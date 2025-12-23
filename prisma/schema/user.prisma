@@ -1,0 +1,21 @@
+model User {
+  id               String   @id @default(uuid())
+  first_name       String   @db.VarChar(100)
+  last_name        String   @db.VarChar(100)
+  email            String   @unique @db.VarChar(150)
+  phone            String   @unique @db.VarChar(20)
+  zip_code         String   @db.VarChar(10)
+  password         String   @db.VarChar(255)
+  role             role?     @default(User)
+  location         String?  @db.VarChar(50)
+  additional_info  String?  @db.VarChar(255)
+  profile_picture  String?  @db.VarChar(255)
+  created_at       DateTime @default(now())
+  updated_at       DateTime? 
+}
+
+
+enum role {
+    User
+    Admin
+}
