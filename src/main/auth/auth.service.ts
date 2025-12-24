@@ -3,21 +3,21 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import {
-  CreateAuthDto,
-  LoginDto,
-  ForgetPasswordDto,
-} from './dto/create-auth.dto';
+import { CreateAuthDto, LoginDto } from './dto/create-auth.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 
 import * as bcrypt from 'bcrypt';
+import { OtpService } from './otp.service';
+import { MailService } from '@/common/mail/mail.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
+    private readonly otpService: OtpService,
+    private readonly mailService: MailService,
   ) {}
 
   async createUser(dto: CreateAuthDto) {
@@ -72,13 +72,16 @@ export class AuthService {
     };
   }
 
-  async forgetpassword(dto: ForgetPasswordDto) {
-    const user = this.prisma.client.user.findUnique({
-      where: {
-        email: dto.email,
-      },
-    });
-
+  async forgetPassword(email: string) {
+    const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) throw new UnauthorizedException('Invalid User');
+
+    const otp = await this.otpService.generateOtp(email);
+    await this.mailService.forgetPassOtp(email, otp);
+
+    return {
+      message:
+        'OTP sent to your email. Please verify it to reset your password.',
+    };
   }
 }
