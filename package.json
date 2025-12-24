@@ -20,13 +20,12 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prisma:generate": "npx prisma generate",
-    "prisma:migrate": "npx prisma migrate deploy",
+    "prisma:migrate": "npx prisma migrate dev",
     "lint:fix": "eslint . --ext .ts,.js,.jsx,.tsx --fix",
     "format:fix": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "ci:check": "npm run format && npm run lint && npm run build && npm run start:prod",
     "ci:fix": "npm run format:fix",
     "postinstall": "npx prisma generate"
-
   },
   "dependencies": {
     "@nestjs/common": "^11.1.9",
