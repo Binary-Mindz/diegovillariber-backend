@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEmail,
-  IsEnum,
-  IsOptional,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsEmail, IsString, MaxLength } from 'class-validator';
 
 export enum userType {
   user,
@@ -53,4 +47,15 @@ export class ForgetPasswordDto {
   @ApiProperty({ example: 'demo@gmail.com' })
   @IsEmail()
   email: string;
+}
+
+export class Otp {
+  @ApiProperty({ example: '123456' })
+  @IsString()
+  otp: string;
+}
+
+export class ResetPasswordDto {
+  otpToken: number;
+  newPassword: string;
 }
