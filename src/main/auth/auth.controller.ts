@@ -1,16 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto, LoginDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
-import { ApiOperation, ApiProperty } from '@nestjs/swagger';
+import {
+  CreateAuthDto,
+  ForgetPasswordDto,
+  LoginDto,
+} from './dto/create-auth.dto';
+import { ApiOperation } from '@nestjs/swagger';
 import { handleRequest } from '@/common/helpers/handle.request';
 
 @Controller('auth')
@@ -34,7 +29,7 @@ export class AuthController {
 
   @Post('forgetpassword')
   @ApiOperation({ summary: 'login' })
-  forgetpassword(@Body() login: LoginDto) {
-    return this.authService.forgetpassword(login);
+  forgetpassword(@Body() login: ForgetPasswordDto) {
+    return this.authService.forgetPassword(login.email);
   }
 }
