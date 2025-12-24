@@ -11,30 +11,46 @@ export class OtpService {
 
   async generateOtp(email: string): Promise<string> {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = new Date(Date.now() + 2 * 60 * 1000);
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
-    await this.prisma.otp.create({
-      data: { email, otp, expiresAt },
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) throw new UnauthorizedException('Invalid User');
+
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        otp,
+        otpExpiresAt: expiresAt,
+      },
     });
 
     return otp;
   }
-
-  async verifyOtp(otp: string) {
-    const record = await this.prisma.otp.findFirst({
-      where: { otp, verified: false },
-      orderBy: { createdAt: 'desc' },
+  async verifyOtp(email: string, otp: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
     });
 
-    if (!record) throw new UnauthorizedException('Invalid OTP');
-    if (record.expiresAt < new Date())
+    if (!user || !user.otp || !user.otpExpiresAt) {
+      throw new UnauthorizedException('Invalid OTP');
+    }
+
+    if (user.otp !== otp) {
+      throw new UnauthorizedException('Incorrect OTP');
+    }
+
+    if (user.otpExpiresAt.getTime() < Date.now()) {
       throw new UnauthorizedException('OTP expired');
+    }
 
-    await this.prisma.otp.update({
-      where: { id: record.id },
-      data: { verified: true },
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        otp: null,
+        otpExpiresAt: null,
+      },
     });
 
-    return record.id;
+    return true;
   }
 }
