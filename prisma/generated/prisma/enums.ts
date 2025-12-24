@@ -9,6 +9,19 @@
 * 🟢 You can import this file directly.
 */
 
+export const FileType = {
+  IMAGE: 'IMAGE',
+  DOCS: 'DOCS',
+  LINK: 'LINK',
+  DOCUMENT: 'DOCUMENT',
+  ANY: 'ANY',
+  VIDEO: 'VIDEO',
+  AUDIO: 'AUDIO'
+} as const
+
+export type FileType = (typeof FileType)[keyof typeof FileType]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN'
