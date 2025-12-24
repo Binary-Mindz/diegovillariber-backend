@@ -17,6 +17,11 @@ export { Prisma };
 export * as $Enums from './enums';
 export * from './enums';
 /**
+ * Model FileInstance
+ *
+ */
+export type FileInstance = Prisma.FileInstanceModel;
+/**
  * Model User
  *
  */
