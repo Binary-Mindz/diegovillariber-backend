@@ -28,7 +28,7 @@ export class AuthController {
   }
 
   @Post('forgetpassword')
-  @ApiOperation({ summary: 'login' })
+  @ApiOperation({ summary: 'Forget Password' })
   forgetpassword(@Body() login: ForgetPasswordDto) {
     return this.authService.forgetPassword(login.email);
   }

@@ -10,6 +10,8 @@ model User {
   location       String?  @db.VarChar(50)
   additionalInfo String?  @db.VarChar(255)
   profilePicture String?  @db.VarChar(255)
+  otp            String?  
+  otpExpiresAt   DateTime?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
