@@ -588,10 +588,6 @@ export type UserMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder;
 };
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string;
-};
-
 export type NullableEnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role | null;
 };
@@ -602,10 +598,6 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null;
-};
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string;
 };
 
 export type UserSelect<
