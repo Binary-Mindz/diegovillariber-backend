@@ -4,6 +4,9 @@ import {
   CreateAuthDto,
   ForgetPasswordDto,
   LoginDto,
+  Otp,
+  ResetPasswordDto,
+
 } from './dto/create-auth.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { handleRequest } from '@/common/helpers/handle.request';
@@ -32,4 +35,18 @@ export class AuthController {
   forgetpassword(@Body() login: ForgetPasswordDto) {
     return this.authService.forgetPassword(login.email);
   }
+
+  @Post('verify-forgot-otp')
+  @ApiOperation({ summary: 'verify otp' })
+  verifyForgotOtp(@Body() otp: Otp) {
+    return this.authService.verifyForgotOtp(otp.otp);
+  }
+  
+
+  @Post('reset-password')
+  @ApiOperation({ summary: 'Reset password without OTP or ID' })
+  async resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.authService.resetPassword(dto.password);
+  }
+  
 }
