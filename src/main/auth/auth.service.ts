@@ -84,4 +84,34 @@ export class AuthService {
         'OTP sent to your email. Please verify it to reset your password.',
     };
   }
+
+      async verifyForgotOtp(otp: string) {
+      const user = await this.prisma.user.findFirst({
+        where: { otp },
+      });
+
+      if (!user) {
+        throw new UnauthorizedException('Invalid OTP');
+      }
+
+      if (!user.otpExpiresAt || user.otpExpiresAt.getTime() < Date.now()) {
+        throw new UnauthorizedException('OTP expired');
+      }
+
+
+
+      return {
+        message: 'OTP verified successfully. You can now reset password.',
+      };
+    }
+
+    async resetPassword(password: string) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await this.prisma.user.updateMany({
+      data: { password: hashedPassword },
+    });
+
+    return { message: 'Password reset successful' };
+  }
 }
