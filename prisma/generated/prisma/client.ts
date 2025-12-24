@@ -26,8 +26,8 @@ export * from './enums';
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more FileInstances
+ * const fileInstances = await prisma.fileInstance.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,6 +42,11 @@ export type PrismaClient<
 > = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>;
 export { Prisma };
 
+/**
+ * Model FileInstance
+ *
+ */
+export type FileInstance = Prisma.FileInstanceModel;
 /**
  * Model User
  *
