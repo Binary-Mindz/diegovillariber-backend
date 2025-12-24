@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  FileInstance: 'FileInstance',
   User: 'User'
 } as const
 
@@ -68,6 +69,22 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const FileInstanceScalarFieldEnum = {
+  id: 'id',
+  filename: 'filename',
+  originalFilename: 'originalFilename',
+  path: 'path',
+  url: 'url',
+  fileType: 'fileType',
+  mimeType: 'mimeType',
+  size: 'size',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FileInstanceScalarFieldEnum = (typeof FileInstanceScalarFieldEnum)[keyof typeof FileInstanceScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
