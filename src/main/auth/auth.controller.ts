@@ -6,11 +6,9 @@ import {
   LoginDto,
   Otp,
   ResetPasswordDto,
-
 } from './dto/create-auth.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { handleRequest } from '@/common/helpers/handle.request';
-
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -41,12 +39,13 @@ export class AuthController {
   verifyForgotOtp(@Body() otp: Otp) {
     return this.authService.verifyForgotOtp(otp.otp);
   }
-  
 
   @Post('reset-password')
   @ApiOperation({ summary: 'Reset password without OTP or ID' })
   async resetPassword(@Body() dto: ResetPasswordDto) {
-    return this.authService.resetPassword(dto.password);
+    return handleRequest(
+      () => this.authService.resetPassword(dto.password),
+      'Password Set successful',
+    );
   }
-  
 }
