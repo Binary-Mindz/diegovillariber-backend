@@ -58,7 +58,7 @@ export class AuthService {
     const payload = {
       sub: user.id,
       email: user.email,
-      role: user.role,
+      role: user.role
     };
 
     const accessToken = await this.jwtService.signAsync(payload);
@@ -97,7 +97,7 @@ export class AuthService {
       if (!user.otpExpiresAt || user.otpExpiresAt.getTime() < Date.now()) {
         throw new UnauthorizedException('OTP expired');
       }
-
+      // todo.... otp match or not verify. 
 
 
       return {
@@ -111,7 +111,5 @@ export class AuthService {
     await this.prisma.user.updateMany({
       data: { password: hashedPassword },
     });
-
-    return { message: 'Password reset successful' };
   }
 }
