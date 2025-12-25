@@ -5,7 +5,7 @@ import {
   ForgetPasswordDto,
   LoginDto,
   Otp,
-  ResetPasswordDto
+  ResetPasswordDto,
 } from './dto/create-auth.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { handleRequest } from '@/common/helpers/handle.request';
@@ -39,19 +39,13 @@ export class AuthController {
   verifyForgotOtp(@Body() otp: Otp) {
     return this.authService.verifyForgotOtp(otp.otp);
   }
-  
 
   @Post('reset-password')
   @ApiOperation({ summary: 'Reset password without OTP or ID' })
   async resetPassword(@Body() dto: ResetPasswordDto) {
-     return handleRequest(
+    return handleRequest(
       () => this.authService.resetPassword(dto.password),
       'Password Set successful',
     );
   }
-
-
-
-  
-  
 }
