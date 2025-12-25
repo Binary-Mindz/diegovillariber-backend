@@ -1,0 +1,32 @@
+DATABASE_URL="postgresql://postgres:postgresPassword@localhost:5435/johnbDB?schema=public"
+
+JWT_SECRET =
+
+EMAIL_USER = 
+EMAIL_PASS= 
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_BUCKET_NAME=
+AWS_REGION=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------cmd-------
+npm i
+
+docker compose up -d
+
+mssolally aws ....
