@@ -17,18 +17,18 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Truf Managment System')
+    .setTitle('Diegovillariber Backend Server')
     .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory, {
+  SwaggerModule.setup('docs', app, documentFactory, {
     swaggerOptions: {
       persistAuthorization: true,
     },
   });
 
-  const port = process.env.PORT! || 3000;
+  const port = process.env.PORT! || 5000;
   await app.listen(process.env.PORT ?? port);
-  console.log(`the server running at http://localhost:${port}/api`);
+
 }
 bootstrap();
