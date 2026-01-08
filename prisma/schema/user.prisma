@@ -10,7 +10,7 @@ model User {
   expiresIn       String?
   accessToken     String?
   refreshToken    String?
-  isEmailVerified Boolean @default(false)
+  isEmailVerified Boolean @default(true)
   totalPoints     Int     @default(0)
   balance         Int     @default(0)
   likeCount       Int     @default(0)
