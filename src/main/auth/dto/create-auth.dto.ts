@@ -7,7 +7,7 @@ export enum userType {
 }
 
 export class LoginDto {
-  @ApiProperty({ example: 'demo@gmail.com' })
+  @ApiProperty({ example: 'ranarasul21@gmail.com' })
   @IsEmail()
   email: string;
 
@@ -17,7 +17,7 @@ export class LoginDto {
 }
 
 export class ForgetPasswordDto {
-  @ApiProperty({ example: 'demo@gmail.com' })
+  @ApiProperty({ example: 'ranarasul21@gmail.com' })
   @IsEmail()
   email: string;
 }

@@ -23,9 +23,12 @@ export class AuthController {
   }
 
   @Post('login')
-  @ApiOperation({ summary: 'login' })
+  @ApiOperation({ summary: 'Login User' })
   login(@Body() login: LoginDto) {
-    return this.authService.loginuser(login);
+    return handleRequest(
+      () => this.authService.loginuser(login),
+      'User login successfully',
+    );
   }
 
   @Post('forgetpassword')
