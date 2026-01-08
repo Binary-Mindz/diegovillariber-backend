@@ -20,115 +20,173 @@ export type UserModel =
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null;
+  _avg: UserAvgAggregateOutputType | null;
+  _sum: UserSumAggregateOutputType | null;
   _min: UserMinAggregateOutputType | null;
   _max: UserMaxAggregateOutputType | null;
 };
 
+export type UserAvgAggregateOutputType = {
+  totalPoints: number | null;
+  balance: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
+  shareCount: number | null;
+};
+
+export type UserSumAggregateOutputType = {
+  totalPoints: number | null;
+  balance: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
+  shareCount: number | null;
+};
+
 export type UserMinAggregateOutputType = {
   id: string | null;
-  firstName: string | null;
-  lastName: string | null;
   email: string | null;
   phone: string | null;
-  zipCode: string | null;
+  firstName: string | null;
+  lastName: string | null;
   password: string | null;
   role: $Enums.Role | null;
-  location: string | null;
-  additionalInfo: string | null;
-  profilePicture: string | null;
   otp: string | null;
-  otpExpiresAt: Date | null;
+  expiresIn: string | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  isEmailVerified: boolean | null;
+  totalPoints: number | null;
+  balance: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
+  shareCount: number | null;
   createdAt: Date | null;
   updatedAt: Date | null;
 };
 
 export type UserMaxAggregateOutputType = {
   id: string | null;
-  firstName: string | null;
-  lastName: string | null;
   email: string | null;
   phone: string | null;
-  zipCode: string | null;
+  firstName: string | null;
+  lastName: string | null;
   password: string | null;
   role: $Enums.Role | null;
-  location: string | null;
-  additionalInfo: string | null;
-  profilePicture: string | null;
   otp: string | null;
-  otpExpiresAt: Date | null;
+  expiresIn: string | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  isEmailVerified: boolean | null;
+  totalPoints: number | null;
+  balance: number | null;
+  likeCount: number | null;
+  commentCount: number | null;
+  shareCount: number | null;
   createdAt: Date | null;
   updatedAt: Date | null;
 };
 
 export type UserCountAggregateOutputType = {
   id: number;
-  firstName: number;
-  lastName: number;
   email: number;
   phone: number;
-  zipCode: number;
+  firstName: number;
+  lastName: number;
   password: number;
   role: number;
-  location: number;
-  additionalInfo: number;
-  profilePicture: number;
   otp: number;
-  otpExpiresAt: number;
+  expiresIn: number;
+  accessToken: number;
+  refreshToken: number;
+  isEmailVerified: number;
+  totalPoints: number;
+  balance: number;
+  likeCount: number;
+  commentCount: number;
+  shareCount: number;
   createdAt: number;
   updatedAt: number;
   _all: number;
 };
 
+export type UserAvgAggregateInputType = {
+  totalPoints?: true;
+  balance?: true;
+  likeCount?: true;
+  commentCount?: true;
+  shareCount?: true;
+};
+
+export type UserSumAggregateInputType = {
+  totalPoints?: true;
+  balance?: true;
+  likeCount?: true;
+  commentCount?: true;
+  shareCount?: true;
+};
+
 export type UserMinAggregateInputType = {
   id?: true;
-  firstName?: true;
-  lastName?: true;
   email?: true;
   phone?: true;
-  zipCode?: true;
+  firstName?: true;
+  lastName?: true;
   password?: true;
   role?: true;
-  location?: true;
-  additionalInfo?: true;
-  profilePicture?: true;
   otp?: true;
-  otpExpiresAt?: true;
+  expiresIn?: true;
+  accessToken?: true;
+  refreshToken?: true;
+  isEmailVerified?: true;
+  totalPoints?: true;
+  balance?: true;
+  likeCount?: true;
+  commentCount?: true;
+  shareCount?: true;
   createdAt?: true;
   updatedAt?: true;
 };
 
 export type UserMaxAggregateInputType = {
   id?: true;
-  firstName?: true;
-  lastName?: true;
   email?: true;
   phone?: true;
-  zipCode?: true;
+  firstName?: true;
+  lastName?: true;
   password?: true;
   role?: true;
-  location?: true;
-  additionalInfo?: true;
-  profilePicture?: true;
   otp?: true;
-  otpExpiresAt?: true;
+  expiresIn?: true;
+  accessToken?: true;
+  refreshToken?: true;
+  isEmailVerified?: true;
+  totalPoints?: true;
+  balance?: true;
+  likeCount?: true;
+  commentCount?: true;
+  shareCount?: true;
   createdAt?: true;
   updatedAt?: true;
 };
 
 export type UserCountAggregateInputType = {
   id?: true;
-  firstName?: true;
-  lastName?: true;
   email?: true;
   phone?: true;
-  zipCode?: true;
+  firstName?: true;
+  lastName?: true;
   password?: true;
   role?: true;
-  location?: true;
-  additionalInfo?: true;
-  profilePicture?: true;
   otp?: true;
-  otpExpiresAt?: true;
+  expiresIn?: true;
+  accessToken?: true;
+  refreshToken?: true;
+  isEmailVerified?: true;
+  totalPoints?: true;
+  balance?: true;
+  likeCount?: true;
+  commentCount?: true;
+  shareCount?: true;
   createdAt?: true;
   updatedAt?: true;
   _all?: true;
@@ -177,6 +235,18 @@ export type UserAggregateArgs<
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    *
+   * Select which fields to average
+   **/
+  _avg?: UserAvgAggregateInputType;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   *
+   * Select which fields to sum
+   **/
+  _sum?: UserSumAggregateInputType;
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   *
    * Select which fields to find the minimum value
    **/
   _min?: UserMinAggregateInputType;
@@ -209,27 +279,35 @@ export type UserGroupByArgs<
   take?: number;
   skip?: number;
   _count?: UserCountAggregateInputType | true;
+  _avg?: UserAvgAggregateInputType;
+  _sum?: UserSumAggregateInputType;
   _min?: UserMinAggregateInputType;
   _max?: UserMaxAggregateInputType;
 };
 
 export type UserGroupByOutputType = {
   id: string;
-  firstName: string;
-  lastName: string;
   email: string;
-  phone: string;
-  zipCode: string;
+  phone: string | null;
+  firstName: string | null;
+  lastName: string | null;
   password: string;
-  role: $Enums.Role | null;
-  location: string | null;
-  additionalInfo: string | null;
-  profilePicture: string | null;
+  role: $Enums.Role;
   otp: string | null;
-  otpExpiresAt: Date | null;
+  expiresIn: string | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  isEmailVerified: boolean;
+  totalPoints: number;
+  balance: number;
+  likeCount: number;
+  commentCount: number;
+  shareCount: number;
   createdAt: Date;
   updatedAt: Date;
   _count: UserCountAggregateOutputType | null;
+  _avg: UserAvgAggregateOutputType | null;
+  _sum: UserSumAggregateOutputType | null;
   _min: UserMinAggregateOutputType | null;
   _max: UserMaxAggregateOutputType | null;
 };
@@ -250,84 +328,216 @@ export type UserWhereInput = {
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
   OR?: Prisma.UserWhereInput[];
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
-  id?: Prisma.StringFilter<'User'> | string;
-  firstName?: Prisma.StringFilter<'User'> | string;
-  lastName?: Prisma.StringFilter<'User'> | string;
+  id?: Prisma.UuidFilter<'User'> | string;
   email?: Prisma.StringFilter<'User'> | string;
-  phone?: Prisma.StringFilter<'User'> | string;
-  zipCode?: Prisma.StringFilter<'User'> | string;
+  phone?: Prisma.StringNullableFilter<'User'> | string | null;
+  firstName?: Prisma.StringNullableFilter<'User'> | string | null;
+  lastName?: Prisma.StringNullableFilter<'User'> | string | null;
   password?: Prisma.StringFilter<'User'> | string;
-  role?: Prisma.EnumRoleNullableFilter<'User'> | $Enums.Role | null;
-  location?: Prisma.StringNullableFilter<'User'> | string | null;
-  additionalInfo?: Prisma.StringNullableFilter<'User'> | string | null;
-  profilePicture?: Prisma.StringNullableFilter<'User'> | string | null;
+  role?: Prisma.EnumRoleFilter<'User'> | $Enums.Role;
   otp?: Prisma.StringNullableFilter<'User'> | string | null;
-  otpExpiresAt?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
+  expiresIn?: Prisma.StringNullableFilter<'User'> | string | null;
+  accessToken?: Prisma.StringNullableFilter<'User'> | string | null;
+  refreshToken?: Prisma.StringNullableFilter<'User'> | string | null;
+  isEmailVerified?: Prisma.BoolFilter<'User'> | boolean;
+  totalPoints?: Prisma.IntFilter<'User'> | number;
+  balance?: Prisma.IntFilter<'User'> | number;
+  likeCount?: Prisma.IntFilter<'User'> | number;
+  commentCount?: Prisma.IntFilter<'User'> | number;
+  shareCount?: Prisma.IntFilter<'User'> | number;
   createdAt?: Prisma.DateTimeFilter<'User'> | Date | string;
   updatedAt?: Prisma.DateTimeFilter<'User'> | Date | string;
+  profile?: Prisma.XOR<
+    Prisma.ProfileNullableScalarRelationFilter,
+    Prisma.ProfileWhereInput
+  > | null;
+  posts?: Prisma.PostListRelationFilter;
+  events?: Prisma.EventListRelationFilter;
+  payments?: Prisma.PaymentListRelationFilter;
+  following?: Prisma.FollowListRelationFilter;
+  followers?: Prisma.FollowListRelationFilter;
+  sentMessages?: Prisma.MessageListRelationFilter;
+  receivedMessages?: Prisma.MessageListRelationFilter;
+  ticketsBought?: Prisma.EventTicketListRelationFilter;
+  ticketsSold?: Prisma.EventTicketListRelationFilter;
+  productLists?: Prisma.ProductListListRelationFilter;
+  reports?: Prisma.ReportListRelationFilter;
+  shares?: Prisma.ShareListRelationFilter;
+  likes?: Prisma.LikeListRelationFilter;
+  comments?: Prisma.CommentListRelationFilter;
+  liveRewards?: Prisma.LiveRewardListRelationFilter;
+  liveRewardsGiven?: Prisma.LiveRewardListRelationFilter;
+  lives?: Prisma.LiveListRelationFilter;
+  liveParticipants?: Prisma.LiveParticipantListRelationFilter;
+  reposts?: Prisma.RepostListRelationFilter;
+  racingVotes?: Prisma.RacingVoteListRelationFilter;
+  savePosts?: Prisma.SavePostListRelationFilter;
+  hidePosts?: Prisma.HidePostListRelationFilter;
+  wishLists?: Prisma.WishListListRelationFilter;
+  battleResults?: Prisma.BattleResultListRelationFilter;
+  battleVotes?: Prisma.BattleVoteListRelationFilter;
+  battles?: Prisma.BattleListRelationFilter;
+  battleParticipants?: Prisma.BattleParticipantListRelationFilter;
+  userPoints?: Prisma.UserPointListRelationFilter;
+  sellerProducts?: Prisma.BuyProductListRelationFilter;
+  buyProducts?: Prisma.BuyProductListRelationFilter;
+  challengeResults?: Prisma.ChallengeResultListRelationFilter;
+  hostChallenge?: Prisma.ChallengeListRelationFilter;
+  challenges?: Prisma.ChallengeListRelationFilter;
+  challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter;
+  battleEntries?: Prisma.BattleEntryListRelationFilter;
 };
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
-  firstName?: Prisma.SortOrder;
-  lastName?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
-  phone?: Prisma.SortOrder;
-  zipCode?: Prisma.SortOrder;
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder;
+  firstName?: Prisma.SortOrderInput | Prisma.SortOrder;
+  lastName?: Prisma.SortOrderInput | Prisma.SortOrder;
   password?: Prisma.SortOrder;
-  role?: Prisma.SortOrderInput | Prisma.SortOrder;
-  location?: Prisma.SortOrderInput | Prisma.SortOrder;
-  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder;
-  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder;
+  role?: Prisma.SortOrder;
   otp?: Prisma.SortOrderInput | Prisma.SortOrder;
-  otpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+  expiresIn?: Prisma.SortOrderInput | Prisma.SortOrder;
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder;
+  refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder;
+  isEmailVerified?: Prisma.SortOrder;
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
+  profile?: Prisma.ProfileOrderByWithRelationInput;
+  posts?: Prisma.PostOrderByRelationAggregateInput;
+  events?: Prisma.EventOrderByRelationAggregateInput;
+  payments?: Prisma.PaymentOrderByRelationAggregateInput;
+  following?: Prisma.FollowOrderByRelationAggregateInput;
+  followers?: Prisma.FollowOrderByRelationAggregateInput;
+  sentMessages?: Prisma.MessageOrderByRelationAggregateInput;
+  receivedMessages?: Prisma.MessageOrderByRelationAggregateInput;
+  ticketsBought?: Prisma.EventTicketOrderByRelationAggregateInput;
+  ticketsSold?: Prisma.EventTicketOrderByRelationAggregateInput;
+  productLists?: Prisma.ProductListOrderByRelationAggregateInput;
+  reports?: Prisma.ReportOrderByRelationAggregateInput;
+  shares?: Prisma.ShareOrderByRelationAggregateInput;
+  likes?: Prisma.LikeOrderByRelationAggregateInput;
+  comments?: Prisma.CommentOrderByRelationAggregateInput;
+  liveRewards?: Prisma.LiveRewardOrderByRelationAggregateInput;
+  liveRewardsGiven?: Prisma.LiveRewardOrderByRelationAggregateInput;
+  lives?: Prisma.LiveOrderByRelationAggregateInput;
+  liveParticipants?: Prisma.LiveParticipantOrderByRelationAggregateInput;
+  reposts?: Prisma.RepostOrderByRelationAggregateInput;
+  racingVotes?: Prisma.RacingVoteOrderByRelationAggregateInput;
+  savePosts?: Prisma.SavePostOrderByRelationAggregateInput;
+  hidePosts?: Prisma.HidePostOrderByRelationAggregateInput;
+  wishLists?: Prisma.WishListOrderByRelationAggregateInput;
+  battleResults?: Prisma.BattleResultOrderByRelationAggregateInput;
+  battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput;
+  battles?: Prisma.BattleOrderByRelationAggregateInput;
+  battleParticipants?: Prisma.BattleParticipantOrderByRelationAggregateInput;
+  userPoints?: Prisma.UserPointOrderByRelationAggregateInput;
+  sellerProducts?: Prisma.BuyProductOrderByRelationAggregateInput;
+  buyProducts?: Prisma.BuyProductOrderByRelationAggregateInput;
+  challengeResults?: Prisma.ChallengeResultOrderByRelationAggregateInput;
+  hostChallenge?: Prisma.ChallengeOrderByRelationAggregateInput;
+  challenges?: Prisma.ChallengeOrderByRelationAggregateInput;
+  challengeParticipants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput;
+  battleEntries?: Prisma.BattleEntryOrderByRelationAggregateInput;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
   {
     id?: string;
     email?: string;
-    phone?: string;
     AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
     OR?: Prisma.UserWhereInput[];
     NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
-    firstName?: Prisma.StringFilter<'User'> | string;
-    lastName?: Prisma.StringFilter<'User'> | string;
-    zipCode?: Prisma.StringFilter<'User'> | string;
+    phone?: Prisma.StringNullableFilter<'User'> | string | null;
+    firstName?: Prisma.StringNullableFilter<'User'> | string | null;
+    lastName?: Prisma.StringNullableFilter<'User'> | string | null;
     password?: Prisma.StringFilter<'User'> | string;
-    role?: Prisma.EnumRoleNullableFilter<'User'> | $Enums.Role | null;
-    location?: Prisma.StringNullableFilter<'User'> | string | null;
-    additionalInfo?: Prisma.StringNullableFilter<'User'> | string | null;
-    profilePicture?: Prisma.StringNullableFilter<'User'> | string | null;
+    role?: Prisma.EnumRoleFilter<'User'> | $Enums.Role;
     otp?: Prisma.StringNullableFilter<'User'> | string | null;
-    otpExpiresAt?: Prisma.DateTimeNullableFilter<'User'> | Date | string | null;
+    expiresIn?: Prisma.StringNullableFilter<'User'> | string | null;
+    accessToken?: Prisma.StringNullableFilter<'User'> | string | null;
+    refreshToken?: Prisma.StringNullableFilter<'User'> | string | null;
+    isEmailVerified?: Prisma.BoolFilter<'User'> | boolean;
+    totalPoints?: Prisma.IntFilter<'User'> | number;
+    balance?: Prisma.IntFilter<'User'> | number;
+    likeCount?: Prisma.IntFilter<'User'> | number;
+    commentCount?: Prisma.IntFilter<'User'> | number;
+    shareCount?: Prisma.IntFilter<'User'> | number;
     createdAt?: Prisma.DateTimeFilter<'User'> | Date | string;
     updatedAt?: Prisma.DateTimeFilter<'User'> | Date | string;
+    profile?: Prisma.XOR<
+      Prisma.ProfileNullableScalarRelationFilter,
+      Prisma.ProfileWhereInput
+    > | null;
+    posts?: Prisma.PostListRelationFilter;
+    events?: Prisma.EventListRelationFilter;
+    payments?: Prisma.PaymentListRelationFilter;
+    following?: Prisma.FollowListRelationFilter;
+    followers?: Prisma.FollowListRelationFilter;
+    sentMessages?: Prisma.MessageListRelationFilter;
+    receivedMessages?: Prisma.MessageListRelationFilter;
+    ticketsBought?: Prisma.EventTicketListRelationFilter;
+    ticketsSold?: Prisma.EventTicketListRelationFilter;
+    productLists?: Prisma.ProductListListRelationFilter;
+    reports?: Prisma.ReportListRelationFilter;
+    shares?: Prisma.ShareListRelationFilter;
+    likes?: Prisma.LikeListRelationFilter;
+    comments?: Prisma.CommentListRelationFilter;
+    liveRewards?: Prisma.LiveRewardListRelationFilter;
+    liveRewardsGiven?: Prisma.LiveRewardListRelationFilter;
+    lives?: Prisma.LiveListRelationFilter;
+    liveParticipants?: Prisma.LiveParticipantListRelationFilter;
+    reposts?: Prisma.RepostListRelationFilter;
+    racingVotes?: Prisma.RacingVoteListRelationFilter;
+    savePosts?: Prisma.SavePostListRelationFilter;
+    hidePosts?: Prisma.HidePostListRelationFilter;
+    wishLists?: Prisma.WishListListRelationFilter;
+    battleResults?: Prisma.BattleResultListRelationFilter;
+    battleVotes?: Prisma.BattleVoteListRelationFilter;
+    battles?: Prisma.BattleListRelationFilter;
+    battleParticipants?: Prisma.BattleParticipantListRelationFilter;
+    userPoints?: Prisma.UserPointListRelationFilter;
+    sellerProducts?: Prisma.BuyProductListRelationFilter;
+    buyProducts?: Prisma.BuyProductListRelationFilter;
+    challengeResults?: Prisma.ChallengeResultListRelationFilter;
+    hostChallenge?: Prisma.ChallengeListRelationFilter;
+    challenges?: Prisma.ChallengeListRelationFilter;
+    challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter;
+    battleEntries?: Prisma.BattleEntryListRelationFilter;
   },
-  'id' | 'email' | 'phone'
+  'id' | 'email'
 >;
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
-  firstName?: Prisma.SortOrder;
-  lastName?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
-  phone?: Prisma.SortOrder;
-  zipCode?: Prisma.SortOrder;
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder;
+  firstName?: Prisma.SortOrderInput | Prisma.SortOrder;
+  lastName?: Prisma.SortOrderInput | Prisma.SortOrder;
   password?: Prisma.SortOrder;
-  role?: Prisma.SortOrderInput | Prisma.SortOrder;
-  location?: Prisma.SortOrderInput | Prisma.SortOrder;
-  additionalInfo?: Prisma.SortOrderInput | Prisma.SortOrder;
-  profilePicture?: Prisma.SortOrderInput | Prisma.SortOrder;
+  role?: Prisma.SortOrder;
   otp?: Prisma.SortOrderInput | Prisma.SortOrder;
-  otpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder;
+  expiresIn?: Prisma.SortOrderInput | Prisma.SortOrder;
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder;
+  refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder;
+  isEmailVerified?: Prisma.SortOrder;
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
   _count?: Prisma.UserCountOrderByAggregateInput;
+  _avg?: Prisma.UserAvgOrderByAggregateInput;
   _max?: Prisma.UserMaxOrderByAggregateInput;
   _min?: Prisma.UserMinOrderByAggregateInput;
+  _sum?: Prisma.UserSumOrderByAggregateInput;
 };
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -338,266 +548,11468 @@ export type UserScalarWhereWithAggregatesInput = {
   NOT?:
     | Prisma.UserScalarWhereWithAggregatesInput
     | Prisma.UserScalarWhereWithAggregatesInput[];
-  id?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  firstName?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  lastName?: Prisma.StringWithAggregatesFilter<'User'> | string;
+  id?: Prisma.UuidWithAggregatesFilter<'User'> | string;
   email?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  phone?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  zipCode?: Prisma.StringWithAggregatesFilter<'User'> | string;
+  phone?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  firstName?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  lastName?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
   password?: Prisma.StringWithAggregatesFilter<'User'> | string;
-  role?:
-    | Prisma.EnumRoleNullableWithAggregatesFilter<'User'>
-    | $Enums.Role
-    | null;
-  location?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
-  additionalInfo?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
-  profilePicture?:
-    | Prisma.StringNullableWithAggregatesFilter<'User'>
-    | string
-    | null;
+  role?: Prisma.EnumRoleWithAggregatesFilter<'User'> | $Enums.Role;
   otp?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
-  otpExpiresAt?:
-    | Prisma.DateTimeNullableWithAggregatesFilter<'User'>
-    | Date
+  expiresIn?: Prisma.StringNullableWithAggregatesFilter<'User'> | string | null;
+  accessToken?:
+    | Prisma.StringNullableWithAggregatesFilter<'User'>
     | string
     | null;
+  refreshToken?:
+    | Prisma.StringNullableWithAggregatesFilter<'User'>
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolWithAggregatesFilter<'User'> | boolean;
+  totalPoints?: Prisma.IntWithAggregatesFilter<'User'> | number;
+  balance?: Prisma.IntWithAggregatesFilter<'User'> | number;
+  likeCount?: Prisma.IntWithAggregatesFilter<'User'> | number;
+  commentCount?: Prisma.IntWithAggregatesFilter<'User'> | number;
+  shareCount?: Prisma.IntWithAggregatesFilter<'User'> | number;
   createdAt?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<'User'> | Date | string;
 };
 
 export type UserCreateInput = {
   id?: string;
-  firstName: string;
-  lastName: string;
   email: string;
-  phone: string;
-  zipCode: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   password: string;
-  role?: $Enums.Role | null;
-  location?: string | null;
-  additionalInfo?: string | null;
-  profilePicture?: string | null;
+  role?: $Enums.Role;
   otp?: string | null;
-  otpExpiresAt?: Date | string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
 };
 
 export type UserUncheckedCreateInput = {
   id?: string;
-  firstName: string;
-  lastName: string;
   email: string;
-  phone: string;
-  zipCode: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   password: string;
-  role?: $Enums.Role | null;
-  location?: string | null;
-  additionalInfo?: string | null;
-  profilePicture?: string | null;
+  role?: $Enums.Role;
   otp?: string | null;
-  otpExpiresAt?: Date | string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
   createdAt?: Date | string;
   updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
 };
 
 export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string;
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  zipCode?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  additionalInfo?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  profilePicture?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  otpExpiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
 };
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string;
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  zipCode?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  additionalInfo?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  profilePicture?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  otpExpiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
 };
 
 export type UserCreateManyInput = {
   id?: string;
-  firstName: string;
-  lastName: string;
   email: string;
-  phone: string;
-  zipCode: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
   password: string;
-  role?: $Enums.Role | null;
-  location?: string | null;
-  additionalInfo?: string | null;
-  profilePicture?: string | null;
+  role?: $Enums.Role;
   otp?: string | null;
-  otpExpiresAt?: Date | string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
   createdAt?: Date | string;
   updatedAt?: Date | string;
 };
 
 export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string;
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  zipCode?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  additionalInfo?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  profilePicture?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  otpExpiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
-  firstName?: Prisma.StringFieldUpdateOperationsInput | string;
-  lastName?: Prisma.StringFieldUpdateOperationsInput | string;
   email?: Prisma.StringFieldUpdateOperationsInput | string;
-  phone?: Prisma.StringFieldUpdateOperationsInput | string;
-  zipCode?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
-  role?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null;
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  additionalInfo?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
-  profilePicture?:
-    | Prisma.NullableStringFieldUpdateOperationsInput
-    | string
-    | null;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-  otpExpiresAt?:
-    | Prisma.NullableDateTimeFieldUpdateOperationsInput
-    | Date
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
     | string
     | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput;
+  isNot?: Prisma.UserWhereInput;
+};
+
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null;
+  isNot?: Prisma.UserWhereInput | null;
+};
+
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput;
+  some?: Prisma.UserWhereInput;
+  none?: Prisma.UserWhereInput;
+};
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder;
+};
+
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  firstName?: Prisma.SortOrder;
-  lastName?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
-  zipCode?: Prisma.SortOrder;
+  firstName?: Prisma.SortOrder;
+  lastName?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
   role?: Prisma.SortOrder;
-  location?: Prisma.SortOrder;
-  additionalInfo?: Prisma.SortOrder;
-  profilePicture?: Prisma.SortOrder;
   otp?: Prisma.SortOrder;
-  otpExpiresAt?: Prisma.SortOrder;
+  expiresIn?: Prisma.SortOrder;
+  accessToken?: Prisma.SortOrder;
+  refreshToken?: Prisma.SortOrder;
+  isEmailVerified?: Prisma.SortOrder;
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
 
+export type UserAvgOrderByAggregateInput = {
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
+};
+
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  firstName?: Prisma.SortOrder;
-  lastName?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
-  zipCode?: Prisma.SortOrder;
+  firstName?: Prisma.SortOrder;
+  lastName?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
   role?: Prisma.SortOrder;
-  location?: Prisma.SortOrder;
-  additionalInfo?: Prisma.SortOrder;
-  profilePicture?: Prisma.SortOrder;
   otp?: Prisma.SortOrder;
-  otpExpiresAt?: Prisma.SortOrder;
+  expiresIn?: Prisma.SortOrder;
+  accessToken?: Prisma.SortOrder;
+  refreshToken?: Prisma.SortOrder;
+  isEmailVerified?: Prisma.SortOrder;
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
-  firstName?: Prisma.SortOrder;
-  lastName?: Prisma.SortOrder;
   email?: Prisma.SortOrder;
   phone?: Prisma.SortOrder;
-  zipCode?: Prisma.SortOrder;
+  firstName?: Prisma.SortOrder;
+  lastName?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
   role?: Prisma.SortOrder;
-  location?: Prisma.SortOrder;
-  additionalInfo?: Prisma.SortOrder;
-  profilePicture?: Prisma.SortOrder;
   otp?: Prisma.SortOrder;
-  otpExpiresAt?: Prisma.SortOrder;
+  expiresIn?: Prisma.SortOrder;
+  accessToken?: Prisma.SortOrder;
+  refreshToken?: Prisma.SortOrder;
+  isEmailVerified?: Prisma.SortOrder;
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
 };
 
-export type NullableEnumRoleFieldUpdateOperationsInput = {
-  set?: $Enums.Role | null;
+export type UserSumOrderByAggregateInput = {
+  totalPoints?: Prisma.SortOrder;
+  balance?: Prisma.SortOrder;
+  likeCount?: Prisma.SortOrder;
+  commentCount?: Prisma.SortOrder;
+  shareCount?: Prisma.SortOrder;
 };
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null;
+export type UserCreateNestedOneWithoutBattlesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattlesInput,
+    Prisma.UserUncheckedCreateWithoutBattlesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattlesInput;
+  connect?: Prisma.UserWhereUniqueInput;
 };
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null;
+export type UserUpdateOneRequiredWithoutBattlesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattlesInput,
+    Prisma.UserUncheckedCreateWithoutBattlesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattlesInput;
+  upsert?: Prisma.UserUpsertWithoutBattlesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBattlesInput,
+      Prisma.UserUpdateWithoutBattlesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBattlesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutBattleEntriesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedCreateWithoutBattleEntriesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleEntriesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutBattleEntriesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedCreateWithoutBattleEntriesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleEntriesInput;
+  upsert?: Prisma.UserUpsertWithoutBattleEntriesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBattleEntriesInput,
+      Prisma.UserUpdateWithoutBattleEntriesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBattleEntriesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutBattleParticipantsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutBattleParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutBattleParticipantsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutBattleParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput;
+  upsert?: Prisma.UserUpsertWithoutBattleParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBattleParticipantsInput,
+      Prisma.UserUpdateWithoutBattleParticipantsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutBattleResultsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleResultsInput,
+    Prisma.UserUncheckedCreateWithoutBattleResultsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleResultsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutBattleResultsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleResultsInput,
+    Prisma.UserUncheckedCreateWithoutBattleResultsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleResultsInput;
+  upsert?: Prisma.UserUpsertWithoutBattleResultsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBattleResultsInput,
+      Prisma.UserUpdateWithoutBattleResultsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBattleResultsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutBattleVotesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleVotesInput,
+    Prisma.UserUncheckedCreateWithoutBattleVotesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutBattleVotesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleVotesInput,
+    Prisma.UserUncheckedCreateWithoutBattleVotesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput;
+  upsert?: Prisma.UserUpsertWithoutBattleVotesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBattleVotesInput,
+      Prisma.UserUpdateWithoutBattleVotesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBattleVotesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutSellerProductsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSellerProductsInput,
+    Prisma.UserUncheckedCreateWithoutSellerProductsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSellerProductsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutBuyProductsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBuyProductsInput,
+    Prisma.UserUncheckedCreateWithoutBuyProductsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBuyProductsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutSellerProductsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSellerProductsInput,
+    Prisma.UserUncheckedCreateWithoutSellerProductsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSellerProductsInput;
+  upsert?: Prisma.UserUpsertWithoutSellerProductsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutSellerProductsInput,
+      Prisma.UserUpdateWithoutSellerProductsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutSellerProductsInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutBuyProductsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutBuyProductsInput,
+    Prisma.UserUncheckedCreateWithoutBuyProductsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBuyProductsInput;
+  upsert?: Prisma.UserUpsertWithoutBuyProductsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutBuyProductsInput,
+      Prisma.UserUpdateWithoutBuyProductsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutBuyProductsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutHostChallengeInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutHostChallengeInput,
+    Prisma.UserUncheckedCreateWithoutHostChallengeInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostChallengeInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutChallengesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengesInput,
+    Prisma.UserUncheckedCreateWithoutChallengesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutHostChallengeNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutHostChallengeInput,
+    Prisma.UserUncheckedCreateWithoutHostChallengeInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostChallengeInput;
+  upsert?: Prisma.UserUpsertWithoutHostChallengeInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutHostChallengeInput,
+      Prisma.UserUpdateWithoutHostChallengeInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutHostChallengeInput
+  >;
+};
+
+export type UserUpdateOneWithoutChallengesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengesInput,
+    Prisma.UserUncheckedCreateWithoutChallengesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengesInput;
+  upsert?: Prisma.UserUpsertWithoutChallengesInput;
+  disconnect?: Prisma.UserWhereInput | boolean;
+  delete?: Prisma.UserWhereInput | boolean;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutChallengesInput,
+      Prisma.UserUpdateWithoutChallengesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutChallengesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutChallengeParticipantsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeParticipantsInput;
+  upsert?: Prisma.UserUpsertWithoutChallengeParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutChallengeParticipantsInput,
+      Prisma.UserUpdateWithoutChallengeParticipantsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutChallengeParticipantsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutChallengeResultsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeResultsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeResultsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutChallengeResultsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeResultsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeResultsInput;
+  upsert?: Prisma.UserUpsertWithoutChallengeResultsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutChallengeResultsInput,
+      Prisma.UserUpdateWithoutChallengeResultsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutChallengeResultsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCommentsInput,
+    Prisma.UserUncheckedCreateWithoutCommentsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutCommentsInput,
+    Prisma.UserUncheckedCreateWithoutCommentsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput;
+  upsert?: Prisma.UserUpsertWithoutCommentsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutCommentsInput,
+      Prisma.UserUpdateWithoutCommentsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutCommentsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutEventsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutEventsInput,
+    Prisma.UserUncheckedCreateWithoutEventsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutEventsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutEventsInput,
+    Prisma.UserUncheckedCreateWithoutEventsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventsInput;
+  upsert?: Prisma.UserUpsertWithoutEventsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutEventsInput,
+      Prisma.UserUpdateWithoutEventsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutEventsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutTicketsBoughtInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedCreateWithoutTicketsBoughtInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsBoughtInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutTicketsSoldInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedCreateWithoutTicketsSoldInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsSoldInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutTicketsBoughtNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedCreateWithoutTicketsBoughtInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsBoughtInput;
+  upsert?: Prisma.UserUpsertWithoutTicketsBoughtInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutTicketsBoughtInput,
+      Prisma.UserUpdateWithoutTicketsBoughtInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutTicketsSoldNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedCreateWithoutTicketsSoldInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsSoldInput;
+  upsert?: Prisma.UserUpsertWithoutTicketsSoldInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutTicketsSoldInput,
+      Prisma.UserUpdateWithoutTicketsSoldInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutTicketsSoldInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutFollowingInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowingInput,
+    Prisma.UserUncheckedCreateWithoutFollowingInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowingInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutFollowersInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowersInput,
+    Prisma.UserUncheckedCreateWithoutFollowersInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowersInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutFollowingNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowingInput,
+    Prisma.UserUncheckedCreateWithoutFollowingInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowingInput;
+  upsert?: Prisma.UserUpsertWithoutFollowingInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutFollowingInput,
+      Prisma.UserUpdateWithoutFollowingInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutFollowingInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowersInput,
+    Prisma.UserUncheckedCreateWithoutFollowersInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFollowersInput;
+  upsert?: Prisma.UserUpsertWithoutFollowersInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutFollowersInput,
+      Prisma.UserUpdateWithoutFollowersInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutFollowersInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutHidePostsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutHidePostsInput,
+    Prisma.UserUncheckedCreateWithoutHidePostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHidePostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutHidePostsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutHidePostsInput,
+    Prisma.UserUncheckedCreateWithoutHidePostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHidePostsInput;
+  upsert?: Prisma.UserUpsertWithoutHidePostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutHidePostsInput,
+      Prisma.UserUpdateWithoutHidePostsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutHidePostsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutLikesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLikesInput,
+    Prisma.UserUncheckedCreateWithoutLikesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutLikesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLikesInput,
+    Prisma.UserUncheckedCreateWithoutLikesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLikesInput;
+  upsert?: Prisma.UserUpsertWithoutLikesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutLikesInput,
+      Prisma.UserUpdateWithoutLikesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutLikesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutLivesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLivesInput,
+    Prisma.UserUncheckedCreateWithoutLivesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLivesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutLivesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLivesInput,
+    Prisma.UserUncheckedCreateWithoutLivesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLivesInput;
+  upsert?: Prisma.UserUpsertWithoutLivesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutLivesInput,
+      Prisma.UserUpdateWithoutLivesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutLivesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutLiveParticipantsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutLiveParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutLiveParticipantsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutLiveParticipantsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveParticipantsInput;
+  upsert?: Prisma.UserUpsertWithoutLiveParticipantsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutLiveParticipantsInput,
+      Prisma.UserUpdateWithoutLiveParticipantsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutLiveParticipantsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutLiveRewardsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveRewardsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserCreateNestedOneWithoutLiveRewardsGivenInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsGivenInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveRewardsGivenInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutLiveRewardsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveRewardsInput;
+  upsert?: Prisma.UserUpsertWithoutLiveRewardsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutLiveRewardsInput,
+      Prisma.UserUpdateWithoutLiveRewardsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsInput
+  >;
+};
+
+export type UserUpdateOneRequiredWithoutLiveRewardsGivenNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsGivenInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLiveRewardsGivenInput;
+  upsert?: Prisma.UserUpsertWithoutLiveRewardsGivenInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutLiveRewardsGivenInput,
+      Prisma.UserUpdateWithoutLiveRewardsGivenInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsGivenInput
+  >;
+};
+
+export type UserCreateNestedManyWithoutSentMessagesInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutSentMessagesInput,
+        Prisma.UserUncheckedCreateWithoutSentMessagesInput
+      >
+    | Prisma.UserCreateWithoutSentMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutSentMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+};
+
+export type UserCreateNestedManyWithoutReceivedMessagesInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutReceivedMessagesInput,
+        Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+      >
+    | Prisma.UserCreateWithoutReceivedMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutReceivedMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+};
+
+export type UserUncheckedCreateNestedManyWithoutSentMessagesInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutSentMessagesInput,
+        Prisma.UserUncheckedCreateWithoutSentMessagesInput
+      >
+    | Prisma.UserCreateWithoutSentMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutSentMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+};
+
+export type UserUncheckedCreateNestedManyWithoutReceivedMessagesInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutReceivedMessagesInput,
+        Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+      >
+    | Prisma.UserCreateWithoutReceivedMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutReceivedMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+};
+
+export type UserUpdateManyWithoutSentMessagesNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutSentMessagesInput,
+        Prisma.UserUncheckedCreateWithoutSentMessagesInput
+      >
+    | Prisma.UserCreateWithoutSentMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutSentMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput[];
+  upsert?:
+    | Prisma.UserUpsertWithWhereUniqueWithoutSentMessagesInput
+    | Prisma.UserUpsertWithWhereUniqueWithoutSentMessagesInput[];
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  update?:
+    | Prisma.UserUpdateWithWhereUniqueWithoutSentMessagesInput
+    | Prisma.UserUpdateWithWhereUniqueWithoutSentMessagesInput[];
+  updateMany?:
+    | Prisma.UserUpdateManyWithWhereWithoutSentMessagesInput
+    | Prisma.UserUpdateManyWithWhereWithoutSentMessagesInput[];
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+};
+
+export type UserUpdateManyWithoutReceivedMessagesNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutReceivedMessagesInput,
+        Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+      >
+    | Prisma.UserCreateWithoutReceivedMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutReceivedMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput[];
+  upsert?:
+    | Prisma.UserUpsertWithWhereUniqueWithoutReceivedMessagesInput
+    | Prisma.UserUpsertWithWhereUniqueWithoutReceivedMessagesInput[];
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  update?:
+    | Prisma.UserUpdateWithWhereUniqueWithoutReceivedMessagesInput
+    | Prisma.UserUpdateWithWhereUniqueWithoutReceivedMessagesInput[];
+  updateMany?:
+    | Prisma.UserUpdateManyWithWhereWithoutReceivedMessagesInput
+    | Prisma.UserUpdateManyWithWhereWithoutReceivedMessagesInput[];
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+};
+
+export type UserUncheckedUpdateManyWithoutSentMessagesNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutSentMessagesInput,
+        Prisma.UserUncheckedCreateWithoutSentMessagesInput
+      >
+    | Prisma.UserCreateWithoutSentMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutSentMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput
+    | Prisma.UserCreateOrConnectWithoutSentMessagesInput[];
+  upsert?:
+    | Prisma.UserUpsertWithWhereUniqueWithoutSentMessagesInput
+    | Prisma.UserUpsertWithWhereUniqueWithoutSentMessagesInput[];
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  update?:
+    | Prisma.UserUpdateWithWhereUniqueWithoutSentMessagesInput
+    | Prisma.UserUpdateWithWhereUniqueWithoutSentMessagesInput[];
+  updateMany?:
+    | Prisma.UserUpdateManyWithWhereWithoutSentMessagesInput
+    | Prisma.UserUpdateManyWithWhereWithoutSentMessagesInput[];
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+};
+
+export type UserUncheckedUpdateManyWithoutReceivedMessagesNestedInput = {
+  create?:
+    | Prisma.XOR<
+        Prisma.UserCreateWithoutReceivedMessagesInput,
+        Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+      >
+    | Prisma.UserCreateWithoutReceivedMessagesInput[]
+    | Prisma.UserUncheckedCreateWithoutReceivedMessagesInput[];
+  connectOrCreate?:
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput
+    | Prisma.UserCreateOrConnectWithoutReceivedMessagesInput[];
+  upsert?:
+    | Prisma.UserUpsertWithWhereUniqueWithoutReceivedMessagesInput
+    | Prisma.UserUpsertWithWhereUniqueWithoutReceivedMessagesInput[];
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[];
+  update?:
+    | Prisma.UserUpdateWithWhereUniqueWithoutReceivedMessagesInput
+    | Prisma.UserUpdateWithWhereUniqueWithoutReceivedMessagesInput[];
+  updateMany?:
+    | Prisma.UserUpdateManyWithWhereWithoutReceivedMessagesInput
+    | Prisma.UserUpdateManyWithWhereWithoutReceivedMessagesInput[];
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+};
+
+export type UserCreateNestedOneWithoutPaymentsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutPaymentsInput,
+    Prisma.UserUncheckedCreateWithoutPaymentsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPaymentsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutPaymentsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutPaymentsInput,
+    Prisma.UserUncheckedCreateWithoutPaymentsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPaymentsInput;
+  upsert?: Prisma.UserUpsertWithoutPaymentsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutPaymentsInput,
+      Prisma.UserUpdateWithoutPaymentsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutPaymentsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutPostsInput,
+    Prisma.UserUncheckedCreateWithoutPostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutPostsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutPostsInput,
+    Prisma.UserUncheckedCreateWithoutPostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostsInput;
+  upsert?: Prisma.UserUpsertWithoutPostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutPostsInput,
+      Prisma.UserUpdateWithoutPostsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutPostsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutProductListsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutProductListsInput,
+    Prisma.UserUncheckedCreateWithoutProductListsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProductListsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutProductListsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutProductListsInput,
+    Prisma.UserUncheckedCreateWithoutProductListsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProductListsInput;
+  upsert?: Prisma.UserUpsertWithoutProductListsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutProductListsInput,
+      Prisma.UserUpdateWithoutProductListsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutProductListsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutProfileInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutProfileInput,
+    Prisma.UserUncheckedCreateWithoutProfileInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutProfileNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutProfileInput,
+    Prisma.UserUncheckedCreateWithoutProfileInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProfileInput;
+  upsert?: Prisma.UserUpsertWithoutProfileInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutProfileInput,
+      Prisma.UserUpdateWithoutProfileInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutProfileInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutRacingVotesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutRacingVotesInput,
+    Prisma.UserUncheckedCreateWithoutRacingVotesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutRacingVotesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutRacingVotesInput,
+    Prisma.UserUncheckedCreateWithoutRacingVotesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesInput;
+  upsert?: Prisma.UserUpsertWithoutRacingVotesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutRacingVotesInput,
+      Prisma.UserUpdateWithoutRacingVotesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutRacingVotesInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutReportsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutReportsInput,
+    Prisma.UserUncheckedCreateWithoutReportsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutReportsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutReportsInput,
+    Prisma.UserUncheckedCreateWithoutReportsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput;
+  upsert?: Prisma.UserUpsertWithoutReportsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutReportsInput,
+      Prisma.UserUpdateWithoutReportsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutReportsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutRepostsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutRepostsInput,
+    Prisma.UserUncheckedCreateWithoutRepostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutRepostsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutRepostsInput,
+    Prisma.UserUncheckedCreateWithoutRepostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRepostsInput;
+  upsert?: Prisma.UserUpsertWithoutRepostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutRepostsInput,
+      Prisma.UserUpdateWithoutRepostsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutRepostsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutSavePostsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSavePostsInput,
+    Prisma.UserUncheckedCreateWithoutSavePostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavePostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutSavePostsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSavePostsInput,
+    Prisma.UserUncheckedCreateWithoutSavePostsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavePostsInput;
+  upsert?: Prisma.UserUpsertWithoutSavePostsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutSavePostsInput,
+      Prisma.UserUpdateWithoutSavePostsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutSavePostsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutSharesInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSharesInput,
+    Prisma.UserUncheckedCreateWithoutSharesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSharesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutSharesNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutSharesInput,
+    Prisma.UserUncheckedCreateWithoutSharesInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSharesInput;
+  upsert?: Prisma.UserUpsertWithoutSharesInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutSharesInput,
+      Prisma.UserUpdateWithoutSharesInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutSharesInput
+  >;
+};
+
+export type EnumRoleFieldUpdateOperationsInput = {
+  set?: $Enums.Role;
+};
+
+export type UserCreateNestedOneWithoutUserPointsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutUserPointsInput,
+    Prisma.UserUncheckedCreateWithoutUserPointsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserPointsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutUserPointsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutUserPointsInput,
+    Prisma.UserUncheckedCreateWithoutUserPointsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserPointsInput;
+  upsert?: Prisma.UserUpsertWithoutUserPointsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutUserPointsInput,
+      Prisma.UserUpdateWithoutUserPointsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutUserPointsInput
+  >;
+};
+
+export type UserCreateNestedOneWithoutWishListsInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutWishListsInput,
+    Prisma.UserUncheckedCreateWithoutWishListsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWishListsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+};
+
+export type UserUpdateOneRequiredWithoutWishListsNestedInput = {
+  create?: Prisma.XOR<
+    Prisma.UserCreateWithoutWishListsInput,
+    Prisma.UserUncheckedCreateWithoutWishListsInput
+  >;
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutWishListsInput;
+  upsert?: Prisma.UserUpsertWithoutWishListsInput;
+  connect?: Prisma.UserWhereUniqueInput;
+  update?: Prisma.XOR<
+    Prisma.XOR<
+      Prisma.UserUpdateToOneWithWhereWithoutWishListsInput,
+      Prisma.UserUpdateWithoutWishListsInput
+    >,
+    Prisma.UserUncheckedUpdateWithoutWishListsInput
+  >;
+};
+
+export type UserCreateWithoutBattlesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutBattlesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutBattlesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattlesInput,
+    Prisma.UserUncheckedCreateWithoutBattlesInput
+  >;
+};
+
+export type UserUpsertWithoutBattlesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattlesInput,
+    Prisma.UserUncheckedUpdateWithoutBattlesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattlesInput,
+    Prisma.UserUncheckedCreateWithoutBattlesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBattlesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattlesInput,
+    Prisma.UserUncheckedUpdateWithoutBattlesInput
+  >;
+};
+
+export type UserUpdateWithoutBattlesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBattlesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutBattleEntriesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+};
+
+export type UserUncheckedCreateWithoutBattleEntriesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+};
+
+export type UserCreateOrConnectWithoutBattleEntriesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedCreateWithoutBattleEntriesInput
+  >;
+};
+
+export type UserUpsertWithoutBattleEntriesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedUpdateWithoutBattleEntriesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedCreateWithoutBattleEntriesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBattleEntriesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleEntriesInput,
+    Prisma.UserUncheckedUpdateWithoutBattleEntriesInput
+  >;
+};
+
+export type UserUpdateWithoutBattleEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBattleEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+};
+
+export type UserCreateWithoutBattleParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutBattleParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutBattleParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutBattleParticipantsInput
+  >;
+};
+
+export type UserUpsertWithoutBattleParticipantsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutBattleParticipantsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBattleParticipantsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput
+  >;
+};
+
+export type UserUpdateWithoutBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutBattleResultsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutBattleResultsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutBattleResultsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleResultsInput,
+    Prisma.UserUncheckedCreateWithoutBattleResultsInput
+  >;
+};
+
+export type UserUpsertWithoutBattleResultsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleResultsInput,
+    Prisma.UserUncheckedUpdateWithoutBattleResultsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleResultsInput,
+    Prisma.UserUncheckedCreateWithoutBattleResultsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBattleResultsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleResultsInput,
+    Prisma.UserUncheckedUpdateWithoutBattleResultsInput
+  >;
+};
+
+export type UserUpdateWithoutBattleResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBattleResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutBattleVotesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutBattleVotesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutBattleVotesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleVotesInput,
+    Prisma.UserUncheckedCreateWithoutBattleVotesInput
+  >;
+};
+
+export type UserUpsertWithoutBattleVotesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleVotesInput,
+    Prisma.UserUncheckedUpdateWithoutBattleVotesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBattleVotesInput,
+    Prisma.UserUncheckedCreateWithoutBattleVotesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBattleVotesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBattleVotesInput,
+    Prisma.UserUncheckedUpdateWithoutBattleVotesInput
+  >;
+};
+
+export type UserUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutSellerProductsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutSellerProductsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutSellerProductsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSellerProductsInput,
+    Prisma.UserUncheckedCreateWithoutSellerProductsInput
+  >;
+};
+
+export type UserCreateWithoutBuyProductsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutBuyProductsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutBuyProductsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBuyProductsInput,
+    Prisma.UserUncheckedCreateWithoutBuyProductsInput
+  >;
+};
+
+export type UserUpsertWithoutSellerProductsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutSellerProductsInput,
+    Prisma.UserUncheckedUpdateWithoutSellerProductsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSellerProductsInput,
+    Prisma.UserUncheckedCreateWithoutSellerProductsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutSellerProductsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutSellerProductsInput,
+    Prisma.UserUncheckedUpdateWithoutSellerProductsInput
+  >;
+};
+
+export type UserUpdateWithoutSellerProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutSellerProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpsertWithoutBuyProductsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutBuyProductsInput,
+    Prisma.UserUncheckedUpdateWithoutBuyProductsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutBuyProductsInput,
+    Prisma.UserUncheckedCreateWithoutBuyProductsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutBuyProductsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutBuyProductsInput,
+    Prisma.UserUncheckedUpdateWithoutBuyProductsInput
+  >;
+};
+
+export type UserUpdateWithoutBuyProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutBuyProductsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutHostChallengeInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutHostChallengeInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutHostChallengeInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutHostChallengeInput,
+    Prisma.UserUncheckedCreateWithoutHostChallengeInput
+  >;
+};
+
+export type UserCreateWithoutChallengesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutChallengesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutChallengesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengesInput,
+    Prisma.UserUncheckedCreateWithoutChallengesInput
+  >;
+};
+
+export type UserUpsertWithoutHostChallengeInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutHostChallengeInput,
+    Prisma.UserUncheckedUpdateWithoutHostChallengeInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutHostChallengeInput,
+    Prisma.UserUncheckedCreateWithoutHostChallengeInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutHostChallengeInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutHostChallengeInput,
+    Prisma.UserUncheckedUpdateWithoutHostChallengeInput
+  >;
+};
+
+export type UserUpdateWithoutHostChallengeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutHostChallengeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpsertWithoutChallengesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengesInput,
+    Prisma.UserUncheckedUpdateWithoutChallengesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengesInput,
+    Prisma.UserUncheckedCreateWithoutChallengesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutChallengesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengesInput,
+    Prisma.UserUncheckedUpdateWithoutChallengesInput
+  >;
+};
+
+export type UserUpdateWithoutChallengesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutChallengesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutChallengeParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeParticipantsInput
+  >;
+};
+
+export type UserUpsertWithoutChallengeParticipantsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutChallengeParticipantsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeParticipantsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutChallengeParticipantsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengeParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutChallengeParticipantsInput
+  >;
+};
+
+export type UserUpdateWithoutChallengeParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutChallengeResultsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutChallengeResultsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutChallengeResultsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeResultsInput
+  >;
+};
+
+export type UserUpsertWithoutChallengeResultsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedUpdateWithoutChallengeResultsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedCreateWithoutChallengeResultsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutChallengeResultsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutChallengeResultsInput,
+    Prisma.UserUncheckedUpdateWithoutChallengeResultsInput
+  >;
+};
+
+export type UserUpdateWithoutChallengeResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutChallengeResultsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutCommentsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutCommentsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCommentsInput,
+    Prisma.UserUncheckedCreateWithoutCommentsInput
+  >;
+};
+
+export type UserUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutCommentsInput,
+    Prisma.UserUncheckedUpdateWithoutCommentsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutCommentsInput,
+    Prisma.UserUncheckedCreateWithoutCommentsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutCommentsInput,
+    Prisma.UserUncheckedUpdateWithoutCommentsInput
+  >;
+};
+
+export type UserUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutEventsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutEventsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutEventsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutEventsInput,
+    Prisma.UserUncheckedCreateWithoutEventsInput
+  >;
+};
+
+export type UserUpsertWithoutEventsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutEventsInput,
+    Prisma.UserUncheckedUpdateWithoutEventsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutEventsInput,
+    Prisma.UserUncheckedCreateWithoutEventsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutEventsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutEventsInput,
+    Prisma.UserUncheckedUpdateWithoutEventsInput
+  >;
+};
+
+export type UserUpdateWithoutEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutTicketsBoughtInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutTicketsBoughtInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutTicketsBoughtInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedCreateWithoutTicketsBoughtInput
+  >;
+};
+
+export type UserCreateWithoutTicketsSoldInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutTicketsSoldInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutTicketsSoldInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedCreateWithoutTicketsSoldInput
+  >;
+};
+
+export type UserUpsertWithoutTicketsBoughtInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedCreateWithoutTicketsBoughtInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutTicketsBoughtInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutTicketsBoughtInput,
+    Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput
+  >;
+};
+
+export type UserUpdateWithoutTicketsBoughtInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutTicketsBoughtInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpsertWithoutTicketsSoldInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedUpdateWithoutTicketsSoldInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedCreateWithoutTicketsSoldInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutTicketsSoldInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutTicketsSoldInput,
+    Prisma.UserUncheckedUpdateWithoutTicketsSoldInput
+  >;
+};
+
+export type UserUpdateWithoutTicketsSoldInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutTicketsSoldInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutFollowingInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutFollowingInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutFollowingInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowingInput,
+    Prisma.UserUncheckedCreateWithoutFollowingInput
+  >;
+};
+
+export type UserCreateWithoutFollowersInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutFollowersInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutFollowersInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowersInput,
+    Prisma.UserUncheckedCreateWithoutFollowersInput
+  >;
+};
+
+export type UserUpsertWithoutFollowingInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutFollowingInput,
+    Prisma.UserUncheckedUpdateWithoutFollowingInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowingInput,
+    Prisma.UserUncheckedCreateWithoutFollowingInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutFollowingInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutFollowingInput,
+    Prisma.UserUncheckedUpdateWithoutFollowingInput
+  >;
+};
+
+export type UserUpdateWithoutFollowingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutFollowingInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpsertWithoutFollowersInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutFollowersInput,
+    Prisma.UserUncheckedUpdateWithoutFollowersInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutFollowersInput,
+    Prisma.UserUncheckedCreateWithoutFollowersInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutFollowersInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutFollowersInput,
+    Prisma.UserUncheckedUpdateWithoutFollowersInput
+  >;
+};
+
+export type UserUpdateWithoutFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutFollowersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutHidePostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutHidePostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutHidePostsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutHidePostsInput,
+    Prisma.UserUncheckedCreateWithoutHidePostsInput
+  >;
+};
+
+export type UserUpsertWithoutHidePostsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutHidePostsInput,
+    Prisma.UserUncheckedUpdateWithoutHidePostsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutHidePostsInput,
+    Prisma.UserUncheckedCreateWithoutHidePostsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutHidePostsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutHidePostsInput,
+    Prisma.UserUncheckedUpdateWithoutHidePostsInput
+  >;
+};
+
+export type UserUpdateWithoutHidePostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutHidePostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutLikesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutLikesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutLikesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLikesInput,
+    Prisma.UserUncheckedCreateWithoutLikesInput
+  >;
+};
+
+export type UserUpsertWithoutLikesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutLikesInput,
+    Prisma.UserUncheckedUpdateWithoutLikesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLikesInput,
+    Prisma.UserUncheckedCreateWithoutLikesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutLikesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutLikesInput,
+    Prisma.UserUncheckedUpdateWithoutLikesInput
+  >;
+};
+
+export type UserUpdateWithoutLikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutLikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutLivesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutLivesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutLivesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLivesInput,
+    Prisma.UserUncheckedCreateWithoutLivesInput
+  >;
+};
+
+export type UserUpsertWithoutLivesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutLivesInput,
+    Prisma.UserUncheckedUpdateWithoutLivesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLivesInput,
+    Prisma.UserUncheckedCreateWithoutLivesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutLivesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutLivesInput,
+    Prisma.UserUncheckedUpdateWithoutLivesInput
+  >;
+};
+
+export type UserUpdateWithoutLivesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutLivesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutLiveParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutLiveParticipantsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutLiveParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutLiveParticipantsInput
+  >;
+};
+
+export type UserUpsertWithoutLiveParticipantsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutLiveParticipantsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedCreateWithoutLiveParticipantsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutLiveParticipantsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveParticipantsInput,
+    Prisma.UserUncheckedUpdateWithoutLiveParticipantsInput
+  >;
+};
+
+export type UserUpdateWithoutLiveParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutLiveRewardsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutLiveRewardsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutLiveRewardsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsInput
+  >;
+};
+
+export type UserCreateWithoutLiveRewardsGivenInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsGivenInput
+  >;
+};
+
+export type UserUpsertWithoutLiveRewardsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutLiveRewardsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveRewardsInput,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsInput
+  >;
+};
+
+export type UserUpdateWithoutLiveRewardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutLiveRewardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpsertWithoutLiveRewardsGivenInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsGivenInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedCreateWithoutLiveRewardsGivenInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutLiveRewardsGivenInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutLiveRewardsGivenInput,
+    Prisma.UserUncheckedUpdateWithoutLiveRewardsGivenInput
+  >;
+};
+
+export type UserUpdateWithoutLiveRewardsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutSentMessagesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutSentMessagesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutSentMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSentMessagesInput,
+    Prisma.UserUncheckedCreateWithoutSentMessagesInput
+  >;
+};
+
+export type UserCreateWithoutReceivedMessagesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutReceivedMessagesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutReceivedMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutReceivedMessagesInput,
+    Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+  >;
+};
+
+export type UserUpsertWithWhereUniqueWithoutSentMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutSentMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutSentMessagesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSentMessagesInput,
+    Prisma.UserUncheckedCreateWithoutSentMessagesInput
+  >;
+};
+
+export type UserUpdateWithWhereUniqueWithoutSentMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutSentMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutSentMessagesInput
+  >;
+};
+
+export type UserUpdateManyWithWhereWithoutSentMessagesInput = {
+  where: Prisma.UserScalarWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateManyMutationInput,
+    Prisma.UserUncheckedUpdateManyWithoutSentMessagesInput
+  >;
+};
+
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+  OR?: Prisma.UserScalarWhereInput[];
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[];
+  id?: Prisma.UuidFilter<'User'> | string;
+  email?: Prisma.StringFilter<'User'> | string;
+  phone?: Prisma.StringNullableFilter<'User'> | string | null;
+  firstName?: Prisma.StringNullableFilter<'User'> | string | null;
+  lastName?: Prisma.StringNullableFilter<'User'> | string | null;
+  password?: Prisma.StringFilter<'User'> | string;
+  role?: Prisma.EnumRoleFilter<'User'> | $Enums.Role;
+  otp?: Prisma.StringNullableFilter<'User'> | string | null;
+  expiresIn?: Prisma.StringNullableFilter<'User'> | string | null;
+  accessToken?: Prisma.StringNullableFilter<'User'> | string | null;
+  refreshToken?: Prisma.StringNullableFilter<'User'> | string | null;
+  isEmailVerified?: Prisma.BoolFilter<'User'> | boolean;
+  totalPoints?: Prisma.IntFilter<'User'> | number;
+  balance?: Prisma.IntFilter<'User'> | number;
+  likeCount?: Prisma.IntFilter<'User'> | number;
+  commentCount?: Prisma.IntFilter<'User'> | number;
+  shareCount?: Prisma.IntFilter<'User'> | number;
+  createdAt?: Prisma.DateTimeFilter<'User'> | Date | string;
+  updatedAt?: Prisma.DateTimeFilter<'User'> | Date | string;
+};
+
+export type UserUpsertWithWhereUniqueWithoutReceivedMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutReceivedMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutReceivedMessagesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutReceivedMessagesInput,
+    Prisma.UserUncheckedCreateWithoutReceivedMessagesInput
+  >;
+};
+
+export type UserUpdateWithWhereUniqueWithoutReceivedMessagesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutReceivedMessagesInput,
+    Prisma.UserUncheckedUpdateWithoutReceivedMessagesInput
+  >;
+};
+
+export type UserUpdateManyWithWhereWithoutReceivedMessagesInput = {
+  where: Prisma.UserScalarWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateManyMutationInput,
+    Prisma.UserUncheckedUpdateManyWithoutReceivedMessagesInput
+  >;
+};
+
+export type UserCreateWithoutPaymentsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutPaymentsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutPaymentsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutPaymentsInput,
+    Prisma.UserUncheckedCreateWithoutPaymentsInput
+  >;
+};
+
+export type UserUpsertWithoutPaymentsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutPaymentsInput,
+    Prisma.UserUncheckedUpdateWithoutPaymentsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutPaymentsInput,
+    Prisma.UserUncheckedCreateWithoutPaymentsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutPaymentsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutPaymentsInput,
+    Prisma.UserUncheckedUpdateWithoutPaymentsInput
+  >;
+};
+
+export type UserUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutPaymentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutPostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutPostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutPostsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutPostsInput,
+    Prisma.UserUncheckedCreateWithoutPostsInput
+  >;
+};
+
+export type UserUpsertWithoutPostsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutPostsInput,
+    Prisma.UserUncheckedUpdateWithoutPostsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutPostsInput,
+    Prisma.UserUncheckedCreateWithoutPostsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutPostsInput,
+    Prisma.UserUncheckedUpdateWithoutPostsInput
+  >;
+};
+
+export type UserUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutProductListsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutProductListsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutProductListsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutProductListsInput,
+    Prisma.UserUncheckedCreateWithoutProductListsInput
+  >;
+};
+
+export type UserUpsertWithoutProductListsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutProductListsInput,
+    Prisma.UserUncheckedUpdateWithoutProductListsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutProductListsInput,
+    Prisma.UserUncheckedCreateWithoutProductListsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutProductListsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutProductListsInput,
+    Prisma.UserUncheckedUpdateWithoutProductListsInput
+  >;
+};
+
+export type UserUpdateWithoutProductListsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutProductListsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutProfileInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutProfileInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutProfileInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutProfileInput,
+    Prisma.UserUncheckedCreateWithoutProfileInput
+  >;
+};
+
+export type UserUpsertWithoutProfileInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutProfileInput,
+    Prisma.UserUncheckedUpdateWithoutProfileInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutProfileInput,
+    Prisma.UserUncheckedCreateWithoutProfileInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutProfileInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutProfileInput,
+    Prisma.UserUncheckedUpdateWithoutProfileInput
+  >;
+};
+
+export type UserUpdateWithoutProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutRacingVotesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutRacingVotesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutRacingVotesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutRacingVotesInput,
+    Prisma.UserUncheckedCreateWithoutRacingVotesInput
+  >;
+};
+
+export type UserUpsertWithoutRacingVotesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutRacingVotesInput,
+    Prisma.UserUncheckedUpdateWithoutRacingVotesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutRacingVotesInput,
+    Prisma.UserUncheckedCreateWithoutRacingVotesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutRacingVotesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutRacingVotesInput,
+    Prisma.UserUncheckedUpdateWithoutRacingVotesInput
+  >;
+};
+
+export type UserUpdateWithoutRacingVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutRacingVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutReportsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutReportsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutReportsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutReportsInput,
+    Prisma.UserUncheckedCreateWithoutReportsInput
+  >;
+};
+
+export type UserUpsertWithoutReportsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutReportsInput,
+    Prisma.UserUncheckedUpdateWithoutReportsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutReportsInput,
+    Prisma.UserUncheckedCreateWithoutReportsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutReportsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutReportsInput,
+    Prisma.UserUncheckedUpdateWithoutReportsInput
+  >;
+};
+
+export type UserUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutReportsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutRepostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutRepostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutRepostsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutRepostsInput,
+    Prisma.UserUncheckedCreateWithoutRepostsInput
+  >;
+};
+
+export type UserUpsertWithoutRepostsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutRepostsInput,
+    Prisma.UserUncheckedUpdateWithoutRepostsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutRepostsInput,
+    Prisma.UserUncheckedCreateWithoutRepostsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutRepostsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutRepostsInput,
+    Prisma.UserUncheckedUpdateWithoutRepostsInput
+  >;
+};
+
+export type UserUpdateWithoutRepostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutRepostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutSavePostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutSavePostsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutSavePostsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSavePostsInput,
+    Prisma.UserUncheckedCreateWithoutSavePostsInput
+  >;
+};
+
+export type UserUpsertWithoutSavePostsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutSavePostsInput,
+    Prisma.UserUncheckedUpdateWithoutSavePostsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSavePostsInput,
+    Prisma.UserUncheckedCreateWithoutSavePostsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutSavePostsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutSavePostsInput,
+    Prisma.UserUncheckedUpdateWithoutSavePostsInput
+  >;
+};
+
+export type UserUpdateWithoutSavePostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutSavePostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutSharesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutSharesInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutSharesInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSharesInput,
+    Prisma.UserUncheckedCreateWithoutSharesInput
+  >;
+};
+
+export type UserUpsertWithoutSharesInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutSharesInput,
+    Prisma.UserUncheckedUpdateWithoutSharesInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutSharesInput,
+    Prisma.UserUncheckedCreateWithoutSharesInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutSharesInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutSharesInput,
+    Prisma.UserUncheckedUpdateWithoutSharesInput
+  >;
+};
+
+export type UserUpdateWithoutSharesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutSharesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutUserPointsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutUserPointsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutUserPointsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutUserPointsInput,
+    Prisma.UserUncheckedCreateWithoutUserPointsInput
+  >;
+};
+
+export type UserUpsertWithoutUserPointsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutUserPointsInput,
+    Prisma.UserUncheckedUpdateWithoutUserPointsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutUserPointsInput,
+    Prisma.UserUncheckedCreateWithoutUserPointsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutUserPointsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutUserPointsInput,
+    Prisma.UserUncheckedUpdateWithoutUserPointsInput
+  >;
+};
+
+export type UserUpdateWithoutUserPointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutUserPointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserCreateWithoutWishListsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserUncheckedCreateWithoutWishListsInput = {
+  id?: string;
+  email: string;
+  phone?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  password: string;
+  role?: $Enums.Role;
+  otp?: string | null;
+  expiresIn?: string | null;
+  accessToken?: string | null;
+  refreshToken?: string | null;
+  isEmailVerified?: boolean;
+  totalPoints?: number;
+  balance?: number;
+  likeCount?: number;
+  commentCount?: number;
+  shareCount?: number;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput;
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput;
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput;
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput;
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput;
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput;
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput;
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput;
+  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput;
+  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput;
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput;
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput;
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput;
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput;
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput;
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput;
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput;
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput;
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput;
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput;
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput;
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput;
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput;
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput;
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput;
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput;
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput;
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput;
+  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput;
+};
+
+export type UserCreateOrConnectWithoutWishListsInput = {
+  where: Prisma.UserWhereUniqueInput;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutWishListsInput,
+    Prisma.UserUncheckedCreateWithoutWishListsInput
+  >;
+};
+
+export type UserUpsertWithoutWishListsInput = {
+  update: Prisma.XOR<
+    Prisma.UserUpdateWithoutWishListsInput,
+    Prisma.UserUncheckedUpdateWithoutWishListsInput
+  >;
+  create: Prisma.XOR<
+    Prisma.UserCreateWithoutWishListsInput,
+    Prisma.UserUncheckedCreateWithoutWishListsInput
+  >;
+  where?: Prisma.UserWhereInput;
+};
+
+export type UserUpdateToOneWithWhereWithoutWishListsInput = {
+  where?: Prisma.UserWhereInput;
+  data: Prisma.XOR<
+    Prisma.UserUpdateWithoutWishListsInput,
+    Prisma.UserUncheckedUpdateWithoutWishListsInput
+  >;
+};
+
+export type UserUpdateWithoutWishListsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutWishListsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUpdateWithoutSentMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutSentMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateManyWithoutSentMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+export type UserUpdateWithoutReceivedMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput;
+  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput;
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput;
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput;
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput;
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput;
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput;
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput;
+  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput;
+  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput;
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput;
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput;
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput;
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput;
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput;
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput;
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput;
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput;
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput;
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput;
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput;
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput;
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput;
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput;
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput;
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput;
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput;
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput;
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput;
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput;
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput;
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput;
+  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput;
+};
+
+export type UserUncheckedUpdateManyWithoutReceivedMessagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string;
+  email?: Prisma.StringFieldUpdateOperationsInput | string;
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  password?: Prisma.StringFieldUpdateOperationsInput | string;
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role;
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+  refreshToken?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number;
+  balance?: Prisma.IntFieldUpdateOperationsInput | number;
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number;
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+
+/**
+ * Count Type UserCountOutputType
+ */
+
+export type UserCountOutputType = {
+  posts: number;
+  events: number;
+  payments: number;
+  following: number;
+  followers: number;
+  sentMessages: number;
+  receivedMessages: number;
+  ticketsBought: number;
+  ticketsSold: number;
+  productLists: number;
+  reports: number;
+  shares: number;
+  likes: number;
+  comments: number;
+  liveRewards: number;
+  liveRewardsGiven: number;
+  lives: number;
+  liveParticipants: number;
+  reposts: number;
+  racingVotes: number;
+  savePosts: number;
+  hidePosts: number;
+  wishLists: number;
+  battleResults: number;
+  battleVotes: number;
+  battles: number;
+  battleParticipants: number;
+  userPoints: number;
+  sellerProducts: number;
+  buyProducts: number;
+  challengeResults: number;
+  hostChallenge: number;
+  challenges: number;
+  challengeParticipants: number;
+  battleEntries: number;
+};
+
+export type UserCountOutputTypeSelect<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  posts?: boolean | UserCountOutputTypeCountPostsArgs;
+  events?: boolean | UserCountOutputTypeCountEventsArgs;
+  payments?: boolean | UserCountOutputTypeCountPaymentsArgs;
+  following?: boolean | UserCountOutputTypeCountFollowingArgs;
+  followers?: boolean | UserCountOutputTypeCountFollowersArgs;
+  sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs;
+  receivedMessages?: boolean | UserCountOutputTypeCountReceivedMessagesArgs;
+  ticketsBought?: boolean | UserCountOutputTypeCountTicketsBoughtArgs;
+  ticketsSold?: boolean | UserCountOutputTypeCountTicketsSoldArgs;
+  productLists?: boolean | UserCountOutputTypeCountProductListsArgs;
+  reports?: boolean | UserCountOutputTypeCountReportsArgs;
+  shares?: boolean | UserCountOutputTypeCountSharesArgs;
+  likes?: boolean | UserCountOutputTypeCountLikesArgs;
+  comments?: boolean | UserCountOutputTypeCountCommentsArgs;
+  liveRewards?: boolean | UserCountOutputTypeCountLiveRewardsArgs;
+  liveRewardsGiven?: boolean | UserCountOutputTypeCountLiveRewardsGivenArgs;
+  lives?: boolean | UserCountOutputTypeCountLivesArgs;
+  liveParticipants?: boolean | UserCountOutputTypeCountLiveParticipantsArgs;
+  reposts?: boolean | UserCountOutputTypeCountRepostsArgs;
+  racingVotes?: boolean | UserCountOutputTypeCountRacingVotesArgs;
+  savePosts?: boolean | UserCountOutputTypeCountSavePostsArgs;
+  hidePosts?: boolean | UserCountOutputTypeCountHidePostsArgs;
+  wishLists?: boolean | UserCountOutputTypeCountWishListsArgs;
+  battleResults?: boolean | UserCountOutputTypeCountBattleResultsArgs;
+  battleVotes?: boolean | UserCountOutputTypeCountBattleVotesArgs;
+  battles?: boolean | UserCountOutputTypeCountBattlesArgs;
+  battleParticipants?: boolean | UserCountOutputTypeCountBattleParticipantsArgs;
+  userPoints?: boolean | UserCountOutputTypeCountUserPointsArgs;
+  sellerProducts?: boolean | UserCountOutputTypeCountSellerProductsArgs;
+  buyProducts?: boolean | UserCountOutputTypeCountBuyProductsArgs;
+  challengeResults?: boolean | UserCountOutputTypeCountChallengeResultsArgs;
+  hostChallenge?: boolean | UserCountOutputTypeCountHostChallengeArgs;
+  challenges?: boolean | UserCountOutputTypeCountChallengesArgs;
+  challengeParticipants?:
+    | boolean
+    | UserCountOutputTypeCountChallengeParticipantsArgs;
+  battleEntries?: boolean | UserCountOutputTypeCountBattleEntriesArgs;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeDefaultArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the UserCountOutputType
+   */
+  select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.PostWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEventsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.EventWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPaymentsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.PaymentWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowingArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.FollowWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountFollowersArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.FollowWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSentMessagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.MessageWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedMessagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.MessageWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTicketsBoughtArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.EventTicketWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountTicketsSoldArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.EventTicketWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountProductListsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ProductListWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReportsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ReportWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSharesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ShareWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLikesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.LikeWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommentsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.CommentWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLiveRewardsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.LiveRewardWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLiveRewardsGivenArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.LiveRewardWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLivesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.LiveWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLiveParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.LiveParticipantWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRepostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.RepostWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRacingVotesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.RacingVoteWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavePostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.SavePostWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountHidePostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.HidePostWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountWishListsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.WishListWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleResultsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BattleResultWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleVotesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BattleVoteWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattlesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BattleWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BattleParticipantWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserPointsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.UserPointWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSellerProductsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BuyProductWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBuyProductsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BuyProductWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChallengeResultsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ChallengeResultWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountHostChallengeArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ChallengeWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChallengesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ChallengeWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChallengeParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.ChallengeParticipantWhereInput;
+};
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleEntriesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  where?: Prisma.BattleEntryWhereInput;
 };
 
 export type UserSelect<
@@ -606,20 +12018,63 @@ export type UserSelect<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    firstName?: boolean;
-    lastName?: boolean;
     email?: boolean;
     phone?: boolean;
-    zipCode?: boolean;
+    firstName?: boolean;
+    lastName?: boolean;
     password?: boolean;
     role?: boolean;
-    location?: boolean;
-    additionalInfo?: boolean;
-    profilePicture?: boolean;
     otp?: boolean;
-    otpExpiresAt?: boolean;
+    expiresIn?: boolean;
+    accessToken?: boolean;
+    refreshToken?: boolean;
+    isEmailVerified?: boolean;
+    totalPoints?: boolean;
+    balance?: boolean;
+    likeCount?: boolean;
+    commentCount?: boolean;
+    shareCount?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
+    profile?: boolean | Prisma.User$profileArgs<ExtArgs>;
+    posts?: boolean | Prisma.User$postsArgs<ExtArgs>;
+    events?: boolean | Prisma.User$eventsArgs<ExtArgs>;
+    payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>;
+    following?: boolean | Prisma.User$followingArgs<ExtArgs>;
+    followers?: boolean | Prisma.User$followersArgs<ExtArgs>;
+    sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>;
+    receivedMessages?: boolean | Prisma.User$receivedMessagesArgs<ExtArgs>;
+    ticketsBought?: boolean | Prisma.User$ticketsBoughtArgs<ExtArgs>;
+    ticketsSold?: boolean | Prisma.User$ticketsSoldArgs<ExtArgs>;
+    productLists?: boolean | Prisma.User$productListsArgs<ExtArgs>;
+    reports?: boolean | Prisma.User$reportsArgs<ExtArgs>;
+    shares?: boolean | Prisma.User$sharesArgs<ExtArgs>;
+    likes?: boolean | Prisma.User$likesArgs<ExtArgs>;
+    comments?: boolean | Prisma.User$commentsArgs<ExtArgs>;
+    liveRewards?: boolean | Prisma.User$liveRewardsArgs<ExtArgs>;
+    liveRewardsGiven?: boolean | Prisma.User$liveRewardsGivenArgs<ExtArgs>;
+    lives?: boolean | Prisma.User$livesArgs<ExtArgs>;
+    liveParticipants?: boolean | Prisma.User$liveParticipantsArgs<ExtArgs>;
+    reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>;
+    racingVotes?: boolean | Prisma.User$racingVotesArgs<ExtArgs>;
+    savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>;
+    hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>;
+    wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>;
+    battleResults?: boolean | Prisma.User$battleResultsArgs<ExtArgs>;
+    battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>;
+    battles?: boolean | Prisma.User$battlesArgs<ExtArgs>;
+    battleParticipants?: boolean | Prisma.User$battleParticipantsArgs<ExtArgs>;
+    userPoints?: boolean | Prisma.User$userPointsArgs<ExtArgs>;
+    sellerProducts?: boolean | Prisma.User$sellerProductsArgs<ExtArgs>;
+    buyProducts?: boolean | Prisma.User$buyProductsArgs<ExtArgs>;
+    challengeResults?: boolean | Prisma.User$challengeResultsArgs<ExtArgs>;
+    hostChallenge?: boolean | Prisma.User$hostChallengeArgs<ExtArgs>;
+    challenges?: boolean | Prisma.User$challengesArgs<ExtArgs>;
+    challengeParticipants?:
+      | boolean
+      | Prisma.User$challengeParticipantsArgs<ExtArgs>;
+    battleEntries?: boolean | Prisma.User$battleEntriesArgs<ExtArgs>;
+    _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
   },
   ExtArgs['result']['user']
 >;
@@ -630,18 +12085,22 @@ export type UserSelectCreateManyAndReturn<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    firstName?: boolean;
-    lastName?: boolean;
     email?: boolean;
     phone?: boolean;
-    zipCode?: boolean;
+    firstName?: boolean;
+    lastName?: boolean;
     password?: boolean;
     role?: boolean;
-    location?: boolean;
-    additionalInfo?: boolean;
-    profilePicture?: boolean;
     otp?: boolean;
-    otpExpiresAt?: boolean;
+    expiresIn?: boolean;
+    accessToken?: boolean;
+    refreshToken?: boolean;
+    isEmailVerified?: boolean;
+    totalPoints?: boolean;
+    balance?: boolean;
+    likeCount?: boolean;
+    commentCount?: boolean;
+    shareCount?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
   },
@@ -654,18 +12113,22 @@ export type UserSelectUpdateManyAndReturn<
 > = runtime.Types.Extensions.GetSelect<
   {
     id?: boolean;
-    firstName?: boolean;
-    lastName?: boolean;
     email?: boolean;
     phone?: boolean;
-    zipCode?: boolean;
+    firstName?: boolean;
+    lastName?: boolean;
     password?: boolean;
     role?: boolean;
-    location?: boolean;
-    additionalInfo?: boolean;
-    profilePicture?: boolean;
     otp?: boolean;
-    otpExpiresAt?: boolean;
+    expiresIn?: boolean;
+    accessToken?: boolean;
+    refreshToken?: boolean;
+    isEmailVerified?: boolean;
+    totalPoints?: boolean;
+    balance?: boolean;
+    likeCount?: boolean;
+    commentCount?: boolean;
+    shareCount?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
   },
@@ -674,18 +12137,22 @@ export type UserSelectUpdateManyAndReturn<
 
 export type UserSelectScalar = {
   id?: boolean;
-  firstName?: boolean;
-  lastName?: boolean;
   email?: boolean;
   phone?: boolean;
-  zipCode?: boolean;
+  firstName?: boolean;
+  lastName?: boolean;
   password?: boolean;
   role?: boolean;
-  location?: boolean;
-  additionalInfo?: boolean;
-  profilePicture?: boolean;
   otp?: boolean;
-  otpExpiresAt?: boolean;
+  expiresIn?: boolean;
+  accessToken?: boolean;
+  refreshToken?: boolean;
+  isEmailVerified?: boolean;
+  totalPoints?: boolean;
+  balance?: boolean;
+  likeCount?: boolean;
+  commentCount?: boolean;
+  shareCount?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
 };
@@ -695,44 +12162,141 @@ export type UserOmit<
     runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
   | 'id'
-  | 'firstName'
-  | 'lastName'
   | 'email'
   | 'phone'
-  | 'zipCode'
+  | 'firstName'
+  | 'lastName'
   | 'password'
   | 'role'
-  | 'location'
-  | 'additionalInfo'
-  | 'profilePicture'
   | 'otp'
-  | 'otpExpiresAt'
+  | 'expiresIn'
+  | 'accessToken'
+  | 'refreshToken'
+  | 'isEmailVerified'
+  | 'totalPoints'
+  | 'balance'
+  | 'likeCount'
+  | 'commentCount'
+  | 'shareCount'
   | 'createdAt'
   | 'updatedAt',
   ExtArgs['result']['user']
 >;
+export type UserInclude<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  profile?: boolean | Prisma.User$profileArgs<ExtArgs>;
+  posts?: boolean | Prisma.User$postsArgs<ExtArgs>;
+  events?: boolean | Prisma.User$eventsArgs<ExtArgs>;
+  payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>;
+  following?: boolean | Prisma.User$followingArgs<ExtArgs>;
+  followers?: boolean | Prisma.User$followersArgs<ExtArgs>;
+  sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>;
+  receivedMessages?: boolean | Prisma.User$receivedMessagesArgs<ExtArgs>;
+  ticketsBought?: boolean | Prisma.User$ticketsBoughtArgs<ExtArgs>;
+  ticketsSold?: boolean | Prisma.User$ticketsSoldArgs<ExtArgs>;
+  productLists?: boolean | Prisma.User$productListsArgs<ExtArgs>;
+  reports?: boolean | Prisma.User$reportsArgs<ExtArgs>;
+  shares?: boolean | Prisma.User$sharesArgs<ExtArgs>;
+  likes?: boolean | Prisma.User$likesArgs<ExtArgs>;
+  comments?: boolean | Prisma.User$commentsArgs<ExtArgs>;
+  liveRewards?: boolean | Prisma.User$liveRewardsArgs<ExtArgs>;
+  liveRewardsGiven?: boolean | Prisma.User$liveRewardsGivenArgs<ExtArgs>;
+  lives?: boolean | Prisma.User$livesArgs<ExtArgs>;
+  liveParticipants?: boolean | Prisma.User$liveParticipantsArgs<ExtArgs>;
+  reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>;
+  racingVotes?: boolean | Prisma.User$racingVotesArgs<ExtArgs>;
+  savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>;
+  hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>;
+  wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>;
+  battleResults?: boolean | Prisma.User$battleResultsArgs<ExtArgs>;
+  battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>;
+  battles?: boolean | Prisma.User$battlesArgs<ExtArgs>;
+  battleParticipants?: boolean | Prisma.User$battleParticipantsArgs<ExtArgs>;
+  userPoints?: boolean | Prisma.User$userPointsArgs<ExtArgs>;
+  sellerProducts?: boolean | Prisma.User$sellerProductsArgs<ExtArgs>;
+  buyProducts?: boolean | Prisma.User$buyProductsArgs<ExtArgs>;
+  challengeResults?: boolean | Prisma.User$challengeResultsArgs<ExtArgs>;
+  hostChallenge?: boolean | Prisma.User$hostChallengeArgs<ExtArgs>;
+  challenges?: boolean | Prisma.User$challengesArgs<ExtArgs>;
+  challengeParticipants?:
+    | boolean
+    | Prisma.User$challengeParticipantsArgs<ExtArgs>;
+  battleEntries?: boolean | Prisma.User$battleEntriesArgs<ExtArgs>;
+  _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type UserIncludeCreateManyAndReturn<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {};
+export type UserIncludeUpdateManyAndReturn<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {};
 
 export type $UserPayload<
   ExtArgs extends runtime.Types.Extensions.InternalArgs =
     runtime.Types.Extensions.DefaultArgs,
 > = {
   name: 'User';
-  objects: {};
+  objects: {
+    profile: Prisma.$ProfilePayload<ExtArgs> | null;
+    posts: Prisma.$PostPayload<ExtArgs>[];
+    events: Prisma.$EventPayload<ExtArgs>[];
+    payments: Prisma.$PaymentPayload<ExtArgs>[];
+    following: Prisma.$FollowPayload<ExtArgs>[];
+    followers: Prisma.$FollowPayload<ExtArgs>[];
+    sentMessages: Prisma.$MessagePayload<ExtArgs>[];
+    receivedMessages: Prisma.$MessagePayload<ExtArgs>[];
+    ticketsBought: Prisma.$EventTicketPayload<ExtArgs>[];
+    ticketsSold: Prisma.$EventTicketPayload<ExtArgs>[];
+    productLists: Prisma.$ProductListPayload<ExtArgs>[];
+    reports: Prisma.$ReportPayload<ExtArgs>[];
+    shares: Prisma.$SharePayload<ExtArgs>[];
+    likes: Prisma.$LikePayload<ExtArgs>[];
+    comments: Prisma.$CommentPayload<ExtArgs>[];
+    liveRewards: Prisma.$LiveRewardPayload<ExtArgs>[];
+    liveRewardsGiven: Prisma.$LiveRewardPayload<ExtArgs>[];
+    lives: Prisma.$LivePayload<ExtArgs>[];
+    liveParticipants: Prisma.$LiveParticipantPayload<ExtArgs>[];
+    reposts: Prisma.$RepostPayload<ExtArgs>[];
+    racingVotes: Prisma.$RacingVotePayload<ExtArgs>[];
+    savePosts: Prisma.$SavePostPayload<ExtArgs>[];
+    hidePosts: Prisma.$HidePostPayload<ExtArgs>[];
+    wishLists: Prisma.$WishListPayload<ExtArgs>[];
+    battleResults: Prisma.$BattleResultPayload<ExtArgs>[];
+    battleVotes: Prisma.$BattleVotePayload<ExtArgs>[];
+    battles: Prisma.$BattlePayload<ExtArgs>[];
+    battleParticipants: Prisma.$BattleParticipantPayload<ExtArgs>[];
+    userPoints: Prisma.$UserPointPayload<ExtArgs>[];
+    sellerProducts: Prisma.$BuyProductPayload<ExtArgs>[];
+    buyProducts: Prisma.$BuyProductPayload<ExtArgs>[];
+    challengeResults: Prisma.$ChallengeResultPayload<ExtArgs>[];
+    hostChallenge: Prisma.$ChallengePayload<ExtArgs>[];
+    challenges: Prisma.$ChallengePayload<ExtArgs>[];
+    challengeParticipants: Prisma.$ChallengeParticipantPayload<ExtArgs>[];
+    battleEntries: Prisma.$BattleEntryPayload<ExtArgs>[];
+  };
   scalars: runtime.Types.Extensions.GetPayloadResult<
     {
       id: string;
-      firstName: string;
-      lastName: string;
       email: string;
-      phone: string;
-      zipCode: string;
+      phone: string | null;
+      firstName: string | null;
+      lastName: string | null;
       password: string;
-      role: $Enums.Role | null;
-      location: string | null;
-      additionalInfo: string | null;
-      profilePicture: string | null;
+      role: $Enums.Role;
       otp: string | null;
-      otpExpiresAt: Date | null;
+      expiresIn: string | null;
+      accessToken: string | null;
+      refreshToken: string | null;
+      isEmailVerified: boolean;
+      totalPoints: number;
+      balance: number;
+      likeCount: number;
+      commentCount: number;
+      shareCount: number;
       createdAt: Date;
       updatedAt: Date;
     },
@@ -1285,6 +12849,408 @@ export interface Prisma__UserClient<
   GlobalOmitOptions = {},
 > extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: 'PrismaPromise';
+  profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>,
+  ): Prisma.Prisma__ProfileClient<
+    runtime.Types.Result.GetResult<
+      Prisma.$ProfilePayload<ExtArgs>,
+      T,
+      'findUniqueOrThrow',
+      GlobalOmitOptions
+    > | null,
+    null,
+    ExtArgs,
+    GlobalOmitOptions
+  >;
+  posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$PostPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$EventPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  payments<T extends Prisma.User$paymentsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$paymentsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$PaymentPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  following<T extends Prisma.User$followingArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$followingArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$FollowPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  followers<T extends Prisma.User$followersArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$followersArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$FollowPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  sentMessages<T extends Prisma.User$sentMessagesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$sentMessagesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$MessagePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  receivedMessages<T extends Prisma.User$receivedMessagesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$receivedMessagesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$MessagePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  ticketsBought<T extends Prisma.User$ticketsBoughtArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$ticketsBoughtArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$EventTicketPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  ticketsSold<T extends Prisma.User$ticketsSoldArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$ticketsSoldArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$EventTicketPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  productLists<T extends Prisma.User$productListsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$productListsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ProductListPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  reports<T extends Prisma.User$reportsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$reportsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ReportPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  shares<T extends Prisma.User$sharesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$sharesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$SharePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  likes<T extends Prisma.User$likesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$likesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$LikePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  comments<T extends Prisma.User$commentsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$commentsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$CommentPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  liveRewards<T extends Prisma.User$liveRewardsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$liveRewardsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$LiveRewardPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  liveRewardsGiven<T extends Prisma.User$liveRewardsGivenArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$liveRewardsGivenArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$LiveRewardPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  lives<T extends Prisma.User$livesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$livesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$LivePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  liveParticipants<T extends Prisma.User$liveParticipantsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$liveParticipantsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$LiveParticipantPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  reposts<T extends Prisma.User$repostsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$repostsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$RepostPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  racingVotes<T extends Prisma.User$racingVotesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$racingVotesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$RacingVotePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  savePosts<T extends Prisma.User$savePostsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$savePostsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$SavePostPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  hidePosts<T extends Prisma.User$hidePostsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$hidePostsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$HidePostPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  wishLists<T extends Prisma.User$wishListsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$wishListsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$WishListPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  battleResults<T extends Prisma.User$battleResultsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$battleResultsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BattleResultPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  battleVotes<T extends Prisma.User$battleVotesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$battleVotesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BattleVotePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  battles<T extends Prisma.User$battlesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$battlesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BattlePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  battleParticipants<
+    T extends Prisma.User$battleParticipantsArgs<ExtArgs> = {},
+  >(
+    args?: Prisma.Subset<T, Prisma.User$battleParticipantsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BattleParticipantPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  userPoints<T extends Prisma.User$userPointsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$userPointsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$UserPointPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  sellerProducts<T extends Prisma.User$sellerProductsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$sellerProductsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BuyProductPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  buyProducts<T extends Prisma.User$buyProductsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$buyProductsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BuyProductPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  challengeResults<T extends Prisma.User$challengeResultsArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$challengeResultsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ChallengeResultPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  hostChallenge<T extends Prisma.User$hostChallengeArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$hostChallengeArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ChallengePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  challenges<T extends Prisma.User$challengesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$challengesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ChallengePayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  challengeParticipants<
+    T extends Prisma.User$challengeParticipantsArgs<ExtArgs> = {},
+  >(
+    args?: Prisma.Subset<T, Prisma.User$challengeParticipantsArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$ChallengeParticipantPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
+  battleEntries<T extends Prisma.User$battleEntriesArgs<ExtArgs> = {}>(
+    args?: Prisma.Subset<T, Prisma.User$battleEntriesArgs<ExtArgs>>,
+  ): Prisma.PrismaPromise<
+    | runtime.Types.Result.GetResult<
+        Prisma.$BattleEntryPayload<ExtArgs>,
+        T,
+        'findMany',
+        GlobalOmitOptions
+      >
+    | Null
+  >;
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1328,18 +13294,22 @@ export interface Prisma__UserClient<
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<'User', 'String'>;
-  readonly firstName: Prisma.FieldRef<'User', 'String'>;
-  readonly lastName: Prisma.FieldRef<'User', 'String'>;
   readonly email: Prisma.FieldRef<'User', 'String'>;
   readonly phone: Prisma.FieldRef<'User', 'String'>;
-  readonly zipCode: Prisma.FieldRef<'User', 'String'>;
+  readonly firstName: Prisma.FieldRef<'User', 'String'>;
+  readonly lastName: Prisma.FieldRef<'User', 'String'>;
   readonly password: Prisma.FieldRef<'User', 'String'>;
   readonly role: Prisma.FieldRef<'User', 'Role'>;
-  readonly location: Prisma.FieldRef<'User', 'String'>;
-  readonly additionalInfo: Prisma.FieldRef<'User', 'String'>;
-  readonly profilePicture: Prisma.FieldRef<'User', 'String'>;
   readonly otp: Prisma.FieldRef<'User', 'String'>;
-  readonly otpExpiresAt: Prisma.FieldRef<'User', 'DateTime'>;
+  readonly expiresIn: Prisma.FieldRef<'User', 'String'>;
+  readonly accessToken: Prisma.FieldRef<'User', 'String'>;
+  readonly refreshToken: Prisma.FieldRef<'User', 'String'>;
+  readonly isEmailVerified: Prisma.FieldRef<'User', 'Boolean'>;
+  readonly totalPoints: Prisma.FieldRef<'User', 'Int'>;
+  readonly balance: Prisma.FieldRef<'User', 'Int'>;
+  readonly likeCount: Prisma.FieldRef<'User', 'Int'>;
+  readonly commentCount: Prisma.FieldRef<'User', 'Int'>;
+  readonly shareCount: Prisma.FieldRef<'User', 'Int'>;
   readonly createdAt: Prisma.FieldRef<'User', 'DateTime'>;
   readonly updatedAt: Prisma.FieldRef<'User', 'DateTime'>;
 }
@@ -1360,6 +13330,10 @@ export type UserFindUniqueArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * Filter, which User to fetch.
    */
@@ -1382,6 +13356,10 @@ export type UserFindUniqueOrThrowArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
+  /**
    * Filter, which User to fetch.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1402,6 +13380,10 @@ export type UserFindFirstArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * Filter, which User to fetch.
    */
@@ -1456,6 +13438,10 @@ export type UserFindFirstOrThrowArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
+  /**
    * Filter, which User to fetch.
    */
   where?: Prisma.UserWhereInput;
@@ -1509,6 +13495,10 @@ export type UserFindManyArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
+  /**
    * Filter, which Users to fetch.
    */
   where?: Prisma.UserWhereInput;
@@ -1556,6 +13546,10 @@ export type UserCreateArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * The data needed to create a User.
    */
@@ -1613,6 +13607,10 @@ export type UserUpdateArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
   /**
    * The data needed to update a User.
    */
@@ -1695,6 +13693,10 @@ export type UserUpsertArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
+  /**
    * The filter to search for the User to update in case it exists.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1724,6 +13726,10 @@ export type UserDeleteArgs<
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
+  /**
    * Filter which User to delete.
    */
   where: Prisma.UserWhereUniqueInput;
@@ -1747,6 +13753,1079 @@ export type UserDeleteManyArgs<
 };
 
 /**
+ * User.profile
+ */
+export type User$profileArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Profile
+   */
+  select?: Prisma.ProfileSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Profile
+   */
+  omit?: Prisma.ProfileOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProfileInclude<ExtArgs> | null;
+  where?: Prisma.ProfileWhereInput;
+};
+
+/**
+ * User.posts
+ */
+export type User$postsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null;
+  where?: Prisma.PostWhereInput;
+  orderBy?:
+    | Prisma.PostOrderByWithRelationInput
+    | Prisma.PostOrderByWithRelationInput[];
+  cursor?: Prisma.PostWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[];
+};
+
+/**
+ * User.events
+ */
+export type User$eventsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Event
+   */
+  select?: Prisma.EventSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Event
+   */
+  omit?: Prisma.EventOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null;
+  where?: Prisma.EventWhereInput;
+  orderBy?:
+    | Prisma.EventOrderByWithRelationInput
+    | Prisma.EventOrderByWithRelationInput[];
+  cursor?: Prisma.EventWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[];
+};
+
+/**
+ * User.payments
+ */
+export type User$paymentsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Payment
+   */
+  select?: Prisma.PaymentSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Payment
+   */
+  omit?: Prisma.PaymentOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentInclude<ExtArgs> | null;
+  where?: Prisma.PaymentWhereInput;
+  orderBy?:
+    | Prisma.PaymentOrderByWithRelationInput
+    | Prisma.PaymentOrderByWithRelationInput[];
+  cursor?: Prisma.PaymentWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.PaymentScalarFieldEnum | Prisma.PaymentScalarFieldEnum[];
+};
+
+/**
+ * User.following
+ */
+export type User$followingArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null;
+  where?: Prisma.FollowWhereInput;
+  orderBy?:
+    | Prisma.FollowOrderByWithRelationInput
+    | Prisma.FollowOrderByWithRelationInput[];
+  cursor?: Prisma.FollowWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.FollowScalarFieldEnum | Prisma.FollowScalarFieldEnum[];
+};
+
+/**
+ * User.followers
+ */
+export type User$followersArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null;
+  where?: Prisma.FollowWhereInput;
+  orderBy?:
+    | Prisma.FollowOrderByWithRelationInput
+    | Prisma.FollowOrderByWithRelationInput[];
+  cursor?: Prisma.FollowWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.FollowScalarFieldEnum | Prisma.FollowScalarFieldEnum[];
+};
+
+/**
+ * User.sentMessages
+ */
+export type User$sentMessagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null;
+  where?: Prisma.MessageWhereInput;
+  orderBy?:
+    | Prisma.MessageOrderByWithRelationInput
+    | Prisma.MessageOrderByWithRelationInput[];
+  cursor?: Prisma.MessageWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[];
+};
+
+/**
+ * User.receivedMessages
+ */
+export type User$receivedMessagesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null;
+  where?: Prisma.MessageWhereInput;
+  orderBy?:
+    | Prisma.MessageOrderByWithRelationInput
+    | Prisma.MessageOrderByWithRelationInput[];
+  cursor?: Prisma.MessageWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[];
+};
+
+/**
+ * User.ticketsBought
+ */
+export type User$ticketsBoughtArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the EventTicket
+   */
+  select?: Prisma.EventTicketSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the EventTicket
+   */
+  omit?: Prisma.EventTicketOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventTicketInclude<ExtArgs> | null;
+  where?: Prisma.EventTicketWhereInput;
+  orderBy?:
+    | Prisma.EventTicketOrderByWithRelationInput
+    | Prisma.EventTicketOrderByWithRelationInput[];
+  cursor?: Prisma.EventTicketWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.EventTicketScalarFieldEnum
+    | Prisma.EventTicketScalarFieldEnum[];
+};
+
+/**
+ * User.ticketsSold
+ */
+export type User$ticketsSoldArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the EventTicket
+   */
+  select?: Prisma.EventTicketSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the EventTicket
+   */
+  omit?: Prisma.EventTicketOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventTicketInclude<ExtArgs> | null;
+  where?: Prisma.EventTicketWhereInput;
+  orderBy?:
+    | Prisma.EventTicketOrderByWithRelationInput
+    | Prisma.EventTicketOrderByWithRelationInput[];
+  cursor?: Prisma.EventTicketWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.EventTicketScalarFieldEnum
+    | Prisma.EventTicketScalarFieldEnum[];
+};
+
+/**
+ * User.productLists
+ */
+export type User$productListsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the ProductList
+   */
+  select?: Prisma.ProductListSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the ProductList
+   */
+  omit?: Prisma.ProductListOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ProductListInclude<ExtArgs> | null;
+  where?: Prisma.ProductListWhereInput;
+  orderBy?:
+    | Prisma.ProductListOrderByWithRelationInput
+    | Prisma.ProductListOrderByWithRelationInput[];
+  cursor?: Prisma.ProductListWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ProductListScalarFieldEnum
+    | Prisma.ProductListScalarFieldEnum[];
+};
+
+/**
+ * User.reports
+ */
+export type User$reportsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Report
+   */
+  select?: Prisma.ReportSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Report
+   */
+  omit?: Prisma.ReportOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReportInclude<ExtArgs> | null;
+  where?: Prisma.ReportWhereInput;
+  orderBy?:
+    | Prisma.ReportOrderByWithRelationInput
+    | Prisma.ReportOrderByWithRelationInput[];
+  cursor?: Prisma.ReportWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.ReportScalarFieldEnum | Prisma.ReportScalarFieldEnum[];
+};
+
+/**
+ * User.shares
+ */
+export type User$sharesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Share
+   */
+  select?: Prisma.ShareSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Share
+   */
+  omit?: Prisma.ShareOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ShareInclude<ExtArgs> | null;
+  where?: Prisma.ShareWhereInput;
+  orderBy?:
+    | Prisma.ShareOrderByWithRelationInput
+    | Prisma.ShareOrderByWithRelationInput[];
+  cursor?: Prisma.ShareWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.ShareScalarFieldEnum | Prisma.ShareScalarFieldEnum[];
+};
+
+/**
+ * User.likes
+ */
+export type User$likesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Like
+   */
+  select?: Prisma.LikeSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Like
+   */
+  omit?: Prisma.LikeOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LikeInclude<ExtArgs> | null;
+  where?: Prisma.LikeWhereInput;
+  orderBy?:
+    | Prisma.LikeOrderByWithRelationInput
+    | Prisma.LikeOrderByWithRelationInput[];
+  cursor?: Prisma.LikeWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.LikeScalarFieldEnum | Prisma.LikeScalarFieldEnum[];
+};
+
+/**
+ * User.comments
+ */
+export type User$commentsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Comment
+   */
+  select?: Prisma.CommentSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Comment
+   */
+  omit?: Prisma.CommentOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CommentInclude<ExtArgs> | null;
+  where?: Prisma.CommentWhereInput;
+  orderBy?:
+    | Prisma.CommentOrderByWithRelationInput
+    | Prisma.CommentOrderByWithRelationInput[];
+  cursor?: Prisma.CommentWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[];
+};
+
+/**
+ * User.liveRewards
+ */
+export type User$liveRewardsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the LiveReward
+   */
+  select?: Prisma.LiveRewardSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the LiveReward
+   */
+  omit?: Prisma.LiveRewardOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LiveRewardInclude<ExtArgs> | null;
+  where?: Prisma.LiveRewardWhereInput;
+  orderBy?:
+    | Prisma.LiveRewardOrderByWithRelationInput
+    | Prisma.LiveRewardOrderByWithRelationInput[];
+  cursor?: Prisma.LiveRewardWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.LiveRewardScalarFieldEnum
+    | Prisma.LiveRewardScalarFieldEnum[];
+};
+
+/**
+ * User.liveRewardsGiven
+ */
+export type User$liveRewardsGivenArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the LiveReward
+   */
+  select?: Prisma.LiveRewardSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the LiveReward
+   */
+  omit?: Prisma.LiveRewardOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LiveRewardInclude<ExtArgs> | null;
+  where?: Prisma.LiveRewardWhereInput;
+  orderBy?:
+    | Prisma.LiveRewardOrderByWithRelationInput
+    | Prisma.LiveRewardOrderByWithRelationInput[];
+  cursor?: Prisma.LiveRewardWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.LiveRewardScalarFieldEnum
+    | Prisma.LiveRewardScalarFieldEnum[];
+};
+
+/**
+ * User.lives
+ */
+export type User$livesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Live
+   */
+  select?: Prisma.LiveSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Live
+   */
+  omit?: Prisma.LiveOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LiveInclude<ExtArgs> | null;
+  where?: Prisma.LiveWhereInput;
+  orderBy?:
+    | Prisma.LiveOrderByWithRelationInput
+    | Prisma.LiveOrderByWithRelationInput[];
+  cursor?: Prisma.LiveWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.LiveScalarFieldEnum | Prisma.LiveScalarFieldEnum[];
+};
+
+/**
+ * User.liveParticipants
+ */
+export type User$liveParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the LiveParticipant
+   */
+  select?: Prisma.LiveParticipantSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the LiveParticipant
+   */
+  omit?: Prisma.LiveParticipantOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LiveParticipantInclude<ExtArgs> | null;
+  where?: Prisma.LiveParticipantWhereInput;
+  orderBy?:
+    | Prisma.LiveParticipantOrderByWithRelationInput
+    | Prisma.LiveParticipantOrderByWithRelationInput[];
+  cursor?: Prisma.LiveParticipantWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.LiveParticipantScalarFieldEnum
+    | Prisma.LiveParticipantScalarFieldEnum[];
+};
+
+/**
+ * User.reposts
+ */
+export type User$repostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Repost
+   */
+  select?: Prisma.RepostSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Repost
+   */
+  omit?: Prisma.RepostOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RepostInclude<ExtArgs> | null;
+  where?: Prisma.RepostWhereInput;
+  orderBy?:
+    | Prisma.RepostOrderByWithRelationInput
+    | Prisma.RepostOrderByWithRelationInput[];
+  cursor?: Prisma.RepostWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.RepostScalarFieldEnum | Prisma.RepostScalarFieldEnum[];
+};
+
+/**
+ * User.racingVotes
+ */
+export type User$racingVotesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the RacingVote
+   */
+  select?: Prisma.RacingVoteSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the RacingVote
+   */
+  omit?: Prisma.RacingVoteOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RacingVoteInclude<ExtArgs> | null;
+  where?: Prisma.RacingVoteWhereInput;
+  orderBy?:
+    | Prisma.RacingVoteOrderByWithRelationInput
+    | Prisma.RacingVoteOrderByWithRelationInput[];
+  cursor?: Prisma.RacingVoteWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.RacingVoteScalarFieldEnum
+    | Prisma.RacingVoteScalarFieldEnum[];
+};
+
+/**
+ * User.savePosts
+ */
+export type User$savePostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the SavePost
+   */
+  select?: Prisma.SavePostSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the SavePost
+   */
+  omit?: Prisma.SavePostOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavePostInclude<ExtArgs> | null;
+  where?: Prisma.SavePostWhereInput;
+  orderBy?:
+    | Prisma.SavePostOrderByWithRelationInput
+    | Prisma.SavePostOrderByWithRelationInput[];
+  cursor?: Prisma.SavePostWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.SavePostScalarFieldEnum | Prisma.SavePostScalarFieldEnum[];
+};
+
+/**
+ * User.hidePosts
+ */
+export type User$hidePostsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the HidePost
+   */
+  select?: Prisma.HidePostSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the HidePost
+   */
+  omit?: Prisma.HidePostOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HidePostInclude<ExtArgs> | null;
+  where?: Prisma.HidePostWhereInput;
+  orderBy?:
+    | Prisma.HidePostOrderByWithRelationInput
+    | Prisma.HidePostOrderByWithRelationInput[];
+  cursor?: Prisma.HidePostWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.HidePostScalarFieldEnum | Prisma.HidePostScalarFieldEnum[];
+};
+
+/**
+ * User.wishLists
+ */
+export type User$wishListsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the WishList
+   */
+  select?: Prisma.WishListSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the WishList
+   */
+  omit?: Prisma.WishListOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.WishListInclude<ExtArgs> | null;
+  where?: Prisma.WishListWhereInput;
+  orderBy?:
+    | Prisma.WishListOrderByWithRelationInput
+    | Prisma.WishListOrderByWithRelationInput[];
+  cursor?: Prisma.WishListWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.WishListScalarFieldEnum | Prisma.WishListScalarFieldEnum[];
+};
+
+/**
+ * User.battleResults
+ */
+export type User$battleResultsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BattleResult
+   */
+  select?: Prisma.BattleResultSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BattleResult
+   */
+  omit?: Prisma.BattleResultOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleResultInclude<ExtArgs> | null;
+  where?: Prisma.BattleResultWhereInput;
+  orderBy?:
+    | Prisma.BattleResultOrderByWithRelationInput
+    | Prisma.BattleResultOrderByWithRelationInput[];
+  cursor?: Prisma.BattleResultWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BattleResultScalarFieldEnum
+    | Prisma.BattleResultScalarFieldEnum[];
+};
+
+/**
+ * User.battleVotes
+ */
+export type User$battleVotesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BattleVote
+   */
+  select?: Prisma.BattleVoteSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BattleVote
+   */
+  omit?: Prisma.BattleVoteOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleVoteInclude<ExtArgs> | null;
+  where?: Prisma.BattleVoteWhereInput;
+  orderBy?:
+    | Prisma.BattleVoteOrderByWithRelationInput
+    | Prisma.BattleVoteOrderByWithRelationInput[];
+  cursor?: Prisma.BattleVoteWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BattleVoteScalarFieldEnum
+    | Prisma.BattleVoteScalarFieldEnum[];
+};
+
+/**
+ * User.battles
+ */
+export type User$battlesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Battle
+   */
+  select?: Prisma.BattleSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Battle
+   */
+  omit?: Prisma.BattleOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleInclude<ExtArgs> | null;
+  where?: Prisma.BattleWhereInput;
+  orderBy?:
+    | Prisma.BattleOrderByWithRelationInput
+    | Prisma.BattleOrderByWithRelationInput[];
+  cursor?: Prisma.BattleWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?: Prisma.BattleScalarFieldEnum | Prisma.BattleScalarFieldEnum[];
+};
+
+/**
+ * User.battleParticipants
+ */
+export type User$battleParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BattleParticipant
+   */
+  select?: Prisma.BattleParticipantSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BattleParticipant
+   */
+  omit?: Prisma.BattleParticipantOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleParticipantInclude<ExtArgs> | null;
+  where?: Prisma.BattleParticipantWhereInput;
+  orderBy?:
+    | Prisma.BattleParticipantOrderByWithRelationInput
+    | Prisma.BattleParticipantOrderByWithRelationInput[];
+  cursor?: Prisma.BattleParticipantWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BattleParticipantScalarFieldEnum
+    | Prisma.BattleParticipantScalarFieldEnum[];
+};
+
+/**
+ * User.userPoints
+ */
+export type User$userPointsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the UserPoint
+   */
+  select?: Prisma.UserPointSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the UserPoint
+   */
+  omit?: Prisma.UserPointOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserPointInclude<ExtArgs> | null;
+  where?: Prisma.UserPointWhereInput;
+  orderBy?:
+    | Prisma.UserPointOrderByWithRelationInput
+    | Prisma.UserPointOrderByWithRelationInput[];
+  cursor?: Prisma.UserPointWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.UserPointScalarFieldEnum
+    | Prisma.UserPointScalarFieldEnum[];
+};
+
+/**
+ * User.sellerProducts
+ */
+export type User$sellerProductsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BuyProduct
+   */
+  select?: Prisma.BuyProductSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BuyProduct
+   */
+  omit?: Prisma.BuyProductOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyProductInclude<ExtArgs> | null;
+  where?: Prisma.BuyProductWhereInput;
+  orderBy?:
+    | Prisma.BuyProductOrderByWithRelationInput
+    | Prisma.BuyProductOrderByWithRelationInput[];
+  cursor?: Prisma.BuyProductWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BuyProductScalarFieldEnum
+    | Prisma.BuyProductScalarFieldEnum[];
+};
+
+/**
+ * User.buyProducts
+ */
+export type User$buyProductsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BuyProduct
+   */
+  select?: Prisma.BuyProductSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BuyProduct
+   */
+  omit?: Prisma.BuyProductOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BuyProductInclude<ExtArgs> | null;
+  where?: Prisma.BuyProductWhereInput;
+  orderBy?:
+    | Prisma.BuyProductOrderByWithRelationInput
+    | Prisma.BuyProductOrderByWithRelationInput[];
+  cursor?: Prisma.BuyProductWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BuyProductScalarFieldEnum
+    | Prisma.BuyProductScalarFieldEnum[];
+};
+
+/**
+ * User.challengeResults
+ */
+export type User$challengeResultsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the ChallengeResult
+   */
+  select?: Prisma.ChallengeResultSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the ChallengeResult
+   */
+  omit?: Prisma.ChallengeResultOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeResultInclude<ExtArgs> | null;
+  where?: Prisma.ChallengeResultWhereInput;
+  orderBy?:
+    | Prisma.ChallengeResultOrderByWithRelationInput
+    | Prisma.ChallengeResultOrderByWithRelationInput[];
+  cursor?: Prisma.ChallengeResultWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ChallengeResultScalarFieldEnum
+    | Prisma.ChallengeResultScalarFieldEnum[];
+};
+
+/**
+ * User.hostChallenge
+ */
+export type User$hostChallengeArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Challenge
+   */
+  select?: Prisma.ChallengeSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Challenge
+   */
+  omit?: Prisma.ChallengeOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeInclude<ExtArgs> | null;
+  where?: Prisma.ChallengeWhereInput;
+  orderBy?:
+    | Prisma.ChallengeOrderByWithRelationInput
+    | Prisma.ChallengeOrderByWithRelationInput[];
+  cursor?: Prisma.ChallengeWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ChallengeScalarFieldEnum
+    | Prisma.ChallengeScalarFieldEnum[];
+};
+
+/**
+ * User.challenges
+ */
+export type User$challengesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the Challenge
+   */
+  select?: Prisma.ChallengeSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the Challenge
+   */
+  omit?: Prisma.ChallengeOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeInclude<ExtArgs> | null;
+  where?: Prisma.ChallengeWhereInput;
+  orderBy?:
+    | Prisma.ChallengeOrderByWithRelationInput
+    | Prisma.ChallengeOrderByWithRelationInput[];
+  cursor?: Prisma.ChallengeWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ChallengeScalarFieldEnum
+    | Prisma.ChallengeScalarFieldEnum[];
+};
+
+/**
+ * User.challengeParticipants
+ */
+export type User$challengeParticipantsArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the ChallengeParticipant
+   */
+  select?: Prisma.ChallengeParticipantSelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the ChallengeParticipant
+   */
+  omit?: Prisma.ChallengeParticipantOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeParticipantInclude<ExtArgs> | null;
+  where?: Prisma.ChallengeParticipantWhereInput;
+  orderBy?:
+    | Prisma.ChallengeParticipantOrderByWithRelationInput
+    | Prisma.ChallengeParticipantOrderByWithRelationInput[];
+  cursor?: Prisma.ChallengeParticipantWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.ChallengeParticipantScalarFieldEnum
+    | Prisma.ChallengeParticipantScalarFieldEnum[];
+};
+
+/**
+ * User.battleEntries
+ */
+export type User$battleEntriesArgs<
+  ExtArgs extends runtime.Types.Extensions.InternalArgs =
+    runtime.Types.Extensions.DefaultArgs,
+> = {
+  /**
+   * Select specific fields to fetch from the BattleEntry
+   */
+  select?: Prisma.BattleEntrySelect<ExtArgs> | null;
+  /**
+   * Omit specific fields from the BattleEntry
+   */
+  omit?: Prisma.BattleEntryOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleEntryInclude<ExtArgs> | null;
+  where?: Prisma.BattleEntryWhereInput;
+  orderBy?:
+    | Prisma.BattleEntryOrderByWithRelationInput
+    | Prisma.BattleEntryOrderByWithRelationInput[];
+  cursor?: Prisma.BattleEntryWhereUniqueInput;
+  take?: number;
+  skip?: number;
+  distinct?:
+    | Prisma.BattleEntryScalarFieldEnum
+    | Prisma.BattleEntryScalarFieldEnum[];
+};
+
+/**
  * User without action
  */
 export type UserDefaultArgs<
@@ -1761,4 +14840,8 @@ export type UserDefaultArgs<
    * Omit specific fields from the User
    */
   omit?: Prisma.UserOmit<ExtArgs> | null;
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null;
 };

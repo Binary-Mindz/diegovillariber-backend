@@ -26,8 +26,8 @@ export * from './enums';
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more FileInstances
- * const fileInstances = await prisma.fileInstance.findMany()
+ * // Fetch zero or more AdvancedCarData
+ * const advancedCarData = await prisma.advancedCarData.findMany()
  * ```
  *
  * Read more in our [docs](https://pris.ly/d/client).
@@ -43,12 +43,297 @@ export type PrismaClient<
 export { Prisma };
 
 /**
+ * Model AdvancedCarData
+ *
+ */
+export type AdvancedCarData = Prisma.AdvancedCarDataModel;
+/**
+ * Model Battle
+ *
+ */
+export type Battle = Prisma.BattleModel;
+/**
+ * Model BattleEntry
+ *
+ */
+export type BattleEntry = Prisma.BattleEntryModel;
+/**
+ * Model BattleParticipant
+ *
+ */
+export type BattleParticipant = Prisma.BattleParticipantModel;
+/**
+ * Model BattleResult
+ *
+ */
+export type BattleResult = Prisma.BattleResultModel;
+/**
+ * Model BattleVote
+ *
+ */
+export type BattleVote = Prisma.BattleVoteModel;
+/**
+ * Model BusinessProfile
+ *
+ */
+export type BusinessProfile = Prisma.BusinessProfileModel;
+/**
+ * Model BuyProduct
+ *
+ */
+export type BuyProduct = Prisma.BuyProductModel;
+/**
+ * Model Car
+ *
+ */
+export type Car = Prisma.CarModel;
+/**
+ * Model Challenge
+ *
+ */
+export type Challenge = Prisma.ChallengeModel;
+/**
+ * Model ChallengeParticipant
+ *
+ */
+export type ChallengeParticipant = Prisma.ChallengeParticipantModel;
+/**
+ * Model ChallengeResult
+ *
+ */
+export type ChallengeResult = Prisma.ChallengeResultModel;
+/**
+ * Model ChassisBrakes
+ *
+ */
+export type ChassisBrakes = Prisma.ChassisBrakesModel;
+/**
+ * Model Comment
+ *
+ */
+export type Comment = Prisma.CommentModel;
+/**
+ * Model ContentCreatorProfile
+ *
+ */
+export type ContentCreatorProfile = Prisma.ContentCreatorProfileModel;
+/**
+ * Model DisplayAndPcSetup
+ *
+ */
+export type DisplayAndPcSetup = Prisma.DisplayAndPcSetupModel;
+/**
+ * Model Drivetrain
+ *
+ */
+export type Drivetrain = Prisma.DrivetrainModel;
+/**
+ * Model DrivingAssistant
+ *
+ */
+export type DrivingAssistant = Prisma.DrivingAssistantModel;
+/**
+ * Model EnginePower
+ *
+ */
+export type EnginePower = Prisma.EnginePowerModel;
+/**
+ * Model Event
+ *
+ */
+export type Event = Prisma.EventModel;
+/**
+ * Model EventTicket
+ *
+ */
+export type EventTicket = Prisma.EventTicketModel;
+/**
  * Model FileInstance
  *
  */
 export type FileInstance = Prisma.FileInstanceModel;
 /**
+ * Model Follow
+ *
+ */
+export type Follow = Prisma.FollowModel;
+/**
+ * Model Garage
+ *
+ */
+export type Garage = Prisma.GarageModel;
+/**
+ * Model HardwareSetup
+ *
+ */
+export type HardwareSetup = Prisma.HardwareSetupModel;
+/**
+ * Model Hashtag
+ *
+ */
+export type Hashtag = Prisma.HashtagModel;
+/**
+ * Model HidePost
+ *
+ */
+export type HidePost = Prisma.HidePostModel;
+/**
+ * Model HighlightProduct
+ *
+ */
+export type HighlightProduct = Prisma.HighlightProductModel;
+/**
+ * Model InteriorSafety
+ *
+ */
+export type InteriorSafety = Prisma.InteriorSafetyModel;
+/**
+ * Model LegalNotice
+ *
+ */
+export type LegalNotice = Prisma.LegalNoticeModel;
+/**
+ * Model Like
+ *
+ */
+export type Like = Prisma.LikeModel;
+/**
+ * Model Live
+ *
+ */
+export type Live = Prisma.LiveModel;
+/**
+ * Model LiveParticipant
+ *
+ */
+export type LiveParticipant = Prisma.LiveParticipantModel;
+/**
+ * Model LiveReward
+ *
+ */
+export type LiveReward = Prisma.LiveRewardModel;
+/**
+ * Model Message
+ *
+ */
+export type Message = Prisma.MessageModel;
+/**
+ * Model OwnerProfile
+ *
+ */
+export type OwnerProfile = Prisma.OwnerProfileModel;
+/**
+ * Model Payment
+ *
+ */
+export type Payment = Prisma.PaymentModel;
+/**
+ * Model Post
+ *
+ */
+export type Post = Prisma.PostModel;
+/**
+ * Model ProDriverProfile
+ *
+ */
+export type ProDriverProfile = Prisma.ProDriverProfileModel;
+/**
+ * Model ProductList
+ *
+ */
+export type ProductList = Prisma.ProductListModel;
+/**
+ * Model Profile
+ *
+ */
+export type Profile = Prisma.ProfileModel;
+/**
+ * Model Racing
+ *
+ */
+export type Racing = Prisma.RacingModel;
+/**
+ * Model RacingVote
+ *
+ */
+export type RacingVote = Prisma.RacingVoteModel;
+/**
+ * Model Report
+ *
+ */
+export type Report = Prisma.ReportModel;
+/**
+ * Model Repost
+ *
+ */
+export type Repost = Prisma.RepostModel;
+/**
+ * Model SavePost
+ *
+ */
+export type SavePost = Prisma.SavePostModel;
+/**
+ * Model SetupDescriptionPhoto
+ *
+ */
+export type SetupDescriptionPhoto = Prisma.SetupDescriptionPhotoModel;
+/**
+ * Model Share
+ *
+ */
+export type Share = Prisma.ShareModel;
+/**
+ * Model SimRacingProfile
+ *
+ */
+export type SimRacingProfile = Prisma.SimRacingProfileModel;
+/**
+ * Model SpotterProfile
+ *
+ */
+export type SpotterProfile = Prisma.SpotterProfileModel;
+/**
+ * Model TuningAero
+ *
+ */
+export type TuningAero = Prisma.TuningAeroModel;
+/**
+ * Model UsageNotes
+ *
+ */
+export type UsageNotes = Prisma.UsageNotesModel;
+/**
  * Model User
  *
  */
 export type User = Prisma.UserModel;
+/**
+ * Model UserPoint
+ *
+ */
+export type UserPoint = Prisma.UserPointModel;
+/**
+ * Model VirtualGarage
+ *
+ */
+export type VirtualGarage = Prisma.VirtualGarageModel;
+/**
+ * Model VirtualLab
+ *
+ */
+export type VirtualLab = Prisma.VirtualLabModel;
+/**
+ * Model VirtualSimRacingEvent
+ *
+ */
+export type VirtualSimRacingEvent = Prisma.VirtualSimRacingEventModel;
+/**
+ * Model WheelsTires
+ *
+ */
+export type WheelsTires = Prisma.WheelsTiresModel;
+/**
+ * Model WishList
+ *
+ */
+export type WishList = Prisma.WishListModel;

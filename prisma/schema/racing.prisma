@@ -1,0 +1,13 @@
+model Racing {
+  id          String @id @default(uuid()) @db.Uuid
+  simRacingId String @unique @db.Uuid
+  simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
+
+  iRacingId        String?
+  accId            String?
+  steamId          String?
+  psnId            String?
+  xboxGamertag     String?
+
+  @@map("Racing")
+}

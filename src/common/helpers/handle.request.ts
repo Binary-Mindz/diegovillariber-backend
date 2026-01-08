@@ -1,5 +1,16 @@
-export async function handleRequest(
-  callback: () => Promise<any>,
+interface HttpErrorResponse {
+  message?: string;
+  statusCode?: number;
+}
+
+interface HttpError {
+  response?: HttpErrorResponse;
+  message?: string;
+  status?: number;
+}
+
+export async function handleRequest<T>(
+  callback: () => Promise<T>,
   successMessage = 'Request successful',
 ) {
   try {
@@ -10,10 +21,16 @@ export async function handleRequest(
       message: successMessage,
       data,
     };
-  } catch (error: any) {
-    const message =
-      error?.response?.message || error?.message || 'Something went wrong';
-    const statusCode = error?.status || error?.response?.statusCode || 500;
+  } catch (error: unknown) {
+    let message = 'Something went wrong';
+    let statusCode = 500;
+
+    // Type guard for error object
+    if (typeof error === 'object' && error !== null) {
+      const err = error as HttpError;
+      message = err.response?.message ?? err.message ?? message;
+      statusCode = err.response?.statusCode ?? err.status ?? statusCode;
+    }
 
     return {
       statusCode,

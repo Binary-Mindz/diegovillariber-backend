@@ -1,22 +1,63 @@
 model User {
-  id             String   @id @default(uuid())
-  firstName      String   @db.VarChar(100)
-  lastName       String   @db.VarChar(100)
-  email          String   @unique @db.VarChar(150)
-  phone          String   @unique @db.VarChar(20)
-  zipCode        String   @db.VarChar(10)
-  password       String   @db.VarChar(255)
-  role           Role?    @default(USER)
-  location       String?  @db.VarChar(50)
-  additionalInfo String?  @db.VarChar(255)
-  profilePicture String?  @db.VarChar(255)
-  otp            String?  
-  otpExpiresAt   DateTime?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-}
+  id              String  @id @default(uuid()) @db.Uuid
+  email           String  @unique
+  phone           String?
+  firstName       String?
+  lastName        String?
+  password        String
+  role            Role    @default(User)
+  otp             String?
+  expiresIn       String?
+  accessToken     String?
+  refreshToken    String?
+  isEmailVerified Boolean @default(false)
+  totalPoints     Int     @default(0)
+  balance         Int     @default(0)
+  likeCount       Int     @default(0)
+  commentCount    Int     @default(0)
+  shareCount      Int     @default(0)
 
-enum Role {
-  USER
-  ADMIN
+  profile  Profile?
+  posts    Post[]
+  events   Event[]
+  payments Payment[]
+
+  following             Follow[]               @relation("UserFollowing")
+  followers             Follow[]               @relation("UserFollowers")
+  sentMessages          Message[]              @relation("SentMessages")
+  receivedMessages      Message[]              @relation("ReceivedMessages")
+  ticketsBought         EventTicket[]          @relation("BoughtTickets")
+  ticketsSold           EventTicket[]          @relation("SoldTickets")
+  productLists          ProductList[]
+  reports               Report[]
+  shares                Share[]
+  likes                 Like[]
+  comments              Comment[]
+  liveRewards           LiveReward[]           @relation("RewardHost")
+  liveRewardsGiven      LiveReward[]           @relation("RewardParticipant")
+  lives                 Live[]                 @relation("HostedLives")
+  liveParticipants      LiveParticipant[]
+  reposts               Repost[]
+  racingVotes           RacingVote[]
+  savePosts             SavePost[]
+  hidePosts             HidePost[]
+  wishLists             WishList[]
+  battleResults         BattleResult[]         @relation("BattleWinner")
+  battleVotes           BattleVote[]           @relation("VotesByUser")
+  battles               Battle[]               @relation("HostBattles")
+  battleParticipants    BattleParticipant[]
+  userPoints            UserPoint[]
+  sellerProducts        BuyProduct[]           @relation("SellerProducts")
+  buyProducts           BuyProduct[]           @relation("BuyerProducts")
+  challengeResults      ChallengeResult[]      @relation("WinnerResults")
+  hostChallenge         Challenge[]            @relation("HostChallenges")
+  challenges            Challenge[]
+  challengeParticipants ChallengeParticipant[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+ 
+
+  battleEntries BattleEntry[]
 }

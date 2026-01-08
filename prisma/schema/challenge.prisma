@@ -1,0 +1,25 @@
+model Challenge {
+  id                  String                  @id @default(uuid()) @db.Uuid
+
+  hostId              String                  @db.Uuid
+  host                User                    @relation("HostChallenges", fields: [hostId], references: [id])
+
+  participantsId      String?                 @db.Uuid
+  participantsUser    User?                   @relation(fields: [participantsId], references: [id])
+
+  title               String
+  description         String?
+  location            String?
+  startDate           DateTime?
+  endDate             DateTime?
+  images              String?
+  media               Media                   @default(PHOTO)
+  camera              String?
+  participants        Int                     @default(10)
+  comment             String?
+  isActive IsActive @default(ACTIVE)
+
+  participantsList    ChallengeParticipant[]
+  results             ChallengeResult[]
+
+}

@@ -1,0 +1,15 @@
+model LiveReward {
+  id             String   @id @default(uuid()) @db.Uuid
+
+  liveId         String   @db.Uuid
+  live           Live     @relation(fields: [liveId], references: [id])
+
+  hostId         String   @db.Uuid
+  host           User     @relation("RewardHost", fields: [hostId], references: [id])
+
+  participantId  String   @db.Uuid
+  participant    User     @relation("RewardParticipant", fields: [participantId], references: [id])
+
+  points         Int      @default(5)
+  createdAt      DateTime @default(now())
+}

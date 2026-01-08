@@ -1,0 +1,5 @@
+model Hashtag {
+    id    String @id @default(uuid())
+    tag   String @unique
+    posts Post[] @relation("PostHashtags")
+}

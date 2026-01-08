@@ -1,0 +1,12 @@
+model BattleResult {
+  id             String   @id @default(uuid()) @db.Uuid
+
+  battleId       String   @db.Uuid
+  battle         Battle   @relation(fields: [battleId], references: [id])
+
+  winnerUserId   String   @db.Uuid
+  winnerUser     User     @relation("BattleWinner", fields: [winnerUserId], references: [id])
+
+  rewardPoints   Int      @default(250)
+  createdAt      DateTime @default(now())
+}

@@ -13,4 +13,285 @@ datasource db {
   provider = "postgresql"
 }
 
+enum Role {
+User
+ADMIN
+SUPER_ADMIN
+}
+
+enum Preference {
+  Car
+  Motorbike
+  Both
+}
+
+enum Type {
+  SPOTTER
+  OWNER
+  CONTENT_CREATOR
+  PRO_BUSSINESS
+  PRO_DRIVER
+  SIM_RACING_DRIVER
+}
+
+enum IsActive {
+  PENDING
+  ACTIVE
+  INACTIVE
+}
+
+enum Media {
+  PHOTO
+  VIDEO
+}
+
+enum PostType {
+  Spotter_Post
+  Owner_Post
+  Battle_Post
+  Challenge_Post
+}
+
+enum BattleStatus {
+  PENDING
+  ONGOING
+  COMPLETED
+  CANCELED
+}
+
+enum BattleType {
+  OPEN_BATTLE
+  INVITATION_ONLY
+  SEND_INVITATION_AUTO
+  HEAD_TO_HEAD
+}
+
+enum PointType {
+  BATTLE_WIN
+  POST
+  LIKE
+  COMMENT
+  ONGOING
+}
+
+enum EventStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum BuyStatus {
+  PENDING
+  PAID
+  CANCELLED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESSED
+  CANCELL
+}
+
+enum LiveStatus {
+  CREATED
+  SCHEDULED
+  LIVE
+  PAUSED
+  ENDED
+  CANCELLED
+}
+
+enum AccountType {
+  PUBLIC
+  PRIVATE
+}
+
+enum ContentCategory {
+  PHOTOGRAPHY
+  VLOG
+  ANALYSIS
+}
+
+enum RacingType {
+  GT_Racing
+  Rally
+  MotoGP
+  Formula_Racing
+  Drift
+  Karting
+  Endurance_Racing
+}
+
+enum BusinessCategory {
+  Detailling_Care
+  Parts_Performance
+  Ecu_Dyno_Tuning
+  Wrap_Vinyl
+  Motorsport_Service
+  Event_Promoter
+  Media_Podcast
+  Dealership
+  Body_Coachbuilder
+  Auto_Recycling
+  Inspection_Technical
+}
+
+enum BodyType {
+  Coupe
+  Sedan
+  Hatchback
+  Convertible
+  SUV
+  Wagon
+  Pickup
+  Van
+}
+
+enum Transmission {
+  Manual
+  Automatic
+  Sequential
+  DCT
+  CVT
+}
+
+enum DriveTrain {
+  RWD
+  FWD
+  AWD
+  FOUR_WD
+}
+
+enum DriveCategory {
+  Daily_Drive
+  Weekend_Warrior
+  Track_Tool
+  Show_Car
+  Project_Car
+}
+
+enum TrackCondition {
+  Dry
+  Damp
+  Wet
+  Dusty
+  Greasy
+}
+
+enum Weather {
+  Sunny
+  Cloudy
+  Overcast
+  Light_Rain
+  Heavy_Rain
+  Mixed
+}
+
+enum SessionType {
+  Track_Day
+  Private_Session
+  Race_Weekend
+  Test_Day
+  Time_Attack_Event
+}
+
+enum TireCompound {
+  Slick
+  Semi_Slick
+  Street
+  All_Season
+  Rain
+}
+
+enum DriveStyle {
+  Conservative_Leaving_Margin
+  Moderate_Balanced_Approach
+  Aggressive_Pushing_Hard
+  At_The_Limit_Full_Send
+}
+
+enum CarFound {
+  Auction
+  Dealer
+  Private_Seller
+  Online_Marketplace
+  Family
+  Friend
+  Barn_Find
+  Other
+}
+
+enum Platform {
+  iRacing
+  Assetto_Corsa_Competizione
+  Gran_Turismo_7
+  Forza_Motorsport
+  F1_24
+  rFactor_2
+  Automobilista_2
+  RaceRoom
+  Project_CARS_2
+  BeamNG_drive
+  Other
+}
+
+enum Visibility {
+  Public
+  Private
+  Friend
+  Only_Me
+}
+
+enum EventType {
+  Race
+  League_Race
+  Hot_Lap_Session
+  Practice_Session
+  Endurance_Race
+  Time_Attack
+  Drift_Session
+  Other
+}
+
+enum ReportType {
+  POST
+  PROFILE
+}
+
+enum ProductCategory {
+  Car_Parts
+  Photography
+}
+enum CarClass {
+  GT3
+  GT4
+  GTE
+  LMP2
+  F124
+  LMP1
+  FORMULA_1
+  FORMULA_2
+  FORMULA_3
+  TOURING_CAR
+  STOCK_CAR
+  RALLY
+  DRIFT
+  ROAD_CAR
+  PROTOTYPE
+  VINTAGE
+  OTHER
+}
+
+enum TelemetrySource{
+  iRacing_MoTec
+  ACC_Mo_Tec
+  SimHub
+  Crew_Chief
+  Z1_Dashboard
+  Racelab
+  Kapps
+  Other
+}
+
 
