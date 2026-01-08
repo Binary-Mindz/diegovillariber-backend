@@ -1,0 +1,13 @@
+model EventTicket {
+  id        String    @id @default(uuid()) @db.Uuid
+  eventId   String    @db.Uuid
+  event     Event     @relation(fields: [eventId], references: [id]) // <- Relation back to Event
+  buyerId   String    @db.Uuid
+  buyer     User      @relation("BoughtTickets", fields: [buyerId], references: [id])
+  sellerId  String    @db.Uuid
+  seller    User      @relation("SoldTickets", fields: [sellerId], references: [id])
+  price     Int
+  status    BuyStatus @default(PENDING)
+  payments  Payment[]
+  createdAt DateTime  @default(now())
+}

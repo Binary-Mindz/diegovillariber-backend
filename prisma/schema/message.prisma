@@ -1,0 +1,14 @@
+model Message {
+  id         String   @id @default(uuid()) @db.Uuid
+  senderId   String   @db.Uuid
+  receiverId String   @db.Uuid
+  content    String
+  createdAt  DateTime @default(now())
+
+  @@index([senderId])
+  @@index([receiverId])
+  sender User[] @relation("SentMessages")
+  receiver User[] @relation("ReceivedMessages")
+}
+
+

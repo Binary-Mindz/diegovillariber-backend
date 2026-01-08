@@ -1,0 +1,9 @@
+model Drivetrain {
+  id                String @id @default(uuid()) @db.Uuid
+  advancedCarDataId String @db.Uuid @unique
+  advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
+
+  transmission String?
+  differential String?
+  clutch       String?
+}

@@ -1,0 +1,17 @@
+model VirtualGarage {
+  id           String     @id @default(uuid()) @db.Uuid
+  profileId    String     @db.Uuid
+  profile      Profile    @relation(fields: [profileId], references: [id])
+
+  simPlatform  Platform   @default(iRacing)
+  carMake      String
+  carModel     String
+  makeYear     String
+  carClass     CarClass   @default(DRIFT)
+  livery       String?
+  teamName     String?
+  carNumber    Int?
+  transmission Transmission @default(Manual)
+  notes        String?
+}
+

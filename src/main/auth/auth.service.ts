@@ -3,13 +3,22 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { CreateAuthDto, LoginDto } from './dto/create-auth.dto';
+import { LoginDto } from './dto/create-auth.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import { SignOptions } from 'jsonwebtoken';
 
 import * as bcrypt from 'bcrypt';
 import { OtpService } from './otp.service';
 import { MailService } from '@/common/mail/mail.service';
+import { CreateUserDto } from './dto/create.user.dto';
+import { Role } from 'generated/prisma/enums';
+
+export type JwtPayload = {
+  sub: string;
+  email: string;
+  role: Role;
+};
 
 @Injectable()
 export class AuthService {
@@ -20,16 +29,15 @@ export class AuthService {
     private readonly mailService: MailService,
   ) {}
 
-  async createUser(dto: CreateAuthDto) {
-    console.log(dto);
-    const user = await this.prisma.user.findUnique({
-      where: { email: dto.email, phone: dto.phone },
+  async createUser(dto: CreateUserDto) {
+    const existingUser = await this.prisma.user.findUnique({
+      where: { email: dto.email },
     });
-    console.log('user: ', user);
-    if (user)
+    if (existingUser)
       throw new BadRequestException('User already exist. please login.');
+
     const hashedPassword = await bcrypt.hash(dto.password, 10);
-    const newuser = await this.prisma.user.create({
+    const newUser = await this.prisma.user.create({
       data: {
         ...dto,
         password: hashedPassword,
@@ -40,7 +48,19 @@ export class AuthService {
         role: true,
       },
     });
-    return newuser;
+
+    const payload = {
+      sub: newUser.id,
+      email: newUser.email,
+      role: newUser.role,
+    };
+    const accessToken = this.generateAccessToken(payload);
+    return {
+      user: newUser,
+      tokens: {
+        accessToken,
+      },
+    };
   }
 
   async loginuser(dto: LoginDto) {
@@ -93,12 +113,6 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException('Invalid OTP');
     }
-
-    if (!user.otpExpiresAt || user.otpExpiresAt.getTime() < Date.now()) {
-      throw new UnauthorizedException('OTP expired');
-    }
-    // todo.... otp match or not verify.
-
     return {
       message: 'OTP verified successfully. You can now reset password.',
     };
@@ -109,6 +123,14 @@ export class AuthService {
 
     await this.prisma.user.updateMany({
       data: { password: hashedPassword },
+    });
+  }
+
+  // generate token....
+  private generateAccessToken(payload: JwtPayload): string {
+    return this.jwtService.sign(payload, {
+      secret: process.env.JWT_SECRET!,
+      expiresIn: process.env.JWT_ACCESS_EXPIRES_IN as SignOptions['expiresIn'],
     });
   }
 }

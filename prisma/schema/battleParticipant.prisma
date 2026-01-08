@@ -1,0 +1,15 @@
+model BattleParticipant {
+  id          String   @id @default(uuid()) @db.Uuid
+
+  battleId    String   @db.Uuid
+  battle      Battle   @relation(fields: [battleId], references: [id])
+
+  particepantId      String   @db.Uuid
+  user        User     @relation(fields: [particepantId], references: [id])
+
+  joinedAt    DateTime?
+  isActive    Boolean  @default(true)
+
+  votes       BattleVote[]
+
+}

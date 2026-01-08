@@ -1,0 +1,21 @@
+model BattleEntry {
+  id String @id @default(uuid()) @db.Uuid
+  // Optional references to source
+  battleId String? @db.Uuid
+  battle   Battle? @relation(fields: [battleId], references: [id])
+
+  participantId String @db.Uuid
+  participant   User   @relation(fields: [participantId], references: [id])
+
+  postType PostType @default(Battle_Post)
+  mediaUrl Media    @default(PHOTO)
+  caption  String?
+  hashtag  String?
+
+  like    Int @default(0)
+  comment Int @default(0)
+  share   Int @default(0)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}

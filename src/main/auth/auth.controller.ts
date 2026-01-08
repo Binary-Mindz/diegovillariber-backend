@@ -1,7 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
-  CreateAuthDto,
   ForgetPasswordDto,
   LoginDto,
   Otp,
@@ -9,13 +8,14 @@ import {
 } from './dto/create-auth.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { handleRequest } from '@/common/helpers/handle.request';
+import { CreateUserDto } from './dto/create.user.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
   @ApiOperation({ summary: 'Create a new user account' })
-  create(@Body() createAuthDto: CreateAuthDto) {
+  create(@Body() createAuthDto: CreateUserDto) {
     return handleRequest(
       () => this.authService.createUser(createAuthDto),
       'User created successfully',

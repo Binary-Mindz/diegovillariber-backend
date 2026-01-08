@@ -1,0 +1,16 @@
+model ProductList {
+  id          String   @id @default(uuid()) @db.Uuid
+  ownerId     String   @db.Uuid
+   owner       User        @relation(fields: [ownerId], references: [id])
+  title       String
+  description String?
+  category    ProductCategory @default(Car_Parts)
+  price       Int
+  quantity    Int
+  payments  Payment[]
+  createdAt   DateTime @default(now())
+
+  highlightProducts HighlightProduct[]
+
+  buyProducts BuyProduct[]
+}

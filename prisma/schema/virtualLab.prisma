@@ -1,0 +1,19 @@
+model VirtualLab {
+  id               String     @id @default(uuid()) @db.Uuid
+  profileId        String     @db.Uuid
+  profile          Profile    @relation(fields: [profileId], references: [id])
+
+  simPlatform      Platform   @default(iRacing)
+  circuit          String
+  car              String
+  lapTime          DateTime
+  sessionDate      DateTime
+  video            String?
+  telemetrySource  TelemetrySource @default(iRacing_MoTec)
+  telemetryData    String?
+  tractionControl  Boolean    @default(false)
+  abs              Boolean    @default(false)
+  stabillity       Boolean    @default(false)
+  autoClutch       Boolean    @default(true)
+  racingLine       Boolean    @default(true)
+}
