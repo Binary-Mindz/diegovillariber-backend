@@ -1,0 +1,14 @@
+model BattleVote {
+  id             String   @id @default(uuid()) @db.Uuid
+
+  battleId       String   @db.Uuid
+  battle         Battle   @relation(fields: [battleId], references: [id])
+
+  participantId  String   @db.Uuid
+  participant    BattleParticipant @relation(fields: [participantId], references: [id])
+
+  voterUserId    String   @db.Uuid
+  voterUser      User     @relation("VotesByUser", fields: [voterUserId], references: [id])
+
+  votedAt        DateTime @default(now())
+}

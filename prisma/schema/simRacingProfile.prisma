@@ -1,0 +1,16 @@
+model SimRacingProfile {
+  id        String   @id @default(uuid()) @db.Uuid
+  profileId String   @unique @db.Uuid
+  profile   Profile  @relation(fields: [profileId], references: [id])
+
+  hardwareSetup        HardwareSetup?
+  displayAndPcSetup   DisplayAndPcSetup?
+  drivingAssistant    DrivingAssistant?
+  racing               Racing?
+  setupDescription    SetupDescriptionPhoto?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("SimRacingProfile")
+}

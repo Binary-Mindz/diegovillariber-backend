@@ -1,0 +1,13 @@
+model Report {
+  id          String     @id @default(uuid()) @db.Uuid
+  userId      String     @db.Uuid
+  user        User       @relation(fields: [userId], references: [id])
+  targetType  ReportType
+  targetId    String     @db.Uuid
+  description String?
+  media       Media      @default(PHOTO)
+
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, targetId, targetType])
+}

@@ -1,0 +1,14 @@
+DATABASE_URL="postgresql://username:password@localhost:5432/DB?schema=public"
+
+JWT_SECRET=your_super
+JWT_ACCESS_EXPIRES_IN=1h
+JWT_REFRESH_EXPIRES_IN=7d
+
+
+EMAIL_USER = "adam@gmail.com"
+EMAIL_PASS= "none none none"
+
+AWS_ACCESS_KEY_ID=AKIA3AF5LRSN2YUKF47665328790323864UYERUYIWE
+AWS_SECRET_ACCESS_KEY=NbDfkfnusyA2ExLPo2hsqAC7kta5M0YbXwJS4mFGUYYUYWERWEGUYDWEURGWEWQ
+AWS_BUCKET_NAME=nodmac-storage-dhaka-db-softvence
+AWS_REGION=eu-north-123

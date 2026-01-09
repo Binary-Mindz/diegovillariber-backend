@@ -1,0 +1,10 @@
+model SetupDescriptionPhoto {
+  id          String @id @default(uuid()) @db.Uuid
+  simRacingId String @unique @db.Uuid
+  simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
+
+  setupDescription String?
+  setupPhoto       String?
+
+  @@map("SetupDescriptionPhoto")
+}

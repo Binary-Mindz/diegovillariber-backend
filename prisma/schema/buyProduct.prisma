@@ -1,0 +1,18 @@
+model BuyProduct {
+  id         String     @id @default(uuid()) @db.Uuid
+  productId  String     @db.Uuid
+  product    ProductList @relation(fields: [productId], references: [id])
+
+  sellerId   String     @db.Uuid
+  seller     User       @relation("SellerProducts", fields: [sellerId], references: [id])
+
+  buyerId    String     @db.Uuid
+  buyer      User       @relation("BuyerProducts", fields: [buyerId], references: [id])
+
+  status     BuyStatus  @default(PENDING)
+  quantity   Int
+  price      Int
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime?  
+  payments   Payment[]
+}

@@ -1,0 +1,11 @@
+model Share {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @db.Uuid
+  user        User       @relation(fields: [userId], references: [id])
+  postId    String   @db.Uuid
+  postType  PostType
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, postId])
+}

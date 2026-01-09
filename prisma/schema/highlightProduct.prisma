@@ -1,0 +1,9 @@
+model HighlightProduct {
+  id          String    @id @default(uuid()) @db.Uuid
+  productId   String    @db.Uuid
+  product     ProductList @relation(fields: [productId], references: [id])
+
+  chargePerDay Int
+  startDate    DateTime
+  endDate      DateTime
+}

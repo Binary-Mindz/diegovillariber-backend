@@ -1,0 +1,24 @@
+model Post {
+    id     String @id @default(uuid()) @db.Uuid
+    userId String @db.Uuid
+    user   User   @relation(fields: [userId], references: [id])
+
+    postType PostType @default(Spotter_Post)
+    caption  String?
+    media    Media    @default(PHOTO)
+
+    like           Int          @default(0)
+    comment        Int          @default(0)
+    share          Int          @default(0)
+    contentBooster Boolean      @default(false)
+    point          Int          @default(300)
+    hashtags       Hashtag[]    @relation("PostHashtags")
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @updatedAt
+    reposts        Repost[]
+    racingVotes    RacingVote[]
+    savePosts      SavePost[]
+    hidePosts      HidePost[]
+    wishLists      WishList[]
+    userPoints     UserPoint[]
+}
