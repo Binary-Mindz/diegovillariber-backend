@@ -1,0 +1,13 @@
+model DrivingAssistant {
+  id          String @id @default(uuid()) @db.Uuid
+  simRacingId String @unique @db.Uuid
+  simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
+
+  tractionControl Boolean @default(true)
+  abs              Boolean @default(false)
+  stability        Boolean @default(false)
+  autoClutch       Boolean @default(true)
+  racingLine       Boolean @default(false)
+
+  @@map("DrivingAssistant")
+}

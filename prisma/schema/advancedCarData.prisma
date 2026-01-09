@@ -1,0 +1,13 @@
+model AdvancedCarData {
+  id        String @id @default(uuid()) @db.Uuid
+  carId     String @db.Uuid
+  car       Car    @relation(fields: [carId], references: [id])
+  
+  enginePower     EnginePower?
+  drivetrain      Drivetrain?
+  chassisBrakes   ChassisBrakes?
+  tuningAero      TuningAero?
+  interiorSafety  InteriorSafety?
+  usageNotes      UsageNotes?
+  wheelsTires     WheelsTires?
+}

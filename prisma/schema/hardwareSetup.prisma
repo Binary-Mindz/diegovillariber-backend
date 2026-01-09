@@ -1,0 +1,24 @@
+model HardwareSetup {
+  id          String @id @default(uuid()) @db.Uuid
+  simRacingId String @unique @db.Uuid
+  simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
+
+  steeringWheel String?
+  wheelModel    String?
+  wheelbase     String?
+  pedals        String?
+  pedelModel    String?
+  shifter       String?
+  handbrake     String?
+  rig           String?
+  rigBrand      String?
+  seatBrand     String?
+  buttonBox     String?
+
+  bassShakers  Boolean @default(true)
+  windSim      Boolean @default(false)
+  racingGloves Boolean @default(false)
+  racingShoes  Boolean @default(true)
+
+  @@map("HardwareSetup")
+}

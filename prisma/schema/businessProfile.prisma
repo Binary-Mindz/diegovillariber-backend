@@ -1,0 +1,11 @@
+model BusinessProfile {
+  id               String           @id @default(uuid()) @db.Uuid
+  profileId        String           @unique @db.Uuid
+  profile          Profile          @relation(fields: [profileId], references: [id])
+
+  businessCategory BusinessCategory @default(Detailling_Care)
+  businessName     String
+  location         String
+
+  @@map("BusinessProfile")
+}

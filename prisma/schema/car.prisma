@@ -1,0 +1,24 @@
+model Car {
+  id           String        @id @default(uuid()) @db.Uuid
+  profileId    String        @db.Uuid
+  garageId     String        @db.Uuid
+
+  profile      Profile       @relation(fields: [profileId], references: [id])
+  garage       Garage        @relation(fields: [garageId], references: [id])
+
+  image        String?
+  make         String?
+  model        String?
+  bodyType     BodyType      @default(Coupe)
+  transmission Transmission @default(Manual)
+  driveTrain   DriveTrain    @default(RWD)
+  color        String?
+  displayName  String?
+  description  String?
+  category     DriveCategory @default(Daily_Drive)
+  price        Int?
+
+  advancedCarDatas AdvancedCarData[]
+
+  legalNotices LegalNotice[]
+}

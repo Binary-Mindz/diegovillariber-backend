@@ -11,8 +11,6 @@ export class OtpService {
 
   async generateOtp(email: string): Promise<string> {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
-
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) throw new UnauthorizedException('Invalid User');
 
@@ -20,7 +18,6 @@ export class OtpService {
       where: { email },
       data: {
         otp,
-        otpExpiresAt: expiresAt,
       },
     });
 
@@ -31,7 +28,7 @@ export class OtpService {
       where: { email },
     });
 
-    if (!user || !user.otp || !user.otpExpiresAt) {
+    if (!user || !user.otp) {
       throw new UnauthorizedException('Invalid OTP');
     }
 
@@ -39,15 +36,10 @@ export class OtpService {
       throw new UnauthorizedException('Incorrect OTP');
     }
 
-    if (user.otpExpiresAt.getTime() < Date.now()) {
-      throw new UnauthorizedException('OTP expired');
-    }
-
     await this.prisma.user.update({
       where: { email },
       data: {
         otp: null,
-        otpExpiresAt: null,
       },
     });
 

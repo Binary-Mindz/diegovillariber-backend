@@ -1,0 +1,13 @@
+model WishList {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id])
+
+  postId    String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, postId])
+}

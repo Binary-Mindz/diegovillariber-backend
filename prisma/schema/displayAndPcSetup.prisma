@@ -1,0 +1,11 @@
+model DisplayAndPcSetup {
+  id          String @id @default(uuid()) @db.Uuid
+  simRacingId String @unique @db.Uuid
+  simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
+
+  monitors  String?
+  vrHeadset String?
+  pcSpace   String?
+
+  @@map("DisplayAndPcSetup")
+}

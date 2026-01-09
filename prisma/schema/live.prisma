@@ -1,0 +1,20 @@
+model Live {
+  id                 String       @id @default(uuid()) @db.Uuid
+  hostId             String       @db.Uuid
+  host               User         @relation("HostedLives", fields: [hostId], references: [id])
+
+  thumbnail          String?
+  title              String
+  location           String?
+  allowCameraAccess  Boolean      @default(false)
+  allowAudioAccess   Boolean      @default(false)
+  status             LiveStatus   @default(CREATED)
+  startedAt          DateTime?
+  endedAt            DateTime?
+  durationInMinutes  Int?
+
+  createdAt          DateTime     @default(now())
+
+  participants       LiveParticipant[]
+  rewards            LiveReward[]
+}
