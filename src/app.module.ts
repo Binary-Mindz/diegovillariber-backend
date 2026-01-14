@@ -5,6 +5,8 @@ import { ConfigModule } from '@nestjs/config';
 import { FileModule } from './main/files/file.module';
 import { UserModule } from './main/user/user.module';
 import { PostModule } from './main/post/post.module';
+import { LikeModule } from './main/like/like.module';
+import { CommentModule } from './main/comment/comment.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { PostModule } from './main/post/post.module';
     AuthModule,
     UserModule,
     PostModule,
+    LikeModule,
+    CommentModule,
     FileModule,
   ],
   controllers: [],
