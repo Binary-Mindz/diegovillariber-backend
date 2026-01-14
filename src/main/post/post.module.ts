@@ -3,6 +3,7 @@ import { PostController } from './post.controller';
 import { PostService } from './post.service';
 
 @Module({
+    imports:[PostModule],
   controllers: [PostController],
   providers: [PostService],
   exports: [PostService]
