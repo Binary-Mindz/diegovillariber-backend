@@ -20,6 +20,7 @@ async function bootstrap() {
     .setTitle('Diegovillariber Backend Server')
     .addBearerAuth()
     .build();
+    
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory, {
     swaggerOptions: {
