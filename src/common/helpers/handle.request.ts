@@ -1,12 +1,6 @@
-interface HttpErrorResponse {
+interface ErrorResponse {
   message?: string;
   statusCode?: number;
-}
-
-interface HttpError {
-  response?: HttpErrorResponse;
-  message?: string;
-  status?: number;
 }
 
 export async function handleRequest<T>(
@@ -21,15 +15,25 @@ export async function handleRequest<T>(
       message: successMessage,
       data,
     };
-  } catch (error: unknown) {
+  } catch (err: unknown) {
     let message = 'Something went wrong';
     let statusCode = 500;
 
-    // Type guard for error object
-    if (typeof error === 'object' && error !== null) {
-      const err = error as HttpError;
-      message = err.response?.message ?? err.message ?? message;
-      statusCode = err.response?.statusCode ?? err.status ?? statusCode;
+    if (typeof err === 'object' && err !== null) {
+      const e = err as {
+        response?: unknown;
+        message?: string;
+        status?: number;
+      };
+
+      if (e.response && typeof e.response === 'object') {
+        const r = e.response as ErrorResponse;
+        message = r.message ?? message;
+        statusCode = r.statusCode ?? statusCode;
+      } else {
+        message = e.message ?? message;
+        statusCode = e.status ?? statusCode;
+      }
     }
 
     return {

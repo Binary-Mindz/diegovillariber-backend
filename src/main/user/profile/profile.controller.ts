@@ -3,13 +3,13 @@ import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@ne
 import { ProfileService } from './profile.service';
 import { CreateProfileDto } from './dto/create.profile.dto';
 
-
+@ApiBearerAuth()
 @ApiTags('Profiles')
 @Controller('profiles')
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
-  @ApiBearerAuth()
- @Post()
+ 
+   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a new user profile' })
   @ApiResponse({ status: 201, description: 'Profile created successfully' })
@@ -24,7 +24,8 @@ export class ProfileController {
       data: profile
     };
   }
-    @Get('user/:userId')
+
+  @Get('user/:userId')
   @ApiOperation({ summary: 'Get profile by user ID' })
   @ApiParam({ name: 'userId', description: 'User UUID' })
   @ApiResponse({ status: 200, description: 'Profile retrieved successfully' })
