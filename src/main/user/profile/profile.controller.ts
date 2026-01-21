@@ -9,13 +9,8 @@ import { CreateProfileDto } from './dto/create.profile.dto';
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
  
-   @Post()
-  @HttpCode(HttpStatus.CREATED)
+  @Post()
   @ApiOperation({ summary: 'Create a new user profile' })
-  @ApiResponse({ status: 201, description: 'Profile created successfully' })
-  @ApiResponse({ status: 400, description: 'Bad request' })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  @ApiResponse({ status: 409, description: 'Profile already exists' })
   async createProfile(@Body() createProfileDto: CreateProfileDto) {
     const profile = await this.profileService.createProfile(createProfileDto);
     return {
@@ -25,11 +20,8 @@ export class ProfileController {
     };
   }
 
-  @Get('user/:userId')
+  @Get('user/me')
   @ApiOperation({ summary: 'Get profile by user ID' })
-  @ApiParam({ name: 'userId', description: 'User UUID' })
-  @ApiResponse({ status: 200, description: 'Profile retrieved successfully' })
-  @ApiResponse({ status: 404, description: 'Profile not found' })
   async getProfileByUserId(@Param('userId') userId: string) {
     const profile = await this.profileService.getProfileByUserId(userId);
     return {
