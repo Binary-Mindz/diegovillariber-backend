@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
+  AmbassadorProgram: 'AmbassadorProgram',
   Battle: 'Battle',
   BattleEntry: 'BattleEntry',
   BattleParticipant: 'BattleParticipant',
@@ -86,6 +87,7 @@ export const ModelName = {
   LiveParticipant: 'LiveParticipant',
   LiveReward: 'LiveReward',
   Message: 'Message',
+  OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
@@ -134,6 +136,29 @@ export const AdvancedCarDataScalarFieldEnum = {
 } as const
 
 export type AdvancedCarDataScalarFieldEnum = (typeof AdvancedCarDataScalarFieldEnum)[keyof typeof AdvancedCarDataScalarFieldEnum]
+
+
+export const AmbassadorProgramScalarFieldEnum = {
+  id: 'id',
+  ambassadorRequestUserId: 'ambassadorRequestUserId',
+  requestStatus: 'requestStatus',
+  motorspotName: 'motorspotName',
+  contactName: 'contactName',
+  email: 'email',
+  country: 'country',
+  instagramProfile: 'instagramProfile',
+  tiktokProfile: 'tiktokProfile',
+  youTubeChanel: 'youTubeChanel',
+  totalFollower: 'totalFollower',
+  mainCar: 'mainCar',
+  whyDoYouWant: 'whyDoYouWant',
+  releventExperience: 'releventExperience',
+  profilePhoto: 'profilePhoto',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
 
 
 export const BattleScalarFieldEnum = {
@@ -582,6 +607,26 @@ export const MessageScalarFieldEnum = {
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const OfficialPartnerScalarFieldEnum = {
+  id: 'id',
+  requestUserId: 'requestUserId',
+  requestStatus: 'requestStatus',
+  brandLogo: 'brandLogo',
+  brandName: 'brandName',
+  contactName: 'contactName',
+  contactEmail: 'contactEmail',
+  brandDescription: 'brandDescription',
+  websiteUrl: 'websiteUrl',
+  industry: 'industry',
+  country: 'country',
+  companyRegistrationNumber: 'companyRegistrationNumber',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OfficialPartnerScalarFieldEnum = (typeof OfficialPartnerScalarFieldEnum)[keyof typeof OfficialPartnerScalarFieldEnum]
 
 
 export const OwnerProfileScalarFieldEnum = {

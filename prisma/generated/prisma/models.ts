@@ -9,6 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/AdvancedCarData'
+export type * from './models/AmbassadorProgram'
 export type * from './models/Battle'
 export type * from './models/BattleEntry'
 export type * from './models/BattleParticipant'
@@ -43,6 +44,7 @@ export type * from './models/Live'
 export type * from './models/LiveParticipant'
 export type * from './models/LiveReward'
 export type * from './models/Message'
+export type * from './models/OfficialPartner'
 export type * from './models/OwnerProfile'
 export type * from './models/Payment'
 export type * from './models/Post'

@@ -385,6 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
+  AmbassadorProgram: 'AmbassadorProgram',
   Battle: 'Battle',
   BattleEntry: 'BattleEntry',
   BattleParticipant: 'BattleParticipant',
@@ -419,6 +420,7 @@ export const ModelName = {
   LiveParticipant: 'LiveParticipant',
   LiveReward: 'LiveReward',
   Message: 'Message',
+  OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
@@ -458,7 +460,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventTicket" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventTicket" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -533,6 +535,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AdvancedCarDataCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AdvancedCarDataCountAggregateOutputType> | number
+        }
+      }
+    }
+    AmbassadorProgram: {
+      payload: Prisma.$AmbassadorProgramPayload<ExtArgs>
+      fields: Prisma.AmbassadorProgramFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AmbassadorProgramFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AmbassadorProgramFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        findFirst: {
+          args: Prisma.AmbassadorProgramFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AmbassadorProgramFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        findMany: {
+          args: Prisma.AmbassadorProgramFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>[]
+        }
+        create: {
+          args: Prisma.AmbassadorProgramCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        createMany: {
+          args: Prisma.AmbassadorProgramCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AmbassadorProgramCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>[]
+        }
+        delete: {
+          args: Prisma.AmbassadorProgramDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        update: {
+          args: Prisma.AmbassadorProgramUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        deleteMany: {
+          args: Prisma.AmbassadorProgramDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AmbassadorProgramUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AmbassadorProgramUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>[]
+        }
+        upsert: {
+          args: Prisma.AmbassadorProgramUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AmbassadorProgramPayload>
+        }
+        aggregate: {
+          args: Prisma.AmbassadorProgramAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAmbassadorProgram>
+        }
+        groupBy: {
+          args: Prisma.AmbassadorProgramGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AmbassadorProgramGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AmbassadorProgramCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AmbassadorProgramCountAggregateOutputType> | number
         }
       }
     }
@@ -3052,6 +3128,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    OfficialPartner: {
+      payload: Prisma.$OfficialPartnerPayload<ExtArgs>
+      fields: Prisma.OfficialPartnerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.OfficialPartnerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.OfficialPartnerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        findFirst: {
+          args: Prisma.OfficialPartnerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.OfficialPartnerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        findMany: {
+          args: Prisma.OfficialPartnerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>[]
+        }
+        create: {
+          args: Prisma.OfficialPartnerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        createMany: {
+          args: Prisma.OfficialPartnerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.OfficialPartnerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>[]
+        }
+        delete: {
+          args: Prisma.OfficialPartnerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        update: {
+          args: Prisma.OfficialPartnerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        deleteMany: {
+          args: Prisma.OfficialPartnerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.OfficialPartnerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.OfficialPartnerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>[]
+        }
+        upsert: {
+          args: Prisma.OfficialPartnerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OfficialPartnerPayload>
+        }
+        aggregate: {
+          args: Prisma.OfficialPartnerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOfficialPartner>
+        }
+        groupBy: {
+          args: Prisma.OfficialPartnerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfficialPartnerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.OfficialPartnerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OfficialPartnerCountAggregateOutputType> | number
+        }
+      }
+    }
     OwnerProfile: {
       payload: Prisma.$OwnerProfilePayload<ExtArgs>
       fields: Prisma.OwnerProfileFieldRefs
@@ -4875,6 +5025,29 @@ export const AdvancedCarDataScalarFieldEnum = {
 export type AdvancedCarDataScalarFieldEnum = (typeof AdvancedCarDataScalarFieldEnum)[keyof typeof AdvancedCarDataScalarFieldEnum]
 
 
+export const AmbassadorProgramScalarFieldEnum = {
+  id: 'id',
+  ambassadorRequestUserId: 'ambassadorRequestUserId',
+  requestStatus: 'requestStatus',
+  motorspotName: 'motorspotName',
+  contactName: 'contactName',
+  email: 'email',
+  country: 'country',
+  instagramProfile: 'instagramProfile',
+  tiktokProfile: 'tiktokProfile',
+  youTubeChanel: 'youTubeChanel',
+  totalFollower: 'totalFollower',
+  mainCar: 'mainCar',
+  whyDoYouWant: 'whyDoYouWant',
+  releventExperience: 'releventExperience',
+  profilePhoto: 'profilePhoto',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
+
+
 export const BattleScalarFieldEnum = {
   id: 'id',
   hostId: 'hostId',
@@ -5323,6 +5496,26 @@ export const MessageScalarFieldEnum = {
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
+export const OfficialPartnerScalarFieldEnum = {
+  id: 'id',
+  requestUserId: 'requestUserId',
+  requestStatus: 'requestStatus',
+  brandLogo: 'brandLogo',
+  brandName: 'brandName',
+  contactName: 'contactName',
+  contactEmail: 'contactEmail',
+  brandDescription: 'brandDescription',
+  websiteUrl: 'websiteUrl',
+  industry: 'industry',
+  country: 'country',
+  companyRegistrationNumber: 'companyRegistrationNumber',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type OfficialPartnerScalarFieldEnum = (typeof OfficialPartnerScalarFieldEnum)[keyof typeof OfficialPartnerScalarFieldEnum]
+
+
 export const OwnerProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId'
@@ -5689,30 +5882,16 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'BattleType'
+ * Reference to a field of type 'AmbassadorStatus'
  */
-export type EnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType'>
+export type EnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus'>
     
 
 
 /**
- * Reference to a field of type 'BattleType[]'
+ * Reference to a field of type 'AmbassadorStatus[]'
  */
-export type ListEnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType[]'>
-    
-
-
-/**
- * Reference to a field of type 'BattleStatus'
- */
-export type EnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BattleStatus[]'
- */
-export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus[]'>
+export type ListEnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus[]'>
     
 
 
@@ -5741,6 +5920,34 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BattleType'
+ */
+export type EnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType'>
+    
+
+
+/**
+ * Reference to a field of type 'BattleType[]'
+ */
+export type ListEnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BattleStatus'
+ */
+export type EnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'BattleStatus[]'
+ */
+export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus[]'>
     
 
 
@@ -5944,6 +6151,20 @@ export type EnumLiveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'LiveStatus[]'
  */
 export type ListEnumLiveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LiveStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'OfficialPartnerRequestStatus'
+ */
+export type EnumOfficialPartnerRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OfficialPartnerRequestStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'OfficialPartnerRequestStatus[]'
+ */
+export type ListEnumOfficialPartnerRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OfficialPartnerRequestStatus[]'>
     
 
 
@@ -6224,6 +6445,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   advancedCarData?: Prisma.AdvancedCarDataOmit
+  ambassadorProgram?: Prisma.AmbassadorProgramOmit
   battle?: Prisma.BattleOmit
   battleEntry?: Prisma.BattleEntryOmit
   battleParticipant?: Prisma.BattleParticipantOmit
@@ -6258,6 +6480,7 @@ export type GlobalOmitConfig = {
   liveParticipant?: Prisma.LiveParticipantOmit
   liveReward?: Prisma.LiveRewardOmit
   message?: Prisma.MessageOmit
+  officialPartner?: Prisma.OfficialPartnerOmit
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit
   post?: Prisma.PostOmit
