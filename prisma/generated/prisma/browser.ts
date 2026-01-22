@@ -23,6 +23,11 @@ export * from './enums';
  */
 export type AdvancedCarData = Prisma.AdvancedCarDataModel
 /**
+ * Model AmbassadorProgram
+ * 
+ */
+export type AmbassadorProgram = Prisma.AmbassadorProgramModel
+/**
  * Model Battle
  * 
  */
@@ -192,6 +197,11 @@ export type LiveReward = Prisma.LiveRewardModel
  * 
  */
 export type Message = Prisma.MessageModel
+/**
+ * Model OfficialPartner
+ * 
+ */
+export type OfficialPartner = Prisma.OfficialPartnerModel
 /**
  * Model OwnerProfile
  * 

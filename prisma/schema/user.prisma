@@ -57,7 +57,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
- 
-
   battleEntries BattleEntry[]
+  officialPartners OfficialPartner[]
+  ambassadorPrograms AmbassadorProgram[]
 }

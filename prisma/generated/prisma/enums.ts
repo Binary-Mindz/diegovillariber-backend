@@ -404,3 +404,21 @@ export const TelemetrySource = {
 } as const
 
 export type TelemetrySource = (typeof TelemetrySource)[keyof typeof TelemetrySource]
+
+
+export const OfficialPartnerRequestStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type OfficialPartnerRequestStatus = (typeof OfficialPartnerRequestStatus)[keyof typeof OfficialPartnerRequestStatus]
+
+
+export const AmbassadorStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type AmbassadorStatus = (typeof AmbassadorStatus)[keyof typeof AmbassadorStatus]

@@ -283,7 +283,7 @@ enum CarClass {
   OTHER
 }
 
-enum TelemetrySource{
+enum TelemetrySource {
   iRacing_MoTec
   ACC_Mo_Tec
   SimHub
@@ -293,5 +293,17 @@ enum TelemetrySource{
   Kapps
   Other
 }
+enum OfficialPartnerRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum AmbassadorStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 
 

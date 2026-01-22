@@ -1,0 +1,21 @@
+model OfficialPartner {
+  id                         String                         @id @default(uuid())
+  requestUserId              String
+  requestStatus              OfficialPartnerRequestStatus    @default(PENDING)
+
+  brandLogo                  String?
+  brandName                  String
+  contactName                String
+  contactEmail               String
+  brandDescription           String?
+  websiteUrl                 String?
+  industry                   String?
+  country                    String?
+  companyRegistrationNumber  String?
+
+  requestUser                User                           @relation(fields: [requestUserId], references: [id])
+
+  createdAt                  DateTime                       @default(now())
+  updatedAt                  DateTime                       @updatedAt
+}
+
