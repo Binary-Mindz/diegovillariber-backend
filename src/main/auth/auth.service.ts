@@ -48,18 +48,8 @@ export class AuthService {
         role: true,
       },
     });
-
-    const payload = {
-      sub: newUser.id,
-      email: newUser.email,
-      role: newUser.role,
-    };
-    const accessToken = this.generateAccessToken(payload);
     return {
-      user: newUser,
-      tokens: {
-        accessToken,
-      },
+      user: newUser
     };
   }
 
@@ -83,12 +73,12 @@ export class AuthService {
 
     const accessToken = this.generateAccessToken(payload);
     return {
-      accessToken,
       user: {
         id: user.id,
         email: user.email,
         role: user.role,
       },
+      accessToken,
     };
   }
 

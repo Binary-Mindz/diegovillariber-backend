@@ -274,10 +274,11 @@ export type ProfileOrderByWithRelationInput = {
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId?: string
+  userId_profileType?: Prisma.ProfileUserIdProfileTypeCompoundUniqueInput
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
+  userId?: Prisma.UuidFilter<"Profile"> | string
   userName?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -300,7 +301,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   virtualLabs?: Prisma.VirtualLabListRelationFilter
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
-}, "id" | "userId">
+}, "id" | "userId_profileType">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -486,6 +487,11 @@ export type ProfileScalarRelationFilter = {
   isNot?: Prisma.ProfileWhereInput
 }
 
+export type ProfileUserIdProfileTypeCompoundUniqueInput = {
+  userId: string
+  profileType: $Enums.Type
+}
+
 export type ProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -528,9 +534,14 @@ export type ProfileMinOrderByAggregateInput = {
   suspend?: Prisma.SortOrder
 }
 
-export type ProfileNullableScalarRelationFilter = {
-  is?: Prisma.ProfileWhereInput | null
-  isNot?: Prisma.ProfileWhereInput | null
+export type ProfileListRelationFilter = {
+  every?: Prisma.ProfileWhereInput
+  some?: Prisma.ProfileWhereInput
+  none?: Prisma.ProfileWhereInput
+}
+
+export type ProfileOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ProfileCreateNestedOneWithoutBusinessInput = {
@@ -671,36 +682,46 @@ export type ProfileUpdateOneRequiredWithoutSpotterNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSpotterInput, Prisma.ProfileUpdateWithoutSpotterInput>, Prisma.ProfileUncheckedUpdateWithoutSpotterInput>
 }
 
-export type ProfileCreateNestedOneWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
-  connect?: Prisma.ProfileWhereUniqueInput
+export type ProfileCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput> | Prisma.ProfileCreateWithoutUserInput[] | Prisma.ProfileUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput | Prisma.ProfileCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ProfileCreateManyUserInputEnvelope
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
 }
 
-export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
-  connect?: Prisma.ProfileWhereUniqueInput
+export type ProfileUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput> | Prisma.ProfileCreateWithoutUserInput[] | Prisma.ProfileUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput | Prisma.ProfileCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.ProfileCreateManyUserInputEnvelope
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
 }
 
-export type ProfileUpdateOneWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
-  upsert?: Prisma.ProfileUpsertWithoutUserInput
-  disconnect?: Prisma.ProfileWhereInput | boolean
-  delete?: Prisma.ProfileWhereInput | boolean
-  connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
+export type ProfileUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput> | Prisma.ProfileCreateWithoutUserInput[] | Prisma.ProfileUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput | Prisma.ProfileCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput | Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ProfileCreateManyUserInputEnvelope
+  set?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  disconnect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  delete?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  update?: Prisma.ProfileUpdateWithWhereUniqueWithoutUserInput | Prisma.ProfileUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ProfileUpdateManyWithWhereWithoutUserInput | Prisma.ProfileUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
 }
 
-export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
-  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput
-  upsert?: Prisma.ProfileUpsertWithoutUserInput
-  disconnect?: Prisma.ProfileWhereInput | boolean
-  delete?: Prisma.ProfileWhereInput | boolean
-  connect?: Prisma.ProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutUserInput, Prisma.ProfileUpdateWithoutUserInput>, Prisma.ProfileUncheckedUpdateWithoutUserInput>
+export type ProfileUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput> | Prisma.ProfileCreateWithoutUserInput[] | Prisma.ProfileUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutUserInput | Prisma.ProfileCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput | Prisma.ProfileUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.ProfileCreateManyUserInputEnvelope
+  set?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  disconnect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  delete?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  connect?: Prisma.ProfileWhereUniqueInput | Prisma.ProfileWhereUniqueInput[]
+  update?: Prisma.ProfileUpdateWithWhereUniqueWithoutUserInput | Prisma.ProfileUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.ProfileUpdateManyWithWhereWithoutUserInput | Prisma.ProfileUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
 }
 
 export type ProfileCreateNestedOneWithoutVirtualGaragesInput = {
@@ -1844,65 +1865,42 @@ export type ProfileCreateOrConnectWithoutUserInput = {
   create: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
 }
 
-export type ProfileUpsertWithoutUserInput = {
-  update: Prisma.XOR<Prisma.ProfileUpdateWithoutUserInput, Prisma.ProfileUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
-  where?: Prisma.ProfileWhereInput
+export type ProfileCreateManyUserInputEnvelope = {
+  data: Prisma.ProfileCreateManyUserInput | Prisma.ProfileCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
-export type ProfileUpdateToOneWithWhereWithoutUserInput = {
-  where?: Prisma.ProfileWhereInput
+export type ProfileUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutUserInput, Prisma.ProfileUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutUserInput, Prisma.ProfileUncheckedCreateWithoutUserInput>
+}
+
+export type ProfileUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.ProfileWhereUniqueInput
   data: Prisma.XOR<Prisma.ProfileUpdateWithoutUserInput, Prisma.ProfileUncheckedUpdateWithoutUserInput>
 }
 
-export type ProfileUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
-  owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
-  creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
-  business?: Prisma.BusinessProfileUpdateOneWithoutProfileNestedInput
-  proDriver?: Prisma.ProDriverProfileUpdateOneWithoutProfileNestedInput
-  simRacing?: Prisma.SimRacingProfileUpdateOneWithoutProfileNestedInput
-  garages?: Prisma.GarageUpdateManyWithoutProfileNestedInput
-  cars?: Prisma.CarUpdateManyWithoutProfileNestedInput
-  virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
-  virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
-  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
-  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+export type ProfileUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.ProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateManyMutationInput, Prisma.ProfileUncheckedUpdateManyWithoutUserInput>
 }
 
-export type ProfileUncheckedUpdateWithoutUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
-  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
-  owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
-  creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
-  business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
-  proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
-  simRacing?: Prisma.SimRacingProfileUncheckedUpdateOneWithoutProfileNestedInput
-  garages?: Prisma.GarageUncheckedUpdateManyWithoutProfileNestedInput
-  cars?: Prisma.CarUncheckedUpdateManyWithoutProfileNestedInput
-  virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
-  virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
-  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
-  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+export type ProfileScalarWhereInput = {
+  AND?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+  OR?: Prisma.ProfileScalarWhereInput[]
+  NOT?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
+  id?: Prisma.UuidFilter<"Profile"> | string
+  userId?: Prisma.UuidFilter<"Profile"> | string
+  userName?: Prisma.StringNullableFilter<"Profile"> | string | null
+  bio?: Prisma.StringNullableFilter<"Profile"> | string | null
+  imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
+  instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
+  accountType?: Prisma.EnumAccountTypeFilter<"Profile"> | $Enums.AccountType
+  preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
+  profileType?: Prisma.EnumTypeFilter<"Profile"> | $Enums.Type
+  isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
+  suspend?: Prisma.BoolFilter<"Profile"> | boolean
 }
 
 export type ProfileCreateWithoutVirtualGaragesInput = {
@@ -2251,6 +2249,82 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateManyUserInput = {
+  id?: string
+  userName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  profileType: $Enums.Type
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+}
+
+export type ProfileUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
+  virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUncheckedUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUncheckedUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUncheckedUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
+  virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 

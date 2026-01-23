@@ -5,7 +5,7 @@ model User {
   firstName       String?
   lastName        String?
   password        String
-  role            Role    @default(User)
+  role            Role    @default(USER)
   otp             String?
   expiresIn       String?
   accessToken     String?
@@ -17,7 +17,7 @@ model User {
   commentCount    Int     @default(0)
   shareCount      Int     @default(0)
 
-  profile  Profile?
+  profile  Profile[]
   posts    Post[]
   events   Event[]
   payments Payment[]
