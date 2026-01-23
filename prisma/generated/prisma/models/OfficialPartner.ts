@@ -240,8 +240,8 @@ export type OfficialPartnerWhereInput = {
   AND?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
   OR?: Prisma.OfficialPartnerWhereInput[]
   NOT?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
-  id?: Prisma.StringFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.StringFilter<"OfficialPartner"> | string
+  id?: Prisma.UuidFilter<"OfficialPartner"> | string
+  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringFilter<"OfficialPartner"> | string
@@ -280,7 +280,7 @@ export type OfficialPartnerWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
   OR?: Prisma.OfficialPartnerWhereInput[]
   NOT?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
-  requestUserId?: Prisma.StringFilter<"OfficialPartner"> | string
+  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringFilter<"OfficialPartner"> | string
@@ -320,8 +320,8 @@ export type OfficialPartnerScalarWhereWithAggregatesInput = {
   AND?: Prisma.OfficialPartnerScalarWhereWithAggregatesInput | Prisma.OfficialPartnerScalarWhereWithAggregatesInput[]
   OR?: Prisma.OfficialPartnerScalarWhereWithAggregatesInput[]
   NOT?: Prisma.OfficialPartnerScalarWhereWithAggregatesInput | Prisma.OfficialPartnerScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.StringWithAggregatesFilter<"OfficialPartner"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"OfficialPartner"> | string
+  requestUserId?: Prisma.UuidWithAggregatesFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusWithAggregatesFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableWithAggregatesFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringWithAggregatesFilter<"OfficialPartner"> | string
@@ -623,8 +623,8 @@ export type OfficialPartnerScalarWhereInput = {
   AND?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
   OR?: Prisma.OfficialPartnerScalarWhereInput[]
   NOT?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
-  id?: Prisma.StringFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.StringFilter<"OfficialPartner"> | string
+  id?: Prisma.UuidFilter<"OfficialPartner"> | string
+  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringFilter<"OfficialPartner"> | string

@@ -1,25 +1,24 @@
 model AmbassadorProgram {
-  id                  String            @id @default(uuid())
-  ambassadorRequestUserId       String
-  requestStatus       AmbassadorStatus  @default(PENDING)
+  id                      String           @id @default(uuid()) @db.Uuid
+  ambassadorRequestUserId String           @db.Uuid
+  ambassadorRequestUser   User             @relation(fields: [ambassadorRequestUserId], references: [id])
+  requestStatus           AmbassadorStatus @default(PENDING)
 
-  motorspotName       String
-  contactName         String
-  email               String
-  country             String
+  motorspotName String
+  contactName   String
+  email         String
+  country       String
 
-  instagramProfile    String?
-  tiktokProfile       String?
-  youTubeChanel       String?
+  instagramProfile String?
+  tiktokProfile    String?
+  youTubeChanel    String?
 
-  totalFollower       Int
-  mainCar             String?
-  whyDoYouWant        String
-  releventExperience  String?
-  profilePhoto        String?
+  totalFollower      Int
+  mainCar            String?
+  whyDoYouWant       String
+  releventExperience String?
+  profilePhoto       String?
 
-  ambassadorRequestUser        User              @relation(fields: [ambassadorRequestUserId ], references: [id])
-
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
