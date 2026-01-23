@@ -295,8 +295,8 @@ export type AmbassadorProgramWhereInput = {
   AND?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
   OR?: Prisma.AmbassadorProgramWhereInput[]
   NOT?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
-  id?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.StringFilter<"AmbassadorProgram"> | string
+  id?: Prisma.UuidFilter<"AmbassadorProgram"> | string
+  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
   requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string
@@ -341,7 +341,7 @@ export type AmbassadorProgramWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
   OR?: Prisma.AmbassadorProgramWhereInput[]
   NOT?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
-  ambassadorRequestUserId?: Prisma.StringFilter<"AmbassadorProgram"> | string
+  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
   requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string
@@ -389,8 +389,8 @@ export type AmbassadorProgramScalarWhereWithAggregatesInput = {
   AND?: Prisma.AmbassadorProgramScalarWhereWithAggregatesInput | Prisma.AmbassadorProgramScalarWhereWithAggregatesInput[]
   OR?: Prisma.AmbassadorProgramScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AmbassadorProgramScalarWhereWithAggregatesInput | Prisma.AmbassadorProgramScalarWhereWithAggregatesInput[]
-  id?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
+  id?: Prisma.UuidWithAggregatesFilter<"AmbassadorProgram"> | string
+  ambassadorRequestUserId?: Prisma.UuidWithAggregatesFilter<"AmbassadorProgram"> | string
   requestStatus?: Prisma.EnumAmbassadorStatusWithAggregatesFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
@@ -755,8 +755,8 @@ export type AmbassadorProgramScalarWhereInput = {
   AND?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
   OR?: Prisma.AmbassadorProgramScalarWhereInput[]
   NOT?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
-  id?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.StringFilter<"AmbassadorProgram"> | string
+  id?: Prisma.UuidFilter<"AmbassadorProgram"> | string
+  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
   requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string

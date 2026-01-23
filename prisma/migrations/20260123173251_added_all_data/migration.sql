@@ -1,17 +1,9 @@
-/*
-  Warnings:
+-- CreateEnum
+CREATE TYPE "FileType" AS ENUM ('IMAGE', 'DOCS', 'LINK', 'DOCUMENT', 'ANY', 'VIDEO', 'AUDIO');
 
-  - The values [USER] on the enum `Role` will be removed. If these variants are still used in the database, this will fail.
-  - The primary key for the `User` table will be changed. If it partially fails, the table could be left without primary key constraint.
-  - You are about to drop the column `additionalInfo` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `location` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `otpExpiresAt` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `profilePicture` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `zipCode` on the `User` table. All the data in the column will be lost.
-  - Changed the type of `id` on the `User` table. No cast exists, the column would be dropped and recreated, which cannot be done if there is data, since the column is required.
-  - Made the column `role` on table `User` required. This step will fail if there are existing NULL values in that column.
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('User', 'ADMIN', 'SUPER_ADMIN');
 
-*/
 -- CreateEnum
 CREATE TYPE "Preference" AS ENUM ('Car', 'Motorbike', 'Both');
 
@@ -111,49 +103,11 @@ CREATE TYPE "CarClass" AS ENUM ('GT3', 'GT4', 'GTE', 'LMP2', 'F124', 'LMP1', 'FO
 -- CreateEnum
 CREATE TYPE "TelemetrySource" AS ENUM ('iRacing_MoTec', 'ACC_Mo_Tec', 'SimHub', 'Crew_Chief', 'Z1_Dashboard', 'Racelab', 'Kapps', 'Other');
 
--- AlterEnum
-BEGIN;
-CREATE TYPE "Role_new" AS ENUM ('User', 'ADMIN', 'SUPER_ADMIN');
-ALTER TABLE "public"."User" ALTER COLUMN "role" DROP DEFAULT;
-ALTER TABLE "User" ALTER COLUMN "role" TYPE "Role_new" USING ("role"::text::"Role_new");
-ALTER TYPE "Role" RENAME TO "Role_old";
-ALTER TYPE "Role_new" RENAME TO "Role";
-DROP TYPE "public"."Role_old";
-ALTER TABLE "User" ALTER COLUMN "role" SET DEFAULT 'User';
-COMMIT;
+-- CreateEnum
+CREATE TYPE "OfficialPartnerRequestStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 
--- DropIndex
-DROP INDEX "User_phone_key";
-
--- AlterTable
-ALTER TABLE "User" DROP CONSTRAINT "User_pkey",
-DROP COLUMN "additionalInfo",
-DROP COLUMN "location",
-DROP COLUMN "otpExpiresAt",
-DROP COLUMN "profilePicture",
-DROP COLUMN "zipCode",
-ADD COLUMN     "accessToken" TEXT,
-ADD COLUMN     "balance" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "commentCount" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "expiresIn" TEXT,
-ADD COLUMN     "isEmailVerified" BOOLEAN NOT NULL DEFAULT false,
-ADD COLUMN     "likeCount" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "refreshToken" TEXT,
-ADD COLUMN     "shareCount" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "totalPoints" INTEGER NOT NULL DEFAULT 0,
-DROP COLUMN "id",
-ADD COLUMN     "id" UUID NOT NULL,
-ALTER COLUMN "firstName" DROP NOT NULL,
-ALTER COLUMN "firstName" SET DATA TYPE TEXT,
-ALTER COLUMN "lastName" DROP NOT NULL,
-ALTER COLUMN "lastName" SET DATA TYPE TEXT,
-ALTER COLUMN "email" SET DATA TYPE TEXT,
-ALTER COLUMN "phone" DROP NOT NULL,
-ALTER COLUMN "phone" SET DATA TYPE TEXT,
-ALTER COLUMN "password" SET DATA TYPE TEXT,
-ALTER COLUMN "role" SET NOT NULL,
-ALTER COLUMN "role" SET DEFAULT 'User',
-ADD CONSTRAINT "User_pkey" PRIMARY KEY ("id");
+-- CreateEnum
+CREATE TYPE "AmbassadorStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 
 -- CreateTable
 CREATE TABLE "AdvancedCarData" (
@@ -161,6 +115,29 @@ CREATE TABLE "AdvancedCarData" (
     "carId" UUID NOT NULL,
 
     CONSTRAINT "AdvancedCarData_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "AmbassadorProgram" (
+    "id" UUID NOT NULL,
+    "ambassadorRequestUserId" UUID NOT NULL,
+    "requestStatus" "AmbassadorStatus" NOT NULL DEFAULT 'PENDING',
+    "motorspotName" TEXT NOT NULL,
+    "contactName" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "country" TEXT NOT NULL,
+    "instagramProfile" TEXT,
+    "tiktokProfile" TEXT,
+    "youTubeChanel" TEXT,
+    "totalFollower" INTEGER NOT NULL,
+    "mainCar" TEXT,
+    "whyDoYouWant" TEXT NOT NULL,
+    "releventExperience" TEXT,
+    "profilePhoto" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "AmbassadorProgram_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -432,6 +409,22 @@ CREATE TABLE "EventTicket" (
 );
 
 -- CreateTable
+CREATE TABLE "file_instances" (
+    "id" TEXT NOT NULL,
+    "filename" TEXT NOT NULL,
+    "originalFilename" TEXT NOT NULL,
+    "path" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
+    "fileType" "FileType" NOT NULL DEFAULT 'ANY',
+    "mimeType" TEXT NOT NULL,
+    "size" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "file_instances_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Follow" (
     "id" UUID NOT NULL,
     "followerId" UUID NOT NULL,
@@ -593,6 +586,26 @@ CREATE TABLE "Message" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "OfficialPartner" (
+    "id" UUID NOT NULL,
+    "requestUserId" UUID NOT NULL,
+    "requestStatus" "OfficialPartnerRequestStatus" NOT NULL DEFAULT 'PENDING',
+    "brandLogo" TEXT,
+    "brandName" TEXT NOT NULL,
+    "contactName" TEXT NOT NULL,
+    "contactEmail" TEXT NOT NULL,
+    "brandDescription" TEXT,
+    "websiteUrl" TEXT,
+    "industry" TEXT,
+    "country" TEXT,
+    "companyRegistrationNumber" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "OfficialPartner_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -793,6 +806,31 @@ CREATE TABLE "UsageNotes" (
     "alignmentNotes" TEXT,
 
     CONSTRAINT "UsageNotes_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "User" (
+    "id" UUID NOT NULL,
+    "email" TEXT NOT NULL,
+    "phone" TEXT,
+    "firstName" TEXT,
+    "lastName" TEXT,
+    "password" TEXT NOT NULL,
+    "role" "Role" NOT NULL DEFAULT 'User',
+    "otp" TEXT,
+    "expiresIn" TEXT,
+    "accessToken" TEXT,
+    "refreshToken" TEXT,
+    "isEmailVerified" BOOLEAN NOT NULL DEFAULT true,
+    "totalPoints" INTEGER NOT NULL DEFAULT 0,
+    "balance" INTEGER NOT NULL DEFAULT 0,
+    "likeCount" INTEGER NOT NULL DEFAULT 0,
+    "commentCount" INTEGER NOT NULL DEFAULT 0,
+    "shareCount" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1014,6 +1052,9 @@ CREATE UNIQUE INDEX "TuningAero_advancedCarDataId_key" ON "TuningAero"("advanced
 CREATE UNIQUE INDEX "UsageNotes_advancedCarDataId_key" ON "UsageNotes"("advancedCarDataId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "WheelsTires_advancedCarDataId_key" ON "WheelsTires"("advancedCarDataId");
 
 -- CreateIndex
@@ -1033,6 +1074,9 @@ CREATE INDEX "_PaymentToProductList_B_index" ON "_PaymentToProductList"("B");
 
 -- AddForeignKey
 ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "AmbassadorProgram" ADD CONSTRAINT "AmbassadorProgram_ambassadorRequestUserId_fkey" FOREIGN KEY ("ambassadorRequestUserId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Battle" ADD CONSTRAINT "Battle_hostId_fkey" FOREIGN KEY ("hostId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1183,6 +1227,9 @@ ALTER TABLE "LiveReward" ADD CONSTRAINT "LiveReward_hostId_fkey" FOREIGN KEY ("h
 
 -- AddForeignKey
 ALTER TABLE "LiveReward" ADD CONSTRAINT "LiveReward_participantId_fkey" FOREIGN KEY ("participantId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OfficialPartner" ADD CONSTRAINT "OfficialPartner_requestUserId_fkey" FOREIGN KEY ("requestUserId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "OwnerProfile" ADD CONSTRAINT "OwnerProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
