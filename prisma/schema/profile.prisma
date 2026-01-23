@@ -1,9 +1,9 @@
 model Profile {
   id               String      @id @default(uuid()) @db.Uuid
-  userId           String      @unique @db.Uuid
-  user             User        @relation(fields: [userId], references: [id])
+  userId           String      @db.Uuid
+  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  userName         String?
+  userName         String? 
   bio              String?
   imageUrl         String?
   instagramHandler String?
@@ -22,13 +22,9 @@ model Profile {
 
   garages          Garage[]
   cars Car[]
-
-
   virtualGarages VirtualGarage[]
-
   virtualLabs VirtualLab[]
-
   virtualSimRacingEvents VirtualSimRacingEvent[]
-
   legalNotices LegalNotice[]
+  @@unique([userId, profileType])
 }

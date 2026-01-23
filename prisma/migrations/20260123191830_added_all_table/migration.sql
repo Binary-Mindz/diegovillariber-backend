@@ -2,7 +2,7 @@
 CREATE TYPE "FileType" AS ENUM ('IMAGE', 'DOCS', 'LINK', 'DOCUMENT', 'ANY', 'VIDEO', 'AUDIO');
 
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('User', 'ADMIN', 'SUPER_ADMIN');
+CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'SUPER_ADMIN');
 
 -- CreateEnum
 CREATE TYPE "Preference" AS ENUM ('Car', 'Motorbike', 'Both');
@@ -816,7 +816,7 @@ CREATE TABLE "User" (
     "firstName" TEXT,
     "lastName" TEXT,
     "password" TEXT NOT NULL,
-    "role" "Role" NOT NULL DEFAULT 'User',
+    "role" "Role" NOT NULL DEFAULT 'USER',
     "otp" TEXT,
     "expiresIn" TEXT,
     "accessToken" TEXT,
@@ -1016,7 +1016,7 @@ CREATE UNIQUE INDEX "OwnerProfile_profileId_key" ON "OwnerProfile"("profileId");
 CREATE UNIQUE INDEX "ProDriverProfile_profileId_key" ON "ProDriverProfile"("profileId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
+CREATE INDEX "Profile_userId_profileType_idx" ON "Profile"("userId", "profileType");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Racing_simRacingId_key" ON "Racing"("simRacingId");
@@ -1253,7 +1253,7 @@ ALTER TABLE "ProDriverProfile" ADD CONSTRAINT "ProDriverProfile_profileId_fkey" 
 ALTER TABLE "ProductList" ADD CONSTRAINT "ProductList_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Racing" ADD CONSTRAINT "Racing_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
