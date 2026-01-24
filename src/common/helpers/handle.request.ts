@@ -1,45 +1,30 @@
-interface ErrorResponse {
-  message?: string;
-  statusCode?: number;
-}
-
 export async function handleRequest<T>(
   callback: () => Promise<T>,
-  successMessage = 'Request successful',
+  message = 'Request successful',
+  successStatusCode = 200, // success এ default
 ) {
   try {
     const data = await callback();
+
     return {
-      statusCode: 200,
+      statusCode: successStatusCode,
       status: 'success',
-      message: successMessage,
+      message,
       data,
     };
-  } catch (err: unknown) {
-    let message = 'Something went wrong';
-    let statusCode = 500;
-
-    if (typeof err === 'object' && err !== null) {
-      const e = err as {
-        response?: unknown;
-        message?: string;
-        status?: number;
-      };
-
-      if (e.response && typeof e.response === 'object') {
-        const r = e.response as ErrorResponse;
-        message = r.message ?? message;
-        statusCode = r.statusCode ?? statusCode;
-      } else {
-        message = e.message ?? message;
-        statusCode = e.status ?? statusCode;
-      }
-    }
-
+  } catch (err: any) {
     return {
-      statusCode,
+      statusCode:
+        err?.response?.statusCode ||
+        err?.status ||
+        500,
       status: 'error',
-      message,
+      message:
+        Array.isArray(err?.response?.message)
+          ? err.response.message.join(', ')
+          : err?.response?.message ||
+            err?.message ||
+            'Something went wrong',
       data: null,
     };
   }
