@@ -1,82 +1,77 @@
-import { 
-  Controller, 
-  Post, 
-  Delete, 
-  Get, 
-  Body, 
-  Param, 
+import {
+  Controller,
+  Post,
+  Delete,
+  Get,
+  Body,
+  Param,
   Query,
-  HttpCode, 
-  HttpStatus 
+  HttpCode,
+  HttpStatus,
+  UseGuards
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiQuery } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiQuery, ApiBearerAuth } from '@nestjs/swagger';
 import { FollowService } from './follow.service';
 import { CreateFollowDto, FollowersQueryDto, UnfollowDto } from './dto/create.follow.dto';
+import { JwtAuthGuard } from '@/main/auth/guards/jwt-auth.guard';
+import { GetUser } from '@/main/auth/decorator/get-user.decorator';
+import { handleRequest } from '@/common/helpers/handle.request';
 
+@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
 @ApiTags('follows')
 @Controller('follows')
 export class FollowController {
-  constructor(private readonly followService: FollowService) {}
+  constructor(private readonly followService: FollowService) { }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Follow a user' })
-  @ApiResponse({ status: 201, description: 'User followed successfully' })
-  @ApiResponse({ status: 400, description: 'Cannot follow yourself' })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  @ApiResponse({ status: 409, description: 'Already following this user' })
-  async followUser(@Body() createFollowDto: CreateFollowDto) {
-    const follow = await this.followService.followUser(createFollowDto);
-    return {
-      success: true,
-      message: 'User followed successfully',
-      data: follow
-    };
+  @ApiOperation({ summary: 'Logged user follow a user' })
+  async followUser(
+    @GetUser('id') followerId: string,
+    @Body() dto: CreateFollowDto,
+  ) {
+    return handleRequest(
+      async () => {
+        const follow = await this.followService.followUser(followerId, dto); return follow
+      }, 'User Followed successfully',
+    );
   }
 
   @Delete('unfollow')
-  @ApiOperation({ summary: 'Unfollow a user' })
-  @ApiResponse({ status: 200, description: 'User unfollowed successfully' })
-  @ApiResponse({ status: 404, description: 'Follow relationship not found' })
-  async unfollowUser(@Body() unfollowDto: UnfollowDto) {
-    const result = await this.followService.unfollowUser(unfollowDto);
-    return {
-      success: true,
-      ...result
-    };
+  @ApiOperation({ summary: 'Logged user unfollow a user' })
+  async unfollowUser(@GetUser('id') userId: string, @Body() dto: UnfollowDto) {
+    return handleRequest(
+      async () => await this.followService.unfollowUser(userId, dto), 'User Unfollowed successfully',
+    );
   }
 
-  @Get('followers/:userId')
-  @ApiOperation({ summary: 'Get followers of a user' })
-  @ApiParam({ name: 'userId', description: 'User UUID' })
-  @ApiResponse({ status: 200, description: 'Followers retrieved successfully' })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  async getFollowers(
-    @Param('userId') userId: string,
-    @Query() queryDto: FollowersQueryDto
+  @Get('myFollowers')
+  @ApiOperation({ summary: 'Get My followers' })
+  async getMyFollowers(
+    @GetUser('id') userId: string,
   ) {
-    const result = await this.followService.getFollowers(userId, queryDto);
-    return {
-      success: true,
-      ...result
-    };
+    return handleRequest(
+      async () => {
+        const result = await this.followService.getMyFollowers(userId);
+        return result
+      },
+      'Get My Followers successfully',
+    );
   }
 
-  @Get('following/:userId')
-  @ApiOperation({ summary: 'Get users that a user is following' })
-  @ApiParam({ name: 'userId', description: 'User UUID' })
-  @ApiResponse({ status: 200, description: 'Following retrieved successfully' })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  async getFollowing(
-    @Param('userId') userId: string,
-    @Query() queryDto: FollowersQueryDto
+  @Get('mefollowing')
+  @ApiOperation({ summary: 'Get me following' })
+  async getMeFollowing(
+    @GetUser('id') userId: string,
   ) {
-    const result = await this.followService.getFollowing(userId, queryDto);
-    return {
-      success: true,
-      ...result
-    };
+    console.log();
+    return handleRequest(
+      () => this.followService.getMeFollowing(userId),
+      'Get Me Following successfully',
+    );
   }
+
 
   @Get('check/:followerId/:followingId')
   @ApiOperation({ summary: 'Check if a user is following another user' })
@@ -93,7 +88,7 @@ export class FollowController {
       data: result
     };
   }
-
+  
   @Get('counts/:userId')
   @ApiOperation({ summary: 'Get follower and following counts for a user' })
   @ApiParam({ name: 'userId', description: 'User UUID' })
@@ -124,15 +119,4 @@ export class FollowController {
     };
   }
 
-  @Delete('remove-follower')
-  @ApiOperation({ summary: 'Remove a follower' })
-  @ApiResponse({ status: 200, description: 'Follower removed successfully' })
-  @ApiResponse({ status: 404, description: 'Follower relationship not found' })
-  async removeFollower(@Body() body: { userId: string; followerId: string }) {
-    const result = await this.followService.removeFollower(body.userId, body.followerId);
-    return {
-      success: true,
-      ...result
-    };
-  }
 }

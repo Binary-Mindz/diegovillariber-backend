@@ -108,12 +108,13 @@ export class AuthService {
     };
   }
 
-  async resetPassword(password: string) {
+  async resetPassword(password: string): Promise<{updated: true}> {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     await this.prisma.user.updateMany({
       data: { password: hashedPassword },
     });
+    return {updated: true}
   }
 
   // generate token....
