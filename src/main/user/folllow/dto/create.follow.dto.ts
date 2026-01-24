@@ -3,21 +3,17 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
 export class CreateFollowDto {
-  @ApiProperty({ description: 'Follower User ID (UUID)' })
-  @IsUUID()
-  followerId: string;
-
-  @ApiProperty({ description: 'Following User ID (UUID)' })
+  @ApiProperty({ description: 'User ID to follow (UUID)', 
+    example: '550e8400-e29b-41d4-a716-446655440000', })
   @IsUUID()
   followingId: string;
 }
 
-export class UnfollowDto {
-  @ApiProperty({ description: 'Follower User ID (UUID)' })
-  @IsUUID()
-  followerId: string;
 
-  @ApiProperty({ description: 'Following User ID (UUID)' })
+export class UnfollowDto {
+  @ApiProperty({ description: 'Following User ID (UUID)',
+    example: '550e8400-e29b-41d4-a716-446655440000',
+   })
   @IsUUID()
   followingId: string;
 }
