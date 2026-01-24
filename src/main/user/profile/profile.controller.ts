@@ -3,7 +3,6 @@ import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@ne
 import { ProfileService } from './profile.service';
 import { CreateProfileDto } from './dto/create.profile.dto';
 import { JwtAuthGuard } from '@/main/auth/guards/jwt-auth.guard';
-
 import { GetUser } from '@/main/auth/decorator/get-user.decorator';
 import { UpdateProfileBaseDto } from './dto/update.profile.dto';
 import { ChangeProfileTypeDto } from './dto/changed.profile.type.dto';
