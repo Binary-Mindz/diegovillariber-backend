@@ -24,6 +24,8 @@ jobs:
                   cache: 'pnpm'
 
             - name: Install dependencies
+              env:
+                DATABASE_URL: 'postgresql://postgres:postgres@db:5432/app'
               run: pnpm install --frozen-lockfile
 
             - name: Build application
