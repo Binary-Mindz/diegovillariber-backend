@@ -52,6 +52,7 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/prisma.config.ts ./
 
+ENV DATABASE_URL=postgresql://postgres:postgres@db:5432/app
 # Prisma client must exist at runtime
 RUN pnpm prisma generate
 
