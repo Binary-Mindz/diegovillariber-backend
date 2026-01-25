@@ -18,6 +18,7 @@ COPY pnpm-lock.yaml package.json ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
 
+ENV DATABASE_URL=postgresql://postgres:postgres@db:5432/app
 # Install deps
 RUN pnpm install --frozen-lockfile
 
