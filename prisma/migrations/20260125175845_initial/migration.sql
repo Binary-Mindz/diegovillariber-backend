@@ -1016,7 +1016,7 @@ CREATE UNIQUE INDEX "OwnerProfile_profileId_key" ON "OwnerProfile"("profileId");
 CREATE UNIQUE INDEX "ProDriverProfile_profileId_key" ON "ProDriverProfile"("profileId");
 
 -- CreateIndex
-CREATE INDEX "Profile_userId_profileType_idx" ON "Profile"("userId", "profileType");
+CREATE UNIQUE INDEX "Profile_userId_profileType_key" ON "Profile"("userId", "profileType");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Racing_simRacingId_key" ON "Racing"("simRacingId");
