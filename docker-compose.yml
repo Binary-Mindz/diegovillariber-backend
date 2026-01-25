@@ -1,19 +1,98 @@
-version: '3.9'
-
 services:
-  postgres:
-    image: postgres:15
-    container_name: diego
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: diegoDB
-    ports:
-      - "5432:5432"
-#     volumes:
-#       - johnb:/var/lib/postgresql/data
+    postgres:
+        image: postgres:18-alpine
+        container_name: diego_postgres_prod
+        restart: always
+        environment:
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_NAME}
+            PGDATA: /var/lib/postgresql/18/docker
+        volumes:
+            - postgres_data_prod:/var/lib/postgresql/data
+            - ./backups:/backups
+        networks:
+            - diego_network
+        healthcheck:
+            test: ['CMD-SHELL', 'pg_isready -U ${DB_USER}']
+            interval: 10s
+            timeout: 5s
+            retries: 5
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '3'
 
-# volumes:
-#   johnb:
+    redis:
+        image: redis:8-alpine
+        container_name: diego_redis_prod
+        restart: always
+        command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+        volumes:
+            - redis_data_prod:/data
+        networks:
+            - diego_network
+        healthcheck:
+            test: ['CMD', 'redis-cli', '--pass', '${REDIS_PASSWORD}', 'ping']
+            interval: 10s
+            timeout: 3s
+            retries: 5
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '3'
 
+    app:
+        image: ${DOCKER_USERNAME}/${PACKAGE_NAME}
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: diego_app_prod
+        restart: always
+        ports:
+            - '8080:8080'
+        env_file:
+            - '.env'
+        depends_on:
+            postgres:
+                condition: service_healthy
+            redis:
+                condition: service_healthy
+        networks:
+            - diego_network
+        logging:
+            driver: 'json-file'
+            options:
+                max-size: '10m'
+                max-file: '3'
+    caddy:
+        image: caddy:latest
+        restart: always
+        ports:
+            - '80:80'
+            - '443:443'
+            - '443:443/udp'
+
+        networks:
+            - diego_network
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile
+            - caddy_data:/data
+            - caddy_config:/config
+        depends_on:
+            - app
+
+networks:
+    diego_network:
+        external: true
+        driver: bridge
+
+volumes:
+    caddy_data:
+    caddy_config:
+    postgres_data_prod:
+        driver: local
+    redis_data_prod:
+        driver: local
