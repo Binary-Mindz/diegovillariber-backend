@@ -2,12 +2,10 @@ import { Module } from '@nestjs/common';
 import { ProfileModule } from './profile/profile.module';
 import { FollowModule } from './folllow/follow.module';
 
-
-
 @Module({
-    imports:[ProfileModule, FollowModule],
+  imports: [ProfileModule, FollowModule],
   controllers: [],
   providers: [],
-  exports: []
+  exports: [],
 })
 export class UserModule {}

@@ -1,5 +1,14 @@
-import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
-import { CreateLikeDto, LikesQueryDto, PostType, UnlikeDto } from './dto/create.like.dto';
+import {
+  Injectable,
+  NotFoundException,
+  ConflictException,
+} from '@nestjs/common';
+import {
+  CreateLikeDto,
+  LikesQueryDto,
+  PostType,
+  UnlikeDto,
+} from './dto/create.like.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
 @Injectable()
@@ -11,7 +20,7 @@ export class LikeService {
 
     // Verify user exists
     const user = await this.prisma.user.findUnique({
-      where: { id: userId }
+      where: { id: userId },
     });
 
     if (!user) {
@@ -20,7 +29,7 @@ export class LikeService {
 
     // Verify post exists
     const post = await this.prisma.post.findUnique({
-      where: { id: postId }
+      where: { id: postId },
     });
 
     if (!post) {
@@ -33,9 +42,9 @@ export class LikeService {
         userId_postId_postType: {
           userId,
           postId,
-          postType
-        }
-      }
+          postType,
+        },
+      },
     });
 
     if (existingLike) {
@@ -48,7 +57,7 @@ export class LikeService {
         data: {
           userId,
           postId,
-          postType
+          postType,
         },
         include: {
           user: {
@@ -56,15 +65,15 @@ export class LikeService {
               id: true,
               firstName: true,
               lastName: true,
-              email: true
-            }
-          }
-        }
+              email: true,
+            },
+          },
+        },
       }),
       this.prisma.post.update({
         where: { id: postId },
-        data: { like: { increment: 1 } }
-      })
+        data: { like: { increment: 1 } },
+      }),
     ]);
 
     return like;
@@ -79,9 +88,9 @@ export class LikeService {
         userId_postId_postType: {
           userId,
           postId,
-          postType
-        }
-      }
+          postType,
+        },
+      },
     });
 
     if (!like) {
@@ -95,14 +104,14 @@ export class LikeService {
           userId_postId_postType: {
             userId,
             postId,
-            postType
-          }
-        }
+            postType,
+          },
+        },
       }),
       this.prisma.post.update({
         where: { id: postId },
-        data: { like: { decrement: 1 } }
-      })
+        data: { like: { decrement: 1 } },
+      }),
     ]);
 
     return { message: 'Like removed successfully' };
@@ -137,14 +146,14 @@ export class LikeService {
               profile: {
                 select: {
                   userName: true,
-                  imageUrl: true
-                }
-              }
-            }
-          }
-        }
+                  imageUrl: true,
+                },
+              },
+            },
+          },
+        },
       }),
-      this.prisma.like.count({ where })
+      this.prisma.like.count({ where }),
     ]);
 
     return {
@@ -153,8 +162,8 @@ export class LikeService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
-      }
+        totalPages: Math.ceil(total / limit),
+      },
     };
   }
 
@@ -181,10 +190,10 @@ export class LikeService {
           id: true,
           postId: true,
           postType: true,
-          createdAt: true
-        }
+          createdAt: true,
+        },
       }),
-      this.prisma.like.count({ where })
+      this.prisma.like.count({ where }),
     ]);
 
     return {
@@ -193,8 +202,8 @@ export class LikeService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
-      }
+        totalPages: Math.ceil(total / limit),
+      },
     };
   }
 
@@ -204,12 +213,11 @@ export class LikeService {
         userId_postId_postType: {
           userId,
           postId,
-          postType
-        }
-      }
+          postType,
+        },
+      },
     });
 
     return { isLiked: !!like };
   }
 }
-

@@ -8,9 +8,12 @@ model User {
   role            Role    @default(USER)
   otp             String?
   expiresIn       String?
-  accessToken     String?
-  refreshToken    String?
-  isEmailVerified Boolean @default(true)
+  isEmailVerified Boolean @default(false)
+  emailOtp        String?
+  emailOtpExpiresAt DateTime?
+  resetOtp          String?
+  resetOtpExpiresAt DateTime?
+  refreshTokenHash  String?
   totalPoints     Int     @default(0)
   balance         Int     @default(0)
   likeCount       Int     @default(0)

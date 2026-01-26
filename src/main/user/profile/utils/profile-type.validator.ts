@@ -1,17 +1,25 @@
 import { BadRequestException } from '@nestjs/common';
 import { CreateProfileDto } from '../dto/create.profile.dto';
 
-export function assertPayloadMatchesType(dto: Pick<
-  CreateProfileDto,
-  'profileType' | 'spotter' | 'owner' | 'creator' | 'business' | 'proDriver' | 'simRacing'
->) {
+export function assertPayloadMatchesType(
+  dto: Pick<
+    CreateProfileDto,
+    | 'profileType'
+    | 'spotter'
+    | 'owner'
+    | 'creator'
+    | 'business'
+    | 'proDriver'
+    | 'simRacing'
+  >,
+) {
   const map = {
     SPOTTER: !!dto.spotter,
     OWNER: !!dto.owner,
     CONTENT_CREATOR: !!dto.creator,
-    PRO_BUSSINESS: !!dto.business,  
+    PRO_BUSSINESS: !!dto.business,
     PRO_DRIVER: !!dto.proDriver,
-    SIM_RACING_DRIVER: !!dto.simRacing,   
+    SIM_RACING_DRIVER: !!dto.simRacing,
   } as const;
 
   const key = String(dto.profileType) as keyof typeof map;

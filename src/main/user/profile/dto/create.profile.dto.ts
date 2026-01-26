@@ -73,42 +73,62 @@ export class ProDriverProfileDto {
 
 export class HardwareSetupDto {
   @ApiPropertyOptional({ example: 'Fanatec DD Pro' })
-  @IsOptional() @IsString() steeringWheel?: string;
+  @IsOptional()
+  @IsString()
+  steeringWheel?: string;
 
   @ApiPropertyOptional({ example: 'Heusinkveld Sprint' })
-  @IsOptional() @IsString() pedals?: string;
+  @IsOptional()
+  @IsString()
+  pedals?: string;
 
   @ApiPropertyOptional({ example: true })
-  @IsOptional() @IsBoolean() bassShakers?: boolean;
+  @IsOptional()
+  @IsBoolean()
+  bassShakers?: boolean;
 }
 
 export class DisplayAndPcSetupDto {
   @ApiPropertyOptional({ example: 'Triple 32-inch monitors' })
-  @IsOptional() @IsString() monitors?: string;
+  @IsOptional()
+  @IsString()
+  monitors?: string;
 
   @ApiPropertyOptional({ example: 'RTX 4090 PC' })
-  @IsOptional() @IsString() pcSpace?: string;
+  @IsOptional()
+  @IsString()
+  pcSpace?: string;
 }
 
 export class DrivingAssistantDto {
   @ApiPropertyOptional({ example: true })
-  @IsOptional() @IsBoolean() tractionControl?: boolean;
+  @IsOptional()
+  @IsBoolean()
+  tractionControl?: boolean;
 
   @ApiPropertyOptional({ example: false })
-  @IsOptional() @IsBoolean() abs?: boolean;
+  @IsOptional()
+  @IsBoolean()
+  abs?: boolean;
 }
 
 export class RacingDto {
   @ApiPropertyOptional({ example: 'iRacing_12345' })
-  @IsOptional() @IsString() iRacingId?: string;
+  @IsOptional()
+  @IsString()
+  iRacingId?: string;
 }
 
 export class SetupDescriptionPhotoDto {
   @ApiPropertyOptional({ example: 'Optimized GT3 setup' })
-  @IsOptional() @IsString() setupDescription?: string;
+  @IsOptional()
+  @IsString()
+  setupDescription?: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.app/setup.png' })
-  @IsOptional() @IsString() setupPhoto?: string;
+  @IsOptional()
+  @IsString()
+  setupPhoto?: string;
 }
 
 export class SimRacingProfileDto {

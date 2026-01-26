@@ -1,11 +1,27 @@
-import { Controller, Post, Get, Body, Param, HttpCode, HttpStatus, UseGuards, Patch } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Param,
+  HttpCode,
+  HttpStatus,
+  UseGuards,
+  Patch,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiParam,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { ProfileService } from './profile.service';
 import { CreateProfileDto } from './dto/create.profile.dto';
-import { JwtAuthGuard } from '@/main/auth/guards/jwt-auth.guard';
-import { GetUser } from '@/main/auth/decorator/get-user.decorator';
+import { GetUser } from '@/common/decorator/get-user.decorator';
 import { UpdateProfileBaseDto } from './dto/update.profile.dto';
 import { ChangeProfileTypeDto } from './dto/changed.profile.type.dto';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -13,15 +29,21 @@ import { ChangeProfileTypeDto } from './dto/changed.profile.type.dto';
 @Controller('profiles')
 export class ProfileController {
   constructor(private readonly profileService: ProfileService) {}
- 
+
   @Post()
-  @ApiOperation({ summary: 'Create a new user profile. Type: SPOTTER,OWNER,CONTENT_CREATOR, PRO_BUSSINESS, PRO_DRIVER , SIM_RACING_DRIVER'})
-  async createProfile(@GetUser('id') userId:string,@Body() dto: CreateProfileDto) {
+  @ApiOperation({
+    summary:
+      'Create a new user profile. Type: SPOTTER,OWNER,CONTENT_CREATOR, PRO_BUSSINESS, PRO_DRIVER , SIM_RACING_DRIVER',
+  })
+  async createProfile(
+    @GetUser('id') userId: string,
+    @Body() dto: CreateProfileDto,
+  ) {
     const profile = await this.profileService.createProfile(userId, dto);
     return {
       success: true,
       message: 'Profile created successfully',
-      data: profile
+      data: profile,
     };
   }
 
@@ -31,10 +53,10 @@ export class ProfileController {
     const profile = await this.profileService.getProfilesByUserId(userId);
     return {
       success: true,
-      data: profile
+      data: profile,
     };
   }
-    @Get(':profileId')
+  @Get(':profileId')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get single profile by profileId' })
   @ApiParam({ name: 'profileId', required: true, type: String })
