@@ -63,7 +63,7 @@ export class LikeService {
           user: {
             select: {
               id: true,
-              username:true,
+              username: true,
               email: true,
             },
           },
@@ -139,7 +139,7 @@ export class LikeService {
           user: {
             select: {
               id: true,
-              username:true,
+              username: true,
               email: true,
               profile: {
                 select: {
