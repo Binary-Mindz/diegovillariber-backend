@@ -14,17 +14,11 @@ export async function handleRequest<T>(
     };
   } catch (err: any) {
     return {
-      statusCode:
-        err?.response?.statusCode ||
-        err?.status ||
-        500,
+      statusCode: err?.response?.statusCode || err?.status || 500,
       status: 'error',
-      message:
-        Array.isArray(err?.response?.message)
-          ? err.response.message.join(', ')
-          : err?.response?.message ||
-            err?.message ||
-            'Something went wrong',
+      message: Array.isArray(err?.response?.message)
+        ? err.response.message.join(', ')
+        : err?.response?.message || err?.message || 'Something went wrong',
       data: null,
     };
   }

@@ -1,4 +1,12 @@
-import { IsUUID, IsNotEmpty, IsEnum, IsString, IsOptional, IsInt, Min } from 'class-validator';
+import {
+  IsUUID,
+  IsNotEmpty,
+  IsEnum,
+  IsString,
+  IsOptional,
+  IsInt,
+  Min,
+} from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
@@ -6,7 +14,7 @@ export enum PostType {
   SPOTTER_POST = 'Spotter_Post',
   OWNER_POST = 'Owner_Post',
   BATTLE_POST = 'Battle_Post',
-  CHALLENGE_POST = 'Challenge_Post'
+  CHALLENGE_POST = 'Challenge_Post',
 }
 
 export class CreateCommentDto {
@@ -58,4 +66,3 @@ export class CommentsQueryDto {
   @IsOptional()
   postType?: PostType;
 }
-

@@ -1,127 +1,267 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { LoginDto } from './dto/create-auth.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { JwtService } from '@nestjs/jwt';
-import { SignOptions } from 'jsonwebtoken';
-
 import * as bcrypt from 'bcrypt';
-import { OtpService } from './otp.service';
-import { MailService } from '@/common/mail/mail.service';
-import { CreateUserDto } from './dto/create.user.dto';
-import { Role } from 'generated/prisma/enums';
-
-export type JwtPayload = {
-  sub: string;
-  email: string;
-  role: Role;
-};
+import { JwtService } from '@nestjs/jwt';
+import { MailService } from '../../common/mail/mail.service';
+import type { SignOptions } from 'jsonwebtoken';
+import { SignUpDto } from './dto/signup.dto';
+import { generateOtp, otpExpiry } from '@/common/utils/otp';
 
 @Injectable()
 export class AuthService {
   constructor(
-    private readonly prisma: PrismaService,
-    private readonly jwtService: JwtService,
-    private readonly otpService: OtpService,
-    private readonly mailService: MailService,
+    private prisma: PrismaService,
+    private jwt: JwtService,
+    private mail: MailService,
   ) {}
 
-  async createUser(dto: CreateUserDto) {
-    const existingUser = await this.prisma.user.findUnique({
+  private async hash(data: string) {
+    return bcrypt.hash(data, 10);
+  }
+
+  private async compare(raw: string, hashed: string) {
+    return bcrypt.compare(raw, hashed);
+  }
+
+  private signAccessToken(user: { id: string; role: string; email: string }) {
+    const secret = process.env.JWT_ACCESS_SECRET;
+    if (!secret) throw new Error('JWT_ACCESS_SECRET is missing');
+
+    const expiresIn = (process.env.JWT_ACCESS_EXPIRES ||
+      '15m') as SignOptions['expiresIn'];
+
+    return this.jwt.sign(
+      { sub: user.id, role: user.role, email: user.email },
+      {
+        secret,
+        expiresIn,
+      },
+    );
+  }
+
+  private signRefreshToken(user: { id: string; role: string; email: string }) {
+    const secret = process.env.JWT_REFRESH_SECRET;
+    if (!secret) throw new Error('JWT_REFRESH_SECRET is missing');
+
+    const expiresIn = (process.env.JWT_REFRESH_EXPIRES ||
+      '7d') as SignOptions['expiresIn'];
+
+    return this.jwt.sign(
+      { sub: user.id, role: user.role, email: user.email },
+      {
+        secret,
+        expiresIn,
+      },
+    );
+  }
+
+  async signup(dto: SignUpDto) {
+    const existing = await this.prisma.user.findUnique({
       where: { email: dto.email },
     });
-    if (existingUser)
-      throw new BadRequestException('User already exist. please login.');
+    if (existing) throw new BadRequestException('Email already exists');
 
-    const hashedPassword = await bcrypt.hash(dto.password, 10);
-    const newUser = await this.prisma.user.create({
+    const passwordHash = await this.hash(dto.password);
+
+    const otp = generateOtp(6);
+    const expires = otpExpiry(10);
+
+    const user = await this.prisma.user.create({
       data: {
-        ...dto,
-        password: hashedPassword,
+        email: dto.email,
+        password: passwordHash,
+        emailOtp: otp,
+        emailOtpExpiresAt: expires,
       },
+      select: { id: true, email: true },
+    });
+
+    await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
+
+    return {
+      message: 'Signup successful. OTP sent to email.',
+      userId: user.id,
+    };
+  }
+
+  async verifyEmail(email: string, otp: string) {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) throw new BadRequestException('User not found');
+
+    if (user.isEmailVerified) return { message: 'Email already verified' };
+
+    if (!user.emailOtp || !user.emailOtpExpiresAt)
+      throw new BadRequestException('No OTP found');
+    if (user.emailOtp !== otp) throw new BadRequestException('Invalid OTP');
+    if (user.emailOtpExpiresAt < new Date())
+      throw new BadRequestException('OTP expired');
+
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        isEmailVerified: true,
+        emailOtp: null,
+        emailOtpExpiresAt: null,
+      },
+    });
+
+    return { message: 'Email verified successfully' };
+  }
+
+  async login(email: string, password: string) {
+    const user = await this.prisma.user.findUnique({
+      where: { email },
       select: {
         id: true,
         email: true,
         role: true,
-      },
-    });
-    return {
-      user: newUser
-    };
-  }
-
-  async loginuser(dto: LoginDto) {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        email: dto.email,
+        password: true,
+        isEmailVerified: true,
       },
     });
 
-    if (!user) throw new UnauthorizedException('Invalid User');
+    if (!user) throw new UnauthorizedException('Invalid credentials');
 
-    const isPasswordValid = await bcrypt.compare(dto.Password, user.password);
-    if (!isPasswordValid) throw new UnauthorizedException('Invalid Password');
+    const ok = await this.compare(password, user.password);
+    if (!ok) throw new UnauthorizedException('Invalid credentials');
 
-    const payload = {
-      sub: user.id,
-      email: user.email,
+    if (!user.isEmailVerified) {
+      throw new ForbiddenException('Email not verified');
+    }
+
+    const accessToken = this.signAccessToken({
+      id: user.id,
       role: user.role,
-    };
+      email: user.email,
+    });
 
-    const accessToken = this.generateAccessToken(payload);
+    const refreshToken = this.signRefreshToken({
+      id: user.id,
+      role: user.role,
+      email: user.email,
+    });
+
+    // store hash of refresh token
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { refreshTokenHash: await this.hash(refreshToken) },
+    });
+
     return {
+      message: 'Login successful',
       user: {
         id: user.id,
         email: user.email,
         role: user.role,
       },
-      accessToken,
+      tokens: {
+        accessToken,
+        refreshToken,
+      },
     };
   }
 
-  async forgetPassword(email: string) {
+  async refreshTokens(userId: string, refreshToken: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user || !user.refreshTokenHash)
+      throw new UnauthorizedException('Access denied');
+
+    const matched = await this.compare(refreshToken, user.refreshTokenHash);
+    if (!matched) throw new UnauthorizedException('Access denied');
+
+    const accessToken = this.signAccessToken({
+      id: user.id,
+      role: user.role,
+      email: user.email,
+    });
+    const newRefreshToken = this.signRefreshToken({
+      id: user.id,
+      role: user.role,
+      email: user.email,
+    });
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { refreshTokenHash: await this.hash(newRefreshToken) },
+    });
+
+    return { accessToken, refreshToken: newRefreshToken };
+  }
+
+  async logout(userId: string) {
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { refreshTokenHash: null },
+    });
+    return { message: 'Logged out' };
+  }
+
+  async forgotPassword(email: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
-    if (!user) throw new UnauthorizedException('Invalid User');
+    if (!user) return { message: 'If email exists, OTP sent.' };
 
-    const otp = await this.otpService.generateOtp(email);
-    await this.mailService.forgetPassOtp(email, otp);
+    const otp = generateOtp(6);
+    const expires = otpExpiry(10);
 
-    return {
-      message:
-        'OTP sent to your email. Please verify it to reset your password.',
-    };
-  }
-
-  async verifyForgotOtp(otp: string) {
-    const user = await this.prisma.user.findFirst({
-      where: { otp },
+    await this.prisma.user.update({
+      where: { email },
+      data: { resetOtp: otp, resetOtpExpiresAt: expires },
     });
 
-    if (!user) {
-      throw new UnauthorizedException('Invalid OTP');
-    }
-    return {
-      message: 'OTP verified successfully. You can now reset password.',
-    };
+    await this.mail.sendOtpEmail(email, 'Reset your password', otp);
+
+    return { message: 'If email exists, OTP sent.' };
   }
 
-  async resetPassword(password: string): Promise<{updated: true}> {
-    const hashedPassword = await bcrypt.hash(password, 10);
+  async resetPassword(email: string, otp: string, newPassword: string) {
+    const user = await this.prisma.user.findUnique({ where: { email } });
+    if (!user) throw new BadRequestException('Invalid request');
 
-    await this.prisma.user.updateMany({
-      data: { password: hashedPassword },
+    if (!user.resetOtp || !user.resetOtpExpiresAt)
+      throw new BadRequestException('No OTP found');
+    if (user.resetOtp !== otp) throw new BadRequestException('Invalid OTP');
+    if (user.resetOtpExpiresAt < new Date())
+      throw new BadRequestException('OTP expired');
+
+    const newHash = await this.hash(newPassword);
+
+    await this.prisma.user.update({
+      where: { email },
+      data: {
+        password: newHash,
+        resetOtp: null,
+        resetOtpExpiresAt: null,
+        refreshTokenHash: null, // force re-login everywhere
+      },
     });
-    return {updated: true}
+
+    return { message: 'Password reset successful' };
   }
 
-  // generate token....
-  private generateAccessToken(payload: JwtPayload): string {
-    return this.jwtService.sign(payload, {
-      secret: process.env.JWT_SECRET!,
-      expiresIn: process.env.JWT_ACCESS_EXPIRES_IN as SignOptions['expiresIn'],
+  async changePassword(
+    userId: string,
+    currentPassword: string,
+    newPassword: string,
+  ) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new UnauthorizedException('Access denied');
+
+    const ok = await this.compare(currentPassword, user.password);
+    if (!ok) throw new BadRequestException('Current password incorrect');
+
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        password: await this.hash(newPassword),
+        refreshTokenHash: null,
+      },
     });
+
+    return { message: 'Password changed successfully' };
   }
 }

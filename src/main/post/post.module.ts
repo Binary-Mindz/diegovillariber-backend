@@ -3,9 +3,9 @@ import { PostController } from './post.controller';
 import { PostService } from './post.service';
 
 @Module({
-    imports:[PostModule],
+  imports: [PostModule],
   controllers: [PostController],
   providers: [PostService],
-  exports: [PostService]
+  exports: [PostService],
 })
 export class PostModule {}

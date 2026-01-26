@@ -1,18 +1,22 @@
-import { 
-  Controller, 
-  Post, 
-  Delete, 
-  Get, 
-  Body, 
-  Param, 
+import {
+  Controller,
+  Post,
+  Delete,
+  Get,
+  Body,
+  Param,
   Query,
-  HttpCode, 
-  HttpStatus 
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { LikeService } from './like.service';
-import { CreateLikeDto, LikesQueryDto, PostType, UnlikeDto } from './dto/create.like.dto';
-
+import {
+  CreateLikeDto,
+  LikesQueryDto,
+  PostType,
+  UnlikeDto,
+} from './dto/create.like.dto';
 
 @ApiTags('likes')
 @Controller('likes')
@@ -30,7 +34,7 @@ export class LikeController {
     return {
       success: true,
       message: 'Post liked successfully',
-      data: like
+      data: like,
     };
   }
 
@@ -42,7 +46,7 @@ export class LikeController {
     const result = await this.likeService.removeLike(unlikeDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -53,28 +57,31 @@ export class LikeController {
   @ApiResponse({ status: 404, description: 'Post not found' })
   async getPostLikes(
     @Param('postId') postId: string,
-    @Query() queryDto: LikesQueryDto
+    @Query() queryDto: LikesQueryDto,
   ) {
     const result = await this.likeService.getPostLikes(postId, queryDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
   @Get('user/:userId')
   @ApiOperation({ summary: 'Get all likes by a user' })
   @ApiParam({ name: 'userId', description: 'User UUID' })
-  @ApiResponse({ status: 200, description: 'User likes retrieved successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'User likes retrieved successfully',
+  })
   @ApiResponse({ status: 404, description: 'User not found' })
   async getUserLikes(
     @Param('userId') userId: string,
-    @Query() queryDto: LikesQueryDto
+    @Query() queryDto: LikesQueryDto,
   ) {
     const result = await this.likeService.getUserLikes(userId, queryDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -87,13 +94,16 @@ export class LikeController {
   async checkIfLiked(
     @Param('userId') userId: string,
     @Param('postId') postId: string,
-    @Param('postType') postType: PostType
+    @Param('postType') postType: PostType,
   ) {
-    const result = await this.likeService.checkIfLiked(userId, postId, postType);
+    const result = await this.likeService.checkIfLiked(
+      userId,
+      postId,
+      postType,
+    );
     return {
       success: true,
-      data: result
+      data: result,
     };
   }
 }
-

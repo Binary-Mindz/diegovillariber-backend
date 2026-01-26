@@ -15,7 +15,7 @@ import { CommentModule } from './main/comment/comment.module';
     UserModule,
     PostModule,
     LikeModule,
-    CommentModule
+    CommentModule,
   ],
   controllers: [],
   providers: [],

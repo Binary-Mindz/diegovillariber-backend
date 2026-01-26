@@ -18,17 +18,21 @@ import { CreateProfileDto } from './dto/create.profile.dto';
 import { Prisma } from 'generated/prisma/client';
 import { assertPayloadMatchesType } from './utils/profile-type.validator';
 
-
-
-
 // চাইলে Update DTO গুলো আলাদা রাখুন, এখানে inline minimal type দিলাম:
-type UpdateProfileBaseDto = Partial<Pick<
-  CreateProfileDto,
-  'userName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
->>;
+type UpdateProfileBaseDto = Partial<
+  Pick<
+    CreateProfileDto,
+    'userName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
+  >
+>;
 
 type ChangeProfileTypeDto = Pick<CreateProfileDto, 'profileType'> &
-  Partial<Pick<CreateProfileDto, 'spotter' | 'owner' | 'creator' | 'business' | 'proDriver' | 'simRacing'>>;
+  Partial<
+    Pick<
+      CreateProfileDto,
+      'spotter' | 'owner' | 'creator' | 'business' | 'proDriver' | 'simRacing'
+    >
+  >;
 
 @Injectable()
 export class ProfileService {
@@ -36,7 +40,6 @@ export class ProfileService {
 
   // ---------- CREATE ----------
   async createProfile(currentUserId: string, dto: CreateProfileDto) {
-  
     assertPayloadMatchesType(dto);
     const user = await this.prisma.user.findUnique({
       where: { id: currentUserId },
@@ -105,8 +108,7 @@ export class ProfileService {
           (profileData as any).proDriver = {
             create: {
               racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ??
-                RacingType.GT_Racing,
+                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
               location: dto.proDriver.location,
             },
           };
@@ -171,13 +173,18 @@ export class ProfileService {
   }
 
   // ---------- UPDATE: base fields only (no profileType switch) ----------
-  async updateProfileBase(profileId: string, currentUserId: string, dto: UpdateProfileBaseDto) {
+  async updateProfileBase(
+    profileId: string,
+    currentUserId: string,
+    dto: UpdateProfileBaseDto,
+  ) {
     const profile = await this.prisma.profile.findUnique({
       where: { id: profileId },
       select: { id: true, userId: true },
     });
     if (!profile) throw new NotFoundException('Profile not found');
-    if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+    if (profile.userId !== currentUserId)
+      throw new ForbiddenException('No access');
 
     return this.prisma.profile.update({
       where: { id: profileId },
@@ -193,7 +200,11 @@ export class ProfileService {
   }
 
   // ---------- CHANGE TYPE: profileType change + create new subprofile + upsert sim nested ----------
-  async changeProfileType(profileId: string, currentUserId: string, dto: ChangeProfileTypeDto) {
+  async changeProfileType(
+    profileId: string,
+    currentUserId: string,
+    dto: ChangeProfileTypeDto,
+  ) {
     assertPayloadMatchesType(dto);
 
     return this.prisma.$transaction(async (tx) => {
@@ -202,7 +213,8 @@ export class ProfileService {
         include: { simRacing: true },
       });
       if (!profile) throw new NotFoundException('Profile not found');
-      if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+      if (profile.userId !== currentUserId)
+        throw new ForbiddenException('No access');
 
       await tx.profile.update({
         where: { id: profileId },
@@ -230,7 +242,8 @@ export class ProfileService {
           await tx.contentCreatorProfile.upsert({
             where: { profileId },
             update: {
-              creatorCategory: (dto.creator?.creatorCategory as any) ?? undefined,
+              creatorCategory:
+                (dto.creator?.creatorCategory as any) ?? undefined,
               youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
               portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
             },
@@ -254,7 +267,8 @@ export class ProfileService {
           await tx.businessProfile.upsert({
             where: { profileId },
             update: {
-              businessCategory: (dto.business.businessCategory as any) ?? undefined,
+              businessCategory:
+                (dto.business.businessCategory as any) ?? undefined,
               businessName: dto.business.businessName,
               location: dto.business.location,
             },
@@ -279,14 +293,14 @@ export class ProfileService {
           await tx.proDriverProfile.upsert({
             where: { profileId },
             update: {
-              racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
+              racingDiscipline:
+                (dto.proDriver.racingDiscipline as any) ?? undefined,
               location: dto.proDriver.location,
             },
             create: {
               profileId,
               racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ??
-                RacingType.GT_Racing,
+                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
               location: dto.proDriver.location,
             },
           });

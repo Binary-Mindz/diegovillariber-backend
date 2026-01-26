@@ -5,6 +5,6 @@ import { FollowController } from './folloe.controller';
 @Module({
   controllers: [FollowController],
   providers: [FollowService],
-  exports: [FollowService]
+  exports: [FollowService],
 })
 export class FollowModule {}
