@@ -40,6 +40,7 @@ export type UserPointMinAggregateOutputType = {
   postId: string | null
   likeId: string | null
   commentId: string | null
+  followId: string | null
   battleId: string | null
   points: number | null
 }
@@ -50,6 +51,7 @@ export type UserPointMaxAggregateOutputType = {
   postId: string | null
   likeId: string | null
   commentId: string | null
+  followId: string | null
   battleId: string | null
   points: number | null
 }
@@ -60,6 +62,7 @@ export type UserPointCountAggregateOutputType = {
   postId: number
   likeId: number
   commentId: number
+  followId: number
   battleId: number
   points: number
   _all: number
@@ -80,6 +83,7 @@ export type UserPointMinAggregateInputType = {
   postId?: true
   likeId?: true
   commentId?: true
+  followId?: true
   battleId?: true
   points?: true
 }
@@ -90,6 +94,7 @@ export type UserPointMaxAggregateInputType = {
   postId?: true
   likeId?: true
   commentId?: true
+  followId?: true
   battleId?: true
   points?: true
 }
@@ -100,6 +105,7 @@ export type UserPointCountAggregateInputType = {
   postId?: true
   likeId?: true
   commentId?: true
+  followId?: true
   battleId?: true
   points?: true
   _all?: true
@@ -197,7 +203,8 @@ export type UserPointGroupByOutputType = {
   postId: string | null
   likeId: string | null
   commentId: string | null
-  battleId: string
+  followId: string | null
+  battleId: string | null
   points: number
   _count: UserPointCountAggregateOutputType | null
   _avg: UserPointAvgAggregateOutputType | null
@@ -230,13 +237,15 @@ export type UserPointWhereInput = {
   postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  battleId?: Prisma.UuidFilter<"UserPoint"> | string
+  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  battleId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   points?: Prisma.IntFilter<"UserPoint"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
   like?: Prisma.XOR<Prisma.LikeNullableScalarRelationFilter, Prisma.LikeWhereInput> | null
   comment?: Prisma.XOR<Prisma.CommentNullableScalarRelationFilter, Prisma.CommentWhereInput> | null
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
+  follow?: Prisma.XOR<Prisma.FollowNullableScalarRelationFilter, Prisma.FollowWhereInput> | null
+  battle?: Prisma.XOR<Prisma.BattleNullableScalarRelationFilter, Prisma.BattleWhereInput> | null
 }
 
 export type UserPointOrderByWithRelationInput = {
@@ -245,12 +254,14 @@ export type UserPointOrderByWithRelationInput = {
   postId?: Prisma.SortOrderInput | Prisma.SortOrder
   likeId?: Prisma.SortOrderInput | Prisma.SortOrder
   commentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  battleId?: Prisma.SortOrder
+  followId?: Prisma.SortOrderInput | Prisma.SortOrder
+  battleId?: Prisma.SortOrderInput | Prisma.SortOrder
   points?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   post?: Prisma.PostOrderByWithRelationInput
   like?: Prisma.LikeOrderByWithRelationInput
   comment?: Prisma.CommentOrderByWithRelationInput
+  follow?: Prisma.FollowOrderByWithRelationInput
   battle?: Prisma.BattleOrderByWithRelationInput
 }
 
@@ -263,13 +274,15 @@ export type UserPointWhereUniqueInput = Prisma.AtLeast<{
   postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  battleId?: Prisma.UuidFilter<"UserPoint"> | string
+  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  battleId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   points?: Prisma.IntFilter<"UserPoint"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
   like?: Prisma.XOR<Prisma.LikeNullableScalarRelationFilter, Prisma.LikeWhereInput> | null
   comment?: Prisma.XOR<Prisma.CommentNullableScalarRelationFilter, Prisma.CommentWhereInput> | null
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
+  follow?: Prisma.XOR<Prisma.FollowNullableScalarRelationFilter, Prisma.FollowWhereInput> | null
+  battle?: Prisma.XOR<Prisma.BattleNullableScalarRelationFilter, Prisma.BattleWhereInput> | null
 }, "id">
 
 export type UserPointOrderByWithAggregationInput = {
@@ -278,7 +291,8 @@ export type UserPointOrderByWithAggregationInput = {
   postId?: Prisma.SortOrderInput | Prisma.SortOrder
   likeId?: Prisma.SortOrderInput | Prisma.SortOrder
   commentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  battleId?: Prisma.SortOrder
+  followId?: Prisma.SortOrderInput | Prisma.SortOrder
+  battleId?: Prisma.SortOrderInput | Prisma.SortOrder
   points?: Prisma.SortOrder
   _count?: Prisma.UserPointCountOrderByAggregateInput
   _avg?: Prisma.UserPointAvgOrderByAggregateInput
@@ -296,7 +310,8 @@ export type UserPointScalarWhereWithAggregatesInput = {
   postId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
   likeId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
   commentId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
-  battleId?: Prisma.UuidWithAggregatesFilter<"UserPoint"> | string
+  followId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
+  battleId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
   points?: Prisma.IntWithAggregatesFilter<"UserPoint"> | number
 }
 
@@ -307,7 +322,8 @@ export type UserPointCreateInput = {
   post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
   like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
   comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  battle: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateInput = {
@@ -316,7 +332,8 @@ export type UserPointUncheckedCreateInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -327,7 +344,8 @@ export type UserPointUpdateInput = {
   post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
   like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
   comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  battle?: Prisma.BattleUpdateOneRequiredWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateInput = {
@@ -336,7 +354,8 @@ export type UserPointUncheckedUpdateInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -346,7 +365,8 @@ export type UserPointCreateManyInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -361,7 +381,8 @@ export type UserPointUncheckedUpdateManyInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -381,6 +402,7 @@ export type UserPointCountOrderByAggregateInput = {
   postId?: Prisma.SortOrder
   likeId?: Prisma.SortOrder
   commentId?: Prisma.SortOrder
+  followId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   points?: Prisma.SortOrder
 }
@@ -395,6 +417,7 @@ export type UserPointMaxOrderByAggregateInput = {
   postId?: Prisma.SortOrder
   likeId?: Prisma.SortOrder
   commentId?: Prisma.SortOrder
+  followId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   points?: Prisma.SortOrder
 }
@@ -405,6 +428,7 @@ export type UserPointMinOrderByAggregateInput = {
   postId?: Prisma.SortOrder
   likeId?: Prisma.SortOrder
   commentId?: Prisma.SortOrder
+  followId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   points?: Prisma.SortOrder
 }
@@ -494,6 +518,48 @@ export type UserPointUncheckedUpdateManyWithoutCommentNestedInput = {
   connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
   update?: Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput | Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput[]
   updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutCommentInput | Prisma.UserPointUpdateManyWithWhereWithoutCommentInput[]
+  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
+}
+
+export type UserPointCreateNestedManyWithoutFollowInput = {
+  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
+  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
+  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
+  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+}
+
+export type UserPointUncheckedCreateNestedManyWithoutFollowInput = {
+  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
+  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
+  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
+  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+}
+
+export type UserPointUpdateManyWithoutFollowNestedInput = {
+  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
+  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
+  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput[]
+  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
+  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput[]
+  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutFollowInput | Prisma.UserPointUpdateManyWithWhereWithoutFollowInput[]
+  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
+}
+
+export type UserPointUncheckedUpdateManyWithoutFollowNestedInput = {
+  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
+  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
+  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput[]
+  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
+  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
+  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput[]
+  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutFollowInput | Prisma.UserPointUpdateManyWithWhereWithoutFollowInput[]
   deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
 }
 
@@ -630,6 +696,7 @@ export type UserPointCreateWithoutBattleInput = {
   post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
   like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
   comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateWithoutBattleInput = {
@@ -638,6 +705,7 @@ export type UserPointUncheckedCreateWithoutBattleInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
+  followId?: string | null
   points: number
 }
 
@@ -676,7 +744,8 @@ export type UserPointScalarWhereInput = {
   postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  battleId?: Prisma.UuidFilter<"UserPoint"> | string
+  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  battleId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
   points?: Prisma.IntFilter<"UserPoint"> | number
 }
 
@@ -686,7 +755,8 @@ export type UserPointCreateWithoutCommentInput = {
   user: Prisma.UserCreateNestedOneWithoutUserPointsInput
   post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
   like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  battle: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateWithoutCommentInput = {
@@ -694,7 +764,8 @@ export type UserPointUncheckedCreateWithoutCommentInput = {
   userId: string
   postId?: string | null
   likeId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -724,13 +795,60 @@ export type UserPointUpdateManyWithWhereWithoutCommentInput = {
   data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutCommentInput>
 }
 
+export type UserPointCreateWithoutFollowInput = {
+  id?: string
+  points: number
+  user: Prisma.UserCreateNestedOneWithoutUserPointsInput
+  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
+  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
+  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+}
+
+export type UserPointUncheckedCreateWithoutFollowInput = {
+  id?: string
+  userId: string
+  postId?: string | null
+  likeId?: string | null
+  commentId?: string | null
+  battleId?: string | null
+  points: number
+}
+
+export type UserPointCreateOrConnectWithoutFollowInput = {
+  where: Prisma.UserPointWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput>
+}
+
+export type UserPointCreateManyFollowInputEnvelope = {
+  data: Prisma.UserPointCreateManyFollowInput | Prisma.UserPointCreateManyFollowInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserPointUpsertWithWhereUniqueWithoutFollowInput = {
+  where: Prisma.UserPointWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserPointUpdateWithoutFollowInput, Prisma.UserPointUncheckedUpdateWithoutFollowInput>
+  create: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput>
+}
+
+export type UserPointUpdateWithWhereUniqueWithoutFollowInput = {
+  where: Prisma.UserPointWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserPointUpdateWithoutFollowInput, Prisma.UserPointUncheckedUpdateWithoutFollowInput>
+}
+
+export type UserPointUpdateManyWithWhereWithoutFollowInput = {
+  where: Prisma.UserPointScalarWhereInput
+  data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutFollowInput>
+}
+
 export type UserPointCreateWithoutLikeInput = {
   id?: string
   points: number
   user: Prisma.UserCreateNestedOneWithoutUserPointsInput
   post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
   comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  battle: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateWithoutLikeInput = {
@@ -738,7 +856,8 @@ export type UserPointUncheckedCreateWithoutLikeInput = {
   userId: string
   postId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -774,7 +893,8 @@ export type UserPointCreateWithoutPostInput = {
   user: Prisma.UserCreateNestedOneWithoutUserPointsInput
   like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
   comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  battle: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateWithoutPostInput = {
@@ -782,7 +902,8 @@ export type UserPointUncheckedCreateWithoutPostInput = {
   userId: string
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -818,7 +939,8 @@ export type UserPointCreateWithoutUserInput = {
   post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
   like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
   comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  battle: Prisma.BattleCreateNestedOneWithoutUserPointsInput
+  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  battle?: Prisma.BattleCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateWithoutUserInput = {
@@ -826,7 +948,8 @@ export type UserPointUncheckedCreateWithoutUserInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -862,6 +985,7 @@ export type UserPointCreateManyBattleInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
+  followId?: string | null
   points: number
 }
 
@@ -872,6 +996,7 @@ export type UserPointUpdateWithoutBattleInput = {
   post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
   like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
   comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateWithoutBattleInput = {
@@ -880,6 +1005,7 @@ export type UserPointUncheckedUpdateWithoutBattleInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -889,6 +1015,7 @@ export type UserPointUncheckedUpdateManyWithoutBattleInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -897,7 +1024,8 @@ export type UserPointCreateManyCommentInput = {
   userId: string
   postId?: string | null
   likeId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -907,7 +1035,8 @@ export type UserPointUpdateWithoutCommentInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
   post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
   like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  battle?: Prisma.BattleUpdateOneRequiredWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateWithoutCommentInput = {
@@ -915,7 +1044,8 @@ export type UserPointUncheckedUpdateWithoutCommentInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -924,7 +1054,48 @@ export type UserPointUncheckedUpdateManyWithoutCommentInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  points?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type UserPointCreateManyFollowInput = {
+  id?: string
+  userId: string
+  postId?: string | null
+  likeId?: string | null
+  commentId?: string | null
+  battleId?: string | null
+  points: number
+}
+
+export type UserPointUpdateWithoutFollowInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  points?: Prisma.IntFieldUpdateOperationsInput | number
+  user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
+  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
+  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
+  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
+}
+
+export type UserPointUncheckedUpdateWithoutFollowInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  points?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type UserPointUncheckedUpdateManyWithoutFollowInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -933,7 +1104,8 @@ export type UserPointCreateManyLikeInput = {
   userId: string
   postId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -943,7 +1115,8 @@ export type UserPointUpdateWithoutLikeInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
   post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
   comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  battle?: Prisma.BattleUpdateOneRequiredWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateWithoutLikeInput = {
@@ -951,7 +1124,8 @@ export type UserPointUncheckedUpdateWithoutLikeInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -960,7 +1134,8 @@ export type UserPointUncheckedUpdateManyWithoutLikeInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -969,7 +1144,8 @@ export type UserPointCreateManyPostInput = {
   userId: string
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -979,7 +1155,8 @@ export type UserPointUpdateWithoutPostInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
   like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
   comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  battle?: Prisma.BattleUpdateOneRequiredWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateWithoutPostInput = {
@@ -987,7 +1164,8 @@ export type UserPointUncheckedUpdateWithoutPostInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -996,7 +1174,8 @@ export type UserPointUncheckedUpdateManyWithoutPostInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -1005,7 +1184,8 @@ export type UserPointCreateManyUserInput = {
   postId?: string | null
   likeId?: string | null
   commentId?: string | null
-  battleId: string
+  followId?: string | null
+  battleId?: string | null
   points: number
 }
 
@@ -1015,7 +1195,8 @@ export type UserPointUpdateWithoutUserInput = {
   post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
   like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
   comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  battle?: Prisma.BattleUpdateOneRequiredWithoutUserPointsNestedInput
+  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  battle?: Prisma.BattleUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateWithoutUserInput = {
@@ -1023,7 +1204,8 @@ export type UserPointUncheckedUpdateWithoutUserInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -1032,7 +1214,8 @@ export type UserPointUncheckedUpdateManyWithoutUserInput = {
   postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   points?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -1044,13 +1227,15 @@ export type UserPointSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   postId?: boolean
   likeId?: boolean
   commentId?: boolean
+  followId?: boolean
   battleId?: boolean
   points?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1059,13 +1244,15 @@ export type UserPointSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   postId?: boolean
   likeId?: boolean
   commentId?: boolean
+  followId?: boolean
   battleId?: boolean
   points?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1074,13 +1261,15 @@ export type UserPointSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   postId?: boolean
   likeId?: boolean
   commentId?: boolean
+  followId?: boolean
   battleId?: boolean
   points?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectScalar = {
@@ -1089,31 +1278,35 @@ export type UserPointSelectScalar = {
   postId?: boolean
   likeId?: boolean
   commentId?: boolean
+  followId?: boolean
   battleId?: boolean
   points?: boolean
 }
 
-export type UserPointOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postId" | "likeId" | "commentId" | "battleId" | "points", ExtArgs["result"]["userPoint"]>
+export type UserPointOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postId" | "likeId" | "commentId" | "followId" | "battleId" | "points", ExtArgs["result"]["userPoint"]>
 export type UserPointInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }
 export type UserPointIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }
 export type UserPointIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
   like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
   comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
+  battle?: boolean | Prisma.UserPoint$battleArgs<ExtArgs>
 }
 
 export type $UserPointPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1123,7 +1316,8 @@ export type $UserPointPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     post: Prisma.$PostPayload<ExtArgs> | null
     like: Prisma.$LikePayload<ExtArgs> | null
     comment: Prisma.$CommentPayload<ExtArgs> | null
-    battle: Prisma.$BattlePayload<ExtArgs>
+    follow: Prisma.$FollowPayload<ExtArgs> | null
+    battle: Prisma.$BattlePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1131,7 +1325,8 @@ export type $UserPointPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     postId: string | null
     likeId: string | null
     commentId: string | null
-    battleId: string
+    followId: string | null
+    battleId: string | null
     points: number
   }, ExtArgs["result"]["userPoint"]>
   composites: {}
@@ -1531,7 +1726,8 @@ export interface Prisma__UserPointClient<T, Null = never, ExtArgs extends runtim
   post<T extends Prisma.UserPoint$postArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$postArgs<ExtArgs>>): Prisma.Prisma__PostClient<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   like<T extends Prisma.UserPoint$likeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$likeArgs<ExtArgs>>): Prisma.Prisma__LikeClient<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   comment<T extends Prisma.UserPoint$commentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$commentArgs<ExtArgs>>): Prisma.Prisma__CommentClient<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  battle<T extends Prisma.BattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleDefaultArgs<ExtArgs>>): Prisma.Prisma__BattleClient<runtime.Types.Result.GetResult<Prisma.$BattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  follow<T extends Prisma.UserPoint$followArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$followArgs<ExtArgs>>): Prisma.Prisma__FollowClient<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  battle<T extends Prisma.UserPoint$battleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$battleArgs<ExtArgs>>): Prisma.Prisma__BattleClient<runtime.Types.Result.GetResult<Prisma.$BattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1566,6 +1762,7 @@ export interface UserPointFieldRefs {
   readonly postId: Prisma.FieldRef<"UserPoint", 'String'>
   readonly likeId: Prisma.FieldRef<"UserPoint", 'String'>
   readonly commentId: Prisma.FieldRef<"UserPoint", 'String'>
+  readonly followId: Prisma.FieldRef<"UserPoint", 'String'>
   readonly battleId: Prisma.FieldRef<"UserPoint", 'String'>
   readonly points: Prisma.FieldRef<"UserPoint", 'Int'>
 }
@@ -2018,6 +2215,44 @@ export type UserPoint$commentArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   include?: Prisma.CommentInclude<ExtArgs> | null
   where?: Prisma.CommentWhereInput
+}
+
+/**
+ * UserPoint.follow
+ */
+export type UserPoint$followArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Follow
+   */
+  select?: Prisma.FollowSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Follow
+   */
+  omit?: Prisma.FollowOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FollowInclude<ExtArgs> | null
+  where?: Prisma.FollowWhereInput
+}
+
+/**
+ * UserPoint.battle
+ */
+export type UserPoint$battleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Battle
+   */
+  select?: Prisma.BattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Battle
+   */
+  omit?: Prisma.BattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleInclude<ExtArgs> | null
+  where?: Prisma.BattleWhereInput
 }
 
 /**

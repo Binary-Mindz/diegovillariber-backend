@@ -67,6 +67,13 @@ export class AuthController {
     );
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post('getMe')
+  getMe(@GetUser('userId') userId: string) {
+    return this.auth.getMe(userId);
+  }
+
   // Example: admin only route
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)

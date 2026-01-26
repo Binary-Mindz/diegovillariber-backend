@@ -14,15 +14,10 @@ import {
   ApiOperation,
   ApiResponse,
   ApiParam,
-  ApiQuery,
   ApiBearerAuth,
 } from '@nestjs/swagger';
 import { FollowService } from './follow.service';
-import {
-  CreateFollowDto,
-  FollowersQueryDto,
-  UnfollowDto,
-} from './dto/create.follow.dto';
+import { CreateFollowDto, UnfollowDto } from './dto/create.follow.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
@@ -49,7 +44,10 @@ export class FollowController {
 
   @Delete('unfollow')
   @ApiOperation({ summary: 'Logged user unfollow a user' })
-  async unfollowUser(@GetUser('userId') userId: string, @Body() dto: UnfollowDto) {
+  async unfollowUser(
+    @GetUser('userId') userId: string,
+    @Body() dto: UnfollowDto,
+  ) {
     return handleRequest(
       async () => await this.followService.unfollowUser(userId, dto),
       'User Unfollowed successfully',

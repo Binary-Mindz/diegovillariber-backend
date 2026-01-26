@@ -48,7 +48,7 @@ export class CommentService {
           user: {
             select: {
               id: true,
-              username:true,
+              username: true,
               email: true,
               profile: {
                 select: {
@@ -241,7 +241,7 @@ export class CommentService {
         user: {
           select: {
             id: true,
-            username:true,
+            username: true,
             email: true,
             profile: {
               select: {

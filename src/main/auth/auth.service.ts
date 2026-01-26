@@ -2,6 +2,7 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
@@ -73,13 +74,13 @@ export class AuthService {
 
     const user = await this.prisma.user.create({
       data: {
-        username:dto.username,
+        username: dto.username,
         email: dto.email,
         password: passwordHash,
         emailOtp: otp,
         emailOtpExpiresAt: expires,
       },
-      select: { id: true, username:true, email: true },
+      select: { id: true, username: true, email: true },
     });
 
     await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
@@ -264,5 +265,11 @@ export class AuthService {
     });
 
     return { message: 'Password changed successfully' };
+  }
+
+  async getMe(userId: string) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user) throw new NotFoundException('User is Not Found');
+    return user;
   }
 }

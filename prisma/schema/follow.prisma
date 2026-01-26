@@ -10,5 +10,6 @@ model Follow {
   createdAt    DateTime @default(now())
 
   @@unique([followerId, followingId])
+  userPoints UserPoint[]
 }
 

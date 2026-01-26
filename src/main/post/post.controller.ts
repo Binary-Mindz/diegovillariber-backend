@@ -26,8 +26,6 @@ export class PostController {
   @HttpPost()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create a new post' })
-  @ApiResponse({ status: 201, description: 'Post created successfully' })
-  @ApiResponse({ status: 404, description: 'User not found' })
   async createPost(@Body() createPostDto: CreatePostDto) {
     const post = await this.postService.createPost(createPostDto);
     return {
