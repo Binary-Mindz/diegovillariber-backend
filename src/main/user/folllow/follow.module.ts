@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { FollowService } from './follow.service';
-import { FollowController } from './folloe.controller';
+import { FollowController } from './follow.controller';
 
 @Module({
   controllers: [FollowController],

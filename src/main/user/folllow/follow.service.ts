@@ -57,16 +57,14 @@ export class FollowService {
         follower: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username:true,
             email: true,
           },
         },
         following: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username:true,
             email: true,
           },
         },
@@ -117,8 +115,7 @@ export class FollowService {
         follower: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username:true,
             email: true,
             profile: {
               select: {
@@ -147,8 +144,7 @@ export class FollowService {
         following: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username:true,
             email: true,
             profile: {
               select: {
@@ -235,8 +231,7 @@ export class FollowService {
       },
       select: {
         id: true,
-        firstName: true,
-        lastName: true,
+        username:true,
         email: true,
         profile: {
           select: {
