@@ -48,8 +48,7 @@ export class CommentService {
           user: {
             select: {
               id: true,
-              firstName: true,
-              lastName: true,
+              username:true,
               email: true,
               profile: {
                 select: {
@@ -98,8 +97,7 @@ export class CommentService {
         user: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username: true,
             email: true,
             profile: {
               select: {
@@ -169,8 +167,7 @@ export class CommentService {
           user: {
             select: {
               id: true,
-              firstName: true,
-              lastName: true,
+              username: true,
               email: true,
               profile: {
                 select: {
@@ -244,8 +241,7 @@ export class CommentService {
         user: {
           select: {
             id: true,
-            firstName: true,
-            lastName: true,
+            username:true,
             email: true,
             profile: {
               select: {
