@@ -73,12 +73,13 @@ export class AuthService {
 
     const user = await this.prisma.user.create({
       data: {
+        username:dto.username,
         email: dto.email,
         password: passwordHash,
         emailOtp: otp,
         emailOtpExpiresAt: expires,
       },
-      select: { id: true, email: true },
+      select: { id: true, username:true, email: true },
     });
 
     await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
