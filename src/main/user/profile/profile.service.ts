@@ -374,8 +374,7 @@ export class ProfileService {
         select: {
           id: true,
           email: true,
-          firstName: true,
-          lastName: true,
+          username:true,
           phone: true,
         },
       },
