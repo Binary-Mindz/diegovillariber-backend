@@ -36,7 +36,7 @@ export class ProfileController {
       'Create a new user profile. Type: SPOTTER,OWNER,CONTENT_CREATOR, PRO_BUSSINESS, PRO_DRIVER , SIM_RACING_DRIVER',
   })
   async createProfile(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: CreateProfileDto,
   ) {
     const profile = await this.profileService.createProfile(userId, dto);
@@ -49,7 +49,7 @@ export class ProfileController {
 
   @Get('user/me')
   @ApiOperation({ summary: 'Get profile by user ID' })
-  async getProfileByUserId(@GetUser('id') userId: string) {
+  async getProfileByUserId(@GetUser('userId') userId: string) {
     const profile = await this.profileService.getProfilesByUserId(userId);
     return {
       success: true,
@@ -79,7 +79,7 @@ export class ProfileController {
   @ApiResponse({ status: 200, description: 'Profile updated successfully' })
   async updateProfileBase(
     @Param('profileId') profileId: string,
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: UpdateProfileBaseDto,
   ) {
     const profile = await this.profileService.updateProfileBase(
@@ -107,7 +107,7 @@ export class ProfileController {
   })
   async changeProfileType(
     @Param('profileId') profileId: string,
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: ChangeProfileTypeDto,
   ) {
     const profile = await this.profileService.changeProfileType(
