@@ -5749,6 +5749,7 @@ export const UserPointScalarFieldEnum = {
   postId: 'postId',
   likeId: 'likeId',
   commentId: 'commentId',
+  followId: 'followId',
   battleId: 'battleId',
   points: 'points'
 } as const

@@ -62,7 +62,7 @@ export class PostService {
         user: {
           select: {
             id: true,
-            username:true,
+            username: true,
             email: true,
           },
         },
@@ -91,7 +91,7 @@ export class PostService {
           user: {
             select: {
               id: true,
-              username:true,
+              username: true,
               email: true,
             },
           },
@@ -125,7 +125,7 @@ export class PostService {
         user: {
           select: {
             id: true,
-           username:true,
+            username: true,
             email: true,
           },
         },
@@ -135,7 +135,7 @@ export class PostService {
             user: {
               select: {
                 id: true,
-              username:true
+                username: true,
               },
             },
           },
@@ -195,7 +195,7 @@ export class PostService {
         user: {
           select: {
             id: true,
-            username:true,
+            username: true,
             email: true,
           },
         },
