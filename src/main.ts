@@ -20,7 +20,7 @@ async function bootstrap() {
     .setTitle('Diegovillariber Backend Server')
     .addBearerAuth()
     .build();
-    
+
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, documentFactory, {
     swaggerOptions: {
@@ -28,7 +28,7 @@ async function bootstrap() {
     },
   });
 
-  const port = process.env.PORT! || 8080;
+  const port = process.env.PORT! || 5000;
   console.log(`Server Running on port: ${port}`);
   await app.listen(process.env.PORT ?? port);
 }

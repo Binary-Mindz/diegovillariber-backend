@@ -1,7 +1,14 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { CommentsQueryDto, CreateCommentDto, UpdateCommentDto } from './dto/create.comment.dto';
-
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
+import {
+  CommentsQueryDto,
+  CreateCommentDto,
+  UpdateCommentDto,
+} from './dto/create.comment.dto';
 
 @Injectable()
 export class CommentService {
@@ -12,7 +19,7 @@ export class CommentService {
 
     // Verify user exists
     const user = await this.prisma.user.findUnique({
-      where: { id: userId }
+      where: { id: userId },
     });
 
     if (!user) {
@@ -21,7 +28,7 @@ export class CommentService {
 
     // Verify post exists
     const post = await this.prisma.post.findUnique({
-      where: { id: postId }
+      where: { id: postId },
     });
 
     if (!post) {
@@ -35,7 +42,7 @@ export class CommentService {
           userId,
           postId,
           postType,
-          content
+          content,
         },
         include: {
           user: {
@@ -47,26 +54,30 @@ export class CommentService {
               profile: {
                 select: {
                   userName: true,
-                  imageUrl: true
-                }
-              }
-            }
-          }
-        }
+                  imageUrl: true,
+                },
+              },
+            },
+          },
+        },
       }),
       this.prisma.post.update({
         where: { id: postId },
-        data: { comment: { increment: 1 } }
-      })
+        data: { comment: { increment: 1 } },
+      }),
     ]);
 
     return comment;
   }
 
-  async updateComment(id: string, userId: string, updateCommentDto: UpdateCommentDto) {
+  async updateComment(
+    id: string,
+    userId: string,
+    updateCommentDto: UpdateCommentDto,
+  ) {
     // Check if comment exists
     const comment = await this.prisma.comment.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!comment) {
@@ -75,7 +86,9 @@ export class CommentService {
 
     // Check if user owns the comment
     if (comment.userId !== userId) {
-      throw new ForbiddenException('You do not have permission to update this comment');
+      throw new ForbiddenException(
+        'You do not have permission to update this comment',
+      );
     }
 
     const updatedComment = await this.prisma.comment.update({
@@ -91,12 +104,12 @@ export class CommentService {
             profile: {
               select: {
                 userName: true,
-                imageUrl: true
-              }
-            }
-          }
-        }
-      }
+                imageUrl: true,
+              },
+            },
+          },
+        },
+      },
     });
 
     return updatedComment;
@@ -105,7 +118,7 @@ export class CommentService {
   async deleteComment(id: string, userId: string) {
     // Check if comment exists
     const comment = await this.prisma.comment.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!comment) {
@@ -114,18 +127,20 @@ export class CommentService {
 
     // Check if user owns the comment
     if (comment.userId !== userId) {
-      throw new ForbiddenException('You do not have permission to delete this comment');
+      throw new ForbiddenException(
+        'You do not have permission to delete this comment',
+      );
     }
 
     // Delete comment and decrement post comment count
     await this.prisma.$transaction([
       this.prisma.comment.delete({
-        where: { id }
+        where: { id },
       }),
       this.prisma.post.update({
         where: { id: comment.postId },
-        data: { comment: { decrement: 1 } }
-      })
+        data: { comment: { decrement: 1 } },
+      }),
     ]);
 
     return { message: 'Comment deleted successfully' };
@@ -160,14 +175,14 @@ export class CommentService {
               profile: {
                 select: {
                   userName: true,
-                  imageUrl: true
-                }
-              }
-            }
-          }
-        }
+                  imageUrl: true,
+                },
+              },
+            },
+          },
+        },
       }),
-      this.prisma.comment.count({ where })
+      this.prisma.comment.count({ where }),
     ]);
 
     return {
@@ -176,8 +191,8 @@ export class CommentService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
-      }
+        totalPages: Math.ceil(total / limit),
+      },
     };
   }
 
@@ -205,10 +220,10 @@ export class CommentService {
           postId: true,
           postType: true,
           content: true,
-          createdAt: true
-        }
+          createdAt: true,
+        },
       }),
-      this.prisma.comment.count({ where })
+      this.prisma.comment.count({ where }),
     ]);
 
     return {
@@ -217,8 +232,8 @@ export class CommentService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
-      }
+        totalPages: Math.ceil(total / limit),
+      },
     };
   }
 
@@ -235,12 +250,12 @@ export class CommentService {
             profile: {
               select: {
                 userName: true,
-                imageUrl: true
-              }
-            }
-          }
-        }
-      }
+                imageUrl: true,
+              },
+            },
+          },
+        },
+      },
     });
 
     if (!comment) {

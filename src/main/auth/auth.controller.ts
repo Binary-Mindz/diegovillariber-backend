@@ -1,54 +1,79 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import {
-  ForgetPasswordDto,
-  LoginDto,
-  Otp,
-  ResetPasswordDto,
-} from './dto/create-auth.dto';
-import { ApiOperation } from '@nestjs/swagger';
-import { handleRequest } from '@/common/helpers/handle.request';
-import { CreateUserDto } from './dto/create.user.dto';
+import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { SignUpDto } from './dto/signup.dto';
+import { VerifyEmailDto } from './dto/verify-email.dto';
+import { LoginDto } from './dto/login.dto';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { ChangePasswordDto } from './dto/change-password.dto';
+import { GetUser } from '@/common/decorator/get-user.decorator';
+import { Roles } from '@/common/decorator/roles.tdecorator';
+
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private auth: AuthService) {}
 
   @Post('signup')
-  @ApiOperation({ summary: 'Create a new user account' })
-  create(@Body() createAuthDto: CreateUserDto) {
-    return handleRequest(
-      () => this.authService.createUser(createAuthDto),
-      'User created successfully',
-    );
+  signup(@Body() dto: SignUpDto) {
+    return this.auth.signup(dto);
+  }
+
+  @Post('verify-email')
+  verifyEmail(@Body() dto: VerifyEmailDto) {
+    return this.auth.verifyEmail(dto.email, dto.otp);
   }
 
   @Post('login')
-  @ApiOperation({ summary: 'Login User' })
-  login(@Body() login: LoginDto) {
-    return handleRequest(
-      () => this.authService.loginuser(login),
-      'User login successfully',
-    );
+  login(@Body() dto: LoginDto) {
+    return this.auth.login(dto.email, dto.password);
   }
 
-  @Post('forgetpassword')
-  @ApiOperation({ summary: 'Forget Password' })
-  forgetpassword(@Body() login: ForgetPasswordDto) {
-    return this.authService.forgetPassword(login.email);
+  @Post('refresh')
+  refresh(@Body() dto: RefreshTokenDto) {
+    return this.auth.refreshTokens(dto.userId, dto.refreshToken);
   }
 
-  @Post('verify-forgot-otp')
-  @ApiOperation({ summary: 'verify otp' })
-  verifyForgotOtp(@Body() otp: Otp) {
-    return this.authService.verifyForgotOtp(otp.otp);
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  logout(@Req() req: any) {
+    return this.auth.logout(req.user.userId);
+  }
+
+  @Post('forgot-password')
+  forgotPassword(@Body() dto: ForgotPasswordDto) {
+    return this.auth.forgotPassword(dto.email);
   }
 
   @Post('reset-password')
-  @ApiOperation({ summary: 'Reset password without OTP or ID' })
-  async resetPassword(@Body() dto: ResetPasswordDto) {
-    return handleRequest(
-      () => this.authService.resetPassword(dto.password),
-      'Password Set successful',
+  resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.auth.resetPassword(dto.email, dto.otp, dto.newPassword);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post('change-password')
+  changePassword(
+    @GetUser('userId') userId: string,
+    @Body() dto: ChangePasswordDto,
+  ) {
+    console.log('userId', userId);
+    return this.auth.changePassword(
+      userId,
+      dto.currentPassword,
+      dto.newPassword,
     );
+  }
+
+  // Example: admin only route
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
+  @Post('admin-only')
+  adminOnly() {
+    return { ok: true };
   }
 }

@@ -1,18 +1,22 @@
-import { 
-  Controller, 
-  Post, 
-  Put, 
-  Delete, 
-  Get, 
-  Body, 
-  Param, 
+import {
+  Controller,
+  Post,
+  Put,
+  Delete,
+  Get,
+  Body,
+  Param,
   Query,
-  HttpCode, 
-  HttpStatus 
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { CommentService } from './comment.service';
-import { CommentsQueryDto, CreateCommentDto, UpdateCommentDto } from './dto/create.comment.dto';
+import {
+  CommentsQueryDto,
+  CreateCommentDto,
+  UpdateCommentDto,
+} from './dto/create.comment.dto';
 
 @ApiTags('comments')
 @Controller('comments')
@@ -29,7 +33,7 @@ export class CommentController {
     return {
       success: true,
       message: 'Comment created successfully',
-      data: comment
+      data: comment,
     };
   }
 
@@ -41,14 +45,18 @@ export class CommentController {
   @ApiResponse({ status: 403, description: 'Forbidden' })
   async updateComment(
     @Param('id') id: string,
-    @Body() updateCommentDto: UpdateCommentDto & { userId: string }
+    @Body() updateCommentDto: UpdateCommentDto & { userId: string },
   ) {
     const { userId, ...updateData } = updateCommentDto;
-    const comment = await this.commentService.updateComment(id, userId, updateData);
+    const comment = await this.commentService.updateComment(
+      id,
+      userId,
+      updateData,
+    );
     return {
       success: true,
       message: 'Comment updated successfully',
-      data: comment
+      data: comment,
     };
   }
 
@@ -58,14 +66,11 @@ export class CommentController {
   @ApiResponse({ status: 200, description: 'Comment deleted successfully' })
   @ApiResponse({ status: 404, description: 'Comment not found' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
-  async deleteComment(
-    @Param('id') id: string,
-    @Body('userId') userId: string
-  ) {
+  async deleteComment(@Param('id') id: string, @Body('userId') userId: string) {
     const result = await this.commentService.deleteComment(id, userId);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -76,28 +81,31 @@ export class CommentController {
   @ApiResponse({ status: 404, description: 'Post not found' })
   async getPostComments(
     @Param('postId') postId: string,
-    @Query() queryDto: CommentsQueryDto
+    @Query() queryDto: CommentsQueryDto,
   ) {
     const result = await this.commentService.getPostComments(postId, queryDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
   @Get('user/:userId')
   @ApiOperation({ summary: 'Get all comments by a user' })
   @ApiParam({ name: 'userId', description: 'User UUID' })
-  @ApiResponse({ status: 200, description: 'User comments retrieved successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'User comments retrieved successfully',
+  })
   @ApiResponse({ status: 404, description: 'User not found' })
   async getUserComments(
     @Param('userId') userId: string,
-    @Query() queryDto: CommentsQueryDto
+    @Query() queryDto: CommentsQueryDto,
   ) {
     const result = await this.commentService.getUserComments(userId, queryDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -110,7 +118,7 @@ export class CommentController {
     const comment = await this.commentService.getCommentById(id);
     return {
       success: true,
-      data: comment
+      data: comment,
     };
   }
 }
