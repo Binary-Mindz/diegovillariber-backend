@@ -60,7 +60,6 @@ export class AuthController {
     @GetUser('userId') userId: string,
     @Body() dto: ChangePasswordDto,
   ) {
-    console.log('userId', userId);
     return this.auth.changePassword(
       userId,
       dto.currentPassword,
