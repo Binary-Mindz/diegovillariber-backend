@@ -1,18 +1,35 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
-import { CreatePostDto, Media, PostQueryDto, PostType, UpdatePostDto } from './dto/create.post.dto';
-
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
+import {
+  CreatePostDto,
+  Media,
+  PostQueryDto,
+  PostType,
+  UpdatePostDto,
+} from './dto/create.post.dto';
 
 @Injectable()
 export class PostService {
   constructor(private prisma: PrismaService) {}
 
   async createPost(createPostDto: CreatePostDto) {
-    const { userId, postType, caption, media, contentBooster, point, hashtagIds } = createPostDto;
+    const {
+      userId,
+      postType,
+      caption,
+      media,
+      contentBooster,
+      point,
+      hashtagIds,
+    } = createPostDto;
 
     // Verify user exists
     const user = await this.prisma.user.findUnique({
-      where: { id: userId }
+      where: { id: userId },
     });
 
     if (!user) {
@@ -29,13 +46,13 @@ export class PostService {
       point: point || 300,
       like: 0,
       comment: 0,
-      share: 0
+      share: 0,
     };
 
     // Connect hashtags if provided
     if (hashtagIds && hashtagIds.length > 0) {
       postData.hashtags = {
-        connect: hashtagIds.map(id => ({ id }))
+        connect: hashtagIds.map((id) => ({ id })),
       };
     }
 
@@ -47,18 +64,18 @@ export class PostService {
             id: true,
             firstName: true,
             lastName: true,
-            email: true
-          }
+            email: true,
+          },
         },
-        hashtags: true
-      }
+        hashtags: true,
+      },
     });
 
     return post;
   }
 
   async getPosts(queryDto: PostQueryDto) {
-    const { page=1, limit=10, postType, userId } = queryDto;
+    const { page = 1, limit = 10, postType, userId } = queryDto;
     const skip = (page - 1) * limit;
 
     const where: any = {};
@@ -77,19 +94,19 @@ export class PostService {
               id: true,
               firstName: true,
               lastName: true,
-              email: true
-            }
+              email: true,
+            },
           },
           hashtags: true,
           _count: {
             select: {
               reposts: true,
-              savePosts: true
-            }
-          }
-        }
+              savePosts: true,
+            },
+          },
+        },
       }),
-      this.prisma.post.count({ where })
+      this.prisma.post.count({ where }),
     ]);
 
     return {
@@ -98,8 +115,8 @@ export class PostService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
-      }
+        totalPages: Math.ceil(total / limit),
+      },
     };
   }
 
@@ -112,8 +129,8 @@ export class PostService {
             id: true,
             firstName: true,
             lastName: true,
-            email: true
-          }
+            email: true,
+          },
         },
         hashtags: true,
         reposts: {
@@ -122,19 +139,19 @@ export class PostService {
               select: {
                 id: true,
                 firstName: true,
-                lastName: true
-              }
-            }
-          }
+                lastName: true,
+              },
+            },
+          },
         },
         _count: {
           select: {
             reposts: true,
             savePosts: true,
-            racingVotes: true
-          }
-        }
-      }
+            racingVotes: true,
+          },
+        },
+      },
     });
 
     if (!post) {
@@ -147,7 +164,7 @@ export class PostService {
   async updatePost(id: string, userId: string, updatePostDto: UpdatePostDto) {
     // Check if post exists and belongs to user
     const post = await this.prisma.post.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!post) {
@@ -155,7 +172,9 @@ export class PostService {
     }
 
     if (post.userId !== userId) {
-      throw new ForbiddenException('You do not have permission to update this post');
+      throw new ForbiddenException(
+        'You do not have permission to update this post',
+      );
     }
 
     const { caption, media, contentBooster, hashtagIds } = updatePostDto;
@@ -163,12 +182,13 @@ export class PostService {
     const updateData: any = {};
     if (caption !== undefined) updateData.caption = caption;
     if (media !== undefined) updateData.media = media;
-    if (contentBooster !== undefined) updateData.contentBooster = contentBooster;
+    if (contentBooster !== undefined)
+      updateData.contentBooster = contentBooster;
 
     // Handle hashtags update
     if (hashtagIds !== undefined) {
       updateData.hashtags = {
-        set: hashtagIds.map(id => ({ id }))
+        set: hashtagIds.map((id) => ({ id })),
       };
     }
 
@@ -181,11 +201,11 @@ export class PostService {
             id: true,
             firstName: true,
             lastName: true,
-            email: true
-          }
+            email: true,
+          },
         },
-        hashtags: true
-      }
+        hashtags: true,
+      },
     });
 
     return updatedPost;
@@ -194,7 +214,7 @@ export class PostService {
   async deletePost(id: string, userId: string) {
     // Check if post exists and belongs to user
     const post = await this.prisma.post.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!post) {
@@ -202,11 +222,13 @@ export class PostService {
     }
 
     if (post.userId !== userId) {
-      throw new ForbiddenException('You do not have permission to delete this post');
+      throw new ForbiddenException(
+        'You do not have permission to delete this post',
+      );
     }
 
     await this.prisma.post.delete({
-      where: { id }
+      where: { id },
     });
 
     return { message: 'Post deleted successfully' };
@@ -216,8 +238,8 @@ export class PostService {
     const post = await this.prisma.post.update({
       where: { id },
       data: {
-        like: { increment: 1 }
-      }
+        like: { increment: 1 },
+      },
     });
 
     return post;
@@ -227,8 +249,8 @@ export class PostService {
     const post = await this.prisma.post.update({
       where: { id },
       data: {
-        comment: { increment: 1 }
-      }
+        comment: { increment: 1 },
+      },
     });
 
     return post;
@@ -238,8 +260,8 @@ export class PostService {
     const post = await this.prisma.post.update({
       where: { id },
       data: {
-        share: { increment: 1 }
-      }
+        share: { increment: 1 },
+      },
     });
 
     return post;

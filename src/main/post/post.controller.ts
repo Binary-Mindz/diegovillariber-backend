@@ -1,18 +1,22 @@
-import { 
-  Controller, 
-  Post as HttpPost, 
-  Get, 
-  Put, 
-  Delete, 
-  Body, 
-  Param, 
+import {
+  Controller,
+  Post as HttpPost,
+  Get,
+  Put,
+  Delete,
+  Body,
+  Param,
   Query,
-  HttpCode, 
-  HttpStatus 
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { PostService } from './post.service';
-import { CreatePostDto, PostQueryDto, UpdatePostDto } from './dto/create.post.dto';
+import {
+  CreatePostDto,
+  PostQueryDto,
+  UpdatePostDto,
+} from './dto/create.post.dto';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -29,7 +33,7 @@ export class PostController {
     return {
       success: true,
       message: 'Post created successfully',
-      data: post
+      data: post,
     };
   }
 
@@ -40,7 +44,7 @@ export class PostController {
     const result = await this.postService.getPosts(queryDto);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -53,7 +57,7 @@ export class PostController {
     const post = await this.postService.getPostById(id);
     return {
       success: true,
-      data: post
+      data: post,
     };
   }
 
@@ -65,14 +69,14 @@ export class PostController {
   @ApiResponse({ status: 403, description: 'Forbidden' })
   async updatePost(
     @Param('id') id: string,
-    @Body() updatePostDto: UpdatePostDto & { userId: string }
+    @Body() updatePostDto: UpdatePostDto & { userId: string },
   ) {
     const { userId, ...updateData } = updatePostDto;
     const post = await this.postService.updatePost(id, userId, updateData);
     return {
       success: true,
       message: 'Post updated successfully',
-      data: post
+      data: post,
     };
   }
 
@@ -82,14 +86,11 @@ export class PostController {
   @ApiResponse({ status: 200, description: 'Post deleted successfully' })
   @ApiResponse({ status: 404, description: 'Post not found' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
-  async deletePost(
-    @Param('id') id: string,
-    @Body('userId') userId: string
-  ) {
+  async deletePost(@Param('id') id: string, @Body('userId') userId: string) {
     const result = await this.postService.deletePost(id, userId);
     return {
       success: true,
-      ...result
+      ...result,
     };
   }
 
@@ -102,7 +103,7 @@ export class PostController {
     return {
       success: true,
       message: 'Like count incremented',
-      data: { like: post.like }
+      data: { like: post.like },
     };
   }
 
@@ -115,7 +116,7 @@ export class PostController {
     return {
       success: true,
       message: 'Comment count incremented',
-      data: { comment: post.comment }
+      data: { comment: post.comment },
     };
   }
 
@@ -128,7 +129,7 @@ export class PostController {
     return {
       success: true,
       message: 'Share count incremented',
-      data: { share: post.share }
+      data: { share: post.share },
     };
   }
 }

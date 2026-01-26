@@ -1,17 +1,27 @@
-import { IsString, IsOptional, IsEnum, IsUUID, IsNotEmpty, IsBoolean, IsInt, IsArray, Min } from 'class-validator';
+import {
+  IsString,
+  IsOptional,
+  IsEnum,
+  IsUUID,
+  IsNotEmpty,
+  IsBoolean,
+  IsInt,
+  IsArray,
+  Min,
+} from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
 export enum Media {
   PHOTO = 'PHOTO',
-  VIDEO = 'VIDEO'
+  VIDEO = 'VIDEO',
 }
 
 export enum PostType {
   SPOTTER_POST = 'Spotter_Post',
   OWNER_POST = 'Owner_Post',
   BATTLE_POST = 'Battle_Post',
-  CHALLENGE_POST = 'Challenge_Post'
+  CHALLENGE_POST = 'Challenge_Post',
 }
 export class CreatePostDto {
   @ApiProperty({ description: 'User ID (UUID)' })

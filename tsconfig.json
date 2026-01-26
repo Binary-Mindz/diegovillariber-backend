@@ -25,6 +25,6 @@
     "strictBindCallApply": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "test"],
+  "include": ["src", "test", "src/main/auth/dto/signup.dto.ts"],
   "exclude": ["node_modules", "dist", "prisma"]
 }
