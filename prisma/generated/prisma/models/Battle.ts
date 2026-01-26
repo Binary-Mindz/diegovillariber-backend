@@ -748,10 +748,12 @@ export type BattleCreateNestedOneWithoutUserPointsInput = {
   connect?: Prisma.BattleWhereUniqueInput
 }
 
-export type BattleUpdateOneRequiredWithoutUserPointsNestedInput = {
+export type BattleUpdateOneWithoutUserPointsNestedInput = {
   create?: Prisma.XOR<Prisma.BattleCreateWithoutUserPointsInput, Prisma.BattleUncheckedCreateWithoutUserPointsInput>
   connectOrCreate?: Prisma.BattleCreateOrConnectWithoutUserPointsInput
   upsert?: Prisma.BattleUpsertWithoutUserPointsInput
+  disconnect?: Prisma.BattleWhereInput | boolean
+  delete?: Prisma.BattleWhereInput | boolean
   connect?: Prisma.BattleWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BattleUpdateToOneWithWhereWithoutUserPointsInput, Prisma.BattleUpdateWithoutUserPointsInput>, Prisma.BattleUncheckedUpdateWithoutUserPointsInput>
 }

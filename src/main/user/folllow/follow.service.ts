@@ -25,15 +25,9 @@ export class FollowService {
       this.prisma.user.findUnique({ where: { id: dto.followingId } }),
     ]);
 
-    if (!follower) {
-      throw new NotFoundException('Follower user not found');
-    }
+    if (!follower) throw new NotFoundException('Follower user not found');
+    if (!following) throw new NotFoundException('User to follow not found');
 
-    if (!following) {
-      throw new NotFoundException('User to follow not found');
-    }
-
-    // check if already following
     const existingFollow = await this.prisma.follow.findUnique({
       where: {
         followerId_followingId: {
@@ -47,32 +41,45 @@ export class FollowService {
       throw new ConflictException('Already following this user');
     }
 
-    // create follow relationship
-    const follow = await this.prisma.follow.create({
-      data: {
-        followerId,
-        followingId: dto.followingId,
-      },
-      include: {
-        follower: {
-          select: {
-            id: true,
-            username:true,
-            email: true,
-          },
+    const FOLLOW_POINTS = 5;
+
+    const result = await this.prisma.$transaction(async (tx) => {
+      // 1) create follow
+      const follow = await tx.follow.create({
+        data: {
+          followerId,
+          followingId: dto.followingId,
         },
-        following: {
-          select: {
-            id: true,
-            username:true,
-            email: true,
-          },
+        include: {
+          follower: { select: { id: true, username: true, email: true } },
+          following: { select: { id: true, username: true, email: true } },
         },
-      },
+      });
+
+      // 2) increment points for followed user (B)
+      await tx.user.update({
+        where: { id: dto.followingId },
+        data: {
+          totalPoints: { increment: FOLLOW_POINTS },
+        },
+      });
+
+      // 3) point log (optional but recommended)
+      await tx.userPoint.create({
+        data: {
+          userId: dto.followingId, // যাকে follow করা হয়েছে সে points পাবে
+          followId: follow.id,
+          points: FOLLOW_POINTS,
+          // battleId না দিলে error হলে battleId কে optional করতে হবে (উপরে বলা)
+        },
+      });
+
+      return follow;
     });
 
-    return follow;
+    return result;
   }
+
   //  user unfollow another
   async unfollowUser(
     followerId: string,
@@ -115,7 +122,7 @@ export class FollowService {
         follower: {
           select: {
             id: true,
-            username:true,
+            username: true,
             email: true,
             profile: {
               select: {
@@ -144,7 +151,7 @@ export class FollowService {
         following: {
           select: {
             id: true,
-            username:true,
+            username: true,
             email: true,
             profile: {
               select: {
@@ -160,6 +167,7 @@ export class FollowService {
 
     return following.map((f) => f.following);
   }
+
   async isFollowing(followerId: string, followingId: string) {
     const follow = await this.prisma.follow.findUnique({
       where: {
@@ -231,7 +239,7 @@ export class FollowService {
       },
       select: {
         id: true,
-        username:true,
+        username: true,
         email: true,
         profile: {
           select: {
