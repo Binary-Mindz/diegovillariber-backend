@@ -38,7 +38,7 @@ export class FollowController {
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Logged user follow a user' })
   async followUser(
-    @GetUser('id') followerId: string,
+    @GetUser('userId') followerId: string,
     @Body() dto: CreateFollowDto,
   ) {
     return handleRequest(async () => {
@@ -49,7 +49,7 @@ export class FollowController {
 
   @Delete('unfollow')
   @ApiOperation({ summary: 'Logged user unfollow a user' })
-  async unfollowUser(@GetUser('id') userId: string, @Body() dto: UnfollowDto) {
+  async unfollowUser(@GetUser('userId') userId: string, @Body() dto: UnfollowDto) {
     return handleRequest(
       async () => await this.followService.unfollowUser(userId, dto),
       'User Unfollowed successfully',
@@ -58,7 +58,7 @@ export class FollowController {
 
   @Get('myFollowers')
   @ApiOperation({ summary: 'Get My followers' })
-  async getMyFollowers(@GetUser('id') userId: string) {
+  async getMyFollowers(@GetUser('userId') userId: string) {
     return handleRequest(async () => {
       const result = await this.followService.getMyFollowers(userId);
       return result;
@@ -67,7 +67,7 @@ export class FollowController {
 
   @Get('mefollowing')
   @ApiOperation({ summary: 'Get me following' })
-  async getMeFollowing(@GetUser('id') userId: string) {
+  async getMeFollowing(@GetUser('userId') userId: string) {
     console.log();
     return handleRequest(
       () => this.followService.getMeFollowing(userId),
