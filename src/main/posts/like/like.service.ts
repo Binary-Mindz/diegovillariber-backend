@@ -13,108 +13,118 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 
 @Injectable()
 export class LikeService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
-  async createLike(createLikeDto: CreateLikeDto) {
-    const { userId, postId, postType } = createLikeDto;
 
-    // Verify user exists
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-    });
 
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
+  async createLike(userId: string, dto: CreateLikeDto) {
+    const { postId, postType } = dto;
 
-    // Verify post exists
-    const post = await this.prisma.post.findUnique({
-      where: { id: postId },
-    });
+    const LIKE_REWARD_POINTS = 1;
 
-    if (!post) {
-      throw new NotFoundException('Post not found');
-    }
+    return this.prisma.$transaction(async (tx) => {
+  
+      const user = await tx.user.findUnique({
+        where: { id: userId },
+        select: { id: true, username: true },
+      });
+      if (!user) throw new NotFoundException('User not found');
 
-    // Check if already liked
-    const existingLike = await this.prisma.like.findUnique({
-      where: {
-        userId_postId_postType: {
-          userId,
-          postId,
-          postType,
-        },
-      },
-    });
+      const post = await tx.post.findUnique({
+        where: { id: postId },
+        select: { id: true, userId: true },
+      });
+      if (!post) throw new NotFoundException('Post not found');
 
-    if (existingLike) {
-      throw new ConflictException('You have already liked this post');
-    }
+      const existing = await tx.like.findUnique({
+        where: { userId_postId_postType: { userId, postId, postType } },
+        select: { id: true },
+      });
+      if (existing) throw new ConflictException('You have already liked this post');
 
-    // Create like and increment post like count
-    const [like] = await this.prisma.$transaction([
-      this.prisma.like.create({
-        data: {
-          userId,
-          postId,
-          postType,
-        },
+      const like = await tx.like.create({
+        data: { userId, postId, postType },
         include: {
-          user: {
-            select: {
-              id: true,
-              username: true,
-              email: true,
-            },
-          },
+          user: { select: { id: true, username: true, email: true } },
         },
-      }),
-      this.prisma.post.update({
+      });
+
+      await tx.post.update({
         where: { id: postId },
         data: { like: { increment: 1 } },
-      }),
-    ]);
+      });
 
-    return like;
+
+      await tx.userPoint.create({
+        data: {
+          userId: post.userId, 
+          postId: postId,
+          likeId: like.id,
+          points: LIKE_REWARD_POINTS,
+        },
+      });
+
+      await tx.user.update({
+        where: { id: post.userId },
+        data: { totalPoints: { increment: LIKE_REWARD_POINTS }, likeCount: { increment: 1 } },
+        select: { id: true },
+      });
+
+      return like;
+    });
   }
 
-  async removeLike(unlikeDto: UnlikeDto) {
-    const { userId, postId, postType } = unlikeDto;
 
-    // Check if like exists
-    const like = await this.prisma.like.findUnique({
-      where: {
-        userId_postId_postType: {
-          userId,
-          postId,
-          postType,
-        },
+async unlike(userId: string, dto: CreateLikeDto) {
+  const { postId, postType } = dto;
+  const LIKE_REWARD_POINTS = 1;
+
+  return this.prisma.$transaction(async (tx) => {
+   
+    const like = await tx.like.findUnique({
+      where: { userId_postId_postType: { userId, postId, postType } },
+      select: { id: true },
+    });
+    if (!like) throw new NotFoundException('Like not found');
+
+
+    const post = await tx.post.findUnique({
+      where: { id: postId },
+      select: { id: true, userId: true },
+    });
+    if (!post) throw new NotFoundException('Post not found');
+
+    await tx.like.delete({
+      where: { userId_postId_postType: { userId, postId, postType } },
+    });
+
+
+    await tx.post.update({
+      where: { id: postId },
+      data: { like: { decrement: 1 } },
+    });
+
+    await tx.userPoint.create({
+      data: {
+        userId: post.userId,     
+        postId,
+        likeId: null,       
+        points: -LIKE_REWARD_POINTS,
       },
     });
 
-    if (!like) {
-      throw new NotFoundException('Like not found');
-    }
+    await tx.user.update({
+      where: { id: post.userId },
+      data: {
+        totalPoints: { decrement: LIKE_REWARD_POINTS },
+        likeCount: { decrement: 1 },
+      },
+    });
 
-    // Remove like and decrement post like count
-    await this.prisma.$transaction([
-      this.prisma.like.delete({
-        where: {
-          userId_postId_postType: {
-            userId,
-            postId,
-            postType,
-          },
-        },
-      }),
-      this.prisma.post.update({
-        where: { id: postId },
-        data: { like: { decrement: 1 } },
-      }),
-    ]);
+    return { unliked: true, postId };
+  });
+}
 
-    return { message: 'Like removed successfully' };
-  }
 
   async getPostLikes(postId: string, queryDto: LikesQueryDto) {
     const { page = 1, limit = 20, postType } = queryDto;

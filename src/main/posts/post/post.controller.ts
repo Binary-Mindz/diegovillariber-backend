@@ -6,6 +6,7 @@ import { CreatePostDto } from './dto/create.post.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { FeedQueryDto } from './dto/feed-query.dto';
 
 
 @ApiTags('Posts')
@@ -32,11 +33,11 @@ export class PostController {
   }
 
 
-  @Get('feed')
-  @ApiOperation({ summary: 'Get feed (boosted posts show more)' })
-  async feed(@Query('page') page?: string, @Query('limit') limit?: string) {
-    return this.postsService.getFeed(page ? Number(page) : 1, limit ? Number(limit) : 10);
-  }
+ @Get('feed')
+@ApiOperation({ summary: 'Get feed with search, filters, sorting and pagination' })
+async feed(@Query() query: FeedQueryDto ){
+  return this.postsService.getFeed(query);
+}
 
 
   @Get(':id')

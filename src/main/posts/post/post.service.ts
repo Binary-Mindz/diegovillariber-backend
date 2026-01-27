@@ -7,10 +7,21 @@ import {
 } from '@nestjs/common';
 import { CreatePostDto } from './dto/create.post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { FeedQueryDto } from './dto/feed-query.dto';
+import { Prisma } from 'generated/prisma/client';
 
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
+
+function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
+  if (!value) return undefined;
+  const arr = value
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean) as T[];
+  return arr.length ? arr : undefined;
+}
 
 @Injectable()
 export class PostService {
@@ -53,7 +64,6 @@ export class PostService {
         },
       });
 
-      // 4) Reward +5 points for creating a post (always)
       await tx.userPoint.create({
         data: {
           userId,
@@ -62,7 +72,6 @@ export class PostService {
         },
       });
 
-      // 5) If boosted, charge -300 points (log + user decrement)
       if (wantBoost) {
         await tx.userPoint.create({
           data: {
@@ -91,22 +100,73 @@ export class PostService {
   }
 
 
-  async getFeed(page = 1, limit = 10) {
+  async getFeed(query: FeedQueryDto) {
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    return this.prisma.post.findMany({
-      where: {},
-      orderBy: [
-        { contentBooster: 'desc' },
-        { createdAt: 'desc' },
-      ],
-      skip,
-      take: limit,
-      include: {
-        user: { select: { id: true, username: true } },
-        hashtags: true,
+    if (page < 1) throw new BadRequestException('page must be >= 1');
+    if (limit < 1 || limit > 50) throw new BadRequestException('limit must be between 1 and 50');
+
+    const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
+    const contextActivity = parseCsvEnum<any>(query.contextActivity);
+    const subject = parseCsvEnum<any>(query.subject);
+
+    const where: Prisma.PostWhereInput = {
+      ...(query.postType ? { postType: query.postType } : {}),
+      ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
+      ...(query.location
+        ? { postLocation: { contains: query.location, mode: 'insensitive' } }
+        : {}),
+      ...(query.search
+        ? {
+          OR: [
+            { caption: { contains: query.search, mode: 'insensitive' } },
+            { postLocation: { contains: query.search, mode: 'insensitive' } },
+          ],
+        }
+        : {}),
+
+      ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
+      ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
+      ...(subject ? { subject: { hasSome: subject } } : {}),
+    };
+
+
+    const orderBy: Prisma.PostOrderByWithRelationInput[] =
+      query.sort === 'topLiked'
+        ? [{ like: 'desc' }, { createdAt: 'desc' }]
+        : query.sort === 'boosted'
+          ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
+          : [{ createdAt: 'desc' }]; // latest default
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.post.findMany({
+        where,
+        orderBy,
+        skip,
+        take: limit,
+        include: {
+          user: { select: { id: true, username: true } },
+          hashtags: true,
+        },
+      }),
+      this.prisma.post.count({ where }),
+    ]);
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
       },
-    });
+    };
   }
 
   async getSinglePost(postId: string) {
