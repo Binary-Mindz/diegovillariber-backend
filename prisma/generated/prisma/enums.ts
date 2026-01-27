@@ -22,6 +22,75 @@ export const FileType = {
 export type FileType = (typeof FileType)[keyof typeof FileType]
 
 
+export const VisiualStyle = {
+  Action: 'Action',
+  Aerial: 'Aerial',
+  Artistic: 'Artistic',
+  Drift: 'Drift',
+  Black_And_White: 'Black_And_White',
+  Cinematic: 'Cinematic',
+  Close_Up: 'Close_Up',
+  Motion_Blur: 'Motion_Blur',
+  Day: 'Day',
+  Detail_Shot: 'Detail_Shot',
+  Golden_Hour: 'Golden_Hour',
+  Long_Exposure: 'Long_Exposure',
+  Macro: 'Macro',
+  Night_Shot: 'Night_Shot',
+  Panoramic: 'Panoramic',
+  Panning: 'Panning',
+  Raw: 'Raw',
+  Rollin_Shot: 'Rollin_Shot',
+  Wet_Conditions: 'Wet_Conditions',
+  Wide_Angle: 'Wide_Angle',
+  Abandoned: 'Abandoned',
+  AI_Generated: 'AI_Generated'
+} as const
+
+export type VisiualStyle = (typeof VisiualStyle)[keyof typeof VisiualStyle]
+
+
+export const ContextActivity = {
+  Car_Meet: 'Car_Meet',
+  Celebration: 'Celebration',
+  Drag_Race: 'Drag_Race',
+  Diving: 'Diving',
+  Garage: 'Garage',
+  Highway: 'Highway',
+  Iconic_Location: 'Iconic_Location',
+  Offroad: 'Offroad',
+  Onboard: 'Onboard',
+  Mountain_Road: 'Mountain_Road',
+  Natural_Landscape: 'Natural_Landscape',
+  Perked: 'Perked',
+  Rally: 'Rally',
+  Road: 'Road',
+  Static: 'Static',
+  Studio: 'Studio',
+  Trackday: 'Trackday',
+  Urban: 'Urban'
+} as const
+
+export type ContextActivity = (typeof ContextActivity)[keyof typeof ContextActivity]
+
+
+export const Subject = {
+  Brake_Details: 'Brake_Details',
+  Cockpit: 'Cockpit',
+  Driver_Portrait: 'Driver_Portrait',
+  Engine_Bay: 'Engine_Bay',
+  Exterior: 'Exterior',
+  Front_Detail: 'Front_Detail',
+  Interior: 'Interior',
+  Logos: 'Logos',
+  Rear_Detail: 'Rear_Detail',
+  Side: 'Side',
+  Wheel: 'Wheel'
+} as const
+
+export type Subject = (typeof Subject)[keyof typeof Subject]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN',
