@@ -664,6 +664,9 @@ export const PostScalarFieldEnum = {
   share: 'share',
   contentBooster: 'contentBooster',
   point: 'point',
+  visiualStyle: 'visiualStyle',
+  contextActivity: 'contextActivity',
+  subject: 'subject',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

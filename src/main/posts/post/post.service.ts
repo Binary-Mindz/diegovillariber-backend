@@ -44,6 +44,10 @@ export class PostService {
           postLocation: dto.postLocation ?? null,
           locationVisibility: dto.locationVisibility ?? null,
 
+          visiualStyle: dto.visiualStyle ?? [],
+          contextActivity: dto.contextActivity ?? [],
+          subject: dto.subject ?? [],
+
           point: POST_REWARD_POINTS,
           contentBooster: wantBoost,
         },
@@ -159,7 +163,12 @@ export class PostService {
         ...(dto.locationVisibility !== undefined
           ? { locationVisibility: dto.locationVisibility ?? null }
           : {}),
+
+        ...(dto.visiualStyle !== undefined ? { visiualStyle: dto.visiualStyle ?? [] } : {}),
+        ...(dto.contextActivity !== undefined ? { contextActivity: dto.contextActivity ?? [] } : {}),
+        ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
       };
+
       if (Object.keys(updateData).length === 0) {
         throw new BadRequestException('No valid fields provided to update');
       }
@@ -191,3 +200,20 @@ export class PostService {
     });
   }
 }
+
+
+// @ApiProperty({
+//   example: [
+//     Amenity.WIFI,
+//     Amenity.PARKING_AVAILABLE,
+//     Amenity.AIR_CONDITIONING,
+//   ],
+//   description: 'List of amenities (enum values)',
+//   isArray: true,
+//   enum: Amenity,
+//   required: false,
+// })
+// @IsOptional()
+// @IsArray()
+// @IsEnum(Amenity, { each: true })
+// amenities?: Amenity[];

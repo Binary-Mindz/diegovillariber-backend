@@ -87,6 +87,9 @@ export type PostCountAggregateOutputType = {
   share: number
   contentBooster: number
   point: number
+  visiualStyle: number
+  contextActivity: number
+  subject: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -154,6 +157,9 @@ export type PostCountAggregateInputType = {
   share?: true
   contentBooster?: true
   point?: true
+  visiualStyle?: true
+  contextActivity?: true
+  subject?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -258,6 +264,9 @@ export type PostGroupByOutputType = {
   share: number
   contentBooster: boolean
   point: number
+  visiualStyle: $Enums.VisiualStyle[]
+  contextActivity: $Enums.ContextActivity[]
+  subject: $Enums.Subject[]
   createdAt: Date
   updatedAt: Date
   _count: PostCountAggregateOutputType | null
@@ -298,6 +307,9 @@ export type PostWhereInput = {
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -323,6 +335,9 @@ export type PostOrderByWithRelationInput = {
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -351,6 +366,9 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -376,6 +394,9 @@ export type PostOrderByWithAggregationInput = {
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PostCountOrderByAggregateInput
@@ -401,6 +422,9 @@ export type PostScalarWhereWithAggregatesInput = {
   share?: Prisma.IntWithAggregatesFilter<"Post"> | number
   contentBooster?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   point?: Prisma.IntWithAggregatesFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
 }
@@ -417,6 +441,9 @@ export type PostCreateInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -442,6 +469,9 @@ export type PostUncheckedCreateInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -465,6 +495,9 @@ export type PostUpdateInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -490,6 +523,9 @@ export type PostUncheckedUpdateInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -514,6 +550,9 @@ export type PostCreateManyInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -530,6 +569,9 @@ export type PostUpdateManyMutationInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -547,6 +589,9 @@ export type PostUncheckedUpdateManyInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -566,6 +611,30 @@ export type PostScalarRelationFilter = {
   isNot?: Prisma.PostWhereInput
 }
 
+export type EnumVisiualStyleNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel> | null
+  has?: $Enums.VisiualStyle | Prisma.EnumVisiualStyleFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type EnumContextActivityNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel> | null
+  has?: $Enums.ContextActivity | Prisma.EnumContextActivityFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type EnumSubjectNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel> | null
+  has?: $Enums.Subject | Prisma.EnumSubjectFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type PostCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -579,6 +648,9 @@ export type PostCountOrderByAggregateInput = {
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -686,6 +758,33 @@ export type PostUpdateOneRequiredWithoutHidePostsNestedInput = {
   upsert?: Prisma.PostUpsertWithoutHidePostsInput
   connect?: Prisma.PostWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutHidePostsInput, Prisma.PostUpdateWithoutHidePostsInput>, Prisma.PostUncheckedUpdateWithoutHidePostsInput>
+}
+
+export type PostCreatevisiualStyleInput = {
+  set: $Enums.VisiualStyle[]
+}
+
+export type PostCreatecontextActivityInput = {
+  set: $Enums.ContextActivity[]
+}
+
+export type PostCreatesubjectInput = {
+  set: $Enums.Subject[]
+}
+
+export type PostUpdatevisiualStyleInput = {
+  set?: $Enums.VisiualStyle[]
+  push?: $Enums.VisiualStyle | $Enums.VisiualStyle[]
+}
+
+export type PostUpdatecontextActivityInput = {
+  set?: $Enums.ContextActivity[]
+  push?: $Enums.ContextActivity | $Enums.ContextActivity[]
+}
+
+export type PostUpdatesubjectInput = {
+  set?: $Enums.Subject[]
+  push?: $Enums.Subject | $Enums.Subject[]
 }
 
 export type PostCreateNestedOneWithoutRacingVotesInput = {
@@ -814,6 +913,9 @@ export type PostCreateWithoutHashtagsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -838,6 +940,9 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
@@ -885,6 +990,9 @@ export type PostScalarWhereInput = {
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
 }
@@ -901,6 +1009,9 @@ export type PostCreateWithoutHidePostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -925,6 +1036,9 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -963,6 +1077,9 @@ export type PostUpdateWithoutHidePostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -987,6 +1104,9 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1009,6 +1129,9 @@ export type PostCreateWithoutRacingVotesInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1033,6 +1156,9 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1071,6 +1197,9 @@ export type PostUpdateWithoutRacingVotesInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1095,6 +1224,9 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1117,6 +1249,9 @@ export type PostCreateWithoutRepostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1141,6 +1276,9 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1179,6 +1317,9 @@ export type PostUpdateWithoutRepostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1203,6 +1344,9 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1225,6 +1369,9 @@ export type PostCreateWithoutSavePostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1249,6 +1396,9 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1287,6 +1437,9 @@ export type PostUpdateWithoutSavePostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1311,6 +1464,9 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1333,6 +1489,9 @@ export type PostCreateWithoutUserInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
@@ -1356,6 +1515,9 @@ export type PostUncheckedCreateWithoutUserInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1405,6 +1567,9 @@ export type PostCreateWithoutUserPointsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1429,6 +1594,9 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1467,6 +1635,9 @@ export type PostUpdateWithoutUserPointsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1491,6 +1662,9 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1513,6 +1687,9 @@ export type PostCreateWithoutWishListsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1537,6 +1714,9 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1575,6 +1755,9 @@ export type PostUpdateWithoutWishListsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1599,6 +1782,9 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1621,6 +1807,9 @@ export type PostUpdateWithoutHashtagsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1645,6 +1834,9 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
@@ -1668,6 +1860,9 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1684,6 +1879,9 @@ export type PostCreateManyUserInput = {
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1700,6 +1898,9 @@ export type PostUpdateWithoutUserInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
@@ -1723,6 +1924,9 @@ export type PostUncheckedUpdateWithoutUserInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1746,6 +1950,9 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1848,6 +2055,9 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1874,6 +2084,9 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1892,6 +2105,9 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1910,11 +2126,14 @@ export type PostSelectScalar = {
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   hashtags?: boolean | Prisma.Post$hashtagsArgs<ExtArgs>
@@ -1958,6 +2177,9 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     share: number
     contentBooster: boolean
     point: number
+    visiualStyle: $Enums.VisiualStyle[]
+    contextActivity: $Enums.ContextActivity[]
+    subject: $Enums.Subject[]
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["post"]>
@@ -2403,6 +2625,9 @@ export interface PostFieldRefs {
   readonly share: Prisma.FieldRef<"Post", 'Int'>
   readonly contentBooster: Prisma.FieldRef<"Post", 'Boolean'>
   readonly point: Prisma.FieldRef<"Post", 'Int'>
+  readonly visiualStyle: Prisma.FieldRef<"Post", 'VisiualStyle[]'>
+  readonly contextActivity: Prisma.FieldRef<"Post", 'ContextActivity[]'>
+  readonly subject: Prisma.FieldRef<"Post", 'Subject[]'>
   readonly createdAt: Prisma.FieldRef<"Post", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Post", 'DateTime'>
 }
