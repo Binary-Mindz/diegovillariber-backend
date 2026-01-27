@@ -105,6 +105,23 @@ export class PostService {
     });
   }
 
+  async getSinglePost(postId: string) {
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true
+          },
+        },
+      },
+    });
+
+    if (!post) throw new NotFoundException('Post not found');
+    return post;
+  }
+
 
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
@@ -152,6 +169,25 @@ export class PostService {
       });
 
       return updated;
+    });
+  }
+
+  async deletePost(postId: string, userId: string) {
+    return this.prisma.$transaction(async (tx) => {
+      const post = await tx.post.findUnique({
+        where: { id: postId },
+        select: { id: true, userId: true },
+      });
+
+      if (!post) throw new NotFoundException('Post not found');
+
+      if (post.userId !== userId) {
+        throw new ForbiddenException('You are not allowed to delete this post');
+      }
+
+      await tx.post.delete({ where: { id: postId } });
+
+      return { deleted: true, postId };
     });
   }
 }
