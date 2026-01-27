@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostService } from './post.service';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
@@ -38,6 +38,18 @@ export class PostController {
     return this.postsService.getFeed(page ? Number(page) : 1, limit ? Number(limit) : 10);
   }
 
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get single post by id' })
+  @ApiResponse({ status: 200 })
+  async getSinglePost(@Param('id') id: string) {
+    return handleRequest(async () => {
+      const post = await this.postsService.getSinglePost(id);
+      return post;
+    }, 'Post fetched successfully');
+  }
+
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
@@ -52,6 +64,21 @@ export class PostController {
       const post = await this.postsService.updatePost(id, userId, dto);
       return post;
     }, 'Post updated successfully');
+  }
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Delete post (only owner can delete)' })
+  @ApiResponse({ status: 200 })
+  async deletePost(
+    @Param('id') id: string,
+    @GetUser('userId') userId: string,
+  ) {
+    return handleRequest(async () => {
+      const result = await this.postsService.deletePost(id, userId);
+      return result;
+    }, 'Post deleted successfully');
   }
 
 }
