@@ -45,7 +45,9 @@ export type PostMinAggregateOutputType = {
   userId: string | null
   postType: $Enums.PostType | null
   caption: string | null
-  media: $Enums.Media | null
+  mediaUrl: string | null
+  postLocation: string | null
+  locationVisibility: string | null
   like: number | null
   comment: number | null
   share: number | null
@@ -60,7 +62,9 @@ export type PostMaxAggregateOutputType = {
   userId: string | null
   postType: $Enums.PostType | null
   caption: string | null
-  media: $Enums.Media | null
+  mediaUrl: string | null
+  postLocation: string | null
+  locationVisibility: string | null
   like: number | null
   comment: number | null
   share: number | null
@@ -75,12 +79,17 @@ export type PostCountAggregateOutputType = {
   userId: number
   postType: number
   caption: number
-  media: number
+  mediaUrl: number
+  postLocation: number
+  locationVisibility: number
   like: number
   comment: number
   share: number
   contentBooster: number
   point: number
+  visiualStyle: number
+  contextActivity: number
+  subject: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -106,7 +115,9 @@ export type PostMinAggregateInputType = {
   userId?: true
   postType?: true
   caption?: true
-  media?: true
+  mediaUrl?: true
+  postLocation?: true
+  locationVisibility?: true
   like?: true
   comment?: true
   share?: true
@@ -121,7 +132,9 @@ export type PostMaxAggregateInputType = {
   userId?: true
   postType?: true
   caption?: true
-  media?: true
+  mediaUrl?: true
+  postLocation?: true
+  locationVisibility?: true
   like?: true
   comment?: true
   share?: true
@@ -136,12 +149,17 @@ export type PostCountAggregateInputType = {
   userId?: true
   postType?: true
   caption?: true
-  media?: true
+  mediaUrl?: true
+  postLocation?: true
+  locationVisibility?: true
   like?: true
   comment?: true
   share?: true
   contentBooster?: true
   point?: true
+  visiualStyle?: true
+  contextActivity?: true
+  subject?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -238,12 +256,17 @@ export type PostGroupByOutputType = {
   userId: string
   postType: $Enums.PostType
   caption: string | null
-  media: $Enums.Media
+  mediaUrl: string | null
+  postLocation: string | null
+  locationVisibility: string | null
   like: number
   comment: number
   share: number
   contentBooster: boolean
   point: number
+  visiualStyle: $Enums.VisiualStyle[]
+  contextActivity: $Enums.ContextActivity[]
+  subject: $Enums.Subject[]
   createdAt: Date
   updatedAt: Date
   _count: PostCountAggregateOutputType | null
@@ -276,12 +299,17 @@ export type PostWhereInput = {
   userId?: Prisma.UuidFilter<"Post"> | string
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  media?: Prisma.EnumMediaFilter<"Post"> | $Enums.Media
+  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -299,12 +327,17 @@ export type PostOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -325,12 +358,17 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.UuidFilter<"Post"> | string
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  media?: Prisma.EnumMediaFilter<"Post"> | $Enums.Media
+  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -348,12 +386,17 @@ export type PostOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PostCountOrderByAggregateInput
@@ -371,12 +414,17 @@ export type PostScalarWhereWithAggregatesInput = {
   userId?: Prisma.UuidWithAggregatesFilter<"Post"> | string
   postType?: Prisma.EnumPostTypeWithAggregatesFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  media?: Prisma.EnumMediaWithAggregatesFilter<"Post"> | $Enums.Media
+  mediaUrl?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  postLocation?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  locationVisibility?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   like?: Prisma.IntWithAggregatesFilter<"Post"> | number
   comment?: Prisma.IntWithAggregatesFilter<"Post"> | number
   share?: Prisma.IntWithAggregatesFilter<"Post"> | number
   contentBooster?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   point?: Prisma.IntWithAggregatesFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
 }
@@ -385,12 +433,17 @@ export type PostCreateInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -408,12 +461,17 @@ export type PostUncheckedCreateInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -429,12 +487,17 @@ export type PostUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -452,12 +515,17 @@ export type PostUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -474,12 +542,17 @@ export type PostCreateManyInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -488,12 +561,17 @@ export type PostUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -503,12 +581,17 @@ export type PostUncheckedUpdateManyInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -528,17 +611,46 @@ export type PostScalarRelationFilter = {
   isNot?: Prisma.PostWhereInput
 }
 
+export type EnumVisiualStyleNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel> | null
+  has?: $Enums.VisiualStyle | Prisma.EnumVisiualStyleFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.VisiualStyle[] | Prisma.ListEnumVisiualStyleFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type EnumContextActivityNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel> | null
+  has?: $Enums.ContextActivity | Prisma.EnumContextActivityFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.ContextActivity[] | Prisma.ListEnumContextActivityFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type EnumSubjectNullableListFilter<$PrismaModel = never> = {
+  equals?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel> | null
+  has?: $Enums.Subject | Prisma.EnumSubjectFieldRefInput<$PrismaModel> | null
+  hasEvery?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel>
+  hasSome?: $Enums.Subject[] | Prisma.ListEnumSubjectFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
 export type PostCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrder
-  media?: Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrder
+  postLocation?: Prisma.SortOrder
+  locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  visiualStyle?: Prisma.SortOrder
+  contextActivity?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -555,7 +667,9 @@ export type PostMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrder
-  media?: Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrder
+  postLocation?: Prisma.SortOrder
+  locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -570,7 +684,9 @@ export type PostMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrder
-  media?: Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrder
+  postLocation?: Prisma.SortOrder
+  locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -642,6 +758,33 @@ export type PostUpdateOneRequiredWithoutHidePostsNestedInput = {
   upsert?: Prisma.PostUpsertWithoutHidePostsInput
   connect?: Prisma.PostWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutHidePostsInput, Prisma.PostUpdateWithoutHidePostsInput>, Prisma.PostUncheckedUpdateWithoutHidePostsInput>
+}
+
+export type PostCreatevisiualStyleInput = {
+  set: $Enums.VisiualStyle[]
+}
+
+export type PostCreatecontextActivityInput = {
+  set: $Enums.ContextActivity[]
+}
+
+export type PostCreatesubjectInput = {
+  set: $Enums.Subject[]
+}
+
+export type PostUpdatevisiualStyleInput = {
+  set?: $Enums.VisiualStyle[]
+  push?: $Enums.VisiualStyle | $Enums.VisiualStyle[]
+}
+
+export type PostUpdatecontextActivityInput = {
+  set?: $Enums.ContextActivity[]
+  push?: $Enums.ContextActivity | $Enums.ContextActivity[]
+}
+
+export type PostUpdatesubjectInput = {
+  set?: $Enums.Subject[]
+  push?: $Enums.Subject | $Enums.Subject[]
 }
 
 export type PostCreateNestedOneWithoutRacingVotesInput = {
@@ -762,12 +905,17 @@ export type PostCreateWithoutHashtagsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -784,12 +932,17 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
@@ -829,12 +982,17 @@ export type PostScalarWhereInput = {
   userId?: Prisma.UuidFilter<"Post"> | string
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  media?: Prisma.EnumMediaFilter<"Post"> | $Enums.Media
+  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
+  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
+  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
 }
@@ -843,12 +1001,17 @@ export type PostCreateWithoutHidePostsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -865,12 +1028,17 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -901,12 +1069,17 @@ export type PostUpdateWithoutHidePostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -923,12 +1096,17 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -943,12 +1121,17 @@ export type PostCreateWithoutRacingVotesInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -965,12 +1148,17 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1001,12 +1189,17 @@ export type PostUpdateWithoutRacingVotesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1023,12 +1216,17 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1043,12 +1241,17 @@ export type PostCreateWithoutRepostsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1065,12 +1268,17 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1101,12 +1309,17 @@ export type PostUpdateWithoutRepostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1123,12 +1336,17 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1143,12 +1361,17 @@ export type PostCreateWithoutSavePostsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1165,12 +1388,17 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1201,12 +1429,17 @@ export type PostUpdateWithoutSavePostsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1223,12 +1456,17 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1243,12 +1481,17 @@ export type PostCreateWithoutUserInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
@@ -1264,12 +1507,17 @@ export type PostUncheckedCreateWithoutUserInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1311,12 +1559,17 @@ export type PostCreateWithoutUserPointsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1333,12 +1586,17 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1369,12 +1627,17 @@ export type PostUpdateWithoutUserPointsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1391,12 +1654,17 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1411,12 +1679,17 @@ export type PostCreateWithoutWishListsInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
@@ -1433,12 +1706,17 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   userId: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
@@ -1469,12 +1747,17 @@ export type PostUpdateWithoutWishListsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1491,12 +1774,17 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1511,12 +1799,17 @@ export type PostUpdateWithoutHashtagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
@@ -1533,12 +1826,17 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
@@ -1554,12 +1852,17 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1568,12 +1871,17 @@ export type PostCreateManyUserInput = {
   id?: string
   postType?: $Enums.PostType
   caption?: string | null
-  media?: $Enums.Media
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationVisibility?: string | null
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1582,12 +1890,17 @@ export type PostUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
@@ -1603,12 +1916,17 @@ export type PostUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
@@ -1624,12 +1942,17 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1724,12 +2047,17 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userId?: boolean
   postType?: boolean
   caption?: boolean
-  media?: boolean
+  mediaUrl?: boolean
+  postLocation?: boolean
+  locationVisibility?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1748,12 +2076,17 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   userId?: boolean
   postType?: boolean
   caption?: boolean
-  media?: boolean
+  mediaUrl?: boolean
+  postLocation?: boolean
+  locationVisibility?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1764,12 +2097,17 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   userId?: boolean
   postType?: boolean
   caption?: boolean
-  media?: boolean
+  mediaUrl?: boolean
+  postLocation?: boolean
+  locationVisibility?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1780,17 +2118,22 @@ export type PostSelectScalar = {
   userId?: boolean
   postType?: boolean
   caption?: boolean
-  media?: boolean
+  mediaUrl?: boolean
+  postLocation?: boolean
+  locationVisibility?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  visiualStyle?: boolean
+  contextActivity?: boolean
+  subject?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "media" | "like" | "comment" | "share" | "contentBooster" | "point" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   hashtags?: boolean | Prisma.Post$hashtagsArgs<ExtArgs>
@@ -1826,12 +2169,17 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userId: string
     postType: $Enums.PostType
     caption: string | null
-    media: $Enums.Media
+    mediaUrl: string | null
+    postLocation: string | null
+    locationVisibility: string | null
     like: number
     comment: number
     share: number
     contentBooster: boolean
     point: number
+    visiualStyle: $Enums.VisiualStyle[]
+    contextActivity: $Enums.ContextActivity[]
+    subject: $Enums.Subject[]
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["post"]>
@@ -2269,12 +2617,17 @@ export interface PostFieldRefs {
   readonly userId: Prisma.FieldRef<"Post", 'String'>
   readonly postType: Prisma.FieldRef<"Post", 'PostType'>
   readonly caption: Prisma.FieldRef<"Post", 'String'>
-  readonly media: Prisma.FieldRef<"Post", 'Media'>
+  readonly mediaUrl: Prisma.FieldRef<"Post", 'String'>
+  readonly postLocation: Prisma.FieldRef<"Post", 'String'>
+  readonly locationVisibility: Prisma.FieldRef<"Post", 'String'>
   readonly like: Prisma.FieldRef<"Post", 'Int'>
   readonly comment: Prisma.FieldRef<"Post", 'Int'>
   readonly share: Prisma.FieldRef<"Post", 'Int'>
   readonly contentBooster: Prisma.FieldRef<"Post", 'Boolean'>
   readonly point: Prisma.FieldRef<"Post", 'Int'>
+  readonly visiualStyle: Prisma.FieldRef<"Post", 'VisiualStyle[]'>
+  readonly contextActivity: Prisma.FieldRef<"Post", 'ContextActivity[]'>
+  readonly subject: Prisma.FieldRef<"Post", 'Subject[]'>
   readonly createdAt: Prisma.FieldRef<"Post", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Post", 'DateTime'>
 }

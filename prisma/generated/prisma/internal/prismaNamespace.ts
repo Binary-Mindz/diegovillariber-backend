@@ -5543,12 +5543,17 @@ export const PostScalarFieldEnum = {
   userId: 'userId',
   postType: 'postType',
   caption: 'caption',
-  media: 'media',
+  mediaUrl: 'mediaUrl',
+  postLocation: 'postLocation',
+  locationVisibility: 'locationVisibility',
   like: 'like',
   comment: 'comment',
   share: 'share',
   contentBooster: 'contentBooster',
   point: 'point',
+  visiualStyle: 'visiualStyle',
+  contextActivity: 'contextActivity',
+  subject: 'subject',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -6182,6 +6187,48 @@ export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'PaymentStatus[]'
  */
 export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VisiualStyle[]'
+ */
+export type ListEnumVisiualStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VisiualStyle[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VisiualStyle'
+ */
+export type EnumVisiualStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VisiualStyle'>
+    
+
+
+/**
+ * Reference to a field of type 'ContextActivity[]'
+ */
+export type ListEnumContextActivityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContextActivity[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ContextActivity'
+ */
+export type EnumContextActivityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContextActivity'>
+    
+
+
+/**
+ * Reference to a field of type 'Subject[]'
+ */
+export type ListEnumSubjectFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Subject[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Subject'
+ */
+export type EnumSubjectFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Subject'>
     
 
 

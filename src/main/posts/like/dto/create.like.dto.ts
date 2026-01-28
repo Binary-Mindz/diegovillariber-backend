@@ -17,12 +17,7 @@ export enum PostType {
 }
 
 export class CreateLikeDto {
-  @ApiProperty({ description: 'User ID (UUID)' })
-  @IsUUID()
-  @IsNotEmpty()
-  userId: string;
-
-  @ApiProperty({ description: 'Post ID (UUID)' })
+  @ApiProperty({ description: 'Post ID (UUID)', example: "7e3525f6-a27b-41db-bdaa-e80bd4877af4" })
   @IsUUID()
   @IsNotEmpty()
   postId: string;
@@ -34,12 +29,7 @@ export class CreateLikeDto {
 }
 
 export class UnlikeDto {
-  @ApiProperty({ description: 'User ID (UUID)' })
-  @IsUUID()
-  @IsNotEmpty()
-  userId: string;
-
-  @ApiProperty({ description: 'Post ID (UUID)' })
+  @ApiProperty({ description: 'Post ID (UUID)',  example: "7e3525f6-a27b-41db-bdaa-e80bd4877af4"  })
   @IsUUID()
   @IsNotEmpty()
   postId: string;

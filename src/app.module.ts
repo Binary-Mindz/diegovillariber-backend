@@ -3,9 +3,8 @@ import { PrismaModule } from './common/prisma/prisma.module';
 import { AuthModule } from './main/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './main/user/user.module';
-import { PostModule } from './main/post/post.module';
-import { LikeModule } from './main/like/like.module';
-import { CommentModule } from './main/comment/comment.module';
+import { PostsModule } from './main/posts/posts.module';
+
 
 @Module({
   imports: [
@@ -13,9 +12,7 @@ import { CommentModule } from './main/comment/comment.module';
     PrismaModule,
     AuthModule,
     UserModule,
-    PostModule,
-    LikeModule,
-    CommentModule,
+    PostsModule
   ],
   controllers: [],
   providers: [],

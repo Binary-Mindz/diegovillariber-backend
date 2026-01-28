@@ -8,8 +8,9 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
 import { LikeService } from './like.service';
 import {
   CreateLikeDto,
@@ -17,38 +18,46 @@ import {
   PostType,
   UnlikeDto,
 } from './dto/create.like.dto';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { GetUser } from '@/common/decorator/get-user.decorator';
+import { handleRequest } from '@/common/helpers/handle.request';
 
 @ApiTags('likes')
 @Controller('likes')
 export class LikeController {
-  constructor(private readonly likeService: LikeService) {}
+  constructor(private readonly likeService: LikeService) { }
 
   @Post()
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Like a post' })
   @ApiResponse({ status: 201, description: 'Post liked successfully' })
-  @ApiResponse({ status: 404, description: 'User or Post not found' })
-  @ApiResponse({ status: 409, description: 'Already liked this post' })
-  async createLike(@Body() createLikeDto: CreateLikeDto) {
-    const like = await this.likeService.createLike(createLikeDto);
-    return {
-      success: true,
-      message: 'Post liked successfully',
-      data: like,
-    };
+  async createLike(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateLikeDto,
+  ) {
+    return handleRequest(async () => {
+      return this.likeService.createLike(userId, dto);
+    }, 'Post liked successfully', HttpStatus.CREATED);
   }
 
   @Delete('unlike')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Unlike a post' })
   @ApiResponse({ status: 200, description: 'Like removed successfully' })
   @ApiResponse({ status: 404, description: 'Like not found' })
-  async removeLike(@Body() unlikeDto: UnlikeDto) {
-    const result = await this.likeService.removeLike(unlikeDto);
-    return {
-      success: true,
-      ...result,
-    };
+  async removeLike(
+    @GetUser('userId') userId: string,
+    @Body() unlikeDto: UnlikeDto,
+  ) {
+    return handleRequest(async () => {
+      return this.likeService.unlike(userId, unlikeDto);
+    }, 'Like removed successfully', HttpStatus.OK);
   }
+
 
   @Get('post/:postId')
   @ApiOperation({ summary: 'Get all likes for a post' })

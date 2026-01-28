@@ -656,12 +656,17 @@ export const PostScalarFieldEnum = {
   userId: 'userId',
   postType: 'postType',
   caption: 'caption',
-  media: 'media',
+  mediaUrl: 'mediaUrl',
+  postLocation: 'postLocation',
+  locationVisibility: 'locationVisibility',
   like: 'like',
   comment: 'comment',
   share: 'share',
   contentBooster: 'contentBooster',
   point: 'point',
+  visiualStyle: 'visiualStyle',
+  contextActivity: 'contextActivity',
+  subject: 'subject',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
