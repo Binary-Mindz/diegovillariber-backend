@@ -27,6 +27,9 @@ model Post {
     hidePosts      HidePost[]
     wishLists      WishList[]
     userPoints     UserPoint[]
+
+    likes Like[]
+    comments Comment[]
 }
 
 
