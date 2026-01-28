@@ -3,118 +3,112 @@ import {
   Injectable,
   NotFoundException,
   ForbiddenException,
+  BadRequestException,
 } from '@nestjs/common';
-import {
-  CommentsQueryDto,
-  CreateCommentDto,
-  UpdateCommentDto,
-} from './dto/create.comment.dto';
+import { CreateCommentDto } from './dto/create-comment.dto';
+import { UpdateCommentDto } from './dto/update-comment.dto';
+import { CommentsQueryDto } from './dto/comment-query.dto';
+
 
 @Injectable()
 export class CommentService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
-  async createComment(createCommentDto: CreateCommentDto) {
-    const { userId, postId, postType, content } = createCommentDto;
+  async createComment(userId: string, dto: CreateCommentDto) {
+    const { postId, postType, content, parentId } = dto;
+    const COMMENT_REWARD_POINTS = 1;
+    return this.prisma.$transaction(async (tx) => {
+      const user = await tx.user.findUnique({
+        where: { id: userId },
+        select: { id: true, username: true },
+      });
+      if (!user) throw new NotFoundException('User not found');
+      const post = await tx.post.findUnique({
+        where: { id: postId },
+        select: { id: true, userId: true },
+      });
+      if (!post) throw new NotFoundException('Post not found');
+      if (parentId) {
+        const parent = await tx.comment.findUnique({
+          where: { id: parentId },
+          select: { id: true, postId: true },
+        });
 
-    // Verify user exists
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-    });
+        if (!parent) throw new NotFoundException('Parent comment not found');
 
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
+        if (parent.postId !== postId) {
+          throw new BadRequestException('Parent comment does not belong to this post');
+        }
+      }
 
-    // Verify post exists
-    const post = await this.prisma.post.findUnique({
-      where: { id: postId },
-    });
-
-    if (!post) {
-      throw new NotFoundException('Post not found');
-    }
-
-    // Create comment and increment post comment count
-    const [comment] = await this.prisma.$transaction([
-      this.prisma.comment.create({
+      const comment = await tx.comment.create({
         data: {
           userId,
           postId,
           postType,
           content,
+          parentId: parentId ?? null,
         },
         include: {
-          user: {
-            select: {
-              id: true,
-              username: true,
-              email: true,
-              profile: {
-                select: {
-                  userName: true,
-                  imageUrl: true,
-                },
-              },
-            },
-          },
+          user: { select: { id: true, username: true, email: true } },
+          parent: { select: { id: true, content: true } },
         },
-      }),
-      this.prisma.post.update({
+      });
+
+      await tx.post.update({
         where: { id: postId },
         data: { comment: { increment: 1 } },
-      }),
-    ]);
+      });
 
-    return comment;
+      await tx.userPoint.create({
+        data: {
+          userId: post.userId,
+          postId: postId,
+          commentId: comment.id,
+          points: COMMENT_REWARD_POINTS,
+        },
+      });
+
+      await tx.user.update({
+        where: { id: post.userId },
+        data: {
+          totalPoints: { increment: COMMENT_REWARD_POINTS },
+          commentCount: { increment: 1 },
+        },
+        select: { id: true },
+      });
+
+      return comment;
+    });
   }
 
-  async updateComment(
-    id: string,
-    userId: string,
-    updateCommentDto: UpdateCommentDto,
-  ) {
-    // Check if comment exists
-    const comment = await this.prisma.comment.findUnique({
-      where: { id },
-    });
+  async updateComment(userId: string, commentId: string, dto: UpdateCommentDto) {
+    const content = dto?.content?.trim();
+    if (!content) throw new BadRequestException('Content is required');
 
-    if (!comment) {
-      throw new NotFoundException('Comment not found');
-    }
-
-    // Check if user owns the comment
-    if (comment.userId !== userId) {
-      throw new ForbiddenException(
-        'You do not have permission to update this comment',
-      );
-    }
-
-    const updatedComment = await this.prisma.comment.update({
-      where: { id },
-      data: { content: updateCommentDto.content },
-      include: {
-        user: {
-          select: {
-            id: true,
-            username: true,
-            email: true,
-            profile: {
-              select: {
-                userName: true,
-                imageUrl: true,
-              },
-            },
-          },
+    return this.prisma.$transaction(async (tx) => {
+      const comment = await tx.comment.findUnique({
+        where: { id: commentId },
+        select: { id: true, userId: true, postId: true },
+      });
+      if (!comment) throw new NotFoundException('Comment not found');
+      if (comment.userId !== userId) {
+        throw new ForbiddenException('You are not allowed to update this comment');
+      }
+      const updated = await tx.comment.update({
+        where: { id: commentId },
+        data: { content },
+        include: {
+          user: { select: { id: true, username: true, email: true } },
+          parent: { select: { id: true, content: true } },
         },
-      },
-    });
+      });
 
-    return updatedComment;
+      return updated;
+    });
   }
 
   async deleteComment(id: string, userId: string) {
-    // Check if comment exists
     const comment = await this.prisma.comment.findUnique({
       where: { id },
     });
@@ -123,14 +117,11 @@ export class CommentService {
       throw new NotFoundException('Comment not found');
     }
 
-    // Check if user owns the comment
     if (comment.userId !== userId) {
       throw new ForbiddenException(
         'You do not have permission to delete this comment',
       );
     }
-
-    // Delete comment and decrement post comment count
     await this.prisma.$transaction([
       this.prisma.comment.delete({
         where: { id },
@@ -145,119 +136,108 @@ export class CommentService {
   }
 
   async getPostComments(postId: string, queryDto: CommentsQueryDto) {
-    const { page = 1, limit = 20, postType } = queryDto;
+    const page = queryDto.page ?? 1;
+    const limit = queryDto.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    // Check if post exists
-    const post = await this.prisma.post.findUnique({ where: { id: postId } });
-    if (!post) {
-      throw new NotFoundException('Post not found');
-    }
+    const sort = queryDto.sort ?? 'new';
+    const orderBy = sort === 'old' ? { createdAt: 'asc' as const } : { createdAt: 'desc' as const };
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      select: { id: true },
+    });
+    if (!post) throw new NotFoundException('Post not found');
 
-    const where: any = { postId };
-    if (postType) where.postType = postType;
+    const where: any = {
+      postId,
+      ...(queryDto.parentId ? { parentId: queryDto.parentId } : { parentId: null }),
+    };
 
-    const [comments, total] = await Promise.all([
+    const [total, comments] = await this.prisma.$transaction([
+      this.prisma.comment.count({ where }),
       this.prisma.comment.findMany({
         where,
+        orderBy,
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
         include: {
-          user: {
-            select: {
-              id: true,
-              username: true,
-              email: true,
-              profile: {
-                select: {
-                  userName: true,
-                  imageUrl: true,
+          user: { select: { id: true, username: true } },
+          ...(queryDto.includeReplies
+            ? {
+              replies: {
+                orderBy: { createdAt: 'asc' },
+                include: {
+                  user: { select: { id: true, username: true } },
                 },
               },
-            },
-          },
+            }
+            : {}),
         },
       }),
-      this.prisma.comment.count({ where }),
     ]);
 
     return {
       data: comments,
-      pagination: {
-        total,
+      meta: {
         page,
         limit,
+        total,
         totalPages: Math.ceil(total / limit),
       },
     };
   }
 
   async getUserComments(userId: string, queryDto: CommentsQueryDto) {
-    const { page = 1, limit = 20, postType } = queryDto;
+    const page = queryDto.page ?? 1;
+    const limit = queryDto.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    // Check if user exists
-    const user = await this.prisma.user.findUnique({ where: { id: userId } });
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
+    const sort = queryDto.sort ?? 'new';
+    const orderBy = sort === 'old' ? { createdAt: 'asc' as const } : { createdAt: 'desc' as const };
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true },
+    });
+    if (!user) throw new NotFoundException('User not found');
 
-    const where: any = { userId };
-    if (postType) where.postType = postType;
+    const where: any = {
+      userId,
+      ...(queryDto.parentId ? { parentId: queryDto.parentId } : {}), 
+    };
 
-    const [comments, total] = await Promise.all([
+    const [total, comments] = await this.prisma.$transaction([
+      this.prisma.comment.count({ where }),
       this.prisma.comment.findMany({
         where,
+        orderBy,
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
-        select: {
-          id: true,
-          postId: true,
-          postType: true,
-          content: true,
-          createdAt: true,
+        include: {
+          post: { select: { id: true, caption: true, mediaUrl: true } },
+          user: { select: { id: true, username: true } },
+          ...(queryDto.includeReplies
+            ? {
+              replies: {
+                orderBy: { createdAt: 'asc' },
+                include: {
+                  user: { select: { id: true, username: true } },
+                },
+              },
+            }
+            : {}),
         },
       }),
-      this.prisma.comment.count({ where }),
     ]);
 
     return {
       data: comments,
-      pagination: {
-        total,
+      meta: {
         page,
         limit,
+        total,
         totalPages: Math.ceil(total / limit),
       },
     };
   }
 
-  async getCommentById(id: string) {
-    const comment = await this.prisma.comment.findUnique({
-      where: { id },
-      include: {
-        user: {
-          select: {
-            id: true,
-            username: true,
-            email: true,
-            profile: {
-              select: {
-                userName: true,
-                imageUrl: true,
-              },
-            },
-          },
-        },
-      },
-    });
-
-    if (!comment) {
-      throw new NotFoundException('Comment not found');
-    }
-
-    return comment;
-  }
 }
