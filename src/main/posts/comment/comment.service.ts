@@ -9,10 +9,9 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { CommentsQueryDto } from './dto/comment-query.dto';
 
-
 @Injectable()
 export class CommentService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async createComment(userId: string, dto: CreateCommentDto) {
     const { postId, postType, content, parentId } = dto;
@@ -37,7 +36,9 @@ export class CommentService {
         if (!parent) throw new NotFoundException('Parent comment not found');
 
         if (parent.postId !== postId) {
-          throw new BadRequestException('Parent comment does not belong to this post');
+          throw new BadRequestException(
+            'Parent comment does not belong to this post',
+          );
         }
       }
 
@@ -82,7 +83,11 @@ export class CommentService {
     });
   }
 
-  async updateComment(userId: string, commentId: string, dto: UpdateCommentDto) {
+  async updateComment(
+    userId: string,
+    commentId: string,
+    dto: UpdateCommentDto,
+  ) {
     const content = dto?.content?.trim();
     if (!content) throw new BadRequestException('Content is required');
 
@@ -93,7 +98,9 @@ export class CommentService {
       });
       if (!comment) throw new NotFoundException('Comment not found');
       if (comment.userId !== userId) {
-        throw new ForbiddenException('You are not allowed to update this comment');
+        throw new ForbiddenException(
+          'You are not allowed to update this comment',
+        );
       }
       const updated = await tx.comment.update({
         where: { id: commentId },
@@ -141,7 +148,10 @@ export class CommentService {
     const skip = (page - 1) * limit;
 
     const sort = queryDto.sort ?? 'new';
-    const orderBy = sort === 'old' ? { createdAt: 'asc' as const } : { createdAt: 'desc' as const };
+    const orderBy =
+      sort === 'old'
+        ? { createdAt: 'asc' as const }
+        : { createdAt: 'desc' as const };
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
       select: { id: true },
@@ -150,7 +160,9 @@ export class CommentService {
 
     const where: any = {
       postId,
-      ...(queryDto.parentId ? { parentId: queryDto.parentId } : { parentId: null }),
+      ...(queryDto.parentId
+        ? { parentId: queryDto.parentId }
+        : { parentId: null }),
     };
 
     const [total, comments] = await this.prisma.$transaction([
@@ -164,13 +176,13 @@ export class CommentService {
           user: { select: { id: true, username: true } },
           ...(queryDto.includeReplies
             ? {
-              replies: {
-                orderBy: { createdAt: 'asc' },
-                include: {
-                  user: { select: { id: true, username: true } },
+                replies: {
+                  orderBy: { createdAt: 'asc' },
+                  include: {
+                    user: { select: { id: true, username: true } },
+                  },
                 },
-              },
-            }
+              }
             : {}),
         },
       }),
@@ -193,7 +205,10 @@ export class CommentService {
     const skip = (page - 1) * limit;
 
     const sort = queryDto.sort ?? 'new';
-    const orderBy = sort === 'old' ? { createdAt: 'asc' as const } : { createdAt: 'desc' as const };
+    const orderBy =
+      sort === 'old'
+        ? { createdAt: 'asc' as const }
+        : { createdAt: 'desc' as const };
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       select: { id: true },
@@ -202,7 +217,7 @@ export class CommentService {
 
     const where: any = {
       userId,
-      ...(queryDto.parentId ? { parentId: queryDto.parentId } : {}), 
+      ...(queryDto.parentId ? { parentId: queryDto.parentId } : {}),
     };
 
     const [total, comments] = await this.prisma.$transaction([
@@ -217,13 +232,13 @@ export class CommentService {
           user: { select: { id: true, username: true } },
           ...(queryDto.includeReplies
             ? {
-              replies: {
-                orderBy: { createdAt: 'asc' },
-                include: {
-                  user: { select: { id: true, username: true } },
+                replies: {
+                  orderBy: { createdAt: 'asc' },
+                  include: {
+                    user: { select: { id: true, username: true } },
+                  },
                 },
-              },
-            }
+              }
             : {}),
         },
       }),
@@ -239,5 +254,4 @@ export class CommentService {
       },
     };
   }
-
 }

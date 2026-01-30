@@ -10,7 +10,13 @@ import {
   HttpStatus,
   UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiParam,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { LikeService } from './like.service';
 import {
   CreateLikeDto,
@@ -25,7 +31,7 @@ import { handleRequest } from '@/common/helpers/handle.request';
 @ApiTags('likes')
 @Controller('likes')
 export class LikeController {
-  constructor(private readonly likeService: LikeService) { }
+  constructor(private readonly likeService: LikeService) {}
 
   @Post()
   @ApiBearerAuth()
@@ -37,9 +43,13 @@ export class LikeController {
     @GetUser('userId') userId: string,
     @Body() dto: CreateLikeDto,
   ) {
-    return handleRequest(async () => {
-      return this.likeService.createLike(userId, dto);
-    }, 'Post liked successfully', HttpStatus.CREATED);
+    return handleRequest(
+      async () => {
+        return this.likeService.createLike(userId, dto);
+      },
+      'Post liked successfully',
+      HttpStatus.CREATED,
+    );
   }
 
   @Delete('unlike')
@@ -53,11 +63,14 @@ export class LikeController {
     @GetUser('userId') userId: string,
     @Body() unlikeDto: UnlikeDto,
   ) {
-    return handleRequest(async () => {
-      return this.likeService.unlike(userId, unlikeDto);
-    }, 'Like removed successfully', HttpStatus.OK);
+    return handleRequest(
+      async () => {
+        return this.likeService.unlike(userId, unlikeDto);
+      },
+      'Like removed successfully',
+      HttpStatus.OK,
+    );
   }
-
 
   @Get('post/:postId')
   @ApiOperation({ summary: 'Get all likes for a post' })
