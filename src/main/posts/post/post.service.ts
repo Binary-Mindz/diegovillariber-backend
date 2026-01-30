@@ -10,7 +10,6 @@ import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
 import { Prisma } from 'generated/prisma/client';
 
-
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
 
@@ -25,26 +24,23 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createPost(userId: string, dto: CreatePostDto) {
     const wantBoost = dto.contentBooster === true;
 
     return this.prisma.$transaction(async (tx) => {
-
       const user = await tx.user.findUnique({
         where: { id: userId },
         select: { id: true, totalPoints: true },
       });
       if (!user) throw new NotFoundException('User not found');
 
-
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
         throw new BadRequestException(
           `Not enough points to boost. Need at least ${BOOST_COST_POINTS} points.`,
         );
       }
-
 
       const post = await tx.post.create({
         data: {
@@ -99,14 +95,14 @@ export class PostService {
     });
   }
 
-
   async getFeed(query: FeedQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
     if (page < 1) throw new BadRequestException('page must be >= 1');
-    if (limit < 1 || limit > 50) throw new BadRequestException('limit must be between 1 and 50');
+    if (limit < 1 || limit > 50)
+      throw new BadRequestException('limit must be between 1 and 50');
 
     const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
     const contextActivity = parseCsvEnum<any>(query.contextActivity);
@@ -120,18 +116,19 @@ export class PostService {
         : {}),
       ...(query.search
         ? {
-          OR: [
-            { caption: { contains: query.search, mode: 'insensitive' } },
-            { postLocation: { contains: query.search, mode: 'insensitive' } },
-          ],
-        }
+            OR: [
+              { caption: { contains: query.search, mode: 'insensitive' } },
+              { postLocation: { contains: query.search, mode: 'insensitive' } },
+            ],
+          }
         : {}),
 
       ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
-      ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
+      ...(contextActivity
+        ? { contextActivity: { hasSome: contextActivity } }
+        : {}),
       ...(subject ? { subject: { hasSome: subject } } : {}),
     };
-
 
     const orderBy: Prisma.PostOrderByWithRelationInput[] =
       query.sort === 'topLiked'
@@ -176,7 +173,7 @@ export class PostService {
         user: {
           select: {
             id: true,
-            username: true
+            username: true,
           },
         },
       },
@@ -185,7 +182,6 @@ export class PostService {
     if (!post) throw new NotFoundException('Post not found');
     return post;
   }
-
 
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
@@ -216,7 +212,9 @@ export class PostService {
       const updateData: any = {
         ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
-        ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? null } : {}),
+        ...(dto.mediaUrl !== undefined
+          ? { mediaUrl: dto.mediaUrl ?? null }
+          : {}),
         ...(dto.postLocation !== undefined
           ? { postLocation: dto.postLocation ?? null }
           : {}),
@@ -224,8 +222,12 @@ export class PostService {
           ? { locationVisibility: dto.locationVisibility ?? null }
           : {}),
 
-        ...(dto.visiualStyle !== undefined ? { visiualStyle: dto.visiualStyle ?? [] } : {}),
-        ...(dto.contextActivity !== undefined ? { contextActivity: dto.contextActivity ?? [] } : {}),
+        ...(dto.visiualStyle !== undefined
+          ? { visiualStyle: dto.visiualStyle ?? [] }
+          : {}),
+        ...(dto.contextActivity !== undefined
+          ? { contextActivity: dto.contextActivity ?? [] }
+          : {}),
         ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
       };
 
@@ -260,7 +262,6 @@ export class PostService {
     });
   }
 }
-
 
 // @ApiProperty({
 //   example: [

@@ -9,7 +9,7 @@ import {
   Max,
   IsBooleanString,
 } from 'class-validator';
-import { PostType, VisiualStyle, ContextActivity, Subject } from 'generated/prisma/enums';
+import { PostType } from 'generated/prisma/enums';
 
 export class FeedQueryDto {
   @ApiPropertyOptional({ example: 1 })
@@ -27,32 +27,29 @@ export class FeedQueryDto {
   @Max(50)
   limit?: number = 10;
 
-  // ✅ text search (caption / location)
   @ApiPropertyOptional({ example: 'bmw' })
   @IsOptional()
   @IsString()
   search?: string;
 
-  // ✅ filter by postType
   @ApiPropertyOptional({ enum: PostType, example: 'Spotter_Post' })
   @IsOptional()
   @IsEnum(PostType)
   postType?: PostType;
 
-  // ✅ filter by location (simple)
   @ApiPropertyOptional({ example: 'Dhaka' })
   @IsOptional()
   @IsString()
   location?: string;
 
-  // ✅ boosted only
-  @ApiPropertyOptional({ example: 'true', description: 'true হলে শুধু boosted post' })
+  @ApiPropertyOptional({
+    example: 'true',
+    description: 'true হলে শুধু boosted post',
+  })
   @IsOptional()
   @IsBooleanString()
   boostedOnly?: 'true' | 'false';
 
-  // ✅ enum array filters (CSV format in query)
-  // example: ?visiualStyle=Cinematic,Night_Shot
   @ApiPropertyOptional({
     example: 'Cinematic,Night_Shot',
     description: 'CSV: Cinematic,Night_Shot',
@@ -77,7 +74,6 @@ export class FeedQueryDto {
   @IsString()
   subject?: string;
 
-  // ✅ sorting
   @ApiPropertyOptional({
     example: 'latest',
     description: 'latest | boosted | topLiked',

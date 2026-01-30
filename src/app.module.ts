@@ -5,14 +5,13 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './main/user/user.module';
 import { PostsModule } from './main/posts/posts.module';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     PrismaModule,
     AuthModule,
     UserModule,
-    PostsModule
+    PostsModule,
   ],
   controllers: [],
   providers: [],
