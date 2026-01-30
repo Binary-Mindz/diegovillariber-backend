@@ -1,6 +1,5 @@
 import {
   ApiProperty,
-  ApiPropertyOptional,
   IntersectionType,
   PickType,
   PartialType,

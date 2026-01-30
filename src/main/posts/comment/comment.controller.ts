@@ -1,7 +1,6 @@
 import {
   Controller,
   Post,
-  Put,
   Delete,
   Get,
   Body,
@@ -12,7 +11,13 @@ import {
   UseGuards,
   Patch,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiParam,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { CommentService } from './comment.service';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -21,11 +26,10 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { CommentsQueryDto } from './dto/comment-query.dto';
 
-
 @ApiTags('comments')
 @Controller('comments')
 export class CommentController {
-  constructor(private readonly commentService: CommentService) { }
+  constructor(private readonly commentService: CommentService) {}
 
   @Post()
   @ApiBearerAuth()
@@ -37,9 +41,13 @@ export class CommentController {
     @GetUser('userId') userId: string,
     @Body() dto: CreateCommentDto,
   ) {
-    return handleRequest(async () => {
-      return this.commentService.createComment(userId, dto);
-    }, 'Comment created successfully', HttpStatus.CREATED);
+    return handleRequest(
+      async () => {
+        return this.commentService.createComment(userId, dto);
+      },
+      'Comment created successfully',
+      HttpStatus.CREATED,
+    );
   }
 
   @Patch(':id')
@@ -53,9 +61,13 @@ export class CommentController {
     @Param('id') commentId: string,
     @Body() dto: UpdateCommentDto,
   ) {
-    return handleRequest(async () => {
-      return this.commentService.updateComment(userId, commentId, dto);
-    }, 'Comment updated successfully', HttpStatus.OK);
+    return handleRequest(
+      async () => {
+        return this.commentService.updateComment(userId, commentId, dto);
+      },
+      'Comment updated successfully',
+      HttpStatus.OK,
+    );
   }
 
   @Delete(':id')
@@ -71,12 +83,14 @@ export class CommentController {
     @GetUser('userId') userId: string,
     @Param('id') id: string,
   ) {
-    return handleRequest(async () => {
-      return this.commentService.deleteComment(id, userId);
-    }, 'Comment deleted successfully', HttpStatus.OK);
+    return handleRequest(
+      async () => {
+        return this.commentService.deleteComment(id, userId);
+      },
+      'Comment deleted successfully',
+      HttpStatus.OK,
+    );
   }
-
-
 
   @Get('post/:postId')
   @HttpCode(HttpStatus.OK)
@@ -88,13 +102,15 @@ export class CommentController {
     @Param('postId') postId: string,
     @Query() queryDto: CommentsQueryDto,
   ) {
-    return handleRequest(async () => {
-      return this.commentService.getPostComments(postId, queryDto);
-    }, 'Comments retrieved successfully', HttpStatus.OK);
+    return handleRequest(
+      async () => {
+        return this.commentService.getPostComments(postId, queryDto);
+      },
+      'Comments retrieved successfully',
+      HttpStatus.OK,
+    );
   }
 
-
-  
   @Get('user/:userId')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -110,12 +126,12 @@ export class CommentController {
     @Param('userId') userId: string,
     @Query() queryDto: CommentsQueryDto,
   ) {
-    return handleRequest(async () => {
-      return this.commentService.getUserComments(userId, queryDto);
-    }, 'User comments retrieved successfully', HttpStatus.OK);
+    return handleRequest(
+      async () => {
+        return this.commentService.getUserComments(userId, queryDto);
+      },
+      'User comments retrieved successfully',
+      HttpStatus.OK,
+    );
   }
-
-
-  
-
 }

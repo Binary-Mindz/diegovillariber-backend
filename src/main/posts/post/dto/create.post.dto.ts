@@ -51,36 +51,36 @@ export class CreatePostDto {
   contentBooster?: boolean;
 
   // ✅ NEW: enum arrays
-@ApiPropertyOptional({
-  isArray: true,
-  enum: VisiualStyle,
-  example: ['Cinematic', 'Night_Shot', 'Wide_Angle'],
-  description: 'Visual style tags for the post',
-})
-@IsOptional()
-@IsArray()
-@IsEnum(VisiualStyle, { each: true })
-visiualStyle?: VisiualStyle[];
+  @ApiPropertyOptional({
+    isArray: true,
+    enum: VisiualStyle,
+    example: ['Cinematic', 'Night_Shot', 'Wide_Angle'],
+    description: 'Visual style tags for the post',
+  })
+  @IsOptional()
+  @IsArray()
+  @IsEnum(VisiualStyle, { each: true })
+  visiualStyle?: VisiualStyle[];
 
-@ApiPropertyOptional({
-  isArray: true,
-  enum: ContextActivity,
-  example: ['Car_Meet', 'Highway', 'Urban'],
-  description: 'Context or activity where the post was created',
-})
-@IsOptional()
-@IsArray()
-@IsEnum(ContextActivity, { each: true })
-contextActivity?: ContextActivity[];
+  @ApiPropertyOptional({
+    isArray: true,
+    enum: ContextActivity,
+    example: ['Car_Meet', 'Highway', 'Urban'],
+    description: 'Context or activity where the post was created',
+  })
+  @IsOptional()
+  @IsArray()
+  @IsEnum(ContextActivity, { each: true })
+  contextActivity?: ContextActivity[];
 
-@ApiPropertyOptional({
-  isArray: true,
-  enum: Subject,
-  example: ['Exterior', 'Wheel', 'Driver_Portrait'],
-  description: 'Main subjects shown in the post',
-})
-@IsOptional()
-@IsArray()
-@IsEnum(Subject, { each: true })
-subject?: Subject[];
+  @ApiPropertyOptional({
+    isArray: true,
+    enum: Subject,
+    example: ['Exterior', 'Wheel', 'Driver_Portrait'],
+    description: 'Main subjects shown in the post',
+  })
+  @IsOptional()
+  @IsArray()
+  @IsEnum(Subject, { each: true })
+  subject?: Subject[];
 }
