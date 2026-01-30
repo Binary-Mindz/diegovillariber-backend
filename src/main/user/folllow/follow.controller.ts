@@ -24,7 +24,7 @@ import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiTags('follows')
+@ApiTags('Follows')
 @Controller('follows')
 export class FollowController {
   constructor(private readonly followService: FollowService) {}
