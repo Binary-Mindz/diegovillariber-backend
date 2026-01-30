@@ -143,7 +143,6 @@ export class LikeService {
               email: true,
               profile: {
                 select: {
-                  userName: true,
                   imageUrl: true,
                 },
               },

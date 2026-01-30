@@ -58,7 +58,6 @@ export class ProfileService {
     return this.prisma.$transaction(async (tx) => {
       const profileData: ProfileCreateWithRelations = {
         user: { connect: { id: user.id } },
-        userName: dto.userName ?? null,
         bio: dto.bio ?? null,
         imageUrl: dto.imageUrl ?? null,
         instagramHandler: dto.instagramHandler ?? null,
@@ -196,7 +195,6 @@ export class ProfileService {
     return this.prisma.profile.update({
       where: { id: profileId },
       data: {
-        userName: dto.userName ?? undefined,
         bio: dto.bio ?? undefined,
         imageUrl: dto.imageUrl ?? undefined,
         instagramHandler: dto.instagramHandler ?? undefined,
