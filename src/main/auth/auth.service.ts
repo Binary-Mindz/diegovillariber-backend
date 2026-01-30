@@ -64,30 +64,79 @@ export class AuthService {
   async signup(dto: SignUpDto) {
     const existing = await this.prisma.user.findUnique({
       where: { email: dto.email },
+      include: { profile: true },
     });
-    if (existing) throw new BadRequestException('Email already exists');
-
-    const passwordHash = await this.hash(dto.password);
 
     const otp = generateOtp(6);
     const expires = otpExpiry(10);
 
-    const user = await this.prisma.user.create({
-      data: {
-        username: dto.username,
-        email: dto.email,
-        password: passwordHash,
-        emailOtp: otp,
-        emailOtpExpiresAt: expires,
-      },
-      select: { id: true, username: true, email: true },
+    // ✅ Case 1: user exists & email already verified
+    if (existing && existing.isEmailVerified) {
+      throw new BadRequestException('Email already exists');
+    }
+
+    // 🔁 Case 2: user exists but NOT verified → resend OTP
+    if (existing && !existing.isEmailVerified) {
+      await this.prisma.user.update({
+        where: { id: existing.id },
+        data: {
+          emailOtp: otp,
+          emailOtpExpiresAt: expires,
+        },
+      });
+
+      await this.mail.sendOtpEmail(existing.email, 'Verify your email', otp);
+
+      return {
+        message: 'Email not verified. OTP resent.',
+        userId: existing.id,
+      };
+    }
+
+    // ✅ Case 3: fresh signup
+    const passwordHash = await this.hash(dto.password);
+
+    const result = await this.prisma.$transaction(async (tx) => {
+      const user = await tx.user.create({
+        data: {
+          username: dto.username,
+          email: dto.email,
+          password: passwordHash,
+          emailOtp: otp,
+          emailOtpExpiresAt: expires,
+        },
+      });
+
+      const profile = await tx.profile.create({
+        data: {
+          userId: user.id,
+          preference: dto.preference,
+          profileType: dto.profileType,
+        },
+      });
+
+      switch (dto.profileType) {
+        case 'SPOTTER':
+          await tx.spotterProfile.create({
+            data: { profileId: profile.id },
+          });
+          break;
+
+        case 'OWNER':
+          await tx.ownerProfile.create({
+            data: { profileId: profile.id },
+          });
+          break;
+      }
+
+      return user;
     });
 
     await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
 
     return {
       message: 'Signup successful. OTP sent to email.',
-      userId: user.id,
+      userId: result.id,
     };
   }
 

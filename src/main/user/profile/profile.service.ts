@@ -18,7 +18,6 @@ import { CreateProfileDto } from './dto/create.profile.dto';
 import { Prisma } from 'generated/prisma/client';
 import { assertPayloadMatchesType } from './utils/profile-type.validator';
 
-// চাইলে Update DTO গুলো আলাদা রাখুন, এখানে inline minimal type দিলাম:
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
@@ -34,6 +33,15 @@ type ChangeProfileTypeDto = Pick<CreateProfileDto, 'profileType'> &
     >
   >;
 
+type ProfileCreateWithRelations = Prisma.ProfileCreateInput & {
+  spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput;
+  owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput;
+  creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput;
+  business?: Prisma.BusinessProfileCreateNestedOneWithoutProfileInput;
+  proDriver?: Prisma.ProDriverProfileCreateNestedOneWithoutProfileInput;
+  simRacing?: Prisma.SimRacingProfileCreateNestedOneWithoutProfileInput;
+};
+
 @Injectable()
 export class ProfileService {
   constructor(private prisma: PrismaService) {}
@@ -48,33 +56,32 @@ export class ProfileService {
     if (!user) throw new NotFoundException('User not found');
 
     return this.prisma.$transaction(async (tx) => {
-      const profileData: Prisma.ProfileCreateInput = {
+      const profileData: ProfileCreateWithRelations = {
         user: { connect: { id: user.id } },
         userName: dto.userName ?? null,
         bio: dto.bio ?? null,
         imageUrl: dto.imageUrl ?? null,
         instagramHandler: dto.instagramHandler ?? null,
-        accountType: (dto.accountType as any) ?? AccountType.PUBLIC,
-        profileType: dto.profileType as any,
-        isActive: IsActive.ACTIVE as any,
+        accountType: dto.accountType ?? AccountType.PUBLIC,
+        profileType: dto.profileType,
+        isActive: IsActive.ACTIVE,
         suspend: false,
       };
 
       switch (dto.profileType) {
         case ProfileType.SPOTTER:
-          (profileData as any).spotter = { create: dto.spotter ?? {} };
+          profileData.spotter = { create: dto.spotter ?? {} };
           break;
 
         case ProfileType.OWNER:
-          (profileData as any).owner = { create: dto.owner ?? {} };
+          profileData.owner = { create: dto.owner ?? {} };
           break;
 
         case ProfileType.CONTENT_CREATOR:
-          (profileData as any).creator = {
+          profileData.creator = {
             create: {
               creatorCategory:
-                (dto.creator?.creatorCategory as any) ??
-                ContentCategory.PHOTOGRAPHY,
+                dto.creator?.creatorCategory ?? ContentCategory.PHOTOGRAPHY,
               youtubeChanel: dto.creator?.youtubeChanel ?? null,
               portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
             },
@@ -87,10 +94,10 @@ export class ProfileService {
               'businessName and location are required for BUSINESS profile',
             );
           }
-          (profileData as any).business = {
+          profileData.business = {
             create: {
               businessCategory:
-                (dto.business.businessCategory as any) ??
+                dto.business.businessCategory ??
                 BusinessCategory.Detailling_Care,
               businessName: dto.business.businessName,
               location: dto.business.location,
@@ -105,7 +112,7 @@ export class ProfileService {
               'location is required for PRO_DRIVER profile',
             );
           }
-          (profileData as any).proDriver = {
+          profileData.proDriver = {
             create: {
               racingDiscipline:
                 (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
@@ -117,7 +124,7 @@ export class ProfileService {
 
         case ProfileType.SIM_RACING_DRIVER: {
           const sim = dto.simRacing ?? {};
-          (profileData as any).simRacing = {
+          profileData.simRacing = {
             create: {
               hardwareSetup: sim.hardwareSetup
                 ? { create: { ...sim.hardwareSetup } }
