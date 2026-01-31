@@ -59,13 +59,12 @@ enum BattleStatus {
   CANCELED
 }
 
-enum BattleType {
-  OPEN_BATTLE
-  INVITATION_ONLY
-  SEND_INVITATION_AUTO
+enum BattleCategory {
+  RAW_SHIFT
   HEAD_TO_HEAD
+  SPLIT_SCREEN
 }
-
+ 
 enum PointType {
   BATTLE_WIN
   POST
