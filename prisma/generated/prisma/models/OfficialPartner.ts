@@ -26,7 +26,7 @@ export type AggregateOfficialPartner = {
 
 export type OfficialPartnerMinAggregateOutputType = {
   id: string | null
-  requestUserId: string | null
+  userId: string | null
   requestStatus: $Enums.OfficialPartnerRequestStatus | null
   brandLogo: string | null
   brandName: string | null
@@ -43,7 +43,7 @@ export type OfficialPartnerMinAggregateOutputType = {
 
 export type OfficialPartnerMaxAggregateOutputType = {
   id: string | null
-  requestUserId: string | null
+  userId: string | null
   requestStatus: $Enums.OfficialPartnerRequestStatus | null
   brandLogo: string | null
   brandName: string | null
@@ -60,7 +60,7 @@ export type OfficialPartnerMaxAggregateOutputType = {
 
 export type OfficialPartnerCountAggregateOutputType = {
   id: number
-  requestUserId: number
+  userId: number
   requestStatus: number
   brandLogo: number
   brandName: number
@@ -79,7 +79,7 @@ export type OfficialPartnerCountAggregateOutputType = {
 
 export type OfficialPartnerMinAggregateInputType = {
   id?: true
-  requestUserId?: true
+  userId?: true
   requestStatus?: true
   brandLogo?: true
   brandName?: true
@@ -96,7 +96,7 @@ export type OfficialPartnerMinAggregateInputType = {
 
 export type OfficialPartnerMaxAggregateInputType = {
   id?: true
-  requestUserId?: true
+  userId?: true
   requestStatus?: true
   brandLogo?: true
   brandName?: true
@@ -113,7 +113,7 @@ export type OfficialPartnerMaxAggregateInputType = {
 
 export type OfficialPartnerCountAggregateInputType = {
   id?: true
-  requestUserId?: true
+  userId?: true
   requestStatus?: true
   brandLogo?: true
   brandName?: true
@@ -203,7 +203,7 @@ export type OfficialPartnerGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 
 export type OfficialPartnerGroupByOutputType = {
   id: string
-  requestUserId: string
+  userId: string
   requestStatus: $Enums.OfficialPartnerRequestStatus
   brandLogo: string | null
   brandName: string
@@ -241,7 +241,7 @@ export type OfficialPartnerWhereInput = {
   OR?: Prisma.OfficialPartnerWhereInput[]
   NOT?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
   id?: Prisma.UuidFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
+  userId?: Prisma.UuidFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringFilter<"OfficialPartner"> | string
@@ -254,12 +254,12 @@ export type OfficialPartnerWhereInput = {
   companyRegistrationNumber?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   createdAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
-  requestUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type OfficialPartnerOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  requestUserId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   requestStatus?: Prisma.SortOrder
   brandLogo?: Prisma.SortOrderInput | Prisma.SortOrder
   brandName?: Prisma.SortOrder
@@ -272,15 +272,15 @@ export type OfficialPartnerOrderByWithRelationInput = {
   companyRegistrationNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  requestUser?: Prisma.UserOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type OfficialPartnerWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  userId?: string
   AND?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
   OR?: Prisma.OfficialPartnerWhereInput[]
   NOT?: Prisma.OfficialPartnerWhereInput | Prisma.OfficialPartnerWhereInput[]
-  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringFilter<"OfficialPartner"> | string
@@ -293,12 +293,12 @@ export type OfficialPartnerWhereUniqueInput = Prisma.AtLeast<{
   companyRegistrationNumber?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
   createdAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
-  requestUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id">
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+}, "id" | "userId">
 
 export type OfficialPartnerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  requestUserId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   requestStatus?: Prisma.SortOrder
   brandLogo?: Prisma.SortOrderInput | Prisma.SortOrder
   brandName?: Prisma.SortOrder
@@ -321,7 +321,7 @@ export type OfficialPartnerScalarWhereWithAggregatesInput = {
   OR?: Prisma.OfficialPartnerScalarWhereWithAggregatesInput[]
   NOT?: Prisma.OfficialPartnerScalarWhereWithAggregatesInput | Prisma.OfficialPartnerScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.UuidWithAggregatesFilter<"OfficialPartner"> | string
+  userId?: Prisma.UuidWithAggregatesFilter<"OfficialPartner"> | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusWithAggregatesFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.StringNullableWithAggregatesFilter<"OfficialPartner"> | string | null
   brandName?: Prisma.StringWithAggregatesFilter<"OfficialPartner"> | string
@@ -350,12 +350,12 @@ export type OfficialPartnerCreateInput = {
   companyRegistrationNumber?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  requestUser: Prisma.UserCreateNestedOneWithoutOfficialPartnersInput
+  user: Prisma.UserCreateNestedOneWithoutOfficialPartnersInput
 }
 
 export type OfficialPartnerUncheckedCreateInput = {
   id?: string
-  requestUserId: string
+  userId: string
   requestStatus?: $Enums.OfficialPartnerRequestStatus
   brandLogo?: string | null
   brandName: string
@@ -384,12 +384,12 @@ export type OfficialPartnerUpdateInput = {
   companyRegistrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  requestUser?: Prisma.UserUpdateOneRequiredWithoutOfficialPartnersNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutOfficialPartnersNestedInput
 }
 
 export type OfficialPartnerUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brandName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -406,7 +406,7 @@ export type OfficialPartnerUncheckedUpdateInput = {
 
 export type OfficialPartnerCreateManyInput = {
   id?: string
-  requestUserId: string
+  userId: string
   requestStatus?: $Enums.OfficialPartnerRequestStatus
   brandLogo?: string | null
   brandName: string
@@ -439,7 +439,7 @@ export type OfficialPartnerUpdateManyMutationInput = {
 
 export type OfficialPartnerUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   brandName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -456,7 +456,7 @@ export type OfficialPartnerUncheckedUpdateManyInput = {
 
 export type OfficialPartnerCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  requestUserId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   requestStatus?: Prisma.SortOrder
   brandLogo?: Prisma.SortOrder
   brandName?: Prisma.SortOrder
@@ -473,7 +473,7 @@ export type OfficialPartnerCountOrderByAggregateInput = {
 
 export type OfficialPartnerMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  requestUserId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   requestStatus?: Prisma.SortOrder
   brandLogo?: Prisma.SortOrder
   brandName?: Prisma.SortOrder
@@ -490,7 +490,7 @@ export type OfficialPartnerMaxOrderByAggregateInput = {
 
 export type OfficialPartnerMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  requestUserId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   requestStatus?: Prisma.SortOrder
   brandLogo?: Prisma.SortOrder
   brandName?: Prisma.SortOrder
@@ -505,63 +505,48 @@ export type OfficialPartnerMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type OfficialPartnerListRelationFilter = {
-  every?: Prisma.OfficialPartnerWhereInput
-  some?: Prisma.OfficialPartnerWhereInput
-  none?: Prisma.OfficialPartnerWhereInput
-}
-
-export type OfficialPartnerOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type OfficialPartnerNullableScalarRelationFilter = {
+  is?: Prisma.OfficialPartnerWhereInput | null
+  isNot?: Prisma.OfficialPartnerWhereInput | null
 }
 
 export type EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput = {
   set?: $Enums.OfficialPartnerRequestStatus
 }
 
-export type OfficialPartnerCreateNestedManyWithoutRequestUserInput = {
-  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput> | Prisma.OfficialPartnerCreateWithoutRequestUserInput[] | Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput[]
-  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput | Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput[]
-  createMany?: Prisma.OfficialPartnerCreateManyRequestUserInputEnvelope
-  connect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
+export type OfficialPartnerCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutUserInput
+  connect?: Prisma.OfficialPartnerWhereUniqueInput
 }
 
-export type OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput = {
-  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput> | Prisma.OfficialPartnerCreateWithoutRequestUserInput[] | Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput[]
-  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput | Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput[]
-  createMany?: Prisma.OfficialPartnerCreateManyRequestUserInputEnvelope
-  connect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
+export type OfficialPartnerUncheckedCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutUserInput
+  connect?: Prisma.OfficialPartnerWhereUniqueInput
 }
 
-export type OfficialPartnerUpdateManyWithoutRequestUserNestedInput = {
-  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput> | Prisma.OfficialPartnerCreateWithoutRequestUserInput[] | Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput[]
-  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput | Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput[]
-  upsert?: Prisma.OfficialPartnerUpsertWithWhereUniqueWithoutRequestUserInput | Prisma.OfficialPartnerUpsertWithWhereUniqueWithoutRequestUserInput[]
-  createMany?: Prisma.OfficialPartnerCreateManyRequestUserInputEnvelope
-  set?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  disconnect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  delete?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  connect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  update?: Prisma.OfficialPartnerUpdateWithWhereUniqueWithoutRequestUserInput | Prisma.OfficialPartnerUpdateWithWhereUniqueWithoutRequestUserInput[]
-  updateMany?: Prisma.OfficialPartnerUpdateManyWithWhereWithoutRequestUserInput | Prisma.OfficialPartnerUpdateManyWithWhereWithoutRequestUserInput[]
-  deleteMany?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
+export type OfficialPartnerUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutUserInput
+  upsert?: Prisma.OfficialPartnerUpsertWithoutUserInput
+  disconnect?: Prisma.OfficialPartnerWhereInput | boolean
+  delete?: Prisma.OfficialPartnerWhereInput | boolean
+  connect?: Prisma.OfficialPartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OfficialPartnerUpdateToOneWithWhereWithoutUserInput, Prisma.OfficialPartnerUpdateWithoutUserInput>, Prisma.OfficialPartnerUncheckedUpdateWithoutUserInput>
 }
 
-export type OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput = {
-  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput> | Prisma.OfficialPartnerCreateWithoutRequestUserInput[] | Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput[]
-  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput | Prisma.OfficialPartnerCreateOrConnectWithoutRequestUserInput[]
-  upsert?: Prisma.OfficialPartnerUpsertWithWhereUniqueWithoutRequestUserInput | Prisma.OfficialPartnerUpsertWithWhereUniqueWithoutRequestUserInput[]
-  createMany?: Prisma.OfficialPartnerCreateManyRequestUserInputEnvelope
-  set?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  disconnect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  delete?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  connect?: Prisma.OfficialPartnerWhereUniqueInput | Prisma.OfficialPartnerWhereUniqueInput[]
-  update?: Prisma.OfficialPartnerUpdateWithWhereUniqueWithoutRequestUserInput | Prisma.OfficialPartnerUpdateWithWhereUniqueWithoutRequestUserInput[]
-  updateMany?: Prisma.OfficialPartnerUpdateManyWithWhereWithoutRequestUserInput | Prisma.OfficialPartnerUpdateManyWithWhereWithoutRequestUserInput[]
-  deleteMany?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
+export type OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.OfficialPartnerCreateOrConnectWithoutUserInput
+  upsert?: Prisma.OfficialPartnerUpsertWithoutUserInput
+  disconnect?: Prisma.OfficialPartnerWhereInput | boolean
+  delete?: Prisma.OfficialPartnerWhereInput | boolean
+  connect?: Prisma.OfficialPartnerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OfficialPartnerUpdateToOneWithWhereWithoutUserInput, Prisma.OfficialPartnerUpdateWithoutUserInput>, Prisma.OfficialPartnerUncheckedUpdateWithoutUserInput>
 }
 
-export type OfficialPartnerCreateWithoutRequestUserInput = {
+export type OfficialPartnerCreateWithoutUserInput = {
   id?: string
   requestStatus?: $Enums.OfficialPartnerRequestStatus
   brandLogo?: string | null
@@ -577,7 +562,7 @@ export type OfficialPartnerCreateWithoutRequestUserInput = {
   updatedAt?: Date | string
 }
 
-export type OfficialPartnerUncheckedCreateWithoutRequestUserInput = {
+export type OfficialPartnerUncheckedCreateWithoutUserInput = {
   id?: string
   requestStatus?: $Enums.OfficialPartnerRequestStatus
   brandLogo?: string | null
@@ -593,69 +578,23 @@ export type OfficialPartnerUncheckedCreateWithoutRequestUserInput = {
   updatedAt?: Date | string
 }
 
-export type OfficialPartnerCreateOrConnectWithoutRequestUserInput = {
+export type OfficialPartnerCreateOrConnectWithoutUserInput = {
   where: Prisma.OfficialPartnerWhereUniqueInput
-  create: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput>
+  create: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
 }
 
-export type OfficialPartnerCreateManyRequestUserInputEnvelope = {
-  data: Prisma.OfficialPartnerCreateManyRequestUserInput | Prisma.OfficialPartnerCreateManyRequestUserInput[]
-  skipDuplicates?: boolean
+export type OfficialPartnerUpsertWithoutUserInput = {
+  update: Prisma.XOR<Prisma.OfficialPartnerUpdateWithoutUserInput, Prisma.OfficialPartnerUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutUserInput>
+  where?: Prisma.OfficialPartnerWhereInput
 }
 
-export type OfficialPartnerUpsertWithWhereUniqueWithoutRequestUserInput = {
-  where: Prisma.OfficialPartnerWhereUniqueInput
-  update: Prisma.XOR<Prisma.OfficialPartnerUpdateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedUpdateWithoutRequestUserInput>
-  create: Prisma.XOR<Prisma.OfficialPartnerCreateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedCreateWithoutRequestUserInput>
+export type OfficialPartnerUpdateToOneWithWhereWithoutUserInput = {
+  where?: Prisma.OfficialPartnerWhereInput
+  data: Prisma.XOR<Prisma.OfficialPartnerUpdateWithoutUserInput, Prisma.OfficialPartnerUncheckedUpdateWithoutUserInput>
 }
 
-export type OfficialPartnerUpdateWithWhereUniqueWithoutRequestUserInput = {
-  where: Prisma.OfficialPartnerWhereUniqueInput
-  data: Prisma.XOR<Prisma.OfficialPartnerUpdateWithoutRequestUserInput, Prisma.OfficialPartnerUncheckedUpdateWithoutRequestUserInput>
-}
-
-export type OfficialPartnerUpdateManyWithWhereWithoutRequestUserInput = {
-  where: Prisma.OfficialPartnerScalarWhereInput
-  data: Prisma.XOR<Prisma.OfficialPartnerUpdateManyMutationInput, Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserInput>
-}
-
-export type OfficialPartnerScalarWhereInput = {
-  AND?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
-  OR?: Prisma.OfficialPartnerScalarWhereInput[]
-  NOT?: Prisma.OfficialPartnerScalarWhereInput | Prisma.OfficialPartnerScalarWhereInput[]
-  id?: Prisma.UuidFilter<"OfficialPartner"> | string
-  requestUserId?: Prisma.UuidFilter<"OfficialPartner"> | string
-  requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFilter<"OfficialPartner"> | $Enums.OfficialPartnerRequestStatus
-  brandLogo?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  brandName?: Prisma.StringFilter<"OfficialPartner"> | string
-  contactName?: Prisma.StringFilter<"OfficialPartner"> | string
-  contactEmail?: Prisma.StringFilter<"OfficialPartner"> | string
-  brandDescription?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  websiteUrl?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  industry?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  country?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  companyRegistrationNumber?: Prisma.StringNullableFilter<"OfficialPartner"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"OfficialPartner"> | Date | string
-}
-
-export type OfficialPartnerCreateManyRequestUserInput = {
-  id?: string
-  requestStatus?: $Enums.OfficialPartnerRequestStatus
-  brandLogo?: string | null
-  brandName: string
-  contactName: string
-  contactEmail: string
-  brandDescription?: string | null
-  websiteUrl?: string | null
-  industry?: string | null
-  country?: string | null
-  companyRegistrationNumber?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type OfficialPartnerUpdateWithoutRequestUserInput = {
+export type OfficialPartnerUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -671,23 +610,7 @@ export type OfficialPartnerUpdateWithoutRequestUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type OfficialPartnerUncheckedUpdateWithoutRequestUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput | $Enums.OfficialPartnerRequestStatus
-  brandLogo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  brandName?: Prisma.StringFieldUpdateOperationsInput | string
-  contactName?: Prisma.StringFieldUpdateOperationsInput | string
-  contactEmail?: Prisma.StringFieldUpdateOperationsInput | string
-  brandDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  industry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  companyRegistrationNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type OfficialPartnerUncheckedUpdateManyWithoutRequestUserInput = {
+export type OfficialPartnerUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   requestStatus?: Prisma.EnumOfficialPartnerRequestStatusFieldUpdateOperationsInput | $Enums.OfficialPartnerRequestStatus
   brandLogo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -707,7 +630,7 @@ export type OfficialPartnerUncheckedUpdateManyWithoutRequestUserInput = {
 
 export type OfficialPartnerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  requestUserId?: boolean
+  userId?: boolean
   requestStatus?: boolean
   brandLogo?: boolean
   brandName?: boolean
@@ -720,12 +643,12 @@ export type OfficialPartnerSelect<ExtArgs extends runtime.Types.Extensions.Inter
   companyRegistrationNumber?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["officialPartner"]>
 
 export type OfficialPartnerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  requestUserId?: boolean
+  userId?: boolean
   requestStatus?: boolean
   brandLogo?: boolean
   brandName?: boolean
@@ -738,12 +661,12 @@ export type OfficialPartnerSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   companyRegistrationNumber?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["officialPartner"]>
 
 export type OfficialPartnerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  requestUserId?: boolean
+  userId?: boolean
   requestStatus?: boolean
   brandLogo?: boolean
   brandName?: boolean
@@ -756,12 +679,12 @@ export type OfficialPartnerSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   companyRegistrationNumber?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["officialPartner"]>
 
 export type OfficialPartnerSelectScalar = {
   id?: boolean
-  requestUserId?: boolean
+  userId?: boolean
   requestStatus?: boolean
   brandLogo?: boolean
   brandName?: boolean
@@ -776,25 +699,25 @@ export type OfficialPartnerSelectScalar = {
   updatedAt?: boolean
 }
 
-export type OfficialPartnerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "requestUserId" | "requestStatus" | "brandLogo" | "brandName" | "contactName" | "contactEmail" | "brandDescription" | "websiteUrl" | "industry" | "country" | "companyRegistrationNumber" | "createdAt" | "updatedAt", ExtArgs["result"]["officialPartner"]>
+export type OfficialPartnerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "requestStatus" | "brandLogo" | "brandName" | "contactName" | "contactEmail" | "brandDescription" | "websiteUrl" | "industry" | "country" | "companyRegistrationNumber" | "createdAt" | "updatedAt", ExtArgs["result"]["officialPartner"]>
 export type OfficialPartnerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type OfficialPartnerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type OfficialPartnerIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  requestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $OfficialPartnerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "OfficialPartner"
   objects: {
-    requestUser: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    requestUserId: string
+    userId: string
     requestStatus: $Enums.OfficialPartnerRequestStatus
     brandLogo: string | null
     brandName: string
@@ -1201,7 +1124,7 @@ readonly fields: OfficialPartnerFieldRefs;
  */
 export interface Prisma__OfficialPartnerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  requestUser<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1232,7 +1155,7 @@ export interface Prisma__OfficialPartnerClient<T, Null = never, ExtArgs extends 
  */
 export interface OfficialPartnerFieldRefs {
   readonly id: Prisma.FieldRef<"OfficialPartner", 'String'>
-  readonly requestUserId: Prisma.FieldRef<"OfficialPartner", 'String'>
+  readonly userId: Prisma.FieldRef<"OfficialPartner", 'String'>
   readonly requestStatus: Prisma.FieldRef<"OfficialPartner", 'OfficialPartnerRequestStatus'>
   readonly brandLogo: Prisma.FieldRef<"OfficialPartner", 'String'>
   readonly brandName: Prisma.FieldRef<"OfficialPartner", 'String'>

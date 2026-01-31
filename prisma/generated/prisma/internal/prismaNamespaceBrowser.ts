@@ -140,8 +140,8 @@ export type AdvancedCarDataScalarFieldEnum = (typeof AdvancedCarDataScalarFieldE
 
 export const AmbassadorProgramScalarFieldEnum = {
   id: 'id',
-  ambassadorRequestUserId: 'ambassadorRequestUserId',
-  requestStatus: 'requestStatus',
+  userId: 'userId',
+  status: 'status',
   motorspotName: 'motorspotName',
   contactName: 'contactName',
   email: 'email',
@@ -612,7 +612,7 @@ export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeo
 
 export const OfficialPartnerScalarFieldEnum = {
   id: 'id',
-  requestUserId: 'requestUserId',
+  userId: 'userId',
   requestStatus: 'requestStatus',
   brandLogo: 'brandLogo',
   brandName: 'brandName',

@@ -1,8 +1,8 @@
 model AmbassadorProgram {
-  id                      String           @id @default(uuid()) @db.Uuid
-  ambassadorRequestUserId String           @db.Uuid
-  ambassadorRequestUser   User             @relation(fields: [ambassadorRequestUserId], references: [id])
-  requestStatus           AmbassadorStatus @default(PENDING)
+  id     String           @id @default(uuid()) @db.Uuid
+  userId String           @unique @db.Uuid
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status AmbassadorStatus @default(PENDING)
 
   motorspotName String
   contactName   String
