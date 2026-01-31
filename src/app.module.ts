@@ -4,6 +4,7 @@ import { AuthModule } from './main/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './main/user/user.module';
 import { PostsModule } from './main/posts/posts.module';
+import { ProProfileModule } from './main/pro-profile/pro-profile.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { PostsModule } from './main/posts/posts.module';
     AuthModule,
     UserModule,
     PostsModule,
+    ProProfileModule
   ],
   controllers: [],
   providers: [],
