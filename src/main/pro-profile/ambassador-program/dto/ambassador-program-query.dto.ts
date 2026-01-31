@@ -8,22 +8,34 @@ export enum AmbassadorStatusDto {
 }
 
 export class AmbassadorProgramQueryDto {
-  @ApiPropertyOptional({ example: '1' })
+  @ApiPropertyOptional({
+    example: '1',
+    description: 'Page number for pagination',
+  })
   @IsOptional()
   @IsNumberString()
   page?: string;
 
-  @ApiPropertyOptional({ example: '10' })
+  @ApiPropertyOptional({
+    example: '10',
+    description: 'Number of records per page',
+  })
   @IsOptional()
   @IsNumberString()
   limit?: string;
 
-  @ApiPropertyOptional({ enum: AmbassadorStatusDto })
+  @ApiPropertyOptional({
+    enum: AmbassadorStatusDto,
+    example: AmbassadorStatusDto.PENDING,
+  })
   @IsOptional()
   @IsEnum(AmbassadorStatusDto)
   status?: AmbassadorStatusDto;
 
-  @ApiPropertyOptional({ description: 'Search motorspotName/contactName/email' })
+  @ApiPropertyOptional({
+    example: 'rana',
+    description: 'Search by motorspot name, contact name, or email',
+  })
   @IsOptional()
   @IsString()
   search?: string;

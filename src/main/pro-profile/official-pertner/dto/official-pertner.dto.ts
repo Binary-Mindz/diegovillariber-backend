@@ -8,22 +8,35 @@ export enum OfficialPartnerRequestStatusDto {
 }
 
 export class OfficialPartnerQueryDto {
-  @ApiPropertyOptional({ example: '1' })
+  @ApiPropertyOptional({
+    example: '1',
+    description: 'Page number',
+  })
   @IsOptional()
   @IsNumberString()
   page?: string;
 
-  @ApiPropertyOptional({ example: '10' })
+  @ApiPropertyOptional({
+    example: '10',
+    description: 'Number of items per page',
+  })
   @IsOptional()
   @IsNumberString()
   limit?: string;
 
-  @ApiPropertyOptional({ enum: OfficialPartnerRequestStatusDto })
+  @ApiPropertyOptional({
+    enum: OfficialPartnerRequestStatusDto,
+    example: OfficialPartnerRequestStatusDto.PENDING,
+    description: 'Filter by request status',
+  })
   @IsOptional()
   @IsEnum(OfficialPartnerRequestStatusDto)
   status?: OfficialPartnerRequestStatusDto;
 
-  @ApiPropertyOptional({ description: 'Search by brandName/contactName/contactEmail' })
+  @ApiPropertyOptional({
+    example: 'speedx',
+    description: 'Search by brand name, contact name, or contact email',
+  })
   @IsOptional()
   @IsString()
   search?: string;
