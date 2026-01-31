@@ -5055,15 +5055,13 @@ export const BattleScalarFieldEnum = {
   description: 'description',
   coverImage: 'coverImage',
   battleCategory: 'battleCategory',
-  brand: 'brand',
-  car: 'car',
-  battleType: 'battleType',
+  preference: 'preference',
   status: 'status',
   maxParticipants: 'maxParticipants',
   startTime: 'startTime',
   endTime: 'endTime',
-  isActive: 'isActive',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BattleScalarFieldEnum = (typeof BattleScalarFieldEnum)[keyof typeof BattleScalarFieldEnum]
@@ -5073,15 +5071,8 @@ export const BattleEntryScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   participantId: 'participantId',
-  postType: 'postType',
-  mediaUrl: 'mediaUrl',
-  caption: 'caption',
-  hashtag: 'hashtag',
-  like: 'like',
-  comment: 'comment',
-  share: 'share',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  postId: 'postId',
+  createdAt: 'createdAt'
 } as const
 
 export type BattleEntryScalarFieldEnum = (typeof BattleEntryScalarFieldEnum)[keyof typeof BattleEntryScalarFieldEnum]
@@ -5090,7 +5081,7 @@ export type BattleEntryScalarFieldEnum = (typeof BattleEntryScalarFieldEnum)[key
 export const BattleParticipantScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
-  particepantId: 'particepantId',
+  userId: 'userId',
   joinedAt: 'joinedAt',
   isActive: 'isActive'
 } as const
@@ -5102,6 +5093,7 @@ export const BattleResultScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   winnerUserId: 'winnerUserId',
+  winnerEntryId: 'winnerEntryId',
   rewardPoints: 'rewardPoints',
   createdAt: 'createdAt'
 } as const
@@ -5112,9 +5104,9 @@ export type BattleResultScalarFieldEnum = (typeof BattleResultScalarFieldEnum)[k
 export const BattleVoteScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
-  participantId: 'participantId',
+  entryId: 'entryId',
   voterUserId: 'voterUserId',
-  votedAt: 'votedAt'
+  createdAt: 'createdAt'
 } as const
 
 export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof typeof BattleVoteScalarFieldEnum]
@@ -5932,16 +5924,30 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'BattleType'
+ * Reference to a field of type 'BattleCategory'
  */
-export type EnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType'>
+export type EnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory'>
     
 
 
 /**
- * Reference to a field of type 'BattleType[]'
+ * Reference to a field of type 'BattleCategory[]'
  */
-export type ListEnumBattleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleType[]'>
+export type ListEnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference'
+ */
+export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference[]'
+ */
+export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
     
 
 
@@ -5956,48 +5962,6 @@ export type EnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'BattleStatus[]'
  */
 export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'IsActive'
- */
-export type EnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive'>
-    
-
-
-/**
- * Reference to a field of type 'IsActive[]'
- */
-export type ListEnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive[]'>
-    
-
-
-/**
- * Reference to a field of type 'PostType'
- */
-export type EnumPostTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostType'>
-    
-
-
-/**
- * Reference to a field of type 'PostType[]'
- */
-export type ListEnumPostTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostType[]'>
-    
-
-
-/**
- * Reference to a field of type 'Media'
- */
-export type EnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media'>
-    
-
-
-/**
- * Reference to a field of type 'Media[]'
- */
-export type ListEnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media[]'>
     
 
 
@@ -6089,6 +6053,48 @@ export type EnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'DriveCategory[]'
  */
 export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Media'
+ */
+export type EnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media'>
+    
+
+
+/**
+ * Reference to a field of type 'Media[]'
+ */
+export type ListEnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media[]'>
+    
+
+
+/**
+ * Reference to a field of type 'IsActive'
+ */
+export type EnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive'>
+    
+
+
+/**
+ * Reference to a field of type 'IsActive[]'
+ */
+export type ListEnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PostType'
+ */
+export type EnumPostTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostType'>
+    
+
+
+/**
+ * Reference to a field of type 'PostType[]'
+ */
+export type ListEnumPostTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostType[]'>
     
 
 
@@ -6271,20 +6277,6 @@ export type EnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
  * Reference to a field of type 'AccountType[]'
  */
 export type ListEnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountType[]'>
-    
-
-
-/**
- * Reference to a field of type 'Preference'
- */
-export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
-    
-
-
-/**
- * Reference to a field of type 'Preference[]'
- */
-export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
     
 
 

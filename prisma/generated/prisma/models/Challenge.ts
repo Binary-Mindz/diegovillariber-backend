@@ -580,6 +580,14 @@ export type ChallengeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type EnumMediaFieldUpdateOperationsInput = {
+  set?: $Enums.Media
+}
+
+export type EnumIsActiveFieldUpdateOperationsInput = {
+  set?: $Enums.IsActive
+}
+
 export type ChallengeCreateNestedOneWithoutParticipantsListInput = {
   create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsListInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsListInput>
   connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsListInput

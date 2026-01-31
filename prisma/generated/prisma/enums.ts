@@ -158,14 +158,13 @@ export const BattleStatus = {
 export type BattleStatus = (typeof BattleStatus)[keyof typeof BattleStatus]
 
 
-export const BattleType = {
-  OPEN_BATTLE: 'OPEN_BATTLE',
-  INVITATION_ONLY: 'INVITATION_ONLY',
-  SEND_INVITATION_AUTO: 'SEND_INVITATION_AUTO',
-  HEAD_TO_HEAD: 'HEAD_TO_HEAD'
+export const BattleCategory = {
+  RAW_SHIFT: 'RAW_SHIFT',
+  HEAD_TO_HEAD: 'HEAD_TO_HEAD',
+  SPLIT_SCREEN: 'SPLIT_SCREEN'
 } as const
 
-export type BattleType = (typeof BattleType)[keyof typeof BattleType]
+export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory]
 
 
 export const PointType = {
