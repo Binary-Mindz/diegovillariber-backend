@@ -1,21 +1,20 @@
 model BattleEntry {
-  id String @id @default(uuid()) @db.Uuid
-  // Optional references to source
-  battleId String? @db.Uuid
-  battle   Battle? @relation(fields: [battleId], references: [id])
+  id            String   @id @default(uuid()) @db.Uuid
 
-  participantId String @db.Uuid
-  participant   User   @relation(fields: [participantId], references: [id])
+  battleId      String   @db.Uuid
+  battle        Battle   @relation(fields: [battleId], references: [id])
 
-  postType PostType @default(Battle_Post)
-  mediaUrl Media    @default(PHOTO)
-  caption  String?
-  hashtag  String?
+  participantId String   @db.Uuid
+  participant   BattleParticipant @relation(fields: [participantId], references: [id])
 
-  like    Int @default(0)
-  comment Int @default(0)
-  share   Int @default(0)
+  postId        String   @db.Uuid
+  post          Post     @relation(fields: [postId], references: [id])
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt     DateTime @default(now())
+
+  votes         BattleVote[]
+
+  @@unique([battleId, participantId]) // one entry per participant per battle (change if you want multiple)
+  @@index([battleId])
+  battleResults BattleResult[]
 }

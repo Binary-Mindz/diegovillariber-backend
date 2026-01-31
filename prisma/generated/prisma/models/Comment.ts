@@ -404,6 +404,10 @@ export type CommentUncheckedCreateNestedManyWithoutParentInput = {
   connect?: Prisma.CommentWhereUniqueInput | Prisma.CommentWhereUniqueInput[]
 }
 
+export type EnumPostTypeFieldUpdateOperationsInput = {
+  set?: $Enums.PostType
+}
+
 export type CommentUpdateOneWithoutRepliesNestedInput = {
   create?: Prisma.XOR<Prisma.CommentCreateWithoutRepliesInput, Prisma.CommentUncheckedCreateWithoutRepliesInput>
   connectOrCreate?: Prisma.CommentCreateOrConnectWithoutRepliesInput
