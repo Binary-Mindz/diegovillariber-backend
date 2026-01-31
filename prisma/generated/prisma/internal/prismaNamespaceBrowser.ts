@@ -168,15 +168,13 @@ export const BattleScalarFieldEnum = {
   description: 'description',
   coverImage: 'coverImage',
   battleCategory: 'battleCategory',
-  brand: 'brand',
-  car: 'car',
-  battleType: 'battleType',
+  preference: 'preference',
   status: 'status',
   maxParticipants: 'maxParticipants',
   startTime: 'startTime',
   endTime: 'endTime',
-  isActive: 'isActive',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type BattleScalarFieldEnum = (typeof BattleScalarFieldEnum)[keyof typeof BattleScalarFieldEnum]
@@ -186,15 +184,8 @@ export const BattleEntryScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   participantId: 'participantId',
-  postType: 'postType',
-  mediaUrl: 'mediaUrl',
-  caption: 'caption',
-  hashtag: 'hashtag',
-  like: 'like',
-  comment: 'comment',
-  share: 'share',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  postId: 'postId',
+  createdAt: 'createdAt'
 } as const
 
 export type BattleEntryScalarFieldEnum = (typeof BattleEntryScalarFieldEnum)[keyof typeof BattleEntryScalarFieldEnum]
@@ -203,7 +194,7 @@ export type BattleEntryScalarFieldEnum = (typeof BattleEntryScalarFieldEnum)[key
 export const BattleParticipantScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
-  particepantId: 'particepantId',
+  userId: 'userId',
   joinedAt: 'joinedAt',
   isActive: 'isActive'
 } as const
@@ -215,6 +206,7 @@ export const BattleResultScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   winnerUserId: 'winnerUserId',
+  winnerEntryId: 'winnerEntryId',
   rewardPoints: 'rewardPoints',
   createdAt: 'createdAt'
 } as const
@@ -225,9 +217,9 @@ export type BattleResultScalarFieldEnum = (typeof BattleResultScalarFieldEnum)[k
 export const BattleVoteScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
-  participantId: 'participantId',
+  entryId: 'entryId',
   voterUserId: 'voterUserId',
-  votedAt: 'votedAt'
+  createdAt: 'createdAt'
 } as const
 
 export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof typeof BattleVoteScalarFieldEnum]

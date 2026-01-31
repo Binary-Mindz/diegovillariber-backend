@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './main/user/user.module';
 import { PostsModule } from './main/posts/posts.module';
 import { ProProfileModule } from './main/pro-profile/pro-profile.module';
+import { BattleModule } from './main/battle/battle.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { ProProfileModule } from './main/pro-profile/pro-profile.module';
     AuthModule,
     UserModule,
     PostsModule,
-    ProProfileModule
+    ProProfileModule,
+    BattleModule
   ],
   controllers: [],
   providers: [],
