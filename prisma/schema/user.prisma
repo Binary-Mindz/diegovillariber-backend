@@ -60,6 +60,6 @@ model User {
   updatedAt DateTime @updatedAt
 
   battleEntries BattleEntry[]
-  officialPartners OfficialPartner[]
-  ambassadorPrograms AmbassadorProgram[]
+  officialPartners OfficialPartner?
+  ambassadorPrograms AmbassadorProgram?
 }
