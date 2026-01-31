@@ -28,7 +28,7 @@ import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 
-@ApiTags('likes')
+@ApiTags('Likes')
 @Controller('likes')
 export class LikeController {
   constructor(private readonly likeService: LikeService) {}

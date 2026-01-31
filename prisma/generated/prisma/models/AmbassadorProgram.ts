@@ -36,8 +36,8 @@ export type AmbassadorProgramSumAggregateOutputType = {
 
 export type AmbassadorProgramMinAggregateOutputType = {
   id: string | null
-  ambassadorRequestUserId: string | null
-  requestStatus: $Enums.AmbassadorStatus | null
+  userId: string | null
+  status: $Enums.AmbassadorStatus | null
   motorspotName: string | null
   contactName: string | null
   email: string | null
@@ -56,8 +56,8 @@ export type AmbassadorProgramMinAggregateOutputType = {
 
 export type AmbassadorProgramMaxAggregateOutputType = {
   id: string | null
-  ambassadorRequestUserId: string | null
-  requestStatus: $Enums.AmbassadorStatus | null
+  userId: string | null
+  status: $Enums.AmbassadorStatus | null
   motorspotName: string | null
   contactName: string | null
   email: string | null
@@ -76,8 +76,8 @@ export type AmbassadorProgramMaxAggregateOutputType = {
 
 export type AmbassadorProgramCountAggregateOutputType = {
   id: number
-  ambassadorRequestUserId: number
-  requestStatus: number
+  userId: number
+  status: number
   motorspotName: number
   contactName: number
   email: number
@@ -106,8 +106,8 @@ export type AmbassadorProgramSumAggregateInputType = {
 
 export type AmbassadorProgramMinAggregateInputType = {
   id?: true
-  ambassadorRequestUserId?: true
-  requestStatus?: true
+  userId?: true
+  status?: true
   motorspotName?: true
   contactName?: true
   email?: true
@@ -126,8 +126,8 @@ export type AmbassadorProgramMinAggregateInputType = {
 
 export type AmbassadorProgramMaxAggregateInputType = {
   id?: true
-  ambassadorRequestUserId?: true
-  requestStatus?: true
+  userId?: true
+  status?: true
   motorspotName?: true
   contactName?: true
   email?: true
@@ -146,8 +146,8 @@ export type AmbassadorProgramMaxAggregateInputType = {
 
 export type AmbassadorProgramCountAggregateInputType = {
   id?: true
-  ambassadorRequestUserId?: true
-  requestStatus?: true
+  userId?: true
+  status?: true
   motorspotName?: true
   contactName?: true
   email?: true
@@ -253,8 +253,8 @@ export type AmbassadorProgramGroupByArgs<ExtArgs extends runtime.Types.Extension
 
 export type AmbassadorProgramGroupByOutputType = {
   id: string
-  ambassadorRequestUserId: string
-  requestStatus: $Enums.AmbassadorStatus
+  userId: string
+  status: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -296,8 +296,8 @@ export type AmbassadorProgramWhereInput = {
   OR?: Prisma.AmbassadorProgramWhereInput[]
   NOT?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
   id?: Prisma.UuidFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
+  userId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
+  status?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   email?: Prisma.StringFilter<"AmbassadorProgram"> | string
@@ -312,13 +312,13 @@ export type AmbassadorProgramWhereInput = {
   profilePhoto?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
-  ambassadorRequestUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type AmbassadorProgramOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  ambassadorRequestUserId?: Prisma.SortOrder
-  requestStatus?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   motorspotName?: Prisma.SortOrder
   contactName?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -333,16 +333,16 @@ export type AmbassadorProgramOrderByWithRelationInput = {
   profilePhoto?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  ambassadorRequestUser?: Prisma.UserOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type AmbassadorProgramWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  userId?: string
   AND?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
   OR?: Prisma.AmbassadorProgramWhereInput[]
   NOT?: Prisma.AmbassadorProgramWhereInput | Prisma.AmbassadorProgramWhereInput[]
-  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
+  status?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string
   email?: Prisma.StringFilter<"AmbassadorProgram"> | string
@@ -357,13 +357,13 @@ export type AmbassadorProgramWhereUniqueInput = Prisma.AtLeast<{
   profilePhoto?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
-  ambassadorRequestUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id">
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+}, "id" | "userId">
 
 export type AmbassadorProgramOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  ambassadorRequestUserId?: Prisma.SortOrder
-  requestStatus?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   motorspotName?: Prisma.SortOrder
   contactName?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -390,8 +390,8 @@ export type AmbassadorProgramScalarWhereWithAggregatesInput = {
   OR?: Prisma.AmbassadorProgramScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AmbassadorProgramScalarWhereWithAggregatesInput | Prisma.AmbassadorProgramScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.UuidWithAggregatesFilter<"AmbassadorProgram"> | string
-  requestStatus?: Prisma.EnumAmbassadorStatusWithAggregatesFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
+  userId?: Prisma.UuidWithAggregatesFilter<"AmbassadorProgram"> | string
+  status?: Prisma.EnumAmbassadorStatusWithAggregatesFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
   contactName?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
   email?: Prisma.StringWithAggregatesFilter<"AmbassadorProgram"> | string
@@ -410,7 +410,7 @@ export type AmbassadorProgramScalarWhereWithAggregatesInput = {
 
 export type AmbassadorProgramCreateInput = {
   id?: string
-  requestStatus?: $Enums.AmbassadorStatus
+  status?: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -425,13 +425,13 @@ export type AmbassadorProgramCreateInput = {
   profilePhoto?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  ambassadorRequestUser: Prisma.UserCreateNestedOneWithoutAmbassadorProgramsInput
+  user: Prisma.UserCreateNestedOneWithoutAmbassadorProgramsInput
 }
 
 export type AmbassadorProgramUncheckedCreateInput = {
   id?: string
-  ambassadorRequestUserId: string
-  requestStatus?: $Enums.AmbassadorStatus
+  userId: string
+  status?: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -450,7 +450,7 @@ export type AmbassadorProgramUncheckedCreateInput = {
 
 export type AmbassadorProgramUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -465,13 +465,13 @@ export type AmbassadorProgramUpdateInput = {
   profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  ambassadorRequestUser?: Prisma.UserUpdateOneRequiredWithoutAmbassadorProgramsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutAmbassadorProgramsNestedInput
 }
 
 export type AmbassadorProgramUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ambassadorRequestUserId?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -490,8 +490,8 @@ export type AmbassadorProgramUncheckedUpdateInput = {
 
 export type AmbassadorProgramCreateManyInput = {
   id?: string
-  ambassadorRequestUserId: string
-  requestStatus?: $Enums.AmbassadorStatus
+  userId: string
+  status?: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -510,7 +510,7 @@ export type AmbassadorProgramCreateManyInput = {
 
 export type AmbassadorProgramUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -529,8 +529,8 @@ export type AmbassadorProgramUpdateManyMutationInput = {
 
 export type AmbassadorProgramUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ambassadorRequestUserId?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -549,8 +549,8 @@ export type AmbassadorProgramUncheckedUpdateManyInput = {
 
 export type AmbassadorProgramCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  ambassadorRequestUserId?: Prisma.SortOrder
-  requestStatus?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   motorspotName?: Prisma.SortOrder
   contactName?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -573,8 +573,8 @@ export type AmbassadorProgramAvgOrderByAggregateInput = {
 
 export type AmbassadorProgramMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  ambassadorRequestUserId?: Prisma.SortOrder
-  requestStatus?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   motorspotName?: Prisma.SortOrder
   contactName?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -593,8 +593,8 @@ export type AmbassadorProgramMaxOrderByAggregateInput = {
 
 export type AmbassadorProgramMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  ambassadorRequestUserId?: Prisma.SortOrder
-  requestStatus?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   motorspotName?: Prisma.SortOrder
   contactName?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -615,14 +615,9 @@ export type AmbassadorProgramSumOrderByAggregateInput = {
   totalFollower?: Prisma.SortOrder
 }
 
-export type AmbassadorProgramListRelationFilter = {
-  every?: Prisma.AmbassadorProgramWhereInput
-  some?: Prisma.AmbassadorProgramWhereInput
-  none?: Prisma.AmbassadorProgramWhereInput
-}
-
-export type AmbassadorProgramOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type AmbassadorProgramNullableScalarRelationFilter = {
+  is?: Prisma.AmbassadorProgramWhereInput | null
+  isNot?: Prisma.AmbassadorProgramWhereInput | null
 }
 
 export type EnumAmbassadorStatusFieldUpdateOperationsInput = {
@@ -645,51 +640,41 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput = {
-  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput> | Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput[] | Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput[]
-  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput[]
-  createMany?: Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInputEnvelope
-  connect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
+export type AmbassadorProgramCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutUserInput
+  connect?: Prisma.AmbassadorProgramWhereUniqueInput
 }
 
-export type AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput = {
-  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput> | Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput[] | Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput[]
-  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput[]
-  createMany?: Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInputEnvelope
-  connect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
+export type AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutUserInput
+  connect?: Prisma.AmbassadorProgramWhereUniqueInput
 }
 
-export type AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput = {
-  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput> | Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput[] | Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput[]
-  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput[]
-  upsert?: Prisma.AmbassadorProgramUpsertWithWhereUniqueWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpsertWithWhereUniqueWithoutAmbassadorRequestUserInput[]
-  createMany?: Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInputEnvelope
-  set?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  disconnect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  delete?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  connect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  update?: Prisma.AmbassadorProgramUpdateWithWhereUniqueWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpdateWithWhereUniqueWithoutAmbassadorRequestUserInput[]
-  updateMany?: Prisma.AmbassadorProgramUpdateManyWithWhereWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpdateManyWithWhereWithoutAmbassadorRequestUserInput[]
-  deleteMany?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
+export type AmbassadorProgramUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutUserInput
+  upsert?: Prisma.AmbassadorProgramUpsertWithoutUserInput
+  disconnect?: Prisma.AmbassadorProgramWhereInput | boolean
+  delete?: Prisma.AmbassadorProgramWhereInput | boolean
+  connect?: Prisma.AmbassadorProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AmbassadorProgramUpdateToOneWithWhereWithoutUserInput, Prisma.AmbassadorProgramUpdateWithoutUserInput>, Prisma.AmbassadorProgramUncheckedUpdateWithoutUserInput>
 }
 
-export type AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput = {
-  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput> | Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput[] | Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput[]
-  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput[]
-  upsert?: Prisma.AmbassadorProgramUpsertWithWhereUniqueWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpsertWithWhereUniqueWithoutAmbassadorRequestUserInput[]
-  createMany?: Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInputEnvelope
-  set?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  disconnect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  delete?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  connect?: Prisma.AmbassadorProgramWhereUniqueInput | Prisma.AmbassadorProgramWhereUniqueInput[]
-  update?: Prisma.AmbassadorProgramUpdateWithWhereUniqueWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpdateWithWhereUniqueWithoutAmbassadorRequestUserInput[]
-  updateMany?: Prisma.AmbassadorProgramUpdateManyWithWhereWithoutAmbassadorRequestUserInput | Prisma.AmbassadorProgramUpdateManyWithWhereWithoutAmbassadorRequestUserInput[]
-  deleteMany?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
+export type AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
+  connectOrCreate?: Prisma.AmbassadorProgramCreateOrConnectWithoutUserInput
+  upsert?: Prisma.AmbassadorProgramUpsertWithoutUserInput
+  disconnect?: Prisma.AmbassadorProgramWhereInput | boolean
+  delete?: Prisma.AmbassadorProgramWhereInput | boolean
+  connect?: Prisma.AmbassadorProgramWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AmbassadorProgramUpdateToOneWithWhereWithoutUserInput, Prisma.AmbassadorProgramUpdateWithoutUserInput>, Prisma.AmbassadorProgramUncheckedUpdateWithoutUserInput>
 }
 
-export type AmbassadorProgramCreateWithoutAmbassadorRequestUserInput = {
+export type AmbassadorProgramCreateWithoutUserInput = {
   id?: string
-  requestStatus?: $Enums.AmbassadorStatus
+  status?: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -706,9 +691,9 @@ export type AmbassadorProgramCreateWithoutAmbassadorRequestUserInput = {
   updatedAt?: Date | string
 }
 
-export type AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput = {
+export type AmbassadorProgramUncheckedCreateWithoutUserInput = {
   id?: string
-  requestStatus?: $Enums.AmbassadorStatus
+  status?: $Enums.AmbassadorStatus
   motorspotName: string
   contactName: string
   email: string
@@ -725,77 +710,25 @@ export type AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput = 
   updatedAt?: Date | string
 }
 
-export type AmbassadorProgramCreateOrConnectWithoutAmbassadorRequestUserInput = {
+export type AmbassadorProgramCreateOrConnectWithoutUserInput = {
   where: Prisma.AmbassadorProgramWhereUniqueInput
-  create: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput>
+  create: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
 }
 
-export type AmbassadorProgramCreateManyAmbassadorRequestUserInputEnvelope = {
-  data: Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInput | Prisma.AmbassadorProgramCreateManyAmbassadorRequestUserInput[]
-  skipDuplicates?: boolean
+export type AmbassadorProgramUpsertWithoutUserInput = {
+  update: Prisma.XOR<Prisma.AmbassadorProgramUpdateWithoutUserInput, Prisma.AmbassadorProgramUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutUserInput>
+  where?: Prisma.AmbassadorProgramWhereInput
 }
 
-export type AmbassadorProgramUpsertWithWhereUniqueWithoutAmbassadorRequestUserInput = {
-  where: Prisma.AmbassadorProgramWhereUniqueInput
-  update: Prisma.XOR<Prisma.AmbassadorProgramUpdateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedUpdateWithoutAmbassadorRequestUserInput>
-  create: Prisma.XOR<Prisma.AmbassadorProgramCreateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedCreateWithoutAmbassadorRequestUserInput>
+export type AmbassadorProgramUpdateToOneWithWhereWithoutUserInput = {
+  where?: Prisma.AmbassadorProgramWhereInput
+  data: Prisma.XOR<Prisma.AmbassadorProgramUpdateWithoutUserInput, Prisma.AmbassadorProgramUncheckedUpdateWithoutUserInput>
 }
 
-export type AmbassadorProgramUpdateWithWhereUniqueWithoutAmbassadorRequestUserInput = {
-  where: Prisma.AmbassadorProgramWhereUniqueInput
-  data: Prisma.XOR<Prisma.AmbassadorProgramUpdateWithoutAmbassadorRequestUserInput, Prisma.AmbassadorProgramUncheckedUpdateWithoutAmbassadorRequestUserInput>
-}
-
-export type AmbassadorProgramUpdateManyWithWhereWithoutAmbassadorRequestUserInput = {
-  where: Prisma.AmbassadorProgramScalarWhereInput
-  data: Prisma.XOR<Prisma.AmbassadorProgramUpdateManyMutationInput, Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserInput>
-}
-
-export type AmbassadorProgramScalarWhereInput = {
-  AND?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
-  OR?: Prisma.AmbassadorProgramScalarWhereInput[]
-  NOT?: Prisma.AmbassadorProgramScalarWhereInput | Prisma.AmbassadorProgramScalarWhereInput[]
-  id?: Prisma.UuidFilter<"AmbassadorProgram"> | string
-  ambassadorRequestUserId?: Prisma.UuidFilter<"AmbassadorProgram"> | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFilter<"AmbassadorProgram"> | $Enums.AmbassadorStatus
-  motorspotName?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  contactName?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  email?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  country?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  instagramProfile?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  tiktokProfile?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  youTubeChanel?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  totalFollower?: Prisma.IntFilter<"AmbassadorProgram"> | number
-  mainCar?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  whyDoYouWant?: Prisma.StringFilter<"AmbassadorProgram"> | string
-  releventExperience?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  profilePhoto?: Prisma.StringNullableFilter<"AmbassadorProgram"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"AmbassadorProgram"> | Date | string
-}
-
-export type AmbassadorProgramCreateManyAmbassadorRequestUserInput = {
-  id?: string
-  requestStatus?: $Enums.AmbassadorStatus
-  motorspotName: string
-  contactName: string
-  email: string
-  country: string
-  instagramProfile?: string | null
-  tiktokProfile?: string | null
-  youTubeChanel?: string | null
-  totalFollower: number
-  mainCar?: string | null
-  whyDoYouWant: string
-  releventExperience?: string | null
-  profilePhoto?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type AmbassadorProgramUpdateWithoutAmbassadorRequestUserInput = {
+export type AmbassadorProgramUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -812,28 +745,9 @@ export type AmbassadorProgramUpdateWithoutAmbassadorRequestUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type AmbassadorProgramUncheckedUpdateWithoutAmbassadorRequestUserInput = {
+export type AmbassadorProgramUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
-  motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
-  contactName?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
-  instagramProfile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tiktokProfile?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youTubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalFollower?: Prisma.IntFieldUpdateOperationsInput | number
-  mainCar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  whyDoYouWant?: Prisma.StringFieldUpdateOperationsInput | string
-  releventExperience?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  requestStatus?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
+  status?: Prisma.EnumAmbassadorStatusFieldUpdateOperationsInput | $Enums.AmbassadorStatus
   motorspotName?: Prisma.StringFieldUpdateOperationsInput | string
   contactName?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -854,8 +768,8 @@ export type AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserInpu
 
 export type AmbassadorProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  ambassadorRequestUserId?: boolean
-  requestStatus?: boolean
+  userId?: boolean
+  status?: boolean
   motorspotName?: boolean
   contactName?: boolean
   email?: boolean
@@ -870,13 +784,13 @@ export type AmbassadorProgramSelect<ExtArgs extends runtime.Types.Extensions.Int
   profilePhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ambassadorProgram"]>
 
 export type AmbassadorProgramSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  ambassadorRequestUserId?: boolean
-  requestStatus?: boolean
+  userId?: boolean
+  status?: boolean
   motorspotName?: boolean
   contactName?: boolean
   email?: boolean
@@ -891,13 +805,13 @@ export type AmbassadorProgramSelectCreateManyAndReturn<ExtArgs extends runtime.T
   profilePhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ambassadorProgram"]>
 
 export type AmbassadorProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  ambassadorRequestUserId?: boolean
-  requestStatus?: boolean
+  userId?: boolean
+  status?: boolean
   motorspotName?: boolean
   contactName?: boolean
   email?: boolean
@@ -912,13 +826,13 @@ export type AmbassadorProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   profilePhoto?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ambassadorProgram"]>
 
 export type AmbassadorProgramSelectScalar = {
   id?: boolean
-  ambassadorRequestUserId?: boolean
-  requestStatus?: boolean
+  userId?: boolean
+  status?: boolean
   motorspotName?: boolean
   contactName?: boolean
   email?: boolean
@@ -935,26 +849,26 @@ export type AmbassadorProgramSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AmbassadorProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ambassadorRequestUserId" | "requestStatus" | "motorspotName" | "contactName" | "email" | "country" | "instagramProfile" | "tiktokProfile" | "youTubeChanel" | "totalFollower" | "mainCar" | "whyDoYouWant" | "releventExperience" | "profilePhoto" | "createdAt" | "updatedAt", ExtArgs["result"]["ambassadorProgram"]>
+export type AmbassadorProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "status" | "motorspotName" | "contactName" | "email" | "country" | "instagramProfile" | "tiktokProfile" | "youTubeChanel" | "totalFollower" | "mainCar" | "whyDoYouWant" | "releventExperience" | "profilePhoto" | "createdAt" | "updatedAt", ExtArgs["result"]["ambassadorProgram"]>
 export type AmbassadorProgramInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type AmbassadorProgramIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type AmbassadorProgramIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  ambassadorRequestUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $AmbassadorProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AmbassadorProgram"
   objects: {
-    ambassadorRequestUser: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    ambassadorRequestUserId: string
-    requestStatus: $Enums.AmbassadorStatus
+    userId: string
+    status: $Enums.AmbassadorStatus
     motorspotName: string
     contactName: string
     email: string
@@ -1363,7 +1277,7 @@ readonly fields: AmbassadorProgramFieldRefs;
  */
 export interface Prisma__AmbassadorProgramClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  ambassadorRequestUser<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1394,8 +1308,8 @@ export interface Prisma__AmbassadorProgramClient<T, Null = never, ExtArgs extend
  */
 export interface AmbassadorProgramFieldRefs {
   readonly id: Prisma.FieldRef<"AmbassadorProgram", 'String'>
-  readonly ambassadorRequestUserId: Prisma.FieldRef<"AmbassadorProgram", 'String'>
-  readonly requestStatus: Prisma.FieldRef<"AmbassadorProgram", 'AmbassadorStatus'>
+  readonly userId: Prisma.FieldRef<"AmbassadorProgram", 'String'>
+  readonly status: Prisma.FieldRef<"AmbassadorProgram", 'AmbassadorStatus'>
   readonly motorspotName: Prisma.FieldRef<"AmbassadorProgram", 'String'>
   readonly contactName: Prisma.FieldRef<"AmbassadorProgram", 'String'>
   readonly email: Prisma.FieldRef<"AmbassadorProgram", 'String'>

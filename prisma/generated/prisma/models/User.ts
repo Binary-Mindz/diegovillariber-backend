@@ -396,8 +396,8 @@ export type UserWhereInput = {
   challenges?: Prisma.ChallengeListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
   battleEntries?: Prisma.BattleEntryListRelationFilter
-  officialPartners?: Prisma.OfficialPartnerListRelationFilter
-  ambassadorPrograms?: Prisma.AmbassadorProgramListRelationFilter
+  officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
+  ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -458,8 +458,8 @@ export type UserOrderByWithRelationInput = {
   challenges?: Prisma.ChallengeOrderByRelationAggregateInput
   challengeParticipants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
   battleEntries?: Prisma.BattleEntryOrderByRelationAggregateInput
-  officialPartners?: Prisma.OfficialPartnerOrderByRelationAggregateInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramOrderByRelationAggregateInput
+  officialPartners?: Prisma.OfficialPartnerOrderByWithRelationInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -523,8 +523,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   challenges?: Prisma.ChallengeListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
   battleEntries?: Prisma.BattleEntryListRelationFilter
-  officialPartners?: Prisma.OfficialPartnerListRelationFilter
-  ambassadorPrograms?: Prisma.AmbassadorProgramListRelationFilter
+  officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
+  ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -641,8 +641,8 @@ export type UserCreateInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -703,8 +703,8 @@ export type UserUncheckedCreateInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -765,8 +765,8 @@ export type UserUpdateInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -827,8 +827,8 @@ export type UserUncheckedUpdateInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1655,7 +1655,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -1716,7 +1716,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -1793,7 +1793,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -1854,7 +1854,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattlesInput = {
@@ -1914,8 +1914,8 @@ export type UserCreateWithoutBattlesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattlesInput = {
@@ -1975,8 +1975,8 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattlesInput = {
@@ -2052,8 +2052,8 @@ export type UserUpdateWithoutBattlesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattlesInput = {
@@ -2113,8 +2113,8 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleEntriesInput = {
@@ -2174,8 +2174,8 @@ export type UserCreateWithoutBattleEntriesInput = {
   hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleEntriesInput = {
@@ -2235,8 +2235,8 @@ export type UserUncheckedCreateWithoutBattleEntriesInput = {
   hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleEntriesInput = {
@@ -2312,8 +2312,8 @@ export type UserUpdateWithoutBattleEntriesInput = {
   hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleEntriesInput = {
@@ -2373,8 +2373,8 @@ export type UserUncheckedUpdateWithoutBattleEntriesInput = {
   hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -2434,8 +2434,8 @@ export type UserCreateWithoutBattleParticipantsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -2495,8 +2495,8 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -2572,8 +2572,8 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -2633,8 +2633,8 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleResultsInput = {
@@ -2694,8 +2694,8 @@ export type UserCreateWithoutBattleResultsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleResultsInput = {
@@ -2755,8 +2755,8 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleResultsInput = {
@@ -2832,8 +2832,8 @@ export type UserUpdateWithoutBattleResultsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleResultsInput = {
@@ -2893,8 +2893,8 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -2954,8 +2954,8 @@ export type UserCreateWithoutBattleVotesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -3015,8 +3015,8 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -3092,8 +3092,8 @@ export type UserUpdateWithoutBattleVotesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -3153,8 +3153,8 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSellerProductsInput = {
@@ -3214,8 +3214,8 @@ export type UserCreateWithoutSellerProductsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSellerProductsInput = {
@@ -3275,8 +3275,8 @@ export type UserUncheckedCreateWithoutSellerProductsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSellerProductsInput = {
@@ -3341,8 +3341,8 @@ export type UserCreateWithoutBuyProductsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBuyProductsInput = {
@@ -3402,8 +3402,8 @@ export type UserUncheckedCreateWithoutBuyProductsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBuyProductsInput = {
@@ -3479,8 +3479,8 @@ export type UserUpdateWithoutSellerProductsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSellerProductsInput = {
@@ -3540,8 +3540,8 @@ export type UserUncheckedUpdateWithoutSellerProductsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBuyProductsInput = {
@@ -3612,8 +3612,8 @@ export type UserUpdateWithoutBuyProductsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBuyProductsInput = {
@@ -3673,8 +3673,8 @@ export type UserUncheckedUpdateWithoutBuyProductsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostChallengeInput = {
@@ -3734,8 +3734,8 @@ export type UserCreateWithoutHostChallengeInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostChallengeInput = {
@@ -3795,8 +3795,8 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostChallengeInput = {
@@ -3861,8 +3861,8 @@ export type UserCreateWithoutChallengesInput = {
   hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -3922,8 +3922,8 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -3999,8 +3999,8 @@ export type UserUpdateWithoutHostChallengeInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostChallengeInput = {
@@ -4060,8 +4060,8 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutChallengesInput = {
@@ -4132,8 +4132,8 @@ export type UserUpdateWithoutChallengesInput = {
   hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -4193,8 +4193,8 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -4254,8 +4254,8 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -4315,8 +4315,8 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -4392,8 +4392,8 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -4453,8 +4453,8 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeResultsInput = {
@@ -4514,8 +4514,8 @@ export type UserCreateWithoutChallengeResultsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeResultsInput = {
@@ -4575,8 +4575,8 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeResultsInput = {
@@ -4652,8 +4652,8 @@ export type UserUpdateWithoutChallengeResultsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeResultsInput = {
@@ -4713,8 +4713,8 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4774,8 +4774,8 @@ export type UserCreateWithoutCommentsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4835,8 +4835,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4912,8 +4912,8 @@ export type UserUpdateWithoutCommentsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4973,8 +4973,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -5034,8 +5034,8 @@ export type UserCreateWithoutEventsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -5095,8 +5095,8 @@ export type UserUncheckedCreateWithoutEventsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -5172,8 +5172,8 @@ export type UserUpdateWithoutEventsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5233,8 +5233,8 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTicketsBoughtInput = {
@@ -5294,8 +5294,8 @@ export type UserCreateWithoutTicketsBoughtInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTicketsBoughtInput = {
@@ -5355,8 +5355,8 @@ export type UserUncheckedCreateWithoutTicketsBoughtInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTicketsBoughtInput = {
@@ -5421,8 +5421,8 @@ export type UserCreateWithoutTicketsSoldInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTicketsSoldInput = {
@@ -5482,8 +5482,8 @@ export type UserUncheckedCreateWithoutTicketsSoldInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTicketsSoldInput = {
@@ -5559,8 +5559,8 @@ export type UserUpdateWithoutTicketsBoughtInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTicketsBoughtInput = {
@@ -5620,8 +5620,8 @@ export type UserUncheckedUpdateWithoutTicketsBoughtInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutTicketsSoldInput = {
@@ -5692,8 +5692,8 @@ export type UserUpdateWithoutTicketsSoldInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTicketsSoldInput = {
@@ -5753,8 +5753,8 @@ export type UserUncheckedUpdateWithoutTicketsSoldInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5814,8 +5814,8 @@ export type UserCreateWithoutFollowingInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5875,8 +5875,8 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5941,8 +5941,8 @@ export type UserCreateWithoutFollowersInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -6002,8 +6002,8 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -6079,8 +6079,8 @@ export type UserUpdateWithoutFollowingInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -6140,8 +6140,8 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -6212,8 +6212,8 @@ export type UserUpdateWithoutFollowersInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -6273,8 +6273,8 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -6334,8 +6334,8 @@ export type UserCreateWithoutHidePostsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -6395,8 +6395,8 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -6472,8 +6472,8 @@ export type UserUpdateWithoutHidePostsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -6533,8 +6533,8 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -6594,8 +6594,8 @@ export type UserCreateWithoutLikesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -6655,8 +6655,8 @@ export type UserUncheckedCreateWithoutLikesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -6732,8 +6732,8 @@ export type UserUpdateWithoutLikesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -6793,8 +6793,8 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -6854,8 +6854,8 @@ export type UserCreateWithoutLivesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -6915,8 +6915,8 @@ export type UserUncheckedCreateWithoutLivesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -6992,8 +6992,8 @@ export type UserUpdateWithoutLivesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -7053,8 +7053,8 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -7114,8 +7114,8 @@ export type UserCreateWithoutLiveParticipantsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -7175,8 +7175,8 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -7252,8 +7252,8 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -7313,8 +7313,8 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -7374,8 +7374,8 @@ export type UserCreateWithoutLiveRewardsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -7435,8 +7435,8 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -7501,8 +7501,8 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -7562,8 +7562,8 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -7639,8 +7639,8 @@ export type UserUpdateWithoutLiveRewardsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -7700,8 +7700,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -7772,8 +7772,8 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -7833,8 +7833,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -7894,8 +7894,8 @@ export type UserCreateWithoutSentMessagesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
@@ -7955,8 +7955,8 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -8021,8 +8021,8 @@ export type UserCreateWithoutReceivedMessagesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedMessagesInput = {
@@ -8082,8 +8082,8 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedMessagesInput = {
@@ -8208,7 +8208,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -8269,7 +8269,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -8346,7 +8346,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -8407,7 +8407,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -8467,8 +8467,8 @@ export type UserCreateWithoutPaymentsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -8528,8 +8528,8 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -8605,8 +8605,8 @@ export type UserUpdateWithoutPaymentsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -8666,8 +8666,8 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -8727,8 +8727,8 @@ export type UserCreateWithoutPostsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -8788,8 +8788,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -8865,8 +8865,8 @@ export type UserUpdateWithoutPostsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -8926,8 +8926,8 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -8987,8 +8987,8 @@ export type UserCreateWithoutProductListsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -9048,8 +9048,8 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -9125,8 +9125,8 @@ export type UserUpdateWithoutProductListsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -9186,8 +9186,8 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -9247,8 +9247,8 @@ export type UserCreateWithoutProfileInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -9308,8 +9308,8 @@ export type UserUncheckedCreateWithoutProfileInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -9385,8 +9385,8 @@ export type UserUpdateWithoutProfileInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -9446,8 +9446,8 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -9507,8 +9507,8 @@ export type UserCreateWithoutRacingVotesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -9568,8 +9568,8 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -9645,8 +9645,8 @@ export type UserUpdateWithoutRacingVotesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -9706,8 +9706,8 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -9767,8 +9767,8 @@ export type UserCreateWithoutReportsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -9828,8 +9828,8 @@ export type UserUncheckedCreateWithoutReportsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -9905,8 +9905,8 @@ export type UserUpdateWithoutReportsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -9966,8 +9966,8 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -10027,8 +10027,8 @@ export type UserCreateWithoutRepostsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -10088,8 +10088,8 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -10165,8 +10165,8 @@ export type UserUpdateWithoutRepostsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -10226,8 +10226,8 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -10287,8 +10287,8 @@ export type UserCreateWithoutSavePostsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -10348,8 +10348,8 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -10425,8 +10425,8 @@ export type UserUpdateWithoutSavePostsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -10486,8 +10486,8 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -10547,8 +10547,8 @@ export type UserCreateWithoutSharesInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -10608,8 +10608,8 @@ export type UserUncheckedCreateWithoutSharesInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -10685,8 +10685,8 @@ export type UserUpdateWithoutSharesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -10746,8 +10746,8 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -10807,8 +10807,8 @@ export type UserCreateWithoutUserPointsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -10868,8 +10868,8 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -10945,8 +10945,8 @@ export type UserUpdateWithoutUserPointsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -11006,8 +11006,8 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -11067,8 +11067,8 @@ export type UserCreateWithoutWishListsInput = {
   challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -11128,8 +11128,8 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedManyWithoutRequestUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedManyWithoutAmbassadorRequestUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -11205,8 +11205,8 @@ export type UserUpdateWithoutWishListsInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -11266,8 +11266,8 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutSentMessagesInput = {
@@ -11327,8 +11327,8 @@ export type UserUpdateWithoutSentMessagesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -11388,8 +11388,8 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutSentMessagesInput = {
@@ -11473,8 +11473,8 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
@@ -11534,8 +11534,8 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateManyWithoutRequestUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateManyWithoutAmbassadorRequestUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutReceivedMessagesInput = {
@@ -11604,8 +11604,6 @@ export type UserCountOutputType = {
   challenges: number
   challengeParticipants: number
   battleEntries: number
-  officialPartners: number
-  ambassadorPrograms: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -11645,8 +11643,6 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   challenges?: boolean | UserCountOutputTypeCountChallengesArgs
   challengeParticipants?: boolean | UserCountOutputTypeCountChallengeParticipantsArgs
   battleEntries?: boolean | UserCountOutputTypeCountBattleEntriesArgs
-  officialPartners?: boolean | UserCountOutputTypeCountOfficialPartnersArgs
-  ambassadorPrograms?: boolean | UserCountOutputTypeCountAmbassadorProgramsArgs
 }
 
 /**
@@ -11911,20 +11907,6 @@ export type UserCountOutputTypeCountBattleEntriesArgs<ExtArgs extends runtime.Ty
   where?: Prisma.BattleEntryWhereInput
 }
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountOfficialPartnersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.OfficialPartnerWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountAmbassadorProgramsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.AmbassadorProgramWhereInput
-}
-
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -12145,8 +12127,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     challenges: Prisma.$ChallengePayload<ExtArgs>[]
     challengeParticipants: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
     battleEntries: Prisma.$BattleEntryPayload<ExtArgs>[]
-    officialPartners: Prisma.$OfficialPartnerPayload<ExtArgs>[]
-    ambassadorPrograms: Prisma.$AmbassadorProgramPayload<ExtArgs>[]
+    officialPartners: Prisma.$OfficialPartnerPayload<ExtArgs> | null
+    ambassadorPrograms: Prisma.$AmbassadorProgramPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -12600,8 +12582,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   challenges<T extends Prisma.User$challengesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   challengeParticipants<T extends Prisma.User$challengeParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengeParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   battleEntries<T extends Prisma.User$battleEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  officialPartners<T extends Prisma.User$officialPartnersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$officialPartnersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OfficialPartnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  ambassadorPrograms<T extends Prisma.User$ambassadorProgramsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ambassadorProgramsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AmbassadorProgramPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  officialPartners<T extends Prisma.User$officialPartnersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$officialPartnersArgs<ExtArgs>>): Prisma.Prisma__OfficialPartnerClient<runtime.Types.Result.GetResult<Prisma.$OfficialPartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  ambassadorPrograms<T extends Prisma.User$ambassadorProgramsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ambassadorProgramsArgs<ExtArgs>>): Prisma.Prisma__AmbassadorProgramClient<runtime.Types.Result.GetResult<Prisma.$AmbassadorProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13920,11 +13902,6 @@ export type User$officialPartnersArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   include?: Prisma.OfficialPartnerInclude<ExtArgs> | null
   where?: Prisma.OfficialPartnerWhereInput
-  orderBy?: Prisma.OfficialPartnerOrderByWithRelationInput | Prisma.OfficialPartnerOrderByWithRelationInput[]
-  cursor?: Prisma.OfficialPartnerWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.OfficialPartnerScalarFieldEnum | Prisma.OfficialPartnerScalarFieldEnum[]
 }
 
 /**
@@ -13944,11 +13921,6 @@ export type User$ambassadorProgramsArgs<ExtArgs extends runtime.Types.Extensions
    */
   include?: Prisma.AmbassadorProgramInclude<ExtArgs> | null
   where?: Prisma.AmbassadorProgramWhereInput
-  orderBy?: Prisma.AmbassadorProgramOrderByWithRelationInput | Prisma.AmbassadorProgramOrderByWithRelationInput[]
-  cursor?: Prisma.AmbassadorProgramWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.AmbassadorProgramScalarFieldEnum | Prisma.AmbassadorProgramScalarFieldEnum[]
 }
 
 /**

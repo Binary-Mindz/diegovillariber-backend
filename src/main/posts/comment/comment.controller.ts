@@ -26,7 +26,7 @@ import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { CommentsQueryDto } from './dto/comment-query.dto';
 
-@ApiTags('comments')
+@ApiTags('Comments')
 @Controller('comments')
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
