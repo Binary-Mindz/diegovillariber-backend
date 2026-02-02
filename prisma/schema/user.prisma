@@ -28,8 +28,6 @@ model User {
   followers             Follow[]               @relation("UserFollowers")
   sentMessages          Message[]              @relation("SentMessages")
   receivedMessages      Message[]              @relation("ReceivedMessages")
-  ticketsBought         EventTicket[]          @relation("BoughtTickets")
-  ticketsSold           EventTicket[]          @relation("SoldTickets")
   productLists          ProductList[]
   reports               Report[]
   shares                Share[]
@@ -63,4 +61,6 @@ model User {
   ambassadorPrograms AmbassadorProgram?
 
   battleVotes BattleVote[]
+
+  eventParticipants EventParticipant[]
 }

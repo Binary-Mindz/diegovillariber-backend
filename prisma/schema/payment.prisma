@@ -3,9 +3,6 @@ model Payment {
     userId String @db.Uuid
     user   User   @relation(fields: [userId], references: [id])
 
-    ticketId String      @db.Uuid
-    ticket   EventTicket @relation(fields: [ticketId], references: [id])
-
     buyProductId  String?       @db.Uuid
     buyProduct    BuyProduct?   @relation(fields: [buyProductId], references: [id])
     
