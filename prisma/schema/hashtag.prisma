@@ -1,5 +1,17 @@
 model Hashtag {
-    id    String @id @default(uuid())
-    tag   String @unique
-    posts Post[] @relation("PostHashtags")
+  id          String   @id @default(uuid())
+  tag         String   @unique
+  description String?
+  
+  isActive    Boolean  @default(true) 
+  isFeatured  Boolean  @default(false)  
+  createdBy   HashtagCreatedBy @default(ADMIN)
+
+  usageCount  Int      @default(0)  
+
+  posts       Post[]   @relation("PostHashtags")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
+

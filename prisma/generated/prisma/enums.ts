@@ -490,3 +490,11 @@ export const AmbassadorStatus = {
 } as const
 
 export type AmbassadorStatus = (typeof AmbassadorStatus)[keyof typeof AmbassadorStatus]
+
+
+export const HashtagCreatedBy = {
+  ADMIN: 'ADMIN',
+  SYSTEM: 'SYSTEM'
+} as const
+
+export type HashtagCreatedBy = (typeof HashtagCreatedBy)[keyof typeof HashtagCreatedBy]
