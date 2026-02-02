@@ -7,6 +7,7 @@ import { PostsModule } from './main/posts/posts.module';
 import { ProProfileModule } from './main/pro-profile/pro-profile.module';
 import { BattleModule } from './main/battle/battle.module';
 import { AdminModule } from './main/admin/admin.module';
+import { EventModule } from './main/event/event.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AdminModule } from './main/admin/admin.module';
     PostsModule,
     ProProfileModule,
     BattleModule,
+    EventModule,
     AdminModule
   ],
   controllers: [],
