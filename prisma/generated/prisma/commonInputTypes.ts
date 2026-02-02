@@ -545,6 +545,23 @@ export type EnumFileTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
 }
 
+export type EnumHashtagCreatedByFilter<$PrismaModel = never> = {
+  equals?: $Enums.HashtagCreatedBy | Prisma.EnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  in?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel> | $Enums.HashtagCreatedBy
+}
+
+export type EnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HashtagCreatedBy | Prisma.EnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  in?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel> | $Enums.HashtagCreatedBy
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
+}
+
 export type EnumLiveStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.LiveStatus | Prisma.EnumLiveStatusFieldRefInput<$PrismaModel>
   in?: $Enums.LiveStatus[] | Prisma.ListEnumLiveStatusFieldRefInput<$PrismaModel>
@@ -1375,6 +1392,23 @@ export type NestedEnumFileTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumHashtagCreatedByFilter<$PrismaModel = never> = {
+  equals?: $Enums.HashtagCreatedBy | Prisma.EnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  in?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel> | $Enums.HashtagCreatedBy
+}
+
+export type NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HashtagCreatedBy | Prisma.EnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  in?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel> | $Enums.HashtagCreatedBy
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
 }
 
 export type NestedEnumLiveStatusFilter<$PrismaModel = never> = {
