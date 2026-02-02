@@ -72,7 +72,7 @@ export const ModelName = {
   DrivingAssistant: 'DrivingAssistant',
   EnginePower: 'EnginePower',
   Event: 'Event',
-  EventTicket: 'EventTicket',
+  EventParticipant: 'EventParticipant',
   FileInstance: 'FileInstance',
   Follow: 'Follow',
   Garage: 'Garage',
@@ -398,7 +398,8 @@ export const EventScalarFieldEnum = {
   eventTitle: 'eventTitle',
   description: 'description',
   location: 'location',
-  availableTicket: 'availableTicket',
+  maxParticipants: 'maxParticipants',
+  joinedCount: 'joinedCount',
   eventType: 'eventType',
   eventStatus: 'eventStatus',
   startDate: 'startDate',
@@ -409,17 +410,14 @@ export const EventScalarFieldEnum = {
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
-export const EventTicketScalarFieldEnum = {
+export const EventParticipantScalarFieldEnum = {
   id: 'id',
   eventId: 'eventId',
-  buyerId: 'buyerId',
-  sellerId: 'sellerId',
-  price: 'price',
-  status: 'status',
-  createdAt: 'createdAt'
+  userId: 'userId',
+  joinedAt: 'joinedAt'
 } as const
 
-export type EventTicketScalarFieldEnum = (typeof EventTicketScalarFieldEnum)[keyof typeof EventTicketScalarFieldEnum]
+export type EventParticipantScalarFieldEnum = (typeof EventParticipantScalarFieldEnum)[keyof typeof EventParticipantScalarFieldEnum]
 
 
 export const FileInstanceScalarFieldEnum = {
@@ -640,7 +638,6 @@ export type OwnerProfileScalarFieldEnum = (typeof OwnerProfileScalarFieldEnum)[k
 export const PaymentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  ticketId: 'ticketId',
   buyProductId: 'buyProductId',
   amount: 'amount',
   status: 'status',

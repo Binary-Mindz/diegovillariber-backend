@@ -368,8 +368,6 @@ export type UserWhereInput = {
   followers?: Prisma.FollowListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
   receivedMessages?: Prisma.MessageListRelationFilter
-  ticketsBought?: Prisma.EventTicketListRelationFilter
-  ticketsSold?: Prisma.EventTicketListRelationFilter
   productLists?: Prisma.ProductListListRelationFilter
   reports?: Prisma.ReportListRelationFilter
   shares?: Prisma.ShareListRelationFilter
@@ -397,6 +395,7 @@ export type UserWhereInput = {
   officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
   battleVotes?: Prisma.BattleVoteListRelationFilter
+  eventParticipants?: Prisma.EventParticipantListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -429,8 +428,6 @@ export type UserOrderByWithRelationInput = {
   followers?: Prisma.FollowOrderByRelationAggregateInput
   sentMessages?: Prisma.MessageOrderByRelationAggregateInput
   receivedMessages?: Prisma.MessageOrderByRelationAggregateInput
-  ticketsBought?: Prisma.EventTicketOrderByRelationAggregateInput
-  ticketsSold?: Prisma.EventTicketOrderByRelationAggregateInput
   productLists?: Prisma.ProductListOrderByRelationAggregateInput
   reports?: Prisma.ReportOrderByRelationAggregateInput
   shares?: Prisma.ShareOrderByRelationAggregateInput
@@ -458,6 +455,7 @@ export type UserOrderByWithRelationInput = {
   officialPartners?: Prisma.OfficialPartnerOrderByWithRelationInput
   ambassadorPrograms?: Prisma.AmbassadorProgramOrderByWithRelationInput
   battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput
+  eventParticipants?: Prisma.EventParticipantOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -493,8 +491,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   followers?: Prisma.FollowListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
   receivedMessages?: Prisma.MessageListRelationFilter
-  ticketsBought?: Prisma.EventTicketListRelationFilter
-  ticketsSold?: Prisma.EventTicketListRelationFilter
   productLists?: Prisma.ProductListListRelationFilter
   reports?: Prisma.ReportListRelationFilter
   shares?: Prisma.ShareListRelationFilter
@@ -522,6 +518,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
   battleVotes?: Prisma.BattleVoteListRelationFilter
+  eventParticipants?: Prisma.EventParticipantListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -610,8 +607,6 @@ export type UserCreateInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -639,6 +634,7 @@ export type UserCreateInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -671,8 +667,6 @@ export type UserUncheckedCreateInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -700,6 +694,7 @@ export type UserUncheckedCreateInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -732,8 +727,6 @@ export type UserUpdateInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -761,6 +754,7 @@ export type UserUpdateInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -793,8 +787,6 @@ export type UserUncheckedUpdateInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -822,6 +814,7 @@ export type UserUncheckedUpdateInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1188,32 +1181,18 @@ export type UserUpdateOneRequiredWithoutEventsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEventsInput, Prisma.UserUpdateWithoutEventsInput>, Prisma.UserUncheckedUpdateWithoutEventsInput>
 }
 
-export type UserCreateNestedOneWithoutTicketsBoughtInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTicketsBoughtInput, Prisma.UserUncheckedCreateWithoutTicketsBoughtInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsBoughtInput
+export type UserCreateNestedOneWithoutEventParticipantsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEventParticipantsInput, Prisma.UserUncheckedCreateWithoutEventParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventParticipantsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserCreateNestedOneWithoutTicketsSoldInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTicketsSoldInput, Prisma.UserUncheckedCreateWithoutTicketsSoldInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsSoldInput
+export type UserUpdateOneRequiredWithoutEventParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEventParticipantsInput, Prisma.UserUncheckedCreateWithoutEventParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventParticipantsInput
+  upsert?: Prisma.UserUpsertWithoutEventParticipantsInput
   connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutTicketsBoughtNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTicketsBoughtInput, Prisma.UserUncheckedCreateWithoutTicketsBoughtInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsBoughtInput
-  upsert?: Prisma.UserUpsertWithoutTicketsBoughtInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTicketsBoughtInput, Prisma.UserUpdateWithoutTicketsBoughtInput>, Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput>
-}
-
-export type UserUpdateOneRequiredWithoutTicketsSoldNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutTicketsSoldInput, Prisma.UserUncheckedCreateWithoutTicketsSoldInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutTicketsSoldInput
-  upsert?: Prisma.UserUpsertWithoutTicketsSoldInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTicketsSoldInput, Prisma.UserUpdateWithoutTicketsSoldInput>, Prisma.UserUncheckedUpdateWithoutTicketsSoldInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEventParticipantsInput, Prisma.UserUpdateWithoutEventParticipantsInput>, Prisma.UserUncheckedUpdateWithoutEventParticipantsInput>
 }
 
 export type UserCreateNestedOneWithoutFollowingInput = {
@@ -1606,8 +1585,6 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -1634,6 +1611,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -1666,8 +1644,6 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -1694,6 +1670,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -1742,8 +1719,6 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -1770,6 +1745,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -1802,8 +1778,6 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -1830,6 +1804,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattlesInput = {
@@ -1862,8 +1837,6 @@ export type UserCreateWithoutBattlesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -1890,6 +1863,7 @@ export type UserCreateWithoutBattlesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattlesInput = {
@@ -1922,8 +1896,6 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -1950,6 +1922,7 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattlesInput = {
@@ -1998,8 +1971,6 @@ export type UserUpdateWithoutBattlesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -2026,6 +1997,7 @@ export type UserUpdateWithoutBattlesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattlesInput = {
@@ -2058,8 +2030,6 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -2086,6 +2056,7 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -2118,8 +2089,6 @@ export type UserCreateWithoutBattleParticipantsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -2146,6 +2115,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -2178,8 +2148,6 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -2206,6 +2174,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -2254,8 +2223,6 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -2282,6 +2249,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -2314,8 +2282,6 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -2342,6 +2308,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleResultsInput = {
@@ -2374,8 +2341,6 @@ export type UserCreateWithoutBattleResultsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -2402,6 +2367,7 @@ export type UserCreateWithoutBattleResultsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleResultsInput = {
@@ -2434,8 +2400,6 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -2462,6 +2426,7 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleResultsInput = {
@@ -2510,8 +2475,6 @@ export type UserUpdateWithoutBattleResultsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -2538,6 +2501,7 @@ export type UserUpdateWithoutBattleResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleResultsInput = {
@@ -2570,8 +2534,6 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -2598,6 +2560,7 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -2630,8 +2593,6 @@ export type UserCreateWithoutBattleVotesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -2658,6 +2619,7 @@ export type UserCreateWithoutBattleVotesInput = {
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -2690,8 +2652,6 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -2718,6 +2678,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -2766,8 +2727,6 @@ export type UserUpdateWithoutBattleVotesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -2794,6 +2753,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -2826,8 +2786,6 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -2854,6 +2812,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSellerProductsInput = {
@@ -2886,8 +2845,6 @@ export type UserCreateWithoutSellerProductsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -2914,6 +2871,7 @@ export type UserCreateWithoutSellerProductsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSellerProductsInput = {
@@ -2946,8 +2904,6 @@ export type UserUncheckedCreateWithoutSellerProductsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -2974,6 +2930,7 @@ export type UserUncheckedCreateWithoutSellerProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSellerProductsInput = {
@@ -3011,8 +2968,6 @@ export type UserCreateWithoutBuyProductsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -3039,6 +2994,7 @@ export type UserCreateWithoutBuyProductsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBuyProductsInput = {
@@ -3071,8 +3027,6 @@ export type UserUncheckedCreateWithoutBuyProductsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -3099,6 +3053,7 @@ export type UserUncheckedCreateWithoutBuyProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBuyProductsInput = {
@@ -3147,8 +3102,6 @@ export type UserUpdateWithoutSellerProductsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -3175,6 +3128,7 @@ export type UserUpdateWithoutSellerProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSellerProductsInput = {
@@ -3207,8 +3161,6 @@ export type UserUncheckedUpdateWithoutSellerProductsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -3235,6 +3187,7 @@ export type UserUncheckedUpdateWithoutSellerProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBuyProductsInput = {
@@ -3278,8 +3231,6 @@ export type UserUpdateWithoutBuyProductsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -3306,6 +3257,7 @@ export type UserUpdateWithoutBuyProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBuyProductsInput = {
@@ -3338,8 +3290,6 @@ export type UserUncheckedUpdateWithoutBuyProductsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -3366,6 +3316,7 @@ export type UserUncheckedUpdateWithoutBuyProductsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostChallengeInput = {
@@ -3398,8 +3349,6 @@ export type UserCreateWithoutHostChallengeInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -3426,6 +3375,7 @@ export type UserCreateWithoutHostChallengeInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostChallengeInput = {
@@ -3458,8 +3408,6 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -3486,6 +3434,7 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostChallengeInput = {
@@ -3523,8 +3472,6 @@ export type UserCreateWithoutChallengesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -3551,6 +3498,7 @@ export type UserCreateWithoutChallengesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -3583,8 +3531,6 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -3611,6 +3557,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -3659,8 +3606,6 @@ export type UserUpdateWithoutHostChallengeInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -3687,6 +3632,7 @@ export type UserUpdateWithoutHostChallengeInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostChallengeInput = {
@@ -3719,8 +3665,6 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -3747,6 +3691,7 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutChallengesInput = {
@@ -3790,8 +3735,6 @@ export type UserUpdateWithoutChallengesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -3818,6 +3761,7 @@ export type UserUpdateWithoutChallengesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -3850,8 +3794,6 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -3878,6 +3820,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -3910,8 +3853,6 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -3938,6 +3879,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -3970,8 +3912,6 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -3998,6 +3938,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -4046,8 +3987,6 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -4074,6 +4013,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -4106,8 +4046,6 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -4134,6 +4072,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeResultsInput = {
@@ -4166,8 +4105,6 @@ export type UserCreateWithoutChallengeResultsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -4194,6 +4131,7 @@ export type UserCreateWithoutChallengeResultsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeResultsInput = {
@@ -4226,8 +4164,6 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -4254,6 +4190,7 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeResultsInput = {
@@ -4302,8 +4239,6 @@ export type UserUpdateWithoutChallengeResultsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -4330,6 +4265,7 @@ export type UserUpdateWithoutChallengeResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeResultsInput = {
@@ -4362,8 +4298,6 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -4390,6 +4324,7 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4422,8 +4357,6 @@ export type UserCreateWithoutCommentsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -4450,6 +4383,7 @@ export type UserCreateWithoutCommentsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4482,8 +4416,6 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -4510,6 +4442,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4558,8 +4491,6 @@ export type UserUpdateWithoutCommentsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -4586,6 +4517,7 @@ export type UserUpdateWithoutCommentsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4618,8 +4550,6 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -4646,6 +4576,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4677,8 +4608,6 @@ export type UserCreateWithoutEventsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -4706,6 +4635,7 @@ export type UserCreateWithoutEventsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4737,8 +4667,6 @@ export type UserUncheckedCreateWithoutEventsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -4766,6 +4694,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -4813,8 +4742,6 @@ export type UserUpdateWithoutEventsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -4842,6 +4769,7 @@ export type UserUpdateWithoutEventsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -4873,8 +4801,6 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -4902,9 +4828,10 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutTicketsBoughtInput = {
+export type UserCreateWithoutEventParticipantsInput = {
   id?: string
   email: string
   phone?: string | null
@@ -4934,7 +4861,6 @@ export type UserCreateWithoutTicketsBoughtInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -4964,7 +4890,7 @@ export type UserCreateWithoutTicketsBoughtInput = {
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
 }
 
-export type UserUncheckedCreateWithoutTicketsBoughtInput = {
+export type UserUncheckedCreateWithoutEventParticipantsInput = {
   id?: string
   email: string
   phone?: string | null
@@ -4994,7 +4920,6 @@ export type UserUncheckedCreateWithoutTicketsBoughtInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -5024,148 +4949,23 @@ export type UserUncheckedCreateWithoutTicketsBoughtInput = {
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
 }
 
-export type UserCreateOrConnectWithoutTicketsBoughtInput = {
+export type UserCreateOrConnectWithoutEventParticipantsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutTicketsBoughtInput, Prisma.UserUncheckedCreateWithoutTicketsBoughtInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEventParticipantsInput, Prisma.UserUncheckedCreateWithoutEventParticipantsInput>
 }
 
-export type UserCreateWithoutTicketsSoldInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  username: string
-  password: string
-  role?: $Enums.Role
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput
-  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-}
-
-export type UserUncheckedCreateWithoutTicketsSoldInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  username: string
-  password: string
-  role?: $Enums.Role
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput
-  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-}
-
-export type UserCreateOrConnectWithoutTicketsSoldInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutTicketsSoldInput, Prisma.UserUncheckedCreateWithoutTicketsSoldInput>
-}
-
-export type UserUpsertWithoutTicketsBoughtInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutTicketsBoughtInput, Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutTicketsBoughtInput, Prisma.UserUncheckedCreateWithoutTicketsBoughtInput>
+export type UserUpsertWithoutEventParticipantsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutEventParticipantsInput, Prisma.UserUncheckedUpdateWithoutEventParticipantsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEventParticipantsInput, Prisma.UserUncheckedCreateWithoutEventParticipantsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutTicketsBoughtInput = {
+export type UserUpdateToOneWithWhereWithoutEventParticipantsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutTicketsBoughtInput, Prisma.UserUncheckedUpdateWithoutTicketsBoughtInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutEventParticipantsInput, Prisma.UserUncheckedUpdateWithoutEventParticipantsInput>
 }
 
-export type UserUpdateWithoutTicketsBoughtInput = {
+export type UserUpdateWithoutEventParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5195,7 +4995,6 @@ export type UserUpdateWithoutTicketsBoughtInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -5225,7 +5024,7 @@ export type UserUpdateWithoutTicketsBoughtInput = {
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutTicketsBoughtInput = {
+export type UserUncheckedUpdateWithoutEventParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5255,138 +5054,6 @@ export type UserUncheckedUpdateWithoutTicketsBoughtInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput
-  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-}
-
-export type UserUpsertWithoutTicketsSoldInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutTicketsSoldInput, Prisma.UserUncheckedUpdateWithoutTicketsSoldInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutTicketsSoldInput, Prisma.UserUncheckedCreateWithoutTicketsSoldInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutTicketsSoldInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutTicketsSoldInput, Prisma.UserUncheckedUpdateWithoutTicketsSoldInput>
-}
-
-export type UserUpdateWithoutTicketsSoldInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput
-  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutTicketsSoldInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  username?: Prisma.StringFieldUpdateOperationsInput | string
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -5445,8 +5112,6 @@ export type UserCreateWithoutFollowingInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -5474,6 +5139,7 @@ export type UserCreateWithoutFollowingInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5505,8 +5171,6 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -5534,6 +5198,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5570,8 +5235,6 @@ export type UserCreateWithoutFollowersInput = {
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -5599,6 +5262,7 @@ export type UserCreateWithoutFollowersInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5630,8 +5294,6 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -5659,6 +5321,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5706,8 +5369,6 @@ export type UserUpdateWithoutFollowingInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -5735,6 +5396,7 @@ export type UserUpdateWithoutFollowingInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5766,8 +5428,6 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -5795,6 +5455,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5837,8 +5498,6 @@ export type UserUpdateWithoutFollowersInput = {
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -5866,6 +5525,7 @@ export type UserUpdateWithoutFollowersInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5897,8 +5557,6 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -5926,6 +5584,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -5958,8 +5617,6 @@ export type UserCreateWithoutHidePostsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -5986,6 +5643,7 @@ export type UserCreateWithoutHidePostsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -6018,8 +5676,6 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -6046,6 +5702,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -6094,8 +5751,6 @@ export type UserUpdateWithoutHidePostsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -6122,6 +5777,7 @@ export type UserUpdateWithoutHidePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -6154,8 +5810,6 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -6182,6 +5836,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -6214,8 +5869,6 @@ export type UserCreateWithoutLikesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -6242,6 +5895,7 @@ export type UserCreateWithoutLikesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -6274,8 +5928,6 @@ export type UserUncheckedCreateWithoutLikesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -6302,6 +5954,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -6350,8 +6003,6 @@ export type UserUpdateWithoutLikesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -6378,6 +6029,7 @@ export type UserUpdateWithoutLikesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -6410,8 +6062,6 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -6438,6 +6088,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -6470,8 +6121,6 @@ export type UserCreateWithoutLivesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -6498,6 +6147,7 @@ export type UserCreateWithoutLivesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -6530,8 +6180,6 @@ export type UserUncheckedCreateWithoutLivesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -6558,6 +6206,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -6606,8 +6255,6 @@ export type UserUpdateWithoutLivesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -6634,6 +6281,7 @@ export type UserUpdateWithoutLivesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -6666,8 +6314,6 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -6694,6 +6340,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -6726,8 +6373,6 @@ export type UserCreateWithoutLiveParticipantsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -6754,6 +6399,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -6786,8 +6432,6 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -6814,6 +6458,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -6862,8 +6507,6 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -6890,6 +6533,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -6922,8 +6566,6 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -6950,6 +6592,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -6982,8 +6625,6 @@ export type UserCreateWithoutLiveRewardsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -7010,6 +6651,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -7042,8 +6684,6 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -7070,6 +6710,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -7107,8 +6748,6 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -7135,6 +6774,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -7167,8 +6807,6 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -7195,6 +6833,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -7243,8 +6882,6 @@ export type UserUpdateWithoutLiveRewardsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -7271,6 +6908,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -7303,8 +6941,6 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -7331,6 +6967,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -7374,8 +7011,6 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -7402,6 +7037,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -7434,8 +7070,6 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -7462,6 +7096,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -7493,8 +7128,6 @@ export type UserCreateWithoutSentMessagesInput = {
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -7522,6 +7155,7 @@ export type UserCreateWithoutSentMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
@@ -7553,8 +7187,6 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -7582,6 +7214,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -7618,8 +7251,6 @@ export type UserCreateWithoutReceivedMessagesInput = {
   following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -7647,6 +7278,7 @@ export type UserCreateWithoutReceivedMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedMessagesInput = {
@@ -7678,8 +7310,6 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -7707,6 +7337,7 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedMessagesInput = {
@@ -7803,8 +7434,6 @@ export type UserCreateWithoutOfficialPartnersInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -7831,6 +7460,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -7863,8 +7493,6 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -7891,6 +7519,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -7939,8 +7568,6 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -7967,6 +7594,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -7999,8 +7627,6 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -8027,6 +7653,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -8058,8 +7685,6 @@ export type UserCreateWithoutPaymentsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -8087,6 +7712,7 @@ export type UserCreateWithoutPaymentsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -8118,8 +7744,6 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -8147,6 +7771,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -8194,8 +7819,6 @@ export type UserUpdateWithoutPaymentsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -8223,6 +7846,7 @@ export type UserUpdateWithoutPaymentsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -8254,8 +7878,6 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -8283,6 +7905,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -8314,8 +7937,6 @@ export type UserCreateWithoutPostsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -8343,6 +7964,7 @@ export type UserCreateWithoutPostsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -8374,8 +7996,6 @@ export type UserUncheckedCreateWithoutPostsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -8403,6 +8023,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -8450,8 +8071,6 @@ export type UserUpdateWithoutPostsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -8479,6 +8098,7 @@ export type UserUpdateWithoutPostsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -8510,8 +8130,6 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -8539,6 +8157,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -8571,8 +8190,6 @@ export type UserCreateWithoutProductListsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeCreateNestedManyWithoutUserInput
@@ -8599,6 +8216,7 @@ export type UserCreateWithoutProductListsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -8631,8 +8249,6 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
@@ -8659,6 +8275,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -8707,8 +8324,6 @@ export type UserUpdateWithoutProductListsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
@@ -8735,6 +8350,7 @@ export type UserUpdateWithoutProductListsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -8767,8 +8383,6 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
@@ -8795,6 +8409,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -8826,8 +8441,6 @@ export type UserCreateWithoutProfileInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -8855,6 +8468,7 @@ export type UserCreateWithoutProfileInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -8886,8 +8500,6 @@ export type UserUncheckedCreateWithoutProfileInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -8915,6 +8527,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -8962,8 +8575,6 @@ export type UserUpdateWithoutProfileInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -8991,6 +8602,7 @@ export type UserUpdateWithoutProfileInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -9022,8 +8634,6 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -9051,6 +8661,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -9083,8 +8694,6 @@ export type UserCreateWithoutRacingVotesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -9111,6 +8720,7 @@ export type UserCreateWithoutRacingVotesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -9143,8 +8753,6 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -9171,6 +8779,7 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -9219,8 +8828,6 @@ export type UserUpdateWithoutRacingVotesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -9247,6 +8854,7 @@ export type UserUpdateWithoutRacingVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -9279,8 +8887,6 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -9307,6 +8913,7 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -9339,8 +8946,6 @@ export type UserCreateWithoutReportsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeCreateNestedManyWithoutUserInput
@@ -9367,6 +8972,7 @@ export type UserCreateWithoutReportsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -9399,8 +9005,6 @@ export type UserUncheckedCreateWithoutReportsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
@@ -9427,6 +9031,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -9475,8 +9080,6 @@ export type UserUpdateWithoutReportsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
@@ -9503,6 +9106,7 @@ export type UserUpdateWithoutReportsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -9535,8 +9139,6 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
@@ -9563,6 +9165,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -9595,8 +9198,6 @@ export type UserCreateWithoutRepostsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -9623,6 +9224,7 @@ export type UserCreateWithoutRepostsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -9655,8 +9257,6 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -9683,6 +9283,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -9731,8 +9332,6 @@ export type UserUpdateWithoutRepostsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -9759,6 +9358,7 @@ export type UserUpdateWithoutRepostsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -9791,8 +9391,6 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -9819,6 +9417,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -9851,8 +9450,6 @@ export type UserCreateWithoutSavePostsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -9879,6 +9476,7 @@ export type UserCreateWithoutSavePostsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -9911,8 +9509,6 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -9939,6 +9535,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -9987,8 +9584,6 @@ export type UserUpdateWithoutSavePostsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -10015,6 +9610,7 @@ export type UserUpdateWithoutSavePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -10047,8 +9643,6 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -10075,6 +9669,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -10107,8 +9702,6 @@ export type UserCreateWithoutSharesInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeCreateNestedManyWithoutUserInput
@@ -10135,6 +9728,7 @@ export type UserCreateWithoutSharesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -10167,8 +9761,6 @@ export type UserUncheckedCreateWithoutSharesInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
@@ -10195,6 +9787,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -10243,8 +9836,6 @@ export type UserUpdateWithoutSharesInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
@@ -10271,6 +9862,7 @@ export type UserUpdateWithoutSharesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -10303,8 +9895,6 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
@@ -10331,6 +9921,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -10363,8 +9954,6 @@ export type UserCreateWithoutUserPointsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -10391,6 +9980,7 @@ export type UserCreateWithoutUserPointsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -10423,8 +10013,6 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -10451,6 +10039,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -10499,8 +10088,6 @@ export type UserUpdateWithoutUserPointsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -10527,6 +10114,7 @@ export type UserUpdateWithoutUserPointsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -10559,8 +10147,6 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -10587,6 +10173,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -10619,8 +10206,6 @@ export type UserCreateWithoutWishListsInput = {
   followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareCreateNestedManyWithoutUserInput
@@ -10647,6 +10232,7 @@ export type UserCreateWithoutWishListsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -10679,8 +10265,6 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
-  ticketsBought?: Prisma.EventTicketUncheckedCreateNestedManyWithoutBuyerInput
-  ticketsSold?: Prisma.EventTicketUncheckedCreateNestedManyWithoutSellerInput
   productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
   reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
   shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
@@ -10707,6 +10291,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -10755,8 +10340,6 @@ export type UserUpdateWithoutWishListsInput = {
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -10783,6 +10366,7 @@ export type UserUpdateWithoutWishListsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -10815,8 +10399,6 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -10843,6 +10425,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutSentMessagesInput = {
@@ -10874,8 +10457,6 @@ export type UserUpdateWithoutSentMessagesInput = {
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -10903,6 +10484,7 @@ export type UserUpdateWithoutSentMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -10934,8 +10516,6 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -10963,6 +10543,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutSentMessagesInput = {
@@ -11018,8 +10599,6 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
   followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  ticketsBought?: Prisma.EventTicketUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
@@ -11047,6 +10626,7 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
@@ -11078,8 +10658,6 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
   followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  ticketsBought?: Prisma.EventTicketUncheckedUpdateManyWithoutBuyerNestedInput
-  ticketsSold?: Prisma.EventTicketUncheckedUpdateManyWithoutSellerNestedInput
   productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
   reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
   shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
@@ -11107,6 +10685,7 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutReceivedMessagesInput = {
@@ -11147,8 +10726,6 @@ export type UserCountOutputType = {
   followers: number
   sentMessages: number
   receivedMessages: number
-  ticketsBought: number
-  ticketsSold: number
   productLists: number
   reports: number
   shares: number
@@ -11174,6 +10751,7 @@ export type UserCountOutputType = {
   challenges: number
   challengeParticipants: number
   battleVotes: number
+  eventParticipants: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -11185,8 +10763,6 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   followers?: boolean | UserCountOutputTypeCountFollowersArgs
   sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
   receivedMessages?: boolean | UserCountOutputTypeCountReceivedMessagesArgs
-  ticketsBought?: boolean | UserCountOutputTypeCountTicketsBoughtArgs
-  ticketsSold?: boolean | UserCountOutputTypeCountTicketsSoldArgs
   productLists?: boolean | UserCountOutputTypeCountProductListsArgs
   reports?: boolean | UserCountOutputTypeCountReportsArgs
   shares?: boolean | UserCountOutputTypeCountSharesArgs
@@ -11212,6 +10788,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   challenges?: boolean | UserCountOutputTypeCountChallengesArgs
   challengeParticipants?: boolean | UserCountOutputTypeCountChallengeParticipantsArgs
   battleVotes?: boolean | UserCountOutputTypeCountBattleVotesArgs
+  eventParticipants?: boolean | UserCountOutputTypeCountEventParticipantsArgs
 }
 
 /**
@@ -11278,20 +10855,6 @@ export type UserCountOutputTypeCountSentMessagesArgs<ExtArgs extends runtime.Typ
  */
 export type UserCountOutputTypeCountReceivedMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MessageWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountTicketsBoughtArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventTicketWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountTicketsSoldArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventTicketWhereInput
 }
 
 /**
@@ -11469,6 +11032,13 @@ export type UserCountOutputTypeCountBattleVotesArgs<ExtArgs extends runtime.Type
   where?: Prisma.BattleVoteWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEventParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EventParticipantWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -11500,8 +11070,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   followers?: boolean | Prisma.User$followersArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
   receivedMessages?: boolean | Prisma.User$receivedMessagesArgs<ExtArgs>
-  ticketsBought?: boolean | Prisma.User$ticketsBoughtArgs<ExtArgs>
-  ticketsSold?: boolean | Prisma.User$ticketsSoldArgs<ExtArgs>
   productLists?: boolean | Prisma.User$productListsArgs<ExtArgs>
   reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
   shares?: boolean | Prisma.User$sharesArgs<ExtArgs>
@@ -11529,6 +11097,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   officialPartners?: boolean | Prisma.User$officialPartnersArgs<ExtArgs>
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
   battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
+  eventParticipants?: boolean | Prisma.User$eventParticipantsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -11614,8 +11183,6 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   followers?: boolean | Prisma.User$followersArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
   receivedMessages?: boolean | Prisma.User$receivedMessagesArgs<ExtArgs>
-  ticketsBought?: boolean | Prisma.User$ticketsBoughtArgs<ExtArgs>
-  ticketsSold?: boolean | Prisma.User$ticketsSoldArgs<ExtArgs>
   productLists?: boolean | Prisma.User$productListsArgs<ExtArgs>
   reports?: boolean | Prisma.User$reportsArgs<ExtArgs>
   shares?: boolean | Prisma.User$sharesArgs<ExtArgs>
@@ -11643,6 +11210,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   officialPartners?: boolean | Prisma.User$officialPartnersArgs<ExtArgs>
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
   battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
+  eventParticipants?: boolean | Prisma.User$eventParticipantsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -11659,8 +11227,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     followers: Prisma.$FollowPayload<ExtArgs>[]
     sentMessages: Prisma.$MessagePayload<ExtArgs>[]
     receivedMessages: Prisma.$MessagePayload<ExtArgs>[]
-    ticketsBought: Prisma.$EventTicketPayload<ExtArgs>[]
-    ticketsSold: Prisma.$EventTicketPayload<ExtArgs>[]
     productLists: Prisma.$ProductListPayload<ExtArgs>[]
     reports: Prisma.$ReportPayload<ExtArgs>[]
     shares: Prisma.$SharePayload<ExtArgs>[]
@@ -11688,6 +11254,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     officialPartners: Prisma.$OfficialPartnerPayload<ExtArgs> | null
     ambassadorPrograms: Prisma.$AmbassadorProgramPayload<ExtArgs> | null
     battleVotes: Prisma.$BattleVotePayload<ExtArgs>[]
+    eventParticipants: Prisma.$EventParticipantPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -12113,8 +11680,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   followers<T extends Prisma.User$followersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$followersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sentMessages<T extends Prisma.User$sentMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   receivedMessages<T extends Prisma.User$receivedMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  ticketsBought<T extends Prisma.User$ticketsBoughtArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ticketsBoughtArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  ticketsSold<T extends Prisma.User$ticketsSoldArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ticketsSoldArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventTicketPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   productLists<T extends Prisma.User$productListsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$productListsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reports<T extends Prisma.User$reportsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   shares<T extends Prisma.User$sharesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sharesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SharePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -12142,6 +11707,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   officialPartners<T extends Prisma.User$officialPartnersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$officialPartnersArgs<ExtArgs>>): Prisma.Prisma__OfficialPartnerClient<runtime.Types.Result.GetResult<Prisma.$OfficialPartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ambassadorPrograms<T extends Prisma.User$ambassadorProgramsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ambassadorProgramsArgs<ExtArgs>>): Prisma.Prisma__AmbassadorProgramClient<runtime.Types.Result.GetResult<Prisma.$AmbassadorProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   battleVotes<T extends Prisma.User$battleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  eventParticipants<T extends Prisma.User$eventParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12769,54 +12335,6 @@ export type User$receivedMessagesArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
-}
-
-/**
- * User.ticketsBought
- */
-export type User$ticketsBoughtArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the EventTicket
-   */
-  select?: Prisma.EventTicketSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the EventTicket
-   */
-  omit?: Prisma.EventTicketOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EventTicketInclude<ExtArgs> | null
-  where?: Prisma.EventTicketWhereInput
-  orderBy?: Prisma.EventTicketOrderByWithRelationInput | Prisma.EventTicketOrderByWithRelationInput[]
-  cursor?: Prisma.EventTicketWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.EventTicketScalarFieldEnum | Prisma.EventTicketScalarFieldEnum[]
-}
-
-/**
- * User.ticketsSold
- */
-export type User$ticketsSoldArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the EventTicket
-   */
-  select?: Prisma.EventTicketSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the EventTicket
-   */
-  omit?: Prisma.EventTicketOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EventTicketInclude<ExtArgs> | null
-  where?: Prisma.EventTicketWhereInput
-  orderBy?: Prisma.EventTicketOrderByWithRelationInput | Prisma.EventTicketOrderByWithRelationInput[]
-  cursor?: Prisma.EventTicketWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.EventTicketScalarFieldEnum | Prisma.EventTicketScalarFieldEnum[]
 }
 
 /**
@@ -13455,6 +12973,30 @@ export type User$battleVotesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.BattleVoteScalarFieldEnum | Prisma.BattleVoteScalarFieldEnum[]
+}
+
+/**
+ * User.eventParticipants
+ */
+export type User$eventParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EventParticipant
+   */
+  select?: Prisma.EventParticipantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the EventParticipant
+   */
+  omit?: Prisma.EventParticipantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventParticipantInclude<ExtArgs> | null
+  where?: Prisma.EventParticipantWhereInput
+  orderBy?: Prisma.EventParticipantOrderByWithRelationInput | Prisma.EventParticipantOrderByWithRelationInput[]
+  cursor?: Prisma.EventParticipantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EventParticipantScalarFieldEnum | Prisma.EventParticipantScalarFieldEnum[]
 }
 
 /**

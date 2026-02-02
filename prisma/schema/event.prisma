@@ -1,19 +1,22 @@
 model Event {
-  id          String      @id @default(uuid()) @db.Uuid
-  ownerId     String      @db.Uuid
-  owner       User        @relation(fields: [ownerId], references: [id])
+  id          String   @id @default(uuid()) @db.Uuid
+  ownerId     String   @db.Uuid
+  owner       User     @relation(fields: [ownerId], references: [id])
 
   eventTitle  String
   description String?
   location    String?
-  availableTicket Int @default(50)
+
+  maxParticipants Int @default(50)
+  joinedCount     Int @default(0)
+
   eventType   EventType   @default(Race)
   eventStatus EventStatus @default(PENDING)
 
   startDate   DateTime
   endDate     DateTime
 
-  createdAt   DateTime @default(now())
+  participants EventParticipant[]
 
-  eventTickets EventTicket[]
+  createdAt DateTime @default(now())
 }

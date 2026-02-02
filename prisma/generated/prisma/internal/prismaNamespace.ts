@@ -405,7 +405,7 @@ export const ModelName = {
   DrivingAssistant: 'DrivingAssistant',
   EnginePower: 'EnginePower',
   Event: 'Event',
-  EventTicket: 'EventTicket',
+  EventParticipant: 'EventParticipant',
   FileInstance: 'FileInstance',
   Follow: 'Follow',
   Garage: 'Garage',
@@ -460,7 +460,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventTicket" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2018,77 +2018,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    EventTicket: {
-      payload: Prisma.$EventTicketPayload<ExtArgs>
-      fields: Prisma.EventTicketFieldRefs
+    EventParticipant: {
+      payload: Prisma.$EventParticipantPayload<ExtArgs>
+      fields: Prisma.EventParticipantFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.EventTicketFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload> | null
+          args: Prisma.EventParticipantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.EventTicketFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         findFirst: {
-          args: Prisma.EventTicketFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload> | null
+          args: Prisma.EventParticipantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.EventTicketFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         findMany: {
-          args: Prisma.EventTicketFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>[]
+          args: Prisma.EventParticipantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>[]
         }
         create: {
-          args: Prisma.EventTicketCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         createMany: {
-          args: Prisma.EventTicketCreateManyArgs<ExtArgs>
+          args: Prisma.EventParticipantCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.EventTicketCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>[]
+          args: Prisma.EventParticipantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>[]
         }
         delete: {
-          args: Prisma.EventTicketDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         update: {
-          args: Prisma.EventTicketUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         deleteMany: {
-          args: Prisma.EventTicketDeleteManyArgs<ExtArgs>
+          args: Prisma.EventParticipantDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.EventTicketUpdateManyArgs<ExtArgs>
+          args: Prisma.EventParticipantUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.EventTicketUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>[]
+          args: Prisma.EventParticipantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>[]
         }
         upsert: {
-          args: Prisma.EventTicketUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventTicketPayload>
+          args: Prisma.EventParticipantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EventParticipantPayload>
         }
         aggregate: {
-          args: Prisma.EventTicketAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateEventTicket>
+          args: Prisma.EventParticipantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEventParticipant>
         }
         groupBy: {
-          args: Prisma.EventTicketGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EventTicketGroupByOutputType>[]
+          args: Prisma.EventParticipantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EventParticipantGroupByOutputType>[]
         }
         count: {
-          args: Prisma.EventTicketCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.EventTicketCountAggregateOutputType> | number
+          args: Prisma.EventParticipantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EventParticipantCountAggregateOutputType> | number
         }
       }
     }
@@ -5285,7 +5285,8 @@ export const EventScalarFieldEnum = {
   eventTitle: 'eventTitle',
   description: 'description',
   location: 'location',
-  availableTicket: 'availableTicket',
+  maxParticipants: 'maxParticipants',
+  joinedCount: 'joinedCount',
   eventType: 'eventType',
   eventStatus: 'eventStatus',
   startDate: 'startDate',
@@ -5296,17 +5297,14 @@ export const EventScalarFieldEnum = {
 export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
-export const EventTicketScalarFieldEnum = {
+export const EventParticipantScalarFieldEnum = {
   id: 'id',
   eventId: 'eventId',
-  buyerId: 'buyerId',
-  sellerId: 'sellerId',
-  price: 'price',
-  status: 'status',
-  createdAt: 'createdAt'
+  userId: 'userId',
+  joinedAt: 'joinedAt'
 } as const
 
-export type EventTicketScalarFieldEnum = (typeof EventTicketScalarFieldEnum)[keyof typeof EventTicketScalarFieldEnum]
+export type EventParticipantScalarFieldEnum = (typeof EventParticipantScalarFieldEnum)[keyof typeof EventParticipantScalarFieldEnum]
 
 
 export const FileInstanceScalarFieldEnum = {
@@ -5527,7 +5525,6 @@ export type OwnerProfileScalarFieldEnum = (typeof OwnerProfileScalarFieldEnum)[k
 export const PaymentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  ticketId: 'ticketId',
   buyProductId: 'buyProductId',
   amount: 'amount',
   status: 'status',
@@ -6528,7 +6525,7 @@ export type GlobalOmitConfig = {
   drivingAssistant?: Prisma.DrivingAssistantOmit
   enginePower?: Prisma.EnginePowerOmit
   event?: Prisma.EventOmit
-  eventTicket?: Prisma.EventTicketOmit
+  eventParticipant?: Prisma.EventParticipantOmit
   fileInstance?: Prisma.FileInstanceOmit
   follow?: Prisma.FollowOmit
   garage?: Prisma.GarageOmit
