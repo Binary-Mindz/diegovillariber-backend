@@ -6,6 +6,7 @@ import { UserModule } from './main/user/user.module';
 import { PostsModule } from './main/posts/posts.module';
 import { ProProfileModule } from './main/pro-profile/pro-profile.module';
 import { BattleModule } from './main/battle/battle.module';
+import { AdminModule } from './main/admin/admin.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { BattleModule } from './main/battle/battle.module';
     UserModule,
     PostsModule,
     ProProfileModule,
-    BattleModule
+    BattleModule,
+    AdminModule
   ],
   controllers: [],
   providers: [],

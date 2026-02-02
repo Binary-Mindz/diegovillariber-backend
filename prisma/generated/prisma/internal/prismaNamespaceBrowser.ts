@@ -484,7 +484,14 @@ export type HardwareSetupScalarFieldEnum = (typeof HardwareSetupScalarFieldEnum)
 
 export const HashtagScalarFieldEnum = {
   id: 'id',
-  tag: 'tag'
+  tag: 'tag',
+  description: 'description',
+  isActive: 'isActive',
+  isFeatured: 'isFeatured',
+  createdBy: 'createdBy',
+  usageCount: 'usageCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type HashtagScalarFieldEnum = (typeof HashtagScalarFieldEnum)[keyof typeof HashtagScalarFieldEnum]

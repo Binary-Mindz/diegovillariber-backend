@@ -304,5 +304,11 @@ enum AmbassadorStatus {
   REJECTED
 }
 
+enum HashtagCreatedBy {
+  ADMIN
+  SYSTEM
+}
+
+
 
 
