@@ -44,7 +44,7 @@ export type ChallengeMinAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   images: string | null
-  media: $Enums.Media | null
+  media: string | null
   camera: string | null
   participants: number | null
   comment: string | null
@@ -61,7 +61,7 @@ export type ChallengeMaxAggregateOutputType = {
   startDate: Date | null
   endDate: Date | null
   images: string | null
-  media: $Enums.Media | null
+  media: string | null
   camera: string | null
   participants: number | null
   comment: string | null
@@ -243,7 +243,7 @@ export type ChallengeGroupByOutputType = {
   startDate: Date | null
   endDate: Date | null
   images: string | null
-  media: $Enums.Media
+  media: string | null
   camera: string | null
   participants: number
   comment: string | null
@@ -283,7 +283,7 @@ export type ChallengeWhereInput = {
   startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.EnumMediaFilter<"Challenge"> | $Enums.Media
+  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
   camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
   participants?: Prisma.IntFilter<"Challenge"> | number
   comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
@@ -304,7 +304,7 @@ export type ChallengeOrderByWithRelationInput = {
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   images?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  media?: Prisma.SortOrderInput | Prisma.SortOrder
   camera?: Prisma.SortOrderInput | Prisma.SortOrder
   participants?: Prisma.SortOrder
   comment?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -328,7 +328,7 @@ export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.EnumMediaFilter<"Challenge"> | $Enums.Media
+  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
   camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
   participants?: Prisma.IntFilter<"Challenge"> | number
   comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
@@ -349,7 +349,7 @@ export type ChallengeOrderByWithAggregationInput = {
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   images?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrder
+  media?: Prisma.SortOrderInput | Prisma.SortOrder
   camera?: Prisma.SortOrderInput | Prisma.SortOrder
   participants?: Prisma.SortOrder
   comment?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -374,7 +374,7 @@ export type ChallengeScalarWhereWithAggregatesInput = {
   startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Challenge"> | Date | string | null
   endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Challenge"> | Date | string | null
   images?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  media?: Prisma.EnumMediaWithAggregatesFilter<"Challenge"> | $Enums.Media
+  media?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
   camera?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
   participants?: Prisma.IntWithAggregatesFilter<"Challenge"> | number
   comment?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
@@ -389,7 +389,7 @@ export type ChallengeCreateInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -410,7 +410,7 @@ export type ChallengeUncheckedCreateInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -427,7 +427,7 @@ export type ChallengeUpdateInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -448,7 +448,7 @@ export type ChallengeUncheckedUpdateInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -467,7 +467,7 @@ export type ChallengeCreateManyInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -482,7 +482,7 @@ export type ChallengeUpdateManyMutationInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -499,7 +499,7 @@ export type ChallengeUncheckedUpdateManyInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -578,10 +578,6 @@ export type ChallengeListRelationFilter = {
 
 export type ChallengeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type EnumMediaFieldUpdateOperationsInput = {
-  set?: $Enums.Media
 }
 
 export type EnumIsActiveFieldUpdateOperationsInput = {
@@ -708,7 +704,7 @@ export type ChallengeCreateWithoutParticipantsListInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -728,7 +724,7 @@ export type ChallengeUncheckedCreateWithoutParticipantsListInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -760,7 +756,7 @@ export type ChallengeUpdateWithoutParticipantsListInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -780,7 +776,7 @@ export type ChallengeUncheckedUpdateWithoutParticipantsListInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -796,7 +792,7 @@ export type ChallengeCreateWithoutResultsInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -816,7 +812,7 @@ export type ChallengeUncheckedCreateWithoutResultsInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -848,7 +844,7 @@ export type ChallengeUpdateWithoutResultsInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -868,7 +864,7 @@ export type ChallengeUncheckedUpdateWithoutResultsInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -884,7 +880,7 @@ export type ChallengeCreateWithoutHostInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -903,7 +899,7 @@ export type ChallengeUncheckedCreateWithoutHostInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -930,7 +926,7 @@ export type ChallengeCreateWithoutParticipantsUserInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -949,7 +945,7 @@ export type ChallengeUncheckedCreateWithoutParticipantsUserInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -997,7 +993,7 @@ export type ChallengeScalarWhereInput = {
   startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
   images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.EnumMediaFilter<"Challenge"> | $Enums.Media
+  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
   camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
   participants?: Prisma.IntFilter<"Challenge"> | number
   comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
@@ -1029,7 +1025,7 @@ export type ChallengeCreateManyHostInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -1045,7 +1041,7 @@ export type ChallengeCreateManyParticipantsUserInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   images?: string | null
-  media?: $Enums.Media
+  media?: string | null
   camera?: string | null
   participants?: number
   comment?: string | null
@@ -1060,7 +1056,7 @@ export type ChallengeUpdateWithoutHostInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1079,7 +1075,7 @@ export type ChallengeUncheckedUpdateWithoutHostInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1097,7 +1093,7 @@ export type ChallengeUncheckedUpdateManyWithoutHostInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1112,7 +1108,7 @@ export type ChallengeUpdateWithoutParticipantsUserInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1131,7 +1127,7 @@ export type ChallengeUncheckedUpdateWithoutParticipantsUserInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1149,7 +1145,7 @@ export type ChallengeUncheckedUpdateManyWithoutParticipantsUserInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.EnumMediaFieldUpdateOperationsInput | $Enums.Media
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1308,7 +1304,7 @@ export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     startDate: Date | null
     endDate: Date | null
     images: string | null
-    media: $Enums.Media
+    media: string | null
     camera: string | null
     participants: number
     comment: string | null
@@ -1749,7 +1745,7 @@ export interface ChallengeFieldRefs {
   readonly startDate: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly images: Prisma.FieldRef<"Challenge", 'String'>
-  readonly media: Prisma.FieldRef<"Challenge", 'Media'>
+  readonly media: Prisma.FieldRef<"Challenge", 'String'>
   readonly camera: Prisma.FieldRef<"Challenge", 'String'>
   readonly participants: Prisma.FieldRef<"Challenge", 'Int'>
   readonly comment: Prisma.FieldRef<"Challenge", 'String'>
