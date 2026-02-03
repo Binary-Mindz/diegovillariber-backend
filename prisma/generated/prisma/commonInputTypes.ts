@@ -411,13 +411,6 @@ export type UuidNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedUuidNullableFilter<$PrismaModel> | string | null
 }
 
-export type EnumMediaFilter<$PrismaModel = never> = {
-  equals?: $Enums.Media | Prisma.EnumMediaFieldRefInput<$PrismaModel>
-  in?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumMediaFilter<$PrismaModel> | $Enums.Media
-}
-
 export type EnumIsActiveFilter<$PrismaModel = never> = {
   equals?: $Enums.IsActive | Prisma.EnumIsActiveFieldRefInput<$PrismaModel>
   in?: $Enums.IsActive[] | Prisma.ListEnumIsActiveFieldRefInput<$PrismaModel>
@@ -438,16 +431,6 @@ export type UuidNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedStringNullableFilter<$PrismaModel>
   _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
-}
-
-export type EnumMediaWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Media | Prisma.EnumMediaFieldRefInput<$PrismaModel>
-  in?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumMediaWithAggregatesFilter<$PrismaModel> | $Enums.Media
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumMediaFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumMediaFilter<$PrismaModel>
 }
 
 export type EnumIsActiveWithAggregatesFilter<$PrismaModel = never> = {
@@ -1261,13 +1244,6 @@ export type NestedUuidNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedUuidNullableFilter<$PrismaModel> | string | null
 }
 
-export type NestedEnumMediaFilter<$PrismaModel = never> = {
-  equals?: $Enums.Media | Prisma.EnumMediaFieldRefInput<$PrismaModel>
-  in?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumMediaFilter<$PrismaModel> | $Enums.Media
-}
-
 export type NestedEnumIsActiveFilter<$PrismaModel = never> = {
   equals?: $Enums.IsActive | Prisma.EnumIsActiveFieldRefInput<$PrismaModel>
   in?: $Enums.IsActive[] | Prisma.ListEnumIsActiveFieldRefInput<$PrismaModel>
@@ -1287,16 +1263,6 @@ export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedStringNullableFilter<$PrismaModel>
   _max?: Prisma.NestedStringNullableFilter<$PrismaModel>
-}
-
-export type NestedEnumMediaWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Media | Prisma.EnumMediaFieldRefInput<$PrismaModel>
-  in?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Media[] | Prisma.ListEnumMediaFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumMediaWithAggregatesFilter<$PrismaModel> | $Enums.Media
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumMediaFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumMediaFilter<$PrismaModel>
 }
 
 export type NestedEnumIsActiveWithAggregatesFilter<$PrismaModel = never> = {

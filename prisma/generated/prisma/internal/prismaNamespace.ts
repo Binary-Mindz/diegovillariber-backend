@@ -6061,20 +6061,6 @@ export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
- * Reference to a field of type 'Media'
- */
-export type EnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media'>
-    
-
-
-/**
- * Reference to a field of type 'Media[]'
- */
-export type ListEnumMediaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Media[]'>
-    
-
-
-/**
  * Reference to a field of type 'IsActive'
  */
 export type EnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive'>
