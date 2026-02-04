@@ -29,11 +29,15 @@ export class PostService {
   async createPost(userId: string, dto: CreatePostDto) {
     const wantBoost = dto.contentBooster === true;
 
-    const hasLat = dto.latitude !== undefined && dto.latitude !== null && dto.latitude !== '';
-    const hasLng = dto.longitude !== undefined && dto.longitude !== null && dto.longitude !== '';
+    const hasLat = typeof dto.latitude === 'number';
+    const hasLng = typeof dto.longitude === 'number';
+
     if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
-      throw new BadRequestException('Both latitude and longitude must be provided together.');
+      throw new BadRequestException(
+        'Both latitude and longitude must be provided together.',
+      );
     }
+
 
     const hashtagIds = dto.hashtagIds
       ? Array.from(new Set(dto.hashtagIds))
@@ -93,7 +97,7 @@ export class PostService {
           contentBooster: wantBoost,
         },
         include: {
-          hashtags: true, 
+          hashtags: true,
         },
       });
 
@@ -172,7 +176,7 @@ export class PostService {
         ? [{ like: 'desc' }, { createdAt: 'desc' }]
         : query.sort === 'boosted'
           ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-          : [{ createdAt: 'desc' }]; 
+          : [{ createdAt: 'desc' }];
 
     const [data, total] = await this.prisma.$transaction([
       this.prisma.post.findMany({
@@ -225,14 +229,12 @@ export class PostService {
       throw new BadRequestException('contentBooster cannot be updated');
     }
 
-    const hasLat =
-      dto.latitude !== undefined && dto.latitude !== null && dto.latitude !== '';
-    const hasLng =
-      dto.longitude !== undefined && dto.longitude !== null && dto.longitude !== '';
+    const hasLat = typeof dto.latitude === 'number';
+    const hasLng = typeof dto.longitude === 'number';
 
     if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
       throw new BadRequestException(
-        'Both latitude and longitude must be provided together',
+        'Both latitude and longitude must be provided together.',
       );
     }
 
