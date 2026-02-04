@@ -5542,6 +5542,11 @@ export const PostScalarFieldEnum = {
   caption: 'caption',
   mediaUrl: 'mediaUrl',
   postLocation: 'postLocation',
+  locationName: 'locationName',
+  locationAddress: 'locationAddress',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
   locationVisibility: 'locationVisibility',
   like: 'like',
   comment: 'comment',
@@ -6197,6 +6202,20 @@ export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'PaymentStatus[]'
  */
 export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 

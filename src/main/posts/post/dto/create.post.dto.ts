@@ -6,6 +6,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  IsNumberString,
 } from 'class-validator';
 import {
   PostType,
@@ -31,10 +32,41 @@ export class CreatePostDto {
   @IsString()
   mediaUrl?: string;
 
+  // Optional: formatted location string (you already have it)
   @ApiPropertyOptional({ example: 'Dhaka, Bangladesh' })
   @IsOptional()
   @IsString()
   postLocation?: string;
+
+  // ✅ NEW: location fields (map picked)
+  @ApiPropertyOptional({ example: 'Bashundhara City' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  locationName?: string;
+
+  @ApiPropertyOptional({ example: 'Panthapath, Dhaka 1205, Bangladesh' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(300)
+  locationAddress?: string;
+
+  // Prisma Decimal -> best practice: send as string
+  @ApiPropertyOptional({ example: '23.751600' })
+  @IsOptional()
+  @IsNumberString({ no_symbols: true })
+  latitude?: string;
+
+  @ApiPropertyOptional({ example: '90.392700' })
+  @IsOptional()
+  @IsNumberString({ no_symbols: true })
+  longitude?: string;
+
+  @ApiPropertyOptional({ example: 'ChIJ....' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
+  placeId?: string;
 
   @ApiPropertyOptional({ example: 'PUBLIC' })
   @IsOptional()
@@ -50,12 +82,11 @@ export class CreatePostDto {
   @IsBoolean()
   contentBooster?: boolean;
 
-  // ✅ NEW: enum arrays
+  // ✅ enum arrays
   @ApiPropertyOptional({
     isArray: true,
     enum: VisiualStyle,
     example: ['Cinematic', 'Night_Shot', 'Wide_Angle'],
-    description: 'Visual style tags for the post',
   })
   @IsOptional()
   @IsArray()
@@ -66,7 +97,6 @@ export class CreatePostDto {
     isArray: true,
     enum: ContextActivity,
     example: ['Car_Meet', 'Highway', 'Urban'],
-    description: 'Context or activity where the post was created',
   })
   @IsOptional()
   @IsArray()
@@ -77,7 +107,6 @@ export class CreatePostDto {
     isArray: true,
     enum: Subject,
     example: ['Exterior', 'Wheel', 'Driver_Portrait'],
-    description: 'Main subjects shown in the post',
   })
   @IsOptional()
   @IsArray()
