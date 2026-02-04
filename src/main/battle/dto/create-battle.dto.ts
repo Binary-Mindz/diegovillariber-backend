@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsInt, IsOptional, IsString, Length, Min } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, Length, MaxLength, Min } from 'class-validator';
+import { BattleCategory, Preference } from 'generated/prisma/enums';
 
 export enum BattleStatusDto {
   PENDING = 'PENDING',
@@ -19,56 +20,46 @@ export enum PreferenceDto {
   Both = 'Both'
 
 }
-
 export class CreateBattleDto {
-  @ApiProperty({ example: 'Supercar Battle Season 1' })
+  @ApiProperty({ example: 'My Battle' })
   @IsString()
-  @Length(2, 120)
+  @MaxLength(120)
   title: string;
 
-  @ApiPropertyOptional({ example: 'Post your best supercar shot and win!' })
+  @ApiPropertyOptional({ example: 'Description...' })
   @IsOptional()
   @IsString()
+  @MaxLength(2000)
   description?: string;
 
-  @ApiPropertyOptional({ example: 'https://cdn.example.com/battle-cover.jpg' })
+  @ApiPropertyOptional({ example: 'https://cdn.com/cover.jpg' })
   @IsOptional()
   @IsString()
   coverImage?: string;
 
-  @ApiPropertyOptional({ enum: BattleCategoryDto, example: BattleCategoryDto.HEAD_TO_HEAD })
+  @ApiPropertyOptional({ enum: BattleCategory, example: 'HEAD_TO_HEAD' })
   @IsOptional()
-  @IsEnum(BattleCategoryDto)
-  battleCategory?: BattleCategoryDto;
+  @IsEnum(BattleCategory)
+  battleCategory?: BattleCategory;
 
-  @ApiPropertyOptional({ enum: PreferenceDto, example: PreferenceDto.Car })
+  @ApiPropertyOptional({ enum: Preference, example: 'Car' })
   @IsOptional()
-  @IsEnum(PreferenceDto)
-  preference?: PreferenceDto;
+  @IsEnum(Preference)
+  preference?: Preference;
 
-  @ApiPropertyOptional({ example: 10, description: 'Default 10, max 10 allowed' })
+  @ApiPropertyOptional({ example: 10 })
   @IsOptional()
   @IsInt()
   @Min(2)
   maxParticipants?: number;
 
-  @ApiPropertyOptional({ example: '2026-02-05T12:00:00.000Z' })
+  @ApiPropertyOptional({ example: '2026-02-10T00:00:00.000Z' })
   @IsOptional()
   @IsString()
   startTime?: string;
 
-  @ApiPropertyOptional({ example: '2026-02-10T12:00:00.000Z' })
+  @ApiPropertyOptional({ example: '2026-02-12T00:00:00.000Z' })
   @IsOptional()
   @IsString()
   endTime?: string;
-
-  @ApiPropertyOptional({ example: '7d', description: 'duration text (optional)' })
-  @IsOptional()
-  @IsString()
-  duration?: string;
-
-  @ApiPropertyOptional({ example: 'BDT 5000 + Trophy' })
-  @IsOptional()
-  @IsString()
-  prize?: string;
 }
