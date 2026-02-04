@@ -27,6 +27,8 @@ export type AggregatePost = {
 }
 
 export type PostAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   like: number | null
   comment: number | null
   share: number | null
@@ -34,6 +36,8 @@ export type PostAvgAggregateOutputType = {
 }
 
 export type PostSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   like: number | null
   comment: number | null
   share: number | null
@@ -47,6 +51,11 @@ export type PostMinAggregateOutputType = {
   caption: string | null
   mediaUrl: string | null
   postLocation: string | null
+  locationName: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   locationVisibility: string | null
   like: number | null
   comment: number | null
@@ -64,6 +73,11 @@ export type PostMaxAggregateOutputType = {
   caption: string | null
   mediaUrl: string | null
   postLocation: string | null
+  locationName: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   locationVisibility: string | null
   like: number | null
   comment: number | null
@@ -81,6 +95,11 @@ export type PostCountAggregateOutputType = {
   caption: number
   mediaUrl: number
   postLocation: number
+  locationName: number
+  locationAddress: number
+  latitude: number
+  longitude: number
+  placeId: number
   locationVisibility: number
   like: number
   comment: number
@@ -97,6 +116,8 @@ export type PostCountAggregateOutputType = {
 
 
 export type PostAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
   like?: true
   comment?: true
   share?: true
@@ -104,6 +125,8 @@ export type PostAvgAggregateInputType = {
 }
 
 export type PostSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
   like?: true
   comment?: true
   share?: true
@@ -117,6 +140,11 @@ export type PostMinAggregateInputType = {
   caption?: true
   mediaUrl?: true
   postLocation?: true
+  locationName?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   locationVisibility?: true
   like?: true
   comment?: true
@@ -134,6 +162,11 @@ export type PostMaxAggregateInputType = {
   caption?: true
   mediaUrl?: true
   postLocation?: true
+  locationName?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   locationVisibility?: true
   like?: true
   comment?: true
@@ -151,6 +184,11 @@ export type PostCountAggregateInputType = {
   caption?: true
   mediaUrl?: true
   postLocation?: true
+  locationName?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   locationVisibility?: true
   like?: true
   comment?: true
@@ -258,6 +296,11 @@ export type PostGroupByOutputType = {
   caption: string | null
   mediaUrl: string | null
   postLocation: string | null
+  locationName: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   locationVisibility: string | null
   like: number
   comment: number
@@ -301,6 +344,11 @@ export type PostWhereInput = {
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
   mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationName?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
@@ -332,6 +380,11 @@ export type PostOrderByWithRelationInput = {
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
@@ -366,6 +419,11 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
   mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationName?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
@@ -397,6 +455,11 @@ export type PostOrderByWithAggregationInput = {
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
   mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
@@ -425,6 +488,11 @@ export type PostScalarWhereWithAggregatesInput = {
   caption?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   mediaUrl?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   postLocation?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  locationName?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  locationAddress?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   like?: Prisma.IntWithAggregatesFilter<"Post"> | number
   comment?: Prisma.IntWithAggregatesFilter<"Post"> | number
@@ -444,6 +512,11 @@ export type PostCreateInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -475,6 +548,11 @@ export type PostUncheckedCreateInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -504,6 +582,11 @@ export type PostUpdateInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -535,6 +618,11 @@ export type PostUncheckedUpdateInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -565,6 +653,11 @@ export type PostCreateManyInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -584,6 +677,11 @@ export type PostUpdateManyMutationInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -604,6 +702,11 @@ export type PostUncheckedUpdateManyInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -663,6 +766,11 @@ export type PostCountOrderByAggregateInput = {
   caption?: Prisma.SortOrder
   mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
@@ -677,6 +785,8 @@ export type PostCountOrderByAggregateInput = {
 }
 
 export type PostAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -690,6 +800,11 @@ export type PostMaxOrderByAggregateInput = {
   caption?: Prisma.SortOrder
   mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
@@ -707,6 +822,11 @@ export type PostMinOrderByAggregateInput = {
   caption?: Prisma.SortOrder
   mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
@@ -718,6 +838,8 @@ export type PostMinOrderByAggregateInput = {
 }
 
 export type PostSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -833,6 +955,14 @@ export type PostCreatecontextActivityInput = {
 
 export type PostCreatesubjectInput = {
   set: $Enums.Subject[]
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type PostUpdatevisiualStyleInput = {
@@ -970,6 +1100,11 @@ export type PostCreateWithoutBattleEntriesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1000,6 +1135,11 @@ export type PostUncheckedCreateWithoutBattleEntriesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1044,6 +1184,11 @@ export type PostUpdateWithoutBattleEntriesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1074,6 +1219,11 @@ export type PostUncheckedUpdateWithoutBattleEntriesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1102,6 +1252,11 @@ export type PostCreateWithoutCommentsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1132,6 +1287,11 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1176,6 +1336,11 @@ export type PostUpdateWithoutCommentsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1206,6 +1371,11 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1234,6 +1404,11 @@ export type PostCreateWithoutHashtagsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1264,6 +1439,11 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1317,6 +1497,11 @@ export type PostScalarWhereInput = {
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
   mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationName?: Prisma.StringNullableFilter<"Post"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
@@ -1336,6 +1521,11 @@ export type PostCreateWithoutHidePostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1366,6 +1556,11 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1410,6 +1605,11 @@ export type PostUpdateWithoutHidePostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1440,6 +1640,11 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1468,6 +1673,11 @@ export type PostCreateWithoutLikesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1498,6 +1708,11 @@ export type PostUncheckedCreateWithoutLikesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1542,6 +1757,11 @@ export type PostUpdateWithoutLikesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1572,6 +1792,11 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1600,6 +1825,11 @@ export type PostCreateWithoutRacingVotesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1630,6 +1860,11 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1674,6 +1909,11 @@ export type PostUpdateWithoutRacingVotesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1704,6 +1944,11 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1732,6 +1977,11 @@ export type PostCreateWithoutRepostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1762,6 +2012,11 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1806,6 +2061,11 @@ export type PostUpdateWithoutRepostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1836,6 +2096,11 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1864,6 +2129,11 @@ export type PostCreateWithoutSavePostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1894,6 +2164,11 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -1938,6 +2213,11 @@ export type PostUpdateWithoutSavePostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1968,6 +2248,11 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1996,6 +2281,11 @@ export type PostCreateWithoutUserInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2025,6 +2315,11 @@ export type PostUncheckedCreateWithoutUserInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2080,6 +2375,11 @@ export type PostCreateWithoutUserPointsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2110,6 +2410,11 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2154,6 +2459,11 @@ export type PostUpdateWithoutUserPointsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2184,6 +2494,11 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2212,6 +2527,11 @@ export type PostCreateWithoutWishListsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2242,6 +2562,11 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2286,6 +2611,11 @@ export type PostUpdateWithoutWishListsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2316,6 +2646,11 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2344,6 +2679,11 @@ export type PostUpdateWithoutHashtagsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2374,6 +2714,11 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2403,6 +2748,11 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2422,6 +2772,11 @@ export type PostCreateManyUserInput = {
   caption?: string | null
   mediaUrl?: string | null
   postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   locationVisibility?: string | null
   like?: number
   comment?: number
@@ -2441,6 +2796,11 @@ export type PostUpdateWithoutUserInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2470,6 +2830,11 @@ export type PostUncheckedUpdateWithoutUserInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2499,6 +2864,11 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2631,6 +3001,11 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   caption?: boolean
   mediaUrl?: boolean
   postLocation?: boolean
+  locationName?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   locationVisibility?: boolean
   like?: boolean
   comment?: boolean
@@ -2663,6 +3038,11 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   caption?: boolean
   mediaUrl?: boolean
   postLocation?: boolean
+  locationName?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   locationVisibility?: boolean
   like?: boolean
   comment?: boolean
@@ -2684,6 +3064,11 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   caption?: boolean
   mediaUrl?: boolean
   postLocation?: boolean
+  locationName?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   locationVisibility?: boolean
   like?: boolean
   comment?: boolean
@@ -2705,6 +3090,11 @@ export type PostSelectScalar = {
   caption?: boolean
   mediaUrl?: boolean
   postLocation?: boolean
+  locationName?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   locationVisibility?: boolean
   like?: boolean
   comment?: boolean
@@ -2718,7 +3108,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   hashtags?: boolean | Prisma.Post$hashtagsArgs<ExtArgs>
@@ -2762,6 +3152,11 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     caption: string | null
     mediaUrl: string | null
     postLocation: string | null
+    locationName: string | null
+    locationAddress: string | null
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    placeId: string | null
     locationVisibility: string | null
     like: number
     comment: number
@@ -3213,6 +3608,11 @@ export interface PostFieldRefs {
   readonly caption: Prisma.FieldRef<"Post", 'String'>
   readonly mediaUrl: Prisma.FieldRef<"Post", 'String'>
   readonly postLocation: Prisma.FieldRef<"Post", 'String'>
+  readonly locationName: Prisma.FieldRef<"Post", 'String'>
+  readonly locationAddress: Prisma.FieldRef<"Post", 'String'>
+  readonly latitude: Prisma.FieldRef<"Post", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Post", 'Decimal'>
+  readonly placeId: Prisma.FieldRef<"Post", 'String'>
   readonly locationVisibility: Prisma.FieldRef<"Post", 'String'>
   readonly like: Prisma.FieldRef<"Post", 'Int'>
   readonly comment: Prisma.FieldRef<"Post", 'Int'>

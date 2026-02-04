@@ -24,10 +24,16 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async createPost(userId: string, dto: CreatePostDto) {
     const wantBoost = dto.contentBooster === true;
+
+    const hasLat = dto.latitude !== undefined && dto.latitude !== null && dto.latitude !== '';
+    const hasLng = dto.longitude !== undefined && dto.longitude !== null && dto.longitude !== '';
+    if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+      throw new BadRequestException('Both latitude and longitude must be provided together.');
+    }
 
     return this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
@@ -45,10 +51,17 @@ export class PostService {
       const post = await tx.post.create({
         data: {
           userId,
-          postType: dto.postType,
+          postType: dto.postType ?? undefined,
           caption: dto.caption ?? null,
           mediaUrl: dto.mediaUrl ?? null,
+
           postLocation: dto.postLocation ?? null,
+          locationName: dto.locationName ?? null,
+          locationAddress: dto.locationAddress ?? null,
+          latitude: dto.latitude ?? null,
+          longitude: dto.longitude ?? null,
+          placeId: dto.placeId ?? null,
+
           locationVisibility: dto.locationVisibility ?? null,
 
           visiualStyle: dto.visiualStyle ?? [],
@@ -59,6 +72,7 @@ export class PostService {
           contentBooster: wantBoost,
         },
       });
+
 
       await tx.userPoint.create({
         data: {
@@ -77,6 +91,7 @@ export class PostService {
           },
         });
       }
+
       const delta = POST_REWARD_POINTS - (wantBoost ? BOOST_COST_POINTS : 0);
 
       const updatedUser = await tx.user.update({
@@ -94,6 +109,7 @@ export class PostService {
       };
     });
   }
+
 
   async getFeed(query: FeedQueryDto) {
     const page = query.page ?? 1;
@@ -116,11 +132,11 @@ export class PostService {
         : {}),
       ...(query.search
         ? {
-            OR: [
-              { caption: { contains: query.search, mode: 'insensitive' } },
-              { postLocation: { contains: query.search, mode: 'insensitive' } },
-            ],
-          }
+          OR: [
+            { caption: { contains: query.search, mode: 'insensitive' } },
+            { postLocation: { contains: query.search, mode: 'insensitive' } },
+          ],
+        }
         : {}),
 
       ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
@@ -187,20 +203,24 @@ export class PostService {
     if (dto.contentBooster !== undefined) {
       throw new BadRequestException('contentBooster cannot be updated');
     }
+
+    const hasLat =
+      dto.latitude !== undefined && dto.latitude !== null && dto.latitude !== '';
+    const hasLng =
+      dto.longitude !== undefined && dto.longitude !== null && dto.longitude !== '';
+
+    if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+      throw new BadRequestException(
+        'Both latitude and longitude must be provided together',
+      );
+    }
+
     return this.prisma.$transaction(async (tx) => {
       const existing = await tx.post.findUnique({
         where: { id: postId },
         select: {
           id: true,
           userId: true,
-          postType: true,
-          caption: true,
-          mediaUrl: true,
-          postLocation: true,
-          locationVisibility: true,
-          contentBooster: true,
-          createdAt: true,
-          updatedAt: true,
         },
       });
 
@@ -209,6 +229,7 @@ export class PostService {
       if (existing.userId !== userId) {
         throw new ForbiddenException('You are not allowed to update this post');
       }
+
       const updateData: any = {
         ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
@@ -222,6 +243,21 @@ export class PostService {
           ? { locationVisibility: dto.locationVisibility ?? null }
           : {}),
 
+        ...(dto.locationName !== undefined
+          ? { locationName: dto.locationName ?? null }
+          : {}),
+        ...(dto.locationAddress !== undefined
+          ? { locationAddress: dto.locationAddress ?? null }
+          : {}),
+        ...(dto.latitude !== undefined
+          ? { latitude: dto.latitude ?? null }
+          : {}),
+        ...(dto.longitude !== undefined
+          ? { longitude: dto.longitude ?? null }
+          : {}),
+        ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
+
+        // enums
         ...(dto.visiualStyle !== undefined
           ? { visiualStyle: dto.visiualStyle ?? [] }
           : {}),
@@ -234,6 +270,7 @@ export class PostService {
       if (Object.keys(updateData).length === 0) {
         throw new BadRequestException('No valid fields provided to update');
       }
+
       const updated = await tx.post.update({
         where: { id: postId },
         data: updateData,
@@ -242,6 +279,7 @@ export class PostService {
       return updated;
     });
   }
+
 
   async deletePost(postId: string, userId: string) {
     return this.prisma.$transaction(async (tx) => {
@@ -263,18 +301,3 @@ export class PostService {
   }
 }
 
-// @ApiProperty({
-//   example: [
-//     Amenity.WIFI,
-//     Amenity.PARKING_AVAILABLE,
-//     Amenity.AIR_CONDITIONING,
-//   ],
-//   description: 'List of amenities (enum values)',
-//   isArray: true,
-//   enum: Amenity,
-//   required: false,
-// })
-// @IsOptional()
-// @IsArray()
-// @IsEnum(Amenity, { each: true })
-// amenities?: Amenity[];
