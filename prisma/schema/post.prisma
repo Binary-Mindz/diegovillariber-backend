@@ -34,9 +34,8 @@ model Post {
   wishLists   WishList[]
   userPoints  UserPoint[]
 
-  likes         Like[]
-  comments      Comment[]
-  battleEntries BattleEntry[]
+  likes    Like[]
+  comments Comment[]
 }
 
 enum VisiualStyle {

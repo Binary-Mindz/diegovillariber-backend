@@ -5221,7 +5221,7 @@ export const BattleEntryScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   participantId: 'participantId',
-  postId: 'postId',
+  xpostId: 'xpostId',
   createdAt: 'createdAt'
 } as const
 
