@@ -1,4 +1,5 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsArray,
   IsBoolean,
@@ -6,9 +7,9 @@ import {
   IsOptional,
   IsString,
   MaxLength,
-  IsNumberString,
   ArrayMaxSize,
   IsUUID,
+  IsNumber,
 } from 'class-validator';
 import {
   PostType,
@@ -53,16 +54,17 @@ export class CreatePostDto {
   @MaxLength(300)
   locationAddress?: string;
 
-  // Prisma Decimal -> best practice: send as string
-  @ApiPropertyOptional({ example: '23.751600' })
+  @ApiPropertyOptional({ example: 23.7516 })
   @IsOptional()
-  @IsNumberString({ no_symbols: true })
-  latitude?: string;
+  @Type(() => Number)
+  @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'latitude must be a number' })
+  latitude?: number;
 
-  @ApiPropertyOptional({ example: '90.392700' })
+  @ApiPropertyOptional({ example: 90.3927 })
   @IsOptional()
-  @IsNumberString({ no_symbols: true })
-  longitude?: string;
+  @Type(() => Number)
+  @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'longitude must be a number' })
+  longitude?: number;
 
   @ApiPropertyOptional({ example: 'ChIJ....' })
   @IsOptional()
@@ -115,7 +117,7 @@ export class CreatePostDto {
   @IsEnum(Subject, { each: true })
   subject?: Subject[];
 
-   @ApiPropertyOptional({
+  @ApiPropertyOptional({
     isArray: true,
     example: [
       '4d9c8f3b-1b2a-4d2f-9c41-6f8a4a2b3c10',
