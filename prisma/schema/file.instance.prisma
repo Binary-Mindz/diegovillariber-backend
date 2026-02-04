@@ -1,20 +1,21 @@
 model FileInstance {
-  id               String   @id @default(uuid())
+  id               String @id @default(uuid())
   filename         String
   originalFilename String
   path             String
   url              String
 
-  fileType         FileType @default(ANY)
+  fileType FileType @default(ANY)
 
-  mimeType         String
-  size             Int
+  mimeType String
+  size     Int
 
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("file_instances")
 }
+
 enum FileType {
   IMAGE
   DOCS

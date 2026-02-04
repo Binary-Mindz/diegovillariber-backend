@@ -4,11 +4,9 @@ model Message {
   receiverId String   @db.Uuid
   content    String
   createdAt  DateTime @default(now())
+  sender     User[]   @relation("SentMessages")
+  receiver   User[]   @relation("ReceivedMessages")
 
   @@index([senderId])
   @@index([receiverId])
-  sender User[] @relation("SentMessages")
-  receiver User[] @relation("ReceivedMessages")
 }
-
-

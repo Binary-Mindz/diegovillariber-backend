@@ -1,6 +1,6 @@
 model InteriorSafety {
-  id                String @id @default(uuid()) @db.Uuid
-  advancedCarDataId String @db.Uuid @unique
+  id                String          @id @default(uuid()) @db.Uuid
+  advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
   seats   String?

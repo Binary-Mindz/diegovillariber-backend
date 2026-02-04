@@ -1,20 +1,20 @@
 model BattleEntry {
-  id            String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId      String   @db.Uuid
-  battle        Battle   @relation(fields: [battleId], references: [id])
+  battleId String @db.Uuid
+  battle   Battle @relation(fields: [battleId], references: [id])
 
-  participantId String   @db.Uuid
+  participantId String            @db.Uuid
   participant   BattleParticipant @relation(fields: [participantId], references: [id])
 
-  postId        String   @db.Uuid
-  post          Post     @relation(fields: [postId], references: [id])
+  postId String @db.Uuid
+  post   Post   @relation(fields: [postId], references: [id])
 
-  createdAt     DateTime @default(now())
+  createdAt DateTime @default(now())
 
   votes         BattleVote[]
+  battleResults BattleResult[]
 
   @@unique([battleId, participantId]) // one entry per participant per battle (change if you want multiple)
   @@index([battleId])
-  battleResults BattleResult[]
 }

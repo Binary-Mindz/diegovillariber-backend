@@ -445,7 +445,8 @@ export const ModelName = {
   VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
-  WishList: 'WishList'
+  WishList: 'WishList',
+  XPost: 'XPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -461,7 +462,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5053,6 +5054,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    XPost: {
+      payload: Prisma.$XPostPayload<ExtArgs>
+      fields: Prisma.XPostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.XPostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.XPostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        findFirst: {
+          args: Prisma.XPostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.XPostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        findMany: {
+          args: Prisma.XPostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        create: {
+          args: Prisma.XPostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        createMany: {
+          args: Prisma.XPostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.XPostCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        delete: {
+          args: Prisma.XPostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        update: {
+          args: Prisma.XPostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        deleteMany: {
+          args: Prisma.XPostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.XPostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.XPostUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        upsert: {
+          args: Prisma.XPostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        aggregate: {
+          args: Prisma.XPostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateXPost>
+        }
+        groupBy: {
+          args: Prisma.XPostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.XPostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.XPostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.XPostCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5278,7 +5353,7 @@ export const ChallengeSubmissionScalarFieldEnum = {
   id: 'id',
   challengeId: 'challengeId',
   userId: 'userId',
-  postId: 'postId',
+  xpostId: 'xpostId',
   createdAt: 'createdAt'
 } as const
 
@@ -5643,8 +5718,7 @@ export const PostScalarFieldEnum = {
   contextActivity: 'contextActivity',
   subject: 'subject',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  challengeId: 'challengeId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
@@ -5931,6 +6005,26 @@ export const WishListScalarFieldEnum = {
 } as const
 
 export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
+
+
+export const XPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  battleId: 'battleId',
+  battleParticipantId: 'battleParticipantId',
+  challengeId: 'challengeId',
+  challengeParticipantId: 'challengeParticipantId',
+  postType: 'postType',
+  mediaUrl: 'mediaUrl',
+  caption: 'caption',
+  like: 'like',
+  comment: 'comment',
+  share: 'share',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type XPostScalarFieldEnum = (typeof XPostScalarFieldEnum)[keyof typeof XPostScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -6658,6 +6752,7 @@ export type GlobalOmitConfig = {
   virtualSimRacingEvent?: Prisma.VirtualSimRacingEventOmit
   wheelsTires?: Prisma.WheelsTiresOmit
   wishList?: Prisma.WishListOmit
+  xPost?: Prisma.XPostOmit
 }
 
 /* Types for Logging */
