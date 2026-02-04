@@ -64,6 +64,7 @@ export const ModelName = {
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
   ChallengeResult: 'ChallengeResult',
+  ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
@@ -310,6 +311,17 @@ export const ChallengeResultScalarFieldEnum = {
 } as const
 
 export type ChallengeResultScalarFieldEnum = (typeof ChallengeResultScalarFieldEnum)[keyof typeof ChallengeResultScalarFieldEnum]
+
+
+export const ChallengeSubmissionScalarFieldEnum = {
+  id: 'id',
+  challengeId: 'challengeId',
+  userId: 'userId',
+  postId: 'postId',
+  createdAt: 'createdAt'
+} as const
+
+export type ChallengeSubmissionScalarFieldEnum = (typeof ChallengeSubmissionScalarFieldEnum)[keyof typeof ChallengeSubmissionScalarFieldEnum]
 
 
 export const ChassisBrakesScalarFieldEnum = {
@@ -670,7 +682,8 @@ export const PostScalarFieldEnum = {
   contextActivity: 'contextActivity',
   subject: 'subject',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  challengeId: 'challengeId'
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]

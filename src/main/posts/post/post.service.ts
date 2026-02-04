@@ -132,8 +132,6 @@ export class PostService {
     });
   }
 
-
-
   async getFeed(query: FeedQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
@@ -174,7 +172,7 @@ export class PostService {
         ? [{ like: 'desc' }, { createdAt: 'desc' }]
         : query.sort === 'boosted'
           ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-          : [{ createdAt: 'desc' }]; // latest default
+          : [{ createdAt: 'desc' }]; 
 
     const [data, total] = await this.prisma.$transaction([
       this.prisma.post.findMany({

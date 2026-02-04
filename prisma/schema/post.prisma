@@ -7,18 +7,18 @@ model Post {
     caption            String?
     mediaUrl           String?
     postLocation       String?
-    locationName       String? 
-    locationAddress    String? 
+    locationName       String?
+    locationAddress    String?
     latitude           Decimal? @db.Decimal(9, 6)
     longitude          Decimal? @db.Decimal(9, 6)
-    placeId            String? 
+    placeId            String?
     locationVisibility String?
-    
-    like               Int      @default(0)
-    comment            Int      @default(0)
-    share              Int      @default(0)
-    contentBooster     Boolean  @default(false)
-    point              Int      @default(5)
+
+    like           Int     @default(0)
+    comment        Int     @default(0)
+    share          Int     @default(0)
+    contentBooster Boolean @default(false)
+    point          Int     @default(5)
 
     visiualStyle    VisiualStyle[]    @default([])
     contextActivity ContextActivity[] @default([])
@@ -38,6 +38,11 @@ model Post {
     comments Comment[]
 
     battleEntries BattleEntry[]
+
+    challengeId String?    @db.Uuid
+    challenge   Challenge? @relation(fields: [challengeId], references: [id], onDelete: SetNull)
+
+    challengeSubmissions ChallengeSubmission[]
 }
 
 enum VisiualStyle {
