@@ -1,99 +1,80 @@
 import {
-  Controller,
-  Post,
-  Get,
-  Body,
-  Param,
-  Query,
-  HttpCode,
-  HttpStatus,
-  UseGuards,
-  Patch,
+  Body, Controller, HttpCode, HttpStatus, Param, Post, UseGuards,
 } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { BattleService } from './battle.service';
-import { BattleQueryDto } from './dto/battle-query.dto';
-import { CreateBattleEntryDto } from './dto/create-battle-entry.dto';
+import { CreateBattleDto } from './dto/create-battle.dto';
+import { SubmitBattlePostDto } from './dto/submit-battle-post.dto';
+import { VoteBattleDto } from './dto/vote-battle.dto';
 
 @ApiTags('Battles')
 @Controller('battles')
 export class BattleController {
   constructor(private readonly battleService: BattleService) {}
 
-  @Get()
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'List battles' })
-  @ApiResponse({ status: 200, description: 'Battles fetched successfully' })
-  async list(@Query() query: BattleQueryDto) {
-    return handleRequest(
-      async () => this.battleService.listBattles(query),
-      'Battles fetched successfully',
-      HttpStatus.OK,
-    );
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ summary: 'Create battle' })
+  create(@GetUser('userId') userId: string, @Body() dto: CreateBattleDto) {
+    return handleRequest(async () => {
+      return this.battleService.createBattle(userId, dto);
+    }, 'Battle created');
   }
 
-  @Get(':id')
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get battle details' })
-  @ApiResponse({ status: 200, description: 'Battle fetched successfully' })
-  async details(@Param('id') id: string) {
-    return handleRequest(
-      async () => this.battleService.getBattleDetails(id),
-      'Battle fetched successfully',
-      HttpStatus.OK,
-    );
-  }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post(':id/join')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Join a battle (max 10)' })
-  @ApiResponse({ status: 201, description: 'Joined battle successfully' })
-  async join(@GetUser('userId') userId: string, @Param('id') battleId: string) {
-    return handleRequest(
-      async () => this.battleService.joinBattle(userId, battleId),
-      'Joined battle successfully',
-      HttpStatus.CREATED,
-    );
+  @ApiOperation({ summary: 'Join battle' })
+  join(@Param('id') battleId: string, @GetUser('userId') userId: string) {
+    return handleRequest(async () => {
+      return this.battleService.joinBattle(battleId, userId);
+    }, 'Joined battle');
   }
 
-  @Post(':id/entry')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Post(':id/submit')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create battle entry (participant post)' })
-  @ApiResponse({ status: 201, description: 'Battle entry created successfully' })
-  async createEntry(
+  @ApiOperation({ summary: 'Submit battle post (creates entry)' })
+  submit(
+    @Param('id') battleId: string,
     @GetUser('userId') userId: string,
-    @Param('id') battleId: string,
-    @Body() dto: CreateBattleEntryDto,
+    @Body() dto: SubmitBattlePostDto,
   ) {
-    return handleRequest(
-      async () => this.battleService.createEntry(userId, battleId, dto),
-      'Battle entry created successfully',
-      HttpStatus.CREATED,
-    );
+    return handleRequest(async () => {
+      return this.battleService.submitBattlePost(battleId, userId, dto);
+    }, 'Battle post submitted');
   }
 
-  @Post(':id/vote/:entryId')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Post(':id/vote')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Vote for an entry (one vote per battle)' })
-  @ApiResponse({ status: 201, description: 'Vote submitted successfully' })
-  async vote(
-    @GetUser('userId') voterUserId: string,
+  @ApiOperation({ summary: 'Vote battle (one vote per user per battle)' })
+  vote(
     @Param('id') battleId: string,
-    @Param('entryId') entryId: string,
+    @GetUser('userId') userId: string,
+    @Body() dto: VoteBattleDto,
   ) {
-    return handleRequest(
-      async () => this.battleService.vote(voterUserId, battleId, entryId),
-      'Vote submitted successfully',
-      HttpStatus.CREATED,
-    );
+    return handleRequest(async () => {
+      return this.battleService.voteBattle(battleId, userId, dto.entryId);
+    }, 'Voted');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Post(':id/finalize')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Finalize battle winner by votes' })
+  finalize(@Param('id') battleId: string, @GetUser('userId') userId: string) {
+    return handleRequest(async () => {
+      return this.battleService.finalizeBattle(battleId, userId);
+    }, 'Battle finalized');
   }
 }
