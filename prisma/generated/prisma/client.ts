@@ -103,6 +103,11 @@ export type ChallengeParticipant = Prisma.ChallengeParticipantModel
  */
 export type ChallengeResult = Prisma.ChallengeResultModel
 /**
+ * Model ChallengeSubmission
+ * 
+ */
+export type ChallengeSubmission = Prisma.ChallengeSubmissionModel
+/**
  * Model ChassisBrakes
  * 
  */

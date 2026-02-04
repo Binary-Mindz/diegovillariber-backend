@@ -63,4 +63,6 @@ model User {
   battleVotes BattleVote[]
 
   eventParticipants EventParticipant[]
+
+  challengeSubmissions ChallengeSubmission[]
 }
