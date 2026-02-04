@@ -1,101 +1,100 @@
 model Post {
-    id     String @id @default(uuid()) @db.Uuid
-    userId String @db.Uuid
-    user   User   @relation(fields: [userId], references: [id])
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
 
-    postType           PostType @default(Spotter_Post)
-    caption            String?
-    mediaUrl           String?
-    postLocation       String?
-    locationName       String? 
-    locationAddress    String? 
-    latitude           Decimal? @db.Decimal(9, 6)
-    longitude          Decimal? @db.Decimal(9, 6)
-    placeId            String? 
-    locationVisibility String?
-    
-    like               Int      @default(0)
-    comment            Int      @default(0)
-    share              Int      @default(0)
-    contentBooster     Boolean  @default(false)
-    point              Int      @default(5)
+  postType           PostType @default(Spotter_Post)
+  caption            String?
+  mediaUrl           String?
+  postLocation       String?
+  locationName       String?
+  locationAddress    String?
+  latitude           Decimal? @db.Decimal(9, 6)
+  longitude          Decimal? @db.Decimal(9, 6)
+  placeId            String?
+  locationVisibility String?
 
-    visiualStyle    VisiualStyle[]    @default([])
-    contextActivity ContextActivity[] @default([])
-    subject         Subject[]         @default([])
+  like           Int     @default(0)
+  comment        Int     @default(0)
+  share          Int     @default(0)
+  contentBooster Boolean @default(false)
+  point          Int     @default(5)
 
-    hashtags    Hashtag[]    @relation("PostHashtags")
-    createdAt   DateTime     @default(now())
-    updatedAt   DateTime     @updatedAt
-    reposts     Repost[]
-    racingVotes RacingVote[]
-    savePosts   SavePost[]
-    hidePosts   HidePost[]
-    wishLists   WishList[]
-    userPoints  UserPoint[]
+  visiualStyle    VisiualStyle[]    @default([])
+  contextActivity ContextActivity[] @default([])
+  subject         Subject[]         @default([])
 
-    likes    Like[]
-    comments Comment[]
+  hashtags    Hashtag[]    @relation("PostHashtags")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  reposts     Repost[]
+  racingVotes RacingVote[]
+  savePosts   SavePost[]
+  hidePosts   HidePost[]
+  wishLists   WishList[]
+  userPoints  UserPoint[]
 
-    battleEntries BattleEntry[]
+  likes         Like[]
+  comments      Comment[]
+  battleEntries BattleEntry[]
 }
 
 enum VisiualStyle {
-    Action
-    Aerial
-    Artistic
-    Drift
-    Black_And_White
-    Cinematic
-    Close_Up
-    Motion_Blur
-    Day
-    Detail_Shot
-    Golden_Hour
-    Long_Exposure
-    Macro
-    Night_Shot
-    Panoramic
-    Panning
-    Raw
-    Rollin_Shot
-    Wet_Conditions
-    Wide_Angle
-    Abandoned
-    AI_Generated
+  Action
+  Aerial
+  Artistic
+  Drift
+  Black_And_White
+  Cinematic
+  Close_Up
+  Motion_Blur
+  Day
+  Detail_Shot
+  Golden_Hour
+  Long_Exposure
+  Macro
+  Night_Shot
+  Panoramic
+  Panning
+  Raw
+  Rollin_Shot
+  Wet_Conditions
+  Wide_Angle
+  Abandoned
+  AI_Generated
 }
 
 enum ContextActivity {
-    Car_Meet
-    Celebration
-    Drag_Race
-    Diving
-    Garage
-    Highway
-    Iconic_Location
-    Offroad
-    Onboard
-    Mountain_Road
-    Natural_Landscape
-    Perked
-    Rally
-    Road
-    Static
-    Studio
-    Trackday
-    Urban
+  Car_Meet
+  Celebration
+  Drag_Race
+  Diving
+  Garage
+  Highway
+  Iconic_Location
+  Offroad
+  Onboard
+  Mountain_Road
+  Natural_Landscape
+  Perked
+  Rally
+  Road
+  Static
+  Studio
+  Trackday
+  Urban
 }
 
 enum Subject {
-    Brake_Details
-    Cockpit
-    Driver_Portrait
-    Engine_Bay
-    Exterior
-    Front_Detail
-    Interior
-    Logos
-    Rear_Detail
-    Side
-    Wheel
+  Brake_Details
+  Cockpit
+  Driver_Portrait
+  Engine_Bay
+  Exterior
+  Front_Detail
+  Interior
+  Logos
+  Rear_Detail
+  Side
+  Wheel
 }

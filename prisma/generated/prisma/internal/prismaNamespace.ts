@@ -397,6 +397,7 @@ export const ModelName = {
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
   ChallengeResult: 'ChallengeResult',
+  ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
@@ -444,7 +445,8 @@ export const ModelName = {
   VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
-  WishList: 'WishList'
+  WishList: 'WishList',
+  XPost: 'XPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -460,7 +462,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1423,6 +1425,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ChallengeResultCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ChallengeResultCountAggregateOutputType> | number
+        }
+      }
+    }
+    ChallengeSubmission: {
+      payload: Prisma.$ChallengeSubmissionPayload<ExtArgs>
+      fields: Prisma.ChallengeSubmissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ChallengeSubmissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ChallengeSubmissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        findFirst: {
+          args: Prisma.ChallengeSubmissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ChallengeSubmissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        findMany: {
+          args: Prisma.ChallengeSubmissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
+        }
+        create: {
+          args: Prisma.ChallengeSubmissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        createMany: {
+          args: Prisma.ChallengeSubmissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ChallengeSubmissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
+        }
+        delete: {
+          args: Prisma.ChallengeSubmissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        update: {
+          args: Prisma.ChallengeSubmissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.ChallengeSubmissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ChallengeSubmissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ChallengeSubmissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.ChallengeSubmissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
+        }
+        aggregate: {
+          args: Prisma.ChallengeSubmissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateChallengeSubmission>
+        }
+        groupBy: {
+          args: Prisma.ChallengeSubmissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChallengeSubmissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ChallengeSubmissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ChallengeSubmissionCountAggregateOutputType> | number
         }
       }
     }
@@ -4978,6 +5054,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    XPost: {
+      payload: Prisma.$XPostPayload<ExtArgs>
+      fields: Prisma.XPostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.XPostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.XPostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        findFirst: {
+          args: Prisma.XPostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.XPostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        findMany: {
+          args: Prisma.XPostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        create: {
+          args: Prisma.XPostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        createMany: {
+          args: Prisma.XPostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.XPostCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        delete: {
+          args: Prisma.XPostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        update: {
+          args: Prisma.XPostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        deleteMany: {
+          args: Prisma.XPostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.XPostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.XPostUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>[]
+        }
+        upsert: {
+          args: Prisma.XPostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$XPostPayload>
+        }
+        aggregate: {
+          args: Prisma.XPostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateXPost>
+        }
+        groupBy: {
+          args: Prisma.XPostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.XPostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.XPostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.XPostCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5197,6 +5347,17 @@ export const ChallengeResultScalarFieldEnum = {
 } as const
 
 export type ChallengeResultScalarFieldEnum = (typeof ChallengeResultScalarFieldEnum)[keyof typeof ChallengeResultScalarFieldEnum]
+
+
+export const ChallengeSubmissionScalarFieldEnum = {
+  id: 'id',
+  challengeId: 'challengeId',
+  userId: 'userId',
+  xpostId: 'xpostId',
+  createdAt: 'createdAt'
+} as const
+
+export type ChallengeSubmissionScalarFieldEnum = (typeof ChallengeSubmissionScalarFieldEnum)[keyof typeof ChallengeSubmissionScalarFieldEnum]
 
 
 export const ChassisBrakesScalarFieldEnum = {
@@ -5844,6 +6005,26 @@ export const WishListScalarFieldEnum = {
 } as const
 
 export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
+
+
+export const XPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  battleId: 'battleId',
+  battleParticipantId: 'battleParticipantId',
+  challengeId: 'challengeId',
+  challengeParticipantId: 'challengeParticipantId',
+  postType: 'postType',
+  mediaUrl: 'mediaUrl',
+  caption: 'caption',
+  like: 'like',
+  comment: 'comment',
+  share: 'share',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type XPostScalarFieldEnum = (typeof XPostScalarFieldEnum)[keyof typeof XPostScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -6522,6 +6703,7 @@ export type GlobalOmitConfig = {
   challenge?: Prisma.ChallengeOmit
   challengeParticipant?: Prisma.ChallengeParticipantOmit
   challengeResult?: Prisma.ChallengeResultOmit
+  challengeSubmission?: Prisma.ChallengeSubmissionOmit
   chassisBrakes?: Prisma.ChassisBrakesOmit
   comment?: Prisma.CommentOmit
   contentCreatorProfile?: Prisma.ContentCreatorProfileOmit
@@ -6570,6 +6752,7 @@ export type GlobalOmitConfig = {
   virtualSimRacingEvent?: Prisma.VirtualSimRacingEventOmit
   wheelsTires?: Prisma.WheelsTiresOmit
   wishList?: Prisma.WishListOmit
+  xPost?: Prisma.XPostOmit
 }
 
 /* Types for Logging */

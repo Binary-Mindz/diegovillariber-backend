@@ -16,8 +16,8 @@ model UserPoint {
   followId String? @db.Uuid
   follow   Follow? @relation(fields: [followId], references: [id])
 
-  battleId String?  @db.Uuid
-  battle   Battle?  @relation(fields: [battleId], references: [id])
+  battleId String? @db.Uuid
+  battle   Battle? @relation(fields: [battleId], references: [id])
 
   points Int
 }

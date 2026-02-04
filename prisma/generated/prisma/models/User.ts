@@ -396,6 +396,8 @@ export type UserWhereInput = {
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
   battleVotes?: Prisma.BattleVoteListRelationFilter
   eventParticipants?: Prisma.EventParticipantListRelationFilter
+  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  xposts?: Prisma.XPostListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -456,6 +458,8 @@ export type UserOrderByWithRelationInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramOrderByWithRelationInput
   battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput
   eventParticipants?: Prisma.EventParticipantOrderByRelationAggregateInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionOrderByRelationAggregateInput
+  xposts?: Prisma.XPostOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -519,6 +523,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
   battleVotes?: Prisma.BattleVoteListRelationFilter
   eventParticipants?: Prisma.EventParticipantListRelationFilter
+  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  xposts?: Prisma.XPostListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -635,6 +641,8 @@ export type UserCreateInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -695,6 +703,8 @@ export type UserUncheckedCreateInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -755,6 +765,8 @@ export type UserUpdateInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -815,6 +827,8 @@ export type UserUncheckedUpdateInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1151,6 +1165,20 @@ export type UserUpdateOneRequiredWithoutChallengeResultsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutChallengeResultsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengeResultsInput, Prisma.UserUpdateWithoutChallengeResultsInput>, Prisma.UserUncheckedUpdateWithoutChallengeResultsInput>
+}
+
+export type UserCreateNestedOneWithoutChallengeSubmissionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutChallengeSubmissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeSubmissionsInput
+  upsert?: Prisma.UserUpsertWithoutChallengeSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengeSubmissionsInput, Prisma.UserUpdateWithoutChallengeSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
 }
 
 export type UserCreateNestedOneWithoutCommentsInput = {
@@ -1555,6 +1583,20 @@ export type UserUpdateOneRequiredWithoutWishListsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWishListsInput, Prisma.UserUpdateWithoutWishListsInput>, Prisma.UserUncheckedUpdateWithoutWishListsInput>
 }
 
+export type UserCreateNestedOneWithoutXpostsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutXpostsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutXpostsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutXpostsInput
+  upsert?: Prisma.UserUpsertWithoutXpostsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutXpostsInput, Prisma.UserUpdateWithoutXpostsInput>, Prisma.UserUncheckedUpdateWithoutXpostsInput>
+}
+
 export type UserCreateWithoutAmbassadorProgramsInput = {
   id?: string
   email: string
@@ -1612,6 +1654,8 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -1671,6 +1715,8 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -1746,6 +1792,8 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -1805,6 +1853,8 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattlesInput = {
@@ -1864,6 +1914,8 @@ export type UserCreateWithoutBattlesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattlesInput = {
@@ -1923,6 +1975,8 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattlesInput = {
@@ -1998,6 +2052,8 @@ export type UserUpdateWithoutBattlesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattlesInput = {
@@ -2057,6 +2113,8 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -2116,6 +2174,8 @@ export type UserCreateWithoutBattleParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -2175,6 +2235,8 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -2250,6 +2312,8 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -2309,6 +2373,8 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleResultsInput = {
@@ -2368,6 +2434,8 @@ export type UserCreateWithoutBattleResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleResultsInput = {
@@ -2427,6 +2495,8 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleResultsInput = {
@@ -2502,6 +2572,8 @@ export type UserUpdateWithoutBattleResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleResultsInput = {
@@ -2561,6 +2633,8 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -2620,6 +2694,8 @@ export type UserCreateWithoutBattleVotesInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -2679,6 +2755,8 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -2754,6 +2832,8 @@ export type UserUpdateWithoutBattleVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -2813,6 +2893,8 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSellerProductsInput = {
@@ -2872,6 +2954,8 @@ export type UserCreateWithoutSellerProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSellerProductsInput = {
@@ -2931,6 +3015,8 @@ export type UserUncheckedCreateWithoutSellerProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSellerProductsInput = {
@@ -2995,6 +3081,8 @@ export type UserCreateWithoutBuyProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBuyProductsInput = {
@@ -3054,6 +3142,8 @@ export type UserUncheckedCreateWithoutBuyProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBuyProductsInput = {
@@ -3129,6 +3219,8 @@ export type UserUpdateWithoutSellerProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSellerProductsInput = {
@@ -3188,6 +3280,8 @@ export type UserUncheckedUpdateWithoutSellerProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBuyProductsInput = {
@@ -3258,6 +3352,8 @@ export type UserUpdateWithoutBuyProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBuyProductsInput = {
@@ -3317,6 +3413,8 @@ export type UserUncheckedUpdateWithoutBuyProductsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHostChallengeInput = {
@@ -3376,6 +3474,8 @@ export type UserCreateWithoutHostChallengeInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHostChallengeInput = {
@@ -3435,6 +3535,8 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHostChallengeInput = {
@@ -3499,6 +3601,8 @@ export type UserCreateWithoutChallengesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -3558,6 +3662,8 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -3633,6 +3739,8 @@ export type UserUpdateWithoutHostChallengeInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostChallengeInput = {
@@ -3692,6 +3800,8 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutChallengesInput = {
@@ -3762,6 +3872,8 @@ export type UserUpdateWithoutChallengesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -3821,6 +3933,8 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -3880,6 +3994,8 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -3939,6 +4055,8 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -4014,6 +4132,8 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -4073,6 +4193,8 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeResultsInput = {
@@ -4132,6 +4254,8 @@ export type UserCreateWithoutChallengeResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeResultsInput = {
@@ -4191,6 +4315,8 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeResultsInput = {
@@ -4266,6 +4392,8 @@ export type UserUpdateWithoutChallengeResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeResultsInput = {
@@ -4325,6 +4453,268 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutChallengeSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  username: string
+  password: string
+  role?: $Enums.Role
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutChallengeSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  username: string
+  password: string
+  role?: $Enums.Role
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutChallengeSubmissionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
+}
+
+export type UserUpsertWithoutChallengeSubmissionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutChallengeSubmissionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
+}
+
+export type UserUpdateWithoutChallengeSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutChallengeSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4384,6 +4774,8 @@ export type UserCreateWithoutCommentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4443,6 +4835,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4518,6 +4912,8 @@ export type UserUpdateWithoutCommentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4577,6 +4973,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4636,6 +5034,8 @@ export type UserCreateWithoutEventsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4695,6 +5095,8 @@ export type UserUncheckedCreateWithoutEventsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -4770,6 +5172,8 @@ export type UserUpdateWithoutEventsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -4829,6 +5233,8 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventParticipantsInput = {
@@ -4888,6 +5294,8 @@ export type UserCreateWithoutEventParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventParticipantsInput = {
@@ -4947,6 +5355,8 @@ export type UserUncheckedCreateWithoutEventParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventParticipantsInput = {
@@ -5022,6 +5432,8 @@ export type UserUpdateWithoutEventParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventParticipantsInput = {
@@ -5081,6 +5493,8 @@ export type UserUncheckedUpdateWithoutEventParticipantsInput = {
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5140,6 +5554,8 @@ export type UserCreateWithoutFollowingInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5199,6 +5615,8 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5263,6 +5681,8 @@ export type UserCreateWithoutFollowersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5322,6 +5742,8 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5397,6 +5819,8 @@ export type UserUpdateWithoutFollowingInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5456,6 +5880,8 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5526,6 +5952,8 @@ export type UserUpdateWithoutFollowersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5585,6 +6013,8 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -5644,6 +6074,8 @@ export type UserCreateWithoutHidePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -5703,6 +6135,8 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -5778,6 +6212,8 @@ export type UserUpdateWithoutHidePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -5837,6 +6273,8 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -5896,6 +6334,8 @@ export type UserCreateWithoutLikesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -5955,6 +6395,8 @@ export type UserUncheckedCreateWithoutLikesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -6030,6 +6472,8 @@ export type UserUpdateWithoutLikesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -6089,6 +6533,8 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -6148,6 +6594,8 @@ export type UserCreateWithoutLivesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -6207,6 +6655,8 @@ export type UserUncheckedCreateWithoutLivesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -6282,6 +6732,8 @@ export type UserUpdateWithoutLivesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -6341,6 +6793,8 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -6400,6 +6854,8 @@ export type UserCreateWithoutLiveParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -6459,6 +6915,8 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -6534,6 +6992,8 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -6593,6 +7053,8 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -6652,6 +7114,8 @@ export type UserCreateWithoutLiveRewardsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -6711,6 +7175,8 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -6775,6 +7241,8 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -6834,6 +7302,8 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -6909,6 +7379,8 @@ export type UserUpdateWithoutLiveRewardsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -6968,6 +7440,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -7038,6 +7512,8 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -7097,6 +7573,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -7156,6 +7634,8 @@ export type UserCreateWithoutSentMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
@@ -7215,6 +7695,8 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -7279,6 +7761,8 @@ export type UserCreateWithoutReceivedMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReceivedMessagesInput = {
@@ -7338,6 +7822,8 @@ export type UserUncheckedCreateWithoutReceivedMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReceivedMessagesInput = {
@@ -7461,6 +7947,8 @@ export type UserCreateWithoutOfficialPartnersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -7520,6 +8008,8 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -7595,6 +8085,8 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -7654,6 +8146,8 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -7713,6 +8207,8 @@ export type UserCreateWithoutPaymentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -7772,6 +8268,8 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -7847,6 +8345,8 @@ export type UserUpdateWithoutPaymentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -7906,6 +8406,8 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -7965,6 +8467,8 @@ export type UserCreateWithoutPostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -8024,6 +8528,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -8099,6 +8605,8 @@ export type UserUpdateWithoutPostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -8158,6 +8666,8 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -8217,6 +8727,8 @@ export type UserCreateWithoutProductListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -8276,6 +8788,8 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -8351,6 +8865,8 @@ export type UserUpdateWithoutProductListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -8410,6 +8926,8 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -8469,6 +8987,8 @@ export type UserCreateWithoutProfileInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -8528,6 +9048,8 @@ export type UserUncheckedCreateWithoutProfileInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -8603,6 +9125,8 @@ export type UserUpdateWithoutProfileInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -8662,6 +9186,8 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -8721,6 +9247,8 @@ export type UserCreateWithoutRacingVotesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -8780,6 +9308,8 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -8855,6 +9385,8 @@ export type UserUpdateWithoutRacingVotesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -8914,6 +9446,8 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -8973,6 +9507,8 @@ export type UserCreateWithoutReportsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -9032,6 +9568,8 @@ export type UserUncheckedCreateWithoutReportsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -9107,6 +9645,8 @@ export type UserUpdateWithoutReportsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -9166,6 +9706,8 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -9225,6 +9767,8 @@ export type UserCreateWithoutRepostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -9284,6 +9828,8 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -9359,6 +9905,8 @@ export type UserUpdateWithoutRepostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -9418,6 +9966,8 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -9477,6 +10027,8 @@ export type UserCreateWithoutSavePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -9536,6 +10088,8 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -9611,6 +10165,8 @@ export type UserUpdateWithoutSavePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -9670,6 +10226,8 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -9729,6 +10287,8 @@ export type UserCreateWithoutSharesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -9788,6 +10348,8 @@ export type UserUncheckedCreateWithoutSharesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -9863,6 +10425,8 @@ export type UserUpdateWithoutSharesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -9922,6 +10486,8 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -9981,6 +10547,8 @@ export type UserCreateWithoutUserPointsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -10040,6 +10608,8 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -10115,6 +10685,8 @@ export type UserUpdateWithoutUserPointsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -10174,6 +10746,8 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -10233,6 +10807,8 @@ export type UserCreateWithoutWishListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -10292,6 +10868,8 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
   battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
   eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -10367,6 +10945,8 @@ export type UserUpdateWithoutWishListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -10426,6 +11006,268 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutXpostsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  username: string
+  password: string
+  role?: $Enums.Role
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  receivedMessages?: Prisma.MessageCreateNestedManyWithoutReceiverInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
+  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  sellerProducts?: Prisma.BuyProductCreateNestedManyWithoutSellerInput
+  buyProducts?: Prisma.BuyProductCreateNestedManyWithoutBuyerInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
+  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutXpostsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  username: string
+  password: string
+  role?: $Enums.Role
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  receivedMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutReceiverInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
+  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  sellerProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutSellerInput
+  buyProducts?: Prisma.BuyProductUncheckedCreateNestedManyWithoutBuyerInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
+  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
+  eventParticipants?: Prisma.EventParticipantUncheckedCreateNestedManyWithoutUserInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutXpostsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
+}
+
+export type UserUpsertWithoutXpostsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutXpostsInput, Prisma.UserUncheckedUpdateWithoutXpostsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutXpostsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutXpostsInput, Prisma.UserUncheckedUpdateWithoutXpostsInput>
+}
+
+export type UserUpdateWithoutXpostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  receivedMessages?: Prisma.MessageUpdateManyWithoutReceiverNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
+  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  sellerProducts?: Prisma.BuyProductUpdateManyWithoutSellerNestedInput
+  buyProducts?: Prisma.BuyProductUpdateManyWithoutBuyerNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
+  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutXpostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  receivedMessages?: Prisma.MessageUncheckedUpdateManyWithoutReceiverNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  sellerProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutSellerNestedInput
+  buyProducts?: Prisma.BuyProductUncheckedUpdateManyWithoutBuyerNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
+  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
+  eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutSentMessagesInput = {
@@ -10485,6 +11327,8 @@ export type UserUpdateWithoutSentMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -10544,6 +11388,8 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutSentMessagesInput = {
@@ -10627,6 +11473,8 @@ export type UserUpdateWithoutReceivedMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
@@ -10686,6 +11534,8 @@ export type UserUncheckedUpdateWithoutReceivedMessagesInput = {
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
   battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
   eventParticipants?: Prisma.EventParticipantUncheckedUpdateManyWithoutUserNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutReceivedMessagesInput = {
@@ -10752,6 +11602,8 @@ export type UserCountOutputType = {
   challengeParticipants: number
   battleVotes: number
   eventParticipants: number
+  challengeSubmissions: number
+  xposts: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -10789,6 +11641,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   challengeParticipants?: boolean | UserCountOutputTypeCountChallengeParticipantsArgs
   battleVotes?: boolean | UserCountOutputTypeCountBattleVotesArgs
   eventParticipants?: boolean | UserCountOutputTypeCountEventParticipantsArgs
+  challengeSubmissions?: boolean | UserCountOutputTypeCountChallengeSubmissionsArgs
+  xposts?: boolean | UserCountOutputTypeCountXpostsArgs
 }
 
 /**
@@ -11039,6 +11893,20 @@ export type UserCountOutputTypeCountEventParticipantsArgs<ExtArgs extends runtim
   where?: Prisma.EventParticipantWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountChallengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeSubmissionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountXpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.XPostWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -11098,6 +11966,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
   battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
   eventParticipants?: boolean | Prisma.User$eventParticipantsArgs<ExtArgs>
+  challengeSubmissions?: boolean | Prisma.User$challengeSubmissionsArgs<ExtArgs>
+  xposts?: boolean | Prisma.User$xpostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -11211,6 +12081,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
   battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
   eventParticipants?: boolean | Prisma.User$eventParticipantsArgs<ExtArgs>
+  challengeSubmissions?: boolean | Prisma.User$challengeSubmissionsArgs<ExtArgs>
+  xposts?: boolean | Prisma.User$xpostsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -11255,6 +12127,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     ambassadorPrograms: Prisma.$AmbassadorProgramPayload<ExtArgs> | null
     battleVotes: Prisma.$BattleVotePayload<ExtArgs>[]
     eventParticipants: Prisma.$EventParticipantPayload<ExtArgs>[]
+    challengeSubmissions: Prisma.$ChallengeSubmissionPayload<ExtArgs>[]
+    xposts: Prisma.$XPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -11708,6 +12582,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   ambassadorPrograms<T extends Prisma.User$ambassadorProgramsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ambassadorProgramsArgs<ExtArgs>>): Prisma.Prisma__AmbassadorProgramClient<runtime.Types.Result.GetResult<Prisma.$AmbassadorProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   battleVotes<T extends Prisma.User$battleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   eventParticipants<T extends Prisma.User$eventParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  challengeSubmissions<T extends Prisma.User$challengeSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengeSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  xposts<T extends Prisma.User$xpostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$xpostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12997,6 +13873,54 @@ export type User$eventParticipantsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.EventParticipantScalarFieldEnum | Prisma.EventParticipantScalarFieldEnum[]
+}
+
+/**
+ * User.challengeSubmissions
+ */
+export type User$challengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChallengeSubmission
+   */
+  select?: Prisma.ChallengeSubmissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChallengeSubmission
+   */
+  omit?: Prisma.ChallengeSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeSubmissionInclude<ExtArgs> | null
+  where?: Prisma.ChallengeSubmissionWhereInput
+  orderBy?: Prisma.ChallengeSubmissionOrderByWithRelationInput | Prisma.ChallengeSubmissionOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeSubmissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengeSubmissionScalarFieldEnum | Prisma.ChallengeSubmissionScalarFieldEnum[]
+}
+
+/**
+ * User.xposts
+ */
+export type User$xpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the XPost
+   */
+  select?: Prisma.XPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the XPost
+   */
+  omit?: Prisma.XPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.XPostInclude<ExtArgs> | null
+  where?: Prisma.XPostWhereInput
+  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
+  cursor?: Prisma.XPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**

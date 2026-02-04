@@ -1,16 +1,17 @@
 model BattleParticipant {
-  id        String   @id @default(uuid()) @db.Uuid
-  battleId  String   @db.Uuid
-  battle    Battle   @relation(fields: [battleId], references: [id])
+  id       String @id @default(uuid()) @db.Uuid
+  battleId String @db.Uuid
+  battle   Battle @relation(fields: [battleId], references: [id])
 
-  userId    String   @db.Uuid
-  user      User     @relation(fields: [userId], references: [id])
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
 
-  joinedAt  DateTime @default(now())
-  isActive  Boolean  @default(true)
+  joinedAt DateTime @default(now())
+  isActive Boolean  @default(true)
 
-  entries   BattleEntry[]
+  entries BattleEntry[]
+  xposts  XPost[]
 
-  @@unique([battleId, userId]) 
+  @@unique([battleId, userId])
   @@index([battleId])
 }

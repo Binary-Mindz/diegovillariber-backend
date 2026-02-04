@@ -1,7 +1,7 @@
 model Profile {
-  id               String      @id @default(uuid()) @db.Uuid
-  userId           String      @db.Uuid
-  user             User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   bio              String?
   imageUrl         String?
@@ -12,18 +12,19 @@ model Profile {
   isActive         IsActive    @default(ACTIVE)
   suspend          Boolean     @default(false)
 
-  spotter          SpotterProfile?
-  owner            OwnerProfile?
-  creator          ContentCreatorProfile?
-  business         BusinessProfile?
-  proDriver        ProDriverProfile?
-  simRacing        SimRacingProfile?
+  spotter   SpotterProfile?
+  owner     OwnerProfile?
+  creator   ContentCreatorProfile?
+  business  BusinessProfile?
+  proDriver ProDriverProfile?
+  simRacing SimRacingProfile?
 
-  garages          Garage[]
-  cars Car[]
-  virtualGarages VirtualGarage[]
-  virtualLabs VirtualLab[]
+  garages                Garage[]
+  cars                   Car[]
+  virtualGarages         VirtualGarage[]
+  virtualLabs            VirtualLab[]
   virtualSimRacingEvents VirtualSimRacingEvent[]
-  legalNotices LegalNotice[]
+  legalNotices           LegalNotice[]
+
   @@unique([userId, profileType])
 }

@@ -1,30 +1,30 @@
 model Battle {
-  id              String   @id @default(uuid()) @db.Uuid
-  hostId          String   @db.Uuid
-  host            User     @relation("HostBattles", fields: [hostId], references: [id])
+  id     String @id @default(uuid()) @db.Uuid
+  hostId String @db.Uuid
+  host   User   @relation("HostBattles", fields: [hostId], references: [id])
 
-  title           String
-  description     String?
-  coverImage      String?
+  title       String
+  description String?
+  coverImage  String?
 
-  battleCategory  BattleCategory @default(HEAD_TO_HEAD)
-  preference      Preference     @default(Car)
+  battleCategory BattleCategory @default(HEAD_TO_HEAD)
+  preference     Preference     @default(Car)
 
-  status          BattleStatus   @default(PENDING)
-  maxParticipants Int            @default(10)
+  status          BattleStatus @default(PENDING)
+  maxParticipants Int          @default(10)
 
-  startTime       DateTime?
-  endTime         DateTime?
+  startTime DateTime?
+  endTime   DateTime?
 
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  participants    BattleParticipant[]
-  entries         BattleEntry[]
-  votes           BattleVote[]
-  result          BattleResult?
+  participants BattleParticipant[]
+  entries      BattleEntry[]
+  votes        BattleVote[]
+  result       BattleResult?
+  userPoints   UserPoint[]
+  xposts       XPost[]
 
   @@index([status])
-  userPoints UserPoint[]
 }
-

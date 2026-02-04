@@ -184,6 +184,7 @@ export type ChallengeParticipantWhereInput = {
   isActive?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
   challenge?: Prisma.XOR<Prisma.ChallengeScalarRelationFilter, Prisma.ChallengeWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  posts?: Prisma.XPostListRelationFilter
 }
 
 export type ChallengeParticipantOrderByWithRelationInput = {
@@ -194,6 +195,7 @@ export type ChallengeParticipantOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   challenge?: Prisma.ChallengeOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  posts?: Prisma.XPostOrderByRelationAggregateInput
 }
 
 export type ChallengeParticipantWhereUniqueInput = Prisma.AtLeast<{
@@ -207,6 +209,7 @@ export type ChallengeParticipantWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
   challenge?: Prisma.XOR<Prisma.ChallengeScalarRelationFilter, Prisma.ChallengeWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  posts?: Prisma.XPostListRelationFilter
 }, "id">
 
 export type ChallengeParticipantOrderByWithAggregationInput = {
@@ -237,6 +240,7 @@ export type ChallengeParticipantCreateInput = {
   isActive?: boolean
   challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
   user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
+  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUncheckedCreateInput = {
@@ -245,6 +249,7 @@ export type ChallengeParticipantUncheckedCreateInput = {
   userId: string
   joinedAt?: Date | string | null
   isActive?: boolean
+  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUpdateInput = {
@@ -253,6 +258,7 @@ export type ChallengeParticipantUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
+  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateInput = {
@@ -261,6 +267,7 @@ export type ChallengeParticipantUncheckedUpdateInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantCreateManyInput = {
@@ -317,6 +324,11 @@ export type ChallengeParticipantMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+}
+
+export type ChallengeParticipantNullableScalarRelationFilter = {
+  is?: Prisma.ChallengeParticipantWhereInput | null
+  isNot?: Prisma.ChallengeParticipantWhereInput | null
 }
 
 export type ChallengeParticipantCreateNestedManyWithoutChallengeInput = {
@@ -403,11 +415,28 @@ export type ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ChallengeParticipantScalarWhereInput | Prisma.ChallengeParticipantScalarWhereInput[]
 }
 
+export type ChallengeParticipantCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.ChallengeParticipantCreateOrConnectWithoutPostsInput
+  connect?: Prisma.ChallengeParticipantWhereUniqueInput
+}
+
+export type ChallengeParticipantUpdateOneWithoutPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.ChallengeParticipantCreateOrConnectWithoutPostsInput
+  upsert?: Prisma.ChallengeParticipantUpsertWithoutPostsInput
+  disconnect?: Prisma.ChallengeParticipantWhereInput | boolean
+  delete?: Prisma.ChallengeParticipantWhereInput | boolean
+  connect?: Prisma.ChallengeParticipantWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeParticipantUpdateToOneWithWhereWithoutPostsInput, Prisma.ChallengeParticipantUpdateWithoutPostsInput>, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
+}
+
 export type ChallengeParticipantCreateWithoutChallengeInput = {
   id?: string
   joinedAt?: Date | string | null
   isActive?: boolean
   user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
+  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUncheckedCreateWithoutChallengeInput = {
@@ -415,6 +444,7 @@ export type ChallengeParticipantUncheckedCreateWithoutChallengeInput = {
   userId: string
   joinedAt?: Date | string | null
   isActive?: boolean
+  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantCreateOrConnectWithoutChallengeInput = {
@@ -459,6 +489,7 @@ export type ChallengeParticipantCreateWithoutUserInput = {
   joinedAt?: Date | string | null
   isActive?: boolean
   challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
+  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUncheckedCreateWithoutUserInput = {
@@ -466,6 +497,7 @@ export type ChallengeParticipantUncheckedCreateWithoutUserInput = {
   challengeId: string
   joinedAt?: Date | string | null
   isActive?: boolean
+  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantCreateOrConnectWithoutUserInput = {
@@ -494,6 +526,54 @@ export type ChallengeParticipantUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.ChallengeParticipantUpdateManyMutationInput, Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserInput>
 }
 
+export type ChallengeParticipantCreateWithoutPostsInput = {
+  id?: string
+  joinedAt?: Date | string | null
+  isActive?: boolean
+  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
+  user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
+}
+
+export type ChallengeParticipantUncheckedCreateWithoutPostsInput = {
+  id?: string
+  challengeId: string
+  userId: string
+  joinedAt?: Date | string | null
+  isActive?: boolean
+}
+
+export type ChallengeParticipantCreateOrConnectWithoutPostsInput = {
+  where: Prisma.ChallengeParticipantWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
+}
+
+export type ChallengeParticipantUpsertWithoutPostsInput = {
+  update: Prisma.XOR<Prisma.ChallengeParticipantUpdateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
+  create: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
+  where?: Prisma.ChallengeParticipantWhereInput
+}
+
+export type ChallengeParticipantUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.ChallengeParticipantWhereInput
+  data: Prisma.XOR<Prisma.ChallengeParticipantUpdateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
+}
+
+export type ChallengeParticipantUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
+}
+
+export type ChallengeParticipantUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  challengeId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
 export type ChallengeParticipantCreateManyChallengeInput = {
   id?: string
   userId: string
@@ -506,6 +586,7 @@ export type ChallengeParticipantUpdateWithoutChallengeInput = {
   joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
+  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateWithoutChallengeInput = {
@@ -513,6 +594,7 @@ export type ChallengeParticipantUncheckedUpdateWithoutChallengeInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateManyWithoutChallengeInput = {
@@ -534,6 +616,7 @@ export type ChallengeParticipantUpdateWithoutUserInput = {
   joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
+  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateWithoutUserInput = {
@@ -541,6 +624,7 @@ export type ChallengeParticipantUncheckedUpdateWithoutUserInput = {
   challengeId?: Prisma.StringFieldUpdateOperationsInput | string
   joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateManyWithoutUserInput = {
@@ -551,6 +635,35 @@ export type ChallengeParticipantUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type ChallengeParticipantCountOutputType
+ */
+
+export type ChallengeParticipantCountOutputType = {
+  posts: number
+}
+
+export type ChallengeParticipantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  posts?: boolean | ChallengeParticipantCountOutputTypeCountPostsArgs
+}
+
+/**
+ * ChallengeParticipantCountOutputType without action
+ */
+export type ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChallengeParticipantCountOutputType
+   */
+  select?: Prisma.ChallengeParticipantCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ChallengeParticipantCountOutputType without action
+ */
+export type ChallengeParticipantCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.XPostWhereInput
+}
+
 
 export type ChallengeParticipantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -560,6 +673,8 @@ export type ChallengeParticipantSelect<ExtArgs extends runtime.Types.Extensions.
   isActive?: boolean
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  posts?: boolean | Prisma.ChallengeParticipant$postsArgs<ExtArgs>
+  _count?: boolean | Prisma.ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challengeParticipant"]>
 
 export type ChallengeParticipantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -594,6 +709,8 @@ export type ChallengeParticipantOmit<ExtArgs extends runtime.Types.Extensions.In
 export type ChallengeParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  posts?: boolean | Prisma.ChallengeParticipant$postsArgs<ExtArgs>
+  _count?: boolean | Prisma.ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChallengeParticipantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
@@ -609,6 +726,7 @@ export type $ChallengeParticipantPayload<ExtArgs extends runtime.Types.Extension
   objects: {
     challenge: Prisma.$ChallengePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
+    posts: Prisma.$XPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1012,6 +1130,7 @@ export interface Prisma__ChallengeParticipantClient<T, Null = never, ExtArgs ext
   readonly [Symbol.toStringTag]: "PrismaPromise"
   challenge<T extends Prisma.ChallengeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ChallengeDefaultArgs<ExtArgs>>): Prisma.Prisma__ChallengeClient<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  posts<T extends Prisma.ChallengeParticipant$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ChallengeParticipant$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1439,6 +1558,30 @@ export type ChallengeParticipantDeleteManyArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many ChallengeParticipants to delete.
    */
   limit?: number
+}
+
+/**
+ * ChallengeParticipant.posts
+ */
+export type ChallengeParticipant$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the XPost
+   */
+  select?: Prisma.XPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the XPost
+   */
+  omit?: Prisma.XPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.XPostInclude<ExtArgs> | null
+  where?: Prisma.XPostWhereInput
+  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
+  cursor?: Prisma.XPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**

@@ -1,13 +1,14 @@
 model ChallengeParticipant {
-  id           String    @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  challengeId  String    @db.Uuid
-  challenge    Challenge @relation(fields: [challengeId], references: [id])
+  challengeId String    @db.Uuid
+  challenge   Challenge @relation(fields: [challengeId], references: [id])
 
-  userId       String    @db.Uuid
-  user         User      @relation(fields: [userId], references: [id])
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
 
-  joinedAt     DateTime?
-  isActive     Boolean   @default(true)
+  joinedAt DateTime?
+  isActive Boolean   @default(true)
 
+  posts XPost[]
 }

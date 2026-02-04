@@ -1,23 +1,23 @@
 model User {
-  id              String  @id @default(uuid()) @db.Uuid
-  email           String  @unique
-  phone           String?
-  username        String
-  password        String
-  role            Role    @default(USER)
-  otp             String?
-  expiresIn       String?
-  isEmailVerified Boolean @default(false)
-  emailOtp        String?
+  id                String    @id @default(uuid()) @db.Uuid
+  email             String    @unique
+  phone             String?
+  username          String
+  password          String
+  role              Role      @default(USER)
+  otp               String?
+  expiresIn         String?
+  isEmailVerified   Boolean   @default(false)
+  emailOtp          String?
   emailOtpExpiresAt DateTime?
   resetOtp          String?
   resetOtpExpiresAt DateTime?
   refreshTokenHash  String?
-  totalPoints     Int     @default(0)
-  balance         Int     @default(0)
-  likeCount       Int     @default(0)
-  commentCount    Int     @default(0)
-  shareCount      Int     @default(0)
+  totalPoints       Int       @default(0)
+  balance           Int       @default(0)
+  likeCount         Int       @default(0)
+  commentCount      Int       @default(0)
+  shareCount        Int       @default(0)
 
   profile  Profile[]
   posts    Post[]
@@ -56,11 +56,13 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-
-  officialPartners OfficialPartner?
+  officialPartners   OfficialPartner?
   ambassadorPrograms AmbassadorProgram?
 
   battleVotes BattleVote[]
 
   eventParticipants EventParticipant[]
+
+  challengeSubmissions ChallengeSubmission[]
+  xposts               XPost[]
 }
