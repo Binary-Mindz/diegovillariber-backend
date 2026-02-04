@@ -13,7 +13,7 @@ model Challenge {
   startDate           DateTime?
   endDate             DateTime?
   images              String?
-  media               Media                   @default(PHOTO)
+  media               String?
   camera              String?
   participants        Int                     @default(10)
   comment             String?
