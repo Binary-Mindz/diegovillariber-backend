@@ -1,15 +1,14 @@
 model Follow {
-  id           String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  followerId   String   @db.Uuid
-  followingId  String   @db.Uuid
+  followerId  String @db.Uuid
+  followingId String @db.Uuid
 
-  follower     User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
-  following    User     @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+  follower  User @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
 
-  createdAt    DateTime @default(now())
+  createdAt  DateTime    @default(now())
+  userPoints UserPoint[]
 
   @@unique([followerId, followingId])
-  userPoints UserPoint[]
 }
-

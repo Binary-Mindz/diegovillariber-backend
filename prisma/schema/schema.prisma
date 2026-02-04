@@ -14,9 +14,9 @@ datasource db {
 }
 
 enum Role {
-USER
-ADMIN
-SUPER_ADMIN
+  USER
+  ADMIN
+  SUPER_ADMIN
 }
 
 enum Preference {
@@ -64,7 +64,7 @@ enum BattleCategory {
   HEAD_TO_HEAD
   SPLIT_SCREEN
 }
- 
+
 enum PointType {
   BATTLE_WIN
   POST
@@ -262,6 +262,7 @@ enum ProductCategory {
   Car_Parts
   Photography
 }
+
 enum CarClass {
   GT3
   GT4
@@ -292,6 +293,7 @@ enum TelemetrySource {
   Kapps
   Other
 }
+
 enum OfficialPartnerRequestStatus {
   PENDING
   APPROVED
@@ -308,7 +310,3 @@ enum HashtagCreatedBy {
   ADMIN
   SYSTEM
 }
-
-
-
-

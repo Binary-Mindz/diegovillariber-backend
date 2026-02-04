@@ -1,13 +1,13 @@
 model Garage {
-  id          String   @id @default(uuid()) @db.Uuid
-  profileId   String   @db.Uuid
-  profile     Profile  @relation(fields: [profileId], references: [id])
+  id        String  @id @default(uuid()) @db.Uuid
+  profileId String  @db.Uuid
+  profile   Profile @relation(fields: [profileId], references: [id])
 
   garageName  String?
   description String?
   location    String?
 
-  cars        Car[]
+  cars Car[]
 
   @@index([profileId])
 }

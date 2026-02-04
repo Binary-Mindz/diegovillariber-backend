@@ -286,6 +286,7 @@ export type BattleWhereInput = {
   votes?: Prisma.BattleVoteListRelationFilter
   result?: Prisma.XOR<Prisma.BattleResultNullableScalarRelationFilter, Prisma.BattleResultWhereInput> | null
   userPoints?: Prisma.UserPointListRelationFilter
+  xposts?: Prisma.XPostListRelationFilter
 }
 
 export type BattleOrderByWithRelationInput = {
@@ -308,6 +309,7 @@ export type BattleOrderByWithRelationInput = {
   votes?: Prisma.BattleVoteOrderByRelationAggregateInput
   result?: Prisma.BattleResultOrderByWithRelationInput
   userPoints?: Prisma.UserPointOrderByRelationAggregateInput
+  xposts?: Prisma.XPostOrderByRelationAggregateInput
 }
 
 export type BattleWhereUniqueInput = Prisma.AtLeast<{
@@ -333,6 +335,7 @@ export type BattleWhereUniqueInput = Prisma.AtLeast<{
   votes?: Prisma.BattleVoteListRelationFilter
   result?: Prisma.XOR<Prisma.BattleResultNullableScalarRelationFilter, Prisma.BattleResultWhereInput> | null
   userPoints?: Prisma.UserPointListRelationFilter
+  xposts?: Prisma.XPostListRelationFilter
 }, "id">
 
 export type BattleOrderByWithAggregationInput = {
@@ -394,6 +397,7 @@ export type BattleCreateInput = {
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateInput = {
@@ -415,6 +419,7 @@ export type BattleUncheckedCreateInput = {
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUpdateInput = {
@@ -436,6 +441,7 @@ export type BattleUpdateInput = {
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateInput = {
@@ -457,6 +463,7 @@ export type BattleUncheckedUpdateInput = {
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateManyInput = {
@@ -712,6 +719,22 @@ export type BattleUpdateOneWithoutUserPointsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BattleUpdateToOneWithWhereWithoutUserPointsInput, Prisma.BattleUpdateWithoutUserPointsInput>, Prisma.BattleUncheckedUpdateWithoutUserPointsInput>
 }
 
+export type BattleCreateNestedOneWithoutXpostsInput = {
+  create?: Prisma.XOR<Prisma.BattleCreateWithoutXpostsInput, Prisma.BattleUncheckedCreateWithoutXpostsInput>
+  connectOrCreate?: Prisma.BattleCreateOrConnectWithoutXpostsInput
+  connect?: Prisma.BattleWhereUniqueInput
+}
+
+export type BattleUpdateOneWithoutXpostsNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleCreateWithoutXpostsInput, Prisma.BattleUncheckedCreateWithoutXpostsInput>
+  connectOrCreate?: Prisma.BattleCreateOrConnectWithoutXpostsInput
+  upsert?: Prisma.BattleUpsertWithoutXpostsInput
+  disconnect?: Prisma.BattleWhereInput | boolean
+  delete?: Prisma.BattleWhereInput | boolean
+  connect?: Prisma.BattleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BattleUpdateToOneWithWhereWithoutXpostsInput, Prisma.BattleUpdateWithoutXpostsInput>, Prisma.BattleUncheckedUpdateWithoutXpostsInput>
+}
+
 export type BattleCreateWithoutEntriesInput = {
   id?: string
   title: string
@@ -730,6 +753,7 @@ export type BattleCreateWithoutEntriesInput = {
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutEntriesInput = {
@@ -750,6 +774,7 @@ export type BattleUncheckedCreateWithoutEntriesInput = {
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutEntriesInput = {
@@ -786,6 +811,7 @@ export type BattleUpdateWithoutEntriesInput = {
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutEntriesInput = {
@@ -806,6 +832,7 @@ export type BattleUncheckedUpdateWithoutEntriesInput = {
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateWithoutParticipantsInput = {
@@ -826,6 +853,7 @@ export type BattleCreateWithoutParticipantsInput = {
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutParticipantsInput = {
@@ -846,6 +874,7 @@ export type BattleUncheckedCreateWithoutParticipantsInput = {
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutParticipantsInput = {
@@ -882,6 +911,7 @@ export type BattleUpdateWithoutParticipantsInput = {
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutParticipantsInput = {
@@ -902,6 +932,7 @@ export type BattleUncheckedUpdateWithoutParticipantsInput = {
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateWithoutResultInput = {
@@ -922,6 +953,7 @@ export type BattleCreateWithoutResultInput = {
   entries?: Prisma.BattleEntryCreateNestedManyWithoutBattleInput
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutResultInput = {
@@ -942,6 +974,7 @@ export type BattleUncheckedCreateWithoutResultInput = {
   entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutBattleInput
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutResultInput = {
@@ -978,6 +1011,7 @@ export type BattleUpdateWithoutResultInput = {
   entries?: Prisma.BattleEntryUpdateManyWithoutBattleNestedInput
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutResultInput = {
@@ -998,6 +1032,7 @@ export type BattleUncheckedUpdateWithoutResultInput = {
   entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutBattleNestedInput
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateWithoutVotesInput = {
@@ -1018,6 +1053,7 @@ export type BattleCreateWithoutVotesInput = {
   entries?: Prisma.BattleEntryCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutVotesInput = {
@@ -1038,6 +1074,7 @@ export type BattleUncheckedCreateWithoutVotesInput = {
   entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutVotesInput = {
@@ -1074,6 +1111,7 @@ export type BattleUpdateWithoutVotesInput = {
   entries?: Prisma.BattleEntryUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutVotesInput = {
@@ -1094,6 +1132,7 @@ export type BattleUncheckedUpdateWithoutVotesInput = {
   entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateWithoutHostInput = {
@@ -1114,6 +1153,7 @@ export type BattleCreateWithoutHostInput = {
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutHostInput = {
@@ -1134,6 +1174,7 @@ export type BattleUncheckedCreateWithoutHostInput = {
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutHostInput = {
@@ -1199,6 +1240,7 @@ export type BattleCreateWithoutUserPointsInput = {
   entries?: Prisma.BattleEntryCreateNestedManyWithoutBattleInput
   votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
+  xposts?: Prisma.XPostCreateNestedManyWithoutBattleInput
 }
 
 export type BattleUncheckedCreateWithoutUserPointsInput = {
@@ -1219,6 +1261,7 @@ export type BattleUncheckedCreateWithoutUserPointsInput = {
   entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutBattleInput
   votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
   result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
+  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type BattleCreateOrConnectWithoutUserPointsInput = {
@@ -1255,6 +1298,7 @@ export type BattleUpdateWithoutUserPointsInput = {
   entries?: Prisma.BattleEntryUpdateManyWithoutBattleNestedInput
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutUserPointsInput = {
@@ -1275,6 +1319,107 @@ export type BattleUncheckedUpdateWithoutUserPointsInput = {
   entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutBattleNestedInput
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
+}
+
+export type BattleCreateWithoutXpostsInput = {
+  id?: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  preference?: $Enums.Preference
+  status?: $Enums.BattleStatus
+  maxParticipants?: number
+  startTime?: Date | string | null
+  endTime?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  host: Prisma.UserCreateNestedOneWithoutBattlesInput
+  participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
+  entries?: Prisma.BattleEntryCreateNestedManyWithoutBattleInput
+  votes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
+  result?: Prisma.BattleResultCreateNestedOneWithoutBattleInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutBattleInput
+}
+
+export type BattleUncheckedCreateWithoutXpostsInput = {
+  id?: string
+  hostId: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  preference?: $Enums.Preference
+  status?: $Enums.BattleStatus
+  maxParticipants?: number
+  startTime?: Date | string | null
+  endTime?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
+  entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutBattleInput
+  votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
+  result?: Prisma.BattleResultUncheckedCreateNestedOneWithoutBattleInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutBattleInput
+}
+
+export type BattleCreateOrConnectWithoutXpostsInput = {
+  where: Prisma.BattleWhereUniqueInput
+  create: Prisma.XOR<Prisma.BattleCreateWithoutXpostsInput, Prisma.BattleUncheckedCreateWithoutXpostsInput>
+}
+
+export type BattleUpsertWithoutXpostsInput = {
+  update: Prisma.XOR<Prisma.BattleUpdateWithoutXpostsInput, Prisma.BattleUncheckedUpdateWithoutXpostsInput>
+  create: Prisma.XOR<Prisma.BattleCreateWithoutXpostsInput, Prisma.BattleUncheckedCreateWithoutXpostsInput>
+  where?: Prisma.BattleWhereInput
+}
+
+export type BattleUpdateToOneWithWhereWithoutXpostsInput = {
+  where?: Prisma.BattleWhereInput
+  data: Prisma.XOR<Prisma.BattleUpdateWithoutXpostsInput, Prisma.BattleUncheckedUpdateWithoutXpostsInput>
+}
+
+export type BattleUpdateWithoutXpostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number
+  startTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  host?: Prisma.UserUpdateOneRequiredWithoutBattlesNestedInput
+  participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
+  entries?: Prisma.BattleEntryUpdateManyWithoutBattleNestedInput
+  votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
+  result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+}
+
+export type BattleUncheckedUpdateWithoutXpostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  hostId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  maxParticipants?: Prisma.IntFieldUpdateOperationsInput | number
+  startTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endTime?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
+  entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutBattleNestedInput
+  votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
+  result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleCreateManyHostInput = {
@@ -1310,6 +1455,7 @@ export type BattleUpdateWithoutHostInput = {
   votes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateWithoutHostInput = {
@@ -1330,6 +1476,7 @@ export type BattleUncheckedUpdateWithoutHostInput = {
   votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
   result?: Prisma.BattleResultUncheckedUpdateOneWithoutBattleNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutBattleNestedInput
+  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type BattleUncheckedUpdateManyWithoutHostInput = {
@@ -1357,6 +1504,7 @@ export type BattleCountOutputType = {
   entries: number
   votes: number
   userPoints: number
+  xposts: number
 }
 
 export type BattleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1364,6 +1512,7 @@ export type BattleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   entries?: boolean | BattleCountOutputTypeCountEntriesArgs
   votes?: boolean | BattleCountOutputTypeCountVotesArgs
   userPoints?: boolean | BattleCountOutputTypeCountUserPointsArgs
+  xposts?: boolean | BattleCountOutputTypeCountXpostsArgs
 }
 
 /**
@@ -1404,6 +1553,13 @@ export type BattleCountOutputTypeCountUserPointsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.UserPointWhereInput
 }
 
+/**
+ * BattleCountOutputType without action
+ */
+export type BattleCountOutputTypeCountXpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.XPostWhereInput
+}
+
 
 export type BattleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1425,6 +1581,7 @@ export type BattleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   votes?: boolean | Prisma.Battle$votesArgs<ExtArgs>
   result?: boolean | Prisma.Battle$resultArgs<ExtArgs>
   userPoints?: boolean | Prisma.Battle$userPointsArgs<ExtArgs>
+  xposts?: boolean | Prisma.Battle$xpostsArgs<ExtArgs>
   _count?: boolean | Prisma.BattleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battle"]>
 
@@ -1486,6 +1643,7 @@ export type BattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   votes?: boolean | Prisma.Battle$votesArgs<ExtArgs>
   result?: boolean | Prisma.Battle$resultArgs<ExtArgs>
   userPoints?: boolean | Prisma.Battle$userPointsArgs<ExtArgs>
+  xposts?: boolean | Prisma.Battle$xpostsArgs<ExtArgs>
   _count?: boolean | Prisma.BattleCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BattleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1504,6 +1662,7 @@ export type $BattlePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     votes: Prisma.$BattleVotePayload<ExtArgs>[]
     result: Prisma.$BattleResultPayload<ExtArgs> | null
     userPoints: Prisma.$UserPointPayload<ExtArgs>[]
+    xposts: Prisma.$XPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1919,6 +2078,7 @@ export interface Prisma__BattleClient<T, Null = never, ExtArgs extends runtime.T
   votes<T extends Prisma.Battle$votesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Battle$votesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   result<T extends Prisma.Battle$resultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Battle$resultArgs<ExtArgs>>): Prisma.Prisma__BattleResultClient<runtime.Types.Result.GetResult<Prisma.$BattleResultPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   userPoints<T extends Prisma.Battle$userPointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Battle$userPointsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  xposts<T extends Prisma.Battle$xpostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Battle$xpostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2469,6 +2629,30 @@ export type Battle$userPointsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.UserPointScalarFieldEnum | Prisma.UserPointScalarFieldEnum[]
+}
+
+/**
+ * Battle.xposts
+ */
+export type Battle$xpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the XPost
+   */
+  select?: Prisma.XPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the XPost
+   */
+  omit?: Prisma.XPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.XPostInclude<ExtArgs> | null
+  where?: Prisma.XPostWhereInput
+  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
+  cursor?: Prisma.XPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**

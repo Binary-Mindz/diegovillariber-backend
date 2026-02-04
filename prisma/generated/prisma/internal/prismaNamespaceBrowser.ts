@@ -64,6 +64,7 @@ export const ModelName = {
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
   ChallengeResult: 'ChallengeResult',
+  ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
@@ -111,7 +112,8 @@ export const ModelName = {
   VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
-  WishList: 'WishList'
+  WishList: 'WishList',
+  XPost: 'XPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -310,6 +312,17 @@ export const ChallengeResultScalarFieldEnum = {
 } as const
 
 export type ChallengeResultScalarFieldEnum = (typeof ChallengeResultScalarFieldEnum)[keyof typeof ChallengeResultScalarFieldEnum]
+
+
+export const ChallengeSubmissionScalarFieldEnum = {
+  id: 'id',
+  challengeId: 'challengeId',
+  userId: 'userId',
+  xpostId: 'xpostId',
+  createdAt: 'createdAt'
+} as const
+
+export type ChallengeSubmissionScalarFieldEnum = (typeof ChallengeSubmissionScalarFieldEnum)[keyof typeof ChallengeSubmissionScalarFieldEnum]
 
 
 export const ChassisBrakesScalarFieldEnum = {
@@ -957,6 +970,26 @@ export const WishListScalarFieldEnum = {
 } as const
 
 export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
+
+
+export const XPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  battleId: 'battleId',
+  battleParticipantId: 'battleParticipantId',
+  challengeId: 'challengeId',
+  challengeParticipantId: 'challengeParticipantId',
+  postType: 'postType',
+  mediaUrl: 'mediaUrl',
+  caption: 'caption',
+  like: 'like',
+  comment: 'comment',
+  share: 'share',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type XPostScalarFieldEnum = (typeof XPostScalarFieldEnum)[keyof typeof XPostScalarFieldEnum]
 
 
 export const SortOrder = {

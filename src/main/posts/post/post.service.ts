@@ -35,6 +35,10 @@ export class PostService {
       throw new BadRequestException('Both latitude and longitude must be provided together.');
     }
 
+    const hashtagIds = dto.hashtagIds
+      ? Array.from(new Set(dto.hashtagIds))
+      : [];
+
     return this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
@@ -46,6 +50,20 @@ export class PostService {
         throw new BadRequestException(
           `Not enough points to boost. Need at least ${BOOST_COST_POINTS} points.`,
         );
+      }
+
+      if (hashtagIds.length > 0) {
+        const found = await tx.hashtag.findMany({
+          where: {
+            id: { in: hashtagIds },
+            isActive: true,
+          },
+          select: { id: true },
+        });
+
+        if (found.length !== hashtagIds.length) {
+          throw new BadRequestException('One or more hashtags are invalid or inactive.');
+        }
       }
 
       const post = await tx.post.create({
@@ -61,34 +79,38 @@ export class PostService {
           latitude: dto.latitude ?? null,
           longitude: dto.longitude ?? null,
           placeId: dto.placeId ?? null,
-
           locationVisibility: dto.locationVisibility ?? null,
 
           visiualStyle: dto.visiualStyle ?? [],
           contextActivity: dto.contextActivity ?? [],
           subject: dto.subject ?? [],
 
+          hashtags: hashtagIds.length
+            ? { connect: hashtagIds.map((id) => ({ id })) }
+            : undefined,
+
           point: POST_REWARD_POINTS,
           contentBooster: wantBoost,
         },
+        include: {
+          hashtags: true, 
+        },
       });
 
+      if (hashtagIds.length) {
+        await tx.hashtag.updateMany({
+          where: { id: { in: hashtagIds } },
+          data: { usageCount: { increment: 1 } },
+        });
+      }
 
       await tx.userPoint.create({
-        data: {
-          userId,
-          postId: post.id,
-          points: POST_REWARD_POINTS,
-        },
+        data: { userId, postId: post.id, points: POST_REWARD_POINTS },
       });
 
       if (wantBoost) {
         await tx.userPoint.create({
-          data: {
-            userId,
-            postId: post.id,
-            points: -BOOST_COST_POINTS,
-          },
+          data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
         });
       }
 
@@ -109,7 +131,6 @@ export class PostService {
       };
     });
   }
-
 
   async getFeed(query: FeedQueryDto) {
     const page = query.page ?? 1;
@@ -151,7 +172,7 @@ export class PostService {
         ? [{ like: 'desc' }, { createdAt: 'desc' }]
         : query.sort === 'boosted'
           ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-          : [{ createdAt: 'desc' }]; // latest default
+          : [{ createdAt: 'desc' }]; 
 
     const [data, total] = await this.prisma.$transaction([
       this.prisma.post.findMany({

@@ -1,14 +1,13 @@
 model EventParticipant {
-  id      String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   eventId String @db.Uuid
   event   Event  @relation(fields: [eventId], references: [id])
 
-  userId  String @db.Uuid
-  user    User   @relation(fields: [userId], references: [id])
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
 
   joinedAt DateTime @default(now())
 
-  @@unique([eventId, userId]) 
+  @@unique([eventId, userId])
 }
-

@@ -5,9 +5,9 @@ model Report {
   targetType  ReportType
   targetId    String     @db.Uuid
   description String?
-  media       String? 
+  media       String?
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 
   @@unique([userId, targetId, targetType])
 }

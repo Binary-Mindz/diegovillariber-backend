@@ -1,16 +1,16 @@
 model Payment {
-    id     String @id @default(uuid()) @db.Uuid
-    userId String @db.Uuid
-    user   User   @relation(fields: [userId], references: [id])
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
 
-    buyProductId  String?       @db.Uuid
-    buyProduct    BuyProduct?   @relation(fields: [buyProductId], references: [id])
-    
-    amount        Int
-    status        PaymentStatus @default(PENDING)
-    paymentMethod String? // optional: card, wallet, stripe, etc.
+  buyProductId String?     @db.Uuid
+  buyProduct   BuyProduct? @relation(fields: [buyProductId], references: [id])
 
-    createdAt DateTime @default(now())
+  amount        Int
+  status        PaymentStatus @default(PENDING)
+  paymentMethod String? // optional: card, wallet, stripe, etc.
 
-    productLists ProductList[]
+  createdAt DateTime @default(now())
+
+  productLists ProductList[]
 }
