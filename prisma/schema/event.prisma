@@ -1,7 +1,7 @@
 model Event {
-  id          String   @id @default(uuid()) @db.Uuid
-  ownerId     String   @db.Uuid
-  owner       User     @relation(fields: [ownerId], references: [id])
+  id      String @id @default(uuid()) @db.Uuid
+  ownerId String @db.Uuid
+  owner   User   @relation(fields: [ownerId], references: [id])
 
   eventTitle  String
   description String?
@@ -13,8 +13,8 @@ model Event {
   eventType   EventType   @default(Race)
   eventStatus EventStatus @default(PENDING)
 
-  startDate   DateTime
-  endDate     DateTime
+  startDate DateTime
+  endDate   DateTime
 
   participants EventParticipant[]
 

@@ -1,9 +1,9 @@
 model ProDriverProfile {
-  id               String   @id @default(uuid()) @db.Uuid
-  profileId        String   @unique @db.Uuid
-  profile          Profile  @relation(fields: [profileId], references: [id])
+  id        String  @id @default(uuid()) @db.Uuid
+  profileId String  @unique @db.Uuid
+  profile   Profile @relation(fields: [profileId], references: [id])
 
-  racingDiscipline RacingType  @default(GT_Racing)
+  racingDiscipline RacingType @default(GT_Racing)
   location         String
 
   @@map("ProDriverProfile")

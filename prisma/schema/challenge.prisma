@@ -21,7 +21,7 @@ model Challenge {
 
   participantsList ChallengeParticipant[]
   results          ChallengeResult[]
-  post             Post[]
 
+  posts                XPost[]
   challengeSubmissions ChallengeSubmission[]
 }

@@ -189,15 +189,15 @@ export type ChallengeResultOrderByWithRelationInput = {
 
 export type ChallengeResultWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  challengeId?: string
   AND?: Prisma.ChallengeResultWhereInput | Prisma.ChallengeResultWhereInput[]
   OR?: Prisma.ChallengeResultWhereInput[]
   NOT?: Prisma.ChallengeResultWhereInput | Prisma.ChallengeResultWhereInput[]
-  challengeId?: Prisma.UuidFilter<"ChallengeResult"> | string
   winnerUserId?: Prisma.UuidFilter<"ChallengeResult"> | string
   createdAt?: Prisma.DateTimeFilter<"ChallengeResult"> | Date | string
   challenge?: Prisma.XOR<Prisma.ChallengeScalarRelationFilter, Prisma.ChallengeWhereInput>
   winnerUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id">
+}, "id" | "challengeId">
 
 export type ChallengeResultOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
