@@ -29,6 +29,7 @@ model XPost {
   createdAt           DateTime             @default(now())
   updatedAt           DateTime             @updatedAt
   challengeSubmission ChallengeSubmission?
+  battleEntries       BattleEntry[]
 
   @@index([userId])
   @@index([battleId])

@@ -7,14 +7,14 @@ model BattleEntry {
   participantId String            @db.Uuid
   participant   BattleParticipant @relation(fields: [participantId], references: [id])
 
-  postId String @db.Uuid
-  post   Post   @relation(fields: [postId], references: [id])
+  xpostId String? @db.Uuid
+  xpost   XPost?  @relation(fields: [xpostId], references: [id])
 
   createdAt DateTime @default(now())
 
   votes         BattleVote[]
   battleResults BattleResult[]
 
-  @@unique([battleId, participantId]) // one entry per participant per battle (change if you want multiple)
+  @@unique([battleId, participantId])
   @@index([battleId])
 }

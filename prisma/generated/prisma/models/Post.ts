@@ -370,7 +370,6 @@ export type PostWhereInput = {
   userPoints?: Prisma.UserPointListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
-  battleEntries?: Prisma.BattleEntryListRelationFilter
 }
 
 export type PostOrderByWithRelationInput = {
@@ -406,7 +405,6 @@ export type PostOrderByWithRelationInput = {
   userPoints?: Prisma.UserPointOrderByRelationAggregateInput
   likes?: Prisma.LikeOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
-  battleEntries?: Prisma.BattleEntryOrderByRelationAggregateInput
 }
 
 export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -445,7 +443,6 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   userPoints?: Prisma.UserPointListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
-  battleEntries?: Prisma.BattleEntryListRelationFilter
 }, "id">
 
 export type PostOrderByWithAggregationInput = {
@@ -538,7 +535,6 @@ export type PostCreateInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateInput = {
@@ -573,7 +569,6 @@ export type PostUncheckedCreateInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostUpdateInput = {
@@ -608,7 +603,6 @@ export type PostUpdateInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateInput = {
@@ -643,7 +637,6 @@ export type PostUncheckedUpdateInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyInput = {
@@ -849,20 +842,6 @@ export type PostSumOrderByAggregateInput = {
 export type PostNullableScalarRelationFilter = {
   is?: Prisma.PostWhereInput | null
   isNot?: Prisma.PostWhereInput | null
-}
-
-export type PostCreateNestedOneWithoutBattleEntriesInput = {
-  create?: Prisma.XOR<Prisma.PostCreateWithoutBattleEntriesInput, Prisma.PostUncheckedCreateWithoutBattleEntriesInput>
-  connectOrCreate?: Prisma.PostCreateOrConnectWithoutBattleEntriesInput
-  connect?: Prisma.PostWhereUniqueInput
-}
-
-export type PostUpdateOneRequiredWithoutBattleEntriesNestedInput = {
-  create?: Prisma.XOR<Prisma.PostCreateWithoutBattleEntriesInput, Prisma.PostUncheckedCreateWithoutBattleEntriesInput>
-  connectOrCreate?: Prisma.PostCreateOrConnectWithoutBattleEntriesInput
-  upsert?: Prisma.PostUpsertWithoutBattleEntriesInput
-  connect?: Prisma.PostWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutBattleEntriesInput, Prisma.PostUpdateWithoutBattleEntriesInput>, Prisma.PostUncheckedUpdateWithoutBattleEntriesInput>
 }
 
 export type PostCreateNestedOneWithoutCommentsInput = {
@@ -1094,158 +1073,6 @@ export type PostUpdateOneRequiredWithoutWishListsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutWishListsInput, Prisma.PostUpdateWithoutWishListsInput>, Prisma.PostUncheckedUpdateWithoutWishListsInput>
 }
 
-export type PostCreateWithoutBattleEntriesInput = {
-  id?: string
-  postType?: $Enums.PostType
-  caption?: string | null
-  mediaUrl?: string | null
-  postLocation?: string | null
-  locationName?: string | null
-  locationAddress?: string | null
-  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: string | null
-  locationVisibility?: string | null
-  like?: number
-  comment?: number
-  share?: number
-  contentBooster?: boolean
-  point?: number
-  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutPostsInput
-  hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
-  likes?: Prisma.LikeCreateNestedManyWithoutPostInput
-  comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-}
-
-export type PostUncheckedCreateWithoutBattleEntriesInput = {
-  id?: string
-  userId: string
-  postType?: $Enums.PostType
-  caption?: string | null
-  mediaUrl?: string | null
-  postLocation?: string | null
-  locationName?: string | null
-  locationAddress?: string | null
-  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: string | null
-  locationVisibility?: string | null
-  like?: number
-  comment?: number
-  share?: number
-  contentBooster?: boolean
-  point?: number
-  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-}
-
-export type PostCreateOrConnectWithoutBattleEntriesInput = {
-  where: Prisma.PostWhereUniqueInput
-  create: Prisma.XOR<Prisma.PostCreateWithoutBattleEntriesInput, Prisma.PostUncheckedCreateWithoutBattleEntriesInput>
-}
-
-export type PostUpsertWithoutBattleEntriesInput = {
-  update: Prisma.XOR<Prisma.PostUpdateWithoutBattleEntriesInput, Prisma.PostUncheckedUpdateWithoutBattleEntriesInput>
-  create: Prisma.XOR<Prisma.PostCreateWithoutBattleEntriesInput, Prisma.PostUncheckedCreateWithoutBattleEntriesInput>
-  where?: Prisma.PostWhereInput
-}
-
-export type PostUpdateToOneWithWhereWithoutBattleEntriesInput = {
-  where?: Prisma.PostWhereInput
-  data: Prisma.XOR<Prisma.PostUpdateWithoutBattleEntriesInput, Prisma.PostUncheckedUpdateWithoutBattleEntriesInput>
-}
-
-export type PostUpdateWithoutBattleEntriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  like?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.IntFieldUpdateOperationsInput | number
-  share?: Prisma.IntFieldUpdateOperationsInput | number
-  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  point?: Prisma.IntFieldUpdateOperationsInput | number
-  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
-  hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-}
-
-export type PostUncheckedUpdateWithoutBattleEntriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  like?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.IntFieldUpdateOperationsInput | number
-  share?: Prisma.IntFieldUpdateOperationsInput | number
-  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  point?: Prisma.IntFieldUpdateOperationsInput | number
-  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-}
-
 export type PostCreateWithoutCommentsInput = {
   id?: string
   postType?: $Enums.PostType
@@ -1277,7 +1104,6 @@ export type PostCreateWithoutCommentsInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutCommentsInput = {
@@ -1311,7 +1137,6 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutCommentsInput = {
@@ -1361,7 +1186,6 @@ export type PostUpdateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutCommentsInput = {
@@ -1395,7 +1219,6 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutHashtagsInput = {
@@ -1429,7 +1252,6 @@ export type PostCreateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHashtagsInput = {
@@ -1463,7 +1285,6 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHashtagsInput = {
@@ -1546,7 +1367,6 @@ export type PostCreateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHidePostsInput = {
@@ -1580,7 +1400,6 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHidePostsInput = {
@@ -1630,7 +1449,6 @@ export type PostUpdateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHidePostsInput = {
@@ -1664,7 +1482,6 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutLikesInput = {
@@ -1698,7 +1515,6 @@ export type PostCreateWithoutLikesInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutLikesInput = {
@@ -1732,7 +1548,6 @@ export type PostUncheckedCreateWithoutLikesInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutLikesInput = {
@@ -1782,7 +1597,6 @@ export type PostUpdateWithoutLikesInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutLikesInput = {
@@ -1816,7 +1630,6 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutRacingVotesInput = {
@@ -1850,7 +1663,6 @@ export type PostCreateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRacingVotesInput = {
@@ -1884,7 +1696,6 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRacingVotesInput = {
@@ -1934,7 +1745,6 @@ export type PostUpdateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRacingVotesInput = {
@@ -1968,7 +1778,6 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutRepostsInput = {
@@ -2002,7 +1811,6 @@ export type PostCreateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRepostsInput = {
@@ -2036,7 +1844,6 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRepostsInput = {
@@ -2086,7 +1893,6 @@ export type PostUpdateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRepostsInput = {
@@ -2120,7 +1926,6 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutSavePostsInput = {
@@ -2154,7 +1959,6 @@ export type PostCreateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutSavePostsInput = {
@@ -2188,7 +1992,6 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutSavePostsInput = {
@@ -2238,7 +2041,6 @@ export type PostUpdateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutSavePostsInput = {
@@ -2272,7 +2074,6 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutUserInput = {
@@ -2306,7 +2107,6 @@ export type PostCreateWithoutUserInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserInput = {
@@ -2340,7 +2140,6 @@ export type PostUncheckedCreateWithoutUserInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserInput = {
@@ -2400,7 +2199,6 @@ export type PostCreateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserPointsInput = {
@@ -2434,7 +2232,6 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserPointsInput = {
@@ -2484,7 +2281,6 @@ export type PostUpdateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserPointsInput = {
@@ -2518,7 +2314,6 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutWishListsInput = {
@@ -2552,7 +2347,6 @@ export type PostCreateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutWishListsInput = {
@@ -2586,7 +2380,6 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  battleEntries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutWishListsInput = {
@@ -2636,7 +2429,6 @@ export type PostUpdateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutWishListsInput = {
@@ -2670,7 +2462,6 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUpdateWithoutHashtagsInput = {
@@ -2704,7 +2495,6 @@ export type PostUpdateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHashtagsInput = {
@@ -2738,7 +2528,6 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutHashtagsInput = {
@@ -2821,7 +2610,6 @@ export type PostUpdateWithoutUserInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserInput = {
@@ -2855,7 +2643,6 @@ export type PostUncheckedUpdateWithoutUserInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  battleEntries?: Prisma.BattleEntryUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutUserInput = {
@@ -2897,7 +2684,6 @@ export type PostCountOutputType = {
   userPoints: number
   likes: number
   comments: number
-  battleEntries: number
 }
 
 export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2910,7 +2696,6 @@ export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   userPoints?: boolean | PostCountOutputTypeCountUserPointsArgs
   likes?: boolean | PostCountOutputTypeCountLikesArgs
   comments?: boolean | PostCountOutputTypeCountCommentsArgs
-  battleEntries?: boolean | PostCountOutputTypeCountBattleEntriesArgs
 }
 
 /**
@@ -2986,13 +2771,6 @@ export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.CommentWhereInput
 }
 
-/**
- * PostCountOutputType without action
- */
-export type PostCountOutputTypeCountBattleEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BattleEntryWhereInput
-}
-
 
 export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -3027,7 +2805,6 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userPoints?: boolean | Prisma.Post$userPointsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
-  battleEntries?: boolean | Prisma.Post$battleEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
@@ -3120,7 +2897,6 @@ export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userPoints?: boolean | Prisma.Post$userPointsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
-  battleEntries?: boolean | Prisma.Post$battleEntriesArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PostIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3143,7 +2919,6 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userPoints: Prisma.$UserPointPayload<ExtArgs>[]
     likes: Prisma.$LikePayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
-    battleEntries: Prisma.$BattleEntryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3572,7 +3347,6 @@ export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Typ
   userPoints<T extends Prisma.Post$userPointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$userPointsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   likes<T extends Prisma.Post$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Post$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  battleEntries<T extends Prisma.Post$battleEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$battleEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4233,30 +4007,6 @@ export type Post$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.CommentScalarFieldEnum | Prisma.CommentScalarFieldEnum[]
-}
-
-/**
- * Post.battleEntries
- */
-export type Post$battleEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BattleEntry
-   */
-  select?: Prisma.BattleEntrySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BattleEntry
-   */
-  omit?: Prisma.BattleEntryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BattleEntryInclude<ExtArgs> | null
-  where?: Prisma.BattleEntryWhereInput
-  orderBy?: Prisma.BattleEntryOrderByWithRelationInput | Prisma.BattleEntryOrderByWithRelationInput[]
-  cursor?: Prisma.BattleEntryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BattleEntryScalarFieldEnum | Prisma.BattleEntryScalarFieldEnum[]
 }
 
 /**
