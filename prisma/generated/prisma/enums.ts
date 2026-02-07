@@ -430,11 +430,22 @@ export type ReportType = (typeof ReportType)[keyof typeof ReportType]
 
 
 export const ProductCategory = {
+  Car_Tyres: 'Car_Tyres',
   Car_Parts: 'Car_Parts',
-  Photography: 'Photography'
+  Car_Accessories: 'Car_Accessories'
 } as const
 
 export type ProductCategory = (typeof ProductCategory)[keyof typeof ProductCategory]
+
+
+export const HighlightStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type HighlightStatus = (typeof HighlightStatus)[keyof typeof HighlightStatus]
 
 
 export const CarClass = {

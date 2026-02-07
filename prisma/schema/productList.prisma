@@ -1,16 +1,28 @@
 model ProductList {
-  id          String          @id @default(uuid()) @db.Uuid
-  ownerId     String          @db.Uuid
-  owner       User            @relation(fields: [ownerId], references: [id])
-  title       String
-  description String?
-  category    ProductCategory @default(Car_Parts)
-  price       Int
-  quantity    Int
-  payments    Payment[]
-  createdAt   DateTime        @default(now())
+  id           String          @id @default(uuid()) @db.Uuid
 
+  ownerId      String          @db.Uuid
+  owner        User            @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  // form fields
+  title        String
+  productImage String?         // if you later support multiple images, make this String[]
+  description  String?
+  category     ProductCategory @default(Car_Parts)
+
+  tags         String[]        @default([]) // comma separated in UI -> store as array
+
+  carBrand     String?         
+  carModel     String?         
+
+  price        Int
+  quantity     Int
+
+  showWhatsappNo Boolean       @default(false) // "Show my WhatsApp No" toggle
+
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  // highlight (optional)
   highlightProducts HighlightProduct[]
-
-  buyProducts BuyProduct[]
 }
