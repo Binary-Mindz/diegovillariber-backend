@@ -265,11 +265,11 @@ export type ProfileOrderByWithRelationInput = {
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  userId?: string
   userId_profileType?: Prisma.ProfileUserIdProfileTypeCompoundUniqueInput
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
-  userId?: Prisma.UuidFilter<"Profile"> | string
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -291,7 +291,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   virtualLabs?: Prisma.VirtualLabListRelationFilter
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
-}, "id" | "userId_profileType">
+}, "id" | "userId" | "userId_profileType">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
