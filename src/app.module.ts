@@ -9,6 +9,7 @@ import { BattleModule } from './main/battle/battle.module';
 import { AdminModule } from './main/admin/admin.module';
 import { EventModule } from './main/event/event.module';
 import { ChallengeModule } from './main/challenge/challenge.module';
+import { ProductModule } from './main/product/product.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ChallengeModule } from './main/challenge/challenge.module';
     BattleModule,
     EventModule,
     ChallengeModule,
+    ProductModule,
     AdminModule
   ],
   controllers: [],
