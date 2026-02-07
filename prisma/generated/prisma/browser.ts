@@ -58,11 +58,6 @@ export type BattleVote = Prisma.BattleVoteModel
  */
 export type BusinessProfile = Prisma.BusinessProfileModel
 /**
- * Model BuyProduct
- * 
- */
-export type BuyProduct = Prisma.BuyProductModel
-/**
  * Model Car
  * 
  */

@@ -314,23 +314,6 @@ export type EnumBusinessCategoryWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumBusinessCategoryFilter<$PrismaModel>
 }
 
-export type EnumBuyStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BuyStatus | Prisma.EnumBuyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel> | $Enums.BuyStatus
-}
-
-export type EnumBuyStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BuyStatus | Prisma.EnumBuyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBuyStatusWithAggregatesFilter<$PrismaModel> | $Enums.BuyStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel>
-}
-
 export type EnumBodyTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.BodyType | Prisma.EnumBodyTypeFieldRefInput<$PrismaModel>
   in?: $Enums.BodyType[] | Prisma.ListEnumBodyTypeFieldRefInput<$PrismaModel>
@@ -543,6 +526,23 @@ export type EnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
+}
+
+export type EnumHighlightStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel> | $Enums.HighlightStatus
+}
+
+export type EnumHighlightStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel> | $Enums.HighlightStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
 }
 
 export type EnumLiveStatusFilter<$PrismaModel = never> = {
@@ -1173,23 +1173,6 @@ export type NestedEnumBusinessCategoryWithAggregatesFilter<$PrismaModel = never>
   _max?: Prisma.NestedEnumBusinessCategoryFilter<$PrismaModel>
 }
 
-export type NestedEnumBuyStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.BuyStatus | Prisma.EnumBuyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel> | $Enums.BuyStatus
-}
-
-export type NestedEnumBuyStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BuyStatus | Prisma.EnumBuyStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BuyStatus[] | Prisma.ListEnumBuyStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBuyStatusWithAggregatesFilter<$PrismaModel> | $Enums.BuyStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBuyStatusFilter<$PrismaModel>
-}
-
 export type NestedEnumBodyTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.BodyType | Prisma.EnumBodyTypeFieldRefInput<$PrismaModel>
   in?: $Enums.BodyType[] | Prisma.ListEnumBodyTypeFieldRefInput<$PrismaModel>
@@ -1402,6 +1385,23 @@ export type NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
+}
+
+export type NestedEnumHighlightStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel> | $Enums.HighlightStatus
+}
+
+export type NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel> | $Enums.HighlightStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumLiveStatusFilter<$PrismaModel = never> = {

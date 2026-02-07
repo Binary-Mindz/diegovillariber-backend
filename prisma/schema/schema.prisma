@@ -259,8 +259,16 @@ enum ReportType {
 }
 
 enum ProductCategory {
+  Car_Tyres
   Car_Parts
-  Photography
+  Car_Accessories
+}
+
+enum HighlightStatus {
+  PENDING  
+  ACTIVE
+  EXPIRED
+  CANCELLED
 }
 
 enum CarClass {
