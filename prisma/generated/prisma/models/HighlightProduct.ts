@@ -27,69 +27,97 @@ export type AggregateHighlightProduct = {
 }
 
 export type HighlightProductAvgAggregateOutputType = {
-  chargePerDay: number | null
+  durationHours: number | null
+  chargeAmount: number | null
 }
 
 export type HighlightProductSumAggregateOutputType = {
-  chargePerDay: number | null
+  durationHours: number | null
+  chargeAmount: number | null
 }
 
 export type HighlightProductMinAggregateOutputType = {
   id: string | null
   productId: string | null
-  chargePerDay: number | null
+  durationHours: number | null
+  chargeAmount: number | null
+  status: $Enums.HighlightStatus | null
   startDate: Date | null
   endDate: Date | null
+  paidAt: Date | null
+  createdAt: Date | null
 }
 
 export type HighlightProductMaxAggregateOutputType = {
   id: string | null
   productId: string | null
-  chargePerDay: number | null
+  durationHours: number | null
+  chargeAmount: number | null
+  status: $Enums.HighlightStatus | null
   startDate: Date | null
   endDate: Date | null
+  paidAt: Date | null
+  createdAt: Date | null
 }
 
 export type HighlightProductCountAggregateOutputType = {
   id: number
   productId: number
-  chargePerDay: number
+  durationHours: number
+  chargeAmount: number
+  status: number
   startDate: number
   endDate: number
+  paidAt: number
+  createdAt: number
   _all: number
 }
 
 
 export type HighlightProductAvgAggregateInputType = {
-  chargePerDay?: true
+  durationHours?: true
+  chargeAmount?: true
 }
 
 export type HighlightProductSumAggregateInputType = {
-  chargePerDay?: true
+  durationHours?: true
+  chargeAmount?: true
 }
 
 export type HighlightProductMinAggregateInputType = {
   id?: true
   productId?: true
-  chargePerDay?: true
+  durationHours?: true
+  chargeAmount?: true
+  status?: true
   startDate?: true
   endDate?: true
+  paidAt?: true
+  createdAt?: true
 }
 
 export type HighlightProductMaxAggregateInputType = {
   id?: true
   productId?: true
-  chargePerDay?: true
+  durationHours?: true
+  chargeAmount?: true
+  status?: true
   startDate?: true
   endDate?: true
+  paidAt?: true
+  createdAt?: true
 }
 
 export type HighlightProductCountAggregateInputType = {
   id?: true
   productId?: true
-  chargePerDay?: true
+  durationHours?: true
+  chargeAmount?: true
+  status?: true
   startDate?: true
   endDate?: true
+  paidAt?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -182,9 +210,13 @@ export type HighlightProductGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type HighlightProductGroupByOutputType = {
   id: string
   productId: string
-  chargePerDay: number
-  startDate: Date
-  endDate: Date
+  durationHours: number
+  chargeAmount: number
+  status: $Enums.HighlightStatus
+  startDate: Date | null
+  endDate: Date | null
+  paidAt: Date | null
+  createdAt: Date
   _count: HighlightProductCountAggregateOutputType | null
   _avg: HighlightProductAvgAggregateOutputType | null
   _sum: HighlightProductSumAggregateOutputType | null
@@ -213,18 +245,26 @@ export type HighlightProductWhereInput = {
   NOT?: Prisma.HighlightProductWhereInput | Prisma.HighlightProductWhereInput[]
   id?: Prisma.UuidFilter<"HighlightProduct"> | string
   productId?: Prisma.UuidFilter<"HighlightProduct"> | string
-  chargePerDay?: Prisma.IntFilter<"HighlightProduct"> | number
-  startDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
-  endDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
+  durationHours?: Prisma.IntFilter<"HighlightProduct"> | number
+  chargeAmount?: Prisma.IntFilter<"HighlightProduct"> | number
+  status?: Prisma.EnumHighlightStatusFilter<"HighlightProduct"> | $Enums.HighlightStatus
+  startDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  paidAt?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
   product?: Prisma.XOR<Prisma.ProductListScalarRelationFilter, Prisma.ProductListWhereInput>
 }
 
 export type HighlightProductOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  chargePerDay?: Prisma.SortOrder
-  startDate?: Prisma.SortOrder
-  endDate?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   product?: Prisma.ProductListOrderByWithRelationInput
 }
 
@@ -234,18 +274,26 @@ export type HighlightProductWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.HighlightProductWhereInput[]
   NOT?: Prisma.HighlightProductWhereInput | Prisma.HighlightProductWhereInput[]
   productId?: Prisma.UuidFilter<"HighlightProduct"> | string
-  chargePerDay?: Prisma.IntFilter<"HighlightProduct"> | number
-  startDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
-  endDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
+  durationHours?: Prisma.IntFilter<"HighlightProduct"> | number
+  chargeAmount?: Prisma.IntFilter<"HighlightProduct"> | number
+  status?: Prisma.EnumHighlightStatusFilter<"HighlightProduct"> | $Enums.HighlightStatus
+  startDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  paidAt?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
   product?: Prisma.XOR<Prisma.ProductListScalarRelationFilter, Prisma.ProductListWhereInput>
 }, "id">
 
 export type HighlightProductOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  chargePerDay?: Prisma.SortOrder
-  startDate?: Prisma.SortOrder
-  endDate?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.HighlightProductCountOrderByAggregateInput
   _avg?: Prisma.HighlightProductAvgOrderByAggregateInput
   _max?: Prisma.HighlightProductMaxOrderByAggregateInput
@@ -259,96 +307,142 @@ export type HighlightProductScalarWhereWithAggregatesInput = {
   NOT?: Prisma.HighlightProductScalarWhereWithAggregatesInput | Prisma.HighlightProductScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"HighlightProduct"> | string
   productId?: Prisma.UuidWithAggregatesFilter<"HighlightProduct"> | string
-  chargePerDay?: Prisma.IntWithAggregatesFilter<"HighlightProduct"> | number
-  startDate?: Prisma.DateTimeWithAggregatesFilter<"HighlightProduct"> | Date | string
-  endDate?: Prisma.DateTimeWithAggregatesFilter<"HighlightProduct"> | Date | string
+  durationHours?: Prisma.IntWithAggregatesFilter<"HighlightProduct"> | number
+  chargeAmount?: Prisma.IntWithAggregatesFilter<"HighlightProduct"> | number
+  status?: Prisma.EnumHighlightStatusWithAggregatesFilter<"HighlightProduct"> | $Enums.HighlightStatus
+  startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"HighlightProduct"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"HighlightProduct"> | Date | string | null
+  paidAt?: Prisma.DateTimeNullableWithAggregatesFilter<"HighlightProduct"> | Date | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"HighlightProduct"> | Date | string
 }
 
 export type HighlightProductCreateInput = {
   id?: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
   product: Prisma.ProductListCreateNestedOneWithoutHighlightProductsInput
 }
 
 export type HighlightProductUncheckedCreateInput = {
   id?: string
   productId: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
 }
 
 export type HighlightProductUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   product?: Prisma.ProductListUpdateOneRequiredWithoutHighlightProductsNestedInput
 }
 
 export type HighlightProductUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HighlightProductCreateManyInput = {
   id?: string
   productId: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
 }
 
 export type HighlightProductUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HighlightProductUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   productId?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HighlightProductCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  chargePerDay?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  paidAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type HighlightProductAvgOrderByAggregateInput = {
-  chargePerDay?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
 }
 
 export type HighlightProductMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  chargePerDay?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  paidAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type HighlightProductMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  chargePerDay?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  paidAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type HighlightProductSumOrderByAggregateInput = {
-  chargePerDay?: Prisma.SortOrder
+  durationHours?: Prisma.SortOrder
+  chargeAmount?: Prisma.SortOrder
 }
 
 export type HighlightProductListRelationFilter = {
@@ -359,6 +453,10 @@ export type HighlightProductListRelationFilter = {
 
 export type HighlightProductOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type EnumHighlightStatusFieldUpdateOperationsInput = {
+  set?: $Enums.HighlightStatus
 }
 
 export type HighlightProductCreateNestedManyWithoutProductInput = {
@@ -405,16 +503,24 @@ export type HighlightProductUncheckedUpdateManyWithoutProductNestedInput = {
 
 export type HighlightProductCreateWithoutProductInput = {
   id?: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
 }
 
 export type HighlightProductUncheckedCreateWithoutProductInput = {
   id?: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
 }
 
 export type HighlightProductCreateOrConnectWithoutProductInput = {
@@ -449,37 +555,57 @@ export type HighlightProductScalarWhereInput = {
   NOT?: Prisma.HighlightProductScalarWhereInput | Prisma.HighlightProductScalarWhereInput[]
   id?: Prisma.UuidFilter<"HighlightProduct"> | string
   productId?: Prisma.UuidFilter<"HighlightProduct"> | string
-  chargePerDay?: Prisma.IntFilter<"HighlightProduct"> | number
-  startDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
-  endDate?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
+  durationHours?: Prisma.IntFilter<"HighlightProduct"> | number
+  chargeAmount?: Prisma.IntFilter<"HighlightProduct"> | number
+  status?: Prisma.EnumHighlightStatusFilter<"HighlightProduct"> | $Enums.HighlightStatus
+  startDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  endDate?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  paidAt?: Prisma.DateTimeNullableFilter<"HighlightProduct"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"HighlightProduct"> | Date | string
 }
 
 export type HighlightProductCreateManyProductInput = {
   id?: string
-  chargePerDay: number
-  startDate: Date | string
-  endDate: Date | string
+  durationHours: number
+  chargeAmount: number
+  status?: $Enums.HighlightStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  paidAt?: Date | string | null
+  createdAt?: Date | string
 }
 
 export type HighlightProductUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HighlightProductUncheckedUpdateWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HighlightProductUncheckedUpdateManyWithoutProductInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  chargePerDay?: Prisma.IntFieldUpdateOperationsInput | number
-  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationHours?: Prisma.IntFieldUpdateOperationsInput | number
+  chargeAmount?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumHighlightStatusFieldUpdateOperationsInput | $Enums.HighlightStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -487,39 +613,55 @@ export type HighlightProductUncheckedUpdateManyWithoutProductInput = {
 export type HighlightProductSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
-  chargePerDay?: boolean
+  durationHours?: boolean
+  chargeAmount?: boolean
+  status?: boolean
   startDate?: boolean
   endDate?: boolean
+  paidAt?: boolean
+  createdAt?: boolean
   product?: boolean | Prisma.ProductListDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["highlightProduct"]>
 
 export type HighlightProductSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
-  chargePerDay?: boolean
+  durationHours?: boolean
+  chargeAmount?: boolean
+  status?: boolean
   startDate?: boolean
   endDate?: boolean
+  paidAt?: boolean
+  createdAt?: boolean
   product?: boolean | Prisma.ProductListDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["highlightProduct"]>
 
 export type HighlightProductSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   productId?: boolean
-  chargePerDay?: boolean
+  durationHours?: boolean
+  chargeAmount?: boolean
+  status?: boolean
   startDate?: boolean
   endDate?: boolean
+  paidAt?: boolean
+  createdAt?: boolean
   product?: boolean | Prisma.ProductListDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["highlightProduct"]>
 
 export type HighlightProductSelectScalar = {
   id?: boolean
   productId?: boolean
-  chargePerDay?: boolean
+  durationHours?: boolean
+  chargeAmount?: boolean
+  status?: boolean
   startDate?: boolean
   endDate?: boolean
+  paidAt?: boolean
+  createdAt?: boolean
 }
 
-export type HighlightProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "chargePerDay" | "startDate" | "endDate", ExtArgs["result"]["highlightProduct"]>
+export type HighlightProductOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "productId" | "durationHours" | "chargeAmount" | "status" | "startDate" | "endDate" | "paidAt" | "createdAt", ExtArgs["result"]["highlightProduct"]>
 export type HighlightProductInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   product?: boolean | Prisma.ProductListDefaultArgs<ExtArgs>
 }
@@ -538,9 +680,13 @@ export type $HighlightProductPayload<ExtArgs extends runtime.Types.Extensions.In
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     productId: string
-    chargePerDay: number
-    startDate: Date
-    endDate: Date
+    durationHours: number
+    chargeAmount: number
+    status: $Enums.HighlightStatus
+    startDate: Date | null
+    endDate: Date | null
+    paidAt: Date | null
+    createdAt: Date
   }, ExtArgs["result"]["highlightProduct"]>
   composites: {}
 }
@@ -967,9 +1113,13 @@ export interface Prisma__HighlightProductClient<T, Null = never, ExtArgs extends
 export interface HighlightProductFieldRefs {
   readonly id: Prisma.FieldRef<"HighlightProduct", 'String'>
   readonly productId: Prisma.FieldRef<"HighlightProduct", 'String'>
-  readonly chargePerDay: Prisma.FieldRef<"HighlightProduct", 'Int'>
+  readonly durationHours: Prisma.FieldRef<"HighlightProduct", 'Int'>
+  readonly chargeAmount: Prisma.FieldRef<"HighlightProduct", 'Int'>
+  readonly status: Prisma.FieldRef<"HighlightProduct", 'HighlightStatus'>
   readonly startDate: Prisma.FieldRef<"HighlightProduct", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"HighlightProduct", 'DateTime'>
+  readonly paidAt: Prisma.FieldRef<"HighlightProduct", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"HighlightProduct", 'DateTime'>
 }
     
 

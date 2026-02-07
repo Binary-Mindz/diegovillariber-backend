@@ -59,7 +59,6 @@ export const ModelName = {
   BattleResult: 'BattleResult',
   BattleVote: 'BattleVote',
   BusinessProfile: 'BusinessProfile',
-  BuyProduct: 'BuyProduct',
   Car: 'Car',
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
@@ -236,21 +235,6 @@ export const BusinessProfileScalarFieldEnum = {
 } as const
 
 export type BusinessProfileScalarFieldEnum = (typeof BusinessProfileScalarFieldEnum)[keyof typeof BusinessProfileScalarFieldEnum]
-
-
-export const BuyProductScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  sellerId: 'sellerId',
-  buyerId: 'buyerId',
-  status: 'status',
-  quantity: 'quantity',
-  price: 'price',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BuyProductScalarFieldEnum = (typeof BuyProductScalarFieldEnum)[keyof typeof BuyProductScalarFieldEnum]
 
 
 export const CarScalarFieldEnum = {
@@ -521,9 +505,13 @@ export type HidePostScalarFieldEnum = (typeof HidePostScalarFieldEnum)[keyof typ
 export const HighlightProductScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
-  chargePerDay: 'chargePerDay',
+  durationHours: 'durationHours',
+  chargeAmount: 'chargeAmount',
+  status: 'status',
   startDate: 'startDate',
-  endDate: 'endDate'
+  endDate: 'endDate',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
 } as const
 
 export type HighlightProductScalarFieldEnum = (typeof HighlightProductScalarFieldEnum)[keyof typeof HighlightProductScalarFieldEnum]
@@ -651,7 +639,6 @@ export type OwnerProfileScalarFieldEnum = (typeof OwnerProfileScalarFieldEnum)[k
 export const PaymentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  buyProductId: 'buyProductId',
   amount: 'amount',
   status: 'status',
   paymentMethod: 'paymentMethod',
@@ -703,11 +690,17 @@ export const ProductListScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
   title: 'title',
+  productImage: 'productImage',
   description: 'description',
   category: 'category',
+  tags: 'tags',
+  carBrand: 'carBrand',
+  carModel: 'carModel',
   price: 'price',
   quantity: 'quantity',
-  createdAt: 'createdAt'
+  showWhatsappNo: 'showWhatsappNo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProductListScalarFieldEnum = (typeof ProductListScalarFieldEnum)[keyof typeof ProductListScalarFieldEnum]

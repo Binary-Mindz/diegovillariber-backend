@@ -392,7 +392,6 @@ export const ModelName = {
   BattleResult: 'BattleResult',
   BattleVote: 'BattleVote',
   BusinessProfile: 'BusinessProfile',
-  BuyProduct: 'BuyProduct',
   Car: 'Car',
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
@@ -462,7 +461,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "buyProduct" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "eventParticipant" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1055,80 +1054,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.BusinessProfileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.BusinessProfileCountAggregateOutputType> | number
-        }
-      }
-    }
-    BuyProduct: {
-      payload: Prisma.$BuyProductPayload<ExtArgs>
-      fields: Prisma.BuyProductFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.BuyProductFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.BuyProductFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        findFirst: {
-          args: Prisma.BuyProductFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.BuyProductFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        findMany: {
-          args: Prisma.BuyProductFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>[]
-        }
-        create: {
-          args: Prisma.BuyProductCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        createMany: {
-          args: Prisma.BuyProductCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.BuyProductCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>[]
-        }
-        delete: {
-          args: Prisma.BuyProductDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        update: {
-          args: Prisma.BuyProductUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        deleteMany: {
-          args: Prisma.BuyProductDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.BuyProductUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.BuyProductUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>[]
-        }
-        upsert: {
-          args: Prisma.BuyProductUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BuyProductPayload>
-        }
-        aggregate: {
-          args: Prisma.BuyProductAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBuyProduct>
-        }
-        groupBy: {
-          args: Prisma.BuyProductGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BuyProductGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.BuyProductCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BuyProductCountAggregateOutputType> | number
         }
       }
     }
@@ -5273,21 +5198,6 @@ export const BusinessProfileScalarFieldEnum = {
 export type BusinessProfileScalarFieldEnum = (typeof BusinessProfileScalarFieldEnum)[keyof typeof BusinessProfileScalarFieldEnum]
 
 
-export const BuyProductScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  sellerId: 'sellerId',
-  buyerId: 'buyerId',
-  status: 'status',
-  quantity: 'quantity',
-  price: 'price',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BuyProductScalarFieldEnum = (typeof BuyProductScalarFieldEnum)[keyof typeof BuyProductScalarFieldEnum]
-
-
 export const CarScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -5556,9 +5466,13 @@ export type HidePostScalarFieldEnum = (typeof HidePostScalarFieldEnum)[keyof typ
 export const HighlightProductScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
-  chargePerDay: 'chargePerDay',
+  durationHours: 'durationHours',
+  chargeAmount: 'chargeAmount',
+  status: 'status',
   startDate: 'startDate',
-  endDate: 'endDate'
+  endDate: 'endDate',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
 } as const
 
 export type HighlightProductScalarFieldEnum = (typeof HighlightProductScalarFieldEnum)[keyof typeof HighlightProductScalarFieldEnum]
@@ -5686,7 +5600,6 @@ export type OwnerProfileScalarFieldEnum = (typeof OwnerProfileScalarFieldEnum)[k
 export const PaymentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  buyProductId: 'buyProductId',
   amount: 'amount',
   status: 'status',
   paymentMethod: 'paymentMethod',
@@ -5738,11 +5651,17 @@ export const ProductListScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
   title: 'title',
+  productImage: 'productImage',
   description: 'description',
   category: 'category',
+  tags: 'tags',
+  carBrand: 'carBrand',
+  carModel: 'carModel',
   price: 'price',
   quantity: 'quantity',
-  createdAt: 'createdAt'
+  showWhatsappNo: 'showWhatsappNo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ProductListScalarFieldEnum = (typeof ProductListScalarFieldEnum)[keyof typeof ProductListScalarFieldEnum]
@@ -6177,20 +6096,6 @@ export type ListEnumBusinessCategoryFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
- * Reference to a field of type 'BuyStatus'
- */
-export type EnumBuyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BuyStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BuyStatus[]'
- */
-export type ListEnumBuyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BuyStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'BodyType'
  */
 export type EnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType'>
@@ -6341,6 +6246,20 @@ export type EnumHashtagCreatedByFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'HashtagCreatedBy[]'
  */
 export type ListEnumHashtagCreatedByFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HashtagCreatedBy[]'>
+    
+
+
+/**
+ * Reference to a field of type 'HighlightStatus'
+ */
+export type EnumHighlightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HighlightStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'HighlightStatus[]'
+ */
+export type ListEnumHighlightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HighlightStatus[]'>
     
 
 
@@ -6698,7 +6617,6 @@ export type GlobalOmitConfig = {
   battleResult?: Prisma.BattleResultOmit
   battleVote?: Prisma.BattleVoteOmit
   businessProfile?: Prisma.BusinessProfileOmit
-  buyProduct?: Prisma.BuyProductOmit
   car?: Prisma.CarOmit
   challenge?: Prisma.ChallengeOmit
   challengeParticipant?: Prisma.ChallengeParticipantOmit
