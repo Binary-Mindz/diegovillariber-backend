@@ -1,9 +1,21 @@
 model HighlightProduct {
-  id        String      @id @default(uuid()) @db.Uuid
-  productId String      @db.Uuid
-  product   ProductList @relation(fields: [productId], references: [id])
+  id          String       @id @default(uuid()) @db.Uuid
 
-  chargePerDay Int
-  startDate    DateTime
-  endDate      DateTime
+  productId   String       @db.Uuid
+  product     ProductList  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+ 
+  durationHours Int        
+  chargeAmount  Int       
+
+  status      HighlightStatus @default(PENDING)
+
+  startDate   DateTime?
+  endDate     DateTime?
+
+  paidAt      DateTime?
+  createdAt   DateTime        @default(now())
+
+  @@index([productId])
+  @@index([status])
 }

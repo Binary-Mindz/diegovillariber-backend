@@ -46,8 +46,6 @@ model User {
   battles               Battle[]               @relation("HostBattles")
   battleParticipants    BattleParticipant[]
   userPoints            UserPoint[]
-  sellerProducts        BuyProduct[]           @relation("SellerProducts")
-  buyProducts           BuyProduct[]           @relation("BuyerProducts")
   challengeResults      ChallengeResult[]      @relation("WinnerResults")
   hostChallenge         Challenge[]            @relation("HostChallenges")
   challenges            Challenge[]
