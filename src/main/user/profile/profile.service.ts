@@ -44,11 +44,12 @@ type ProfileCreateWithRelations = Prisma.ProfileCreateInput & {
 
 @Injectable()
 export class ProfileService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   // ---------- CREATE ----------
   async createProfile(currentUserId: string, dto: CreateProfileDto) {
     assertPayloadMatchesType(dto);
+
     const user = await this.prisma.user.findUnique({
       where: { id: currentUserId },
       select: { id: true },
@@ -56,8 +57,13 @@ export class ProfileService {
     if (!user) throw new NotFoundException('User not found');
 
     return this.prisma.$transaction(async (tx) => {
-      const profileData: ProfileCreateWithRelations = {
-        user: { connect: { id: user.id } },
+      const existing = await tx.profile.findUnique({
+        where: { userId: currentUserId },
+        select: { id: true, userId: true },
+      });
+
+      // ---- common base fields ----
+      const baseData = {
         bio: dto.bio ?? null,
         imageUrl: dto.imageUrl ?? null,
         instagramHandler: dto.instagramHandler ?? null,
@@ -67,88 +73,30 @@ export class ProfileService {
         suspend: false,
       };
 
-      switch (dto.profileType) {
-        case ProfileType.SPOTTER:
-          profileData.spotter = { create: dto.spotter ?? {} };
-          break;
+      // If profile exists => only update base fields + ensure subprofile exists (upsert)
+      if (existing) {
+        // update base
+        await tx.profile.update({
+          where: { id: existing.id },
+          data: baseData as any,
+        });
 
-        case ProfileType.OWNER:
-          profileData.owner = { create: dto.owner ?? {} };
-          break;
+        // ensure related subprofile exists (without deleting others)
+        await this.ensureSubProfileForType(tx, existing.id, dto);
 
-        case ProfileType.CONTENT_CREATOR:
-          profileData.creator = {
-            create: {
-              creatorCategory:
-                dto.creator?.creatorCategory ?? ContentCategory.PHOTOGRAPHY,
-              youtubeChanel: dto.creator?.youtubeChanel ?? null,
-              portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
-            },
-          };
-          break;
-
-        case ProfileType.PRO_BUSSINESS: {
-          if (!dto.business?.businessName || !dto.business?.location) {
-            throw new BadRequestException(
-              'businessName and location are required for BUSINESS profile',
-            );
-          }
-          profileData.business = {
-            create: {
-              businessCategory:
-                dto.business.businessCategory ??
-                BusinessCategory.Detailling_Care,
-              businessName: dto.business.businessName,
-              location: dto.business.location,
-            },
-          };
-          break;
-        }
-
-        case ProfileType.PRO_DRIVER: {
-          if (!dto.proDriver?.location) {
-            throw new BadRequestException(
-              'location is required for PRO_DRIVER profile',
-            );
-          }
-          profileData.proDriver = {
-            create: {
-              racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
-              location: dto.proDriver.location,
-            },
-          };
-          break;
-        }
-
-        case ProfileType.SIM_RACING_DRIVER: {
-          const sim = dto.simRacing ?? {};
-          profileData.simRacing = {
-            create: {
-              hardwareSetup: sim.hardwareSetup
-                ? { create: { ...sim.hardwareSetup } }
-                : undefined,
-              displayAndPcSetup: sim.displayAndPcSetup
-                ? { create: { ...sim.displayAndPcSetup } }
-                : undefined,
-              drivingAssistant: sim.drivingAssistant
-                ? { create: { ...sim.drivingAssistant } }
-                : undefined,
-              racing: sim.racing ? { create: { ...sim.racing } } : undefined,
-              setupDescription: sim.setupDescription
-                ? { create: { ...sim.setupDescription } }
-                : undefined,
-            },
-          };
-          break;
-        }
-
-        default:
-          throw new BadRequestException('Invalid profile type');
+        return tx.profile.findUnique({
+          where: { id: existing.id },
+          include: this.profileInclude(),
+        });
       }
 
+      // ---- else create new profile + create current type relation only ----
       const created = await tx.profile.create({
-        data: profileData,
+        data: {
+          user: { connect: { id: user.id } },
+          ...baseData,
+          ...(await this.buildCreateNestedForType(dto)),
+        } as any,
         include: this.profileInclude(),
       });
 
@@ -399,4 +347,205 @@ export class ProfileService {
       },
     };
   }
+
+
+  private async buildCreateNestedForType(dto: CreateProfileDto) {
+    switch (dto.profileType) {
+      case ProfileType.SPOTTER:
+        return { spotter: { create: dto.spotter ?? {} } };
+
+      case ProfileType.OWNER:
+        return { owner: { create: dto.owner ?? {} } };
+
+      case ProfileType.CONTENT_CREATOR:
+        return {
+          creator: {
+            create: {
+              creatorCategory: dto.creator?.creatorCategory ?? ContentCategory.PHOTOGRAPHY,
+              youtubeChanel: dto.creator?.youtubeChanel ?? null,
+              portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
+            },
+          },
+        };
+
+      case ProfileType.PRO_BUSSINESS: {
+        if (!dto.business?.businessName || !dto.business?.location) {
+          throw new BadRequestException('businessName and location are required for BUSINESS profile');
+        }
+        return {
+          business: {
+            create: {
+              businessCategory: dto.business.businessCategory ?? BusinessCategory.Detailling_Care,
+              businessName: dto.business.businessName,
+              location: dto.business.location,
+            },
+          },
+        };
+      }
+
+      case ProfileType.PRO_DRIVER: {
+        if (!dto.proDriver?.location) {
+          throw new BadRequestException('location is required for PRO_DRIVER profile');
+        }
+        return {
+          proDriver: {
+            create: {
+              racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+              location: dto.proDriver.location,
+            },
+          },
+        };
+      }
+
+      case ProfileType.SIM_RACING_DRIVER: {
+        const sim = dto.simRacing ?? {};
+        return {
+          simRacing: {
+            create: {
+              hardwareSetup: sim.hardwareSetup ? { create: { ...sim.hardwareSetup } } : undefined,
+              displayAndPcSetup: sim.displayAndPcSetup ? { create: { ...sim.displayAndPcSetup } } : undefined,
+              drivingAssistant: sim.drivingAssistant ? { create: { ...sim.drivingAssistant } } : undefined,
+              racing: sim.racing ? { create: { ...sim.racing } } : undefined,
+              setupDescription: sim.setupDescription ? { create: { ...sim.setupDescription } } : undefined,
+            },
+          },
+        };
+      }
+
+      default:
+        throw new BadRequestException('Invalid profile type');
+    }
+  }
+
+  private async ensureSubProfileForType(tx: any, profileId: string, dto: CreateProfileDto) {
+    switch (dto.profileType) {
+      case ProfileType.SPOTTER:
+        await tx.spotterProfile.upsert({
+          where: { profileId },
+          update: { ...(dto.spotter ?? {}) },
+          create: { profileId, ...(dto.spotter ?? {}) },
+        });
+        break;
+
+      case ProfileType.OWNER:
+        await tx.ownerProfile.upsert({
+          where: { profileId },
+          update: { ...(dto.owner ?? {}) },
+          create: { profileId, ...(dto.owner ?? {}) },
+        });
+        break;
+
+      case ProfileType.CONTENT_CREATOR:
+        await tx.contentCreatorProfile.upsert({
+          where: { profileId },
+          update: {
+            creatorCategory: (dto.creator?.creatorCategory as any) ?? undefined,
+            youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
+            portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
+          },
+          create: {
+            profileId,
+            creatorCategory: (dto.creator?.creatorCategory as any) ?? ContentCategory.PHOTOGRAPHY,
+            youtubeChanel: dto.creator?.youtubeChanel ?? null,
+            portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
+          },
+        });
+        break;
+
+      case ProfileType.PRO_BUSSINESS: {
+        if (!dto.business?.businessName || !dto.business?.location) {
+          throw new BadRequestException('businessName and location are required for BUSINESS profile');
+        }
+        await tx.businessProfile.upsert({
+          where: { profileId },
+          update: {
+            businessCategory: (dto.business.businessCategory as any) ?? undefined,
+            businessName: dto.business.businessName,
+            location: dto.business.location,
+          },
+          create: {
+            profileId,
+            businessCategory: (dto.business.businessCategory as any) ?? BusinessCategory.Detailling_Care,
+            businessName: dto.business.businessName,
+            location: dto.business.location,
+          },
+        });
+        break;
+      }
+
+      case ProfileType.PRO_DRIVER: {
+        if (!dto.proDriver?.location) {
+          throw new BadRequestException('location is required for PRO_DRIVER profile');
+        }
+        await tx.proDriverProfile.upsert({
+          where: { profileId },
+          update: {
+            racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
+            location: dto.proDriver.location,
+          },
+          create: {
+            profileId,
+            racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+            location: dto.proDriver.location,
+          },
+        });
+        break;
+      }
+
+      case ProfileType.SIM_RACING_DRIVER: {
+        const sim = await tx.simRacingProfile.upsert({
+          where: { profileId },
+          update: {},
+          create: { profileId },
+        });
+
+        const payload = dto.simRacing;
+
+        if (payload?.hardwareSetup) {
+          await tx.hardwareSetup.upsert({
+            where: { simRacingId: sim.id },
+            update: { ...payload.hardwareSetup },
+            create: { simRacingId: sim.id, ...payload.hardwareSetup },
+          });
+        }
+
+        if (payload?.displayAndPcSetup) {
+          await tx.displayAndPcSetup.upsert({
+            where: { simRacingId: sim.id },
+            update: { ...payload.displayAndPcSetup },
+            create: { simRacingId: sim.id, ...payload.displayAndPcSetup },
+          });
+        }
+
+        if (payload?.drivingAssistant) {
+          await tx.drivingAssistant.upsert({
+            where: { simRacingId: sim.id },
+            update: { ...payload.drivingAssistant },
+            create: { simRacingId: sim.id, ...payload.drivingAssistant },
+          });
+        }
+
+        if (payload?.racing) {
+          await tx.racing.upsert({
+            where: { simRacingId: sim.id },
+            update: { ...payload.racing },
+            create: { simRacingId: sim.id, ...payload.racing },
+          });
+        }
+
+        if (payload?.setupDescription) {
+          await tx.setupDescriptionPhoto.upsert({
+            where: { simRacingId: sim.id },
+            update: { ...payload.setupDescription },
+            create: { simRacingId: sim.id, ...payload.setupDescription },
+          });
+        }
+        break;
+      }
+
+      default:
+        throw new BadRequestException('Invalid profile type');
+    }
+  }
+
 }
