@@ -401,6 +401,7 @@ export class AuthService {
         updatedAt: true,
 
         profile: {
+          
         },
       },
     });
