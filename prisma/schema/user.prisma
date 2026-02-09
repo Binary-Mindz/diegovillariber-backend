@@ -58,9 +58,6 @@ model User {
   ambassadorPrograms AmbassadorProgram?
 
   battleVotes BattleVote[]
-
-  eventParticipants EventParticipant[]
-
   challengeSubmissions ChallengeSubmission[]
   xposts               XPost[]
 }
