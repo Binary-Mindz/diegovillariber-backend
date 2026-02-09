@@ -45,8 +45,6 @@ type ProfileCreateWithRelations = Prisma.ProfileCreateInput & {
 @Injectable()
 export class ProfileService {
   constructor(private prisma: PrismaService) { }
-
-  // ---------- CREATE ----------
   async createProfile(currentUserId: string, dto: CreateProfileDto) {
     assertPayloadMatchesType(dto);
 
@@ -62,7 +60,6 @@ export class ProfileService {
         select: { id: true, userId: true },
       });
 
-      // ---- common base fields ----
       const baseData = {
         bio: dto.bio ?? null,
         imageUrl: dto.imageUrl ?? null,
@@ -73,15 +70,13 @@ export class ProfileService {
         suspend: false,
       };
 
-      // If profile exists => only update base fields + ensure subprofile exists (upsert)
       if (existing) {
-        // update base
         await tx.profile.update({
           where: { id: existing.id },
           data: baseData as any,
         });
 
-        // ensure related subprofile exists (without deleting others)
+
         await this.ensureSubProfileForType(tx, existing.id, dto);
 
         return tx.profile.findUnique({
@@ -90,7 +85,7 @@ export class ProfileService {
         });
       }
 
-      // ---- else create new profile + create current type relation only ----
+
       const created = await tx.profile.create({
         data: {
           user: { connect: { id: user.id } },
@@ -104,7 +99,6 @@ export class ProfileService {
     });
   }
 
-  // ---------- READ: list user profiles ----------
   async getProfilesByUserId(userId: string) {
     const profiles = await this.prisma.profile.findMany({
       where: { userId },
@@ -115,7 +109,6 @@ export class ProfileService {
     return profiles;
   }
 
-  // ---------- READ: single by profileId ----------
   async getProfileById(profileId: string) {
     const profile = await this.prisma.profile.findUnique({
       where: { id: profileId },
@@ -126,7 +119,6 @@ export class ProfileService {
     return profile;
   }
 
-  // ---------- UPDATE: base fields only (no profileType switch) ----------
   async updateProfileBase(
     profileId: string,
     currentUserId: string,
@@ -152,7 +144,6 @@ export class ProfileService {
     });
   }
 
-  // ---------- CHANGE TYPE: profileType change + create new subprofile + upsert sim nested ----------
   async changeProfileType(
     profileId: string,
     currentUserId: string,
