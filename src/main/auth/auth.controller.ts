@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Req, Get } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -8,7 +8,7 @@ import { LoginDto } from './dto/login.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
@@ -65,6 +65,19 @@ export class AuthController {
       dto.currentPassword,
       dto.newPassword,
     );
+  }
+
+  @Get('user/:id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get user by userId' })
+  @ApiParam({ name: 'id', type: String, required: true })
+  @ApiResponse({ status: 200, description: 'User retrieved successfully' })
+  async getUserById(@Param('id') id: string) {
+    const user = await this.auth.getUserById(id);
+    return {
+      success: true,
+      data: user,
+    };
   }
 
   @ApiBearerAuth()
