@@ -143,11 +143,6 @@ export type EnginePower = Prisma.EnginePowerModel
  */
 export type Event = Prisma.EventModel
 /**
- * Model EventParticipant
- * 
- */
-export type EventParticipant = Prisma.EventParticipantModel
-/**
  * Model FileInstance
  * 
  */
