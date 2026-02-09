@@ -5,11 +5,9 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './main/user/user.module';
 import { PostsModule } from './main/posts/posts.module';
 import { ProProfileModule } from './main/pro-profile/pro-profile.module';
-import { BattleModule } from './main/battle/battle.module';
 import { AdminModule } from './main/admin/admin.module';
-import { EventModule } from './main/event/event.module';
-import { ChallengeModule } from './main/challenge/challenge.module';
 import { ProductModule } from './main/product/product.module';
+import { ProgramModule } from './main/program/program.module';
 
 @Module({
   imports: [
@@ -19,9 +17,7 @@ import { ProductModule } from './main/product/product.module';
     UserModule,
     PostsModule,
     ProProfileModule,
-    BattleModule,
-    EventModule,
-    ChallengeModule,
+    ProgramModule,
     ProductModule,
     AdminModule
   ],
