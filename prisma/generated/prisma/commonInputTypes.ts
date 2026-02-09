@@ -297,11 +297,28 @@ export type BoolWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
 }
 
+export type EnumTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTypeFilter<$PrismaModel> | $Enums.Type
+}
+
 export type EnumBusinessCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel>
   notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumBusinessCategoryFilter<$PrismaModel> | $Enums.BusinessCategory
+}
+
+export type EnumTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTypeWithAggregatesFilter<$PrismaModel> | $Enums.Type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTypeFilter<$PrismaModel>
 }
 
 export type EnumBusinessCategoryWithAggregatesFilter<$PrismaModel = never> = {
@@ -671,13 +688,6 @@ export type EnumPreferenceNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel> | $Enums.Preference | null
 }
 
-export type EnumTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTypeFilter<$PrismaModel> | $Enums.Type
-}
-
 export type EnumAccountTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AccountType | Prisma.EnumAccountTypeFieldRefInput<$PrismaModel>
   in?: $Enums.AccountType[] | Prisma.ListEnumAccountTypeFieldRefInput<$PrismaModel>
@@ -696,16 +706,6 @@ export type EnumPreferenceNullableWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel>
-}
-
-export type EnumTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTypeWithAggregatesFilter<$PrismaModel> | $Enums.Type
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTypeFilter<$PrismaModel>
 }
 
 export type EnumReportTypeFilter<$PrismaModel = never> = {
@@ -1156,11 +1156,28 @@ export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
 }
 
+export type NestedEnumTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTypeFilter<$PrismaModel> | $Enums.Type
+}
+
 export type NestedEnumBusinessCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.BusinessCategory | Prisma.EnumBusinessCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel>
   notIn?: $Enums.BusinessCategory[] | Prisma.ListEnumBusinessCategoryFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumBusinessCategoryFilter<$PrismaModel> | $Enums.BusinessCategory
+}
+
+export type NestedEnumTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTypeWithAggregatesFilter<$PrismaModel> | $Enums.Type
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumBusinessCategoryWithAggregatesFilter<$PrismaModel = never> = {
@@ -1530,13 +1547,6 @@ export type NestedEnumPreferenceNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel> | $Enums.Preference | null
 }
 
-export type NestedEnumTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTypeFilter<$PrismaModel> | $Enums.Type
-}
-
 export type NestedEnumAccountTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.AccountType | Prisma.EnumAccountTypeFieldRefInput<$PrismaModel>
   in?: $Enums.AccountType[] | Prisma.ListEnumAccountTypeFieldRefInput<$PrismaModel>
@@ -1555,16 +1565,6 @@ export type NestedEnumPreferenceNullableWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPreferenceNullableFilter<$PrismaModel>
-}
-
-export type NestedEnumTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTypeWithAggregatesFilter<$PrismaModel> | $Enums.Type
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumReportTypeFilter<$PrismaModel = never> = {

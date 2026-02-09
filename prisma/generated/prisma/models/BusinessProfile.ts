@@ -27,6 +27,7 @@ export type AggregateBusinessProfile = {
 export type BusinessProfileMinAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   businessCategory: $Enums.BusinessCategory | null
   businessName: string | null
   location: string | null
@@ -35,6 +36,7 @@ export type BusinessProfileMinAggregateOutputType = {
 export type BusinessProfileMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   businessCategory: $Enums.BusinessCategory | null
   businessName: string | null
   location: string | null
@@ -43,6 +45,7 @@ export type BusinessProfileMaxAggregateOutputType = {
 export type BusinessProfileCountAggregateOutputType = {
   id: number
   profileId: number
+  profileType: number
   businessCategory: number
   businessName: number
   location: number
@@ -53,6 +56,7 @@ export type BusinessProfileCountAggregateOutputType = {
 export type BusinessProfileMinAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   businessCategory?: true
   businessName?: true
   location?: true
@@ -61,6 +65,7 @@ export type BusinessProfileMinAggregateInputType = {
 export type BusinessProfileMaxAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   businessCategory?: true
   businessName?: true
   location?: true
@@ -69,6 +74,7 @@ export type BusinessProfileMaxAggregateInputType = {
 export type BusinessProfileCountAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   businessCategory?: true
   businessName?: true
   location?: true
@@ -150,6 +156,7 @@ export type BusinessProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 export type BusinessProfileGroupByOutputType = {
   id: string
   profileId: string
+  profileType: $Enums.Type
   businessCategory: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -179,6 +186,7 @@ export type BusinessProfileWhereInput = {
   NOT?: Prisma.BusinessProfileWhereInput | Prisma.BusinessProfileWhereInput[]
   id?: Prisma.UuidFilter<"BusinessProfile"> | string
   profileId?: Prisma.UuidFilter<"BusinessProfile"> | string
+  profileType?: Prisma.EnumTypeFilter<"BusinessProfile"> | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFilter<"BusinessProfile"> | $Enums.BusinessCategory
   businessName?: Prisma.StringFilter<"BusinessProfile"> | string
   location?: Prisma.StringFilter<"BusinessProfile"> | string
@@ -188,6 +196,7 @@ export type BusinessProfileWhereInput = {
 export type BusinessProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   businessCategory?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -200,6 +209,7 @@ export type BusinessProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.BusinessProfileWhereInput | Prisma.BusinessProfileWhereInput[]
   OR?: Prisma.BusinessProfileWhereInput[]
   NOT?: Prisma.BusinessProfileWhereInput | Prisma.BusinessProfileWhereInput[]
+  profileType?: Prisma.EnumTypeFilter<"BusinessProfile"> | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFilter<"BusinessProfile"> | $Enums.BusinessCategory
   businessName?: Prisma.StringFilter<"BusinessProfile"> | string
   location?: Prisma.StringFilter<"BusinessProfile"> | string
@@ -209,6 +219,7 @@ export type BusinessProfileWhereUniqueInput = Prisma.AtLeast<{
 export type BusinessProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   businessCategory?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -223,6 +234,7 @@ export type BusinessProfileScalarWhereWithAggregatesInput = {
   NOT?: Prisma.BusinessProfileScalarWhereWithAggregatesInput | Prisma.BusinessProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"BusinessProfile"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"BusinessProfile"> | string
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"BusinessProfile"> | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryWithAggregatesFilter<"BusinessProfile"> | $Enums.BusinessCategory
   businessName?: Prisma.StringWithAggregatesFilter<"BusinessProfile"> | string
   location?: Prisma.StringWithAggregatesFilter<"BusinessProfile"> | string
@@ -230,6 +242,7 @@ export type BusinessProfileScalarWhereWithAggregatesInput = {
 
 export type BusinessProfileCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   businessCategory?: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -239,6 +252,7 @@ export type BusinessProfileCreateInput = {
 export type BusinessProfileUncheckedCreateInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   businessCategory?: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -246,6 +260,7 @@ export type BusinessProfileUncheckedCreateInput = {
 
 export type BusinessProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -255,6 +270,7 @@ export type BusinessProfileUpdateInput = {
 export type BusinessProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -263,6 +279,7 @@ export type BusinessProfileUncheckedUpdateInput = {
 export type BusinessProfileCreateManyInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   businessCategory?: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -270,6 +287,7 @@ export type BusinessProfileCreateManyInput = {
 
 export type BusinessProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -278,6 +296,7 @@ export type BusinessProfileUpdateManyMutationInput = {
 export type BusinessProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -286,6 +305,7 @@ export type BusinessProfileUncheckedUpdateManyInput = {
 export type BusinessProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   businessCategory?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -294,6 +314,7 @@ export type BusinessProfileCountOrderByAggregateInput = {
 export type BusinessProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   businessCategory?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -302,6 +323,7 @@ export type BusinessProfileMaxOrderByAggregateInput = {
 export type BusinessProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   businessCategory?: Prisma.SortOrder
   businessName?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -310,6 +332,10 @@ export type BusinessProfileMinOrderByAggregateInput = {
 export type BusinessProfileNullableScalarRelationFilter = {
   is?: Prisma.BusinessProfileWhereInput | null
   isNot?: Prisma.BusinessProfileWhereInput | null
+}
+
+export type EnumTypeFieldUpdateOperationsInput = {
+  set?: $Enums.Type
 }
 
 export type EnumBusinessCategoryFieldUpdateOperationsInput = {
@@ -350,6 +376,7 @@ export type BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 
 export type BusinessProfileCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   businessCategory?: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -357,6 +384,7 @@ export type BusinessProfileCreateWithoutProfileInput = {
 
 export type BusinessProfileUncheckedCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   businessCategory?: $Enums.BusinessCategory
   businessName: string
   location: string
@@ -380,6 +408,7 @@ export type BusinessProfileUpdateToOneWithWhereWithoutProfileInput = {
 
 export type BusinessProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -387,6 +416,7 @@ export type BusinessProfileUpdateWithoutProfileInput = {
 
 export type BusinessProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   businessCategory?: Prisma.EnumBusinessCategoryFieldUpdateOperationsInput | $Enums.BusinessCategory
   businessName?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
@@ -397,6 +427,7 @@ export type BusinessProfileUncheckedUpdateWithoutProfileInput = {
 export type BusinessProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   businessCategory?: boolean
   businessName?: boolean
   location?: boolean
@@ -406,6 +437,7 @@ export type BusinessProfileSelect<ExtArgs extends runtime.Types.Extensions.Inter
 export type BusinessProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   businessCategory?: boolean
   businessName?: boolean
   location?: boolean
@@ -415,6 +447,7 @@ export type BusinessProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
 export type BusinessProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   businessCategory?: boolean
   businessName?: boolean
   location?: boolean
@@ -424,12 +457,13 @@ export type BusinessProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
 export type BusinessProfileSelectScalar = {
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   businessCategory?: boolean
   businessName?: boolean
   location?: boolean
 }
 
-export type BusinessProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "businessCategory" | "businessName" | "location", ExtArgs["result"]["businessProfile"]>
+export type BusinessProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "profileType" | "businessCategory" | "businessName" | "location", ExtArgs["result"]["businessProfile"]>
 export type BusinessProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -448,6 +482,7 @@ export type $BusinessProfilePayload<ExtArgs extends runtime.Types.Extensions.Int
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
+    profileType: $Enums.Type
     businessCategory: $Enums.BusinessCategory
     businessName: string
     location: string
@@ -877,6 +912,7 @@ export interface Prisma__BusinessProfileClient<T, Null = never, ExtArgs extends 
 export interface BusinessProfileFieldRefs {
   readonly id: Prisma.FieldRef<"BusinessProfile", 'String'>
   readonly profileId: Prisma.FieldRef<"BusinessProfile", 'String'>
+  readonly profileType: Prisma.FieldRef<"BusinessProfile", 'Type'>
   readonly businessCategory: Prisma.FieldRef<"BusinessProfile", 'BusinessCategory'>
   readonly businessName: Prisma.FieldRef<"BusinessProfile", 'String'>
   readonly location: Prisma.FieldRef<"BusinessProfile", 'String'>

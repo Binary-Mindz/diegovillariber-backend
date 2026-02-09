@@ -27,6 +27,7 @@ export type AggregateSimRacingProfile = {
 export type SimRacingProfileMinAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -34,6 +35,7 @@ export type SimRacingProfileMinAggregateOutputType = {
 export type SimRacingProfileMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -41,6 +43,7 @@ export type SimRacingProfileMaxAggregateOutputType = {
 export type SimRacingProfileCountAggregateOutputType = {
   id: number
   profileId: number
+  profileType: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -50,6 +53,7 @@ export type SimRacingProfileCountAggregateOutputType = {
 export type SimRacingProfileMinAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -57,6 +61,7 @@ export type SimRacingProfileMinAggregateInputType = {
 export type SimRacingProfileMaxAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -64,6 +69,7 @@ export type SimRacingProfileMaxAggregateInputType = {
 export type SimRacingProfileCountAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -144,6 +150,7 @@ export type SimRacingProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type SimRacingProfileGroupByOutputType = {
   id: string
   profileId: string
+  profileType: $Enums.Type
   createdAt: Date
   updatedAt: Date
   _count: SimRacingProfileCountAggregateOutputType | null
@@ -172,6 +179,7 @@ export type SimRacingProfileWhereInput = {
   NOT?: Prisma.SimRacingProfileWhereInput | Prisma.SimRacingProfileWhereInput[]
   id?: Prisma.UuidFilter<"SimRacingProfile"> | string
   profileId?: Prisma.UuidFilter<"SimRacingProfile"> | string
+  profileType?: Prisma.EnumTypeFilter<"SimRacingProfile"> | $Enums.Type
   createdAt?: Prisma.DateTimeFilter<"SimRacingProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SimRacingProfile"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -185,6 +193,7 @@ export type SimRacingProfileWhereInput = {
 export type SimRacingProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
@@ -201,6 +210,7 @@ export type SimRacingProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SimRacingProfileWhereInput | Prisma.SimRacingProfileWhereInput[]
   OR?: Prisma.SimRacingProfileWhereInput[]
   NOT?: Prisma.SimRacingProfileWhereInput | Prisma.SimRacingProfileWhereInput[]
+  profileType?: Prisma.EnumTypeFilter<"SimRacingProfile"> | $Enums.Type
   createdAt?: Prisma.DateTimeFilter<"SimRacingProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SimRacingProfile"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -214,6 +224,7 @@ export type SimRacingProfileWhereUniqueInput = Prisma.AtLeast<{
 export type SimRacingProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SimRacingProfileCountOrderByAggregateInput
@@ -227,12 +238,14 @@ export type SimRacingProfileScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SimRacingProfileScalarWhereWithAggregatesInput | Prisma.SimRacingProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"SimRacingProfile"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"SimRacingProfile"> | string
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"SimRacingProfile"> | $Enums.Type
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SimRacingProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SimRacingProfile"> | Date | string
 }
 
 export type SimRacingProfileCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -246,6 +259,7 @@ export type SimRacingProfileCreateInput = {
 export type SimRacingProfileUncheckedCreateInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -257,6 +271,7 @@ export type SimRacingProfileUncheckedCreateInput = {
 
 export type SimRacingProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -270,6 +285,7 @@ export type SimRacingProfileUpdateInput = {
 export type SimRacingProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -282,12 +298,14 @@ export type SimRacingProfileUncheckedUpdateInput = {
 export type SimRacingProfileCreateManyInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SimRacingProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -295,6 +313,7 @@ export type SimRacingProfileUpdateManyMutationInput = {
 export type SimRacingProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -312,6 +331,7 @@ export type SimRacingProfileNullableScalarRelationFilter = {
 export type SimRacingProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -319,6 +339,7 @@ export type SimRacingProfileCountOrderByAggregateInput = {
 export type SimRacingProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -326,6 +347,7 @@ export type SimRacingProfileMaxOrderByAggregateInput = {
 export type SimRacingProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -434,6 +456,7 @@ export type SimRacingProfileUpdateOneRequiredWithoutSetupDescriptionNestedInput 
 
 export type SimRacingProfileCreateWithoutDisplayAndPcSetupInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -446,6 +469,7 @@ export type SimRacingProfileCreateWithoutDisplayAndPcSetupInput = {
 export type SimRacingProfileUncheckedCreateWithoutDisplayAndPcSetupInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -472,6 +496,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutDisplayAndPcSetupInput = 
 
 export type SimRacingProfileUpdateWithoutDisplayAndPcSetupInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -484,6 +509,7 @@ export type SimRacingProfileUpdateWithoutDisplayAndPcSetupInput = {
 export type SimRacingProfileUncheckedUpdateWithoutDisplayAndPcSetupInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -494,6 +520,7 @@ export type SimRacingProfileUncheckedUpdateWithoutDisplayAndPcSetupInput = {
 
 export type SimRacingProfileCreateWithoutDrivingAssistantInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -506,6 +533,7 @@ export type SimRacingProfileCreateWithoutDrivingAssistantInput = {
 export type SimRacingProfileUncheckedCreateWithoutDrivingAssistantInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -532,6 +560,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutDrivingAssistantInput = {
 
 export type SimRacingProfileUpdateWithoutDrivingAssistantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -544,6 +573,7 @@ export type SimRacingProfileUpdateWithoutDrivingAssistantInput = {
 export type SimRacingProfileUncheckedUpdateWithoutDrivingAssistantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -554,6 +584,7 @@ export type SimRacingProfileUncheckedUpdateWithoutDrivingAssistantInput = {
 
 export type SimRacingProfileCreateWithoutHardwareSetupInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -566,6 +597,7 @@ export type SimRacingProfileCreateWithoutHardwareSetupInput = {
 export type SimRacingProfileUncheckedCreateWithoutHardwareSetupInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   displayAndPcSetup?: Prisma.DisplayAndPcSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -592,6 +624,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutHardwareSetupInput = {
 
 export type SimRacingProfileUpdateWithoutHardwareSetupInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -604,6 +637,7 @@ export type SimRacingProfileUpdateWithoutHardwareSetupInput = {
 export type SimRacingProfileUncheckedUpdateWithoutHardwareSetupInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   displayAndPcSetup?: Prisma.DisplayAndPcSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -614,6 +648,7 @@ export type SimRacingProfileUncheckedUpdateWithoutHardwareSetupInput = {
 
 export type SimRacingProfileCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupCreateNestedOneWithoutSimRacingInput
@@ -625,6 +660,7 @@ export type SimRacingProfileCreateWithoutProfileInput = {
 
 export type SimRacingProfileUncheckedCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -652,6 +688,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutProfileInput = {
 
 export type SimRacingProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUpdateOneWithoutSimRacingNestedInput
@@ -663,6 +700,7 @@ export type SimRacingProfileUpdateWithoutProfileInput = {
 
 export type SimRacingProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -674,6 +712,7 @@ export type SimRacingProfileUncheckedUpdateWithoutProfileInput = {
 
 export type SimRacingProfileCreateWithoutRacingInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -686,6 +725,7 @@ export type SimRacingProfileCreateWithoutRacingInput = {
 export type SimRacingProfileUncheckedCreateWithoutRacingInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -712,6 +752,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutRacingInput = {
 
 export type SimRacingProfileUpdateWithoutRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -724,6 +765,7 @@ export type SimRacingProfileUpdateWithoutRacingInput = {
 export type SimRacingProfileUncheckedUpdateWithoutRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -734,6 +776,7 @@ export type SimRacingProfileUncheckedUpdateWithoutRacingInput = {
 
 export type SimRacingProfileCreateWithoutSetupDescriptionInput = {
   id?: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutSimRacingInput
@@ -746,6 +789,7 @@ export type SimRacingProfileCreateWithoutSetupDescriptionInput = {
 export type SimRacingProfileUncheckedCreateWithoutSetupDescriptionInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   createdAt?: Date | string
   updatedAt?: Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedCreateNestedOneWithoutSimRacingInput
@@ -772,6 +816,7 @@ export type SimRacingProfileUpdateToOneWithWhereWithoutSetupDescriptionInput = {
 
 export type SimRacingProfileUpdateWithoutSetupDescriptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSimRacingNestedInput
@@ -784,6 +829,7 @@ export type SimRacingProfileUpdateWithoutSetupDescriptionInput = {
 export type SimRacingProfileUncheckedUpdateWithoutSetupDescriptionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hardwareSetup?: Prisma.HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput
@@ -797,6 +843,7 @@ export type SimRacingProfileUncheckedUpdateWithoutSetupDescriptionInput = {
 export type SimRacingProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -810,6 +857,7 @@ export type SimRacingProfileSelect<ExtArgs extends runtime.Types.Extensions.Inte
 export type SimRacingProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -818,6 +866,7 @@ export type SimRacingProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
 export type SimRacingProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -826,11 +875,12 @@ export type SimRacingProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
 export type SimRacingProfileSelectScalar = {
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SimRacingProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "createdAt" | "updatedAt", ExtArgs["result"]["simRacingProfile"]>
+export type SimRacingProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "profileType" | "createdAt" | "updatedAt", ExtArgs["result"]["simRacingProfile"]>
 export type SimRacingProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   hardwareSetup?: boolean | Prisma.SimRacingProfile$hardwareSetupArgs<ExtArgs>
@@ -859,6 +909,7 @@ export type $SimRacingProfilePayload<ExtArgs extends runtime.Types.Extensions.In
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
+    profileType: $Enums.Type
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["simRacingProfile"]>
@@ -1292,6 +1343,7 @@ export interface Prisma__SimRacingProfileClient<T, Null = never, ExtArgs extends
 export interface SimRacingProfileFieldRefs {
   readonly id: Prisma.FieldRef<"SimRacingProfile", 'String'>
   readonly profileId: Prisma.FieldRef<"SimRacingProfile", 'String'>
+  readonly profileType: Prisma.FieldRef<"SimRacingProfile", 'Type'>
   readonly createdAt: Prisma.FieldRef<"SimRacingProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SimRacingProfile", 'DateTime'>
 }
