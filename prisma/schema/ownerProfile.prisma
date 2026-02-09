@@ -1,5 +1,6 @@
 model OwnerProfile {
   id        String  @id @default(uuid()) @db.Uuid
+  profileType      Type @default(OWNER)
   profileId String  @unique @db.Uuid
   profile   Profile @relation(fields: [profileId], references: [id])
 }

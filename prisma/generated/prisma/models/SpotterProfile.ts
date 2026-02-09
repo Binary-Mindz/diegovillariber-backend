@@ -26,16 +26,19 @@ export type AggregateSpotterProfile = {
 
 export type SpotterProfileMinAggregateOutputType = {
   id: string | null
+  profileType: $Enums.Type | null
   profileId: string | null
 }
 
 export type SpotterProfileMaxAggregateOutputType = {
   id: string | null
+  profileType: $Enums.Type | null
   profileId: string | null
 }
 
 export type SpotterProfileCountAggregateOutputType = {
   id: number
+  profileType: number
   profileId: number
   _all: number
 }
@@ -43,16 +46,19 @@ export type SpotterProfileCountAggregateOutputType = {
 
 export type SpotterProfileMinAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
 }
 
 export type SpotterProfileMaxAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
 }
 
 export type SpotterProfileCountAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
   _all?: true
 }
@@ -131,6 +137,7 @@ export type SpotterProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type SpotterProfileGroupByOutputType = {
   id: string
+  profileType: $Enums.Type
   profileId: string
   _count: SpotterProfileCountAggregateOutputType | null
   _min: SpotterProfileMinAggregateOutputType | null
@@ -157,12 +164,14 @@ export type SpotterProfileWhereInput = {
   OR?: Prisma.SpotterProfileWhereInput[]
   NOT?: Prisma.SpotterProfileWhereInput | Prisma.SpotterProfileWhereInput[]
   id?: Prisma.UuidFilter<"SpotterProfile"> | string
+  profileType?: Prisma.EnumTypeFilter<"SpotterProfile"> | $Enums.Type
   profileId?: Prisma.UuidFilter<"SpotterProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }
 
 export type SpotterProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
@@ -173,11 +182,13 @@ export type SpotterProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SpotterProfileWhereInput | Prisma.SpotterProfileWhereInput[]
   OR?: Prisma.SpotterProfileWhereInput[]
   NOT?: Prisma.SpotterProfileWhereInput | Prisma.SpotterProfileWhereInput[]
+  profileType?: Prisma.EnumTypeFilter<"SpotterProfile"> | $Enums.Type
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }, "id" | "profileId">
 
 export type SpotterProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   _count?: Prisma.SpotterProfileCountOrderByAggregateInput
   _max?: Prisma.SpotterProfileMaxOrderByAggregateInput
@@ -189,40 +200,48 @@ export type SpotterProfileScalarWhereWithAggregatesInput = {
   OR?: Prisma.SpotterProfileScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SpotterProfileScalarWhereWithAggregatesInput | Prisma.SpotterProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"SpotterProfile"> | string
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"SpotterProfile"> | $Enums.Type
   profileId?: Prisma.UuidWithAggregatesFilter<"SpotterProfile"> | string
 }
 
 export type SpotterProfileCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   profile: Prisma.ProfileCreateNestedOneWithoutSpotterInput
 }
 
 export type SpotterProfileUncheckedCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   profileId: string
 }
 
 export type SpotterProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSpotterNestedInput
 }
 
 export type SpotterProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type SpotterProfileCreateManyInput = {
   id?: string
+  profileType?: $Enums.Type
   profileId: string
 }
 
 export type SpotterProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 export type SpotterProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -233,16 +252,19 @@ export type SpotterProfileNullableScalarRelationFilter = {
 
 export type SpotterProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
 export type SpotterProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
 export type SpotterProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
@@ -280,10 +302,12 @@ export type SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 
 export type SpotterProfileCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
 }
 
 export type SpotterProfileUncheckedCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
 }
 
 export type SpotterProfileCreateOrConnectWithoutProfileInput = {
@@ -304,38 +328,44 @@ export type SpotterProfileUpdateToOneWithWhereWithoutProfileInput = {
 
 export type SpotterProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 export type SpotterProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 
 
 export type SpotterProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["spotterProfile"]>
 
 export type SpotterProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["spotterProfile"]>
 
 export type SpotterProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["spotterProfile"]>
 
 export type SpotterProfileSelectScalar = {
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
 }
 
-export type SpotterProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId", ExtArgs["result"]["spotterProfile"]>
+export type SpotterProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileType" | "profileId", ExtArgs["result"]["spotterProfile"]>
 export type SpotterProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -353,6 +383,7 @@ export type $SpotterProfilePayload<ExtArgs extends runtime.Types.Extensions.Inte
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    profileType: $Enums.Type
     profileId: string
   }, ExtArgs["result"]["spotterProfile"]>
   composites: {}
@@ -779,6 +810,7 @@ export interface Prisma__SpotterProfileClient<T, Null = never, ExtArgs extends r
  */
 export interface SpotterProfileFieldRefs {
   readonly id: Prisma.FieldRef<"SpotterProfile", 'String'>
+  readonly profileType: Prisma.FieldRef<"SpotterProfile", 'Type'>
   readonly profileId: Prisma.FieldRef<"SpotterProfile", 'String'>
 }
     
