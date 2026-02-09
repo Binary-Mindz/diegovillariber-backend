@@ -5190,6 +5190,7 @@ export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof
 export const BusinessProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
+  profileType: 'profileType',
   businessCategory: 'businessCategory',
   businessName: 'businessName',
   location: 'location'
@@ -5298,6 +5299,7 @@ export const ContentCreatorProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
   creatorCategory: 'creatorCategory',
+  profileType: 'profileType',
   youtubeChanel: 'youtubeChanel',
   portfolioWebsite: 'portfolioWebsite'
 } as const
@@ -5591,6 +5593,7 @@ export type OfficialPartnerScalarFieldEnum = (typeof OfficialPartnerScalarFieldE
 
 export const OwnerProfileScalarFieldEnum = {
   id: 'id',
+  profileType: 'profileType',
   profileId: 'profileId'
 } as const
 
@@ -5640,6 +5643,7 @@ export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof Post
 export const ProDriverProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
+  profileType: 'profileType',
   racingDiscipline: 'racingDiscipline',
   location: 'location'
 } as const
@@ -5675,7 +5679,6 @@ export const ProfileScalarFieldEnum = {
   instagramHandler: 'instagramHandler',
   accountType: 'accountType',
   preference: 'preference',
-  profileType: 'profileType',
   isActive: 'isActive',
   suspend: 'suspend'
 } as const
@@ -5765,6 +5768,7 @@ export type ShareScalarFieldEnum = (typeof ShareScalarFieldEnum)[keyof typeof Sh
 export const SimRacingProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
+  profileType: 'profileType',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -5774,6 +5778,7 @@ export type SimRacingProfileScalarFieldEnum = (typeof SimRacingProfileScalarFiel
 
 export const SpotterProfileScalarFieldEnum = {
   id: 'id',
+  profileType: 'profileType',
   profileId: 'profileId'
 } as const
 
@@ -6078,6 +6083,20 @@ export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Type'
+ */
+export type EnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type'>
+    
+
+
+/**
+ * Reference to a field of type 'Type[]'
+ */
+export type ListEnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type[]'>
     
 
 
@@ -6400,20 +6419,6 @@ export type EnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
  * Reference to a field of type 'AccountType[]'
  */
 export type ListEnumAccountTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountType[]'>
-    
-
-
-/**
- * Reference to a field of type 'Type'
- */
-export type EnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type'>
-    
-
-
-/**
- * Reference to a field of type 'Type[]'
- */
-export type ListEnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type[]'>
     
 
 

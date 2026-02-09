@@ -185,7 +185,7 @@ export class PostService {
         skip,
         take: limit,
         include: {
-          user: { select: { id: true, username: true, profile: {select: {imageUrl: true}} } },
+          user: { select: { id: true, username: true, profile: {select: {id:true, imageUrl: true}} } },
           hashtags: true,
         },
       }),

@@ -2,7 +2,7 @@ model SimRacingProfile {
   id        String  @id @default(uuid()) @db.Uuid
   profileId String  @unique @db.Uuid
   profile   Profile @relation(fields: [profileId], references: [id])
-
+  profileType      Type  @default(SIM_RACING_DRIVER)
   hardwareSetup     HardwareSetup?
   displayAndPcSetup DisplayAndPcSetup?
   drivingAssistant  DrivingAssistant?

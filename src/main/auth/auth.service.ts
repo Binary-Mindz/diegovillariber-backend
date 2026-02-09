@@ -12,6 +12,7 @@ import { MailService } from '../../common/mail/mail.service';
 import type { SignOptions } from 'jsonwebtoken';
 import { SignUpDto } from './dto/signup.dto';
 import { generateOtp, otpExpiry } from '@/common/utils/otp';
+import { AccountType, IsActive } from 'generated/prisma/enums';
 
 @Injectable()
 export class AuthService {
@@ -61,84 +62,143 @@ export class AuthService {
     );
   }
 
-  async signup(dto: SignUpDto) {
-    const existing = await this.prisma.user.findUnique({
-      where: { email: dto.email },
-      include: { profile: true },
+ async signup(dto: SignUpDto) {
+  const existing = await this.prisma.user.findUnique({
+    where: { email: dto.email },
+    include: { profile: true },
+  });
+
+  const otp = generateOtp(6);
+  const expires = otpExpiry(10);
+  if (existing && existing.isEmailVerified) {
+    throw new BadRequestException('Email already exists');
+  }
+
+  if (existing && !existing.isEmailVerified) {
+    await this.prisma.user.update({
+      where: { id: existing.id },
+      data: {
+        emailOtp: otp,
+        emailOtpExpiresAt: expires,
+      },
     });
 
-    const otp = generateOtp(6);
-    const expires = otpExpiry(10);
-
-    // ✅ Case 1: user exists & email already verified
-    if (existing && existing.isEmailVerified) {
-      throw new BadRequestException('Email already exists');
-    }
-
-    // 🔁 Case 2: user exists but NOT verified → resend OTP
-    if (existing && !existing.isEmailVerified) {
-      await this.prisma.user.update({
-        where: { id: existing.id },
-        data: {
-          emailOtp: otp,
-          emailOtpExpiresAt: expires,
-        },
-      });
-
-      await this.mail.sendOtpEmail(existing.email, 'Verify your email', otp);
-
-      return {
-        message: 'Email not verified. OTP resent.',
-        userId: existing.id,
-      };
-    }
-
-    // ✅ Case 3: fresh signup
-    const passwordHash = await this.hash(dto.password);
-
-    const result = await this.prisma.$transaction(async (tx) => {
-      const user = await tx.user.create({
-        data: {
-          username: dto.username,
-          email: dto.email,
-          password: passwordHash,
-          emailOtp: otp,
-          emailOtpExpiresAt: expires,
-        },
-      });
-
-      const profile = await tx.profile.create({
-        data: {
-          userId: user.id,
-          preference: dto.preference,
-          profileType: dto.profileType,
-        },
-      });
-
-      switch (dto.profileType) {
-        case 'SPOTTER':
-          await tx.spotterProfile.create({
-            data: { profileId: profile.id },
-          });
-          break;
-
-        case 'OWNER':
-          await tx.ownerProfile.create({
-            data: { profileId: profile.id },
-          });
-          break;
-      }
-
-      return user;
-    });
-
-    await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
+    await this.mail.sendOtpEmail(existing.email, 'Verify your email', otp);
 
     return {
-      message: 'Signup successful. OTP sent to email.',
-      userId: result.id,
+      message: 'Email not verified. OTP resent.',
+      userId: existing.id,
     };
   }
+
+  const passwordHash = await this.hash(dto.password);
+
+  const result = await this.prisma.$transaction(async (tx) => {
+    const user = await tx.user.create({
+      data: {
+        username: dto.username,
+        email: dto.email,
+        password: passwordHash,
+        emailOtp: otp,
+        emailOtpExpiresAt: expires,
+      },
+    });
+
+   
+    const profile = await tx.profile.create({
+      data: {
+        userId: user.id,
+        preference: dto.preference ?? null,
+        bio: (dto as any).bio ?? null,
+        imageUrl: (dto as any).imageUrl ?? null,
+        instagramHandler: (dto as any).instagramHandler ?? null,
+        accountType: (dto as any).accountType ?? AccountType.PUBLIC,
+        isActive: IsActive.ACTIVE,
+        suspend: false,
+      },
+      select: { id: true },
+    });
+
+   
+    switch (dto.profileType) {
+      case 'SPOTTER':
+        await tx.spotterProfile.create({
+          data: { profileId: profile.id }, 
+        });
+        break;
+
+      case 'OWNER':
+        await tx.ownerProfile.create({
+          data: { profileId: profile.id }, 
+        });
+        break;
+
+      case 'CONTENT_CREATOR':
+        await tx.contentCreatorProfile.create({
+          data: {
+            profileId: profile.id,
+            creatorCategory: (dto as any).creator?.creatorCategory ?? undefined,
+            youtubeChanel: (dto as any).creator?.youtubeChanel ?? undefined,
+            portfolioWebsite: (dto as any).creator?.portfolioWebsite ?? undefined,
+          },
+        });
+        break;
+
+      case 'PRO_BUSSINESS': {
+        const business = (dto as any).business;
+        if (!business?.businessName || !business?.location) {
+          throw new BadRequestException(
+            'businessName and location are required for BUSINESS profile',
+          );
+        }
+        await tx.businessProfile.create({
+          data: {
+            profileId: profile.id,
+            businessCategory: business.businessCategory ?? undefined,
+            businessName: business.businessName,
+            location: business.location,
+          },
+        });
+        break;
+      }
+
+      case 'PRO_DRIVER': {
+        const proDriver = (dto as any).proDriver;
+        if (!proDriver?.location) {
+          throw new BadRequestException(
+            'location is required for PRO_DRIVER profile',
+          );
+        }
+        await tx.proDriverProfile.create({
+          data: {
+            profileId: profile.id,
+            racingDiscipline: proDriver.racingDiscipline ?? undefined,
+            location: proDriver.location,
+          },
+        });
+        break;
+      }
+
+      case 'SIM_RACING_DRIVER':
+        await tx.simRacingProfile.create({
+          data: { profileId: profile.id },
+        });
+        break;
+
+      default:
+        throw new BadRequestException('Invalid profileType');
+    }
+
+    return user;
+  });
+
+  await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
+
+  return {
+    message: 'Signup successful. OTP sent to email.',
+    userId: result.id,
+  };
+}
 
   async verifyEmail(email: string, otp: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
@@ -197,7 +257,6 @@ export class AuthService {
       email: user.email,
     });
 
-    // store hash of refresh token
     await this.prisma.user.update({
       where: { id: user.id },
       data: { refreshTokenHash: await this.hash(refreshToken) },
@@ -287,7 +346,7 @@ export class AuthService {
         password: newHash,
         resetOtp: null,
         resetOtpExpiresAt: null,
-        refreshTokenHash: null, // force re-login everywhere
+        refreshTokenHash: null, 
       },
     });
 
