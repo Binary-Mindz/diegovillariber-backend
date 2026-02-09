@@ -8,6 +8,8 @@ import {
   HttpCode,
   HttpStatus,
   Patch,
+  ParseUUIDPipe,
+  Delete,
 } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiParam } from '@nestjs/swagger';
 import { EventService } from './event.service';
@@ -20,7 +22,7 @@ import { UpdateEventDto } from './dto/update-event.dto';
 @ApiTags('Events')
 @Controller('events')
 export class EventController {
-  constructor(private readonly eventService: EventService) {}
+  constructor(private readonly eventService: EventService) { }
 
   @Post()
   @ApiBearerAuth()
@@ -39,6 +41,7 @@ export class EventController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Get approved events' })
   async getEvents() {
     return handleRequest(
       () => this.eventService.getEvents(),
@@ -53,7 +56,7 @@ export class EventController {
   @ApiOperation({ summary: 'Update event (Owner only)' })
   async updateEvent(
     @GetUser('userId') userId: string,
-    @Param('id') eventId: string,
+    @Param('id', ParseUUIDPipe) eventId: string,
     @Body() dto: UpdateEventDto,
   ) {
     return handleRequest(
@@ -62,38 +65,19 @@ export class EventController {
     );
   }
 
-
-  @Post(':id/join')
+  @Delete(':id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  async joinEvent(
+  @ApiParam({ name: 'id', description: 'Event ID' })
+  @ApiOperation({ summary: 'Delete event (Owner only)' })
+  @HttpCode(HttpStatus.OK)
+  async deleteEvent(
     @GetUser('userId') userId: string,
-    @Param('id') eventId: string,
+    @Param('id', ParseUUIDPipe) eventId: string,
   ) {
     return handleRequest(
-      () => this.eventService.joinEvent(userId, eventId),
-      'Joined event',
-    );
-  }
-
-  @Post(':id/leave')
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  async leaveEvent(
-    @GetUser('userId') userId: string,
-    @Param('id') eventId: string,
-  ) {
-    return handleRequest(
-      () => this.eventService.leaveEvent(userId, eventId),
-      'Left event',
-    );
-  }
-
-  @Get(':id/participants')
-  async getParticipants(@Param('id') eventId: string) {
-    return handleRequest(
-      () => this.eventService.getParticipants(eventId),
-      'Participants fetched',
+      () => this.eventService.deleteEvent(userId, eventId),
+      'Event deleted successfully',
     );
   }
 }

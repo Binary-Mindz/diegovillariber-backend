@@ -12,138 +12,100 @@ import { UpdateEventDto } from './dto/update-event.dto';
 export class EventService {
   constructor(private prisma: PrismaService) {}
 
-  // CREATE EVENT
   async createEvent(userId: string, dto: CreateEventDto) {
+    const start = new Date(dto.startDate);
+    const end = new Date(dto.endDate);
+
+    if (end <= start) {
+      throw new BadRequestException('End date must be after start date');
+    }
+
     return this.prisma.event.create({
       data: {
         ownerId: userId,
-        ...dto,
+        coverImage: dto.coverImage,
+        eventTitle: dto.eventTitle,
+        description: dto.description ?? null,
+        location: dto.location ?? null,
+        websiteLink: dto.websiteLink ?? null,
+        price: dto.price,
+        eventType: dto.eventType, 
+        startDate: start,
+        endDate: end,
+  
       },
     });
   }
 
-  // GET ALL EVENTS
+
   async getEvents() {
     return this.prisma.event.findMany({
-      where: {
-        eventStatus: 'APPROVED',
-      },
+      where: { eventStatus: 'APPROVED' },
+      orderBy: { createdAt: 'desc' },
       include: {
-        owner: {
-          select: { id: true, username: true },
-        },
+        owner: { select: { id: true, username: true } },
       },
     });
   }
 
-   async updateEvent(
-    userId: string,
-    eventId: string,
-    dto: UpdateEventDto,
-  ) {
+  async updateEvent(userId: string, eventId: string, dto: UpdateEventDto) {
     const event = await this.prisma.event.findUnique({
       where: { id: eventId },
     });
 
-    if (!event) {
-      throw new NotFoundException('Event not found');
-    }
-
+    if (!event) throw new NotFoundException('Event not found');
     if (event.ownerId !== userId) {
       throw new ForbiddenException('You are not allowed to update this event');
     }
 
-    if (dto.startDate && dto.endDate && dto.endDate <= dto.startDate) {
-      throw new BadRequestException('End date must be after start date');
+    const start = dto.startDate ? new Date(dto.startDate) : new Date(event.startDate);
+    const end = dto.endDate ? new Date(dto.endDate) : new Date(event.endDate);
+
+    if (dto.startDate || dto.endDate) {
+      if (end <= start) {
+        throw new BadRequestException('End date must be after start date');
+      }
     }
+
+    const safeDto: any = { ...dto };
+    delete safeDto.eventStatus;
 
     return this.prisma.event.update({
       where: { id: eventId },
-      data: dto,
-    });
-  }
-
-
-
-  // JOIN EVENT
-  async joinEvent(userId: string, eventId: string) {
-    return this.prisma.$transaction(async (tx) => {
-      const event = await tx.event.findUnique({
-        where: { id: eventId },
-      });
-
-      if (!event) throw new NotFoundException('Event not found');
-
-      if (event.eventStatus !== 'APPROVED') {
-        throw new BadRequestException('Event is not open');
-      }
-
-      if (event.joinedCount >= event.maxParticipants) {
-        throw new BadRequestException('Event is full');
-      }
-
-      const alreadyJoined = await tx.eventParticipant.findUnique({
-        where: {
-          eventId_userId: { eventId, userId },
-        },
-      });
-
-      if (alreadyJoined) {
-        throw new BadRequestException('Already joined');
-      }
-
-      await tx.eventParticipant.create({
-        data: { eventId, userId },
-      });
-
-      await tx.event.update({
-        where: { id: eventId },
-        data: {
-          joinedCount: { increment: 1 },
-        },
-      });
-
-      return { message: 'Joined event successfully' };
-    });
-  }
-
-  // LEAVE EVENT
-  async leaveEvent(userId: string, eventId: string) {
-    return this.prisma.$transaction(async (tx) => {
-      const participant = await tx.eventParticipant.findUnique({
-        where: {
-          eventId_userId: { eventId, userId },
-        },
-      });
-
-      if (!participant) {
-        throw new NotFoundException('You are not joined');
-      }
-
-      await tx.eventParticipant.delete({
-        where: { id: participant.id },
-      });
-
-      await tx.event.update({
-        where: { id: eventId },
-        data: {
-          joinedCount: { decrement: 1 },
-        },
-      });
-
-      return { message: 'Left event successfully' };
-    });
-  }
-
-  // GET PARTICIPANTS
-  async getParticipants(eventId: string) {
-    return this.prisma.eventParticipant.findMany({
-      where: { eventId },
-      include: {
-        user: {
-          select: { id: true, username: true },
-        },
+      data: {
+        coverImage: safeDto.coverImage,
+        eventTitle: safeDto.eventTitle,
+        description:
+          safeDto.description === undefined ? undefined : safeDto.description ?? null,
+        location:
+          safeDto.location === undefined ? undefined : safeDto.location ?? null,
+        websiteLink:
+          safeDto.websiteLink === undefined ? undefined : safeDto.websiteLink ?? null,
+        price: safeDto.price,
+        eventType: safeDto.eventType,
+        startDate: safeDto.startDate ? new Date(safeDto.startDate) : undefined,
+        endDate: safeDto.endDate ? new Date(safeDto.endDate) : undefined,
       },
     });
   }
+
+  async deleteEvent(userId: string, eventId: string) {
+  const event = await this.prisma.event.findUnique({
+    where: { id: eventId },
+    select: { id: true, ownerId: true },
+  });
+
+  if (!event) throw new NotFoundException('Event not found');
+
+  if (event.ownerId !== userId) {
+    throw new ForbiddenException('You are not allowed to delete this event');
+  }
+
+  await this.prisma.event.delete({
+    where: { id: eventId },
+  });
+
+  return { message: 'Event deleted successfully' };
+}
+
 }
