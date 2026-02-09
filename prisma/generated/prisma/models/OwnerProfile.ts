@@ -26,16 +26,19 @@ export type AggregateOwnerProfile = {
 
 export type OwnerProfileMinAggregateOutputType = {
   id: string | null
+  profileType: $Enums.Type | null
   profileId: string | null
 }
 
 export type OwnerProfileMaxAggregateOutputType = {
   id: string | null
+  profileType: $Enums.Type | null
   profileId: string | null
 }
 
 export type OwnerProfileCountAggregateOutputType = {
   id: number
+  profileType: number
   profileId: number
   _all: number
 }
@@ -43,16 +46,19 @@ export type OwnerProfileCountAggregateOutputType = {
 
 export type OwnerProfileMinAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
 }
 
 export type OwnerProfileMaxAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
 }
 
 export type OwnerProfileCountAggregateInputType = {
   id?: true
+  profileType?: true
   profileId?: true
   _all?: true
 }
@@ -131,6 +137,7 @@ export type OwnerProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type OwnerProfileGroupByOutputType = {
   id: string
+  profileType: $Enums.Type
   profileId: string
   _count: OwnerProfileCountAggregateOutputType | null
   _min: OwnerProfileMinAggregateOutputType | null
@@ -157,12 +164,14 @@ export type OwnerProfileWhereInput = {
   OR?: Prisma.OwnerProfileWhereInput[]
   NOT?: Prisma.OwnerProfileWhereInput | Prisma.OwnerProfileWhereInput[]
   id?: Prisma.UuidFilter<"OwnerProfile"> | string
+  profileType?: Prisma.EnumTypeFilter<"OwnerProfile"> | $Enums.Type
   profileId?: Prisma.UuidFilter<"OwnerProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }
 
 export type OwnerProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
@@ -173,11 +182,13 @@ export type OwnerProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.OwnerProfileWhereInput | Prisma.OwnerProfileWhereInput[]
   OR?: Prisma.OwnerProfileWhereInput[]
   NOT?: Prisma.OwnerProfileWhereInput | Prisma.OwnerProfileWhereInput[]
+  profileType?: Prisma.EnumTypeFilter<"OwnerProfile"> | $Enums.Type
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }, "id" | "profileId">
 
 export type OwnerProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   _count?: Prisma.OwnerProfileCountOrderByAggregateInput
   _max?: Prisma.OwnerProfileMaxOrderByAggregateInput
@@ -189,55 +200,66 @@ export type OwnerProfileScalarWhereWithAggregatesInput = {
   OR?: Prisma.OwnerProfileScalarWhereWithAggregatesInput[]
   NOT?: Prisma.OwnerProfileScalarWhereWithAggregatesInput | Prisma.OwnerProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"OwnerProfile"> | string
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"OwnerProfile"> | $Enums.Type
   profileId?: Prisma.UuidWithAggregatesFilter<"OwnerProfile"> | string
 }
 
 export type OwnerProfileCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   profile: Prisma.ProfileCreateNestedOneWithoutOwnerInput
 }
 
 export type OwnerProfileUncheckedCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   profileId: string
 }
 
 export type OwnerProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profile?: Prisma.ProfileUpdateOneRequiredWithoutOwnerNestedInput
 }
 
 export type OwnerProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OwnerProfileCreateManyInput = {
   id?: string
+  profileType?: $Enums.Type
   profileId: string
 }
 
 export type OwnerProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 export type OwnerProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OwnerProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
 export type OwnerProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
 export type OwnerProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
 }
 
@@ -280,10 +302,12 @@ export type OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 
 export type OwnerProfileCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
 }
 
 export type OwnerProfileUncheckedCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
 }
 
 export type OwnerProfileCreateOrConnectWithoutProfileInput = {
@@ -304,38 +328,44 @@ export type OwnerProfileUpdateToOneWithWhereWithoutProfileInput = {
 
 export type OwnerProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 export type OwnerProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
 }
 
 
 
 export type OwnerProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ownerProfile"]>
 
 export type OwnerProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ownerProfile"]>
 
 export type OwnerProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["ownerProfile"]>
 
 export type OwnerProfileSelectScalar = {
   id?: boolean
+  profileType?: boolean
   profileId?: boolean
 }
 
-export type OwnerProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId", ExtArgs["result"]["ownerProfile"]>
+export type OwnerProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileType" | "profileId", ExtArgs["result"]["ownerProfile"]>
 export type OwnerProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -353,6 +383,7 @@ export type $OwnerProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    profileType: $Enums.Type
     profileId: string
   }, ExtArgs["result"]["ownerProfile"]>
   composites: {}
@@ -779,6 +810,7 @@ export interface Prisma__OwnerProfileClient<T, Null = never, ExtArgs extends run
  */
 export interface OwnerProfileFieldRefs {
   readonly id: Prisma.FieldRef<"OwnerProfile", 'String'>
+  readonly profileType: Prisma.FieldRef<"OwnerProfile", 'Type'>
   readonly profileId: Prisma.FieldRef<"OwnerProfile", 'String'>
 }
     

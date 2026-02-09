@@ -27,6 +27,7 @@ export type AggregateProDriverProfile = {
 export type ProDriverProfileMinAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   racingDiscipline: $Enums.RacingType | null
   location: string | null
 }
@@ -34,6 +35,7 @@ export type ProDriverProfileMinAggregateOutputType = {
 export type ProDriverProfileMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
+  profileType: $Enums.Type | null
   racingDiscipline: $Enums.RacingType | null
   location: string | null
 }
@@ -41,6 +43,7 @@ export type ProDriverProfileMaxAggregateOutputType = {
 export type ProDriverProfileCountAggregateOutputType = {
   id: number
   profileId: number
+  profileType: number
   racingDiscipline: number
   location: number
   _all: number
@@ -50,6 +53,7 @@ export type ProDriverProfileCountAggregateOutputType = {
 export type ProDriverProfileMinAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   racingDiscipline?: true
   location?: true
 }
@@ -57,6 +61,7 @@ export type ProDriverProfileMinAggregateInputType = {
 export type ProDriverProfileMaxAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   racingDiscipline?: true
   location?: true
 }
@@ -64,6 +69,7 @@ export type ProDriverProfileMaxAggregateInputType = {
 export type ProDriverProfileCountAggregateInputType = {
   id?: true
   profileId?: true
+  profileType?: true
   racingDiscipline?: true
   location?: true
   _all?: true
@@ -144,6 +150,7 @@ export type ProDriverProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type ProDriverProfileGroupByOutputType = {
   id: string
   profileId: string
+  profileType: $Enums.Type
   racingDiscipline: $Enums.RacingType
   location: string
   _count: ProDriverProfileCountAggregateOutputType | null
@@ -172,6 +179,7 @@ export type ProDriverProfileWhereInput = {
   NOT?: Prisma.ProDriverProfileWhereInput | Prisma.ProDriverProfileWhereInput[]
   id?: Prisma.UuidFilter<"ProDriverProfile"> | string
   profileId?: Prisma.UuidFilter<"ProDriverProfile"> | string
+  profileType?: Prisma.EnumTypeFilter<"ProDriverProfile"> | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFilter<"ProDriverProfile"> | $Enums.RacingType
   location?: Prisma.StringFilter<"ProDriverProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -180,6 +188,7 @@ export type ProDriverProfileWhereInput = {
 export type ProDriverProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   racingDiscipline?: Prisma.SortOrder
   location?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
@@ -191,6 +200,7 @@ export type ProDriverProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProDriverProfileWhereInput | Prisma.ProDriverProfileWhereInput[]
   OR?: Prisma.ProDriverProfileWhereInput[]
   NOT?: Prisma.ProDriverProfileWhereInput | Prisma.ProDriverProfileWhereInput[]
+  profileType?: Prisma.EnumTypeFilter<"ProDriverProfile"> | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFilter<"ProDriverProfile"> | $Enums.RacingType
   location?: Prisma.StringFilter<"ProDriverProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -199,6 +209,7 @@ export type ProDriverProfileWhereUniqueInput = Prisma.AtLeast<{
 export type ProDriverProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   racingDiscipline?: Prisma.SortOrder
   location?: Prisma.SortOrder
   _count?: Prisma.ProDriverProfileCountOrderByAggregateInput
@@ -212,12 +223,14 @@ export type ProDriverProfileScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProDriverProfileScalarWhereWithAggregatesInput | Prisma.ProDriverProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"ProDriverProfile"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"ProDriverProfile"> | string
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"ProDriverProfile"> | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeWithAggregatesFilter<"ProDriverProfile"> | $Enums.RacingType
   location?: Prisma.StringWithAggregatesFilter<"ProDriverProfile"> | string
 }
 
 export type ProDriverProfileCreateInput = {
   id?: string
+  profileType?: $Enums.Type
   racingDiscipline?: $Enums.RacingType
   location: string
   profile: Prisma.ProfileCreateNestedOneWithoutProDriverInput
@@ -226,12 +239,14 @@ export type ProDriverProfileCreateInput = {
 export type ProDriverProfileUncheckedCreateInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   racingDiscipline?: $Enums.RacingType
   location: string
 }
 
 export type ProDriverProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutProDriverNestedInput
@@ -240,6 +255,7 @@ export type ProDriverProfileUpdateInput = {
 export type ProDriverProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -247,12 +263,14 @@ export type ProDriverProfileUncheckedUpdateInput = {
 export type ProDriverProfileCreateManyInput = {
   id?: string
   profileId: string
+  profileType?: $Enums.Type
   racingDiscipline?: $Enums.RacingType
   location: string
 }
 
 export type ProDriverProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -260,6 +278,7 @@ export type ProDriverProfileUpdateManyMutationInput = {
 export type ProDriverProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -267,6 +286,7 @@ export type ProDriverProfileUncheckedUpdateManyInput = {
 export type ProDriverProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   racingDiscipline?: Prisma.SortOrder
   location?: Prisma.SortOrder
 }
@@ -274,6 +294,7 @@ export type ProDriverProfileCountOrderByAggregateInput = {
 export type ProDriverProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   racingDiscipline?: Prisma.SortOrder
   location?: Prisma.SortOrder
 }
@@ -281,6 +302,7 @@ export type ProDriverProfileMaxOrderByAggregateInput = {
 export type ProDriverProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   racingDiscipline?: Prisma.SortOrder
   location?: Prisma.SortOrder
 }
@@ -328,12 +350,14 @@ export type ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 
 export type ProDriverProfileCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   racingDiscipline?: $Enums.RacingType
   location: string
 }
 
 export type ProDriverProfileUncheckedCreateWithoutProfileInput = {
   id?: string
+  profileType?: $Enums.Type
   racingDiscipline?: $Enums.RacingType
   location: string
 }
@@ -356,12 +380,14 @@ export type ProDriverProfileUpdateToOneWithWhereWithoutProfileInput = {
 
 export type ProDriverProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProDriverProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -371,6 +397,7 @@ export type ProDriverProfileUncheckedUpdateWithoutProfileInput = {
 export type ProDriverProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   racingDiscipline?: boolean
   location?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -379,6 +406,7 @@ export type ProDriverProfileSelect<ExtArgs extends runtime.Types.Extensions.Inte
 export type ProDriverProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   racingDiscipline?: boolean
   location?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -387,6 +415,7 @@ export type ProDriverProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
 export type ProDriverProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   racingDiscipline?: boolean
   location?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -395,11 +424,12 @@ export type ProDriverProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
 export type ProDriverProfileSelectScalar = {
   id?: boolean
   profileId?: boolean
+  profileType?: boolean
   racingDiscipline?: boolean
   location?: boolean
 }
 
-export type ProDriverProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "racingDiscipline" | "location", ExtArgs["result"]["proDriverProfile"]>
+export type ProDriverProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "profileType" | "racingDiscipline" | "location", ExtArgs["result"]["proDriverProfile"]>
 export type ProDriverProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -418,6 +448,7 @@ export type $ProDriverProfilePayload<ExtArgs extends runtime.Types.Extensions.In
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
+    profileType: $Enums.Type
     racingDiscipline: $Enums.RacingType
     location: string
   }, ExtArgs["result"]["proDriverProfile"]>
@@ -846,6 +877,7 @@ export interface Prisma__ProDriverProfileClient<T, Null = never, ExtArgs extends
 export interface ProDriverProfileFieldRefs {
   readonly id: Prisma.FieldRef<"ProDriverProfile", 'String'>
   readonly profileId: Prisma.FieldRef<"ProDriverProfile", 'String'>
+  readonly profileType: Prisma.FieldRef<"ProDriverProfile", 'Type'>
   readonly racingDiscipline: Prisma.FieldRef<"ProDriverProfile", 'RacingType'>
   readonly location: Prisma.FieldRef<"ProDriverProfile", 'String'>
 }

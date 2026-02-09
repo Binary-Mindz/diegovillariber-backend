@@ -3,6 +3,7 @@ model ContentCreatorProfile {
   profileId        String          @unique @db.Uuid
   profile          Profile         @relation(fields: [profileId], references: [id])
   creatorCategory  ContentCategory @default(PHOTOGRAPHY)
+  profileType      Type  @default(CONTENT_CREATOR)
   youtubeChanel    String?
   portfolioWebsite String?
 }

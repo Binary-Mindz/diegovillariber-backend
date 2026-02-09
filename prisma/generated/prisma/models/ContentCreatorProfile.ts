@@ -28,6 +28,7 @@ export type ContentCreatorProfileMinAggregateOutputType = {
   id: string | null
   profileId: string | null
   creatorCategory: $Enums.ContentCategory | null
+  profileType: $Enums.Type | null
   youtubeChanel: string | null
   portfolioWebsite: string | null
 }
@@ -36,6 +37,7 @@ export type ContentCreatorProfileMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
   creatorCategory: $Enums.ContentCategory | null
+  profileType: $Enums.Type | null
   youtubeChanel: string | null
   portfolioWebsite: string | null
 }
@@ -44,6 +46,7 @@ export type ContentCreatorProfileCountAggregateOutputType = {
   id: number
   profileId: number
   creatorCategory: number
+  profileType: number
   youtubeChanel: number
   portfolioWebsite: number
   _all: number
@@ -54,6 +57,7 @@ export type ContentCreatorProfileMinAggregateInputType = {
   id?: true
   profileId?: true
   creatorCategory?: true
+  profileType?: true
   youtubeChanel?: true
   portfolioWebsite?: true
 }
@@ -62,6 +66,7 @@ export type ContentCreatorProfileMaxAggregateInputType = {
   id?: true
   profileId?: true
   creatorCategory?: true
+  profileType?: true
   youtubeChanel?: true
   portfolioWebsite?: true
 }
@@ -70,6 +75,7 @@ export type ContentCreatorProfileCountAggregateInputType = {
   id?: true
   profileId?: true
   creatorCategory?: true
+  profileType?: true
   youtubeChanel?: true
   portfolioWebsite?: true
   _all?: true
@@ -151,6 +157,7 @@ export type ContentCreatorProfileGroupByOutputType = {
   id: string
   profileId: string
   creatorCategory: $Enums.ContentCategory
+  profileType: $Enums.Type
   youtubeChanel: string | null
   portfolioWebsite: string | null
   _count: ContentCreatorProfileCountAggregateOutputType | null
@@ -180,6 +187,7 @@ export type ContentCreatorProfileWhereInput = {
   id?: Prisma.UuidFilter<"ContentCreatorProfile"> | string
   profileId?: Prisma.UuidFilter<"ContentCreatorProfile"> | string
   creatorCategory?: Prisma.EnumContentCategoryFilter<"ContentCreatorProfile"> | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFilter<"ContentCreatorProfile"> | $Enums.Type
   youtubeChanel?: Prisma.StringNullableFilter<"ContentCreatorProfile"> | string | null
   portfolioWebsite?: Prisma.StringNullableFilter<"ContentCreatorProfile"> | string | null
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -189,6 +197,7 @@ export type ContentCreatorProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   creatorCategory?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   youtubeChanel?: Prisma.SortOrderInput | Prisma.SortOrder
   portfolioWebsite?: Prisma.SortOrderInput | Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
@@ -201,6 +210,7 @@ export type ContentCreatorProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ContentCreatorProfileWhereInput[]
   NOT?: Prisma.ContentCreatorProfileWhereInput | Prisma.ContentCreatorProfileWhereInput[]
   creatorCategory?: Prisma.EnumContentCategoryFilter<"ContentCreatorProfile"> | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFilter<"ContentCreatorProfile"> | $Enums.Type
   youtubeChanel?: Prisma.StringNullableFilter<"ContentCreatorProfile"> | string | null
   portfolioWebsite?: Prisma.StringNullableFilter<"ContentCreatorProfile"> | string | null
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
@@ -210,6 +220,7 @@ export type ContentCreatorProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   creatorCategory?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   youtubeChanel?: Prisma.SortOrderInput | Prisma.SortOrder
   portfolioWebsite?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ContentCreatorProfileCountOrderByAggregateInput
@@ -224,6 +235,7 @@ export type ContentCreatorProfileScalarWhereWithAggregatesInput = {
   id?: Prisma.UuidWithAggregatesFilter<"ContentCreatorProfile"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"ContentCreatorProfile"> | string
   creatorCategory?: Prisma.EnumContentCategoryWithAggregatesFilter<"ContentCreatorProfile"> | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeWithAggregatesFilter<"ContentCreatorProfile"> | $Enums.Type
   youtubeChanel?: Prisma.StringNullableWithAggregatesFilter<"ContentCreatorProfile"> | string | null
   portfolioWebsite?: Prisma.StringNullableWithAggregatesFilter<"ContentCreatorProfile"> | string | null
 }
@@ -231,6 +243,7 @@ export type ContentCreatorProfileScalarWhereWithAggregatesInput = {
 export type ContentCreatorProfileCreateInput = {
   id?: string
   creatorCategory?: $Enums.ContentCategory
+  profileType?: $Enums.Type
   youtubeChanel?: string | null
   portfolioWebsite?: string | null
   profile: Prisma.ProfileCreateNestedOneWithoutCreatorInput
@@ -240,6 +253,7 @@ export type ContentCreatorProfileUncheckedCreateInput = {
   id?: string
   profileId: string
   creatorCategory?: $Enums.ContentCategory
+  profileType?: $Enums.Type
   youtubeChanel?: string | null
   portfolioWebsite?: string | null
 }
@@ -247,6 +261,7 @@ export type ContentCreatorProfileUncheckedCreateInput = {
 export type ContentCreatorProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profile?: Prisma.ProfileUpdateOneRequiredWithoutCreatorNestedInput
@@ -256,6 +271,7 @@ export type ContentCreatorProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -264,6 +280,7 @@ export type ContentCreatorProfileCreateManyInput = {
   id?: string
   profileId: string
   creatorCategory?: $Enums.ContentCategory
+  profileType?: $Enums.Type
   youtubeChanel?: string | null
   portfolioWebsite?: string | null
 }
@@ -271,6 +288,7 @@ export type ContentCreatorProfileCreateManyInput = {
 export type ContentCreatorProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -279,6 +297,7 @@ export type ContentCreatorProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -287,6 +306,7 @@ export type ContentCreatorProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   creatorCategory?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   youtubeChanel?: Prisma.SortOrder
   portfolioWebsite?: Prisma.SortOrder
 }
@@ -295,6 +315,7 @@ export type ContentCreatorProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   creatorCategory?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   youtubeChanel?: Prisma.SortOrder
   portfolioWebsite?: Prisma.SortOrder
 }
@@ -303,6 +324,7 @@ export type ContentCreatorProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   creatorCategory?: Prisma.SortOrder
+  profileType?: Prisma.SortOrder
   youtubeChanel?: Prisma.SortOrder
   portfolioWebsite?: Prisma.SortOrder
 }
@@ -351,6 +373,7 @@ export type ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 export type ContentCreatorProfileCreateWithoutProfileInput = {
   id?: string
   creatorCategory?: $Enums.ContentCategory
+  profileType?: $Enums.Type
   youtubeChanel?: string | null
   portfolioWebsite?: string | null
 }
@@ -358,6 +381,7 @@ export type ContentCreatorProfileCreateWithoutProfileInput = {
 export type ContentCreatorProfileUncheckedCreateWithoutProfileInput = {
   id?: string
   creatorCategory?: $Enums.ContentCategory
+  profileType?: $Enums.Type
   youtubeChanel?: string | null
   portfolioWebsite?: string | null
 }
@@ -381,6 +405,7 @@ export type ContentCreatorProfileUpdateToOneWithWhereWithoutProfileInput = {
 export type ContentCreatorProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -388,6 +413,7 @@ export type ContentCreatorProfileUpdateWithoutProfileInput = {
 export type ContentCreatorProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorCategory?: Prisma.EnumContentCategoryFieldUpdateOperationsInput | $Enums.ContentCategory
+  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   youtubeChanel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   portfolioWebsite?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -398,6 +424,7 @@ export type ContentCreatorProfileSelect<ExtArgs extends runtime.Types.Extensions
   id?: boolean
   profileId?: boolean
   creatorCategory?: boolean
+  profileType?: boolean
   youtubeChanel?: boolean
   portfolioWebsite?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -407,6 +434,7 @@ export type ContentCreatorProfileSelectCreateManyAndReturn<ExtArgs extends runti
   id?: boolean
   profileId?: boolean
   creatorCategory?: boolean
+  profileType?: boolean
   youtubeChanel?: boolean
   portfolioWebsite?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -416,6 +444,7 @@ export type ContentCreatorProfileSelectUpdateManyAndReturn<ExtArgs extends runti
   id?: boolean
   profileId?: boolean
   creatorCategory?: boolean
+  profileType?: boolean
   youtubeChanel?: boolean
   portfolioWebsite?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -425,11 +454,12 @@ export type ContentCreatorProfileSelectScalar = {
   id?: boolean
   profileId?: boolean
   creatorCategory?: boolean
+  profileType?: boolean
   youtubeChanel?: boolean
   portfolioWebsite?: boolean
 }
 
-export type ContentCreatorProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "creatorCategory" | "youtubeChanel" | "portfolioWebsite", ExtArgs["result"]["contentCreatorProfile"]>
+export type ContentCreatorProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "creatorCategory" | "profileType" | "youtubeChanel" | "portfolioWebsite", ExtArgs["result"]["contentCreatorProfile"]>
 export type ContentCreatorProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -449,6 +479,7 @@ export type $ContentCreatorProfilePayload<ExtArgs extends runtime.Types.Extensio
     id: string
     profileId: string
     creatorCategory: $Enums.ContentCategory
+    profileType: $Enums.Type
     youtubeChanel: string | null
     portfolioWebsite: string | null
   }, ExtArgs["result"]["contentCreatorProfile"]>
@@ -878,6 +909,7 @@ export interface ContentCreatorProfileFieldRefs {
   readonly id: Prisma.FieldRef<"ContentCreatorProfile", 'String'>
   readonly profileId: Prisma.FieldRef<"ContentCreatorProfile", 'String'>
   readonly creatorCategory: Prisma.FieldRef<"ContentCreatorProfile", 'ContentCategory'>
+  readonly profileType: Prisma.FieldRef<"ContentCreatorProfile", 'Type'>
   readonly youtubeChanel: Prisma.FieldRef<"ContentCreatorProfile", 'String'>
   readonly portfolioWebsite: Prisma.FieldRef<"ContentCreatorProfile", 'String'>
 }

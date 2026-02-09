@@ -2,7 +2,7 @@ model BusinessProfile {
   id        String  @id @default(uuid()) @db.Uuid
   profileId String  @unique @db.Uuid
   profile   Profile @relation(fields: [profileId], references: [id])
-
+  profileType      Type  @default(PRO_BUSSINESS)
   businessCategory BusinessCategory @default(Detailling_Care)
   businessName     String
   location         String

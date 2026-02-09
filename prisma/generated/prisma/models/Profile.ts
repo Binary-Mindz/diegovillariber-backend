@@ -32,7 +32,6 @@ export type ProfileMinAggregateOutputType = {
   instagramHandler: string | null
   accountType: $Enums.AccountType | null
   preference: $Enums.Preference | null
-  profileType: $Enums.Type | null
   isActive: $Enums.IsActive | null
   suspend: boolean | null
 }
@@ -45,7 +44,6 @@ export type ProfileMaxAggregateOutputType = {
   instagramHandler: string | null
   accountType: $Enums.AccountType | null
   preference: $Enums.Preference | null
-  profileType: $Enums.Type | null
   isActive: $Enums.IsActive | null
   suspend: boolean | null
 }
@@ -58,7 +56,6 @@ export type ProfileCountAggregateOutputType = {
   instagramHandler: number
   accountType: number
   preference: number
-  profileType: number
   isActive: number
   suspend: number
   _all: number
@@ -73,7 +70,6 @@ export type ProfileMinAggregateInputType = {
   instagramHandler?: true
   accountType?: true
   preference?: true
-  profileType?: true
   isActive?: true
   suspend?: true
 }
@@ -86,7 +82,6 @@ export type ProfileMaxAggregateInputType = {
   instagramHandler?: true
   accountType?: true
   preference?: true
-  profileType?: true
   isActive?: true
   suspend?: true
 }
@@ -99,7 +94,6 @@ export type ProfileCountAggregateInputType = {
   instagramHandler?: true
   accountType?: true
   preference?: true
-  profileType?: true
   isActive?: true
   suspend?: true
   _all?: true
@@ -185,7 +179,6 @@ export type ProfileGroupByOutputType = {
   instagramHandler: string | null
   accountType: $Enums.AccountType
   preference: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive: $Enums.IsActive
   suspend: boolean
   _count: ProfileCountAggregateOutputType | null
@@ -219,7 +212,6 @@ export type ProfileWhereInput = {
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
   accountType?: Prisma.EnumAccountTypeFilter<"Profile"> | $Enums.AccountType
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFilter<"Profile"> | $Enums.Type
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -245,7 +237,6 @@ export type ProfileOrderByWithRelationInput = {
   instagramHandler?: Prisma.SortOrderInput | Prisma.SortOrder
   accountType?: Prisma.SortOrder
   preference?: Prisma.SortOrderInput | Prisma.SortOrder
-  profileType?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -266,7 +257,6 @@ export type ProfileOrderByWithRelationInput = {
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   userId?: string
-  userId_profileType?: Prisma.ProfileUserIdProfileTypeCompoundUniqueInput
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
@@ -275,7 +265,6 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
   accountType?: Prisma.EnumAccountTypeFilter<"Profile"> | $Enums.AccountType
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFilter<"Profile"> | $Enums.Type
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -291,7 +280,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   virtualLabs?: Prisma.VirtualLabListRelationFilter
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
-}, "id" | "userId" | "userId_profileType">
+}, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -301,7 +290,6 @@ export type ProfileOrderByWithAggregationInput = {
   instagramHandler?: Prisma.SortOrderInput | Prisma.SortOrder
   accountType?: Prisma.SortOrder
   preference?: Prisma.SortOrderInput | Prisma.SortOrder
-  profileType?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
@@ -320,7 +308,6 @@ export type ProfileScalarWhereWithAggregatesInput = {
   instagramHandler?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   accountType?: Prisma.EnumAccountTypeWithAggregatesFilter<"Profile"> | $Enums.AccountType
   preference?: Prisma.EnumPreferenceNullableWithAggregatesFilter<"Profile"> | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeWithAggregatesFilter<"Profile"> | $Enums.Type
   isActive?: Prisma.EnumIsActiveWithAggregatesFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
 }
@@ -332,7 +319,6 @@ export type ProfileCreateInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -358,7 +344,6 @@ export type ProfileUncheckedCreateInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -382,7 +367,6 @@ export type ProfileUpdateInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -408,7 +392,6 @@ export type ProfileUncheckedUpdateInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -433,7 +416,6 @@ export type ProfileCreateManyInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
 }
@@ -445,7 +427,6 @@ export type ProfileUpdateManyMutationInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -458,7 +439,6 @@ export type ProfileUncheckedUpdateManyInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -466,11 +446,6 @@ export type ProfileUncheckedUpdateManyInput = {
 export type ProfileScalarRelationFilter = {
   is?: Prisma.ProfileWhereInput
   isNot?: Prisma.ProfileWhereInput
-}
-
-export type ProfileUserIdProfileTypeCompoundUniqueInput = {
-  userId: string
-  profileType: $Enums.Type
 }
 
 export type ProfileCountOrderByAggregateInput = {
@@ -481,7 +456,6 @@ export type ProfileCountOrderByAggregateInput = {
   instagramHandler?: Prisma.SortOrder
   accountType?: Prisma.SortOrder
   preference?: Prisma.SortOrder
-  profileType?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
 }
@@ -494,7 +468,6 @@ export type ProfileMaxOrderByAggregateInput = {
   instagramHandler?: Prisma.SortOrder
   accountType?: Prisma.SortOrder
   preference?: Prisma.SortOrder
-  profileType?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
 }
@@ -507,7 +480,6 @@ export type ProfileMinOrderByAggregateInput = {
   instagramHandler?: Prisma.SortOrder
   accountType?: Prisma.SortOrder
   preference?: Prisma.SortOrder
-  profileType?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
 }
@@ -626,10 +598,6 @@ export type EnumAccountTypeFieldUpdateOperationsInput = {
 
 export type NullableEnumPreferenceFieldUpdateOperationsInput = {
   set?: $Enums.Preference | null
-}
-
-export type EnumTypeFieldUpdateOperationsInput = {
-  set?: $Enums.Type
 }
 
 export type ProfileCreateNestedOneWithoutSimRacingInput = {
@@ -751,7 +719,6 @@ export type ProfileCreateWithoutBusinessInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -776,7 +743,6 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -815,7 +781,6 @@ export type ProfileUpdateWithoutBusinessInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -840,7 +805,6 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -863,7 +827,6 @@ export type ProfileCreateWithoutCarsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -888,7 +851,6 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -927,7 +889,6 @@ export type ProfileUpdateWithoutCarsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -952,7 +913,6 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -975,7 +935,6 @@ export type ProfileCreateWithoutCreatorInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1000,7 +959,6 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1039,7 +997,6 @@ export type ProfileUpdateWithoutCreatorInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1064,7 +1021,6 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1087,7 +1043,6 @@ export type ProfileCreateWithoutGaragesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1112,7 +1067,6 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1151,7 +1105,6 @@ export type ProfileUpdateWithoutGaragesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1176,7 +1129,6 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1199,7 +1151,6 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1224,7 +1175,6 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1263,7 +1213,6 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1288,7 +1237,6 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1311,7 +1259,6 @@ export type ProfileCreateWithoutOwnerInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1336,7 +1283,6 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1375,7 +1321,6 @@ export type ProfileUpdateWithoutOwnerInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1400,7 +1345,6 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1423,7 +1367,6 @@ export type ProfileCreateWithoutProDriverInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1448,7 +1391,6 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1487,7 +1429,6 @@ export type ProfileUpdateWithoutProDriverInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1512,7 +1453,6 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1535,7 +1475,6 @@ export type ProfileCreateWithoutSimRacingInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1560,7 +1499,6 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1599,7 +1537,6 @@ export type ProfileUpdateWithoutSimRacingInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1624,7 +1561,6 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1647,7 +1583,6 @@ export type ProfileCreateWithoutSpotterInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1672,7 +1607,6 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1711,7 +1645,6 @@ export type ProfileUpdateWithoutSpotterInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1736,7 +1669,6 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1759,7 +1691,6 @@ export type ProfileCreateWithoutUserInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
@@ -1783,7 +1714,6 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1837,7 +1767,6 @@ export type ProfileScalarWhereInput = {
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
   accountType?: Prisma.EnumAccountTypeFilter<"Profile"> | $Enums.AccountType
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFilter<"Profile"> | $Enums.Type
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
 }
@@ -1849,7 +1778,6 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1874,7 +1802,6 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1913,7 +1840,6 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -1938,7 +1864,6 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1961,7 +1886,6 @@ export type ProfileCreateWithoutVirtualLabsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -1986,7 +1910,6 @@ export type ProfileUncheckedCreateWithoutVirtualLabsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2025,7 +1948,6 @@ export type ProfileUpdateWithoutVirtualLabsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -2050,7 +1972,6 @@ export type ProfileUncheckedUpdateWithoutVirtualLabsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2073,7 +1994,6 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
@@ -2098,7 +2018,6 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2137,7 +2056,6 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
@@ -2162,7 +2080,6 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2185,7 +2102,6 @@ export type ProfileCreateManyUserInput = {
   instagramHandler?: string | null
   accountType?: $Enums.AccountType
   preference?: $Enums.Preference | null
-  profileType: $Enums.Type
   isActive?: $Enums.IsActive
   suspend?: boolean
 }
@@ -2197,7 +2113,6 @@ export type ProfileUpdateWithoutUserInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
@@ -2221,7 +2136,6 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2245,7 +2159,6 @@ export type ProfileUncheckedUpdateManyWithoutUserInput = {
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
-  profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -2334,7 +2247,6 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   instagramHandler?: boolean
   accountType?: boolean
   preference?: boolean
-  profileType?: boolean
   isActive?: boolean
   suspend?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2361,7 +2273,6 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   instagramHandler?: boolean
   accountType?: boolean
   preference?: boolean
-  profileType?: boolean
   isActive?: boolean
   suspend?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2375,7 +2286,6 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   instagramHandler?: boolean
   accountType?: boolean
   preference?: boolean
-  profileType?: boolean
   isActive?: boolean
   suspend?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -2389,12 +2299,11 @@ export type ProfileSelectScalar = {
   instagramHandler?: boolean
   accountType?: boolean
   preference?: boolean
-  profileType?: boolean
   isActive?: boolean
   suspend?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "profileType" | "isActive" | "suspend", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
@@ -2443,7 +2352,6 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     instagramHandler: string | null
     accountType: $Enums.AccountType
     preference: $Enums.Preference | null
-    profileType: $Enums.Type
     isActive: $Enums.IsActive
     suspend: boolean
   }, ExtArgs["result"]["profile"]>
@@ -2889,7 +2797,6 @@ export interface ProfileFieldRefs {
   readonly instagramHandler: Prisma.FieldRef<"Profile", 'String'>
   readonly accountType: Prisma.FieldRef<"Profile", 'AccountType'>
   readonly preference: Prisma.FieldRef<"Profile", 'Preference'>
-  readonly profileType: Prisma.FieldRef<"Profile", 'Type'>
   readonly isActive: Prisma.FieldRef<"Profile", 'IsActive'>
   readonly suspend: Prisma.FieldRef<"Profile", 'Boolean'>
 }
