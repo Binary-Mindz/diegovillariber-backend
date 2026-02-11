@@ -8,6 +8,7 @@ import { ProProfileModule } from './main/pro-profile/pro-profile.module';
 import { AdminModule } from './main/admin/admin.module';
 import { ProductModule } from './main/product/product.module';
 import { ProgramModule } from './main/program/program.module';
+import { ChatModule } from './main/chat/chat.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ProgramModule } from './main/program/program.module';
     ProProfileModule,
     ProgramModule,
     ProductModule,
+    ChatModule,
     AdminModule
   ],
   controllers: [],
