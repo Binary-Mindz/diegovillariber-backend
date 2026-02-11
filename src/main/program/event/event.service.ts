@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { GetEventsQueryDto } from './dto/get-event-query.dto';
 
 @Injectable()
 export class EventService {
@@ -37,16 +38,103 @@ export class EventService {
     });
   }
 
-
-  async getEvents() {
-    return this.prisma.event.findMany({
-      where: { eventStatus: 'APPROVED' },
-      orderBy: { createdAt: 'desc' },
-      include: {
-        owner: { select: { id: true, username: true } },
-      },
-    });
-  }
+   async getEvents(query: GetEventsQueryDto) {
+      const {
+        status,
+        type,
+        ownerId,
+        search,
+        from,
+        to,
+        page = 1,
+        limit = 20,
+      } = query;
+  
+      const where: any = {};
+  
+      if (status) {
+        where.eventStatus = status;
+      }
+  
+      if (type) {
+        where.eventType = type;
+      }
+  
+  
+      if (ownerId) {
+        where.ownerId = ownerId;
+      }
+  
+      if (from || to) {
+        where.AND = [];
+  
+        if (from) {
+          where.AND.push({
+            startDate: { gte: new Date(from) },
+          });
+        }
+  
+        if (to) {
+          where.AND.push({
+            endDate: { lte: new Date(to) },
+          });
+        }
+      }
+  
+      if (search) {
+        where.OR = [
+          {
+            eventTitle: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            location: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            description: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+        ];
+      }
+  
+      const skip = (page - 1) * limit;
+  
+  
+      const [events, total] = await this.prisma.$transaction([
+        this.prisma.event.findMany({
+          where,
+          orderBy: { createdAt: 'desc' },
+          skip,
+          take: limit,
+          include: {
+            owner: {
+              select: {
+                id: true,
+                username: true,
+              },
+            },
+          },
+        }),
+        this.prisma.event.count({ where }),
+      ]);
+  
+      return {
+        items: events,
+        meta: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit),
+        },
+      };
+    }
 
   async updateEvent(userId: string, eventId: string, dto: UpdateEventDto) {
     const event = await this.prisma.event.findUnique({
