@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsOptional, IsString, IsUUID, MaxLength, ValidateIf } from 'class-validator';
+import { IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
 
 export class SendMessageDto {
   @ApiProperty({ example: '3c1c6c8d-5e6e-4dd8-8e23-9b2f2a50a123' })
@@ -13,8 +13,8 @@ export class SendMessageDto {
   content?: string;
 
   @ApiPropertyOptional({
-    example: 'https://cdn.yoursite.com/chat/voice/abc.webm',
-    description: 'Optional. If you are sending media (image/voice/file) put your uploaded file URL here.',
+    example: 'https://cdn.yoursite.com/chat/img/abc.webp',
+    description: 'External or uploaded file URL',
   })
   @IsOptional()
   @IsString()
@@ -23,15 +23,10 @@ export class SendMessageDto {
 
   @ApiPropertyOptional({
     example: 'local-1700000000000-1',
-    description: 'Client-generated id to make sending idempotent (avoid duplicates on retry)',
+    description: 'Client-generated idempotency key',
   })
   @IsOptional()
   @IsString()
   @MaxLength(100)
   clientMsgId?: string;
-
-  @ValidateIf((o) => !o.fileUrl)
-  @IsString()
-  @MaxLength(4000)
-  contentOrFileValidator?: any;
 }

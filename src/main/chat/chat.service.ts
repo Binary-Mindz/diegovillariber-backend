@@ -4,7 +4,6 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-
 import { SendMessageDto } from './dto/send-message.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { ReceiptStatus } from 'generated/prisma/enums';
@@ -13,15 +12,10 @@ import { ReceiptStatus } from 'generated/prisma/enums';
 export class ChatService {
   constructor(private readonly prisma: PrismaService) {}
 
-  private assertExternalUrlAllowed(fileUrl: string) {
+  private assertHttpsUrl(url: string) {
     let u: URL;
-    try { u = new URL(fileUrl); } catch { throw new BadRequestException('Invalid fileUrl'); }
-    if (u.protocol !== 'https:') throw new BadRequestException('Only https URLs allowed');
-
-    // If you want to enforce your upload domain, uncomment:
-    // if (!fileUrl.startsWith(process.env.ALLOWED_UPLOAD_DOMAIN)) {
-    //   throw new ForbiddenException('Invalid file URL');
-    // }
+    try { u = new URL(url); } catch { throw new BadRequestException('Invalid fileUrl'); }
+    if (u.protocol !== 'https:') throw new BadRequestException('Only https URLs are allowed');
   }
 
   private async assertParticipant(conversationId: string, userId: string) {
@@ -32,16 +26,14 @@ export class ChatService {
     if (!p) throw new ForbiddenException('Not a participant');
   }
 
-  // 1-to-1 conversation find/create
-  async getOrCreateOneToOneConversation(userId: string, otherUserId: string) {
-    if (userId === otherUserId) throw new BadRequestException('Cannot chat with self');
+  async getOrCreateOneToOneConversation(userA: string, userB: string) {
+    if (userA === userB) throw new BadRequestException('Cannot chat with self');
 
-    // Find existing conversation with exactly these two participants and isGroup=false
     const existing = await this.prisma.conversation.findFirst({
       where: {
         isGroup: false,
-        participants: { some: { userId } },
-        AND: [{ participants: { some: { userId: otherUserId } } }],
+        participants: { some: { userId: userA } },
+        AND: [{ participants: { some: { userId: userB } } }],
       },
       include: { participants: true },
     });
@@ -52,31 +44,31 @@ export class ChatService {
       data: {
         isGroup: false,
         participants: {
-          createMany: { data: [{ userId }, { userId: otherUserId }] },
+          createMany: { data: [{ userId: userA }, { userId: userB }] },
         },
       },
       include: { participants: true },
     });
   }
 
-  async sendMessage(userId: string, dto: SendMessageDto) {
+  async sendMessage(senderId: string, dto: SendMessageDto) {
     const hasText = !!dto.content?.trim();
     const hasFile = !!dto.fileUrl?.trim();
 
     if (!hasText && !hasFile) {
       throw new BadRequestException('Either content or fileUrl is required');
     }
-    if (hasFile) this.assertExternalUrlAllowed(dto.fileUrl!);
+    if (hasFile) this.assertHttpsUrl(dto.fileUrl!);
 
-    const convo = await this.getOrCreateOneToOneConversation(userId, dto.receiverId);
+    const convo = await this.getOrCreateOneToOneConversation(senderId, dto.receiverId);
 
-    // idempotency by (conversationId, senderId, clientMsgId)
+    // idempotency
     if (dto.clientMsgId) {
       const existing = await this.prisma.message.findUnique({
         where: {
           conversationId_senderId_clientMsgId: {
             conversationId: convo.id,
-            senderId: userId,
+            senderId,
             clientMsgId: dto.clientMsgId,
           },
         },
@@ -89,14 +81,14 @@ export class ChatService {
       const created = await tx.message.create({
         data: {
           conversationId: convo.id,
-          senderId: userId,
+          senderId,
           content: hasText ? dto.content!.trim() : null,
           fileUrl: hasFile ? dto.fileUrl!.trim() : null,
           clientMsgId: dto.clientMsgId ?? null,
           messageReceipts: {
             createMany: {
               data: [
-                { userId, status: ReceiptStatus.READ },
+                { userId: senderId, status: ReceiptStatus.READ },
                 { userId: dto.receiverId, status: ReceiptStatus.SENT },
               ],
             },
@@ -105,7 +97,6 @@ export class ChatService {
         include: { messageReceipts: true },
       });
 
-     
       await tx.conversationParticipant.update({
         where: { conversationId_userId: { conversationId: convo.id, userId: dto.receiverId } },
         data: { unreadCount: { increment: 1 } },
@@ -113,10 +104,7 @@ export class ChatService {
 
       await tx.conversation.update({
         where: { id: convo.id },
-        data: {
-          lastMessageId: created.id,
-          lastMessageAt: created.createdAt,
-        },
+        data: { lastMessageId: created.id, lastMessageAt: created.createdAt },
       });
 
       return created;
@@ -142,7 +130,12 @@ export class ChatService {
             lastMessage: {
               select: { id: true, content: true, fileUrl: true, senderId: true, createdAt: true },
             },
-            participants: { select: { userId: true } },
+            participants: {
+              select: {
+                userId: true,
+                user: { select: { id: true, email: true } },
+              },
+            },
           },
         },
       },
@@ -154,7 +147,7 @@ export class ChatService {
       lastReadAt: r.lastReadAt,
       lastMessageAt: r.conversation.lastMessageAt,
       lastMessage: r.conversation.lastMessage,
-      participants: r.conversation.participants.map((p) => p.userId),
+      participants: r.conversation.participants.map((p) => p.user),
     }));
   }
 
@@ -233,5 +226,49 @@ export class ChatService {
     const other = parts.map((p) => p.userId).find((id) => id !== userId);
     if (!other) throw new NotFoundException('Other participant not found');
     return other;
+  }
+
+  async getChatPartnersWithUser(userId: string, limit = 50, offset = 0) {
+    const inbox = await this.listConversations(userId, limit, offset);
+
+    // return only partners list
+    return inbox.map((c) => {
+      const other = c.participants.find((p) => p.id !== userId) ?? c.participants[0];
+      return {
+        conversationId: c.conversationId,
+        partner: other,
+        lastMessage: c.lastMessage,
+        lastMessageAt: c.lastMessageAt,
+        unreadCount: c.unreadCount,
+      };
+    });
+  }
+
+  async removeMessage(userId: string, messageId: string) {
+    const msg = await this.prisma.message.findUnique({
+      where: { id: messageId },
+      select: { id: true, senderId: true, conversationId: true },
+    });
+    if (!msg) throw new NotFoundException('Message not found');
+    if (msg.senderId !== userId) throw new ForbiddenException('Only sender can delete');
+
+    const convo = await this.prisma.conversation.findUnique({
+      where: { id: msg.conversationId },
+      select: { lastMessageId: true },
+    });
+
+    await this.prisma.$transaction(async (tx) => {
+      await tx.messageReceipt.deleteMany({ where: { messageId } });
+      await tx.message.delete({ where: { id: messageId } });
+
+      if (convo?.lastMessageId === messageId) {
+        await tx.conversation.update({
+          where: { id: msg.conversationId },
+          data: { lastMessageId: null, lastMessageAt: null },
+        });
+      }
+    });
+
+    return msg; 
   }
 }
