@@ -1,0 +1,15 @@
+model Conversation {
+  id            String   @id @default(uuid()) @db.Uuid
+  isGroup       Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  messages      Message[]
+
+  lastMessageId String?  @db.Uuid @unique
+  lastMessage   Message? @relation("ConversationLastMessage", fields: [lastMessageId], references: [id])
+
+  lastMessageAt DateTime?
+
+  participants  ConversationParticipant[]
+}

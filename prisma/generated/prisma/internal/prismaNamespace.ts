@@ -400,6 +400,8 @@ export const ModelName = {
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
+  Conversation: 'Conversation',
+  ConversationParticipant: 'ConversationParticipant',
   DisplayAndPcSetup: 'DisplayAndPcSetup',
   Drivetrain: 'Drivetrain',
   DrivingAssistant: 'DrivingAssistant',
@@ -419,6 +421,7 @@ export const ModelName = {
   LiveParticipant: 'LiveParticipant',
   LiveReward: 'LiveReward',
   Message: 'Message',
+  MessageReceipt: 'MessageReceipt',
   OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
@@ -460,7 +463,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1645,6 +1648,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ContentCreatorProfileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ContentCreatorProfileCountAggregateOutputType> | number
+        }
+      }
+    }
+    Conversation: {
+      payload: Prisma.$ConversationPayload<ExtArgs>
+      fields: Prisma.ConversationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConversationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConversationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        findFirst: {
+          args: Prisma.ConversationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConversationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        findMany: {
+          args: Prisma.ConversationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+        }
+        create: {
+          args: Prisma.ConversationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        createMany: {
+          args: Prisma.ConversationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ConversationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+        }
+        delete: {
+          args: Prisma.ConversationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        update: {
+          args: Prisma.ConversationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConversationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConversationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ConversationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>[]
+        }
+        upsert: {
+          args: Prisma.ConversationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationPayload>
+        }
+        aggregate: {
+          args: Prisma.ConversationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConversation>
+        }
+        groupBy: {
+          args: Prisma.ConversationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConversationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationCountAggregateOutputType> | number
+        }
+      }
+    }
+    ConversationParticipant: {
+      payload: Prisma.$ConversationParticipantPayload<ExtArgs>
+      fields: Prisma.ConversationParticipantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ConversationParticipantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ConversationParticipantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        findFirst: {
+          args: Prisma.ConversationParticipantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ConversationParticipantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        findMany: {
+          args: Prisma.ConversationParticipantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>[]
+        }
+        create: {
+          args: Prisma.ConversationParticipantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        createMany: {
+          args: Prisma.ConversationParticipantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ConversationParticipantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>[]
+        }
+        delete: {
+          args: Prisma.ConversationParticipantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        update: {
+          args: Prisma.ConversationParticipantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        deleteMany: {
+          args: Prisma.ConversationParticipantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ConversationParticipantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ConversationParticipantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>[]
+        }
+        upsert: {
+          args: Prisma.ConversationParticipantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ConversationParticipantPayload>
+        }
+        aggregate: {
+          args: Prisma.ConversationParticipantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateConversationParticipant>
+        }
+        groupBy: {
+          args: Prisma.ConversationParticipantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationParticipantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ConversationParticipantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ConversationParticipantCountAggregateOutputType> | number
         }
       }
     }
@@ -3051,6 +3202,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MessageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
+        }
+      }
+    }
+    MessageReceipt: {
+      payload: Prisma.$MessageReceiptPayload<ExtArgs>
+      fields: Prisma.MessageReceiptFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MessageReceiptFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MessageReceiptFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        findFirst: {
+          args: Prisma.MessageReceiptFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MessageReceiptFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        findMany: {
+          args: Prisma.MessageReceiptFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>[]
+        }
+        create: {
+          args: Prisma.MessageReceiptCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        createMany: {
+          args: Prisma.MessageReceiptCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MessageReceiptCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>[]
+        }
+        delete: {
+          args: Prisma.MessageReceiptDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        update: {
+          args: Prisma.MessageReceiptUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        deleteMany: {
+          args: Prisma.MessageReceiptDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MessageReceiptUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MessageReceiptUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>[]
+        }
+        upsert: {
+          args: Prisma.MessageReceiptUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessageReceiptPayload>
+        }
+        aggregate: {
+          args: Prisma.MessageReceiptAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMessageReceipt>
+        }
+        groupBy: {
+          args: Prisma.MessageReceiptGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageReceiptGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MessageReceiptCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageReceiptCountAggregateOutputType> | number
         }
       }
     }
@@ -5232,6 +5457,31 @@ export const ContentCreatorProfileScalarFieldEnum = {
 export type ContentCreatorProfileScalarFieldEnum = (typeof ContentCreatorProfileScalarFieldEnum)[keyof typeof ContentCreatorProfileScalarFieldEnum]
 
 
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  isGroup: 'isGroup',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  lastMessageId: 'lastMessageId',
+  lastMessageAt: 'lastMessageAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const ConversationParticipantScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  userId: 'userId',
+  lastReadAt: 'lastReadAt',
+  unreadCount: 'unreadCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConversationParticipantScalarFieldEnum = (typeof ConversationParticipantScalarFieldEnum)[keyof typeof ConversationParticipantScalarFieldEnum]
+
+
 export const DisplayAndPcSetupScalarFieldEnum = {
   id: 'id',
   simRacingId: 'simRacingId',
@@ -5478,13 +5728,27 @@ export type LiveRewardScalarFieldEnum = (typeof LiveRewardScalarFieldEnum)[keyof
 
 export const MessageScalarFieldEnum = {
   id: 'id',
+  conversationId: 'conversationId',
   senderId: 'senderId',
-  receiverId: 'receiverId',
   content: 'content',
+  fileUrl: 'fileUrl',
+  clientMsgId: 'clientMsgId',
   createdAt: 'createdAt'
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const MessageReceiptScalarFieldEnum = {
+  id: 'id',
+  messageId: 'messageId',
+  userId: 'userId',
+  status: 'status',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageReceiptScalarFieldEnum = (typeof MessageReceiptScalarFieldEnum)[keyof typeof MessageReceiptScalarFieldEnum]
 
 
 export const OfficialPartnerScalarFieldEnum = {
@@ -6213,6 +6477,20 @@ export type ListEnumLiveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
+ * Reference to a field of type 'ReceiptStatus'
+ */
+export type EnumReceiptStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReceiptStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ReceiptStatus[]'
+ */
+export type ListEnumReceiptStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReceiptStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'OfficialPartnerRequestStatus'
  */
 export type EnumOfficialPartnerRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OfficialPartnerRequestStatus'>
@@ -6546,6 +6824,8 @@ export type GlobalOmitConfig = {
   chassisBrakes?: Prisma.ChassisBrakesOmit
   comment?: Prisma.CommentOmit
   contentCreatorProfile?: Prisma.ContentCreatorProfileOmit
+  conversation?: Prisma.ConversationOmit
+  conversationParticipant?: Prisma.ConversationParticipantOmit
   displayAndPcSetup?: Prisma.DisplayAndPcSetupOmit
   drivetrain?: Prisma.DrivetrainOmit
   drivingAssistant?: Prisma.DrivingAssistantOmit
@@ -6565,6 +6845,7 @@ export type GlobalOmitConfig = {
   liveParticipant?: Prisma.LiveParticipantOmit
   liveReward?: Prisma.LiveRewardOmit
   message?: Prisma.MessageOmit
+  messageReceipt?: Prisma.MessageReceiptOmit
   officialPartner?: Prisma.OfficialPartnerOmit
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit
