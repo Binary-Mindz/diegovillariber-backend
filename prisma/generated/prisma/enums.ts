@@ -509,3 +509,12 @@ export const HashtagCreatedBy = {
 } as const
 
 export type HashtagCreatedBy = (typeof HashtagCreatedBy)[keyof typeof HashtagCreatedBy]
+
+
+export const ReceiptStatus = {
+  SENT: 'SENT',
+  DELIVERED: 'DELIVERED',
+  READ: 'READ'
+} as const
+
+export type ReceiptStatus = (typeof ReceiptStatus)[keyof typeof ReceiptStatus]

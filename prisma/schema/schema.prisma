@@ -318,3 +318,9 @@ enum HashtagCreatedBy {
   ADMIN
   SYSTEM
 }
+
+enum ReceiptStatus {
+  SENT
+  DELIVERED
+  READ
+}

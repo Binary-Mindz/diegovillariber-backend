@@ -98,6 +98,16 @@ export type Comment = Prisma.CommentModel
  */
 export type ContentCreatorProfile = Prisma.ContentCreatorProfileModel
 /**
+ * Model Conversation
+ * 
+ */
+export type Conversation = Prisma.ConversationModel
+/**
+ * Model ConversationParticipant
+ * 
+ */
+export type ConversationParticipant = Prisma.ConversationParticipantModel
+/**
  * Model DisplayAndPcSetup
  * 
  */
@@ -192,6 +202,11 @@ export type LiveReward = Prisma.LiveRewardModel
  * 
  */
 export type Message = Prisma.MessageModel
+/**
+ * Model MessageReceipt
+ * 
+ */
+export type MessageReceipt = Prisma.MessageReceiptModel
 /**
  * Model OfficialPartner
  * 
