@@ -10,6 +10,7 @@ import {
   Patch,
   ParseUUIDPipe,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiBearerAuth, ApiOperation, ApiParam } from '@nestjs/swagger';
 import { EventService } from './event.service';
@@ -18,11 +19,15 @@ import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { GetEventsQueryDto } from './dto/get-event-query.dto';
+import { PrismaService } from '@/common/prisma/prisma.service';
 
 @ApiTags('Events')
 @Controller('events')
 export class EventController {
-  constructor(private readonly eventService: EventService) { }
+  constructor(private readonly eventService: EventService,
+    private readonly prisma: PrismaService
+  ) { }
 
   @Post()
   @ApiBearerAuth()
@@ -41,13 +46,14 @@ export class EventController {
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get approved events' })
-  async getEvents() {
+  @ApiOperation({ summary: 'Get events with filters' })
+  async getEvents(@Query() query: GetEventsQueryDto) {
     return handleRequest(
-      () => this.eventService.getEvents(),
+      () => this.eventService.getEvents(query),
       'Events fetched successfully',
     );
   }
+
 
   @Patch(':id')
   @ApiBearerAuth()
