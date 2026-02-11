@@ -67,6 +67,8 @@ export const ModelName = {
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
+  Conversation: 'Conversation',
+  ConversationParticipant: 'ConversationParticipant',
   DisplayAndPcSetup: 'DisplayAndPcSetup',
   Drivetrain: 'Drivetrain',
   DrivingAssistant: 'DrivingAssistant',
@@ -86,6 +88,7 @@ export const ModelName = {
   LiveParticipant: 'LiveParticipant',
   LiveReward: 'LiveReward',
   Message: 'Message',
+  MessageReceipt: 'MessageReceipt',
   OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
@@ -345,6 +348,31 @@ export const ContentCreatorProfileScalarFieldEnum = {
 export type ContentCreatorProfileScalarFieldEnum = (typeof ContentCreatorProfileScalarFieldEnum)[keyof typeof ContentCreatorProfileScalarFieldEnum]
 
 
+export const ConversationScalarFieldEnum = {
+  id: 'id',
+  isGroup: 'isGroup',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  lastMessageId: 'lastMessageId',
+  lastMessageAt: 'lastMessageAt'
+} as const
+
+export type ConversationScalarFieldEnum = (typeof ConversationScalarFieldEnum)[keyof typeof ConversationScalarFieldEnum]
+
+
+export const ConversationParticipantScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  userId: 'userId',
+  lastReadAt: 'lastReadAt',
+  unreadCount: 'unreadCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConversationParticipantScalarFieldEnum = (typeof ConversationParticipantScalarFieldEnum)[keyof typeof ConversationParticipantScalarFieldEnum]
+
+
 export const DisplayAndPcSetupScalarFieldEnum = {
   id: 'id',
   simRacingId: 'simRacingId',
@@ -591,13 +619,27 @@ export type LiveRewardScalarFieldEnum = (typeof LiveRewardScalarFieldEnum)[keyof
 
 export const MessageScalarFieldEnum = {
   id: 'id',
+  conversationId: 'conversationId',
   senderId: 'senderId',
-  receiverId: 'receiverId',
   content: 'content',
+  fileUrl: 'fileUrl',
+  clientMsgId: 'clientMsgId',
   createdAt: 'createdAt'
 } as const
 
 export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
+
+
+export const MessageReceiptScalarFieldEnum = {
+  id: 'id',
+  messageId: 'messageId',
+  userId: 'userId',
+  status: 'status',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageReceiptScalarFieldEnum = (typeof MessageReceiptScalarFieldEnum)[keyof typeof MessageReceiptScalarFieldEnum]
 
 
 export const OfficialPartnerScalarFieldEnum = {

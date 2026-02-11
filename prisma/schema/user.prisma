@@ -26,8 +26,7 @@ model User {
 
   following             Follow[]               @relation("UserFollowing")
   followers             Follow[]               @relation("UserFollowers")
-  sentMessages          Message[]              @relation("SentMessages")
-  receivedMessages      Message[]              @relation("ReceivedMessages")
+  
   productLists          ProductList[]
   reports               Report[]
   shares                Share[]
@@ -60,4 +59,12 @@ model User {
   battleVotes BattleVote[]
   challengeSubmissions ChallengeSubmission[]
   xposts               XPost[]
+
+
+
+  conversationParticipants ConversationParticipant[]
+
+  messages Message[] @relation("SentMessages")
+
+  messageReceipts MessageReceipt[]
 }
