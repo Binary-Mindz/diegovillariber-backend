@@ -545,23 +545,6 @@ export type EnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
 }
 
-export type EnumHighlightStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel> | $Enums.HighlightStatus
-}
-
-export type EnumHighlightStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel> | $Enums.HighlightStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
-}
-
 export type EnumLiveStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.LiveStatus | Prisma.EnumLiveStatusFieldRefInput<$PrismaModel>
   in?: $Enums.LiveStatus[] | Prisma.ListEnumLiveStatusFieldRefInput<$PrismaModel>
@@ -1419,23 +1402,6 @@ export type NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
-}
-
-export type NestedEnumHighlightStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel> | $Enums.HighlightStatus
-}
-
-export type NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.HighlightStatus | Prisma.EnumHighlightStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.HighlightStatus[] | Prisma.ListEnumHighlightStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumHighlightStatusWithAggregatesFilter<$PrismaModel> | $Enums.HighlightStatus
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumHighlightStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumLiveStatusFilter<$PrismaModel = never> = {

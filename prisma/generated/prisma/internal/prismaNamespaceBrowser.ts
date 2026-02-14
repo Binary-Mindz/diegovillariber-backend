@@ -80,7 +80,6 @@ export const ModelName = {
   HardwareSetup: 'HardwareSetup',
   Hashtag: 'Hashtag',
   HidePost: 'HidePost',
-  HighlightProduct: 'HighlightProduct',
   InteriorSafety: 'InteriorSafety',
   LegalNotice: 'LegalNotice',
   Like: 'Like',
@@ -522,21 +521,6 @@ export const HidePostScalarFieldEnum = {
 export type HidePostScalarFieldEnum = (typeof HidePostScalarFieldEnum)[keyof typeof HidePostScalarFieldEnum]
 
 
-export const HighlightProductScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  durationHours: 'durationHours',
-  chargeAmount: 'chargeAmount',
-  status: 'status',
-  startDate: 'startDate',
-  endDate: 'endDate',
-  paidAt: 'paidAt',
-  createdAt: 'createdAt'
-} as const
-
-export type HighlightProductScalarFieldEnum = (typeof HighlightProductScalarFieldEnum)[keyof typeof HighlightProductScalarFieldEnum]
-
-
 export const InteriorSafetyScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -735,6 +719,7 @@ export const ProductListScalarFieldEnum = {
   price: 'price',
   quantity: 'quantity',
   showWhatsappNo: 'showWhatsappNo',
+  highlightProduct: 'highlightProduct',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

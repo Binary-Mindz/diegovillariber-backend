@@ -5,24 +5,19 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
+import { PrismaService } from '@/common/prisma/prisma.service';
+import { Prisma } from 'generated/prisma/client';
+import { ProductCategory } from 'generated/prisma/enums';
 
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { CreateHighlightDto } from './dto/create-highlight.dto';
 import { ProductFeedQueryDto } from './dto/product-feed-query.dto';
-import { PrismaService } from '@/common/prisma/prisma.service';
-import { HighlightStatus, ProductCategory } from 'generated/prisma/enums';
-import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
 export class ProductService {
   constructor(private readonly prisma: PrismaService) {}
 
-  // =========================
-  // Controller required methods (FIX your TS errors)
-  // =========================
-
-  // 1) createProduct
+  // 1) Create
   async createProduct(ownerId: string, dto: CreateProductDto) {
     return this.prisma.productList.create({
       data: {
@@ -30,26 +25,27 @@ export class ProductService {
         title: dto.title,
         productImage: dto.productImage ?? null,
         description: dto.description ?? null,
-        category: (dto.category as any) ?? ProductCategory.Car_Parts,
+        category: dto.category ?? ProductCategory.Car_Parts,
         tags: dto.tags ?? [],
         carBrand: dto.carBrand ?? null,
         carModel: dto.carModel ?? null,
         price: dto.price,
         quantity: dto.quantity,
         showWhatsappNo: dto.showWhatsappNo ?? false,
+
+        // highlightProduct default false in schema (optional)
+        highlightProduct: dto.highlightProduct ?? false,
       },
+      include: { owner: true },
     });
   }
 
-  // 2) getFeed (public list with filters + pagination + highlighted first)
+  // 2) Feed (highlighted first)
   async getFeed(query: ProductFeedQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    const now = new Date();
-
-    // filter
     const where: Prisma.ProductListWhereInput = {};
 
     if (query.search?.trim()) {
@@ -59,82 +55,64 @@ export class ProductService {
         { description: { contains: q, mode: 'insensitive' } },
         { carBrand: { contains: q, mode: 'insensitive' } },
         { carModel: { contains: q, mode: 'insensitive' } },
+        { tags: { has: q } }, // exact tag match (optional)
       ];
     }
 
-    if (query.category) {
-      where.category = query.category as any;
+    if (query.category) where.category = query.category;
+
+    if (query.carBrand?.trim()) {
+      where.carBrand = { contains: query.carBrand.trim(), mode: 'insensitive' };
+    }
+    if (query.carModel?.trim()) {
+      where.carModel = { contains: query.carModel.trim(), mode: 'insensitive' };
     }
 
-    // We want highlighted ACTIVE (not expired) to appear first.
-    // Prisma can't "orderBy exists relation" easily, so we fetch + sort.
-    const [rows, total] = await Promise.all([
+    // Sorting: highlighted first, then newest
+    const [data, total] = await Promise.all([
       this.prisma.productList.findMany({
         where,
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          highlightProducts: {
-            where: { status: HighlightStatus.ACTIVE, endDate: { gt: now } },
-            orderBy: { endDate: 'desc' },
-            take: 1,
-          },
-        },
+        orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
+        include: { owner: true },
       }),
       this.prisma.productList.count({ where }),
     ]);
 
-    // sort highlighted first
-    const sorted = [...rows].sort((a, b) => {
-      const aH = a.highlightProducts?.length ? 1 : 0;
-      const bH = b.highlightProducts?.length ? 1 : 0;
-      if (aH !== bH) return bH - aH;
-      // fallback: newest first
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    });
-
-    return {
-      page,
-      limit,
-      total,
-      data: sorted,
-    };
+    return { page, limit, total, data };
   }
 
-  // 3) getMyProducts (just wrapper of your existing myProducts)
+  // 3) My Products
   async getMyProducts(ownerId: string) {
-    return this.myProducts(ownerId);
-  }
-
-  // তোমার existing method (already there)
-  async myProducts(ownerId: string) {
     return this.prisma.productList.findMany({
       where: { ownerId },
-      orderBy: { createdAt: 'desc' },
-      include: {
-        highlightProducts: { orderBy: { createdAt: 'desc' }, take: 5 },
-      },
+      orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
+      include: { owner: true },
     });
   }
 
-  // 4) getSingleProduct
+  // 4) Single
   async getSingleProduct(id: string) {
     const product = await this.prisma.productList.findUnique({
       where: { id },
-      include: {
-        highlightProducts: { orderBy: { createdAt: 'desc' }, take: 5 },
-      },
+      include: { owner: true },
     });
     if (!product) throw new NotFoundException('Product not found');
     return product;
   }
 
-  // 5) updateProduct
+  // 5) Update (owner only)
   async updateProduct(id: string, ownerId: string, dto: UpdateProductDto) {
     const current = await this.prisma.productList.findUnique({ where: { id } });
     if (!current) throw new NotFoundException('Product not found');
     if (current.ownerId !== ownerId) throw new ForbiddenException('Not your product');
+
+    // (Optional) quantity/price validation
+    if (dto.price !== undefined && dto.price < 0)
+      throw new BadRequestException('Price cannot be negative');
+    if (dto.quantity !== undefined && dto.quantity < 0)
+      throw new BadRequestException('Quantity cannot be negative');
 
     return this.prisma.productList.update({
       where: { id },
@@ -142,18 +120,22 @@ export class ProductService {
         title: dto.title ?? undefined,
         productImage: dto.productImage ?? undefined,
         description: dto.description ?? undefined,
-        category: (dto.category as any) ?? undefined,
+        category: dto.category ?? undefined,
         tags: dto.tags ?? undefined,
         carBrand: dto.carBrand ?? undefined,
         carModel: dto.carModel ?? undefined,
         price: dto.price ?? undefined,
         quantity: dto.quantity ?? undefined,
         showWhatsappNo: dto.showWhatsappNo ?? undefined,
+
+        // highlightProduct generally handled via setHighlight(), but keep if you want:
+        // highlightProduct: dto.highlightProduct ?? undefined,
       },
+      include: { owner: true },
     });
   }
 
-  // 6) deleteProduct
+  // 6) Delete (owner only)
   async deleteProduct(id: string, ownerId: string) {
     const current = await this.prisma.productList.findUnique({ where: { id } });
     if (!current) throw new NotFoundException('Product not found');
@@ -163,81 +145,23 @@ export class ProductService {
     return { success: true };
   }
 
-  // =========================
-  // Highlight methods (already in your earlier plan)
-  // =========================
-
-  async requestHighlight(ownerId: string, productId: string, dto: CreateHighlightDto) {
-    const product = await this.prisma.productList.findUnique({ where: { id: productId } });
+  // Highlight toggle (owner only)
+  async setHighlight(ownerId: string, productId: string, on: boolean) {
+    const product = await this.prisma.productList.findUnique({
+      where: { id: productId },
+    });
     if (!product) throw new NotFoundException('Product not found');
     if (product.ownerId !== ownerId) throw new ForbiddenException('Not your product');
 
-    const active = await this.prisma.highlightProduct.findFirst({
-      where: { productId, status: HighlightStatus.ACTIVE, endDate: { gt: new Date() } },
-    });
-    if (active) throw new BadRequestException('This product is already highlighted');
+    if (on === true && product.highlightProduct === true)
+      throw new BadRequestException('Already highlighted');
+    if (on === false && product.highlightProduct === false)
+      throw new BadRequestException('Already unhighlighted');
 
-    return this.prisma.highlightProduct.create({
-      data: {
-        productId,
-        durationHours: dto.durationHours,
-        chargeAmount: dto.chargeAmount,
-        status: HighlightStatus.PENDING,
-      },
-    });
-  }
-
-  async confirmHighlightPayment(ownerId: string, highlightId: string) {
-    const h = await this.prisma.highlightProduct.findUnique({
-      where: { id: highlightId },
-      include: { product: true },
-    });
-    if (!h) throw new NotFoundException('Highlight request not found');
-    if (h.product.ownerId !== ownerId) throw new ForbiddenException('Not your product');
-    if (h.status !== HighlightStatus.PENDING)
-      throw new BadRequestException(`Cannot confirm payment from status ${h.status}`);
-
-    const now = new Date();
-    const end = new Date(now.getTime() + h.durationHours * 60 * 60 * 1000);
-
-    return this.prisma.highlightProduct.update({
-      where: { id: highlightId },
-      data: {
-        status: HighlightStatus.ACTIVE,
-        paidAt: now,
-        startDate: now,
-        endDate: end,
-      },
-    });
-  }
-
-  async cancelHighlight(ownerId: string, highlightId: string) {
-    const h = await this.prisma.highlightProduct.findUnique({
-      where: { id: highlightId },
-      include: { product: true },
-    });
-    if (!h) throw new NotFoundException('Highlight not found');
-    if (h.product.ownerId !== ownerId) throw new ForbiddenException('Not your product');
-
-    if (h.status === HighlightStatus.EXPIRED) throw new BadRequestException('Already expired');
-
-    return this.prisma.highlightProduct.update({
-      where: { id: highlightId },
-      data: { status: HighlightStatus.CANCELLED },
-    });
-  }
-
-  async listPublic() {
-    const now = new Date();
-    return this.prisma.productList.findMany({
-      orderBy: { createdAt: 'desc' },
-      include: {
-        highlightProducts: {
-          where: { status: HighlightStatus.ACTIVE, endDate: { gt: now } },
-          orderBy: { endDate: 'desc' },
-          take: 1,
-        },
-      },
+    return this.prisma.productList.update({
+      where: { id: productId },
+      data: { highlightProduct: on },
+      include: { owner: true },
     });
   }
 }

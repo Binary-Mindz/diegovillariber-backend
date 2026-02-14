@@ -48,6 +48,7 @@ export type ProductListMinAggregateOutputType = {
   price: number | null
   quantity: number | null
   showWhatsappNo: boolean | null
+  highlightProduct: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,6 +65,7 @@ export type ProductListMaxAggregateOutputType = {
   price: number | null
   quantity: number | null
   showWhatsappNo: boolean | null
+  highlightProduct: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -81,6 +83,7 @@ export type ProductListCountAggregateOutputType = {
   price: number
   quantity: number
   showWhatsappNo: number
+  highlightProduct: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -109,6 +112,7 @@ export type ProductListMinAggregateInputType = {
   price?: true
   quantity?: true
   showWhatsappNo?: true
+  highlightProduct?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -125,6 +129,7 @@ export type ProductListMaxAggregateInputType = {
   price?: true
   quantity?: true
   showWhatsappNo?: true
+  highlightProduct?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -142,6 +147,7 @@ export type ProductListCountAggregateInputType = {
   price?: true
   quantity?: true
   showWhatsappNo?: true
+  highlightProduct?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -246,6 +252,7 @@ export type ProductListGroupByOutputType = {
   price: number
   quantity: number
   showWhatsappNo: boolean
+  highlightProduct: boolean
   createdAt: Date
   updatedAt: Date
   _count: ProductListCountAggregateOutputType | null
@@ -286,10 +293,10 @@ export type ProductListWhereInput = {
   price?: Prisma.IntFilter<"ProductList"> | number
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
+  highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  highlightProducts?: Prisma.HighlightProductListRelationFilter
 }
 
 export type ProductListOrderByWithRelationInput = {
@@ -305,10 +312,10 @@ export type ProductListOrderByWithRelationInput = {
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
+  highlightProduct?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   owner?: Prisma.UserOrderByWithRelationInput
-  highlightProducts?: Prisma.HighlightProductOrderByRelationAggregateInput
 }
 
 export type ProductListWhereUniqueInput = Prisma.AtLeast<{
@@ -327,10 +334,10 @@ export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   price?: Prisma.IntFilter<"ProductList"> | number
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
+  highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  highlightProducts?: Prisma.HighlightProductListRelationFilter
 }, "id">
 
 export type ProductListOrderByWithAggregationInput = {
@@ -346,6 +353,7 @@ export type ProductListOrderByWithAggregationInput = {
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
+  highlightProduct?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ProductListCountOrderByAggregateInput
@@ -371,6 +379,7 @@ export type ProductListScalarWhereWithAggregatesInput = {
   price?: Prisma.IntWithAggregatesFilter<"ProductList"> | number
   quantity?: Prisma.IntWithAggregatesFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolWithAggregatesFilter<"ProductList"> | boolean
+  highlightProduct?: Prisma.BoolWithAggregatesFilter<"ProductList"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ProductList"> | Date | string
 }
@@ -387,10 +396,10 @@ export type ProductListCreateInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutProductListsInput
-  highlightProducts?: Prisma.HighlightProductCreateNestedManyWithoutProductInput
 }
 
 export type ProductListUncheckedCreateInput = {
@@ -406,9 +415,9 @@ export type ProductListUncheckedCreateInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  highlightProducts?: Prisma.HighlightProductUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductListUpdateInput = {
@@ -423,10 +432,10 @@ export type ProductListUpdateInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutProductListsNestedInput
-  highlightProducts?: Prisma.HighlightProductUpdateManyWithoutProductNestedInput
 }
 
 export type ProductListUncheckedUpdateInput = {
@@ -442,9 +451,9 @@ export type ProductListUncheckedUpdateInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  highlightProducts?: Prisma.HighlightProductUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductListCreateManyInput = {
@@ -460,6 +469,7 @@ export type ProductListCreateManyInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -476,6 +486,7 @@ export type ProductListUpdateManyMutationInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -493,13 +504,9 @@ export type ProductListUncheckedUpdateManyInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type ProductListScalarRelationFilter = {
-  is?: Prisma.ProductListWhereInput
-  isNot?: Prisma.ProductListWhereInput
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -523,6 +530,7 @@ export type ProductListCountOrderByAggregateInput = {
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
+  highlightProduct?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -544,6 +552,7 @@ export type ProductListMaxOrderByAggregateInput = {
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
+  highlightProduct?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -560,6 +569,7 @@ export type ProductListMinOrderByAggregateInput = {
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
+  highlightProduct?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -577,20 +587,6 @@ export type ProductListListRelationFilter = {
 
 export type ProductListOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
-}
-
-export type ProductListCreateNestedOneWithoutHighlightProductsInput = {
-  create?: Prisma.XOR<Prisma.ProductListCreateWithoutHighlightProductsInput, Prisma.ProductListUncheckedCreateWithoutHighlightProductsInput>
-  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutHighlightProductsInput
-  connect?: Prisma.ProductListWhereUniqueInput
-}
-
-export type ProductListUpdateOneRequiredWithoutHighlightProductsNestedInput = {
-  create?: Prisma.XOR<Prisma.ProductListCreateWithoutHighlightProductsInput, Prisma.ProductListUncheckedCreateWithoutHighlightProductsInput>
-  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutHighlightProductsInput
-  upsert?: Prisma.ProductListUpsertWithoutHighlightProductsInput
-  connect?: Prisma.ProductListWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductListUpdateToOneWithWhereWithoutHighlightProductsInput, Prisma.ProductListUpdateWithoutHighlightProductsInput>, Prisma.ProductListUncheckedUpdateWithoutHighlightProductsInput>
 }
 
 export type ProductListCreatetagsInput = {
@@ -648,90 +644,6 @@ export type ProductListUncheckedUpdateManyWithoutOwnerNestedInput = {
   deleteMany?: Prisma.ProductListScalarWhereInput | Prisma.ProductListScalarWhereInput[]
 }
 
-export type ProductListCreateWithoutHighlightProductsInput = {
-  id?: string
-  title: string
-  productImage?: string | null
-  description?: string | null
-  category?: $Enums.ProductCategory
-  tags?: Prisma.ProductListCreatetagsInput | string[]
-  carBrand?: string | null
-  carModel?: string | null
-  price: number
-  quantity: number
-  showWhatsappNo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  owner: Prisma.UserCreateNestedOneWithoutProductListsInput
-}
-
-export type ProductListUncheckedCreateWithoutHighlightProductsInput = {
-  id?: string
-  ownerId: string
-  title: string
-  productImage?: string | null
-  description?: string | null
-  category?: $Enums.ProductCategory
-  tags?: Prisma.ProductListCreatetagsInput | string[]
-  carBrand?: string | null
-  carModel?: string | null
-  price: number
-  quantity: number
-  showWhatsappNo?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type ProductListCreateOrConnectWithoutHighlightProductsInput = {
-  where: Prisma.ProductListWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProductListCreateWithoutHighlightProductsInput, Prisma.ProductListUncheckedCreateWithoutHighlightProductsInput>
-}
-
-export type ProductListUpsertWithoutHighlightProductsInput = {
-  update: Prisma.XOR<Prisma.ProductListUpdateWithoutHighlightProductsInput, Prisma.ProductListUncheckedUpdateWithoutHighlightProductsInput>
-  create: Prisma.XOR<Prisma.ProductListCreateWithoutHighlightProductsInput, Prisma.ProductListUncheckedCreateWithoutHighlightProductsInput>
-  where?: Prisma.ProductListWhereInput
-}
-
-export type ProductListUpdateToOneWithWhereWithoutHighlightProductsInput = {
-  where?: Prisma.ProductListWhereInput
-  data: Prisma.XOR<Prisma.ProductListUpdateWithoutHighlightProductsInput, Prisma.ProductListUncheckedUpdateWithoutHighlightProductsInput>
-}
-
-export type ProductListUpdateWithoutHighlightProductsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
-  tags?: Prisma.ProductListUpdatetagsInput | string[]
-  carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  owner?: Prisma.UserUpdateOneRequiredWithoutProductListsNestedInput
-}
-
-export type ProductListUncheckedUpdateWithoutHighlightProductsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
-  tags?: Prisma.ProductListUpdatetagsInput | string[]
-  carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  quantity?: Prisma.IntFieldUpdateOperationsInput | number
-  showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
 export type ProductListCreateWithoutOwnerInput = {
   id?: string
   title: string
@@ -744,9 +656,9 @@ export type ProductListCreateWithoutOwnerInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  highlightProducts?: Prisma.HighlightProductCreateNestedManyWithoutProductInput
 }
 
 export type ProductListUncheckedCreateWithoutOwnerInput = {
@@ -761,9 +673,9 @@ export type ProductListUncheckedCreateWithoutOwnerInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  highlightProducts?: Prisma.HighlightProductUncheckedCreateNestedManyWithoutProductInput
 }
 
 export type ProductListCreateOrConnectWithoutOwnerInput = {
@@ -808,6 +720,7 @@ export type ProductListScalarWhereInput = {
   price?: Prisma.IntFilter<"ProductList"> | number
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
+  highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
   createdAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
 }
@@ -824,6 +737,7 @@ export type ProductListCreateManyOwnerInput = {
   price: number
   quantity: number
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -840,9 +754,9 @@ export type ProductListUpdateWithoutOwnerInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  highlightProducts?: Prisma.HighlightProductUpdateManyWithoutProductNestedInput
 }
 
 export type ProductListUncheckedUpdateWithoutOwnerInput = {
@@ -857,9 +771,9 @@ export type ProductListUncheckedUpdateWithoutOwnerInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  highlightProducts?: Prisma.HighlightProductUncheckedUpdateManyWithoutProductNestedInput
 }
 
 export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
@@ -874,39 +788,11 @@ export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
   price?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-
-/**
- * Count Type ProductListCountOutputType
- */
-
-export type ProductListCountOutputType = {
-  highlightProducts: number
-}
-
-export type ProductListCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  highlightProducts?: boolean | ProductListCountOutputTypeCountHighlightProductsArgs
-}
-
-/**
- * ProductListCountOutputType without action
- */
-export type ProductListCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ProductListCountOutputType
-   */
-  select?: Prisma.ProductListCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ProductListCountOutputType without action
- */
-export type ProductListCountOutputTypeCountHighlightProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.HighlightProductWhereInput
-}
 
 
 export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -922,11 +808,10 @@ export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   price?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  highlightProducts?: boolean | Prisma.ProductList$highlightProductsArgs<ExtArgs>
-  _count?: boolean | Prisma.ProductListCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productList"]>
 
 export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -942,6 +827,7 @@ export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   price?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -960,6 +846,7 @@ export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   price?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -978,15 +865,14 @@ export type ProductListSelectScalar = {
   price?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
+  highlightProduct?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
+export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
 export type ProductListInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  highlightProducts?: boolean | Prisma.ProductList$highlightProductsArgs<ExtArgs>
-  _count?: boolean | Prisma.ProductListCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductListIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -999,7 +885,6 @@ export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.Interna
   name: "ProductList"
   objects: {
     owner: Prisma.$UserPayload<ExtArgs>
-    highlightProducts: Prisma.$HighlightProductPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1014,6 +899,7 @@ export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.Interna
     price: number
     quantity: number
     showWhatsappNo: boolean
+    highlightProduct: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["productList"]>
@@ -1411,7 +1297,6 @@ readonly fields: ProductListFieldRefs;
 export interface Prisma__ProductListClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   owner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  highlightProducts<T extends Prisma.ProductList$highlightProductsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductList$highlightProductsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HighlightProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1453,6 +1338,7 @@ export interface ProductListFieldRefs {
   readonly price: Prisma.FieldRef<"ProductList", 'Int'>
   readonly quantity: Prisma.FieldRef<"ProductList", 'Int'>
   readonly showWhatsappNo: Prisma.FieldRef<"ProductList", 'Boolean'>
+  readonly highlightProduct: Prisma.FieldRef<"ProductList", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"ProductList", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ProductList", 'DateTime'>
 }
@@ -1848,30 +1734,6 @@ export type ProductListDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Limit how many ProductLists to delete.
    */
   limit?: number
-}
-
-/**
- * ProductList.highlightProducts
- */
-export type ProductList$highlightProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the HighlightProduct
-   */
-  select?: Prisma.HighlightProductSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the HighlightProduct
-   */
-  omit?: Prisma.HighlightProductOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.HighlightProductInclude<ExtArgs> | null
-  where?: Prisma.HighlightProductWhereInput
-  orderBy?: Prisma.HighlightProductOrderByWithRelationInput | Prisma.HighlightProductOrderByWithRelationInput[]
-  cursor?: Prisma.HighlightProductWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.HighlightProductScalarFieldEnum | Prisma.HighlightProductScalarFieldEnum[]
 }
 
 /**
