@@ -1,10 +1,13 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -16,12 +19,15 @@ import { CreateChallengeDto } from './dto/create-challenge.dto';
 import { SubmitChallengePostDto } from './dto/submit-challenge-post.dto';
 import { ChallengeService } from './challenge.service';
 import { Roles } from '@/common/decorator/roles.tdecorator';
+import { UpdateChallengeDto } from './dto/update-challenge.dto';
+import { UpdateChallengeStatusDto } from './dto/update-challenge-status.dto';
 
 @ApiTags('Challenges')
 @Controller('challenges')
 export class ChallengeController {
   constructor(private readonly challengeService: ChallengeService) {}
 
+  // ---------- POST ----------
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
@@ -56,11 +62,7 @@ export class ChallengeController {
     @Body() dto: SubmitChallengePostDto,
   ) {
     return handleRequest(async () => {
-      // enforce param == body
-      return this.challengeService.submitChallengePost(userId, {
-        ...dto,
-        challengeId,
-      });
+      return this.challengeService.submitChallengePost(userId, { ...dto, challengeId });
     }, 'Submission created');
   }
 
@@ -74,5 +76,88 @@ export class ChallengeController {
     return handleRequest(async () => {
       return this.challengeService.finalizeChallenge(challengeId, adminId);
     }, 'Challenge finalized');
+  }
+
+  // ---------- GET ----------
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'List challenges (public)' })
+  list(
+    @Query('status') status?: string,
+    @Query('search') search?: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+  ) {
+    return handleRequest(async () => {
+      return this.challengeService.listChallenges({
+        status,
+        search,
+        page: page ? Number(page) : 1,
+        limit: limit ? Number(limit) : 20,
+      });
+    }, 'Challenges fetched');
+  }
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get challenge details' })
+  get(@Param('id') challengeId: string) {
+    return handleRequest(async () => this.challengeService.getChallenge(challengeId), 'Challenge fetched');
+  }
+
+  @Get(':id/participants')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get challenge participants' })
+  participants(@Param('id') challengeId: string) {
+    return handleRequest(async () => this.challengeService.getParticipants(challengeId), 'Participants fetched');
+  }
+
+  @Get(':id/submissions')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get challenge submissions' })
+  submissions(@Param('id') challengeId: string) {
+    return handleRequest(async () => this.challengeService.getSubmissions(challengeId), 'Submissions fetched');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/me')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get my status in challenge' })
+  me(@Param('id') challengeId: string, @GetUser('userId') userId: string) {
+    return handleRequest(async () => this.challengeService.getMyChallengeStatus(challengeId, userId), 'My status fetched');
+  }
+
+  // ---------- PATCH (ADMIN) ----------
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
+  @Patch(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'ADMIN: Update challenge details' })
+  update(
+    @Param('id') challengeId: string,
+    @GetUser('userId') adminId: string,
+    @Body() dto: UpdateChallengeDto,
+  ) {
+    return handleRequest(async () => {
+      return this.challengeService.updateChallenge(challengeId, adminId, dto);
+    }, 'Challenge updated');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
+  @Patch(':id/status')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'ADMIN: Update challenge status' })
+  updateStatus(
+    @Param('id') challengeId: string,
+    @GetUser('userId') adminId: string,
+    @Body() dto: UpdateChallengeStatusDto,
+  ) {
+    return handleRequest(async () => {
+      return this.challengeService.updateChallengeStatus(challengeId, adminId, dto.isActive);
+    }, 'Challenge status updated');
   }
 }
