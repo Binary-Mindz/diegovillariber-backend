@@ -1,5 +1,5 @@
 import {
-  Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, UseGuards,
+  Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Query, UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
@@ -9,11 +9,13 @@ import { BattleService } from './battle.service';
 import { CreateBattleDto } from './dto/create-battle.dto';
 import { SubmitBattlePostDto } from './dto/submit-battle-post.dto';
 import { VoteBattleDto } from './dto/vote-battle.dto';
+import { UpdateBattleDto } from './dto/update-battle.dto';
+import { UpdateBattleStatusDto } from './dto/update-battle-status.dto';
 
 @ApiTags('Battles')
 @Controller('battles')
 export class BattleController {
-  constructor(private readonly battleService: BattleService) {}
+  constructor(private readonly battleService: BattleService) { }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -54,7 +56,7 @@ export class BattleController {
     return handleRequest(async () => this.battleService.getBattle(battleId), 'Battle fetched');
   }
 
-    @Get(':id/participants')
+  @Get(':id/participants')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get battle participants' })
   participants(@Param('id') battleId: string) {
@@ -135,5 +137,34 @@ export class BattleController {
     return handleRequest(async () => {
       return this.battleService.finalizeBattle(battleId, userId);
     }, 'Battle finalized');
+  }
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Patch(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Update battle details (host only)' })
+  updateBattle(
+    @Param('id') battleId: string,
+    @GetUser('userId') userId: string,
+    @Body() dto: UpdateBattleDto,
+  ) {
+    return handleRequest(async () => {
+      return this.battleService.updateBattle(battleId, userId, dto);
+    }, 'Battle updated');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Patch(':id/status')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Update battle status (host only)' })
+  updateStatus(
+    @Param('id') battleId: string,
+    @GetUser('userId') userId: string,
+    @Body() dto: UpdateBattleStatusDto,
+  ) {
+    return handleRequest(async () => {
+      return this.battleService.updateBattleStatus(battleId, userId, dto.status);
+    }, 'Battle status updated');
   }
 }
