@@ -8,6 +8,7 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateChallengeDto } from './dto/create-challenge.dto';
 import { SubmitChallengePostDto } from './dto/submit-challenge-post.dto';
 import { PostType } from 'generated/prisma/enums';
+import { UpdateChallengeDto } from './dto/update-challenge.dto';
 
 @Injectable()
 export class ChallengeService {
@@ -159,4 +160,189 @@ export class ChallengeService {
       likes: top.like,
     };
   }
+
+
+    async listChallenges(params: { status?: string; search?: string; page?: number; limit?: number }) {
+    const { status, search, page = 1, limit = 20 } = params;
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+    if (status) where.isActive = status; // ACTIVE / INACTIVE
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: 'insensitive' } },
+        { description: { contains: search, mode: 'insensitive' } },
+        { location: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.challenge.findMany({
+        where,
+        orderBy: { },
+        skip,
+        take: limit,
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          location: true,
+          images: true,
+          media: true,
+          camera: true,
+          startDate: true,
+          endDate: true,
+          isActive: true,
+          participants: true,
+          hostId: true,
+          _count: { select: { participantsList: true } }
+        },
+      }),
+      this.prisma.challenge.count({ where }),
+    ]);
+
+    return {
+      meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
+      items,
+    };
+  }
+
+  async getChallenge(challengeId: string) {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        location: true,
+        images: true,
+        media: true,
+        camera: true,
+        startDate: true,
+        endDate: true,
+        isActive: true,
+        participants: true,
+        hostId: true,
+        host: { select: { id: true, username: true } },
+        _count: { select: { participantsList: true } }
+      },
+    });
+
+    if (!challenge) throw new NotFoundException('Challenge not found');
+    return challenge;
+  }
+
+  async getParticipants(challengeId: string) {
+    const exists = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: { id: true },
+    });
+    if (!exists) throw new NotFoundException('Challenge not found');
+
+    return this.prisma.challengeParticipant.findMany({
+      where: { challengeId, isActive: true },
+      orderBy: { joinedAt: 'asc' },
+      select: {
+        id: true,
+        joinedAt: true,
+        user: { select: { id: true, username: true} },
+      },
+    });
+  }
+
+  async getSubmissions(challengeId: string) {
+    const exists = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: { id: true },
+    });
+    if (!exists) throw new NotFoundException('Challenge not found');
+
+    // return xPosts of this challenge + likes
+    return this.prisma.xPost.findMany({
+      where: { challengeId, postType: PostType.Challenge_Post },
+      orderBy: [{ like: 'desc' }, { createdAt: 'asc' }],
+      select: {
+        id: true,
+        userId: true,
+        mediaUrl: true,
+        caption: true,
+        like: true,
+        createdAt: true,
+        user: { select: { id: true, username: true } },
+      },
+    });
+  }
+
+  async getMyChallengeStatus(challengeId: string, userId: string) {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: { id: true },
+    });
+    if (!challenge) throw new NotFoundException('Challenge not found');
+
+    const participant = await this.prisma.challengeParticipant.findFirst({
+      where: { challengeId, userId, isActive: true },
+      select: { id: true, joinedAt: true, isActive: true },
+    });
+
+    const submission = await this.prisma.challengeSubmission.findUnique({
+      where: { challengeId_userId: { challengeId, userId } },
+      select: { id: true, xpostId: true, createdAt: true },
+    });
+
+    return {
+      joined: !!participant,
+      participant,
+      submitted: !!submission,
+      submission,
+    };
+  }
+
+  // ---------------- ✅ PATCH METHODS (ADMIN) ----------------
+
+  async updateChallenge(challengeId: string, adminId: string, dto: UpdateChallengeDto) {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: { id: true, hostId: true },
+    });
+    if (!challenge) throw new NotFoundException('Challenge not found');
+
+    // if you want only creator-admin can edit:
+    if (challenge.hostId !== adminId) {
+      throw new ForbiddenException('Only challenge host can update');
+    }
+
+    return this.prisma.challenge.update({
+      where: { id: challengeId },
+      data: {
+        title: dto.title,
+        description: dto.description,
+        location: dto.location,
+        images: dto.images,
+        media: dto.media,
+        camera: dto.camera,
+        participants: dto.participants,
+        startDate: dto.startDate ? new Date(dto.startDate) : undefined,
+        endDate: dto.endDate ? new Date(dto.endDate) : undefined,
+      },
+    });
+  }
+
+  async updateChallengeStatus(challengeId: string, adminId: string, isActive: 'ACTIVE' | 'INACTIVE') {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+      select: { id: true, hostId: true },
+    });
+    if (!challenge) throw new NotFoundException('Challenge not found');
+
+    if (challenge.hostId !== adminId) {
+      throw new ForbiddenException('Only challenge host can update status');
+    }
+
+    return this.prisma.challenge.update({
+      where: { id: challengeId },
+      data: { isActive },
+    });
+  }
+
 }
