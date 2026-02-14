@@ -1,5 +1,5 @@
 import {
-  Body, Controller, HttpCode, HttpStatus, Param, Post, UseGuards,
+  Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
@@ -25,6 +25,65 @@ export class BattleController {
       return this.battleService.createBattle(userId, dto);
     }, 'Battle created');
   }
+
+  @Get()
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'List battles (public feed)' })
+  list(
+    @Query('status') status?: string,
+    @Query('category') category?: string,
+    @Query('search') search?: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+  ) {
+    return handleRequest(async () => {
+      return this.battleService.listBattles({
+        status,
+        category,
+        search,
+        page: page ? Number(page) : 1,
+        limit: limit ? Number(limit) : 20,
+      });
+    }, 'Battles fetched');
+  }
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get battle details' })
+  get(@Param('id') battleId: string) {
+    return handleRequest(async () => this.battleService.getBattle(battleId), 'Battle fetched');
+  }
+
+    @Get(':id/participants')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get battle participants' })
+  participants(@Param('id') battleId: string) {
+    return handleRequest(async () => this.battleService.getParticipants(battleId), 'Participants fetched');
+  }
+
+  @Get(':id/entries')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get battle entries with votes count' })
+  entries(@Param('id') battleId: string) {
+    return handleRequest(async () => this.battleService.getEntries(battleId), 'Entries fetched');
+  }
+
+  @Get(':id/leaderboard')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get battle leaderboard (sorted by votes)' })
+  leaderboard(@Param('id') battleId: string) {
+    return handleRequest(async () => this.battleService.getLeaderboard(battleId), 'Leaderboard fetched');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/me')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get my status in battle (joined/submitted/voted)' })
+  me(@Param('id') battleId: string, @GetUser('userId') userId: string) {
+    return handleRequest(async () => this.battleService.getMyBattleStatus(battleId, userId), 'My battle status fetched');
+  }
+
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
