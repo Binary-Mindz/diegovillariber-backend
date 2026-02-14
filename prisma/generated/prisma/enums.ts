@@ -438,16 +438,6 @@ export const ProductCategory = {
 export type ProductCategory = (typeof ProductCategory)[keyof typeof ProductCategory]
 
 
-export const HighlightStatus = {
-  PENDING: 'PENDING',
-  ACTIVE: 'ACTIVE',
-  EXPIRED: 'EXPIRED',
-  CANCELLED: 'CANCELLED'
-} as const
-
-export type HighlightStatus = (typeof HighlightStatus)[keyof typeof HighlightStatus]
-
-
 export const CarClass = {
   GT3: 'GT3',
   GT4: 'GT4',
