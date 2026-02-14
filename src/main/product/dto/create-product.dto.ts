@@ -92,4 +92,12 @@ export class CreateProductDto {
   @IsOptional()
   @IsBoolean()
   showWhatsappNo?: boolean;
+
+  @ApiPropertyOptional({
+    example: false,
+    description: 'Highlight product (default false)',
+  })
+  @IsOptional()
+  @IsBoolean()
+  highlightProduct?: boolean;
 }
