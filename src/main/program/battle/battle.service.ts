@@ -8,10 +8,11 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateBattleDto } from './dto/create-battle.dto';
 import { SubmitBattlePostDto } from './dto/submit-battle-post.dto';
 import { PostType, BattleStatus } from 'generated/prisma/enums';
+import { UpdateBattleDto } from './dto/update-battle.dto';
 
 @Injectable()
 export class BattleService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async createBattle(userId: string, dto: CreateBattleDto) {
     return this.prisma.battle.create({
@@ -28,6 +29,189 @@ export class BattleService {
         status: BattleStatus.PENDING,
       },
     });
+  }
+
+  async listBattles(params: {
+    status?: string;
+    category?: string;
+    search?: string;
+    page?: number;
+    limit?: number;
+  }) {
+    const { status, category, search, page = 1, limit = 20 } = params;
+    const skip = (page - 1) * limit;
+
+    const where: any = {};
+
+    if (status) where.status = status as BattleStatus;
+    if (category) where.battleCategory = category;
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: 'insensitive' } },
+        { description: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.battle.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+        select: {
+          id: true,
+          title: true,
+          coverImage: true,
+          status: true,
+          battleCategory: true,
+          preference: true,
+          maxParticipants: true,
+          startTime: true,
+          endTime: true,
+          createdAt: true,
+          hostId: true,
+          _count: { select: { participants: true, entries: true, votes: true } },
+        },
+      }),
+      this.prisma.battle.count({ where }),
+    ]);
+
+    return {
+      meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
+      items,
+    };
+  }
+
+  async getBattle(battleId: string) {
+    const battle = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        coverImage: true,
+        status: true,
+        battleCategory: true,
+        preference: true,
+        maxParticipants: true,
+        startTime: true,
+        endTime: true,
+        createdAt: true,
+        hostId: true,
+        host: { select: { id: true, username: true } },
+        _count: { select: { participants: true, entries: true, votes: true } },
+        result: {
+          select: {
+            id: true,
+            winnerEntryId: true,
+            winnerUserId: true,
+            rewardPoints: true,
+            createdAt: true,
+          },
+        },
+      },
+    });
+
+    if (!battle) throw new NotFoundException('Battle not found');
+    return battle;
+  }
+
+  async getParticipants(battleId: string) {
+    const exists = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true },
+    });
+    if (!exists) throw new NotFoundException('Battle not found');
+
+    return this.prisma.battleParticipant.findMany({
+      where: { battleId, isActive: true },
+      orderBy: { joinedAt: 'asc' },
+      select: {
+        id: true,
+        joinedAt: true,
+        user: { select: { id: true, username: true } },
+      },
+    });
+  }
+
+  async getEntries(battleId: string) {
+    const exists = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true },
+    });
+    if (!exists) throw new NotFoundException('Battle not found');
+
+    return this.prisma.battleEntry.findMany({
+      where: { battleId },
+      orderBy: { createdAt: 'asc' },
+      select: {
+        id: true,
+        createdAt: true,
+        participantId: true,
+        participant: { select: { userId: true, user: { select: { id: true, username: true } } } },
+        xpost: { select: { id: true, mediaUrl: true, caption: true, createdAt: true } },
+        _count: { select: { votes: true } },
+      },
+    });
+  }
+
+  async getLeaderboard(battleId: string) {
+    const exists = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true },
+    });
+    if (!exists) throw new NotFoundException('Battle not found');
+
+    return this.prisma.battleEntry.findMany({
+      where: { battleId },
+      orderBy: [{ votes: { _count: 'desc' } }, { createdAt: 'asc' }],
+      select: {
+        id: true,
+        createdAt: true,
+        participant: {
+          select: {
+            userId: true,
+            user: { select: { id: true, username: true } },
+          },
+        },
+        xpost: { select: { id: true, mediaUrl: true, caption: true } },
+        _count: { select: { votes: true } },
+      },
+    });
+  }
+
+  async getMyBattleStatus(battleId: string, userId: string) {
+    const battle = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true },
+    });
+    if (!battle) throw new NotFoundException('Battle not found');
+
+    const participant = await this.prisma.battleParticipant.findUnique({
+      where: { battleId_userId: { battleId, userId } },
+      select: { id: true, isActive: true, joinedAt: true },
+    });
+
+    const entry = participant
+      ? await this.prisma.battleEntry.findUnique({
+        where: { battleId_participantId: { battleId, participantId: participant.id } },
+        select: { id: true, createdAt: true, xpostId: true },
+      })
+      : null;
+
+    const vote = await this.prisma.battleVote.findUnique({
+      where: { battleId_voterUserId: { battleId, voterUserId: userId } },
+      select: { id: true, entryId: true, createdAt: true },
+    });
+
+    return {
+      joined: !!participant,
+      participant,
+      submitted: !!entry,
+      entry,
+      voted: !!vote,
+      vote,
+    };
   }
 
   async joinBattle(battleId: string, userId: string) {
@@ -186,5 +370,68 @@ export class BattleService {
     });
 
     return { result, votes: topEntry._count.votes };
+  }
+
+  async updateBattle(battleId: string, userId: string, dto: UpdateBattleDto) {
+    const battle = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true, hostId: true, status: true },
+    });
+
+    if (!battle) throw new NotFoundException('Battle not found');
+
+    if (battle.hostId !== userId) {
+      throw new ForbiddenException('Only host can update battle');
+    }
+
+    if (battle.status === 'COMPLETED') {
+      throw new BadRequestException('Cannot edit ended battle');
+    }
+
+    return this.prisma.battle.update({
+      where: { id: battleId },
+      data: {
+        title: dto.title,
+        description: dto.description,
+        coverImage: dto.coverImage,
+        battleCategory: dto.battleCategory,
+        preference: dto.preference,
+        maxParticipants: dto.maxParticipants,
+        startTime: dto.startTime ? new Date(dto.startTime) : undefined,
+        endTime: dto.endTime ? new Date(dto.endTime) : undefined,
+      },
+    });
+  }
+
+  async updateBattleStatus(battleId: string, userId: string, status: BattleStatus) {
+    const battle = await this.prisma.battle.findUnique({
+      where: { id: battleId },
+      select: { id: true, hostId: true, status: true },
+    });
+
+    if (!battle) throw new NotFoundException('Battle not found');
+
+    if (battle.hostId !== userId) {
+      throw new ForbiddenException('Only host can change status');
+    }
+
+    if (battle.status === BattleStatus.COMPLETED) {
+      throw new BadRequestException('Battle already ended');
+    }
+
+    // Optional business rules (recommended)
+
+    if (status === BattleStatus.ONGOING && battle.status !== BattleStatus.PENDING) {
+      throw new BadRequestException('Battle must be PENDING → ONGOING');
+    }
+
+    if (status === BattleStatus.COMPLETED && battle.status !== BattleStatus.ONGOING) {
+      throw new BadRequestException('Battle must be ONGOING → ENDED');
+    }
+
+    return this.prisma.battle.update({
+      where: { id: battleId },
+      data: { status },
+    });
   }
 }
