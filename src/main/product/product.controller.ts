@@ -23,8 +23,6 @@ import { handleRequest } from '@/common/helpers/handle.request';
 
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
-
-import { CreateHighlightDto } from './dto/create-highlight.dto';
 import { ProductFeedQueryDto } from './dto/product-feed-query.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 
@@ -53,7 +51,9 @@ export class ProductController {
   }
 
   @Get('feed')
-  @ApiOperation({ summary: 'Get product feed (search, filters, sorting, pagination)' })
+  @ApiOperation({
+    summary: 'Get product feed (search, filters, sorting, pagination)',
+  })
   async feed(@Query() query: ProductFeedQueryDto) {
     return this.productsService.getFeed(query);
   }
@@ -114,63 +114,40 @@ export class ProductController {
   }
 
   // =========================
-  // Highlight (Paid Boost)
+  // Highlight (Boolean Toggle)
   // =========================
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/highlight')
-  @HttpCode(HttpStatus.CREATED)
+  @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Request highlight (creates PENDING highlight entry for this product)',
+    summary: 'Highlight product (sets highlightProduct=true) - owner only',
   })
-  async requestHighlight(
+  async highlightOn(
     @Param('id') productId: string,
     @GetUser('userId') userId: string,
-    @Body() dto: CreateHighlightDto,
   ) {
     return handleRequest(async () => {
-      const highlight = await this.productsService.requestHighlight(
-        userId,
-        productId,
-        dto,
-      );
-      return highlight;
-    }, 'Highlight request created successfully');
+      const product = await this.productsService.setHighlight(userId, productId, true);
+      return product;
+    }, 'Product highlighted successfully');
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @Post('highlight/:highlightId/confirm-payment')
+  @Post(':id/unhighlight')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Confirm payment and activate highlight (PENDING -> ACTIVE)',
+    summary: 'Unhighlight product (sets highlightProduct=false) - owner only',
   })
-  async confirmHighlightPayment(
-    @Param('highlightId') highlightId: string,
+  async highlightOff(
+    @Param('id') productId: string,
     @GetUser('userId') userId: string,
   ) {
     return handleRequest(async () => {
-      const highlight = await this.productsService.confirmHighlightPayment(
-        userId,
-        highlightId,
-      );
-      return highlight;
-    }, 'Payment confirmed. Highlight activated successfully');
-  }
-
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @Post('highlight/:highlightId/cancel')
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Cancel highlight (owner only)' })
-  async cancelHighlight(
-    @Param('highlightId') highlightId: string,
-    @GetUser('userId') userId: string,
-  ) {
-    return handleRequest(async () => {
-      const highlight = await this.productsService.cancelHighlight(userId, highlightId);
-      return highlight;
-    }, 'Highlight cancelled successfully');
+      const product = await this.productsService.setHighlight(userId, productId, false);
+      return product;
+    }, 'Product unhighlighted successfully');
   }
 }

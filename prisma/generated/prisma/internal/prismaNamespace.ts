@@ -413,7 +413,6 @@ export const ModelName = {
   HardwareSetup: 'HardwareSetup',
   Hashtag: 'Hashtag',
   HidePost: 'HidePost',
-  HighlightProduct: 'HighlightProduct',
   InteriorSafety: 'InteriorSafety',
   LegalNotice: 'LegalNotice',
   Like: 'Like',
@@ -463,7 +462,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "highlightProduct" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "battleEntry" | "battleParticipant" | "battleResult" | "battleVote" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeResult" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList" | "xPost"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2610,80 +2609,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.HidePostCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.HidePostCountAggregateOutputType> | number
-        }
-      }
-    }
-    HighlightProduct: {
-      payload: Prisma.$HighlightProductPayload<ExtArgs>
-      fields: Prisma.HighlightProductFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.HighlightProductFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.HighlightProductFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        findFirst: {
-          args: Prisma.HighlightProductFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.HighlightProductFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        findMany: {
-          args: Prisma.HighlightProductFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>[]
-        }
-        create: {
-          args: Prisma.HighlightProductCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        createMany: {
-          args: Prisma.HighlightProductCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.HighlightProductCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>[]
-        }
-        delete: {
-          args: Prisma.HighlightProductDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        update: {
-          args: Prisma.HighlightProductUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        deleteMany: {
-          args: Prisma.HighlightProductDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.HighlightProductUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.HighlightProductUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>[]
-        }
-        upsert: {
-          args: Prisma.HighlightProductUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$HighlightProductPayload>
-        }
-        aggregate: {
-          args: Prisma.HighlightProductAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateHighlightProduct>
-        }
-        groupBy: {
-          args: Prisma.HighlightProductGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.HighlightProductGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.HighlightProductCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.HighlightProductCountAggregateOutputType> | number
         }
       }
     }
@@ -5631,21 +5556,6 @@ export const HidePostScalarFieldEnum = {
 export type HidePostScalarFieldEnum = (typeof HidePostScalarFieldEnum)[keyof typeof HidePostScalarFieldEnum]
 
 
-export const HighlightProductScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  durationHours: 'durationHours',
-  chargeAmount: 'chargeAmount',
-  status: 'status',
-  startDate: 'startDate',
-  endDate: 'endDate',
-  paidAt: 'paidAt',
-  createdAt: 'createdAt'
-} as const
-
-export type HighlightProductScalarFieldEnum = (typeof HighlightProductScalarFieldEnum)[keyof typeof HighlightProductScalarFieldEnum]
-
-
 export const InteriorSafetyScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -5844,6 +5754,7 @@ export const ProductListScalarFieldEnum = {
   price: 'price',
   quantity: 'quantity',
   showWhatsappNo: 'showWhatsappNo',
+  highlightProduct: 'highlightProduct',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -6449,20 +6360,6 @@ export type ListEnumHashtagCreatedByFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
- * Reference to a field of type 'HighlightStatus'
- */
-export type EnumHighlightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HighlightStatus'>
-    
-
-
-/**
- * Reference to a field of type 'HighlightStatus[]'
- */
-export type ListEnumHighlightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HighlightStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'LiveStatus'
  */
 export type EnumLiveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LiveStatus'>
@@ -6837,7 +6734,6 @@ export type GlobalOmitConfig = {
   hardwareSetup?: Prisma.HardwareSetupOmit
   hashtag?: Prisma.HashtagOmit
   hidePost?: Prisma.HidePostOmit
-  highlightProduct?: Prisma.HighlightProductOmit
   interiorSafety?: Prisma.InteriorSafetyOmit
   legalNotice?: Prisma.LegalNoticeOmit
   like?: Prisma.LikeOmit

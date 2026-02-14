@@ -264,12 +264,6 @@ enum ProductCategory {
   Car_Accessories
 }
 
-enum HighlightStatus {
-  PENDING  
-  ACTIVE
-  EXPIRED
-  CANCELLED
-}
 
 enum CarClass {
   GT3

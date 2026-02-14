@@ -19,10 +19,8 @@ model ProductList {
   quantity     Int
 
   showWhatsappNo Boolean       @default(false) // "Show my WhatsApp No" toggle
-
+  highlightProduct Boolean     @default(false)
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
 
-  // highlight (optional)
-  highlightProducts HighlightProduct[]
 }

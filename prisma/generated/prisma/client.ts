@@ -183,11 +183,6 @@ export type Hashtag = Prisma.HashtagModel
  */
 export type HidePost = Prisma.HidePostModel
 /**
- * Model HighlightProduct
- * 
- */
-export type HighlightProduct = Prisma.HighlightProductModel
-/**
  * Model InteriorSafety
  * 
  */
