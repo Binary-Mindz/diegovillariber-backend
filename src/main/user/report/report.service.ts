@@ -27,8 +27,7 @@ export class ReportService {
         userId,
         targetType: dto.targetType,
         targetId: dto.targetId,
-        description: dto.description ?? null,
-        media: dto.media ?? null
+        description: dto.description ?? null
       },
     });
 
