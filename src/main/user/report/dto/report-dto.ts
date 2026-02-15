@@ -16,9 +16,4 @@ export class ReportDto {
   @IsString()
   @ApiPropertyOptional({ example: 'This post is inappropriate' })
   description?: string;
-
-  @IsString()
-  @IsOptional()
-  @ApiPropertyOptional({ example: 'http://image-url.com/media.jpg' })
-  media: string;
 }
