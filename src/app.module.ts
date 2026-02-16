@@ -9,6 +9,7 @@ import { AdminModule } from './main/admin/admin.module';
 import { ProductModule } from './main/product/product.module';
 import { ProgramModule } from './main/program/program.module';
 import { ChatModule } from './main/chat/chat.module';
+import { FileModule } from './main/files/file.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { ChatModule } from './main/chat/chat.module';
     ProgramModule,
     ProductModule,
     ChatModule,
+    FileModule,
     AdminModule
   ],
   controllers: [],
