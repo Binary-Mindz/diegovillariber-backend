@@ -1,5 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
+import { Role } from 'generated/prisma/enums';
 
 export class LoginDto {
   @ApiProperty({
@@ -15,4 +16,12 @@ export class LoginDto {
   })
   @IsNotEmpty()
   password: string;
+
+  @IsOptional()
+  @IsEnum(Role)
+  @ApiPropertyOptional({
+    example: 'USER',
+    description: 'Login as specific role',
+  })
+  loginAs?: Role;
 }

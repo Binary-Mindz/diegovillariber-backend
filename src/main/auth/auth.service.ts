@@ -12,7 +12,7 @@ import { MailService } from '../../common/mail/mail.service';
 import type { SignOptions } from 'jsonwebtoken';
 import { SignUpDto } from './dto/signup.dto';
 import { generateOtp, otpExpiry } from '@/common/utils/otp';
-import { AccountType, IsActive } from 'generated/prisma/enums';
+import { AccountType, IsActive, Role } from 'generated/prisma/enums';
 
 @Injectable()
 export class AuthService {
@@ -20,7 +20,7 @@ export class AuthService {
     private prisma: PrismaService,
     private jwt: JwtService,
     private mail: MailService,
-  ) {}
+  ) { }
 
   private async hash(data: string) {
     return bcrypt.hash(data, 10);
@@ -62,143 +62,143 @@ export class AuthService {
     );
   }
 
- async signup(dto: SignUpDto) {
-  const existing = await this.prisma.user.findUnique({
-    where: { email: dto.email },
-    include: { profile: true },
-  });
-
-  const otp = generateOtp(6);
-  const expires = otpExpiry(10);
-  if (existing && existing.isEmailVerified) {
-    throw new BadRequestException('Email already exists');
-  }
-
-  if (existing && !existing.isEmailVerified) {
-    await this.prisma.user.update({
-      where: { id: existing.id },
-      data: {
-        emailOtp: otp,
-        emailOtpExpiresAt: expires,
-      },
+  async signup(dto: SignUpDto) {
+    const existing = await this.prisma.user.findUnique({
+      where: { email: dto.email },
+      include: { profile: true },
     });
 
-    await this.mail.sendOtpEmail(existing.email, 'Verify your email', otp);
-
-    return {
-      message: 'Email not verified. OTP resent.',
-      userId: existing.id,
-    };
-  }
-
-  const passwordHash = await this.hash(dto.password);
-
-  const result = await this.prisma.$transaction(async (tx) => {
-    const user = await tx.user.create({
-      data: {
-        username: dto.username,
-        email: dto.email,
-        password: passwordHash,
-        emailOtp: otp,
-        emailOtpExpiresAt: expires,
-      },
-    });
-
-   
-    const profile = await tx.profile.create({
-      data: {
-        userId: user.id,
-        preference: dto.preference ?? null,
-        bio: (dto as any).bio ?? null,
-        imageUrl: (dto as any).imageUrl ?? null,
-        instagramHandler: (dto as any).instagramHandler ?? null,
-        accountType: (dto as any).accountType ?? AccountType.PUBLIC,
-        isActive: IsActive.ACTIVE,
-        suspend: false,
-      },
-      select: { id: true },
-    });
-
-   
-    switch (dto.profileType) {
-      case 'SPOTTER':
-        await tx.spotterProfile.create({
-          data: { profileId: profile.id }, 
-        });
-        break;
-
-      case 'OWNER':
-        await tx.ownerProfile.create({
-          data: { profileId: profile.id }, 
-        });
-        break;
-
-      case 'CONTENT_CREATOR':
-        await tx.contentCreatorProfile.create({
-          data: {
-            profileId: profile.id,
-            creatorCategory: (dto as any).creator?.creatorCategory ?? undefined,
-            youtubeChanel: (dto as any).creator?.youtubeChanel ?? undefined,
-            portfolioWebsite: (dto as any).creator?.portfolioWebsite ?? undefined,
-          },
-        });
-        break;
-
-      case 'PRO_BUSSINESS': {
-        const business = (dto as any).business;
-        if (!business?.businessName || !business?.location) {
-          throw new BadRequestException(
-            'businessName and location are required for BUSINESS profile',
-          );
-        }
-        await tx.businessProfile.create({
-          data: {
-            profileId: profile.id,
-            businessCategory: business.businessCategory ?? undefined,
-            businessName: business.businessName,
-            location: business.location,
-          },
-        });
-        break;
-      }
-
-      case 'PRO_DRIVER': {
-        const proDriver = (dto as any).proDriver;
-        if (!proDriver?.location) {
-          throw new BadRequestException(
-            'location is required for PRO_DRIVER profile',
-          );
-        }
-        await tx.proDriverProfile.create({
-          data: {
-            profileId: profile.id,
-            racingDiscipline: proDriver.racingDiscipline ?? undefined,
-            location: proDriver.location,
-          },
-        });
-        break;
-      }
-
-      case 'SIM_RACING_DRIVER':
-        await tx.simRacingProfile.create({
-          data: { profileId: profile.id },
-        });
-        break;
-
-      default:
-        throw new BadRequestException('Invalid profileType');
+    const otp = generateOtp(6);
+    const expires = otpExpiry(10);
+    if (existing && existing.isEmailVerified) {
+      throw new BadRequestException('Email already exists');
     }
 
-    return user;
-  });
+    if (existing && !existing.isEmailVerified) {
+      await this.prisma.user.update({
+        where: { id: existing.id },
+        data: {
+          emailOtp: otp,
+          emailOtpExpiresAt: expires,
+        },
+      });
 
-  await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
+      await this.mail.sendOtpEmail(existing.email, 'Verify your email', otp);
 
-  return {
-    message: 'Signup successful. OTP sent to email.',
-    userId: result.id,
-  };
-}
+      return {
+        message: 'Email not verified. OTP resent.',
+        userId: existing.id,
+      };
+    }
+
+    const passwordHash = await this.hash(dto.password);
+
+    const result = await this.prisma.$transaction(async (tx) => {
+      const user = await tx.user.create({
+        data: {
+          username: dto.username,
+          email: dto.email,
+          password: passwordHash,
+          emailOtp: otp,
+          emailOtpExpiresAt: expires,
+        },
+      });
+
+
+      const profile = await tx.profile.create({
+        data: {
+          userId: user.id,
+          preference: dto.preference ?? null,
+          bio: (dto as any).bio ?? null,
+          imageUrl: (dto as any).imageUrl ?? null,
+          instagramHandler: (dto as any).instagramHandler ?? null,
+          accountType: (dto as any).accountType ?? AccountType.PUBLIC,
+          isActive: IsActive.ACTIVE,
+          suspend: false,
+        },
+        select: { id: true },
+      });
+
+
+      switch (dto.profileType) {
+        case 'SPOTTER':
+          await tx.spotterProfile.create({
+            data: { profileId: profile.id },
+          });
+          break;
+
+        case 'OWNER':
+          await tx.ownerProfile.create({
+            data: { profileId: profile.id },
+          });
+          break;
+
+        case 'CONTENT_CREATOR':
+          await tx.contentCreatorProfile.create({
+            data: {
+              profileId: profile.id,
+              creatorCategory: (dto as any).creator?.creatorCategory ?? undefined,
+              youtubeChanel: (dto as any).creator?.youtubeChanel ?? undefined,
+              portfolioWebsite: (dto as any).creator?.portfolioWebsite ?? undefined,
+            },
+          });
+          break;
+
+        case 'PRO_BUSSINESS': {
+          const business = (dto as any).business;
+          if (!business?.businessName || !business?.location) {
+            throw new BadRequestException(
+              'businessName and location are required for BUSINESS profile',
+            );
+          }
+          await tx.businessProfile.create({
+            data: {
+              profileId: profile.id,
+              businessCategory: business.businessCategory ?? undefined,
+              businessName: business.businessName,
+              location: business.location,
+            },
+          });
+          break;
+        }
+
+        case 'PRO_DRIVER': {
+          const proDriver = (dto as any).proDriver;
+          if (!proDriver?.location) {
+            throw new BadRequestException(
+              'location is required for PRO_DRIVER profile',
+            );
+          }
+          await tx.proDriverProfile.create({
+            data: {
+              profileId: profile.id,
+              racingDiscipline: proDriver.racingDiscipline ?? undefined,
+              location: proDriver.location,
+            },
+          });
+          break;
+        }
+
+        case 'SIM_RACING_DRIVER':
+          await tx.simRacingProfile.create({
+            data: { profileId: profile.id },
+          });
+          break;
+
+        default:
+          throw new BadRequestException('Invalid profileType');
+      }
+
+      return user;
+    });
+
+    await this.mail.sendOtpEmail(dto.email, 'Verify your email', otp);
+
+    return {
+      message: 'Signup successful. OTP sent to email.',
+      userId: result.id,
+    };
+  }
 
   async verifyEmail(email: string, otp: string) {
     const user = await this.prisma.user.findUnique({ where: { email } });
@@ -224,15 +224,12 @@ export class AuthService {
     return { message: 'Email verified successfully' };
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string, loginAs?: Role) {
     const user = await this.prisma.user.findUnique({
       where: { email },
-      select: {
-        id: true,
-        email: true,
-        role: true,
-        password: true,
-        isEmailVerified: true,
+      include: {
+        ambassadorPrograms: true,
+        officialPartners: true,
       },
     });
 
@@ -245,15 +242,43 @@ export class AuthService {
       throw new ForbiddenException('Email not verified');
     }
 
+    let selectedRole = user.role;
+
+    if (loginAs === 'AMBASSADOR') {
+      if (
+        !user.ambassadorPrograms ||
+        user.ambassadorPrograms.status !== 'APPROVED'
+      ) {
+        throw new ForbiddenException('Ambassador not approved');
+      }
+      selectedRole = 'AMBASSADOR';
+    }
+
+    if (loginAs === 'OFFICIAL_PARTNER') {
+      if (
+        !user.officialPartners ||
+        user.officialPartners.requestStatus !== 'APPROVED'
+      ) {
+        throw new ForbiddenException('Official Partner not approved');
+      }
+      selectedRole = 'OFFICIAL_PARTNER';
+    }
+
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: { activeRole: selectedRole },
+    });
+
     const accessToken = this.signAccessToken({
       id: user.id,
-      role: user.role,
+      role: selectedRole,
       email: user.email,
     });
 
     const refreshToken = this.signRefreshToken({
       id: user.id,
-      role: user.role,
+      role: selectedRole,
       email: user.email,
     });
 
@@ -267,7 +292,7 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
-        role: user.role,
+        role: selectedRole,
       },
       tokens: {
         accessToken,
@@ -275,6 +300,7 @@ export class AuthService {
       },
     };
   }
+
 
   async refreshTokens(userId: string, refreshToken: string) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
@@ -346,7 +372,7 @@ export class AuthService {
         password: newHash,
         resetOtp: null,
         resetOtpExpiresAt: null,
-        refreshTokenHash: null, 
+        refreshTokenHash: null,
       },
     });
 
@@ -401,7 +427,7 @@ export class AuthService {
         updatedAt: true,
 
         profile: {
-          
+
         },
       },
     });

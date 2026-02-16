@@ -15,7 +15,7 @@ import { AmbassadorStatus } from 'generated/prisma/enums';
 
 @Injectable()
 export class AmbassadorProgramService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   /** USER */
 
@@ -56,7 +56,7 @@ export class AmbassadorProgramService {
   async getMine(userId: string) {
     const app = await this.prisma.ambassadorProgram.findUnique({
       where: { userId },
-      include: { user: true }, 
+      include: { user: true },
     });
 
     if (!app) throw new NotFoundException('Ambassador application not found.');
@@ -133,7 +133,7 @@ export class AmbassadorProgramService {
         skip,
         take: limit,
         orderBy: { createdAt: 'desc' },
-        include: { user: true }, 
+        include: { user: true },
       }),
       this.prisma.ambassadorProgram.count({ where }),
     ]);
@@ -152,14 +152,37 @@ export class AmbassadorProgramService {
   }
 
   async updateStatus(id: string, dto: UpdateAmbassadorStatusDto) {
-    const app = await this.prisma.ambassadorProgram.findUnique({ where: { id } });
-    if (!app) throw new NotFoundException('Ambassador application not found.');
+    const app = await this.prisma.ambassadorProgram.findUnique({
+      where: { id },
+    });
 
-    return this.prisma.ambassadorProgram.update({
+    if (!app) {
+      throw new NotFoundException('Ambassador application not found.');
+    }
+
+    const updated = await this.prisma.ambassadorProgram.update({
       where: { id },
       data: {
-        status: dto.status as AmbassadorStatus, 
+        status: dto.status as AmbassadorStatus,
       },
     });
+
+    if (dto.status === 'APPROVED') {
+      await this.prisma.user.update({
+        where: { id: app.userId },
+        data: { role: 'AMBASSADOR' },
+      });
+    }
+
+    if (dto.status === 'REJECTED') {
+      await this.prisma.user.update({
+        where: { id: app.userId },
+        data: { role: 'USER' },
+      });
+    }
+
+    return updated;
   }
+
+
 }
