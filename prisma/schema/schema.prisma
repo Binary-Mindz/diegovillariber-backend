@@ -17,6 +17,8 @@ enum Role {
   USER
   ADMIN
   SUPER_ADMIN
+  AMBASSADOR
+  OFFICIAL_PARTNER
 }
 
 enum Preference {
