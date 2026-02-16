@@ -94,7 +94,9 @@ export type Subject = (typeof Subject)[keyof typeof Subject]
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN',
-  SUPER_ADMIN: 'SUPER_ADMIN'
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  AMBASSADOR: 'AMBASSADOR',
+  OFFICIAL_PARTNER: 'OFFICIAL_PARTNER'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
