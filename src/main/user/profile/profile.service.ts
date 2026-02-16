@@ -21,7 +21,7 @@ import { assertPayloadMatchesType } from './utils/profile-type.validator';
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
-    'userName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
+     'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
   >
 >;
 
