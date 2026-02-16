@@ -149,20 +149,38 @@ export class OfficialPartnerService {
     return request;
   }
 
- async updateStatus(id: string, dto: UpdateOfficialPartnerStatusDto) {
-  const request = await this.prisma.officialPartner.findUnique({
-    where: { id },
-  });
+  async updateStatus(id: string, dto: UpdateOfficialPartnerStatusDto) {
+    const request = await this.prisma.officialPartner.findUnique({
+      where: { id },
+    });
 
-  if (!request) {
-    throw new NotFoundException('Official partner request not found.');
+    if (!request) {
+      throw new NotFoundException('Official partner request not found.');
+    }
+
+    const updated = await this.prisma.officialPartner.update({
+      where: { id },
+      data: {
+        requestStatus:
+          dto.requestStatus as OfficialPartnerRequestStatus,
+      },
+    });
+
+    if (dto.requestStatus === 'APPROVED') {
+      await this.prisma.user.update({
+        where: { id: request.userId },
+        data: { role: 'OFFICIAL_PARTNER' },
+      });
+    }
+
+    if (dto.requestStatus === 'REJECTED') {
+      await this.prisma.user.update({
+        where: { id: request.userId },
+        data: { role: 'USER' },
+      });
+    }
+
+    return updated;
   }
 
-  return this.prisma.officialPartner.update({
-    where: { id },
-    data: {
-      requestStatus: dto.requestStatus as OfficialPartnerRequestStatus,
-    },
-  });
-}
 }
