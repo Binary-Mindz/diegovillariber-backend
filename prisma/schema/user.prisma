@@ -5,6 +5,7 @@ model User {
   username          String
   password          String
   role              Role      @default(USER)
+  activeRole        Role?
   otp               String?
   expiresIn         String?
   isEmailVerified   Boolean   @default(false)
