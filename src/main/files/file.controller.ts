@@ -8,7 +8,6 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { FileService } from './file.service';
 import { ApiBody, ApiConsumes, ApiParam } from '@nestjs/swagger';
 import { UploadFilesDto } from './dto/upload.file.dto';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
@@ -17,7 +16,6 @@ import { CloudinaryService } from './cloudinary/cloudinary.service';
 @Controller('files')
 export class FileController {
   constructor(
-    private readonly fileService: FileService,
     private readonly cloudinaryService: CloudinaryService,
   ) {}
 

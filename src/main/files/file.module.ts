@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { FileController } from './file.controller';
 import { FileService } from './file.service';
-import { S3Service } from './s3/s3.service';
 import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
@@ -11,11 +10,10 @@ import { PrismaService } from '@/common/prisma/prisma.service';
   controllers: [FileController],
   providers: [
     FileService,
-    S3Service,
     CloudinaryService, 
     PrismaService,
   ],
-  exports: [FileService, S3Service, CloudinaryService], 
+  exports: [FileService, CloudinaryService], 
 })
 export class FileModule {}
 

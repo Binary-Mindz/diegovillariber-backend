@@ -1,13 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { S3Service } from './s3/s3.service';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { FileType } from 'generated/prisma/enums';
 
 @Injectable()
 export class FileService {
   constructor(
     private prisma: PrismaService,
-    private s3Service: S3Service,
   ) {}
 
 
