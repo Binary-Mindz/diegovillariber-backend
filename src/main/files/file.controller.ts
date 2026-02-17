@@ -21,32 +21,6 @@ export class FileController {
     private readonly cloudinaryService: CloudinaryService,
   ) {}
 
-  // ---------------------- UPLOAD MULTIPLE FILES ----------------------
-  @Post('upload')
-  @UseInterceptors(FilesInterceptor('files', 5)) // max 5 files
-  @ApiConsumes('multipart/form-data')
-  @ApiBody({ type: UploadFilesDto })
-  async upload(@UploadedFiles() files: Express.Multer.File[]) {
-    // map over files and upload via Prisma-backed service
-    return Promise.all(
-      files.map((f) =>
-        this.fileService.uploadFile(f.buffer, f.originalname, f.mimetype),
-      ),
-    );
-  }
-
-  // ---------------------- DELETE FILE BY ID ----------------------
-  @Delete(':id')
-  async delete(@Param('id') id: string) {
-    return this.fileService.deleteFile(id);
-  }
-
-  // ---------------------- GET FILE BY ID ----------------------
-  @Get(':id')
-  async get(@Param('id') id: string) {
-    return this.fileService.getFile(id);
-  }
-
   // ---------------------- CLOUDINARY UPLOAD ----------------------
   @Post('cloudinary/upload')
   @UseInterceptors(FilesInterceptor('files', 5))
