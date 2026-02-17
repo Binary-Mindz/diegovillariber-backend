@@ -33,7 +33,7 @@ export class AmbassadorProgramQueryDto {
   status?: AmbassadorStatusDto;
 
   @ApiPropertyOptional({
-    example: 'rana',
+    example: 'Nayem boss',
     description: 'Search by motorspot name, contact name, or email',
   })
   @IsOptional()
