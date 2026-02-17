@@ -30,7 +30,7 @@ export class ChallengeController {
   // ---------- POST ----------
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('ADMIN')
+  @Roles("ADMIN","AMBASSADOR","OFFICIAL_PARTNER")
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'ADMIN: Create challenge' })
@@ -131,7 +131,7 @@ export class ChallengeController {
   // ---------- PATCH (ADMIN) ----------
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('ADMIN')
+  @Roles("ADMIN","AMBASSADOR","OFFICIAL_PARTNER")
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'ADMIN: Update challenge details' })
