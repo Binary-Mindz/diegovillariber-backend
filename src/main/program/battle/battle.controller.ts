@@ -11,6 +11,8 @@ import { SubmitBattlePostDto } from './dto/submit-battle-post.dto';
 import { VoteBattleDto } from './dto/vote-battle.dto';
 import { UpdateBattleDto } from './dto/update-battle.dto';
 import { UpdateBattleStatusDto } from './dto/update-battle-status.dto';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
 
 @ApiTags('Battles')
 @Controller('battles')
@@ -18,10 +20,11 @@ export class BattleController {
   constructor(private readonly battleService: BattleService) { }
 
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles("ADMIN","AMBASSADOR","OFFICIAL_PARTNER")
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create battle' })
+  @ApiOperation({ summary: 'Create battle only access -- ADMIN, AMBASSADOR, OFFICIAL_PARTNER' })
   create(@GetUser('userId') userId: string, @Body() dto: CreateBattleDto) {
     return handleRequest(async () => {
       return this.battleService.createBattle(userId, dto);
@@ -138,11 +141,13 @@ export class BattleController {
       return this.battleService.finalizeBattle(battleId, userId);
     }, 'Battle finalized');
   }
+
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles("ADMIN","AMBASSADOR","OFFICIAL_PARTNER")
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update battle details (host only)' })
+  @ApiOperation({ summary: 'Update battle details (host only) ADMIN, AMBASSADOR, OFFICIAL_PARTNER' })
   updateBattle(
     @Param('id') battleId: string,
     @GetUser('userId') userId: string,
