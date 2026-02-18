@@ -10,6 +10,7 @@ import { ProductModule } from './main/product/product.module';
 import { ProgramModule } from './main/program/program.module';
 import { ChatModule } from './main/chat/chat.module';
 import { FileModule } from './main/files/file.module';
+import { PropertyModule } from './main/property/property.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { FileModule } from './main/files/file.module';
     ProProfileModule,
     ProgramModule,
     ProductModule,
+    PropertyModule,
     ChatModule,
     FileModule,
     AdminModule
