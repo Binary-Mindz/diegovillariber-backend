@@ -11,7 +11,7 @@ import { GetEventsQueryDto } from './dto/get-event-query.dto';
 
 @Injectable()
 export class EventService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async createEvent(userId: string, dto: CreateEventDto) {
     const start = new Date(dto.startDate);
@@ -30,111 +30,123 @@ export class EventService {
         location: dto.location ?? null,
         websiteLink: dto.websiteLink ?? null,
         price: dto.price,
-        eventType: dto.eventType, 
+        eventType: dto.eventType,
         startDate: start,
         endDate: end,
-  
       },
     });
   }
 
-   async getEvents(query: GetEventsQueryDto) {
-      const {
-        status,
-        type,
-        ownerId,
-        search,
-        from,
-        to,
-        page = 1,
-        limit = 20,
-      } = query;
-  
-      const where: any = {};
-  
-      if (status) {
-        where.eventStatus = status;
+  async getEvents(query: GetEventsQueryDto) {
+    const {
+      status,
+      type,
+      ownerId,
+      search,
+      from,
+      to,
+      page = 1,
+      limit = 20,
+    } = query;
+
+    const where: any = {};
+
+    if (status) {
+      where.eventStatus = status;
+    }
+
+    if (type) {
+      where.eventType = type;
+    }
+
+
+    if (ownerId) {
+      where.ownerId = ownerId;
+    }
+
+    if (from || to) {
+      where.AND = [];
+
+      if (from) {
+        where.AND.push({
+          startDate: { gte: new Date(from) },
+        });
       }
-  
-      if (type) {
-        where.eventType = type;
+
+      if (to) {
+        where.AND.push({
+          endDate: { lte: new Date(to) },
+        });
       }
-  
-  
-      if (ownerId) {
-        where.ownerId = ownerId;
-      }
-  
-      if (from || to) {
-        where.AND = [];
-  
-        if (from) {
-          where.AND.push({
-            startDate: { gte: new Date(from) },
-          });
-        }
-  
-        if (to) {
-          where.AND.push({
-            endDate: { lte: new Date(to) },
-          });
-        }
-      }
-  
-      if (search) {
-        where.OR = [
-          {
-            eventTitle: {
-              contains: search,
-              mode: 'insensitive',
-            },
+    }
+
+    if (search) {
+      where.OR = [
+        {
+          eventTitle: {
+            contains: search,
+            mode: 'insensitive',
           },
-          {
-            location: {
-              contains: search,
-              mode: 'insensitive',
-            },
+        },
+        {
+          location: {
+            contains: search,
+            mode: 'insensitive',
           },
-          {
-            description: {
-              contains: search,
-              mode: 'insensitive',
-            },
+        },
+        {
+          description: {
+            contains: search,
+            mode: 'insensitive',
           },
-        ];
-      }
-  
-      const skip = (page - 1) * limit;
-  
-  
-      const [events, total] = await this.prisma.$transaction([
-        this.prisma.event.findMany({
-          where,
-          orderBy: { createdAt: 'desc' },
-          skip,
-          take: limit,
-          include: {
-            owner: {
-              select: {
-                id: true,
-                username: true,
+        },
+      ];
+    }
+
+    const skip = (page - 1) * limit;
+
+
+    const [events, total] = await this.prisma.$transaction([
+      this.prisma.event.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+        include: {
+          owner: {
+            select: {
+              id: true,
+              username: true,
+              email: true,
+              profile: {
+                select: {
+                  id: true,
+                  bio: true,
+                  imageUrl: true,
+                  instagramHandler: true,
+                  accountType: true,
+                  isActive: true,
+                  suspend: true,
+                },
               },
             },
           },
-        }),
-        this.prisma.event.count({ where }),
-      ]);
-  
-      return {
-        items: events,
-        meta: {
-          total,
-          page,
-          limit,
-          totalPages: Math.ceil(total / limit),
         },
-      };
-    }
+      }),
+      this.prisma.event.count({ where }),
+    ]);
+
+
+    return {
+      items: events,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
 
   async updateEvent(userId: string, eventId: string, dto: UpdateEventDto) {
     const event = await this.prisma.event.findUnique({
@@ -178,22 +190,22 @@ export class EventService {
   }
 
   async deleteEvent(userId: string, eventId: string) {
-  const event = await this.prisma.event.findUnique({
-    where: { id: eventId },
-    select: { id: true, ownerId: true },
-  });
+    const event = await this.prisma.event.findUnique({
+      where: { id: eventId },
+      select: { id: true, ownerId: true },
+    });
 
-  if (!event) throw new NotFoundException('Event not found');
+    if (!event) throw new NotFoundException('Event not found');
 
-  if (event.ownerId !== userId) {
-    throw new ForbiddenException('You are not allowed to delete this event');
+    if (event.ownerId !== userId) {
+      throw new ForbiddenException('You are not allowed to delete this event');
+    }
+
+    await this.prisma.event.delete({
+      where: { id: eventId },
+    });
+
+    return { message: 'Event deleted successfully' };
   }
-
-  await this.prisma.event.delete({
-    where: { id: eventId },
-  });
-
-  return { message: 'Event deleted successfully' };
-}
 
 }
