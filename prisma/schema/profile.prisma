@@ -3,6 +3,7 @@ model Profile {
   userId String @unique @db.Uuid
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  profileName      String?
   bio              String?
   imageUrl         String?
   instagramHandler String?
