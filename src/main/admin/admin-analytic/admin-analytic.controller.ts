@@ -18,4 +18,9 @@ export class AdminAnalyticController {
   getAdvancedStats() {
     return this.adminAnalyticService.getAdvancedStats();
   }
+
+  @Get('challenge-arena')
+  getChallengeStats() {
+    return this.adminAnalyticService.getChallengeStats();
+  }
 }
