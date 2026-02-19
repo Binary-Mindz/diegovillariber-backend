@@ -162,6 +162,11 @@ export class SimRacingProfileDto {
 
 export class CreateProfileDto {
 
+  @ApiPropertyOptional({ example: 'Ash' })
+  @IsOptional()
+  @IsString()
+  profileName?: string;
+
   @ApiPropertyOptional({ example: 'Car enthusiast & sim racer' })
   @IsOptional()
   @IsString()
