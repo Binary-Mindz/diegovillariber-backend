@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class AdminOverviewService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async getDashboardStats() {
     const [
@@ -43,7 +43,7 @@ export class AdminOverviewService {
   }
 
   async getWeeklyEngagement() {
-  return this.prisma.$queryRaw`
+    return this.prisma.$queryRaw`
     SELECT 
       DATE_TRUNC('day', "createdAt") as date,
       COUNT(*)::int as total,
@@ -64,6 +64,6 @@ export class AdminOverviewService {
 
     ORDER BY date ASC;
   `;
-}
+  }
 
 }
