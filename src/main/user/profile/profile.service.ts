@@ -518,28 +518,69 @@ export class ProfileService {
     }
   }
 
+  async deleteProfileType(
+    profileId: string,
+    currentUserId: string,
+    profileType: ProfileType,
+  ) {
+    return this.prisma.$transaction(async (tx) => {
+      const profile = await tx.profile.findUnique({
+        where: { id: profileId },
+        include: { simRacing: true },
+      });
 
+      if (!profile) throw new NotFoundException('Profile not found');
+      if (profile.userId !== currentUserId)
+        throw new ForbiddenException('No access');
 
-  // async deleteProfile(userId: string, profileId: string) {
-  //   const profile = await this.prisma.profile.findUnique({
-  //     where: { id: profileId },
-  //   });
+      switch (profileType) {
+        case ProfileType.SPOTTER:
+          await tx.spotterProfile.deleteMany({
+            where: { profileId },
+          });
+          break;
 
-  //   if (!profile) {
-  //     throw new NotFoundException('Profile not found');
-  //   }
+        case ProfileType.OWNER:
+          await tx.ownerProfile.deleteMany({
+            where: { profileId },
+          });
+          break;
 
-  //   if (profile.userId !== userId) {
-  //     throw new ForbiddenException('You are not allowed to delete this profile');
-  //   }
+        case ProfileType.CONTENT_CREATOR:
+          await tx.contentCreatorProfile.deleteMany({
+            where: { profileId },
+          });
+          break;
 
-  //   await this.prisma.profile.delete({
-  //     where: { id: profileId },
-  //   });
+        case ProfileType.PRO_BUSSINESS:
+          await tx.businessProfile.deleteMany({
+            where: { profileId },
+          });
+          break;
 
-  //   return {
-  //     message: 'Profile deleted successfully',
-  //   };
-  // }
+        case ProfileType.PRO_DRIVER:
+          await tx.proDriverProfile.deleteMany({
+            where: { profileId },
+          });
+          break;
 
+        case ProfileType.SIM_RACING_DRIVER:
+          if (profile.simRacing) {
+            await tx.simRacingProfile.delete({
+              where: { profileId },
+            });
+          }
+          break;
+
+        default:
+          throw new BadRequestException('Invalid profile type');
+      }
+
+      return tx.profile.findUnique({
+        where: { id: profileId },
+        include: this.profileInclude(),
+      });
+    });
+  }
+  
 }
