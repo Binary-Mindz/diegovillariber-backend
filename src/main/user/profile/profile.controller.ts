@@ -23,13 +23,14 @@ import { GetUser } from '@/common/decorator/get-user.decorator';
 import { UpdateProfileBaseDto } from './dto/update.profile.dto';
 import { ChangeProfileTypeDto } from './dto/changed.profile.type.dto';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { Type as ProfileType } from 'generated/prisma/enums';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @ApiTags('Profiles')
 @Controller('profiles')
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) {}
+  constructor(private readonly profileService: ProfileService) { }
 
   @Post()
   @ApiOperation({
@@ -123,19 +124,34 @@ export class ProfileController {
     };
   }
 
-  // @Delete(':profileId/delete')
-  // @HttpCode(HttpStatus.OK)
-  //  @ApiOperation({
-  //   summary:
-  //     'Profile Delete ',
-  // })
-  // @ApiParam({ name: 'profileId', required: true, type: String })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'Profile delete successfully',
-  // })
-  // async deleteProfile( @Param('profileId') profileId: string, @GetUser('userId') userId: string,){
-  //   await this.profileService.deleteProfile(userId, profileId)
-  // }
+  @Delete(':profileId/type/:profileType')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Delete specific profile type and related sub-profile data',
+  })
+  @ApiParam({ name: 'profileId', required: true, type: String })
+  @ApiParam({ name: 'profileType', required: true, enum: ProfileType })
+  @ApiResponse({
+    status: 200,
+    description: 'Profile type deleted successfully',
+  })
+  async deleteProfileType(
+    @Param('profileId') profileId: string,
+    @Param('profileType') profileType: ProfileType,
+    @GetUser('userId') userId: string,
+  ) {
+    const result = await this.profileService.deleteProfileType(
+      profileId,
+      userId,
+      profileType,
+    );
+
+    return {
+      success: true,
+      message: 'Profile type deleted successfully',
+      data: result,
+    };
+  }
+
 
 }
