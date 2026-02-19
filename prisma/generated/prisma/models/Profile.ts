@@ -27,6 +27,7 @@ export type AggregateProfile = {
 export type ProfileMinAggregateOutputType = {
   id: string | null
   userId: string | null
+  profileName: string | null
   bio: string | null
   imageUrl: string | null
   instagramHandler: string | null
@@ -39,6 +40,7 @@ export type ProfileMinAggregateOutputType = {
 export type ProfileMaxAggregateOutputType = {
   id: string | null
   userId: string | null
+  profileName: string | null
   bio: string | null
   imageUrl: string | null
   instagramHandler: string | null
@@ -51,6 +53,7 @@ export type ProfileMaxAggregateOutputType = {
 export type ProfileCountAggregateOutputType = {
   id: number
   userId: number
+  profileName: number
   bio: number
   imageUrl: number
   instagramHandler: number
@@ -65,6 +68,7 @@ export type ProfileCountAggregateOutputType = {
 export type ProfileMinAggregateInputType = {
   id?: true
   userId?: true
+  profileName?: true
   bio?: true
   imageUrl?: true
   instagramHandler?: true
@@ -77,6 +81,7 @@ export type ProfileMinAggregateInputType = {
 export type ProfileMaxAggregateInputType = {
   id?: true
   userId?: true
+  profileName?: true
   bio?: true
   imageUrl?: true
   instagramHandler?: true
@@ -89,6 +94,7 @@ export type ProfileMaxAggregateInputType = {
 export type ProfileCountAggregateInputType = {
   id?: true
   userId?: true
+  profileName?: true
   bio?: true
   imageUrl?: true
   instagramHandler?: true
@@ -174,6 +180,7 @@ export type ProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ProfileGroupByOutputType = {
   id: string
   userId: string
+  profileName: string | null
   bio: string | null
   imageUrl: string | null
   instagramHandler: string | null
@@ -207,6 +214,7 @@ export type ProfileWhereInput = {
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   id?: Prisma.UuidFilter<"Profile"> | string
   userId?: Prisma.UuidFilter<"Profile"> | string
+  profileName?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -232,6 +240,7 @@ export type ProfileWhereInput = {
 export type ProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileName?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   instagramHandler?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -260,6 +269,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
+  profileName?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -285,6 +295,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileName?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   instagramHandler?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -303,6 +314,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProfileScalarWhereWithAggregatesInput | Prisma.ProfileScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"Profile"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"Profile"> | string
+  profileName?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
@@ -314,6 +326,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
 
 export type ProfileCreateInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -339,6 +352,7 @@ export type ProfileCreateInput = {
 export type ProfileUncheckedCreateInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -362,6 +376,7 @@ export type ProfileUncheckedCreateInput = {
 
 export type ProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -387,6 +402,7 @@ export type ProfileUpdateInput = {
 export type ProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -411,6 +427,7 @@ export type ProfileUncheckedUpdateInput = {
 export type ProfileCreateManyInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -422,6 +439,7 @@ export type ProfileCreateManyInput = {
 
 export type ProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -434,6 +452,7 @@ export type ProfileUpdateManyMutationInput = {
 export type ProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -451,6 +470,7 @@ export type ProfileScalarRelationFilter = {
 export type ProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileName?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   instagramHandler?: Prisma.SortOrder
@@ -463,6 +483,7 @@ export type ProfileCountOrderByAggregateInput = {
 export type ProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileName?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   instagramHandler?: Prisma.SortOrder
@@ -475,6 +496,7 @@ export type ProfileMaxOrderByAggregateInput = {
 export type ProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileName?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
   instagramHandler?: Prisma.SortOrder
@@ -714,6 +736,7 @@ export type ProfileUpdateOneRequiredWithoutVirtualSimRacingEventsNestedInput = {
 
 export type ProfileCreateWithoutBusinessInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -738,6 +761,7 @@ export type ProfileCreateWithoutBusinessInput = {
 export type ProfileUncheckedCreateWithoutBusinessInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -776,6 +800,7 @@ export type ProfileUpdateToOneWithWhereWithoutBusinessInput = {
 
 export type ProfileUpdateWithoutBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -800,6 +825,7 @@ export type ProfileUpdateWithoutBusinessInput = {
 export type ProfileUncheckedUpdateWithoutBusinessInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -822,6 +848,7 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
 
 export type ProfileCreateWithoutCarsInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -846,6 +873,7 @@ export type ProfileCreateWithoutCarsInput = {
 export type ProfileUncheckedCreateWithoutCarsInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -884,6 +912,7 @@ export type ProfileUpdateToOneWithWhereWithoutCarsInput = {
 
 export type ProfileUpdateWithoutCarsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -908,6 +937,7 @@ export type ProfileUpdateWithoutCarsInput = {
 export type ProfileUncheckedUpdateWithoutCarsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -930,6 +960,7 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
 
 export type ProfileCreateWithoutCreatorInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -954,6 +985,7 @@ export type ProfileCreateWithoutCreatorInput = {
 export type ProfileUncheckedCreateWithoutCreatorInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -992,6 +1024,7 @@ export type ProfileUpdateToOneWithWhereWithoutCreatorInput = {
 
 export type ProfileUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1016,6 +1049,7 @@ export type ProfileUpdateWithoutCreatorInput = {
 export type ProfileUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1038,6 +1072,7 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
 
 export type ProfileCreateWithoutGaragesInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1062,6 +1097,7 @@ export type ProfileCreateWithoutGaragesInput = {
 export type ProfileUncheckedCreateWithoutGaragesInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1100,6 +1136,7 @@ export type ProfileUpdateToOneWithWhereWithoutGaragesInput = {
 
 export type ProfileUpdateWithoutGaragesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1124,6 +1161,7 @@ export type ProfileUpdateWithoutGaragesInput = {
 export type ProfileUncheckedUpdateWithoutGaragesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1146,6 +1184,7 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
 
 export type ProfileCreateWithoutLegalNoticesInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1170,6 +1209,7 @@ export type ProfileCreateWithoutLegalNoticesInput = {
 export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1208,6 +1248,7 @@ export type ProfileUpdateToOneWithWhereWithoutLegalNoticesInput = {
 
 export type ProfileUpdateWithoutLegalNoticesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1232,6 +1273,7 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
 export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1254,6 +1296,7 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
 
 export type ProfileCreateWithoutOwnerInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1278,6 +1321,7 @@ export type ProfileCreateWithoutOwnerInput = {
 export type ProfileUncheckedCreateWithoutOwnerInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1316,6 +1360,7 @@ export type ProfileUpdateToOneWithWhereWithoutOwnerInput = {
 
 export type ProfileUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1340,6 +1385,7 @@ export type ProfileUpdateWithoutOwnerInput = {
 export type ProfileUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1362,6 +1408,7 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
 
 export type ProfileCreateWithoutProDriverInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1386,6 +1433,7 @@ export type ProfileCreateWithoutProDriverInput = {
 export type ProfileUncheckedCreateWithoutProDriverInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1424,6 +1472,7 @@ export type ProfileUpdateToOneWithWhereWithoutProDriverInput = {
 
 export type ProfileUpdateWithoutProDriverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1448,6 +1497,7 @@ export type ProfileUpdateWithoutProDriverInput = {
 export type ProfileUncheckedUpdateWithoutProDriverInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1470,6 +1520,7 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
 
 export type ProfileCreateWithoutSimRacingInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1494,6 +1545,7 @@ export type ProfileCreateWithoutSimRacingInput = {
 export type ProfileUncheckedCreateWithoutSimRacingInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1532,6 +1584,7 @@ export type ProfileUpdateToOneWithWhereWithoutSimRacingInput = {
 
 export type ProfileUpdateWithoutSimRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1556,6 +1609,7 @@ export type ProfileUpdateWithoutSimRacingInput = {
 export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1578,6 +1632,7 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
 
 export type ProfileCreateWithoutSpotterInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1602,6 +1657,7 @@ export type ProfileCreateWithoutSpotterInput = {
 export type ProfileUncheckedCreateWithoutSpotterInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1640,6 +1696,7 @@ export type ProfileUpdateToOneWithWhereWithoutSpotterInput = {
 
 export type ProfileUpdateWithoutSpotterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1664,6 +1721,7 @@ export type ProfileUpdateWithoutSpotterInput = {
 export type ProfileUncheckedUpdateWithoutSpotterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1686,6 +1744,7 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
 
 export type ProfileCreateWithoutUserInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1709,6 +1768,7 @@ export type ProfileCreateWithoutUserInput = {
 
 export type ProfileUncheckedCreateWithoutUserInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1762,6 +1822,7 @@ export type ProfileScalarWhereInput = {
   NOT?: Prisma.ProfileScalarWhereInput | Prisma.ProfileScalarWhereInput[]
   id?: Prisma.UuidFilter<"Profile"> | string
   userId?: Prisma.UuidFilter<"Profile"> | string
+  profileName?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -1773,6 +1834,7 @@ export type ProfileScalarWhereInput = {
 
 export type ProfileCreateWithoutVirtualGaragesInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1797,6 +1859,7 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
 export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1835,6 +1898,7 @@ export type ProfileUpdateToOneWithWhereWithoutVirtualGaragesInput = {
 
 export type ProfileUpdateWithoutVirtualGaragesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1859,6 +1923,7 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
 export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1881,6 +1946,7 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
 
 export type ProfileCreateWithoutVirtualLabsInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1905,6 +1971,7 @@ export type ProfileCreateWithoutVirtualLabsInput = {
 export type ProfileUncheckedCreateWithoutVirtualLabsInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -1943,6 +2010,7 @@ export type ProfileUpdateToOneWithWhereWithoutVirtualLabsInput = {
 
 export type ProfileUpdateWithoutVirtualLabsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1967,6 +2035,7 @@ export type ProfileUpdateWithoutVirtualLabsInput = {
 export type ProfileUncheckedUpdateWithoutVirtualLabsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1989,6 +2058,7 @@ export type ProfileUncheckedUpdateWithoutVirtualLabsInput = {
 
 export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -2013,6 +2083,7 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
 export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   id?: string
   userId: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -2051,6 +2122,7 @@ export type ProfileUpdateToOneWithWhereWithoutVirtualSimRacingEventsInput = {
 
 export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2075,6 +2147,7 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
 export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2097,6 +2170,7 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
 
 export type ProfileCreateManyUserInput = {
   id?: string
+  profileName?: string | null
   bio?: string | null
   imageUrl?: string | null
   instagramHandler?: string | null
@@ -2108,6 +2182,7 @@ export type ProfileCreateManyUserInput = {
 
 export type ProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2131,6 +2206,7 @@ export type ProfileUpdateWithoutUserInput = {
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2154,6 +2230,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
 
 export type ProfileUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2242,6 +2319,7 @@ export type ProfileCountOutputTypeCountLegalNoticesArgs<ExtArgs extends runtime.
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  profileName?: boolean
   bio?: boolean
   imageUrl?: boolean
   instagramHandler?: boolean
@@ -2268,6 +2346,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  profileName?: boolean
   bio?: boolean
   imageUrl?: boolean
   instagramHandler?: boolean
@@ -2281,6 +2360,7 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  profileName?: boolean
   bio?: boolean
   imageUrl?: boolean
   instagramHandler?: boolean
@@ -2294,6 +2374,7 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ProfileSelectScalar = {
   id?: boolean
   userId?: boolean
+  profileName?: boolean
   bio?: boolean
   imageUrl?: boolean
   instagramHandler?: boolean
@@ -2303,7 +2384,7 @@ export type ProfileSelectScalar = {
   suspend?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileName" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
@@ -2347,6 +2428,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
+    profileName: string | null
     bio: string | null
     imageUrl: string | null
     instagramHandler: string | null
@@ -2792,6 +2874,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
 export interface ProfileFieldRefs {
   readonly id: Prisma.FieldRef<"Profile", 'String'>
   readonly userId: Prisma.FieldRef<"Profile", 'String'>
+  readonly profileName: Prisma.FieldRef<"Profile", 'String'>
   readonly bio: Prisma.FieldRef<"Profile", 'String'>
   readonly imageUrl: Prisma.FieldRef<"Profile", 'String'>
   readonly instagramHandler: Prisma.FieldRef<"Profile", 'String'>

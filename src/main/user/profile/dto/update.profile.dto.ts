@@ -6,6 +6,7 @@ import { AccountType } from 'generated/prisma/enums';
 
 export class UpdateProfileBaseDto extends PartialType(
   PickType(CreateProfileDto, [
+    'profileName',
     'bio',
     'imageUrl',
     'instagramHandler',

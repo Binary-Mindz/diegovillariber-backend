@@ -8,6 +8,7 @@ import {
   HttpStatus,
   UseGuards,
   Patch,
+  Delete,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -121,4 +122,20 @@ export class ProfileController {
       data: profile,
     };
   }
+
+  // @Delete(':profileId/delete')
+  // @HttpCode(HttpStatus.OK)
+  //  @ApiOperation({
+  //   summary:
+  //     'Profile Delete ',
+  // })
+  // @ApiParam({ name: 'profileId', required: true, type: String })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'Profile delete successfully',
+  // })
+  // async deleteProfile( @Param('profileId') profileId: string, @GetUser('userId') userId: string,){
+  //   await this.profileService.deleteProfile(userId, profileId)
+  // }
+
 }

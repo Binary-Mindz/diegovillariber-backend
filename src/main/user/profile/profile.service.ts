@@ -21,7 +21,7 @@ import { assertPayloadMatchesType } from './utils/profile-type.validator';
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
-     'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
+    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
   >
 >;
 
@@ -46,56 +46,57 @@ type ProfileCreateWithRelations = Prisma.ProfileCreateInput & {
 export class ProfileService {
   constructor(private prisma: PrismaService) { }
   async createProfile(currentUserId: string, dto: CreateProfileDto) {
-  assertPayloadMatchesType(dto);
+    assertPayloadMatchesType(dto);
 
-  const user = await this.prisma.user.findUnique({
-    where: { id: currentUserId },
-    select: { id: true },
-  });
-  if (!user) throw new NotFoundException('User not found');
-
-  return this.prisma.$transaction(async (tx) => {
-    const existing = await tx.profile.findUnique({
-      where: { userId: currentUserId },
-      select: { id: true, userId: true },
+    const user = await this.prisma.user.findUnique({
+      where: { id: currentUserId },
+      select: { id: true },
     });
+    if (!user) throw new NotFoundException('User not found');
 
-    const baseData = {
-      bio: dto.bio ?? null,
-      imageUrl: dto.imageUrl ?? null,
-      instagramHandler: dto.instagramHandler ?? null,
-      accountType: dto.accountType ?? AccountType.PUBLIC,
-      isActive: IsActive.ACTIVE,
-      suspend: false,
-    };
-
-    if (existing) {
-      await tx.profile.update({
-        where: { id: existing.id },
-        data: baseData,
+    return this.prisma.$transaction(async (tx) => {
+      const existing = await tx.profile.findUnique({
+        where: { userId: currentUserId },
+        select: { id: true, userId: true },
       });
 
-     
-      await this.ensureSubProfileForType(tx, existing.id, dto);
+      const baseData = {
+        profileName: dto.profileName ?? null,
+        bio: dto.bio ?? null,
+        imageUrl: dto.imageUrl ?? null,
+        instagramHandler: dto.instagramHandler ?? null,
+        accountType: dto.accountType ?? AccountType.PUBLIC,
+        isActive: IsActive.ACTIVE,
+        suspend: false,
+      };
 
-      return tx.profile.findUnique({
-        where: { id: existing.id },
+      if (existing) {
+        await tx.profile.update({
+          where: { id: existing.id },
+          data: baseData,
+        });
+
+
+        await this.ensureSubProfileForType(tx, existing.id, dto);
+
+        return tx.profile.findUnique({
+          where: { id: existing.id },
+          include: this.profileInclude(),
+        });
+      }
+
+      const created = await tx.profile.create({
+        data: {
+          user: { connect: { id: user.id } },
+          ...baseData,
+          ...(await this.buildCreateNestedForType(dto)),
+        } as any,
         include: this.profileInclude(),
       });
-    }
 
-    const created = await tx.profile.create({
-      data: {
-        user: { connect: { id: user.id } },
-        ...baseData,
-        ...(await this.buildCreateNestedForType(dto)),
-      } as any,
-      include: this.profileInclude(),
+      return created;
     });
-
-    return created;
-  });
-}
+  }
 
   async getProfilesByUserId(userId: string) {
     const profiles = await this.prisma.profile.findMany({
@@ -133,6 +134,7 @@ export class ProfileService {
     return this.prisma.profile.update({
       where: { id: profileId },
       data: {
+        profileName: dto.profileName ?? undefined,
         bio: dto.bio ?? undefined,
         imageUrl: dto.imageUrl ?? undefined,
         instagramHandler: dto.instagramHandler ?? undefined,
@@ -142,152 +144,152 @@ export class ProfileService {
     });
   }
 
- async changeProfileType(profileId: string, currentUserId: string, dto: ChangeProfileTypeDto) {
-  assertPayloadMatchesType(dto);
+  async changeProfileType(profileId: string, currentUserId: string, dto: ChangeProfileTypeDto) {
+    assertPayloadMatchesType(dto);
 
-  return this.prisma.$transaction(async (tx) => {
-    const profile = await tx.profile.findUnique({
-      where: { id: profileId },
-      include: { simRacing: true },
+    return this.prisma.$transaction(async (tx) => {
+      const profile = await tx.profile.findUnique({
+        where: { id: profileId },
+        include: { simRacing: true },
+      });
+      if (!profile) throw new NotFoundException('Profile not found');
+      if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+
+      switch (dto.profileType) {
+        case ProfileType.SPOTTER:
+          await tx.spotterProfile.upsert({
+            where: { profileId },
+            update: {},
+            create: { profileId },
+          });
+          break;
+
+        case ProfileType.OWNER:
+          await tx.ownerProfile.upsert({
+            where: { profileId },
+            update: {},
+            create: { profileId },
+          });
+          break;
+
+        case ProfileType.CONTENT_CREATOR:
+          await tx.contentCreatorProfile.upsert({
+            where: { profileId },
+            update: {
+              creatorCategory: (dto.creator?.creatorCategory as any) ?? undefined,
+              youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
+              portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
+            },
+            create: {
+              profileId,
+              creatorCategory:
+                (dto.creator?.creatorCategory as any) ?? ContentCategory.PHOTOGRAPHY,
+              youtubeChanel: dto.creator?.youtubeChanel ?? null,
+              portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
+            },
+          });
+          break;
+
+        case ProfileType.PRO_BUSSINESS: {
+          if (!dto.business?.businessName || !dto.business?.location) {
+            throw new BadRequestException('businessName and location are required for BUSINESS profile');
+          }
+          await tx.businessProfile.upsert({
+            where: { profileId },
+            update: {
+              businessCategory: (dto.business.businessCategory as any) ?? undefined,
+              businessName: dto.business.businessName,
+              location: dto.business.location,
+            },
+            create: {
+              profileId,
+              businessCategory:
+                (dto.business.businessCategory as any) ?? BusinessCategory.Detailling_Care,
+              businessName: dto.business.businessName,
+              location: dto.business.location,
+
+            },
+          });
+          break;
+        }
+
+        case ProfileType.PRO_DRIVER: {
+          if (!dto.proDriver?.location) {
+            throw new BadRequestException('location is required for PRO_DRIVER profile');
+          }
+          await tx.proDriverProfile.upsert({
+            where: { profileId },
+            update: {
+              racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
+              location: dto.proDriver.location,
+            },
+            create: {
+              profileId,
+              racingDiscipline:
+                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+              location: dto.proDriver.location,
+
+            },
+          });
+          break;
+        }
+
+        case ProfileType.SIM_RACING_DRIVER: {
+          const sim = await tx.simRacingProfile.upsert({
+            where: { profileId },
+            update: {},
+            create: { profileId },
+          });
+
+          const payload = dto.simRacing;
+          if (payload?.hardwareSetup) {
+            await tx.hardwareSetup.upsert({
+              where: { simRacingId: sim.id },
+              update: { ...payload.hardwareSetup },
+              create: { simRacingId: sim.id, ...payload.hardwareSetup },
+            });
+          }
+          if (payload?.displayAndPcSetup) {
+            await tx.displayAndPcSetup.upsert({
+              where: { simRacingId: sim.id },
+              update: { ...payload.displayAndPcSetup },
+              create: { simRacingId: sim.id, ...payload.displayAndPcSetup },
+            });
+          }
+          if (payload?.drivingAssistant) {
+            await tx.drivingAssistant.upsert({
+              where: { simRacingId: sim.id },
+              update: { ...payload.drivingAssistant },
+              create: { simRacingId: sim.id, ...payload.drivingAssistant },
+            });
+          }
+          if (payload?.racing) {
+            await tx.racing.upsert({
+              where: { simRacingId: sim.id },
+              update: { ...payload.racing },
+              create: { simRacingId: sim.id, ...payload.racing },
+            });
+          }
+          if (payload?.setupDescription) {
+            await tx.setupDescriptionPhoto.upsert({
+              where: { simRacingId: sim.id },
+              update: { ...payload.setupDescription },
+              create: { simRacingId: sim.id, ...payload.setupDescription },
+            });
+          }
+          break;
+        }
+
+        default:
+          throw new BadRequestException('Invalid profile type');
+      }
+
+      return tx.profile.findUnique({
+        where: { id: profileId },
+        include: this.profileInclude(),
+      });
     });
-    if (!profile) throw new NotFoundException('Profile not found');
-    if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
-
-    switch (dto.profileType) {
-      case ProfileType.SPOTTER:
-        await tx.spotterProfile.upsert({
-          where: { profileId },
-          update: {},
-          create: { profileId }, 
-        });
-        break;
-
-      case ProfileType.OWNER:
-        await tx.ownerProfile.upsert({
-          where: { profileId },
-          update: {},
-          create: { profileId },
-        });
-        break;
-
-      case ProfileType.CONTENT_CREATOR:
-        await tx.contentCreatorProfile.upsert({
-          where: { profileId },
-          update: {
-            creatorCategory: (dto.creator?.creatorCategory as any) ?? undefined,
-            youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
-            portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
-          },
-          create: {
-            profileId,
-            creatorCategory:
-              (dto.creator?.creatorCategory as any) ?? ContentCategory.PHOTOGRAPHY,
-            youtubeChanel: dto.creator?.youtubeChanel ?? null,
-            portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
-          },
-        });
-        break;
-
-      case ProfileType.PRO_BUSSINESS: {
-        if (!dto.business?.businessName || !dto.business?.location) {
-          throw new BadRequestException('businessName and location are required for BUSINESS profile');
-        }
-        await tx.businessProfile.upsert({
-          where: { profileId },
-          update: {
-            businessCategory: (dto.business.businessCategory as any) ?? undefined,
-            businessName: dto.business.businessName,
-            location: dto.business.location,
-          },
-          create: {
-            profileId,
-            businessCategory:
-              (dto.business.businessCategory as any) ?? BusinessCategory.Detailling_Care,
-            businessName: dto.business.businessName,
-            location: dto.business.location,
-      
-          },
-        });
-        break;
-      }
-
-      case ProfileType.PRO_DRIVER: {
-        if (!dto.proDriver?.location) {
-          throw new BadRequestException('location is required for PRO_DRIVER profile');
-        }
-        await tx.proDriverProfile.upsert({
-          where: { profileId },
-          update: {
-            racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
-            location: dto.proDriver.location,
-          },
-          create: {
-            profileId,
-            racingDiscipline:
-              (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
-            location: dto.proDriver.location,
-        
-          },
-        });
-        break;
-      }
-
-      case ProfileType.SIM_RACING_DRIVER: {
-        const sim = await tx.simRacingProfile.upsert({
-          where: { profileId },
-          update: {},
-          create: { profileId }, 
-        });
-
-        const payload = dto.simRacing;
-        if (payload?.hardwareSetup) {
-          await tx.hardwareSetup.upsert({
-            where: { simRacingId: sim.id },
-            update: { ...payload.hardwareSetup },
-            create: { simRacingId: sim.id, ...payload.hardwareSetup },
-          });
-        }
-        if (payload?.displayAndPcSetup) {
-          await tx.displayAndPcSetup.upsert({
-            where: { simRacingId: sim.id },
-            update: { ...payload.displayAndPcSetup },
-            create: { simRacingId: sim.id, ...payload.displayAndPcSetup },
-          });
-        }
-        if (payload?.drivingAssistant) {
-          await tx.drivingAssistant.upsert({
-            where: { simRacingId: sim.id },
-            update: { ...payload.drivingAssistant },
-            create: { simRacingId: sim.id, ...payload.drivingAssistant },
-          });
-        }
-        if (payload?.racing) {
-          await tx.racing.upsert({
-            where: { simRacingId: sim.id },
-            update: { ...payload.racing },
-            create: { simRacingId: sim.id, ...payload.racing },
-          });
-        }
-        if (payload?.setupDescription) {
-          await tx.setupDescriptionPhoto.upsert({
-            where: { simRacingId: sim.id },
-            update: { ...payload.setupDescription },
-            create: { simRacingId: sim.id, ...payload.setupDescription },
-          });
-        }
-        break;
-      }
-
-      default:
-        throw new BadRequestException('Invalid profile type');
-    }
-
-    return tx.profile.findUnique({
-      where: { id: profileId },
-      include: this.profileInclude(),
-    });
-  });
-}
+  }
 
   private profileInclude(): Prisma.ProfileInclude {
     return {
@@ -515,5 +517,29 @@ export class ProfileService {
         throw new BadRequestException('Invalid profile type');
     }
   }
+
+
+
+  // async deleteProfile(userId: string, profileId: string) {
+  //   const profile = await this.prisma.profile.findUnique({
+  //     where: { id: profileId },
+  //   });
+
+  //   if (!profile) {
+  //     throw new NotFoundException('Profile not found');
+  //   }
+
+  //   if (profile.userId !== userId) {
+  //     throw new ForbiddenException('You are not allowed to delete this profile');
+  //   }
+
+  //   await this.prisma.profile.delete({
+  //     where: { id: profileId },
+  //   });
+
+  //   return {
+  //     message: 'Profile deleted successfully',
+  //   };
+  // }
 
 }
