@@ -132,6 +132,15 @@ export const IsActive = {
 export type IsActive = (typeof IsActive)[keyof typeof IsActive]
 
 
+export const AccountStatus = {
+  ACTIVE: 'ACTIVE',
+  SUSPEND: 'SUSPEND',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type AccountStatus = (typeof AccountStatus)[keyof typeof AccountStatus]
+
+
 export const Media = {
   PHOTO: 'PHOTO',
   VIDEO: 'VIDEO'

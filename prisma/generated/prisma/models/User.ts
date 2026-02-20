@@ -53,6 +53,7 @@ export type UserMinAggregateOutputType = {
   otp: string | null
   expiresIn: string | null
   isEmailVerified: boolean | null
+  accountStatus: $Enums.AccountStatus | null
   emailOtp: string | null
   emailOtpExpiresAt: Date | null
   resetOtp: string | null
@@ -63,6 +64,7 @@ export type UserMinAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  activeProfileId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -78,6 +80,7 @@ export type UserMaxAggregateOutputType = {
   otp: string | null
   expiresIn: string | null
   isEmailVerified: boolean | null
+  accountStatus: $Enums.AccountStatus | null
   emailOtp: string | null
   emailOtpExpiresAt: Date | null
   resetOtp: string | null
@@ -88,6 +91,7 @@ export type UserMaxAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  activeProfileId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -103,6 +107,7 @@ export type UserCountAggregateOutputType = {
   otp: number
   expiresIn: number
   isEmailVerified: number
+  accountStatus: number
   emailOtp: number
   emailOtpExpiresAt: number
   resetOtp: number
@@ -113,6 +118,7 @@ export type UserCountAggregateOutputType = {
   likeCount: number
   commentCount: number
   shareCount: number
+  activeProfileId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -146,6 +152,7 @@ export type UserMinAggregateInputType = {
   otp?: true
   expiresIn?: true
   isEmailVerified?: true
+  accountStatus?: true
   emailOtp?: true
   emailOtpExpiresAt?: true
   resetOtp?: true
@@ -156,6 +163,7 @@ export type UserMinAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  activeProfileId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -171,6 +179,7 @@ export type UserMaxAggregateInputType = {
   otp?: true
   expiresIn?: true
   isEmailVerified?: true
+  accountStatus?: true
   emailOtp?: true
   emailOtpExpiresAt?: true
   resetOtp?: true
@@ -181,6 +190,7 @@ export type UserMaxAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  activeProfileId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -196,6 +206,7 @@ export type UserCountAggregateInputType = {
   otp?: true
   expiresIn?: true
   isEmailVerified?: true
+  accountStatus?: true
   emailOtp?: true
   emailOtpExpiresAt?: true
   resetOtp?: true
@@ -206,6 +217,7 @@ export type UserCountAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  activeProfileId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -308,6 +320,7 @@ export type UserGroupByOutputType = {
   otp: string | null
   expiresIn: string | null
   isEmailVerified: boolean
+  accountStatus: $Enums.AccountStatus
   emailOtp: string | null
   emailOtpExpiresAt: Date | null
   resetOtp: string | null
@@ -318,6 +331,7 @@ export type UserGroupByOutputType = {
   likeCount: number
   commentCount: number
   shareCount: number
+  activeProfileId: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -356,6 +370,7 @@ export type UserWhereInput = {
   otp?: Prisma.StringNullableFilter<"User"> | string | null
   expiresIn?: Prisma.StringNullableFilter<"User"> | string | null
   isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   emailOtp?: Prisma.StringNullableFilter<"User"> | string | null
   emailOtpExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   resetOtp?: Prisma.StringNullableFilter<"User"> | string | null
@@ -366,6 +381,7 @@ export type UserWhereInput = {
   likeCount?: Prisma.IntFilter<"User"> | number
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
+  activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.ProfileListRelationFilter
@@ -417,6 +433,7 @@ export type UserOrderByWithRelationInput = {
   otp?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresIn?: Prisma.SortOrderInput | Prisma.SortOrder
   isEmailVerified?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   emailOtp?: Prisma.SortOrderInput | Prisma.SortOrder
   emailOtpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   resetOtp?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -427,6 +444,7 @@ export type UserOrderByWithRelationInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByRelationAggregateInput
@@ -481,6 +499,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   otp?: Prisma.StringNullableFilter<"User"> | string | null
   expiresIn?: Prisma.StringNullableFilter<"User"> | string | null
   isEmailVerified?: Prisma.BoolFilter<"User"> | boolean
+  accountStatus?: Prisma.EnumAccountStatusFilter<"User"> | $Enums.AccountStatus
   emailOtp?: Prisma.StringNullableFilter<"User"> | string | null
   emailOtpExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   resetOtp?: Prisma.StringNullableFilter<"User"> | string | null
@@ -491,6 +510,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   likeCount?: Prisma.IntFilter<"User"> | number
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
+  activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.ProfileListRelationFilter
@@ -542,6 +562,7 @@ export type UserOrderByWithAggregationInput = {
   otp?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresIn?: Prisma.SortOrderInput | Prisma.SortOrder
   isEmailVerified?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   emailOtp?: Prisma.SortOrderInput | Prisma.SortOrder
   emailOtpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
   resetOtp?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -552,6 +573,7 @@ export type UserOrderByWithAggregationInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -575,6 +597,7 @@ export type UserScalarWhereWithAggregatesInput = {
   otp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   expiresIn?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   isEmailVerified?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  accountStatus?: Prisma.EnumAccountStatusWithAggregatesFilter<"User"> | $Enums.AccountStatus
   emailOtp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   emailOtpExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   resetOtp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -585,6 +608,7 @@ export type UserScalarWhereWithAggregatesInput = {
   likeCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   commentCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   shareCount?: Prisma.IntWithAggregatesFilter<"User"> | number
+  activeProfileId?: Prisma.UuidNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -600,6 +624,7 @@ export type UserCreateInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -610,6 +635,7 @@ export type UserCreateInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -661,6 +687,7 @@ export type UserUncheckedCreateInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -671,6 +698,7 @@ export type UserUncheckedCreateInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -722,6 +750,7 @@ export type UserUpdateInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -732,6 +761,7 @@ export type UserUpdateInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -783,6 +813,7 @@ export type UserUncheckedUpdateInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -793,6 +824,7 @@ export type UserUncheckedUpdateInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -844,6 +876,7 @@ export type UserCreateManyInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -854,6 +887,7 @@ export type UserCreateManyInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -869,6 +903,7 @@ export type UserUpdateManyMutationInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -879,6 +914,7 @@ export type UserUpdateManyMutationInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -894,6 +930,7 @@ export type UserUncheckedUpdateManyInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -904,6 +941,7 @@ export type UserUncheckedUpdateManyInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -929,6 +967,7 @@ export type UserCountOrderByAggregateInput = {
   otp?: Prisma.SortOrder
   expiresIn?: Prisma.SortOrder
   isEmailVerified?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   emailOtp?: Prisma.SortOrder
   emailOtpExpiresAt?: Prisma.SortOrder
   resetOtp?: Prisma.SortOrder
@@ -939,6 +978,7 @@ export type UserCountOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  activeProfileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -962,6 +1002,7 @@ export type UserMaxOrderByAggregateInput = {
   otp?: Prisma.SortOrder
   expiresIn?: Prisma.SortOrder
   isEmailVerified?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   emailOtp?: Prisma.SortOrder
   emailOtpExpiresAt?: Prisma.SortOrder
   resetOtp?: Prisma.SortOrder
@@ -972,6 +1013,7 @@ export type UserMaxOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  activeProfileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -987,6 +1029,7 @@ export type UserMinOrderByAggregateInput = {
   otp?: Prisma.SortOrder
   expiresIn?: Prisma.SortOrder
   isEmailVerified?: Prisma.SortOrder
+  accountStatus?: Prisma.SortOrder
   emailOtp?: Prisma.SortOrder
   emailOtpExpiresAt?: Prisma.SortOrder
   resetOtp?: Prisma.SortOrder
@@ -997,6 +1040,7 @@ export type UserMinOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  activeProfileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1481,6 +1525,10 @@ export type NullableEnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role | null
 }
 
+export type EnumAccountStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AccountStatus
+}
+
 export type UserCreateNestedOneWithoutUserPointsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutUserPointsInput, Prisma.UserUncheckedCreateWithoutUserPointsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserPointsInput
@@ -1534,6 +1582,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -1544,6 +1593,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -1594,6 +1644,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -1604,6 +1655,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -1670,6 +1722,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1680,6 +1733,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -1730,6 +1784,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1740,6 +1795,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -1790,6 +1846,7 @@ export type UserCreateWithoutBattlesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -1800,6 +1857,7 @@ export type UserCreateWithoutBattlesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -1850,6 +1908,7 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -1860,6 +1919,7 @@ export type UserUncheckedCreateWithoutBattlesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -1926,6 +1986,7 @@ export type UserUpdateWithoutBattlesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1936,6 +1997,7 @@ export type UserUpdateWithoutBattlesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -1986,6 +2048,7 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1996,6 +2059,7 @@ export type UserUncheckedUpdateWithoutBattlesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2046,6 +2110,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2056,6 +2121,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2106,6 +2172,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2116,6 +2183,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2182,6 +2250,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2192,6 +2261,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -2242,6 +2312,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2252,6 +2323,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2302,6 +2374,7 @@ export type UserCreateWithoutBattleResultsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2312,6 +2385,7 @@ export type UserCreateWithoutBattleResultsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2362,6 +2436,7 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2372,6 +2447,7 @@ export type UserUncheckedCreateWithoutBattleResultsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2438,6 +2514,7 @@ export type UserUpdateWithoutBattleResultsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2448,6 +2525,7 @@ export type UserUpdateWithoutBattleResultsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -2498,6 +2576,7 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2508,6 +2587,7 @@ export type UserUncheckedUpdateWithoutBattleResultsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2558,6 +2638,7 @@ export type UserCreateWithoutBattleVotesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2568,6 +2649,7 @@ export type UserCreateWithoutBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2618,6 +2700,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2628,6 +2711,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2694,6 +2778,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2704,6 +2789,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -2754,6 +2840,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2764,6 +2851,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2814,6 +2902,7 @@ export type UserCreateWithoutHostChallengeInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2824,6 +2913,7 @@ export type UserCreateWithoutHostChallengeInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2874,6 +2964,7 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2884,6 +2975,7 @@ export type UserUncheckedCreateWithoutHostChallengeInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2939,6 +3031,7 @@ export type UserCreateWithoutChallengesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -2949,6 +3042,7 @@ export type UserCreateWithoutChallengesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2999,6 +3093,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3009,6 +3104,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3075,6 +3171,7 @@ export type UserUpdateWithoutHostChallengeInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3085,6 +3182,7 @@ export type UserUpdateWithoutHostChallengeInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3135,6 +3233,7 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3145,6 +3244,7 @@ export type UserUncheckedUpdateWithoutHostChallengeInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3206,6 +3306,7 @@ export type UserUpdateWithoutChallengesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3216,6 +3317,7 @@ export type UserUpdateWithoutChallengesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3266,6 +3368,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3276,6 +3379,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3326,6 +3430,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3336,6 +3441,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3386,6 +3492,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3396,6 +3503,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3462,6 +3570,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3472,6 +3581,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3522,6 +3632,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3532,6 +3643,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3582,6 +3694,7 @@ export type UserCreateWithoutChallengeResultsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3592,6 +3705,7 @@ export type UserCreateWithoutChallengeResultsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3642,6 +3756,7 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3652,6 +3767,7 @@ export type UserUncheckedCreateWithoutChallengeResultsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3718,6 +3834,7 @@ export type UserUpdateWithoutChallengeResultsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3728,6 +3845,7 @@ export type UserUpdateWithoutChallengeResultsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3778,6 +3896,7 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3788,6 +3907,7 @@ export type UserUncheckedUpdateWithoutChallengeResultsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3838,6 +3958,7 @@ export type UserCreateWithoutChallengeSubmissionsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3848,6 +3969,7 @@ export type UserCreateWithoutChallengeSubmissionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3898,6 +4020,7 @@ export type UserUncheckedCreateWithoutChallengeSubmissionsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -3908,6 +4031,7 @@ export type UserUncheckedCreateWithoutChallengeSubmissionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3974,6 +4098,7 @@ export type UserUpdateWithoutChallengeSubmissionsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3984,6 +4109,7 @@ export type UserUpdateWithoutChallengeSubmissionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4034,6 +4160,7 @@ export type UserUncheckedUpdateWithoutChallengeSubmissionsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4044,6 +4171,7 @@ export type UserUncheckedUpdateWithoutChallengeSubmissionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4094,6 +4222,7 @@ export type UserCreateWithoutCommentsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4104,6 +4233,7 @@ export type UserCreateWithoutCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4154,6 +4284,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4164,6 +4295,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4230,6 +4362,7 @@ export type UserUpdateWithoutCommentsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4240,6 +4373,7 @@ export type UserUpdateWithoutCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4290,6 +4424,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4300,6 +4435,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4350,6 +4486,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4360,6 +4497,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4410,6 +4548,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4420,6 +4559,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4486,6 +4626,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4496,6 +4637,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4546,6 +4688,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4556,6 +4699,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4606,6 +4750,7 @@ export type UserCreateWithoutEventsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4616,6 +4761,7 @@ export type UserCreateWithoutEventsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4666,6 +4812,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4676,6 +4823,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4742,6 +4890,7 @@ export type UserUpdateWithoutEventsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4752,6 +4901,7 @@ export type UserUpdateWithoutEventsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4802,6 +4952,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4812,6 +4963,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4862,6 +5014,7 @@ export type UserCreateWithoutFollowingInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4872,6 +5025,7 @@ export type UserCreateWithoutFollowingInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4922,6 +5076,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4932,6 +5087,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4987,6 +5143,7 @@ export type UserCreateWithoutFollowersInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -4997,6 +5154,7 @@ export type UserCreateWithoutFollowersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5047,6 +5205,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5057,6 +5216,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5123,6 +5283,7 @@ export type UserUpdateWithoutFollowingInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5133,6 +5294,7 @@ export type UserUpdateWithoutFollowingInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5183,6 +5345,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5193,6 +5356,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5254,6 +5418,7 @@ export type UserUpdateWithoutFollowersInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5264,6 +5429,7 @@ export type UserUpdateWithoutFollowersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5314,6 +5480,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5324,6 +5491,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5374,6 +5542,7 @@ export type UserCreateWithoutHidePostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5384,6 +5553,7 @@ export type UserCreateWithoutHidePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5434,6 +5604,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5444,6 +5615,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5510,6 +5682,7 @@ export type UserUpdateWithoutHidePostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5520,6 +5693,7 @@ export type UserUpdateWithoutHidePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5570,6 +5744,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5580,6 +5755,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5630,6 +5806,7 @@ export type UserCreateWithoutLikesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5640,6 +5817,7 @@ export type UserCreateWithoutLikesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5690,6 +5868,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5700,6 +5879,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5766,6 +5946,7 @@ export type UserUpdateWithoutLikesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5776,6 +5957,7 @@ export type UserUpdateWithoutLikesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5826,6 +6008,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5836,6 +6019,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5886,6 +6070,7 @@ export type UserCreateWithoutLivesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5896,6 +6081,7 @@ export type UserCreateWithoutLivesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5946,6 +6132,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -5956,6 +6143,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6022,6 +6210,7 @@ export type UserUpdateWithoutLivesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6032,6 +6221,7 @@ export type UserUpdateWithoutLivesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6082,6 +6272,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6092,6 +6283,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6142,6 +6334,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6152,6 +6345,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6202,6 +6396,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6212,6 +6407,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6278,6 +6474,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6288,6 +6485,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6338,6 +6536,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6348,6 +6547,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6398,6 +6598,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6408,6 +6609,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6458,6 +6660,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6468,6 +6671,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6523,6 +6727,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6533,6 +6738,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6583,6 +6789,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6593,6 +6800,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6659,6 +6867,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6669,6 +6878,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6719,6 +6929,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6729,6 +6940,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6790,6 +7002,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6800,6 +7013,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6850,6 +7064,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6860,6 +7075,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6910,6 +7126,7 @@ export type UserCreateWithoutMessagesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6920,6 +7137,7 @@ export type UserCreateWithoutMessagesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6970,6 +7188,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -6980,6 +7199,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7046,6 +7266,7 @@ export type UserUpdateWithoutMessagesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7056,6 +7277,7 @@ export type UserUpdateWithoutMessagesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7106,6 +7328,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7116,6 +7339,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7166,6 +7390,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7176,6 +7401,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7226,6 +7452,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7236,6 +7463,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7302,6 +7530,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7312,6 +7541,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7362,6 +7592,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7372,6 +7603,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7422,6 +7654,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7432,6 +7665,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7482,6 +7716,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7492,6 +7727,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7558,6 +7794,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7568,6 +7805,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7618,6 +7856,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7628,6 +7867,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7678,6 +7918,7 @@ export type UserCreateWithoutPaymentsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7688,6 +7929,7 @@ export type UserCreateWithoutPaymentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7738,6 +7980,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7748,6 +7991,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7814,6 +8058,7 @@ export type UserUpdateWithoutPaymentsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7824,6 +8069,7 @@ export type UserUpdateWithoutPaymentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7874,6 +8120,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7884,6 +8131,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7934,6 +8182,7 @@ export type UserCreateWithoutPostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -7944,6 +8193,7 @@ export type UserCreateWithoutPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7994,6 +8244,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8004,6 +8255,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8070,6 +8322,7 @@ export type UserUpdateWithoutPostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8080,6 +8333,7 @@ export type UserUpdateWithoutPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8130,6 +8384,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8140,6 +8395,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8190,6 +8446,7 @@ export type UserCreateWithoutProductListsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8200,6 +8457,7 @@ export type UserCreateWithoutProductListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -8250,6 +8508,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8260,6 +8519,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8326,6 +8586,7 @@ export type UserUpdateWithoutProductListsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8336,6 +8597,7 @@ export type UserUpdateWithoutProductListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8386,6 +8648,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8396,6 +8659,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8446,6 +8710,7 @@ export type UserCreateWithoutProfileInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8456,6 +8721,7 @@ export type UserCreateWithoutProfileInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
@@ -8506,6 +8772,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8516,6 +8783,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
@@ -8582,6 +8850,7 @@ export type UserUpdateWithoutProfileInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8592,6 +8861,7 @@ export type UserUpdateWithoutProfileInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
@@ -8642,6 +8912,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8652,6 +8923,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
@@ -8702,6 +8974,7 @@ export type UserCreateWithoutRacingVotesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8712,6 +8985,7 @@ export type UserCreateWithoutRacingVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -8762,6 +9036,7 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8772,6 +9047,7 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8838,6 +9114,7 @@ export type UserUpdateWithoutRacingVotesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8848,6 +9125,7 @@ export type UserUpdateWithoutRacingVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8898,6 +9176,7 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8908,6 +9187,7 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8958,6 +9238,7 @@ export type UserCreateWithoutReportsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -8968,6 +9249,7 @@ export type UserCreateWithoutReportsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9018,6 +9300,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9028,6 +9311,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9094,6 +9378,7 @@ export type UserUpdateWithoutReportsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9104,6 +9389,7 @@ export type UserUpdateWithoutReportsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9154,6 +9440,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9164,6 +9451,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9214,6 +9502,7 @@ export type UserCreateWithoutRepostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9224,6 +9513,7 @@ export type UserCreateWithoutRepostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9274,6 +9564,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9284,6 +9575,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9350,6 +9642,7 @@ export type UserUpdateWithoutRepostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9360,6 +9653,7 @@ export type UserUpdateWithoutRepostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9410,6 +9704,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9420,6 +9715,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9470,6 +9766,7 @@ export type UserCreateWithoutSavePostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9480,6 +9777,7 @@ export type UserCreateWithoutSavePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9530,6 +9828,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9540,6 +9839,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9606,6 +9906,7 @@ export type UserUpdateWithoutSavePostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9616,6 +9917,7 @@ export type UserUpdateWithoutSavePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9666,6 +9968,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9676,6 +9979,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9726,6 +10030,7 @@ export type UserCreateWithoutSharesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9736,6 +10041,7 @@ export type UserCreateWithoutSharesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9786,6 +10092,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9796,6 +10103,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9862,6 +10170,7 @@ export type UserUpdateWithoutSharesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9872,6 +10181,7 @@ export type UserUpdateWithoutSharesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9922,6 +10232,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9932,6 +10243,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9982,6 +10294,7 @@ export type UserCreateWithoutUserPointsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -9992,6 +10305,7 @@ export type UserCreateWithoutUserPointsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10042,6 +10356,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -10052,6 +10367,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10118,6 +10434,7 @@ export type UserUpdateWithoutUserPointsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10128,6 +10445,7 @@ export type UserUpdateWithoutUserPointsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -10178,6 +10496,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10188,6 +10507,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -10238,6 +10558,7 @@ export type UserCreateWithoutWishListsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -10248,6 +10569,7 @@ export type UserCreateWithoutWishListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10298,6 +10620,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -10308,6 +10631,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10374,6 +10698,7 @@ export type UserUpdateWithoutWishListsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10384,6 +10709,7 @@ export type UserUpdateWithoutWishListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -10434,6 +10760,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10444,6 +10771,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -10494,6 +10822,7 @@ export type UserCreateWithoutXpostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -10504,6 +10833,7 @@ export type UserCreateWithoutXpostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10554,6 +10884,7 @@ export type UserUncheckedCreateWithoutXpostsInput = {
   otp?: string | null
   expiresIn?: string | null
   isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
   emailOtp?: string | null
   emailOtpExpiresAt?: Date | string | null
   resetOtp?: string | null
@@ -10564,6 +10895,7 @@ export type UserUncheckedCreateWithoutXpostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  activeProfileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10630,6 +10962,7 @@ export type UserUpdateWithoutXpostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10640,6 +10973,7 @@ export type UserUpdateWithoutXpostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -10690,6 +11024,7 @@ export type UserUncheckedUpdateWithoutXpostsInput = {
   otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
   emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10700,6 +11035,7 @@ export type UserUncheckedUpdateWithoutXpostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -11078,6 +11414,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   otp?: boolean
   expiresIn?: boolean
   isEmailVerified?: boolean
+  accountStatus?: boolean
   emailOtp?: boolean
   emailOtpExpiresAt?: boolean
   resetOtp?: boolean
@@ -11088,6 +11425,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  activeProfileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
@@ -11140,6 +11478,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   otp?: boolean
   expiresIn?: boolean
   isEmailVerified?: boolean
+  accountStatus?: boolean
   emailOtp?: boolean
   emailOtpExpiresAt?: boolean
   resetOtp?: boolean
@@ -11150,6 +11489,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  activeProfileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -11165,6 +11505,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   otp?: boolean
   expiresIn?: boolean
   isEmailVerified?: boolean
+  accountStatus?: boolean
   emailOtp?: boolean
   emailOtpExpiresAt?: boolean
   resetOtp?: boolean
@@ -11175,6 +11516,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  activeProfileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -11190,6 +11532,7 @@ export type UserSelectScalar = {
   otp?: boolean
   expiresIn?: boolean
   isEmailVerified?: boolean
+  accountStatus?: boolean
   emailOtp?: boolean
   emailOtpExpiresAt?: boolean
   resetOtp?: boolean
@@ -11200,11 +11543,12 @@ export type UserSelectScalar = {
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  activeProfileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "username" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "username" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "accountStatus" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "activeProfileId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
@@ -11298,6 +11642,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     otp: string | null
     expiresIn: string | null
     isEmailVerified: boolean
+    accountStatus: $Enums.AccountStatus
     emailOtp: string | null
     emailOtpExpiresAt: Date | null
     resetOtp: string | null
@@ -11308,6 +11653,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     likeCount: number
     commentCount: number
     shareCount: number
+    activeProfileId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -11779,6 +12125,7 @@ export interface UserFieldRefs {
   readonly otp: Prisma.FieldRef<"User", 'String'>
   readonly expiresIn: Prisma.FieldRef<"User", 'String'>
   readonly isEmailVerified: Prisma.FieldRef<"User", 'Boolean'>
+  readonly accountStatus: Prisma.FieldRef<"User", 'AccountStatus'>
   readonly emailOtp: Prisma.FieldRef<"User", 'String'>
   readonly emailOtpExpiresAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly resetOtp: Prisma.FieldRef<"User", 'String'>
@@ -11789,6 +12136,7 @@ export interface UserFieldRefs {
   readonly likeCount: Prisma.FieldRef<"User", 'Int'>
   readonly commentCount: Prisma.FieldRef<"User", 'Int'>
   readonly shareCount: Prisma.FieldRef<"User", 'Int'>
+  readonly activeProfileId: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

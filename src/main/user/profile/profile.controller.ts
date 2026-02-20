@@ -24,6 +24,7 @@ import { UpdateProfileBaseDto } from './dto/update.profile.dto';
 import { ChangeProfileTypeDto } from './dto/changed.profile.type.dto';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { Type as ProfileType } from 'generated/prisma/enums';
+import { SwitchProfileDto } from './dto/switch.profile.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -71,6 +72,17 @@ export class ProfileController {
     };
   }
 
+   @Patch('switch')
+  async switchProfile(
+     @GetUser('userId') userId: string,
+    @Body() dto: SwitchProfileDto,
+  ) {
+    return this.profileService.switchProfile(
+      userId,
+      dto.profileId,
+    );
+  }
+
   @Patch(':profileId')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
@@ -95,6 +107,8 @@ export class ProfileController {
       data: profile,
     };
   }
+
+ 
 
   @Patch(':profileId/type')
   @HttpCode(HttpStatus.OK)
