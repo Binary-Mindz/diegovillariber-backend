@@ -12,7 +12,8 @@ import {
   ContentCategory,
   IsActive,
   RacingType,
-  Type as ProfileType, // Prisma enum name: Type
+  Type as ProfileType,
+  Type, // Prisma enum name: Type
 } from 'generated/prisma/enums';
 import { CreateProfileDto } from './dto/create.profile.dto';
 import { Prisma } from 'generated/prisma/client';
@@ -583,36 +584,51 @@ export class ProfileService {
     });
   }
 
-
-   async switchProfile(userId: string, profileId: string) {
-    const profile = await this.prisma.profile.findFirst({
-      where: {
-        id: profileId,
-        userId: userId,
-      },
-    });
-
-    if (!profile) {
-      throw new ForbiddenException(
-        'Profile not found or not owned by user',
-      );
-    }
-
-    await this.prisma.user.update({
-      where: { id: userId },
-      data: { activeProfileId: profileId },
-    });
-
-    return {
-      message: 'Profile switched successfully',
-      activeProfileId: profileId,
-    };
-  }
-
   async getMyProfiles(userId: string) {
     return this.prisma.profile.findMany({
       where: { userId },
     });
   }
+
+  async switchProfileType(profileId: string, type: Type) {
+  const profile = await this.prisma.profile.findUnique({
+    where: { id: profileId },
+    include: {
+      spotter: true,
+      owner: true,
+      creator: true,
+      business: true,
+      proDriver: true,
+      simRacing: true,
+    },
+  });
+
+  if (!profile) {
+    throw new NotFoundException('Profile not found');
+  }
+
+  const profilePropertyMap: Record<Type, keyof typeof profile> = {
+    SPOTTER: 'spotter',
+    OWNER: 'owner',
+    CONTENT_CREATOR: 'creator',
+    PRO_BUSSINESS: 'business',
+    PRO_DRIVER: 'proDriver',
+    SIM_RACING_DRIVER: 'simRacing',
+  };
+
+  const property = profilePropertyMap[type];
+
+  if (!profile[property]) {
+    throw new BadRequestException(`${type} profile not created yet`);
+  }
+
+  return this.prisma.profile.update({
+    where: { id: profileId },
+    data: {
+      activeType: type,
+    },
+  });
+}
+
   
 }
