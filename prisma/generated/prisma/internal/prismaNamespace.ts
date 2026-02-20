@@ -5765,6 +5765,7 @@ export type ProductListScalarFieldEnum = (typeof ProductListScalarFieldEnum)[key
 export const ProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  activeType: 'activeType',
   profileName: 'profileName',
   bio: 'bio',
   imageUrl: 'imageUrl',
