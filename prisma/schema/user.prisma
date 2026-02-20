@@ -9,6 +9,7 @@ model User {
   otp               String?
   expiresIn         String?
   isEmailVerified   Boolean   @default(false)
+  accountStatus     AccountStatus  @default(ACTIVE)
   emailOtp          String?
   emailOtpExpiresAt DateTime?
   resetOtp          String?
@@ -19,6 +20,7 @@ model User {
   likeCount         Int       @default(0)
   commentCount      Int       @default(0)
   shareCount        Int       @default(0)
+  activeProfileId   String?   @db.Uuid
 
   profile  Profile[]
   posts    Post[]

@@ -42,6 +42,12 @@ enum IsActive {
   INACTIVE
 }
 
+enum AccountStatus  {
+  ACTIVE
+  SUSPEND
+  INACTIVE
+}
+
 enum Media {
   PHOTO
   VIDEO
