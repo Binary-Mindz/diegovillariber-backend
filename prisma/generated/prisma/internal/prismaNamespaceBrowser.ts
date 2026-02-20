@@ -874,6 +874,7 @@ export const UserScalarFieldEnum = {
   otp: 'otp',
   expiresIn: 'expiresIn',
   isEmailVerified: 'isEmailVerified',
+  accountStatus: 'accountStatus',
   emailOtp: 'emailOtp',
   emailOtpExpiresAt: 'emailOtpExpiresAt',
   resetOtp: 'resetOtp',
@@ -884,6 +885,7 @@ export const UserScalarFieldEnum = {
   likeCount: 'likeCount',
   commentCount: 'commentCount',
   shareCount: 'shareCount',
+  activeProfileId: 'activeProfileId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
