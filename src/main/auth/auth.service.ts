@@ -119,7 +119,13 @@ export class AuthService {
         select: { id: true },
       });
 
-
+      await tx.user.update({
+        where:{id: user.id},
+        data:{
+          activeProfileId: profile.id
+        }
+      })
+      
       switch (dto.profileType) {
         case 'SPOTTER':
           await tx.spotterProfile.create({

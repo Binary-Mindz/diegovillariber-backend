@@ -582,5 +582,37 @@ export class ProfileService {
       });
     });
   }
+
+
+   async switchProfile(userId: string, profileId: string) {
+    const profile = await this.prisma.profile.findFirst({
+      where: {
+        id: profileId,
+        userId: userId,
+      },
+    });
+
+    if (!profile) {
+      throw new ForbiddenException(
+        'Profile not found or not owned by user',
+      );
+    }
+
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { activeProfileId: profileId },
+    });
+
+    return {
+      message: 'Profile switched successfully',
+      activeProfileId: profileId,
+    };
+  }
+
+  async getMyProfiles(userId: string) {
+    return this.prisma.profile.findMany({
+      where: { userId },
+    });
+  }
   
 }
