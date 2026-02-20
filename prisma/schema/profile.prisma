@@ -3,15 +3,16 @@ model Profile {
   userId String @unique @db.Uuid
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  activeType       Type?
   profileName      String?
   bio              String?
   imageUrl         String?
   instagramHandler String?
   accountType      AccountType @default(PUBLIC)
   preference       Preference?
-  
-  isActive         IsActive    @default(ACTIVE)
-  suspend          Boolean     @default(false)
+
+  isActive IsActive @default(ACTIVE)
+  suspend  Boolean  @default(false)
 
   spotter   SpotterProfile?
   owner     OwnerProfile?
@@ -26,5 +27,4 @@ model Profile {
   virtualLabs            VirtualLab[]
   virtualSimRacingEvents VirtualSimRacingEvent[]
   legalNotices           LegalNotice[]
-
 }
