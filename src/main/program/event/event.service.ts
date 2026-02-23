@@ -35,7 +35,7 @@ export class EventService {
     const activeProfile = await this.prisma.profile.findFirst({
       where: {
         id: user.activeProfileId,
-        userId: userId, // extra safety: profileটা যেন এই user-এরই হয়
+        userId: userId, 
       },
       select: { id: true, activeType: true },
     });
