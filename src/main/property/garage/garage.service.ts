@@ -7,23 +7,6 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 export class GarageService {
   constructor(private prisma: PrismaService) {}
 
-  async createGarage(userId: string, dto: CreateGarageDto) {
-    const profile = await this.prisma.profile.findUnique({
-      where: { userId },
-    });
-
-    if (!profile) {
-      throw new NotFoundException('Profile not found');
-    }
-
-    return this.prisma.garage.create({
-      data: {
-        ...dto,
-        profileId: profile.id,
-      },
-    });
-  }
-
   async getUserGarages(userId: string) {
     const profile = await this.prisma.profile.findUnique({
       where: { userId },

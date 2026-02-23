@@ -29,22 +29,6 @@ import { UpdateGarageDto } from './dto/update-garage.dto';
 export class GarageController {
   constructor(private readonly garageService: GarageService) {}
 
-
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create garage (Authenticated users)' })
-  create(
-    @GetUser('userId') userId: string,
-    @Body() dto: CreateGarageDto,
-  ) {
-    return handleRequest(async () => {
-      return this.garageService.createGarage(userId, dto);
-    }, 'Garage created successfully');
-  }
-
-  
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')

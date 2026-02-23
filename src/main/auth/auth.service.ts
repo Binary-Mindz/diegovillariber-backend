@@ -12,7 +12,7 @@ import { MailService } from '../../common/mail/mail.service';
 import type { SignOptions } from 'jsonwebtoken';
 import { SignUpDto } from './dto/signup.dto';
 import { generateOtp, otpExpiry } from '@/common/utils/otp';
-import { AccountType, IsActive, Role } from 'generated/prisma/enums';
+import { AccountType, IsActive, Role, Type } from 'generated/prisma/enums';
 
 @Injectable()
 export class AuthService {
@@ -108,6 +108,7 @@ export class AuthService {
       const profile = await tx.profile.create({
         data: {
           userId: user.id,
+          activeType: dto.profileType as Type,
           preference: dto.preference ?? null,
           bio: (dto as any).bio ?? null,
           imageUrl: (dto as any).imageUrl ?? null,
