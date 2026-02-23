@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ChatService } from './chat.service';
 import { SendMessageDto } from './dto/send-message.dto';
 import { ListMessagesDto } from './dto/list-messages.dto';
@@ -37,5 +37,15 @@ export class ChatController {
   @Post('read')
   read( @GetUser('userId') userId: string, @Body() dto: MarkReadDto) {
     return this.chatService.markRead(userId, dto.conversationId, dto.messageId);
+  }
+
+   @ApiOperation({ summary: 'Delete a message (only sender can delete)' })
+  @ApiParam({ name: 'messageId', required: true })
+  @Delete('messages/:messageId')
+  deleteMessage(
+    @GetUser('userId') userId: string,
+    @Param('messageId') messageId: string,
+  ) {
+    return this.chatService.removeMessage(userId, messageId);
   }
 }
