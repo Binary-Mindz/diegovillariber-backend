@@ -3,6 +3,7 @@ model Event {
   ownerId String @db.Uuid
   owner   User   @relation(fields: [ownerId], references: [id])
 
+  profileType Type?
   coverImage  String
   eventTitle  String
   description String?

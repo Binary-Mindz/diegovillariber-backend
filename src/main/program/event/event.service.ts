@@ -21,9 +21,35 @@ export class EventService {
       throw new BadRequestException('End date must be after start date');
     }
 
+     // 1) user থেকে activeProfileId নাও
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true, activeProfileId: true },
+    });
+
+    if (!user) throw new NotFoundException('User not found');
+    if (!user.activeProfileId) {
+      throw new BadRequestException('No active profile selected');
+    }
+
+    const activeProfile = await this.prisma.profile.findFirst({
+      where: {
+        id: user.activeProfileId,
+        userId: userId, // extra safety: profileটা যেন এই user-এরই হয়
+      },
+      select: { id: true, activeType: true },
+    });
+
+    if (!activeProfile) {
+      throw new BadRequestException('Active profile not found for this user');
+    }
+       if (!activeProfile.activeType) {
+      throw new BadRequestException('Active profile type is not set');
+    }
     return this.prisma.event.create({
       data: {
         ownerId: userId,
+        profileType: activeProfile.activeType, 
         coverImage: dto.coverImage,
         eventTitle: dto.eventTitle,
         description: dto.description ?? null,
