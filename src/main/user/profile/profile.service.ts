@@ -69,6 +69,7 @@ export class ProfileService {
         accountType: dto.accountType ?? AccountType.PUBLIC,
         isActive: IsActive.ACTIVE,
         suspend: false,
+        activeType: dto.profileType
       };
 
       if (existing) {
@@ -519,70 +520,89 @@ export class ProfileService {
     }
   }
 
-  async deleteProfileType(
-    profileId: string,
-    currentUserId: string,
-    profileType: ProfileType,
-  ) {
-    return this.prisma.$transaction(async (tx) => {
-      const profile = await tx.profile.findUnique({
-        where: { id: profileId },
-        include: { simRacing: true },
-      });
-
-      if (!profile) throw new NotFoundException('Profile not found');
-      if (profile.userId !== currentUserId)
-        throw new ForbiddenException('No access');
-
-      switch (profileType) {
-        case ProfileType.SPOTTER:
-          await tx.spotterProfile.deleteMany({
-            where: { profileId },
-          });
-          break;
-
-        case ProfileType.OWNER:
-          await tx.ownerProfile.deleteMany({
-            where: { profileId },
-          });
-          break;
-
-        case ProfileType.CONTENT_CREATOR:
-          await tx.contentCreatorProfile.deleteMany({
-            where: { profileId },
-          });
-          break;
-
-        case ProfileType.PRO_BUSSINESS:
-          await tx.businessProfile.deleteMany({
-            where: { profileId },
-          });
-          break;
-
-        case ProfileType.PRO_DRIVER:
-          await tx.proDriverProfile.deleteMany({
-            where: { profileId },
-          });
-          break;
-
-        case ProfileType.SIM_RACING_DRIVER:
-          if (profile.simRacing) {
-            await tx.simRacingProfile.delete({
-              where: { profileId },
-            });
-          }
-          break;
-
-        default:
-          throw new BadRequestException('Invalid profile type');
-      }
-
-      return tx.profile.findUnique({
-        where: { id: profileId },
-        include: this.profileInclude(),
-      });
+  async deleteProfileType(profileId: string, currentUserId: string, profileType: ProfileType) {
+  return this.prisma.$transaction(async (tx) => {
+    const profile = await tx.profile.findUnique({
+      where: { id: profileId },
+      include: {
+        spotter: true,
+        owner: true,
+        creator: true,
+        business: true,
+        proDriver: true,
+        simRacing: true,
+      },
     });
-  }
+
+    if (!profile) throw new NotFoundException('Profile not found');
+    if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+
+    switch (profileType) {
+      case ProfileType.SPOTTER:
+        await tx.spotterProfile.deleteMany({ where: { profileId } });
+        break;
+
+      case ProfileType.OWNER:
+        await tx.ownerProfile.deleteMany({ where: { profileId } });
+        break;
+
+      case ProfileType.CONTENT_CREATOR:
+        await tx.contentCreatorProfile.deleteMany({ where: { profileId } });
+        break;
+
+      case ProfileType.PRO_BUSSINESS:
+        await tx.businessProfile.deleteMany({ where: { profileId } });
+        break;
+
+      case ProfileType.PRO_DRIVER:
+        await tx.proDriverProfile.deleteMany({ where: { profileId } });
+        break;
+
+      case ProfileType.SIM_RACING_DRIVER:
+        await tx.simRacingProfile.deleteMany({ where: { profileId } });
+        break;
+
+      default:
+        throw new BadRequestException('Invalid profile type');
+    }
+
+ 
+    const after = await tx.profile.findUnique({
+      where: { id: profileId },
+      include: {
+        spotter: true,
+        owner: true,
+        creator: true,
+        business: true,
+        proDriver: true,
+        simRacing: true,
+      },
+    });
+
+    if (!after) throw new NotFoundException('Profile not found');
+
+    const existingTypes = this.detectExistingTypes(after);
+
+    // ✅ if no type exists => activeType should be null
+    // ✅ if activeType was deleted (or invalid) => set to first available
+    const nextActive =
+      existingTypes.length === 0
+        ? null
+        : existingTypes.includes(after.activeType as any)
+          ? after.activeType
+          : existingTypes[0];
+
+    await tx.profile.update({
+      where: { id: profileId },
+      data: { activeType: nextActive },
+    });
+
+    return tx.profile.findUnique({
+      where: { id: profileId },
+      include: this.profileInclude(),
+    });
+  });
+}
 
   async getMyProfiles(userId: string) {
     return this.prisma.profile.findMany({
@@ -628,6 +648,19 @@ export class ProfileService {
       activeType: type,
     },
   });
+}
+
+private detectExistingTypes(profile: any): Type[] {
+  const types: Type[] = [];
+
+  if (profile.spotter) types.push(Type.SPOTTER);
+  if (profile.owner) types.push(Type.OWNER);
+  if (profile.creator) types.push(Type.CONTENT_CREATOR);
+  if (profile.business) types.push(Type.PRO_BUSSINESS);
+  if (profile.proDriver) types.push(Type.PRO_DRIVER);
+  if (profile.simRacing) types.push(Type.SIM_RACING_DRIVER);
+
+  return types;
 }
 
   
