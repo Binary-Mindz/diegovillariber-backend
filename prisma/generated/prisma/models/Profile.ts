@@ -636,10 +636,6 @@ export type ProfileUpdateOneRequiredWithoutProDriverNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutProDriverInput, Prisma.ProfileUpdateWithoutProDriverInput>, Prisma.ProfileUncheckedUpdateWithoutProDriverInput>
 }
 
-export type NullableEnumTypeFieldUpdateOperationsInput = {
-  set?: $Enums.Type | null
-}
-
 export type EnumAccountTypeFieldUpdateOperationsInput = {
   set?: $Enums.AccountType
 }

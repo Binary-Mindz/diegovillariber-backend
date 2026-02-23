@@ -5455,6 +5455,7 @@ export type EnginePowerScalarFieldEnum = (typeof EnginePowerScalarFieldEnum)[key
 export const EventScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
+  profileType: 'profileType',
   coverImage: 'coverImage',
   eventTitle: 'eventTitle',
   description: 'description',
