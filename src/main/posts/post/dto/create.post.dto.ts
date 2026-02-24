@@ -130,4 +130,18 @@ export class CreatePostDto {
   @ArrayMaxSize(20)
   @IsUUID('4', { each: true })
   hashtagIds?: string[];
+
+   @ApiPropertyOptional({
+    isArray: true,
+    example: [
+      '4d9c8f3b-1b2a-4d2f-9c41-6f8a4a2b3c10',
+      '8b1b9d1a-2a1f-4d2a-9b11-9a8a7a6b5c44',
+    ],
+    description: 'Tagged user IDs',
+  })
+  @IsOptional()
+  @IsArray()
+  @ArrayMaxSize(20)
+  @IsUUID('4', { each: true })
+  taggedUserIds?: string[];
 }

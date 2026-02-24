@@ -37,8 +37,6 @@ export class PostService {
         'Both latitude and longitude must be provided together.',
       );
     }
-
-
     const hashtagIds = dto.hashtagIds
       ? Array.from(new Set(dto.hashtagIds))
       : [];
@@ -46,9 +44,37 @@ export class PostService {
     return this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
-        select: { id: true, totalPoints: true },
+        select: { id: true, totalPoints: true, activeProfileId: true },
       });
       if (!user) throw new NotFoundException('User not found');
+
+      if (!user.activeProfileId) {
+        throw new BadRequestException('No active profile selected');
+      }
+      const activeProfile = await tx.profile.findFirst({
+        where: { id: user.activeProfileId, userId },
+        select: { id: true, activeType: true },
+      });
+      if (!activeProfile) {
+        throw new BadRequestException('Active profile not found for this user');
+      }
+      if (!activeProfile.activeType) {
+        throw new BadRequestException('Active profile type not set');
+      }
+
+      const taggedUserIds = dto.taggedUserIds
+        ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
+        : [];
+
+      if (taggedUserIds.length) {
+        const found = await tx.user.findMany({
+          where: { id: { in: taggedUserIds } },
+          select: { id: true },
+        });
+        if (found.length !== taggedUserIds.length) {
+          throw new BadRequestException('One or more tagged users are invalid');
+        }
+      }
 
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
         throw new BadRequestException(
@@ -73,6 +99,11 @@ export class PostService {
       const post = await tx.post.create({
         data: {
           userId,
+
+          // ✅ active profile binding
+          profileId: activeProfile.id,
+          profileType: activeProfile.activeType,
+
           postType: dto.postType ?? undefined,
           caption: dto.caption ?? null,
           mediaUrl: dto.mediaUrl ?? null,
@@ -93,11 +124,18 @@ export class PostService {
             ? { connect: hashtagIds.map((id) => ({ id })) }
             : undefined,
 
+          // ✅ tagged users connect
+          taggedUsers: taggedUserIds.length
+            ? { connect: taggedUserIds.map((id) => ({ id })) }
+            : undefined,
+
           point: POST_REWARD_POINTS,
           contentBooster: wantBoost,
         },
         include: {
           hashtags: true,
+          taggedUsers: { select: { id: true, username: true } },
+          profile: { select: { id: true, imageUrl: true, activeType: true } },
         },
       });
 
@@ -185,9 +223,11 @@ export class PostService {
         skip,
         take: limit,
         include: {
-          user: { select: { id: true, username: true, profile: {select: {id:true, imageUrl: true}} } },
+          user: { select: { id: true, username: true } },
+          profile: { select: { id: true, imageUrl: true, activeType: true } },
           hashtags: true,
-        },
+          taggedUsers: { select: { id: true, username: true } },
+        }
       }),
       this.prisma.post.count({ where }),
     ]);
@@ -211,13 +251,11 @@ export class PostService {
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
       include: {
-        user: {
-          select: {
-            id: true,
-            username: true,
-          },
-        },
-      },
+        user: { select: { id: true, username: true } },
+        profile: { select: { id: true, imageUrl: true, activeType: true } },
+        hashtags: true,
+        taggedUsers: { select: { id: true, username: true } },
+      }
     });
 
     if (!post) throw new NotFoundException('Post not found');

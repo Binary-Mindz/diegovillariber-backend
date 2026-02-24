@@ -243,6 +243,7 @@ export type ProfileWhereInput = {
   virtualLabs?: Prisma.VirtualLabListRelationFilter
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  posts?: Prisma.PostListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -270,6 +271,7 @@ export type ProfileOrderByWithRelationInput = {
   virtualLabs?: Prisma.VirtualLabOrderByRelationAggregateInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventOrderByRelationAggregateInput
   legalNotices?: Prisma.LegalNoticeOrderByRelationAggregateInput
+  posts?: Prisma.PostOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -300,6 +302,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   virtualLabs?: Prisma.VirtualLabListRelationFilter
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  posts?: Prisma.PostListRelationFilter
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -360,6 +363,7 @@ export type ProfileCreateInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -386,6 +390,7 @@ export type ProfileUncheckedCreateInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -412,6 +417,7 @@ export type ProfileUpdateInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -438,6 +444,7 @@ export type ProfileUncheckedUpdateInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -484,6 +491,11 @@ export type ProfileUncheckedUpdateManyInput = {
 export type ProfileScalarRelationFilter = {
   is?: Prisma.ProfileWhereInput
   isNot?: Prisma.ProfileWhereInput
+}
+
+export type ProfileNullableScalarRelationFilter = {
+  is?: Prisma.ProfileWhereInput | null
+  isNot?: Prisma.ProfileWhereInput | null
 }
 
 export type ProfileCountOrderByAggregateInput = {
@@ -620,6 +632,22 @@ export type ProfileUpdateOneRequiredWithoutOwnerNestedInput = {
   upsert?: Prisma.ProfileUpsertWithoutOwnerInput
   connect?: Prisma.ProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutOwnerInput, Prisma.ProfileUpdateWithoutOwnerInput>, Prisma.ProfileUncheckedUpdateWithoutOwnerInput>
+}
+
+export type ProfileCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPostsInput, Prisma.ProfileUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPostsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneWithoutPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutPostsInput, Prisma.ProfileUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutPostsInput
+  upsert?: Prisma.ProfileUpsertWithoutPostsInput
+  disconnect?: Prisma.ProfileWhereInput | boolean
+  delete?: Prisma.ProfileWhereInput | boolean
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutPostsInput, Prisma.ProfileUpdateWithoutPostsInput>, Prisma.ProfileUncheckedUpdateWithoutPostsInput>
 }
 
 export type ProfileCreateNestedOneWithoutProDriverInput = {
@@ -779,6 +807,7 @@ export type ProfileCreateWithoutBusinessInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutBusinessInput = {
@@ -804,6 +833,7 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutBusinessInput = {
@@ -845,6 +875,7 @@ export type ProfileUpdateWithoutBusinessInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutBusinessInput = {
@@ -870,6 +901,7 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCarsInput = {
@@ -895,6 +927,7 @@ export type ProfileCreateWithoutCarsInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCarsInput = {
@@ -920,6 +953,7 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCarsInput = {
@@ -961,6 +995,7 @@ export type ProfileUpdateWithoutCarsInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCarsInput = {
@@ -986,6 +1021,7 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCreatorInput = {
@@ -1011,6 +1047,7 @@ export type ProfileCreateWithoutCreatorInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCreatorInput = {
@@ -1036,6 +1073,7 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCreatorInput = {
@@ -1077,6 +1115,7 @@ export type ProfileUpdateWithoutCreatorInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCreatorInput = {
@@ -1102,6 +1141,7 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutGaragesInput = {
@@ -1127,6 +1167,7 @@ export type ProfileCreateWithoutGaragesInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutGaragesInput = {
@@ -1152,6 +1193,7 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutGaragesInput = {
@@ -1193,6 +1235,7 @@ export type ProfileUpdateWithoutGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutGaragesInput = {
@@ -1218,6 +1261,7 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutLegalNoticesInput = {
@@ -1243,6 +1287,7 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
@@ -1268,6 +1313,7 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutLegalNoticesInput = {
@@ -1309,6 +1355,7 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1334,6 +1381,7 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutOwnerInput = {
@@ -1359,6 +1407,7 @@ export type ProfileCreateWithoutOwnerInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutOwnerInput = {
@@ -1384,6 +1433,7 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutOwnerInput = {
@@ -1425,6 +1475,7 @@ export type ProfileUpdateWithoutOwnerInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutOwnerInput = {
@@ -1440,6 +1491,127 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUncheckedUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUncheckedUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUncheckedUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
+  virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutPostsInput = {
+  id?: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+  spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
+  virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutPostsInput = {
+  id?: string
+  userId: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileUncheckedCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileUncheckedCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageUncheckedCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
+  virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutPostsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutPostsInput, Prisma.ProfileUncheckedCreateWithoutPostsInput>
+}
+
+export type ProfileUpsertWithoutPostsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutPostsInput, Prisma.ProfileUncheckedUpdateWithoutPostsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutPostsInput, Prisma.ProfileUncheckedCreateWithoutPostsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutPostsInput, Prisma.ProfileUncheckedUpdateWithoutPostsInput>
+}
+
+export type ProfileUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
+  virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
   proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1475,6 +1647,7 @@ export type ProfileCreateWithoutProDriverInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutProDriverInput = {
@@ -1500,6 +1673,7 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutProDriverInput = {
@@ -1541,6 +1715,7 @@ export type ProfileUpdateWithoutProDriverInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutProDriverInput = {
@@ -1566,6 +1741,7 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSimRacingInput = {
@@ -1591,6 +1767,7 @@ export type ProfileCreateWithoutSimRacingInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSimRacingInput = {
@@ -1616,6 +1793,7 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSimRacingInput = {
@@ -1657,6 +1835,7 @@ export type ProfileUpdateWithoutSimRacingInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSimRacingInput = {
@@ -1682,6 +1861,7 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSpotterInput = {
@@ -1707,6 +1887,7 @@ export type ProfileCreateWithoutSpotterInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSpotterInput = {
@@ -1732,6 +1913,7 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSpotterInput = {
@@ -1773,6 +1955,7 @@ export type ProfileUpdateWithoutSpotterInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSpotterInput = {
@@ -1798,6 +1981,7 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutUserInput = {
@@ -1823,6 +2007,7 @@ export type ProfileCreateWithoutUserInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -1848,6 +2033,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -1916,6 +2102,7 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
@@ -1941,6 +2128,7 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualGaragesInput = {
@@ -1982,6 +2170,7 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
@@ -2007,6 +2196,7 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutVirtualLabsInput = {
@@ -2032,6 +2222,7 @@ export type ProfileCreateWithoutVirtualLabsInput = {
   virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualLabsInput = {
@@ -2057,6 +2248,7 @@ export type ProfileUncheckedCreateWithoutVirtualLabsInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualLabsInput = {
@@ -2098,6 +2290,7 @@ export type ProfileUpdateWithoutVirtualLabsInput = {
   virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualLabsInput = {
@@ -2123,6 +2316,7 @@ export type ProfileUncheckedUpdateWithoutVirtualLabsInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
@@ -2148,6 +2342,7 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
   virtualLabs?: Prisma.VirtualLabCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
@@ -2173,6 +2368,7 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
   virtualLabs?: Prisma.VirtualLabUncheckedCreateNestedManyWithoutProfileInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualSimRacingEventsInput = {
@@ -2214,6 +2410,7 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
@@ -2239,6 +2436,7 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyUserInput = {
@@ -2277,6 +2475,7 @@ export type ProfileUpdateWithoutUserInput = {
   virtualLabs?: Prisma.VirtualLabUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -2302,6 +2501,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   virtualLabs?: Prisma.VirtualLabUncheckedUpdateManyWithoutProfileNestedInput
   virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateManyWithoutUserInput = {
@@ -2329,6 +2529,7 @@ export type ProfileCountOutputType = {
   virtualLabs: number
   virtualSimRacingEvents: number
   legalNotices: number
+  posts: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2338,6 +2539,7 @@ export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   virtualLabs?: boolean | ProfileCountOutputTypeCountVirtualLabsArgs
   virtualSimRacingEvents?: boolean | ProfileCountOutputTypeCountVirtualSimRacingEventsArgs
   legalNotices?: boolean | ProfileCountOutputTypeCountLegalNoticesArgs
+  posts?: boolean | ProfileCountOutputTypeCountPostsArgs
 }
 
 /**
@@ -2392,6 +2594,13 @@ export type ProfileCountOutputTypeCountLegalNoticesArgs<ExtArgs extends runtime.
   where?: Prisma.LegalNoticeWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2418,6 +2627,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   virtualLabs?: boolean | Prisma.Profile$virtualLabsArgs<ExtArgs>
   virtualSimRacingEvents?: boolean | Prisma.Profile$virtualSimRacingEventsArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Profile$legalNoticesArgs<ExtArgs>
+  posts?: boolean | Prisma.Profile$postsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -2480,6 +2690,7 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   virtualLabs?: boolean | Prisma.Profile$virtualLabsArgs<ExtArgs>
   virtualSimRacingEvents?: boolean | Prisma.Profile$virtualSimRacingEventsArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Profile$legalNoticesArgs<ExtArgs>
+  posts?: boolean | Prisma.Profile$postsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2505,6 +2716,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     virtualLabs: Prisma.$VirtualLabPayload<ExtArgs>[]
     virtualSimRacingEvents: Prisma.$VirtualSimRacingEventPayload<ExtArgs>[]
     legalNotices: Prisma.$LegalNoticePayload<ExtArgs>[]
+    posts: Prisma.$PostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2925,6 +3137,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   virtualLabs<T extends Prisma.Profile$virtualLabsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$virtualLabsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VirtualLabPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   virtualSimRacingEvents<T extends Prisma.Profile$virtualSimRacingEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$virtualSimRacingEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VirtualSimRacingEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   legalNotices<T extends Prisma.Profile$legalNoticesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$legalNoticesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LegalNoticePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  posts<T extends Prisma.Profile$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3616,6 +3829,30 @@ export type Profile$legalNoticesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.LegalNoticeScalarFieldEnum | Prisma.LegalNoticeScalarFieldEnum[]
+}
+
+/**
+ * Profile.posts
+ */
+export type Profile$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
 }
 
 /**
