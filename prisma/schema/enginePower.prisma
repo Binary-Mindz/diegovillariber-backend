@@ -3,6 +3,18 @@ model EnginePower {
   advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
-  tires  String?
-  wheels String?
+  horsepowerHp        Int?
+  torqueNm            Int?
+  weightKg            Int?
+  engineDescription   String?
+  fuelType            FuelType @default(Gasoline)
+  turboOrSupercharger String?
+  intercooler         String?
+  exhaustSystem       String?
+  intakeSystem        String?
+  fuelSystemMods      String?
+  coolingUpgrades     String?
+
+  dynoWeightKg Int?
+  rpmLimiter   Int?
 }

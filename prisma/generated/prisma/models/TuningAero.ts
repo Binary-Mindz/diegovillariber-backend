@@ -27,22 +27,22 @@ export type AggregateTuningAero = {
 export type TuningAeroMinAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  ecuType: string | null
-  aeroParts: string | null
+  ecuTune: $Enums.EcuTune | null
+  aeroDynamics: string | null
 }
 
 export type TuningAeroMaxAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  ecuType: string | null
-  aeroParts: string | null
+  ecuTune: $Enums.EcuTune | null
+  aeroDynamics: string | null
 }
 
 export type TuningAeroCountAggregateOutputType = {
   id: number
   advancedCarDataId: number
-  ecuType: number
-  aeroParts: number
+  ecuTune: number
+  aeroDynamics: number
   _all: number
 }
 
@@ -50,22 +50,22 @@ export type TuningAeroCountAggregateOutputType = {
 export type TuningAeroMinAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  ecuType?: true
-  aeroParts?: true
+  ecuTune?: true
+  aeroDynamics?: true
 }
 
 export type TuningAeroMaxAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  ecuType?: true
-  aeroParts?: true
+  ecuTune?: true
+  aeroDynamics?: true
 }
 
 export type TuningAeroCountAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  ecuType?: true
-  aeroParts?: true
+  ecuTune?: true
+  aeroDynamics?: true
   _all?: true
 }
 
@@ -144,8 +144,8 @@ export type TuningAeroGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 export type TuningAeroGroupByOutputType = {
   id: string
   advancedCarDataId: string
-  ecuType: string | null
-  aeroParts: string | null
+  ecuTune: $Enums.EcuTune
+  aeroDynamics: string | null
   _count: TuningAeroCountAggregateOutputType | null
   _min: TuningAeroMinAggregateOutputType | null
   _max: TuningAeroMaxAggregateOutputType | null
@@ -172,16 +172,16 @@ export type TuningAeroWhereInput = {
   NOT?: Prisma.TuningAeroWhereInput | Prisma.TuningAeroWhereInput[]
   id?: Prisma.UuidFilter<"TuningAero"> | string
   advancedCarDataId?: Prisma.UuidFilter<"TuningAero"> | string
-  ecuType?: Prisma.StringNullableFilter<"TuningAero"> | string | null
-  aeroParts?: Prisma.StringNullableFilter<"TuningAero"> | string | null
+  ecuTune?: Prisma.EnumEcuTuneFilter<"TuningAero"> | $Enums.EcuTune
+  aeroDynamics?: Prisma.StringNullableFilter<"TuningAero"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }
 
 export type TuningAeroOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  ecuType?: Prisma.SortOrderInput | Prisma.SortOrder
-  aeroParts?: Prisma.SortOrderInput | Prisma.SortOrder
+  ecuTune?: Prisma.SortOrder
+  aeroDynamics?: Prisma.SortOrderInput | Prisma.SortOrder
   advancedCarData?: Prisma.AdvancedCarDataOrderByWithRelationInput
 }
 
@@ -191,16 +191,16 @@ export type TuningAeroWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.TuningAeroWhereInput | Prisma.TuningAeroWhereInput[]
   OR?: Prisma.TuningAeroWhereInput[]
   NOT?: Prisma.TuningAeroWhereInput | Prisma.TuningAeroWhereInput[]
-  ecuType?: Prisma.StringNullableFilter<"TuningAero"> | string | null
-  aeroParts?: Prisma.StringNullableFilter<"TuningAero"> | string | null
+  ecuTune?: Prisma.EnumEcuTuneFilter<"TuningAero"> | $Enums.EcuTune
+  aeroDynamics?: Prisma.StringNullableFilter<"TuningAero"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }, "id" | "advancedCarDataId">
 
 export type TuningAeroOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  ecuType?: Prisma.SortOrderInput | Prisma.SortOrder
-  aeroParts?: Prisma.SortOrderInput | Prisma.SortOrder
+  ecuTune?: Prisma.SortOrder
+  aeroDynamics?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.TuningAeroCountOrderByAggregateInput
   _max?: Prisma.TuningAeroMaxOrderByAggregateInput
   _min?: Prisma.TuningAeroMinOrderByAggregateInput
@@ -212,56 +212,56 @@ export type TuningAeroScalarWhereWithAggregatesInput = {
   NOT?: Prisma.TuningAeroScalarWhereWithAggregatesInput | Prisma.TuningAeroScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"TuningAero"> | string
   advancedCarDataId?: Prisma.UuidWithAggregatesFilter<"TuningAero"> | string
-  ecuType?: Prisma.StringNullableWithAggregatesFilter<"TuningAero"> | string | null
-  aeroParts?: Prisma.StringNullableWithAggregatesFilter<"TuningAero"> | string | null
+  ecuTune?: Prisma.EnumEcuTuneWithAggregatesFilter<"TuningAero"> | $Enums.EcuTune
+  aeroDynamics?: Prisma.StringNullableWithAggregatesFilter<"TuningAero"> | string | null
 }
 
 export type TuningAeroCreateInput = {
   id?: string
-  ecuType?: string | null
-  aeroParts?: string | null
+  ecuTune?: $Enums.EcuTune
+  aeroDynamics?: string | null
   advancedCarData: Prisma.AdvancedCarDataCreateNestedOneWithoutTuningAeroInput
 }
 
 export type TuningAeroUncheckedCreateInput = {
   id?: string
   advancedCarDataId: string
-  ecuType?: string | null
-  aeroParts?: string | null
+  ecuTune?: $Enums.EcuTune
+  aeroDynamics?: string | null
 }
 
 export type TuningAeroUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   advancedCarData?: Prisma.AdvancedCarDataUpdateOneRequiredWithoutTuningAeroNestedInput
 }
 
 export type TuningAeroUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TuningAeroCreateManyInput = {
   id?: string
   advancedCarDataId: string
-  ecuType?: string | null
-  aeroParts?: string | null
+  ecuTune?: $Enums.EcuTune
+  aeroDynamics?: string | null
 }
 
 export type TuningAeroUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TuningAeroUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TuningAeroNullableScalarRelationFilter = {
@@ -272,22 +272,22 @@ export type TuningAeroNullableScalarRelationFilter = {
 export type TuningAeroCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  ecuType?: Prisma.SortOrder
-  aeroParts?: Prisma.SortOrder
+  ecuTune?: Prisma.SortOrder
+  aeroDynamics?: Prisma.SortOrder
 }
 
 export type TuningAeroMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  ecuType?: Prisma.SortOrder
-  aeroParts?: Prisma.SortOrder
+  ecuTune?: Prisma.SortOrder
+  aeroDynamics?: Prisma.SortOrder
 }
 
 export type TuningAeroMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  ecuType?: Prisma.SortOrder
-  aeroParts?: Prisma.SortOrder
+  ecuTune?: Prisma.SortOrder
+  aeroDynamics?: Prisma.SortOrder
 }
 
 export type TuningAeroCreateNestedOneWithoutAdvancedCarDataInput = {
@@ -322,16 +322,20 @@ export type TuningAeroUncheckedUpdateOneWithoutAdvancedCarDataNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TuningAeroUpdateToOneWithWhereWithoutAdvancedCarDataInput, Prisma.TuningAeroUpdateWithoutAdvancedCarDataInput>, Prisma.TuningAeroUncheckedUpdateWithoutAdvancedCarDataInput>
 }
 
+export type EnumEcuTuneFieldUpdateOperationsInput = {
+  set?: $Enums.EcuTune
+}
+
 export type TuningAeroCreateWithoutAdvancedCarDataInput = {
   id?: string
-  ecuType?: string | null
-  aeroParts?: string | null
+  ecuTune?: $Enums.EcuTune
+  aeroDynamics?: string | null
 }
 
 export type TuningAeroUncheckedCreateWithoutAdvancedCarDataInput = {
   id?: string
-  ecuType?: string | null
-  aeroParts?: string | null
+  ecuTune?: $Enums.EcuTune
+  aeroDynamics?: string | null
 }
 
 export type TuningAeroCreateOrConnectWithoutAdvancedCarDataInput = {
@@ -352,14 +356,14 @@ export type TuningAeroUpdateToOneWithWhereWithoutAdvancedCarDataInput = {
 
 export type TuningAeroUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type TuningAeroUncheckedUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  ecuType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  aeroParts?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ecuTune?: Prisma.EnumEcuTuneFieldUpdateOperationsInput | $Enums.EcuTune
+  aeroDynamics?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -367,35 +371,35 @@ export type TuningAeroUncheckedUpdateWithoutAdvancedCarDataInput = {
 export type TuningAeroSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  ecuType?: boolean
-  aeroParts?: boolean
+  ecuTune?: boolean
+  aeroDynamics?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tuningAero"]>
 
 export type TuningAeroSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  ecuType?: boolean
-  aeroParts?: boolean
+  ecuTune?: boolean
+  aeroDynamics?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tuningAero"]>
 
 export type TuningAeroSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  ecuType?: boolean
-  aeroParts?: boolean
+  ecuTune?: boolean
+  aeroDynamics?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tuningAero"]>
 
 export type TuningAeroSelectScalar = {
   id?: boolean
   advancedCarDataId?: boolean
-  ecuType?: boolean
-  aeroParts?: boolean
+  ecuTune?: boolean
+  aeroDynamics?: boolean
 }
 
-export type TuningAeroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "ecuType" | "aeroParts", ExtArgs["result"]["tuningAero"]>
+export type TuningAeroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "ecuTune" | "aeroDynamics", ExtArgs["result"]["tuningAero"]>
 export type TuningAeroInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }
@@ -414,8 +418,8 @@ export type $TuningAeroPayload<ExtArgs extends runtime.Types.Extensions.Internal
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     advancedCarDataId: string
-    ecuType: string | null
-    aeroParts: string | null
+    ecuTune: $Enums.EcuTune
+    aeroDynamics: string | null
   }, ExtArgs["result"]["tuningAero"]>
   composites: {}
 }
@@ -842,8 +846,8 @@ export interface Prisma__TuningAeroClient<T, Null = never, ExtArgs extends runti
 export interface TuningAeroFieldRefs {
   readonly id: Prisma.FieldRef<"TuningAero", 'String'>
   readonly advancedCarDataId: Prisma.FieldRef<"TuningAero", 'String'>
-  readonly ecuType: Prisma.FieldRef<"TuningAero", 'String'>
-  readonly aeroParts: Prisma.FieldRef<"TuningAero", 'String'>
+  readonly ecuTune: Prisma.FieldRef<"TuningAero", 'EcuTune'>
+  readonly aeroDynamics: Prisma.FieldRef<"TuningAero", 'String'>
 }
     
 

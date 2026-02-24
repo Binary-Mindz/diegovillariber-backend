@@ -27,7 +27,7 @@ export type AggregateDrivetrain = {
 export type DrivetrainMinAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  transmission: string | null
+  transmissionMods: string | null
   differential: string | null
   clutch: string | null
 }
@@ -35,7 +35,7 @@ export type DrivetrainMinAggregateOutputType = {
 export type DrivetrainMaxAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  transmission: string | null
+  transmissionMods: string | null
   differential: string | null
   clutch: string | null
 }
@@ -43,7 +43,7 @@ export type DrivetrainMaxAggregateOutputType = {
 export type DrivetrainCountAggregateOutputType = {
   id: number
   advancedCarDataId: number
-  transmission: number
+  transmissionMods: number
   differential: number
   clutch: number
   _all: number
@@ -53,7 +53,7 @@ export type DrivetrainCountAggregateOutputType = {
 export type DrivetrainMinAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  transmission?: true
+  transmissionMods?: true
   differential?: true
   clutch?: true
 }
@@ -61,7 +61,7 @@ export type DrivetrainMinAggregateInputType = {
 export type DrivetrainMaxAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  transmission?: true
+  transmissionMods?: true
   differential?: true
   clutch?: true
 }
@@ -69,7 +69,7 @@ export type DrivetrainMaxAggregateInputType = {
 export type DrivetrainCountAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  transmission?: true
+  transmissionMods?: true
   differential?: true
   clutch?: true
   _all?: true
@@ -150,7 +150,7 @@ export type DrivetrainGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 export type DrivetrainGroupByOutputType = {
   id: string
   advancedCarDataId: string
-  transmission: string | null
+  transmissionMods: string | null
   differential: string | null
   clutch: string | null
   _count: DrivetrainCountAggregateOutputType | null
@@ -179,7 +179,7 @@ export type DrivetrainWhereInput = {
   NOT?: Prisma.DrivetrainWhereInput | Prisma.DrivetrainWhereInput[]
   id?: Prisma.UuidFilter<"Drivetrain"> | string
   advancedCarDataId?: Prisma.UuidFilter<"Drivetrain"> | string
-  transmission?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
+  transmissionMods?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   differential?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   clutch?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
@@ -188,7 +188,7 @@ export type DrivetrainWhereInput = {
 export type DrivetrainOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  transmission?: Prisma.SortOrderInput | Prisma.SortOrder
+  transmissionMods?: Prisma.SortOrderInput | Prisma.SortOrder
   differential?: Prisma.SortOrderInput | Prisma.SortOrder
   clutch?: Prisma.SortOrderInput | Prisma.SortOrder
   advancedCarData?: Prisma.AdvancedCarDataOrderByWithRelationInput
@@ -200,7 +200,7 @@ export type DrivetrainWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.DrivetrainWhereInput | Prisma.DrivetrainWhereInput[]
   OR?: Prisma.DrivetrainWhereInput[]
   NOT?: Prisma.DrivetrainWhereInput | Prisma.DrivetrainWhereInput[]
-  transmission?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
+  transmissionMods?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   differential?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   clutch?: Prisma.StringNullableFilter<"Drivetrain"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
@@ -209,7 +209,7 @@ export type DrivetrainWhereUniqueInput = Prisma.AtLeast<{
 export type DrivetrainOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  transmission?: Prisma.SortOrderInput | Prisma.SortOrder
+  transmissionMods?: Prisma.SortOrderInput | Prisma.SortOrder
   differential?: Prisma.SortOrderInput | Prisma.SortOrder
   clutch?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.DrivetrainCountOrderByAggregateInput
@@ -223,14 +223,14 @@ export type DrivetrainScalarWhereWithAggregatesInput = {
   NOT?: Prisma.DrivetrainScalarWhereWithAggregatesInput | Prisma.DrivetrainScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"Drivetrain"> | string
   advancedCarDataId?: Prisma.UuidWithAggregatesFilter<"Drivetrain"> | string
-  transmission?: Prisma.StringNullableWithAggregatesFilter<"Drivetrain"> | string | null
+  transmissionMods?: Prisma.StringNullableWithAggregatesFilter<"Drivetrain"> | string | null
   differential?: Prisma.StringNullableWithAggregatesFilter<"Drivetrain"> | string | null
   clutch?: Prisma.StringNullableWithAggregatesFilter<"Drivetrain"> | string | null
 }
 
 export type DrivetrainCreateInput = {
   id?: string
-  transmission?: string | null
+  transmissionMods?: string | null
   differential?: string | null
   clutch?: string | null
   advancedCarData: Prisma.AdvancedCarDataCreateNestedOneWithoutDrivetrainInput
@@ -239,14 +239,14 @@ export type DrivetrainCreateInput = {
 export type DrivetrainUncheckedCreateInput = {
   id?: string
   advancedCarDataId: string
-  transmission?: string | null
+  transmissionMods?: string | null
   differential?: string | null
   clutch?: string | null
 }
 
 export type DrivetrainUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   advancedCarData?: Prisma.AdvancedCarDataUpdateOneRequiredWithoutDrivetrainNestedInput
@@ -255,7 +255,7 @@ export type DrivetrainUpdateInput = {
 export type DrivetrainUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -263,14 +263,14 @@ export type DrivetrainUncheckedUpdateInput = {
 export type DrivetrainCreateManyInput = {
   id?: string
   advancedCarDataId: string
-  transmission?: string | null
+  transmissionMods?: string | null
   differential?: string | null
   clutch?: string | null
 }
 
 export type DrivetrainUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -278,7 +278,7 @@ export type DrivetrainUpdateManyMutationInput = {
 export type DrivetrainUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -291,7 +291,7 @@ export type DrivetrainNullableScalarRelationFilter = {
 export type DrivetrainCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  transmission?: Prisma.SortOrder
+  transmissionMods?: Prisma.SortOrder
   differential?: Prisma.SortOrder
   clutch?: Prisma.SortOrder
 }
@@ -299,7 +299,7 @@ export type DrivetrainCountOrderByAggregateInput = {
 export type DrivetrainMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  transmission?: Prisma.SortOrder
+  transmissionMods?: Prisma.SortOrder
   differential?: Prisma.SortOrder
   clutch?: Prisma.SortOrder
 }
@@ -307,7 +307,7 @@ export type DrivetrainMaxOrderByAggregateInput = {
 export type DrivetrainMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  transmission?: Prisma.SortOrder
+  transmissionMods?: Prisma.SortOrder
   differential?: Prisma.SortOrder
   clutch?: Prisma.SortOrder
 }
@@ -346,14 +346,14 @@ export type DrivetrainUncheckedUpdateOneWithoutAdvancedCarDataNestedInput = {
 
 export type DrivetrainCreateWithoutAdvancedCarDataInput = {
   id?: string
-  transmission?: string | null
+  transmissionMods?: string | null
   differential?: string | null
   clutch?: string | null
 }
 
 export type DrivetrainUncheckedCreateWithoutAdvancedCarDataInput = {
   id?: string
-  transmission?: string | null
+  transmissionMods?: string | null
   differential?: string | null
   clutch?: string | null
 }
@@ -376,14 +376,14 @@ export type DrivetrainUpdateToOneWithWhereWithoutAdvancedCarDataInput = {
 
 export type DrivetrainUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type DrivetrainUncheckedUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  transmission?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  transmissionMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   differential?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clutch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -393,7 +393,7 @@ export type DrivetrainUncheckedUpdateWithoutAdvancedCarDataInput = {
 export type DrivetrainSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  transmission?: boolean
+  transmissionMods?: boolean
   differential?: boolean
   clutch?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
@@ -402,7 +402,7 @@ export type DrivetrainSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type DrivetrainSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  transmission?: boolean
+  transmissionMods?: boolean
   differential?: boolean
   clutch?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
@@ -411,7 +411,7 @@ export type DrivetrainSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type DrivetrainSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  transmission?: boolean
+  transmissionMods?: boolean
   differential?: boolean
   clutch?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
@@ -420,12 +420,12 @@ export type DrivetrainSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type DrivetrainSelectScalar = {
   id?: boolean
   advancedCarDataId?: boolean
-  transmission?: boolean
+  transmissionMods?: boolean
   differential?: boolean
   clutch?: boolean
 }
 
-export type DrivetrainOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "transmission" | "differential" | "clutch", ExtArgs["result"]["drivetrain"]>
+export type DrivetrainOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "transmissionMods" | "differential" | "clutch", ExtArgs["result"]["drivetrain"]>
 export type DrivetrainInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }
@@ -444,7 +444,7 @@ export type $DrivetrainPayload<ExtArgs extends runtime.Types.Extensions.Internal
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     advancedCarDataId: string
-    transmission: string | null
+    transmissionMods: string | null
     differential: string | null
     clutch: string | null
   }, ExtArgs["result"]["drivetrain"]>
@@ -873,7 +873,7 @@ export interface Prisma__DrivetrainClient<T, Null = never, ExtArgs extends runti
 export interface DrivetrainFieldRefs {
   readonly id: Prisma.FieldRef<"Drivetrain", 'String'>
   readonly advancedCarDataId: Prisma.FieldRef<"Drivetrain", 'String'>
-  readonly transmission: Prisma.FieldRef<"Drivetrain", 'String'>
+  readonly transmissionMods: Prisma.FieldRef<"Drivetrain", 'String'>
   readonly differential: Prisma.FieldRef<"Drivetrain", 'String'>
   readonly clutch: Prisma.FieldRef<"Drivetrain", 'String'>
 }

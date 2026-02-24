@@ -3,7 +3,7 @@ model Drivetrain {
   advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
-  transmission String?
-  differential String?
-  clutch       String?
+  transmissionMods String?
+  differential     String?
+  clutch           String?
 }

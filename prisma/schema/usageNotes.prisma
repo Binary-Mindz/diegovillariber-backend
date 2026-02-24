@@ -3,8 +3,8 @@ model UsageNotes {
   advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
-  category       String?
-  driverLevel    String?
-  usageMode      String?
+  category       UsageCategory @default(Street)
+  driverLevel    DriverLevel   @default(Amateur)
+  usageMode      UsageMode     @default(Daily)
   alignmentNotes String?
 }

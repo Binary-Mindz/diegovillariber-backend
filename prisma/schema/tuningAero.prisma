@@ -3,6 +3,6 @@ model TuningAero {
   advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
-  ecuType   String?
-  aeroParts String?
+  ecuTune      EcuTune @default(Stock)
+  aeroDynamics String?
 }
