@@ -3,6 +3,9 @@ model Post {
   userId String @db.Uuid
   user   User   @relation(fields: [userId], references: [id])
 
+  profileId String?  @db.Uuid
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileType        Type?
   postType           PostType @default(Spotter_Post)
   caption            String?
   mediaUrl           String?
@@ -19,6 +22,8 @@ model Post {
   share          Int     @default(0)
   contentBooster Boolean @default(false)
   point          Int     @default(5)
+  
+  taggedUsers User[] @relation("PostTaggedUsers")
 
   visiualStyle    VisiualStyle[]    @default([])
   contextActivity ContextActivity[] @default([])
