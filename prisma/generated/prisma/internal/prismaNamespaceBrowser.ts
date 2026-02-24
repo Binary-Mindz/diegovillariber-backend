@@ -671,6 +671,8 @@ export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeo
 export const PostScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  profileId: 'profileId',
+  profileType: 'profileType',
   postType: 'postType',
   caption: 'caption',
   mediaUrl: 'mediaUrl',

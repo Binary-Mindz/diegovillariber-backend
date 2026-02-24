@@ -27,4 +27,6 @@ model Profile {
   virtualLabs            VirtualLab[]
   virtualSimRacingEvents VirtualSimRacingEvent[]
   legalNotices           LegalNotice[]
+
+  posts Post[]
 }
