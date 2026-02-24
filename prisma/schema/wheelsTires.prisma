@@ -3,10 +3,12 @@ model WheelsTires {
   advancedCarDataId String          @unique @db.Uuid
   advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
 
-  wheelAlignmentFront Float?
-  wheelAlignmentRear  Float?
-  frontToe            Float?
-  rearToe             Float?
-  frontCaster         Float?
-  alignmentNotes      String?
+  tires          String?
+  wheels         String?
+  frontCamber    Float?
+  rearCamber     Float?
+  frontToe       Float?
+  rearToe        Float?
+  frontCaster    Float?
+  alignmentNotes String?
 }

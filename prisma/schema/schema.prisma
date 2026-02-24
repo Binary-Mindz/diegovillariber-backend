@@ -326,3 +326,41 @@ enum ReceiptStatus {
   DELIVERED
   READ
 }
+enum FuelType {
+  Gasoline
+  Diesel
+  Electric
+  Hybrid
+  Hydrogen
+  E85
+}
+
+enum EcuTune {
+  Stock
+  Stage_1
+  Stage_2
+  Stage_3
+  Custom
+}
+
+enum UsageCategory {
+  Street
+  Trackday
+  Race
+  Time_Attack
+  Drift
+  Show
+}
+
+enum DriverLevel {
+  Amateur
+  Semi_Pro
+  Pro
+}
+
+enum UsageMode {
+  Daily
+  Weekend
+  Track_Only
+  Show_Only
+}
