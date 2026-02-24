@@ -1,27 +1,18 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { IsOptional, IsString } from "class-validator";
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsOptional, IsString } from 'class-validator';
 
 export class UpdateDrivetrainDto {
-  @ApiPropertyOptional({
-    example: 'Sequential 6-Speed',
-    description: 'Transmission setup details',
-  })
+  @ApiPropertyOptional({ example: 'DCT software + strengthened gears' })
   @IsOptional()
   @IsString()
-  transmission?: string;
+  transmissionMods?: string;
 
-  @ApiPropertyOptional({
-    example: 'Limited Slip Differential',
-    description: 'Differential configuration',
-  })
+  @ApiPropertyOptional({ example: 'M Performance LSD' })
   @IsOptional()
   @IsString()
   differential?: string;
 
-  @ApiPropertyOptional({
-    example: 'Twin Plate Clutch',
-    description: 'Clutch system',
-  })
+  @ApiPropertyOptional({ example: 'Twin-plate clutch kit' })
   @IsOptional()
   @IsString()
   clutch?: string;

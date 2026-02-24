@@ -477,6 +477,23 @@ export type EnumContentCategoryWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumContentCategoryFilter<$PrismaModel>
 }
 
+export type EnumFuelTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.FuelType | Prisma.EnumFuelTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel> | $Enums.FuelType
+}
+
+export type EnumFuelTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FuelType | Prisma.EnumFuelTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFuelTypeWithAggregatesFilter<$PrismaModel> | $Enums.FuelType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel>
+}
+
 export type EnumTypeNullableFilter<$PrismaModel = never> = {
   equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel> | null
   in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel> | null
@@ -740,6 +757,74 @@ export type EnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
+}
+
+export type EnumEcuTuneFilter<$PrismaModel = never> = {
+  equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
+  in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel> | $Enums.EcuTune
+}
+
+export type EnumEcuTuneWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
+  in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEcuTuneWithAggregatesFilter<$PrismaModel> | $Enums.EcuTune
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
+}
+
+export type EnumUsageCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageCategory | Prisma.EnumUsageCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel> | $Enums.UsageCategory
+}
+
+export type EnumDriverLevelFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriverLevel | Prisma.EnumDriverLevelFieldRefInput<$PrismaModel>
+  in?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel> | $Enums.DriverLevel
+}
+
+export type EnumUsageModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageMode | Prisma.EnumUsageModeFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageModeFilter<$PrismaModel> | $Enums.UsageMode
+}
+
+export type EnumUsageCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageCategory | Prisma.EnumUsageCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageCategoryWithAggregatesFilter<$PrismaModel> | $Enums.UsageCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel>
+}
+
+export type EnumDriverLevelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriverLevel | Prisma.EnumDriverLevelFieldRefInput<$PrismaModel>
+  in?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriverLevelWithAggregatesFilter<$PrismaModel> | $Enums.DriverLevel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel>
+}
+
+export type EnumUsageModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageMode | Prisma.EnumUsageModeFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageModeWithAggregatesFilter<$PrismaModel> | $Enums.UsageMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUsageModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUsageModeFilter<$PrismaModel>
 }
 
 export type EnumRoleFilter<$PrismaModel = never> = {
@@ -1387,6 +1472,23 @@ export type NestedEnumContentCategoryWithAggregatesFilter<$PrismaModel = never> 
   _max?: Prisma.NestedEnumContentCategoryFilter<$PrismaModel>
 }
 
+export type NestedEnumFuelTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.FuelType | Prisma.EnumFuelTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel> | $Enums.FuelType
+}
+
+export type NestedEnumFuelTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FuelType | Prisma.EnumFuelTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FuelType[] | Prisma.ListEnumFuelTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFuelTypeWithAggregatesFilter<$PrismaModel> | $Enums.FuelType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFuelTypeFilter<$PrismaModel>
+}
+
 export type NestedEnumTypeNullableFilter<$PrismaModel = never> = {
   equals?: $Enums.Type | Prisma.EnumTypeFieldRefInput<$PrismaModel> | null
   in?: $Enums.Type[] | Prisma.ListEnumTypeFieldRefInput<$PrismaModel> | null
@@ -1650,6 +1752,74 @@ export type NestedEnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumEcuTuneFilter<$PrismaModel = never> = {
+  equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
+  in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel> | $Enums.EcuTune
+}
+
+export type NestedEnumEcuTuneWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
+  in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumEcuTuneWithAggregatesFilter<$PrismaModel> | $Enums.EcuTune
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
+}
+
+export type NestedEnumUsageCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageCategory | Prisma.EnumUsageCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel> | $Enums.UsageCategory
+}
+
+export type NestedEnumDriverLevelFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriverLevel | Prisma.EnumDriverLevelFieldRefInput<$PrismaModel>
+  in?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel> | $Enums.DriverLevel
+}
+
+export type NestedEnumUsageModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageMode | Prisma.EnumUsageModeFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageModeFilter<$PrismaModel> | $Enums.UsageMode
+}
+
+export type NestedEnumUsageCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageCategory | Prisma.EnumUsageCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageCategoryWithAggregatesFilter<$PrismaModel> | $Enums.UsageCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUsageCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumDriverLevelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriverLevel | Prisma.EnumDriverLevelFieldRefInput<$PrismaModel>
+  in?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriverLevel[] | Prisma.ListEnumDriverLevelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriverLevelWithAggregatesFilter<$PrismaModel> | $Enums.DriverLevel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriverLevelFilter<$PrismaModel>
+}
+
+export type NestedEnumUsageModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UsageMode | Prisma.EnumUsageModeFieldRefInput<$PrismaModel>
+  in?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UsageMode[] | Prisma.ListEnumUsageModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUsageModeWithAggregatesFilter<$PrismaModel> | $Enums.UsageMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUsageModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUsageModeFilter<$PrismaModel>
 }
 
 export type NestedEnumRoleFilter<$PrismaModel = never> = {

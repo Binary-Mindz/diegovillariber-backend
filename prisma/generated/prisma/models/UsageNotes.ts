@@ -27,18 +27,18 @@ export type AggregateUsageNotes = {
 export type UsageNotesMinAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  category: string | null
-  driverLevel: string | null
-  usageMode: string | null
+  category: $Enums.UsageCategory | null
+  driverLevel: $Enums.DriverLevel | null
+  usageMode: $Enums.UsageMode | null
   alignmentNotes: string | null
 }
 
 export type UsageNotesMaxAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  category: string | null
-  driverLevel: string | null
-  usageMode: string | null
+  category: $Enums.UsageCategory | null
+  driverLevel: $Enums.DriverLevel | null
+  usageMode: $Enums.UsageMode | null
   alignmentNotes: string | null
 }
 
@@ -156,9 +156,9 @@ export type UsageNotesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 export type UsageNotesGroupByOutputType = {
   id: string
   advancedCarDataId: string
-  category: string | null
-  driverLevel: string | null
-  usageMode: string | null
+  category: $Enums.UsageCategory
+  driverLevel: $Enums.DriverLevel
+  usageMode: $Enums.UsageMode
   alignmentNotes: string | null
   _count: UsageNotesCountAggregateOutputType | null
   _min: UsageNotesMinAggregateOutputType | null
@@ -186,9 +186,9 @@ export type UsageNotesWhereInput = {
   NOT?: Prisma.UsageNotesWhereInput | Prisma.UsageNotesWhereInput[]
   id?: Prisma.UuidFilter<"UsageNotes"> | string
   advancedCarDataId?: Prisma.UuidFilter<"UsageNotes"> | string
-  category?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
-  driverLevel?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
-  usageMode?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
+  category?: Prisma.EnumUsageCategoryFilter<"UsageNotes"> | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFilter<"UsageNotes"> | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFilter<"UsageNotes"> | $Enums.UsageMode
   alignmentNotes?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }
@@ -196,9 +196,9 @@ export type UsageNotesWhereInput = {
 export type UsageNotesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  category?: Prisma.SortOrderInput | Prisma.SortOrder
-  driverLevel?: Prisma.SortOrderInput | Prisma.SortOrder
-  usageMode?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrder
+  driverLevel?: Prisma.SortOrder
+  usageMode?: Prisma.SortOrder
   alignmentNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   advancedCarData?: Prisma.AdvancedCarDataOrderByWithRelationInput
 }
@@ -209,9 +209,9 @@ export type UsageNotesWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UsageNotesWhereInput | Prisma.UsageNotesWhereInput[]
   OR?: Prisma.UsageNotesWhereInput[]
   NOT?: Prisma.UsageNotesWhereInput | Prisma.UsageNotesWhereInput[]
-  category?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
-  driverLevel?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
-  usageMode?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
+  category?: Prisma.EnumUsageCategoryFilter<"UsageNotes"> | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFilter<"UsageNotes"> | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFilter<"UsageNotes"> | $Enums.UsageMode
   alignmentNotes?: Prisma.StringNullableFilter<"UsageNotes"> | string | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }, "id" | "advancedCarDataId">
@@ -219,9 +219,9 @@ export type UsageNotesWhereUniqueInput = Prisma.AtLeast<{
 export type UsageNotesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  category?: Prisma.SortOrderInput | Prisma.SortOrder
-  driverLevel?: Prisma.SortOrderInput | Prisma.SortOrder
-  usageMode?: Prisma.SortOrderInput | Prisma.SortOrder
+  category?: Prisma.SortOrder
+  driverLevel?: Prisma.SortOrder
+  usageMode?: Prisma.SortOrder
   alignmentNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UsageNotesCountOrderByAggregateInput
   _max?: Prisma.UsageNotesMaxOrderByAggregateInput
@@ -234,17 +234,17 @@ export type UsageNotesScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UsageNotesScalarWhereWithAggregatesInput | Prisma.UsageNotesScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"UsageNotes"> | string
   advancedCarDataId?: Prisma.UuidWithAggregatesFilter<"UsageNotes"> | string
-  category?: Prisma.StringNullableWithAggregatesFilter<"UsageNotes"> | string | null
-  driverLevel?: Prisma.StringNullableWithAggregatesFilter<"UsageNotes"> | string | null
-  usageMode?: Prisma.StringNullableWithAggregatesFilter<"UsageNotes"> | string | null
+  category?: Prisma.EnumUsageCategoryWithAggregatesFilter<"UsageNotes"> | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelWithAggregatesFilter<"UsageNotes"> | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeWithAggregatesFilter<"UsageNotes"> | $Enums.UsageMode
   alignmentNotes?: Prisma.StringNullableWithAggregatesFilter<"UsageNotes"> | string | null
 }
 
 export type UsageNotesCreateInput = {
   id?: string
-  category?: string | null
-  driverLevel?: string | null
-  usageMode?: string | null
+  category?: $Enums.UsageCategory
+  driverLevel?: $Enums.DriverLevel
+  usageMode?: $Enums.UsageMode
   alignmentNotes?: string | null
   advancedCarData: Prisma.AdvancedCarDataCreateNestedOneWithoutUsageNotesInput
 }
@@ -252,17 +252,17 @@ export type UsageNotesCreateInput = {
 export type UsageNotesUncheckedCreateInput = {
   id?: string
   advancedCarDataId: string
-  category?: string | null
-  driverLevel?: string | null
-  usageMode?: string | null
+  category?: $Enums.UsageCategory
+  driverLevel?: $Enums.DriverLevel
+  usageMode?: $Enums.UsageMode
   alignmentNotes?: string | null
 }
 
 export type UsageNotesUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   advancedCarData?: Prisma.AdvancedCarDataUpdateOneRequiredWithoutUsageNotesNestedInput
 }
@@ -270,35 +270,35 @@ export type UsageNotesUpdateInput = {
 export type UsageNotesUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UsageNotesCreateManyInput = {
   id?: string
   advancedCarDataId: string
-  category?: string | null
-  driverLevel?: string | null
-  usageMode?: string | null
+  category?: $Enums.UsageCategory
+  driverLevel?: $Enums.DriverLevel
+  usageMode?: $Enums.UsageMode
   alignmentNotes?: string | null
 }
 
 export type UsageNotesUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UsageNotesUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -366,19 +366,31 @@ export type UsageNotesUncheckedUpdateOneWithoutAdvancedCarDataNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsageNotesUpdateToOneWithWhereWithoutAdvancedCarDataInput, Prisma.UsageNotesUpdateWithoutAdvancedCarDataInput>, Prisma.UsageNotesUncheckedUpdateWithoutAdvancedCarDataInput>
 }
 
+export type EnumUsageCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.UsageCategory
+}
+
+export type EnumDriverLevelFieldUpdateOperationsInput = {
+  set?: $Enums.DriverLevel
+}
+
+export type EnumUsageModeFieldUpdateOperationsInput = {
+  set?: $Enums.UsageMode
+}
+
 export type UsageNotesCreateWithoutAdvancedCarDataInput = {
   id?: string
-  category?: string | null
-  driverLevel?: string | null
-  usageMode?: string | null
+  category?: $Enums.UsageCategory
+  driverLevel?: $Enums.DriverLevel
+  usageMode?: $Enums.UsageMode
   alignmentNotes?: string | null
 }
 
 export type UsageNotesUncheckedCreateWithoutAdvancedCarDataInput = {
   id?: string
-  category?: string | null
-  driverLevel?: string | null
-  usageMode?: string | null
+  category?: $Enums.UsageCategory
+  driverLevel?: $Enums.DriverLevel
+  usageMode?: $Enums.UsageMode
   alignmentNotes?: string | null
 }
 
@@ -400,17 +412,17 @@ export type UsageNotesUpdateToOneWithWhereWithoutAdvancedCarDataInput = {
 
 export type UsageNotesUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type UsageNotesUncheckedUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  driverLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  usageMode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumUsageCategoryFieldUpdateOperationsInput | $Enums.UsageCategory
+  driverLevel?: Prisma.EnumDriverLevelFieldUpdateOperationsInput | $Enums.DriverLevel
+  usageMode?: Prisma.EnumUsageModeFieldUpdateOperationsInput | $Enums.UsageMode
   alignmentNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -474,9 +486,9 @@ export type $UsageNotesPayload<ExtArgs extends runtime.Types.Extensions.Internal
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     advancedCarDataId: string
-    category: string | null
-    driverLevel: string | null
-    usageMode: string | null
+    category: $Enums.UsageCategory
+    driverLevel: $Enums.DriverLevel
+    usageMode: $Enums.UsageMode
     alignmentNotes: string | null
   }, ExtArgs["result"]["usageNotes"]>
   composites: {}
@@ -904,9 +916,9 @@ export interface Prisma__UsageNotesClient<T, Null = never, ExtArgs extends runti
 export interface UsageNotesFieldRefs {
   readonly id: Prisma.FieldRef<"UsageNotes", 'String'>
   readonly advancedCarDataId: Prisma.FieldRef<"UsageNotes", 'String'>
-  readonly category: Prisma.FieldRef<"UsageNotes", 'String'>
-  readonly driverLevel: Prisma.FieldRef<"UsageNotes", 'String'>
-  readonly usageMode: Prisma.FieldRef<"UsageNotes", 'String'>
+  readonly category: Prisma.FieldRef<"UsageNotes", 'UsageCategory'>
+  readonly driverLevel: Prisma.FieldRef<"UsageNotes", 'DriverLevel'>
+  readonly usageMode: Prisma.FieldRef<"UsageNotes", 'UsageMode'>
   readonly alignmentNotes: Prisma.FieldRef<"UsageNotes", 'String'>
 }
     

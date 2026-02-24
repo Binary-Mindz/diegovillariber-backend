@@ -5284,10 +5284,12 @@ export const CarScalarFieldEnum = {
   bodyType: 'bodyType',
   transmission: 'transmission',
   driveTrain: 'driveTrain',
+  country: 'country',
   color: 'color',
   displayName: 'displayName',
   description: 'description',
   category: 'category',
+  listOnMarketplace: 'listOnMarketplace',
   price: 'price'
 } as const
 
@@ -5421,7 +5423,7 @@ export type DisplayAndPcSetupScalarFieldEnum = (typeof DisplayAndPcSetupScalarFi
 export const DrivetrainScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  transmission: 'transmission',
+  transmissionMods: 'transmissionMods',
   differential: 'differential',
   clutch: 'clutch'
 } as const
@@ -5445,8 +5447,19 @@ export type DrivingAssistantScalarFieldEnum = (typeof DrivingAssistantScalarFiel
 export const EnginePowerScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  tires: 'tires',
-  wheels: 'wheels'
+  horsepowerHp: 'horsepowerHp',
+  torqueNm: 'torqueNm',
+  weightKg: 'weightKg',
+  engineDescription: 'engineDescription',
+  fuelType: 'fuelType',
+  turboOrSupercharger: 'turboOrSupercharger',
+  intercooler: 'intercooler',
+  exhaustSystem: 'exhaustSystem',
+  intakeSystem: 'intakeSystem',
+  fuelSystemMods: 'fuelSystemMods',
+  coolingUpgrades: 'coolingUpgrades',
+  dynoWeightKg: 'dynoWeightKg',
+  rpmLimiter: 'rpmLimiter'
 } as const
 
 export type EnginePowerScalarFieldEnum = (typeof EnginePowerScalarFieldEnum)[keyof typeof EnginePowerScalarFieldEnum]
@@ -5883,8 +5896,8 @@ export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnu
 export const TuningAeroScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  ecuType: 'ecuType',
-  aeroParts: 'aeroParts'
+  ecuTune: 'ecuTune',
+  aeroDynamics: 'aeroDynamics'
 } as const
 
 export type TuningAeroScalarFieldEnum = (typeof TuningAeroScalarFieldEnum)[keyof typeof TuningAeroScalarFieldEnum]
@@ -6008,8 +6021,10 @@ export type VirtualSimRacingEventScalarFieldEnum = (typeof VirtualSimRacingEvent
 export const WheelsTiresScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  wheelAlignmentFront: 'wheelAlignmentFront',
-  wheelAlignmentRear: 'wheelAlignmentRear',
+  tires: 'tires',
+  wheels: 'wheels',
+  frontCamber: 'frontCamber',
+  rearCamber: 'rearCamber',
   frontToe: 'frontToe',
   rearToe: 'rearToe',
   frontCaster: 'frontCaster',
@@ -6311,6 +6326,20 @@ export type ListEnumContentCategoryFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
+ * Reference to a field of type 'FuelType'
+ */
+export type EnumFuelTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FuelType'>
+    
+
+
+/**
+ * Reference to a field of type 'FuelType[]'
+ */
+export type ListEnumFuelTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FuelType[]'>
+    
+
+
+/**
  * Reference to a field of type 'EventType'
  */
 export type EnumEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EventType'>
@@ -6531,6 +6560,62 @@ export type EnumReportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'ReportType[]'
  */
 export type ListEnumReportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReportType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'EcuTune'
+ */
+export type EnumEcuTuneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EcuTune'>
+    
+
+
+/**
+ * Reference to a field of type 'EcuTune[]'
+ */
+export type ListEnumEcuTuneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EcuTune[]'>
+    
+
+
+/**
+ * Reference to a field of type 'UsageCategory'
+ */
+export type EnumUsageCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UsageCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'UsageCategory[]'
+ */
+export type ListEnumUsageCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UsageCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DriverLevel'
+ */
+export type EnumDriverLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriverLevel'>
+    
+
+
+/**
+ * Reference to a field of type 'DriverLevel[]'
+ */
+export type ListEnumDriverLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriverLevel[]'>
+    
+
+
+/**
+ * Reference to a field of type 'UsageMode'
+ */
+export type EnumUsageModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UsageMode'>
+    
+
+
+/**
+ * Reference to a field of type 'UsageMode[]'
+ */
+export type ListEnumUsageModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UsageMode[]'>
     
 
 

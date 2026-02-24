@@ -519,3 +519,57 @@ export const ReceiptStatus = {
 } as const
 
 export type ReceiptStatus = (typeof ReceiptStatus)[keyof typeof ReceiptStatus]
+
+
+export const FuelType = {
+  Gasoline: 'Gasoline',
+  Diesel: 'Diesel',
+  Electric: 'Electric',
+  Hybrid: 'Hybrid',
+  Hydrogen: 'Hydrogen',
+  E85: 'E85'
+} as const
+
+export type FuelType = (typeof FuelType)[keyof typeof FuelType]
+
+
+export const EcuTune = {
+  Stock: 'Stock',
+  Stage_1: 'Stage_1',
+  Stage_2: 'Stage_2',
+  Stage_3: 'Stage_3',
+  Custom: 'Custom'
+} as const
+
+export type EcuTune = (typeof EcuTune)[keyof typeof EcuTune]
+
+
+export const UsageCategory = {
+  Street: 'Street',
+  Trackday: 'Trackday',
+  Race: 'Race',
+  Time_Attack: 'Time_Attack',
+  Drift: 'Drift',
+  Show: 'Show'
+} as const
+
+export type UsageCategory = (typeof UsageCategory)[keyof typeof UsageCategory]
+
+
+export const DriverLevel = {
+  Amateur: 'Amateur',
+  Semi_Pro: 'Semi_Pro',
+  Pro: 'Pro'
+} as const
+
+export type DriverLevel = (typeof DriverLevel)[keyof typeof DriverLevel]
+
+
+export const UsageMode = {
+  Daily: 'Daily',
+  Weekend: 'Weekend',
+  Track_Only: 'Track_Only',
+  Show_Only: 'Show_Only'
+} as const
+
+export type UsageMode = (typeof UsageMode)[keyof typeof UsageMode]

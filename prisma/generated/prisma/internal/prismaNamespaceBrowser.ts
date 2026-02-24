@@ -249,10 +249,12 @@ export const CarScalarFieldEnum = {
   bodyType: 'bodyType',
   transmission: 'transmission',
   driveTrain: 'driveTrain',
+  country: 'country',
   color: 'color',
   displayName: 'displayName',
   description: 'description',
   category: 'category',
+  listOnMarketplace: 'listOnMarketplace',
   price: 'price'
 } as const
 
@@ -386,7 +388,7 @@ export type DisplayAndPcSetupScalarFieldEnum = (typeof DisplayAndPcSetupScalarFi
 export const DrivetrainScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  transmission: 'transmission',
+  transmissionMods: 'transmissionMods',
   differential: 'differential',
   clutch: 'clutch'
 } as const
@@ -410,8 +412,19 @@ export type DrivingAssistantScalarFieldEnum = (typeof DrivingAssistantScalarFiel
 export const EnginePowerScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  tires: 'tires',
-  wheels: 'wheels'
+  horsepowerHp: 'horsepowerHp',
+  torqueNm: 'torqueNm',
+  weightKg: 'weightKg',
+  engineDescription: 'engineDescription',
+  fuelType: 'fuelType',
+  turboOrSupercharger: 'turboOrSupercharger',
+  intercooler: 'intercooler',
+  exhaustSystem: 'exhaustSystem',
+  intakeSystem: 'intakeSystem',
+  fuelSystemMods: 'fuelSystemMods',
+  coolingUpgrades: 'coolingUpgrades',
+  dynoWeightKg: 'dynoWeightKg',
+  rpmLimiter: 'rpmLimiter'
 } as const
 
 export type EnginePowerScalarFieldEnum = (typeof EnginePowerScalarFieldEnum)[keyof typeof EnginePowerScalarFieldEnum]
@@ -848,8 +861,8 @@ export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnu
 export const TuningAeroScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  ecuType: 'ecuType',
-  aeroParts: 'aeroParts'
+  ecuTune: 'ecuTune',
+  aeroDynamics: 'aeroDynamics'
 } as const
 
 export type TuningAeroScalarFieldEnum = (typeof TuningAeroScalarFieldEnum)[keyof typeof TuningAeroScalarFieldEnum]
@@ -973,8 +986,10 @@ export type VirtualSimRacingEventScalarFieldEnum = (typeof VirtualSimRacingEvent
 export const WheelsTiresScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
-  wheelAlignmentFront: 'wheelAlignmentFront',
-  wheelAlignmentRear: 'wheelAlignmentRear',
+  tires: 'tires',
+  wheels: 'wheels',
+  frontCamber: 'frontCamber',
+  rearCamber: 'rearCamber',
   frontToe: 'frontToe',
   rearToe: 'rearToe',
   frontCaster: 'frontCaster',

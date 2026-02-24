@@ -1,35 +1,24 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { IsOptional, IsString } from "class-validator";
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { DriverLevel, UsageCategory, UsageMode } from 'generated/prisma/enums';
 
 export class UpdateUsageNotesDto {
-  @ApiPropertyOptional({
-    example: 'Track',
-    description: 'Primary usage category',
-  })
+  @ApiPropertyOptional({ enum: UsageCategory, example: UsageCategory.Trackday })
   @IsOptional()
-  @IsString()
-  category?: string;
+  @IsEnum(UsageCategory)
+  category?: UsageCategory;
 
-  @ApiPropertyOptional({
-    example: 'Advanced Driver',
-    description: 'Driver skill level',
-  })
+  @ApiPropertyOptional({ enum: DriverLevel, example: DriverLevel.Amateur })
   @IsOptional()
-  @IsString()
-  driverLevel?: string;
+  @IsEnum(DriverLevel)
+  driverLevel?: DriverLevel;
 
-  @ApiPropertyOptional({
-    example: 'Time Attack',
-    description: 'Driving usage mode',
-  })
+  @ApiPropertyOptional({ enum: UsageMode, example: UsageMode.Weekend })
   @IsOptional()
-  @IsString()
-  usageMode?: string;
+  @IsEnum(UsageMode)
+  usageMode?: UsageMode;
 
-  @ApiPropertyOptional({
-    example: 'Front camber -2.5°, Rear camber -1.8°',
-    description: 'Wheel alignment notes',
-  })
+  @ApiPropertyOptional({ example: 'Front camber -2.5°, rear -1.8°' })
   @IsOptional()
   @IsString()
   alignmentNotes?: string;
