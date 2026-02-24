@@ -20,52 +20,152 @@ export type EnginePowerModel = runtime.Types.Result.DefaultSelection<Prisma.$Eng
 
 export type AggregateEnginePower = {
   _count: EnginePowerCountAggregateOutputType | null
+  _avg: EnginePowerAvgAggregateOutputType | null
+  _sum: EnginePowerSumAggregateOutputType | null
   _min: EnginePowerMinAggregateOutputType | null
   _max: EnginePowerMaxAggregateOutputType | null
+}
+
+export type EnginePowerAvgAggregateOutputType = {
+  horsepowerHp: number | null
+  torqueNm: number | null
+  weightKg: number | null
+  dynoWeightKg: number | null
+  rpmLimiter: number | null
+}
+
+export type EnginePowerSumAggregateOutputType = {
+  horsepowerHp: number | null
+  torqueNm: number | null
+  weightKg: number | null
+  dynoWeightKg: number | null
+  rpmLimiter: number | null
 }
 
 export type EnginePowerMinAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  tires: string | null
-  wheels: string | null
+  horsepowerHp: number | null
+  torqueNm: number | null
+  weightKg: number | null
+  engineDescription: string | null
+  fuelType: $Enums.FuelType | null
+  turboOrSupercharger: string | null
+  intercooler: string | null
+  exhaustSystem: string | null
+  intakeSystem: string | null
+  fuelSystemMods: string | null
+  coolingUpgrades: string | null
+  dynoWeightKg: number | null
+  rpmLimiter: number | null
 }
 
 export type EnginePowerMaxAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  tires: string | null
-  wheels: string | null
+  horsepowerHp: number | null
+  torqueNm: number | null
+  weightKg: number | null
+  engineDescription: string | null
+  fuelType: $Enums.FuelType | null
+  turboOrSupercharger: string | null
+  intercooler: string | null
+  exhaustSystem: string | null
+  intakeSystem: string | null
+  fuelSystemMods: string | null
+  coolingUpgrades: string | null
+  dynoWeightKg: number | null
+  rpmLimiter: number | null
 }
 
 export type EnginePowerCountAggregateOutputType = {
   id: number
   advancedCarDataId: number
-  tires: number
-  wheels: number
+  horsepowerHp: number
+  torqueNm: number
+  weightKg: number
+  engineDescription: number
+  fuelType: number
+  turboOrSupercharger: number
+  intercooler: number
+  exhaustSystem: number
+  intakeSystem: number
+  fuelSystemMods: number
+  coolingUpgrades: number
+  dynoWeightKg: number
+  rpmLimiter: number
   _all: number
 }
 
 
+export type EnginePowerAvgAggregateInputType = {
+  horsepowerHp?: true
+  torqueNm?: true
+  weightKg?: true
+  dynoWeightKg?: true
+  rpmLimiter?: true
+}
+
+export type EnginePowerSumAggregateInputType = {
+  horsepowerHp?: true
+  torqueNm?: true
+  weightKg?: true
+  dynoWeightKg?: true
+  rpmLimiter?: true
+}
+
 export type EnginePowerMinAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  tires?: true
-  wheels?: true
+  horsepowerHp?: true
+  torqueNm?: true
+  weightKg?: true
+  engineDescription?: true
+  fuelType?: true
+  turboOrSupercharger?: true
+  intercooler?: true
+  exhaustSystem?: true
+  intakeSystem?: true
+  fuelSystemMods?: true
+  coolingUpgrades?: true
+  dynoWeightKg?: true
+  rpmLimiter?: true
 }
 
 export type EnginePowerMaxAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  tires?: true
-  wheels?: true
+  horsepowerHp?: true
+  torqueNm?: true
+  weightKg?: true
+  engineDescription?: true
+  fuelType?: true
+  turboOrSupercharger?: true
+  intercooler?: true
+  exhaustSystem?: true
+  intakeSystem?: true
+  fuelSystemMods?: true
+  coolingUpgrades?: true
+  dynoWeightKg?: true
+  rpmLimiter?: true
 }
 
 export type EnginePowerCountAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  tires?: true
-  wheels?: true
+  horsepowerHp?: true
+  torqueNm?: true
+  weightKg?: true
+  engineDescription?: true
+  fuelType?: true
+  turboOrSupercharger?: true
+  intercooler?: true
+  exhaustSystem?: true
+  intakeSystem?: true
+  fuelSystemMods?: true
+  coolingUpgrades?: true
+  dynoWeightKg?: true
+  rpmLimiter?: true
   _all?: true
 }
 
@@ -107,6 +207,18 @@ export type EnginePowerAggregateArgs<ExtArgs extends runtime.Types.Extensions.In
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: EnginePowerAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: EnginePowerSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: EnginePowerMinAggregateInputType
@@ -137,6 +249,8 @@ export type EnginePowerGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   _count?: EnginePowerCountAggregateInputType | true
+  _avg?: EnginePowerAvgAggregateInputType
+  _sum?: EnginePowerSumAggregateInputType
   _min?: EnginePowerMinAggregateInputType
   _max?: EnginePowerMaxAggregateInputType
 }
@@ -144,9 +258,22 @@ export type EnginePowerGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type EnginePowerGroupByOutputType = {
   id: string
   advancedCarDataId: string
-  tires: string | null
-  wheels: string | null
+  horsepowerHp: number | null
+  torqueNm: number | null
+  weightKg: number | null
+  engineDescription: string | null
+  fuelType: $Enums.FuelType
+  turboOrSupercharger: string | null
+  intercooler: string | null
+  exhaustSystem: string | null
+  intakeSystem: string | null
+  fuelSystemMods: string | null
+  coolingUpgrades: string | null
+  dynoWeightKg: number | null
+  rpmLimiter: number | null
   _count: EnginePowerCountAggregateOutputType | null
+  _avg: EnginePowerAvgAggregateOutputType | null
+  _sum: EnginePowerSumAggregateOutputType | null
   _min: EnginePowerMinAggregateOutputType | null
   _max: EnginePowerMaxAggregateOutputType | null
 }
@@ -172,16 +299,38 @@ export type EnginePowerWhereInput = {
   NOT?: Prisma.EnginePowerWhereInput | Prisma.EnginePowerWhereInput[]
   id?: Prisma.UuidFilter<"EnginePower"> | string
   advancedCarDataId?: Prisma.UuidFilter<"EnginePower"> | string
-  tires?: Prisma.StringNullableFilter<"EnginePower"> | string | null
-  wheels?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  horsepowerHp?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  torqueNm?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  weightKg?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  engineDescription?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  fuelType?: Prisma.EnumFuelTypeFilter<"EnginePower"> | $Enums.FuelType
+  turboOrSupercharger?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  intercooler?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  exhaustSystem?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  intakeSystem?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  fuelSystemMods?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  coolingUpgrades?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  dynoWeightKg?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  rpmLimiter?: Prisma.IntNullableFilter<"EnginePower"> | number | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }
 
 export type EnginePowerOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  tires?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  horsepowerHp?: Prisma.SortOrderInput | Prisma.SortOrder
+  torqueNm?: Prisma.SortOrderInput | Prisma.SortOrder
+  weightKg?: Prisma.SortOrderInput | Prisma.SortOrder
+  engineDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelType?: Prisma.SortOrder
+  turboOrSupercharger?: Prisma.SortOrderInput | Prisma.SortOrder
+  intercooler?: Prisma.SortOrderInput | Prisma.SortOrder
+  exhaustSystem?: Prisma.SortOrderInput | Prisma.SortOrder
+  intakeSystem?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelSystemMods?: Prisma.SortOrderInput | Prisma.SortOrder
+  coolingUpgrades?: Prisma.SortOrderInput | Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrderInput | Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrderInput | Prisma.SortOrder
   advancedCarData?: Prisma.AdvancedCarDataOrderByWithRelationInput
 }
 
@@ -191,19 +340,43 @@ export type EnginePowerWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.EnginePowerWhereInput | Prisma.EnginePowerWhereInput[]
   OR?: Prisma.EnginePowerWhereInput[]
   NOT?: Prisma.EnginePowerWhereInput | Prisma.EnginePowerWhereInput[]
-  tires?: Prisma.StringNullableFilter<"EnginePower"> | string | null
-  wheels?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  horsepowerHp?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  torqueNm?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  weightKg?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  engineDescription?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  fuelType?: Prisma.EnumFuelTypeFilter<"EnginePower"> | $Enums.FuelType
+  turboOrSupercharger?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  intercooler?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  exhaustSystem?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  intakeSystem?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  fuelSystemMods?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  coolingUpgrades?: Prisma.StringNullableFilter<"EnginePower"> | string | null
+  dynoWeightKg?: Prisma.IntNullableFilter<"EnginePower"> | number | null
+  rpmLimiter?: Prisma.IntNullableFilter<"EnginePower"> | number | null
   advancedCarData?: Prisma.XOR<Prisma.AdvancedCarDataScalarRelationFilter, Prisma.AdvancedCarDataWhereInput>
 }, "id" | "advancedCarDataId">
 
 export type EnginePowerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  tires?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  horsepowerHp?: Prisma.SortOrderInput | Prisma.SortOrder
+  torqueNm?: Prisma.SortOrderInput | Prisma.SortOrder
+  weightKg?: Prisma.SortOrderInput | Prisma.SortOrder
+  engineDescription?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelType?: Prisma.SortOrder
+  turboOrSupercharger?: Prisma.SortOrderInput | Prisma.SortOrder
+  intercooler?: Prisma.SortOrderInput | Prisma.SortOrder
+  exhaustSystem?: Prisma.SortOrderInput | Prisma.SortOrder
+  intakeSystem?: Prisma.SortOrderInput | Prisma.SortOrder
+  fuelSystemMods?: Prisma.SortOrderInput | Prisma.SortOrder
+  coolingUpgrades?: Prisma.SortOrderInput | Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrderInput | Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EnginePowerCountOrderByAggregateInput
+  _avg?: Prisma.EnginePowerAvgOrderByAggregateInput
   _max?: Prisma.EnginePowerMaxOrderByAggregateInput
   _min?: Prisma.EnginePowerMinOrderByAggregateInput
+  _sum?: Prisma.EnginePowerSumOrderByAggregateInput
 }
 
 export type EnginePowerScalarWhereWithAggregatesInput = {
@@ -212,56 +385,144 @@ export type EnginePowerScalarWhereWithAggregatesInput = {
   NOT?: Prisma.EnginePowerScalarWhereWithAggregatesInput | Prisma.EnginePowerScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"EnginePower"> | string
   advancedCarDataId?: Prisma.UuidWithAggregatesFilter<"EnginePower"> | string
-  tires?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
-  wheels?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  horsepowerHp?: Prisma.IntNullableWithAggregatesFilter<"EnginePower"> | number | null
+  torqueNm?: Prisma.IntNullableWithAggregatesFilter<"EnginePower"> | number | null
+  weightKg?: Prisma.IntNullableWithAggregatesFilter<"EnginePower"> | number | null
+  engineDescription?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  fuelType?: Prisma.EnumFuelTypeWithAggregatesFilter<"EnginePower"> | $Enums.FuelType
+  turboOrSupercharger?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  intercooler?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  exhaustSystem?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  intakeSystem?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  fuelSystemMods?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  coolingUpgrades?: Prisma.StringNullableWithAggregatesFilter<"EnginePower"> | string | null
+  dynoWeightKg?: Prisma.IntNullableWithAggregatesFilter<"EnginePower"> | number | null
+  rpmLimiter?: Prisma.IntNullableWithAggregatesFilter<"EnginePower"> | number | null
 }
 
 export type EnginePowerCreateInput = {
   id?: string
-  tires?: string | null
-  wheels?: string | null
+  horsepowerHp?: number | null
+  torqueNm?: number | null
+  weightKg?: number | null
+  engineDescription?: string | null
+  fuelType?: $Enums.FuelType
+  turboOrSupercharger?: string | null
+  intercooler?: string | null
+  exhaustSystem?: string | null
+  intakeSystem?: string | null
+  fuelSystemMods?: string | null
+  coolingUpgrades?: string | null
+  dynoWeightKg?: number | null
+  rpmLimiter?: number | null
   advancedCarData: Prisma.AdvancedCarDataCreateNestedOneWithoutEnginePowerInput
 }
 
 export type EnginePowerUncheckedCreateInput = {
   id?: string
   advancedCarDataId: string
-  tires?: string | null
-  wheels?: string | null
+  horsepowerHp?: number | null
+  torqueNm?: number | null
+  weightKg?: number | null
+  engineDescription?: string | null
+  fuelType?: $Enums.FuelType
+  turboOrSupercharger?: string | null
+  intercooler?: string | null
+  exhaustSystem?: string | null
+  intakeSystem?: string | null
+  fuelSystemMods?: string | null
+  coolingUpgrades?: string | null
+  dynoWeightKg?: number | null
+  rpmLimiter?: number | null
 }
 
 export type EnginePowerUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advancedCarData?: Prisma.AdvancedCarDataUpdateOneRequiredWithoutEnginePowerNestedInput
 }
 
 export type EnginePowerUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnginePowerCreateManyInput = {
   id?: string
   advancedCarDataId: string
-  tires?: string | null
-  wheels?: string | null
+  horsepowerHp?: number | null
+  torqueNm?: number | null
+  weightKg?: number | null
+  engineDescription?: string | null
+  fuelType?: $Enums.FuelType
+  turboOrSupercharger?: string | null
+  intercooler?: string | null
+  exhaustSystem?: string | null
+  intakeSystem?: string | null
+  fuelSystemMods?: string | null
+  coolingUpgrades?: string | null
+  dynoWeightKg?: number | null
+  rpmLimiter?: number | null
 }
 
 export type EnginePowerUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnginePowerUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnginePowerNullableScalarRelationFilter = {
@@ -272,22 +533,71 @@ export type EnginePowerNullableScalarRelationFilter = {
 export type EnginePowerCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  tires?: Prisma.SortOrder
-  wheels?: Prisma.SortOrder
+  horsepowerHp?: Prisma.SortOrder
+  torqueNm?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
+  engineDescription?: Prisma.SortOrder
+  fuelType?: Prisma.SortOrder
+  turboOrSupercharger?: Prisma.SortOrder
+  intercooler?: Prisma.SortOrder
+  exhaustSystem?: Prisma.SortOrder
+  intakeSystem?: Prisma.SortOrder
+  fuelSystemMods?: Prisma.SortOrder
+  coolingUpgrades?: Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrder
+}
+
+export type EnginePowerAvgOrderByAggregateInput = {
+  horsepowerHp?: Prisma.SortOrder
+  torqueNm?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrder
 }
 
 export type EnginePowerMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  tires?: Prisma.SortOrder
-  wheels?: Prisma.SortOrder
+  horsepowerHp?: Prisma.SortOrder
+  torqueNm?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
+  engineDescription?: Prisma.SortOrder
+  fuelType?: Prisma.SortOrder
+  turboOrSupercharger?: Prisma.SortOrder
+  intercooler?: Prisma.SortOrder
+  exhaustSystem?: Prisma.SortOrder
+  intakeSystem?: Prisma.SortOrder
+  fuelSystemMods?: Prisma.SortOrder
+  coolingUpgrades?: Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrder
 }
 
 export type EnginePowerMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  tires?: Prisma.SortOrder
-  wheels?: Prisma.SortOrder
+  horsepowerHp?: Prisma.SortOrder
+  torqueNm?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
+  engineDescription?: Prisma.SortOrder
+  fuelType?: Prisma.SortOrder
+  turboOrSupercharger?: Prisma.SortOrder
+  intercooler?: Prisma.SortOrder
+  exhaustSystem?: Prisma.SortOrder
+  intakeSystem?: Prisma.SortOrder
+  fuelSystemMods?: Prisma.SortOrder
+  coolingUpgrades?: Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrder
+}
+
+export type EnginePowerSumOrderByAggregateInput = {
+  horsepowerHp?: Prisma.SortOrder
+  torqueNm?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
+  dynoWeightKg?: Prisma.SortOrder
+  rpmLimiter?: Prisma.SortOrder
 }
 
 export type EnginePowerCreateNestedOneWithoutAdvancedCarDataInput = {
@@ -322,16 +632,42 @@ export type EnginePowerUncheckedUpdateOneWithoutAdvancedCarDataNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EnginePowerUpdateToOneWithWhereWithoutAdvancedCarDataInput, Prisma.EnginePowerUpdateWithoutAdvancedCarDataInput>, Prisma.EnginePowerUncheckedUpdateWithoutAdvancedCarDataInput>
 }
 
+export type EnumFuelTypeFieldUpdateOperationsInput = {
+  set?: $Enums.FuelType
+}
+
 export type EnginePowerCreateWithoutAdvancedCarDataInput = {
   id?: string
-  tires?: string | null
-  wheels?: string | null
+  horsepowerHp?: number | null
+  torqueNm?: number | null
+  weightKg?: number | null
+  engineDescription?: string | null
+  fuelType?: $Enums.FuelType
+  turboOrSupercharger?: string | null
+  intercooler?: string | null
+  exhaustSystem?: string | null
+  intakeSystem?: string | null
+  fuelSystemMods?: string | null
+  coolingUpgrades?: string | null
+  dynoWeightKg?: number | null
+  rpmLimiter?: number | null
 }
 
 export type EnginePowerUncheckedCreateWithoutAdvancedCarDataInput = {
   id?: string
-  tires?: string | null
-  wheels?: string | null
+  horsepowerHp?: number | null
+  torqueNm?: number | null
+  weightKg?: number | null
+  engineDescription?: string | null
+  fuelType?: $Enums.FuelType
+  turboOrSupercharger?: string | null
+  intercooler?: string | null
+  exhaustSystem?: string | null
+  intakeSystem?: string | null
+  fuelSystemMods?: string | null
+  coolingUpgrades?: string | null
+  dynoWeightKg?: number | null
+  rpmLimiter?: number | null
 }
 
 export type EnginePowerCreateOrConnectWithoutAdvancedCarDataInput = {
@@ -352,14 +688,36 @@ export type EnginePowerUpdateToOneWithWhereWithoutAdvancedCarDataInput = {
 
 export type EnginePowerUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type EnginePowerUncheckedUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  horsepowerHp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  torqueNm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  weightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  engineDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelType?: Prisma.EnumFuelTypeFieldUpdateOperationsInput | $Enums.FuelType
+  turboOrSupercharger?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intercooler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  exhaustSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  intakeSystem?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fuelSystemMods?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coolingUpgrades?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dynoWeightKg?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rpmLimiter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -367,35 +725,79 @@ export type EnginePowerUncheckedUpdateWithoutAdvancedCarDataInput = {
 export type EnginePowerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  tires?: boolean
-  wheels?: boolean
+  horsepowerHp?: boolean
+  torqueNm?: boolean
+  weightKg?: boolean
+  engineDescription?: boolean
+  fuelType?: boolean
+  turboOrSupercharger?: boolean
+  intercooler?: boolean
+  exhaustSystem?: boolean
+  intakeSystem?: boolean
+  fuelSystemMods?: boolean
+  coolingUpgrades?: boolean
+  dynoWeightKg?: boolean
+  rpmLimiter?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["enginePower"]>
 
 export type EnginePowerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  tires?: boolean
-  wheels?: boolean
+  horsepowerHp?: boolean
+  torqueNm?: boolean
+  weightKg?: boolean
+  engineDescription?: boolean
+  fuelType?: boolean
+  turboOrSupercharger?: boolean
+  intercooler?: boolean
+  exhaustSystem?: boolean
+  intakeSystem?: boolean
+  fuelSystemMods?: boolean
+  coolingUpgrades?: boolean
+  dynoWeightKg?: boolean
+  rpmLimiter?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["enginePower"]>
 
 export type EnginePowerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  tires?: boolean
-  wheels?: boolean
+  horsepowerHp?: boolean
+  torqueNm?: boolean
+  weightKg?: boolean
+  engineDescription?: boolean
+  fuelType?: boolean
+  turboOrSupercharger?: boolean
+  intercooler?: boolean
+  exhaustSystem?: boolean
+  intakeSystem?: boolean
+  fuelSystemMods?: boolean
+  coolingUpgrades?: boolean
+  dynoWeightKg?: boolean
+  rpmLimiter?: boolean
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["enginePower"]>
 
 export type EnginePowerSelectScalar = {
   id?: boolean
   advancedCarDataId?: boolean
-  tires?: boolean
-  wheels?: boolean
+  horsepowerHp?: boolean
+  torqueNm?: boolean
+  weightKg?: boolean
+  engineDescription?: boolean
+  fuelType?: boolean
+  turboOrSupercharger?: boolean
+  intercooler?: boolean
+  exhaustSystem?: boolean
+  intakeSystem?: boolean
+  fuelSystemMods?: boolean
+  coolingUpgrades?: boolean
+  dynoWeightKg?: boolean
+  rpmLimiter?: boolean
 }
 
-export type EnginePowerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "tires" | "wheels", ExtArgs["result"]["enginePower"]>
+export type EnginePowerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "horsepowerHp" | "torqueNm" | "weightKg" | "engineDescription" | "fuelType" | "turboOrSupercharger" | "intercooler" | "exhaustSystem" | "intakeSystem" | "fuelSystemMods" | "coolingUpgrades" | "dynoWeightKg" | "rpmLimiter", ExtArgs["result"]["enginePower"]>
 export type EnginePowerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }
@@ -414,8 +816,19 @@ export type $EnginePowerPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     advancedCarDataId: string
-    tires: string | null
-    wheels: string | null
+    horsepowerHp: number | null
+    torqueNm: number | null
+    weightKg: number | null
+    engineDescription: string | null
+    fuelType: $Enums.FuelType
+    turboOrSupercharger: string | null
+    intercooler: string | null
+    exhaustSystem: string | null
+    intakeSystem: string | null
+    fuelSystemMods: string | null
+    coolingUpgrades: string | null
+    dynoWeightKg: number | null
+    rpmLimiter: number | null
   }, ExtArgs["result"]["enginePower"]>
   composites: {}
 }
@@ -842,8 +1255,19 @@ export interface Prisma__EnginePowerClient<T, Null = never, ExtArgs extends runt
 export interface EnginePowerFieldRefs {
   readonly id: Prisma.FieldRef<"EnginePower", 'String'>
   readonly advancedCarDataId: Prisma.FieldRef<"EnginePower", 'String'>
-  readonly tires: Prisma.FieldRef<"EnginePower", 'String'>
-  readonly wheels: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly horsepowerHp: Prisma.FieldRef<"EnginePower", 'Int'>
+  readonly torqueNm: Prisma.FieldRef<"EnginePower", 'Int'>
+  readonly weightKg: Prisma.FieldRef<"EnginePower", 'Int'>
+  readonly engineDescription: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly fuelType: Prisma.FieldRef<"EnginePower", 'FuelType'>
+  readonly turboOrSupercharger: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly intercooler: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly exhaustSystem: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly intakeSystem: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly fuelSystemMods: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly coolingUpgrades: Prisma.FieldRef<"EnginePower", 'String'>
+  readonly dynoWeightKg: Prisma.FieldRef<"EnginePower", 'Int'>
+  readonly rpmLimiter: Prisma.FieldRef<"EnginePower", 'Int'>
 }
     
 

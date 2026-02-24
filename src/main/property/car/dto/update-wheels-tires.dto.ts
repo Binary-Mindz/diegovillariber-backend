@@ -1,51 +1,43 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { IsNumber, IsOptional, IsString } from "class-validator";
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class UpdateWheelsTiresDto {
-  @ApiPropertyOptional({
-    example: -2.5,
-    description: 'Front wheel alignment camber',
-  })
+  @ApiPropertyOptional({ example: 'Michelin Pilot Sport 4S 275/35/19' })
+  @IsOptional()
+  @IsString()
+  tires?: string;
+
+  @ApiPropertyOptional({ example: 'BBS FI-R 19 inch' })
+  @IsOptional()
+  @IsString()
+  wheels?: string;
+
+  @ApiPropertyOptional({ example: -2.5 })
   @IsOptional()
   @IsNumber()
-  wheelAlignmentFront?: number;
+  frontCamber?: number;
 
-  @ApiPropertyOptional({
-    example: -1.8,
-    description: 'Rear wheel alignment camber',
-  })
+  @ApiPropertyOptional({ example: -1.8 })
   @IsOptional()
   @IsNumber()
-  wheelAlignmentRear?: number;
+  rearCamber?: number;
 
-  @ApiPropertyOptional({
-    example: 0.05,
-    description: 'Front toe angle',
-  })
+  @ApiPropertyOptional({ example: 0.05 })
   @IsOptional()
   @IsNumber()
   frontToe?: number;
 
-  @ApiPropertyOptional({
-    example: 0.03,
-    description: 'Rear toe angle',
-  })
+  @ApiPropertyOptional({ example: 0.03 })
   @IsOptional()
   @IsNumber()
   rearToe?: number;
 
-  @ApiPropertyOptional({
-    example: 6.5,
-    description: 'Front caster angle',
-  })
+  @ApiPropertyOptional({ example: 6.5 })
   @IsOptional()
   @IsNumber()
   frontCaster?: number;
 
-  @ApiPropertyOptional({
-    example: 'Optimized for track stability',
-    description: 'Alignment notes',
-  })
+  @ApiPropertyOptional({ example: 'Track stability focused alignment' })
   @IsOptional()
   @IsString()
   alignmentNotes?: string;

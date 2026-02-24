@@ -27,16 +27,16 @@ export type AggregateWheelsTires = {
 }
 
 export type WheelsTiresAvgAggregateOutputType = {
-  wheelAlignmentFront: number | null
-  wheelAlignmentRear: number | null
+  frontCamber: number | null
+  rearCamber: number | null
   frontToe: number | null
   rearToe: number | null
   frontCaster: number | null
 }
 
 export type WheelsTiresSumAggregateOutputType = {
-  wheelAlignmentFront: number | null
-  wheelAlignmentRear: number | null
+  frontCamber: number | null
+  rearCamber: number | null
   frontToe: number | null
   rearToe: number | null
   frontCaster: number | null
@@ -45,8 +45,10 @@ export type WheelsTiresSumAggregateOutputType = {
 export type WheelsTiresMinAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  wheelAlignmentFront: number | null
-  wheelAlignmentRear: number | null
+  tires: string | null
+  wheels: string | null
+  frontCamber: number | null
+  rearCamber: number | null
   frontToe: number | null
   rearToe: number | null
   frontCaster: number | null
@@ -56,8 +58,10 @@ export type WheelsTiresMinAggregateOutputType = {
 export type WheelsTiresMaxAggregateOutputType = {
   id: string | null
   advancedCarDataId: string | null
-  wheelAlignmentFront: number | null
-  wheelAlignmentRear: number | null
+  tires: string | null
+  wheels: string | null
+  frontCamber: number | null
+  rearCamber: number | null
   frontToe: number | null
   rearToe: number | null
   frontCaster: number | null
@@ -67,8 +71,10 @@ export type WheelsTiresMaxAggregateOutputType = {
 export type WheelsTiresCountAggregateOutputType = {
   id: number
   advancedCarDataId: number
-  wheelAlignmentFront: number
-  wheelAlignmentRear: number
+  tires: number
+  wheels: number
+  frontCamber: number
+  rearCamber: number
   frontToe: number
   rearToe: number
   frontCaster: number
@@ -78,16 +84,16 @@ export type WheelsTiresCountAggregateOutputType = {
 
 
 export type WheelsTiresAvgAggregateInputType = {
-  wheelAlignmentFront?: true
-  wheelAlignmentRear?: true
+  frontCamber?: true
+  rearCamber?: true
   frontToe?: true
   rearToe?: true
   frontCaster?: true
 }
 
 export type WheelsTiresSumAggregateInputType = {
-  wheelAlignmentFront?: true
-  wheelAlignmentRear?: true
+  frontCamber?: true
+  rearCamber?: true
   frontToe?: true
   rearToe?: true
   frontCaster?: true
@@ -96,8 +102,10 @@ export type WheelsTiresSumAggregateInputType = {
 export type WheelsTiresMinAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  wheelAlignmentFront?: true
-  wheelAlignmentRear?: true
+  tires?: true
+  wheels?: true
+  frontCamber?: true
+  rearCamber?: true
   frontToe?: true
   rearToe?: true
   frontCaster?: true
@@ -107,8 +115,10 @@ export type WheelsTiresMinAggregateInputType = {
 export type WheelsTiresMaxAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  wheelAlignmentFront?: true
-  wheelAlignmentRear?: true
+  tires?: true
+  wheels?: true
+  frontCamber?: true
+  rearCamber?: true
   frontToe?: true
   rearToe?: true
   frontCaster?: true
@@ -118,8 +128,10 @@ export type WheelsTiresMaxAggregateInputType = {
 export type WheelsTiresCountAggregateInputType = {
   id?: true
   advancedCarDataId?: true
-  wheelAlignmentFront?: true
-  wheelAlignmentRear?: true
+  tires?: true
+  wheels?: true
+  frontCamber?: true
+  rearCamber?: true
   frontToe?: true
   rearToe?: true
   frontCaster?: true
@@ -216,8 +228,10 @@ export type WheelsTiresGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type WheelsTiresGroupByOutputType = {
   id: string
   advancedCarDataId: string
-  wheelAlignmentFront: number | null
-  wheelAlignmentRear: number | null
+  tires: string | null
+  wheels: string | null
+  frontCamber: number | null
+  rearCamber: number | null
   frontToe: number | null
   rearToe: number | null
   frontCaster: number | null
@@ -250,8 +264,10 @@ export type WheelsTiresWhereInput = {
   NOT?: Prisma.WheelsTiresWhereInput | Prisma.WheelsTiresWhereInput[]
   id?: Prisma.UuidFilter<"WheelsTires"> | string
   advancedCarDataId?: Prisma.UuidFilter<"WheelsTires"> | string
-  wheelAlignmentFront?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
-  wheelAlignmentRear?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
+  tires?: Prisma.StringNullableFilter<"WheelsTires"> | string | null
+  wheels?: Prisma.StringNullableFilter<"WheelsTires"> | string | null
+  frontCamber?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
+  rearCamber?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   frontToe?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   rearToe?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   frontCaster?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
@@ -262,8 +278,10 @@ export type WheelsTiresWhereInput = {
 export type WheelsTiresOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  wheelAlignmentFront?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrderInput | Prisma.SortOrder
+  tires?: Prisma.SortOrderInput | Prisma.SortOrder
+  wheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  frontCamber?: Prisma.SortOrderInput | Prisma.SortOrder
+  rearCamber?: Prisma.SortOrderInput | Prisma.SortOrder
   frontToe?: Prisma.SortOrderInput | Prisma.SortOrder
   rearToe?: Prisma.SortOrderInput | Prisma.SortOrder
   frontCaster?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -277,8 +295,10 @@ export type WheelsTiresWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.WheelsTiresWhereInput | Prisma.WheelsTiresWhereInput[]
   OR?: Prisma.WheelsTiresWhereInput[]
   NOT?: Prisma.WheelsTiresWhereInput | Prisma.WheelsTiresWhereInput[]
-  wheelAlignmentFront?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
-  wheelAlignmentRear?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
+  tires?: Prisma.StringNullableFilter<"WheelsTires"> | string | null
+  wheels?: Prisma.StringNullableFilter<"WheelsTires"> | string | null
+  frontCamber?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
+  rearCamber?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   frontToe?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   rearToe?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
   frontCaster?: Prisma.FloatNullableFilter<"WheelsTires"> | number | null
@@ -289,8 +309,10 @@ export type WheelsTiresWhereUniqueInput = Prisma.AtLeast<{
 export type WheelsTiresOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  wheelAlignmentFront?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrderInput | Prisma.SortOrder
+  tires?: Prisma.SortOrderInput | Prisma.SortOrder
+  wheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  frontCamber?: Prisma.SortOrderInput | Prisma.SortOrder
+  rearCamber?: Prisma.SortOrderInput | Prisma.SortOrder
   frontToe?: Prisma.SortOrderInput | Prisma.SortOrder
   rearToe?: Prisma.SortOrderInput | Prisma.SortOrder
   frontCaster?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -308,8 +330,10 @@ export type WheelsTiresScalarWhereWithAggregatesInput = {
   NOT?: Prisma.WheelsTiresScalarWhereWithAggregatesInput | Prisma.WheelsTiresScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"WheelsTires"> | string
   advancedCarDataId?: Prisma.UuidWithAggregatesFilter<"WheelsTires"> | string
-  wheelAlignmentFront?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
-  wheelAlignmentRear?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
+  tires?: Prisma.StringNullableWithAggregatesFilter<"WheelsTires"> | string | null
+  wheels?: Prisma.StringNullableWithAggregatesFilter<"WheelsTires"> | string | null
+  frontCamber?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
+  rearCamber?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
   frontToe?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
   rearToe?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
   frontCaster?: Prisma.FloatNullableWithAggregatesFilter<"WheelsTires"> | number | null
@@ -318,8 +342,10 @@ export type WheelsTiresScalarWhereWithAggregatesInput = {
 
 export type WheelsTiresCreateInput = {
   id?: string
-  wheelAlignmentFront?: number | null
-  wheelAlignmentRear?: number | null
+  tires?: string | null
+  wheels?: string | null
+  frontCamber?: number | null
+  rearCamber?: number | null
   frontToe?: number | null
   rearToe?: number | null
   frontCaster?: number | null
@@ -330,8 +356,10 @@ export type WheelsTiresCreateInput = {
 export type WheelsTiresUncheckedCreateInput = {
   id?: string
   advancedCarDataId: string
-  wheelAlignmentFront?: number | null
-  wheelAlignmentRear?: number | null
+  tires?: string | null
+  wheels?: string | null
+  frontCamber?: number | null
+  rearCamber?: number | null
   frontToe?: number | null
   rearToe?: number | null
   frontCaster?: number | null
@@ -340,8 +368,10 @@ export type WheelsTiresUncheckedCreateInput = {
 
 export type WheelsTiresUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -352,8 +382,10 @@ export type WheelsTiresUpdateInput = {
 export type WheelsTiresUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -363,8 +395,10 @@ export type WheelsTiresUncheckedUpdateInput = {
 export type WheelsTiresCreateManyInput = {
   id?: string
   advancedCarDataId: string
-  wheelAlignmentFront?: number | null
-  wheelAlignmentRear?: number | null
+  tires?: string | null
+  wheels?: string | null
+  frontCamber?: number | null
+  rearCamber?: number | null
   frontToe?: number | null
   rearToe?: number | null
   frontCaster?: number | null
@@ -373,8 +407,10 @@ export type WheelsTiresCreateManyInput = {
 
 export type WheelsTiresUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -384,8 +420,10 @@ export type WheelsTiresUpdateManyMutationInput = {
 export type WheelsTiresUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   advancedCarDataId?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -400,8 +438,10 @@ export type WheelsTiresNullableScalarRelationFilter = {
 export type WheelsTiresCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  wheelAlignmentFront?: Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrder
+  tires?: Prisma.SortOrder
+  wheels?: Prisma.SortOrder
+  frontCamber?: Prisma.SortOrder
+  rearCamber?: Prisma.SortOrder
   frontToe?: Prisma.SortOrder
   rearToe?: Prisma.SortOrder
   frontCaster?: Prisma.SortOrder
@@ -409,8 +449,8 @@ export type WheelsTiresCountOrderByAggregateInput = {
 }
 
 export type WheelsTiresAvgOrderByAggregateInput = {
-  wheelAlignmentFront?: Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrder
+  frontCamber?: Prisma.SortOrder
+  rearCamber?: Prisma.SortOrder
   frontToe?: Prisma.SortOrder
   rearToe?: Prisma.SortOrder
   frontCaster?: Prisma.SortOrder
@@ -419,8 +459,10 @@ export type WheelsTiresAvgOrderByAggregateInput = {
 export type WheelsTiresMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  wheelAlignmentFront?: Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrder
+  tires?: Prisma.SortOrder
+  wheels?: Prisma.SortOrder
+  frontCamber?: Prisma.SortOrder
+  rearCamber?: Prisma.SortOrder
   frontToe?: Prisma.SortOrder
   rearToe?: Prisma.SortOrder
   frontCaster?: Prisma.SortOrder
@@ -430,8 +472,10 @@ export type WheelsTiresMaxOrderByAggregateInput = {
 export type WheelsTiresMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   advancedCarDataId?: Prisma.SortOrder
-  wheelAlignmentFront?: Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrder
+  tires?: Prisma.SortOrder
+  wheels?: Prisma.SortOrder
+  frontCamber?: Prisma.SortOrder
+  rearCamber?: Prisma.SortOrder
   frontToe?: Prisma.SortOrder
   rearToe?: Prisma.SortOrder
   frontCaster?: Prisma.SortOrder
@@ -439,8 +483,8 @@ export type WheelsTiresMinOrderByAggregateInput = {
 }
 
 export type WheelsTiresSumOrderByAggregateInput = {
-  wheelAlignmentFront?: Prisma.SortOrder
-  wheelAlignmentRear?: Prisma.SortOrder
+  frontCamber?: Prisma.SortOrder
+  rearCamber?: Prisma.SortOrder
   frontToe?: Prisma.SortOrder
   rearToe?: Prisma.SortOrder
   frontCaster?: Prisma.SortOrder
@@ -488,8 +532,10 @@ export type NullableFloatFieldUpdateOperationsInput = {
 
 export type WheelsTiresCreateWithoutAdvancedCarDataInput = {
   id?: string
-  wheelAlignmentFront?: number | null
-  wheelAlignmentRear?: number | null
+  tires?: string | null
+  wheels?: string | null
+  frontCamber?: number | null
+  rearCamber?: number | null
   frontToe?: number | null
   rearToe?: number | null
   frontCaster?: number | null
@@ -498,8 +544,10 @@ export type WheelsTiresCreateWithoutAdvancedCarDataInput = {
 
 export type WheelsTiresUncheckedCreateWithoutAdvancedCarDataInput = {
   id?: string
-  wheelAlignmentFront?: number | null
-  wheelAlignmentRear?: number | null
+  tires?: string | null
+  wheels?: string | null
+  frontCamber?: number | null
+  rearCamber?: number | null
   frontToe?: number | null
   rearToe?: number | null
   frontCaster?: number | null
@@ -524,8 +572,10 @@ export type WheelsTiresUpdateToOneWithWhereWithoutAdvancedCarDataInput = {
 
 export type WheelsTiresUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -534,8 +584,10 @@ export type WheelsTiresUpdateWithoutAdvancedCarDataInput = {
 
 export type WheelsTiresUncheckedUpdateWithoutAdvancedCarDataInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  wheelAlignmentFront?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  wheelAlignmentRear?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  tires?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  wheels?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  frontCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  rearCamber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   rearToe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   frontCaster?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -547,8 +599,10 @@ export type WheelsTiresUncheckedUpdateWithoutAdvancedCarDataInput = {
 export type WheelsTiresSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  wheelAlignmentFront?: boolean
-  wheelAlignmentRear?: boolean
+  tires?: boolean
+  wheels?: boolean
+  frontCamber?: boolean
+  rearCamber?: boolean
   frontToe?: boolean
   rearToe?: boolean
   frontCaster?: boolean
@@ -559,8 +613,10 @@ export type WheelsTiresSelect<ExtArgs extends runtime.Types.Extensions.InternalA
 export type WheelsTiresSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  wheelAlignmentFront?: boolean
-  wheelAlignmentRear?: boolean
+  tires?: boolean
+  wheels?: boolean
+  frontCamber?: boolean
+  rearCamber?: boolean
   frontToe?: boolean
   rearToe?: boolean
   frontCaster?: boolean
@@ -571,8 +627,10 @@ export type WheelsTiresSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
 export type WheelsTiresSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   advancedCarDataId?: boolean
-  wheelAlignmentFront?: boolean
-  wheelAlignmentRear?: boolean
+  tires?: boolean
+  wheels?: boolean
+  frontCamber?: boolean
+  rearCamber?: boolean
   frontToe?: boolean
   rearToe?: boolean
   frontCaster?: boolean
@@ -583,15 +641,17 @@ export type WheelsTiresSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type WheelsTiresSelectScalar = {
   id?: boolean
   advancedCarDataId?: boolean
-  wheelAlignmentFront?: boolean
-  wheelAlignmentRear?: boolean
+  tires?: boolean
+  wheels?: boolean
+  frontCamber?: boolean
+  rearCamber?: boolean
   frontToe?: boolean
   rearToe?: boolean
   frontCaster?: boolean
   alignmentNotes?: boolean
 }
 
-export type WheelsTiresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "wheelAlignmentFront" | "wheelAlignmentRear" | "frontToe" | "rearToe" | "frontCaster" | "alignmentNotes", ExtArgs["result"]["wheelsTires"]>
+export type WheelsTiresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "advancedCarDataId" | "tires" | "wheels" | "frontCamber" | "rearCamber" | "frontToe" | "rearToe" | "frontCaster" | "alignmentNotes", ExtArgs["result"]["wheelsTires"]>
 export type WheelsTiresInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedCarData?: boolean | Prisma.AdvancedCarDataDefaultArgs<ExtArgs>
 }
@@ -610,8 +670,10 @@ export type $WheelsTiresPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     advancedCarDataId: string
-    wheelAlignmentFront: number | null
-    wheelAlignmentRear: number | null
+    tires: string | null
+    wheels: string | null
+    frontCamber: number | null
+    rearCamber: number | null
     frontToe: number | null
     rearToe: number | null
     frontCaster: number | null
@@ -1042,8 +1104,10 @@ export interface Prisma__WheelsTiresClient<T, Null = never, ExtArgs extends runt
 export interface WheelsTiresFieldRefs {
   readonly id: Prisma.FieldRef<"WheelsTires", 'String'>
   readonly advancedCarDataId: Prisma.FieldRef<"WheelsTires", 'String'>
-  readonly wheelAlignmentFront: Prisma.FieldRef<"WheelsTires", 'Float'>
-  readonly wheelAlignmentRear: Prisma.FieldRef<"WheelsTires", 'Float'>
+  readonly tires: Prisma.FieldRef<"WheelsTires", 'String'>
+  readonly wheels: Prisma.FieldRef<"WheelsTires", 'String'>
+  readonly frontCamber: Prisma.FieldRef<"WheelsTires", 'Float'>
+  readonly rearCamber: Prisma.FieldRef<"WheelsTires", 'Float'>
   readonly frontToe: Prisma.FieldRef<"WheelsTires", 'Float'>
   readonly rearToe: Prisma.FieldRef<"WheelsTires", 'Float'>
   readonly frontCaster: Prisma.FieldRef<"WheelsTires", 'Float'>

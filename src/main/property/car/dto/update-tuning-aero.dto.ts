@@ -1,20 +1,15 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { IsOptional, IsString } from "class-validator";
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsEnum, IsOptional, IsString } from 'class-validator';
+import { EcuTune } from 'generated/prisma/enums';
 
 export class UpdateTuningAeroDto {
-  @ApiPropertyOptional({
-    example: 'Stage 2 Custom ECU',
-    description: 'ECU tuning details',
-  })
+  @ApiPropertyOptional({ enum: EcuTune, example: EcuTune.Stage_2 })
   @IsOptional()
-  @IsString()
-  ecuType?: string;
+  @IsEnum(EcuTune)
+  ecuTune?: EcuTune;
 
-  @ApiPropertyOptional({
-    example: 'Carbon Front Splitter & Rear Wing',
-    description: 'Aerodynamic parts',
-  })
+  @ApiPropertyOptional({ example: 'Carbon splitter + rear wing + diffuser' })
   @IsOptional()
   @IsString()
-  aeroParts?: string;
+  aeroDynamics?: string;
 }
