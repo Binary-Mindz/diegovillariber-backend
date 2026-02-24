@@ -70,4 +70,6 @@ model User {
   messages Message[] @relation("SentMessages")
 
   messageReceipts MessageReceipt[]
+
+  taggedInPosts Post[] @relation("PostTaggedUsers")
 }
