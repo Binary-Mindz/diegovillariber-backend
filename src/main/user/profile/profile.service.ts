@@ -318,7 +318,7 @@ export class ProfileService {
   private profileInclude(): Prisma.ProfileInclude {
     return {
       user: {
-        select: { id: true, email: true, username: true, phone: true },
+        select: { id: true, email: true, phone: true },
       },
       spotter: true,
       owner: true,
