@@ -51,8 +51,8 @@ export class FollowService {
           followingId: dto.followingId,
         },
         include: {
-          follower: { select: { id: true, username: true, email: true } },
-          following: { select: { id: true, username: true, email: true } },
+          follower: { select: { id: true, email: true } },
+          following: { select: { id: true, email: true } },
         },
       });
 
@@ -122,7 +122,6 @@ export class FollowService {
         follower: {
           select: {
             id: true,
-            username: true,
             email: true,
             profile: {
               select: {
@@ -150,7 +149,6 @@ export class FollowService {
         following: {
           select: {
             id: true,
-            username: true,
             email: true,
             profile: {
               select: {
@@ -237,7 +235,6 @@ export class FollowService {
       },
       select: {
         id: true,
-        username: true,
         email: true,
         profile: {
           select: {
