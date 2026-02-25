@@ -142,7 +142,6 @@ export class EventService {
           owner: {
             select: {
               id: true,
-              username: true,
               email: true,
               profile: {
                 select: {

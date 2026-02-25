@@ -96,7 +96,6 @@ export class AuthService {
     const result = await this.prisma.$transaction(async (tx) => {
       const user = await tx.user.create({
         data: {
-          username: dto.username,
           email: dto.email,
           password: passwordHash,
           emailOtp: otp,
@@ -108,6 +107,7 @@ export class AuthService {
       const profile = await tx.profile.create({
         data: {
           userId: user.id,
+          profileName: dto.username,
           activeType: dto.profileType as Type,
           preference: dto.preference ?? null,
           bio: (dto as any).bio ?? null,
@@ -423,7 +423,6 @@ export class AuthService {
         id: true,
         email: true,
         phone: true,
-        username: true,
         role: true,
         isEmailVerified: true,
         totalPoints: true,
