@@ -42,6 +42,11 @@ export class CarController {
     return handleRequest(async () => this.carService.create(userId, dto), 'Car created successfully');
   }
 
+  @Get('/cars')
+  getCars(){
+    return handleRequest(async () => this.carService.getCars(), 'Cars get successfully');
+  }
+
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get car with advanced data' })
