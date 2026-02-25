@@ -19,7 +19,7 @@ export class CommentService {
     return this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
-        select: { id: true, username: true },
+        select: { id: true },
       });
       if (!user) throw new NotFoundException('User not found');
       const post = await tx.post.findUnique({
@@ -51,7 +51,7 @@ export class CommentService {
           parentId: parentId ?? null,
         },
         include: {
-          user: { select: { id: true, username: true, email: true } },
+          user: { select: { id: true, email: true } },
           parent: { select: { id: true, content: true } },
         },
       });
@@ -106,7 +106,7 @@ export class CommentService {
         where: { id: commentId },
         data: { content },
         include: {
-          user: { select: { id: true, username: true, email: true } },
+          user: { select: { id: true, email: true } },
           parent: { select: { id: true, content: true } },
         },
       });
@@ -173,13 +173,13 @@ export class CommentService {
         skip,
         take: limit,
         include: {
-          user: { select: { id: true, username: true } },
+          user: { select: { id: true } },
           ...(queryDto.includeReplies
             ? {
                 replies: {
                   orderBy: { createdAt: 'asc' },
                   include: {
-                    user: { select: { id: true, username: true } },
+                    user: { select: { id: true} },
                   },
                 },
               }
@@ -229,13 +229,13 @@ export class CommentService {
         take: limit,
         include: {
           post: { select: { id: true, caption: true, mediaUrl: true } },
-          user: { select: { id: true, username: true } },
+          user: { select: { id: true } },
           ...(queryDto.includeReplies
             ? {
                 replies: {
                   orderBy: { createdAt: 'asc' },
                   include: {
-                    user: { select: { id: true, username: true } },
+                    user: { select: { id: true } },
                   },
                 },
               }

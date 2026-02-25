@@ -18,7 +18,7 @@ export class LikeService {
     return this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
-        select: { id: true, username: true },
+        select: { id: true},
       });
       if (!user) throw new NotFoundException('User not found');
 
@@ -38,7 +38,7 @@ export class LikeService {
       const like = await tx.like.create({
         data: { userId, postId, postType },
         include: {
-          user: { select: { id: true, username: true, email: true } },
+          user: { select: { id: true, email: true } },
         },
       });
 
@@ -139,7 +139,6 @@ export class LikeService {
           user: {
             select: {
               id: true,
-              username: true,
               email: true,
               profile: {
                 select: {

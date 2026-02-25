@@ -134,7 +134,7 @@ export class PostService {
         },
         include: {
           hashtags: true,
-          taggedUsers: { select: { id: true, username: true } },
+          taggedUsers: { select: { id: true } },
           profile: { select: { id: true, imageUrl: true, activeType: true } },
         },
       });
@@ -223,10 +223,10 @@ export class PostService {
         skip,
         take: limit,
         include: {
-          user: { select: { id: true, username: true } },
+          user: { select: { id: true} },
           profile: { select: { id: true, imageUrl: true, activeType: true } },
           hashtags: true,
-          taggedUsers: { select: { id: true, username: true } },
+          taggedUsers: { select: { id: true } },
         }
       }),
       this.prisma.post.count({ where }),
@@ -251,10 +251,10 @@ export class PostService {
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
       include: {
-        user: { select: { id: true, username: true } },
+        user: { select: { id: true} },
         profile: { select: { id: true, imageUrl: true, activeType: true } },
         hashtags: true,
-        taggedUsers: { select: { id: true, username: true } },
+        taggedUsers: { select: { id: true } },
       }
     });
 
