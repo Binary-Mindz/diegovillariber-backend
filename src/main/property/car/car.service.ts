@@ -108,6 +108,11 @@ export class CarService {
     });
   }
 
+  async getCars(){
+    const cars = await this.prisma.car.findMany({})
+    return cars
+  }
+
   async update(userId: string, carId: string, dto: UpdateCarDto) {
     await this.validateOwnership(userId, carId);
     return this.prisma.car.update({
