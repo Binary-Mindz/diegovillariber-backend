@@ -4,6 +4,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  MaxLength,
   ValidateNested,
 } from 'class-validator';
 import { Type } from 'class-transformer';
@@ -70,53 +71,176 @@ export class ProDriverProfileDto {
 }
 
 /* ---------------- Sim Racing ---------------- */
-
 export class HardwareSetupDto {
-  @ApiPropertyOptional({ example: 'Fanatec DD Pro' })
+  // ---- Wheel / Base ----
+  @ApiPropertyOptional({ example: 'Fanatec' })
   @IsOptional()
   @IsString()
+  @MaxLength(80)
   steeringWheel?: string;
 
-  @ApiPropertyOptional({ example: 'Heusinkveld Sprint' })
+  @ApiPropertyOptional({ example: 'GT DD Pro Wheel' })
   @IsOptional()
   @IsString()
+  @MaxLength(120)
+  wheelModel?: string;
+
+  @ApiPropertyOptional({ example: 'Direct Drive 8Nm' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  wheelbase?: string;
+
+  // ---- Pedals ----
+  @ApiPropertyOptional({ example: 'Heusinkveld' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(80)
   pedals?: string;
 
-  @ApiPropertyOptional({ example: true })
+  // NOTE: model field is `pedelModel` (typo). DTO keeps same name to match Prisma.
+  @ApiPropertyOptional({ example: 'Sprint 3-Pedal Set' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  pedelModel?: string;
+
+  // ---- Other Controls ----
+  @ApiPropertyOptional({ example: 'Fanatec SQ 1.5' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  shifter?: string;
+
+  @ApiPropertyOptional({ example: 'Heusinkveld Handbrake' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  handbrake?: string;
+
+  @ApiPropertyOptional({ example: 'Aluminium Profile Rig' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  rig?: string;
+
+  @ApiPropertyOptional({ example: 'Sim-Lab' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  rigBrand?: string;
+
+  @ApiPropertyOptional({ example: 'Sparco' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  seatBrand?: string;
+
+  @ApiPropertyOptional({ example: 'BBJ Sim Racing Button Box' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(160)
+  buttonBox?: string;
+
+  // ---- Accessories ----
+  @ApiPropertyOptional({ example: true, default: true })
   @IsOptional()
   @IsBoolean()
   bassShakers?: boolean;
+
+  @ApiPropertyOptional({ example: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  windSim?: boolean;
+
+  @ApiPropertyOptional({ example: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  racingGloves?: boolean;
+
+  @ApiPropertyOptional({ example: true, default: true })
+  @IsOptional()
+  @IsBoolean()
+  racingShoes?: boolean;
 }
 
 export class DisplayAndPcSetupDto {
   @ApiPropertyOptional({ example: 'Triple 32-inch monitors' })
   @IsOptional()
   @IsString()
+  @MaxLength(120)
   monitors?: string;
 
-  @ApiPropertyOptional({ example: 'RTX 4090 PC' })
+  @ApiPropertyOptional({ example: 'Meta Quest 3 / Valve Index' })
   @IsOptional()
   @IsString()
+  @MaxLength(120)
+  vrHeadset?: string;
+
+  @ApiPropertyOptional({ example: 'PC desk in spare room / sim corner setup' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(160)
   pcSpace?: string;
 }
 
 export class DrivingAssistantDto {
-  @ApiPropertyOptional({ example: true })
+  @ApiPropertyOptional({ example: true, default: true })
   @IsOptional()
   @IsBoolean()
   tractionControl?: boolean;
 
-  @ApiPropertyOptional({ example: false })
+  @ApiPropertyOptional({ example: false, default: false })
   @IsOptional()
   @IsBoolean()
   abs?: boolean;
+
+  @ApiPropertyOptional({ example: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  stability?: boolean;
+
+  @ApiPropertyOptional({ example: true, default: true })
+  @IsOptional()
+  @IsBoolean()
+  autoClutch?: boolean;
+
+  @ApiPropertyOptional({ example: false, default: false })
+  @IsOptional()
+  @IsBoolean()
+  racingLine?: boolean;
 }
 
 export class RacingDto {
   @ApiPropertyOptional({ example: 'iRacing_12345' })
   @IsOptional()
   @IsString()
+  @MaxLength(100)
   iRacingId?: string;
+
+  @ApiPropertyOptional({ example: 'ACC_Player_01' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  accId?: string;
+
+  @ApiPropertyOptional({ example: '76561198000000000' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  steamId?: string;
+
+  @ApiPropertyOptional({ example: 'PSN_RacerX' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  psnId?: string;
+
+  @ApiPropertyOptional({ example: 'XboxRacerGT' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(100)
+  xboxGamertag?: string;
 }
 
 export class SetupDescriptionPhotoDto {
