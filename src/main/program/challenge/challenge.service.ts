@@ -223,7 +223,7 @@ export class ChallengeService {
         isActive: true,
         participants: true,
         hostId: true,
-        host: { select: { id: true, username: true } },
+        host: { select: { id: true, } },
         _count: { select: { participantsList: true } }
       },
     });
@@ -245,7 +245,7 @@ export class ChallengeService {
       select: {
         id: true,
         joinedAt: true,
-        user: { select: { id: true, username: true} },
+        user: { select: { id: true} },
       },
     });
   }
@@ -268,7 +268,7 @@ export class ChallengeService {
         caption: true,
         like: true,
         createdAt: true,
-        user: { select: { id: true, username: true } },
+        user: { select: { id: true } },
       },
     });
   }

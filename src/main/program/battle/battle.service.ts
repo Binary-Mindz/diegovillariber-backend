@@ -98,7 +98,7 @@ export class BattleService {
         endTime: true,
         createdAt: true,
         hostId: true,
-        host: { select: { id: true, username: true } },
+        host: { select: { id: true } },
         _count: { select: { participants: true, entries: true, votes: true } },
         result: {
           select: {
@@ -129,7 +129,7 @@ export class BattleService {
       select: {
         id: true,
         joinedAt: true,
-        user: { select: { id: true, username: true } },
+        user: { select: { id: true } },
       },
     });
   }
@@ -148,7 +148,7 @@ export class BattleService {
         id: true,
         createdAt: true,
         participantId: true,
-        participant: { select: { userId: true, user: { select: { id: true, username: true } } } },
+        participant: { select: { userId: true, user: { select: { id: true } } } },
         xpost: { select: { id: true, mediaUrl: true, caption: true, createdAt: true } },
         _count: { select: { votes: true } },
       },
@@ -171,7 +171,7 @@ export class BattleService {
         participant: {
           select: {
             userId: true,
-            user: { select: { id: true, username: true } },
+            user: { select: { id: true } },
           },
         },
         xpost: { select: { id: true, mediaUrl: true, caption: true } },
