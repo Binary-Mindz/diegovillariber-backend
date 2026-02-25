@@ -22,7 +22,7 @@ import { assertPayloadMatchesType } from './utils/profile-type.validator';
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
-    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType'
+    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType' | 'preference'
   >
 >;
 
@@ -69,7 +69,8 @@ export class ProfileService {
         accountType: dto.accountType ?? AccountType.PUBLIC,
         isActive: IsActive.ACTIVE,
         suspend: false,
-        activeType: dto.profileType
+        activeType: dto.profileType,
+        preference: dto.preference,
       };
 
       if (existing) {
@@ -152,6 +153,7 @@ export class ProfileService {
         imageUrl: dto.imageUrl ?? undefined,
         instagramHandler: dto.instagramHandler ?? undefined,
         accountType: dto.accountType as any,
+        preference: dto.preference as any
       },
       include: this.profileInclude(),
     });

@@ -16,6 +16,7 @@ import {
   BusinessCategory,
   RacingType,
   ContentCategory,
+  Preference,
 } from 'generated/prisma/enums';
 
 /* ---------------- Sub Profiles ---------------- */
@@ -310,6 +311,11 @@ export class CreateProfileDto {
   @IsOptional()
   @IsEnum(AccountType)
   accountType?: AccountType;
+
+  @ApiPropertyOptional({ enum: Preference, example: 'Car' })
+  @IsOptional()
+  @IsEnum(Preference)
+  preference?: Preference;
 
   @ApiProperty({ enum: ProfileType, example: 'PRO_BUSSINESS' })
   @IsEnum(ProfileType)
