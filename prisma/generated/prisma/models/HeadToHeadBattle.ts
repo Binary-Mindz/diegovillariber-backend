@@ -27,19 +27,19 @@ export type AggregateHeadToHeadBattle = {
 }
 
 export type HeadToHeadBattleAvgAggregateOutputType = {
+  durationDays: number | null
   autoInviteCount: number | null
   radiusKm: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
-  durationDays: number | null
 }
 
 export type HeadToHeadBattleSumAggregateOutputType = {
+  durationDays: number | null
   autoInviteCount: number | null
   radiusKm: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
-  durationDays: number | null
 }
 
 export type HeadToHeadBattleMinAggregateOutputType = {
@@ -47,9 +47,14 @@ export type HeadToHeadBattleMinAggregateOutputType = {
   creatorId: string | null
   winnerUserId: string | null
   title: string | null
+  preference: $Enums.Preference | null
   description: string | null
-  mediaType: $Enums.BattleMediaType | null
   coverImage: string | null
+  battleCategory: $Enums.BattleCategory | null
+  brandFilter: string | null
+  durationDays: number | null
+  winPrize: string | null
+  uploadImageOrVideo: string | null
   cameraRequirement: $Enums.CameraRequirement | null
   requireTrueShotVerified: boolean | null
   rejectEditedPhotos: boolean | null
@@ -64,7 +69,6 @@ export type HeadToHeadBattleMinAggregateOutputType = {
   placeId: string | null
   startDate: Date | null
   endDate: Date | null
-  durationDays: number | null
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -75,9 +79,14 @@ export type HeadToHeadBattleMaxAggregateOutputType = {
   creatorId: string | null
   winnerUserId: string | null
   title: string | null
+  preference: $Enums.Preference | null
   description: string | null
-  mediaType: $Enums.BattleMediaType | null
   coverImage: string | null
+  battleCategory: $Enums.BattleCategory | null
+  brandFilter: string | null
+  durationDays: number | null
+  winPrize: string | null
+  uploadImageOrVideo: string | null
   cameraRequirement: $Enums.CameraRequirement | null
   requireTrueShotVerified: boolean | null
   rejectEditedPhotos: boolean | null
@@ -92,7 +101,6 @@ export type HeadToHeadBattleMaxAggregateOutputType = {
   placeId: string | null
   startDate: Date | null
   endDate: Date | null
-  durationDays: number | null
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -103,9 +111,14 @@ export type HeadToHeadBattleCountAggregateOutputType = {
   creatorId: number
   winnerUserId: number
   title: number
+  preference: number
   description: number
-  mediaType: number
   coverImage: number
+  battleCategory: number
+  brandFilter: number
+  durationDays: number
+  winPrize: number
+  uploadImageOrVideo: number
   cameraRequirement: number
   requireTrueShotVerified: number
   rejectEditedPhotos: number
@@ -120,7 +133,6 @@ export type HeadToHeadBattleCountAggregateOutputType = {
   placeId: number
   startDate: number
   endDate: number
-  durationDays: number
   status: number
   createdAt: number
   updatedAt: number
@@ -129,19 +141,19 @@ export type HeadToHeadBattleCountAggregateOutputType = {
 
 
 export type HeadToHeadBattleAvgAggregateInputType = {
+  durationDays?: true
   autoInviteCount?: true
   radiusKm?: true
   latitude?: true
   longitude?: true
-  durationDays?: true
 }
 
 export type HeadToHeadBattleSumAggregateInputType = {
+  durationDays?: true
   autoInviteCount?: true
   radiusKm?: true
   latitude?: true
   longitude?: true
-  durationDays?: true
 }
 
 export type HeadToHeadBattleMinAggregateInputType = {
@@ -149,9 +161,14 @@ export type HeadToHeadBattleMinAggregateInputType = {
   creatorId?: true
   winnerUserId?: true
   title?: true
+  preference?: true
   description?: true
-  mediaType?: true
   coverImage?: true
+  battleCategory?: true
+  brandFilter?: true
+  durationDays?: true
+  winPrize?: true
+  uploadImageOrVideo?: true
   cameraRequirement?: true
   requireTrueShotVerified?: true
   rejectEditedPhotos?: true
@@ -166,7 +183,6 @@ export type HeadToHeadBattleMinAggregateInputType = {
   placeId?: true
   startDate?: true
   endDate?: true
-  durationDays?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -177,9 +193,14 @@ export type HeadToHeadBattleMaxAggregateInputType = {
   creatorId?: true
   winnerUserId?: true
   title?: true
+  preference?: true
   description?: true
-  mediaType?: true
   coverImage?: true
+  battleCategory?: true
+  brandFilter?: true
+  durationDays?: true
+  winPrize?: true
+  uploadImageOrVideo?: true
   cameraRequirement?: true
   requireTrueShotVerified?: true
   rejectEditedPhotos?: true
@@ -194,7 +215,6 @@ export type HeadToHeadBattleMaxAggregateInputType = {
   placeId?: true
   startDate?: true
   endDate?: true
-  durationDays?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -205,9 +225,14 @@ export type HeadToHeadBattleCountAggregateInputType = {
   creatorId?: true
   winnerUserId?: true
   title?: true
+  preference?: true
   description?: true
-  mediaType?: true
   coverImage?: true
+  battleCategory?: true
+  brandFilter?: true
+  durationDays?: true
+  winPrize?: true
+  uploadImageOrVideo?: true
   cameraRequirement?: true
   requireTrueShotVerified?: true
   rejectEditedPhotos?: true
@@ -222,7 +247,6 @@ export type HeadToHeadBattleCountAggregateInputType = {
   placeId?: true
   startDate?: true
   endDate?: true
-  durationDays?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -320,9 +344,14 @@ export type HeadToHeadBattleGroupByOutputType = {
   creatorId: string
   winnerUserId: string | null
   title: string
+  preference: $Enums.Preference
   description: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage: string | null
+  battleCategory: $Enums.BattleCategory
+  brandFilter: string | null
+  durationDays: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement: $Enums.CameraRequirement
   requireTrueShotVerified: boolean
   rejectEditedPhotos: boolean
@@ -337,7 +366,6 @@ export type HeadToHeadBattleGroupByOutputType = {
   placeId: string | null
   startDate: Date
   endDate: Date
-  durationDays: number | null
   status: $Enums.BattleStatus
   createdAt: Date
   updatedAt: Date
@@ -371,9 +399,14 @@ export type HeadToHeadBattleWhereInput = {
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
   winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  preference?: Prisma.EnumPreferenceFilter<"HeadToHeadBattle"> | $Enums.Preference
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
   coverImage?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFilter<"HeadToHeadBattle"> | $Enums.BattleCategory
+  brandFilter?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
+  winPrize?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  uploadImageOrVideo?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   cameraRequirement?: Prisma.EnumCameraRequirementFilter<"HeadToHeadBattle"> | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
@@ -388,7 +421,6 @@ export type HeadToHeadBattleWhereInput = {
   placeId?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   startDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
@@ -406,9 +438,14 @@ export type HeadToHeadBattleOrderByWithRelationInput = {
   creatorId?: Prisma.SortOrder
   winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  mediaType?: Prisma.SortOrder
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  battleCategory?: Prisma.SortOrder
+  brandFilter?: Prisma.SortOrderInput | Prisma.SortOrder
+  durationDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  winPrize?: Prisma.SortOrder
+  uploadImageOrVideo?: Prisma.SortOrder
   cameraRequirement?: Prisma.SortOrder
   requireTrueShotVerified?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
@@ -423,7 +460,6 @@ export type HeadToHeadBattleOrderByWithRelationInput = {
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -444,9 +480,14 @@ export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
   winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  preference?: Prisma.EnumPreferenceFilter<"HeadToHeadBattle"> | $Enums.Preference
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
   coverImage?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFilter<"HeadToHeadBattle"> | $Enums.BattleCategory
+  brandFilter?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
+  winPrize?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  uploadImageOrVideo?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   cameraRequirement?: Prisma.EnumCameraRequirementFilter<"HeadToHeadBattle"> | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
@@ -461,7 +502,6 @@ export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
   placeId?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   startDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
@@ -479,9 +519,14 @@ export type HeadToHeadBattleOrderByWithAggregationInput = {
   creatorId?: Prisma.SortOrder
   winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  mediaType?: Prisma.SortOrder
   coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  battleCategory?: Prisma.SortOrder
+  brandFilter?: Prisma.SortOrderInput | Prisma.SortOrder
+  durationDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  winPrize?: Prisma.SortOrder
+  uploadImageOrVideo?: Prisma.SortOrder
   cameraRequirement?: Prisma.SortOrder
   requireTrueShotVerified?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
@@ -496,7 +541,6 @@ export type HeadToHeadBattleOrderByWithAggregationInput = {
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -515,9 +559,14 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
   creatorId?: Prisma.UuidWithAggregatesFilter<"HeadToHeadBattle"> | string
   winnerUserId?: Prisma.UuidNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringWithAggregatesFilter<"HeadToHeadBattle"> | string
+  preference?: Prisma.EnumPreferenceWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.Preference
   description?: Prisma.StringNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
   coverImage?: Prisma.StringNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
+  battleCategory?: Prisma.EnumBattleCategoryWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleCategory
+  brandFilter?: Prisma.StringNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
+  durationDays?: Prisma.IntNullableWithAggregatesFilter<"HeadToHeadBattle"> | number | null
+  winPrize?: Prisma.StringWithAggregatesFilter<"HeadToHeadBattle"> | string
+  uploadImageOrVideo?: Prisma.StringWithAggregatesFilter<"HeadToHeadBattle"> | string
   cameraRequirement?: Prisma.EnumCameraRequirementWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolWithAggregatesFilter<"HeadToHeadBattle"> | boolean
   rejectEditedPhotos?: Prisma.BoolWithAggregatesFilter<"HeadToHeadBattle"> | boolean
@@ -532,7 +581,6 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
   placeId?: Prisma.StringNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
   startDate?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
   endDate?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
-  durationDays?: Prisma.IntNullableWithAggregatesFilter<"HeadToHeadBattle"> | number | null
   status?: Prisma.EnumBattleStatusWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
@@ -541,9 +589,14 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
 export type HeadToHeadBattleCreateInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -558,7 +611,6 @@ export type HeadToHeadBattleCreateInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -576,9 +628,14 @@ export type HeadToHeadBattleUncheckedCreateInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -593,7 +650,6 @@ export type HeadToHeadBattleUncheckedCreateInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -607,9 +663,14 @@ export type HeadToHeadBattleUncheckedCreateInput = {
 export type HeadToHeadBattleUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -624,7 +685,6 @@ export type HeadToHeadBattleUpdateInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -642,9 +702,14 @@ export type HeadToHeadBattleUncheckedUpdateInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -659,7 +724,6 @@ export type HeadToHeadBattleUncheckedUpdateInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -675,9 +739,14 @@ export type HeadToHeadBattleCreateManyInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -692,7 +761,6 @@ export type HeadToHeadBattleCreateManyInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -701,9 +769,14 @@ export type HeadToHeadBattleCreateManyInput = {
 export type HeadToHeadBattleUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -718,7 +791,6 @@ export type HeadToHeadBattleUpdateManyMutationInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -729,9 +801,14 @@ export type HeadToHeadBattleUncheckedUpdateManyInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -746,7 +823,6 @@ export type HeadToHeadBattleUncheckedUpdateManyInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -757,9 +833,14 @@ export type HeadToHeadBattleCountOrderByAggregateInput = {
   creatorId?: Prisma.SortOrder
   winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  mediaType?: Prisma.SortOrder
   coverImage?: Prisma.SortOrder
+  battleCategory?: Prisma.SortOrder
+  brandFilter?: Prisma.SortOrder
+  durationDays?: Prisma.SortOrder
+  winPrize?: Prisma.SortOrder
+  uploadImageOrVideo?: Prisma.SortOrder
   cameraRequirement?: Prisma.SortOrder
   requireTrueShotVerified?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
@@ -774,18 +855,17 @@ export type HeadToHeadBattleCountOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleAvgOrderByAggregateInput = {
+  durationDays?: Prisma.SortOrder
   autoInviteCount?: Prisma.SortOrder
   radiusKm?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleMaxOrderByAggregateInput = {
@@ -793,9 +873,14 @@ export type HeadToHeadBattleMaxOrderByAggregateInput = {
   creatorId?: Prisma.SortOrder
   winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  mediaType?: Prisma.SortOrder
   coverImage?: Prisma.SortOrder
+  battleCategory?: Prisma.SortOrder
+  brandFilter?: Prisma.SortOrder
+  durationDays?: Prisma.SortOrder
+  winPrize?: Prisma.SortOrder
+  uploadImageOrVideo?: Prisma.SortOrder
   cameraRequirement?: Prisma.SortOrder
   requireTrueShotVerified?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
@@ -810,7 +895,6 @@ export type HeadToHeadBattleMaxOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -821,9 +905,14 @@ export type HeadToHeadBattleMinOrderByAggregateInput = {
   creatorId?: Prisma.SortOrder
   winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  mediaType?: Prisma.SortOrder
   coverImage?: Prisma.SortOrder
+  battleCategory?: Prisma.SortOrder
+  brandFilter?: Prisma.SortOrder
+  durationDays?: Prisma.SortOrder
+  winPrize?: Prisma.SortOrder
+  uploadImageOrVideo?: Prisma.SortOrder
   cameraRequirement?: Prisma.SortOrder
   requireTrueShotVerified?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
@@ -838,18 +927,17 @@ export type HeadToHeadBattleMinOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleSumOrderByAggregateInput = {
+  durationDays?: Prisma.SortOrder
   autoInviteCount?: Prisma.SortOrder
   radiusKm?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  durationDays?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleScalarRelationFilter = {
@@ -867,8 +955,8 @@ export type HeadToHeadBattleOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type EnumBattleMediaTypeFieldUpdateOperationsInput = {
-  set?: $Enums.BattleMediaType
+export type EnumBattleCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.BattleCategory
 }
 
 export type EnumCameraRequirementFieldUpdateOperationsInput = {
@@ -1044,9 +1132,14 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput = {
 export type HeadToHeadBattleCreateWithoutParticipantsInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1061,7 +1154,6 @@ export type HeadToHeadBattleCreateWithoutParticipantsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1078,9 +1170,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutParticipantsInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1095,7 +1192,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutParticipantsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1124,9 +1220,14 @@ export type HeadToHeadBattleUpdateToOneWithWhereWithoutParticipantsInput = {
 export type HeadToHeadBattleUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1141,7 +1242,6 @@ export type HeadToHeadBattleUpdateWithoutParticipantsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1158,9 +1258,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1175,7 +1280,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1188,9 +1292,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
 export type HeadToHeadBattleCreateWithoutInvitationsInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1205,7 +1314,6 @@ export type HeadToHeadBattleCreateWithoutInvitationsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1222,9 +1330,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutInvitationsInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1239,7 +1352,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutInvitationsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1268,9 +1380,14 @@ export type HeadToHeadBattleUpdateToOneWithWhereWithoutInvitationsInput = {
 export type HeadToHeadBattleUpdateWithoutInvitationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1285,7 +1402,6 @@ export type HeadToHeadBattleUpdateWithoutInvitationsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1302,9 +1418,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1319,7 +1440,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1332,9 +1452,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
 export type HeadToHeadBattleCreateWithoutSubmissionsInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1349,7 +1474,6 @@ export type HeadToHeadBattleCreateWithoutSubmissionsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1366,9 +1490,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutSubmissionsInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1383,7 +1512,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutSubmissionsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1412,9 +1540,14 @@ export type HeadToHeadBattleUpdateToOneWithWhereWithoutSubmissionsInput = {
 export type HeadToHeadBattleUpdateWithoutSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1429,7 +1562,6 @@ export type HeadToHeadBattleUpdateWithoutSubmissionsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1446,9 +1578,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1463,7 +1600,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1476,9 +1612,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
 export type HeadToHeadBattleCreateWithoutBattleVotesInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1493,7 +1634,6 @@ export type HeadToHeadBattleCreateWithoutBattleVotesInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1510,9 +1650,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1527,7 +1672,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1556,9 +1700,14 @@ export type HeadToHeadBattleUpdateToOneWithWhereWithoutBattleVotesInput = {
 export type HeadToHeadBattleUpdateWithoutBattleVotesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1573,7 +1722,6 @@ export type HeadToHeadBattleUpdateWithoutBattleVotesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1590,9 +1738,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1607,7 +1760,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1620,9 +1772,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput = {
 export type HeadToHeadBattleCreateWithoutBattleCommentsInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1637,7 +1794,6 @@ export type HeadToHeadBattleCreateWithoutBattleCommentsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1654,9 +1810,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput = {
   creatorId: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1671,7 +1832,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1700,9 +1860,14 @@ export type HeadToHeadBattleUpdateToOneWithWhereWithoutBattleCommentsInput = {
 export type HeadToHeadBattleUpdateWithoutBattleCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1717,7 +1882,6 @@ export type HeadToHeadBattleUpdateWithoutBattleCommentsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1734,9 +1898,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput = {
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1751,7 +1920,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1764,9 +1932,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput = {
 export type HeadToHeadBattleCreateWithoutCreatorInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1781,7 +1954,6 @@ export type HeadToHeadBattleCreateWithoutCreatorInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1797,9 +1969,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutCreatorInput = {
   id?: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1814,7 +1991,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutCreatorInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1838,9 +2014,14 @@ export type HeadToHeadBattleCreateManyCreatorInputEnvelope = {
 export type HeadToHeadBattleCreateWithoutWinnerUserInput = {
   id?: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1855,7 +2036,6 @@ export type HeadToHeadBattleCreateWithoutWinnerUserInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1871,9 +2051,14 @@ export type HeadToHeadBattleUncheckedCreateWithoutWinnerUserInput = {
   id?: string
   creatorId: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1888,7 +2073,6 @@ export type HeadToHeadBattleUncheckedCreateWithoutWinnerUserInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1933,9 +2117,14 @@ export type HeadToHeadBattleScalarWhereInput = {
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
   winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  preference?: Prisma.EnumPreferenceFilter<"HeadToHeadBattle"> | $Enums.Preference
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
   coverImage?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFilter<"HeadToHeadBattle"> | $Enums.BattleCategory
+  brandFilter?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
+  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
+  winPrize?: Prisma.StringFilter<"HeadToHeadBattle"> | string
+  uploadImageOrVideo?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   cameraRequirement?: Prisma.EnumCameraRequirementFilter<"HeadToHeadBattle"> | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"HeadToHeadBattle"> | boolean
@@ -1950,7 +2139,6 @@ export type HeadToHeadBattleScalarWhereInput = {
   placeId?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   startDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  durationDays?: Prisma.IntNullableFilter<"HeadToHeadBattle"> | number | null
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
@@ -1976,9 +2164,14 @@ export type HeadToHeadBattleCreateManyCreatorInput = {
   id?: string
   winnerUserId?: string | null
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -1993,7 +2186,6 @@ export type HeadToHeadBattleCreateManyCreatorInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2003,9 +2195,14 @@ export type HeadToHeadBattleCreateManyWinnerUserInput = {
   id?: string
   creatorId: string
   title: string
+  preference?: $Enums.Preference
   description?: string | null
-  mediaType: $Enums.BattleMediaType
   coverImage?: string | null
+  battleCategory?: $Enums.BattleCategory
+  brandFilter?: string | null
+  durationDays?: number | null
+  winPrize: string
+  uploadImageOrVideo: string
   cameraRequirement?: $Enums.CameraRequirement
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -2020,7 +2217,6 @@ export type HeadToHeadBattleCreateManyWinnerUserInput = {
   placeId?: string | null
   startDate: Date | string
   endDate: Date | string
-  durationDays?: number | null
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2029,9 +2225,14 @@ export type HeadToHeadBattleCreateManyWinnerUserInput = {
 export type HeadToHeadBattleUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2046,7 +2247,6 @@ export type HeadToHeadBattleUpdateWithoutCreatorInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2062,9 +2262,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2079,7 +2284,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutCreatorInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2094,9 +2298,14 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2111,7 +2320,6 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2120,9 +2328,14 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
 export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2137,7 +2350,6 @@ export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2153,9 +2365,14 @@ export type HeadToHeadBattleUncheckedUpdateWithoutWinnerUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2170,7 +2387,6 @@ export type HeadToHeadBattleUncheckedUpdateWithoutWinnerUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2185,9 +2401,14 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
   coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  battleCategory?: Prisma.EnumBattleCategoryFieldUpdateOperationsInput | $Enums.BattleCategory
+  brandFilter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  winPrize?: Prisma.StringFieldUpdateOperationsInput | string
+  uploadImageOrVideo?: Prisma.StringFieldUpdateOperationsInput | string
   cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
   requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2202,7 +2423,6 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -2280,9 +2500,14 @@ export type HeadToHeadBattleSelect<ExtArgs extends runtime.Types.Extensions.Inte
   creatorId?: boolean
   winnerUserId?: boolean
   title?: boolean
+  preference?: boolean
   description?: boolean
-  mediaType?: boolean
   coverImage?: boolean
+  battleCategory?: boolean
+  brandFilter?: boolean
+  durationDays?: boolean
+  winPrize?: boolean
+  uploadImageOrVideo?: boolean
   cameraRequirement?: boolean
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -2297,7 +2522,6 @@ export type HeadToHeadBattleSelect<ExtArgs extends runtime.Types.Extensions.Inte
   placeId?: boolean
   startDate?: boolean
   endDate?: boolean
-  durationDays?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2316,9 +2540,14 @@ export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   creatorId?: boolean
   winnerUserId?: boolean
   title?: boolean
+  preference?: boolean
   description?: boolean
-  mediaType?: boolean
   coverImage?: boolean
+  battleCategory?: boolean
+  brandFilter?: boolean
+  durationDays?: boolean
+  winPrize?: boolean
+  uploadImageOrVideo?: boolean
   cameraRequirement?: boolean
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -2333,7 +2562,6 @@ export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   placeId?: boolean
   startDate?: boolean
   endDate?: boolean
-  durationDays?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2346,9 +2574,14 @@ export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   creatorId?: boolean
   winnerUserId?: boolean
   title?: boolean
+  preference?: boolean
   description?: boolean
-  mediaType?: boolean
   coverImage?: boolean
+  battleCategory?: boolean
+  brandFilter?: boolean
+  durationDays?: boolean
+  winPrize?: boolean
+  uploadImageOrVideo?: boolean
   cameraRequirement?: boolean
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -2363,7 +2596,6 @@ export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   placeId?: boolean
   startDate?: boolean
   endDate?: boolean
-  durationDays?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2376,9 +2608,14 @@ export type HeadToHeadBattleSelectScalar = {
   creatorId?: boolean
   winnerUserId?: boolean
   title?: boolean
+  preference?: boolean
   description?: boolean
-  mediaType?: boolean
   coverImage?: boolean
+  battleCategory?: boolean
+  brandFilter?: boolean
+  durationDays?: boolean
+  winPrize?: boolean
+  uploadImageOrVideo?: boolean
   cameraRequirement?: boolean
   requireTrueShotVerified?: boolean
   rejectEditedPhotos?: boolean
@@ -2393,13 +2630,12 @@ export type HeadToHeadBattleSelectScalar = {
   placeId?: boolean
   startDate?: boolean
   endDate?: boolean
-  durationDays?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "mediaType" | "coverImage" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "durationDays" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["headToHeadBattle"]>
+export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "preference" | "description" | "coverImage" | "battleCategory" | "brandFilter" | "durationDays" | "winPrize" | "uploadImageOrVideo" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["headToHeadBattle"]>
 export type HeadToHeadBattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
@@ -2435,9 +2671,14 @@ export type $HeadToHeadBattlePayload<ExtArgs extends runtime.Types.Extensions.In
     creatorId: string
     winnerUserId: string | null
     title: string
+    preference: $Enums.Preference
     description: string | null
-    mediaType: $Enums.BattleMediaType
     coverImage: string | null
+    battleCategory: $Enums.BattleCategory
+    brandFilter: string | null
+    durationDays: number | null
+    winPrize: string
+    uploadImageOrVideo: string
     cameraRequirement: $Enums.CameraRequirement
     requireTrueShotVerified: boolean
     rejectEditedPhotos: boolean
@@ -2452,7 +2693,6 @@ export type $HeadToHeadBattlePayload<ExtArgs extends runtime.Types.Extensions.In
     placeId: string | null
     startDate: Date
     endDate: Date
-    durationDays: number | null
     status: $Enums.BattleStatus
     createdAt: Date
     updatedAt: Date
@@ -2890,9 +3130,14 @@ export interface HeadToHeadBattleFieldRefs {
   readonly creatorId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly winnerUserId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly title: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
+  readonly preference: Prisma.FieldRef<"HeadToHeadBattle", 'Preference'>
   readonly description: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
-  readonly mediaType: Prisma.FieldRef<"HeadToHeadBattle", 'BattleMediaType'>
   readonly coverImage: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
+  readonly battleCategory: Prisma.FieldRef<"HeadToHeadBattle", 'BattleCategory'>
+  readonly brandFilter: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
+  readonly durationDays: Prisma.FieldRef<"HeadToHeadBattle", 'Int'>
+  readonly winPrize: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
+  readonly uploadImageOrVideo: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly cameraRequirement: Prisma.FieldRef<"HeadToHeadBattle", 'CameraRequirement'>
   readonly requireTrueShotVerified: Prisma.FieldRef<"HeadToHeadBattle", 'Boolean'>
   readonly rejectEditedPhotos: Prisma.FieldRef<"HeadToHeadBattle", 'Boolean'>
@@ -2907,7 +3152,6 @@ export interface HeadToHeadBattleFieldRefs {
   readonly placeId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly startDate: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
-  readonly durationDays: Prisma.FieldRef<"HeadToHeadBattle", 'Int'>
   readonly status: Prisma.FieldRef<"HeadToHeadBattle", 'BattleStatus'>
   readonly createdAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>

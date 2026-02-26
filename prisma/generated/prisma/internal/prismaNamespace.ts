@@ -426,6 +426,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
   Profile: 'Profile',
@@ -467,7 +468,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeDeviceRule" | "challengePrize" | "challengeParticipant" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeDeviceRule" | "challengePrize" | "challengeParticipant" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3579,6 +3580,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Prize: {
+      payload: Prisma.$PrizePayload<ExtArgs>
+      fields: Prisma.PrizeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PrizeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PrizeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        findFirst: {
+          args: Prisma.PrizeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PrizeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        findMany: {
+          args: Prisma.PrizeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>[]
+        }
+        create: {
+          args: Prisma.PrizeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        createMany: {
+          args: Prisma.PrizeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PrizeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>[]
+        }
+        delete: {
+          args: Prisma.PrizeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        update: {
+          args: Prisma.PrizeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        deleteMany: {
+          args: Prisma.PrizeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PrizeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PrizeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>[]
+        }
+        upsert: {
+          args: Prisma.PrizeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrizePayload>
+        }
+        aggregate: {
+          args: Prisma.PrizeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrize>
+        }
+        groupBy: {
+          args: Prisma.PrizeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrizeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PrizeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrizeCountAggregateOutputType> | number
+        }
+      }
+    }
     ProDriverProfile: {
       payload: Prisma.$ProDriverProfilePayload<ExtArgs>
       fields: Prisma.ProDriverProfileFieldRefs
@@ -5885,9 +5960,14 @@ export const HeadToHeadBattleScalarFieldEnum = {
   creatorId: 'creatorId',
   winnerUserId: 'winnerUserId',
   title: 'title',
+  preference: 'preference',
   description: 'description',
-  mediaType: 'mediaType',
   coverImage: 'coverImage',
+  battleCategory: 'battleCategory',
+  brandFilter: 'brandFilter',
+  durationDays: 'durationDays',
+  winPrize: 'winPrize',
+  uploadImageOrVideo: 'uploadImageOrVideo',
   cameraRequirement: 'cameraRequirement',
   requireTrueShotVerified: 'requireTrueShotVerified',
   rejectEditedPhotos: 'rejectEditedPhotos',
@@ -5902,7 +5982,6 @@ export const HeadToHeadBattleScalarFieldEnum = {
   placeId: 'placeId',
   startDate: 'startDate',
   endDate: 'endDate',
-  durationDays: 'durationDays',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -6161,6 +6240,15 @@ export const PostScalarFieldEnum = {
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
+export const PrizeScalarFieldEnum = {
+  id: 'id',
+  prizeName: 'prizeName',
+  createdById: 'createdById'
+} as const
+
+export type PrizeScalarFieldEnum = (typeof PrizeScalarFieldEnum)[keyof typeof PrizeScalarFieldEnum]
+
+
 export const ProDriverProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -6242,17 +6330,9 @@ export const RawShiftBattleScalarFieldEnum = {
   description: 'description',
   coverImage: 'coverImage',
   bannerImage: 'bannerImage',
-  software: 'software',
-  softwareLabel: 'softwareLabel',
-  requireRaw: 'requireRaw',
-  rejectAiEdited: 'rejectAiEdited',
   participantLimit: 'participantLimit',
-  participationScope: 'participationScope',
-  radiusKm: 'radiusKm',
-  locationName: 'locationName',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  placeId: 'placeId',
+  rawShiftPrice: 'rawShiftPrice',
+  location: 'location',
   startDate: 'startDate',
   endDate: 'endDate',
   status: 'status',
@@ -6927,16 +7007,16 @@ export type ListEnumHashtagCreatedByFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
- * Reference to a field of type 'BattleMediaType'
+ * Reference to a field of type 'BattleCategory'
  */
-export type EnumBattleMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleMediaType'>
+export type EnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory'>
     
 
 
 /**
- * Reference to a field of type 'BattleMediaType[]'
+ * Reference to a field of type 'BattleCategory[]'
  */
-export type ListEnumBattleMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleMediaType[]'>
+export type ListEnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory[]'>
     
 
 
@@ -7189,20 +7269,6 @@ export type EnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'IsActive[]'
  */
 export type ListEnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive[]'>
-    
-
-
-/**
- * Reference to a field of type 'RawShiftSoftware'
- */
-export type EnumRawShiftSoftwareFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftSoftware'>
-    
-
-
-/**
- * Reference to a field of type 'RawShiftSoftware[]'
- */
-export type ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftSoftware[]'>
     
 
 
@@ -7538,6 +7604,7 @@ export type GlobalOmitConfig = {
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit
   post?: Prisma.PostOmit
+  prize?: Prisma.PrizeOmit
   proDriverProfile?: Prisma.ProDriverProfileOmit
   productList?: Prisma.ProductListOmit
   profile?: Prisma.ProfileOmit
