@@ -1,27 +1,116 @@
-model Challenge {
-  id String @id @default(uuid()) @db.Uuid
-
-  hostId String @db.Uuid
-  host   User   @relation("HostChallenges", fields: [hostId], references: [id])
-
-  participantsId   String? @db.Uuid
-  participantsUser User?   @relation(fields: [participantsId], references: [id])
-
-  title        String
-  description  String?
-  location     String?
-  startDate    DateTime?
-  endDate      DateTime?
-  images       String?
-  media        String?
-  camera       String?
-  participants Int       @default(10)
-  comment      String?
-  isActive     IsActive  @default(ACTIVE)
-
-  participantsList ChallengeParticipant[]
-  results          ChallengeResult[]
-
-  posts                XPost[]
-  challengeSubmissions ChallengeSubmission[]
+enum ChallengeType {
+  PHOTO
+  VIDEO
+  LAP_TIME
+  EXPLORATION
 }
+
+enum ChallengeCategory {
+  DAILY
+  SPOTTER
+  COMMUNITY
+  BRAND
+}
+
+enum Preference {
+  CAR
+  BIKE
+  BOTH
+}
+
+enum ParticipationScope {
+  GLOBAL
+  RADIUS
+}
+
+enum WinnerPrizeType {
+  NO_PRIZE
+  FEATURED
+  PRESTIGE_POINTS
+  EXPERIENCE_POINTS
+  FREE_ENTRY
+  CO_PILOT_EXPERIENCE
+  MERCHANDISING
+  CUSTOM
+}
+
+enum ChallengeStatus {
+  DRAFT
+  PUBLISHED
+  COMPLETED
+  CANCELLED
+}
+
+enum DeviceType {
+  MOBILE
+  DSLR
+  MIRRORLESS
+  ACTION_CAMERA
+  DRONE
+  OTHER
+}
+
+model Challenge {
+  id              String   @id @default(uuid()) @db.Uuid
+  creatorId       String   @db.Uuid
+  creator         User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  title           String   @db.VarChar(255)
+  description     String?  @db.Text
+
+  type            ChallengeType
+  category        ChallengeCategory
+  preference      Preference
+
+  coverImage      String?
+
+  participationScope ParticipationScope @default(GLOBAL)
+  radiusKm        Int?       
+  locationName    String?              @db.VarChar(150)
+  latitude        Decimal?             @db.Decimal(9,6)
+  longitude       Decimal?             @db.Decimal(9,6)
+
+  startDate       DateTime             @db.Timestamptz(6)
+  endDate         DateTime             @db.Timestamptz(6)
+
+  enableDeviceRestriction Boolean @default(false)
+
+  requireTrueShotVerification Boolean @default(false)
+  rejectEditedPhotos          Boolean @default(false)
+
+  status          ChallengeStatus @default(DRAFT)
+
+  createdAt       DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt       DateTime @updatedAt @db.Timestamptz(6)
+
+  prizes          ChallengePrize[]
+  deviceRules     ChallengeDeviceRule[]
+  participants    ChallengeParticipant[]
+
+  @@index([creatorId])
+  @@index([status])
+}
+
+model ChallengeDeviceRule {
+  id          String     @id @default(uuid()) @db.Uuid
+  challengeId String     @db.Uuid
+  challenge   Challenge  @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  deviceType  DeviceType
+  brand       String?    @db.VarChar(100)
+
+  @@index([challengeId])
+}
+  model ChallengePrize {
+  id          String           @id @default(uuid()) @db.Uuid
+  challengeId String           @db.Uuid
+  challenge   Challenge        @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  type        WinnerPrizeType
+  customName  String?          @db.VarChar(255)
+
+  createdAt   DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([challengeId])
+}
+

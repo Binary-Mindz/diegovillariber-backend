@@ -7,10 +7,10 @@ model Battle {
   description String?
   coverImage  String?
 
-  battleCategory BattleCategory @default(HEAD_TO_HEAD)
-  preference     Preference     @default(Car)
+  battleCategory BattleCategory @default(RAW_SHIFT)
+  preference     Preference     @default(CAR)
 
-  status          BattleStatus @default(PENDING)
+  status          BattleStatus @default(DRAFT)
   maxParticipants Int          @default(10)
 
   startTime DateTime?
@@ -19,12 +19,8 @@ model Battle {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  participants BattleParticipant[]
-  entries      BattleEntry[]
-  votes        BattleVote[]
-  result       BattleResult?
   userPoints   UserPoint[]
-  xposts       XPost[]
+ 
 
   @@index([status])
 }

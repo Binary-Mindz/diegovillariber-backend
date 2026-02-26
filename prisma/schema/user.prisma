@@ -43,12 +43,9 @@ model User {
   savePosts             SavePost[]
   hidePosts             HidePost[]
   wishLists             WishList[]
-  battleResults         BattleResult[]         @relation("BattleWinner")
   battles               Battle[]               @relation("HostBattles")
   battleParticipants    BattleParticipant[]
   userPoints            UserPoint[]
-  challengeResults      ChallengeResult[]      @relation("WinnerResults")
-  hostChallenge         Challenge[]            @relation("HostChallenges")
   challenges            Challenge[]
   challengeParticipants ChallengeParticipant[]
 
@@ -58,12 +55,6 @@ model User {
   officialPartners   OfficialPartner?
   ambassadorPrograms AmbassadorProgram?
 
-  battleVotes BattleVote[]
-  challengeSubmissions ChallengeSubmission[]
-  xposts               XPost[]
-
-
-
   conversationParticipants ConversationParticipant[]
 
   messages Message[] @relation("SentMessages")
@@ -71,4 +62,14 @@ model User {
   messageReceipts MessageReceipt[]
 
   taggedInPosts Post[] @relation("PostTaggedUsers")
+
+  headToHeadBattles HeadToHeadBattle[]
+
+  headToHeadBattlesWinner HeadToHeadBattle[] @relation("BattleWinner")
+
+  battleInvitationsHost BattleInvitation[] @relation("BattleInviter")
+
+  battleInvitations BattleInvitation[] @relation("BattleInvitee")
+
+  battleSubmissions BattleSubmission[]
 }

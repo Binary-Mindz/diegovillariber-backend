@@ -27,123 +27,173 @@ export type AggregateChallenge = {
 }
 
 export type ChallengeAvgAggregateOutputType = {
-  participants: number | null
+  radiusKm: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type ChallengeSumAggregateOutputType = {
-  participants: number | null
+  radiusKm: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type ChallengeMinAggregateOutputType = {
   id: string | null
-  hostId: string | null
-  participantsId: string | null
+  creatorId: string | null
   title: string | null
   description: string | null
-  location: string | null
+  type: $Enums.ChallengeType | null
+  category: $Enums.ChallengeCategory | null
+  preference: $Enums.Preference | null
+  coverImage: string | null
+  participationScope: $Enums.ParticipationScope | null
+  radiusKm: number | null
+  locationName: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
-  images: string | null
-  media: string | null
-  camera: string | null
-  participants: number | null
-  comment: string | null
-  isActive: $Enums.IsActive | null
+  enableDeviceRestriction: boolean | null
+  requireTrueShotVerification: boolean | null
+  rejectEditedPhotos: boolean | null
+  status: $Enums.ChallengeStatus | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ChallengeMaxAggregateOutputType = {
   id: string | null
-  hostId: string | null
-  participantsId: string | null
+  creatorId: string | null
   title: string | null
   description: string | null
-  location: string | null
+  type: $Enums.ChallengeType | null
+  category: $Enums.ChallengeCategory | null
+  preference: $Enums.Preference | null
+  coverImage: string | null
+  participationScope: $Enums.ParticipationScope | null
+  radiusKm: number | null
+  locationName: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
-  images: string | null
-  media: string | null
-  camera: string | null
-  participants: number | null
-  comment: string | null
-  isActive: $Enums.IsActive | null
+  enableDeviceRestriction: boolean | null
+  requireTrueShotVerification: boolean | null
+  rejectEditedPhotos: boolean | null
+  status: $Enums.ChallengeStatus | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ChallengeCountAggregateOutputType = {
   id: number
-  hostId: number
-  participantsId: number
+  creatorId: number
   title: number
   description: number
-  location: number
+  type: number
+  category: number
+  preference: number
+  coverImage: number
+  participationScope: number
+  radiusKm: number
+  locationName: number
+  latitude: number
+  longitude: number
   startDate: number
   endDate: number
-  images: number
-  media: number
-  camera: number
-  participants: number
-  comment: number
-  isActive: number
+  enableDeviceRestriction: number
+  requireTrueShotVerification: number
+  rejectEditedPhotos: number
+  status: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ChallengeAvgAggregateInputType = {
-  participants?: true
+  radiusKm?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type ChallengeSumAggregateInputType = {
-  participants?: true
+  radiusKm?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type ChallengeMinAggregateInputType = {
   id?: true
-  hostId?: true
-  participantsId?: true
+  creatorId?: true
   title?: true
   description?: true
-  location?: true
+  type?: true
+  category?: true
+  preference?: true
+  coverImage?: true
+  participationScope?: true
+  radiusKm?: true
+  locationName?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
-  images?: true
-  media?: true
-  camera?: true
-  participants?: true
-  comment?: true
-  isActive?: true
+  enableDeviceRestriction?: true
+  requireTrueShotVerification?: true
+  rejectEditedPhotos?: true
+  status?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ChallengeMaxAggregateInputType = {
   id?: true
-  hostId?: true
-  participantsId?: true
+  creatorId?: true
   title?: true
   description?: true
-  location?: true
+  type?: true
+  category?: true
+  preference?: true
+  coverImage?: true
+  participationScope?: true
+  radiusKm?: true
+  locationName?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
-  images?: true
-  media?: true
-  camera?: true
-  participants?: true
-  comment?: true
-  isActive?: true
+  enableDeviceRestriction?: true
+  requireTrueShotVerification?: true
+  rejectEditedPhotos?: true
+  status?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ChallengeCountAggregateInputType = {
   id?: true
-  hostId?: true
-  participantsId?: true
+  creatorId?: true
   title?: true
   description?: true
-  location?: true
+  type?: true
+  category?: true
+  preference?: true
+  coverImage?: true
+  participationScope?: true
+  radiusKm?: true
+  locationName?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
-  images?: true
-  media?: true
-  camera?: true
-  participants?: true
-  comment?: true
-  isActive?: true
+  enableDeviceRestriction?: true
+  requireTrueShotVerification?: true
+  rejectEditedPhotos?: true
+  status?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -235,19 +285,26 @@ export type ChallengeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type ChallengeGroupByOutputType = {
   id: string
-  hostId: string
-  participantsId: string | null
+  creatorId: string
   title: string
   description: string | null
-  location: string | null
-  startDate: Date | null
-  endDate: Date | null
-  images: string | null
-  media: string | null
-  camera: string | null
-  participants: number
-  comment: string | null
-  isActive: $Enums.IsActive
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage: string | null
+  participationScope: $Enums.ParticipationScope
+  radiusKm: number | null
+  locationName: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  startDate: Date
+  endDate: Date
+  enableDeviceRestriction: boolean
+  requireTrueShotVerification: boolean
+  rejectEditedPhotos: boolean
+  status: $Enums.ChallengeStatus
+  createdAt: Date
+  updatedAt: Date
   _count: ChallengeCountAggregateOutputType | null
   _avg: ChallengeAvgAggregateOutputType | null
   _sum: ChallengeSumAggregateOutputType | null
@@ -275,48 +332,58 @@ export type ChallengeWhereInput = {
   OR?: Prisma.ChallengeWhereInput[]
   NOT?: Prisma.ChallengeWhereInput | Prisma.ChallengeWhereInput[]
   id?: Prisma.UuidFilter<"Challenge"> | string
-  hostId?: Prisma.UuidFilter<"Challenge"> | string
-  participantsId?: Prisma.UuidNullableFilter<"Challenge"> | string | null
+  creatorId?: Prisma.UuidFilter<"Challenge"> | string
   title?: Prisma.StringFilter<"Challenge"> | string
   description?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  location?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  participants?: Prisma.IntFilter<"Challenge"> | number
-  comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  isActive?: Prisma.EnumIsActiveFilter<"Challenge"> | $Enums.IsActive
-  host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  participantsUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
-  participantsList?: Prisma.ChallengeParticipantListRelationFilter
-  results?: Prisma.ChallengeResultListRelationFilter
-  posts?: Prisma.XPostListRelationFilter
-  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  type?: Prisma.EnumChallengeTypeFilter<"Challenge"> | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFilter<"Challenge"> | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFilter<"Challenge"> | $Enums.Preference
+  coverImage?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  participationScope?: Prisma.EnumParticipationScopeFilter<"Challenge"> | $Enums.ParticipationScope
+  radiusKm?: Prisma.IntNullableFilter<"Challenge"> | number | null
+  locationName?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
+  rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prizes?: Prisma.ChallengePrizeListRelationFilter
+  deviceRules?: Prisma.ChallengeDeviceRuleListRelationFilter
+  participants?: Prisma.ChallengeParticipantListRelationFilter
 }
 
 export type ChallengeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  hostId?: Prisma.SortOrder
-  participantsId?: Prisma.SortOrderInput | Prisma.SortOrder
+  creatorId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
-  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  images?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrderInput | Prisma.SortOrder
-  camera?: Prisma.SortOrderInput | Prisma.SortOrder
-  participants?: Prisma.SortOrder
-  comment?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
-  host?: Prisma.UserOrderByWithRelationInput
-  participantsUser?: Prisma.UserOrderByWithRelationInput
-  participantsList?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
-  results?: Prisma.ChallengeResultOrderByRelationAggregateInput
-  posts?: Prisma.XPostOrderByRelationAggregateInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionOrderByRelationAggregateInput
+  type?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
+  coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  participationScope?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
+  enableDeviceRestriction?: Prisma.SortOrder
+  requireTrueShotVerification?: Prisma.SortOrder
+  rejectEditedPhotos?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  creator?: Prisma.UserOrderByWithRelationInput
+  prizes?: Prisma.ChallengePrizeOrderByRelationAggregateInput
+  deviceRules?: Prisma.ChallengeDeviceRuleOrderByRelationAggregateInput
+  participants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
 }
 
 export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
@@ -324,42 +391,54 @@ export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ChallengeWhereInput | Prisma.ChallengeWhereInput[]
   OR?: Prisma.ChallengeWhereInput[]
   NOT?: Prisma.ChallengeWhereInput | Prisma.ChallengeWhereInput[]
-  hostId?: Prisma.UuidFilter<"Challenge"> | string
-  participantsId?: Prisma.UuidNullableFilter<"Challenge"> | string | null
+  creatorId?: Prisma.UuidFilter<"Challenge"> | string
   title?: Prisma.StringFilter<"Challenge"> | string
   description?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  location?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  participants?: Prisma.IntFilter<"Challenge"> | number
-  comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  isActive?: Prisma.EnumIsActiveFilter<"Challenge"> | $Enums.IsActive
-  host?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  participantsUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
-  participantsList?: Prisma.ChallengeParticipantListRelationFilter
-  results?: Prisma.ChallengeResultListRelationFilter
-  posts?: Prisma.XPostListRelationFilter
-  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  type?: Prisma.EnumChallengeTypeFilter<"Challenge"> | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFilter<"Challenge"> | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFilter<"Challenge"> | $Enums.Preference
+  coverImage?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  participationScope?: Prisma.EnumParticipationScopeFilter<"Challenge"> | $Enums.ParticipationScope
+  radiusKm?: Prisma.IntNullableFilter<"Challenge"> | number | null
+  locationName?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
+  rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  prizes?: Prisma.ChallengePrizeListRelationFilter
+  deviceRules?: Prisma.ChallengeDeviceRuleListRelationFilter
+  participants?: Prisma.ChallengeParticipantListRelationFilter
 }, "id">
 
 export type ChallengeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  hostId?: Prisma.SortOrder
-  participantsId?: Prisma.SortOrderInput | Prisma.SortOrder
+  creatorId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
-  startDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  endDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  images?: Prisma.SortOrderInput | Prisma.SortOrder
-  media?: Prisma.SortOrderInput | Prisma.SortOrder
-  camera?: Prisma.SortOrderInput | Prisma.SortOrder
-  participants?: Prisma.SortOrder
-  comment?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
+  coverImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  participationScope?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationName?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
+  enableDeviceRestriction?: Prisma.SortOrder
+  requireTrueShotVerification?: Prisma.SortOrder
+  rejectEditedPhotos?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ChallengeCountOrderByAggregateInput
   _avg?: Prisma.ChallengeAvgOrderByAggregateInput
   _max?: Prisma.ChallengeMaxOrderByAggregateInput
@@ -372,211 +451,289 @@ export type ChallengeScalarWhereWithAggregatesInput = {
   OR?: Prisma.ChallengeScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ChallengeScalarWhereWithAggregatesInput | Prisma.ChallengeScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"Challenge"> | string
-  hostId?: Prisma.UuidWithAggregatesFilter<"Challenge"> | string
-  participantsId?: Prisma.UuidNullableWithAggregatesFilter<"Challenge"> | string | null
+  creatorId?: Prisma.UuidWithAggregatesFilter<"Challenge"> | string
   title?: Prisma.StringWithAggregatesFilter<"Challenge"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  location?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Challenge"> | Date | string | null
-  endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Challenge"> | Date | string | null
-  images?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  media?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  camera?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  participants?: Prisma.IntWithAggregatesFilter<"Challenge"> | number
-  comment?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
-  isActive?: Prisma.EnumIsActiveWithAggregatesFilter<"Challenge"> | $Enums.IsActive
+  type?: Prisma.EnumChallengeTypeWithAggregatesFilter<"Challenge"> | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryWithAggregatesFilter<"Challenge"> | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceWithAggregatesFilter<"Challenge"> | $Enums.Preference
+  coverImage?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
+  participationScope?: Prisma.EnumParticipationScopeWithAggregatesFilter<"Challenge"> | $Enums.ParticipationScope
+  radiusKm?: Prisma.IntNullableWithAggregatesFilter<"Challenge"> | number | null
+  locationName?: Prisma.StringNullableWithAggregatesFilter<"Challenge"> | string | null
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
+  endDate?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
+  enableDeviceRestriction?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
+  requireTrueShotVerification?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
+  rejectEditedPhotos?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
+  status?: Prisma.EnumChallengeStatusWithAggregatesFilter<"Challenge"> | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
 }
 
 export type ChallengeCreateInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutChallengesInput
+  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeUncheckedCreateInput = {
   id?: string
-  hostId: string
-  participantsId?: string | null
+  creatorId: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
+  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeCreateManyInput = {
   id?: string
-  hostId: string
-  participantsId?: string | null
+  creatorId: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ChallengeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  hostId?: Prisma.SortOrder
-  participantsId?: Prisma.SortOrder
+  creatorId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
+  coverImage?: Prisma.SortOrder
+  participationScope?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  images?: Prisma.SortOrder
-  media?: Prisma.SortOrder
-  camera?: Prisma.SortOrder
-  participants?: Prisma.SortOrder
-  comment?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  enableDeviceRestriction?: Prisma.SortOrder
+  requireTrueShotVerification?: Prisma.SortOrder
+  rejectEditedPhotos?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChallengeAvgOrderByAggregateInput = {
-  participants?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type ChallengeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  hostId?: Prisma.SortOrder
-  participantsId?: Prisma.SortOrder
+  creatorId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
+  coverImage?: Prisma.SortOrder
+  participationScope?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  images?: Prisma.SortOrder
-  media?: Prisma.SortOrder
-  camera?: Prisma.SortOrder
-  participants?: Prisma.SortOrder
-  comment?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  enableDeviceRestriction?: Prisma.SortOrder
+  requireTrueShotVerification?: Prisma.SortOrder
+  rejectEditedPhotos?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChallengeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  hostId?: Prisma.SortOrder
-  participantsId?: Prisma.SortOrder
+  creatorId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  location?: Prisma.SortOrder
+  type?: Prisma.SortOrder
+  category?: Prisma.SortOrder
+  preference?: Prisma.SortOrder
+  coverImage?: Prisma.SortOrder
+  participationScope?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrder
+  locationName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
-  images?: Prisma.SortOrder
-  media?: Prisma.SortOrder
-  camera?: Prisma.SortOrder
-  participants?: Prisma.SortOrder
-  comment?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  enableDeviceRestriction?: Prisma.SortOrder
+  requireTrueShotVerification?: Prisma.SortOrder
+  rejectEditedPhotos?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ChallengeSumOrderByAggregateInput = {
-  participants?: Prisma.SortOrder
+  radiusKm?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type ChallengeScalarRelationFilter = {
@@ -594,559 +751,550 @@ export type ChallengeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type ChallengeNullableScalarRelationFilter = {
-  is?: Prisma.ChallengeWhereInput | null
-  isNot?: Prisma.ChallengeWhereInput | null
+export type EnumChallengeTypeFieldUpdateOperationsInput = {
+  set?: $Enums.ChallengeType
 }
 
-export type EnumIsActiveFieldUpdateOperationsInput = {
-  set?: $Enums.IsActive
+export type EnumChallengeCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.ChallengeCategory
 }
 
-export type ChallengeCreateNestedOneWithoutParticipantsListInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsListInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsListInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsListInput
+export type EnumParticipationScopeFieldUpdateOperationsInput = {
+  set?: $Enums.ParticipationScope
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type EnumChallengeStatusFieldUpdateOperationsInput = {
+  set?: $Enums.ChallengeStatus
+}
+
+export type ChallengeCreateNestedOneWithoutDeviceRulesInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutDeviceRulesInput
   connect?: Prisma.ChallengeWhereUniqueInput
 }
 
-export type ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsListInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsListInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsListInput
-  upsert?: Prisma.ChallengeUpsertWithoutParticipantsListInput
+export type ChallengeUpdateOneRequiredWithoutDeviceRulesNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutDeviceRulesInput
+  upsert?: Prisma.ChallengeUpsertWithoutDeviceRulesInput
   connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutParticipantsListInput, Prisma.ChallengeUpdateWithoutParticipantsListInput>, Prisma.ChallengeUncheckedUpdateWithoutParticipantsListInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutDeviceRulesInput, Prisma.ChallengeUpdateWithoutDeviceRulesInput>, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
 }
 
-export type ChallengeCreateNestedOneWithoutResultsInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutResultsInput, Prisma.ChallengeUncheckedCreateWithoutResultsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutResultsInput
-  connect?: Prisma.ChallengeWhereUniqueInput
-}
-
-export type ChallengeUpdateOneRequiredWithoutResultsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutResultsInput, Prisma.ChallengeUncheckedCreateWithoutResultsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutResultsInput
-  upsert?: Prisma.ChallengeUpsertWithoutResultsInput
-  connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutResultsInput, Prisma.ChallengeUpdateWithoutResultsInput>, Prisma.ChallengeUncheckedUpdateWithoutResultsInput>
-}
-
-export type ChallengeCreateNestedOneWithoutChallengeSubmissionsInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeSubmissionsInput
+export type ChallengeCreateNestedOneWithoutPrizesInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPrizesInput
   connect?: Prisma.ChallengeWhereUniqueInput
 }
 
-export type ChallengeUpdateOneRequiredWithoutChallengeSubmissionsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeSubmissionsInput
-  upsert?: Prisma.ChallengeUpsertWithoutChallengeSubmissionsInput
+export type ChallengeUpdateOneRequiredWithoutPrizesNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPrizesInput
+  upsert?: Prisma.ChallengeUpsertWithoutPrizesInput
   connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutChallengeSubmissionsInput, Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput>, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutPrizesInput, Prisma.ChallengeUpdateWithoutPrizesInput>, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
 }
 
-export type ChallengeCreateNestedManyWithoutHostInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput> | Prisma.ChallengeCreateWithoutHostInput[] | Prisma.ChallengeUncheckedCreateWithoutHostInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutHostInput | Prisma.ChallengeCreateOrConnectWithoutHostInput[]
-  createMany?: Prisma.ChallengeCreateManyHostInputEnvelope
+export type ChallengeCreateNestedOneWithoutParticipantsInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+}
+
+export type ChallengeUpdateOneRequiredWithoutParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsInput
+  upsert?: Prisma.ChallengeUpsertWithoutParticipantsInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutParticipantsInput, Prisma.ChallengeUpdateWithoutParticipantsInput>, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
+}
+
+export type ChallengeCreateNestedManyWithoutCreatorInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput> | Prisma.ChallengeCreateWithoutCreatorInput[] | Prisma.ChallengeUncheckedCreateWithoutCreatorInput[]
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutCreatorInput | Prisma.ChallengeCreateOrConnectWithoutCreatorInput[]
+  createMany?: Prisma.ChallengeCreateManyCreatorInputEnvelope
   connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
 }
 
-export type ChallengeCreateNestedManyWithoutParticipantsUserInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput> | Prisma.ChallengeCreateWithoutParticipantsUserInput[] | Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput | Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput[]
-  createMany?: Prisma.ChallengeCreateManyParticipantsUserInputEnvelope
+export type ChallengeUncheckedCreateNestedManyWithoutCreatorInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput> | Prisma.ChallengeCreateWithoutCreatorInput[] | Prisma.ChallengeUncheckedCreateWithoutCreatorInput[]
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutCreatorInput | Prisma.ChallengeCreateOrConnectWithoutCreatorInput[]
+  createMany?: Prisma.ChallengeCreateManyCreatorInputEnvelope
   connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
 }
 
-export type ChallengeUncheckedCreateNestedManyWithoutHostInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput> | Prisma.ChallengeCreateWithoutHostInput[] | Prisma.ChallengeUncheckedCreateWithoutHostInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutHostInput | Prisma.ChallengeCreateOrConnectWithoutHostInput[]
-  createMany?: Prisma.ChallengeCreateManyHostInputEnvelope
-  connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-}
-
-export type ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput> | Prisma.ChallengeCreateWithoutParticipantsUserInput[] | Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput | Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput[]
-  createMany?: Prisma.ChallengeCreateManyParticipantsUserInputEnvelope
-  connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-}
-
-export type ChallengeUpdateManyWithoutHostNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput> | Prisma.ChallengeCreateWithoutHostInput[] | Prisma.ChallengeUncheckedCreateWithoutHostInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutHostInput | Prisma.ChallengeCreateOrConnectWithoutHostInput[]
-  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutHostInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutHostInput[]
-  createMany?: Prisma.ChallengeCreateManyHostInputEnvelope
+export type ChallengeUpdateManyWithoutCreatorNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput> | Prisma.ChallengeCreateWithoutCreatorInput[] | Prisma.ChallengeUncheckedCreateWithoutCreatorInput[]
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutCreatorInput | Prisma.ChallengeCreateOrConnectWithoutCreatorInput[]
+  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutCreatorInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutCreatorInput[]
+  createMany?: Prisma.ChallengeCreateManyCreatorInputEnvelope
   set?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   disconnect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   delete?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutHostInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutHostInput[]
-  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutHostInput | Prisma.ChallengeUpdateManyWithWhereWithoutHostInput[]
+  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutCreatorInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutCreatorInput[]
+  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutCreatorInput | Prisma.ChallengeUpdateManyWithWhereWithoutCreatorInput[]
   deleteMany?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
 }
 
-export type ChallengeUpdateManyWithoutParticipantsUserNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput> | Prisma.ChallengeCreateWithoutParticipantsUserInput[] | Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput | Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput[]
-  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutParticipantsUserInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutParticipantsUserInput[]
-  createMany?: Prisma.ChallengeCreateManyParticipantsUserInputEnvelope
+export type ChallengeUncheckedUpdateManyWithoutCreatorNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput> | Prisma.ChallengeCreateWithoutCreatorInput[] | Prisma.ChallengeUncheckedCreateWithoutCreatorInput[]
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutCreatorInput | Prisma.ChallengeCreateOrConnectWithoutCreatorInput[]
+  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutCreatorInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutCreatorInput[]
+  createMany?: Prisma.ChallengeCreateManyCreatorInputEnvelope
   set?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   disconnect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   delete?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
   connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutParticipantsUserInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutParticipantsUserInput[]
-  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutParticipantsUserInput | Prisma.ChallengeUpdateManyWithWhereWithoutParticipantsUserInput[]
+  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutCreatorInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutCreatorInput[]
+  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutCreatorInput | Prisma.ChallengeUpdateManyWithWhereWithoutCreatorInput[]
   deleteMany?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
 }
 
-export type ChallengeUncheckedUpdateManyWithoutHostNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput> | Prisma.ChallengeCreateWithoutHostInput[] | Prisma.ChallengeUncheckedCreateWithoutHostInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutHostInput | Prisma.ChallengeCreateOrConnectWithoutHostInput[]
-  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutHostInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutHostInput[]
-  createMany?: Prisma.ChallengeCreateManyHostInputEnvelope
-  set?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  disconnect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  delete?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutHostInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutHostInput[]
-  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutHostInput | Prisma.ChallengeUpdateManyWithWhereWithoutHostInput[]
-  deleteMany?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
-}
-
-export type ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput> | Prisma.ChallengeCreateWithoutParticipantsUserInput[] | Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput[]
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput | Prisma.ChallengeCreateOrConnectWithoutParticipantsUserInput[]
-  upsert?: Prisma.ChallengeUpsertWithWhereUniqueWithoutParticipantsUserInput | Prisma.ChallengeUpsertWithWhereUniqueWithoutParticipantsUserInput[]
-  createMany?: Prisma.ChallengeCreateManyParticipantsUserInputEnvelope
-  set?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  disconnect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  delete?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  connect?: Prisma.ChallengeWhereUniqueInput | Prisma.ChallengeWhereUniqueInput[]
-  update?: Prisma.ChallengeUpdateWithWhereUniqueWithoutParticipantsUserInput | Prisma.ChallengeUpdateWithWhereUniqueWithoutParticipantsUserInput[]
-  updateMany?: Prisma.ChallengeUpdateManyWithWhereWithoutParticipantsUserInput | Prisma.ChallengeUpdateManyWithWhereWithoutParticipantsUserInput[]
-  deleteMany?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
-}
-
-export type ChallengeCreateNestedOneWithoutPostsInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPostsInput, Prisma.ChallengeUncheckedCreateWithoutPostsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPostsInput
-  connect?: Prisma.ChallengeWhereUniqueInput
-}
-
-export type ChallengeUpdateOneWithoutPostsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPostsInput, Prisma.ChallengeUncheckedCreateWithoutPostsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPostsInput
-  upsert?: Prisma.ChallengeUpsertWithoutPostsInput
-  disconnect?: Prisma.ChallengeWhereInput | boolean
-  delete?: Prisma.ChallengeWhereInput | boolean
-  connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutPostsInput, Prisma.ChallengeUpdateWithoutPostsInput>, Prisma.ChallengeUncheckedUpdateWithoutPostsInput>
-}
-
-export type ChallengeCreateWithoutParticipantsListInput = {
+export type ChallengeCreateWithoutDeviceRulesInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutChallengesInput
+  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutParticipantsListInput = {
+export type ChallengeUncheckedCreateWithoutDeviceRulesInput = {
   id?: string
-  hostId: string
-  participantsId?: string | null
+  creatorId: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutParticipantsListInput = {
+export type ChallengeCreateOrConnectWithoutDeviceRulesInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsListInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsListInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
 }
 
-export type ChallengeUpsertWithoutParticipantsListInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsListInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsListInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsListInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsListInput>
+export type ChallengeUpsertWithoutDeviceRulesInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutParticipantsListInput = {
+export type ChallengeUpdateToOneWithWhereWithoutDeviceRulesInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsListInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsListInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
 }
 
-export type ChallengeUpdateWithoutParticipantsListInput = {
+export type ChallengeUpdateWithoutDeviceRulesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
+  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutParticipantsListInput = {
+export type ChallengeUncheckedUpdateWithoutDeviceRulesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeCreateWithoutResultsInput = {
+export type ChallengeCreateWithoutPrizesInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutChallengesInput
+  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutResultsInput = {
+export type ChallengeUncheckedCreateWithoutPrizesInput = {
   id?: string
-  hostId: string
-  participantsId?: string | null
+  creatorId: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutResultsInput = {
+export type ChallengeCreateOrConnectWithoutPrizesInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutResultsInput, Prisma.ChallengeUncheckedCreateWithoutResultsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
 }
 
-export type ChallengeUpsertWithoutResultsInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutResultsInput, Prisma.ChallengeUncheckedUpdateWithoutResultsInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutResultsInput, Prisma.ChallengeUncheckedCreateWithoutResultsInput>
+export type ChallengeUpsertWithoutPrizesInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutPrizesInput, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutResultsInput = {
+export type ChallengeUpdateToOneWithWhereWithoutPrizesInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutResultsInput, Prisma.ChallengeUncheckedUpdateWithoutResultsInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutPrizesInput, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
 }
 
-export type ChallengeUpdateWithoutResultsInput = {
+export type ChallengeUpdateWithoutPrizesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutResultsInput = {
+export type ChallengeUncheckedUpdateWithoutPrizesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeCreateWithoutChallengeSubmissionsInput = {
+export type ChallengeCreateWithoutParticipantsInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutChallengesInput
+  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutChallengeSubmissionsInput = {
+export type ChallengeUncheckedCreateWithoutParticipantsInput = {
   id?: string
-  hostId: string
-  participantsId?: string | null
+  creatorId: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutChallengeSubmissionsInput = {
+export type ChallengeCreateOrConnectWithoutParticipantsInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
 }
 
-export type ChallengeUpsertWithoutChallengeSubmissionsInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
+export type ChallengeUpsertWithoutParticipantsInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutChallengeSubmissionsInput = {
+export type ChallengeUpdateToOneWithWhereWithoutParticipantsInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
 }
 
-export type ChallengeUpdateWithoutChallengeSubmissionsInput = {
+export type ChallengeUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
+  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput = {
+export type ChallengeUncheckedUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeCreateWithoutHostInput = {
+export type ChallengeCreateWithoutCreatorInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutHostInput = {
+export type ChallengeUncheckedCreateWithoutCreatorInput = {
   id?: string
-  participantsId?: string | null
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
+  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutHostInput = {
+export type ChallengeCreateOrConnectWithoutCreatorInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput>
 }
 
-export type ChallengeCreateManyHostInputEnvelope = {
-  data: Prisma.ChallengeCreateManyHostInput | Prisma.ChallengeCreateManyHostInput[]
+export type ChallengeCreateManyCreatorInputEnvelope = {
+  data: Prisma.ChallengeCreateManyCreatorInput | Prisma.ChallengeCreateManyCreatorInput[]
   skipDuplicates?: boolean
 }
 
-export type ChallengeCreateWithoutParticipantsUserInput = {
-  id?: string
-  title: string
-  description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
-}
-
-export type ChallengeUncheckedCreateWithoutParticipantsUserInput = {
-  id?: string
-  hostId: string
-  title: string
-  description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
-}
-
-export type ChallengeCreateOrConnectWithoutParticipantsUserInput = {
+export type ChallengeUpsertWithWhereUniqueWithoutCreatorInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput>
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutCreatorInput, Prisma.ChallengeUncheckedUpdateWithoutCreatorInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutCreatorInput, Prisma.ChallengeUncheckedCreateWithoutCreatorInput>
 }
 
-export type ChallengeCreateManyParticipantsUserInputEnvelope = {
-  data: Prisma.ChallengeCreateManyParticipantsUserInput | Prisma.ChallengeCreateManyParticipantsUserInput[]
-  skipDuplicates?: boolean
-}
-
-export type ChallengeUpsertWithWhereUniqueWithoutHostInput = {
+export type ChallengeUpdateWithWhereUniqueWithoutCreatorInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutHostInput, Prisma.ChallengeUncheckedUpdateWithoutHostInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutHostInput, Prisma.ChallengeUncheckedCreateWithoutHostInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutCreatorInput, Prisma.ChallengeUncheckedUpdateWithoutCreatorInput>
 }
 
-export type ChallengeUpdateWithWhereUniqueWithoutHostInput = {
-  where: Prisma.ChallengeWhereUniqueInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutHostInput, Prisma.ChallengeUncheckedUpdateWithoutHostInput>
-}
-
-export type ChallengeUpdateManyWithWhereWithoutHostInput = {
+export type ChallengeUpdateManyWithWhereWithoutCreatorInput = {
   where: Prisma.ChallengeScalarWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateManyMutationInput, Prisma.ChallengeUncheckedUpdateManyWithoutHostInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateManyMutationInput, Prisma.ChallengeUncheckedUpdateManyWithoutCreatorInput>
 }
 
 export type ChallengeScalarWhereInput = {
@@ -1154,275 +1302,124 @@ export type ChallengeScalarWhereInput = {
   OR?: Prisma.ChallengeScalarWhereInput[]
   NOT?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
   id?: Prisma.UuidFilter<"Challenge"> | string
-  hostId?: Prisma.UuidFilter<"Challenge"> | string
-  participantsId?: Prisma.UuidNullableFilter<"Challenge"> | string | null
+  creatorId?: Prisma.UuidFilter<"Challenge"> | string
   title?: Prisma.StringFilter<"Challenge"> | string
   description?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  location?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  startDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  endDate?: Prisma.DateTimeNullableFilter<"Challenge"> | Date | string | null
-  images?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  media?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  camera?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  participants?: Prisma.IntFilter<"Challenge"> | number
-  comment?: Prisma.StringNullableFilter<"Challenge"> | string | null
-  isActive?: Prisma.EnumIsActiveFilter<"Challenge"> | $Enums.IsActive
+  type?: Prisma.EnumChallengeTypeFilter<"Challenge"> | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFilter<"Challenge"> | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFilter<"Challenge"> | $Enums.Preference
+  coverImage?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  participationScope?: Prisma.EnumParticipationScopeFilter<"Challenge"> | $Enums.ParticipationScope
+  radiusKm?: Prisma.IntNullableFilter<"Challenge"> | number | null
+  locationName?: Prisma.StringNullableFilter<"Challenge"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
+  rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
 }
 
-export type ChallengeUpsertWithWhereUniqueWithoutParticipantsUserInput = {
-  where: Prisma.ChallengeWhereUniqueInput
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsUserInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsUserInput>
-}
-
-export type ChallengeUpdateWithWhereUniqueWithoutParticipantsUserInput = {
-  where: Prisma.ChallengeWhereUniqueInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsUserInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsUserInput>
-}
-
-export type ChallengeUpdateManyWithWhereWithoutParticipantsUserInput = {
-  where: Prisma.ChallengeScalarWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateManyMutationInput, Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserInput>
-}
-
-export type ChallengeCreateWithoutPostsInput = {
+export type ChallengeCreateManyCreatorInput = {
   id?: string
   title: string
   description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  host: Prisma.UserCreateNestedOneWithoutHostChallengeInput
-  participantsUser?: Prisma.UserCreateNestedOneWithoutChallengesInput
-  participantsList?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
-export type ChallengeUncheckedCreateWithoutPostsInput = {
-  id?: string
-  hostId: string
-  participantsId?: string | null
-  title: string
-  description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
-  results?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
-}
-
-export type ChallengeCreateOrConnectWithoutPostsInput = {
-  where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPostsInput, Prisma.ChallengeUncheckedCreateWithoutPostsInput>
-}
-
-export type ChallengeUpsertWithoutPostsInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutPostsInput, Prisma.ChallengeUncheckedUpdateWithoutPostsInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPostsInput, Prisma.ChallengeUncheckedCreateWithoutPostsInput>
-  where?: Prisma.ChallengeWhereInput
-}
-
-export type ChallengeUpdateToOneWithWhereWithoutPostsInput = {
-  where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutPostsInput, Prisma.ChallengeUncheckedUpdateWithoutPostsInput>
-}
-
-export type ChallengeUpdateWithoutPostsInput = {
+export type ChallengeUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutPostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
-}
-
-export type ChallengeCreateManyHostInput = {
-  id?: string
-  participantsId?: string | null
-  title: string
-  description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-}
-
-export type ChallengeCreateManyParticipantsUserInput = {
-  id?: string
-  hostId: string
-  title: string
-  description?: string | null
-  location?: string | null
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  images?: string | null
-  media?: string | null
-  camera?: string | null
-  participants?: number
-  comment?: string | null
-  isActive?: $Enums.IsActive
-}
-
-export type ChallengeUpdateWithoutHostInput = {
+export type ChallengeUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsUser?: Prisma.UserUpdateOneWithoutChallengesNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
+  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
+  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutHostInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
-}
-
-export type ChallengeUncheckedUpdateManyWithoutHostInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  participantsId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-}
-
-export type ChallengeUpdateWithoutParticipantsUserInput = {
+export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  host?: Prisma.UserUpdateOneRequiredWithoutHostChallengeNestedInput
-  participantsList?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
-}
-
-export type ChallengeUncheckedUpdateWithoutParticipantsUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
-  participantsList?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
-  results?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
-}
-
-export type ChallengeUncheckedUpdateManyWithoutParticipantsUserInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  hostId?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  images?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  camera?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  participants?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1431,17 +1428,15 @@ export type ChallengeUncheckedUpdateManyWithoutParticipantsUserInput = {
  */
 
 export type ChallengeCountOutputType = {
-  participantsList: number
-  results: number
-  posts: number
-  challengeSubmissions: number
+  prizes: number
+  deviceRules: number
+  participants: number
 }
 
 export type ChallengeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  participantsList?: boolean | ChallengeCountOutputTypeCountParticipantsListArgs
-  results?: boolean | ChallengeCountOutputTypeCountResultsArgs
-  posts?: boolean | ChallengeCountOutputTypeCountPostsArgs
-  challengeSubmissions?: boolean | ChallengeCountOutputTypeCountChallengeSubmissionsArgs
+  prizes?: boolean | ChallengeCountOutputTypeCountPrizesArgs
+  deviceRules?: boolean | ChallengeCountOutputTypeCountDeviceRulesArgs
+  participants?: boolean | ChallengeCountOutputTypeCountParticipantsArgs
 }
 
 /**
@@ -1457,155 +1452,173 @@ export type ChallengeCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * ChallengeCountOutputType without action
  */
-export type ChallengeCountOutputTypeCountParticipantsListArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ChallengeCountOutputTypeCountPrizesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengePrizeWhereInput
+}
+
+/**
+ * ChallengeCountOutputType without action
+ */
+export type ChallengeCountOutputTypeCountDeviceRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeDeviceRuleWhereInput
+}
+
+/**
+ * ChallengeCountOutputType without action
+ */
+export type ChallengeCountOutputTypeCountParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChallengeParticipantWhereInput
-}
-
-/**
- * ChallengeCountOutputType without action
- */
-export type ChallengeCountOutputTypeCountResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeResultWhereInput
-}
-
-/**
- * ChallengeCountOutputType without action
- */
-export type ChallengeCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.XPostWhereInput
-}
-
-/**
- * ChallengeCountOutputType without action
- */
-export type ChallengeCountOutputTypeCountChallengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeSubmissionWhereInput
 }
 
 
 export type ChallengeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  hostId?: boolean
-  participantsId?: boolean
+  creatorId?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  type?: boolean
+  category?: boolean
+  preference?: boolean
+  coverImage?: boolean
+  participationScope?: boolean
+  radiusKm?: boolean
+  locationName?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
-  images?: boolean
-  media?: boolean
-  camera?: boolean
-  participants?: boolean
-  comment?: boolean
-  isActive?: boolean
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
-  participantsList?: boolean | Prisma.Challenge$participantsListArgs<ExtArgs>
-  results?: boolean | Prisma.Challenge$resultsArgs<ExtArgs>
-  posts?: boolean | Prisma.Challenge$postsArgs<ExtArgs>
-  challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prizes?: boolean | Prisma.Challenge$prizesArgs<ExtArgs>
+  deviceRules?: boolean | Prisma.Challenge$deviceRulesArgs<ExtArgs>
+  participants?: boolean | Prisma.Challenge$participantsArgs<ExtArgs>
   _count?: boolean | Prisma.ChallengeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
 export type ChallengeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  hostId?: boolean
-  participantsId?: boolean
+  creatorId?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  type?: boolean
+  category?: boolean
+  preference?: boolean
+  coverImage?: boolean
+  participationScope?: boolean
+  radiusKm?: boolean
+  locationName?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
-  images?: boolean
-  media?: boolean
-  camera?: boolean
-  participants?: boolean
-  comment?: boolean
-  isActive?: boolean
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
 export type ChallengeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  hostId?: boolean
-  participantsId?: boolean
+  creatorId?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  type?: boolean
+  category?: boolean
+  preference?: boolean
+  coverImage?: boolean
+  participationScope?: boolean
+  radiusKm?: boolean
+  locationName?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
-  images?: boolean
-  media?: boolean
-  camera?: boolean
-  participants?: boolean
-  comment?: boolean
-  isActive?: boolean
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
 export type ChallengeSelectScalar = {
   id?: boolean
-  hostId?: boolean
-  participantsId?: boolean
+  creatorId?: boolean
   title?: boolean
   description?: boolean
-  location?: boolean
+  type?: boolean
+  category?: boolean
+  preference?: boolean
+  coverImage?: boolean
+  participationScope?: boolean
+  radiusKm?: boolean
+  locationName?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
-  images?: boolean
-  media?: boolean
-  camera?: boolean
-  participants?: boolean
-  comment?: boolean
-  isActive?: boolean
+  enableDeviceRestriction?: boolean
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "hostId" | "participantsId" | "title" | "description" | "location" | "startDate" | "endDate" | "images" | "media" | "camera" | "participants" | "comment" | "isActive", ExtArgs["result"]["challenge"]>
+export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "enableDeviceRestriction" | "requireTrueShotVerification" | "rejectEditedPhotos" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["challenge"]>
 export type ChallengeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
-  participantsList?: boolean | Prisma.Challenge$participantsListArgs<ExtArgs>
-  results?: boolean | Prisma.Challenge$resultsArgs<ExtArgs>
-  posts?: boolean | Prisma.Challenge$postsArgs<ExtArgs>
-  challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  prizes?: boolean | Prisma.Challenge$prizesArgs<ExtArgs>
+  deviceRules?: boolean | Prisma.Challenge$deviceRulesArgs<ExtArgs>
+  participants?: boolean | Prisma.Challenge$participantsArgs<ExtArgs>
   _count?: boolean | Prisma.ChallengeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChallengeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type ChallengeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  host?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participantsUser?: boolean | Prisma.Challenge$participantsUserArgs<ExtArgs>
+  creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Challenge"
   objects: {
-    host: Prisma.$UserPayload<ExtArgs>
-    participantsUser: Prisma.$UserPayload<ExtArgs> | null
-    participantsList: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
-    results: Prisma.$ChallengeResultPayload<ExtArgs>[]
-    posts: Prisma.$XPostPayload<ExtArgs>[]
-    challengeSubmissions: Prisma.$ChallengeSubmissionPayload<ExtArgs>[]
+    creator: Prisma.$UserPayload<ExtArgs>
+    prizes: Prisma.$ChallengePrizePayload<ExtArgs>[]
+    deviceRules: Prisma.$ChallengeDeviceRulePayload<ExtArgs>[]
+    participants: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    hostId: string
-    participantsId: string | null
+    creatorId: string
     title: string
     description: string | null
-    location: string | null
-    startDate: Date | null
-    endDate: Date | null
-    images: string | null
-    media: string | null
-    camera: string | null
-    participants: number
-    comment: string | null
-    isActive: $Enums.IsActive
+    type: $Enums.ChallengeType
+    category: $Enums.ChallengeCategory
+    preference: $Enums.Preference
+    coverImage: string | null
+    participationScope: $Enums.ParticipationScope
+    radiusKm: number | null
+    locationName: string | null
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    startDate: Date
+    endDate: Date
+    enableDeviceRestriction: boolean
+    requireTrueShotVerification: boolean
+    rejectEditedPhotos: boolean
+    status: $Enums.ChallengeStatus
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["challenge"]>
   composites: {}
 }
@@ -2000,12 +2013,10 @@ readonly fields: ChallengeFieldRefs;
  */
 export interface Prisma__ChallengeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  host<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  participantsUser<T extends Prisma.Challenge$participantsUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$participantsUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  participantsList<T extends Prisma.Challenge$participantsListArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$participantsListArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  results<T extends Prisma.Challenge$resultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  posts<T extends Prisma.Challenge$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  challengeSubmissions<T extends Prisma.Challenge$challengeSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  creator<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  prizes<T extends Prisma.Challenge$prizesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$prizesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePrizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deviceRules<T extends Prisma.Challenge$deviceRulesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$deviceRulesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeDeviceRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  participants<T extends Prisma.Challenge$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2036,19 +2047,26 @@ export interface Prisma__ChallengeClient<T, Null = never, ExtArgs extends runtim
  */
 export interface ChallengeFieldRefs {
   readonly id: Prisma.FieldRef<"Challenge", 'String'>
-  readonly hostId: Prisma.FieldRef<"Challenge", 'String'>
-  readonly participantsId: Prisma.FieldRef<"Challenge", 'String'>
+  readonly creatorId: Prisma.FieldRef<"Challenge", 'String'>
   readonly title: Prisma.FieldRef<"Challenge", 'String'>
   readonly description: Prisma.FieldRef<"Challenge", 'String'>
-  readonly location: Prisma.FieldRef<"Challenge", 'String'>
+  readonly type: Prisma.FieldRef<"Challenge", 'ChallengeType'>
+  readonly category: Prisma.FieldRef<"Challenge", 'ChallengeCategory'>
+  readonly preference: Prisma.FieldRef<"Challenge", 'Preference'>
+  readonly coverImage: Prisma.FieldRef<"Challenge", 'String'>
+  readonly participationScope: Prisma.FieldRef<"Challenge", 'ParticipationScope'>
+  readonly radiusKm: Prisma.FieldRef<"Challenge", 'Int'>
+  readonly locationName: Prisma.FieldRef<"Challenge", 'String'>
+  readonly latitude: Prisma.FieldRef<"Challenge", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Challenge", 'Decimal'>
   readonly startDate: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Challenge", 'DateTime'>
-  readonly images: Prisma.FieldRef<"Challenge", 'String'>
-  readonly media: Prisma.FieldRef<"Challenge", 'String'>
-  readonly camera: Prisma.FieldRef<"Challenge", 'String'>
-  readonly participants: Prisma.FieldRef<"Challenge", 'Int'>
-  readonly comment: Prisma.FieldRef<"Challenge", 'String'>
-  readonly isActive: Prisma.FieldRef<"Challenge", 'IsActive'>
+  readonly enableDeviceRestriction: Prisma.FieldRef<"Challenge", 'Boolean'>
+  readonly requireTrueShotVerification: Prisma.FieldRef<"Challenge", 'Boolean'>
+  readonly rejectEditedPhotos: Prisma.FieldRef<"Challenge", 'Boolean'>
+  readonly status: Prisma.FieldRef<"Challenge", 'ChallengeStatus'>
+  readonly createdAt: Prisma.FieldRef<"Challenge", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Challenge", 'DateTime'>
 }
     
 
@@ -2445,28 +2463,57 @@ export type ChallengeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Challenge.participantsUser
+ * Challenge.prizes
  */
-export type Challenge$participantsUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Challenge$prizesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the ChallengePrize
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.ChallengePrizeSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the ChallengePrize
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.ChallengePrizeOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
+  include?: Prisma.ChallengePrizeInclude<ExtArgs> | null
+  where?: Prisma.ChallengePrizeWhereInput
+  orderBy?: Prisma.ChallengePrizeOrderByWithRelationInput | Prisma.ChallengePrizeOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengePrizeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengePrizeScalarFieldEnum | Prisma.ChallengePrizeScalarFieldEnum[]
 }
 
 /**
- * Challenge.participantsList
+ * Challenge.deviceRules
  */
-export type Challenge$participantsListArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Challenge$deviceRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChallengeDeviceRule
+   */
+  select?: Prisma.ChallengeDeviceRuleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChallengeDeviceRule
+   */
+  omit?: Prisma.ChallengeDeviceRuleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeDeviceRuleInclude<ExtArgs> | null
+  where?: Prisma.ChallengeDeviceRuleWhereInput
+  orderBy?: Prisma.ChallengeDeviceRuleOrderByWithRelationInput | Prisma.ChallengeDeviceRuleOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeDeviceRuleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengeDeviceRuleScalarFieldEnum | Prisma.ChallengeDeviceRuleScalarFieldEnum[]
+}
+
+/**
+ * Challenge.participants
+ */
+export type Challenge$participantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the ChallengeParticipant
    */
@@ -2485,78 +2532,6 @@ export type Challenge$participantsListArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.ChallengeParticipantScalarFieldEnum | Prisma.ChallengeParticipantScalarFieldEnum[]
-}
-
-/**
- * Challenge.results
- */
-export type Challenge$resultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeResult
-   */
-  select?: Prisma.ChallengeResultSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ChallengeResult
-   */
-  omit?: Prisma.ChallengeResultOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeResultInclude<ExtArgs> | null
-  where?: Prisma.ChallengeResultWhereInput
-  orderBy?: Prisma.ChallengeResultOrderByWithRelationInput | Prisma.ChallengeResultOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeResultWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeResultScalarFieldEnum | Prisma.ChallengeResultScalarFieldEnum[]
-}
-
-/**
- * Challenge.posts
- */
-export type Challenge$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the XPost
-   */
-  select?: Prisma.XPostSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the XPost
-   */
-  omit?: Prisma.XPostOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.XPostInclude<ExtArgs> | null
-  where?: Prisma.XPostWhereInput
-  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
-  cursor?: Prisma.XPostWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
-}
-
-/**
- * Challenge.challengeSubmissions
- */
-export type Challenge$challengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeSubmission
-   */
-  select?: Prisma.ChallengeSubmissionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ChallengeSubmission
-   */
-  omit?: Prisma.ChallengeSubmissionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeSubmissionInclude<ExtArgs> | null
-  where?: Prisma.ChallengeSubmissionWhereInput
-  orderBy?: Prisma.ChallengeSubmissionOrderByWithRelationInput | Prisma.ChallengeSubmissionOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeSubmissionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeSubmissionScalarFieldEnum | Prisma.ChallengeSubmissionScalarFieldEnum[]
 }
 
 /**

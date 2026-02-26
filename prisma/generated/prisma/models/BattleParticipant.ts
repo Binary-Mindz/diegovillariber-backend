@@ -28,24 +28,24 @@ export type BattleParticipantMinAggregateOutputType = {
   id: string | null
   battleId: string | null
   userId: string | null
+  status: $Enums.ParticipantStatus | null
   joinedAt: Date | null
-  isActive: boolean | null
 }
 
 export type BattleParticipantMaxAggregateOutputType = {
   id: string | null
   battleId: string | null
   userId: string | null
+  status: $Enums.ParticipantStatus | null
   joinedAt: Date | null
-  isActive: boolean | null
 }
 
 export type BattleParticipantCountAggregateOutputType = {
   id: number
   battleId: number
   userId: number
+  status: number
   joinedAt: number
-  isActive: number
   _all: number
 }
 
@@ -54,24 +54,24 @@ export type BattleParticipantMinAggregateInputType = {
   id?: true
   battleId?: true
   userId?: true
+  status?: true
   joinedAt?: true
-  isActive?: true
 }
 
 export type BattleParticipantMaxAggregateInputType = {
   id?: true
   battleId?: true
   userId?: true
+  status?: true
   joinedAt?: true
-  isActive?: true
 }
 
 export type BattleParticipantCountAggregateInputType = {
   id?: true
   battleId?: true
   userId?: true
+  status?: true
   joinedAt?: true
-  isActive?: true
   _all?: true
 }
 
@@ -151,8 +151,8 @@ export type BattleParticipantGroupByOutputType = {
   id: string
   battleId: string
   userId: string
+  status: $Enums.ParticipantStatus
   joinedAt: Date
-  isActive: boolean
   _count: BattleParticipantCountAggregateOutputType | null
   _min: BattleParticipantMinAggregateOutputType | null
   _max: BattleParticipantMaxAggregateOutputType | null
@@ -180,24 +180,20 @@ export type BattleParticipantWhereInput = {
   id?: Prisma.UuidFilter<"BattleParticipant"> | string
   battleId?: Prisma.UuidFilter<"BattleParticipant"> | string
   userId?: Prisma.UuidFilter<"BattleParticipant"> | string
+  status?: Prisma.EnumParticipantStatusFilter<"BattleParticipant"> | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFilter<"BattleParticipant"> | Date | string
-  isActive?: Prisma.BoolFilter<"BattleParticipant"> | boolean
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
+  battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  entries?: Prisma.BattleEntryListRelationFilter
-  xposts?: Prisma.XPostListRelationFilter
 }
 
 export type BattleParticipantOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
-  battle?: Prisma.BattleOrderByWithRelationInput
+  battle?: Prisma.HeadToHeadBattleOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
-  entries?: Prisma.BattleEntryOrderByRelationAggregateInput
-  xposts?: Prisma.XPostOrderByRelationAggregateInput
 }
 
 export type BattleParticipantWhereUniqueInput = Prisma.AtLeast<{
@@ -208,20 +204,18 @@ export type BattleParticipantWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.BattleParticipantWhereInput | Prisma.BattleParticipantWhereInput[]
   battleId?: Prisma.UuidFilter<"BattleParticipant"> | string
   userId?: Prisma.UuidFilter<"BattleParticipant"> | string
+  status?: Prisma.EnumParticipantStatusFilter<"BattleParticipant"> | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFilter<"BattleParticipant"> | Date | string
-  isActive?: Prisma.BoolFilter<"BattleParticipant"> | boolean
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
+  battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  entries?: Prisma.BattleEntryListRelationFilter
-  xposts?: Prisma.XPostListRelationFilter
 }, "id" | "battleId_userId">
 
 export type BattleParticipantOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
   _count?: Prisma.BattleParticipantCountOrderByAggregateInput
   _max?: Prisma.BattleParticipantMaxOrderByAggregateInput
   _min?: Prisma.BattleParticipantMinOrderByAggregateInput
@@ -234,70 +228,62 @@ export type BattleParticipantScalarWhereWithAggregatesInput = {
   id?: Prisma.UuidWithAggregatesFilter<"BattleParticipant"> | string
   battleId?: Prisma.UuidWithAggregatesFilter<"BattleParticipant"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"BattleParticipant"> | string
+  status?: Prisma.EnumParticipantStatusWithAggregatesFilter<"BattleParticipant"> | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeWithAggregatesFilter<"BattleParticipant"> | Date | string
-  isActive?: Prisma.BoolWithAggregatesFilter<"BattleParticipant"> | boolean
 }
 
 export type BattleParticipantCreateInput = {
   id?: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
-  battle: Prisma.BattleCreateNestedOneWithoutParticipantsInput
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutBattleParticipantsInput
-  entries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutBattleParticipantInput
 }
 
 export type BattleParticipantUncheckedCreateInput = {
   id?: string
   battleId: string
   userId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
-  entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleParticipantInput
 }
 
 export type BattleParticipantUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  battle?: Prisma.BattleUpdateOneRequiredWithoutParticipantsNestedInput
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBattleParticipantsNestedInput
-  entries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantCreateManyInput = {
   id?: string
   battleId: string
   userId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
 }
 
 export type BattleParticipantUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BattleParticipantUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BattleParticipantListRelationFilter = {
@@ -310,11 +296,6 @@ export type BattleParticipantOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type BattleParticipantScalarRelationFilter = {
-  is?: Prisma.BattleParticipantWhereInput
-  isNot?: Prisma.BattleParticipantWhereInput
-}
-
 export type BattleParticipantBattleIdUserIdCompoundUniqueInput = {
   battleId: string
   userId: string
@@ -324,29 +305,24 @@ export type BattleParticipantCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
 }
 
 export type BattleParticipantMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
 }
 
 export type BattleParticipantMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
-}
-
-export type BattleParticipantNullableScalarRelationFilter = {
-  is?: Prisma.BattleParticipantWhereInput | null
-  isNot?: Prisma.BattleParticipantWhereInput | null
 }
 
 export type BattleParticipantCreateNestedManyWithoutBattleInput = {
@@ -391,22 +367,8 @@ export type BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput = {
   deleteMany?: Prisma.BattleParticipantScalarWhereInput | Prisma.BattleParticipantScalarWhereInput[]
 }
 
-export type BattleParticipantCreateNestedOneWithoutEntriesInput = {
-  create?: Prisma.XOR<Prisma.BattleParticipantCreateWithoutEntriesInput, Prisma.BattleParticipantUncheckedCreateWithoutEntriesInput>
-  connectOrCreate?: Prisma.BattleParticipantCreateOrConnectWithoutEntriesInput
-  connect?: Prisma.BattleParticipantWhereUniqueInput
-}
-
-export type BattleParticipantUpdateOneRequiredWithoutEntriesNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleParticipantCreateWithoutEntriesInput, Prisma.BattleParticipantUncheckedCreateWithoutEntriesInput>
-  connectOrCreate?: Prisma.BattleParticipantCreateOrConnectWithoutEntriesInput
-  upsert?: Prisma.BattleParticipantUpsertWithoutEntriesInput
-  connect?: Prisma.BattleParticipantWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BattleParticipantUpdateToOneWithWhereWithoutEntriesInput, Prisma.BattleParticipantUpdateWithoutEntriesInput>, Prisma.BattleParticipantUncheckedUpdateWithoutEntriesInput>
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
+export type EnumParticipantStatusFieldUpdateOperationsInput = {
+  set?: $Enums.ParticipantStatus
 }
 
 export type BattleParticipantCreateNestedManyWithoutUserInput = {
@@ -451,38 +413,18 @@ export type BattleParticipantUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.BattleParticipantScalarWhereInput | Prisma.BattleParticipantScalarWhereInput[]
 }
 
-export type BattleParticipantCreateNestedOneWithoutXpostsInput = {
-  create?: Prisma.XOR<Prisma.BattleParticipantCreateWithoutXpostsInput, Prisma.BattleParticipantUncheckedCreateWithoutXpostsInput>
-  connectOrCreate?: Prisma.BattleParticipantCreateOrConnectWithoutXpostsInput
-  connect?: Prisma.BattleParticipantWhereUniqueInput
-}
-
-export type BattleParticipantUpdateOneWithoutXpostsNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleParticipantCreateWithoutXpostsInput, Prisma.BattleParticipantUncheckedCreateWithoutXpostsInput>
-  connectOrCreate?: Prisma.BattleParticipantCreateOrConnectWithoutXpostsInput
-  upsert?: Prisma.BattleParticipantUpsertWithoutXpostsInput
-  disconnect?: Prisma.BattleParticipantWhereInput | boolean
-  delete?: Prisma.BattleParticipantWhereInput | boolean
-  connect?: Prisma.BattleParticipantWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BattleParticipantUpdateToOneWithWhereWithoutXpostsInput, Prisma.BattleParticipantUpdateWithoutXpostsInput>, Prisma.BattleParticipantUncheckedUpdateWithoutXpostsInput>
-}
-
 export type BattleParticipantCreateWithoutBattleInput = {
   id?: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
   user: Prisma.UserCreateNestedOneWithoutBattleParticipantsInput
-  entries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutBattleParticipantInput
 }
 
 export type BattleParticipantUncheckedCreateWithoutBattleInput = {
   id?: string
   userId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
-  entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleParticipantInput
 }
 
 export type BattleParticipantCreateOrConnectWithoutBattleInput = {
@@ -518,78 +460,22 @@ export type BattleParticipantScalarWhereInput = {
   id?: Prisma.UuidFilter<"BattleParticipant"> | string
   battleId?: Prisma.UuidFilter<"BattleParticipant"> | string
   userId?: Prisma.UuidFilter<"BattleParticipant"> | string
+  status?: Prisma.EnumParticipantStatusFilter<"BattleParticipant"> | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFilter<"BattleParticipant"> | Date | string
-  isActive?: Prisma.BoolFilter<"BattleParticipant"> | boolean
-}
-
-export type BattleParticipantCreateWithoutEntriesInput = {
-  id?: string
-  joinedAt?: Date | string
-  isActive?: boolean
-  battle: Prisma.BattleCreateNestedOneWithoutParticipantsInput
-  user: Prisma.UserCreateNestedOneWithoutBattleParticipantsInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutBattleParticipantInput
-}
-
-export type BattleParticipantUncheckedCreateWithoutEntriesInput = {
-  id?: string
-  battleId: string
-  userId: string
-  joinedAt?: Date | string
-  isActive?: boolean
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleParticipantInput
-}
-
-export type BattleParticipantCreateOrConnectWithoutEntriesInput = {
-  where: Prisma.BattleParticipantWhereUniqueInput
-  create: Prisma.XOR<Prisma.BattleParticipantCreateWithoutEntriesInput, Prisma.BattleParticipantUncheckedCreateWithoutEntriesInput>
-}
-
-export type BattleParticipantUpsertWithoutEntriesInput = {
-  update: Prisma.XOR<Prisma.BattleParticipantUpdateWithoutEntriesInput, Prisma.BattleParticipantUncheckedUpdateWithoutEntriesInput>
-  create: Prisma.XOR<Prisma.BattleParticipantCreateWithoutEntriesInput, Prisma.BattleParticipantUncheckedCreateWithoutEntriesInput>
-  where?: Prisma.BattleParticipantWhereInput
-}
-
-export type BattleParticipantUpdateToOneWithWhereWithoutEntriesInput = {
-  where?: Prisma.BattleParticipantWhereInput
-  data: Prisma.XOR<Prisma.BattleParticipantUpdateWithoutEntriesInput, Prisma.BattleParticipantUncheckedUpdateWithoutEntriesInput>
-}
-
-export type BattleParticipantUpdateWithoutEntriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  battle?: Prisma.BattleUpdateOneRequiredWithoutParticipantsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutBattleParticipantsNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutBattleParticipantNestedInput
-}
-
-export type BattleParticipantUncheckedUpdateWithoutEntriesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantCreateWithoutUserInput = {
   id?: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
-  battle: Prisma.BattleCreateNestedOneWithoutParticipantsInput
-  entries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutBattleParticipantInput
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutParticipantsInput
 }
 
 export type BattleParticipantUncheckedCreateWithoutUserInput = {
   id?: string
   battleId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
-  entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutBattleParticipantInput
 }
 
 export type BattleParticipantCreateOrConnectWithoutUserInput = {
@@ -618,182 +504,81 @@ export type BattleParticipantUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.BattleParticipantUpdateManyMutationInput, Prisma.BattleParticipantUncheckedUpdateManyWithoutUserInput>
 }
 
-export type BattleParticipantCreateWithoutXpostsInput = {
-  id?: string
-  joinedAt?: Date | string
-  isActive?: boolean
-  battle: Prisma.BattleCreateNestedOneWithoutParticipantsInput
-  user: Prisma.UserCreateNestedOneWithoutBattleParticipantsInput
-  entries?: Prisma.BattleEntryCreateNestedManyWithoutParticipantInput
-}
-
-export type BattleParticipantUncheckedCreateWithoutXpostsInput = {
-  id?: string
-  battleId: string
-  userId: string
-  joinedAt?: Date | string
-  isActive?: boolean
-  entries?: Prisma.BattleEntryUncheckedCreateNestedManyWithoutParticipantInput
-}
-
-export type BattleParticipantCreateOrConnectWithoutXpostsInput = {
-  where: Prisma.BattleParticipantWhereUniqueInput
-  create: Prisma.XOR<Prisma.BattleParticipantCreateWithoutXpostsInput, Prisma.BattleParticipantUncheckedCreateWithoutXpostsInput>
-}
-
-export type BattleParticipantUpsertWithoutXpostsInput = {
-  update: Prisma.XOR<Prisma.BattleParticipantUpdateWithoutXpostsInput, Prisma.BattleParticipantUncheckedUpdateWithoutXpostsInput>
-  create: Prisma.XOR<Prisma.BattleParticipantCreateWithoutXpostsInput, Prisma.BattleParticipantUncheckedCreateWithoutXpostsInput>
-  where?: Prisma.BattleParticipantWhereInput
-}
-
-export type BattleParticipantUpdateToOneWithWhereWithoutXpostsInput = {
-  where?: Prisma.BattleParticipantWhereInput
-  data: Prisma.XOR<Prisma.BattleParticipantUpdateWithoutXpostsInput, Prisma.BattleParticipantUncheckedUpdateWithoutXpostsInput>
-}
-
-export type BattleParticipantUpdateWithoutXpostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  battle?: Prisma.BattleUpdateOneRequiredWithoutParticipantsNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutBattleParticipantsNestedInput
-  entries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-}
-
-export type BattleParticipantUncheckedUpdateWithoutXpostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-}
-
 export type BattleParticipantCreateManyBattleInput = {
   id?: string
   userId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
 }
 
 export type BattleParticipantUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutBattleParticipantsNestedInput
-  entries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantUncheckedUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantUncheckedUpdateManyWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type BattleParticipantCreateManyUserInput = {
   id?: string
   battleId: string
+  status?: $Enums.ParticipantStatus
   joinedAt?: Date | string
-  isActive?: boolean
 }
 
 export type BattleParticipantUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  battle?: Prisma.BattleUpdateOneRequiredWithoutParticipantsNestedInput
-  entries?: Prisma.BattleEntryUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutBattleParticipantNestedInput
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutParticipantsNestedInput
 }
 
 export type BattleParticipantUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  entries?: Prisma.BattleEntryUncheckedUpdateManyWithoutParticipantNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutBattleParticipantNestedInput
 }
 
 export type BattleParticipantUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumParticipantStatusFieldUpdateOperationsInput | $Enums.ParticipantStatus
   joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
-
-/**
- * Count Type BattleParticipantCountOutputType
- */
-
-export type BattleParticipantCountOutputType = {
-  entries: number
-  xposts: number
-}
-
-export type BattleParticipantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  entries?: boolean | BattleParticipantCountOutputTypeCountEntriesArgs
-  xposts?: boolean | BattleParticipantCountOutputTypeCountXpostsArgs
-}
-
-/**
- * BattleParticipantCountOutputType without action
- */
-export type BattleParticipantCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BattleParticipantCountOutputType
-   */
-  select?: Prisma.BattleParticipantCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * BattleParticipantCountOutputType without action
- */
-export type BattleParticipantCountOutputTypeCountEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BattleEntryWhereInput
-}
-
-/**
- * BattleParticipantCountOutputType without action
- */
-export type BattleParticipantCountOutputTypeCountXpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.XPostWhereInput
-}
 
 
 export type BattleParticipantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   battleId?: boolean
   userId?: boolean
+  status?: boolean
   joinedAt?: boolean
-  isActive?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  entries?: boolean | Prisma.BattleParticipant$entriesArgs<ExtArgs>
-  xposts?: boolean | Prisma.BattleParticipant$xpostsArgs<ExtArgs>
-  _count?: boolean | Prisma.BattleParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleParticipant"]>
 
 export type BattleParticipantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   battleId?: boolean
   userId?: boolean
+  status?: boolean
   joinedAt?: boolean
-  isActive?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleParticipant"]>
 
@@ -801,9 +586,9 @@ export type BattleParticipantSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   id?: boolean
   battleId?: boolean
   userId?: boolean
+  status?: boolean
   joinedAt?: boolean
-  isActive?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleParticipant"]>
 
@@ -811,41 +596,36 @@ export type BattleParticipantSelectScalar = {
   id?: boolean
   battleId?: boolean
   userId?: boolean
+  status?: boolean
   joinedAt?: boolean
-  isActive?: boolean
 }
 
-export type BattleParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "userId" | "joinedAt" | "isActive", ExtArgs["result"]["battleParticipant"]>
+export type BattleParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "userId" | "status" | "joinedAt", ExtArgs["result"]["battleParticipant"]>
 export type BattleParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  entries?: boolean | Prisma.BattleParticipant$entriesArgs<ExtArgs>
-  xposts?: boolean | Prisma.BattleParticipant$xpostsArgs<ExtArgs>
-  _count?: boolean | Prisma.BattleParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BattleParticipantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type BattleParticipantIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $BattleParticipantPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "BattleParticipant"
   objects: {
-    battle: Prisma.$BattlePayload<ExtArgs>
+    battle: Prisma.$HeadToHeadBattlePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
-    entries: Prisma.$BattleEntryPayload<ExtArgs>[]
-    xposts: Prisma.$XPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     battleId: string
     userId: string
+    status: $Enums.ParticipantStatus
     joinedAt: Date
-    isActive: boolean
   }, ExtArgs["result"]["battleParticipant"]>
   composites: {}
 }
@@ -1240,10 +1020,8 @@ readonly fields: BattleParticipantFieldRefs;
  */
 export interface Prisma__BattleParticipantClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  battle<T extends Prisma.BattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleDefaultArgs<ExtArgs>>): Prisma.Prisma__BattleClient<runtime.Types.Result.GetResult<Prisma.$BattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  battle<T extends Prisma.HeadToHeadBattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>>): Prisma.Prisma__HeadToHeadBattleClient<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  entries<T extends Prisma.BattleParticipant$entriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleParticipant$entriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  xposts<T extends Prisma.BattleParticipant$xpostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleParticipant$xpostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1276,8 +1054,8 @@ export interface BattleParticipantFieldRefs {
   readonly id: Prisma.FieldRef<"BattleParticipant", 'String'>
   readonly battleId: Prisma.FieldRef<"BattleParticipant", 'String'>
   readonly userId: Prisma.FieldRef<"BattleParticipant", 'String'>
+  readonly status: Prisma.FieldRef<"BattleParticipant", 'ParticipantStatus'>
   readonly joinedAt: Prisma.FieldRef<"BattleParticipant", 'DateTime'>
-  readonly isActive: Prisma.FieldRef<"BattleParticipant", 'Boolean'>
 }
     
 
@@ -1671,54 +1449,6 @@ export type BattleParticipantDeleteManyArgs<ExtArgs extends runtime.Types.Extens
    * Limit how many BattleParticipants to delete.
    */
   limit?: number
-}
-
-/**
- * BattleParticipant.entries
- */
-export type BattleParticipant$entriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BattleEntry
-   */
-  select?: Prisma.BattleEntrySelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BattleEntry
-   */
-  omit?: Prisma.BattleEntryOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BattleEntryInclude<ExtArgs> | null
-  where?: Prisma.BattleEntryWhereInput
-  orderBy?: Prisma.BattleEntryOrderByWithRelationInput | Prisma.BattleEntryOrderByWithRelationInput[]
-  cursor?: Prisma.BattleEntryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BattleEntryScalarFieldEnum | Prisma.BattleEntryScalarFieldEnum[]
-}
-
-/**
- * BattleParticipant.xposts
- */
-export type BattleParticipant$xpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the XPost
-   */
-  select?: Prisma.XPostSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the XPost
-   */
-  omit?: Prisma.XPostOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.XPostInclude<ExtArgs> | null
-  where?: Prisma.XPostWhereInput
-  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
-  cursor?: Prisma.XPostWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**

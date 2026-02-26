@@ -54,15 +54,12 @@ export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
   Battle: 'Battle',
-  BattleEntry: 'BattleEntry',
-  BattleParticipant: 'BattleParticipant',
-  BattleResult: 'BattleResult',
-  BattleVote: 'BattleVote',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
   Challenge: 'Challenge',
+  ChallengeDeviceRule: 'ChallengeDeviceRule',
+  ChallengePrize: 'ChallengePrize',
   ChallengeParticipant: 'ChallengeParticipant',
-  ChallengeResult: 'ChallengeResult',
   ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
@@ -79,6 +76,10 @@ export const ModelName = {
   Garage: 'Garage',
   HardwareSetup: 'HardwareSetup',
   Hashtag: 'Hashtag',
+  HeadToHeadBattle: 'HeadToHeadBattle',
+  BattleParticipant: 'BattleParticipant',
+  BattleInvitation: 'BattleInvitation',
+  BattleSubmission: 'BattleSubmission',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
   LegalNotice: 'LegalNotice',
@@ -112,8 +113,7 @@ export const ModelName = {
   VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
-  WishList: 'WishList',
-  XPost: 'XPost'
+  WishList: 'WishList'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -182,51 +182,6 @@ export const BattleScalarFieldEnum = {
 export type BattleScalarFieldEnum = (typeof BattleScalarFieldEnum)[keyof typeof BattleScalarFieldEnum]
 
 
-export const BattleEntryScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  participantId: 'participantId',
-  xpostId: 'xpostId',
-  createdAt: 'createdAt'
-} as const
-
-export type BattleEntryScalarFieldEnum = (typeof BattleEntryScalarFieldEnum)[keyof typeof BattleEntryScalarFieldEnum]
-
-
-export const BattleParticipantScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  userId: 'userId',
-  joinedAt: 'joinedAt',
-  isActive: 'isActive'
-} as const
-
-export type BattleParticipantScalarFieldEnum = (typeof BattleParticipantScalarFieldEnum)[keyof typeof BattleParticipantScalarFieldEnum]
-
-
-export const BattleResultScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  winnerUserId: 'winnerUserId',
-  winnerEntryId: 'winnerEntryId',
-  rewardPoints: 'rewardPoints',
-  createdAt: 'createdAt'
-} as const
-
-export type BattleResultScalarFieldEnum = (typeof BattleResultScalarFieldEnum)[keyof typeof BattleResultScalarFieldEnum]
-
-
-export const BattleVoteScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  entryId: 'entryId',
-  voterUserId: 'voterUserId',
-  createdAt: 'createdAt'
-} as const
-
-export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof typeof BattleVoteScalarFieldEnum]
-
-
 export const BusinessProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -263,50 +218,68 @@ export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarSca
 
 export const ChallengeScalarFieldEnum = {
   id: 'id',
-  hostId: 'hostId',
-  participantsId: 'participantsId',
+  creatorId: 'creatorId',
   title: 'title',
   description: 'description',
-  location: 'location',
+  type: 'type',
+  category: 'category',
+  preference: 'preference',
+  coverImage: 'coverImage',
+  participationScope: 'participationScope',
+  radiusKm: 'radiusKm',
+  locationName: 'locationName',
+  latitude: 'latitude',
+  longitude: 'longitude',
   startDate: 'startDate',
   endDate: 'endDate',
-  images: 'images',
-  media: 'media',
-  camera: 'camera',
-  participants: 'participants',
-  comment: 'comment',
-  isActive: 'isActive'
+  enableDeviceRestriction: 'enableDeviceRestriction',
+  requireTrueShotVerification: 'requireTrueShotVerification',
+  rejectEditedPhotos: 'rejectEditedPhotos',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ChallengeScalarFieldEnum = (typeof ChallengeScalarFieldEnum)[keyof typeof ChallengeScalarFieldEnum]
+
+
+export const ChallengeDeviceRuleScalarFieldEnum = {
+  id: 'id',
+  challengeId: 'challengeId',
+  deviceType: 'deviceType',
+  brand: 'brand'
+} as const
+
+export type ChallengeDeviceRuleScalarFieldEnum = (typeof ChallengeDeviceRuleScalarFieldEnum)[keyof typeof ChallengeDeviceRuleScalarFieldEnum]
+
+
+export const ChallengePrizeScalarFieldEnum = {
+  id: 'id',
+  challengeId: 'challengeId',
+  type: 'type',
+  customName: 'customName',
+  createdAt: 'createdAt'
+} as const
+
+export type ChallengePrizeScalarFieldEnum = (typeof ChallengePrizeScalarFieldEnum)[keyof typeof ChallengePrizeScalarFieldEnum]
 
 
 export const ChallengeParticipantScalarFieldEnum = {
   id: 'id',
   challengeId: 'challengeId',
   userId: 'userId',
-  joinedAt: 'joinedAt',
-  isActive: 'isActive'
+  submissionUrl: 'submissionUrl',
+  score: 'score',
+  isWinner: 'isWinner',
+  createdAt: 'createdAt'
 } as const
 
 export type ChallengeParticipantScalarFieldEnum = (typeof ChallengeParticipantScalarFieldEnum)[keyof typeof ChallengeParticipantScalarFieldEnum]
 
 
-export const ChallengeResultScalarFieldEnum = {
-  id: 'id',
-  challengeId: 'challengeId',
-  winnerUserId: 'winnerUserId',
-  createdAt: 'createdAt'
-} as const
-
-export type ChallengeResultScalarFieldEnum = (typeof ChallengeResultScalarFieldEnum)[keyof typeof ChallengeResultScalarFieldEnum]
-
-
 export const ChallengeSubmissionScalarFieldEnum = {
   id: 'id',
-  challengeId: 'challengeId',
   userId: 'userId',
-  xpostId: 'xpostId',
   createdAt: 'createdAt'
 } as const
 
@@ -523,6 +496,77 @@ export const HashtagScalarFieldEnum = {
 } as const
 
 export type HashtagScalarFieldEnum = (typeof HashtagScalarFieldEnum)[keyof typeof HashtagScalarFieldEnum]
+
+
+export const HeadToHeadBattleScalarFieldEnum = {
+  id: 'id',
+  creatorId: 'creatorId',
+  title: 'title',
+  description: 'description',
+  mediaType: 'mediaType',
+  coverImage: 'coverImage',
+  cameraRequirement: 'cameraRequirement',
+  requireTrueShotVerified: 'requireTrueShotVerified',
+  rejectEditedPhotos: 'rejectEditedPhotos',
+  accessType: 'accessType',
+  autoInviteScope: 'autoInviteScope',
+  autoInviteCount: 'autoInviteCount',
+  participationScope: 'participationScope',
+  radiusKm: 'radiusKm',
+  locationName: 'locationName',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  durationDays: 'durationDays',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  winnerUserId: 'winnerUserId'
+} as const
+
+export type HeadToHeadBattleScalarFieldEnum = (typeof HeadToHeadBattleScalarFieldEnum)[keyof typeof HeadToHeadBattleScalarFieldEnum]
+
+
+export const BattleParticipantScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  status: 'status',
+  joinedAt: 'joinedAt'
+} as const
+
+export type BattleParticipantScalarFieldEnum = (typeof BattleParticipantScalarFieldEnum)[keyof typeof BattleParticipantScalarFieldEnum]
+
+
+export const BattleInvitationScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  inviterId: 'inviterId',
+  inviteeId: 'inviteeId',
+  status: 'status',
+  sentAt: 'sentAt',
+  respondedAt: 'respondedAt'
+} as const
+
+export type BattleInvitationScalarFieldEnum = (typeof BattleInvitationScalarFieldEnum)[keyof typeof BattleInvitationScalarFieldEnum]
+
+
+export const BattleSubmissionScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  mediaUrl: 'mediaUrl',
+  thumbnailUrl: 'thumbnailUrl',
+  caption: 'caption',
+  isTrueShotVerified: 'isTrueShotVerified',
+  isEditedDetected: 'isEditedDetected',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type BattleSubmissionScalarFieldEnum = (typeof BattleSubmissionScalarFieldEnum)[keyof typeof BattleSubmissionScalarFieldEnum]
 
 
 export const HidePostScalarFieldEnum = {
@@ -1006,26 +1050,6 @@ export const WishListScalarFieldEnum = {
 } as const
 
 export type WishListScalarFieldEnum = (typeof WishListScalarFieldEnum)[keyof typeof WishListScalarFieldEnum]
-
-
-export const XPostScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  battleId: 'battleId',
-  battleParticipantId: 'battleParticipantId',
-  challengeId: 'challengeId',
-  challengeParticipantId: 'challengeParticipantId',
-  postType: 'postType',
-  mediaUrl: 'mediaUrl',
-  caption: 'caption',
-  like: 'like',
-  comment: 'comment',
-  share: 'share',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type XPostScalarFieldEnum = (typeof XPostScalarFieldEnum)[keyof typeof XPostScalarFieldEnum]
 
 
 export const SortOrder = {

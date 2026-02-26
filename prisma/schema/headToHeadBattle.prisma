@@ -1,0 +1,172 @@
+enum BattleMediaType {
+  PHOTO
+  VIDEO
+}
+
+enum BattleAccessType {
+  OPEN               // anyone can join
+  INVITATION_ONLY    // only invited users
+  AUTO_INVITE        // system sends invites automatically
+  FOLLOWERS_ONLY     // only followers can join
+}
+
+enum AutoInviteScope {
+  SAME_CITY
+  SAME_COUNTRY_500KM
+  WORLDWIDE
+}
+
+
+
+enum CameraRequirement {
+  ANY
+  MOBILE_ONLY
+  DSLR_MIRRORLESS_ONLY
+  PROFESSIONAL_ONLY   // DSLR/Mirrorless + Pro cameras
+}
+
+enum BattleStatus {
+  DRAFT
+  PUBLISHED
+  RUNNING
+  COMPLETED
+  CANCELLED
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+}
+
+enum ParticipantStatus {
+  JOINED
+  LEFT
+  DISQUALIFIED
+}
+
+enum SubmissionStatus {
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+model HeadToHeadBattle {
+  id          String   @id @default(uuid()) @db.Uuid
+
+  creatorId   String   @db.Uuid
+  creator     User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+
+  mediaType   BattleMediaType
+  coverImage  String?  // optional cover
+  // you can also store thumbnail if needed
+
+  // Requirements
+  cameraRequirement        CameraRequirement @default(ANY)
+  requireTrueShotVerified  Boolean          @default(false)
+  rejectEditedPhotos       Boolean          @default(false)
+
+  // Access / Privacy
+  accessType      BattleAccessType @default(OPEN)
+
+  // Auto invite settings (only when accessType = AUTO_INVITE)
+  autoInviteScope AutoInviteScope?
+  autoInviteCount Int?             // 1..1000+
+  
+  // Location & radius
+  participationScope ParticipationScope @default(GLOBAL)
+  radiusKm          Int?                 // used when scope = RADIUS
+  locationName      String?              @db.VarChar(150)
+  latitude          Decimal?             @db.Decimal(9,6)
+  longitude         Decimal?             @db.Decimal(9,6)
+  placeId           String?              @db.VarChar(120)
+
+  // Timing
+  startDate   DateTime @db.Timestamptz(6)
+  endDate     DateTime @db.Timestamptz(6)
+  durationDays Int?    // UI shows “7 days” style; optional derived too
+
+  status      BattleStatus @default(DRAFT)
+
+  createdAt   DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(6)
+
+  participants BattleParticipant[]
+  invitations  BattleInvitation[]
+  submissions  BattleSubmission[]
+
+  winnerUserId String?  @db.Uuid
+  winnerUser   User?    @relation("BattleWinner", fields: [winnerUserId], references: [id], onDelete: SetNull)
+
+  @@index([creatorId])
+  @@index([status])
+  @@index([accessType])
+}
+
+model BattleParticipant {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String @db.Uuid
+  userId    String @db.Uuid
+
+  battle    HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status    ParticipantStatus @default(JOINED)
+
+  joinedAt  DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([battleId, userId])
+  @@index([userId])
+}
+
+model BattleInvitation {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String @db.Uuid
+  inviterId String @db.Uuid
+  inviteeId String @db.Uuid
+
+  battle    HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+
+  inviter   User @relation("BattleInviter", fields: [inviterId], references: [id], onDelete: Cascade)
+  invitee   User @relation("BattleInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
+
+  status    InvitationStatus @default(PENDING)
+
+  sentAt    DateTime @default(now()) @db.Timestamptz(6)
+  respondedAt DateTime?
+
+  @@unique([battleId, inviteeId]) // same user can't be invited twice for same battle
+  @@index([inviterId])
+  @@index([inviteeId])
+}
+
+model BattleSubmission {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String @db.Uuid
+  userId    String @db.Uuid
+
+  battle    HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  mediaUrl     String
+  thumbnailUrl String?
+  caption      String?
+
+  // verification flags
+  isTrueShotVerified Boolean @default(false)
+  isEditedDetected   Boolean @default(false)
+
+  status     SubmissionStatus @default(SUBMITTED)
+
+  createdAt  DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([battleId, userId]) // head2head: usually 1 submission per user (change if needed)
+  @@index([battleId])
+}
