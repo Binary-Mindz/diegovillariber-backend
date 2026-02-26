@@ -657,11 +657,11 @@ export type EnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
 }
 
-export type EnumBattleMediaTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.BattleMediaType | Prisma.EnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel> | $Enums.BattleMediaType
+export type EnumBattleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.BattleCategory | Prisma.EnumBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel> | $Enums.BattleCategory
 }
 
 export type EnumCameraRequirementFilter<$PrismaModel = never> = {
@@ -692,14 +692,14 @@ export type EnumBattleStatusFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumBattleStatusFilter<$PrismaModel> | $Enums.BattleStatus
 }
 
-export type EnumBattleMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BattleMediaType | Prisma.EnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBattleMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.BattleMediaType
+export type EnumBattleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BattleCategory | Prisma.EnumBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBattleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.BattleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel>
 }
 
 export type EnumCameraRequirementWithAggregatesFilter<$PrismaModel = never> = {
@@ -946,28 +946,11 @@ export type EnumIsActiveWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumIsActiveFilter<$PrismaModel>
 }
 
-export type EnumRawShiftSoftwareFilter<$PrismaModel = never> = {
-  equals?: $Enums.RawShiftSoftware | Prisma.EnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  in?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel> | $Enums.RawShiftSoftware
-}
-
 export type EnumRawShiftStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.RawShiftStatus | Prisma.EnumRawShiftStatusFieldRefInput<$PrismaModel>
   in?: $Enums.RawShiftStatus[] | Prisma.ListEnumRawShiftStatusFieldRefInput<$PrismaModel>
   notIn?: $Enums.RawShiftStatus[] | Prisma.ListEnumRawShiftStatusFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumRawShiftStatusFilter<$PrismaModel> | $Enums.RawShiftStatus
-}
-
-export type EnumRawShiftSoftwareWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.RawShiftSoftware | Prisma.EnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  in?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRawShiftSoftwareWithAggregatesFilter<$PrismaModel> | $Enums.RawShiftSoftware
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel>
 }
 
 export type EnumRawShiftStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -1907,11 +1890,11 @@ export type NestedEnumHashtagCreatedByWithAggregatesFilter<$PrismaModel = never>
   _max?: Prisma.NestedEnumHashtagCreatedByFilter<$PrismaModel>
 }
 
-export type NestedEnumBattleMediaTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.BattleMediaType | Prisma.EnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel> | $Enums.BattleMediaType
+export type NestedEnumBattleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.BattleCategory | Prisma.EnumBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel> | $Enums.BattleCategory
 }
 
 export type NestedEnumCameraRequirementFilter<$PrismaModel = never> = {
@@ -1942,14 +1925,14 @@ export type NestedEnumBattleStatusFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumBattleStatusFilter<$PrismaModel> | $Enums.BattleStatus
 }
 
-export type NestedEnumBattleMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.BattleMediaType | Prisma.EnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.BattleMediaType[] | Prisma.ListEnumBattleMediaTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumBattleMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.BattleMediaType
+export type NestedEnumBattleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BattleCategory | Prisma.EnumBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BattleCategory[] | Prisma.ListEnumBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBattleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.BattleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumBattleMediaTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBattleCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumCameraRequirementWithAggregatesFilter<$PrismaModel = never> = {
@@ -2196,28 +2179,11 @@ export type NestedEnumIsActiveWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumIsActiveFilter<$PrismaModel>
 }
 
-export type NestedEnumRawShiftSoftwareFilter<$PrismaModel = never> = {
-  equals?: $Enums.RawShiftSoftware | Prisma.EnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  in?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel> | $Enums.RawShiftSoftware
-}
-
 export type NestedEnumRawShiftStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.RawShiftStatus | Prisma.EnumRawShiftStatusFieldRefInput<$PrismaModel>
   in?: $Enums.RawShiftStatus[] | Prisma.ListEnumRawShiftStatusFieldRefInput<$PrismaModel>
   notIn?: $Enums.RawShiftStatus[] | Prisma.ListEnumRawShiftStatusFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumRawShiftStatusFilter<$PrismaModel> | $Enums.RawShiftStatus
-}
-
-export type NestedEnumRawShiftSoftwareWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.RawShiftSoftware | Prisma.EnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  in?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RawShiftSoftware[] | Prisma.ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRawShiftSoftwareWithAggregatesFilter<$PrismaModel> | $Enums.RawShiftSoftware
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRawShiftSoftwareFilter<$PrismaModel>
 }
 
 export type NestedEnumRawShiftStatusWithAggregatesFilter<$PrismaModel = never> = {

@@ -1,41 +1,30 @@
+// src/main/program/head-to-head/dto/headtohead-query.dto.ts
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
-import { BattleAccessType, BattleMediaType, BattleStatus } from 'generated/prisma/enums';
-
-
-export enum BattleTab {
-  ACTIVE = 'ACTIVE',
-  UPCOMING = 'UPCOMING',
-  FINISHED = 'FINISHED',
-}
+import { BattleAccessType, BattleStatus, BattleCategory, Preference } from 'generated/prisma/enums';
 
 export class HeadToHeadQueryDto {
-  @ApiPropertyOptional({ enum: BattleTab, example: BattleTab.ACTIVE })
-  @IsOptional()
-  @IsEnum(BattleTab)
-  tab?: BattleTab;
-
   @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.RUNNING })
   @IsOptional()
   @IsEnum(BattleStatus)
   status?: BattleStatus;
-
-  @ApiPropertyOptional({ enum: BattleMediaType, example: BattleMediaType.PHOTO })
-  @IsOptional()
-  @IsEnum(BattleMediaType)
-  mediaType?: BattleMediaType;
 
   @ApiPropertyOptional({ enum: BattleAccessType, example: BattleAccessType.OPEN })
   @IsOptional()
   @IsEnum(BattleAccessType)
   accessType?: BattleAccessType;
 
-  @ApiPropertyOptional({ example: 'uuid-of-creator' })
+  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
   @IsOptional()
-  @IsString()
-  creatorId?: string;
+  @IsEnum(BattleCategory)
+  battleCategory?: BattleCategory;
 
-  @ApiPropertyOptional({ example: 'sunset', description: 'Search by title/description/locationName' })
+  @ApiPropertyOptional({ enum: Preference, example: Preference.CAR })
+  @IsOptional()
+  @IsEnum(Preference)
+  preference?: Preference;
+
+  @ApiPropertyOptional({ example: 'bmw' })
   @IsOptional()
   @IsString()
   q?: string;

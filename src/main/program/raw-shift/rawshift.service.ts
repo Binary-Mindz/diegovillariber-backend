@@ -92,71 +92,63 @@ export class RawShiftService {
     return battle;
   }
 
-  async createBattle(userId: string, dto: CreateRawShiftBattleDto) {
-    const startDate = new Date(dto.startDate);
-    const endDate = new Date(dto.endDate);
+ async createBattle(userId: string, dto: CreateRawShiftBattleDto) {
+  const startDate = new Date(dto.startDate);
+  const endDate = new Date(dto.endDate);
 
-    if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
+  if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
 
-    return this.prisma.rawShiftBattle.create({
-      data: {
-        creatorId: userId,
-        title: dto.title,
-        description: dto.description,
-        coverImage: dto.coverImage,
-        bannerImage: dto.bannerImage,
-        software: dto.software,
-        softwareLabel: dto.softwareLabel,
-        requireRaw: dto.requireRaw ?? true,
-        rejectAiEdited: dto.rejectAiEdited ?? false,
-        participantLimit: dto.participantLimit,
-        participationScope: dto.participationScope ?? ParticipationScope.GLOBAL,
-        radiusKm: dto.radiusKm,
-        locationName: dto.locationName,
-        latitude: dto.latitude,
-        longitude: dto.longitude,
-        placeId: dto.placeId,
-        startDate,
-        endDate,
-        status: RawShiftStatus.DRAFT, // publish step can be separate if you want
-      },
-    });
-  }
+  return this.prisma.rawShiftBattle.create({
+    data: {
+      creatorId: userId,
+      title: dto.title,
+      description: dto.description,
+      coverImage: dto.coverImage,
+      bannerImage: dto.bannerImage,
+      participantLimit: dto.participantLimit,
 
+      // schema field (required)
+      rawShiftPrice: dto.rawShiftPrice,
+
+      // schema field (optional)
+      location: dto.location,
+
+      startDate,
+      endDate,
+
+      // optional from dto, otherwise default in schema
+      status: dto.status ?? RawShiftStatus.DRAFT,
+    },
+  });
+}
   async updateBattle(id: string, userId: string, dto: UpdateRawShiftBattleDto) {
-    const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
-    if (!battle) throw new NotFoundException('RawShift battle not found');
-    if (battle.creatorId !== userId) throw new ForbiddenException('Only creator can update');
+  const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
+  if (!battle) throw new NotFoundException('RawShift battle not found');
+  if (battle.creatorId !== userId) throw new ForbiddenException('Only creator can update');
 
-    // If dates provided, validate
-    const startDate = dto.startDate ? new Date(dto.startDate) : battle.startDate;
-    const endDate = dto.endDate ? new Date(dto.endDate) : battle.endDate;
-    if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
+  const startDate = dto.startDate ? new Date(dto.startDate) : battle.startDate;
+  const endDate = dto.endDate ? new Date(dto.endDate) : battle.endDate;
 
-    return this.prisma.rawShiftBattle.update({
-      where: { id },
-      data: {
-        title: dto.title,
-        description: dto.description,
-        coverImage: dto.coverImage,
-        bannerImage: dto.bannerImage,
-        software: dto.software,
-        softwareLabel: dto.softwareLabel,
-        requireRaw: dto.requireRaw,
-        rejectAiEdited: dto.rejectAiEdited,
-        participantLimit: dto.participantLimit,
-        participationScope: dto.participationScope,
-        radiusKm: dto.radiusKm,
-        locationName: dto.locationName,
-        latitude: dto.latitude as any,
-        longitude: dto.longitude as any,
-        placeId: dto.placeId,
-        startDate,
-        endDate,
-      },
-    });
-  }
+  if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
 
+  return this.prisma.rawShiftBattle.update({
+    where: { id },
+    data: {
+      ...(dto.title !== undefined ? { title: dto.title } : {}),
+      ...(dto.description !== undefined ? { description: dto.description } : {}),
+      ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
+      ...(dto.bannerImage !== undefined ? { bannerImage: dto.bannerImage } : {}),
+      ...(dto.participantLimit !== undefined ? { participantLimit: dto.participantLimit } : {}),
+      ...(dto.rawShiftPrice !== undefined ? { rawShift: dto.rawShiftPrice } : {}),
+      ...(dto.location !== undefined ? { location: dto.location } : {}),
+      ...(dto.status !== undefined ? { status: dto.status } : {}),
+
+      // dates validated above
+      ...(dto.startDate !== undefined ? { startDate } : {}),
+      ...(dto.endDate !== undefined ? { endDate } : {}),
+    },
+  });
+}
   async deleteBattle(id: string, userId: string) {
     const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
     if (!battle) throw new NotFoundException('RawShift battle not found');

@@ -88,4 +88,6 @@ model User {
   rawShiftVotes RawShiftVote[]
 
   rawShiftComments RawShiftComment[]
+
+  prizes Prize[]
 }

@@ -23,9 +23,6 @@ CREATE TYPE "DeviceType" AS ENUM ('MOBILE', 'DSLR', 'MIRRORLESS', 'ACTION_CAMERA
 CREATE TYPE "FileType" AS ENUM ('IMAGE', 'DOCS', 'LINK', 'DOCUMENT', 'ANY', 'VIDEO', 'AUDIO');
 
 -- CreateEnum
-CREATE TYPE "BattleMediaType" AS ENUM ('PHOTO', 'VIDEO');
-
--- CreateEnum
 CREATE TYPE "BattleAccessType" AS ENUM ('OPEN', 'INVITATION_ONLY', 'AUTO_INVITE', 'FOLLOWERS_ONLY');
 
 -- CreateEnum
@@ -47,6 +44,9 @@ CREATE TYPE "ParticipantStatus" AS ENUM ('JOINED', 'LEFT', 'DISQUALIFIED');
 CREATE TYPE "SubmissionStatus" AS ENUM ('SUBMITTED', 'APPROVED', 'REJECTED');
 
 -- CreateEnum
+CREATE TYPE "BattleCategory" AS ENUM ('STYLE_BATTLE', 'STANCE_BATTLE', 'RACING_BATTLE', 'CLASSIC_BATTLE', 'JDM_BATTLE', 'EURO_BATTLE', 'MUSCLE_BATTLE', 'OFF_ROAD_BATTLE');
+
+-- CreateEnum
 CREATE TYPE "VisiualStyle" AS ENUM ('Action', 'Aerial', 'Artistic', 'Drift', 'Black_And_White', 'Cinematic', 'Close_Up', 'Motion_Blur', 'Day', 'Detail_Shot', 'Golden_Hour', 'Long_Exposure', 'Macro', 'Night_Shot', 'Panoramic', 'Panning', 'Raw', 'Rollin_Shot', 'Wet_Conditions', 'Wide_Angle', 'Abandoned', 'AI_Generated');
 
 -- CreateEnum
@@ -54,6 +54,15 @@ CREATE TYPE "ContextActivity" AS ENUM ('Car_Meet', 'Celebration', 'Drag_Race', '
 
 -- CreateEnum
 CREATE TYPE "Subject" AS ENUM ('Brake_Details', 'Cockpit', 'Driver_Portrait', 'Engine_Bay', 'Exterior', 'Front_Detail', 'Interior', 'Logos', 'Rear_Detail', 'Side', 'Wheel');
+
+-- CreateEnum
+CREATE TYPE "RawShiftStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'RUNNING', 'COMPLETED', 'CANCELLED');
+
+-- CreateEnum
+CREATE TYPE "RawShiftEntryStatus" AS ENUM ('SUBMITTED', 'APPROVED', 'REJECTED');
+
+-- CreateEnum
+CREATE TYPE "RawShiftSoftware" AS ENUM ('ANY', 'LIGHTROOM', 'PHOTOSHOP', 'CAPTURE_ONE', 'SNAPSEED', 'OTHER');
 
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'SUPER_ADMIN', 'AMBASSADOR', 'OFFICIAL_PARTNER');
@@ -72,9 +81,6 @@ CREATE TYPE "Media" AS ENUM ('PHOTO', 'VIDEO');
 
 -- CreateEnum
 CREATE TYPE "PostType" AS ENUM ('Spotter_Post', 'Owner_Post', 'Battle_Post', 'Challenge_Post');
-
--- CreateEnum
-CREATE TYPE "BattleCategory" AS ENUM ('RAW_SHIFT', 'SPLIT_SCREEN');
 
 -- CreateEnum
 CREATE TYPE "PointType" AS ENUM ('BATTLE_WIN', 'POST', 'LIKE', 'COMMENT', 'ONGOING');
@@ -213,25 +219,6 @@ CREATE TABLE "AmbassadorProgram" (
 );
 
 -- CreateTable
-CREATE TABLE "Battle" (
-    "id" UUID NOT NULL,
-    "hostId" UUID NOT NULL,
-    "title" TEXT NOT NULL,
-    "description" TEXT,
-    "coverImage" TEXT,
-    "battleCategory" "BattleCategory" NOT NULL DEFAULT 'RAW_SHIFT',
-    "preference" "Preference" NOT NULL DEFAULT 'CAR',
-    "status" "BattleStatus" NOT NULL DEFAULT 'DRAFT',
-    "maxParticipants" INTEGER NOT NULL DEFAULT 10,
-    "startTime" TIMESTAMP(3),
-    "endTime" TIMESTAMP(3),
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "Battle_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "BusinessProfile" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -324,15 +311,6 @@ CREATE TABLE "ChallengeParticipant" (
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "ChallengeParticipant_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "ChallengeSubmission" (
-    "id" UUID NOT NULL,
-    "userId" UUID NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "ChallengeSubmission_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -551,10 +529,16 @@ CREATE TABLE "Hashtag" (
 CREATE TABLE "HeadToHeadBattle" (
     "id" UUID NOT NULL,
     "creatorId" UUID NOT NULL,
+    "winnerUserId" UUID,
     "title" VARCHAR(255) NOT NULL,
+    "preference" "Preference" NOT NULL DEFAULT 'CAR',
     "description" TEXT,
-    "mediaType" "BattleMediaType" NOT NULL,
     "coverImage" TEXT,
+    "battleCategory" "BattleCategory" NOT NULL DEFAULT 'STYLE_BATTLE',
+    "brandFilter" TEXT,
+    "durationDays" INTEGER,
+    "winPrize" TEXT NOT NULL,
+    "uploadImageOrVideo" TEXT NOT NULL,
     "cameraRequirement" "CameraRequirement" NOT NULL DEFAULT 'ANY',
     "requireTrueShotVerified" BOOLEAN NOT NULL DEFAULT false,
     "rejectEditedPhotos" BOOLEAN NOT NULL DEFAULT false,
@@ -569,11 +553,9 @@ CREATE TABLE "HeadToHeadBattle" (
     "placeId" VARCHAR(120),
     "startDate" TIMESTAMPTZ(6) NOT NULL,
     "endDate" TIMESTAMPTZ(6) NOT NULL,
-    "durationDays" INTEGER,
     "status" "BattleStatus" NOT NULL DEFAULT 'DRAFT',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
-    "winnerUserId" UUID,
 
     CONSTRAINT "HeadToHeadBattle_pkey" PRIMARY KEY ("id")
 );
@@ -616,6 +598,30 @@ CREATE TABLE "BattleSubmission" (
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "BattleSubmission_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BattleVote" (
+    "id" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "value" INTEGER NOT NULL DEFAULT 1,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "BattleVote_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BattleComment" (
+    "id" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "submissionId" UUID,
+    "message" TEXT NOT NULL,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "BattleComment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -805,6 +811,15 @@ CREATE TABLE "Post" (
 );
 
 -- CreateTable
+CREATE TABLE "Prize" (
+    "id" UUID NOT NULL,
+    "prizeName" TEXT NOT NULL,
+    "createdById" UUID NOT NULL,
+
+    CONSTRAINT "Prize_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "ProDriverProfile" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -875,6 +890,80 @@ CREATE TABLE "RacingVote" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "RacingVote_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RawShiftBattle" (
+    "id" UUID NOT NULL,
+    "creatorId" UUID NOT NULL,
+    "winnerUserId" UUID,
+    "title" VARCHAR(255) NOT NULL,
+    "description" TEXT,
+    "coverImage" TEXT,
+    "bannerImage" TEXT,
+    "participantLimit" INTEGER,
+    "rawShiftPrice" TEXT NOT NULL,
+    "location" VARCHAR(150),
+    "startDate" TIMESTAMPTZ(6) NOT NULL,
+    "endDate" TIMESTAMPTZ(6) NOT NULL,
+    "status" "RawShiftStatus" NOT NULL DEFAULT 'DRAFT',
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "RawShiftBattle_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RawShiftParticipant" (
+    "id" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "joinedAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "leftAt" TIMESTAMP(3),
+
+    CONSTRAINT "RawShiftParticipant_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RawShiftEntry" (
+    "id" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "rawMediaUrl" TEXT NOT NULL,
+    "rawThumbnailUrl" TEXT,
+    "editedMediaUrl" TEXT NOT NULL,
+    "editedThumbnailUrl" TEXT,
+    "caption" TEXT,
+    "hashtags" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "status" "RawShiftEntryStatus" NOT NULL DEFAULT 'SUBMITTED',
+    "score" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "RawShiftEntry_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RawShiftVote" (
+    "id" UUID NOT NULL,
+    "entryId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "value" INTEGER NOT NULL DEFAULT 1,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "RawShiftVote_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "RawShiftComment" (
+    "id" UUID NOT NULL,
+    "battleId" UUID,
+    "entryId" UUID,
+    "userId" UUID NOT NULL,
+    "message" TEXT NOT NULL,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "RawShiftComment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1010,7 +1099,6 @@ CREATE TABLE "UserPoint" (
     "likeId" UUID,
     "commentId" UUID,
     "followId" UUID,
-    "battleId" UUID,
     "points" INTEGER NOT NULL,
 
     CONSTRAINT "UserPoint_pkey" PRIMARY KEY ("id")
@@ -1121,9 +1209,6 @@ CREATE TABLE "_PostTaggedUsers" (
 CREATE UNIQUE INDEX "AmbassadorProgram_userId_key" ON "AmbassadorProgram"("userId");
 
 -- CreateIndex
-CREATE INDEX "Battle_status_idx" ON "Battle"("status");
-
--- CreateIndex
 CREATE UNIQUE INDEX "BusinessProfile_profileId_key" ON "BusinessProfile"("profileId");
 
 -- CreateIndex
@@ -1140,9 +1225,6 @@ CREATE INDEX "ChallengePrize_challengeId_idx" ON "ChallengePrize"("challengeId")
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ChallengeParticipant_challengeId_userId_key" ON "ChallengeParticipant"("challengeId", "userId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "ChallengeSubmission_userId_key" ON "ChallengeSubmission"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ChassisBrakes_advancedCarDataId_key" ON "ChassisBrakes"("advancedCarDataId");
@@ -1214,6 +1296,27 @@ CREATE INDEX "BattleSubmission_battleId_idx" ON "BattleSubmission"("battleId");
 CREATE UNIQUE INDEX "BattleSubmission_battleId_userId_key" ON "BattleSubmission"("battleId", "userId");
 
 -- CreateIndex
+CREATE INDEX "BattleVote_battleId_idx" ON "BattleVote"("battleId");
+
+-- CreateIndex
+CREATE INDEX "BattleVote_userId_idx" ON "BattleVote"("userId");
+
+-- CreateIndex
+CREATE INDEX "BattleVote_submissionId_idx" ON "BattleVote"("submissionId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "BattleVote_submissionId_userId_key" ON "BattleVote"("submissionId", "userId");
+
+-- CreateIndex
+CREATE INDEX "BattleComment_battleId_idx" ON "BattleComment"("battleId");
+
+-- CreateIndex
+CREATE INDEX "BattleComment_submissionId_idx" ON "BattleComment"("submissionId");
+
+-- CreateIndex
+CREATE INDEX "BattleComment_userId_idx" ON "BattleComment"("userId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "HidePost_userId_postId_key" ON "HidePost"("userId", "postId");
 
 -- CreateIndex
@@ -1251,6 +1354,57 @@ CREATE UNIQUE INDEX "Racing_simRacingId_key" ON "Racing"("simRacingId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "RacingVote_userId_postId_key" ON "RacingVote"("userId", "postId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftBattle_creatorId_idx" ON "RawShiftBattle"("creatorId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftBattle_status_idx" ON "RawShiftBattle"("status");
+
+-- CreateIndex
+CREATE INDEX "RawShiftBattle_startDate_idx" ON "RawShiftBattle"("startDate");
+
+-- CreateIndex
+CREATE INDEX "RawShiftBattle_endDate_idx" ON "RawShiftBattle"("endDate");
+
+-- CreateIndex
+CREATE INDEX "RawShiftParticipant_userId_idx" ON "RawShiftParticipant"("userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftParticipant_battleId_idx" ON "RawShiftParticipant"("battleId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RawShiftParticipant_battleId_userId_key" ON "RawShiftParticipant"("battleId", "userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftEntry_battleId_idx" ON "RawShiftEntry"("battleId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftEntry_userId_idx" ON "RawShiftEntry"("userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftEntry_score_idx" ON "RawShiftEntry"("score");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RawShiftEntry_battleId_userId_key" ON "RawShiftEntry"("battleId", "userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftVote_userId_idx" ON "RawShiftVote"("userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftVote_entryId_idx" ON "RawShiftVote"("entryId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "RawShiftVote_entryId_userId_key" ON "RawShiftVote"("entryId", "userId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftComment_battleId_idx" ON "RawShiftComment"("battleId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftComment_entryId_idx" ON "RawShiftComment"("entryId");
+
+-- CreateIndex
+CREATE INDEX "RawShiftComment_userId_idx" ON "RawShiftComment"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Report_userId_targetId_targetType_key" ON "Report"("userId", "targetId", "targetType");
@@ -1301,9 +1455,6 @@ ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIG
 ALTER TABLE "AmbassadorProgram" ADD CONSTRAINT "AmbassadorProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Battle" ADD CONSTRAINT "Battle_hostId_fkey" FOREIGN KEY ("hostId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "BusinessProfile" ADD CONSTRAINT "BusinessProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1326,9 +1477,6 @@ ALTER TABLE "ChallengeParticipant" ADD CONSTRAINT "ChallengeParticipant_challeng
 
 -- AddForeignKey
 ALTER TABLE "ChallengeParticipant" ADD CONSTRAINT "ChallengeParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ChallengeSubmission" ADD CONSTRAINT "ChallengeSubmission_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ChassisBrakes" ADD CONSTRAINT "ChassisBrakes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1409,6 +1557,24 @@ ALTER TABLE "BattleSubmission" ADD CONSTRAINT "BattleSubmission_battleId_fkey" F
 ALTER TABLE "BattleSubmission" ADD CONSTRAINT "BattleSubmission_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "BattleVote" ADD CONSTRAINT "BattleVote_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "BattleSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BattleVote" ADD CONSTRAINT "BattleVote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BattleVote" ADD CONSTRAINT "BattleVote_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "HeadToHeadBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BattleComment" ADD CONSTRAINT "BattleComment_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "HeadToHeadBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BattleComment" ADD CONSTRAINT "BattleComment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BattleComment" ADD CONSTRAINT "BattleComment_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "BattleSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1475,6 +1641,9 @@ ALTER TABLE "Post" ADD CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFE
 ALTER TABLE "Post" ADD CONSTRAINT "Post_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Prize" ADD CONSTRAINT "Prize_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "ProDriverProfile" ADD CONSTRAINT "ProDriverProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1491,6 +1660,39 @@ ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_userId_fkey" FOREIGN KEY ("u
 
 -- AddForeignKey
 ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftBattle" ADD CONSTRAINT "RawShiftBattle_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftBattle" ADD CONSTRAINT "RawShiftBattle_winnerUserId_fkey" FOREIGN KEY ("winnerUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftParticipant" ADD CONSTRAINT "RawShiftParticipant_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "RawShiftBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftParticipant" ADD CONSTRAINT "RawShiftParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftEntry" ADD CONSTRAINT "RawShiftEntry_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "RawShiftBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftEntry" ADD CONSTRAINT "RawShiftEntry_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftVote" ADD CONSTRAINT "RawShiftVote_entryId_fkey" FOREIGN KEY ("entryId") REFERENCES "RawShiftEntry"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftVote" ADD CONSTRAINT "RawShiftVote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftComment" ADD CONSTRAINT "RawShiftComment_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "RawShiftBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftComment" ADD CONSTRAINT "RawShiftComment_entryId_fkey" FOREIGN KEY ("entryId") REFERENCES "RawShiftEntry"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RawShiftComment" ADD CONSTRAINT "RawShiftComment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Report" ADD CONSTRAINT "Report_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1539,9 +1741,6 @@ ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_commentId_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_followId_fkey" FOREIGN KEY ("followId") REFERENCES "Follow"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "Battle"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "VirtualGarage" ADD CONSTRAINT "VirtualGarage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -57,11 +57,6 @@ enum PostType {
 }
 
 
-enum BattleCategory {
-  RAW_SHIFT
-  SPLIT_SCREEN
-}
-
 enum PointType {
   BATTLE_WIN
   POST

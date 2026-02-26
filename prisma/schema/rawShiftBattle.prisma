@@ -35,29 +35,14 @@ model RawShiftBattle {
 
   coverImage  String?
   bannerImage String?
-
-  // Rules / Requirements (screens show "Lightroom editor", can filter by software)
-  software       RawShiftSoftware @default(ANY)
-  softwareLabel  String?          @db.VarChar(100) // if OTHER: e.g. "Adobe Lightroom Classic"
-  requireRaw     Boolean          @default(true)   // RawShift always true
-  rejectAiEdited Boolean          @default(false)  // optional policy flag
-
-  // Participation / Limits
-  participantLimit Int?           // e.g. Participants: 10
-  participationScope ParticipationScope @default(GLOBAL)
-  radiusKm          Int?
-  locationName      String?  @db.VarChar(150)
-  latitude          Decimal? @db.Decimal(9,6)
-  longitude         Decimal? @db.Decimal(9,6)
-  placeId           String?  @db.VarChar(120)
-
-  // Timing
+  participantLimit Int?     
+  rawShiftPrice      String
+  location      String?  @db.VarChar(150)
+  
   startDate   DateTime @db.Timestamptz(6)
   endDate     DateTime @db.Timestamptz(6)
 
   status      RawShiftStatus @default(DRAFT)
-
-  
 
   createdAt   DateTime @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime @updatedAt @db.Timestamptz(6)
@@ -98,7 +83,6 @@ model RawShiftEntry {
   battle    RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
   user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  // ✅ RawShift specific: two uploads
   rawMediaUrl       String
   rawThumbnailUrl   String?
   editedMediaUrl    String
@@ -117,7 +101,6 @@ model RawShiftEntry {
   votes      RawShiftVote[]
   comments   RawShiftComment[]
 
-  // ✅ Same pattern as Head2Head: 1 entry per battle per user
   @@unique([battleId, userId])
   @@index([battleId])
   @@index([userId])
