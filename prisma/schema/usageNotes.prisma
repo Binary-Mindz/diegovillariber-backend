@@ -1,7 +1,7 @@
 model UsageNotes {
   id                String          @id @default(uuid()) @db.Uuid
   advancedCarDataId String          @unique @db.Uuid
-  advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id])
+  advancedCarData   AdvancedCarData @relation(fields: [advancedCarDataId], references: [id], onDelete: Cascade)
 
   category       UsageCategory @default(Street)
   driverLevel    DriverLevel   @default(Amateur)
