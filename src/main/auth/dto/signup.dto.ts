@@ -17,7 +17,7 @@ export class SignUpDto {
 
   @ApiProperty({
     enum: Preference,
-    example: Preference.Car,
+    example: Preference.CAR,
   })
   @IsEnum(Preference)
   preference: Preference;
