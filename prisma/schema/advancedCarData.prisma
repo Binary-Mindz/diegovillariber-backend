@@ -1,7 +1,7 @@
 model AdvancedCarData {
   id    String @id @default(uuid()) @db.Uuid
   carId String @db.Uuid
-  car   Car    @relation(fields: [carId], references: [id])
+  car   Car    @relation(fields: [carId], references: [id], onDelete: Cascade)
 
   enginePower    EnginePower?
   drivetrain     Drivetrain?
