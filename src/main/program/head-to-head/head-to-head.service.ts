@@ -11,7 +11,7 @@ import { SubmitHeadToHeadDto } from './dto/submit-headtohead.dto';
 import { VoteHeadToHeadDto } from './dto/vote-headtohead.dto';
 import { CreateHeadToHeadCommentDto } from './dto/comment-headtohead.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { BattleAccessType, BattleStatus, InvitationStatus, ParticipantStatus, SubmissionStatus } from 'generated/prisma/enums';
+import { BattleAccessType, BattleCategory, BattleStatus, CameraRequirement, InvitationStatus, ParticipantStatus, ParticipationScope, Preference, SubmissionStatus } from 'generated/prisma/enums';
 import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
@@ -22,53 +22,35 @@ export class HeadToHeadService {
     return new Date();
   }
 
-  async listBattles(query: HeadToHeadQueryDto) {
-    const now = this.now();
+ async listBattles(query: HeadToHeadQueryDto) {
+  const where: Prisma.HeadToHeadBattleWhereInput = {
+    ...(query.status ? { status: query.status } : {}),
+    ...(query.accessType ? { accessType: query.accessType } : {}),
+    ...(query.battleCategory ? { battleCategory: query.battleCategory } : {}),
+    ...(query.preference ? { preference: query.preference } : {}),
+    ...(query.q
+      ? {
+          OR: [
+            { title: { contains: query.q, mode: 'insensitive' } },
+            { description: { contains: query.q, mode: 'insensitive' } },
+            { locationName: { contains: query.q, mode: 'insensitive' } },
+            { brandFilter: { contains: query.q, mode: 'insensitive' } },
+          ],
+        }
+      : {}),
+  };
 
-    const where: Prisma.HeadToHeadBattleWhereInput = {
-      ...(query.status ? { status: query.status } : {}),
-      ...(query.mediaType ? { mediaType: query.mediaType } : {}),
-      ...(query.accessType ? { accessType: query.accessType } : {}),
-      ...(query.creatorId ? { creatorId: query.creatorId } : {}),
-      ...(query.q
-        ? {
-            OR: [
-              { title: { contains: query.q, mode: 'insensitive' } },
-              { description: { contains: query.q, mode: 'insensitive' } },
-              { locationName: { contains: query.q, mode: 'insensitive' } },
-            ],
-          }
-        : {}),
-    };
-
-    // Tabs: active/upcoming/finished
-    if (query.tab === 'ACTIVE') {
-      where.startDate = { lte: now };
-      where.endDate = { gte: now };
-      where.status = query.status ?? BattleStatus.RUNNING;
-    } else if (query.tab === 'UPCOMING') {
-      where.startDate = { gt: now };
-      where.status = query.status ?? BattleStatus.PUBLISHED;
-    } else if (query.tab === 'FINISHED') {
-      where.OR = [
-        ...(where.OR ?? []),
-        { endDate: { lt: now } },
-        { status: BattleStatus.COMPLETED },
-        { status: BattleStatus.CANCELLED },
-      ];
-    }
-
-    return this.prisma.headToHeadBattle.findMany({
-      where,
-      orderBy: [{ createdAt: 'desc' }],
-      take: Math.min(query.limit ?? 20, 50),
-      skip: query.offset ?? 0,
-      include: {
-        creator: { select: { id: true, email: true } },
-        _count: { select: { participants: true, submissions: true, battleComments: true, battleVotes: true } },
-      },
-    });
-  }
+  return this.prisma.headToHeadBattle.findMany({
+    where,
+    orderBy: [{ createdAt: 'desc' }],
+    take: Math.min(query.limit ?? 20, 50),
+    skip: query.offset ?? 0,
+    include: {
+      creator: { select: { id: true, email: true } },
+      _count: { select: { participants: true, submissions: true, battleComments: true, battleVotes: true } },
+    },
+  });
+}
 
   async getBattle(id: string) {
     const battle = await this.prisma.headToHeadBattle.findUnique({
@@ -109,52 +91,56 @@ export class HeadToHeadService {
     return battle;
   }
 
-  async createBattle(creatorId: string, dto: CreateHeadToHeadBattleDto) {
-    if (dto.startDate >= dto.endDate) throw new BadRequestException('startDate must be before endDate');
+ async createBattle(creatorId: string, dto: CreateHeadToHeadBattleDto) {
+  if (dto.startDate >= dto.endDate) throw new BadRequestException('startDate must be before endDate');
 
-    if (dto.accessType === BattleAccessType.AUTO_INVITE) {
-      if (!dto.autoInviteScope || !dto.autoInviteCount) {
-        throw new BadRequestException('autoInviteScope and autoInviteCount are required when accessType = AUTO_INVITE');
-      }
+  if (dto.accessType === BattleAccessType.AUTO_INVITE) {
+    if (!dto.autoInviteScope || !dto.autoInviteCount) {
+      throw new BadRequestException('autoInviteScope and autoInviteCount are required when accessType = AUTO_INVITE');
     }
-
-    const battle = await this.prisma.headToHeadBattle.create({
-      data: {
-        creatorId,
-        title: dto.title,
-        description: dto.description,
-        mediaType: dto.mediaType,
-        coverImage: dto.coverImage,
-
-        cameraRequirement: dto.cameraRequirement,
-        requireTrueShotVerified: dto.requireTrueShotVerified ?? false,
-        rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
-
-        accessType: dto.accessType,
-        autoInviteScope: dto.autoInviteScope,
-        autoInviteCount: dto.autoInviteCount,
-
-        participationScope: dto.participationScope,
-        radiusKm: dto.radiusKm,
-        locationName: dto.locationName,
-        latitude: dto.latitude,
-        longitude: dto.longitude,
-        placeId: dto.placeId,
-
-        startDate: dto.startDate,
-        endDate: dto.endDate,
-        durationDays: dto.durationDays,
-
-        status: dto.status ?? BattleStatus.DRAFT,
-
-        // optional: auto-join creator as participant
-        participants: { create: { userId: creatorId, status: ParticipantStatus.JOINED } },
-      },
-    });
-
-    // NOTE: If you want system auto-invite logic, implement in a cron/queue worker.
-    return battle;
   }
+
+  return this.prisma.headToHeadBattle.create({
+    data: {
+      creatorId,
+
+      title: dto.title,
+      preference: dto.preference ?? Preference.CAR,
+      description: dto.description,
+      coverImage: dto.coverImage,
+
+      battleCategory: dto.battleCategory ?? BattleCategory.STYLE_BATTLE,
+      brandFilter: dto.brandFilter,
+      durationDays: dto.durationDays,
+
+      winPrize: dto.winPrize,
+      uploadImageOrVideo: dto.uploadImageOrVideo,
+
+      cameraRequirement: dto.cameraRequirement ?? CameraRequirement.ANY,
+      requireTrueShotVerified: dto.requireTrueShotVerified ?? false,
+      rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
+
+      accessType: dto.accessType ?? BattleAccessType.OPEN,
+      autoInviteScope: dto.autoInviteScope,
+      autoInviteCount: dto.autoInviteCount,
+
+      participationScope: dto.participationScope ?? ParticipationScope.GLOBAL,
+      radiusKm: dto.radiusKm,
+      locationName: dto.locationName,
+      latitude: dto.latitude as any,
+      longitude: dto.longitude as any,
+      placeId: dto.placeId,
+
+      startDate: dto.startDate,
+      endDate: dto.endDate,
+
+      status: dto.status ?? BattleStatus.DRAFT,
+
+      // auto-join creator
+      participants: { create: { userId: creatorId, status: ParticipantStatus.JOINED } },
+    },
+  });
+}
 
   async updateBattle(id: string, userId: string, dto: UpdateHeadToHeadBattleDto) {
     const battle = await this.prisma.headToHeadBattle.findUnique({ where: { id } });
@@ -167,33 +153,37 @@ export class HeadToHeadService {
 
     return this.prisma.headToHeadBattle.update({
       where: { id },
-      data: {
-        ...(dto.title !== undefined ? { title: dto.title } : {}),
-        ...(dto.description !== undefined ? { description: dto.description } : {}),
-        ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
-        ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
+       data: {
+    ...(dto.title !== undefined ? { title: dto.title } : {}),
+    ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
+    ...(dto.description !== undefined ? { description: dto.description } : {}),
+    ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
 
-        ...(dto.cameraRequirement !== undefined ? { cameraRequirement: dto.cameraRequirement } : {}),
-        ...(dto.requireTrueShotVerified !== undefined ? { requireTrueShotVerified: dto.requireTrueShotVerified } : {}),
-        ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
+    ...(dto.battleCategory !== undefined ? { battleCategory: dto.battleCategory } : {}),
+    ...(dto.brandFilter !== undefined ? { brandFilter: dto.brandFilter } : {}),
+    ...(dto.durationDays !== undefined ? { durationDays: dto.durationDays } : {}),
+    ...(dto.winPrize !== undefined ? { winPrize: dto.winPrize } : {}),
+    ...(dto.uploadImageOrVideo !== undefined ? { uploadImageOrVideo: dto.uploadImageOrVideo } : {}),
 
-        ...(dto.accessType !== undefined ? { accessType: dto.accessType } : {}),
-        ...(dto.autoInviteScope !== undefined ? { autoInviteScope: dto.autoInviteScope } : {}),
-        ...(dto.autoInviteCount !== undefined ? { autoInviteCount: dto.autoInviteCount } : {}),
+    ...(dto.cameraRequirement !== undefined ? { cameraRequirement: dto.cameraRequirement } : {}),
+    ...(dto.requireTrueShotVerified !== undefined ? { requireTrueShotVerified: dto.requireTrueShotVerified } : {}),
+    ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
 
-        ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
-        ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
-        ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
-        ...(dto.latitude !== undefined ? { latitude: dto.latitude } : {}),
-        ...(dto.longitude !== undefined ? { longitude: dto.longitude } : {}),
-        ...(dto.placeId !== undefined ? { placeId: dto.placeId } : {}),
+    ...(dto.accessType !== undefined ? { accessType: dto.accessType } : {}),
+    ...(dto.autoInviteScope !== undefined ? { autoInviteScope: dto.autoInviteScope } : {}),
+    ...(dto.autoInviteCount !== undefined ? { autoInviteCount: dto.autoInviteCount } : {}),
 
-        ...(dto.startDate !== undefined ? { startDate: dto.startDate } : {}),
-        ...(dto.endDate !== undefined ? { endDate: dto.endDate } : {}),
-        ...(dto.durationDays !== undefined ? { durationDays: dto.durationDays } : {}),
+    ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
+    ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
+    ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
+    ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
+    ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
+    ...(dto.placeId !== undefined ? { placeId: dto.placeId } : {}),
 
-        ...(dto.status !== undefined ? { status: dto.status } : {}),
-      },
+    ...(dto.startDate !== undefined ? { startDate: dto.startDate } : {}),
+    ...(dto.endDate !== undefined ? { endDate: dto.endDate } : {}),
+    ...(dto.status !== undefined ? { status: dto.status } : {}),
+  },
     });
   }
 

@@ -93,6 +93,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
   Profile: 'Profile',
@@ -480,9 +481,14 @@ export const HeadToHeadBattleScalarFieldEnum = {
   creatorId: 'creatorId',
   winnerUserId: 'winnerUserId',
   title: 'title',
+  preference: 'preference',
   description: 'description',
-  mediaType: 'mediaType',
   coverImage: 'coverImage',
+  battleCategory: 'battleCategory',
+  brandFilter: 'brandFilter',
+  durationDays: 'durationDays',
+  winPrize: 'winPrize',
+  uploadImageOrVideo: 'uploadImageOrVideo',
   cameraRequirement: 'cameraRequirement',
   requireTrueShotVerified: 'requireTrueShotVerified',
   rejectEditedPhotos: 'rejectEditedPhotos',
@@ -497,7 +503,6 @@ export const HeadToHeadBattleScalarFieldEnum = {
   placeId: 'placeId',
   startDate: 'startDate',
   endDate: 'endDate',
-  durationDays: 'durationDays',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -756,6 +761,15 @@ export const PostScalarFieldEnum = {
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
+export const PrizeScalarFieldEnum = {
+  id: 'id',
+  prizeName: 'prizeName',
+  createdById: 'createdById'
+} as const
+
+export type PrizeScalarFieldEnum = (typeof PrizeScalarFieldEnum)[keyof typeof PrizeScalarFieldEnum]
+
+
 export const ProDriverProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -837,17 +851,9 @@ export const RawShiftBattleScalarFieldEnum = {
   description: 'description',
   coverImage: 'coverImage',
   bannerImage: 'bannerImage',
-  software: 'software',
-  softwareLabel: 'softwareLabel',
-  requireRaw: 'requireRaw',
-  rejectAiEdited: 'rejectAiEdited',
   participantLimit: 'participantLimit',
-  participationScope: 'participationScope',
-  radiusKm: 'radiusKm',
-  locationName: 'locationName',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  placeId: 'placeId',
+  rawShiftPrice: 'rawShiftPrice',
+  location: 'location',
   startDate: 'startDate',
   endDate: 'endDate',
   status: 'status',

@@ -95,14 +95,6 @@ export const FileType = {
 export type FileType = (typeof FileType)[keyof typeof FileType]
 
 
-export const BattleMediaType = {
-  PHOTO: 'PHOTO',
-  VIDEO: 'VIDEO'
-} as const
-
-export type BattleMediaType = (typeof BattleMediaType)[keyof typeof BattleMediaType]
-
-
 export const BattleAccessType = {
   OPEN: 'OPEN',
   INVITATION_ONLY: 'INVITATION_ONLY',
@@ -169,6 +161,20 @@ export const SubmissionStatus = {
 } as const
 
 export type SubmissionStatus = (typeof SubmissionStatus)[keyof typeof SubmissionStatus]
+
+
+export const BattleCategory = {
+  STYLE_BATTLE: 'STYLE_BATTLE',
+  STANCE_BATTLE: 'STANCE_BATTLE',
+  RACING_BATTLE: 'RACING_BATTLE',
+  CLASSIC_BATTLE: 'CLASSIC_BATTLE',
+  JDM_BATTLE: 'JDM_BATTLE',
+  EURO_BATTLE: 'EURO_BATTLE',
+  MUSCLE_BATTLE: 'MUSCLE_BATTLE',
+  OFF_ROAD_BATTLE: 'OFF_ROAD_BATTLE'
+} as const
+
+export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory]
 
 
 export const VisiualStyle = {
@@ -329,14 +335,6 @@ export const PostType = {
 } as const
 
 export type PostType = (typeof PostType)[keyof typeof PostType]
-
-
-export const BattleCategory = {
-  RAW_SHIFT: 'RAW_SHIFT',
-  SPLIT_SCREEN: 'SPLIT_SCREEN'
-} as const
-
-export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory]
 
 
 export const PointType = {
