@@ -386,14 +386,12 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
-  Battle: 'Battle',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
   Challenge: 'Challenge',
   ChallengeDeviceRule: 'ChallengeDeviceRule',
   ChallengePrize: 'ChallengePrize',
   ChallengeParticipant: 'ChallengeParticipant',
-  ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
@@ -413,6 +411,8 @@ export const ModelName = {
   BattleParticipant: 'BattleParticipant',
   BattleInvitation: 'BattleInvitation',
   BattleSubmission: 'BattleSubmission',
+  BattleVote: 'BattleVote',
+  BattleComment: 'BattleComment',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
   LegalNotice: 'LegalNotice',
@@ -431,6 +431,11 @@ export const ModelName = {
   Profile: 'Profile',
   Racing: 'Racing',
   RacingVote: 'RacingVote',
+  RawShiftBattle: 'RawShiftBattle',
+  RawShiftParticipant: 'RawShiftParticipant',
+  RawShiftEntry: 'RawShiftEntry',
+  RawShiftVote: 'RawShiftVote',
+  RawShiftComment: 'RawShiftComment',
   Report: 'Report',
   Repost: 'Repost',
   SavePost: 'SavePost',
@@ -462,7 +467,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "battle" | "businessProfile" | "car" | "challenge" | "challengeDeviceRule" | "challengePrize" | "challengeParticipant" | "challengeSubmission" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeDeviceRule" | "challengePrize" | "challengeParticipant" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -611,80 +616,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AmbassadorProgramCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AmbassadorProgramCountAggregateOutputType> | number
-        }
-      }
-    }
-    Battle: {
-      payload: Prisma.$BattlePayload<ExtArgs>
-      fields: Prisma.BattleFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.BattleFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.BattleFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        findFirst: {
-          args: Prisma.BattleFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.BattleFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        findMany: {
-          args: Prisma.BattleFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>[]
-        }
-        create: {
-          args: Prisma.BattleCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        createMany: {
-          args: Prisma.BattleCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.BattleCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>[]
-        }
-        delete: {
-          args: Prisma.BattleDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        update: {
-          args: Prisma.BattleUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        deleteMany: {
-          args: Prisma.BattleDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.BattleUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.BattleUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>[]
-        }
-        upsert: {
-          args: Prisma.BattleUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattlePayload>
-        }
-        aggregate: {
-          args: Prisma.BattleAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBattle>
-        }
-        groupBy: {
-          args: Prisma.BattleGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BattleGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.BattleCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BattleCountAggregateOutputType> | number
         }
       }
     }
@@ -1129,80 +1060,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.ChallengeParticipantCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ChallengeParticipantCountAggregateOutputType> | number
-        }
-      }
-    }
-    ChallengeSubmission: {
-      payload: Prisma.$ChallengeSubmissionPayload<ExtArgs>
-      fields: Prisma.ChallengeSubmissionFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.ChallengeSubmissionFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.ChallengeSubmissionFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        findFirst: {
-          args: Prisma.ChallengeSubmissionFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.ChallengeSubmissionFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        findMany: {
-          args: Prisma.ChallengeSubmissionFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
-        }
-        create: {
-          args: Prisma.ChallengeSubmissionCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        createMany: {
-          args: Prisma.ChallengeSubmissionCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.ChallengeSubmissionCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
-        }
-        delete: {
-          args: Prisma.ChallengeSubmissionDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        update: {
-          args: Prisma.ChallengeSubmissionUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        deleteMany: {
-          args: Prisma.ChallengeSubmissionDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.ChallengeSubmissionUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.ChallengeSubmissionUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>[]
-        }
-        upsert: {
-          args: Prisma.ChallengeSubmissionUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$ChallengeSubmissionPayload>
-        }
-        aggregate: {
-          args: Prisma.ChallengeSubmissionAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateChallengeSubmission>
-        }
-        groupBy: {
-          args: Prisma.ChallengeSubmissionGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ChallengeSubmissionGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.ChallengeSubmissionCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.ChallengeSubmissionCountAggregateOutputType> | number
         }
       }
     }
@@ -2612,6 +2469,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    BattleVote: {
+      payload: Prisma.$BattleVotePayload<ExtArgs>
+      fields: Prisma.BattleVoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BattleVoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BattleVoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        findFirst: {
+          args: Prisma.BattleVoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BattleVoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        findMany: {
+          args: Prisma.BattleVoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>[]
+        }
+        create: {
+          args: Prisma.BattleVoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        createMany: {
+          args: Prisma.BattleVoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BattleVoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>[]
+        }
+        delete: {
+          args: Prisma.BattleVoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        update: {
+          args: Prisma.BattleVoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        deleteMany: {
+          args: Prisma.BattleVoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BattleVoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BattleVoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>[]
+        }
+        upsert: {
+          args: Prisma.BattleVoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleVotePayload>
+        }
+        aggregate: {
+          args: Prisma.BattleVoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBattleVote>
+        }
+        groupBy: {
+          args: Prisma.BattleVoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BattleVoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BattleVoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BattleVoteCountAggregateOutputType> | number
+        }
+      }
+    }
+    BattleComment: {
+      payload: Prisma.$BattleCommentPayload<ExtArgs>
+      fields: Prisma.BattleCommentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BattleCommentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BattleCommentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        findFirst: {
+          args: Prisma.BattleCommentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BattleCommentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        findMany: {
+          args: Prisma.BattleCommentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>[]
+        }
+        create: {
+          args: Prisma.BattleCommentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        createMany: {
+          args: Prisma.BattleCommentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BattleCommentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>[]
+        }
+        delete: {
+          args: Prisma.BattleCommentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        update: {
+          args: Prisma.BattleCommentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        deleteMany: {
+          args: Prisma.BattleCommentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BattleCommentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BattleCommentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>[]
+        }
+        upsert: {
+          args: Prisma.BattleCommentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BattleCommentPayload>
+        }
+        aggregate: {
+          args: Prisma.BattleCommentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBattleComment>
+        }
+        groupBy: {
+          args: Prisma.BattleCommentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BattleCommentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BattleCommentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BattleCommentCountAggregateOutputType> | number
+        }
+      }
+    }
     HidePost: {
       payload: Prisma.$HidePostPayload<ExtArgs>
       fields: Prisma.HidePostFieldRefs
@@ -3944,6 +3949,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RawShiftBattle: {
+      payload: Prisma.$RawShiftBattlePayload<ExtArgs>
+      fields: Prisma.RawShiftBattleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RawShiftBattleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RawShiftBattleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        findFirst: {
+          args: Prisma.RawShiftBattleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RawShiftBattleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        findMany: {
+          args: Prisma.RawShiftBattleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>[]
+        }
+        create: {
+          args: Prisma.RawShiftBattleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        createMany: {
+          args: Prisma.RawShiftBattleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RawShiftBattleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>[]
+        }
+        delete: {
+          args: Prisma.RawShiftBattleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        update: {
+          args: Prisma.RawShiftBattleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        deleteMany: {
+          args: Prisma.RawShiftBattleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RawShiftBattleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RawShiftBattleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>[]
+        }
+        upsert: {
+          args: Prisma.RawShiftBattleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftBattlePayload>
+        }
+        aggregate: {
+          args: Prisma.RawShiftBattleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRawShiftBattle>
+        }
+        groupBy: {
+          args: Prisma.RawShiftBattleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftBattleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RawShiftBattleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftBattleCountAggregateOutputType> | number
+        }
+      }
+    }
+    RawShiftParticipant: {
+      payload: Prisma.$RawShiftParticipantPayload<ExtArgs>
+      fields: Prisma.RawShiftParticipantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RawShiftParticipantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RawShiftParticipantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        findFirst: {
+          args: Prisma.RawShiftParticipantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RawShiftParticipantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        findMany: {
+          args: Prisma.RawShiftParticipantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>[]
+        }
+        create: {
+          args: Prisma.RawShiftParticipantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        createMany: {
+          args: Prisma.RawShiftParticipantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RawShiftParticipantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>[]
+        }
+        delete: {
+          args: Prisma.RawShiftParticipantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        update: {
+          args: Prisma.RawShiftParticipantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        deleteMany: {
+          args: Prisma.RawShiftParticipantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RawShiftParticipantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RawShiftParticipantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>[]
+        }
+        upsert: {
+          args: Prisma.RawShiftParticipantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftParticipantPayload>
+        }
+        aggregate: {
+          args: Prisma.RawShiftParticipantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRawShiftParticipant>
+        }
+        groupBy: {
+          args: Prisma.RawShiftParticipantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftParticipantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RawShiftParticipantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftParticipantCountAggregateOutputType> | number
+        }
+      }
+    }
+    RawShiftEntry: {
+      payload: Prisma.$RawShiftEntryPayload<ExtArgs>
+      fields: Prisma.RawShiftEntryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RawShiftEntryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RawShiftEntryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        findFirst: {
+          args: Prisma.RawShiftEntryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RawShiftEntryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        findMany: {
+          args: Prisma.RawShiftEntryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>[]
+        }
+        create: {
+          args: Prisma.RawShiftEntryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        createMany: {
+          args: Prisma.RawShiftEntryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RawShiftEntryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>[]
+        }
+        delete: {
+          args: Prisma.RawShiftEntryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        update: {
+          args: Prisma.RawShiftEntryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        deleteMany: {
+          args: Prisma.RawShiftEntryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RawShiftEntryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RawShiftEntryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>[]
+        }
+        upsert: {
+          args: Prisma.RawShiftEntryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftEntryPayload>
+        }
+        aggregate: {
+          args: Prisma.RawShiftEntryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRawShiftEntry>
+        }
+        groupBy: {
+          args: Prisma.RawShiftEntryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftEntryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RawShiftEntryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftEntryCountAggregateOutputType> | number
+        }
+      }
+    }
+    RawShiftVote: {
+      payload: Prisma.$RawShiftVotePayload<ExtArgs>
+      fields: Prisma.RawShiftVoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RawShiftVoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RawShiftVoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        findFirst: {
+          args: Prisma.RawShiftVoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RawShiftVoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        findMany: {
+          args: Prisma.RawShiftVoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>[]
+        }
+        create: {
+          args: Prisma.RawShiftVoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        createMany: {
+          args: Prisma.RawShiftVoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RawShiftVoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>[]
+        }
+        delete: {
+          args: Prisma.RawShiftVoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        update: {
+          args: Prisma.RawShiftVoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        deleteMany: {
+          args: Prisma.RawShiftVoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RawShiftVoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RawShiftVoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>[]
+        }
+        upsert: {
+          args: Prisma.RawShiftVoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftVotePayload>
+        }
+        aggregate: {
+          args: Prisma.RawShiftVoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRawShiftVote>
+        }
+        groupBy: {
+          args: Prisma.RawShiftVoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftVoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RawShiftVoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftVoteCountAggregateOutputType> | number
+        }
+      }
+    }
+    RawShiftComment: {
+      payload: Prisma.$RawShiftCommentPayload<ExtArgs>
+      fields: Prisma.RawShiftCommentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RawShiftCommentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RawShiftCommentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        findFirst: {
+          args: Prisma.RawShiftCommentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RawShiftCommentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        findMany: {
+          args: Prisma.RawShiftCommentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>[]
+        }
+        create: {
+          args: Prisma.RawShiftCommentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        createMany: {
+          args: Prisma.RawShiftCommentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RawShiftCommentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>[]
+        }
+        delete: {
+          args: Prisma.RawShiftCommentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        update: {
+          args: Prisma.RawShiftCommentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        deleteMany: {
+          args: Prisma.RawShiftCommentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RawShiftCommentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RawShiftCommentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>[]
+        }
+        upsert: {
+          args: Prisma.RawShiftCommentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RawShiftCommentPayload>
+        }
+        aggregate: {
+          args: Prisma.RawShiftCommentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRawShiftComment>
+        }
+        groupBy: {
+          args: Prisma.RawShiftCommentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftCommentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RawShiftCommentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RawShiftCommentCountAggregateOutputType> | number
+        }
+      }
+    }
     Report: {
       payload: Prisma.$ReportPayload<ExtArgs>
       fields: Prisma.ReportFieldRefs
@@ -5198,25 +5573,6 @@ export const AmbassadorProgramScalarFieldEnum = {
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
 
 
-export const BattleScalarFieldEnum = {
-  id: 'id',
-  hostId: 'hostId',
-  title: 'title',
-  description: 'description',
-  coverImage: 'coverImage',
-  battleCategory: 'battleCategory',
-  preference: 'preference',
-  status: 'status',
-  maxParticipants: 'maxParticipants',
-  startTime: 'startTime',
-  endTime: 'endTime',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BattleScalarFieldEnum = (typeof BattleScalarFieldEnum)[keyof typeof BattleScalarFieldEnum]
-
-
 export const BusinessProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -5310,15 +5666,6 @@ export const ChallengeParticipantScalarFieldEnum = {
 } as const
 
 export type ChallengeParticipantScalarFieldEnum = (typeof ChallengeParticipantScalarFieldEnum)[keyof typeof ChallengeParticipantScalarFieldEnum]
-
-
-export const ChallengeSubmissionScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  createdAt: 'createdAt'
-} as const
-
-export type ChallengeSubmissionScalarFieldEnum = (typeof ChallengeSubmissionScalarFieldEnum)[keyof typeof ChallengeSubmissionScalarFieldEnum]
 
 
 export const ChassisBrakesScalarFieldEnum = {
@@ -5536,6 +5883,7 @@ export type HashtagScalarFieldEnum = (typeof HashtagScalarFieldEnum)[keyof typeo
 export const HeadToHeadBattleScalarFieldEnum = {
   id: 'id',
   creatorId: 'creatorId',
+  winnerUserId: 'winnerUserId',
   title: 'title',
   description: 'description',
   mediaType: 'mediaType',
@@ -5557,8 +5905,7 @@ export const HeadToHeadBattleScalarFieldEnum = {
   durationDays: 'durationDays',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  winnerUserId: 'winnerUserId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type HeadToHeadBattleScalarFieldEnum = (typeof HeadToHeadBattleScalarFieldEnum)[keyof typeof HeadToHeadBattleScalarFieldEnum]
@@ -5602,6 +5949,30 @@ export const BattleSubmissionScalarFieldEnum = {
 } as const
 
 export type BattleSubmissionScalarFieldEnum = (typeof BattleSubmissionScalarFieldEnum)[keyof typeof BattleSubmissionScalarFieldEnum]
+
+
+export const BattleVoteScalarFieldEnum = {
+  id: 'id',
+  submissionId: 'submissionId',
+  userId: 'userId',
+  battleId: 'battleId',
+  value: 'value',
+  createdAt: 'createdAt'
+} as const
+
+export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof typeof BattleVoteScalarFieldEnum]
+
+
+export const BattleCommentScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  submissionId: 'submissionId',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type BattleCommentScalarFieldEnum = (typeof BattleCommentScalarFieldEnum)[keyof typeof BattleCommentScalarFieldEnum]
 
 
 export const HidePostScalarFieldEnum = {
@@ -5863,6 +6234,88 @@ export const RacingVoteScalarFieldEnum = {
 export type RacingVoteScalarFieldEnum = (typeof RacingVoteScalarFieldEnum)[keyof typeof RacingVoteScalarFieldEnum]
 
 
+export const RawShiftBattleScalarFieldEnum = {
+  id: 'id',
+  creatorId: 'creatorId',
+  winnerUserId: 'winnerUserId',
+  title: 'title',
+  description: 'description',
+  coverImage: 'coverImage',
+  bannerImage: 'bannerImage',
+  software: 'software',
+  softwareLabel: 'softwareLabel',
+  requireRaw: 'requireRaw',
+  rejectAiEdited: 'rejectAiEdited',
+  participantLimit: 'participantLimit',
+  participationScope: 'participationScope',
+  radiusKm: 'radiusKm',
+  locationName: 'locationName',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RawShiftBattleScalarFieldEnum = (typeof RawShiftBattleScalarFieldEnum)[keyof typeof RawShiftBattleScalarFieldEnum]
+
+
+export const RawShiftParticipantScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  joinedAt: 'joinedAt',
+  leftAt: 'leftAt'
+} as const
+
+export type RawShiftParticipantScalarFieldEnum = (typeof RawShiftParticipantScalarFieldEnum)[keyof typeof RawShiftParticipantScalarFieldEnum]
+
+
+export const RawShiftEntryScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  rawMediaUrl: 'rawMediaUrl',
+  rawThumbnailUrl: 'rawThumbnailUrl',
+  editedMediaUrl: 'editedMediaUrl',
+  editedThumbnailUrl: 'editedThumbnailUrl',
+  caption: 'caption',
+  hashtags: 'hashtags',
+  status: 'status',
+  score: 'score',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RawShiftEntryScalarFieldEnum = (typeof RawShiftEntryScalarFieldEnum)[keyof typeof RawShiftEntryScalarFieldEnum]
+
+
+export const RawShiftVoteScalarFieldEnum = {
+  id: 'id',
+  entryId: 'entryId',
+  userId: 'userId',
+  value: 'value',
+  createdAt: 'createdAt'
+} as const
+
+export type RawShiftVoteScalarFieldEnum = (typeof RawShiftVoteScalarFieldEnum)[keyof typeof RawShiftVoteScalarFieldEnum]
+
+
+export const RawShiftCommentScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  entryId: 'entryId',
+  userId: 'userId',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type RawShiftCommentScalarFieldEnum = (typeof RawShiftCommentScalarFieldEnum)[keyof typeof RawShiftCommentScalarFieldEnum]
+
+
 export const ReportScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -5995,7 +6448,6 @@ export const UserPointScalarFieldEnum = {
   likeId: 'likeId',
   commentId: 'commentId',
   followId: 'followId',
-  battleId: 'battleId',
   points: 'points'
 } as const
 
@@ -6174,48 +6626,6 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'BattleCategory'
- */
-export type EnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory'>
-    
-
-
-/**
- * Reference to a field of type 'BattleCategory[]'
- */
-export type ListEnumBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleCategory[]'>
-    
-
-
-/**
- * Reference to a field of type 'Preference'
- */
-export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
-    
-
-
-/**
- * Reference to a field of type 'Preference[]'
- */
-export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
-    
-
-
-/**
- * Reference to a field of type 'BattleStatus'
- */
-export type EnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus'>
-    
-
-
-/**
- * Reference to a field of type 'BattleStatus[]'
- */
-export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'Type'
  */
 export type EnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type'>
@@ -6331,6 +6741,20 @@ export type EnumChallengeCategoryFieldRefInput<$PrismaModel> = FieldRefInputType
  * Reference to a field of type 'ChallengeCategory[]'
  */
 export type ListEnumChallengeCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChallengeCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference'
+ */
+export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference[]'
+ */
+export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
     
 
 
@@ -6559,6 +6983,20 @@ export type ListEnumAutoInviteScopeFieldRefInput<$PrismaModel> = FieldRefInputTy
 
 
 /**
+ * Reference to a field of type 'BattleStatus'
+ */
+export type EnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'BattleStatus[]'
+ */
+export type ListEnumBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BattleStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'ParticipantStatus'
  */
 export type EnumParticipantStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParticipantStatus'>
@@ -6751,6 +7189,48 @@ export type EnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'IsActive[]'
  */
 export type ListEnumIsActiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'IsActive[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftSoftware'
+ */
+export type EnumRawShiftSoftwareFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftSoftware'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftSoftware[]'
+ */
+export type ListEnumRawShiftSoftwareFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftSoftware[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftStatus'
+ */
+export type EnumRawShiftStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftStatus[]'
+ */
+export type ListEnumRawShiftStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftEntryStatus'
+ */
+export type EnumRawShiftEntryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftEntryStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'RawShiftEntryStatus[]'
+ */
+export type ListEnumRawShiftEntryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RawShiftEntryStatus[]'>
     
 
 
@@ -7018,14 +7498,12 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   advancedCarData?: Prisma.AdvancedCarDataOmit
   ambassadorProgram?: Prisma.AmbassadorProgramOmit
-  battle?: Prisma.BattleOmit
   businessProfile?: Prisma.BusinessProfileOmit
   car?: Prisma.CarOmit
   challenge?: Prisma.ChallengeOmit
   challengeDeviceRule?: Prisma.ChallengeDeviceRuleOmit
   challengePrize?: Prisma.ChallengePrizeOmit
   challengeParticipant?: Prisma.ChallengeParticipantOmit
-  challengeSubmission?: Prisma.ChallengeSubmissionOmit
   chassisBrakes?: Prisma.ChassisBrakesOmit
   comment?: Prisma.CommentOmit
   contentCreatorProfile?: Prisma.ContentCreatorProfileOmit
@@ -7045,6 +7523,8 @@ export type GlobalOmitConfig = {
   battleParticipant?: Prisma.BattleParticipantOmit
   battleInvitation?: Prisma.BattleInvitationOmit
   battleSubmission?: Prisma.BattleSubmissionOmit
+  battleVote?: Prisma.BattleVoteOmit
+  battleComment?: Prisma.BattleCommentOmit
   hidePost?: Prisma.HidePostOmit
   interiorSafety?: Prisma.InteriorSafetyOmit
   legalNotice?: Prisma.LegalNoticeOmit
@@ -7063,6 +7543,11 @@ export type GlobalOmitConfig = {
   profile?: Prisma.ProfileOmit
   racing?: Prisma.RacingOmit
   racingVote?: Prisma.RacingVoteOmit
+  rawShiftBattle?: Prisma.RawShiftBattleOmit
+  rawShiftParticipant?: Prisma.RawShiftParticipantOmit
+  rawShiftEntry?: Prisma.RawShiftEntryOmit
+  rawShiftVote?: Prisma.RawShiftVoteOmit
+  rawShiftComment?: Prisma.RawShiftCommentOmit
   report?: Prisma.ReportOmit
   repost?: Prisma.RepostOmit
   savePost?: Prisma.SavePostOmit

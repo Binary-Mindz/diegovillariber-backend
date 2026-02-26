@@ -759,6 +759,10 @@ export type EnumChallengeCategoryFieldUpdateOperationsInput = {
   set?: $Enums.ChallengeCategory
 }
 
+export type EnumPreferenceFieldUpdateOperationsInput = {
+  set?: $Enums.Preference
+}
+
 export type EnumParticipationScopeFieldUpdateOperationsInput = {
   set?: $Enums.ParticipationScope
 }

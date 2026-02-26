@@ -1,0 +1,164 @@
+enum RawShiftStatus {
+  DRAFT
+  PUBLISHED
+  RUNNING
+  COMPLETED
+  CANCELLED
+}
+
+enum RawShiftEntryStatus {
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+enum RawShiftSoftware {
+  ANY
+  LIGHTROOM
+  PHOTOSHOP
+  CAPTURE_ONE
+  SNAPSEED
+  OTHER
+}
+
+model RawShiftBattle {
+  id          String   @id @default(uuid()) @db.Uuid
+
+  creatorId String @db.Uuid
+  creator   User   @relation("RawShiftCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+
+  winnerUserId String? @db.Uuid
+  winnerUser   User?   @relation("RawShiftWinner", fields: [winnerUserId], references: [id], onDelete: SetNull)
+
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+
+  coverImage  String?
+  bannerImage String?
+
+  // Rules / Requirements (screens show "Lightroom editor", can filter by software)
+  software       RawShiftSoftware @default(ANY)
+  softwareLabel  String?          @db.VarChar(100) // if OTHER: e.g. "Adobe Lightroom Classic"
+  requireRaw     Boolean          @default(true)   // RawShift always true
+  rejectAiEdited Boolean          @default(false)  // optional policy flag
+
+  // Participation / Limits
+  participantLimit Int?           // e.g. Participants: 10
+  participationScope ParticipationScope @default(GLOBAL)
+  radiusKm          Int?
+  locationName      String?  @db.VarChar(150)
+  latitude          Decimal? @db.Decimal(9,6)
+  longitude         Decimal? @db.Decimal(9,6)
+  placeId           String?  @db.VarChar(120)
+
+  // Timing
+  startDate   DateTime @db.Timestamptz(6)
+  endDate     DateTime @db.Timestamptz(6)
+
+  status      RawShiftStatus @default(DRAFT)
+
+  
+
+  createdAt   DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(6)
+
+  participants RawShiftParticipant[]
+  entries      RawShiftEntry[]
+  comments     RawShiftComment[]
+
+  @@index([creatorId])
+  @@index([status])
+  @@index([startDate])
+  @@index([endDate])
+}
+
+model RawShiftParticipant {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String @db.Uuid
+  userId    String @db.Uuid
+
+  battle    RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  joinedAt  DateTime @default(now()) @db.Timestamptz(6)
+  leftAt    DateTime? // if user leaves (optional)
+
+  @@unique([battleId, userId])
+  @@index([userId])
+  @@index([battleId])
+}
+
+model RawShiftEntry {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String @db.Uuid
+  userId    String @db.Uuid
+
+  battle    RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // ✅ RawShift specific: two uploads
+  rawMediaUrl       String
+  rawThumbnailUrl   String?
+  editedMediaUrl    String
+  editedThumbnailUrl String?
+
+  caption     String?
+  hashtags    String[] @default([]) // “#cars #editing” etc (optional)
+
+  status     RawShiftEntryStatus @default(SUBMITTED)
+
+  // Voting / scoring (optional but useful for winner selection)
+  score      Int @default(0) // can be computed from votes
+  createdAt  DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt  DateTime @updatedAt @db.Timestamptz(6)
+
+  votes      RawShiftVote[]
+  comments   RawShiftComment[]
+
+  // ✅ Same pattern as Head2Head: 1 entry per battle per user
+  @@unique([battleId, userId])
+  @@index([battleId])
+  @@index([userId])
+  @@index([score])
+}
+
+model RawShiftVote {
+  id       String @id @default(uuid()) @db.Uuid
+
+  entryId  String @db.Uuid
+  userId   String @db.Uuid
+
+  entry    RawShiftEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // voteType can be used if you want 1-5 rating later
+  value    Int @default(1)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([entryId, userId]) // one vote per user per entry
+  @@index([userId])
+  @@index([entryId])
+}
+
+model RawShiftComment {
+  id        String @id @default(uuid()) @db.Uuid
+
+  battleId  String? @db.Uuid
+  entryId   String? @db.Uuid
+  userId    String  @db.Uuid
+
+  battle    RawShiftBattle? @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  entry     RawShiftEntry?  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  message   String @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([battleId])
+  @@index([entryId])
+  @@index([userId])
+}

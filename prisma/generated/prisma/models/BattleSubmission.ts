@@ -224,6 +224,8 @@ export type BattleSubmissionWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"BattleSubmission"> | Date | string
   battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  votes?: Prisma.BattleVoteListRelationFilter
+  comments?: Prisma.BattleCommentListRelationFilter
 }
 
 export type BattleSubmissionOrderByWithRelationInput = {
@@ -239,6 +241,8 @@ export type BattleSubmissionOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   battle?: Prisma.HeadToHeadBattleOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
+  votes?: Prisma.BattleVoteOrderByRelationAggregateInput
+  comments?: Prisma.BattleCommentOrderByRelationAggregateInput
 }
 
 export type BattleSubmissionWhereUniqueInput = Prisma.AtLeast<{
@@ -258,6 +262,8 @@ export type BattleSubmissionWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"BattleSubmission"> | Date | string
   battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  votes?: Prisma.BattleVoteListRelationFilter
+  comments?: Prisma.BattleCommentListRelationFilter
 }, "id" | "battleId_userId">
 
 export type BattleSubmissionOrderByWithAggregationInput = {
@@ -303,6 +309,8 @@ export type BattleSubmissionCreateInput = {
   createdAt?: Date | string
   battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutSubmissionsInput
   user: Prisma.UserCreateNestedOneWithoutBattleSubmissionsInput
+  votes?: Prisma.BattleVoteCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionUncheckedCreateInput = {
@@ -316,6 +324,8 @@ export type BattleSubmissionUncheckedCreateInput = {
   isEditedDetected?: boolean
   status?: $Enums.SubmissionStatus
   createdAt?: Date | string
+  votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionUpdateInput = {
@@ -329,6 +339,8 @@ export type BattleSubmissionUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutSubmissionsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutBattleSubmissionsNestedInput
+  votes?: Prisma.BattleVoteUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionUncheckedUpdateInput = {
@@ -342,6 +354,8 @@ export type BattleSubmissionUncheckedUpdateInput = {
   isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUncheckedUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionCreateManyInput = {
@@ -435,6 +449,16 @@ export type BattleSubmissionMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
 }
 
+export type BattleSubmissionScalarRelationFilter = {
+  is?: Prisma.BattleSubmissionWhereInput
+  isNot?: Prisma.BattleSubmissionWhereInput
+}
+
+export type BattleSubmissionNullableScalarRelationFilter = {
+  is?: Prisma.BattleSubmissionWhereInput | null
+  isNot?: Prisma.BattleSubmissionWhereInput | null
+}
+
 export type BattleSubmissionCreateNestedManyWithoutBattleInput = {
   create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutBattleInput, Prisma.BattleSubmissionUncheckedCreateWithoutBattleInput> | Prisma.BattleSubmissionCreateWithoutBattleInput[] | Prisma.BattleSubmissionUncheckedCreateWithoutBattleInput[]
   connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutBattleInput | Prisma.BattleSubmissionCreateOrConnectWithoutBattleInput[]
@@ -479,6 +503,36 @@ export type BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput = {
 
 export type EnumSubmissionStatusFieldUpdateOperationsInput = {
   set?: $Enums.SubmissionStatus
+}
+
+export type BattleSubmissionCreateNestedOneWithoutVotesInput = {
+  create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutVotesInput, Prisma.BattleSubmissionUncheckedCreateWithoutVotesInput>
+  connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutVotesInput
+  connect?: Prisma.BattleSubmissionWhereUniqueInput
+}
+
+export type BattleSubmissionUpdateOneRequiredWithoutVotesNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutVotesInput, Prisma.BattleSubmissionUncheckedCreateWithoutVotesInput>
+  connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutVotesInput
+  upsert?: Prisma.BattleSubmissionUpsertWithoutVotesInput
+  connect?: Prisma.BattleSubmissionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BattleSubmissionUpdateToOneWithWhereWithoutVotesInput, Prisma.BattleSubmissionUpdateWithoutVotesInput>, Prisma.BattleSubmissionUncheckedUpdateWithoutVotesInput>
+}
+
+export type BattleSubmissionCreateNestedOneWithoutCommentsInput = {
+  create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutCommentsInput
+  connect?: Prisma.BattleSubmissionWhereUniqueInput
+}
+
+export type BattleSubmissionUpdateOneWithoutCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedCreateWithoutCommentsInput>
+  connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutCommentsInput
+  upsert?: Prisma.BattleSubmissionUpsertWithoutCommentsInput
+  disconnect?: Prisma.BattleSubmissionWhereInput | boolean
+  delete?: Prisma.BattleSubmissionWhereInput | boolean
+  connect?: Prisma.BattleSubmissionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BattleSubmissionUpdateToOneWithWhereWithoutCommentsInput, Prisma.BattleSubmissionUpdateWithoutCommentsInput>, Prisma.BattleSubmissionUncheckedUpdateWithoutCommentsInput>
 }
 
 export type BattleSubmissionCreateNestedManyWithoutUserInput = {
@@ -533,6 +587,8 @@ export type BattleSubmissionCreateWithoutBattleInput = {
   status?: $Enums.SubmissionStatus
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBattleSubmissionsInput
+  votes?: Prisma.BattleVoteCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionUncheckedCreateWithoutBattleInput = {
@@ -545,6 +601,8 @@ export type BattleSubmissionUncheckedCreateWithoutBattleInput = {
   isEditedDetected?: boolean
   status?: $Enums.SubmissionStatus
   createdAt?: Date | string
+  votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionCreateOrConnectWithoutBattleInput = {
@@ -589,6 +647,150 @@ export type BattleSubmissionScalarWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"BattleSubmission"> | Date | string
 }
 
+export type BattleSubmissionCreateWithoutVotesInput = {
+  id?: string
+  mediaUrl: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  isTrueShotVerified?: boolean
+  isEditedDetected?: boolean
+  status?: $Enums.SubmissionStatus
+  createdAt?: Date | string
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutSubmissionsInput
+  user: Prisma.UserCreateNestedOneWithoutBattleSubmissionsInput
+  comments?: Prisma.BattleCommentCreateNestedManyWithoutSubmissionInput
+}
+
+export type BattleSubmissionUncheckedCreateWithoutVotesInput = {
+  id?: string
+  battleId: string
+  userId: string
+  mediaUrl: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  isTrueShotVerified?: boolean
+  isEditedDetected?: boolean
+  status?: $Enums.SubmissionStatus
+  createdAt?: Date | string
+  comments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutSubmissionInput
+}
+
+export type BattleSubmissionCreateOrConnectWithoutVotesInput = {
+  where: Prisma.BattleSubmissionWhereUniqueInput
+  create: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutVotesInput, Prisma.BattleSubmissionUncheckedCreateWithoutVotesInput>
+}
+
+export type BattleSubmissionUpsertWithoutVotesInput = {
+  update: Prisma.XOR<Prisma.BattleSubmissionUpdateWithoutVotesInput, Prisma.BattleSubmissionUncheckedUpdateWithoutVotesInput>
+  create: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutVotesInput, Prisma.BattleSubmissionUncheckedCreateWithoutVotesInput>
+  where?: Prisma.BattleSubmissionWhereInput
+}
+
+export type BattleSubmissionUpdateToOneWithWhereWithoutVotesInput = {
+  where?: Prisma.BattleSubmissionWhereInput
+  data: Prisma.XOR<Prisma.BattleSubmissionUpdateWithoutVotesInput, Prisma.BattleSubmissionUncheckedUpdateWithoutVotesInput>
+}
+
+export type BattleSubmissionUpdateWithoutVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutSubmissionsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutBattleSubmissionsNestedInput
+  comments?: Prisma.BattleCommentUpdateManyWithoutSubmissionNestedInput
+}
+
+export type BattleSubmissionUncheckedUpdateWithoutVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comments?: Prisma.BattleCommentUncheckedUpdateManyWithoutSubmissionNestedInput
+}
+
+export type BattleSubmissionCreateWithoutCommentsInput = {
+  id?: string
+  mediaUrl: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  isTrueShotVerified?: boolean
+  isEditedDetected?: boolean
+  status?: $Enums.SubmissionStatus
+  createdAt?: Date | string
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutSubmissionsInput
+  user: Prisma.UserCreateNestedOneWithoutBattleSubmissionsInput
+  votes?: Prisma.BattleVoteCreateNestedManyWithoutSubmissionInput
+}
+
+export type BattleSubmissionUncheckedCreateWithoutCommentsInput = {
+  id?: string
+  battleId: string
+  userId: string
+  mediaUrl: string
+  thumbnailUrl?: string | null
+  caption?: string | null
+  isTrueShotVerified?: boolean
+  isEditedDetected?: boolean
+  status?: $Enums.SubmissionStatus
+  createdAt?: Date | string
+  votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutSubmissionInput
+}
+
+export type BattleSubmissionCreateOrConnectWithoutCommentsInput = {
+  where: Prisma.BattleSubmissionWhereUniqueInput
+  create: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedCreateWithoutCommentsInput>
+}
+
+export type BattleSubmissionUpsertWithoutCommentsInput = {
+  update: Prisma.XOR<Prisma.BattleSubmissionUpdateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedUpdateWithoutCommentsInput>
+  create: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedCreateWithoutCommentsInput>
+  where?: Prisma.BattleSubmissionWhereInput
+}
+
+export type BattleSubmissionUpdateToOneWithWhereWithoutCommentsInput = {
+  where?: Prisma.BattleSubmissionWhereInput
+  data: Prisma.XOR<Prisma.BattleSubmissionUpdateWithoutCommentsInput, Prisma.BattleSubmissionUncheckedUpdateWithoutCommentsInput>
+}
+
+export type BattleSubmissionUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutSubmissionsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutBattleSubmissionsNestedInput
+  votes?: Prisma.BattleVoteUpdateManyWithoutSubmissionNestedInput
+}
+
+export type BattleSubmissionUncheckedUpdateWithoutCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  battleId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  mediaUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  thumbnailUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutSubmissionNestedInput
+}
+
 export type BattleSubmissionCreateWithoutUserInput = {
   id?: string
   mediaUrl: string
@@ -599,6 +801,8 @@ export type BattleSubmissionCreateWithoutUserInput = {
   status?: $Enums.SubmissionStatus
   createdAt?: Date | string
   battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutSubmissionsInput
+  votes?: Prisma.BattleVoteCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionUncheckedCreateWithoutUserInput = {
@@ -611,6 +815,8 @@ export type BattleSubmissionUncheckedCreateWithoutUserInput = {
   isEditedDetected?: boolean
   status?: $Enums.SubmissionStatus
   createdAt?: Date | string
+  votes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutSubmissionInput
+  comments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutSubmissionInput
 }
 
 export type BattleSubmissionCreateOrConnectWithoutUserInput = {
@@ -661,6 +867,8 @@ export type BattleSubmissionUpdateWithoutBattleInput = {
   status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBattleSubmissionsNestedInput
+  votes?: Prisma.BattleVoteUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionUncheckedUpdateWithoutBattleInput = {
@@ -673,6 +881,8 @@ export type BattleSubmissionUncheckedUpdateWithoutBattleInput = {
   isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUncheckedUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionUncheckedUpdateManyWithoutBattleInput = {
@@ -709,6 +919,8 @@ export type BattleSubmissionUpdateWithoutUserInput = {
   status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutSubmissionsNestedInput
+  votes?: Prisma.BattleVoteUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionUncheckedUpdateWithoutUserInput = {
@@ -721,6 +933,8 @@ export type BattleSubmissionUncheckedUpdateWithoutUserInput = {
   isEditedDetected?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumSubmissionStatusFieldUpdateOperationsInput | $Enums.SubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  votes?: Prisma.BattleVoteUncheckedUpdateManyWithoutSubmissionNestedInput
+  comments?: Prisma.BattleCommentUncheckedUpdateManyWithoutSubmissionNestedInput
 }
 
 export type BattleSubmissionUncheckedUpdateManyWithoutUserInput = {
@@ -736,6 +950,44 @@ export type BattleSubmissionUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type BattleSubmissionCountOutputType
+ */
+
+export type BattleSubmissionCountOutputType = {
+  votes: number
+  comments: number
+}
+
+export type BattleSubmissionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  votes?: boolean | BattleSubmissionCountOutputTypeCountVotesArgs
+  comments?: boolean | BattleSubmissionCountOutputTypeCountCommentsArgs
+}
+
+/**
+ * BattleSubmissionCountOutputType without action
+ */
+export type BattleSubmissionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleSubmissionCountOutputType
+   */
+  select?: Prisma.BattleSubmissionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BattleSubmissionCountOutputType without action
+ */
+export type BattleSubmissionCountOutputTypeCountVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleVoteWhereInput
+}
+
+/**
+ * BattleSubmissionCountOutputType without action
+ */
+export type BattleSubmissionCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleCommentWhereInput
+}
+
 
 export type BattleSubmissionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -750,6 +1002,9 @@ export type BattleSubmissionSelect<ExtArgs extends runtime.Types.Extensions.Inte
   createdAt?: boolean
   battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  votes?: boolean | Prisma.BattleSubmission$votesArgs<ExtArgs>
+  comments?: boolean | Prisma.BattleSubmission$commentsArgs<ExtArgs>
+  _count?: boolean | Prisma.BattleSubmissionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleSubmission"]>
 
 export type BattleSubmissionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -799,6 +1054,9 @@ export type BattleSubmissionOmit<ExtArgs extends runtime.Types.Extensions.Intern
 export type BattleSubmissionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  votes?: boolean | Prisma.BattleSubmission$votesArgs<ExtArgs>
+  comments?: boolean | Prisma.BattleSubmission$commentsArgs<ExtArgs>
+  _count?: boolean | Prisma.BattleSubmissionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BattleSubmissionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
@@ -814,6 +1072,8 @@ export type $BattleSubmissionPayload<ExtArgs extends runtime.Types.Extensions.In
   objects: {
     battle: Prisma.$HeadToHeadBattlePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
+    votes: Prisma.$BattleVotePayload<ExtArgs>[]
+    comments: Prisma.$BattleCommentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1222,6 +1482,8 @@ export interface Prisma__BattleSubmissionClient<T, Null = never, ExtArgs extends
   readonly [Symbol.toStringTag]: "PrismaPromise"
   battle<T extends Prisma.HeadToHeadBattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>>): Prisma.Prisma__HeadToHeadBattleClient<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  votes<T extends Prisma.BattleSubmission$votesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleSubmission$votesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comments<T extends Prisma.BattleSubmission$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleSubmission$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1654,6 +1916,54 @@ export type BattleSubmissionDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many BattleSubmissions to delete.
    */
   limit?: number
+}
+
+/**
+ * BattleSubmission.votes
+ */
+export type BattleSubmission$votesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleVote
+   */
+  select?: Prisma.BattleVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleVote
+   */
+  omit?: Prisma.BattleVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleVoteInclude<ExtArgs> | null
+  where?: Prisma.BattleVoteWhereInput
+  orderBy?: Prisma.BattleVoteOrderByWithRelationInput | Prisma.BattleVoteOrderByWithRelationInput[]
+  cursor?: Prisma.BattleVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleVoteScalarFieldEnum | Prisma.BattleVoteScalarFieldEnum[]
+}
+
+/**
+ * BattleSubmission.comments
+ */
+export type BattleSubmission$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleComment
+   */
+  select?: Prisma.BattleCommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleComment
+   */
+  omit?: Prisma.BattleCommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleCommentInclude<ExtArgs> | null
+  where?: Prisma.BattleCommentWhereInput
+  orderBy?: Prisma.BattleCommentOrderByWithRelationInput | Prisma.BattleCommentOrderByWithRelationInput[]
+  cursor?: Prisma.BattleCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleCommentScalarFieldEnum | Prisma.BattleCommentScalarFieldEnum[]
 }
 
 /**
