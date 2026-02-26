@@ -396,23 +396,29 @@ export type UserWhereInput = {
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
   wishLists?: Prisma.WishListListRelationFilter
-  battleResults?: Prisma.BattleResultListRelationFilter
-  battles?: Prisma.BattleListRelationFilter
   battleParticipants?: Prisma.BattleParticipantListRelationFilter
   userPoints?: Prisma.UserPointListRelationFilter
-  challengeResults?: Prisma.ChallengeResultListRelationFilter
-  hostChallenge?: Prisma.ChallengeListRelationFilter
   challenges?: Prisma.ChallengeListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
   officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
-  battleVotes?: Prisma.BattleVoteListRelationFilter
-  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
-  xposts?: Prisma.XPostListRelationFilter
   conversationParticipants?: Prisma.ConversationParticipantListRelationFilter
   messages?: Prisma.MessageListRelationFilter
   messageReceipts?: Prisma.MessageReceiptListRelationFilter
   taggedInPosts?: Prisma.PostListRelationFilter
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleListRelationFilter
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleListRelationFilter
+  battleInvitationsInviter?: Prisma.BattleInvitationListRelationFilter
+  battleInvitationsInvitte?: Prisma.BattleInvitationListRelationFilter
+  battleSubmissions?: Prisma.BattleSubmissionListRelationFilter
+  battleVotes?: Prisma.BattleVoteListRelationFilter
+  battleComments?: Prisma.BattleCommentListRelationFilter
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleListRelationFilter
+  rawShiftBattlesWon?: Prisma.RawShiftBattleListRelationFilter
+  rawShiftParticipants?: Prisma.RawShiftParticipantListRelationFilter
+  rawShiftEntries?: Prisma.RawShiftEntryListRelationFilter
+  rawShiftVotes?: Prisma.RawShiftVoteListRelationFilter
+  rawShiftComments?: Prisma.RawShiftCommentListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -459,23 +465,29 @@ export type UserOrderByWithRelationInput = {
   savePosts?: Prisma.SavePostOrderByRelationAggregateInput
   hidePosts?: Prisma.HidePostOrderByRelationAggregateInput
   wishLists?: Prisma.WishListOrderByRelationAggregateInput
-  battleResults?: Prisma.BattleResultOrderByRelationAggregateInput
-  battles?: Prisma.BattleOrderByRelationAggregateInput
   battleParticipants?: Prisma.BattleParticipantOrderByRelationAggregateInput
   userPoints?: Prisma.UserPointOrderByRelationAggregateInput
-  challengeResults?: Prisma.ChallengeResultOrderByRelationAggregateInput
-  hostChallenge?: Prisma.ChallengeOrderByRelationAggregateInput
   challenges?: Prisma.ChallengeOrderByRelationAggregateInput
   challengeParticipants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
   officialPartners?: Prisma.OfficialPartnerOrderByWithRelationInput
   ambassadorPrograms?: Prisma.AmbassadorProgramOrderByWithRelationInput
-  battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionOrderByRelationAggregateInput
-  xposts?: Prisma.XPostOrderByRelationAggregateInput
   conversationParticipants?: Prisma.ConversationParticipantOrderByRelationAggregateInput
   messages?: Prisma.MessageOrderByRelationAggregateInput
   messageReceipts?: Prisma.MessageReceiptOrderByRelationAggregateInput
   taggedInPosts?: Prisma.PostOrderByRelationAggregateInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleOrderByRelationAggregateInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleOrderByRelationAggregateInput
+  battleInvitationsInviter?: Prisma.BattleInvitationOrderByRelationAggregateInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationOrderByRelationAggregateInput
+  battleSubmissions?: Prisma.BattleSubmissionOrderByRelationAggregateInput
+  battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput
+  battleComments?: Prisma.BattleCommentOrderByRelationAggregateInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleOrderByRelationAggregateInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleOrderByRelationAggregateInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantOrderByRelationAggregateInput
+  rawShiftEntries?: Prisma.RawShiftEntryOrderByRelationAggregateInput
+  rawShiftVotes?: Prisma.RawShiftVoteOrderByRelationAggregateInput
+  rawShiftComments?: Prisma.RawShiftCommentOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -525,23 +537,29 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
   wishLists?: Prisma.WishListListRelationFilter
-  battleResults?: Prisma.BattleResultListRelationFilter
-  battles?: Prisma.BattleListRelationFilter
   battleParticipants?: Prisma.BattleParticipantListRelationFilter
   userPoints?: Prisma.UserPointListRelationFilter
-  challengeResults?: Prisma.ChallengeResultListRelationFilter
-  hostChallenge?: Prisma.ChallengeListRelationFilter
   challenges?: Prisma.ChallengeListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
   officialPartners?: Prisma.XOR<Prisma.OfficialPartnerNullableScalarRelationFilter, Prisma.OfficialPartnerWhereInput> | null
   ambassadorPrograms?: Prisma.XOR<Prisma.AmbassadorProgramNullableScalarRelationFilter, Prisma.AmbassadorProgramWhereInput> | null
-  battleVotes?: Prisma.BattleVoteListRelationFilter
-  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
-  xposts?: Prisma.XPostListRelationFilter
   conversationParticipants?: Prisma.ConversationParticipantListRelationFilter
   messages?: Prisma.MessageListRelationFilter
   messageReceipts?: Prisma.MessageReceiptListRelationFilter
   taggedInPosts?: Prisma.PostListRelationFilter
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleListRelationFilter
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleListRelationFilter
+  battleInvitationsInviter?: Prisma.BattleInvitationListRelationFilter
+  battleInvitationsInvitte?: Prisma.BattleInvitationListRelationFilter
+  battleSubmissions?: Prisma.BattleSubmissionListRelationFilter
+  battleVotes?: Prisma.BattleVoteListRelationFilter
+  battleComments?: Prisma.BattleCommentListRelationFilter
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleListRelationFilter
+  rawShiftBattlesWon?: Prisma.RawShiftBattleListRelationFilter
+  rawShiftParticipants?: Prisma.RawShiftParticipantListRelationFilter
+  rawShiftEntries?: Prisma.RawShiftEntryListRelationFilter
+  rawShiftVotes?: Prisma.RawShiftVoteListRelationFilter
+  rawShiftComments?: Prisma.RawShiftCommentListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -648,23 +666,29 @@ export type UserCreateInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -711,23 +735,29 @@ export type UserUncheckedCreateInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -774,23 +804,29 @@ export type UserUpdateInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -837,23 +873,29 @@ export type UserUncheckedUpdateInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1062,88 +1104,16 @@ export type UserUpdateOneRequiredWithoutAmbassadorProgramsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAmbassadorProgramsInput, Prisma.UserUpdateWithoutAmbassadorProgramsInput>, Prisma.UserUncheckedUpdateWithoutAmbassadorProgramsInput>
 }
 
-export type UserCreateNestedOneWithoutBattlesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattlesInput, Prisma.UserUncheckedCreateWithoutBattlesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattlesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBattlesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattlesInput, Prisma.UserUncheckedCreateWithoutBattlesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattlesInput
-  upsert?: Prisma.UserUpsertWithoutBattlesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattlesInput, Prisma.UserUpdateWithoutBattlesInput>, Prisma.UserUncheckedUpdateWithoutBattlesInput>
-}
-
-export type UserCreateNestedOneWithoutBattleParticipantsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBattleParticipantsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput
-  upsert?: Prisma.UserUpsertWithoutBattleParticipantsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleParticipantsInput, Prisma.UserUpdateWithoutBattleParticipantsInput>, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
-}
-
-export type UserCreateNestedOneWithoutBattleResultsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleResultsInput, Prisma.UserUncheckedCreateWithoutBattleResultsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleResultsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBattleResultsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleResultsInput, Prisma.UserUncheckedCreateWithoutBattleResultsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleResultsInput
-  upsert?: Prisma.UserUpsertWithoutBattleResultsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleResultsInput, Prisma.UserUpdateWithoutBattleResultsInput>, Prisma.UserUncheckedUpdateWithoutBattleResultsInput>
-}
-
-export type UserCreateNestedOneWithoutBattleVotesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutBattleVotesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput
-  upsert?: Prisma.UserUpsertWithoutBattleVotesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleVotesInput, Prisma.UserUpdateWithoutBattleVotesInput>, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
-}
-
-export type UserCreateNestedOneWithoutHostChallengeInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutHostChallengeInput, Prisma.UserUncheckedCreateWithoutHostChallengeInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostChallengeInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
 export type UserCreateNestedOneWithoutChallengesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutChallengesInput, Prisma.UserUncheckedCreateWithoutChallengesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengesInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutHostChallengeNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutHostChallengeInput, Prisma.UserUncheckedCreateWithoutHostChallengeInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHostChallengeInput
-  upsert?: Prisma.UserUpsertWithoutHostChallengeInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHostChallengeInput, Prisma.UserUpdateWithoutHostChallengeInput>, Prisma.UserUncheckedUpdateWithoutHostChallengeInput>
-}
-
-export type UserUpdateOneWithoutChallengesNestedInput = {
+export type UserUpdateOneRequiredWithoutChallengesNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutChallengesInput, Prisma.UserUncheckedCreateWithoutChallengesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengesInput
   upsert?: Prisma.UserUpsertWithoutChallengesInput
-  disconnect?: Prisma.UserWhereInput | boolean
-  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengesInput, Prisma.UserUpdateWithoutChallengesInput>, Prisma.UserUncheckedUpdateWithoutChallengesInput>
 }
@@ -1160,34 +1130,6 @@ export type UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutChallengeParticipantsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengeParticipantsInput, Prisma.UserUpdateWithoutChallengeParticipantsInput>, Prisma.UserUncheckedUpdateWithoutChallengeParticipantsInput>
-}
-
-export type UserCreateNestedOneWithoutChallengeResultsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeResultsInput, Prisma.UserUncheckedCreateWithoutChallengeResultsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeResultsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutChallengeResultsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeResultsInput, Prisma.UserUncheckedCreateWithoutChallengeResultsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeResultsInput
-  upsert?: Prisma.UserUpsertWithoutChallengeResultsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengeResultsInput, Prisma.UserUpdateWithoutChallengeResultsInput>, Prisma.UserUncheckedUpdateWithoutChallengeResultsInput>
-}
-
-export type UserCreateNestedOneWithoutChallengeSubmissionsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeSubmissionsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutChallengeSubmissionsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutChallengeSubmissionsInput
-  upsert?: Prisma.UserUpsertWithoutChallengeSubmissionsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutChallengeSubmissionsInput, Prisma.UserUpdateWithoutChallengeSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
 }
 
 export type UserCreateNestedOneWithoutCommentsInput = {
@@ -1258,6 +1200,120 @@ export type UserUpdateOneRequiredWithoutFollowersNestedInput = {
   upsert?: Prisma.UserUpsertWithoutFollowersInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFollowersInput, Prisma.UserUpdateWithoutFollowersInput>, Prisma.UserUncheckedUpdateWithoutFollowersInput>
+}
+
+export type UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutHeadToHeadBattlesWonInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHeadToHeadBattlesWonInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput
+  upsert?: Prisma.UserUpsertWithoutHeadToHeadBattlesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUpdateWithoutHeadToHeadBattlesCreatedInput>, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput>
+}
+
+export type UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutHeadToHeadBattlesWonInput
+  upsert?: Prisma.UserUpsertWithoutHeadToHeadBattlesWonInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutHeadToHeadBattlesWonInput, Prisma.UserUpdateWithoutHeadToHeadBattlesWonInput>, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput>
+}
+
+export type UserCreateNestedOneWithoutBattleParticipantsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBattleParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleParticipantsInput
+  upsert?: Prisma.UserUpsertWithoutBattleParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleParticipantsInput, Prisma.UserUpdateWithoutBattleParticipantsInput>, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
+}
+
+export type UserCreateNestedOneWithoutBattleInvitationsInviterInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInviterInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleInvitationsInviterInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutBattleInvitationsInvitteInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInvitteInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleInvitationsInvitteInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBattleInvitationsInviterNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInviterInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleInvitationsInviterInput
+  upsert?: Prisma.UserUpsertWithoutBattleInvitationsInviterInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleInvitationsInviterInput, Prisma.UserUpdateWithoutBattleInvitationsInviterInput>, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInviterInput>
+}
+
+export type UserUpdateOneRequiredWithoutBattleInvitationsInvitteNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInvitteInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleInvitationsInvitteInput
+  upsert?: Prisma.UserUpsertWithoutBattleInvitationsInvitteInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleInvitationsInvitteInput, Prisma.UserUpdateWithoutBattleInvitationsInvitteInput>, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInvitteInput>
+}
+
+export type UserCreateNestedOneWithoutBattleSubmissionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleSubmissionsInput, Prisma.UserUncheckedCreateWithoutBattleSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBattleSubmissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleSubmissionsInput, Prisma.UserUncheckedCreateWithoutBattleSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleSubmissionsInput
+  upsert?: Prisma.UserUpsertWithoutBattleSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleSubmissionsInput, Prisma.UserUpdateWithoutBattleSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutBattleSubmissionsInput>
+}
+
+export type UserCreateNestedOneWithoutBattleVotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBattleVotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleVotesInput
+  upsert?: Prisma.UserUpsertWithoutBattleVotesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleVotesInput, Prisma.UserUpdateWithoutBattleVotesInput>, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
+}
+
+export type UserCreateNestedOneWithoutBattleCommentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleCommentsInput, Prisma.UserUncheckedCreateWithoutBattleCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBattleCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBattleCommentsInput, Prisma.UserUncheckedCreateWithoutBattleCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBattleCommentsInput
+  upsert?: Prisma.UserUpsertWithoutBattleCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBattleCommentsInput, Prisma.UserUpdateWithoutBattleCommentsInput>, Prisma.UserUncheckedUpdateWithoutBattleCommentsInput>
 }
 
 export type UserCreateNestedOneWithoutHidePostsInput = {
@@ -1494,6 +1550,92 @@ export type UserUpdateOneRequiredWithoutRacingVotesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRacingVotesInput, Prisma.UserUpdateWithoutRacingVotesInput>, Prisma.UserUncheckedUpdateWithoutRacingVotesInput>
 }
 
+export type UserCreateNestedOneWithoutRawShiftBattlesCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftBattlesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutRawShiftBattlesWonInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftBattlesWonInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftBattlesCreatedInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftBattlesCreatedInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftBattlesCreatedInput, Prisma.UserUpdateWithoutRawShiftBattlesCreatedInput>, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput>
+}
+
+export type UserUpdateOneWithoutRawShiftBattlesWonNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftBattlesWonInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftBattlesWonInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftBattlesWonInput, Prisma.UserUpdateWithoutRawShiftBattlesWonInput>, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesWonInput>
+}
+
+export type UserCreateNestedOneWithoutRawShiftParticipantsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedCreateWithoutRawShiftParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRawShiftParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedCreateWithoutRawShiftParticipantsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftParticipantsInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftParticipantsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftParticipantsInput, Prisma.UserUpdateWithoutRawShiftParticipantsInput>, Prisma.UserUncheckedUpdateWithoutRawShiftParticipantsInput>
+}
+
+export type UserCreateNestedOneWithoutRawShiftEntriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftEntriesInput, Prisma.UserUncheckedCreateWithoutRawShiftEntriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftEntriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRawShiftEntriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftEntriesInput, Prisma.UserUncheckedCreateWithoutRawShiftEntriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftEntriesInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftEntriesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftEntriesInput, Prisma.UserUpdateWithoutRawShiftEntriesInput>, Prisma.UserUncheckedUpdateWithoutRawShiftEntriesInput>
+}
+
+export type UserCreateNestedOneWithoutRawShiftVotesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftVotesInput, Prisma.UserUncheckedCreateWithoutRawShiftVotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftVotesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRawShiftVotesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftVotesInput, Prisma.UserUncheckedCreateWithoutRawShiftVotesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftVotesInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftVotesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftVotesInput, Prisma.UserUpdateWithoutRawShiftVotesInput>, Prisma.UserUncheckedUpdateWithoutRawShiftVotesInput>
+}
+
+export type UserCreateNestedOneWithoutRawShiftCommentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftCommentsInput, Prisma.UserUncheckedCreateWithoutRawShiftCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutRawShiftCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRawShiftCommentsInput, Prisma.UserUncheckedCreateWithoutRawShiftCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRawShiftCommentsInput
+  upsert?: Prisma.UserUpsertWithoutRawShiftCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRawShiftCommentsInput, Prisma.UserUpdateWithoutRawShiftCommentsInput>, Prisma.UserUncheckedUpdateWithoutRawShiftCommentsInput>
+}
+
 export type UserCreateNestedOneWithoutReportsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutReportsInput, Prisma.UserUncheckedCreateWithoutReportsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutReportsInput
@@ -1590,20 +1732,6 @@ export type UserUpdateOneRequiredWithoutWishListsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutWishListsInput, Prisma.UserUpdateWithoutWishListsInput>, Prisma.UserUncheckedUpdateWithoutWishListsInput>
 }
 
-export type UserCreateNestedOneWithoutXpostsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutXpostsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutXpostsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutXpostsInput
-  upsert?: Prisma.UserUpsertWithoutXpostsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutXpostsInput, Prisma.UserUpdateWithoutXpostsInput>, Prisma.UserUncheckedUpdateWithoutXpostsInput>
-}
-
 export type UserCreateWithoutAmbassadorProgramsInput = {
   id?: string
   email: string
@@ -1648,22 +1776,28 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -1710,22 +1844,28 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -1788,22 +1928,28 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -1850,1207 +1996,28 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutBattlesInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutBattlesInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutBattlesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattlesInput, Prisma.UserUncheckedCreateWithoutBattlesInput>
-}
-
-export type UserUpsertWithoutBattlesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBattlesInput, Prisma.UserUncheckedUpdateWithoutBattlesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattlesInput, Prisma.UserUncheckedCreateWithoutBattlesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBattlesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBattlesInput, Prisma.UserUncheckedUpdateWithoutBattlesInput>
-}
-
-export type UserUpdateWithoutBattlesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBattlesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutBattleParticipantsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutBattleParticipantsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutBattleParticipantsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
-}
-
-export type UserUpsertWithoutBattleParticipantsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleParticipantsInput, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBattleParticipantsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleParticipantsInput, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
-}
-
-export type UserUpdateWithoutBattleParticipantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutBattleResultsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutBattleResultsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutBattleResultsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleResultsInput, Prisma.UserUncheckedCreateWithoutBattleResultsInput>
-}
-
-export type UserUpsertWithoutBattleResultsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleResultsInput, Prisma.UserUncheckedUpdateWithoutBattleResultsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleResultsInput, Prisma.UserUncheckedCreateWithoutBattleResultsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBattleResultsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleResultsInput, Prisma.UserUncheckedUpdateWithoutBattleResultsInput>
-}
-
-export type UserUpdateWithoutBattleResultsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBattleResultsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutBattleVotesInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutBattleVotesInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutBattleVotesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
-}
-
-export type UserUpsertWithoutBattleVotesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleVotesInput, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutBattleVotesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleVotesInput, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
-}
-
-export type UserUpdateWithoutBattleVotesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutBattleVotesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutHostChallengeInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutHostChallengeInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutHostChallengeInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutHostChallengeInput, Prisma.UserUncheckedCreateWithoutHostChallengeInput>
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -3097,22 +2064,28 @@ export type UserCreateWithoutChallengesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -3159,162 +2132,33 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
   where: Prisma.UserWhereUniqueInput
   create: Prisma.XOR<Prisma.UserCreateWithoutChallengesInput, Prisma.UserUncheckedCreateWithoutChallengesInput>
-}
-
-export type UserUpsertWithoutHostChallengeInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutHostChallengeInput, Prisma.UserUncheckedUpdateWithoutHostChallengeInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutHostChallengeInput, Prisma.UserUncheckedCreateWithoutHostChallengeInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutHostChallengeInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutHostChallengeInput, Prisma.UserUncheckedUpdateWithoutHostChallengeInput>
-}
-
-export type UserUpdateWithoutHostChallengeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutHostChallengeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
 }
 
 export type UserUpsertWithoutChallengesInput = {
@@ -3372,22 +2216,28 @@ export type UserUpdateWithoutChallengesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -3434,22 +2284,28 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -3496,22 +2352,28 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -3558,22 +2420,28 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -3636,22 +2504,28 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -3698,550 +2572,28 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutChallengeResultsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutChallengeResultsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutChallengeResultsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeResultsInput, Prisma.UserUncheckedCreateWithoutChallengeResultsInput>
-}
-
-export type UserUpsertWithoutChallengeResultsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutChallengeResultsInput, Prisma.UserUncheckedUpdateWithoutChallengeResultsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeResultsInput, Prisma.UserUncheckedCreateWithoutChallengeResultsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutChallengeResultsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutChallengeResultsInput, Prisma.UserUncheckedUpdateWithoutChallengeResultsInput>
-}
-
-export type UserUpdateWithoutChallengeResultsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutChallengeResultsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutChallengeSubmissionsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutChallengeSubmissionsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutChallengeSubmissionsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
-}
-
-export type UserUpsertWithoutChallengeSubmissionsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedCreateWithoutChallengeSubmissionsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutChallengeSubmissionsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutChallengeSubmissionsInput, Prisma.UserUncheckedUpdateWithoutChallengeSubmissionsInput>
-}
-
-export type UserUpdateWithoutChallengeSubmissionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutChallengeSubmissionsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4287,23 +2639,29 @@ export type UserCreateWithoutCommentsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4349,23 +2707,29 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4427,23 +2791,29 @@ export type UserUpdateWithoutCommentsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4489,23 +2859,29 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -4552,22 +2928,28 @@ export type UserCreateWithoutConversationParticipantsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -4614,22 +2996,28 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -4692,22 +3080,28 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -4754,22 +3148,28 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4815,23 +3215,29 @@ export type UserCreateWithoutEventsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4877,23 +3283,29 @@ export type UserUncheckedCreateWithoutEventsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -4955,23 +3367,29 @@ export type UserUpdateWithoutEventsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5017,23 +3435,29 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5079,23 +3503,29 @@ export type UserCreateWithoutFollowingInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5141,23 +3571,29 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5208,23 +3644,29 @@ export type UserCreateWithoutFollowersInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5270,23 +3712,29 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5348,23 +3796,29 @@ export type UserUpdateWithoutFollowingInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5410,23 +3864,29 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5483,23 +3943,29 @@ export type UserUpdateWithoutFollowersInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5545,23 +4011,2333 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput>
+}
+
+export type UserCreateWithoutHeadToHeadBattlesWonInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesWonInput>
+}
+
+export type UserUpsertWithoutHeadToHeadBattlesCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutHeadToHeadBattlesCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutHeadToHeadBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput>
+}
+
+export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedCreateWithoutHeadToHeadBattlesWonInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutHeadToHeadBattlesWonInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutHeadToHeadBattlesWonInput, Prisma.UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput>
+}
+
+export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBattleParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
+}
+
+export type UserUpsertWithoutBattleParticipantsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleParticipantsInput, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleParticipantsInput, Prisma.UserUncheckedCreateWithoutBattleParticipantsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleParticipantsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleParticipantsInput, Prisma.UserUncheckedUpdateWithoutBattleParticipantsInput>
+}
+
+export type UserUpdateWithoutBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBattleInvitationsInviterInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInviterInput>
+}
+
+export type UserCreateWithoutBattleInvitationsInvitteInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInvitteInput>
+}
+
+export type UserUpsertWithoutBattleInvitationsInviterInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInviterInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInviterInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleInvitationsInviterInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleInvitationsInviterInput, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInviterInput>
+}
+
+export type UserUpdateWithoutBattleInvitationsInviterInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutBattleInvitationsInvitteInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInvitteInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedCreateWithoutBattleInvitationsInvitteInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleInvitationsInvitteInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleInvitationsInvitteInput, Prisma.UserUncheckedUpdateWithoutBattleInvitationsInvitteInput>
+}
+
+export type UserUpdateWithoutBattleInvitationsInvitteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBattleSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleSubmissionsInput, Prisma.UserUncheckedCreateWithoutBattleSubmissionsInput>
+}
+
+export type UserUpsertWithoutBattleSubmissionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleSubmissionsInput, Prisma.UserUncheckedUpdateWithoutBattleSubmissionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleSubmissionsInput, Prisma.UserUncheckedCreateWithoutBattleSubmissionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleSubmissionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleSubmissionsInput, Prisma.UserUncheckedUpdateWithoutBattleSubmissionsInput>
+}
+
+export type UserUpdateWithoutBattleSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBattleVotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleVotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleVotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
+}
+
+export type UserUpsertWithoutBattleVotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleVotesInput, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleVotesInput, Prisma.UserUncheckedCreateWithoutBattleVotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleVotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleVotesInput, Prisma.UserUncheckedUpdateWithoutBattleVotesInput>
+}
+
+export type UserUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutBattleCommentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutBattleCommentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutBattleCommentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleCommentsInput, Prisma.UserUncheckedCreateWithoutBattleCommentsInput>
+}
+
+export type UserUpsertWithoutBattleCommentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBattleCommentsInput, Prisma.UserUncheckedUpdateWithoutBattleCommentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBattleCommentsInput, Prisma.UserUncheckedCreateWithoutBattleCommentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBattleCommentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBattleCommentsInput, Prisma.UserUncheckedUpdateWithoutBattleCommentsInput>
+}
+
+export type UserUpdateWithoutBattleCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBattleCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -5607,23 +6383,29 @@ export type UserCreateWithoutHidePostsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -5669,23 +6451,29 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -5747,23 +6535,29 @@ export type UserUpdateWithoutHidePostsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -5809,23 +6603,29 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -5871,23 +6671,29 @@ export type UserCreateWithoutLikesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -5933,23 +6739,29 @@ export type UserUncheckedCreateWithoutLikesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -6011,23 +6823,29 @@ export type UserUpdateWithoutLikesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -6073,23 +6891,29 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -6135,23 +6959,29 @@ export type UserCreateWithoutLivesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -6197,23 +7027,29 @@ export type UserUncheckedCreateWithoutLivesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -6275,23 +7111,29 @@ export type UserUpdateWithoutLivesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -6337,23 +7179,29 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -6399,23 +7247,29 @@ export type UserCreateWithoutLiveParticipantsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -6461,23 +7315,29 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -6539,23 +7399,29 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -6601,23 +7467,29 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -6663,23 +7535,29 @@ export type UserCreateWithoutLiveRewardsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -6725,23 +7603,29 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -6792,23 +7676,29 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -6854,23 +7744,29 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -6932,23 +7828,29 @@ export type UserUpdateWithoutLiveRewardsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -6994,23 +7896,29 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -7067,23 +7975,29 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -7129,23 +8043,29 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -7192,22 +8112,28 @@ export type UserCreateWithoutMessagesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -7254,22 +8180,28 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -7332,22 +8264,28 @@ export type UserUpdateWithoutMessagesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -7394,22 +8332,28 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -7456,22 +8400,28 @@ export type UserCreateWithoutMessageReceiptsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -7518,22 +8468,28 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -7596,22 +8552,28 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -7658,22 +8620,28 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -7720,22 +8688,28 @@ export type UserCreateWithoutOfficialPartnersInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -7782,22 +8756,28 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -7860,22 +8840,28 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -7922,22 +8908,28 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -7983,23 +8975,29 @@ export type UserCreateWithoutPaymentsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -8045,23 +9043,29 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -8123,23 +9127,29 @@ export type UserUpdateWithoutPaymentsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -8185,23 +9195,29 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -8247,23 +9263,29 @@ export type UserCreateWithoutPostsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -8309,23 +9331,29 @@ export type UserUncheckedCreateWithoutPostsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -8377,22 +9405,28 @@ export type UserCreateWithoutTaggedInPostsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -8439,22 +9473,28 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -8516,23 +9556,29 @@ export type UserUpdateWithoutPostsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -8578,23 +9624,29 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -8685,23 +9737,29 @@ export type UserCreateWithoutProductListsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -8747,23 +9805,29 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -8825,23 +9889,29 @@ export type UserUpdateWithoutProductListsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -8887,23 +9957,29 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -8949,23 +10025,29 @@ export type UserCreateWithoutProfileInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -9011,23 +10093,29 @@ export type UserUncheckedCreateWithoutProfileInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -9089,23 +10177,29 @@ export type UserUpdateWithoutProfileInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -9151,23 +10245,29 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -9213,23 +10313,29 @@ export type UserCreateWithoutRacingVotesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -9275,23 +10381,29 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -9353,23 +10465,29 @@ export type UserUpdateWithoutRacingVotesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -9415,23 +10533,1757 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRawShiftBattlesCreatedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesCreatedInput>
+}
+
+export type UserCreateWithoutRawShiftBattlesWonInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesWonInput>
+}
+
+export type UserUpsertWithoutRawShiftBattlesCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesCreatedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftBattlesCreatedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput>
+}
+
+export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutRawShiftBattlesWonInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesWonInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedCreateWithoutRawShiftBattlesWonInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftBattlesWonInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftBattlesWonInput, Prisma.UserUncheckedUpdateWithoutRawShiftBattlesWonInput>
+}
+
+export type UserUpdateWithoutRawShiftBattlesWonInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRawShiftParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedCreateWithoutRawShiftParticipantsInput>
+}
+
+export type UserUpsertWithoutRawShiftParticipantsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedUpdateWithoutRawShiftParticipantsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedCreateWithoutRawShiftParticipantsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftParticipantsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftParticipantsInput, Prisma.UserUncheckedUpdateWithoutRawShiftParticipantsInput>
+}
+
+export type UserUpdateWithoutRawShiftParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRawShiftEntriesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftEntriesInput, Prisma.UserUncheckedCreateWithoutRawShiftEntriesInput>
+}
+
+export type UserUpsertWithoutRawShiftEntriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftEntriesInput, Prisma.UserUncheckedUpdateWithoutRawShiftEntriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftEntriesInput, Prisma.UserUncheckedCreateWithoutRawShiftEntriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftEntriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftEntriesInput, Prisma.UserUncheckedUpdateWithoutRawShiftEntriesInput>
+}
+
+export type UserUpdateWithoutRawShiftEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRawShiftVotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftVotesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftVotesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftVotesInput, Prisma.UserUncheckedCreateWithoutRawShiftVotesInput>
+}
+
+export type UserUpsertWithoutRawShiftVotesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftVotesInput, Prisma.UserUncheckedUpdateWithoutRawShiftVotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftVotesInput, Prisma.UserUncheckedCreateWithoutRawShiftVotesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftVotesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftVotesInput, Prisma.UserUncheckedUpdateWithoutRawShiftVotesInput>
+}
+
+export type UserUpdateWithoutRawShiftVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutRawShiftCommentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftCommentsInput, Prisma.UserUncheckedCreateWithoutRawShiftCommentsInput>
+}
+
+export type UserUpsertWithoutRawShiftCommentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftCommentsInput, Prisma.UserUncheckedUpdateWithoutRawShiftCommentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRawShiftCommentsInput, Prisma.UserUncheckedCreateWithoutRawShiftCommentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRawShiftCommentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRawShiftCommentsInput, Prisma.UserUncheckedUpdateWithoutRawShiftCommentsInput>
+}
+
+export type UserUpdateWithoutRawShiftCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -9477,23 +12329,29 @@ export type UserCreateWithoutReportsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -9539,23 +12397,29 @@ export type UserUncheckedCreateWithoutReportsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -9617,23 +12481,29 @@ export type UserUpdateWithoutReportsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -9679,23 +12549,29 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -9741,23 +12617,29 @@ export type UserCreateWithoutRepostsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -9803,23 +12685,29 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -9881,23 +12769,29 @@ export type UserUpdateWithoutRepostsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -9943,23 +12837,29 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -10005,23 +12905,29 @@ export type UserCreateWithoutSavePostsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -10067,23 +12973,29 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -10145,23 +13057,29 @@ export type UserUpdateWithoutSavePostsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -10207,23 +13125,29 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -10269,23 +13193,29 @@ export type UserCreateWithoutSharesInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -10331,23 +13261,29 @@ export type UserUncheckedCreateWithoutSharesInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -10409,23 +13345,29 @@ export type UserUpdateWithoutSharesInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -10471,23 +13413,29 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -10534,22 +13482,28 @@ export type UserCreateWithoutUserPointsInput = {
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -10596,22 +13550,28 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -10674,22 +13634,28 @@ export type UserUpdateWithoutUserPointsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -10736,22 +13702,28 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -10797,23 +13769,29 @@ export type UserCreateWithoutWishListsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -10859,23 +13837,29 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
   officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  xposts?: Prisma.XPostUncheckedCreateNestedManyWithoutUserInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -10937,23 +13921,29 @@ export type UserUpdateWithoutWishListsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -10999,287 +13989,29 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserCreateWithoutXpostsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserUncheckedCreateWithoutXpostsInput = {
-  id?: string
-  email: string
-  phone?: string | null
-  password: string
-  role?: $Enums.Role
-  activeRole?: $Enums.Role | null
-  otp?: string | null
-  expiresIn?: string | null
-  isEmailVerified?: boolean
-  accountStatus?: $Enums.AccountStatus
-  emailOtp?: string | null
-  emailOtpExpiresAt?: Date | string | null
-  resetOtp?: string | null
-  resetOtpExpiresAt?: Date | string | null
-  refreshTokenHash?: string | null
-  totalPoints?: number
-  balance?: number
-  likeCount?: number
-  commentCount?: number
-  shareCount?: number
-  activeProfileId?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
-  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
-  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
-  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
-  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
-  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
-  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
-  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
-  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
-  battleResults?: Prisma.BattleResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  battles?: Prisma.BattleUncheckedCreateNestedManyWithoutHostInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
-  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
-  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutWinnerUserInput
-  hostChallenge?: Prisma.ChallengeUncheckedCreateNestedManyWithoutHostInput
-  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutParticipantsUserInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
-  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutUserInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
-  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
-  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
-}
-
-export type UserCreateOrConnectWithoutXpostsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
-}
-
-export type UserUpsertWithoutXpostsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutXpostsInput, Prisma.UserUncheckedUpdateWithoutXpostsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutXpostsInput, Prisma.UserUncheckedCreateWithoutXpostsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutXpostsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutXpostsInput, Prisma.UserUncheckedUpdateWithoutXpostsInput>
-}
-
-export type UserUpdateWithoutXpostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
-}
-
-export type UserUncheckedUpdateWithoutXpostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  password?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
-  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
-  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
-  balance?: Prisma.IntFieldUpdateOperationsInput | number
-  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
-  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
-  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
-  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
-  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
-  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
-  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
-  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
-  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
-  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
-  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
-  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
-  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
-  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
-  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
-  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
-  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
-  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
-  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
-  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
-  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
-  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -11326,22 +14058,28 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -11388,22 +14126,28 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
-  battleResults?: Prisma.BattleResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  battles?: Prisma.BattleUncheckedUpdateManyWithoutHostNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
-  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutWinnerUserNestedInput
-  hostChallenge?: Prisma.ChallengeUncheckedUpdateManyWithoutHostNestedInput
-  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutParticipantsUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
   officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
   ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
-  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput
-  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutUserNestedInput
-  xposts?: Prisma.XPostUncheckedUpdateManyWithoutUserNestedInput
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -11458,21 +14202,27 @@ export type UserCountOutputType = {
   savePosts: number
   hidePosts: number
   wishLists: number
-  battleResults: number
-  battles: number
   battleParticipants: number
   userPoints: number
-  challengeResults: number
-  hostChallenge: number
   challenges: number
   challengeParticipants: number
-  battleVotes: number
-  challengeSubmissions: number
-  xposts: number
   conversationParticipants: number
   messages: number
   messageReceipts: number
   taggedInPosts: number
+  headToHeadBattlesCreated: number
+  headToHeadBattlesWon: number
+  battleInvitationsInviter: number
+  battleInvitationsInvitte: number
+  battleSubmissions: number
+  battleVotes: number
+  battleComments: number
+  rawShiftBattlesCreated: number
+  rawShiftBattlesWon: number
+  rawShiftParticipants: number
+  rawShiftEntries: number
+  rawShiftVotes: number
+  rawShiftComments: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -11496,21 +14246,27 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   savePosts?: boolean | UserCountOutputTypeCountSavePostsArgs
   hidePosts?: boolean | UserCountOutputTypeCountHidePostsArgs
   wishLists?: boolean | UserCountOutputTypeCountWishListsArgs
-  battleResults?: boolean | UserCountOutputTypeCountBattleResultsArgs
-  battles?: boolean | UserCountOutputTypeCountBattlesArgs
   battleParticipants?: boolean | UserCountOutputTypeCountBattleParticipantsArgs
   userPoints?: boolean | UserCountOutputTypeCountUserPointsArgs
-  challengeResults?: boolean | UserCountOutputTypeCountChallengeResultsArgs
-  hostChallenge?: boolean | UserCountOutputTypeCountHostChallengeArgs
   challenges?: boolean | UserCountOutputTypeCountChallengesArgs
   challengeParticipants?: boolean | UserCountOutputTypeCountChallengeParticipantsArgs
-  battleVotes?: boolean | UserCountOutputTypeCountBattleVotesArgs
-  challengeSubmissions?: boolean | UserCountOutputTypeCountChallengeSubmissionsArgs
-  xposts?: boolean | UserCountOutputTypeCountXpostsArgs
   conversationParticipants?: boolean | UserCountOutputTypeCountConversationParticipantsArgs
   messages?: boolean | UserCountOutputTypeCountMessagesArgs
   messageReceipts?: boolean | UserCountOutputTypeCountMessageReceiptsArgs
   taggedInPosts?: boolean | UserCountOutputTypeCountTaggedInPostsArgs
+  headToHeadBattlesCreated?: boolean | UserCountOutputTypeCountHeadToHeadBattlesCreatedArgs
+  headToHeadBattlesWon?: boolean | UserCountOutputTypeCountHeadToHeadBattlesWonArgs
+  battleInvitationsInviter?: boolean | UserCountOutputTypeCountBattleInvitationsInviterArgs
+  battleInvitationsInvitte?: boolean | UserCountOutputTypeCountBattleInvitationsInvitteArgs
+  battleSubmissions?: boolean | UserCountOutputTypeCountBattleSubmissionsArgs
+  battleVotes?: boolean | UserCountOutputTypeCountBattleVotesArgs
+  battleComments?: boolean | UserCountOutputTypeCountBattleCommentsArgs
+  rawShiftBattlesCreated?: boolean | UserCountOutputTypeCountRawShiftBattlesCreatedArgs
+  rawShiftBattlesWon?: boolean | UserCountOutputTypeCountRawShiftBattlesWonArgs
+  rawShiftParticipants?: boolean | UserCountOutputTypeCountRawShiftParticipantsArgs
+  rawShiftEntries?: boolean | UserCountOutputTypeCountRawShiftEntriesArgs
+  rawShiftVotes?: boolean | UserCountOutputTypeCountRawShiftVotesArgs
+  rawShiftComments?: boolean | UserCountOutputTypeCountRawShiftCommentsArgs
 }
 
 /**
@@ -11666,20 +14422,6 @@ export type UserCountOutputTypeCountWishListsArgs<ExtArgs extends runtime.Types.
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountBattleResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BattleResultWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBattlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BattleWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
 export type UserCountOutputTypeCountBattleParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BattleParticipantWhereInput
 }
@@ -11694,20 +14436,6 @@ export type UserCountOutputTypeCountUserPointsArgs<ExtArgs extends runtime.Types
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountChallengeResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeResultWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountHostChallengeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
 export type UserCountOutputTypeCountChallengesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChallengeWhereInput
 }
@@ -11717,27 +14445,6 @@ export type UserCountOutputTypeCountChallengesArgs<ExtArgs extends runtime.Types
  */
 export type UserCountOutputTypeCountChallengeParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChallengeParticipantWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountBattleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BattleVoteWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountChallengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeSubmissionWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountXpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.XPostWhereInput
 }
 
 /**
@@ -11766,6 +14473,97 @@ export type UserCountOutputTypeCountMessageReceiptsArgs<ExtArgs extends runtime.
  */
 export type UserCountOutputTypeCountTaggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountHeadToHeadBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.HeadToHeadBattleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountHeadToHeadBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.HeadToHeadBattleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleInvitationsInviterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleInvitationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleInvitationsInvitteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleInvitationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleSubmissionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleVoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBattleCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleCommentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftBattleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftBattleWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftParticipantWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftEntryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftVoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRawShiftCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RawShiftCommentWhereInput
 }
 
 
@@ -11813,23 +14611,29 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>
   wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>
-  battleResults?: boolean | Prisma.User$battleResultsArgs<ExtArgs>
-  battles?: boolean | Prisma.User$battlesArgs<ExtArgs>
   battleParticipants?: boolean | Prisma.User$battleParticipantsArgs<ExtArgs>
   userPoints?: boolean | Prisma.User$userPointsArgs<ExtArgs>
-  challengeResults?: boolean | Prisma.User$challengeResultsArgs<ExtArgs>
-  hostChallenge?: boolean | Prisma.User$hostChallengeArgs<ExtArgs>
   challenges?: boolean | Prisma.User$challengesArgs<ExtArgs>
   challengeParticipants?: boolean | Prisma.User$challengeParticipantsArgs<ExtArgs>
   officialPartners?: boolean | Prisma.User$officialPartnersArgs<ExtArgs>
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
-  battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
-  challengeSubmissions?: boolean | Prisma.User$challengeSubmissionsArgs<ExtArgs>
-  xposts?: boolean | Prisma.User$xpostsArgs<ExtArgs>
   conversationParticipants?: boolean | Prisma.User$conversationParticipantsArgs<ExtArgs>
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
   messageReceipts?: boolean | Prisma.User$messageReceiptsArgs<ExtArgs>
   taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  headToHeadBattlesCreated?: boolean | Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>
+  headToHeadBattlesWon?: boolean | Prisma.User$headToHeadBattlesWonArgs<ExtArgs>
+  battleInvitationsInviter?: boolean | Prisma.User$battleInvitationsInviterArgs<ExtArgs>
+  battleInvitationsInvitte?: boolean | Prisma.User$battleInvitationsInvitteArgs<ExtArgs>
+  battleSubmissions?: boolean | Prisma.User$battleSubmissionsArgs<ExtArgs>
+  battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
+  battleComments?: boolean | Prisma.User$battleCommentsArgs<ExtArgs>
+  rawShiftBattlesCreated?: boolean | Prisma.User$rawShiftBattlesCreatedArgs<ExtArgs>
+  rawShiftBattlesWon?: boolean | Prisma.User$rawShiftBattlesWonArgs<ExtArgs>
+  rawShiftParticipants?: boolean | Prisma.User$rawShiftParticipantsArgs<ExtArgs>
+  rawShiftEntries?: boolean | Prisma.User$rawShiftEntriesArgs<ExtArgs>
+  rawShiftVotes?: boolean | Prisma.User$rawShiftVotesArgs<ExtArgs>
+  rawShiftComments?: boolean | Prisma.User$rawShiftCommentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -11933,23 +14737,29 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>
   wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>
-  battleResults?: boolean | Prisma.User$battleResultsArgs<ExtArgs>
-  battles?: boolean | Prisma.User$battlesArgs<ExtArgs>
   battleParticipants?: boolean | Prisma.User$battleParticipantsArgs<ExtArgs>
   userPoints?: boolean | Prisma.User$userPointsArgs<ExtArgs>
-  challengeResults?: boolean | Prisma.User$challengeResultsArgs<ExtArgs>
-  hostChallenge?: boolean | Prisma.User$hostChallengeArgs<ExtArgs>
   challenges?: boolean | Prisma.User$challengesArgs<ExtArgs>
   challengeParticipants?: boolean | Prisma.User$challengeParticipantsArgs<ExtArgs>
   officialPartners?: boolean | Prisma.User$officialPartnersArgs<ExtArgs>
   ambassadorPrograms?: boolean | Prisma.User$ambassadorProgramsArgs<ExtArgs>
-  battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
-  challengeSubmissions?: boolean | Prisma.User$challengeSubmissionsArgs<ExtArgs>
-  xposts?: boolean | Prisma.User$xpostsArgs<ExtArgs>
   conversationParticipants?: boolean | Prisma.User$conversationParticipantsArgs<ExtArgs>
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
   messageReceipts?: boolean | Prisma.User$messageReceiptsArgs<ExtArgs>
   taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  headToHeadBattlesCreated?: boolean | Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>
+  headToHeadBattlesWon?: boolean | Prisma.User$headToHeadBattlesWonArgs<ExtArgs>
+  battleInvitationsInviter?: boolean | Prisma.User$battleInvitationsInviterArgs<ExtArgs>
+  battleInvitationsInvitte?: boolean | Prisma.User$battleInvitationsInvitteArgs<ExtArgs>
+  battleSubmissions?: boolean | Prisma.User$battleSubmissionsArgs<ExtArgs>
+  battleVotes?: boolean | Prisma.User$battleVotesArgs<ExtArgs>
+  battleComments?: boolean | Prisma.User$battleCommentsArgs<ExtArgs>
+  rawShiftBattlesCreated?: boolean | Prisma.User$rawShiftBattlesCreatedArgs<ExtArgs>
+  rawShiftBattlesWon?: boolean | Prisma.User$rawShiftBattlesWonArgs<ExtArgs>
+  rawShiftParticipants?: boolean | Prisma.User$rawShiftParticipantsArgs<ExtArgs>
+  rawShiftEntries?: boolean | Prisma.User$rawShiftEntriesArgs<ExtArgs>
+  rawShiftVotes?: boolean | Prisma.User$rawShiftVotesArgs<ExtArgs>
+  rawShiftComments?: boolean | Prisma.User$rawShiftCommentsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -11978,23 +14788,29 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     savePosts: Prisma.$SavePostPayload<ExtArgs>[]
     hidePosts: Prisma.$HidePostPayload<ExtArgs>[]
     wishLists: Prisma.$WishListPayload<ExtArgs>[]
-    battleResults: Prisma.$BattleResultPayload<ExtArgs>[]
-    battles: Prisma.$BattlePayload<ExtArgs>[]
     battleParticipants: Prisma.$BattleParticipantPayload<ExtArgs>[]
     userPoints: Prisma.$UserPointPayload<ExtArgs>[]
-    challengeResults: Prisma.$ChallengeResultPayload<ExtArgs>[]
-    hostChallenge: Prisma.$ChallengePayload<ExtArgs>[]
     challenges: Prisma.$ChallengePayload<ExtArgs>[]
     challengeParticipants: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
     officialPartners: Prisma.$OfficialPartnerPayload<ExtArgs> | null
     ambassadorPrograms: Prisma.$AmbassadorProgramPayload<ExtArgs> | null
-    battleVotes: Prisma.$BattleVotePayload<ExtArgs>[]
-    challengeSubmissions: Prisma.$ChallengeSubmissionPayload<ExtArgs>[]
-    xposts: Prisma.$XPostPayload<ExtArgs>[]
     conversationParticipants: Prisma.$ConversationParticipantPayload<ExtArgs>[]
     messages: Prisma.$MessagePayload<ExtArgs>[]
     messageReceipts: Prisma.$MessageReceiptPayload<ExtArgs>[]
     taggedInPosts: Prisma.$PostPayload<ExtArgs>[]
+    headToHeadBattlesCreated: Prisma.$HeadToHeadBattlePayload<ExtArgs>[]
+    headToHeadBattlesWon: Prisma.$HeadToHeadBattlePayload<ExtArgs>[]
+    battleInvitationsInviter: Prisma.$BattleInvitationPayload<ExtArgs>[]
+    battleInvitationsInvitte: Prisma.$BattleInvitationPayload<ExtArgs>[]
+    battleSubmissions: Prisma.$BattleSubmissionPayload<ExtArgs>[]
+    battleVotes: Prisma.$BattleVotePayload<ExtArgs>[]
+    battleComments: Prisma.$BattleCommentPayload<ExtArgs>[]
+    rawShiftBattlesCreated: Prisma.$RawShiftBattlePayload<ExtArgs>[]
+    rawShiftBattlesWon: Prisma.$RawShiftBattlePayload<ExtArgs>[]
+    rawShiftParticipants: Prisma.$RawShiftParticipantPayload<ExtArgs>[]
+    rawShiftEntries: Prisma.$RawShiftEntryPayload<ExtArgs>[]
+    rawShiftVotes: Prisma.$RawShiftVotePayload<ExtArgs>[]
+    rawShiftComments: Prisma.$RawShiftCommentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -12434,23 +15250,29 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   savePosts<T extends Prisma.User$savePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hidePosts<T extends Prisma.User$hidePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hidePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HidePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wishLists<T extends Prisma.User$wishListsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$wishListsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  battleResults<T extends Prisma.User$battleResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  battles<T extends Prisma.User$battlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   battleParticipants<T extends Prisma.User$battleParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userPoints<T extends Prisma.User$userPointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userPointsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  challengeResults<T extends Prisma.User$challengeResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengeResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  hostChallenge<T extends Prisma.User$hostChallengeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hostChallengeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   challenges<T extends Prisma.User$challengesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   challengeParticipants<T extends Prisma.User$challengeParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengeParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   officialPartners<T extends Prisma.User$officialPartnersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$officialPartnersArgs<ExtArgs>>): Prisma.Prisma__OfficialPartnerClient<runtime.Types.Result.GetResult<Prisma.$OfficialPartnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ambassadorPrograms<T extends Prisma.User$ambassadorProgramsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ambassadorProgramsArgs<ExtArgs>>): Prisma.Prisma__AmbassadorProgramClient<runtime.Types.Result.GetResult<Prisma.$AmbassadorProgramPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  battleVotes<T extends Prisma.User$battleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  challengeSubmissions<T extends Prisma.User$challengeSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$challengeSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  xposts<T extends Prisma.User$xpostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$xpostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   conversationParticipants<T extends Prisma.User$conversationParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messages<T extends Prisma.User$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReceipts<T extends Prisma.User$messageReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   taggedInPosts<T extends Prisma.User$taggedInPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taggedInPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  headToHeadBattlesCreated<T extends Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  headToHeadBattlesWon<T extends Prisma.User$headToHeadBattlesWonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$headToHeadBattlesWonArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleInvitationsInviter<T extends Prisma.User$battleInvitationsInviterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleInvitationsInviterArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleInvitationsInvitte<T extends Prisma.User$battleInvitationsInvitteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleInvitationsInvitteArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleSubmissions<T extends Prisma.User$battleSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleVotes<T extends Prisma.User$battleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleComments<T extends Prisma.User$battleCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftBattlesCreated<T extends Prisma.User$rawShiftBattlesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftBattlesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftBattlesWon<T extends Prisma.User$rawShiftBattlesWonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftBattlesWonArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftParticipants<T extends Prisma.User$rawShiftParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftEntries<T extends Prisma.User$rawShiftEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftVotes<T extends Prisma.User$rawShiftVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rawShiftComments<T extends Prisma.User$rawShiftCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$rawShiftCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RawShiftCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13371,54 +16193,6 @@ export type User$wishListsArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
- * User.battleResults
- */
-export type User$battleResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BattleResult
-   */
-  select?: Prisma.BattleResultSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BattleResult
-   */
-  omit?: Prisma.BattleResultOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BattleResultInclude<ExtArgs> | null
-  where?: Prisma.BattleResultWhereInput
-  orderBy?: Prisma.BattleResultOrderByWithRelationInput | Prisma.BattleResultOrderByWithRelationInput[]
-  cursor?: Prisma.BattleResultWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BattleResultScalarFieldEnum | Prisma.BattleResultScalarFieldEnum[]
-}
-
-/**
- * User.battles
- */
-export type User$battlesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Battle
-   */
-  select?: Prisma.BattleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Battle
-   */
-  omit?: Prisma.BattleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BattleInclude<ExtArgs> | null
-  where?: Prisma.BattleWhereInput
-  orderBy?: Prisma.BattleOrderByWithRelationInput | Prisma.BattleOrderByWithRelationInput[]
-  cursor?: Prisma.BattleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BattleScalarFieldEnum | Prisma.BattleScalarFieldEnum[]
-}
-
-/**
  * User.battleParticipants
  */
 export type User$battleParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -13464,54 +16238,6 @@ export type User$userPointsArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   distinct?: Prisma.UserPointScalarFieldEnum | Prisma.UserPointScalarFieldEnum[]
-}
-
-/**
- * User.challengeResults
- */
-export type User$challengeResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeResult
-   */
-  select?: Prisma.ChallengeResultSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ChallengeResult
-   */
-  omit?: Prisma.ChallengeResultOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeResultInclude<ExtArgs> | null
-  where?: Prisma.ChallengeResultWhereInput
-  orderBy?: Prisma.ChallengeResultOrderByWithRelationInput | Prisma.ChallengeResultOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeResultWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeResultScalarFieldEnum | Prisma.ChallengeResultScalarFieldEnum[]
-}
-
-/**
- * User.hostChallenge
- */
-export type User$hostChallengeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Challenge
-   */
-  select?: Prisma.ChallengeSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Challenge
-   */
-  omit?: Prisma.ChallengeOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeInclude<ExtArgs> | null
-  where?: Prisma.ChallengeWhereInput
-  orderBy?: Prisma.ChallengeOrderByWithRelationInput | Prisma.ChallengeOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeScalarFieldEnum | Prisma.ChallengeScalarFieldEnum[]
 }
 
 /**
@@ -13598,78 +16324,6 @@ export type User$ambassadorProgramsArgs<ExtArgs extends runtime.Types.Extensions
    */
   include?: Prisma.AmbassadorProgramInclude<ExtArgs> | null
   where?: Prisma.AmbassadorProgramWhereInput
-}
-
-/**
- * User.battleVotes
- */
-export type User$battleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BattleVote
-   */
-  select?: Prisma.BattleVoteSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BattleVote
-   */
-  omit?: Prisma.BattleVoteOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BattleVoteInclude<ExtArgs> | null
-  where?: Prisma.BattleVoteWhereInput
-  orderBy?: Prisma.BattleVoteOrderByWithRelationInput | Prisma.BattleVoteOrderByWithRelationInput[]
-  cursor?: Prisma.BattleVoteWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BattleVoteScalarFieldEnum | Prisma.BattleVoteScalarFieldEnum[]
-}
-
-/**
- * User.challengeSubmissions
- */
-export type User$challengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeSubmission
-   */
-  select?: Prisma.ChallengeSubmissionSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ChallengeSubmission
-   */
-  omit?: Prisma.ChallengeSubmissionOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeSubmissionInclude<ExtArgs> | null
-  where?: Prisma.ChallengeSubmissionWhereInput
-  orderBy?: Prisma.ChallengeSubmissionOrderByWithRelationInput | Prisma.ChallengeSubmissionOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeSubmissionWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeSubmissionScalarFieldEnum | Prisma.ChallengeSubmissionScalarFieldEnum[]
-}
-
-/**
- * User.xposts
- */
-export type User$xpostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the XPost
-   */
-  select?: Prisma.XPostSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the XPost
-   */
-  omit?: Prisma.XPostOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.XPostInclude<ExtArgs> | null
-  where?: Prisma.XPostWhereInput
-  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
-  cursor?: Prisma.XPostWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**
@@ -13766,6 +16420,318 @@ export type User$taggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.headToHeadBattlesCreated
+ */
+export type User$headToHeadBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the HeadToHeadBattle
+   */
+  select?: Prisma.HeadToHeadBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the HeadToHeadBattle
+   */
+  omit?: Prisma.HeadToHeadBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HeadToHeadBattleInclude<ExtArgs> | null
+  where?: Prisma.HeadToHeadBattleWhereInput
+  orderBy?: Prisma.HeadToHeadBattleOrderByWithRelationInput | Prisma.HeadToHeadBattleOrderByWithRelationInput[]
+  cursor?: Prisma.HeadToHeadBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.HeadToHeadBattleScalarFieldEnum | Prisma.HeadToHeadBattleScalarFieldEnum[]
+}
+
+/**
+ * User.headToHeadBattlesWon
+ */
+export type User$headToHeadBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the HeadToHeadBattle
+   */
+  select?: Prisma.HeadToHeadBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the HeadToHeadBattle
+   */
+  omit?: Prisma.HeadToHeadBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HeadToHeadBattleInclude<ExtArgs> | null
+  where?: Prisma.HeadToHeadBattleWhereInput
+  orderBy?: Prisma.HeadToHeadBattleOrderByWithRelationInput | Prisma.HeadToHeadBattleOrderByWithRelationInput[]
+  cursor?: Prisma.HeadToHeadBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.HeadToHeadBattleScalarFieldEnum | Prisma.HeadToHeadBattleScalarFieldEnum[]
+}
+
+/**
+ * User.battleInvitationsInviter
+ */
+export type User$battleInvitationsInviterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleInvitation
+   */
+  select?: Prisma.BattleInvitationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleInvitation
+   */
+  omit?: Prisma.BattleInvitationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleInvitationInclude<ExtArgs> | null
+  where?: Prisma.BattleInvitationWhereInput
+  orderBy?: Prisma.BattleInvitationOrderByWithRelationInput | Prisma.BattleInvitationOrderByWithRelationInput[]
+  cursor?: Prisma.BattleInvitationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleInvitationScalarFieldEnum | Prisma.BattleInvitationScalarFieldEnum[]
+}
+
+/**
+ * User.battleInvitationsInvitte
+ */
+export type User$battleInvitationsInvitteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleInvitation
+   */
+  select?: Prisma.BattleInvitationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleInvitation
+   */
+  omit?: Prisma.BattleInvitationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleInvitationInclude<ExtArgs> | null
+  where?: Prisma.BattleInvitationWhereInput
+  orderBy?: Prisma.BattleInvitationOrderByWithRelationInput | Prisma.BattleInvitationOrderByWithRelationInput[]
+  cursor?: Prisma.BattleInvitationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleInvitationScalarFieldEnum | Prisma.BattleInvitationScalarFieldEnum[]
+}
+
+/**
+ * User.battleSubmissions
+ */
+export type User$battleSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleSubmission
+   */
+  select?: Prisma.BattleSubmissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleSubmission
+   */
+  omit?: Prisma.BattleSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleSubmissionInclude<ExtArgs> | null
+  where?: Prisma.BattleSubmissionWhereInput
+  orderBy?: Prisma.BattleSubmissionOrderByWithRelationInput | Prisma.BattleSubmissionOrderByWithRelationInput[]
+  cursor?: Prisma.BattleSubmissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleSubmissionScalarFieldEnum | Prisma.BattleSubmissionScalarFieldEnum[]
+}
+
+/**
+ * User.battleVotes
+ */
+export type User$battleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleVote
+   */
+  select?: Prisma.BattleVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleVote
+   */
+  omit?: Prisma.BattleVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleVoteInclude<ExtArgs> | null
+  where?: Prisma.BattleVoteWhereInput
+  orderBy?: Prisma.BattleVoteOrderByWithRelationInput | Prisma.BattleVoteOrderByWithRelationInput[]
+  cursor?: Prisma.BattleVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleVoteScalarFieldEnum | Prisma.BattleVoteScalarFieldEnum[]
+}
+
+/**
+ * User.battleComments
+ */
+export type User$battleCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleComment
+   */
+  select?: Prisma.BattleCommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleComment
+   */
+  omit?: Prisma.BattleCommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleCommentInclude<ExtArgs> | null
+  where?: Prisma.BattleCommentWhereInput
+  orderBy?: Prisma.BattleCommentOrderByWithRelationInput | Prisma.BattleCommentOrderByWithRelationInput[]
+  cursor?: Prisma.BattleCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleCommentScalarFieldEnum | Prisma.BattleCommentScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftBattlesCreated
+ */
+export type User$rawShiftBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftBattle
+   */
+  select?: Prisma.RawShiftBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftBattle
+   */
+  omit?: Prisma.RawShiftBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftBattleInclude<ExtArgs> | null
+  where?: Prisma.RawShiftBattleWhereInput
+  orderBy?: Prisma.RawShiftBattleOrderByWithRelationInput | Prisma.RawShiftBattleOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftBattleScalarFieldEnum | Prisma.RawShiftBattleScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftBattlesWon
+ */
+export type User$rawShiftBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftBattle
+   */
+  select?: Prisma.RawShiftBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftBattle
+   */
+  omit?: Prisma.RawShiftBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftBattleInclude<ExtArgs> | null
+  where?: Prisma.RawShiftBattleWhereInput
+  orderBy?: Prisma.RawShiftBattleOrderByWithRelationInput | Prisma.RawShiftBattleOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftBattleScalarFieldEnum | Prisma.RawShiftBattleScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftParticipants
+ */
+export type User$rawShiftParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftParticipant
+   */
+  select?: Prisma.RawShiftParticipantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftParticipant
+   */
+  omit?: Prisma.RawShiftParticipantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftParticipantInclude<ExtArgs> | null
+  where?: Prisma.RawShiftParticipantWhereInput
+  orderBy?: Prisma.RawShiftParticipantOrderByWithRelationInput | Prisma.RawShiftParticipantOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftParticipantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftParticipantScalarFieldEnum | Prisma.RawShiftParticipantScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftEntries
+ */
+export type User$rawShiftEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftEntry
+   */
+  select?: Prisma.RawShiftEntrySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftEntry
+   */
+  omit?: Prisma.RawShiftEntryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftEntryInclude<ExtArgs> | null
+  where?: Prisma.RawShiftEntryWhereInput
+  orderBy?: Prisma.RawShiftEntryOrderByWithRelationInput | Prisma.RawShiftEntryOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftEntryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftEntryScalarFieldEnum | Prisma.RawShiftEntryScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftVotes
+ */
+export type User$rawShiftVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftVote
+   */
+  select?: Prisma.RawShiftVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftVote
+   */
+  omit?: Prisma.RawShiftVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftVoteInclude<ExtArgs> | null
+  where?: Prisma.RawShiftVoteWhereInput
+  orderBy?: Prisma.RawShiftVoteOrderByWithRelationInput | Prisma.RawShiftVoteOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftVoteScalarFieldEnum | Prisma.RawShiftVoteScalarFieldEnum[]
+}
+
+/**
+ * User.rawShiftComments
+ */
+export type User$rawShiftCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RawShiftComment
+   */
+  select?: Prisma.RawShiftCommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RawShiftComment
+   */
+  omit?: Prisma.RawShiftCommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RawShiftCommentInclude<ExtArgs> | null
+  where?: Prisma.RawShiftCommentWhereInput
+  orderBy?: Prisma.RawShiftCommentOrderByWithRelationInput | Prisma.RawShiftCommentOrderByWithRelationInput[]
+  cursor?: Prisma.RawShiftCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RawShiftCommentScalarFieldEnum | Prisma.RawShiftCommentScalarFieldEnum[]
 }
 
 /**

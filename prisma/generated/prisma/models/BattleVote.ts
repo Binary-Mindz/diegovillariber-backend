@@ -20,57 +20,81 @@ export type BattleVoteModel = runtime.Types.Result.DefaultSelection<Prisma.$Batt
 
 export type AggregateBattleVote = {
   _count: BattleVoteCountAggregateOutputType | null
+  _avg: BattleVoteAvgAggregateOutputType | null
+  _sum: BattleVoteSumAggregateOutputType | null
   _min: BattleVoteMinAggregateOutputType | null
   _max: BattleVoteMaxAggregateOutputType | null
 }
 
+export type BattleVoteAvgAggregateOutputType = {
+  value: number | null
+}
+
+export type BattleVoteSumAggregateOutputType = {
+  value: number | null
+}
+
 export type BattleVoteMinAggregateOutputType = {
   id: string | null
+  submissionId: string | null
+  userId: string | null
   battleId: string | null
-  entryId: string | null
-  voterUserId: string | null
+  value: number | null
   createdAt: Date | null
 }
 
 export type BattleVoteMaxAggregateOutputType = {
   id: string | null
+  submissionId: string | null
+  userId: string | null
   battleId: string | null
-  entryId: string | null
-  voterUserId: string | null
+  value: number | null
   createdAt: Date | null
 }
 
 export type BattleVoteCountAggregateOutputType = {
   id: number
+  submissionId: number
+  userId: number
   battleId: number
-  entryId: number
-  voterUserId: number
+  value: number
   createdAt: number
   _all: number
 }
 
 
+export type BattleVoteAvgAggregateInputType = {
+  value?: true
+}
+
+export type BattleVoteSumAggregateInputType = {
+  value?: true
+}
+
 export type BattleVoteMinAggregateInputType = {
   id?: true
+  submissionId?: true
+  userId?: true
   battleId?: true
-  entryId?: true
-  voterUserId?: true
+  value?: true
   createdAt?: true
 }
 
 export type BattleVoteMaxAggregateInputType = {
   id?: true
+  submissionId?: true
+  userId?: true
   battleId?: true
-  entryId?: true
-  voterUserId?: true
+  value?: true
   createdAt?: true
 }
 
 export type BattleVoteCountAggregateInputType = {
   id?: true
+  submissionId?: true
+  userId?: true
   battleId?: true
-  entryId?: true
-  voterUserId?: true
+  value?: true
   createdAt?: true
   _all?: true
 }
@@ -113,6 +137,18 @@ export type BattleVoteAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: BattleVoteAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: BattleVoteSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: BattleVoteMinAggregateInputType
@@ -143,17 +179,22 @@ export type BattleVoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   _count?: BattleVoteCountAggregateInputType | true
+  _avg?: BattleVoteAvgAggregateInputType
+  _sum?: BattleVoteSumAggregateInputType
   _min?: BattleVoteMinAggregateInputType
   _max?: BattleVoteMaxAggregateInputType
 }
 
 export type BattleVoteGroupByOutputType = {
   id: string
+  submissionId: string
+  userId: string
   battleId: string
-  entryId: string
-  voterUserId: string
+  value: number
   createdAt: Date
   _count: BattleVoteCountAggregateOutputType | null
+  _avg: BattleVoteAvgAggregateOutputType | null
+  _sum: BattleVoteSumAggregateOutputType | null
   _min: BattleVoteMinAggregateOutputType | null
   _max: BattleVoteMaxAggregateOutputType | null
 }
@@ -178,50 +219,56 @@ export type BattleVoteWhereInput = {
   OR?: Prisma.BattleVoteWhereInput[]
   NOT?: Prisma.BattleVoteWhereInput | Prisma.BattleVoteWhereInput[]
   id?: Prisma.UuidFilter<"BattleVote"> | string
+  submissionId?: Prisma.UuidFilter<"BattleVote"> | string
+  userId?: Prisma.UuidFilter<"BattleVote"> | string
   battleId?: Prisma.UuidFilter<"BattleVote"> | string
-  entryId?: Prisma.UuidFilter<"BattleVote"> | string
-  voterUserId?: Prisma.UuidFilter<"BattleVote"> | string
+  value?: Prisma.IntFilter<"BattleVote"> | number
   createdAt?: Prisma.DateTimeFilter<"BattleVote"> | Date | string
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
-  entry?: Prisma.XOR<Prisma.BattleEntryScalarRelationFilter, Prisma.BattleEntryWhereInput>
-  voterUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  submission?: Prisma.XOR<Prisma.BattleSubmissionScalarRelationFilter, Prisma.BattleSubmissionWhereInput>
+  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
 }
 
 export type BattleVoteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  entryId?: Prisma.SortOrder
-  voterUserId?: Prisma.SortOrder
+  value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  battle?: Prisma.BattleOrderByWithRelationInput
-  entry?: Prisma.BattleEntryOrderByWithRelationInput
-  voterUser?: Prisma.UserOrderByWithRelationInput
+  submission?: Prisma.BattleSubmissionOrderByWithRelationInput
+  voter?: Prisma.UserOrderByWithRelationInput
+  battle?: Prisma.HeadToHeadBattleOrderByWithRelationInput
 }
 
 export type BattleVoteWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  battleId_voterUserId?: Prisma.BattleVoteBattleIdVoterUserIdCompoundUniqueInput
+  submissionId_userId?: Prisma.BattleVoteSubmissionIdUserIdCompoundUniqueInput
   AND?: Prisma.BattleVoteWhereInput | Prisma.BattleVoteWhereInput[]
   OR?: Prisma.BattleVoteWhereInput[]
   NOT?: Prisma.BattleVoteWhereInput | Prisma.BattleVoteWhereInput[]
+  submissionId?: Prisma.UuidFilter<"BattleVote"> | string
+  userId?: Prisma.UuidFilter<"BattleVote"> | string
   battleId?: Prisma.UuidFilter<"BattleVote"> | string
-  entryId?: Prisma.UuidFilter<"BattleVote"> | string
-  voterUserId?: Prisma.UuidFilter<"BattleVote"> | string
+  value?: Prisma.IntFilter<"BattleVote"> | number
   createdAt?: Prisma.DateTimeFilter<"BattleVote"> | Date | string
-  battle?: Prisma.XOR<Prisma.BattleScalarRelationFilter, Prisma.BattleWhereInput>
-  entry?: Prisma.XOR<Prisma.BattleEntryScalarRelationFilter, Prisma.BattleEntryWhereInput>
-  voterUser?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "battleId_voterUserId">
+  submission?: Prisma.XOR<Prisma.BattleSubmissionScalarRelationFilter, Prisma.BattleSubmissionWhereInput>
+  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  battle?: Prisma.XOR<Prisma.HeadToHeadBattleScalarRelationFilter, Prisma.HeadToHeadBattleWhereInput>
+}, "id" | "submissionId_userId">
 
 export type BattleVoteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  entryId?: Prisma.SortOrder
-  voterUserId?: Prisma.SortOrder
+  value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.BattleVoteCountOrderByAggregateInput
+  _avg?: Prisma.BattleVoteAvgOrderByAggregateInput
   _max?: Prisma.BattleVoteMaxOrderByAggregateInput
   _min?: Prisma.BattleVoteMinOrderByAggregateInput
+  _sum?: Prisma.BattleVoteSumOrderByAggregateInput
 }
 
 export type BattleVoteScalarWhereWithAggregatesInput = {
@@ -229,62 +276,70 @@ export type BattleVoteScalarWhereWithAggregatesInput = {
   OR?: Prisma.BattleVoteScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BattleVoteScalarWhereWithAggregatesInput | Prisma.BattleVoteScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
+  submissionId?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
+  userId?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
   battleId?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
-  entryId?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
-  voterUserId?: Prisma.UuidWithAggregatesFilter<"BattleVote"> | string
+  value?: Prisma.IntWithAggregatesFilter<"BattleVote"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BattleVote"> | Date | string
 }
 
 export type BattleVoteCreateInput = {
   id?: string
+  value?: number
   createdAt?: Date | string
-  battle: Prisma.BattleCreateNestedOneWithoutVotesInput
-  entry: Prisma.BattleEntryCreateNestedOneWithoutVotesInput
-  voterUser: Prisma.UserCreateNestedOneWithoutBattleVotesInput
+  submission: Prisma.BattleSubmissionCreateNestedOneWithoutVotesInput
+  voter: Prisma.UserCreateNestedOneWithoutBattleVotesInput
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutBattleVotesInput
 }
 
 export type BattleVoteUncheckedCreateInput = {
   id?: string
+  submissionId: string
+  userId: string
   battleId: string
-  entryId: string
-  voterUserId: string
+  value?: number
   createdAt?: Date | string
 }
 
 export type BattleVoteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  battle?: Prisma.BattleUpdateOneRequiredWithoutVotesNestedInput
-  entry?: Prisma.BattleEntryUpdateOneRequiredWithoutVotesNestedInput
-  voterUser?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
+  submission?: Prisma.BattleSubmissionUpdateOneRequiredWithoutVotesNestedInput
+  voter?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutBattleVotesNestedInput
 }
 
 export type BattleVoteUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BattleVoteCreateManyInput = {
   id?: string
+  submissionId: string
+  userId: string
   battleId: string
-  entryId: string
-  voterUserId: string
+  value?: number
   createdAt?: Date | string
 }
 
 export type BattleVoteUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BattleVoteUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -298,33 +353,44 @@ export type BattleVoteOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type BattleVoteBattleIdVoterUserIdCompoundUniqueInput = {
-  battleId: string
-  voterUserId: string
+export type BattleVoteSubmissionIdUserIdCompoundUniqueInput = {
+  submissionId: string
+  userId: string
 }
 
 export type BattleVoteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  entryId?: Prisma.SortOrder
-  voterUserId?: Prisma.SortOrder
+  value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type BattleVoteAvgOrderByAggregateInput = {
+  value?: Prisma.SortOrder
 }
 
 export type BattleVoteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  entryId?: Prisma.SortOrder
-  voterUserId?: Prisma.SortOrder
+  value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type BattleVoteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  entryId?: Prisma.SortOrder
-  voterUserId?: Prisma.SortOrder
+  value?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type BattleVoteSumOrderByAggregateInput = {
+  value?: Prisma.SortOrder
 }
 
 export type BattleVoteCreateNestedManyWithoutBattleInput = {
@@ -369,101 +435,103 @@ export type BattleVoteUncheckedUpdateManyWithoutBattleNestedInput = {
   deleteMany?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
 }
 
-export type BattleVoteCreateNestedManyWithoutEntryInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput> | Prisma.BattleVoteCreateWithoutEntryInput[] | Prisma.BattleVoteUncheckedCreateWithoutEntryInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutEntryInput | Prisma.BattleVoteCreateOrConnectWithoutEntryInput[]
-  createMany?: Prisma.BattleVoteCreateManyEntryInputEnvelope
+export type BattleVoteCreateNestedManyWithoutSubmissionInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput> | Prisma.BattleVoteCreateWithoutSubmissionInput[] | Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput | Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput[]
+  createMany?: Prisma.BattleVoteCreateManySubmissionInputEnvelope
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
 }
 
-export type BattleVoteUncheckedCreateNestedManyWithoutEntryInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput> | Prisma.BattleVoteCreateWithoutEntryInput[] | Prisma.BattleVoteUncheckedCreateWithoutEntryInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutEntryInput | Prisma.BattleVoteCreateOrConnectWithoutEntryInput[]
-  createMany?: Prisma.BattleVoteCreateManyEntryInputEnvelope
+export type BattleVoteUncheckedCreateNestedManyWithoutSubmissionInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput> | Prisma.BattleVoteCreateWithoutSubmissionInput[] | Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput | Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput[]
+  createMany?: Prisma.BattleVoteCreateManySubmissionInputEnvelope
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
 }
 
-export type BattleVoteUpdateManyWithoutEntryNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput> | Prisma.BattleVoteCreateWithoutEntryInput[] | Prisma.BattleVoteUncheckedCreateWithoutEntryInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutEntryInput | Prisma.BattleVoteCreateOrConnectWithoutEntryInput[]
-  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutEntryInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutEntryInput[]
-  createMany?: Prisma.BattleVoteCreateManyEntryInputEnvelope
+export type BattleVoteUpdateManyWithoutSubmissionNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput> | Prisma.BattleVoteCreateWithoutSubmissionInput[] | Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput | Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput[]
+  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutSubmissionInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutSubmissionInput[]
+  createMany?: Prisma.BattleVoteCreateManySubmissionInputEnvelope
   set?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   disconnect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   delete?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
-  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutEntryInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutEntryInput[]
-  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutEntryInput | Prisma.BattleVoteUpdateManyWithWhereWithoutEntryInput[]
+  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutSubmissionInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutSubmissionInput[]
+  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutSubmissionInput | Prisma.BattleVoteUpdateManyWithWhereWithoutSubmissionInput[]
   deleteMany?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
 }
 
-export type BattleVoteUncheckedUpdateManyWithoutEntryNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput> | Prisma.BattleVoteCreateWithoutEntryInput[] | Prisma.BattleVoteUncheckedCreateWithoutEntryInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutEntryInput | Prisma.BattleVoteCreateOrConnectWithoutEntryInput[]
-  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutEntryInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutEntryInput[]
-  createMany?: Prisma.BattleVoteCreateManyEntryInputEnvelope
+export type BattleVoteUncheckedUpdateManyWithoutSubmissionNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput> | Prisma.BattleVoteCreateWithoutSubmissionInput[] | Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput | Prisma.BattleVoteCreateOrConnectWithoutSubmissionInput[]
+  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutSubmissionInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutSubmissionInput[]
+  createMany?: Prisma.BattleVoteCreateManySubmissionInputEnvelope
   set?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   disconnect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   delete?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
-  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutEntryInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutEntryInput[]
-  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutEntryInput | Prisma.BattleVoteUpdateManyWithWhereWithoutEntryInput[]
+  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutSubmissionInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutSubmissionInput[]
+  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutSubmissionInput | Prisma.BattleVoteUpdateManyWithWhereWithoutSubmissionInput[]
   deleteMany?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
 }
 
-export type BattleVoteCreateNestedManyWithoutVoterUserInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput> | Prisma.BattleVoteCreateWithoutVoterUserInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput | Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput[]
-  createMany?: Prisma.BattleVoteCreateManyVoterUserInputEnvelope
+export type BattleVoteCreateNestedManyWithoutVoterInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput> | Prisma.BattleVoteCreateWithoutVoterInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterInput | Prisma.BattleVoteCreateOrConnectWithoutVoterInput[]
+  createMany?: Prisma.BattleVoteCreateManyVoterInputEnvelope
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
 }
 
-export type BattleVoteUncheckedCreateNestedManyWithoutVoterUserInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput> | Prisma.BattleVoteCreateWithoutVoterUserInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput | Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput[]
-  createMany?: Prisma.BattleVoteCreateManyVoterUserInputEnvelope
+export type BattleVoteUncheckedCreateNestedManyWithoutVoterInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput> | Prisma.BattleVoteCreateWithoutVoterInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterInput | Prisma.BattleVoteCreateOrConnectWithoutVoterInput[]
+  createMany?: Prisma.BattleVoteCreateManyVoterInputEnvelope
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
 }
 
-export type BattleVoteUpdateManyWithoutVoterUserNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput> | Prisma.BattleVoteCreateWithoutVoterUserInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput | Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput[]
-  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterUserInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterUserInput[]
-  createMany?: Prisma.BattleVoteCreateManyVoterUserInputEnvelope
+export type BattleVoteUpdateManyWithoutVoterNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput> | Prisma.BattleVoteCreateWithoutVoterInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterInput | Prisma.BattleVoteCreateOrConnectWithoutVoterInput[]
+  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterInput[]
+  createMany?: Prisma.BattleVoteCreateManyVoterInputEnvelope
   set?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   disconnect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   delete?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
-  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterUserInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterUserInput[]
-  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutVoterUserInput | Prisma.BattleVoteUpdateManyWithWhereWithoutVoterUserInput[]
+  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterInput[]
+  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutVoterInput | Prisma.BattleVoteUpdateManyWithWhereWithoutVoterInput[]
   deleteMany?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
 }
 
-export type BattleVoteUncheckedUpdateManyWithoutVoterUserNestedInput = {
-  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput> | Prisma.BattleVoteCreateWithoutVoterUserInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput[]
-  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput | Prisma.BattleVoteCreateOrConnectWithoutVoterUserInput[]
-  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterUserInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterUserInput[]
-  createMany?: Prisma.BattleVoteCreateManyVoterUserInputEnvelope
+export type BattleVoteUncheckedUpdateManyWithoutVoterNestedInput = {
+  create?: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput> | Prisma.BattleVoteCreateWithoutVoterInput[] | Prisma.BattleVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.BattleVoteCreateOrConnectWithoutVoterInput | Prisma.BattleVoteCreateOrConnectWithoutVoterInput[]
+  upsert?: Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.BattleVoteUpsertWithWhereUniqueWithoutVoterInput[]
+  createMany?: Prisma.BattleVoteCreateManyVoterInputEnvelope
   set?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   disconnect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   delete?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
   connect?: Prisma.BattleVoteWhereUniqueInput | Prisma.BattleVoteWhereUniqueInput[]
-  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterUserInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterUserInput[]
-  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutVoterUserInput | Prisma.BattleVoteUpdateManyWithWhereWithoutVoterUserInput[]
+  update?: Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.BattleVoteUpdateWithWhereUniqueWithoutVoterInput[]
+  updateMany?: Prisma.BattleVoteUpdateManyWithWhereWithoutVoterInput | Prisma.BattleVoteUpdateManyWithWhereWithoutVoterInput[]
   deleteMany?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
 }
 
 export type BattleVoteCreateWithoutBattleInput = {
   id?: string
+  value?: number
   createdAt?: Date | string
-  entry: Prisma.BattleEntryCreateNestedOneWithoutVotesInput
-  voterUser: Prisma.UserCreateNestedOneWithoutBattleVotesInput
+  submission: Prisma.BattleSubmissionCreateNestedOneWithoutVotesInput
+  voter: Prisma.UserCreateNestedOneWithoutBattleVotesInput
 }
 
 export type BattleVoteUncheckedCreateWithoutBattleInput = {
   id?: string
-  entryId: string
-  voterUserId: string
+  submissionId: string
+  userId: string
+  value?: number
   createdAt?: Date | string
 }
 
@@ -498,173 +566,190 @@ export type BattleVoteScalarWhereInput = {
   OR?: Prisma.BattleVoteScalarWhereInput[]
   NOT?: Prisma.BattleVoteScalarWhereInput | Prisma.BattleVoteScalarWhereInput[]
   id?: Prisma.UuidFilter<"BattleVote"> | string
+  submissionId?: Prisma.UuidFilter<"BattleVote"> | string
+  userId?: Prisma.UuidFilter<"BattleVote"> | string
   battleId?: Prisma.UuidFilter<"BattleVote"> | string
-  entryId?: Prisma.UuidFilter<"BattleVote"> | string
-  voterUserId?: Prisma.UuidFilter<"BattleVote"> | string
+  value?: Prisma.IntFilter<"BattleVote"> | number
   createdAt?: Prisma.DateTimeFilter<"BattleVote"> | Date | string
 }
 
-export type BattleVoteCreateWithoutEntryInput = {
+export type BattleVoteCreateWithoutSubmissionInput = {
   id?: string
+  value?: number
   createdAt?: Date | string
-  battle: Prisma.BattleCreateNestedOneWithoutVotesInput
-  voterUser: Prisma.UserCreateNestedOneWithoutBattleVotesInput
+  voter: Prisma.UserCreateNestedOneWithoutBattleVotesInput
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutBattleVotesInput
 }
 
-export type BattleVoteUncheckedCreateWithoutEntryInput = {
+export type BattleVoteUncheckedCreateWithoutSubmissionInput = {
   id?: string
+  userId: string
   battleId: string
-  voterUserId: string
+  value?: number
   createdAt?: Date | string
 }
 
-export type BattleVoteCreateOrConnectWithoutEntryInput = {
+export type BattleVoteCreateOrConnectWithoutSubmissionInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput>
+  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput>
 }
 
-export type BattleVoteCreateManyEntryInputEnvelope = {
-  data: Prisma.BattleVoteCreateManyEntryInput | Prisma.BattleVoteCreateManyEntryInput[]
+export type BattleVoteCreateManySubmissionInputEnvelope = {
+  data: Prisma.BattleVoteCreateManySubmissionInput | Prisma.BattleVoteCreateManySubmissionInput[]
   skipDuplicates?: boolean
 }
 
-export type BattleVoteUpsertWithWhereUniqueWithoutEntryInput = {
+export type BattleVoteUpsertWithWhereUniqueWithoutSubmissionInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  update: Prisma.XOR<Prisma.BattleVoteUpdateWithoutEntryInput, Prisma.BattleVoteUncheckedUpdateWithoutEntryInput>
-  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutEntryInput, Prisma.BattleVoteUncheckedCreateWithoutEntryInput>
+  update: Prisma.XOR<Prisma.BattleVoteUpdateWithoutSubmissionInput, Prisma.BattleVoteUncheckedUpdateWithoutSubmissionInput>
+  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutSubmissionInput, Prisma.BattleVoteUncheckedCreateWithoutSubmissionInput>
 }
 
-export type BattleVoteUpdateWithWhereUniqueWithoutEntryInput = {
+export type BattleVoteUpdateWithWhereUniqueWithoutSubmissionInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  data: Prisma.XOR<Prisma.BattleVoteUpdateWithoutEntryInput, Prisma.BattleVoteUncheckedUpdateWithoutEntryInput>
+  data: Prisma.XOR<Prisma.BattleVoteUpdateWithoutSubmissionInput, Prisma.BattleVoteUncheckedUpdateWithoutSubmissionInput>
 }
 
-export type BattleVoteUpdateManyWithWhereWithoutEntryInput = {
+export type BattleVoteUpdateManyWithWhereWithoutSubmissionInput = {
   where: Prisma.BattleVoteScalarWhereInput
-  data: Prisma.XOR<Prisma.BattleVoteUpdateManyMutationInput, Prisma.BattleVoteUncheckedUpdateManyWithoutEntryInput>
+  data: Prisma.XOR<Prisma.BattleVoteUpdateManyMutationInput, Prisma.BattleVoteUncheckedUpdateManyWithoutSubmissionInput>
 }
 
-export type BattleVoteCreateWithoutVoterUserInput = {
+export type BattleVoteCreateWithoutVoterInput = {
   id?: string
+  value?: number
   createdAt?: Date | string
-  battle: Prisma.BattleCreateNestedOneWithoutVotesInput
-  entry: Prisma.BattleEntryCreateNestedOneWithoutVotesInput
+  submission: Prisma.BattleSubmissionCreateNestedOneWithoutVotesInput
+  battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutBattleVotesInput
 }
 
-export type BattleVoteUncheckedCreateWithoutVoterUserInput = {
+export type BattleVoteUncheckedCreateWithoutVoterInput = {
   id?: string
+  submissionId: string
   battleId: string
-  entryId: string
+  value?: number
   createdAt?: Date | string
 }
 
-export type BattleVoteCreateOrConnectWithoutVoterUserInput = {
+export type BattleVoteCreateOrConnectWithoutVoterInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput>
+  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput>
 }
 
-export type BattleVoteCreateManyVoterUserInputEnvelope = {
-  data: Prisma.BattleVoteCreateManyVoterUserInput | Prisma.BattleVoteCreateManyVoterUserInput[]
+export type BattleVoteCreateManyVoterInputEnvelope = {
+  data: Prisma.BattleVoteCreateManyVoterInput | Prisma.BattleVoteCreateManyVoterInput[]
   skipDuplicates?: boolean
 }
 
-export type BattleVoteUpsertWithWhereUniqueWithoutVoterUserInput = {
+export type BattleVoteUpsertWithWhereUniqueWithoutVoterInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  update: Prisma.XOR<Prisma.BattleVoteUpdateWithoutVoterUserInput, Prisma.BattleVoteUncheckedUpdateWithoutVoterUserInput>
-  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterUserInput, Prisma.BattleVoteUncheckedCreateWithoutVoterUserInput>
+  update: Prisma.XOR<Prisma.BattleVoteUpdateWithoutVoterInput, Prisma.BattleVoteUncheckedUpdateWithoutVoterInput>
+  create: Prisma.XOR<Prisma.BattleVoteCreateWithoutVoterInput, Prisma.BattleVoteUncheckedCreateWithoutVoterInput>
 }
 
-export type BattleVoteUpdateWithWhereUniqueWithoutVoterUserInput = {
+export type BattleVoteUpdateWithWhereUniqueWithoutVoterInput = {
   where: Prisma.BattleVoteWhereUniqueInput
-  data: Prisma.XOR<Prisma.BattleVoteUpdateWithoutVoterUserInput, Prisma.BattleVoteUncheckedUpdateWithoutVoterUserInput>
+  data: Prisma.XOR<Prisma.BattleVoteUpdateWithoutVoterInput, Prisma.BattleVoteUncheckedUpdateWithoutVoterInput>
 }
 
-export type BattleVoteUpdateManyWithWhereWithoutVoterUserInput = {
+export type BattleVoteUpdateManyWithWhereWithoutVoterInput = {
   where: Prisma.BattleVoteScalarWhereInput
-  data: Prisma.XOR<Prisma.BattleVoteUpdateManyMutationInput, Prisma.BattleVoteUncheckedUpdateManyWithoutVoterUserInput>
+  data: Prisma.XOR<Prisma.BattleVoteUpdateManyMutationInput, Prisma.BattleVoteUncheckedUpdateManyWithoutVoterInput>
 }
 
 export type BattleVoteCreateManyBattleInput = {
   id?: string
-  entryId: string
-  voterUserId: string
+  submissionId: string
+  userId: string
+  value?: number
   createdAt?: Date | string
 }
 
 export type BattleVoteUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  entry?: Prisma.BattleEntryUpdateOneRequiredWithoutVotesNestedInput
-  voterUser?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
+  submission?: Prisma.BattleSubmissionUpdateOneRequiredWithoutVotesNestedInput
+  voter?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
 }
 
 export type BattleVoteUncheckedUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type BattleVoteUncheckedUpdateManyWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type BattleVoteCreateManyEntryInput = {
+export type BattleVoteCreateManySubmissionInput = {
   id?: string
+  userId: string
   battleId: string
-  voterUserId: string
+  value?: number
   createdAt?: Date | string
 }
 
-export type BattleVoteUpdateWithoutEntryInput = {
+export type BattleVoteUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  battle?: Prisma.BattleUpdateOneRequiredWithoutVotesNestedInput
-  voterUser?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
+  voter?: Prisma.UserUpdateOneRequiredWithoutBattleVotesNestedInput
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutBattleVotesNestedInput
 }
 
-export type BattleVoteUncheckedUpdateWithoutEntryInput = {
+export type BattleVoteUncheckedUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type BattleVoteUncheckedUpdateManyWithoutEntryInput = {
+export type BattleVoteUncheckedUpdateManyWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type BattleVoteCreateManyVoterUserInput = {
+export type BattleVoteCreateManyVoterInput = {
   id?: string
+  submissionId: string
   battleId: string
-  entryId: string
+  value?: number
   createdAt?: Date | string
 }
 
-export type BattleVoteUpdateWithoutVoterUserInput = {
+export type BattleVoteUpdateWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  battle?: Prisma.BattleUpdateOneRequiredWithoutVotesNestedInput
-  entry?: Prisma.BattleEntryUpdateOneRequiredWithoutVotesNestedInput
+  submission?: Prisma.BattleSubmissionUpdateOneRequiredWithoutVotesNestedInput
+  battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutBattleVotesNestedInput
 }
 
-export type BattleVoteUncheckedUpdateWithoutVoterUserInput = {
+export type BattleVoteUncheckedUpdateWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type BattleVoteUncheckedUpdateManyWithoutVoterUserInput = {
+export type BattleVoteUncheckedUpdateManyWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  entryId?: Prisma.StringFieldUpdateOperationsInput | string
+  value?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -672,74 +757,79 @@ export type BattleVoteUncheckedUpdateManyWithoutVoterUserInput = {
 
 export type BattleVoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  submissionId?: boolean
+  userId?: boolean
   battleId?: boolean
-  entryId?: boolean
-  voterUserId?: boolean
+  value?: boolean
   createdAt?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleVote"]>
 
 export type BattleVoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  submissionId?: boolean
+  userId?: boolean
   battleId?: boolean
-  entryId?: boolean
-  voterUserId?: boolean
+  value?: boolean
   createdAt?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleVote"]>
 
 export type BattleVoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  submissionId?: boolean
+  userId?: boolean
   battleId?: boolean
-  entryId?: boolean
-  voterUserId?: boolean
+  value?: boolean
   createdAt?: boolean
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["battleVote"]>
 
 export type BattleVoteSelectScalar = {
   id?: boolean
+  submissionId?: boolean
+  userId?: boolean
   battleId?: boolean
-  entryId?: boolean
-  voterUserId?: boolean
+  value?: boolean
   createdAt?: boolean
 }
 
-export type BattleVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "entryId" | "voterUserId" | "createdAt", ExtArgs["result"]["battleVote"]>
+export type BattleVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "submissionId" | "userId" | "battleId" | "value" | "createdAt", ExtArgs["result"]["battleVote"]>
 export type BattleVoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }
 export type BattleVoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }
 export type BattleVoteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  battle?: boolean | Prisma.BattleDefaultArgs<ExtArgs>
-  entry?: boolean | Prisma.BattleEntryDefaultArgs<ExtArgs>
-  voterUser?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.BattleSubmissionDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  battle?: boolean | Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>
 }
 
 export type $BattleVotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "BattleVote"
   objects: {
-    battle: Prisma.$BattlePayload<ExtArgs>
-    entry: Prisma.$BattleEntryPayload<ExtArgs>
-    voterUser: Prisma.$UserPayload<ExtArgs>
+    submission: Prisma.$BattleSubmissionPayload<ExtArgs>
+    voter: Prisma.$UserPayload<ExtArgs>
+    battle: Prisma.$HeadToHeadBattlePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    submissionId: string
+    userId: string
     battleId: string
-    entryId: string
-    voterUserId: string
+    value: number
     createdAt: Date
   }, ExtArgs["result"]["battleVote"]>
   composites: {}
@@ -1135,9 +1225,9 @@ readonly fields: BattleVoteFieldRefs;
  */
 export interface Prisma__BattleVoteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  battle<T extends Prisma.BattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleDefaultArgs<ExtArgs>>): Prisma.Prisma__BattleClient<runtime.Types.Result.GetResult<Prisma.$BattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  entry<T extends Prisma.BattleEntryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleEntryDefaultArgs<ExtArgs>>): Prisma.Prisma__BattleEntryClient<runtime.Types.Result.GetResult<Prisma.$BattleEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  voterUser<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  submission<T extends Prisma.BattleSubmissionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BattleSubmissionDefaultArgs<ExtArgs>>): Prisma.Prisma__BattleSubmissionClient<runtime.Types.Result.GetResult<Prisma.$BattleSubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  voter<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  battle<T extends Prisma.HeadToHeadBattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattleDefaultArgs<ExtArgs>>): Prisma.Prisma__HeadToHeadBattleClient<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1168,9 +1258,10 @@ export interface Prisma__BattleVoteClient<T, Null = never, ExtArgs extends runti
  */
 export interface BattleVoteFieldRefs {
   readonly id: Prisma.FieldRef<"BattleVote", 'String'>
+  readonly submissionId: Prisma.FieldRef<"BattleVote", 'String'>
+  readonly userId: Prisma.FieldRef<"BattleVote", 'String'>
   readonly battleId: Prisma.FieldRef<"BattleVote", 'String'>
-  readonly entryId: Prisma.FieldRef<"BattleVote", 'String'>
-  readonly voterUserId: Prisma.FieldRef<"BattleVote", 'String'>
+  readonly value: Prisma.FieldRef<"BattleVote", 'Int'>
   readonly createdAt: Prisma.FieldRef<"BattleVote", 'DateTime'>
 }
     

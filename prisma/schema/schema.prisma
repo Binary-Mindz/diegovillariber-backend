@@ -21,11 +21,7 @@ enum Role {
   OFFICIAL_PARTNER
 }
 
-enum Preference {
-  Car
-  Motorbike
-  Both
-}
+
 
 enum Type {
   SPOTTER
@@ -60,16 +56,9 @@ enum PostType {
   Challenge_Post
 }
 
-enum BattleStatus {
-  PENDING
-  ONGOING
-  COMPLETED
-  CANCELED
-}
 
 enum BattleCategory {
   RAW_SHIFT
-  HEAD_TO_HEAD
   SPLIT_SCREEN
 }
 

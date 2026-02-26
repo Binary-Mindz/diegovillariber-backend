@@ -43,12 +43,8 @@ model User {
   savePosts             SavePost[]
   hidePosts             HidePost[]
   wishLists             WishList[]
-  battleResults         BattleResult[]         @relation("BattleWinner")
-  battles               Battle[]               @relation("HostBattles")
   battleParticipants    BattleParticipant[]
   userPoints            UserPoint[]
-  challengeResults      ChallengeResult[]      @relation("WinnerResults")
-  hostChallenge         Challenge[]            @relation("HostChallenges")
   challenges            Challenge[]
   challengeParticipants ChallengeParticipant[]
 
@@ -58,12 +54,6 @@ model User {
   officialPartners   OfficialPartner?
   ambassadorPrograms AmbassadorProgram?
 
-  battleVotes BattleVote[]
-  challengeSubmissions ChallengeSubmission[]
-  xposts               XPost[]
-
-
-
   conversationParticipants ConversationParticipant[]
 
   messages Message[] @relation("SentMessages")
@@ -71,4 +61,31 @@ model User {
   messageReceipts MessageReceipt[]
 
   taggedInPosts Post[] @relation("PostTaggedUsers")
+
+  
+  headToHeadBattlesCreated HeadToHeadBattle[] @relation("H2HCreator")
+
+  headToHeadBattlesWon HeadToHeadBattle[] @relation("H2HWinner")
+
+  battleInvitationsInviter BattleInvitation[] @relation("H2HInviter")
+
+  battleInvitationsInvitte BattleInvitation[] @relation("H2HInvitee")
+
+  battleSubmissions BattleSubmission[]
+
+  battleVotes BattleVote[]
+
+  battleComments BattleComment[]
+
+  rawShiftBattlesCreated RawShiftBattle[] @relation("RawShiftCreator")
+
+  rawShiftBattlesWon RawShiftBattle[] @relation("RawShiftWinner")
+
+  rawShiftParticipants RawShiftParticipant[]
+
+  rawShiftEntries RawShiftEntry[]
+
+  rawShiftVotes RawShiftVote[]
+
+  rawShiftComments RawShiftComment[]
 }
