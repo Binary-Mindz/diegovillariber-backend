@@ -240,6 +240,38 @@ export const Subject = {
 export type Subject = (typeof Subject)[keyof typeof Subject]
 
 
+export const RawShiftStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  RUNNING: 'RUNNING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type RawShiftStatus = (typeof RawShiftStatus)[keyof typeof RawShiftStatus]
+
+
+export const RawShiftEntryStatus = {
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type RawShiftEntryStatus = (typeof RawShiftEntryStatus)[keyof typeof RawShiftEntryStatus]
+
+
+export const RawShiftSoftware = {
+  ANY: 'ANY',
+  LIGHTROOM: 'LIGHTROOM',
+  PHOTOSHOP: 'PHOTOSHOP',
+  CAPTURE_ONE: 'CAPTURE_ONE',
+  SNAPSEED: 'SNAPSEED',
+  OTHER: 'OTHER'
+} as const
+
+export type RawShiftSoftware = (typeof RawShiftSoftware)[keyof typeof RawShiftSoftware]
+
+
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN',

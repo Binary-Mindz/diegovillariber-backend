@@ -53,14 +53,12 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
-  Battle: 'Battle',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
   Challenge: 'Challenge',
   ChallengeDeviceRule: 'ChallengeDeviceRule',
   ChallengePrize: 'ChallengePrize',
   ChallengeParticipant: 'ChallengeParticipant',
-  ChallengeSubmission: 'ChallengeSubmission',
   ChassisBrakes: 'ChassisBrakes',
   Comment: 'Comment',
   ContentCreatorProfile: 'ContentCreatorProfile',
@@ -80,6 +78,8 @@ export const ModelName = {
   BattleParticipant: 'BattleParticipant',
   BattleInvitation: 'BattleInvitation',
   BattleSubmission: 'BattleSubmission',
+  BattleVote: 'BattleVote',
+  BattleComment: 'BattleComment',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
   LegalNotice: 'LegalNotice',
@@ -98,6 +98,11 @@ export const ModelName = {
   Profile: 'Profile',
   Racing: 'Racing',
   RacingVote: 'RacingVote',
+  RawShiftBattle: 'RawShiftBattle',
+  RawShiftParticipant: 'RawShiftParticipant',
+  RawShiftEntry: 'RawShiftEntry',
+  RawShiftVote: 'RawShiftVote',
+  RawShiftComment: 'RawShiftComment',
   Report: 'Report',
   Repost: 'Repost',
   SavePost: 'SavePost',
@@ -161,25 +166,6 @@ export const AmbassadorProgramScalarFieldEnum = {
 } as const
 
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
-
-
-export const BattleScalarFieldEnum = {
-  id: 'id',
-  hostId: 'hostId',
-  title: 'title',
-  description: 'description',
-  coverImage: 'coverImage',
-  battleCategory: 'battleCategory',
-  preference: 'preference',
-  status: 'status',
-  maxParticipants: 'maxParticipants',
-  startTime: 'startTime',
-  endTime: 'endTime',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BattleScalarFieldEnum = (typeof BattleScalarFieldEnum)[keyof typeof BattleScalarFieldEnum]
 
 
 export const BusinessProfileScalarFieldEnum = {
@@ -275,15 +261,6 @@ export const ChallengeParticipantScalarFieldEnum = {
 } as const
 
 export type ChallengeParticipantScalarFieldEnum = (typeof ChallengeParticipantScalarFieldEnum)[keyof typeof ChallengeParticipantScalarFieldEnum]
-
-
-export const ChallengeSubmissionScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  createdAt: 'createdAt'
-} as const
-
-export type ChallengeSubmissionScalarFieldEnum = (typeof ChallengeSubmissionScalarFieldEnum)[keyof typeof ChallengeSubmissionScalarFieldEnum]
 
 
 export const ChassisBrakesScalarFieldEnum = {
@@ -501,6 +478,7 @@ export type HashtagScalarFieldEnum = (typeof HashtagScalarFieldEnum)[keyof typeo
 export const HeadToHeadBattleScalarFieldEnum = {
   id: 'id',
   creatorId: 'creatorId',
+  winnerUserId: 'winnerUserId',
   title: 'title',
   description: 'description',
   mediaType: 'mediaType',
@@ -522,8 +500,7 @@ export const HeadToHeadBattleScalarFieldEnum = {
   durationDays: 'durationDays',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  winnerUserId: 'winnerUserId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type HeadToHeadBattleScalarFieldEnum = (typeof HeadToHeadBattleScalarFieldEnum)[keyof typeof HeadToHeadBattleScalarFieldEnum]
@@ -567,6 +544,30 @@ export const BattleSubmissionScalarFieldEnum = {
 } as const
 
 export type BattleSubmissionScalarFieldEnum = (typeof BattleSubmissionScalarFieldEnum)[keyof typeof BattleSubmissionScalarFieldEnum]
+
+
+export const BattleVoteScalarFieldEnum = {
+  id: 'id',
+  submissionId: 'submissionId',
+  userId: 'userId',
+  battleId: 'battleId',
+  value: 'value',
+  createdAt: 'createdAt'
+} as const
+
+export type BattleVoteScalarFieldEnum = (typeof BattleVoteScalarFieldEnum)[keyof typeof BattleVoteScalarFieldEnum]
+
+
+export const BattleCommentScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  submissionId: 'submissionId',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type BattleCommentScalarFieldEnum = (typeof BattleCommentScalarFieldEnum)[keyof typeof BattleCommentScalarFieldEnum]
 
 
 export const HidePostScalarFieldEnum = {
@@ -828,6 +829,88 @@ export const RacingVoteScalarFieldEnum = {
 export type RacingVoteScalarFieldEnum = (typeof RacingVoteScalarFieldEnum)[keyof typeof RacingVoteScalarFieldEnum]
 
 
+export const RawShiftBattleScalarFieldEnum = {
+  id: 'id',
+  creatorId: 'creatorId',
+  winnerUserId: 'winnerUserId',
+  title: 'title',
+  description: 'description',
+  coverImage: 'coverImage',
+  bannerImage: 'bannerImage',
+  software: 'software',
+  softwareLabel: 'softwareLabel',
+  requireRaw: 'requireRaw',
+  rejectAiEdited: 'rejectAiEdited',
+  participantLimit: 'participantLimit',
+  participationScope: 'participationScope',
+  radiusKm: 'radiusKm',
+  locationName: 'locationName',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RawShiftBattleScalarFieldEnum = (typeof RawShiftBattleScalarFieldEnum)[keyof typeof RawShiftBattleScalarFieldEnum]
+
+
+export const RawShiftParticipantScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  joinedAt: 'joinedAt',
+  leftAt: 'leftAt'
+} as const
+
+export type RawShiftParticipantScalarFieldEnum = (typeof RawShiftParticipantScalarFieldEnum)[keyof typeof RawShiftParticipantScalarFieldEnum]
+
+
+export const RawShiftEntryScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  rawMediaUrl: 'rawMediaUrl',
+  rawThumbnailUrl: 'rawThumbnailUrl',
+  editedMediaUrl: 'editedMediaUrl',
+  editedThumbnailUrl: 'editedThumbnailUrl',
+  caption: 'caption',
+  hashtags: 'hashtags',
+  status: 'status',
+  score: 'score',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RawShiftEntryScalarFieldEnum = (typeof RawShiftEntryScalarFieldEnum)[keyof typeof RawShiftEntryScalarFieldEnum]
+
+
+export const RawShiftVoteScalarFieldEnum = {
+  id: 'id',
+  entryId: 'entryId',
+  userId: 'userId',
+  value: 'value',
+  createdAt: 'createdAt'
+} as const
+
+export type RawShiftVoteScalarFieldEnum = (typeof RawShiftVoteScalarFieldEnum)[keyof typeof RawShiftVoteScalarFieldEnum]
+
+
+export const RawShiftCommentScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  entryId: 'entryId',
+  userId: 'userId',
+  message: 'message',
+  createdAt: 'createdAt'
+} as const
+
+export type RawShiftCommentScalarFieldEnum = (typeof RawShiftCommentScalarFieldEnum)[keyof typeof RawShiftCommentScalarFieldEnum]
+
+
 export const ReportScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -960,7 +1043,6 @@ export const UserPointScalarFieldEnum = {
   likeId: 'likeId',
   commentId: 'commentId',
   followId: 'followId',
-  battleId: 'battleId',
   points: 'points'
 } as const
 

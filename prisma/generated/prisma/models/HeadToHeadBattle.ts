@@ -45,6 +45,7 @@ export type HeadToHeadBattleSumAggregateOutputType = {
 export type HeadToHeadBattleMinAggregateOutputType = {
   id: string | null
   creatorId: string | null
+  winnerUserId: string | null
   title: string | null
   description: string | null
   mediaType: $Enums.BattleMediaType | null
@@ -67,12 +68,12 @@ export type HeadToHeadBattleMinAggregateOutputType = {
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
-  winnerUserId: string | null
 }
 
 export type HeadToHeadBattleMaxAggregateOutputType = {
   id: string | null
   creatorId: string | null
+  winnerUserId: string | null
   title: string | null
   description: string | null
   mediaType: $Enums.BattleMediaType | null
@@ -95,12 +96,12 @@ export type HeadToHeadBattleMaxAggregateOutputType = {
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
-  winnerUserId: string | null
 }
 
 export type HeadToHeadBattleCountAggregateOutputType = {
   id: number
   creatorId: number
+  winnerUserId: number
   title: number
   description: number
   mediaType: number
@@ -123,7 +124,6 @@ export type HeadToHeadBattleCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
-  winnerUserId: number
   _all: number
 }
 
@@ -147,6 +147,7 @@ export type HeadToHeadBattleSumAggregateInputType = {
 export type HeadToHeadBattleMinAggregateInputType = {
   id?: true
   creatorId?: true
+  winnerUserId?: true
   title?: true
   description?: true
   mediaType?: true
@@ -169,12 +170,12 @@ export type HeadToHeadBattleMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
-  winnerUserId?: true
 }
 
 export type HeadToHeadBattleMaxAggregateInputType = {
   id?: true
   creatorId?: true
+  winnerUserId?: true
   title?: true
   description?: true
   mediaType?: true
@@ -197,12 +198,12 @@ export type HeadToHeadBattleMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
-  winnerUserId?: true
 }
 
 export type HeadToHeadBattleCountAggregateInputType = {
   id?: true
   creatorId?: true
+  winnerUserId?: true
   title?: true
   description?: true
   mediaType?: true
@@ -225,7 +226,6 @@ export type HeadToHeadBattleCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
-  winnerUserId?: true
   _all?: true
 }
 
@@ -318,6 +318,7 @@ export type HeadToHeadBattleGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type HeadToHeadBattleGroupByOutputType = {
   id: string
   creatorId: string
+  winnerUserId: string | null
   title: string
   description: string | null
   mediaType: $Enums.BattleMediaType
@@ -340,7 +341,6 @@ export type HeadToHeadBattleGroupByOutputType = {
   status: $Enums.BattleStatus
   createdAt: Date
   updatedAt: Date
-  winnerUserId: string | null
   _count: HeadToHeadBattleCountAggregateOutputType | null
   _avg: HeadToHeadBattleAvgAggregateOutputType | null
   _sum: HeadToHeadBattleSumAggregateOutputType | null
@@ -369,6 +369,7 @@ export type HeadToHeadBattleWhereInput = {
   NOT?: Prisma.HeadToHeadBattleWhereInput | Prisma.HeadToHeadBattleWhereInput[]
   id?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
+  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
@@ -391,17 +392,19 @@ export type HeadToHeadBattleWhereInput = {
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.BattleParticipantListRelationFilter
   invitations?: Prisma.BattleInvitationListRelationFilter
   submissions?: Prisma.BattleSubmissionListRelationFilter
-  winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  battleComments?: Prisma.BattleCommentListRelationFilter
+  battleVotes?: Prisma.BattleVoteListRelationFilter
 }
 
 export type HeadToHeadBattleOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   mediaType?: Prisma.SortOrder
@@ -424,12 +427,13 @@ export type HeadToHeadBattleOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
+  winnerUser?: Prisma.UserOrderByWithRelationInput
   participants?: Prisma.BattleParticipantOrderByRelationAggregateInput
   invitations?: Prisma.BattleInvitationOrderByRelationAggregateInput
   submissions?: Prisma.BattleSubmissionOrderByRelationAggregateInput
-  winnerUser?: Prisma.UserOrderByWithRelationInput
+  battleComments?: Prisma.BattleCommentOrderByRelationAggregateInput
+  battleVotes?: Prisma.BattleVoteOrderByRelationAggregateInput
 }
 
 export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
@@ -438,6 +442,7 @@ export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.HeadToHeadBattleWhereInput[]
   NOT?: Prisma.HeadToHeadBattleWhereInput | Prisma.HeadToHeadBattleWhereInput[]
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
+  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
@@ -460,17 +465,19 @@ export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.BattleParticipantListRelationFilter
   invitations?: Prisma.BattleInvitationListRelationFilter
   submissions?: Prisma.BattleSubmissionListRelationFilter
-  winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  battleComments?: Prisma.BattleCommentListRelationFilter
+  battleVotes?: Prisma.BattleVoteListRelationFilter
 }, "id">
 
 export type HeadToHeadBattleOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   mediaType?: Prisma.SortOrder
@@ -493,7 +500,6 @@ export type HeadToHeadBattleOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  winnerUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.HeadToHeadBattleCountOrderByAggregateInput
   _avg?: Prisma.HeadToHeadBattleAvgOrderByAggregateInput
   _max?: Prisma.HeadToHeadBattleMaxOrderByAggregateInput
@@ -507,6 +513,7 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
   NOT?: Prisma.HeadToHeadBattleScalarWhereWithAggregatesInput | Prisma.HeadToHeadBattleScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"HeadToHeadBattle"> | string
   creatorId?: Prisma.UuidWithAggregatesFilter<"HeadToHeadBattle"> | string
+  winnerUserId?: Prisma.UuidNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringWithAggregatesFilter<"HeadToHeadBattle"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
   mediaType?: Prisma.EnumBattleMediaTypeWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
@@ -529,7 +536,6 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumBattleStatusWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
-  winnerUserId?: Prisma.UuidNullableWithAggregatesFilter<"HeadToHeadBattle"> | string | null
 }
 
 export type HeadToHeadBattleCreateInput = {
@@ -556,16 +562,19 @@ export type HeadToHeadBattleCreateInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesInput
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
-  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWinnerInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateInput = {
   id?: string
   creatorId: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -588,10 +597,11 @@ export type HeadToHeadBattleUncheckedCreateInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUpdateInput = {
@@ -618,16 +628,19 @@ export type HeadToHeadBattleUpdateInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesNestedInput
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
-  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWinnerNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -650,15 +663,17 @@ export type HeadToHeadBattleUncheckedUpdateInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleCreateManyInput = {
   id?: string
   creatorId: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -681,7 +696,6 @@ export type HeadToHeadBattleCreateManyInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
 }
 
 export type HeadToHeadBattleUpdateManyMutationInput = {
@@ -713,6 +727,7 @@ export type HeadToHeadBattleUpdateManyMutationInput = {
 export type HeadToHeadBattleUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -735,12 +750,12 @@ export type HeadToHeadBattleUncheckedUpdateManyInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type HeadToHeadBattleCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   mediaType?: Prisma.SortOrder
@@ -763,7 +778,6 @@ export type HeadToHeadBattleCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  winnerUserId?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleAvgOrderByAggregateInput = {
@@ -777,6 +791,7 @@ export type HeadToHeadBattleAvgOrderByAggregateInput = {
 export type HeadToHeadBattleMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   mediaType?: Prisma.SortOrder
@@ -799,12 +814,12 @@ export type HeadToHeadBattleMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  winnerUserId?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  winnerUserId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   mediaType?: Prisma.SortOrder
@@ -827,7 +842,6 @@ export type HeadToHeadBattleMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  winnerUserId?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleSumOrderByAggregateInput = {
@@ -867,6 +881,10 @@ export type EnumBattleAccessTypeFieldUpdateOperationsInput = {
 
 export type NullableEnumAutoInviteScopeFieldUpdateOperationsInput = {
   set?: $Enums.AutoInviteScope | null
+}
+
+export type EnumBattleStatusFieldUpdateOperationsInput = {
+  set?: $Enums.BattleStatus
 }
 
 export type HeadToHeadBattleCreateNestedOneWithoutParticipantsInput = {
@@ -909,6 +927,34 @@ export type HeadToHeadBattleUpdateOneRequiredWithoutSubmissionsNestedInput = {
   upsert?: Prisma.HeadToHeadBattleUpsertWithoutSubmissionsInput
   connect?: Prisma.HeadToHeadBattleWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.HeadToHeadBattleUpdateToOneWithWhereWithoutSubmissionsInput, Prisma.HeadToHeadBattleUpdateWithoutSubmissionsInput>, Prisma.HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput>
+}
+
+export type HeadToHeadBattleCreateNestedOneWithoutBattleVotesInput = {
+  create?: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput>
+  connectOrCreate?: Prisma.HeadToHeadBattleCreateOrConnectWithoutBattleVotesInput
+  connect?: Prisma.HeadToHeadBattleWhereUniqueInput
+}
+
+export type HeadToHeadBattleUpdateOneRequiredWithoutBattleVotesNestedInput = {
+  create?: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput>
+  connectOrCreate?: Prisma.HeadToHeadBattleCreateOrConnectWithoutBattleVotesInput
+  upsert?: Prisma.HeadToHeadBattleUpsertWithoutBattleVotesInput
+  connect?: Prisma.HeadToHeadBattleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HeadToHeadBattleUpdateToOneWithWhereWithoutBattleVotesInput, Prisma.HeadToHeadBattleUpdateWithoutBattleVotesInput>, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput>
+}
+
+export type HeadToHeadBattleCreateNestedOneWithoutBattleCommentsInput = {
+  create?: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput>
+  connectOrCreate?: Prisma.HeadToHeadBattleCreateOrConnectWithoutBattleCommentsInput
+  connect?: Prisma.HeadToHeadBattleWhereUniqueInput
+}
+
+export type HeadToHeadBattleUpdateOneRequiredWithoutBattleCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput>
+  connectOrCreate?: Prisma.HeadToHeadBattleCreateOrConnectWithoutBattleCommentsInput
+  upsert?: Prisma.HeadToHeadBattleUpsertWithoutBattleCommentsInput
+  connect?: Prisma.HeadToHeadBattleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.HeadToHeadBattleUpdateToOneWithWhereWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUpdateWithoutBattleCommentsInput>, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput>
 }
 
 export type HeadToHeadBattleCreateNestedManyWithoutCreatorInput = {
@@ -1019,15 +1065,18 @@ export type HeadToHeadBattleCreateWithoutParticipantsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesInput
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
-  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWinnerInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateWithoutParticipantsInput = {
   id?: string
   creatorId: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -1050,9 +1099,10 @@ export type HeadToHeadBattleUncheckedCreateWithoutParticipantsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleCreateOrConnectWithoutParticipantsInput = {
@@ -1095,15 +1145,18 @@ export type HeadToHeadBattleUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesNestedInput
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
-  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWinnerNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -1126,9 +1179,10 @@ export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleCreateWithoutInvitationsInput = {
@@ -1155,15 +1209,18 @@ export type HeadToHeadBattleCreateWithoutInvitationsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesInput
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
-  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWinnerInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateWithoutInvitationsInput = {
   id?: string
   creatorId: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -1186,9 +1243,10 @@ export type HeadToHeadBattleUncheckedCreateWithoutInvitationsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleCreateOrConnectWithoutInvitationsInput = {
@@ -1231,15 +1289,18 @@ export type HeadToHeadBattleUpdateWithoutInvitationsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesNestedInput
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
-  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWinnerNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -1262,9 +1323,10 @@ export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleCreateWithoutSubmissionsInput = {
@@ -1291,15 +1353,18 @@ export type HeadToHeadBattleCreateWithoutSubmissionsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesInput
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
-  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWinnerInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateWithoutSubmissionsInput = {
   id?: string
   creatorId: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -1322,9 +1387,10 @@ export type HeadToHeadBattleUncheckedCreateWithoutSubmissionsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleCreateOrConnectWithoutSubmissionsInput = {
@@ -1367,15 +1433,18 @@ export type HeadToHeadBattleUpdateWithoutSubmissionsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesNestedInput
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
-  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWinnerNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -1398,9 +1467,298 @@ export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
+}
+
+export type HeadToHeadBattleCreateWithoutBattleVotesInput = {
+  id?: string
+  title: string
+  description?: string | null
+  mediaType: $Enums.BattleMediaType
+  coverImage?: string | null
+  cameraRequirement?: $Enums.CameraRequirement
+  requireTrueShotVerified?: boolean
+  rejectEditedPhotos?: boolean
+  accessType?: $Enums.BattleAccessType
+  autoInviteScope?: $Enums.AutoInviteScope | null
+  autoInviteCount?: number | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  durationDays?: number | null
+  status?: $Enums.BattleStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
+  participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
+  invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
+  submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+}
+
+export type HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput = {
+  id?: string
+  creatorId: string
+  winnerUserId?: string | null
+  title: string
+  description?: string | null
+  mediaType: $Enums.BattleMediaType
+  coverImage?: string | null
+  cameraRequirement?: $Enums.CameraRequirement
+  requireTrueShotVerified?: boolean
+  rejectEditedPhotos?: boolean
+  accessType?: $Enums.BattleAccessType
+  autoInviteScope?: $Enums.AutoInviteScope | null
+  autoInviteCount?: number | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  durationDays?: number | null
+  status?: $Enums.BattleStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
+  invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
+  submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+}
+
+export type HeadToHeadBattleCreateOrConnectWithoutBattleVotesInput = {
+  where: Prisma.HeadToHeadBattleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput>
+}
+
+export type HeadToHeadBattleUpsertWithoutBattleVotesInput = {
+  update: Prisma.XOR<Prisma.HeadToHeadBattleUpdateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput>
+  create: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput>
+  where?: Prisma.HeadToHeadBattleWhereInput
+}
+
+export type HeadToHeadBattleUpdateToOneWithWhereWithoutBattleVotesInput = {
+  where?: Prisma.HeadToHeadBattleWhereInput
+  data: Prisma.XOR<Prisma.HeadToHeadBattleUpdateWithoutBattleVotesInput, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput>
+}
+
+export type HeadToHeadBattleUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
+  requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessType?: Prisma.EnumBattleAccessTypeFieldUpdateOperationsInput | $Enums.BattleAccessType
+  autoInviteScope?: Prisma.NullableEnumAutoInviteScopeFieldUpdateOperationsInput | $Enums.AutoInviteScope | null
+  autoInviteCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
+  participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
+  invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
+  submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+}
+
+export type HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
+  requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessType?: Prisma.EnumBattleAccessTypeFieldUpdateOperationsInput | $Enums.BattleAccessType
+  autoInviteScope?: Prisma.NullableEnumAutoInviteScopeFieldUpdateOperationsInput | $Enums.AutoInviteScope | null
+  autoInviteCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
+  invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
+  submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+}
+
+export type HeadToHeadBattleCreateWithoutBattleCommentsInput = {
+  id?: string
+  title: string
+  description?: string | null
+  mediaType: $Enums.BattleMediaType
+  coverImage?: string | null
+  cameraRequirement?: $Enums.CameraRequirement
+  requireTrueShotVerified?: boolean
+  rejectEditedPhotos?: boolean
+  accessType?: $Enums.BattleAccessType
+  autoInviteScope?: $Enums.AutoInviteScope | null
+  autoInviteCount?: number | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  durationDays?: number | null
+  status?: $Enums.BattleStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
+  participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
+  invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
+  submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
+}
+
+export type HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput = {
+  id?: string
+  creatorId: string
+  winnerUserId?: string | null
+  title: string
+  description?: string | null
+  mediaType: $Enums.BattleMediaType
+  coverImage?: string | null
+  cameraRequirement?: $Enums.CameraRequirement
+  requireTrueShotVerified?: boolean
+  rejectEditedPhotos?: boolean
+  accessType?: $Enums.BattleAccessType
+  autoInviteScope?: $Enums.AutoInviteScope | null
+  autoInviteCount?: number | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  startDate: Date | string
+  endDate: Date | string
+  durationDays?: number | null
+  status?: $Enums.BattleStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
+  invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
+  submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
+}
+
+export type HeadToHeadBattleCreateOrConnectWithoutBattleCommentsInput = {
+  where: Prisma.HeadToHeadBattleWhereUniqueInput
+  create: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput>
+}
+
+export type HeadToHeadBattleUpsertWithoutBattleCommentsInput = {
+  update: Prisma.XOR<Prisma.HeadToHeadBattleUpdateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput>
+  create: Prisma.XOR<Prisma.HeadToHeadBattleCreateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput>
+  where?: Prisma.HeadToHeadBattleWhereInput
+}
+
+export type HeadToHeadBattleUpdateToOneWithWhereWithoutBattleCommentsInput = {
+  where?: Prisma.HeadToHeadBattleWhereInput
+  data: Prisma.XOR<Prisma.HeadToHeadBattleUpdateWithoutBattleCommentsInput, Prisma.HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput>
+}
+
+export type HeadToHeadBattleUpdateWithoutBattleCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
+  requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessType?: Prisma.EnumBattleAccessTypeFieldUpdateOperationsInput | $Enums.BattleAccessType
+  autoInviteScope?: Prisma.NullableEnumAutoInviteScopeFieldUpdateOperationsInput | $Enums.AutoInviteScope | null
+  autoInviteCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
+  participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
+  invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
+  submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
+}
+
+export type HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cameraRequirement?: Prisma.EnumCameraRequirementFieldUpdateOperationsInput | $Enums.CameraRequirement
+  requireTrueShotVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accessType?: Prisma.EnumBattleAccessTypeFieldUpdateOperationsInput | $Enums.BattleAccessType
+  autoInviteScope?: Prisma.NullableEnumAutoInviteScopeFieldUpdateOperationsInput | $Enums.AutoInviteScope | null
+  autoInviteCount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  durationDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
+  invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
+  submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleCreateWithoutCreatorInput = {
@@ -1427,14 +1785,17 @@ export type HeadToHeadBattleCreateWithoutCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
-  winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWinnerInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateWithoutCreatorInput = {
   id?: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -1457,10 +1818,11 @@ export type HeadToHeadBattleUncheckedCreateWithoutCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleCreateOrConnectWithoutCreatorInput = {
@@ -1497,10 +1859,12 @@ export type HeadToHeadBattleCreateWithoutWinnerUserInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesInput
+  creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleUncheckedCreateWithoutWinnerUserInput = {
@@ -1531,6 +1895,8 @@ export type HeadToHeadBattleUncheckedCreateWithoutWinnerUserInput = {
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutBattleInput
 }
 
 export type HeadToHeadBattleCreateOrConnectWithoutWinnerUserInput = {
@@ -1565,6 +1931,7 @@ export type HeadToHeadBattleScalarWhereInput = {
   NOT?: Prisma.HeadToHeadBattleScalarWhereInput | Prisma.HeadToHeadBattleScalarWhereInput[]
   id?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
   creatorId?: Prisma.UuidFilter<"HeadToHeadBattle"> | string
+  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
   title?: Prisma.StringFilter<"HeadToHeadBattle"> | string
   description?: Prisma.StringNullableFilter<"HeadToHeadBattle"> | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFilter<"HeadToHeadBattle"> | $Enums.BattleMediaType
@@ -1587,7 +1954,6 @@ export type HeadToHeadBattleScalarWhereInput = {
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
-  winnerUserId?: Prisma.UuidNullableFilter<"HeadToHeadBattle"> | string | null
 }
 
 export type HeadToHeadBattleUpsertWithWhereUniqueWithoutWinnerUserInput = {
@@ -1608,6 +1974,7 @@ export type HeadToHeadBattleUpdateManyWithWhereWithoutWinnerUserInput = {
 
 export type HeadToHeadBattleCreateManyCreatorInput = {
   id?: string
+  winnerUserId?: string | null
   title: string
   description?: string | null
   mediaType: $Enums.BattleMediaType
@@ -1630,7 +1997,6 @@ export type HeadToHeadBattleCreateManyCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  winnerUserId?: string | null
 }
 
 export type HeadToHeadBattleCreateManyWinnerUserInput = {
@@ -1684,14 +2050,17 @@ export type HeadToHeadBattleUpdateWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
-  winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWinnerNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -1714,14 +2083,16 @@ export type HeadToHeadBattleUncheckedUpdateWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   mediaType?: Prisma.EnumBattleMediaTypeFieldUpdateOperationsInput | $Enums.BattleMediaType
@@ -1744,7 +2115,6 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  winnerUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
@@ -1771,10 +2141,12 @@ export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesNestedInput
+  creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateWithoutWinnerUserInput = {
@@ -1805,6 +2177,8 @@ export type HeadToHeadBattleUncheckedUpdateWithoutWinnerUserInput = {
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutBattleNestedInput
 }
 
 export type HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserInput = {
@@ -1843,12 +2217,16 @@ export type HeadToHeadBattleCountOutputType = {
   participants: number
   invitations: number
   submissions: number
+  battleComments: number
+  battleVotes: number
 }
 
 export type HeadToHeadBattleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   participants?: boolean | HeadToHeadBattleCountOutputTypeCountParticipantsArgs
   invitations?: boolean | HeadToHeadBattleCountOutputTypeCountInvitationsArgs
   submissions?: boolean | HeadToHeadBattleCountOutputTypeCountSubmissionsArgs
+  battleComments?: boolean | HeadToHeadBattleCountOutputTypeCountBattleCommentsArgs
+  battleVotes?: boolean | HeadToHeadBattleCountOutputTypeCountBattleVotesArgs
 }
 
 /**
@@ -1882,10 +2260,25 @@ export type HeadToHeadBattleCountOutputTypeCountSubmissionsArgs<ExtArgs extends 
   where?: Prisma.BattleSubmissionWhereInput
 }
 
+/**
+ * HeadToHeadBattleCountOutputType without action
+ */
+export type HeadToHeadBattleCountOutputTypeCountBattleCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleCommentWhereInput
+}
+
+/**
+ * HeadToHeadBattleCountOutputType without action
+ */
+export type HeadToHeadBattleCountOutputTypeCountBattleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BattleVoteWhereInput
+}
+
 
 export type HeadToHeadBattleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   creatorId?: boolean
+  winnerUserId?: boolean
   title?: boolean
   description?: boolean
   mediaType?: boolean
@@ -1908,18 +2301,20 @@ export type HeadToHeadBattleSelect<ExtArgs extends runtime.Types.Extensions.Inte
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  winnerUserId?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
   participants?: boolean | Prisma.HeadToHeadBattle$participantsArgs<ExtArgs>
   invitations?: boolean | Prisma.HeadToHeadBattle$invitationsArgs<ExtArgs>
   submissions?: boolean | Prisma.HeadToHeadBattle$submissionsArgs<ExtArgs>
-  winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
+  battleComments?: boolean | Prisma.HeadToHeadBattle$battleCommentsArgs<ExtArgs>
+  battleVotes?: boolean | Prisma.HeadToHeadBattle$battleVotesArgs<ExtArgs>
   _count?: boolean | Prisma.HeadToHeadBattleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["headToHeadBattle"]>
 
 export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   creatorId?: boolean
+  winnerUserId?: boolean
   title?: boolean
   description?: boolean
   mediaType?: boolean
@@ -1942,7 +2337,6 @@ export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  winnerUserId?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["headToHeadBattle"]>
@@ -1950,6 +2344,7 @@ export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
 export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   creatorId?: boolean
+  winnerUserId?: boolean
   title?: boolean
   description?: boolean
   mediaType?: boolean
@@ -1972,7 +2367,6 @@ export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  winnerUserId?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["headToHeadBattle"]>
@@ -1980,6 +2374,7 @@ export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
 export type HeadToHeadBattleSelectScalar = {
   id?: boolean
   creatorId?: boolean
+  winnerUserId?: boolean
   title?: boolean
   description?: boolean
   mediaType?: boolean
@@ -2002,16 +2397,17 @@ export type HeadToHeadBattleSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  winnerUserId?: boolean
 }
 
-export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "mediaType" | "coverImage" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "durationDays" | "status" | "createdAt" | "updatedAt" | "winnerUserId", ExtArgs["result"]["headToHeadBattle"]>
+export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "mediaType" | "coverImage" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "durationDays" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["headToHeadBattle"]>
 export type HeadToHeadBattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
   participants?: boolean | Prisma.HeadToHeadBattle$participantsArgs<ExtArgs>
   invitations?: boolean | Prisma.HeadToHeadBattle$invitationsArgs<ExtArgs>
   submissions?: boolean | Prisma.HeadToHeadBattle$submissionsArgs<ExtArgs>
-  winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
+  battleComments?: boolean | Prisma.HeadToHeadBattle$battleCommentsArgs<ExtArgs>
+  battleVotes?: boolean | Prisma.HeadToHeadBattle$battleVotesArgs<ExtArgs>
   _count?: boolean | Prisma.HeadToHeadBattleCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type HeadToHeadBattleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2027,14 +2423,17 @@ export type $HeadToHeadBattlePayload<ExtArgs extends runtime.Types.Extensions.In
   name: "HeadToHeadBattle"
   objects: {
     creator: Prisma.$UserPayload<ExtArgs>
+    winnerUser: Prisma.$UserPayload<ExtArgs> | null
     participants: Prisma.$BattleParticipantPayload<ExtArgs>[]
     invitations: Prisma.$BattleInvitationPayload<ExtArgs>[]
     submissions: Prisma.$BattleSubmissionPayload<ExtArgs>[]
-    winnerUser: Prisma.$UserPayload<ExtArgs> | null
+    battleComments: Prisma.$BattleCommentPayload<ExtArgs>[]
+    battleVotes: Prisma.$BattleVotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     creatorId: string
+    winnerUserId: string | null
     title: string
     description: string | null
     mediaType: $Enums.BattleMediaType
@@ -2057,7 +2456,6 @@ export type $HeadToHeadBattlePayload<ExtArgs extends runtime.Types.Extensions.In
     status: $Enums.BattleStatus
     createdAt: Date
     updatedAt: Date
-    winnerUserId: string | null
   }, ExtArgs["result"]["headToHeadBattle"]>
   composites: {}
 }
@@ -2453,10 +2851,12 @@ readonly fields: HeadToHeadBattleFieldRefs;
 export interface Prisma__HeadToHeadBattleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   creator<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  winnerUser<T extends Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   participants<T extends Prisma.HeadToHeadBattle$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invitations<T extends Prisma.HeadToHeadBattle$invitationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   submissions<T extends Prisma.HeadToHeadBattle$submissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$submissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  winnerUser<T extends Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  battleComments<T extends Prisma.HeadToHeadBattle$battleCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$battleCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  battleVotes<T extends Prisma.HeadToHeadBattle$battleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.HeadToHeadBattle$battleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2488,6 +2888,7 @@ export interface Prisma__HeadToHeadBattleClient<T, Null = never, ExtArgs extends
 export interface HeadToHeadBattleFieldRefs {
   readonly id: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly creatorId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
+  readonly winnerUserId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly title: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly description: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
   readonly mediaType: Prisma.FieldRef<"HeadToHeadBattle", 'BattleMediaType'>
@@ -2510,7 +2911,6 @@ export interface HeadToHeadBattleFieldRefs {
   readonly status: Prisma.FieldRef<"HeadToHeadBattle", 'BattleStatus'>
   readonly createdAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
-  readonly winnerUserId: Prisma.FieldRef<"HeadToHeadBattle", 'String'>
 }
     
 
@@ -2907,6 +3307,25 @@ export type HeadToHeadBattleDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
 }
 
 /**
+ * HeadToHeadBattle.winnerUser
+ */
+export type HeadToHeadBattle$winnerUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
  * HeadToHeadBattle.participants
  */
 export type HeadToHeadBattle$participantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2979,22 +3398,51 @@ export type HeadToHeadBattle$submissionsArgs<ExtArgs extends runtime.Types.Exten
 }
 
 /**
- * HeadToHeadBattle.winnerUser
+ * HeadToHeadBattle.battleComments
  */
-export type HeadToHeadBattle$winnerUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type HeadToHeadBattle$battleCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the BattleComment
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.BattleCommentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the BattleComment
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.BattleCommentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
+  include?: Prisma.BattleCommentInclude<ExtArgs> | null
+  where?: Prisma.BattleCommentWhereInput
+  orderBy?: Prisma.BattleCommentOrderByWithRelationInput | Prisma.BattleCommentOrderByWithRelationInput[]
+  cursor?: Prisma.BattleCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleCommentScalarFieldEnum | Prisma.BattleCommentScalarFieldEnum[]
+}
+
+/**
+ * HeadToHeadBattle.battleVotes
+ */
+export type HeadToHeadBattle$battleVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BattleVote
+   */
+  select?: Prisma.BattleVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BattleVote
+   */
+  omit?: Prisma.BattleVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BattleVoteInclude<ExtArgs> | null
+  where?: Prisma.BattleVoteWhereInput
+  orderBy?: Prisma.BattleVoteOrderByWithRelationInput | Prisma.BattleVoteOrderByWithRelationInput[]
+  cursor?: Prisma.BattleVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BattleVoteScalarFieldEnum | Prisma.BattleVoteScalarFieldEnum[]
 }
 
 /**

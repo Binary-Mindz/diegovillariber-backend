@@ -265,8 +265,8 @@ export type BattleInvitationCreateInput = {
   sentAt?: Date | string
   respondedAt?: Date | string | null
   battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutInvitationsInput
-  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsHostInput
-  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInput
+  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsInviterInput
+  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInvitteInput
 }
 
 export type BattleInvitationUncheckedCreateInput = {
@@ -285,8 +285,8 @@ export type BattleInvitationUpdateInput = {
   sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutInvitationsNestedInput
-  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsHostNestedInput
-  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsNestedInput
+  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInviterNestedInput
+  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInvitteNestedInput
 }
 
 export type BattleInvitationUncheckedUpdateInput = {
@@ -506,8 +506,8 @@ export type BattleInvitationCreateWithoutBattleInput = {
   status?: $Enums.InvitationStatus
   sentAt?: Date | string
   respondedAt?: Date | string | null
-  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsHostInput
-  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInput
+  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsInviterInput
+  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInvitteInput
 }
 
 export type BattleInvitationUncheckedCreateWithoutBattleInput = {
@@ -564,7 +564,7 @@ export type BattleInvitationCreateWithoutInviterInput = {
   sentAt?: Date | string
   respondedAt?: Date | string | null
   battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutInvitationsInput
-  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInput
+  invitee: Prisma.UserCreateNestedOneWithoutBattleInvitationsInvitteInput
 }
 
 export type BattleInvitationUncheckedCreateWithoutInviterInput = {
@@ -592,7 +592,7 @@ export type BattleInvitationCreateWithoutInviteeInput = {
   sentAt?: Date | string
   respondedAt?: Date | string | null
   battle: Prisma.HeadToHeadBattleCreateNestedOneWithoutInvitationsInput
-  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsHostInput
+  inviter: Prisma.UserCreateNestedOneWithoutBattleInvitationsInviterInput
 }
 
 export type BattleInvitationUncheckedCreateWithoutInviteeInput = {
@@ -660,8 +660,8 @@ export type BattleInvitationUpdateWithoutBattleInput = {
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsHostNestedInput
-  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsNestedInput
+  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInviterNestedInput
+  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInvitteNestedInput
 }
 
 export type BattleInvitationUncheckedUpdateWithoutBattleInput = {
@@ -706,7 +706,7 @@ export type BattleInvitationUpdateWithoutInviterInput = {
   sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutInvitationsNestedInput
-  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsNestedInput
+  invitee?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInvitteNestedInput
 }
 
 export type BattleInvitationUncheckedUpdateWithoutInviterInput = {
@@ -733,7 +733,7 @@ export type BattleInvitationUpdateWithoutInviteeInput = {
   sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   respondedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   battle?: Prisma.HeadToHeadBattleUpdateOneRequiredWithoutInvitationsNestedInput
-  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsHostNestedInput
+  inviter?: Prisma.UserUpdateOneRequiredWithoutBattleInvitationsInviterNestedInput
 }
 
 export type BattleInvitationUncheckedUpdateWithoutInviteeInput = {
