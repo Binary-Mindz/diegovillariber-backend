@@ -9,6 +9,79 @@
 * 🟢 You can import this file directly.
 */
 
+export const ChallengeType = {
+  PHOTO: 'PHOTO',
+  VIDEO: 'VIDEO',
+  LAP_TIME: 'LAP_TIME',
+  EXPLORATION: 'EXPLORATION'
+} as const
+
+export type ChallengeType = (typeof ChallengeType)[keyof typeof ChallengeType]
+
+
+export const ChallengeCategory = {
+  DAILY: 'DAILY',
+  SPOTTER: 'SPOTTER',
+  COMMUNITY: 'COMMUNITY',
+  BRAND: 'BRAND'
+} as const
+
+export type ChallengeCategory = (typeof ChallengeCategory)[keyof typeof ChallengeCategory]
+
+
+export const Preference = {
+  CAR: 'CAR',
+  BIKE: 'BIKE',
+  BOTH: 'BOTH'
+} as const
+
+export type Preference = (typeof Preference)[keyof typeof Preference]
+
+
+export const ParticipationScope = {
+  GLOBAL: 'GLOBAL',
+  RADIUS: 'RADIUS'
+} as const
+
+export type ParticipationScope = (typeof ParticipationScope)[keyof typeof ParticipationScope]
+
+
+export const WinnerPrizeType = {
+  NO_PRIZE: 'NO_PRIZE',
+  FEATURED: 'FEATURED',
+  PRESTIGE_POINTS: 'PRESTIGE_POINTS',
+  EXPERIENCE_POINTS: 'EXPERIENCE_POINTS',
+  FREE_ENTRY: 'FREE_ENTRY',
+  CO_PILOT_EXPERIENCE: 'CO_PILOT_EXPERIENCE',
+  MERCHANDISING: 'MERCHANDISING',
+  CUSTOM: 'CUSTOM'
+} as const
+
+export type WinnerPrizeType = (typeof WinnerPrizeType)[keyof typeof WinnerPrizeType]
+
+
+export const ChallengeStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ChallengeStatus = (typeof ChallengeStatus)[keyof typeof ChallengeStatus]
+
+
+export const DeviceType = {
+  MOBILE: 'MOBILE',
+  DSLR: 'DSLR',
+  MIRRORLESS: 'MIRRORLESS',
+  ACTION_CAMERA: 'ACTION_CAMERA',
+  DRONE: 'DRONE',
+  OTHER: 'OTHER'
+} as const
+
+export type DeviceType = (typeof DeviceType)[keyof typeof DeviceType]
+
+
 export const FileType = {
   IMAGE: 'IMAGE',
   DOCS: 'DOCS',
@@ -20,6 +93,82 @@ export const FileType = {
 } as const
 
 export type FileType = (typeof FileType)[keyof typeof FileType]
+
+
+export const BattleMediaType = {
+  PHOTO: 'PHOTO',
+  VIDEO: 'VIDEO'
+} as const
+
+export type BattleMediaType = (typeof BattleMediaType)[keyof typeof BattleMediaType]
+
+
+export const BattleAccessType = {
+  OPEN: 'OPEN',
+  INVITATION_ONLY: 'INVITATION_ONLY',
+  AUTO_INVITE: 'AUTO_INVITE',
+  FOLLOWERS_ONLY: 'FOLLOWERS_ONLY'
+} as const
+
+export type BattleAccessType = (typeof BattleAccessType)[keyof typeof BattleAccessType]
+
+
+export const AutoInviteScope = {
+  SAME_CITY: 'SAME_CITY',
+  SAME_COUNTRY_500KM: 'SAME_COUNTRY_500KM',
+  WORLDWIDE: 'WORLDWIDE'
+} as const
+
+export type AutoInviteScope = (typeof AutoInviteScope)[keyof typeof AutoInviteScope]
+
+
+export const CameraRequirement = {
+  ANY: 'ANY',
+  MOBILE_ONLY: 'MOBILE_ONLY',
+  DSLR_MIRRORLESS_ONLY: 'DSLR_MIRRORLESS_ONLY',
+  PROFESSIONAL_ONLY: 'PROFESSIONAL_ONLY'
+} as const
+
+export type CameraRequirement = (typeof CameraRequirement)[keyof typeof CameraRequirement]
+
+
+export const BattleStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  RUNNING: 'RUNNING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type BattleStatus = (typeof BattleStatus)[keyof typeof BattleStatus]
+
+
+export const InvitationStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type InvitationStatus = (typeof InvitationStatus)[keyof typeof InvitationStatus]
+
+
+export const ParticipantStatus = {
+  JOINED: 'JOINED',
+  LEFT: 'LEFT',
+  DISQUALIFIED: 'DISQUALIFIED'
+} as const
+
+export type ParticipantStatus = (typeof ParticipantStatus)[keyof typeof ParticipantStatus]
+
+
+export const SubmissionStatus = {
+  SUBMITTED: 'SUBMITTED',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type SubmissionStatus = (typeof SubmissionStatus)[keyof typeof SubmissionStatus]
 
 
 export const VisiualStyle = {
@@ -102,15 +251,6 @@ export const Role = {
 export type Role = (typeof Role)[keyof typeof Role]
 
 
-export const Preference = {
-  Car: 'Car',
-  Motorbike: 'Motorbike',
-  Both: 'Both'
-} as const
-
-export type Preference = (typeof Preference)[keyof typeof Preference]
-
-
 export const Type = {
   SPOTTER: 'SPOTTER',
   OWNER: 'OWNER',
@@ -159,19 +299,8 @@ export const PostType = {
 export type PostType = (typeof PostType)[keyof typeof PostType]
 
 
-export const BattleStatus = {
-  PENDING: 'PENDING',
-  ONGOING: 'ONGOING',
-  COMPLETED: 'COMPLETED',
-  CANCELED: 'CANCELED'
-} as const
-
-export type BattleStatus = (typeof BattleStatus)[keyof typeof BattleStatus]
-
-
 export const BattleCategory = {
   RAW_SHIFT: 'RAW_SHIFT',
-  HEAD_TO_HEAD: 'HEAD_TO_HEAD',
   SPLIT_SCREEN: 'SPLIT_SCREEN'
 } as const
 

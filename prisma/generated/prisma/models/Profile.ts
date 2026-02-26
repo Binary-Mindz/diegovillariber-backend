@@ -672,6 +672,10 @@ export type NullableEnumPreferenceFieldUpdateOperationsInput = {
   set?: $Enums.Preference | null
 }
 
+export type EnumIsActiveFieldUpdateOperationsInput = {
+  set?: $Enums.IsActive
+}
+
 export type ProfileCreateNestedOneWithoutSimRacingInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutSimRacingInput, Prisma.ProfileUncheckedCreateWithoutSimRacingInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSimRacingInput

@@ -20,58 +20,88 @@ export type ChallengeParticipantModel = runtime.Types.Result.DefaultSelection<Pr
 
 export type AggregateChallengeParticipant = {
   _count: ChallengeParticipantCountAggregateOutputType | null
+  _avg: ChallengeParticipantAvgAggregateOutputType | null
+  _sum: ChallengeParticipantSumAggregateOutputType | null
   _min: ChallengeParticipantMinAggregateOutputType | null
   _max: ChallengeParticipantMaxAggregateOutputType | null
+}
+
+export type ChallengeParticipantAvgAggregateOutputType = {
+  score: number | null
+}
+
+export type ChallengeParticipantSumAggregateOutputType = {
+  score: number | null
 }
 
 export type ChallengeParticipantMinAggregateOutputType = {
   id: string | null
   challengeId: string | null
   userId: string | null
-  joinedAt: Date | null
-  isActive: boolean | null
+  submissionUrl: string | null
+  score: number | null
+  isWinner: boolean | null
+  createdAt: Date | null
 }
 
 export type ChallengeParticipantMaxAggregateOutputType = {
   id: string | null
   challengeId: string | null
   userId: string | null
-  joinedAt: Date | null
-  isActive: boolean | null
+  submissionUrl: string | null
+  score: number | null
+  isWinner: boolean | null
+  createdAt: Date | null
 }
 
 export type ChallengeParticipantCountAggregateOutputType = {
   id: number
   challengeId: number
   userId: number
-  joinedAt: number
-  isActive: number
+  submissionUrl: number
+  score: number
+  isWinner: number
+  createdAt: number
   _all: number
 }
 
+
+export type ChallengeParticipantAvgAggregateInputType = {
+  score?: true
+}
+
+export type ChallengeParticipantSumAggregateInputType = {
+  score?: true
+}
 
 export type ChallengeParticipantMinAggregateInputType = {
   id?: true
   challengeId?: true
   userId?: true
-  joinedAt?: true
-  isActive?: true
+  submissionUrl?: true
+  score?: true
+  isWinner?: true
+  createdAt?: true
 }
 
 export type ChallengeParticipantMaxAggregateInputType = {
   id?: true
   challengeId?: true
   userId?: true
-  joinedAt?: true
-  isActive?: true
+  submissionUrl?: true
+  score?: true
+  isWinner?: true
+  createdAt?: true
 }
 
 export type ChallengeParticipantCountAggregateInputType = {
   id?: true
   challengeId?: true
   userId?: true
-  joinedAt?: true
-  isActive?: true
+  submissionUrl?: true
+  score?: true
+  isWinner?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -113,6 +143,18 @@ export type ChallengeParticipantAggregateArgs<ExtArgs extends runtime.Types.Exte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: ChallengeParticipantAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: ChallengeParticipantSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: ChallengeParticipantMinAggregateInputType
@@ -143,6 +185,8 @@ export type ChallengeParticipantGroupByArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   _count?: ChallengeParticipantCountAggregateInputType | true
+  _avg?: ChallengeParticipantAvgAggregateInputType
+  _sum?: ChallengeParticipantSumAggregateInputType
   _min?: ChallengeParticipantMinAggregateInputType
   _max?: ChallengeParticipantMaxAggregateInputType
 }
@@ -151,9 +195,13 @@ export type ChallengeParticipantGroupByOutputType = {
   id: string
   challengeId: string
   userId: string
-  joinedAt: Date | null
-  isActive: boolean
+  submissionUrl: string | null
+  score: number | null
+  isWinner: boolean
+  createdAt: Date
   _count: ChallengeParticipantCountAggregateOutputType | null
+  _avg: ChallengeParticipantAvgAggregateOutputType | null
+  _sum: ChallengeParticipantSumAggregateOutputType | null
   _min: ChallengeParticipantMinAggregateOutputType | null
   _max: ChallengeParticipantMaxAggregateOutputType | null
 }
@@ -180,47 +228,55 @@ export type ChallengeParticipantWhereInput = {
   id?: Prisma.UuidFilter<"ChallengeParticipant"> | string
   challengeId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
   userId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
-  joinedAt?: Prisma.DateTimeNullableFilter<"ChallengeParticipant"> | Date | string | null
-  isActive?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  submissionUrl?: Prisma.StringNullableFilter<"ChallengeParticipant"> | string | null
+  score?: Prisma.IntNullableFilter<"ChallengeParticipant"> | number | null
+  isWinner?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ChallengeParticipant"> | Date | string
   challenge?: Prisma.XOR<Prisma.ChallengeScalarRelationFilter, Prisma.ChallengeWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  posts?: Prisma.XPostListRelationFilter
 }
 
 export type ChallengeParticipantOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   challengeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  joinedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  submissionUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  score?: Prisma.SortOrderInput | Prisma.SortOrder
+  isWinner?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   challenge?: Prisma.ChallengeOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
-  posts?: Prisma.XPostOrderByRelationAggregateInput
 }
 
 export type ChallengeParticipantWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  challengeId_userId?: Prisma.ChallengeParticipantChallengeIdUserIdCompoundUniqueInput
   AND?: Prisma.ChallengeParticipantWhereInput | Prisma.ChallengeParticipantWhereInput[]
   OR?: Prisma.ChallengeParticipantWhereInput[]
   NOT?: Prisma.ChallengeParticipantWhereInput | Prisma.ChallengeParticipantWhereInput[]
   challengeId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
   userId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
-  joinedAt?: Prisma.DateTimeNullableFilter<"ChallengeParticipant"> | Date | string | null
-  isActive?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  submissionUrl?: Prisma.StringNullableFilter<"ChallengeParticipant"> | string | null
+  score?: Prisma.IntNullableFilter<"ChallengeParticipant"> | number | null
+  isWinner?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ChallengeParticipant"> | Date | string
   challenge?: Prisma.XOR<Prisma.ChallengeScalarRelationFilter, Prisma.ChallengeWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  posts?: Prisma.XPostListRelationFilter
-}, "id">
+}, "id" | "challengeId_userId">
 
 export type ChallengeParticipantOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   challengeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  joinedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  submissionUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  score?: Prisma.SortOrderInput | Prisma.SortOrder
+  isWinner?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.ChallengeParticipantCountOrderByAggregateInput
+  _avg?: Prisma.ChallengeParticipantAvgOrderByAggregateInput
   _max?: Prisma.ChallengeParticipantMaxOrderByAggregateInput
   _min?: Prisma.ChallengeParticipantMinOrderByAggregateInput
+  _sum?: Prisma.ChallengeParticipantSumOrderByAggregateInput
 }
 
 export type ChallengeParticipantScalarWhereWithAggregatesInput = {
@@ -230,66 +286,78 @@ export type ChallengeParticipantScalarWhereWithAggregatesInput = {
   id?: Prisma.UuidWithAggregatesFilter<"ChallengeParticipant"> | string
   challengeId?: Prisma.UuidWithAggregatesFilter<"ChallengeParticipant"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"ChallengeParticipant"> | string
-  joinedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ChallengeParticipant"> | Date | string | null
-  isActive?: Prisma.BoolWithAggregatesFilter<"ChallengeParticipant"> | boolean
+  submissionUrl?: Prisma.StringNullableWithAggregatesFilter<"ChallengeParticipant"> | string | null
+  score?: Prisma.IntNullableWithAggregatesFilter<"ChallengeParticipant"> | number | null
+  isWinner?: Prisma.BoolWithAggregatesFilter<"ChallengeParticipant"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"ChallengeParticipant"> | Date | string
 }
 
 export type ChallengeParticipantCreateInput = {
   id?: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
+  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUncheckedCreateInput = {
   id?: string
   challengeId: string
   userId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   challengeId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantCreateManyInput = {
   id?: string
   challengeId: string
   userId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   challengeId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantListRelationFilter = {
@@ -302,33 +370,47 @@ export type ChallengeParticipantOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type ChallengeParticipantChallengeIdUserIdCompoundUniqueInput = {
+  challengeId: string
+  userId: string
+}
+
 export type ChallengeParticipantCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   challengeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  submissionUrl?: Prisma.SortOrder
+  score?: Prisma.SortOrder
+  isWinner?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+}
+
+export type ChallengeParticipantAvgOrderByAggregateInput = {
+  score?: Prisma.SortOrder
 }
 
 export type ChallengeParticipantMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   challengeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  submissionUrl?: Prisma.SortOrder
+  score?: Prisma.SortOrder
+  isWinner?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type ChallengeParticipantMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   challengeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  joinedAt?: Prisma.SortOrder
-  isActive?: Prisma.SortOrder
+  submissionUrl?: Prisma.SortOrder
+  score?: Prisma.SortOrder
+  isWinner?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
-export type ChallengeParticipantNullableScalarRelationFilter = {
-  is?: Prisma.ChallengeParticipantWhereInput | null
-  isNot?: Prisma.ChallengeParticipantWhereInput | null
+export type ChallengeParticipantSumOrderByAggregateInput = {
+  score?: Prisma.SortOrder
 }
 
 export type ChallengeParticipantCreateNestedManyWithoutChallengeInput = {
@@ -415,36 +497,22 @@ export type ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ChallengeParticipantScalarWhereInput | Prisma.ChallengeParticipantScalarWhereInput[]
 }
 
-export type ChallengeParticipantCreateNestedOneWithoutPostsInput = {
-  create?: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
-  connectOrCreate?: Prisma.ChallengeParticipantCreateOrConnectWithoutPostsInput
-  connect?: Prisma.ChallengeParticipantWhereUniqueInput
-}
-
-export type ChallengeParticipantUpdateOneWithoutPostsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
-  connectOrCreate?: Prisma.ChallengeParticipantCreateOrConnectWithoutPostsInput
-  upsert?: Prisma.ChallengeParticipantUpsertWithoutPostsInput
-  disconnect?: Prisma.ChallengeParticipantWhereInput | boolean
-  delete?: Prisma.ChallengeParticipantWhereInput | boolean
-  connect?: Prisma.ChallengeParticipantWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeParticipantUpdateToOneWithWhereWithoutPostsInput, Prisma.ChallengeParticipantUpdateWithoutPostsInput>, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
-}
-
 export type ChallengeParticipantCreateWithoutChallengeInput = {
   id?: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
 }
 
 export type ChallengeParticipantUncheckedCreateWithoutChallengeInput = {
   id?: string
   userId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantCreateOrConnectWithoutChallengeInput = {
@@ -480,24 +548,28 @@ export type ChallengeParticipantScalarWhereInput = {
   id?: Prisma.UuidFilter<"ChallengeParticipant"> | string
   challengeId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
   userId?: Prisma.UuidFilter<"ChallengeParticipant"> | string
-  joinedAt?: Prisma.DateTimeNullableFilter<"ChallengeParticipant"> | Date | string | null
-  isActive?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  submissionUrl?: Prisma.StringNullableFilter<"ChallengeParticipant"> | string | null
+  score?: Prisma.IntNullableFilter<"ChallengeParticipant"> | number | null
+  isWinner?: Prisma.BoolFilter<"ChallengeParticipant"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ChallengeParticipant"> | Date | string
 }
 
 export type ChallengeParticipantCreateWithoutUserInput = {
   id?: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
-  posts?: Prisma.XPostCreateNestedManyWithoutChallengeParticipantInput
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
+  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsInput
 }
 
 export type ChallengeParticipantUncheckedCreateWithoutUserInput = {
   id?: string
   challengeId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  posts?: Prisma.XPostUncheckedCreateNestedManyWithoutChallengeParticipantInput
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantCreateOrConnectWithoutUserInput = {
@@ -526,163 +598,100 @@ export type ChallengeParticipantUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.ChallengeParticipantUpdateManyMutationInput, Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserInput>
 }
 
-export type ChallengeParticipantCreateWithoutPostsInput = {
-  id?: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-  challenge: Prisma.ChallengeCreateNestedOneWithoutParticipantsListInput
-  user: Prisma.UserCreateNestedOneWithoutChallengeParticipantsInput
-}
-
-export type ChallengeParticipantUncheckedCreateWithoutPostsInput = {
-  id?: string
-  challengeId: string
-  userId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
-}
-
-export type ChallengeParticipantCreateOrConnectWithoutPostsInput = {
-  where: Prisma.ChallengeParticipantWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
-}
-
-export type ChallengeParticipantUpsertWithoutPostsInput = {
-  update: Prisma.XOR<Prisma.ChallengeParticipantUpdateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
-  create: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutPostsInput>
-  where?: Prisma.ChallengeParticipantWhereInput
-}
-
-export type ChallengeParticipantUpdateToOneWithWhereWithoutPostsInput = {
-  where?: Prisma.ChallengeParticipantWhereInput
-  data: Prisma.XOR<Prisma.ChallengeParticipantUpdateWithoutPostsInput, Prisma.ChallengeParticipantUncheckedUpdateWithoutPostsInput>
-}
-
-export type ChallengeParticipantUpdateWithoutPostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
-}
-
-export type ChallengeParticipantUncheckedUpdateWithoutPostsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  challengeId?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-}
-
 export type ChallengeParticipantCreateManyChallengeInput = {
   id?: string
   userId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantUpdateWithoutChallengeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutChallengeParticipantsNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateWithoutChallengeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantUncheckedUpdateManyWithoutChallengeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantCreateManyUserInput = {
   id?: string
   challengeId: string
-  joinedAt?: Date | string | null
-  isActive?: boolean
+  submissionUrl?: string | null
+  score?: number | null
+  isWinner?: boolean
+  createdAt?: Date | string
 }
 
 export type ChallengeParticipantUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsListNestedInput
-  posts?: Prisma.XPostUpdateManyWithoutChallengeParticipantNestedInput
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challenge?: Prisma.ChallengeUpdateOneRequiredWithoutParticipantsNestedInput
 }
 
 export type ChallengeParticipantUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   challengeId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  posts?: Prisma.XPostUncheckedUpdateManyWithoutChallengeParticipantNestedInput
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ChallengeParticipantUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   challengeId?: Prisma.StringFieldUpdateOperationsInput | string
-  joinedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-
-/**
- * Count Type ChallengeParticipantCountOutputType
- */
-
-export type ChallengeParticipantCountOutputType = {
-  posts: number
-}
-
-export type ChallengeParticipantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  posts?: boolean | ChallengeParticipantCountOutputTypeCountPostsArgs
-}
-
-/**
- * ChallengeParticipantCountOutputType without action
- */
-export type ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeParticipantCountOutputType
-   */
-  select?: Prisma.ChallengeParticipantCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * ChallengeParticipantCountOutputType without action
- */
-export type ChallengeParticipantCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.XPostWhereInput
-}
 
 
 export type ChallengeParticipantSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   challengeId?: boolean
   userId?: boolean
-  joinedAt?: boolean
-  isActive?: boolean
+  submissionUrl?: boolean
+  score?: boolean
+  isWinner?: boolean
+  createdAt?: boolean
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  posts?: boolean | Prisma.ChallengeParticipant$postsArgs<ExtArgs>
-  _count?: boolean | Prisma.ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challengeParticipant"]>
 
 export type ChallengeParticipantSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   challengeId?: boolean
   userId?: boolean
-  joinedAt?: boolean
-  isActive?: boolean
+  submissionUrl?: boolean
+  score?: boolean
+  isWinner?: boolean
+  createdAt?: boolean
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challengeParticipant"]>
@@ -691,8 +700,10 @@ export type ChallengeParticipantSelectUpdateManyAndReturn<ExtArgs extends runtim
   id?: boolean
   challengeId?: boolean
   userId?: boolean
-  joinedAt?: boolean
-  isActive?: boolean
+  submissionUrl?: boolean
+  score?: boolean
+  isWinner?: boolean
+  createdAt?: boolean
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challengeParticipant"]>
@@ -701,16 +712,16 @@ export type ChallengeParticipantSelectScalar = {
   id?: boolean
   challengeId?: boolean
   userId?: boolean
-  joinedAt?: boolean
-  isActive?: boolean
+  submissionUrl?: boolean
+  score?: boolean
+  isWinner?: boolean
+  createdAt?: boolean
 }
 
-export type ChallengeParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "challengeId" | "userId" | "joinedAt" | "isActive", ExtArgs["result"]["challengeParticipant"]>
+export type ChallengeParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "challengeId" | "userId" | "submissionUrl" | "score" | "isWinner" | "createdAt", ExtArgs["result"]["challengeParticipant"]>
 export type ChallengeParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  posts?: boolean | Prisma.ChallengeParticipant$postsArgs<ExtArgs>
-  _count?: boolean | Prisma.ChallengeParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChallengeParticipantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   challenge?: boolean | Prisma.ChallengeDefaultArgs<ExtArgs>
@@ -726,14 +737,15 @@ export type $ChallengeParticipantPayload<ExtArgs extends runtime.Types.Extension
   objects: {
     challenge: Prisma.$ChallengePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
-    posts: Prisma.$XPostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     challengeId: string
     userId: string
-    joinedAt: Date | null
-    isActive: boolean
+    submissionUrl: string | null
+    score: number | null
+    isWinner: boolean
+    createdAt: Date
   }, ExtArgs["result"]["challengeParticipant"]>
   composites: {}
 }
@@ -1130,7 +1142,6 @@ export interface Prisma__ChallengeParticipantClient<T, Null = never, ExtArgs ext
   readonly [Symbol.toStringTag]: "PrismaPromise"
   challenge<T extends Prisma.ChallengeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ChallengeDefaultArgs<ExtArgs>>): Prisma.Prisma__ChallengeClient<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  posts<T extends Prisma.ChallengeParticipant$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ChallengeParticipant$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$XPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1163,8 +1174,10 @@ export interface ChallengeParticipantFieldRefs {
   readonly id: Prisma.FieldRef<"ChallengeParticipant", 'String'>
   readonly challengeId: Prisma.FieldRef<"ChallengeParticipant", 'String'>
   readonly userId: Prisma.FieldRef<"ChallengeParticipant", 'String'>
-  readonly joinedAt: Prisma.FieldRef<"ChallengeParticipant", 'DateTime'>
-  readonly isActive: Prisma.FieldRef<"ChallengeParticipant", 'Boolean'>
+  readonly submissionUrl: Prisma.FieldRef<"ChallengeParticipant", 'String'>
+  readonly score: Prisma.FieldRef<"ChallengeParticipant", 'Int'>
+  readonly isWinner: Prisma.FieldRef<"ChallengeParticipant", 'Boolean'>
+  readonly createdAt: Prisma.FieldRef<"ChallengeParticipant", 'DateTime'>
 }
     
 
@@ -1558,30 +1571,6 @@ export type ChallengeParticipantDeleteManyArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many ChallengeParticipants to delete.
    */
   limit?: number
-}
-
-/**
- * ChallengeParticipant.posts
- */
-export type ChallengeParticipant$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the XPost
-   */
-  select?: Prisma.XPostSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the XPost
-   */
-  omit?: Prisma.XPostOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.XPostInclude<ExtArgs> | null
-  where?: Prisma.XPostWhereInput
-  orderBy?: Prisma.XPostOrderByWithRelationInput | Prisma.XPostOrderByWithRelationInput[]
-  cursor?: Prisma.XPostWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.XPostScalarFieldEnum | Prisma.XPostScalarFieldEnum[]
 }
 
 /**

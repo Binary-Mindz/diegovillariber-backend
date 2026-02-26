@@ -53,26 +53,6 @@ export type AmbassadorProgram = Prisma.AmbassadorProgramModel
  */
 export type Battle = Prisma.BattleModel
 /**
- * Model BattleEntry
- * 
- */
-export type BattleEntry = Prisma.BattleEntryModel
-/**
- * Model BattleParticipant
- * 
- */
-export type BattleParticipant = Prisma.BattleParticipantModel
-/**
- * Model BattleResult
- * 
- */
-export type BattleResult = Prisma.BattleResultModel
-/**
- * Model BattleVote
- * 
- */
-export type BattleVote = Prisma.BattleVoteModel
-/**
  * Model BusinessProfile
  * 
  */
@@ -88,15 +68,20 @@ export type Car = Prisma.CarModel
  */
 export type Challenge = Prisma.ChallengeModel
 /**
+ * Model ChallengeDeviceRule
+ * 
+ */
+export type ChallengeDeviceRule = Prisma.ChallengeDeviceRuleModel
+/**
+ * Model ChallengePrize
+ * 
+ */
+export type ChallengePrize = Prisma.ChallengePrizeModel
+/**
  * Model ChallengeParticipant
  * 
  */
 export type ChallengeParticipant = Prisma.ChallengeParticipantModel
-/**
- * Model ChallengeResult
- * 
- */
-export type ChallengeResult = Prisma.ChallengeResultModel
 /**
  * Model ChallengeSubmission
  * 
@@ -177,6 +162,26 @@ export type HardwareSetup = Prisma.HardwareSetupModel
  * 
  */
 export type Hashtag = Prisma.HashtagModel
+/**
+ * Model HeadToHeadBattle
+ * 
+ */
+export type HeadToHeadBattle = Prisma.HeadToHeadBattleModel
+/**
+ * Model BattleParticipant
+ * 
+ */
+export type BattleParticipant = Prisma.BattleParticipantModel
+/**
+ * Model BattleInvitation
+ * 
+ */
+export type BattleInvitation = Prisma.BattleInvitationModel
+/**
+ * Model BattleSubmission
+ * 
+ */
+export type BattleSubmission = Prisma.BattleSubmissionModel
 /**
  * Model HidePost
  * 
@@ -347,8 +352,3 @@ export type WheelsTires = Prisma.WheelsTiresModel
  * 
  */
 export type WishList = Prisma.WishListModel
-/**
- * Model XPost
- * 
- */
-export type XPost = Prisma.XPostModel

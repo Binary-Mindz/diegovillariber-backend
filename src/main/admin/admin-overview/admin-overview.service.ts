@@ -6,40 +6,40 @@ export class AdminOverviewService {
   constructor(private readonly prisma: PrismaService) { }
 
   async getDashboardStats() {
-    const [
-      totalUsers,
-      totalPosts,
-      totalLikes,
-      totalComments,
-      totalEvents,
-      totalChallenges,
-      activeChallenges,
-      headToHeadBattles,
-    ] = await Promise.all([
-      this.prisma.user.count(),
-      this.prisma.post.count(),
-      this.prisma.like.count(),
-      this.prisma.comment.count(),
-      this.prisma.event.count(),
-      this.prisma.challenge.count(),
-      this.prisma.challenge.count({
-        where: { isActive: 'ACTIVE' },
-      }),
-      this.prisma.battle.count({
-        where: { battleCategory: 'HEAD_TO_HEAD' },
-      }),
-    ]);
+    // const [
+    //   totalUsers,
+    //   totalPosts,
+    //   totalLikes,
+    //   totalComments,
+    //   totalEvents,
+    //   totalChallenges,
+    //   activeChallenges,
+    //   headToHeadBattles,
+    // ] = await Promise.all([
+    //   this.prisma.user.count(),
+    //   this.prisma.post.count(),
+    //   this.prisma.like.count(),
+    //   this.prisma.comment.count(),
+    //   this.prisma.event.count(),
+    //   this.prisma.challenge.count(),
+    //   this.prisma.challenge.count({
+    //     where: { isActive: 'ACTIVE' },
+    //   }),
+    //   this.prisma.battle.count({
+    //     where: { battleCategory: 'HEAD_TO_HEAD' },
+    //   }),
+    // ]);
 
-    return {
-      totalUsers,
-      totalPosts,
-      totalLikes,
-      totalComments,
-      totalEvents,
-      totalChallenges,
-      activeChallenges,
-      headToHeadBattles,
-    };
+    // return {
+    //   totalUsers,
+    //   totalPosts,
+    //   totalLikes,
+    //   totalComments,
+    //   totalEvents,
+    //   totalChallenges,
+    //   activeChallenges,
+    //   headToHeadBattles,
+    // };
   }
 
   async getWeeklyEngagement() {
