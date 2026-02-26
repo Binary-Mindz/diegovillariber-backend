@@ -1,12 +1,12 @@
 import { Module } from "@nestjs/common";
-import { BattleModule } from "./battle/battle.module";
-import { ChallengeModule } from "./challenge/challenge.module";
+
 import { EventModule } from "./event/event.module";
+import { RawShiftModule } from "./raw-shift/rawshift.module";
 
 
 
 @Module({
-  imports: [BattleModule, ChallengeModule, EventModule],
+  imports: [EventModule, RawShiftModule],
   controllers: [],
   providers: [],
   exports: [],

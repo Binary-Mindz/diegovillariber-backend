@@ -38,34 +38,34 @@ export class AdminAnalyticService {
   }
 
   async getChallengeStats() {
-    const grouped = await this.prisma.challenge.groupBy({
-      by: ['isActive'],
-      _count: {
-        _all: true,
-      },
-    });
+  //   const grouped = await this.prisma.challenge.groupBy({
+  //     by: ['isActive'],
+  //     _count: {
+  //       _all: true,
+  //     },
+  //   });
 
-    let totalChallenges = 0;
-    let activeChallenges = 0;
-    let pendingChallenges = 0;
+  //   let totalChallenges = 0;
+  //   let activeChallenges = 0;
+  //   let pendingChallenges = 0;
 
-    for (const item of grouped) {
-      totalChallenges += item._count._all;
+  //   for (const item of grouped) {
+  //     totalChallenges += item._count._all;
 
-      if (item.isActive === 'ACTIVE') {
-        activeChallenges = item._count._all;
-      }
+  //     if (item.isActive === 'ACTIVE') {
+  //       activeChallenges = item._count._all;
+  //     }
 
-      if (item.isActive === 'PENDING') {
-        pendingChallenges = item._count._all;
-      }
-    }
+  //     if (item.isActive === 'PENDING') {
+  //       pendingChallenges = item._count._all;
+  //     }
+  //   }
 
-    return {
-      totalChallenges,
-      activeChallenges,
-      pendingChallenges,
-    };
+  //   return {
+  //     totalChallenges,
+  //     activeChallenges,
+  //     pendingChallenges,
+  //   };
   }
 
 }

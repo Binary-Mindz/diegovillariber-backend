@@ -654,6 +654,10 @@ export type EnumDriveCategoryFieldUpdateOperationsInput = {
   set?: $Enums.DriveCategory
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 export type NullableIntFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
