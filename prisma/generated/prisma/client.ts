@@ -248,6 +248,11 @@ export type Payment = Prisma.PaymentModel
  */
 export type Post = Prisma.PostModel
 /**
+ * Model Prize
+ * 
+ */
+export type Prize = Prisma.PrizeModel
+/**
  * Model ProDriverProfile
  * 
  */

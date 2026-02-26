@@ -1,8 +1,3 @@
-enum BattleMediaType {
-  PHOTO
-  VIDEO
-}
-
 enum BattleAccessType {
   OPEN               // anyone can join
   INVITATION_ONLY    // only invited users
@@ -15,8 +10,6 @@ enum AutoInviteScope {
   SAME_COUNTRY_500KM
   WORLDWIDE
 }
-
-
 
 enum CameraRequirement {
   ANY
@@ -52,6 +45,17 @@ enum SubmissionStatus {
   REJECTED
 }
 
+enum BattleCategory {
+  STYLE_BATTLE
+  STANCE_BATTLE
+  RACING_BATTLE
+  CLASSIC_BATTLE
+  JDM_BATTLE
+  EURO_BATTLE
+  MUSCLE_BATTLE
+  OFF_ROAD_BATTLE
+}
+
 model HeadToHeadBattle {
   id          String   @id @default(uuid()) @db.Uuid
 
@@ -62,11 +66,16 @@ model HeadToHeadBattle {
   winnerUser   User?   @relation("H2HWinner", fields: [winnerUserId], references: [id], onDelete: SetNull)
   
   title       String   @db.VarChar(255)
+  preference  Preference @default(CAR)
   description String?  @db.Text
 
-  mediaType   BattleMediaType
-  coverImage  String?  // optional cover
-  // you can also store thumbnail if needed
+  coverImage  String?
+  battleCategory BattleCategory @default(STYLE_BATTLE)
+  brandFilter    String? 
+  durationDays Int? 
+  winPrize    String 
+  uploadImageOrVideo String
+  
 
   // Requirements
   cameraRequirement        CameraRequirement @default(ANY)
@@ -91,7 +100,7 @@ model HeadToHeadBattle {
   // Timing
   startDate   DateTime @db.Timestamptz(6)
   endDate     DateTime @db.Timestamptz(6)
-  durationDays Int?    // UI shows “7 days” style; optional derived too
+   // UI shows “7 days” style; optional derived too
 
   status      BattleStatus @default(DRAFT)
 

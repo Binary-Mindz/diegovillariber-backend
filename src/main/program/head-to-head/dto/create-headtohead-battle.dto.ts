@@ -1,28 +1,73 @@
+// src/main/program/head-to-head/dto/create-headtohead-battle.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsBoolean, IsDate, IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
-import { AutoInviteScope, BattleAccessType, BattleMediaType, BattleStatus, CameraRequirement, ParticipationScope } from 'generated/prisma/enums';
+import {
+  IsBoolean,
+  IsDate,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 
+import {
+  AutoInviteScope,
+  BattleAccessType,
+  BattleCategory,
+  BattleStatus,
+  CameraRequirement,
+  ParticipationScope,
+  Preference,
+} from 'generated/prisma/enums';
 
 export class CreateHeadToHeadBattleDto {
-  @ApiProperty({ example: 'Night Street Photography Battle' })
+  @ApiProperty({ example: 'STANCE Battle - BMW vs Audi' })
   @IsString()
   title: string;
 
-  @ApiPropertyOptional({ example: 'Shoot the best night street photo. No heavy edits.' })
+  @ApiPropertyOptional({ enum: Preference, example: Preference.CAR })
+  @IsOptional()
+  @IsEnum(Preference)
+  preference?: Preference;
+
+  @ApiPropertyOptional({ example: 'Show your best stance shot' })
   @IsOptional()
   @IsString()
   description?: string;
 
-  @ApiProperty({ enum: BattleMediaType, example: BattleMediaType.PHOTO })
-  @IsEnum(BattleMediaType)
-  mediaType: BattleMediaType;
-
-  @ApiPropertyOptional({ example: 'https://cdn.app.com/covers/cover.jpg' })
+  @ApiPropertyOptional({ example: 'https://cdn.app.com/covers/h2h.jpg' })
   @IsOptional()
   @IsString()
   coverImage?: string;
 
+  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
+  @IsOptional()
+  @IsEnum(BattleCategory)
+  battleCategory?: BattleCategory;
+
+  @ApiPropertyOptional({ example: 'BMW,AUDI', description: 'optional brand filter' })
+  @IsOptional()
+  @IsString()
+  brandFilter?: string;
+
+  @ApiPropertyOptional({ example: 7 })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(365)
+  durationDays?: number;
+
+  @ApiProperty({ example: 'Free Car Wash Coupon', description: 'required in schema' })
+  @IsString()
+  winPrize: string;
+
+  @ApiProperty({ example: 'IMAGE', description: 'required in schema. Example: IMAGE / VIDEO / BOTH' })
+  @IsString()
+  uploadImageOrVideo: string;
+
+  // Requirements
   @ApiPropertyOptional({ enum: CameraRequirement, example: CameraRequirement.ANY })
   @IsOptional()
   @IsEnum(CameraRequirement)
@@ -38,6 +83,7 @@ export class CreateHeadToHeadBattleDto {
   @IsBoolean()
   rejectEditedPhotos?: boolean;
 
+  // Access
   @ApiPropertyOptional({ enum: BattleAccessType, example: BattleAccessType.OPEN })
   @IsOptional()
   @IsEnum(BattleAccessType)
@@ -55,12 +101,13 @@ export class CreateHeadToHeadBattleDto {
   @Max(2000)
   autoInviteCount?: number;
 
+  // Location
   @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;
 
-  @ApiPropertyOptional({ example: 25, description: 'Used when scope = RADIUS' })
+  @ApiPropertyOptional({ example: 25 })
   @IsOptional()
   @IsInt()
   @Min(1)
@@ -85,6 +132,7 @@ export class CreateHeadToHeadBattleDto {
   @IsString()
   placeId?: string;
 
+  // Timing
   @ApiProperty({ example: '2026-03-01T00:00:00.000Z' })
   @Type(() => Date)
   @IsDate()
@@ -94,13 +142,6 @@ export class CreateHeadToHeadBattleDto {
   @Type(() => Date)
   @IsDate()
   endDate: Date;
-
-  @ApiPropertyOptional({ example: 7 })
-  @IsOptional()
-  @IsInt()
-  @Min(1)
-  @Max(365)
-  durationDays?: number;
 
   @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.DRAFT })
   @IsOptional()

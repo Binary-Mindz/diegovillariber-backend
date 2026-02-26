@@ -11,6 +11,19 @@ export enum RawShiftTab {
 }
 
 export class RawShiftQueryDto {
+  @ApiPropertyOptional({ example: 1, minimum: 1 })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  page?: number;
+
+  @ApiPropertyOptional({ example: 20, minimum: 1, maximum: 50 })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(50)
+  limit?: number;
+
   @ApiPropertyOptional({
     enum: RawShiftTab,
     example: RawShiftTab.ACTIVE,
@@ -20,20 +33,6 @@ export class RawShiftQueryDto {
   @IsEnum(RawShiftTab)
   tab?: RawShiftTab;
 
-  @ApiPropertyOptional({ example: 1, minimum: 1 })
-  @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  @Min(1)
-  page?: number = 1;
-
-  @ApiPropertyOptional({ example: 10, minimum: 1, maximum: 50 })
-  @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  @Min(1)
-  @Max(50)
-  limit?: number = 10;
 
   @ApiPropertyOptional({
     enum: RawShiftStatus,
