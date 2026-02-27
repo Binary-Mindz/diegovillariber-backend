@@ -844,6 +844,91 @@ export type EnumInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
 }
 
+export type EnumSessionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel> | $Enums.SessionType
+}
+
+export type EnumWeatherFilter<$PrismaModel = never> = {
+  equals?: $Enums.Weather | Prisma.EnumWeatherFieldRefInput<$PrismaModel>
+  in?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeatherFilter<$PrismaModel> | $Enums.Weather
+}
+
+export type EnumTrackConditionFilter<$PrismaModel = never> = {
+  equals?: $Enums.TrackCondition | Prisma.EnumTrackConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel> | $Enums.TrackCondition
+}
+
+export type EnumTireCompoundFilter<$PrismaModel = never> = {
+  equals?: $Enums.TireCompound | Prisma.EnumTireCompoundFieldRefInput<$PrismaModel>
+  in?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel> | $Enums.TireCompound
+}
+
+export type EnumDriveStyleFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveStyle | Prisma.EnumDriveStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel> | $Enums.DriveStyle
+}
+
+export type EnumSessionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSessionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SessionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel>
+}
+
+export type EnumWeatherWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Weather | Prisma.EnumWeatherFieldRefInput<$PrismaModel>
+  in?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeatherWithAggregatesFilter<$PrismaModel> | $Enums.Weather
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeatherFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeatherFilter<$PrismaModel>
+}
+
+export type EnumTrackConditionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TrackCondition | Prisma.EnumTrackConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTrackConditionWithAggregatesFilter<$PrismaModel> | $Enums.TrackCondition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel>
+}
+
+export type EnumTireCompoundWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TireCompound | Prisma.EnumTireCompoundFieldRefInput<$PrismaModel>
+  in?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTireCompoundWithAggregatesFilter<$PrismaModel> | $Enums.TireCompound
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel>
+}
+
+export type EnumDriveStyleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveStyle | Prisma.EnumDriveStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveStyleWithAggregatesFilter<$PrismaModel> | $Enums.DriveStyle
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel>
+}
+
 export type EnumLiveStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.LiveStatus | Prisma.EnumLiveStatusFieldRefInput<$PrismaModel>
   in?: $Enums.LiveStatus[] | Prisma.ListEnumLiveStatusFieldRefInput<$PrismaModel>
@@ -2126,6 +2211,91 @@ export type NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSessionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel> | $Enums.SessionType
+}
+
+export type NestedEnumWeatherFilter<$PrismaModel = never> = {
+  equals?: $Enums.Weather | Prisma.EnumWeatherFieldRefInput<$PrismaModel>
+  in?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeatherFilter<$PrismaModel> | $Enums.Weather
+}
+
+export type NestedEnumTrackConditionFilter<$PrismaModel = never> = {
+  equals?: $Enums.TrackCondition | Prisma.EnumTrackConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel> | $Enums.TrackCondition
+}
+
+export type NestedEnumTireCompoundFilter<$PrismaModel = never> = {
+  equals?: $Enums.TireCompound | Prisma.EnumTireCompoundFieldRefInput<$PrismaModel>
+  in?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel> | $Enums.TireCompound
+}
+
+export type NestedEnumDriveStyleFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveStyle | Prisma.EnumDriveStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel> | $Enums.DriveStyle
+}
+
+export type NestedEnumSessionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSessionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SessionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSessionTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumWeatherWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Weather | Prisma.EnumWeatherFieldRefInput<$PrismaModel>
+  in?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Weather[] | Prisma.ListEnumWeatherFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeatherWithAggregatesFilter<$PrismaModel> | $Enums.Weather
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeatherFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeatherFilter<$PrismaModel>
+}
+
+export type NestedEnumTrackConditionWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TrackCondition | Prisma.EnumTrackConditionFieldRefInput<$PrismaModel>
+  in?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TrackCondition[] | Prisma.ListEnumTrackConditionFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTrackConditionWithAggregatesFilter<$PrismaModel> | $Enums.TrackCondition
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTrackConditionFilter<$PrismaModel>
+}
+
+export type NestedEnumTireCompoundWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TireCompound | Prisma.EnumTireCompoundFieldRefInput<$PrismaModel>
+  in?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TireCompound[] | Prisma.ListEnumTireCompoundFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTireCompoundWithAggregatesFilter<$PrismaModel> | $Enums.TireCompound
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTireCompoundFilter<$PrismaModel>
+}
+
+export type NestedEnumDriveStyleWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveStyle | Prisma.EnumDriveStyleFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveStyleWithAggregatesFilter<$PrismaModel> | $Enums.DriveStyle
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel>
 }
 
 export type NestedEnumLiveStatusFilter<$PrismaModel = never> = {

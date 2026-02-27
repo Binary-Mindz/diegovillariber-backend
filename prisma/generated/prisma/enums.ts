@@ -496,9 +496,9 @@ export type BodyType = (typeof BodyType)[keyof typeof BodyType]
 
 
 export const Transmission = {
-  Manual: 'Manual',
-  Automatic: 'Automatic',
-  Sequential: 'Sequential',
+  MANUAL: 'MANUAL',
+  AUTOMATIC: 'AUTOMATIC',
+  SEQUENTIAL: 'SEQUENTIAL',
   DCT: 'DCT',
   CVT: 'CVT'
 } as const
@@ -551,11 +551,11 @@ export type Weather = (typeof Weather)[keyof typeof Weather]
 
 
 export const SessionType = {
-  Track_Day: 'Track_Day',
-  Private_Session: 'Private_Session',
-  Race_Weekend: 'Race_Weekend',
-  Test_Day: 'Test_Day',
-  Time_Attack_Event: 'Time_Attack_Event'
+  TRACK_DAY: 'TRACK_DAY',
+  PRIVATE_SECTION: 'PRIVATE_SECTION',
+  RACE_WEEKEND: 'RACE_WEEKEND',
+  TEST_DAY: 'TEST_DAY',
+  TIME_ATTACK_EVENT: 'TIME_ATTACK_EVENT'
 } as const
 
 export type SessionType = (typeof SessionType)[keyof typeof SessionType]
