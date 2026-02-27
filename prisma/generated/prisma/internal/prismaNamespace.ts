@@ -420,6 +420,7 @@ export const ModelName = {
   BattleComment: 'BattleComment',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
+  LabTime: 'LabTime',
   LegalNotice: 'LegalNotice',
   Like: 'Like',
   Live: 'Live',
@@ -473,7 +474,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3138,6 +3139,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.InteriorSafetyCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.InteriorSafetyCountAggregateOutputType> | number
+        }
+      }
+    }
+    LabTime: {
+      payload: Prisma.$LabTimePayload<ExtArgs>
+      fields: Prisma.LabTimeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LabTimeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LabTimeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        findFirst: {
+          args: Prisma.LabTimeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LabTimeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        findMany: {
+          args: Prisma.LabTimeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>[]
+        }
+        create: {
+          args: Prisma.LabTimeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        createMany: {
+          args: Prisma.LabTimeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LabTimeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>[]
+        }
+        delete: {
+          args: Prisma.LabTimeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        update: {
+          args: Prisma.LabTimeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        deleteMany: {
+          args: Prisma.LabTimeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LabTimeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LabTimeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>[]
+        }
+        upsert: {
+          args: Prisma.LabTimeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LabTimePayload>
+        }
+        aggregate: {
+          args: Prisma.LabTimeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLabTime>
+        }
+        groupBy: {
+          args: Prisma.LabTimeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LabTimeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LabTimeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LabTimeCountAggregateOutputType> | number
         }
       }
     }
@@ -6533,6 +6608,43 @@ export const InteriorSafetyScalarFieldEnum = {
 export type InteriorSafetyScalarFieldEnum = (typeof InteriorSafetyScalarFieldEnum)[keyof typeof InteriorSafetyScalarFieldEnum]
 
 
+export const LabTimeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  trackName: 'trackName',
+  trackLayout: 'trackLayout',
+  carName: 'carName',
+  lapTimeMs: 'lapTimeMs',
+  dateSet: 'dateSet',
+  videoUrl: 'videoUrl',
+  telemetryMedia: 'telemetryMedia',
+  transmission: 'transmission',
+  drivetrain: 'drivetrain',
+  timeOfDay: 'timeOfDay',
+  sessionType: 'sessionType',
+  weather: 'weather',
+  trackCondition: 'trackCondition',
+  airTemp: 'airTemp',
+  trackTemp: 'trackTemp',
+  humidity: 'humidity',
+  tireBrand: 'tireBrand',
+  tireModel: 'tireModel',
+  tireCompund: 'tireCompund',
+  tireWear: 'tireWear',
+  frontTireSize: 'frontTireSize',
+  frontPressure: 'frontPressure',
+  rearTireSize: 'rearTireSize',
+  drivingStyle: 'drivingStyle',
+  fuelLoad: 'fuelLoad',
+  driverWeight: 'driverWeight',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LabTimeScalarFieldEnum = (typeof LabTimeScalarFieldEnum)[keyof typeof LabTimeScalarFieldEnum]
+
+
 export const LegalNoticeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -7620,6 +7732,76 @@ export type ListEnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'SessionType'
+ */
+export type EnumSessionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionType'>
+    
+
+
+/**
+ * Reference to a field of type 'SessionType[]'
+ */
+export type ListEnumSessionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Weather'
+ */
+export type EnumWeatherFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Weather'>
+    
+
+
+/**
+ * Reference to a field of type 'Weather[]'
+ */
+export type ListEnumWeatherFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Weather[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TrackCondition'
+ */
+export type EnumTrackConditionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrackCondition'>
+    
+
+
+/**
+ * Reference to a field of type 'TrackCondition[]'
+ */
+export type ListEnumTrackConditionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TrackCondition[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TireCompound'
+ */
+export type EnumTireCompoundFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TireCompound'>
+    
+
+
+/**
+ * Reference to a field of type 'TireCompound[]'
+ */
+export type ListEnumTireCompoundFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TireCompound[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveStyle'
+ */
+export type EnumDriveStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveStyle'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveStyle[]'
+ */
+export type ListEnumDriveStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveStyle[]'>
+    
+
+
+/**
  * Reference to a field of type 'LiveStatus'
  */
 export type EnumLiveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LiveStatus'>
@@ -8099,6 +8281,7 @@ export type GlobalOmitConfig = {
   battleComment?: Prisma.BattleCommentOmit
   hidePost?: Prisma.HidePostOmit
   interiorSafety?: Prisma.InteriorSafetyOmit
+  labTime?: Prisma.LabTimeOmit
   legalNotice?: Prisma.LegalNoticeOmit
   like?: Prisma.LikeOmit
   live?: Prisma.LiveOmit

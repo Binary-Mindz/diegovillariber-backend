@@ -1,0 +1,65 @@
+model LabTime {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  // Owner
+  profileId String   @db.Uuid
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  // Track Info
+  trackName   String   @db.VarChar(255)
+  trackLayout String?  @db.VarChar(255)
+
+  // Car Info
+  carName String @db.VarChar(255)
+
+  // Lap Data
+  lapTimeMs Int
+  dateSet   DateTime @db.Timestamptz(6)
+
+  // Media
+  videoUrl       String?  @db.VarChar(500)
+  telemetryMedia String[] @default([])
+
+  // Setup
+  transmission Transmission @default(MANUAL)
+  drivetrain   DriveTrain  @default(RWD)
+  timeOfDay    String
+  sessionType  SessionType @default(TRACK_DAY)
+  weather      Weather     @default(Sunny)
+  trackCondition TrackCondition @default(Dry)
+
+  // Environment
+  airTemp   Int?
+  trackTemp Int?
+  humidity  Int?
+
+  // Tires
+  tireBrand    String
+  tireModel    String
+  tireCompund  TireCompound @default(Slick)
+  tireWear     Int?
+  frontTireSize Int?
+  frontPressure String?
+  rearTireSize  Int?
+
+  // Driver / Style
+  drivingStyle DriveStyle @default(Moderate_Balanced_Approach)
+  fuelLoad     Int?
+  driverWeight Int?
+
+  // Notes
+  additionalNotes String @db.Text
+
+  // System Fields
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+
+  // Indexing (IMPORTANT for leaderboard + filtering)
+  @@index([profileId])
+  @@index([trackName])
+  @@index([trackName, lapTimeMs])   // leaderboard sorting per track
+  @@index([dateSet])
+  @@index([sessionType])
+  @@index([weather])
+  @@map("LabTime")
+}
