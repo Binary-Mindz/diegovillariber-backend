@@ -117,12 +117,12 @@ export const ModelName = {
   Share: 'Share',
   SimRacingProfile: 'SimRacingProfile',
   SpotterProfile: 'SpotterProfile',
+  SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
   UsageNotes: 'UsageNotes',
   User: 'User',
   UserPoint: 'UserPoint',
   VirtualGarage: 'VirtualGarage',
-  VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
   WishList: 'WishList'
@@ -1118,6 +1118,30 @@ export const SpotterProfileScalarFieldEnum = {
 export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnum)[keyof typeof SpotterProfileScalarFieldEnum]
 
 
+export const SubmitLabTimeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  simPlatform: 'simPlatform',
+  circuit: 'circuit',
+  carName: 'carName',
+  carClass: 'carClass',
+  lapTimeMs: 'lapTimeMs',
+  sessionDate: 'sessionDate',
+  videoLink: 'videoLink',
+  telemetrySource: 'telemetrySource',
+  telemetryData: 'telemetryData',
+  tractionControl: 'tractionControl',
+  abs: 'abs',
+  stability: 'stability',
+  autoClutch: 'autoClutch',
+  racingLine: 'racingLine',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubmitLabTimeScalarFieldEnum = (typeof SubmitLabTimeScalarFieldEnum)[keyof typeof SubmitLabTimeScalarFieldEnum]
+
+
 export const TuningAeroScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -1194,31 +1218,12 @@ export const VirtualGarageScalarFieldEnum = {
   teamName: 'teamName',
   carNumber: 'carNumber',
   transmission: 'transmission',
-  notes: 'notes'
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type VirtualGarageScalarFieldEnum = (typeof VirtualGarageScalarFieldEnum)[keyof typeof VirtualGarageScalarFieldEnum]
-
-
-export const VirtualLabScalarFieldEnum = {
-  id: 'id',
-  profileId: 'profileId',
-  simPlatform: 'simPlatform',
-  circuit: 'circuit',
-  car: 'car',
-  lapTime: 'lapTime',
-  sessionDate: 'sessionDate',
-  video: 'video',
-  telemetrySource: 'telemetrySource',
-  telemetryData: 'telemetryData',
-  tractionControl: 'tractionControl',
-  abs: 'abs',
-  stabillity: 'stabillity',
-  autoClutch: 'autoClutch',
-  racingLine: 'racingLine'
-} as const
-
-export type VirtualLabScalarFieldEnum = (typeof VirtualLabScalarFieldEnum)[keyof typeof VirtualLabScalarFieldEnum]
 
 
 export const VirtualSimRacingEventScalarFieldEnum = {
@@ -1235,7 +1240,9 @@ export const VirtualSimRacingEventScalarFieldEnum = {
   serverName: 'serverName',
   serverPassword: 'serverPassword',
   discordLink: 'discordLink',
-  notes: 'notes'
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type VirtualSimRacingEventScalarFieldEnum = (typeof VirtualSimRacingEventScalarFieldEnum)[keyof typeof VirtualSimRacingEventScalarFieldEnum]

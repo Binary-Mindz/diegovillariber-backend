@@ -216,14 +216,20 @@ enum CarFound {
 enum Platform {
   iRacing
   Assetto_Corsa_Competizione
+  Assetto_Corsa
   Gran_Turismo_7
   Forza_Motorsport
   F1_24
+  F1_23
   rFactor_2
   Automobilista_2
-  RaceRoom
+  RaceRoom_Racing_Experience
   Project_CARS_2
   BeamNG_drive
+  Dirt_Rally
+  Le_Mans_Ultimate
+  Assetto_Corsa_EVO
+  Asseto_Corsa_Rally
   Other
 }
 
@@ -275,6 +281,19 @@ enum CarClass {
   PROTOTYPE
   VINTAGE
   OTHER
+}
+enum Circuit {
+  Spa_Francorchamps
+  Nurburgring_Nordschleife
+  Nurburgring_GP
+  Monza
+  Silverstone
+  Brands_Hatch
+  Laguna_Seca
+  Mount_Panorama
+  Suzuka
+  Interlagos
+  Imola
 }
 
 enum TelemetrySource {
