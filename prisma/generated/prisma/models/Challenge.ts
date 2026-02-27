@@ -30,12 +30,14 @@ export type ChallengeAvgAggregateOutputType = {
   radiusKm: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  maxEntriesPerUser: number | null
 }
 
 export type ChallengeSumAggregateOutputType = {
   radiusKm: number | null
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
+  maxEntriesPerUser: number | null
 }
 
 export type ChallengeMinAggregateOutputType = {
@@ -54,9 +56,14 @@ export type ChallengeMinAggregateOutputType = {
   longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
+  challengePrize: string | null
   enableDeviceRestriction: boolean | null
+  quickPreset: $Enums.QuickPreset | null
+  deviceType: $Enums.DeviceType | null
+  brand: $Enums.Brand | null
   requireTrueShotVerification: boolean | null
   rejectEditedPhotos: boolean | null
+  maxEntriesPerUser: number | null
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -78,9 +85,14 @@ export type ChallengeMaxAggregateOutputType = {
   longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
+  challengePrize: string | null
   enableDeviceRestriction: boolean | null
+  quickPreset: $Enums.QuickPreset | null
+  deviceType: $Enums.DeviceType | null
+  brand: $Enums.Brand | null
   requireTrueShotVerification: boolean | null
   rejectEditedPhotos: boolean | null
+  maxEntriesPerUser: number | null
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -102,9 +114,14 @@ export type ChallengeCountAggregateOutputType = {
   longitude: number
   startDate: number
   endDate: number
+  challengePrize: number
   enableDeviceRestriction: number
+  quickPreset: number
+  deviceType: number
+  brand: number
   requireTrueShotVerification: number
   rejectEditedPhotos: number
+  maxEntriesPerUser: number
   status: number
   createdAt: number
   updatedAt: number
@@ -116,12 +133,14 @@ export type ChallengeAvgAggregateInputType = {
   radiusKm?: true
   latitude?: true
   longitude?: true
+  maxEntriesPerUser?: true
 }
 
 export type ChallengeSumAggregateInputType = {
   radiusKm?: true
   latitude?: true
   longitude?: true
+  maxEntriesPerUser?: true
 }
 
 export type ChallengeMinAggregateInputType = {
@@ -140,9 +159,14 @@ export type ChallengeMinAggregateInputType = {
   longitude?: true
   startDate?: true
   endDate?: true
+  challengePrize?: true
   enableDeviceRestriction?: true
+  quickPreset?: true
+  deviceType?: true
+  brand?: true
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
+  maxEntriesPerUser?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -164,9 +188,14 @@ export type ChallengeMaxAggregateInputType = {
   longitude?: true
   startDate?: true
   endDate?: true
+  challengePrize?: true
   enableDeviceRestriction?: true
+  quickPreset?: true
+  deviceType?: true
+  brand?: true
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
+  maxEntriesPerUser?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -188,9 +217,14 @@ export type ChallengeCountAggregateInputType = {
   longitude?: true
   startDate?: true
   endDate?: true
+  challengePrize?: true
   enableDeviceRestriction?: true
+  quickPreset?: true
+  deviceType?: true
+  brand?: true
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
+  maxEntriesPerUser?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -299,9 +333,14 @@ export type ChallengeGroupByOutputType = {
   longitude: runtime.Decimal | null
   startDate: Date
   endDate: Date
+  challengePrize: string
   enableDeviceRestriction: boolean
+  quickPreset: $Enums.QuickPreset
+  deviceType: $Enums.DeviceType
+  brand: $Enums.Brand
   requireTrueShotVerification: boolean
   rejectEditedPhotos: boolean
+  maxEntriesPerUser: number
   status: $Enums.ChallengeStatus
   createdAt: Date
   updatedAt: Date
@@ -346,16 +385,22 @@ export type ChallengeWhereInput = {
   longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  challengePrize?: Prisma.StringFilter<"Challenge"> | string
   enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  quickPreset?: Prisma.EnumQuickPresetFilter<"Challenge"> | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFilter<"Challenge"> | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFilter<"Challenge"> | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
   status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  prizes?: Prisma.ChallengePrizeListRelationFilter
-  deviceRules?: Prisma.ChallengeDeviceRuleListRelationFilter
-  participants?: Prisma.ChallengeParticipantListRelationFilter
+  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
+  challengeResults?: Prisma.ChallengeResultListRelationFilter
+  challengeWinners?: Prisma.ChallengeWinnerListRelationFilter
 }
 
 export type ChallengeOrderByWithRelationInput = {
@@ -374,16 +419,22 @@ export type ChallengeOrderByWithRelationInput = {
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  challengePrize?: Prisma.SortOrder
   enableDeviceRestriction?: Prisma.SortOrder
+  quickPreset?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
-  prizes?: Prisma.ChallengePrizeOrderByRelationAggregateInput
-  deviceRules?: Prisma.ChallengeDeviceRuleOrderByRelationAggregateInput
-  participants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionOrderByRelationAggregateInput
+  challengeParticipants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
+  challengeResults?: Prisma.ChallengeResultOrderByRelationAggregateInput
+  challengeWinners?: Prisma.ChallengeWinnerOrderByRelationAggregateInput
 }
 
 export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
@@ -405,16 +456,22 @@ export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
   longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  challengePrize?: Prisma.StringFilter<"Challenge"> | string
   enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  quickPreset?: Prisma.EnumQuickPresetFilter<"Challenge"> | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFilter<"Challenge"> | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFilter<"Challenge"> | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
   status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  prizes?: Prisma.ChallengePrizeListRelationFilter
-  deviceRules?: Prisma.ChallengeDeviceRuleListRelationFilter
-  participants?: Prisma.ChallengeParticipantListRelationFilter
+  challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
+  challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
+  challengeResults?: Prisma.ChallengeResultListRelationFilter
+  challengeWinners?: Prisma.ChallengeWinnerListRelationFilter
 }, "id">
 
 export type ChallengeOrderByWithAggregationInput = {
@@ -433,9 +490,14 @@ export type ChallengeOrderByWithAggregationInput = {
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  challengePrize?: Prisma.SortOrder
   enableDeviceRestriction?: Prisma.SortOrder
+  quickPreset?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -465,9 +527,14 @@ export type ChallengeScalarWhereWithAggregatesInput = {
   longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
   endDate?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
+  challengePrize?: Prisma.StringWithAggregatesFilter<"Challenge"> | string
   enableDeviceRestriction?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
+  quickPreset?: Prisma.EnumQuickPresetWithAggregatesFilter<"Challenge"> | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeWithAggregatesFilter<"Challenge"> | $Enums.DeviceType
+  brand?: Prisma.EnumBrandWithAggregatesFilter<"Challenge"> | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
+  maxEntriesPerUser?: Prisma.IntWithAggregatesFilter<"Challenge"> | number
   status?: Prisma.EnumChallengeStatusWithAggregatesFilter<"Challenge"> | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
@@ -488,16 +555,22 @@ export type ChallengeCreateInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
-  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeUncheckedCreateInput = {
@@ -516,15 +589,21 @@ export type ChallengeUncheckedCreateInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeUpdateInput = {
@@ -542,16 +621,22 @@ export type ChallengeUpdateInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
-  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeUncheckedUpdateInput = {
@@ -570,15 +655,21 @@ export type ChallengeUncheckedUpdateInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeCreateManyInput = {
@@ -597,9 +688,14 @@ export type ChallengeCreateManyInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -620,9 +716,14 @@ export type ChallengeUpdateManyMutationInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -644,9 +745,14 @@ export type ChallengeUncheckedUpdateManyInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -668,9 +774,14 @@ export type ChallengeCountOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  challengePrize?: Prisma.SortOrder
   enableDeviceRestriction?: Prisma.SortOrder
+  quickPreset?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -680,6 +791,7 @@ export type ChallengeAvgOrderByAggregateInput = {
   radiusKm?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
 }
 
 export type ChallengeMaxOrderByAggregateInput = {
@@ -698,9 +810,14 @@ export type ChallengeMaxOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  challengePrize?: Prisma.SortOrder
   enableDeviceRestriction?: Prisma.SortOrder
+  quickPreset?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -722,9 +839,14 @@ export type ChallengeMinOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
+  challengePrize?: Prisma.SortOrder
   enableDeviceRestriction?: Prisma.SortOrder
+  quickPreset?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  brand?: Prisma.SortOrder
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -734,6 +856,7 @@ export type ChallengeSumOrderByAggregateInput = {
   radiusKm?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
+  maxEntriesPerUser?: Prisma.SortOrder
 }
 
 export type ChallengeScalarRelationFilter = {
@@ -775,50 +898,76 @@ export type NullableDecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type EnumQuickPresetFieldUpdateOperationsInput = {
+  set?: $Enums.QuickPreset
+}
+
+export type EnumDeviceTypeFieldUpdateOperationsInput = {
+  set?: $Enums.DeviceType
+}
+
+export type EnumBrandFieldUpdateOperationsInput = {
+  set?: $Enums.Brand
+}
+
 export type EnumChallengeStatusFieldUpdateOperationsInput = {
   set?: $Enums.ChallengeStatus
 }
 
-export type ChallengeCreateNestedOneWithoutDeviceRulesInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutDeviceRulesInput
+export type ChallengeCreateNestedOneWithoutChallengeParticipantsInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeParticipantsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeParticipantsInput
   connect?: Prisma.ChallengeWhereUniqueInput
 }
 
-export type ChallengeUpdateOneRequiredWithoutDeviceRulesNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutDeviceRulesInput
-  upsert?: Prisma.ChallengeUpsertWithoutDeviceRulesInput
+export type ChallengeUpdateOneRequiredWithoutChallengeParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeParticipantsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeParticipantsInput
+  upsert?: Prisma.ChallengeUpsertWithoutChallengeParticipantsInput
   connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutDeviceRulesInput, Prisma.ChallengeUpdateWithoutDeviceRulesInput>, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutChallengeParticipantsInput, Prisma.ChallengeUpdateWithoutChallengeParticipantsInput>, Prisma.ChallengeUncheckedUpdateWithoutChallengeParticipantsInput>
 }
 
-export type ChallengeCreateNestedOneWithoutPrizesInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPrizesInput
-  connect?: Prisma.ChallengeWhereUniqueInput
-}
-
-export type ChallengeUpdateOneRequiredWithoutPrizesNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutPrizesInput
-  upsert?: Prisma.ChallengeUpsertWithoutPrizesInput
-  connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutPrizesInput, Prisma.ChallengeUpdateWithoutPrizesInput>, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
-}
-
-export type ChallengeCreateNestedOneWithoutParticipantsInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsInput
+export type ChallengeCreateNestedOneWithoutChallengeSubmissionsInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeSubmissionsInput
   connect?: Prisma.ChallengeWhereUniqueInput
 }
 
-export type ChallengeUpdateOneRequiredWithoutParticipantsNestedInput = {
-  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
-  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutParticipantsInput
-  upsert?: Prisma.ChallengeUpsertWithoutParticipantsInput
+export type ChallengeUpdateOneRequiredWithoutChallengeSubmissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeSubmissionsInput
+  upsert?: Prisma.ChallengeUpsertWithoutChallengeSubmissionsInput
   connect?: Prisma.ChallengeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutParticipantsInput, Prisma.ChallengeUpdateWithoutParticipantsInput>, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutChallengeSubmissionsInput, Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput>, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
+}
+
+export type ChallengeCreateNestedOneWithoutChallengeResultsInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeResultsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeResultsInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+}
+
+export type ChallengeUpdateOneRequiredWithoutChallengeResultsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeResultsInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeResultsInput
+  upsert?: Prisma.ChallengeUpsertWithoutChallengeResultsInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutChallengeResultsInput, Prisma.ChallengeUpdateWithoutChallengeResultsInput>, Prisma.ChallengeUncheckedUpdateWithoutChallengeResultsInput>
+}
+
+export type ChallengeCreateNestedOneWithoutChallengeWinnersInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedCreateWithoutChallengeWinnersInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeWinnersInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+}
+
+export type ChallengeUpdateOneRequiredWithoutChallengeWinnersNestedInput = {
+  create?: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedCreateWithoutChallengeWinnersInput>
+  connectOrCreate?: Prisma.ChallengeCreateOrConnectWithoutChallengeWinnersInput
+  upsert?: Prisma.ChallengeUpsertWithoutChallengeWinnersInput
+  connect?: Prisma.ChallengeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChallengeUpdateToOneWithWhereWithoutChallengeWinnersInput, Prisma.ChallengeUpdateWithoutChallengeWinnersInput>, Prisma.ChallengeUncheckedUpdateWithoutChallengeWinnersInput>
 }
 
 export type ChallengeCreateNestedManyWithoutCreatorInput = {
@@ -863,7 +1012,7 @@ export type ChallengeUncheckedUpdateManyWithoutCreatorNestedInput = {
   deleteMany?: Prisma.ChallengeScalarWhereInput | Prisma.ChallengeScalarWhereInput[]
 }
 
-export type ChallengeCreateWithoutDeviceRulesInput = {
+export type ChallengeCreateWithoutChallengeParticipantsInput = {
   id?: string
   title: string
   description?: string | null
@@ -878,18 +1027,24 @@ export type ChallengeCreateWithoutDeviceRulesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
-  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutDeviceRulesInput = {
+export type ChallengeUncheckedCreateWithoutChallengeParticipantsInput = {
   id?: string
   creatorId: string
   title: string
@@ -905,33 +1060,39 @@ export type ChallengeUncheckedCreateWithoutDeviceRulesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutDeviceRulesInput = {
+export type ChallengeCreateOrConnectWithoutChallengeParticipantsInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeParticipantsInput>
 }
 
-export type ChallengeUpsertWithoutDeviceRulesInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedCreateWithoutDeviceRulesInput>
+export type ChallengeUpsertWithoutChallengeParticipantsInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeParticipantsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeParticipantsInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutDeviceRulesInput = {
+export type ChallengeUpdateToOneWithWhereWithoutChallengeParticipantsInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutDeviceRulesInput, Prisma.ChallengeUncheckedUpdateWithoutDeviceRulesInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeParticipantsInput>
 }
 
-export type ChallengeUpdateWithoutDeviceRulesInput = {
+export type ChallengeUpdateWithoutChallengeParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -946,18 +1107,24 @@ export type ChallengeUpdateWithoutDeviceRulesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
-  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutDeviceRulesInput = {
+export type ChallengeUncheckedUpdateWithoutChallengeParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -973,17 +1140,23 @@ export type ChallengeUncheckedUpdateWithoutDeviceRulesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeCreateWithoutPrizesInput = {
+export type ChallengeCreateWithoutChallengeSubmissionsInput = {
   id?: string
   title: string
   description?: string | null
@@ -998,18 +1171,24 @@ export type ChallengeCreateWithoutPrizesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
-  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutPrizesInput = {
+export type ChallengeUncheckedCreateWithoutChallengeSubmissionsInput = {
   id?: string
   creatorId: string
   title: string
@@ -1025,33 +1204,39 @@ export type ChallengeUncheckedCreateWithoutPrizesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutPrizesInput = {
+export type ChallengeCreateOrConnectWithoutChallengeSubmissionsInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
 }
 
-export type ChallengeUpsertWithoutPrizesInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutPrizesInput, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutPrizesInput, Prisma.ChallengeUncheckedCreateWithoutPrizesInput>
+export type ChallengeUpsertWithoutChallengeSubmissionsInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeSubmissionsInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutPrizesInput = {
+export type ChallengeUpdateToOneWithWhereWithoutChallengeSubmissionsInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutPrizesInput, Prisma.ChallengeUncheckedUpdateWithoutPrizesInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeSubmissionsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput>
 }
 
-export type ChallengeUpdateWithoutPrizesInput = {
+export type ChallengeUpdateWithoutChallengeSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1066,18 +1251,24 @@ export type ChallengeUpdateWithoutPrizesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutPrizesInput = {
+export type ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1093,17 +1284,23 @@ export type ChallengeUncheckedUpdateWithoutPrizesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeCreateWithoutParticipantsInput = {
+export type ChallengeCreateWithoutChallengeResultsInput = {
   id?: string
   title: string
   description?: string | null
@@ -1118,18 +1315,24 @@ export type ChallengeCreateWithoutParticipantsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
-  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeUncheckedCreateWithoutParticipantsInput = {
+export type ChallengeUncheckedCreateWithoutChallengeResultsInput = {
   id?: string
   creatorId: string
   title: string
@@ -1145,33 +1348,39 @@ export type ChallengeUncheckedCreateWithoutParticipantsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
 }
 
-export type ChallengeCreateOrConnectWithoutParticipantsInput = {
+export type ChallengeCreateOrConnectWithoutChallengeResultsInput = {
   where: Prisma.ChallengeWhereUniqueInput
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeResultsInput>
 }
 
-export type ChallengeUpsertWithoutParticipantsInput = {
-  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
-  create: Prisma.XOR<Prisma.ChallengeCreateWithoutParticipantsInput, Prisma.ChallengeUncheckedCreateWithoutParticipantsInput>
+export type ChallengeUpsertWithoutChallengeResultsInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeResultsInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedCreateWithoutChallengeResultsInput>
   where?: Prisma.ChallengeWhereInput
 }
 
-export type ChallengeUpdateToOneWithWhereWithoutParticipantsInput = {
+export type ChallengeUpdateToOneWithWhereWithoutChallengeResultsInput = {
   where?: Prisma.ChallengeWhereInput
-  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutParticipantsInput, Prisma.ChallengeUncheckedUpdateWithoutParticipantsInput>
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeResultsInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeResultsInput>
 }
 
-export type ChallengeUpdateWithoutParticipantsInput = {
+export type ChallengeUpdateWithoutChallengeResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1186,18 +1395,24 @@ export type ChallengeUpdateWithoutParticipantsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
-  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUpdateManyWithoutChallengeNestedInput
 }
 
-export type ChallengeUncheckedUpdateWithoutParticipantsInput = {
+export type ChallengeUncheckedUpdateWithoutChallengeResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1213,14 +1428,164 @@ export type ChallengeUncheckedUpdateWithoutParticipantsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
+}
+
+export type ChallengeCreateWithoutChallengeWinnersInput = {
+  id?: string
+  title: string
+  description?: string | null
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  challengePrize: string
+  enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  creator: Prisma.UserCreateNestedOneWithoutChallengesInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
+}
+
+export type ChallengeUncheckedCreateWithoutChallengeWinnersInput = {
+  id?: string
+  creatorId: string
+  title: string
+  description?: string | null
+  type: $Enums.ChallengeType
+  category: $Enums.ChallengeCategory
+  preference: $Enums.Preference
+  coverImage?: string | null
+  participationScope?: $Enums.ParticipationScope
+  radiusKm?: number | null
+  locationName?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate: Date | string
+  endDate: Date | string
+  challengePrize: string
+  enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
+  requireTrueShotVerification?: boolean
+  rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
+  status?: $Enums.ChallengeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
+}
+
+export type ChallengeCreateOrConnectWithoutChallengeWinnersInput = {
+  where: Prisma.ChallengeWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedCreateWithoutChallengeWinnersInput>
+}
+
+export type ChallengeUpsertWithoutChallengeWinnersInput = {
+  update: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeWinnersInput>
+  create: Prisma.XOR<Prisma.ChallengeCreateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedCreateWithoutChallengeWinnersInput>
+  where?: Prisma.ChallengeWhereInput
+}
+
+export type ChallengeUpdateToOneWithWhereWithoutChallengeWinnersInput = {
+  where?: Prisma.ChallengeWhereInput
+  data: Prisma.XOR<Prisma.ChallengeUpdateWithoutChallengeWinnersInput, Prisma.ChallengeUncheckedUpdateWithoutChallengeWinnersInput>
+}
+
+export type ChallengeUpdateWithoutChallengeWinnersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
+}
+
+export type ChallengeUncheckedUpdateWithoutChallengeWinnersInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumChallengeTypeFieldUpdateOperationsInput | $Enums.ChallengeType
+  category?: Prisma.EnumChallengeCategoryFieldUpdateOperationsInput | $Enums.ChallengeCategory
+  preference?: Prisma.EnumPreferenceFieldUpdateOperationsInput | $Enums.Preference
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  participationScope?: Prisma.EnumParticipationScopeFieldUpdateOperationsInput | $Enums.ParticipationScope
+  radiusKm?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
+  enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
+  requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeCreateWithoutCreatorInput = {
@@ -1238,15 +1603,21 @@ export type ChallengeCreateWithoutCreatorInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  prizes?: Prisma.ChallengePrizeCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeUncheckedCreateWithoutCreatorInput = {
@@ -1264,15 +1635,21 @@ export type ChallengeUncheckedCreateWithoutCreatorInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedCreateNestedManyWithoutChallengeInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedCreateNestedManyWithoutChallengeInput
-  participants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
+  challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
 }
 
 export type ChallengeCreateOrConnectWithoutCreatorInput = {
@@ -1320,9 +1697,14 @@ export type ChallengeScalarWhereInput = {
   longitude?: Prisma.DecimalNullableFilter<"Challenge"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   endDate?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  challengePrize?: Prisma.StringFilter<"Challenge"> | string
   enableDeviceRestriction?: Prisma.BoolFilter<"Challenge"> | boolean
+  quickPreset?: Prisma.EnumQuickPresetFilter<"Challenge"> | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFilter<"Challenge"> | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFilter<"Challenge"> | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
+  maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
   status?: Prisma.EnumChallengeStatusFilter<"Challenge"> | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
@@ -1343,9 +1725,14 @@ export type ChallengeCreateManyCreatorInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
+  challengePrize: string
   enableDeviceRestriction?: boolean
+  quickPreset?: $Enums.QuickPreset
+  deviceType?: $Enums.DeviceType
+  brand?: $Enums.Brand
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: number
   status?: $Enums.ChallengeStatus
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1366,15 +1753,21 @@ export type ChallengeUpdateWithoutCreatorInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prizes?: Prisma.ChallengePrizeUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeUncheckedUpdateWithoutCreatorInput = {
@@ -1392,15 +1785,21 @@ export type ChallengeUncheckedUpdateWithoutCreatorInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  prizes?: Prisma.ChallengePrizeUncheckedUpdateManyWithoutChallengeNestedInput
-  deviceRules?: Prisma.ChallengeDeviceRuleUncheckedUpdateManyWithoutChallengeNestedInput
-  participants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
+  challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
 }
 
 export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
@@ -1418,9 +1817,14 @@ export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challengePrize?: Prisma.StringFieldUpdateOperationsInput | string
   enableDeviceRestriction?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  quickPreset?: Prisma.EnumQuickPresetFieldUpdateOperationsInput | $Enums.QuickPreset
+  deviceType?: Prisma.EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+  brand?: Prisma.EnumBrandFieldUpdateOperationsInput | $Enums.Brand
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1432,15 +1836,17 @@ export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
  */
 
 export type ChallengeCountOutputType = {
-  prizes: number
-  deviceRules: number
-  participants: number
+  challengeSubmissions: number
+  challengeParticipants: number
+  challengeResults: number
+  challengeWinners: number
 }
 
 export type ChallengeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  prizes?: boolean | ChallengeCountOutputTypeCountPrizesArgs
-  deviceRules?: boolean | ChallengeCountOutputTypeCountDeviceRulesArgs
-  participants?: boolean | ChallengeCountOutputTypeCountParticipantsArgs
+  challengeSubmissions?: boolean | ChallengeCountOutputTypeCountChallengeSubmissionsArgs
+  challengeParticipants?: boolean | ChallengeCountOutputTypeCountChallengeParticipantsArgs
+  challengeResults?: boolean | ChallengeCountOutputTypeCountChallengeResultsArgs
+  challengeWinners?: boolean | ChallengeCountOutputTypeCountChallengeWinnersArgs
 }
 
 /**
@@ -1456,22 +1862,29 @@ export type ChallengeCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * ChallengeCountOutputType without action
  */
-export type ChallengeCountOutputTypeCountPrizesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengePrizeWhereInput
+export type ChallengeCountOutputTypeCountChallengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeSubmissionWhereInput
 }
 
 /**
  * ChallengeCountOutputType without action
  */
-export type ChallengeCountOutputTypeCountDeviceRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ChallengeDeviceRuleWhereInput
-}
-
-/**
- * ChallengeCountOutputType without action
- */
-export type ChallengeCountOutputTypeCountParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ChallengeCountOutputTypeCountChallengeParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ChallengeParticipantWhereInput
+}
+
+/**
+ * ChallengeCountOutputType without action
+ */
+export type ChallengeCountOutputTypeCountChallengeResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeResultWhereInput
+}
+
+/**
+ * ChallengeCountOutputType without action
+ */
+export type ChallengeCountOutputTypeCountChallengeWinnersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeWinnerWhereInput
 }
 
 
@@ -1491,16 +1904,22 @@ export type ChallengeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   longitude?: boolean
   startDate?: boolean
   endDate?: boolean
+  challengePrize?: boolean
   enableDeviceRestriction?: boolean
+  quickPreset?: boolean
+  deviceType?: boolean
+  brand?: boolean
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  prizes?: boolean | Prisma.Challenge$prizesArgs<ExtArgs>
-  deviceRules?: boolean | Prisma.Challenge$deviceRulesArgs<ExtArgs>
-  participants?: boolean | Prisma.Challenge$participantsArgs<ExtArgs>
+  challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
+  challengeParticipants?: boolean | Prisma.Challenge$challengeParticipantsArgs<ExtArgs>
+  challengeResults?: boolean | Prisma.Challenge$challengeResultsArgs<ExtArgs>
+  challengeWinners?: boolean | Prisma.Challenge$challengeWinnersArgs<ExtArgs>
   _count?: boolean | Prisma.ChallengeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
@@ -1520,9 +1939,14 @@ export type ChallengeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   longitude?: boolean
   startDate?: boolean
   endDate?: boolean
+  challengePrize?: boolean
   enableDeviceRestriction?: boolean
+  quickPreset?: boolean
+  deviceType?: boolean
+  brand?: boolean
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1545,9 +1969,14 @@ export type ChallengeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   longitude?: boolean
   startDate?: boolean
   endDate?: boolean
+  challengePrize?: boolean
   enableDeviceRestriction?: boolean
+  quickPreset?: boolean
+  deviceType?: boolean
+  brand?: boolean
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1570,20 +1999,26 @@ export type ChallengeSelectScalar = {
   longitude?: boolean
   startDate?: boolean
   endDate?: boolean
+  challengePrize?: boolean
   enableDeviceRestriction?: boolean
+  quickPreset?: boolean
+  deviceType?: boolean
+  brand?: boolean
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
+  maxEntriesPerUser?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "enableDeviceRestriction" | "requireTrueShotVerification" | "rejectEditedPhotos" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["challenge"]>
+export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "challengePrize" | "enableDeviceRestriction" | "quickPreset" | "deviceType" | "brand" | "requireTrueShotVerification" | "rejectEditedPhotos" | "maxEntriesPerUser" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["challenge"]>
 export type ChallengeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  prizes?: boolean | Prisma.Challenge$prizesArgs<ExtArgs>
-  deviceRules?: boolean | Prisma.Challenge$deviceRulesArgs<ExtArgs>
-  participants?: boolean | Prisma.Challenge$participantsArgs<ExtArgs>
+  challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
+  challengeParticipants?: boolean | Prisma.Challenge$challengeParticipantsArgs<ExtArgs>
+  challengeResults?: boolean | Prisma.Challenge$challengeResultsArgs<ExtArgs>
+  challengeWinners?: boolean | Prisma.Challenge$challengeWinnersArgs<ExtArgs>
   _count?: boolean | Prisma.ChallengeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChallengeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1597,9 +2032,10 @@ export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "Challenge"
   objects: {
     creator: Prisma.$UserPayload<ExtArgs>
-    prizes: Prisma.$ChallengePrizePayload<ExtArgs>[]
-    deviceRules: Prisma.$ChallengeDeviceRulePayload<ExtArgs>[]
-    participants: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
+    challengeSubmissions: Prisma.$ChallengeSubmissionPayload<ExtArgs>[]
+    challengeParticipants: Prisma.$ChallengeParticipantPayload<ExtArgs>[]
+    challengeResults: Prisma.$ChallengeResultPayload<ExtArgs>[]
+    challengeWinners: Prisma.$ChallengeWinnerPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1617,9 +2053,14 @@ export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     longitude: runtime.Decimal | null
     startDate: Date
     endDate: Date
+    challengePrize: string
     enableDeviceRestriction: boolean
+    quickPreset: $Enums.QuickPreset
+    deviceType: $Enums.DeviceType
+    brand: $Enums.Brand
     requireTrueShotVerification: boolean
     rejectEditedPhotos: boolean
+    maxEntriesPerUser: number
     status: $Enums.ChallengeStatus
     createdAt: Date
     updatedAt: Date
@@ -2018,9 +2459,10 @@ readonly fields: ChallengeFieldRefs;
 export interface Prisma__ChallengeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   creator<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  prizes<T extends Prisma.Challenge$prizesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$prizesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePrizePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  deviceRules<T extends Prisma.Challenge$deviceRulesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$deviceRulesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeDeviceRulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  participants<T extends Prisma.Challenge$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  challengeSubmissions<T extends Prisma.Challenge$challengeSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  challengeParticipants<T extends Prisma.Challenge$challengeParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$challengeParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  challengeResults<T extends Prisma.Challenge$challengeResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$challengeResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  challengeWinners<T extends Prisma.Challenge$challengeWinnersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Challenge$challengeWinnersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengeWinnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2065,9 +2507,14 @@ export interface ChallengeFieldRefs {
   readonly longitude: Prisma.FieldRef<"Challenge", 'Decimal'>
   readonly startDate: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"Challenge", 'DateTime'>
+  readonly challengePrize: Prisma.FieldRef<"Challenge", 'String'>
   readonly enableDeviceRestriction: Prisma.FieldRef<"Challenge", 'Boolean'>
+  readonly quickPreset: Prisma.FieldRef<"Challenge", 'QuickPreset'>
+  readonly deviceType: Prisma.FieldRef<"Challenge", 'DeviceType'>
+  readonly brand: Prisma.FieldRef<"Challenge", 'Brand'>
   readonly requireTrueShotVerification: Prisma.FieldRef<"Challenge", 'Boolean'>
   readonly rejectEditedPhotos: Prisma.FieldRef<"Challenge", 'Boolean'>
+  readonly maxEntriesPerUser: Prisma.FieldRef<"Challenge", 'Int'>
   readonly status: Prisma.FieldRef<"Challenge", 'ChallengeStatus'>
   readonly createdAt: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Challenge", 'DateTime'>
@@ -2467,57 +2914,33 @@ export type ChallengeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Challenge.prizes
+ * Challenge.challengeSubmissions
  */
-export type Challenge$prizesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Challenge$challengeSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ChallengePrize
+   * Select specific fields to fetch from the ChallengeSubmission
    */
-  select?: Prisma.ChallengePrizeSelect<ExtArgs> | null
+  select?: Prisma.ChallengeSubmissionSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ChallengePrize
+   * Omit specific fields from the ChallengeSubmission
    */
-  omit?: Prisma.ChallengePrizeOmit<ExtArgs> | null
+  omit?: Prisma.ChallengeSubmissionOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ChallengePrizeInclude<ExtArgs> | null
-  where?: Prisma.ChallengePrizeWhereInput
-  orderBy?: Prisma.ChallengePrizeOrderByWithRelationInput | Prisma.ChallengePrizeOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengePrizeWhereUniqueInput
+  include?: Prisma.ChallengeSubmissionInclude<ExtArgs> | null
+  where?: Prisma.ChallengeSubmissionWhereInput
+  orderBy?: Prisma.ChallengeSubmissionOrderByWithRelationInput | Prisma.ChallengeSubmissionOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeSubmissionWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ChallengePrizeScalarFieldEnum | Prisma.ChallengePrizeScalarFieldEnum[]
+  distinct?: Prisma.ChallengeSubmissionScalarFieldEnum | Prisma.ChallengeSubmissionScalarFieldEnum[]
 }
 
 /**
- * Challenge.deviceRules
+ * Challenge.challengeParticipants
  */
-export type Challenge$deviceRulesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the ChallengeDeviceRule
-   */
-  select?: Prisma.ChallengeDeviceRuleSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the ChallengeDeviceRule
-   */
-  omit?: Prisma.ChallengeDeviceRuleOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ChallengeDeviceRuleInclude<ExtArgs> | null
-  where?: Prisma.ChallengeDeviceRuleWhereInput
-  orderBy?: Prisma.ChallengeDeviceRuleOrderByWithRelationInput | Prisma.ChallengeDeviceRuleOrderByWithRelationInput[]
-  cursor?: Prisma.ChallengeDeviceRuleWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ChallengeDeviceRuleScalarFieldEnum | Prisma.ChallengeDeviceRuleScalarFieldEnum[]
-}
-
-/**
- * Challenge.participants
- */
-export type Challenge$participantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Challenge$challengeParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the ChallengeParticipant
    */
@@ -2536,6 +2959,54 @@ export type Challenge$participantsArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.ChallengeParticipantScalarFieldEnum | Prisma.ChallengeParticipantScalarFieldEnum[]
+}
+
+/**
+ * Challenge.challengeResults
+ */
+export type Challenge$challengeResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChallengeResult
+   */
+  select?: Prisma.ChallengeResultSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChallengeResult
+   */
+  omit?: Prisma.ChallengeResultOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeResultInclude<ExtArgs> | null
+  where?: Prisma.ChallengeResultWhereInput
+  orderBy?: Prisma.ChallengeResultOrderByWithRelationInput | Prisma.ChallengeResultOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeResultWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengeResultScalarFieldEnum | Prisma.ChallengeResultScalarFieldEnum[]
+}
+
+/**
+ * Challenge.challengeWinners
+ */
+export type Challenge$challengeWinnersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ChallengeWinner
+   */
+  select?: Prisma.ChallengeWinnerSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ChallengeWinner
+   */
+  omit?: Prisma.ChallengeWinnerOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeWinnerInclude<ExtArgs> | null
+  where?: Prisma.ChallengeWinnerWhereInput
+  orderBy?: Prisma.ChallengeWinnerOrderByWithRelationInput | Prisma.ChallengeWinnerOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeWinnerWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengeWinnerScalarFieldEnum | Prisma.ChallengeWinnerScalarFieldEnum[]
 }
 
 /**

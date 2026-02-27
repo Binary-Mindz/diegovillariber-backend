@@ -23,17 +23,6 @@ enum ParticipationScope {
   RADIUS
 }
 
-enum WinnerPrizeType {
-  NO_PRIZE
-  FEATURED
-  PRESTIGE_POINTS
-  EXPERIENCE_POINTS
-  FREE_ENTRY
-  CO_PILOT_EXPERIENCE
-  MERCHANDISING
-  CUSTOM
-}
-
 enum ChallengeStatus {
   DRAFT
   PUBLISHED
@@ -48,6 +37,40 @@ enum DeviceType {
   ACTION_CAMERA
   DRONE
   OTHER
+}
+
+enum QuickPreset {
+  NONE_ALL_DEVICE
+  MOBAILE_ONLY
+  DSLR_CAMERAS_ONLY
+  MIRRORLESS_CAMERAS_ONLY
+  ACTION_CAMERAS_ONLY
+  IPHONE_ONLY
+  CANON_ONLY
+  SONY_ONLY
+  TRUE_SHOT
+}
+
+enum Brand {
+  APPLE
+  SUMSUNG
+  GOOGLE
+  HUAWEI
+  XIAOMI
+  ONEPLUS
+  OPPO
+  VIVO
+  CANON
+  NIKON
+  SONY
+  FUJIFILM
+  PANASONIC
+  LEICA
+  OLYMPUS
+  PENTAX
+  GOPRO
+  DJI
+  INSTA360
 }
 
 model Challenge {
@@ -72,45 +95,214 @@ model Challenge {
 
   startDate       DateTime             @db.Timestamptz(6)
   endDate         DateTime             @db.Timestamptz(6)
-
+  challengePrize  String
   enableDeviceRestriction Boolean @default(false)
-
+  quickPreset     QuickPreset @default(NONE_ALL_DEVICE)
+  deviceType      DeviceType @default(MOBILE)
+  brand           Brand @default(APPLE) 
   requireTrueShotVerification Boolean @default(false)
   rejectEditedPhotos          Boolean @default(false)
-
+  maxEntriesPerUser Int @default(1)
   status          ChallengeStatus @default(DRAFT)
-
   createdAt       DateTime @default(now()) @db.Timestamptz(6)
   updatedAt       DateTime @updatedAt @db.Timestamptz(6)
 
-  prizes          ChallengePrize[]
-  deviceRules     ChallengeDeviceRule[]
-  participants    ChallengeParticipant[]
-
   @@index([creatorId])
   @@index([status])
+  challengeSubmissions ChallengeSubmission[]
+  challengeParticipants ChallengeParticipant[]
+  challengeResults ChallengeResult[]
+  challengeWinners ChallengeWinner[]
 }
 
-model ChallengeDeviceRule {
-  id          String     @id @default(uuid()) @db.Uuid
-  challengeId String     @db.Uuid
-  challenge   Challenge  @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
-  deviceType  DeviceType
-  brand       String?    @db.VarChar(100)
+model ChallengeParticipant {
+  id          String   @id @default(uuid()) @db.Uuid
+  challengeId String   @db.Uuid
+  userId      String   @db.Uuid
 
+  challenge   Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  status      ParticipantStatus @default(JOINED)
+
+  joinedAt    DateTime @default(now()) @db.Timestamptz(6)
+  submittedAt DateTime? @db.Timestamptz(6)
+
+  // arena card stats (optional but useful)
+  totalVotes  Int @default(0)
+  totalLikes  Int @default(0)
+  totalScore  Int @default(0)
+  rank        Int?
+
+  submissions ChallengeSubmission[]
+  wins        ChallengeWinner[]
+
+  @@unique([challengeId, userId]) // ✅ already joined check
+  @@index([challengeId, status])
+  @@index([userId])
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  RAW
+}
+
+model ChallengeSubmission {
+  id            String   @id @default(uuid()) @db.Uuid
+  challengeId   String   @db.Uuid
+  participantId String   @db.Uuid
+
+  challenge     Challenge            @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  participant   ChallengeParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  caption       String?  @db.Text
+  hashtags      String[] @default([])
+
+  status        SubmissionStatus @default(PENDING)
+
+  // verification toggles
+  isTrueShotVerified Boolean @default(false)
+  isEditedDetected   Boolean @default(false)
+  verificationNote   String? @db.Text
+
+  // counters for UI
+  likeCount     Int @default(0)
+  commentCount  Int @default(0)
+  voteCount     Int @default(0)
+  score         Int @default(0)
+
+  createdAt     DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(6)
+
+  media         ChallengeSubmissionMedia[]
+  votes         ChallengeVote[]
+  reactions     ChallengeReaction[]
+  comments      ChallengeComment[]
+
+  @@index([challengeId, createdAt])
+  @@index([participantId])
+  @@index([status])
+  challengeWinners ChallengeWinner[]
+}
+
+model ChallengeSubmissionMedia {
+  id           String   @id @default(uuid()) @db.Uuid
+  submissionId String   @db.Uuid
+  submission   ChallengeSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  type         MediaType
+  url          String   @db.Text
+
+  // video support
+  durationSec  Int?
+  thumbnailUrl String?  @db.Text
+
+  sortOrder    Int @default(0)
+
+  // raw/edited pairing (optional)
+  pairKey      String? @db.VarChar(50)
+
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+
+  @@index([submissionId, sortOrder])
+}
+
+enum ReactionType {
+  LIKE
+  LOVE
+  FIRE
+  WOW
+}
+
+model ChallengeReaction {
+  id           String   @id @default(uuid()) @db.Uuid
+  submissionId String   @db.Uuid
+  userId       String   @db.Uuid
+  type         ReactionType @default(LIKE)
+
+  submission   ChallengeSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([submissionId, userId, type])
+  @@index([submissionId])
+  @@index([userId])
+}
+
+model ChallengeVote {
+  id           String   @id @default(uuid()) @db.Uuid
+  submissionId String   @db.Uuid
+  userId       String   @db.Uuid
+
+  submission   ChallengeSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  weight       Int @default(1)
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([submissionId, userId]) // ✅ one vote per user
+  @@index([submissionId])
+  @@index([userId])
+}
+
+model ChallengeComment {
+  id           String   @id @default(uuid()) @db.Uuid
+  submissionId String   @db.Uuid
+  userId       String   @db.Uuid
+
+  submission   ChallengeSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  user         User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  parentId     String? @db.Uuid
+  parent       ChallengeComment? @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies      ChallengeComment[] @relation("CommentReplies")
+
+  text         String   @db.Text
+
+  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @db.Timestamptz(6)
+
+  @@index([submissionId, createdAt])
+  @@index([parentId])
+  @@index([userId])
+}
+model ChallengeResult {
+  id               String   @id @default(uuid()) @db.Uuid
+  challengeId      String   @unique @db.Uuid
+  challenge        Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+
+  totalParticipants Int @default(0)
+  totalSubmissions  Int @default(0)
+
+  completedAt      DateTime @default(now()) @db.Timestamptz(6)
+
+  winners          ChallengeWinner[]
+}
+
+model ChallengeWinner {
+  id            String   @id @default(uuid()) @db.Uuid
+  resultId      String   @db.Uuid
+  challengeId   String   @db.Uuid
+  participantId String   @db.Uuid
+  submissionId  String   @db.Uuid
+
+  result        ChallengeResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
+  challenge     Challenge       @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  participant   ChallengeParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  submission    ChallengeSubmission  @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  position      Int // 1,2,3...
+  finalVotes    Int @default(0)
+  finalScore    Int @default(0)
+
+  createdAt     DateTime @default(now()) @db.Timestamptz(6)
+
+  @@unique([challengeId, position])
   @@index([challengeId])
+  @@index([resultId])
 }
-  model ChallengePrize {
-  id          String           @id @default(uuid()) @db.Uuid
-  challengeId String           @db.Uuid
-  challenge   Challenge        @relation(fields: [challengeId], references: [id], onDelete: Cascade)
 
-  type        WinnerPrizeType
-  customName  String?          @db.VarChar(255)
-
-  createdAt   DateTime @default(now()) @db.Timestamptz(6)
-
-  @@index([challengeId])
-}
 

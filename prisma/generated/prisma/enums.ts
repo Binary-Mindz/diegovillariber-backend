@@ -46,20 +46,6 @@ export const ParticipationScope = {
 export type ParticipationScope = (typeof ParticipationScope)[keyof typeof ParticipationScope]
 
 
-export const WinnerPrizeType = {
-  NO_PRIZE: 'NO_PRIZE',
-  FEATURED: 'FEATURED',
-  PRESTIGE_POINTS: 'PRESTIGE_POINTS',
-  EXPERIENCE_POINTS: 'EXPERIENCE_POINTS',
-  FREE_ENTRY: 'FREE_ENTRY',
-  CO_PILOT_EXPERIENCE: 'CO_PILOT_EXPERIENCE',
-  MERCHANDISING: 'MERCHANDISING',
-  CUSTOM: 'CUSTOM'
-} as const
-
-export type WinnerPrizeType = (typeof WinnerPrizeType)[keyof typeof WinnerPrizeType]
-
-
 export const ChallengeStatus = {
   DRAFT: 'DRAFT',
   PUBLISHED: 'PUBLISHED',
@@ -80,6 +66,65 @@ export const DeviceType = {
 } as const
 
 export type DeviceType = (typeof DeviceType)[keyof typeof DeviceType]
+
+
+export const QuickPreset = {
+  NONE_ALL_DEVICE: 'NONE_ALL_DEVICE',
+  MOBAILE_ONLY: 'MOBAILE_ONLY',
+  DSLR_CAMERAS_ONLY: 'DSLR_CAMERAS_ONLY',
+  MIRRORLESS_CAMERAS_ONLY: 'MIRRORLESS_CAMERAS_ONLY',
+  ACTION_CAMERAS_ONLY: 'ACTION_CAMERAS_ONLY',
+  IPHONE_ONLY: 'IPHONE_ONLY',
+  CANON_ONLY: 'CANON_ONLY',
+  SONY_ONLY: 'SONY_ONLY',
+  TRUE_SHOT: 'TRUE_SHOT'
+} as const
+
+export type QuickPreset = (typeof QuickPreset)[keyof typeof QuickPreset]
+
+
+export const Brand = {
+  APPLE: 'APPLE',
+  SUMSUNG: 'SUMSUNG',
+  GOOGLE: 'GOOGLE',
+  HUAWEI: 'HUAWEI',
+  XIAOMI: 'XIAOMI',
+  ONEPLUS: 'ONEPLUS',
+  OPPO: 'OPPO',
+  VIVO: 'VIVO',
+  CANON: 'CANON',
+  NIKON: 'NIKON',
+  SONY: 'SONY',
+  FUJIFILM: 'FUJIFILM',
+  PANASONIC: 'PANASONIC',
+  LEICA: 'LEICA',
+  OLYMPUS: 'OLYMPUS',
+  PENTAX: 'PENTAX',
+  GOPRO: 'GOPRO',
+  DJI: 'DJI',
+  INSTA360: 'INSTA360'
+} as const
+
+export type Brand = (typeof Brand)[keyof typeof Brand]
+
+
+export const MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO',
+  RAW: 'RAW'
+} as const
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]
+
+
+export const ReactionType = {
+  LIKE: 'LIKE',
+  LOVE: 'LOVE',
+  FIRE: 'FIRE',
+  WOW: 'WOW'
+} as const
+
+export type ReactionType = (typeof ReactionType)[keyof typeof ReactionType]
 
 
 export const FileType = {
@@ -155,6 +200,7 @@ export type ParticipantStatus = (typeof ParticipantStatus)[keyof typeof Particip
 
 
 export const SubmissionStatus = {
+  PENDING: 'PENDING',
   SUBMITTED: 'SUBMITTED',
   APPROVED: 'APPROVED',
   REJECTED: 'REJECTED'

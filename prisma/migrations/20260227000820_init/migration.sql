@@ -11,13 +11,22 @@ CREATE TYPE "Preference" AS ENUM ('CAR', 'BIKE', 'BOTH');
 CREATE TYPE "ParticipationScope" AS ENUM ('GLOBAL', 'RADIUS');
 
 -- CreateEnum
-CREATE TYPE "WinnerPrizeType" AS ENUM ('NO_PRIZE', 'FEATURED', 'PRESTIGE_POINTS', 'EXPERIENCE_POINTS', 'FREE_ENTRY', 'CO_PILOT_EXPERIENCE', 'MERCHANDISING', 'CUSTOM');
-
--- CreateEnum
 CREATE TYPE "ChallengeStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'COMPLETED', 'CANCELLED');
 
 -- CreateEnum
 CREATE TYPE "DeviceType" AS ENUM ('MOBILE', 'DSLR', 'MIRRORLESS', 'ACTION_CAMERA', 'DRONE', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "QuickPreset" AS ENUM ('NONE_ALL_DEVICE', 'MOBAILE_ONLY', 'DSLR_CAMERAS_ONLY', 'MIRRORLESS_CAMERAS_ONLY', 'ACTION_CAMERAS_ONLY', 'IPHONE_ONLY', 'CANON_ONLY', 'SONY_ONLY', 'TRUE_SHOT');
+
+-- CreateEnum
+CREATE TYPE "Brand" AS ENUM ('APPLE', 'SUMSUNG', 'GOOGLE', 'HUAWEI', 'XIAOMI', 'ONEPLUS', 'OPPO', 'VIVO', 'CANON', 'NIKON', 'SONY', 'FUJIFILM', 'PANASONIC', 'LEICA', 'OLYMPUS', 'PENTAX', 'GOPRO', 'DJI', 'INSTA360');
+
+-- CreateEnum
+CREATE TYPE "MediaType" AS ENUM ('IMAGE', 'VIDEO', 'RAW');
+
+-- CreateEnum
+CREATE TYPE "ReactionType" AS ENUM ('LIKE', 'LOVE', 'FIRE', 'WOW');
 
 -- CreateEnum
 CREATE TYPE "FileType" AS ENUM ('IMAGE', 'DOCS', 'LINK', 'DOCUMENT', 'ANY', 'VIDEO', 'AUDIO');
@@ -41,7 +50,7 @@ CREATE TYPE "InvitationStatus" AS ENUM ('PENDING', 'ACCEPTED', 'DECLINED', 'EXPI
 CREATE TYPE "ParticipantStatus" AS ENUM ('JOINED', 'LEFT', 'DISQUALIFIED');
 
 -- CreateEnum
-CREATE TYPE "SubmissionStatus" AS ENUM ('SUBMITTED', 'APPROVED', 'REJECTED');
+CREATE TYPE "SubmissionStatus" AS ENUM ('PENDING', 'SUBMITTED', 'APPROVED', 'REJECTED');
 
 -- CreateEnum
 CREATE TYPE "BattleCategory" AS ENUM ('STYLE_BATTLE', 'STANCE_BATTLE', 'RACING_BATTLE', 'CLASSIC_BATTLE', 'JDM_BATTLE', 'EURO_BATTLE', 'MUSCLE_BATTLE', 'OFF_ROAD_BATTLE');
@@ -269,9 +278,14 @@ CREATE TABLE "Challenge" (
     "longitude" DECIMAL(9,6),
     "startDate" TIMESTAMPTZ(6) NOT NULL,
     "endDate" TIMESTAMPTZ(6) NOT NULL,
+    "challengePrize" TEXT NOT NULL,
     "enableDeviceRestriction" BOOLEAN NOT NULL DEFAULT false,
+    "quickPreset" "QuickPreset" NOT NULL DEFAULT 'NONE_ALL_DEVICE',
+    "deviceType" "DeviceType" NOT NULL DEFAULT 'MOBILE',
+    "brand" "Brand" NOT NULL DEFAULT 'APPLE',
     "requireTrueShotVerification" BOOLEAN NOT NULL DEFAULT false,
     "rejectEditedPhotos" BOOLEAN NOT NULL DEFAULT false,
+    "maxEntriesPerUser" INTEGER NOT NULL DEFAULT 1,
     "status" "ChallengeStatus" NOT NULL DEFAULT 'DRAFT',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
@@ -280,37 +294,116 @@ CREATE TABLE "Challenge" (
 );
 
 -- CreateTable
-CREATE TABLE "ChallengeDeviceRule" (
-    "id" UUID NOT NULL,
-    "challengeId" UUID NOT NULL,
-    "deviceType" "DeviceType" NOT NULL,
-    "brand" VARCHAR(100),
-
-    CONSTRAINT "ChallengeDeviceRule_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "ChallengePrize" (
-    "id" UUID NOT NULL,
-    "challengeId" UUID NOT NULL,
-    "type" "WinnerPrizeType" NOT NULL,
-    "customName" VARCHAR(255),
-    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "ChallengePrize_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "ChallengeParticipant" (
     "id" UUID NOT NULL,
     "challengeId" UUID NOT NULL,
     "userId" UUID NOT NULL,
-    "submissionUrl" TEXT,
-    "score" INTEGER,
-    "isWinner" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "status" "ParticipantStatus" NOT NULL DEFAULT 'JOINED',
+    "joinedAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "submittedAt" TIMESTAMPTZ(6),
+    "totalVotes" INTEGER NOT NULL DEFAULT 0,
+    "totalLikes" INTEGER NOT NULL DEFAULT 0,
+    "totalScore" INTEGER NOT NULL DEFAULT 0,
+    "rank" INTEGER,
 
     CONSTRAINT "ChallengeParticipant_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeSubmission" (
+    "id" UUID NOT NULL,
+    "challengeId" UUID NOT NULL,
+    "participantId" UUID NOT NULL,
+    "caption" TEXT,
+    "hashtags" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "status" "SubmissionStatus" NOT NULL DEFAULT 'PENDING',
+    "isTrueShotVerified" BOOLEAN NOT NULL DEFAULT false,
+    "isEditedDetected" BOOLEAN NOT NULL DEFAULT false,
+    "verificationNote" TEXT,
+    "likeCount" INTEGER NOT NULL DEFAULT 0,
+    "commentCount" INTEGER NOT NULL DEFAULT 0,
+    "voteCount" INTEGER NOT NULL DEFAULT 0,
+    "score" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "ChallengeSubmission_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeSubmissionMedia" (
+    "id" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "type" "MediaType" NOT NULL,
+    "url" TEXT NOT NULL,
+    "durationSec" INTEGER,
+    "thumbnailUrl" TEXT,
+    "sortOrder" INTEGER NOT NULL DEFAULT 0,
+    "pairKey" VARCHAR(50),
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChallengeSubmissionMedia_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeReaction" (
+    "id" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "type" "ReactionType" NOT NULL DEFAULT 'LIKE',
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChallengeReaction_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeVote" (
+    "id" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "weight" INTEGER NOT NULL DEFAULT 1,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChallengeVote_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeComment" (
+    "id" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "parentId" UUID,
+    "text" TEXT NOT NULL,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "ChallengeComment_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeResult" (
+    "id" UUID NOT NULL,
+    "challengeId" UUID NOT NULL,
+    "totalParticipants" INTEGER NOT NULL DEFAULT 0,
+    "totalSubmissions" INTEGER NOT NULL DEFAULT 0,
+    "completedAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChallengeResult_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ChallengeWinner" (
+    "id" UUID NOT NULL,
+    "resultId" UUID NOT NULL,
+    "challengeId" UUID NOT NULL,
+    "participantId" UUID NOT NULL,
+    "submissionId" UUID NOT NULL,
+    "position" INTEGER NOT NULL,
+    "finalVotes" INTEGER NOT NULL DEFAULT 0,
+    "finalScore" INTEGER NOT NULL DEFAULT 0,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ChallengeWinner_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1218,13 +1311,64 @@ CREATE INDEX "Challenge_creatorId_idx" ON "Challenge"("creatorId");
 CREATE INDEX "Challenge_status_idx" ON "Challenge"("status");
 
 -- CreateIndex
-CREATE INDEX "ChallengeDeviceRule_challengeId_idx" ON "ChallengeDeviceRule"("challengeId");
+CREATE INDEX "ChallengeParticipant_challengeId_status_idx" ON "ChallengeParticipant"("challengeId", "status");
 
 -- CreateIndex
-CREATE INDEX "ChallengePrize_challengeId_idx" ON "ChallengePrize"("challengeId");
+CREATE INDEX "ChallengeParticipant_userId_idx" ON "ChallengeParticipant"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ChallengeParticipant_challengeId_userId_key" ON "ChallengeParticipant"("challengeId", "userId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeSubmission_challengeId_createdAt_idx" ON "ChallengeSubmission"("challengeId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "ChallengeSubmission_participantId_idx" ON "ChallengeSubmission"("participantId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeSubmission_status_idx" ON "ChallengeSubmission"("status");
+
+-- CreateIndex
+CREATE INDEX "ChallengeSubmissionMedia_submissionId_sortOrder_idx" ON "ChallengeSubmissionMedia"("submissionId", "sortOrder");
+
+-- CreateIndex
+CREATE INDEX "ChallengeReaction_submissionId_idx" ON "ChallengeReaction"("submissionId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeReaction_userId_idx" ON "ChallengeReaction"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ChallengeReaction_submissionId_userId_type_key" ON "ChallengeReaction"("submissionId", "userId", "type");
+
+-- CreateIndex
+CREATE INDEX "ChallengeVote_submissionId_idx" ON "ChallengeVote"("submissionId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeVote_userId_idx" ON "ChallengeVote"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ChallengeVote_submissionId_userId_key" ON "ChallengeVote"("submissionId", "userId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeComment_submissionId_createdAt_idx" ON "ChallengeComment"("submissionId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "ChallengeComment_parentId_idx" ON "ChallengeComment"("parentId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeComment_userId_idx" ON "ChallengeComment"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ChallengeResult_challengeId_key" ON "ChallengeResult"("challengeId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeWinner_challengeId_idx" ON "ChallengeWinner"("challengeId");
+
+-- CreateIndex
+CREATE INDEX "ChallengeWinner_resultId_idx" ON "ChallengeWinner"("resultId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ChallengeWinner_challengeId_position_key" ON "ChallengeWinner"("challengeId", "position");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ChassisBrakes_advancedCarDataId_key" ON "ChassisBrakes"("advancedCarDataId");
@@ -1449,7 +1593,7 @@ CREATE INDEX "_PostHashtags_B_index" ON "_PostHashtags"("B");
 CREATE INDEX "_PostTaggedUsers_B_index" ON "_PostTaggedUsers"("B");
 
 -- AddForeignKey
-ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "AmbassadorProgram" ADD CONSTRAINT "AmbassadorProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -1467,19 +1611,58 @@ ALTER TABLE "Car" ADD CONSTRAINT "Car_garageId_fkey" FOREIGN KEY ("garageId") RE
 ALTER TABLE "Challenge" ADD CONSTRAINT "Challenge_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ChallengeDeviceRule" ADD CONSTRAINT "ChallengeDeviceRule_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ChallengePrize" ADD CONSTRAINT "ChallengePrize_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "ChallengeParticipant" ADD CONSTRAINT "ChallengeParticipant_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ChallengeParticipant" ADD CONSTRAINT "ChallengeParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ChassisBrakes" ADD CONSTRAINT "ChassisBrakes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ChallengeSubmission" ADD CONSTRAINT "ChallengeSubmission_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeSubmission" ADD CONSTRAINT "ChallengeSubmission_participantId_fkey" FOREIGN KEY ("participantId") REFERENCES "ChallengeParticipant"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeSubmissionMedia" ADD CONSTRAINT "ChallengeSubmissionMedia_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "ChallengeSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeReaction" ADD CONSTRAINT "ChallengeReaction_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "ChallengeSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeReaction" ADD CONSTRAINT "ChallengeReaction_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeVote" ADD CONSTRAINT "ChallengeVote_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "ChallengeSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeVote" ADD CONSTRAINT "ChallengeVote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeComment" ADD CONSTRAINT "ChallengeComment_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "ChallengeSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeComment" ADD CONSTRAINT "ChallengeComment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeComment" ADD CONSTRAINT "ChallengeComment_parentId_fkey" FOREIGN KEY ("parentId") REFERENCES "ChallengeComment"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeResult" ADD CONSTRAINT "ChallengeResult_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeWinner" ADD CONSTRAINT "ChallengeWinner_resultId_fkey" FOREIGN KEY ("resultId") REFERENCES "ChallengeResult"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeWinner" ADD CONSTRAINT "ChallengeWinner_challengeId_fkey" FOREIGN KEY ("challengeId") REFERENCES "Challenge"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeWinner" ADD CONSTRAINT "ChallengeWinner_participantId_fkey" FOREIGN KEY ("participantId") REFERENCES "ChallengeParticipant"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChallengeWinner" ADD CONSTRAINT "ChallengeWinner_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "ChallengeSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ChassisBrakes" ADD CONSTRAINT "ChassisBrakes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1506,13 +1689,13 @@ ALTER TABLE "ConversationParticipant" ADD CONSTRAINT "ConversationParticipant_us
 ALTER TABLE "DisplayAndPcSetup" ADD CONSTRAINT "DisplayAndPcSetup_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Drivetrain" ADD CONSTRAINT "Drivetrain_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Drivetrain" ADD CONSTRAINT "Drivetrain_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DrivingAssistant" ADD CONSTRAINT "DrivingAssistant_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "EnginePower" ADD CONSTRAINT "EnginePower_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "EnginePower" ADD CONSTRAINT "EnginePower_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Event" ADD CONSTRAINT "Event_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1581,7 +1764,7 @@ ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_userId_fkey" FOREIGN KEY ("userI
 ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "InteriorSafety" ADD CONSTRAINT "InteriorSafety_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "InteriorSafety" ADD CONSTRAINT "InteriorSafety_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1725,7 +1908,7 @@ ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FORE
 ALTER TABLE "TuningAero" ADD CONSTRAINT "TuningAero_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UsageNotes" ADD CONSTRAINT "UsageNotes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "UsageNotes" ADD CONSTRAINT "UsageNotes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -1752,7 +1935,7 @@ ALTER TABLE "VirtualLab" ADD CONSTRAINT "VirtualLab_profileId_fkey" FOREIGN KEY 
 ALTER TABLE "VirtualSimRacingEvent" ADD CONSTRAINT "VirtualSimRacingEvent_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WheelsTires" ADD CONSTRAINT "WheelsTires_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WheelsTires" ADD CONSTRAINT "WheelsTires_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "WishList" ADD CONSTRAINT "WishList_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

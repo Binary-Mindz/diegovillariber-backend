@@ -367,10 +367,6 @@ export type BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput = {
   deleteMany?: Prisma.BattleParticipantScalarWhereInput | Prisma.BattleParticipantScalarWhereInput[]
 }
 
-export type EnumParticipantStatusFieldUpdateOperationsInput = {
-  set?: $Enums.ParticipantStatus
-}
-
 export type BattleParticipantCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.BattleParticipantCreateWithoutUserInput, Prisma.BattleParticipantUncheckedCreateWithoutUserInput> | Prisma.BattleParticipantCreateWithoutUserInput[] | Prisma.BattleParticipantUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.BattleParticipantCreateOrConnectWithoutUserInput | Prisma.BattleParticipantCreateOrConnectWithoutUserInput[]
