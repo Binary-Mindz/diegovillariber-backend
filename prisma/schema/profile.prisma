@@ -24,9 +24,10 @@ model Profile {
   garages                Garage[]
   cars                   Car[]
   virtualGarages         VirtualGarage[]
-  virtualLabs            VirtualLab[]
   virtualSimRacingEvents VirtualSimRacingEvent[]
   legalNotices           LegalNotice[]
   posts Post[]
   labTimes LabTime[]
+  submitLabTimes SubmitLabTime[]
 }
+

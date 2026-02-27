@@ -51,6 +51,8 @@ export type VirtualSimRacingEventMinAggregateOutputType = {
   serverPassword: string | null
   discordLink: string | null
   notes: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VirtualSimRacingEventMaxAggregateOutputType = {
@@ -68,6 +70,8 @@ export type VirtualSimRacingEventMaxAggregateOutputType = {
   serverPassword: string | null
   discordLink: string | null
   notes: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VirtualSimRacingEventCountAggregateOutputType = {
@@ -85,6 +89,8 @@ export type VirtualSimRacingEventCountAggregateOutputType = {
   serverPassword: number
   discordLink: number
   notes: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -114,6 +120,8 @@ export type VirtualSimRacingEventMinAggregateInputType = {
   serverPassword?: true
   discordLink?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VirtualSimRacingEventMaxAggregateInputType = {
@@ -131,6 +139,8 @@ export type VirtualSimRacingEventMaxAggregateInputType = {
   serverPassword?: true
   discordLink?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VirtualSimRacingEventCountAggregateInputType = {
@@ -148,6 +158,8 @@ export type VirtualSimRacingEventCountAggregateInputType = {
   serverPassword?: true
   discordLink?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -252,6 +264,8 @@ export type VirtualSimRacingEventGroupByOutputType = {
   serverPassword: string | null
   discordLink: string | null
   notes: string | null
+  createdAt: Date
+  updatedAt: Date
   _count: VirtualSimRacingEventCountAggregateOutputType | null
   _avg: VirtualSimRacingEventAvgAggregateOutputType | null
   _sum: VirtualSimRacingEventSumAggregateOutputType | null
@@ -292,6 +306,8 @@ export type VirtualSimRacingEventWhereInput = {
   serverPassword?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   discordLink?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   notes?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }
 
@@ -310,6 +326,8 @@ export type VirtualSimRacingEventOrderByWithRelationInput = {
   serverPassword?: Prisma.SortOrderInput | Prisma.SortOrder
   discordLink?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
 
@@ -331,6 +349,8 @@ export type VirtualSimRacingEventWhereUniqueInput = Prisma.AtLeast<{
   serverPassword?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   discordLink?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   notes?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }, "id">
 
@@ -349,6 +369,8 @@ export type VirtualSimRacingEventOrderByWithAggregationInput = {
   serverPassword?: Prisma.SortOrderInput | Prisma.SortOrder
   discordLink?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.VirtualSimRacingEventCountOrderByAggregateInput
   _avg?: Prisma.VirtualSimRacingEventAvgOrderByAggregateInput
   _max?: Prisma.VirtualSimRacingEventMaxOrderByAggregateInput
@@ -374,6 +396,8 @@ export type VirtualSimRacingEventScalarWhereWithAggregatesInput = {
   serverPassword?: Prisma.StringNullableWithAggregatesFilter<"VirtualSimRacingEvent"> | string | null
   discordLink?: Prisma.StringNullableWithAggregatesFilter<"VirtualSimRacingEvent"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"VirtualSimRacingEvent"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"VirtualSimRacingEvent"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"VirtualSimRacingEvent"> | Date | string
 }
 
 export type VirtualSimRacingEventCreateInput = {
@@ -390,6 +414,8 @@ export type VirtualSimRacingEventCreateInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutVirtualSimRacingEventsInput
 }
 
@@ -408,6 +434,8 @@ export type VirtualSimRacingEventUncheckedCreateInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualSimRacingEventUpdateInput = {
@@ -424,6 +452,8 @@ export type VirtualSimRacingEventUpdateInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutVirtualSimRacingEventsNestedInput
 }
 
@@ -442,6 +472,8 @@ export type VirtualSimRacingEventUncheckedUpdateInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualSimRacingEventCreateManyInput = {
@@ -459,6 +491,8 @@ export type VirtualSimRacingEventCreateManyInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualSimRacingEventUpdateManyMutationInput = {
@@ -475,6 +509,8 @@ export type VirtualSimRacingEventUpdateManyMutationInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualSimRacingEventUncheckedUpdateManyInput = {
@@ -492,6 +528,8 @@ export type VirtualSimRacingEventUncheckedUpdateManyInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualSimRacingEventListRelationFilter = {
@@ -519,6 +557,8 @@ export type VirtualSimRacingEventCountOrderByAggregateInput = {
   serverPassword?: Prisma.SortOrder
   discordLink?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualSimRacingEventAvgOrderByAggregateInput = {
@@ -541,6 +581,8 @@ export type VirtualSimRacingEventMaxOrderByAggregateInput = {
   serverPassword?: Prisma.SortOrder
   discordLink?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualSimRacingEventMinOrderByAggregateInput = {
@@ -558,6 +600,8 @@ export type VirtualSimRacingEventMinOrderByAggregateInput = {
   serverPassword?: Prisma.SortOrder
   discordLink?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualSimRacingEventSumOrderByAggregateInput = {
@@ -633,6 +677,8 @@ export type VirtualSimRacingEventCreateWithoutProfileInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualSimRacingEventUncheckedCreateWithoutProfileInput = {
@@ -649,6 +695,8 @@ export type VirtualSimRacingEventUncheckedCreateWithoutProfileInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualSimRacingEventCreateOrConnectWithoutProfileInput = {
@@ -695,6 +743,8 @@ export type VirtualSimRacingEventScalarWhereInput = {
   serverPassword?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   discordLink?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
   notes?: Prisma.StringNullableFilter<"VirtualSimRacingEvent"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualSimRacingEvent"> | Date | string
 }
 
 export type VirtualSimRacingEventCreateManyProfileInput = {
@@ -711,6 +761,8 @@ export type VirtualSimRacingEventCreateManyProfileInput = {
   serverPassword?: string | null
   discordLink?: string | null
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualSimRacingEventUpdateWithoutProfileInput = {
@@ -727,6 +779,8 @@ export type VirtualSimRacingEventUpdateWithoutProfileInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualSimRacingEventUncheckedUpdateWithoutProfileInput = {
@@ -743,6 +797,8 @@ export type VirtualSimRacingEventUncheckedUpdateWithoutProfileInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualSimRacingEventUncheckedUpdateManyWithoutProfileInput = {
@@ -759,6 +815,8 @@ export type VirtualSimRacingEventUncheckedUpdateManyWithoutProfileInput = {
   serverPassword?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   discordLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -778,6 +836,8 @@ export type VirtualSimRacingEventSelect<ExtArgs extends runtime.Types.Extensions
   serverPassword?: boolean
   discordLink?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualSimRacingEvent"]>
 
@@ -796,6 +856,8 @@ export type VirtualSimRacingEventSelectCreateManyAndReturn<ExtArgs extends runti
   serverPassword?: boolean
   discordLink?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualSimRacingEvent"]>
 
@@ -814,6 +876,8 @@ export type VirtualSimRacingEventSelectUpdateManyAndReturn<ExtArgs extends runti
   serverPassword?: boolean
   discordLink?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualSimRacingEvent"]>
 
@@ -832,9 +896,11 @@ export type VirtualSimRacingEventSelectScalar = {
   serverPassword?: boolean
   discordLink?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type VirtualSimRacingEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "eventTitle" | "simPlatform" | "circuit" | "eventType" | "dateAndTime" | "duration" | "maxGridSize" | "visibility" | "serverName" | "serverPassword" | "discordLink" | "notes", ExtArgs["result"]["virtualSimRacingEvent"]>
+export type VirtualSimRacingEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "eventTitle" | "simPlatform" | "circuit" | "eventType" | "dateAndTime" | "duration" | "maxGridSize" | "visibility" | "serverName" | "serverPassword" | "discordLink" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["virtualSimRacingEvent"]>
 export type VirtualSimRacingEventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -865,6 +931,8 @@ export type $VirtualSimRacingEventPayload<ExtArgs extends runtime.Types.Extensio
     serverPassword: string | null
     discordLink: string | null
     notes: string | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["virtualSimRacingEvent"]>
   composites: {}
 }
@@ -1303,6 +1371,8 @@ export interface VirtualSimRacingEventFieldRefs {
   readonly serverPassword: Prisma.FieldRef<"VirtualSimRacingEvent", 'String'>
   readonly discordLink: Prisma.FieldRef<"VirtualSimRacingEvent", 'String'>
   readonly notes: Prisma.FieldRef<"VirtualSimRacingEvent", 'String'>
+  readonly createdAt: Prisma.FieldRef<"VirtualSimRacingEvent", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"VirtualSimRacingEvent", 'DateTime'>
 }
     
 
