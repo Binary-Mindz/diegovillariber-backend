@@ -353,10 +353,6 @@ export type ConversationNullableScalarRelationFilter = {
   isNot?: Prisma.ConversationWhereInput | null
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ConversationCreateNestedOneWithoutParticipantsInput = {
   create?: Prisma.XOR<Prisma.ConversationCreateWithoutParticipantsInput, Prisma.ConversationUncheckedCreateWithoutParticipantsInput>
   connectOrCreate?: Prisma.ConversationCreateOrConnectWithoutParticipantsInput

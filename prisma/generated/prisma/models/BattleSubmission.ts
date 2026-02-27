@@ -501,10 +501,6 @@ export type BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput = {
   deleteMany?: Prisma.BattleSubmissionScalarWhereInput | Prisma.BattleSubmissionScalarWhereInput[]
 }
 
-export type EnumSubmissionStatusFieldUpdateOperationsInput = {
-  set?: $Enums.SubmissionStatus
-}
-
 export type BattleSubmissionCreateNestedOneWithoutVotesInput = {
   create?: Prisma.XOR<Prisma.BattleSubmissionCreateWithoutVotesInput, Prisma.BattleSubmissionUncheckedCreateWithoutVotesInput>
   connectOrCreate?: Prisma.BattleSubmissionCreateOrConnectWithoutVotesInput
