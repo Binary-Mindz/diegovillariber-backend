@@ -348,6 +348,11 @@ export type SimRacingProfile = Prisma.SimRacingProfileModel
  */
 export type SpotterProfile = Prisma.SpotterProfileModel
 /**
+ * Model SubmitLabTime
+ * 
+ */
+export type SubmitLabTime = Prisma.SubmitLabTimeModel
+/**
  * Model TuningAero
  * 
  */
@@ -372,11 +377,6 @@ export type UserPoint = Prisma.UserPointModel
  * 
  */
 export type VirtualGarage = Prisma.VirtualGarageModel
-/**
- * Model VirtualLab
- * 
- */
-export type VirtualLab = Prisma.VirtualLabModel
 /**
  * Model VirtualSimRacingEvent
  * 

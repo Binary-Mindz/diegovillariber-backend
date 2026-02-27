@@ -599,14 +599,20 @@ export type CarFound = (typeof CarFound)[keyof typeof CarFound]
 export const Platform = {
   iRacing: 'iRacing',
   Assetto_Corsa_Competizione: 'Assetto_Corsa_Competizione',
+  Assetto_Corsa: 'Assetto_Corsa',
   Gran_Turismo_7: 'Gran_Turismo_7',
   Forza_Motorsport: 'Forza_Motorsport',
   F1_24: 'F1_24',
+  F1_23: 'F1_23',
   rFactor_2: 'rFactor_2',
   Automobilista_2: 'Automobilista_2',
-  RaceRoom: 'RaceRoom',
+  RaceRoom_Racing_Experience: 'RaceRoom_Racing_Experience',
   Project_CARS_2: 'Project_CARS_2',
   BeamNG_drive: 'BeamNG_drive',
+  Dirt_Rally: 'Dirt_Rally',
+  Le_Mans_Ultimate: 'Le_Mans_Ultimate',
+  Assetto_Corsa_EVO: 'Assetto_Corsa_EVO',
+  Asseto_Corsa_Rally: 'Asseto_Corsa_Rally',
   Other: 'Other'
 } as const
 
@@ -675,6 +681,23 @@ export const CarClass = {
 } as const
 
 export type CarClass = (typeof CarClass)[keyof typeof CarClass]
+
+
+export const Circuit = {
+  Spa_Francorchamps: 'Spa_Francorchamps',
+  Nurburgring_Nordschleife: 'Nurburgring_Nordschleife',
+  Nurburgring_GP: 'Nurburgring_GP',
+  Monza: 'Monza',
+  Silverstone: 'Silverstone',
+  Brands_Hatch: 'Brands_Hatch',
+  Laguna_Seca: 'Laguna_Seca',
+  Mount_Panorama: 'Mount_Panorama',
+  Suzuka: 'Suzuka',
+  Interlagos: 'Interlagos',
+  Imola: 'Imola'
+} as const
+
+export type Circuit = (typeof Circuit)[keyof typeof Circuit]
 
 
 export const TelemetrySource = {
