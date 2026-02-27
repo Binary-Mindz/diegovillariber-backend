@@ -90,4 +90,10 @@ model User {
   rawShiftComments RawShiftComment[]
 
   prizes Prize[]
+
+  challengeReactions ChallengeReaction[]
+
+  challengeVotes ChallengeVote[]
+
+  challengeComments ChallengeComment[]
 }
