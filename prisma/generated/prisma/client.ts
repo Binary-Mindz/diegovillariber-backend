@@ -63,20 +63,45 @@ export type Car = Prisma.CarModel
  */
 export type Challenge = Prisma.ChallengeModel
 /**
- * Model ChallengeDeviceRule
- * 
- */
-export type ChallengeDeviceRule = Prisma.ChallengeDeviceRuleModel
-/**
- * Model ChallengePrize
- * 
- */
-export type ChallengePrize = Prisma.ChallengePrizeModel
-/**
  * Model ChallengeParticipant
  * 
  */
 export type ChallengeParticipant = Prisma.ChallengeParticipantModel
+/**
+ * Model ChallengeSubmission
+ * 
+ */
+export type ChallengeSubmission = Prisma.ChallengeSubmissionModel
+/**
+ * Model ChallengeSubmissionMedia
+ * 
+ */
+export type ChallengeSubmissionMedia = Prisma.ChallengeSubmissionMediaModel
+/**
+ * Model ChallengeReaction
+ * 
+ */
+export type ChallengeReaction = Prisma.ChallengeReactionModel
+/**
+ * Model ChallengeVote
+ * 
+ */
+export type ChallengeVote = Prisma.ChallengeVoteModel
+/**
+ * Model ChallengeComment
+ * 
+ */
+export type ChallengeComment = Prisma.ChallengeCommentModel
+/**
+ * Model ChallengeResult
+ * 
+ */
+export type ChallengeResult = Prisma.ChallengeResultModel
+/**
+ * Model ChallengeWinner
+ * 
+ */
+export type ChallengeWinner = Prisma.ChallengeWinnerModel
 /**
  * Model ChassisBrakes
  * 
