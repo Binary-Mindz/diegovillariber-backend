@@ -450,12 +450,12 @@ export const ModelName = {
   Share: 'Share',
   SimRacingProfile: 'SimRacingProfile',
   SpotterProfile: 'SpotterProfile',
+  SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
   UsageNotes: 'UsageNotes',
   User: 'User',
   UserPoint: 'UserPoint',
   VirtualGarage: 'VirtualGarage',
-  VirtualLab: 'VirtualLab',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
   WheelsTires: 'WheelsTires',
   WishList: 'WishList'
@@ -474,7 +474,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualLab" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5362,6 +5362,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SubmitLabTime: {
+      payload: Prisma.$SubmitLabTimePayload<ExtArgs>
+      fields: Prisma.SubmitLabTimeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SubmitLabTimeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SubmitLabTimeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        findFirst: {
+          args: Prisma.SubmitLabTimeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SubmitLabTimeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        findMany: {
+          args: Prisma.SubmitLabTimeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>[]
+        }
+        create: {
+          args: Prisma.SubmitLabTimeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        createMany: {
+          args: Prisma.SubmitLabTimeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SubmitLabTimeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>[]
+        }
+        delete: {
+          args: Prisma.SubmitLabTimeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        update: {
+          args: Prisma.SubmitLabTimeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        deleteMany: {
+          args: Prisma.SubmitLabTimeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SubmitLabTimeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SubmitLabTimeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>[]
+        }
+        upsert: {
+          args: Prisma.SubmitLabTimeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubmitLabTimePayload>
+        }
+        aggregate: {
+          args: Prisma.SubmitLabTimeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubmitLabTime>
+        }
+        groupBy: {
+          args: Prisma.SubmitLabTimeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubmitLabTimeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SubmitLabTimeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubmitLabTimeCountAggregateOutputType> | number
+        }
+      }
+    }
     TuningAero: {
       payload: Prisma.$TuningAeroPayload<ExtArgs>
       fields: Prisma.TuningAeroFieldRefs
@@ -5729,80 +5803,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.VirtualGarageCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.VirtualGarageCountAggregateOutputType> | number
-        }
-      }
-    }
-    VirtualLab: {
-      payload: Prisma.$VirtualLabPayload<ExtArgs>
-      fields: Prisma.VirtualLabFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.VirtualLabFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.VirtualLabFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        findFirst: {
-          args: Prisma.VirtualLabFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.VirtualLabFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        findMany: {
-          args: Prisma.VirtualLabFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>[]
-        }
-        create: {
-          args: Prisma.VirtualLabCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        createMany: {
-          args: Prisma.VirtualLabCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.VirtualLabCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>[]
-        }
-        delete: {
-          args: Prisma.VirtualLabDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        update: {
-          args: Prisma.VirtualLabUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        deleteMany: {
-          args: Prisma.VirtualLabDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.VirtualLabUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.VirtualLabUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>[]
-        }
-        upsert: {
-          args: Prisma.VirtualLabUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$VirtualLabPayload>
-        }
-        aggregate: {
-          args: Prisma.VirtualLabAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateVirtualLab>
-        }
-        groupBy: {
-          args: Prisma.VirtualLabGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VirtualLabGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.VirtualLabCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.VirtualLabCountAggregateOutputType> | number
         }
       }
     }
@@ -7041,6 +7041,30 @@ export const SpotterProfileScalarFieldEnum = {
 export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnum)[keyof typeof SpotterProfileScalarFieldEnum]
 
 
+export const SubmitLabTimeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  simPlatform: 'simPlatform',
+  circuit: 'circuit',
+  carName: 'carName',
+  carClass: 'carClass',
+  lapTimeMs: 'lapTimeMs',
+  sessionDate: 'sessionDate',
+  videoLink: 'videoLink',
+  telemetrySource: 'telemetrySource',
+  telemetryData: 'telemetryData',
+  tractionControl: 'tractionControl',
+  abs: 'abs',
+  stability: 'stability',
+  autoClutch: 'autoClutch',
+  racingLine: 'racingLine',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubmitLabTimeScalarFieldEnum = (typeof SubmitLabTimeScalarFieldEnum)[keyof typeof SubmitLabTimeScalarFieldEnum]
+
+
 export const TuningAeroScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -7117,31 +7141,12 @@ export const VirtualGarageScalarFieldEnum = {
   teamName: 'teamName',
   carNumber: 'carNumber',
   transmission: 'transmission',
-  notes: 'notes'
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type VirtualGarageScalarFieldEnum = (typeof VirtualGarageScalarFieldEnum)[keyof typeof VirtualGarageScalarFieldEnum]
-
-
-export const VirtualLabScalarFieldEnum = {
-  id: 'id',
-  profileId: 'profileId',
-  simPlatform: 'simPlatform',
-  circuit: 'circuit',
-  car: 'car',
-  lapTime: 'lapTime',
-  sessionDate: 'sessionDate',
-  video: 'video',
-  telemetrySource: 'telemetrySource',
-  telemetryData: 'telemetryData',
-  tractionControl: 'tractionControl',
-  abs: 'abs',
-  stabillity: 'stabillity',
-  autoClutch: 'autoClutch',
-  racingLine: 'racingLine'
-} as const
-
-export type VirtualLabScalarFieldEnum = (typeof VirtualLabScalarFieldEnum)[keyof typeof VirtualLabScalarFieldEnum]
 
 
 export const VirtualSimRacingEventScalarFieldEnum = {
@@ -7158,7 +7163,9 @@ export const VirtualSimRacingEventScalarFieldEnum = {
   serverName: 'serverName',
   serverPassword: 'serverPassword',
   discordLink: 'discordLink',
-  notes: 'notes'
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type VirtualSimRacingEventScalarFieldEnum = (typeof VirtualSimRacingEventScalarFieldEnum)[keyof typeof VirtualSimRacingEventScalarFieldEnum]
@@ -7998,6 +8005,62 @@ export type ListEnumReportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
+ * Reference to a field of type 'Platform'
+ */
+export type EnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform'>
+    
+
+
+/**
+ * Reference to a field of type 'Platform[]'
+ */
+export type ListEnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Circuit'
+ */
+export type EnumCircuitFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Circuit'>
+    
+
+
+/**
+ * Reference to a field of type 'Circuit[]'
+ */
+export type ListEnumCircuitFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Circuit[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CarClass'
+ */
+export type EnumCarClassFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarClass'>
+    
+
+
+/**
+ * Reference to a field of type 'CarClass[]'
+ */
+export type ListEnumCarClassFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarClass[]'>
+    
+
+
+/**
+ * Reference to a field of type 'TelemetrySource'
+ */
+export type EnumTelemetrySourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TelemetrySource'>
+    
+
+
+/**
+ * Reference to a field of type 'TelemetrySource[]'
+ */
+export type ListEnumTelemetrySourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TelemetrySource[]'>
+    
+
+
+/**
  * Reference to a field of type 'EcuTune'
  */
 export type EnumEcuTuneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EcuTune'>
@@ -8078,48 +8141,6 @@ export type EnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'AccountStatus[]'
  */
 export type ListEnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'Platform'
- */
-export type EnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform'>
-    
-
-
-/**
- * Reference to a field of type 'Platform[]'
- */
-export type ListEnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform[]'>
-    
-
-
-/**
- * Reference to a field of type 'CarClass'
- */
-export type EnumCarClassFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarClass'>
-    
-
-
-/**
- * Reference to a field of type 'CarClass[]'
- */
-export type ListEnumCarClassFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarClass[]'>
-    
-
-
-/**
- * Reference to a field of type 'TelemetrySource'
- */
-export type EnumTelemetrySourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TelemetrySource'>
-    
-
-
-/**
- * Reference to a field of type 'TelemetrySource[]'
- */
-export type ListEnumTelemetrySourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TelemetrySource[]'>
     
 
 
@@ -8311,12 +8332,12 @@ export type GlobalOmitConfig = {
   share?: Prisma.ShareOmit
   simRacingProfile?: Prisma.SimRacingProfileOmit
   spotterProfile?: Prisma.SpotterProfileOmit
+  submitLabTime?: Prisma.SubmitLabTimeOmit
   tuningAero?: Prisma.TuningAeroOmit
   usageNotes?: Prisma.UsageNotesOmit
   user?: Prisma.UserOmit
   userPoint?: Prisma.UserPointOmit
   virtualGarage?: Prisma.VirtualGarageOmit
-  virtualLab?: Prisma.VirtualLabOmit
   virtualSimRacingEvent?: Prisma.VirtualSimRacingEventOmit
   wheelsTires?: Prisma.WheelsTiresOmit
   wishList?: Prisma.WishListOmit

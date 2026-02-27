@@ -47,6 +47,8 @@ export type VirtualGarageMinAggregateOutputType = {
   carNumber: number | null
   transmission: $Enums.Transmission | null
   notes: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VirtualGarageMaxAggregateOutputType = {
@@ -62,6 +64,8 @@ export type VirtualGarageMaxAggregateOutputType = {
   carNumber: number | null
   transmission: $Enums.Transmission | null
   notes: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type VirtualGarageCountAggregateOutputType = {
@@ -77,6 +81,8 @@ export type VirtualGarageCountAggregateOutputType = {
   carNumber: number
   transmission: number
   notes: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -102,6 +108,8 @@ export type VirtualGarageMinAggregateInputType = {
   carNumber?: true
   transmission?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VirtualGarageMaxAggregateInputType = {
@@ -117,6 +125,8 @@ export type VirtualGarageMaxAggregateInputType = {
   carNumber?: true
   transmission?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type VirtualGarageCountAggregateInputType = {
@@ -132,6 +142,8 @@ export type VirtualGarageCountAggregateInputType = {
   carNumber?: true
   transmission?: true
   notes?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -234,6 +246,8 @@ export type VirtualGarageGroupByOutputType = {
   carNumber: number | null
   transmission: $Enums.Transmission
   notes: string | null
+  createdAt: Date
+  updatedAt: Date
   _count: VirtualGarageCountAggregateOutputType | null
   _avg: VirtualGarageAvgAggregateOutputType | null
   _sum: VirtualGarageSumAggregateOutputType | null
@@ -272,6 +286,8 @@ export type VirtualGarageWhereInput = {
   carNumber?: Prisma.IntNullableFilter<"VirtualGarage"> | number | null
   transmission?: Prisma.EnumTransmissionFilter<"VirtualGarage"> | $Enums.Transmission
   notes?: Prisma.StringNullableFilter<"VirtualGarage"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }
 
@@ -288,6 +304,8 @@ export type VirtualGarageOrderByWithRelationInput = {
   carNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   transmission?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
 }
 
@@ -307,6 +325,8 @@ export type VirtualGarageWhereUniqueInput = Prisma.AtLeast<{
   carNumber?: Prisma.IntNullableFilter<"VirtualGarage"> | number | null
   transmission?: Prisma.EnumTransmissionFilter<"VirtualGarage"> | $Enums.Transmission
   notes?: Prisma.StringNullableFilter<"VirtualGarage"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }, "id">
 
@@ -323,6 +343,8 @@ export type VirtualGarageOrderByWithAggregationInput = {
   carNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   transmission?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.VirtualGarageCountOrderByAggregateInput
   _avg?: Prisma.VirtualGarageAvgOrderByAggregateInput
   _max?: Prisma.VirtualGarageMaxOrderByAggregateInput
@@ -346,6 +368,8 @@ export type VirtualGarageScalarWhereWithAggregatesInput = {
   carNumber?: Prisma.IntNullableWithAggregatesFilter<"VirtualGarage"> | number | null
   transmission?: Prisma.EnumTransmissionWithAggregatesFilter<"VirtualGarage"> | $Enums.Transmission
   notes?: Prisma.StringNullableWithAggregatesFilter<"VirtualGarage"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"VirtualGarage"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"VirtualGarage"> | Date | string
 }
 
 export type VirtualGarageCreateInput = {
@@ -360,6 +384,8 @@ export type VirtualGarageCreateInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutVirtualGaragesInput
 }
 
@@ -376,6 +402,8 @@ export type VirtualGarageUncheckedCreateInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualGarageUpdateInput = {
@@ -390,6 +418,8 @@ export type VirtualGarageUpdateInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutVirtualGaragesNestedInput
 }
 
@@ -406,6 +436,8 @@ export type VirtualGarageUncheckedUpdateInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualGarageCreateManyInput = {
@@ -421,6 +453,8 @@ export type VirtualGarageCreateManyInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualGarageUpdateManyMutationInput = {
@@ -435,6 +469,8 @@ export type VirtualGarageUpdateManyMutationInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualGarageUncheckedUpdateManyInput = {
@@ -450,6 +486,8 @@ export type VirtualGarageUncheckedUpdateManyInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualGarageListRelationFilter = {
@@ -475,6 +513,8 @@ export type VirtualGarageCountOrderByAggregateInput = {
   carNumber?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualGarageAvgOrderByAggregateInput = {
@@ -494,6 +534,8 @@ export type VirtualGarageMaxOrderByAggregateInput = {
   carNumber?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualGarageMinOrderByAggregateInput = {
@@ -509,6 +551,8 @@ export type VirtualGarageMinOrderByAggregateInput = {
   carNumber?: Prisma.SortOrder
   transmission?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type VirtualGarageSumOrderByAggregateInput = {
@@ -557,14 +601,6 @@ export type VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.VirtualGarageScalarWhereInput | Prisma.VirtualGarageScalarWhereInput[]
 }
 
-export type EnumPlatformFieldUpdateOperationsInput = {
-  set?: $Enums.Platform
-}
-
-export type EnumCarClassFieldUpdateOperationsInput = {
-  set?: $Enums.CarClass
-}
-
 export type VirtualGarageCreateWithoutProfileInput = {
   id?: string
   simPlatform?: $Enums.Platform
@@ -577,6 +613,8 @@ export type VirtualGarageCreateWithoutProfileInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualGarageUncheckedCreateWithoutProfileInput = {
@@ -591,6 +629,8 @@ export type VirtualGarageUncheckedCreateWithoutProfileInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualGarageCreateOrConnectWithoutProfileInput = {
@@ -635,6 +675,8 @@ export type VirtualGarageScalarWhereInput = {
   carNumber?: Prisma.IntNullableFilter<"VirtualGarage"> | number | null
   transmission?: Prisma.EnumTransmissionFilter<"VirtualGarage"> | $Enums.Transmission
   notes?: Prisma.StringNullableFilter<"VirtualGarage"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"VirtualGarage"> | Date | string
 }
 
 export type VirtualGarageCreateManyProfileInput = {
@@ -649,6 +691,8 @@ export type VirtualGarageCreateManyProfileInput = {
   carNumber?: number | null
   transmission?: $Enums.Transmission
   notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type VirtualGarageUpdateWithoutProfileInput = {
@@ -663,6 +707,8 @@ export type VirtualGarageUpdateWithoutProfileInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualGarageUncheckedUpdateWithoutProfileInput = {
@@ -677,6 +723,8 @@ export type VirtualGarageUncheckedUpdateWithoutProfileInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VirtualGarageUncheckedUpdateManyWithoutProfileInput = {
@@ -691,6 +739,8 @@ export type VirtualGarageUncheckedUpdateManyWithoutProfileInput = {
   carNumber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -708,6 +758,8 @@ export type VirtualGarageSelect<ExtArgs extends runtime.Types.Extensions.Interna
   carNumber?: boolean
   transmission?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualGarage"]>
 
@@ -724,6 +776,8 @@ export type VirtualGarageSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   carNumber?: boolean
   transmission?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualGarage"]>
 
@@ -740,6 +794,8 @@ export type VirtualGarageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   carNumber?: boolean
   transmission?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["virtualGarage"]>
 
@@ -756,9 +812,11 @@ export type VirtualGarageSelectScalar = {
   carNumber?: boolean
   transmission?: boolean
   notes?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type VirtualGarageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "simPlatform" | "carMake" | "carModel" | "makeYear" | "carClass" | "livery" | "teamName" | "carNumber" | "transmission" | "notes", ExtArgs["result"]["virtualGarage"]>
+export type VirtualGarageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "simPlatform" | "carMake" | "carModel" | "makeYear" | "carClass" | "livery" | "teamName" | "carNumber" | "transmission" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["virtualGarage"]>
 export type VirtualGarageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
 }
@@ -787,6 +845,8 @@ export type $VirtualGaragePayload<ExtArgs extends runtime.Types.Extensions.Inter
     carNumber: number | null
     transmission: $Enums.Transmission
     notes: string | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["virtualGarage"]>
   composites: {}
 }
@@ -1223,6 +1283,8 @@ export interface VirtualGarageFieldRefs {
   readonly carNumber: Prisma.FieldRef<"VirtualGarage", 'Int'>
   readonly transmission: Prisma.FieldRef<"VirtualGarage", 'Transmission'>
   readonly notes: Prisma.FieldRef<"VirtualGarage", 'String'>
+  readonly createdAt: Prisma.FieldRef<"VirtualGarage", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"VirtualGarage", 'DateTime'>
 }
     
 

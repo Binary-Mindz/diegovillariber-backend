@@ -1133,6 +1133,74 @@ export type EnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
 }
 
+export type EnumPlatformFilter<$PrismaModel = never> = {
+  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
+  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformFilter<$PrismaModel> | $Enums.Platform
+}
+
+export type EnumCircuitFilter<$PrismaModel = never> = {
+  equals?: $Enums.Circuit | Prisma.EnumCircuitFieldRefInput<$PrismaModel>
+  in?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCircuitFilter<$PrismaModel> | $Enums.Circuit
+}
+
+export type EnumCarClassFilter<$PrismaModel = never> = {
+  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
+  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCarClassFilter<$PrismaModel> | $Enums.CarClass
+}
+
+export type EnumTelemetrySourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
+  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel> | $Enums.TelemetrySource
+}
+
+export type EnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
+  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformWithAggregatesFilter<$PrismaModel> | $Enums.Platform
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
+}
+
+export type EnumCircuitWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Circuit | Prisma.EnumCircuitFieldRefInput<$PrismaModel>
+  in?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCircuitWithAggregatesFilter<$PrismaModel> | $Enums.Circuit
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCircuitFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCircuitFilter<$PrismaModel>
+}
+
+export type EnumCarClassWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
+  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCarClassWithAggregatesFilter<$PrismaModel> | $Enums.CarClass
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
+}
+
+export type EnumTelemetrySourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
+  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel> | $Enums.TelemetrySource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
+}
+
 export type EnumEcuTuneFilter<$PrismaModel = never> = {
   equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
   in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
@@ -1250,57 +1318,6 @@ export type EnumAccountStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
-}
-
-export type EnumPlatformFilter<$PrismaModel = never> = {
-  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
-  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPlatformFilter<$PrismaModel> | $Enums.Platform
-}
-
-export type EnumCarClassFilter<$PrismaModel = never> = {
-  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
-  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCarClassFilter<$PrismaModel> | $Enums.CarClass
-}
-
-export type EnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
-  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPlatformWithAggregatesFilter<$PrismaModel> | $Enums.Platform
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
-}
-
-export type EnumCarClassWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
-  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCarClassWithAggregatesFilter<$PrismaModel> | $Enums.CarClass
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
-}
-
-export type EnumTelemetrySourceFilter<$PrismaModel = never> = {
-  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
-  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel> | $Enums.TelemetrySource
-}
-
-export type EnumTelemetrySourceWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
-  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel> | $Enums.TelemetrySource
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
 }
 
 export type FloatFilter<$PrismaModel = never> = {
@@ -2502,6 +2519,74 @@ export type NestedEnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
 }
 
+export type NestedEnumPlatformFilter<$PrismaModel = never> = {
+  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
+  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformFilter<$PrismaModel> | $Enums.Platform
+}
+
+export type NestedEnumCircuitFilter<$PrismaModel = never> = {
+  equals?: $Enums.Circuit | Prisma.EnumCircuitFieldRefInput<$PrismaModel>
+  in?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCircuitFilter<$PrismaModel> | $Enums.Circuit
+}
+
+export type NestedEnumCarClassFilter<$PrismaModel = never> = {
+  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
+  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCarClassFilter<$PrismaModel> | $Enums.CarClass
+}
+
+export type NestedEnumTelemetrySourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
+  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel> | $Enums.TelemetrySource
+}
+
+export type NestedEnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
+  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPlatformWithAggregatesFilter<$PrismaModel> | $Enums.Platform
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
+}
+
+export type NestedEnumCircuitWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Circuit | Prisma.EnumCircuitFieldRefInput<$PrismaModel>
+  in?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  notIn?: $Enums.Circuit[] | Prisma.ListEnumCircuitFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCircuitWithAggregatesFilter<$PrismaModel> | $Enums.Circuit
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCircuitFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCircuitFilter<$PrismaModel>
+}
+
+export type NestedEnumCarClassWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
+  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCarClassWithAggregatesFilter<$PrismaModel> | $Enums.CarClass
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
+}
+
+export type NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
+  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel> | $Enums.TelemetrySource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
+}
+
 export type NestedEnumEcuTuneFilter<$PrismaModel = never> = {
   equals?: $Enums.EcuTune | Prisma.EnumEcuTuneFieldRefInput<$PrismaModel>
   in?: $Enums.EcuTune[] | Prisma.ListEnumEcuTuneFieldRefInput<$PrismaModel>
@@ -2619,57 +2704,6 @@ export type NestedEnumAccountStatusWithAggregatesFilter<$PrismaModel = never> = 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
-}
-
-export type NestedEnumPlatformFilter<$PrismaModel = never> = {
-  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
-  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPlatformFilter<$PrismaModel> | $Enums.Platform
-}
-
-export type NestedEnumCarClassFilter<$PrismaModel = never> = {
-  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
-  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCarClassFilter<$PrismaModel> | $Enums.CarClass
-}
-
-export type NestedEnumPlatformWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
-  in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  notIn?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPlatformWithAggregatesFilter<$PrismaModel> | $Enums.Platform
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumPlatformFilter<$PrismaModel>
-}
-
-export type NestedEnumCarClassWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.CarClass | Prisma.EnumCarClassFieldRefInput<$PrismaModel>
-  in?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  notIn?: $Enums.CarClass[] | Prisma.ListEnumCarClassFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumCarClassWithAggregatesFilter<$PrismaModel> | $Enums.CarClass
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumCarClassFilter<$PrismaModel>
-}
-
-export type NestedEnumTelemetrySourceFilter<$PrismaModel = never> = {
-  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
-  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel> | $Enums.TelemetrySource
-}
-
-export type NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.TelemetrySource | Prisma.EnumTelemetrySourceFieldRefInput<$PrismaModel>
-  in?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  notIn?: $Enums.TelemetrySource[] | Prisma.ListEnumTelemetrySourceFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumTelemetrySourceWithAggregatesFilter<$PrismaModel> | $Enums.TelemetrySource
-  _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTelemetrySourceFilter<$PrismaModel>
 }
 
 export type NestedEnumVisibilityFilter<$PrismaModel = never> = {

@@ -149,7 +149,7 @@ CREATE TYPE "DriveStyle" AS ENUM ('Conservative_Leaving_Margin', 'Moderate_Balan
 CREATE TYPE "CarFound" AS ENUM ('Auction', 'Dealer', 'Private_Seller', 'Online_Marketplace', 'Family', 'Friend', 'Barn_Find', 'Other');
 
 -- CreateEnum
-CREATE TYPE "Platform" AS ENUM ('iRacing', 'Assetto_Corsa_Competizione', 'Gran_Turismo_7', 'Forza_Motorsport', 'F1_24', 'rFactor_2', 'Automobilista_2', 'RaceRoom', 'Project_CARS_2', 'BeamNG_drive', 'Other');
+CREATE TYPE "Platform" AS ENUM ('iRacing', 'Assetto_Corsa_Competizione', 'Assetto_Corsa', 'Gran_Turismo_7', 'Forza_Motorsport', 'F1_24', 'F1_23', 'rFactor_2', 'Automobilista_2', 'RaceRoom_Racing_Experience', 'Project_CARS_2', 'BeamNG_drive', 'Dirt_Rally', 'Le_Mans_Ultimate', 'Assetto_Corsa_EVO', 'Asseto_Corsa_Rally', 'Other');
 
 -- CreateEnum
 CREATE TYPE "Visibility" AS ENUM ('Public', 'Private', 'Friend', 'Only_Me');
@@ -165,6 +165,9 @@ CREATE TYPE "ProductCategory" AS ENUM ('Car_Tyres', 'Car_Parts', 'Car_Accessorie
 
 -- CreateEnum
 CREATE TYPE "CarClass" AS ENUM ('GT3', 'GT4', 'GTE', 'LMP2', 'F124', 'LMP1', 'FORMULA_1', 'FORMULA_2', 'FORMULA_3', 'TOURING_CAR', 'STOCK_CAR', 'RALLY', 'DRIFT', 'ROAD_CAR', 'PROTOTYPE', 'VINTAGE', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "Circuit" AS ENUM ('Spa_Francorchamps', 'Nurburgring_Nordschleife', 'Nurburgring_GP', 'Monza', 'Silverstone', 'Brands_Hatch', 'Laguna_Seca', 'Mount_Panorama', 'Suzuka', 'Interlagos', 'Imola');
 
 -- CreateEnum
 CREATE TYPE "TelemetrySource" AS ENUM ('iRacing_MoTec', 'ACC_Mo_Tec', 'SimHub', 'Crew_Chief', 'Z1_Dashboard', 'Racelab', 'Kapps', 'Other');
@@ -1171,6 +1174,30 @@ CREATE TABLE "SpotterProfile" (
 );
 
 -- CreateTable
+CREATE TABLE "SubmitLabTime" (
+    "id" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "simPlatform" "Platform" NOT NULL DEFAULT 'iRacing',
+    "circuit" "Circuit" NOT NULL DEFAULT 'Spa_Francorchamps',
+    "carName" TEXT,
+    "carClass" "CarClass" NOT NULL DEFAULT 'DRIFT',
+    "lapTimeMs" INTEGER NOT NULL,
+    "sessionDate" TIMESTAMPTZ(6) NOT NULL,
+    "videoLink" VARCHAR(500),
+    "telemetrySource" "TelemetrySource" NOT NULL DEFAULT 'iRacing_MoTec',
+    "telemetryData" TEXT,
+    "tractionControl" BOOLEAN NOT NULL DEFAULT false,
+    "abs" BOOLEAN NOT NULL DEFAULT false,
+    "stability" BOOLEAN NOT NULL DEFAULT false,
+    "autoClutch" BOOLEAN NOT NULL DEFAULT false,
+    "racingLine" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "SubmitLabTime_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "TuningAero" (
     "id" UUID NOT NULL,
     "advancedCarDataId" UUID NOT NULL,
@@ -1248,29 +1275,10 @@ CREATE TABLE "VirtualGarage" (
     "carNumber" INTEGER,
     "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
     "notes" TEXT,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
 
     CONSTRAINT "VirtualGarage_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "VirtualLab" (
-    "id" UUID NOT NULL,
-    "profileId" UUID NOT NULL,
-    "simPlatform" "Platform" NOT NULL DEFAULT 'iRacing',
-    "circuit" TEXT NOT NULL,
-    "car" TEXT NOT NULL,
-    "lapTime" TIMESTAMP(3) NOT NULL,
-    "sessionDate" TIMESTAMP(3) NOT NULL,
-    "video" TEXT,
-    "telemetrySource" "TelemetrySource" NOT NULL DEFAULT 'iRacing_MoTec',
-    "telemetryData" TEXT,
-    "tractionControl" BOOLEAN NOT NULL DEFAULT false,
-    "abs" BOOLEAN NOT NULL DEFAULT false,
-    "stabillity" BOOLEAN NOT NULL DEFAULT false,
-    "autoClutch" BOOLEAN NOT NULL DEFAULT true,
-    "racingLine" BOOLEAN NOT NULL DEFAULT true,
-
-    CONSTRAINT "VirtualLab_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1289,6 +1297,8 @@ CREATE TABLE "VirtualSimRacingEvent" (
     "serverPassword" TEXT,
     "discordLink" TEXT,
     "notes" TEXT,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
 
     CONSTRAINT "VirtualSimRacingEvent_pkey" PRIMARY KEY ("id")
 );
@@ -1627,6 +1637,27 @@ CREATE UNIQUE INDEX "SimRacingProfile_profileId_key" ON "SimRacingProfile"("prof
 CREATE UNIQUE INDEX "SpotterProfile_profileId_key" ON "SpotterProfile"("profileId");
 
 -- CreateIndex
+CREATE INDEX "SubmitLabTime_profileId_idx" ON "SubmitLabTime"("profileId");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_circuit_idx" ON "SubmitLabTime"("circuit");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_carClass_idx" ON "SubmitLabTime"("carClass");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_simPlatform_idx" ON "SubmitLabTime"("simPlatform");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_lapTimeMs_idx" ON "SubmitLabTime"("lapTimeMs");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_circuit_carClass_lapTimeMs_idx" ON "SubmitLabTime"("circuit", "carClass", "lapTimeMs");
+
+-- CreateIndex
+CREATE INDEX "SubmitLabTime_profileId_circuit_idx" ON "SubmitLabTime"("profileId", "circuit");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "TuningAero_advancedCarDataId_key" ON "TuningAero"("advancedCarDataId");
 
 -- CreateIndex
@@ -1634,6 +1665,21 @@ CREATE UNIQUE INDEX "UsageNotes_advancedCarDataId_key" ON "UsageNotes"("advanced
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE INDEX "VirtualGarage_profileId_idx" ON "VirtualGarage"("profileId");
+
+-- CreateIndex
+CREATE INDEX "VirtualGarage_simPlatform_carClass_idx" ON "VirtualGarage"("simPlatform", "carClass");
+
+-- CreateIndex
+CREATE INDEX "VirtualSimRacingEvent_profileId_idx" ON "VirtualSimRacingEvent"("profileId");
+
+-- CreateIndex
+CREATE INDEX "VirtualSimRacingEvent_simPlatform_eventType_idx" ON "VirtualSimRacingEvent"("simPlatform", "eventType");
+
+-- CreateIndex
+CREATE INDEX "VirtualSimRacingEvent_dateAndTime_idx" ON "VirtualSimRacingEvent"("dateAndTime");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "WheelsTires_advancedCarDataId_key" ON "WheelsTires"("advancedCarDataId");
@@ -1963,6 +2009,9 @@ ALTER TABLE "SimRacingProfile" ADD CONSTRAINT "SimRacingProfile_profileId_fkey" 
 ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "SubmitLabTime" ADD CONSTRAINT "SubmitLabTime_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "TuningAero" ADD CONSTRAINT "TuningAero_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1985,9 +2034,6 @@ ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_followId_fkey" FOREIGN KEY ("f
 
 -- AddForeignKey
 ALTER TABLE "VirtualGarage" ADD CONSTRAINT "VirtualGarage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "VirtualLab" ADD CONSTRAINT "VirtualLab_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "VirtualSimRacingEvent" ADD CONSTRAINT "VirtualSimRacingEvent_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
