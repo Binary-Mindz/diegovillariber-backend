@@ -11,6 +11,6 @@ model VirtualGarage {
   livery       String?
   teamName     String?
   carNumber    Int?
-  transmission Transmission @default(Manual)
+  transmission Transmission @default(MANUAL)
   notes        String?
 }
