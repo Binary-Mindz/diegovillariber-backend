@@ -122,7 +122,7 @@ CREATE TYPE "BusinessCategory" AS ENUM ('Detailling_Care', 'Parts_Performance', 
 CREATE TYPE "BodyType" AS ENUM ('Coupe', 'Sedan', 'Hatchback', 'Convertible', 'SUV', 'Wagon', 'Pickup', 'Van');
 
 -- CreateEnum
-CREATE TYPE "Transmission" AS ENUM ('Manual', 'Automatic', 'Sequential', 'DCT', 'CVT');
+CREATE TYPE "Transmission" AS ENUM ('MANUAL', 'AUTOMATIC', 'SEQUENTIAL', 'DCT', 'CVT');
 
 -- CreateEnum
 CREATE TYPE "DriveTrain" AS ENUM ('RWD', 'FWD', 'AWD', 'FOUR_WD');
@@ -137,7 +137,7 @@ CREATE TYPE "TrackCondition" AS ENUM ('Dry', 'Damp', 'Wet', 'Dusty', 'Greasy');
 CREATE TYPE "Weather" AS ENUM ('Sunny', 'Cloudy', 'Overcast', 'Light_Rain', 'Heavy_Rain', 'Mixed');
 
 -- CreateEnum
-CREATE TYPE "SessionType" AS ENUM ('Track_Day', 'Private_Session', 'Race_Weekend', 'Test_Day', 'Time_Attack_Event');
+CREATE TYPE "SessionType" AS ENUM ('TRACK_DAY', 'PRIVATE_SECTION', 'RACE_WEEKEND', 'TEST_DAY', 'TIME_ATTACK_EVENT');
 
 -- CreateEnum
 CREATE TYPE "TireCompound" AS ENUM ('Slick', 'Semi_Slick', 'Street', 'All_Season', 'Rain');
@@ -248,7 +248,7 @@ CREATE TABLE "Car" (
     "make" TEXT,
     "model" TEXT,
     "bodyType" "BodyType" NOT NULL DEFAULT 'Coupe',
-    "transmission" "Transmission" NOT NULL DEFAULT 'Manual',
+    "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
     "driveTrain" "DriveTrain" NOT NULL DEFAULT 'RWD',
     "country" TEXT,
     "color" TEXT,
@@ -738,6 +738,43 @@ CREATE TABLE "InteriorSafety" (
 );
 
 -- CreateTable
+CREATE TABLE "LabTime" (
+    "id" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "trackName" VARCHAR(255) NOT NULL,
+    "trackLayout" VARCHAR(255),
+    "carName" VARCHAR(255) NOT NULL,
+    "lapTimeMs" INTEGER NOT NULL,
+    "dateSet" TIMESTAMPTZ(6) NOT NULL,
+    "videoUrl" VARCHAR(500),
+    "telemetryMedia" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
+    "drivetrain" "DriveTrain" NOT NULL DEFAULT 'RWD',
+    "timeOfDay" TEXT NOT NULL,
+    "sessionType" "SessionType" NOT NULL DEFAULT 'TRACK_DAY',
+    "weather" "Weather" NOT NULL DEFAULT 'Sunny',
+    "trackCondition" "TrackCondition" NOT NULL DEFAULT 'Dry',
+    "airTemp" INTEGER,
+    "trackTemp" INTEGER,
+    "humidity" INTEGER,
+    "tireBrand" TEXT NOT NULL,
+    "tireModel" TEXT NOT NULL,
+    "tireCompund" "TireCompound" NOT NULL DEFAULT 'Slick',
+    "tireWear" INTEGER,
+    "frontTireSize" INTEGER,
+    "frontPressure" TEXT,
+    "rearTireSize" INTEGER,
+    "drivingStyle" "DriveStyle" NOT NULL DEFAULT 'Moderate_Balanced_Approach',
+    "fuelLoad" INTEGER,
+    "driverWeight" INTEGER,
+    "additionalNotes" TEXT NOT NULL,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "LabTime_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "LegalNotice" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -1209,7 +1246,7 @@ CREATE TABLE "VirtualGarage" (
     "livery" TEXT,
     "teamName" TEXT,
     "carNumber" INTEGER,
-    "transmission" "Transmission" NOT NULL DEFAULT 'Manual',
+    "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
     "notes" TEXT,
 
     CONSTRAINT "VirtualGarage_pkey" PRIMARY KEY ("id")
@@ -1465,6 +1502,24 @@ CREATE UNIQUE INDEX "HidePost_userId_postId_key" ON "HidePost"("userId", "postId
 
 -- CreateIndex
 CREATE UNIQUE INDEX "InteriorSafety_advancedCarDataId_key" ON "InteriorSafety"("advancedCarDataId");
+
+-- CreateIndex
+CREATE INDEX "LabTime_profileId_idx" ON "LabTime"("profileId");
+
+-- CreateIndex
+CREATE INDEX "LabTime_trackName_idx" ON "LabTime"("trackName");
+
+-- CreateIndex
+CREATE INDEX "LabTime_trackName_lapTimeMs_idx" ON "LabTime"("trackName", "lapTimeMs");
+
+-- CreateIndex
+CREATE INDEX "LabTime_dateSet_idx" ON "LabTime"("dateSet");
+
+-- CreateIndex
+CREATE INDEX "LabTime_sessionType_idx" ON "LabTime"("sessionType");
+
+-- CreateIndex
+CREATE INDEX "LabTime_weather_idx" ON "LabTime"("weather");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Like_userId_postId_postType_key" ON "Like"("userId", "postId", "postType");
@@ -1767,6 +1822,9 @@ ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_postId_fkey" FOREIGN KEY ("postI
 ALTER TABLE "InteriorSafety" ADD CONSTRAINT "InteriorSafety_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "LabTime" ADD CONSTRAINT "LabTime_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1905,7 +1963,7 @@ ALTER TABLE "SimRacingProfile" ADD CONSTRAINT "SimRacingProfile_profileId_fkey" 
 ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "TuningAero" ADD CONSTRAINT "TuningAero_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "TuningAero" ADD CONSTRAINT "TuningAero_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "UsageNotes" ADD CONSTRAINT "UsageNotes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;

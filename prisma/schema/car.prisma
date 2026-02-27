@@ -10,7 +10,7 @@ model Car {
   make              String?
   model             String?
   bodyType          BodyType      @default(Coupe)
-  transmission      Transmission  @default(Manual)
+  transmission      Transmission  @default(MANUAL)
   driveTrain        DriveTrain    @default(RWD)
   country           String?
   color             String?
@@ -19,8 +19,6 @@ model Car {
   category          DriveCategory @default(Daily_Drive)
   listOnMarketplace Boolean       @default(false)
   price             Int?
-
   advancedCarDatas AdvancedCarData[]
-
   legalNotices LegalNotice[]
 }

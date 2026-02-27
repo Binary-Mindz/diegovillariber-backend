@@ -198,6 +198,11 @@ export type HidePost = Prisma.HidePostModel
  */
 export type InteriorSafety = Prisma.InteriorSafetyModel
 /**
+ * Model LabTime
+ * 
+ */
+export type LabTime = Prisma.LabTimeModel
+/**
  * Model LegalNotice
  * 
  */

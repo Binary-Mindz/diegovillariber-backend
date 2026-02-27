@@ -87,6 +87,7 @@ export const ModelName = {
   BattleComment: 'BattleComment',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
+  LabTime: 'LabTime',
   LegalNotice: 'LegalNotice',
   Like: 'Like',
   Live: 'Live',
@@ -682,6 +683,43 @@ export const InteriorSafetyScalarFieldEnum = {
 } as const
 
 export type InteriorSafetyScalarFieldEnum = (typeof InteriorSafetyScalarFieldEnum)[keyof typeof InteriorSafetyScalarFieldEnum]
+
+
+export const LabTimeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  trackName: 'trackName',
+  trackLayout: 'trackLayout',
+  carName: 'carName',
+  lapTimeMs: 'lapTimeMs',
+  dateSet: 'dateSet',
+  videoUrl: 'videoUrl',
+  telemetryMedia: 'telemetryMedia',
+  transmission: 'transmission',
+  drivetrain: 'drivetrain',
+  timeOfDay: 'timeOfDay',
+  sessionType: 'sessionType',
+  weather: 'weather',
+  trackCondition: 'trackCondition',
+  airTemp: 'airTemp',
+  trackTemp: 'trackTemp',
+  humidity: 'humidity',
+  tireBrand: 'tireBrand',
+  tireModel: 'tireModel',
+  tireCompund: 'tireCompund',
+  tireWear: 'tireWear',
+  frontTireSize: 'frontTireSize',
+  frontPressure: 'frontPressure',
+  rearTireSize: 'rearTireSize',
+  drivingStyle: 'drivingStyle',
+  fuelLoad: 'fuelLoad',
+  driverWeight: 'driverWeight',
+  additionalNotes: 'additionalNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LabTimeScalarFieldEnum = (typeof LabTimeScalarFieldEnum)[keyof typeof LabTimeScalarFieldEnum]
 
 
 export const LegalNoticeScalarFieldEnum = {

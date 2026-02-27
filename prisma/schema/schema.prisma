@@ -140,9 +140,9 @@ enum BodyType {
 }
 
 enum Transmission {
-  Manual
-  Automatic
-  Sequential
+  MANUAL
+  AUTOMATIC
+  SEQUENTIAL
   DCT
   CVT
 }
@@ -180,11 +180,11 @@ enum Weather {
 }
 
 enum SessionType {
-  Track_Day
-  Private_Session
-  Race_Weekend
-  Test_Day
-  Time_Attack_Event
+  TRACK_DAY
+  PRIVATE_SECTION
+  RACE_WEEKEND
+  TEST_DAY
+  TIME_ATTACK_EVENT
 }
 
 enum TireCompound {
