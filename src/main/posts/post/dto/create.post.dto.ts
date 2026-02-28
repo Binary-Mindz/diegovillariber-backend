@@ -16,6 +16,7 @@ import {
   VisiualStyle,
   ContextActivity,
   Subject,
+  VehicleCategory,
 } from 'generated/prisma/enums';
 
 export class CreatePostDto {
@@ -77,6 +78,11 @@ export class CreatePostDto {
   @IsString()
   locationVisibility?: string;
 
+  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.CITY })
+  @IsOptional()
+  @IsEnum(VehicleCategory)
+  vehicleCategory?: VehicleCategory;
+
   @ApiPropertyOptional({
     example: false,
     description:
@@ -86,7 +92,8 @@ export class CreatePostDto {
   @IsBoolean()
   contentBooster?: boolean;
 
-  // ✅ enum arrays
+
+ 
   @ApiPropertyOptional({
     isArray: true,
     enum: VisiualStyle,
