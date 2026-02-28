@@ -1,19 +1,30 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsDateString, IsOptional, IsString, IsUUID } from 'class-validator';
+import { IsDateString, IsEnum, IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
+import { LegalNoticeTarget } from 'generated/prisma/enums';
 
 export class CreateLegalNoticeDto {
-  // ADMIN only (optional for admin; required if not using activeProfileId)
   @ApiPropertyOptional({ example: 'profile-uuid' })
   @IsOptional()
   @IsUUID()
   profileId?: string;
 
-  @ApiProperty({ example: 'car-uuid' })
+  @ApiProperty({ enum: LegalNoticeTarget, example: LegalNoticeTarget.CAR })
+  @IsEnum(LegalNoticeTarget)
+  targetType: LegalNoticeTarget;
+
+  @ApiPropertyOptional({ example: 'car-uuid' })
+  @IsOptional()
   @IsUUID()
-  carId: string;
+  carId?: string;
+
+  @ApiPropertyOptional({ example: 'bike-uuid' })
+  @IsOptional()
+  @IsUUID()
+  bikeId?: string;
 
   @ApiProperty({ example: 'Dhaka, Bangladesh' })
   @IsString()
+  @MaxLength(255)
   location: string;
 
   @ApiProperty({ example: '2026-02-21T10:30:00.000Z' })
@@ -28,6 +39,7 @@ export class CreateLegalNoticeDto {
   @ApiPropertyOptional({ example: 'https://cdn.../notice.png' })
   @IsOptional()
   @IsString()
+  @MaxLength(500)
   media?: string;
 
   @ApiPropertyOptional({ example: 'Mr. X' })

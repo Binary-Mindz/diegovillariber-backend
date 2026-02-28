@@ -48,6 +48,46 @@ export type AdvancedCarData = Prisma.AdvancedCarDataModel
  */
 export type AmbassadorProgram = Prisma.AmbassadorProgramModel
 /**
+ * Model Bike
+ * 
+ */
+export type Bike = Prisma.BikeModel
+/**
+ * Model AdvancedBikeData
+ * 
+ */
+export type AdvancedBikeData = Prisma.AdvancedBikeDataModel
+/**
+ * Model EngineAndPerformance
+ * 
+ */
+export type EngineAndPerformance = Prisma.EngineAndPerformanceModel
+/**
+ * Model BikeDriveTrains
+ * 
+ */
+export type BikeDriveTrains = Prisma.BikeDriveTrainsModel
+/**
+ * Model Suspension
+ * 
+ */
+export type Suspension = Prisma.SuspensionModel
+/**
+ * Model BikeWheelTires
+ * 
+ */
+export type BikeWheelTires = Prisma.BikeWheelTiresModel
+/**
+ * Model BikeElectronics
+ * 
+ */
+export type BikeElectronics = Prisma.BikeElectronicsModel
+/**
+ * Model BikeUsageAndNotes
+ * 
+ */
+export type BikeUsageAndNotes = Prisma.BikeUsageAndNotesModel
+/**
  * Model BusinessProfile
  * 
  */

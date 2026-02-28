@@ -245,6 +245,7 @@ export type ProfileWhereInput = {
   posts?: Prisma.PostListRelationFilter
   labTimes?: Prisma.LabTimeListRelationFilter
   submitLabTimes?: Prisma.SubmitLabTimeListRelationFilter
+  bikes?: Prisma.BikeListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -274,6 +275,7 @@ export type ProfileOrderByWithRelationInput = {
   posts?: Prisma.PostOrderByRelationAggregateInput
   labTimes?: Prisma.LabTimeOrderByRelationAggregateInput
   submitLabTimes?: Prisma.SubmitLabTimeOrderByRelationAggregateInput
+  bikes?: Prisma.BikeOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -306,6 +308,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   posts?: Prisma.PostListRelationFilter
   labTimes?: Prisma.LabTimeListRelationFilter
   submitLabTimes?: Prisma.SubmitLabTimeListRelationFilter
+  bikes?: Prisma.BikeListRelationFilter
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -368,6 +371,7 @@ export type ProfileCreateInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -396,6 +400,7 @@ export type ProfileUncheckedCreateInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -424,6 +429,7 @@ export type ProfileUpdateInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -452,6 +458,7 @@ export type ProfileUncheckedUpdateInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -555,6 +562,20 @@ export type ProfileListRelationFilter = {
 
 export type ProfileOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type ProfileCreateNestedOneWithoutBikesInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutBikesInput, Prisma.ProfileUncheckedCreateWithoutBikesInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutBikesInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneRequiredWithoutBikesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutBikesInput, Prisma.ProfileUncheckedCreateWithoutBikesInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutBikesInput
+  upsert?: Prisma.ProfileUpsertWithoutBikesInput
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutBikesInput, Prisma.ProfileUpdateWithoutBikesInput>, Prisma.ProfileUncheckedUpdateWithoutBikesInput>
 }
 
 export type ProfileCreateNestedOneWithoutBusinessInput = {
@@ -809,6 +830,134 @@ export type ProfileUpdateOneRequiredWithoutVirtualSimRacingEventsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutVirtualSimRacingEventsInput, Prisma.ProfileUpdateWithoutVirtualSimRacingEventsInput>, Prisma.ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput>
 }
 
+export type ProfileCreateWithoutBikesInput = {
+  id?: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+  spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
+  submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutBikesInput = {
+  id?: string
+  userId: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileUncheckedCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileUncheckedCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageUncheckedCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
+  submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutBikesInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutBikesInput, Prisma.ProfileUncheckedCreateWithoutBikesInput>
+}
+
+export type ProfileUpsertWithoutBikesInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutBikesInput, Prisma.ProfileUncheckedUpdateWithoutBikesInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutBikesInput, Prisma.ProfileUncheckedCreateWithoutBikesInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutBikesInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutBikesInput, Prisma.ProfileUncheckedUpdateWithoutBikesInput>
+}
+
+export type ProfileUpdateWithoutBikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
+  submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutBikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUncheckedUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUncheckedUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUncheckedUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+}
+
 export type ProfileCreateWithoutBusinessInput = {
   id?: string
   activeType?: $Enums.Type | null
@@ -834,6 +983,7 @@ export type ProfileCreateWithoutBusinessInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutBusinessInput = {
@@ -861,6 +1011,7 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutBusinessInput = {
@@ -904,6 +1055,7 @@ export type ProfileUpdateWithoutBusinessInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutBusinessInput = {
@@ -931,6 +1083,7 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCarsInput = {
@@ -958,6 +1111,7 @@ export type ProfileCreateWithoutCarsInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCarsInput = {
@@ -985,6 +1139,7 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCarsInput = {
@@ -1028,6 +1183,7 @@ export type ProfileUpdateWithoutCarsInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCarsInput = {
@@ -1055,6 +1211,7 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCreatorInput = {
@@ -1082,6 +1239,7 @@ export type ProfileCreateWithoutCreatorInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCreatorInput = {
@@ -1109,6 +1267,7 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCreatorInput = {
@@ -1152,6 +1311,7 @@ export type ProfileUpdateWithoutCreatorInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCreatorInput = {
@@ -1179,6 +1339,7 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutGaragesInput = {
@@ -1206,6 +1367,7 @@ export type ProfileCreateWithoutGaragesInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutGaragesInput = {
@@ -1233,6 +1395,7 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutGaragesInput = {
@@ -1276,6 +1439,7 @@ export type ProfileUpdateWithoutGaragesInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutGaragesInput = {
@@ -1303,6 +1467,7 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutLabTimesInput = {
@@ -1330,6 +1495,7 @@ export type ProfileCreateWithoutLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutLabTimesInput = {
@@ -1357,6 +1523,7 @@ export type ProfileUncheckedCreateWithoutLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutLabTimesInput = {
@@ -1400,6 +1567,7 @@ export type ProfileUpdateWithoutLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutLabTimesInput = {
@@ -1427,6 +1595,7 @@ export type ProfileUncheckedUpdateWithoutLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutLegalNoticesInput = {
@@ -1454,6 +1623,7 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
@@ -1481,6 +1651,7 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutLegalNoticesInput = {
@@ -1524,6 +1695,7 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1551,6 +1723,7 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutOwnerInput = {
@@ -1578,6 +1751,7 @@ export type ProfileCreateWithoutOwnerInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutOwnerInput = {
@@ -1605,6 +1779,7 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutOwnerInput = {
@@ -1648,6 +1823,7 @@ export type ProfileUpdateWithoutOwnerInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutOwnerInput = {
@@ -1675,6 +1851,7 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutPostsInput = {
@@ -1702,6 +1879,7 @@ export type ProfileCreateWithoutPostsInput = {
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutPostsInput = {
@@ -1729,6 +1907,7 @@ export type ProfileUncheckedCreateWithoutPostsInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutPostsInput = {
@@ -1772,6 +1951,7 @@ export type ProfileUpdateWithoutPostsInput = {
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutPostsInput = {
@@ -1799,6 +1979,7 @@ export type ProfileUncheckedUpdateWithoutPostsInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutProDriverInput = {
@@ -1826,6 +2007,7 @@ export type ProfileCreateWithoutProDriverInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutProDriverInput = {
@@ -1853,6 +2035,7 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutProDriverInput = {
@@ -1896,6 +2079,7 @@ export type ProfileUpdateWithoutProDriverInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutProDriverInput = {
@@ -1923,6 +2107,7 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSimRacingInput = {
@@ -1950,6 +2135,7 @@ export type ProfileCreateWithoutSimRacingInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSimRacingInput = {
@@ -1977,6 +2163,7 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSimRacingInput = {
@@ -2020,6 +2207,7 @@ export type ProfileUpdateWithoutSimRacingInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSimRacingInput = {
@@ -2047,6 +2235,7 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSpotterInput = {
@@ -2074,6 +2263,7 @@ export type ProfileCreateWithoutSpotterInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSpotterInput = {
@@ -2101,6 +2291,7 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSpotterInput = {
@@ -2144,6 +2335,7 @@ export type ProfileUpdateWithoutSpotterInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSpotterInput = {
@@ -2171,6 +2363,7 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSubmitLabTimesInput = {
@@ -2198,6 +2391,7 @@ export type ProfileCreateWithoutSubmitLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
@@ -2225,6 +2419,7 @@ export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSubmitLabTimesInput = {
@@ -2268,6 +2463,7 @@ export type ProfileUpdateWithoutSubmitLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
@@ -2295,6 +2491,7 @@ export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutUserInput = {
@@ -2322,6 +2519,7 @@ export type ProfileCreateWithoutUserInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -2349,6 +2547,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -2419,6 +2618,7 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
@@ -2446,6 +2646,7 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualGaragesInput = {
@@ -2489,6 +2690,7 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
@@ -2516,6 +2718,7 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
@@ -2543,6 +2746,7 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   posts?: Prisma.PostCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
@@ -2570,6 +2774,7 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
   labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualSimRacingEventsInput = {
@@ -2613,6 +2818,7 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
@@ -2640,6 +2846,7 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyUserInput = {
@@ -2680,6 +2887,7 @@ export type ProfileUpdateWithoutUserInput = {
   posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -2707,6 +2915,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
   labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
   submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateManyWithoutUserInput = {
@@ -2736,6 +2945,7 @@ export type ProfileCountOutputType = {
   posts: number
   labTimes: number
   submitLabTimes: number
+  bikes: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2747,6 +2957,7 @@ export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   posts?: boolean | ProfileCountOutputTypeCountPostsArgs
   labTimes?: boolean | ProfileCountOutputTypeCountLabTimesArgs
   submitLabTimes?: boolean | ProfileCountOutputTypeCountSubmitLabTimesArgs
+  bikes?: boolean | ProfileCountOutputTypeCountBikesArgs
 }
 
 /**
@@ -2815,6 +3026,13 @@ export type ProfileCountOutputTypeCountSubmitLabTimesArgs<ExtArgs extends runtim
   where?: Prisma.SubmitLabTimeWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountBikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BikeWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2843,6 +3061,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   posts?: boolean | Prisma.Profile$postsArgs<ExtArgs>
   labTimes?: boolean | Prisma.Profile$labTimesArgs<ExtArgs>
   submitLabTimes?: boolean | Prisma.Profile$submitLabTimesArgs<ExtArgs>
+  bikes?: boolean | Prisma.Profile$bikesArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -2907,6 +3126,7 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   posts?: boolean | Prisma.Profile$postsArgs<ExtArgs>
   labTimes?: boolean | Prisma.Profile$labTimesArgs<ExtArgs>
   submitLabTimes?: boolean | Prisma.Profile$submitLabTimesArgs<ExtArgs>
+  bikes?: boolean | Prisma.Profile$bikesArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2934,6 +3154,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     posts: Prisma.$PostPayload<ExtArgs>[]
     labTimes: Prisma.$LabTimePayload<ExtArgs>[]
     submitLabTimes: Prisma.$SubmitLabTimePayload<ExtArgs>[]
+    bikes: Prisma.$BikePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3356,6 +3577,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   posts<T extends Prisma.Profile$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   labTimes<T extends Prisma.Profile$labTimesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$labTimesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LabTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   submitLabTimes<T extends Prisma.Profile$submitLabTimesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$submitLabTimesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SubmitLabTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bikes<T extends Prisma.Profile$bikesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$bikesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4095,6 +4317,30 @@ export type Profile$submitLabTimesArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.SubmitLabTimeScalarFieldEnum | Prisma.SubmitLabTimeScalarFieldEnum[]
+}
+
+/**
+ * Profile.bikes
+ */
+export type Profile$bikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bike
+   */
+  select?: Prisma.BikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bike
+   */
+  omit?: Prisma.BikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BikeInclude<ExtArgs> | null
+  where?: Prisma.BikeWhereInput
+  orderBy?: Prisma.BikeOrderByWithRelationInput | Prisma.BikeOrderByWithRelationInput[]
+  cursor?: Prisma.BikeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BikeScalarFieldEnum | Prisma.BikeScalarFieldEnum[]
 }
 
 /**

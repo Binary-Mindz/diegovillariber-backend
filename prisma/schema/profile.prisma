@@ -29,5 +29,6 @@ model Profile {
   posts Post[]
   labTimes LabTime[]
   submitLabTimes SubmitLabTime[]
+  bikes Bike[]
 }
 

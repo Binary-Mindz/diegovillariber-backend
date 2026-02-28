@@ -53,6 +53,14 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
+  Bike: 'Bike',
+  AdvancedBikeData: 'AdvancedBikeData',
+  EngineAndPerformance: 'EngineAndPerformance',
+  BikeDriveTrains: 'BikeDriveTrains',
+  Suspension: 'Suspension',
+  BikeWheelTires: 'BikeWheelTires',
+  BikeElectronics: 'BikeElectronics',
+  BikeUsageAndNotes: 'BikeUsageAndNotes',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
   Challenge: 'Challenge',
@@ -173,6 +181,110 @@ export const AmbassadorProgramScalarFieldEnum = {
 } as const
 
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
+
+
+export const BikeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  garageId: 'garageId',
+  image: 'image',
+  make: 'make',
+  model: 'model',
+  bodyType: 'bodyType',
+  transmission: 'transmission',
+  driveTrain: 'driveTrain',
+  country: 'country',
+  color: 'color',
+  displayName: 'displayName',
+  description: 'description',
+  category: 'category',
+  listOnMarketplace: 'listOnMarketplace',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BikeScalarFieldEnum = (typeof BikeScalarFieldEnum)[keyof typeof BikeScalarFieldEnum]
+
+
+export const AdvancedBikeDataScalarFieldEnum = {
+  id: 'id',
+  bikeId: 'bikeId'
+} as const
+
+export type AdvancedBikeDataScalarFieldEnum = (typeof AdvancedBikeDataScalarFieldEnum)[keyof typeof AdvancedBikeDataScalarFieldEnum]
+
+
+export const EngineAndPerformanceScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  engineType: 'engineType',
+  displacement: 'displacement',
+  power: 'power',
+  torque: 'torque',
+  ecu: 'ecu'
+} as const
+
+export type EngineAndPerformanceScalarFieldEnum = (typeof EngineAndPerformanceScalarFieldEnum)[keyof typeof EngineAndPerformanceScalarFieldEnum]
+
+
+export const BikeDriveTrainsScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  transmissionMods: 'transmissionMods',
+  differential: 'differential',
+  clutch: 'clutch'
+} as const
+
+export type BikeDriveTrainsScalarFieldEnum = (typeof BikeDriveTrainsScalarFieldEnum)[keyof typeof BikeDriveTrainsScalarFieldEnum]
+
+
+export const SuspensionScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  frontSuspension: 'frontSuspension',
+  rearSuspension: 'rearSuspension',
+  frontBrakes: 'frontBrakes',
+  rearBrake: 'rearBrake',
+  abs: 'abs',
+  notes: 'notes'
+} as const
+
+export type SuspensionScalarFieldEnum = (typeof SuspensionScalarFieldEnum)[keyof typeof SuspensionScalarFieldEnum]
+
+
+export const BikeWheelTiresScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  wheels: 'wheels',
+  tires: 'tires'
+} as const
+
+export type BikeWheelTiresScalarFieldEnum = (typeof BikeWheelTiresScalarFieldEnum)[keyof typeof BikeWheelTiresScalarFieldEnum]
+
+
+export const BikeElectronicsScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  riding: 'riding',
+  tractionControl: 'tractionControl',
+  wheelieControl: 'wheelieControl'
+} as const
+
+export type BikeElectronicsScalarFieldEnum = (typeof BikeElectronicsScalarFieldEnum)[keyof typeof BikeElectronicsScalarFieldEnum]
+
+
+export const BikeUsageAndNotesScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  weight: 'weight',
+  primaryUsage: 'primaryUsage',
+  ridingLevel: 'ridingLevel',
+  buildStatus: 'buildStatus',
+  notes: 'notes'
+} as const
+
+export type BikeUsageAndNotesScalarFieldEnum = (typeof BikeUsageAndNotesScalarFieldEnum)[keyof typeof BikeUsageAndNotesScalarFieldEnum]
 
 
 export const BusinessProfileScalarFieldEnum = {
@@ -725,7 +837,9 @@ export type LabTimeScalarFieldEnum = (typeof LabTimeScalarFieldEnum)[keyof typeo
 export const LegalNoticeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
+  targetType: 'targetType',
   carId: 'carId',
+  bikeId: 'bikeId',
   location: 'location',
   date: 'date',
   description: 'description',

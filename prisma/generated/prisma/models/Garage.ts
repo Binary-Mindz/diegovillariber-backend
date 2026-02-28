@@ -184,6 +184,7 @@ export type GarageWhereInput = {
   location?: Prisma.StringNullableFilter<"Garage"> | string | null
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   cars?: Prisma.CarListRelationFilter
+  bikes?: Prisma.BikeListRelationFilter
 }
 
 export type GarageOrderByWithRelationInput = {
@@ -194,6 +195,7 @@ export type GarageOrderByWithRelationInput = {
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
   cars?: Prisma.CarOrderByRelationAggregateInput
+  bikes?: Prisma.BikeOrderByRelationAggregateInput
 }
 
 export type GarageWhereUniqueInput = Prisma.AtLeast<{
@@ -207,6 +209,7 @@ export type GarageWhereUniqueInput = Prisma.AtLeast<{
   location?: Prisma.StringNullableFilter<"Garage"> | string | null
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   cars?: Prisma.CarListRelationFilter
+  bikes?: Prisma.BikeListRelationFilter
 }, "id">
 
 export type GarageOrderByWithAggregationInput = {
@@ -238,6 +241,7 @@ export type GarageCreateInput = {
   location?: string | null
   profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
   cars?: Prisma.CarCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateInput = {
@@ -247,6 +251,7 @@ export type GarageUncheckedCreateInput = {
   description?: string | null
   location?: string | null
   cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUpdateInput = {
@@ -256,6 +261,7 @@ export type GarageUpdateInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
   cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateInput = {
@@ -265,6 +271,7 @@ export type GarageUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageCreateManyInput = {
@@ -329,6 +336,20 @@ export type GarageOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type GarageCreateNestedOneWithoutBikesInput = {
+  create?: Prisma.XOR<Prisma.GarageCreateWithoutBikesInput, Prisma.GarageUncheckedCreateWithoutBikesInput>
+  connectOrCreate?: Prisma.GarageCreateOrConnectWithoutBikesInput
+  connect?: Prisma.GarageWhereUniqueInput
+}
+
+export type GarageUpdateOneRequiredWithoutBikesNestedInput = {
+  create?: Prisma.XOR<Prisma.GarageCreateWithoutBikesInput, Prisma.GarageUncheckedCreateWithoutBikesInput>
+  connectOrCreate?: Prisma.GarageCreateOrConnectWithoutBikesInput
+  upsert?: Prisma.GarageUpsertWithoutBikesInput
+  connect?: Prisma.GarageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.GarageUpdateToOneWithWhereWithoutBikesInput, Prisma.GarageUpdateWithoutBikesInput>, Prisma.GarageUncheckedUpdateWithoutBikesInput>
+}
+
 export type GarageCreateNestedOneWithoutCarsInput = {
   create?: Prisma.XOR<Prisma.GarageCreateWithoutCarsInput, Prisma.GarageUncheckedCreateWithoutCarsInput>
   connectOrCreate?: Prisma.GarageCreateOrConnectWithoutCarsInput
@@ -385,12 +406,65 @@ export type GarageUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.GarageScalarWhereInput | Prisma.GarageScalarWhereInput[]
 }
 
+export type GarageCreateWithoutBikesInput = {
+  id?: string
+  garageName?: string | null
+  description?: string | null
+  location?: string | null
+  profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
+  cars?: Prisma.CarCreateNestedManyWithoutGarageInput
+}
+
+export type GarageUncheckedCreateWithoutBikesInput = {
+  id?: string
+  profileId: string
+  garageName?: string | null
+  description?: string | null
+  location?: string | null
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
+}
+
+export type GarageCreateOrConnectWithoutBikesInput = {
+  where: Prisma.GarageWhereUniqueInput
+  create: Prisma.XOR<Prisma.GarageCreateWithoutBikesInput, Prisma.GarageUncheckedCreateWithoutBikesInput>
+}
+
+export type GarageUpsertWithoutBikesInput = {
+  update: Prisma.XOR<Prisma.GarageUpdateWithoutBikesInput, Prisma.GarageUncheckedUpdateWithoutBikesInput>
+  create: Prisma.XOR<Prisma.GarageCreateWithoutBikesInput, Prisma.GarageUncheckedCreateWithoutBikesInput>
+  where?: Prisma.GarageWhereInput
+}
+
+export type GarageUpdateToOneWithWhereWithoutBikesInput = {
+  where?: Prisma.GarageWhereInput
+  data: Prisma.XOR<Prisma.GarageUpdateWithoutBikesInput, Prisma.GarageUncheckedUpdateWithoutBikesInput>
+}
+
+export type GarageUpdateWithoutBikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
+  cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
+}
+
+export type GarageUncheckedUpdateWithoutBikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
+}
+
 export type GarageCreateWithoutCarsInput = {
   id?: string
   garageName?: string | null
   description?: string | null
   location?: string | null
   profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateWithoutCarsInput = {
@@ -399,6 +473,7 @@ export type GarageUncheckedCreateWithoutCarsInput = {
   garageName?: string | null
   description?: string | null
   location?: string | null
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageCreateOrConnectWithoutCarsInput = {
@@ -423,6 +498,7 @@ export type GarageUpdateWithoutCarsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateWithoutCarsInput = {
@@ -431,6 +507,7 @@ export type GarageUncheckedUpdateWithoutCarsInput = {
   garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageCreateWithoutProfileInput = {
@@ -439,6 +516,7 @@ export type GarageCreateWithoutProfileInput = {
   description?: string | null
   location?: string | null
   cars?: Prisma.CarCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateWithoutProfileInput = {
@@ -447,6 +525,7 @@ export type GarageUncheckedCreateWithoutProfileInput = {
   description?: string | null
   location?: string | null
   cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageCreateOrConnectWithoutProfileInput = {
@@ -499,6 +578,7 @@ export type GarageUpdateWithoutProfileInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateWithoutProfileInput = {
@@ -507,6 +587,7 @@ export type GarageUncheckedUpdateWithoutProfileInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateManyWithoutProfileInput = {
@@ -523,10 +604,12 @@ export type GarageUncheckedUpdateManyWithoutProfileInput = {
 
 export type GarageCountOutputType = {
   cars: number
+  bikes: number
 }
 
 export type GarageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cars?: boolean | GarageCountOutputTypeCountCarsArgs
+  bikes?: boolean | GarageCountOutputTypeCountBikesArgs
 }
 
 /**
@@ -546,6 +629,13 @@ export type GarageCountOutputTypeCountCarsArgs<ExtArgs extends runtime.Types.Ext
   where?: Prisma.CarWhereInput
 }
 
+/**
+ * GarageCountOutputType without action
+ */
+export type GarageCountOutputTypeCountBikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BikeWhereInput
+}
+
 
 export type GarageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -555,6 +645,7 @@ export type GarageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   location?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   cars?: boolean | Prisma.Garage$carsArgs<ExtArgs>
+  bikes?: boolean | Prisma.Garage$bikesArgs<ExtArgs>
   _count?: boolean | Prisma.GarageCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["garage"]>
 
@@ -588,6 +679,7 @@ export type GarageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type GarageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   cars?: boolean | Prisma.Garage$carsArgs<ExtArgs>
+  bikes?: boolean | Prisma.Garage$bikesArgs<ExtArgs>
   _count?: boolean | Prisma.GarageCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type GarageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -602,6 +694,7 @@ export type $GaragePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   objects: {
     profile: Prisma.$ProfilePayload<ExtArgs>
     cars: Prisma.$CarPayload<ExtArgs>[]
+    bikes: Prisma.$BikePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1005,6 +1098,7 @@ export interface Prisma__GarageClient<T, Null = never, ExtArgs extends runtime.T
   readonly [Symbol.toStringTag]: "PrismaPromise"
   profile<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   cars<T extends Prisma.Garage$carsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Garage$carsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bikes<T extends Prisma.Garage$bikesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Garage$bikesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1456,6 +1550,30 @@ export type Garage$carsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.CarScalarFieldEnum | Prisma.CarScalarFieldEnum[]
+}
+
+/**
+ * Garage.bikes
+ */
+export type Garage$bikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bike
+   */
+  select?: Prisma.BikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bike
+   */
+  omit?: Prisma.BikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BikeInclude<ExtArgs> | null
+  where?: Prisma.BikeWhereInput
+  orderBy?: Prisma.BikeOrderByWithRelationInput | Prisma.BikeOrderByWithRelationInput[]
+  cursor?: Prisma.BikeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BikeScalarFieldEnum | Prisma.BikeScalarFieldEnum[]
 }
 
 /**
