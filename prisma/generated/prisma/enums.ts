@@ -327,7 +327,6 @@ export type RawShiftSoftware = (typeof RawShiftSoftware)[keyof typeof RawShiftSo
 export const Role = {
   USER: 'USER',
   ADMIN: 'ADMIN',
-  SUPER_ADMIN: 'SUPER_ADMIN',
   AMBASSADOR: 'AMBASSADOR',
   OFFICIAL_PARTNER: 'OFFICIAL_PARTNER'
 } as const
