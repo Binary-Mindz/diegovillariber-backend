@@ -4,8 +4,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { PrismaService } from './common/prisma/prisma.service';
-import { seedAdmin } from './common/seed/admin.seed';
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,13 +17,6 @@ async function bootstrap() {
     }),
   );
 
-  if (process.env.AUTO_SEED === 'true') {
-    const prisma = app.get(PrismaService);
-
-    console.log('AUTO_SEED enabled. Seeding admin...');
-    await seedAdmin(prisma);
-    console.log('Seeding done ✅ test seed ');
-  }
 
   const config = new DocumentBuilder()
     .setTitle('Diegovillariber Backend Server')
