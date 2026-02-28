@@ -386,6 +386,14 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
+  Bike: 'Bike',
+  AdvancedBikeData: 'AdvancedBikeData',
+  EngineAndPerformance: 'EngineAndPerformance',
+  BikeDriveTrains: 'BikeDriveTrains',
+  Suspension: 'Suspension',
+  BikeWheelTires: 'BikeWheelTires',
+  BikeElectronics: 'BikeElectronics',
+  BikeUsageAndNotes: 'BikeUsageAndNotes',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
   Challenge: 'Challenge',
@@ -474,7 +482,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -623,6 +631,598 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AmbassadorProgramCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AmbassadorProgramCountAggregateOutputType> | number
+        }
+      }
+    }
+    Bike: {
+      payload: Prisma.$BikePayload<ExtArgs>
+      fields: Prisma.BikeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BikeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BikeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        findFirst: {
+          args: Prisma.BikeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BikeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        findMany: {
+          args: Prisma.BikeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>[]
+        }
+        create: {
+          args: Prisma.BikeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        createMany: {
+          args: Prisma.BikeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BikeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>[]
+        }
+        delete: {
+          args: Prisma.BikeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        update: {
+          args: Prisma.BikeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        deleteMany: {
+          args: Prisma.BikeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BikeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BikeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>[]
+        }
+        upsert: {
+          args: Prisma.BikeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikePayload>
+        }
+        aggregate: {
+          args: Prisma.BikeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBike>
+        }
+        groupBy: {
+          args: Prisma.BikeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BikeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeCountAggregateOutputType> | number
+        }
+      }
+    }
+    AdvancedBikeData: {
+      payload: Prisma.$AdvancedBikeDataPayload<ExtArgs>
+      fields: Prisma.AdvancedBikeDataFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdvancedBikeDataFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdvancedBikeDataFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        findFirst: {
+          args: Prisma.AdvancedBikeDataFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdvancedBikeDataFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        findMany: {
+          args: Prisma.AdvancedBikeDataFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>[]
+        }
+        create: {
+          args: Prisma.AdvancedBikeDataCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        createMany: {
+          args: Prisma.AdvancedBikeDataCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdvancedBikeDataCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>[]
+        }
+        delete: {
+          args: Prisma.AdvancedBikeDataDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        update: {
+          args: Prisma.AdvancedBikeDataUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdvancedBikeDataDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdvancedBikeDataUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdvancedBikeDataUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdvancedBikeDataUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvancedBikeDataPayload>
+        }
+        aggregate: {
+          args: Prisma.AdvancedBikeDataAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdvancedBikeData>
+        }
+        groupBy: {
+          args: Prisma.AdvancedBikeDataGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvancedBikeDataGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdvancedBikeDataCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvancedBikeDataCountAggregateOutputType> | number
+        }
+      }
+    }
+    EngineAndPerformance: {
+      payload: Prisma.$EngineAndPerformancePayload<ExtArgs>
+      fields: Prisma.EngineAndPerformanceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.EngineAndPerformanceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.EngineAndPerformanceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        findFirst: {
+          args: Prisma.EngineAndPerformanceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.EngineAndPerformanceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        findMany: {
+          args: Prisma.EngineAndPerformanceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>[]
+        }
+        create: {
+          args: Prisma.EngineAndPerformanceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        createMany: {
+          args: Prisma.EngineAndPerformanceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.EngineAndPerformanceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>[]
+        }
+        delete: {
+          args: Prisma.EngineAndPerformanceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        update: {
+          args: Prisma.EngineAndPerformanceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        deleteMany: {
+          args: Prisma.EngineAndPerformanceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.EngineAndPerformanceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.EngineAndPerformanceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>[]
+        }
+        upsert: {
+          args: Prisma.EngineAndPerformanceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$EngineAndPerformancePayload>
+        }
+        aggregate: {
+          args: Prisma.EngineAndPerformanceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEngineAndPerformance>
+        }
+        groupBy: {
+          args: Prisma.EngineAndPerformanceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EngineAndPerformanceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.EngineAndPerformanceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.EngineAndPerformanceCountAggregateOutputType> | number
+        }
+      }
+    }
+    BikeDriveTrains: {
+      payload: Prisma.$BikeDriveTrainsPayload<ExtArgs>
+      fields: Prisma.BikeDriveTrainsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BikeDriveTrainsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BikeDriveTrainsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        findFirst: {
+          args: Prisma.BikeDriveTrainsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BikeDriveTrainsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        findMany: {
+          args: Prisma.BikeDriveTrainsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>[]
+        }
+        create: {
+          args: Prisma.BikeDriveTrainsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        createMany: {
+          args: Prisma.BikeDriveTrainsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BikeDriveTrainsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>[]
+        }
+        delete: {
+          args: Prisma.BikeDriveTrainsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        update: {
+          args: Prisma.BikeDriveTrainsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        deleteMany: {
+          args: Prisma.BikeDriveTrainsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BikeDriveTrainsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BikeDriveTrainsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>[]
+        }
+        upsert: {
+          args: Prisma.BikeDriveTrainsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeDriveTrainsPayload>
+        }
+        aggregate: {
+          args: Prisma.BikeDriveTrainsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBikeDriveTrains>
+        }
+        groupBy: {
+          args: Prisma.BikeDriveTrainsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeDriveTrainsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BikeDriveTrainsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeDriveTrainsCountAggregateOutputType> | number
+        }
+      }
+    }
+    Suspension: {
+      payload: Prisma.$SuspensionPayload<ExtArgs>
+      fields: Prisma.SuspensionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SuspensionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SuspensionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        findFirst: {
+          args: Prisma.SuspensionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SuspensionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        findMany: {
+          args: Prisma.SuspensionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>[]
+        }
+        create: {
+          args: Prisma.SuspensionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        createMany: {
+          args: Prisma.SuspensionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SuspensionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>[]
+        }
+        delete: {
+          args: Prisma.SuspensionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        update: {
+          args: Prisma.SuspensionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SuspensionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SuspensionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SuspensionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>[]
+        }
+        upsert: {
+          args: Prisma.SuspensionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SuspensionPayload>
+        }
+        aggregate: {
+          args: Prisma.SuspensionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSuspension>
+        }
+        groupBy: {
+          args: Prisma.SuspensionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SuspensionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SuspensionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SuspensionCountAggregateOutputType> | number
+        }
+      }
+    }
+    BikeWheelTires: {
+      payload: Prisma.$BikeWheelTiresPayload<ExtArgs>
+      fields: Prisma.BikeWheelTiresFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BikeWheelTiresFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BikeWheelTiresFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        findFirst: {
+          args: Prisma.BikeWheelTiresFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BikeWheelTiresFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        findMany: {
+          args: Prisma.BikeWheelTiresFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>[]
+        }
+        create: {
+          args: Prisma.BikeWheelTiresCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        createMany: {
+          args: Prisma.BikeWheelTiresCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BikeWheelTiresCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>[]
+        }
+        delete: {
+          args: Prisma.BikeWheelTiresDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        update: {
+          args: Prisma.BikeWheelTiresUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        deleteMany: {
+          args: Prisma.BikeWheelTiresDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BikeWheelTiresUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BikeWheelTiresUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>[]
+        }
+        upsert: {
+          args: Prisma.BikeWheelTiresUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeWheelTiresPayload>
+        }
+        aggregate: {
+          args: Prisma.BikeWheelTiresAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBikeWheelTires>
+        }
+        groupBy: {
+          args: Prisma.BikeWheelTiresGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeWheelTiresGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BikeWheelTiresCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeWheelTiresCountAggregateOutputType> | number
+        }
+      }
+    }
+    BikeElectronics: {
+      payload: Prisma.$BikeElectronicsPayload<ExtArgs>
+      fields: Prisma.BikeElectronicsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BikeElectronicsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BikeElectronicsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        findFirst: {
+          args: Prisma.BikeElectronicsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BikeElectronicsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        findMany: {
+          args: Prisma.BikeElectronicsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>[]
+        }
+        create: {
+          args: Prisma.BikeElectronicsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        createMany: {
+          args: Prisma.BikeElectronicsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BikeElectronicsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>[]
+        }
+        delete: {
+          args: Prisma.BikeElectronicsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        update: {
+          args: Prisma.BikeElectronicsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        deleteMany: {
+          args: Prisma.BikeElectronicsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BikeElectronicsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BikeElectronicsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>[]
+        }
+        upsert: {
+          args: Prisma.BikeElectronicsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeElectronicsPayload>
+        }
+        aggregate: {
+          args: Prisma.BikeElectronicsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBikeElectronics>
+        }
+        groupBy: {
+          args: Prisma.BikeElectronicsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeElectronicsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BikeElectronicsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeElectronicsCountAggregateOutputType> | number
+        }
+      }
+    }
+    BikeUsageAndNotes: {
+      payload: Prisma.$BikeUsageAndNotesPayload<ExtArgs>
+      fields: Prisma.BikeUsageAndNotesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BikeUsageAndNotesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BikeUsageAndNotesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        findFirst: {
+          args: Prisma.BikeUsageAndNotesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BikeUsageAndNotesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        findMany: {
+          args: Prisma.BikeUsageAndNotesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>[]
+        }
+        create: {
+          args: Prisma.BikeUsageAndNotesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        createMany: {
+          args: Prisma.BikeUsageAndNotesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BikeUsageAndNotesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>[]
+        }
+        delete: {
+          args: Prisma.BikeUsageAndNotesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        update: {
+          args: Prisma.BikeUsageAndNotesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        deleteMany: {
+          args: Prisma.BikeUsageAndNotesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BikeUsageAndNotesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BikeUsageAndNotesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>[]
+        }
+        upsert: {
+          args: Prisma.BikeUsageAndNotesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BikeUsageAndNotesPayload>
+        }
+        aggregate: {
+          args: Prisma.BikeUsageAndNotesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBikeUsageAndNotes>
+        }
+        groupBy: {
+          args: Prisma.BikeUsageAndNotesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeUsageAndNotesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BikeUsageAndNotesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BikeUsageAndNotesCountAggregateOutputType> | number
         }
       }
     }
@@ -6098,6 +6698,110 @@ export const AmbassadorProgramScalarFieldEnum = {
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
 
 
+export const BikeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  garageId: 'garageId',
+  image: 'image',
+  make: 'make',
+  model: 'model',
+  bodyType: 'bodyType',
+  transmission: 'transmission',
+  driveTrain: 'driveTrain',
+  country: 'country',
+  color: 'color',
+  displayName: 'displayName',
+  description: 'description',
+  category: 'category',
+  listOnMarketplace: 'listOnMarketplace',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BikeScalarFieldEnum = (typeof BikeScalarFieldEnum)[keyof typeof BikeScalarFieldEnum]
+
+
+export const AdvancedBikeDataScalarFieldEnum = {
+  id: 'id',
+  bikeId: 'bikeId'
+} as const
+
+export type AdvancedBikeDataScalarFieldEnum = (typeof AdvancedBikeDataScalarFieldEnum)[keyof typeof AdvancedBikeDataScalarFieldEnum]
+
+
+export const EngineAndPerformanceScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  engineType: 'engineType',
+  displacement: 'displacement',
+  power: 'power',
+  torque: 'torque',
+  ecu: 'ecu'
+} as const
+
+export type EngineAndPerformanceScalarFieldEnum = (typeof EngineAndPerformanceScalarFieldEnum)[keyof typeof EngineAndPerformanceScalarFieldEnum]
+
+
+export const BikeDriveTrainsScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  transmissionMods: 'transmissionMods',
+  differential: 'differential',
+  clutch: 'clutch'
+} as const
+
+export type BikeDriveTrainsScalarFieldEnum = (typeof BikeDriveTrainsScalarFieldEnum)[keyof typeof BikeDriveTrainsScalarFieldEnum]
+
+
+export const SuspensionScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  frontSuspension: 'frontSuspension',
+  rearSuspension: 'rearSuspension',
+  frontBrakes: 'frontBrakes',
+  rearBrake: 'rearBrake',
+  abs: 'abs',
+  notes: 'notes'
+} as const
+
+export type SuspensionScalarFieldEnum = (typeof SuspensionScalarFieldEnum)[keyof typeof SuspensionScalarFieldEnum]
+
+
+export const BikeWheelTiresScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  wheels: 'wheels',
+  tires: 'tires'
+} as const
+
+export type BikeWheelTiresScalarFieldEnum = (typeof BikeWheelTiresScalarFieldEnum)[keyof typeof BikeWheelTiresScalarFieldEnum]
+
+
+export const BikeElectronicsScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  riding: 'riding',
+  tractionControl: 'tractionControl',
+  wheelieControl: 'wheelieControl'
+} as const
+
+export type BikeElectronicsScalarFieldEnum = (typeof BikeElectronicsScalarFieldEnum)[keyof typeof BikeElectronicsScalarFieldEnum]
+
+
+export const BikeUsageAndNotesScalarFieldEnum = {
+  id: 'id',
+  advancedBikeDataId: 'advancedBikeDataId',
+  weight: 'weight',
+  primaryUsage: 'primaryUsage',
+  ridingLevel: 'ridingLevel',
+  buildStatus: 'buildStatus',
+  notes: 'notes'
+} as const
+
+export type BikeUsageAndNotesScalarFieldEnum = (typeof BikeUsageAndNotesScalarFieldEnum)[keyof typeof BikeUsageAndNotesScalarFieldEnum]
+
+
 export const BusinessProfileScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -6648,7 +7352,9 @@ export type LabTimeScalarFieldEnum = (typeof LabTimeScalarFieldEnum)[keyof typeo
 export const LegalNoticeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
+  targetType: 'targetType',
   carId: 'carId',
+  bikeId: 'bikeId',
   location: 'location',
   date: 'date',
   description: 'description',
@@ -7284,44 +7990,16 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'Type'
+ * Reference to a field of type 'BikeBodyType'
  */
-export type EnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type'>
+export type EnumBikeBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BikeBodyType'>
     
 
 
 /**
- * Reference to a field of type 'Type[]'
+ * Reference to a field of type 'BikeBodyType[]'
  */
-export type ListEnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type[]'>
-    
-
-
-/**
- * Reference to a field of type 'BusinessCategory'
- */
-export type EnumBusinessCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BusinessCategory'>
-    
-
-
-/**
- * Reference to a field of type 'BusinessCategory[]'
- */
-export type ListEnumBusinessCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BusinessCategory[]'>
-    
-
-
-/**
- * Reference to a field of type 'BodyType'
- */
-export type EnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType'>
-    
-
-
-/**
- * Reference to a field of type 'BodyType[]'
- */
-export type ListEnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType[]'>
+export type ListEnumBikeBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BikeBodyType[]'>
     
 
 
@@ -7371,6 +8049,48 @@ export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'Type'
+ */
+export type EnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type'>
+    
+
+
+/**
+ * Reference to a field of type 'Type[]'
+ */
+export type ListEnumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Type[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BusinessCategory'
+ */
+export type EnumBusinessCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BusinessCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'BusinessCategory[]'
+ */
+export type ListEnumBusinessCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BusinessCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BodyType'
+ */
+export type EnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType'>
+    
+
+
+/**
+ * Reference to a field of type 'BodyType[]'
+ */
+export type ListEnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType[]'>
     
 
 
@@ -7805,6 +8525,20 @@ export type EnumDriveStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'DriveStyle[]'
  */
 export type ListEnumDriveStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveStyle[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LegalNoticeTarget'
+ */
+export type EnumLegalNoticeTargetFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LegalNoticeTarget'>
+    
+
+
+/**
+ * Reference to a field of type 'LegalNoticeTarget[]'
+ */
+export type ListEnumLegalNoticeTargetFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LegalNoticeTarget[]'>
     
 
 
@@ -8268,6 +9002,14 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   advancedCarData?: Prisma.AdvancedCarDataOmit
   ambassadorProgram?: Prisma.AmbassadorProgramOmit
+  bike?: Prisma.BikeOmit
+  advancedBikeData?: Prisma.AdvancedBikeDataOmit
+  engineAndPerformance?: Prisma.EngineAndPerformanceOmit
+  bikeDriveTrains?: Prisma.BikeDriveTrainsOmit
+  suspension?: Prisma.SuspensionOmit
+  bikeWheelTires?: Prisma.BikeWheelTiresOmit
+  bikeElectronics?: Prisma.BikeElectronicsOmit
+  bikeUsageAndNotes?: Prisma.BikeUsageAndNotesOmit
   businessProfile?: Prisma.BusinessProfileOmit
   car?: Prisma.CarOmit
   challenge?: Prisma.ChallengeOmit
