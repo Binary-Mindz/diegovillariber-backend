@@ -10,16 +10,16 @@ model Bike {
   image       String?
   make        String?
   model       String?
-  bodyType    BikeBodyType @default(Sport)
+  bodyType    BikeBodyType @default(SPORT)
   transmission Transmission @default(MANUAL)
-  driveTrain   DriveTrain   @default(RWD)
+  driveTrain   DriveTrainBike   @default(CHAIN)
 
   country     String?
   color       String?
   displayName String?
   description String?
 
-  category          DriveCategory @default(Daily_Drive)
+  category          DriveCategoryBike @default(DAILY_RIDER)
   listOnMarketplace Boolean       @default(false)
   price             Int?
 

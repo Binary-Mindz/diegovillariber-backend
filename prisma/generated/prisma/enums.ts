@@ -471,6 +471,30 @@ export const RacingType = {
 export type RacingType = (typeof RacingType)[keyof typeof RacingType]
 
 
+export const VehicleCategory = {
+  CITY: 'CITY',
+  HOT_HATCH: 'HOT_HATCH',
+  SEDAN: 'SEDAN',
+  SPORT: 'SPORT',
+  SUV: 'SUV',
+  SUPERCAR: 'SUPERCAR',
+  TRACK: 'TRACK',
+  CLASSIC: 'CLASSIC',
+  NAKED: 'NAKED',
+  ADVENTURE: 'ADVENTURE',
+  TOURING: 'TOURING',
+  CUSTOM: 'CUSTOM',
+  SCOOTER: 'SCOOTER',
+  OFF_ROAD: 'OFF_ROAD',
+  MOTOCROSS: 'MOTOCROSS',
+  ENDURO: 'ENDURO',
+  TRIAL: 'TRIAL',
+  ELECTRIC: 'ELECTRIC'
+} as const
+
+export type VehicleCategory = (typeof VehicleCategory)[keyof typeof VehicleCategory]
+
+
 export const BusinessCategory = {
   Detailling_Care: 'Detailling_Care',
   Parts_Performance: 'Parts_Performance',
@@ -489,32 +513,32 @@ export type BusinessCategory = (typeof BusinessCategory)[keyof typeof BusinessCa
 
 
 export const BodyType = {
-  Coupe: 'Coupe',
-  Sedan: 'Sedan',
-  Hatchback: 'Hatchback',
-  Convertible: 'Convertible',
+  CITY: 'CITY',
+  HOT_HATCH: 'HOT_HATCH',
+  SEDAN: 'SEDAN',
+  SPORT: 'SPORT',
   SUV: 'SUV',
-  Wagon: 'Wagon',
-  Pickup: 'Pickup',
-  Van: 'Van'
+  SUPERCAR: 'SUPERCAR',
+  TRACK: 'TRACK',
+  CLASSIC: 'CLASSIC'
 } as const
 
 export type BodyType = (typeof BodyType)[keyof typeof BodyType]
 
 
 export const BikeBodyType = {
-  Sport: 'Sport',
-  Naked: 'Naked',
-  Adventure: 'Adventure',
-  Touring: 'Touring',
-  Custom: 'Custom',
-  Scooter: 'Scooter',
-  Off_Road: 'Off_Road',
-  Motocross: 'Motocross',
-  Enduro: 'Enduro',
-  Trial: 'Trial',
-  Classic: 'Classic',
-  Electric: 'Electric'
+  SPORT: 'SPORT',
+  NAKED: 'NAKED',
+  ADVENTURE: 'ADVENTURE',
+  TOURING: 'TOURING',
+  CUSTOM: 'CUSTOM',
+  SCOOTER: 'SCOOTER',
+  OFF_ROAD: 'OFF_ROAD',
+  MOTOCROSS: 'MOTOCROSS',
+  ENDURO: 'ENDURO',
+  TRIAL: 'TRIAL',
+  CLASSIC: 'CLASSIC',
+  ELECTRIC: 'ELECTRIC'
 } as const
 
 export type BikeBodyType = (typeof BikeBodyType)[keyof typeof BikeBodyType]
@@ -541,15 +565,33 @@ export const DriveTrain = {
 export type DriveTrain = (typeof DriveTrain)[keyof typeof DriveTrain]
 
 
+export const DriveTrainBike = {
+  CHAIN: 'CHAIN',
+  BELT: 'BELT',
+  SHAFT: 'SHAFT'
+} as const
+
+export type DriveTrainBike = (typeof DriveTrainBike)[keyof typeof DriveTrainBike]
+
+
 export const DriveCategory = {
-  Daily_Drive: 'Daily_Drive',
-  Weekend_Warrior: 'Weekend_Warrior',
-  Track_Tool: 'Track_Tool',
-  Show_Car: 'Show_Car',
-  Project_Car: 'Project_Car'
+  DAILY_DRIVE: 'DAILY_DRIVE',
+  WEEEKEND_WARRIOR: 'WEEEKEND_WARRIOR',
+  TRACK_TOOL: 'TRACK_TOOL',
+  SHOW_CAR: 'SHOW_CAR',
+  PROJECT_CAR: 'PROJECT_CAR'
 } as const
 
 export type DriveCategory = (typeof DriveCategory)[keyof typeof DriveCategory]
+
+
+export const DriveCategoryBike = {
+  DAILY_RIDER: 'DAILY_RIDER',
+  TRACK_BIKE: 'TRACK_BIKE',
+  SHOW_BIKE: 'SHOW_BIKE'
+} as const
+
+export type DriveCategoryBike = (typeof DriveCategoryBike)[keyof typeof DriveCategoryBike]
 
 
 export const TrackCondition = {

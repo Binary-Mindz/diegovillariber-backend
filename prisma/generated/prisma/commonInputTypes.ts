@@ -195,18 +195,18 @@ export type EnumTransmissionFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumTransmissionFilter<$PrismaModel> | $Enums.Transmission
 }
 
-export type EnumDriveTrainFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel> | $Enums.DriveTrain
+export type EnumDriveTrainBikeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrainBike | Prisma.EnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel> | $Enums.DriveTrainBike
 }
 
-export type EnumDriveCategoryFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel> | $Enums.DriveCategory
+export type EnumDriveCategoryBikeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategoryBike | Prisma.EnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel> | $Enums.DriveCategoryBike
 }
 
 export type BoolFilter<$PrismaModel = never> = {
@@ -245,24 +245,24 @@ export type EnumTransmissionWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumTransmissionFilter<$PrismaModel>
 }
 
-export type EnumDriveTrainWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrain
+export type EnumDriveTrainBikeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrainBike | Prisma.EnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainBikeWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrainBike
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel>
 }
 
-export type EnumDriveCategoryWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategory
+export type EnumDriveCategoryBikeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategoryBike | Prisma.EnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryBikeWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategoryBike
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel>
 }
 
 export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -330,6 +330,20 @@ export type EnumBodyTypeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel> | $Enums.BodyType
 }
 
+export type EnumDriveTrainFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel> | $Enums.DriveTrain
+}
+
+export type EnumDriveCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel> | $Enums.DriveCategory
+}
+
 export type EnumBodyTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.BodyType | Prisma.EnumBodyTypeFieldRefInput<$PrismaModel>
   in?: $Enums.BodyType[] | Prisma.ListEnumBodyTypeFieldRefInput<$PrismaModel>
@@ -338,6 +352,26 @@ export type EnumBodyTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel>
+}
+
+export type EnumDriveTrainWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrain
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+}
+
+export type EnumDriveCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
 }
 
 export type EnumChallengeTypeFilter<$PrismaModel = never> = {
@@ -1031,21 +1065,21 @@ export type EnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
 }
 
-export type EnumRacingTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.RacingType | Prisma.EnumRacingTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel> | $Enums.RacingType
+export type EnumVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
 }
 
-export type EnumRacingTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.RacingType | Prisma.EnumRacingTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRacingTypeWithAggregatesFilter<$PrismaModel> | $Enums.RacingType
+export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
 }
 
 export type EnumProductCategoryFilter<$PrismaModel = never> = {
@@ -1617,18 +1651,18 @@ export type NestedEnumTransmissionFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumTransmissionFilter<$PrismaModel> | $Enums.Transmission
 }
 
-export type NestedEnumDriveTrainFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel> | $Enums.DriveTrain
+export type NestedEnumDriveTrainBikeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrainBike | Prisma.EnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel> | $Enums.DriveTrainBike
 }
 
-export type NestedEnumDriveCategoryFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel> | $Enums.DriveCategory
+export type NestedEnumDriveCategoryBikeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategoryBike | Prisma.EnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel> | $Enums.DriveCategoryBike
 }
 
 export type NestedBoolFilter<$PrismaModel = never> = {
@@ -1656,24 +1690,24 @@ export type NestedEnumTransmissionWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumTransmissionFilter<$PrismaModel>
 }
 
-export type NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrain
+export type NestedEnumDriveTrainBikeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrainBike | Prisma.EnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrainBike[] | Prisma.ListEnumDriveTrainBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainBikeWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrainBike
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveTrainBikeFilter<$PrismaModel>
 }
 
-export type NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategory
+export type NestedEnumDriveCategoryBikeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategoryBike | Prisma.EnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategoryBike[] | Prisma.ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryBikeWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategoryBike
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveCategoryBikeFilter<$PrismaModel>
 }
 
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -1752,6 +1786,20 @@ export type NestedEnumBodyTypeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel> | $Enums.BodyType
 }
 
+export type NestedEnumDriveTrainFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel> | $Enums.DriveTrain
+}
+
+export type NestedEnumDriveCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel> | $Enums.DriveCategory
+}
+
 export type NestedEnumBodyTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.BodyType | Prisma.EnumBodyTypeFieldRefInput<$PrismaModel>
   in?: $Enums.BodyType[] | Prisma.ListEnumBodyTypeFieldRefInput<$PrismaModel>
@@ -1760,6 +1808,26 @@ export type NestedEnumBodyTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumBodyTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveTrain | Prisma.EnumDriveTrainFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveTrain[] | Prisma.ListEnumDriveTrainFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveTrainWithAggregatesFilter<$PrismaModel> | $Enums.DriveTrain
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveTrainFilter<$PrismaModel>
+}
+
+export type NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DriveCategory | Prisma.EnumDriveCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DriveCategory[] | Prisma.ListEnumDriveCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDriveCategoryWithAggregatesFilter<$PrismaModel> | $Enums.DriveCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDriveCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumChallengeTypeFilter<$PrismaModel = never> = {
@@ -2451,21 +2519,21 @@ export type NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = 
   _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
 }
 
-export type NestedEnumRacingTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.RacingType | Prisma.EnumRacingTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel> | $Enums.RacingType
+export type NestedEnumVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
 }
 
-export type NestedEnumRacingTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.RacingType | Prisma.EnumRacingTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.RacingType[] | Prisma.ListEnumRacingTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumRacingTypeWithAggregatesFilter<$PrismaModel> | $Enums.RacingType
+export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRacingTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumProductCategoryFilter<$PrismaModel = never> = {

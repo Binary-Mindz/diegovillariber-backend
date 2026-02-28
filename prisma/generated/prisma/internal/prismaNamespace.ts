@@ -7502,6 +7502,7 @@ export const PostScalarFieldEnum = {
   longitude: 'longitude',
   placeId: 'placeId',
   locationVisibility: 'locationVisibility',
+  vehicleCategory: 'vehicleCategory',
   like: 'like',
   comment: 'comment',
   share: 'share',
@@ -8018,30 +8019,30 @@ export type ListEnumTransmissionFieldRefInput<$PrismaModel> = FieldRefInputType<
 
 
 /**
- * Reference to a field of type 'DriveTrain'
+ * Reference to a field of type 'DriveTrainBike'
  */
-export type EnumDriveTrainFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrain'>
+export type EnumDriveTrainBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrainBike'>
     
 
 
 /**
- * Reference to a field of type 'DriveTrain[]'
+ * Reference to a field of type 'DriveTrainBike[]'
  */
-export type ListEnumDriveTrainFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrain[]'>
+export type ListEnumDriveTrainBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrainBike[]'>
     
 
 
 /**
- * Reference to a field of type 'DriveCategory'
+ * Reference to a field of type 'DriveCategoryBike'
  */
-export type EnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategory'>
+export type EnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategoryBike'>
     
 
 
 /**
- * Reference to a field of type 'DriveCategory[]'
+ * Reference to a field of type 'DriveCategoryBike[]'
  */
-export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategory[]'>
+export type ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategoryBike[]'>
     
 
 
@@ -8091,6 +8092,34 @@ export type EnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'BodyType[]'
  */
 export type ListEnumBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BodyType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveTrain'
+ */
+export type EnumDriveTrainFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrain'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveTrain[]'
+ */
+export type ListEnumDriveTrainFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveTrain[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveCategory'
+ */
+export type EnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'DriveCategory[]'
+ */
+export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategory[]'>
     
 
 
@@ -8599,6 +8628,20 @@ export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'VehicleCategory'
+ */
+export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleCategory[]'
+ */
+export type ListEnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory[]'>
+    
+
+
+/**
  * Reference to a field of type 'VisiualStyle[]'
  */
 export type ListEnumVisiualStyleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VisiualStyle[]'>
@@ -8637,20 +8680,6 @@ export type ListEnumSubjectFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
  * Reference to a field of type 'Subject'
  */
 export type EnumSubjectFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Subject'>
-    
-
-
-/**
- * Reference to a field of type 'RacingType'
- */
-export type EnumRacingTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RacingType'>
-    
-
-
-/**
- * Reference to a field of type 'RacingType[]'
- */
-export type ListEnumRacingTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RacingType[]'>
     
 
 

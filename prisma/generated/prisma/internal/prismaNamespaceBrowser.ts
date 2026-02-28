@@ -987,6 +987,7 @@ export const PostScalarFieldEnum = {
   longitude: 'longitude',
   placeId: 'placeId',
   locationVisibility: 'locationVisibility',
+  vehicleCategory: 'vehicleCategory',
   like: 'like',
   comment: 'comment',
   share: 'share',

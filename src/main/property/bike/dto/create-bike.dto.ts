@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsBoolean, IsEnum, IsInt, IsOptional, IsString, IsUUID, MaxLength, Min } from 'class-validator';
-import { BikeBodyType, DriveCategory, DriveTrain, Transmission } from 'generated/prisma/enums';
+import { BikeBodyType, DriveCategory, DriveCategoryBike, DriveTrain, DriveTrainBike, Transmission } from 'generated/prisma/enums';
 
 export class CreateBikeDto {
   @ApiProperty({ example: 'garage-uuid' })
@@ -25,7 +25,7 @@ export class CreateBikeDto {
   @MaxLength(120)
   model?: string;
 
-  @ApiProperty({ enum: BikeBodyType, example: BikeBodyType.Sport })
+  @ApiProperty({ enum: BikeBodyType, example: BikeBodyType.SPORT })
   @IsEnum(BikeBodyType)
   bodyType: BikeBodyType;
 
@@ -33,9 +33,9 @@ export class CreateBikeDto {
   @IsEnum(Transmission)
   transmission: Transmission;
 
-  @ApiProperty({ enum: DriveTrain, example: DriveTrain.RWD })
+  @ApiProperty({ enum: DriveTrainBike, example: DriveTrainBike.CHAIN })
   @IsEnum(DriveTrain)
-  driveTrain: DriveTrain;
+  driveTrain: DriveTrainBike;
 
   @ApiPropertyOptional({ example: 'Japan' })
   @IsOptional()
@@ -60,9 +60,9 @@ export class CreateBikeDto {
   @IsString()
   description?: string;
 
-  @ApiProperty({ enum: DriveCategory, example: DriveCategory.Daily_Drive })
+  @ApiProperty({ enum: DriveCategoryBike, example: DriveCategoryBike })
   @IsEnum(DriveCategory)
-  category: DriveCategory;
+  category: DriveCategoryBike;
 
   @ApiPropertyOptional({ example: false })
   @IsOptional()

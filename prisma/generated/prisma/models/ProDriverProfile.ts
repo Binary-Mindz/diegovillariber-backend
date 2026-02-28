@@ -28,7 +28,7 @@ export type ProDriverProfileMinAggregateOutputType = {
   id: string | null
   profileId: string | null
   profileType: $Enums.Type | null
-  racingDiscipline: $Enums.RacingType | null
+  racingDiscipline: $Enums.VehicleCategory | null
   location: string | null
 }
 
@@ -36,7 +36,7 @@ export type ProDriverProfileMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
   profileType: $Enums.Type | null
-  racingDiscipline: $Enums.RacingType | null
+  racingDiscipline: $Enums.VehicleCategory | null
   location: string | null
 }
 
@@ -151,7 +151,7 @@ export type ProDriverProfileGroupByOutputType = {
   id: string
   profileId: string
   profileType: $Enums.Type
-  racingDiscipline: $Enums.RacingType
+  racingDiscipline: $Enums.VehicleCategory
   location: string
   _count: ProDriverProfileCountAggregateOutputType | null
   _min: ProDriverProfileMinAggregateOutputType | null
@@ -180,7 +180,7 @@ export type ProDriverProfileWhereInput = {
   id?: Prisma.UuidFilter<"ProDriverProfile"> | string
   profileId?: Prisma.UuidFilter<"ProDriverProfile"> | string
   profileType?: Prisma.EnumTypeFilter<"ProDriverProfile"> | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFilter<"ProDriverProfile"> | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFilter<"ProDriverProfile"> | $Enums.VehicleCategory
   location?: Prisma.StringFilter<"ProDriverProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }
@@ -201,7 +201,7 @@ export type ProDriverProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProDriverProfileWhereInput[]
   NOT?: Prisma.ProDriverProfileWhereInput | Prisma.ProDriverProfileWhereInput[]
   profileType?: Prisma.EnumTypeFilter<"ProDriverProfile"> | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFilter<"ProDriverProfile"> | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFilter<"ProDriverProfile"> | $Enums.VehicleCategory
   location?: Prisma.StringFilter<"ProDriverProfile"> | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
 }, "id" | "profileId">
@@ -224,14 +224,14 @@ export type ProDriverProfileScalarWhereWithAggregatesInput = {
   id?: Prisma.UuidWithAggregatesFilter<"ProDriverProfile"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"ProDriverProfile"> | string
   profileType?: Prisma.EnumTypeWithAggregatesFilter<"ProDriverProfile"> | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeWithAggregatesFilter<"ProDriverProfile"> | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryWithAggregatesFilter<"ProDriverProfile"> | $Enums.VehicleCategory
   location?: Prisma.StringWithAggregatesFilter<"ProDriverProfile"> | string
 }
 
 export type ProDriverProfileCreateInput = {
   id?: string
   profileType?: $Enums.Type
-  racingDiscipline?: $Enums.RacingType
+  racingDiscipline?: $Enums.VehicleCategory
   location: string
   profile: Prisma.ProfileCreateNestedOneWithoutProDriverInput
 }
@@ -240,14 +240,14 @@ export type ProDriverProfileUncheckedCreateInput = {
   id?: string
   profileId: string
   profileType?: $Enums.Type
-  racingDiscipline?: $Enums.RacingType
+  racingDiscipline?: $Enums.VehicleCategory
   location: string
 }
 
 export type ProDriverProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutProDriverNestedInput
 }
@@ -256,7 +256,7 @@ export type ProDriverProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -264,14 +264,14 @@ export type ProDriverProfileCreateManyInput = {
   id?: string
   profileId: string
   profileType?: $Enums.Type
-  racingDiscipline?: $Enums.RacingType
+  racingDiscipline?: $Enums.VehicleCategory
   location: string
 }
 
 export type ProDriverProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -279,7 +279,7 @@ export type ProDriverProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -310,10 +310,6 @@ export type ProDriverProfileMinOrderByAggregateInput = {
 export type ProDriverProfileNullableScalarRelationFilter = {
   is?: Prisma.ProDriverProfileWhereInput | null
   isNot?: Prisma.ProDriverProfileWhereInput | null
-}
-
-export type EnumRacingTypeFieldUpdateOperationsInput = {
-  set?: $Enums.RacingType
 }
 
 export type ProDriverProfileCreateNestedOneWithoutProfileInput = {
@@ -351,14 +347,14 @@ export type ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput = {
 export type ProDriverProfileCreateWithoutProfileInput = {
   id?: string
   profileType?: $Enums.Type
-  racingDiscipline?: $Enums.RacingType
+  racingDiscipline?: $Enums.VehicleCategory
   location: string
 }
 
 export type ProDriverProfileUncheckedCreateWithoutProfileInput = {
   id?: string
   profileType?: $Enums.Type
-  racingDiscipline?: $Enums.RacingType
+  racingDiscipline?: $Enums.VehicleCategory
   location: string
 }
 
@@ -381,14 +377,14 @@ export type ProDriverProfileUpdateToOneWithWhereWithoutProfileInput = {
 export type ProDriverProfileUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ProDriverProfileUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileType?: Prisma.EnumTypeFieldUpdateOperationsInput | $Enums.Type
-  racingDiscipline?: Prisma.EnumRacingTypeFieldUpdateOperationsInput | $Enums.RacingType
+  racingDiscipline?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   location?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -449,7 +445,7 @@ export type $ProDriverProfilePayload<ExtArgs extends runtime.Types.Extensions.In
     id: string
     profileId: string
     profileType: $Enums.Type
-    racingDiscipline: $Enums.RacingType
+    racingDiscipline: $Enums.VehicleCategory
     location: string
   }, ExtArgs["result"]["proDriverProfile"]>
   composites: {}
@@ -878,7 +874,7 @@ export interface ProDriverProfileFieldRefs {
   readonly id: Prisma.FieldRef<"ProDriverProfile", 'String'>
   readonly profileId: Prisma.FieldRef<"ProDriverProfile", 'String'>
   readonly profileType: Prisma.FieldRef<"ProDriverProfile", 'Type'>
-  readonly racingDiscipline: Prisma.FieldRef<"ProDriverProfile", 'RacingType'>
+  readonly racingDiscipline: Prisma.FieldRef<"ProDriverProfile", 'VehicleCategory'>
   readonly location: Prisma.FieldRef<"ProDriverProfile", 'String'>
 }
     

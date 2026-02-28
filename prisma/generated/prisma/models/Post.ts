@@ -59,6 +59,7 @@ export type PostMinAggregateOutputType = {
   longitude: runtime.Decimal | null
   placeId: string | null
   locationVisibility: string | null
+  vehicleCategory: $Enums.VehicleCategory | null
   like: number | null
   comment: number | null
   share: number | null
@@ -83,6 +84,7 @@ export type PostMaxAggregateOutputType = {
   longitude: runtime.Decimal | null
   placeId: string | null
   locationVisibility: string | null
+  vehicleCategory: $Enums.VehicleCategory | null
   like: number | null
   comment: number | null
   share: number | null
@@ -107,6 +109,7 @@ export type PostCountAggregateOutputType = {
   longitude: number
   placeId: number
   locationVisibility: number
+  vehicleCategory: number
   like: number
   comment: number
   share: number
@@ -154,6 +157,7 @@ export type PostMinAggregateInputType = {
   longitude?: true
   placeId?: true
   locationVisibility?: true
+  vehicleCategory?: true
   like?: true
   comment?: true
   share?: true
@@ -178,6 +182,7 @@ export type PostMaxAggregateInputType = {
   longitude?: true
   placeId?: true
   locationVisibility?: true
+  vehicleCategory?: true
   like?: true
   comment?: true
   share?: true
@@ -202,6 +207,7 @@ export type PostCountAggregateInputType = {
   longitude?: true
   placeId?: true
   locationVisibility?: true
+  vehicleCategory?: true
   like?: true
   comment?: true
   share?: true
@@ -316,6 +322,7 @@ export type PostGroupByOutputType = {
   longitude: runtime.Decimal | null
   placeId: string | null
   locationVisibility: string | null
+  vehicleCategory: $Enums.VehicleCategory
   like: number
   comment: number
   share: number
@@ -366,6 +373,7 @@ export type PostWhereInput = {
   longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
@@ -405,6 +413,7 @@ export type PostOrderByWithRelationInput = {
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicleCategory?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -447,6 +456,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
@@ -486,6 +496,7 @@ export type PostOrderByWithAggregationInput = {
   longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicleCategory?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -521,6 +532,7 @@ export type PostScalarWhereWithAggregatesInput = {
   longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryWithAggregatesFilter<"Post"> | $Enums.VehicleCategory
   like?: Prisma.IntWithAggregatesFilter<"Post"> | number
   comment?: Prisma.IntWithAggregatesFilter<"Post"> | number
   share?: Prisma.IntWithAggregatesFilter<"Post"> | number
@@ -546,6 +558,7 @@ export type PostCreateInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -585,6 +598,7 @@ export type PostUncheckedCreateInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -620,6 +634,7 @@ export type PostUpdateInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -659,6 +674,7 @@ export type PostUncheckedUpdateInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -696,6 +712,7 @@ export type PostCreateManyInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -721,6 +738,7 @@ export type PostUpdateManyMutationInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -748,6 +766,7 @@ export type PostUncheckedUpdateManyInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -814,6 +833,7 @@ export type PostCountOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
+  vehicleCategory?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -850,6 +870,7 @@ export type PostMaxOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
+  vehicleCategory?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -874,6 +895,7 @@ export type PostMinOrderByAggregateInput = {
   longitude?: Prisma.SortOrder
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
+  vehicleCategory?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
@@ -987,6 +1009,10 @@ export type PostCreatecontextActivityInput = {
 
 export type PostCreatesubjectInput = {
   set: $Enums.Subject[]
+}
+
+export type EnumVehicleCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.VehicleCategory
 }
 
 export type PostUpdatevisiualStyleInput = {
@@ -1211,6 +1237,7 @@ export type PostCreateWithoutCommentsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1249,6 +1276,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1299,6 +1327,7 @@ export type PostUpdateWithoutCommentsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1337,6 +1366,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1371,6 +1401,7 @@ export type PostCreateWithoutHashtagsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1409,6 +1440,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1469,6 +1501,7 @@ export type PostScalarWhereInput = {
   longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
@@ -1494,6 +1527,7 @@ export type PostCreateWithoutHidePostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1532,6 +1566,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1582,6 +1617,7 @@ export type PostUpdateWithoutHidePostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1620,6 +1656,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1654,6 +1691,7 @@ export type PostCreateWithoutLikesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1692,6 +1730,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1742,6 +1781,7 @@ export type PostUpdateWithoutLikesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1780,6 +1820,7 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1814,6 +1855,7 @@ export type PostCreateWithoutProfileInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1851,6 +1893,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1912,6 +1955,7 @@ export type PostCreateWithoutRacingVotesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -1950,6 +1994,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2000,6 +2045,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2038,6 +2084,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2072,6 +2119,7 @@ export type PostCreateWithoutRepostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2110,6 +2158,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2160,6 +2209,7 @@ export type PostUpdateWithoutRepostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2198,6 +2248,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2232,6 +2283,7 @@ export type PostCreateWithoutSavePostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2270,6 +2322,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2320,6 +2373,7 @@ export type PostUpdateWithoutSavePostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2358,6 +2412,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2392,6 +2447,7 @@ export type PostCreateWithoutUserInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2429,6 +2485,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2474,6 +2531,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2512,6 +2570,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2583,6 +2642,7 @@ export type PostCreateWithoutUserPointsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2621,6 +2681,7 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2671,6 +2732,7 @@ export type PostUpdateWithoutUserPointsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2709,6 +2771,7 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2743,6 +2806,7 @@ export type PostCreateWithoutWishListsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2781,6 +2845,7 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -2831,6 +2896,7 @@ export type PostUpdateWithoutWishListsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2869,6 +2935,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2903,6 +2970,7 @@ export type PostUpdateWithoutHashtagsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2941,6 +3009,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -2977,6 +3046,7 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3003,6 +3073,7 @@ export type PostCreateManyProfileInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -3028,6 +3099,7 @@ export type PostUpdateWithoutProfileInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3065,6 +3137,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3101,6 +3174,7 @@ export type PostUncheckedUpdateManyWithoutProfileInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3127,6 +3201,7 @@ export type PostCreateManyUserInput = {
   longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: string | null
   locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
   like?: number
   comment?: number
   share?: number
@@ -3152,6 +3227,7 @@ export type PostUpdateWithoutUserInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3189,6 +3265,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3225,6 +3302,7 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3250,6 +3328,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3288,6 +3367,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3324,6 +3404,7 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
   longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
@@ -3463,6 +3544,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   longitude?: boolean
   placeId?: boolean
   locationVisibility?: boolean
+  vehicleCategory?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
@@ -3503,6 +3585,7 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   longitude?: boolean
   placeId?: boolean
   locationVisibility?: boolean
+  vehicleCategory?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
@@ -3532,6 +3615,7 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   longitude?: boolean
   placeId?: boolean
   locationVisibility?: boolean
+  vehicleCategory?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
@@ -3561,6 +3645,7 @@ export type PostSelectScalar = {
   longitude?: boolean
   placeId?: boolean
   locationVisibility?: boolean
+  vehicleCategory?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
@@ -3573,7 +3658,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Post$profileArgs<ExtArgs>
@@ -3629,6 +3714,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     longitude: runtime.Decimal | null
     placeId: string | null
     locationVisibility: string | null
+    vehicleCategory: $Enums.VehicleCategory
     like: number
     comment: number
     share: number
@@ -4088,6 +4174,7 @@ export interface PostFieldRefs {
   readonly longitude: Prisma.FieldRef<"Post", 'Decimal'>
   readonly placeId: Prisma.FieldRef<"Post", 'String'>
   readonly locationVisibility: Prisma.FieldRef<"Post", 'String'>
+  readonly vehicleCategory: Prisma.FieldRef<"Post", 'VehicleCategory'>
   readonly like: Prisma.FieldRef<"Post", 'Int'>
   readonly comment: Prisma.FieldRef<"Post", 'Int'>
   readonly share: Prisma.FieldRef<"Post", 'Int'>

@@ -116,6 +116,29 @@ enum RacingType {
   Endurance_Racing
 }
 
+enum VehicleCategory {
+  CITY
+  HOT_HATCH
+  SEDAN
+  SPORT
+  SUV
+  SUPERCAR
+  TRACK
+  CLASSIC
+
+ 
+  NAKED
+  ADVENTURE
+  TOURING
+  CUSTOM
+  SCOOTER
+  OFF_ROAD
+  MOTOCROSS
+  ENDURO
+  TRIAL
+  ELECTRIC
+}
+
 enum BusinessCategory {
   Detailling_Care
   Parts_Performance
@@ -131,28 +154,28 @@ enum BusinessCategory {
 }
 
 enum BodyType {
-  Coupe
-  Sedan
-  Hatchback
-  Convertible
+  CITY
+  HOT_HATCH
+  SEDAN
+  SPORT
   SUV
-  Wagon
-  Pickup
-  Van
+  SUPERCAR
+  TRACK
+  CLASSIC
 }
 enum BikeBodyType {
-  Sport
-  Naked
-  Adventure
-  Touring
-  Custom
-  Scooter
-  Off_Road
-  Motocross
-  Enduro
-  Trial
-  Classic
-  Electric
+  SPORT
+  NAKED
+  ADVENTURE
+  TOURING
+  CUSTOM
+  SCOOTER
+  OFF_ROAD
+  MOTOCROSS
+  ENDURO
+  TRIAL
+  CLASSIC
+  ELECTRIC
 }
 
 enum Transmission {
@@ -169,13 +192,25 @@ enum DriveTrain {
   AWD
   FOUR_WD
 }
+enum DriveTrainBike {
+  CHAIN
+  BELT
+  SHAFT
+}
+
 
 enum DriveCategory {
-  Daily_Drive
-  Weekend_Warrior
-  Track_Tool
-  Show_Car
-  Project_Car
+  DAILY_DRIVE
+  WEEEKEND_WARRIOR
+  TRACK_TOOL
+  SHOW_CAR
+  PROJECT_CAR
+}
+
+enum DriveCategoryBike {
+  DAILY_RIDER
+  TRACK_BIKE
+  SHOW_BIKE
 }
 
 enum TrackCondition {
