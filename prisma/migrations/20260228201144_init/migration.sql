@@ -74,7 +74,10 @@ CREATE TYPE "RawShiftEntryStatus" AS ENUM ('SUBMITTED', 'APPROVED', 'REJECTED');
 CREATE TYPE "RawShiftSoftware" AS ENUM ('ANY', 'LIGHTROOM', 'PHOTOSHOP', 'CAPTURE_ONE', 'SNAPSEED', 'OTHER');
 
 -- CreateEnum
-CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'SUPER_ADMIN', 'AMBASSADOR', 'OFFICIAL_PARTNER');
+CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN', 'AMBASSADOR', 'OFFICIAL_PARTNER');
+
+-- CreateEnum
+CREATE TYPE "LegalNoticeTarget" AS ENUM ('CAR', 'BIKE');
 
 -- CreateEnum
 CREATE TYPE "Type" AS ENUM ('SPOTTER', 'OWNER', 'CONTENT_CREATOR', 'PRO_BUSSINESS', 'PRO_DRIVER', 'SIM_RACING_DRIVER');
@@ -116,10 +119,16 @@ CREATE TYPE "ContentCategory" AS ENUM ('PHOTOGRAPHY', 'VLOG', 'ANALYSIS');
 CREATE TYPE "RacingType" AS ENUM ('GT_Racing', 'Rally', 'MotoGP', 'Formula_Racing', 'Drift', 'Karting', 'Endurance_Racing');
 
 -- CreateEnum
+CREATE TYPE "VehicleCategory" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'ELECTRIC');
+
+-- CreateEnum
 CREATE TYPE "BusinessCategory" AS ENUM ('Detailling_Care', 'Parts_Performance', 'Ecu_Dyno_Tuning', 'Wrap_Vinyl', 'Motorsport_Service', 'Event_Promoter', 'Media_Podcast', 'Dealership', 'Body_Coachbuilder', 'Auto_Recycling', 'Inspection_Technical');
 
 -- CreateEnum
-CREATE TYPE "BodyType" AS ENUM ('Coupe', 'Sedan', 'Hatchback', 'Convertible', 'SUV', 'Wagon', 'Pickup', 'Van');
+CREATE TYPE "BodyType" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC');
+
+-- CreateEnum
+CREATE TYPE "BikeBodyType" AS ENUM ('SPORT', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'CLASSIC', 'ELECTRIC');
 
 -- CreateEnum
 CREATE TYPE "Transmission" AS ENUM ('MANUAL', 'AUTOMATIC', 'SEQUENTIAL', 'DCT', 'CVT');
@@ -128,7 +137,13 @@ CREATE TYPE "Transmission" AS ENUM ('MANUAL', 'AUTOMATIC', 'SEQUENTIAL', 'DCT', 
 CREATE TYPE "DriveTrain" AS ENUM ('RWD', 'FWD', 'AWD', 'FOUR_WD');
 
 -- CreateEnum
-CREATE TYPE "DriveCategory" AS ENUM ('Daily_Drive', 'Weekend_Warrior', 'Track_Tool', 'Show_Car', 'Project_Car');
+CREATE TYPE "DriveTrainBike" AS ENUM ('CHAIN', 'BELT', 'SHAFT');
+
+-- CreateEnum
+CREATE TYPE "DriveCategory" AS ENUM ('DAILY_DRIVE', 'WEEEKEND_WARRIOR', 'TRACK_TOOL', 'SHOW_CAR', 'PROJECT_CAR');
+
+-- CreateEnum
+CREATE TYPE "DriveCategoryBike" AS ENUM ('DAILY_RIDER', 'TRACK_BIKE', 'SHOW_BIKE');
 
 -- CreateEnum
 CREATE TYPE "TrackCondition" AS ENUM ('Dry', 'Damp', 'Wet', 'Dusty', 'Greasy');
@@ -231,6 +246,110 @@ CREATE TABLE "AmbassadorProgram" (
 );
 
 -- CreateTable
+CREATE TABLE "Bike" (
+    "id" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "garageId" UUID NOT NULL,
+    "image" TEXT,
+    "make" TEXT,
+    "model" TEXT,
+    "bodyType" "BikeBodyType" NOT NULL DEFAULT 'SPORT',
+    "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
+    "driveTrain" "DriveTrainBike" NOT NULL DEFAULT 'CHAIN',
+    "country" TEXT,
+    "color" TEXT,
+    "displayName" TEXT,
+    "description" TEXT,
+    "category" "DriveCategoryBike" NOT NULL DEFAULT 'DAILY_RIDER',
+    "listOnMarketplace" BOOLEAN NOT NULL DEFAULT false,
+    "price" INTEGER,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "Bike_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "AdvancedBikeData" (
+    "id" UUID NOT NULL,
+    "bikeId" UUID NOT NULL,
+
+    CONSTRAINT "AdvancedBikeData_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "EngineAndPerformance" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "engineType" TEXT NOT NULL,
+    "displacement" INTEGER,
+    "power" INTEGER,
+    "torque" INTEGER,
+    "ecu" TEXT,
+
+    CONSTRAINT "EngineAndPerformance_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BikeDriveTrains" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "transmissionMods" TEXT,
+    "differential" TEXT,
+    "clutch" TEXT,
+
+    CONSTRAINT "BikeDriveTrains_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Suspension" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "frontSuspension" TEXT,
+    "rearSuspension" TEXT,
+    "frontBrakes" TEXT,
+    "rearBrake" TEXT,
+    "abs" TEXT,
+    "notes" TEXT,
+
+    CONSTRAINT "Suspension_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BikeWheelTires" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "wheels" TEXT,
+    "tires" TEXT,
+
+    CONSTRAINT "BikeWheelTires_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BikeElectronics" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "riding" TEXT,
+    "tractionControl" TEXT,
+    "wheelieControl" TEXT,
+
+    CONSTRAINT "BikeElectronics_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "BikeUsageAndNotes" (
+    "id" UUID NOT NULL,
+    "advancedBikeDataId" UUID NOT NULL,
+    "weight" INTEGER,
+    "primaryUsage" TEXT,
+    "ridingLevel" TEXT,
+    "buildStatus" TEXT,
+    "notes" TEXT,
+
+    CONSTRAINT "BikeUsageAndNotes_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "BusinessProfile" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -250,14 +369,14 @@ CREATE TABLE "Car" (
     "image" TEXT,
     "make" TEXT,
     "model" TEXT,
-    "bodyType" "BodyType" NOT NULL DEFAULT 'Coupe',
+    "bodyType" "BodyType" NOT NULL DEFAULT 'CLASSIC',
     "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
     "driveTrain" "DriveTrain" NOT NULL DEFAULT 'RWD',
     "country" TEXT,
     "color" TEXT,
     "displayName" TEXT,
     "description" TEXT,
-    "category" "DriveCategory" NOT NULL DEFAULT 'Daily_Drive',
+    "category" "DriveCategory" NOT NULL DEFAULT 'DAILY_DRIVE',
     "listOnMarketplace" BOOLEAN NOT NULL DEFAULT false,
     "price" INTEGER,
 
@@ -781,7 +900,9 @@ CREATE TABLE "LabTime" (
 CREATE TABLE "LegalNotice" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
-    "carId" UUID NOT NULL,
+    "targetType" "LegalNoticeTarget" NOT NULL,
+    "carId" UUID,
+    "bikeId" UUID,
     "location" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "description" TEXT,
@@ -929,6 +1050,7 @@ CREATE TABLE "Post" (
     "longitude" DECIMAL(9,6),
     "placeId" TEXT,
     "locationVisibility" TEXT,
+    "vehicleCategory" "VehicleCategory" NOT NULL DEFAULT 'CLASSIC',
     "like" INTEGER NOT NULL DEFAULT 0,
     "comment" INTEGER NOT NULL DEFAULT 0,
     "share" INTEGER NOT NULL DEFAULT 0,
@@ -957,7 +1079,7 @@ CREATE TABLE "ProDriverProfile" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
     "profileType" "Type" NOT NULL DEFAULT 'PRO_DRIVER',
-    "racingDiscipline" "RacingType" NOT NULL DEFAULT 'GT_Racing',
+    "racingDiscipline" "VehicleCategory" NOT NULL DEFAULT 'CITY',
     "location" TEXT NOT NULL,
 
     CONSTRAINT "ProDriverProfile_pkey" PRIMARY KEY ("id")
@@ -1349,6 +1471,42 @@ CREATE TABLE "_PostTaggedUsers" (
 CREATE UNIQUE INDEX "AmbassadorProgram_userId_key" ON "AmbassadorProgram"("userId");
 
 -- CreateIndex
+CREATE INDEX "Bike_profileId_idx" ON "Bike"("profileId");
+
+-- CreateIndex
+CREATE INDEX "Bike_garageId_idx" ON "Bike"("garageId");
+
+-- CreateIndex
+CREATE INDEX "Bike_listOnMarketplace_idx" ON "Bike"("listOnMarketplace");
+
+-- CreateIndex
+CREATE INDEX "Bike_category_idx" ON "Bike"("category");
+
+-- CreateIndex
+CREATE INDEX "Bike_make_model_idx" ON "Bike"("make", "model");
+
+-- CreateIndex
+CREATE INDEX "Bike_profileId_category_idx" ON "Bike"("profileId", "category");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "EngineAndPerformance_advancedBikeDataId_key" ON "EngineAndPerformance"("advancedBikeDataId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "BikeDriveTrains_advancedBikeDataId_key" ON "BikeDriveTrains"("advancedBikeDataId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Suspension_advancedBikeDataId_key" ON "Suspension"("advancedBikeDataId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "BikeWheelTires_advancedBikeDataId_key" ON "BikeWheelTires"("advancedBikeDataId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "BikeElectronics_advancedBikeDataId_key" ON "BikeElectronics"("advancedBikeDataId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "BikeUsageAndNotes_advancedBikeDataId_key" ON "BikeUsageAndNotes"("advancedBikeDataId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "BusinessProfile_profileId_key" ON "BusinessProfile"("profileId");
 
 -- CreateIndex
@@ -1700,6 +1858,33 @@ ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIG
 ALTER TABLE "AmbassadorProgram" ADD CONSTRAINT "AmbassadorProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Bike" ADD CONSTRAINT "Bike_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Bike" ADD CONSTRAINT "Bike_garageId_fkey" FOREIGN KEY ("garageId") REFERENCES "Garage"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "AdvancedBikeData" ADD CONSTRAINT "AdvancedBikeData_bikeId_fkey" FOREIGN KEY ("bikeId") REFERENCES "Bike"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "EngineAndPerformance" ADD CONSTRAINT "EngineAndPerformance_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BikeDriveTrains" ADD CONSTRAINT "BikeDriveTrains_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Suspension" ADD CONSTRAINT "Suspension_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BikeWheelTires" ADD CONSTRAINT "BikeWheelTires_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BikeElectronics" ADD CONSTRAINT "BikeElectronics_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "BikeUsageAndNotes" ADD CONSTRAINT "BikeUsageAndNotes_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "BusinessProfile" ADD CONSTRAINT "BusinessProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -1874,7 +2059,10 @@ ALTER TABLE "LabTime" ADD CONSTRAINT "LabTime_profileId_fkey" FOREIGN KEY ("prof
 ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_bikeId_fkey" FOREIGN KEY ("bikeId") REFERENCES "Bike"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

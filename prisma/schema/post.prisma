@@ -17,6 +17,8 @@ model Post {
   placeId            String?
   locationVisibility String?
 
+  vehicleCategory    VehicleCategory @default(CLASSIC)
+
   like           Int     @default(0)
   comment        Int     @default(0)
   share          Int     @default(0)
