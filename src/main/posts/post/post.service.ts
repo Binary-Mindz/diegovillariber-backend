@@ -115,7 +115,7 @@ export class PostService {
           longitude: dto.longitude ?? null,
           placeId: dto.placeId ?? null,
           locationVisibility: dto.locationVisibility ?? null,
-
+          vehicleCategory: dto.vehicleCategory,
           visiualStyle: dto.visiualStyle ?? [],
           contextActivity: dto.contextActivity ?? [],
           subject: dto.subject ?? [],

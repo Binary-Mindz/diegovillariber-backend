@@ -14,9 +14,9 @@ import {
   AccountType,
   Type as ProfileType,
   BusinessCategory,
-  RacingType,
   ContentCategory,
   Preference,
+  VehicleCategory,
 } from 'generated/prisma/enums';
 
 /* ---------------- Sub Profiles ---------------- */
@@ -60,10 +60,10 @@ export class BusinessProfileDto {
 }
 
 export class ProDriverProfileDto {
-  @ApiPropertyOptional({ enum: RacingType, example: 'GT_Racing' })
+  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.CITY })
   @IsOptional()
-  @IsEnum(RacingType)
-  racingDiscipline?: RacingType;
+  @IsEnum(VehicleCategory)
+  racingDiscipline?: VehicleCategory;
 
   @ApiProperty({ example: 'Chittagong Circuit' })
   @IsString()
