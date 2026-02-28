@@ -13,7 +13,8 @@ import {
   IsActive,
   RacingType,
   Type as ProfileType,
-  Type, // Prisma enum name: Type
+  Type,
+  VehicleCategory, // Prisma enum name: Type
 } from 'generated/prisma/enums';
 import { CreateProfileDto } from './dto/create.profile.dto';
 import { Prisma } from 'generated/prisma/client';
@@ -241,7 +242,7 @@ export class ProfileService {
             create: {
               profileId,
               racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+                (dto.proDriver.racingDiscipline as any) ?? VehicleCategory.CITY,
               location: dto.proDriver.location,
 
             },
