@@ -23,7 +23,7 @@ async function bootstrap() {
 
     console.log('AUTO_SEED enabled. Seeding admin...');
     await seedAdmin(prisma);
-    console.log('Seeding done ✅');
+    console.log('Seeding done ✅ test seed ');
   }
 
   const config = new DocumentBuilder()
