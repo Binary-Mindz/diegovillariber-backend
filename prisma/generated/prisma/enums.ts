@@ -335,6 +335,14 @@ export const Role = {
 export type Role = (typeof Role)[keyof typeof Role]
 
 
+export const LegalNoticeTarget = {
+  CAR: 'CAR',
+  BIKE: 'BIKE'
+} as const
+
+export type LegalNoticeTarget = (typeof LegalNoticeTarget)[keyof typeof LegalNoticeTarget]
+
+
 export const Type = {
   SPOTTER: 'SPOTTER',
   OWNER: 'OWNER',
@@ -493,6 +501,24 @@ export const BodyType = {
 } as const
 
 export type BodyType = (typeof BodyType)[keyof typeof BodyType]
+
+
+export const BikeBodyType = {
+  Sport: 'Sport',
+  Naked: 'Naked',
+  Adventure: 'Adventure',
+  Touring: 'Touring',
+  Custom: 'Custom',
+  Scooter: 'Scooter',
+  Off_Road: 'Off_Road',
+  Motocross: 'Motocross',
+  Enduro: 'Enduro',
+  Trial: 'Trial',
+  Classic: 'Classic',
+  Electric: 'Electric'
+} as const
+
+export type BikeBodyType = (typeof BikeBodyType)[keyof typeof BikeBodyType]
 
 
 export const Transmission = {

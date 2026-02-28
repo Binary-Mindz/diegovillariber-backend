@@ -27,7 +27,9 @@ export type AggregateLegalNotice = {
 export type LegalNoticeMinAggregateOutputType = {
   id: string | null
   profileId: string | null
+  targetType: $Enums.LegalNoticeTarget | null
   carId: string | null
+  bikeId: string | null
   location: string | null
   date: Date | null
   description: string | null
@@ -41,7 +43,9 @@ export type LegalNoticeMinAggregateOutputType = {
 export type LegalNoticeMaxAggregateOutputType = {
   id: string | null
   profileId: string | null
+  targetType: $Enums.LegalNoticeTarget | null
   carId: string | null
+  bikeId: string | null
   location: string | null
   date: Date | null
   description: string | null
@@ -55,7 +59,9 @@ export type LegalNoticeMaxAggregateOutputType = {
 export type LegalNoticeCountAggregateOutputType = {
   id: number
   profileId: number
+  targetType: number
   carId: number
+  bikeId: number
   location: number
   date: number
   description: number
@@ -71,7 +77,9 @@ export type LegalNoticeCountAggregateOutputType = {
 export type LegalNoticeMinAggregateInputType = {
   id?: true
   profileId?: true
+  targetType?: true
   carId?: true
+  bikeId?: true
   location?: true
   date?: true
   description?: true
@@ -85,7 +93,9 @@ export type LegalNoticeMinAggregateInputType = {
 export type LegalNoticeMaxAggregateInputType = {
   id?: true
   profileId?: true
+  targetType?: true
   carId?: true
+  bikeId?: true
   location?: true
   date?: true
   description?: true
@@ -99,7 +109,9 @@ export type LegalNoticeMaxAggregateInputType = {
 export type LegalNoticeCountAggregateInputType = {
   id?: true
   profileId?: true
+  targetType?: true
   carId?: true
+  bikeId?: true
   location?: true
   date?: true
   description?: true
@@ -186,7 +198,9 @@ export type LegalNoticeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type LegalNoticeGroupByOutputType = {
   id: string
   profileId: string
-  carId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId: string | null
+  bikeId: string | null
   location: string
   date: Date
   description: string | null
@@ -221,7 +235,9 @@ export type LegalNoticeWhereInput = {
   NOT?: Prisma.LegalNoticeWhereInput | Prisma.LegalNoticeWhereInput[]
   id?: Prisma.UuidFilter<"LegalNotice"> | string
   profileId?: Prisma.UuidFilter<"LegalNotice"> | string
-  carId?: Prisma.UuidFilter<"LegalNotice"> | string
+  targetType?: Prisma.EnumLegalNoticeTargetFilter<"LegalNotice"> | $Enums.LegalNoticeTarget
+  carId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
+  bikeId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
   location?: Prisma.StringFilter<"LegalNotice"> | string
   date?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
   description?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
@@ -231,13 +247,16 @@ export type LegalNoticeWhereInput = {
   witnessPhone?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
   createdAt?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
-  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null
+  bike?: Prisma.XOR<Prisma.BikeNullableScalarRelationFilter, Prisma.BikeWhereInput> | null
 }
 
 export type LegalNoticeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  carId?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder
+  bikeId?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
   date?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -248,6 +267,7 @@ export type LegalNoticeOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
   car?: Prisma.CarOrderByWithRelationInput
+  bike?: Prisma.BikeOrderByWithRelationInput
 }
 
 export type LegalNoticeWhereUniqueInput = Prisma.AtLeast<{
@@ -256,7 +276,9 @@ export type LegalNoticeWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.LegalNoticeWhereInput[]
   NOT?: Prisma.LegalNoticeWhereInput | Prisma.LegalNoticeWhereInput[]
   profileId?: Prisma.UuidFilter<"LegalNotice"> | string
-  carId?: Prisma.UuidFilter<"LegalNotice"> | string
+  targetType?: Prisma.EnumLegalNoticeTargetFilter<"LegalNotice"> | $Enums.LegalNoticeTarget
+  carId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
+  bikeId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
   location?: Prisma.StringFilter<"LegalNotice"> | string
   date?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
   description?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
@@ -266,13 +288,16 @@ export type LegalNoticeWhereUniqueInput = Prisma.AtLeast<{
   witnessPhone?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
   createdAt?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
-  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null
+  bike?: Prisma.XOR<Prisma.BikeNullableScalarRelationFilter, Prisma.BikeWhereInput> | null
 }, "id">
 
 export type LegalNoticeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
-  carId?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder
+  bikeId?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
   date?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -292,7 +317,9 @@ export type LegalNoticeScalarWhereWithAggregatesInput = {
   NOT?: Prisma.LegalNoticeScalarWhereWithAggregatesInput | Prisma.LegalNoticeScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"LegalNotice"> | string
   profileId?: Prisma.UuidWithAggregatesFilter<"LegalNotice"> | string
-  carId?: Prisma.UuidWithAggregatesFilter<"LegalNotice"> | string
+  targetType?: Prisma.EnumLegalNoticeTargetWithAggregatesFilter<"LegalNotice"> | $Enums.LegalNoticeTarget
+  carId?: Prisma.UuidNullableWithAggregatesFilter<"LegalNotice"> | string | null
+  bikeId?: Prisma.UuidNullableWithAggregatesFilter<"LegalNotice"> | string | null
   location?: Prisma.StringWithAggregatesFilter<"LegalNotice"> | string
   date?: Prisma.DateTimeWithAggregatesFilter<"LegalNotice"> | Date | string
   description?: Prisma.StringNullableWithAggregatesFilter<"LegalNotice"> | string | null
@@ -305,6 +332,7 @@ export type LegalNoticeScalarWhereWithAggregatesInput = {
 
 export type LegalNoticeCreateInput = {
   id?: string
+  targetType: $Enums.LegalNoticeTarget
   location: string
   date: Date | string
   description?: string | null
@@ -314,13 +342,16 @@ export type LegalNoticeCreateInput = {
   witnessPhone?: string | null
   createdAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutLegalNoticesInput
-  car: Prisma.CarCreateNestedOneWithoutLegalNoticesInput
+  car?: Prisma.CarCreateNestedOneWithoutLegalNoticesInput
+  bike?: Prisma.BikeCreateNestedOneWithoutLegalNoticesInput
 }
 
 export type LegalNoticeUncheckedCreateInput = {
   id?: string
   profileId: string
-  carId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -333,6 +364,7 @@ export type LegalNoticeUncheckedCreateInput = {
 
 export type LegalNoticeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -342,13 +374,16 @@ export type LegalNoticeUpdateInput = {
   witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutLegalNoticesNestedInput
-  car?: Prisma.CarUpdateOneRequiredWithoutLegalNoticesNestedInput
+  car?: Prisma.CarUpdateOneWithoutLegalNoticesNestedInput
+  bike?: Prisma.BikeUpdateOneWithoutLegalNoticesNestedInput
 }
 
 export type LegalNoticeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
-  carId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -362,7 +397,9 @@ export type LegalNoticeUncheckedUpdateInput = {
 export type LegalNoticeCreateManyInput = {
   id?: string
   profileId: string
-  carId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -375,6 +412,7 @@ export type LegalNoticeCreateManyInput = {
 
 export type LegalNoticeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -388,7 +426,9 @@ export type LegalNoticeUpdateManyMutationInput = {
 export type LegalNoticeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
-  carId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -412,7 +452,9 @@ export type LegalNoticeOrderByRelationAggregateInput = {
 export type LegalNoticeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
   carId?: Prisma.SortOrder
+  bikeId?: Prisma.SortOrder
   location?: Prisma.SortOrder
   date?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -426,7 +468,9 @@ export type LegalNoticeCountOrderByAggregateInput = {
 export type LegalNoticeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
   carId?: Prisma.SortOrder
+  bikeId?: Prisma.SortOrder
   location?: Prisma.SortOrder
   date?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -440,7 +484,9 @@ export type LegalNoticeMaxOrderByAggregateInput = {
 export type LegalNoticeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  targetType?: Prisma.SortOrder
   carId?: Prisma.SortOrder
+  bikeId?: Prisma.SortOrder
   location?: Prisma.SortOrder
   date?: Prisma.SortOrder
   description?: Prisma.SortOrder
@@ -449,6 +495,48 @@ export type LegalNoticeMinOrderByAggregateInput = {
   witnessEmail?: Prisma.SortOrder
   witnessPhone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+}
+
+export type LegalNoticeCreateNestedManyWithoutBikeInput = {
+  create?: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput> | Prisma.LegalNoticeCreateWithoutBikeInput[] | Prisma.LegalNoticeUncheckedCreateWithoutBikeInput[]
+  connectOrCreate?: Prisma.LegalNoticeCreateOrConnectWithoutBikeInput | Prisma.LegalNoticeCreateOrConnectWithoutBikeInput[]
+  createMany?: Prisma.LegalNoticeCreateManyBikeInputEnvelope
+  connect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+}
+
+export type LegalNoticeUncheckedCreateNestedManyWithoutBikeInput = {
+  create?: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput> | Prisma.LegalNoticeCreateWithoutBikeInput[] | Prisma.LegalNoticeUncheckedCreateWithoutBikeInput[]
+  connectOrCreate?: Prisma.LegalNoticeCreateOrConnectWithoutBikeInput | Prisma.LegalNoticeCreateOrConnectWithoutBikeInput[]
+  createMany?: Prisma.LegalNoticeCreateManyBikeInputEnvelope
+  connect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+}
+
+export type LegalNoticeUpdateManyWithoutBikeNestedInput = {
+  create?: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput> | Prisma.LegalNoticeCreateWithoutBikeInput[] | Prisma.LegalNoticeUncheckedCreateWithoutBikeInput[]
+  connectOrCreate?: Prisma.LegalNoticeCreateOrConnectWithoutBikeInput | Prisma.LegalNoticeCreateOrConnectWithoutBikeInput[]
+  upsert?: Prisma.LegalNoticeUpsertWithWhereUniqueWithoutBikeInput | Prisma.LegalNoticeUpsertWithWhereUniqueWithoutBikeInput[]
+  createMany?: Prisma.LegalNoticeCreateManyBikeInputEnvelope
+  set?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  disconnect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  delete?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  connect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  update?: Prisma.LegalNoticeUpdateWithWhereUniqueWithoutBikeInput | Prisma.LegalNoticeUpdateWithWhereUniqueWithoutBikeInput[]
+  updateMany?: Prisma.LegalNoticeUpdateManyWithWhereWithoutBikeInput | Prisma.LegalNoticeUpdateManyWithWhereWithoutBikeInput[]
+  deleteMany?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
+}
+
+export type LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput = {
+  create?: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput> | Prisma.LegalNoticeCreateWithoutBikeInput[] | Prisma.LegalNoticeUncheckedCreateWithoutBikeInput[]
+  connectOrCreate?: Prisma.LegalNoticeCreateOrConnectWithoutBikeInput | Prisma.LegalNoticeCreateOrConnectWithoutBikeInput[]
+  upsert?: Prisma.LegalNoticeUpsertWithWhereUniqueWithoutBikeInput | Prisma.LegalNoticeUpsertWithWhereUniqueWithoutBikeInput[]
+  createMany?: Prisma.LegalNoticeCreateManyBikeInputEnvelope
+  set?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  disconnect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  delete?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  connect?: Prisma.LegalNoticeWhereUniqueInput | Prisma.LegalNoticeWhereUniqueInput[]
+  update?: Prisma.LegalNoticeUpdateWithWhereUniqueWithoutBikeInput | Prisma.LegalNoticeUpdateWithWhereUniqueWithoutBikeInput[]
+  updateMany?: Prisma.LegalNoticeUpdateManyWithWhereWithoutBikeInput | Prisma.LegalNoticeUpdateManyWithWhereWithoutBikeInput[]
+  deleteMany?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
 }
 
 export type LegalNoticeCreateNestedManyWithoutCarInput = {
@@ -493,6 +581,10 @@ export type LegalNoticeUncheckedUpdateManyWithoutCarNestedInput = {
   deleteMany?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
 }
 
+export type EnumLegalNoticeTargetFieldUpdateOperationsInput = {
+  set?: $Enums.LegalNoticeTarget
+}
+
 export type LegalNoticeCreateNestedManyWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.LegalNoticeCreateWithoutProfileInput, Prisma.LegalNoticeUncheckedCreateWithoutProfileInput> | Prisma.LegalNoticeCreateWithoutProfileInput[] | Prisma.LegalNoticeUncheckedCreateWithoutProfileInput[]
   connectOrCreate?: Prisma.LegalNoticeCreateOrConnectWithoutProfileInput | Prisma.LegalNoticeCreateOrConnectWithoutProfileInput[]
@@ -535,8 +627,9 @@ export type LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
 }
 
-export type LegalNoticeCreateWithoutCarInput = {
+export type LegalNoticeCreateWithoutBikeInput = {
   id?: string
+  targetType: $Enums.LegalNoticeTarget
   location: string
   date: Date | string
   description?: string | null
@@ -546,11 +639,89 @@ export type LegalNoticeCreateWithoutCarInput = {
   witnessPhone?: string | null
   createdAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutLegalNoticesInput
+  car?: Prisma.CarCreateNestedOneWithoutLegalNoticesInput
+}
+
+export type LegalNoticeUncheckedCreateWithoutBikeInput = {
+  id?: string
+  profileId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  location: string
+  date: Date | string
+  description?: string | null
+  media?: string | null
+  witnessName?: string | null
+  witnessEmail?: string | null
+  witnessPhone?: string | null
+  createdAt?: Date | string
+}
+
+export type LegalNoticeCreateOrConnectWithoutBikeInput = {
+  where: Prisma.LegalNoticeWhereUniqueInput
+  create: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput>
+}
+
+export type LegalNoticeCreateManyBikeInputEnvelope = {
+  data: Prisma.LegalNoticeCreateManyBikeInput | Prisma.LegalNoticeCreateManyBikeInput[]
+  skipDuplicates?: boolean
+}
+
+export type LegalNoticeUpsertWithWhereUniqueWithoutBikeInput = {
+  where: Prisma.LegalNoticeWhereUniqueInput
+  update: Prisma.XOR<Prisma.LegalNoticeUpdateWithoutBikeInput, Prisma.LegalNoticeUncheckedUpdateWithoutBikeInput>
+  create: Prisma.XOR<Prisma.LegalNoticeCreateWithoutBikeInput, Prisma.LegalNoticeUncheckedCreateWithoutBikeInput>
+}
+
+export type LegalNoticeUpdateWithWhereUniqueWithoutBikeInput = {
+  where: Prisma.LegalNoticeWhereUniqueInput
+  data: Prisma.XOR<Prisma.LegalNoticeUpdateWithoutBikeInput, Prisma.LegalNoticeUncheckedUpdateWithoutBikeInput>
+}
+
+export type LegalNoticeUpdateManyWithWhereWithoutBikeInput = {
+  where: Prisma.LegalNoticeScalarWhereInput
+  data: Prisma.XOR<Prisma.LegalNoticeUpdateManyMutationInput, Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeInput>
+}
+
+export type LegalNoticeScalarWhereInput = {
+  AND?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
+  OR?: Prisma.LegalNoticeScalarWhereInput[]
+  NOT?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
+  id?: Prisma.UuidFilter<"LegalNotice"> | string
+  profileId?: Prisma.UuidFilter<"LegalNotice"> | string
+  targetType?: Prisma.EnumLegalNoticeTargetFilter<"LegalNotice"> | $Enums.LegalNoticeTarget
+  carId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
+  bikeId?: Prisma.UuidNullableFilter<"LegalNotice"> | string | null
+  location?: Prisma.StringFilter<"LegalNotice"> | string
+  date?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
+  description?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
+  media?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
+  witnessName?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
+  witnessEmail?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
+  witnessPhone?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
+}
+
+export type LegalNoticeCreateWithoutCarInput = {
+  id?: string
+  targetType: $Enums.LegalNoticeTarget
+  location: string
+  date: Date | string
+  description?: string | null
+  media?: string | null
+  witnessName?: string | null
+  witnessEmail?: string | null
+  witnessPhone?: string | null
+  createdAt?: Date | string
+  profile: Prisma.ProfileCreateNestedOneWithoutLegalNoticesInput
+  bike?: Prisma.BikeCreateNestedOneWithoutLegalNoticesInput
 }
 
 export type LegalNoticeUncheckedCreateWithoutCarInput = {
   id?: string
   profileId: string
+  targetType: $Enums.LegalNoticeTarget
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -587,25 +758,9 @@ export type LegalNoticeUpdateManyWithWhereWithoutCarInput = {
   data: Prisma.XOR<Prisma.LegalNoticeUpdateManyMutationInput, Prisma.LegalNoticeUncheckedUpdateManyWithoutCarInput>
 }
 
-export type LegalNoticeScalarWhereInput = {
-  AND?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
-  OR?: Prisma.LegalNoticeScalarWhereInput[]
-  NOT?: Prisma.LegalNoticeScalarWhereInput | Prisma.LegalNoticeScalarWhereInput[]
-  id?: Prisma.UuidFilter<"LegalNotice"> | string
-  profileId?: Prisma.UuidFilter<"LegalNotice"> | string
-  carId?: Prisma.UuidFilter<"LegalNotice"> | string
-  location?: Prisma.StringFilter<"LegalNotice"> | string
-  date?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
-  description?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
-  media?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
-  witnessName?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
-  witnessEmail?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
-  witnessPhone?: Prisma.StringNullableFilter<"LegalNotice"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"LegalNotice"> | Date | string
-}
-
 export type LegalNoticeCreateWithoutProfileInput = {
   id?: string
+  targetType: $Enums.LegalNoticeTarget
   location: string
   date: Date | string
   description?: string | null
@@ -614,12 +769,15 @@ export type LegalNoticeCreateWithoutProfileInput = {
   witnessEmail?: string | null
   witnessPhone?: string | null
   createdAt?: Date | string
-  car: Prisma.CarCreateNestedOneWithoutLegalNoticesInput
+  car?: Prisma.CarCreateNestedOneWithoutLegalNoticesInput
+  bike?: Prisma.BikeCreateNestedOneWithoutLegalNoticesInput
 }
 
 export type LegalNoticeUncheckedCreateWithoutProfileInput = {
   id?: string
-  carId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -656,9 +814,71 @@ export type LegalNoticeUpdateManyWithWhereWithoutProfileInput = {
   data: Prisma.XOR<Prisma.LegalNoticeUpdateManyMutationInput, Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileInput>
 }
 
+export type LegalNoticeCreateManyBikeInput = {
+  id?: string
+  profileId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  location: string
+  date: Date | string
+  description?: string | null
+  media?: string | null
+  witnessName?: string | null
+  witnessEmail?: string | null
+  witnessPhone?: string | null
+  createdAt?: Date | string
+}
+
+export type LegalNoticeUpdateWithoutBikeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutLegalNoticesNestedInput
+  car?: Prisma.CarUpdateOneWithoutLegalNoticesNestedInput
+}
+
+export type LegalNoticeUncheckedUpdateWithoutBikeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LegalNoticeUncheckedUpdateManyWithoutBikeInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  media?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type LegalNoticeCreateManyCarInput = {
   id?: string
   profileId: string
+  targetType: $Enums.LegalNoticeTarget
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -671,6 +891,7 @@ export type LegalNoticeCreateManyCarInput = {
 
 export type LegalNoticeUpdateWithoutCarInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -680,11 +901,14 @@ export type LegalNoticeUpdateWithoutCarInput = {
   witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutLegalNoticesNestedInput
+  bike?: Prisma.BikeUpdateOneWithoutLegalNoticesNestedInput
 }
 
 export type LegalNoticeUncheckedUpdateWithoutCarInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -698,6 +922,8 @@ export type LegalNoticeUncheckedUpdateWithoutCarInput = {
 export type LegalNoticeUncheckedUpdateManyWithoutCarInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -710,7 +936,9 @@ export type LegalNoticeUncheckedUpdateManyWithoutCarInput = {
 
 export type LegalNoticeCreateManyProfileInput = {
   id?: string
-  carId: string
+  targetType: $Enums.LegalNoticeTarget
+  carId?: string | null
+  bikeId?: string | null
   location: string
   date: Date | string
   description?: string | null
@@ -723,6 +951,7 @@ export type LegalNoticeCreateManyProfileInput = {
 
 export type LegalNoticeUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -731,12 +960,15 @@ export type LegalNoticeUpdateWithoutProfileInput = {
   witnessEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   witnessPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  car?: Prisma.CarUpdateOneRequiredWithoutLegalNoticesNestedInput
+  car?: Prisma.CarUpdateOneWithoutLegalNoticesNestedInput
+  bike?: Prisma.BikeUpdateOneWithoutLegalNoticesNestedInput
 }
 
 export type LegalNoticeUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -749,7 +981,9 @@ export type LegalNoticeUncheckedUpdateWithoutProfileInput = {
 
 export type LegalNoticeUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  carId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumLegalNoticeTargetFieldUpdateOperationsInput | $Enums.LegalNoticeTarget
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -765,7 +999,9 @@ export type LegalNoticeUncheckedUpdateManyWithoutProfileInput = {
 export type LegalNoticeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  targetType?: boolean
   carId?: boolean
+  bikeId?: boolean
   location?: boolean
   date?: boolean
   description?: boolean
@@ -775,13 +1011,16 @@ export type LegalNoticeSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   witnessPhone?: boolean
   createdAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }, ExtArgs["result"]["legalNotice"]>
 
 export type LegalNoticeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  targetType?: boolean
   carId?: boolean
+  bikeId?: boolean
   location?: boolean
   date?: boolean
   description?: boolean
@@ -791,13 +1030,16 @@ export type LegalNoticeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   witnessPhone?: boolean
   createdAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }, ExtArgs["result"]["legalNotice"]>
 
 export type LegalNoticeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   profileId?: boolean
+  targetType?: boolean
   carId?: boolean
+  bikeId?: boolean
   location?: boolean
   date?: boolean
   description?: boolean
@@ -807,13 +1049,16 @@ export type LegalNoticeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   witnessPhone?: boolean
   createdAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }, ExtArgs["result"]["legalNotice"]>
 
 export type LegalNoticeSelectScalar = {
   id?: boolean
   profileId?: boolean
+  targetType?: boolean
   carId?: boolean
+  bikeId?: boolean
   location?: boolean
   date?: boolean
   description?: boolean
@@ -824,30 +1069,36 @@ export type LegalNoticeSelectScalar = {
   createdAt?: boolean
 }
 
-export type LegalNoticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "carId" | "location" | "date" | "description" | "media" | "witnessName" | "witnessEmail" | "witnessPhone" | "createdAt", ExtArgs["result"]["legalNotice"]>
+export type LegalNoticeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "targetType" | "carId" | "bikeId" | "location" | "date" | "description" | "media" | "witnessName" | "witnessEmail" | "witnessPhone" | "createdAt", ExtArgs["result"]["legalNotice"]>
 export type LegalNoticeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }
 export type LegalNoticeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }
 export type LegalNoticeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
-  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.LegalNotice$carArgs<ExtArgs>
+  bike?: boolean | Prisma.LegalNotice$bikeArgs<ExtArgs>
 }
 
 export type $LegalNoticePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "LegalNotice"
   objects: {
     profile: Prisma.$ProfilePayload<ExtArgs>
-    car: Prisma.$CarPayload<ExtArgs>
+    car: Prisma.$CarPayload<ExtArgs> | null
+    bike: Prisma.$BikePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
-    carId: string
+    targetType: $Enums.LegalNoticeTarget
+    carId: string | null
+    bikeId: string | null
     location: string
     date: Date
     description: string | null
@@ -1251,7 +1502,8 @@ readonly fields: LegalNoticeFieldRefs;
 export interface Prisma__LegalNoticeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   profile<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  car<T extends Prisma.CarDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CarDefaultArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  car<T extends Prisma.LegalNotice$carArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LegalNotice$carArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bike<T extends Prisma.LegalNotice$bikeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LegalNotice$bikeArgs<ExtArgs>>): Prisma.Prisma__BikeClient<runtime.Types.Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1283,7 +1535,9 @@ export interface Prisma__LegalNoticeClient<T, Null = never, ExtArgs extends runt
 export interface LegalNoticeFieldRefs {
   readonly id: Prisma.FieldRef<"LegalNotice", 'String'>
   readonly profileId: Prisma.FieldRef<"LegalNotice", 'String'>
+  readonly targetType: Prisma.FieldRef<"LegalNotice", 'LegalNoticeTarget'>
   readonly carId: Prisma.FieldRef<"LegalNotice", 'String'>
+  readonly bikeId: Prisma.FieldRef<"LegalNotice", 'String'>
   readonly location: Prisma.FieldRef<"LegalNotice", 'String'>
   readonly date: Prisma.FieldRef<"LegalNotice", 'DateTime'>
   readonly description: Prisma.FieldRef<"LegalNotice", 'String'>
@@ -1685,6 +1939,44 @@ export type LegalNoticeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Limit how many LegalNotices to delete.
    */
   limit?: number
+}
+
+/**
+ * LegalNotice.car
+ */
+export type LegalNotice$carArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Car
+   */
+  select?: Prisma.CarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Car
+   */
+  omit?: Prisma.CarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarInclude<ExtArgs> | null
+  where?: Prisma.CarWhereInput
+}
+
+/**
+ * LegalNotice.bike
+ */
+export type LegalNotice$bikeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Bike
+   */
+  select?: Prisma.BikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Bike
+   */
+  omit?: Prisma.BikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BikeInclude<ExtArgs> | null
+  where?: Prisma.BikeWhereInput
 }
 
 /**

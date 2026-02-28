@@ -4,8 +4,13 @@ model LegalNotice {
   profileId String  @db.Uuid
   profile   Profile @relation(fields: [profileId], references: [id])
 
-  carId String @db.Uuid
-  car   Car    @relation(fields: [carId], references: [id])
+  targetType LegalNoticeTarget
+
+  carId  String? @db.Uuid
+  car    Car?    @relation(fields: [carId], references: [id], onDelete: Cascade)
+
+  bikeId String? @db.Uuid
+  bike   Bike?   @relation(fields: [bikeId], references: [id], onDelete: Cascade)
 
   location    String
   date        DateTime

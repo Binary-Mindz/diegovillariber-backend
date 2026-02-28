@@ -21,7 +21,10 @@ enum Role {
   OFFICIAL_PARTNER
 }
 
-
+enum LegalNoticeTarget {
+  CAR
+  BIKE
+}
 
 enum Type {
   SPOTTER
@@ -137,6 +140,20 @@ enum BodyType {
   Wagon
   Pickup
   Van
+}
+enum BikeBodyType {
+  Sport
+  Naked
+  Adventure
+  Touring
+  Custom
+  Scooter
+  Off_Road
+  Motocross
+  Enduro
+  Trial
+  Classic
+  Electric
 }
 
 enum Transmission {
