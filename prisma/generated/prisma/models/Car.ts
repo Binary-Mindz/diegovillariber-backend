@@ -647,6 +647,14 @@ export type EnumBodyTypeFieldUpdateOperationsInput = {
   set?: $Enums.BodyType
 }
 
+export type EnumDriveTrainFieldUpdateOperationsInput = {
+  set?: $Enums.DriveTrain
+}
+
+export type EnumDriveCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.DriveCategory
+}
+
 export type CarCreateNestedManyWithoutGarageInput = {
   create?: Prisma.XOR<Prisma.CarCreateWithoutGarageInput, Prisma.CarUncheckedCreateWithoutGarageInput> | Prisma.CarCreateWithoutGarageInput[] | Prisma.CarUncheckedCreateWithoutGarageInput[]
   connectOrCreate?: Prisma.CarCreateOrConnectWithoutGarageInput | Prisma.CarCreateOrConnectWithoutGarageInput[]

@@ -43,12 +43,12 @@ export type BikeMinAggregateOutputType = {
   model: string | null
   bodyType: $Enums.BikeBodyType | null
   transmission: $Enums.Transmission | null
-  driveTrain: $Enums.DriveTrain | null
+  driveTrain: $Enums.DriveTrainBike | null
   country: string | null
   color: string | null
   displayName: string | null
   description: string | null
-  category: $Enums.DriveCategory | null
+  category: $Enums.DriveCategoryBike | null
   listOnMarketplace: boolean | null
   price: number | null
   createdAt: Date | null
@@ -64,12 +64,12 @@ export type BikeMaxAggregateOutputType = {
   model: string | null
   bodyType: $Enums.BikeBodyType | null
   transmission: $Enums.Transmission | null
-  driveTrain: $Enums.DriveTrain | null
+  driveTrain: $Enums.DriveTrainBike | null
   country: string | null
   color: string | null
   displayName: string | null
   description: string | null
-  category: $Enums.DriveCategory | null
+  category: $Enums.DriveCategoryBike | null
   listOnMarketplace: boolean | null
   price: number | null
   createdAt: Date | null
@@ -266,12 +266,12 @@ export type BikeGroupByOutputType = {
   model: string | null
   bodyType: $Enums.BikeBodyType
   transmission: $Enums.Transmission
-  driveTrain: $Enums.DriveTrain
+  driveTrain: $Enums.DriveTrainBike
   country: string | null
   color: string | null
   displayName: string | null
   description: string | null
-  category: $Enums.DriveCategory
+  category: $Enums.DriveCategoryBike
   listOnMarketplace: boolean
   price: number | null
   createdAt: Date
@@ -310,12 +310,12 @@ export type BikeWhereInput = {
   model?: Prisma.StringNullableFilter<"Bike"> | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFilter<"Bike"> | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFilter<"Bike"> | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFilter<"Bike"> | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFilter<"Bike"> | $Enums.DriveTrainBike
   country?: Prisma.StringNullableFilter<"Bike"> | string | null
   color?: Prisma.StringNullableFilter<"Bike"> | string | null
   displayName?: Prisma.StringNullableFilter<"Bike"> | string | null
   description?: Prisma.StringNullableFilter<"Bike"> | string | null
-  category?: Prisma.EnumDriveCategoryFilter<"Bike"> | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFilter<"Bike"> | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFilter<"Bike"> | boolean
   price?: Prisma.IntNullableFilter<"Bike"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Bike"> | Date | string
@@ -363,12 +363,12 @@ export type BikeWhereUniqueInput = Prisma.AtLeast<{
   model?: Prisma.StringNullableFilter<"Bike"> | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFilter<"Bike"> | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFilter<"Bike"> | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFilter<"Bike"> | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFilter<"Bike"> | $Enums.DriveTrainBike
   country?: Prisma.StringNullableFilter<"Bike"> | string | null
   color?: Prisma.StringNullableFilter<"Bike"> | string | null
   displayName?: Prisma.StringNullableFilter<"Bike"> | string | null
   description?: Prisma.StringNullableFilter<"Bike"> | string | null
-  category?: Prisma.EnumDriveCategoryFilter<"Bike"> | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFilter<"Bike"> | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFilter<"Bike"> | boolean
   price?: Prisma.IntNullableFilter<"Bike"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Bike"> | Date | string
@@ -417,12 +417,12 @@ export type BikeScalarWhereWithAggregatesInput = {
   model?: Prisma.StringNullableWithAggregatesFilter<"Bike"> | string | null
   bodyType?: Prisma.EnumBikeBodyTypeWithAggregatesFilter<"Bike"> | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionWithAggregatesFilter<"Bike"> | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainWithAggregatesFilter<"Bike"> | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeWithAggregatesFilter<"Bike"> | $Enums.DriveTrainBike
   country?: Prisma.StringNullableWithAggregatesFilter<"Bike"> | string | null
   color?: Prisma.StringNullableWithAggregatesFilter<"Bike"> | string | null
   displayName?: Prisma.StringNullableWithAggregatesFilter<"Bike"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Bike"> | string | null
-  category?: Prisma.EnumDriveCategoryWithAggregatesFilter<"Bike"> | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeWithAggregatesFilter<"Bike"> | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolWithAggregatesFilter<"Bike"> | boolean
   price?: Prisma.IntNullableWithAggregatesFilter<"Bike"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Bike"> | Date | string
@@ -436,12 +436,12 @@ export type BikeCreateInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -461,12 +461,12 @@ export type BikeUncheckedCreateInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -482,12 +482,12 @@ export type BikeUpdateInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -507,12 +507,12 @@ export type BikeUncheckedUpdateInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -530,12 +530,12 @@ export type BikeCreateManyInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -549,12 +549,12 @@ export type BikeUpdateManyMutationInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -570,12 +570,12 @@ export type BikeUncheckedUpdateManyInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -681,12 +681,12 @@ export type EnumTransmissionFieldUpdateOperationsInput = {
   set?: $Enums.Transmission
 }
 
-export type EnumDriveTrainFieldUpdateOperationsInput = {
-  set?: $Enums.DriveTrain
+export type EnumDriveTrainBikeFieldUpdateOperationsInput = {
+  set?: $Enums.DriveTrainBike
 }
 
-export type EnumDriveCategoryFieldUpdateOperationsInput = {
-  set?: $Enums.DriveCategory
+export type EnumDriveCategoryBikeFieldUpdateOperationsInput = {
+  set?: $Enums.DriveCategoryBike
 }
 
 export type BoolFieldUpdateOperationsInput = {
@@ -822,12 +822,12 @@ export type BikeCreateWithoutAdvancedBikeDatasInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -846,12 +846,12 @@ export type BikeUncheckedCreateWithoutAdvancedBikeDatasInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -882,12 +882,12 @@ export type BikeUpdateWithoutAdvancedBikeDatasInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -906,12 +906,12 @@ export type BikeUncheckedUpdateWithoutAdvancedBikeDatasInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -926,12 +926,12 @@ export type BikeCreateWithoutGarageInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -949,12 +949,12 @@ export type BikeUncheckedCreateWithoutGarageInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1001,12 +1001,12 @@ export type BikeScalarWhereInput = {
   model?: Prisma.StringNullableFilter<"Bike"> | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFilter<"Bike"> | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFilter<"Bike"> | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFilter<"Bike"> | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFilter<"Bike"> | $Enums.DriveTrainBike
   country?: Prisma.StringNullableFilter<"Bike"> | string | null
   color?: Prisma.StringNullableFilter<"Bike"> | string | null
   displayName?: Prisma.StringNullableFilter<"Bike"> | string | null
   description?: Prisma.StringNullableFilter<"Bike"> | string | null
-  category?: Prisma.EnumDriveCategoryFilter<"Bike"> | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFilter<"Bike"> | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFilter<"Bike"> | boolean
   price?: Prisma.IntNullableFilter<"Bike"> | number | null
   createdAt?: Prisma.DateTimeFilter<"Bike"> | Date | string
@@ -1020,12 +1020,12 @@ export type BikeCreateWithoutLegalNoticesInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1044,12 +1044,12 @@ export type BikeUncheckedCreateWithoutLegalNoticesInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1080,12 +1080,12 @@ export type BikeUpdateWithoutLegalNoticesInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1104,12 +1104,12 @@ export type BikeUncheckedUpdateWithoutLegalNoticesInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1124,12 +1124,12 @@ export type BikeCreateWithoutProfileInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1147,12 +1147,12 @@ export type BikeUncheckedCreateWithoutProfileInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1195,12 +1195,12 @@ export type BikeCreateManyGarageInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1214,12 +1214,12 @@ export type BikeUpdateWithoutGarageInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1237,12 +1237,12 @@ export type BikeUncheckedUpdateWithoutGarageInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1259,12 +1259,12 @@ export type BikeUncheckedUpdateManyWithoutGarageInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1279,12 +1279,12 @@ export type BikeCreateManyProfileInput = {
   model?: string | null
   bodyType?: $Enums.BikeBodyType
   transmission?: $Enums.Transmission
-  driveTrain?: $Enums.DriveTrain
+  driveTrain?: $Enums.DriveTrainBike
   country?: string | null
   color?: string | null
   displayName?: string | null
   description?: string | null
-  category?: $Enums.DriveCategory
+  category?: $Enums.DriveCategoryBike
   listOnMarketplace?: boolean
   price?: number | null
   createdAt?: Date | string
@@ -1298,12 +1298,12 @@ export type BikeUpdateWithoutProfileInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1321,12 +1321,12 @@ export type BikeUncheckedUpdateWithoutProfileInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1343,12 +1343,12 @@ export type BikeUncheckedUpdateManyWithoutProfileInput = {
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
-  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1522,12 +1522,12 @@ export type $BikePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     model: string | null
     bodyType: $Enums.BikeBodyType
     transmission: $Enums.Transmission
-    driveTrain: $Enums.DriveTrain
+    driveTrain: $Enums.DriveTrainBike
     country: string | null
     color: string | null
     displayName: string | null
     description: string | null
-    category: $Enums.DriveCategory
+    category: $Enums.DriveCategoryBike
     listOnMarketplace: boolean
     price: number | null
     createdAt: Date
@@ -1967,12 +1967,12 @@ export interface BikeFieldRefs {
   readonly model: Prisma.FieldRef<"Bike", 'String'>
   readonly bodyType: Prisma.FieldRef<"Bike", 'BikeBodyType'>
   readonly transmission: Prisma.FieldRef<"Bike", 'Transmission'>
-  readonly driveTrain: Prisma.FieldRef<"Bike", 'DriveTrain'>
+  readonly driveTrain: Prisma.FieldRef<"Bike", 'DriveTrainBike'>
   readonly country: Prisma.FieldRef<"Bike", 'String'>
   readonly color: Prisma.FieldRef<"Bike", 'String'>
   readonly displayName: Prisma.FieldRef<"Bike", 'String'>
   readonly description: Prisma.FieldRef<"Bike", 'String'>
-  readonly category: Prisma.FieldRef<"Bike", 'DriveCategory'>
+  readonly category: Prisma.FieldRef<"Bike", 'DriveCategoryBike'>
   readonly listOnMarketplace: Prisma.FieldRef<"Bike", 'Boolean'>
   readonly price: Prisma.FieldRef<"Bike", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Bike", 'DateTime'>

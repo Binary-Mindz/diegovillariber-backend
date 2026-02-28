@@ -25,7 +25,7 @@ export class CreateCarDto {
   @IsString()
   model?: string;
 
-  @ApiPropertyOptional({ enum: BodyType, example: BodyType.Coupe })
+  @ApiPropertyOptional({ enum: BodyType, example: BodyType.CLASSIC })
   @IsOptional()
   @IsEnum(BodyType)
   bodyType?: BodyType;
@@ -60,7 +60,7 @@ export class CreateCarDto {
   @IsString()
   description?: string;
 
-  @ApiPropertyOptional({ enum: DriveCategory, example: DriveCategory.Track_Tool })
+  @ApiPropertyOptional({ enum: DriveCategory, example: DriveCategory.DAILY_DRIVE })
   @IsOptional()
   @IsEnum(DriveCategory)
   category?: DriveCategory;

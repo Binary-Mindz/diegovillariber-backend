@@ -9,14 +9,14 @@ model Car {
   image             String?
   make              String?
   model             String?
-  bodyType          BodyType      @default(Coupe)
+  bodyType          BodyType      @default(CLASSIC)
   transmission      Transmission  @default(MANUAL)
   driveTrain        DriveTrain    @default(RWD)
   country           String?
   color             String?
   displayName       String?
   description       String?
-  category          DriveCategory @default(Daily_Drive)
+  category          DriveCategory @default(DAILY_DRIVE)
   listOnMarketplace Boolean       @default(false)
   price             Int?
   advancedCarDatas AdvancedCarData[]
