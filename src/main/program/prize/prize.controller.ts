@@ -45,10 +45,8 @@ export class PrizeController {
     }, 'Prize fetched successfully');
   }
 
-  // ✅ Admin only
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN)
+  @UseGuards(JwtAuthGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create prize (Admin only)' })
@@ -58,10 +56,8 @@ export class PrizeController {
     }, 'Prize created successfully');
   }
 
-  // ✅ Admin only
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN)
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update prize (Admin only)' })
@@ -71,10 +67,8 @@ export class PrizeController {
     }, 'Prize updated successfully');
   }
 
-  // ✅ Admin only
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN)
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete prize (Admin only)' })
