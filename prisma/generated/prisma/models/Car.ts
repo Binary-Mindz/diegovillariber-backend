@@ -624,6 +624,11 @@ export type CarOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type CarNullableScalarRelationFilter = {
+  is?: Prisma.CarWhereInput | null
+  isNot?: Prisma.CarWhereInput | null
+}
+
 export type CarCreateNestedOneWithoutAdvancedCarDatasInput = {
   create?: Prisma.XOR<Prisma.CarCreateWithoutAdvancedCarDatasInput, Prisma.CarUncheckedCreateWithoutAdvancedCarDatasInput>
   connectOrCreate?: Prisma.CarCreateOrConnectWithoutAdvancedCarDatasInput
@@ -640,30 +645,6 @@ export type CarUpdateOneRequiredWithoutAdvancedCarDatasNestedInput = {
 
 export type EnumBodyTypeFieldUpdateOperationsInput = {
   set?: $Enums.BodyType
-}
-
-export type EnumTransmissionFieldUpdateOperationsInput = {
-  set?: $Enums.Transmission
-}
-
-export type EnumDriveTrainFieldUpdateOperationsInput = {
-  set?: $Enums.DriveTrain
-}
-
-export type EnumDriveCategoryFieldUpdateOperationsInput = {
-  set?: $Enums.DriveCategory
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type CarCreateNestedManyWithoutGarageInput = {
@@ -714,10 +695,12 @@ export type CarCreateNestedOneWithoutLegalNoticesInput = {
   connect?: Prisma.CarWhereUniqueInput
 }
 
-export type CarUpdateOneRequiredWithoutLegalNoticesNestedInput = {
+export type CarUpdateOneWithoutLegalNoticesNestedInput = {
   create?: Prisma.XOR<Prisma.CarCreateWithoutLegalNoticesInput, Prisma.CarUncheckedCreateWithoutLegalNoticesInput>
   connectOrCreate?: Prisma.CarCreateOrConnectWithoutLegalNoticesInput
   upsert?: Prisma.CarUpsertWithoutLegalNoticesInput
+  disconnect?: Prisma.CarWhereInput | boolean
+  delete?: Prisma.CarWhereInput | boolean
   connect?: Prisma.CarWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutLegalNoticesInput, Prisma.CarUpdateWithoutLegalNoticesInput>, Prisma.CarUncheckedUpdateWithoutLegalNoticesInput>
 }

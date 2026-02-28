@@ -8,6 +8,7 @@ model Garage {
   location    String?
 
   cars Car[]
+  bikes Bike[]
 
   @@index([profileId])
 }
