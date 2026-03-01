@@ -60,11 +60,14 @@ export type PostMinAggregateOutputType = {
   placeId: string | null
   locationVisibility: string | null
   vehicleCategory: $Enums.VehicleCategory | null
+  mediaType: $Enums.MediaType | null
   like: number | null
   comment: number | null
   share: number | null
   contentBooster: boolean | null
   point: number | null
+  photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration: $Enums.VideoEditingDeclaration | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -85,11 +88,14 @@ export type PostMaxAggregateOutputType = {
   placeId: string | null
   locationVisibility: string | null
   vehicleCategory: $Enums.VehicleCategory | null
+  mediaType: $Enums.MediaType | null
   like: number | null
   comment: number | null
   share: number | null
   contentBooster: boolean | null
   point: number | null
+  photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration: $Enums.VideoEditingDeclaration | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -110,11 +116,14 @@ export type PostCountAggregateOutputType = {
   placeId: number
   locationVisibility: number
   vehicleCategory: number
+  mediaType: number
   like: number
   comment: number
   share: number
   contentBooster: number
   point: number
+  photoEditingDeclaration: number
+  videoEditingDeclaration: number
   visiualStyle: number
   contextActivity: number
   subject: number
@@ -158,11 +167,14 @@ export type PostMinAggregateInputType = {
   placeId?: true
   locationVisibility?: true
   vehicleCategory?: true
+  mediaType?: true
   like?: true
   comment?: true
   share?: true
   contentBooster?: true
   point?: true
+  photoEditingDeclaration?: true
+  videoEditingDeclaration?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -183,11 +195,14 @@ export type PostMaxAggregateInputType = {
   placeId?: true
   locationVisibility?: true
   vehicleCategory?: true
+  mediaType?: true
   like?: true
   comment?: true
   share?: true
   contentBooster?: true
   point?: true
+  photoEditingDeclaration?: true
+  videoEditingDeclaration?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -208,11 +223,14 @@ export type PostCountAggregateInputType = {
   placeId?: true
   locationVisibility?: true
   vehicleCategory?: true
+  mediaType?: true
   like?: true
   comment?: true
   share?: true
   contentBooster?: true
   point?: true
+  photoEditingDeclaration?: true
+  videoEditingDeclaration?: true
   visiualStyle?: true
   contextActivity?: true
   subject?: true
@@ -323,11 +341,14 @@ export type PostGroupByOutputType = {
   placeId: string | null
   locationVisibility: string | null
   vehicleCategory: $Enums.VehicleCategory
+  mediaType: $Enums.MediaType
   like: number
   comment: number
   share: number
   contentBooster: boolean
   point: number
+  photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration: $Enums.VideoEditingDeclaration | null
   visiualStyle: $Enums.VisiualStyle[]
   contextActivity: $Enums.ContextActivity[]
   subject: $Enums.Subject[]
@@ -374,11 +395,14 @@ export type PostWhereInput = {
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFilter<"Post"> | $Enums.MediaType
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableFilter<"Post"> | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -414,11 +438,14 @@ export type PostOrderByWithRelationInput = {
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicleCategory?: Prisma.SortOrder
+  mediaType?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  photoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
+  videoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -457,11 +484,14 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFilter<"Post"> | $Enums.MediaType
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableFilter<"Post"> | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -497,11 +527,14 @@ export type PostOrderByWithAggregationInput = {
   placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   locationVisibility?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicleCategory?: Prisma.SortOrder
+  mediaType?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  photoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
+  videoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -533,11 +566,14 @@ export type PostScalarWhereWithAggregatesInput = {
   placeId?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryWithAggregatesFilter<"Post"> | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeWithAggregatesFilter<"Post"> | $Enums.MediaType
   like?: Prisma.IntWithAggregatesFilter<"Post"> | number
   comment?: Prisma.IntWithAggregatesFilter<"Post"> | number
   share?: Prisma.IntWithAggregatesFilter<"Post"> | number
   contentBooster?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   point?: Prisma.IntWithAggregatesFilter<"Post"> | number
+  photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableWithAggregatesFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableWithAggregatesFilter<"Post"> | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -559,11 +595,14 @@ export type PostCreateInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -599,11 +638,14 @@ export type PostUncheckedCreateInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -635,11 +677,14 @@ export type PostUpdateInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -675,11 +720,14 @@ export type PostUncheckedUpdateInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -713,11 +761,14 @@ export type PostCreateManyInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -739,11 +790,14 @@ export type PostUpdateManyMutationInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -767,11 +821,14 @@ export type PostUncheckedUpdateManyInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -834,11 +891,14 @@ export type PostCountOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   vehicleCategory?: Prisma.SortOrder
+  mediaType?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  photoEditingDeclaration?: Prisma.SortOrder
+  videoEditingDeclaration?: Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -871,11 +931,14 @@ export type PostMaxOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   vehicleCategory?: Prisma.SortOrder
+  mediaType?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  photoEditingDeclaration?: Prisma.SortOrder
+  videoEditingDeclaration?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -896,11 +959,14 @@ export type PostMinOrderByAggregateInput = {
   placeId?: Prisma.SortOrder
   locationVisibility?: Prisma.SortOrder
   vehicleCategory?: Prisma.SortOrder
+  mediaType?: Prisma.SortOrder
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
+  photoEditingDeclaration?: Prisma.SortOrder
+  videoEditingDeclaration?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1013,6 +1079,14 @@ export type PostCreatesubjectInput = {
 
 export type EnumVehicleCategoryFieldUpdateOperationsInput = {
   set?: $Enums.VehicleCategory
+}
+
+export type NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput = {
+  set?: $Enums.PhotoEditingDeclaration | null
+}
+
+export type NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput = {
+  set?: $Enums.VideoEditingDeclaration | null
 }
 
 export type PostUpdatevisiualStyleInput = {
@@ -1238,11 +1312,14 @@ export type PostCreateWithoutCommentsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1277,11 +1354,14 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1328,11 +1408,14 @@ export type PostUpdateWithoutCommentsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1367,11 +1450,14 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1402,11 +1488,14 @@ export type PostCreateWithoutHashtagsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1441,11 +1530,14 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1502,11 +1594,14 @@ export type PostScalarWhereInput = {
   placeId?: Prisma.StringNullableFilter<"Post"> | string | null
   locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFilter<"Post"> | $Enums.MediaType
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
+  photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableFilter<"Post"> | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -1528,11 +1623,14 @@ export type PostCreateWithoutHidePostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1567,11 +1665,14 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1618,11 +1719,14 @@ export type PostUpdateWithoutHidePostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1657,11 +1761,14 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1692,11 +1799,14 @@ export type PostCreateWithoutLikesInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1731,11 +1841,14 @@ export type PostUncheckedCreateWithoutLikesInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1782,11 +1895,14 @@ export type PostUpdateWithoutLikesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1821,11 +1937,14 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1856,11 +1975,14 @@ export type PostCreateWithoutProfileInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1894,11 +2016,14 @@ export type PostUncheckedCreateWithoutProfileInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1956,11 +2081,14 @@ export type PostCreateWithoutRacingVotesInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1995,11 +2123,14 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2046,11 +2177,14 @@ export type PostUpdateWithoutRacingVotesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2085,11 +2219,14 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2120,11 +2257,14 @@ export type PostCreateWithoutRepostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2159,11 +2299,14 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2210,11 +2353,14 @@ export type PostUpdateWithoutRepostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2249,11 +2395,14 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2284,11 +2433,14 @@ export type PostCreateWithoutSavePostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2323,11 +2475,14 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2374,11 +2529,14 @@ export type PostUpdateWithoutSavePostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2413,11 +2571,14 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2448,11 +2609,14 @@ export type PostCreateWithoutUserInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2486,11 +2650,14 @@ export type PostUncheckedCreateWithoutUserInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2532,11 +2699,14 @@ export type PostCreateWithoutTaggedUsersInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2571,11 +2741,14 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2643,11 +2816,14 @@ export type PostCreateWithoutUserPointsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2682,11 +2858,14 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2733,11 +2912,14 @@ export type PostUpdateWithoutUserPointsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2772,11 +2954,14 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2807,11 +2992,14 @@ export type PostCreateWithoutWishListsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2846,11 +3034,14 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2897,11 +3088,14 @@ export type PostUpdateWithoutWishListsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2936,11 +3130,14 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2971,11 +3168,14 @@ export type PostUpdateWithoutHashtagsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3010,11 +3210,14 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3047,11 +3250,14 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3074,11 +3280,14 @@ export type PostCreateManyProfileInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3100,11 +3309,14 @@ export type PostUpdateWithoutProfileInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3138,11 +3350,14 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3175,11 +3390,14 @@ export type PostUncheckedUpdateManyWithoutProfileInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3202,11 +3420,14 @@ export type PostCreateManyUserInput = {
   placeId?: string | null
   locationVisibility?: string | null
   vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
   like?: number
   comment?: number
   share?: number
   contentBooster?: boolean
   point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3228,11 +3449,14 @@ export type PostUpdateWithoutUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3266,11 +3490,14 @@ export type PostUncheckedUpdateWithoutUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3303,11 +3530,14 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3329,11 +3559,14 @@ export type PostUpdateWithoutTaggedUsersInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3368,11 +3601,14 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3405,11 +3641,14 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
   placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3545,11 +3784,14 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   placeId?: boolean
   locationVisibility?: boolean
   vehicleCategory?: boolean
+  mediaType?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  photoEditingDeclaration?: boolean
+  videoEditingDeclaration?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -3586,11 +3828,14 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   placeId?: boolean
   locationVisibility?: boolean
   vehicleCategory?: boolean
+  mediaType?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  photoEditingDeclaration?: boolean
+  videoEditingDeclaration?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -3616,11 +3861,14 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   placeId?: boolean
   locationVisibility?: boolean
   vehicleCategory?: boolean
+  mediaType?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  photoEditingDeclaration?: boolean
+  videoEditingDeclaration?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -3646,11 +3894,14 @@ export type PostSelectScalar = {
   placeId?: boolean
   locationVisibility?: boolean
   vehicleCategory?: boolean
+  mediaType?: boolean
   like?: boolean
   comment?: boolean
   share?: boolean
   contentBooster?: boolean
   point?: boolean
+  photoEditingDeclaration?: boolean
+  videoEditingDeclaration?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -3658,7 +3909,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "like" | "comment" | "share" | "contentBooster" | "point" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Post$profileArgs<ExtArgs>
@@ -3715,11 +3966,14 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     placeId: string | null
     locationVisibility: string | null
     vehicleCategory: $Enums.VehicleCategory
+    mediaType: $Enums.MediaType
     like: number
     comment: number
     share: number
     contentBooster: boolean
     point: number
+    photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
+    videoEditingDeclaration: $Enums.VideoEditingDeclaration | null
     visiualStyle: $Enums.VisiualStyle[]
     contextActivity: $Enums.ContextActivity[]
     subject: $Enums.Subject[]
@@ -4175,11 +4429,14 @@ export interface PostFieldRefs {
   readonly placeId: Prisma.FieldRef<"Post", 'String'>
   readonly locationVisibility: Prisma.FieldRef<"Post", 'String'>
   readonly vehicleCategory: Prisma.FieldRef<"Post", 'VehicleCategory'>
+  readonly mediaType: Prisma.FieldRef<"Post", 'MediaType'>
   readonly like: Prisma.FieldRef<"Post", 'Int'>
   readonly comment: Prisma.FieldRef<"Post", 'Int'>
   readonly share: Prisma.FieldRef<"Post", 'Int'>
   readonly contentBooster: Prisma.FieldRef<"Post", 'Boolean'>
   readonly point: Prisma.FieldRef<"Post", 'Int'>
+  readonly photoEditingDeclaration: Prisma.FieldRef<"Post", 'PhotoEditingDeclaration'>
+  readonly videoEditingDeclaration: Prisma.FieldRef<"Post", 'VideoEditingDeclaration'>
   readonly visiualStyle: Prisma.FieldRef<"Post", 'VisiualStyle[]'>
   readonly contextActivity: Prisma.FieldRef<"Post", 'ContextActivity[]'>
   readonly subject: Prisma.FieldRef<"Post", 'Subject[]'>

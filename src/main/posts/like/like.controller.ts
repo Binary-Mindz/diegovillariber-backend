@@ -21,12 +21,12 @@ import { LikeService } from './like.service';
 import {
   CreateLikeDto,
   LikesQueryDto,
-  PostType,
   UnlikeDto,
 } from './dto/create.like.dto';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
+import { PostType } from 'generated/prisma/enums';
 
 @ApiTags('Likes')
 @Controller('likes')

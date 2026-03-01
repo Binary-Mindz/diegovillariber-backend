@@ -36,11 +36,13 @@ model LabTime {
   // Tires
   tireBrand    String
   tireModel    String
-  tireCompund  TireCompound @default(Slick)
+  tireCompund  TireCompound @default(SOFT)
   tireWear     Int?
   frontTireSize Int?
   frontPressure String?
   rearTireSize  Int?
+  rearPressure String?
+
 
   // Driver / Style
   drivingStyle DriveStyle @default(Moderate_Balanced_Approach)

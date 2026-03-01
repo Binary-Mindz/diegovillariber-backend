@@ -14,7 +14,7 @@ export class ProductFeedQueryDto {
 
   @ApiPropertyOptional({
     enum: ProductCategory,
-    example: ProductCategory.Car_Parts,
+    example: ProductCategory.CAR,
     description: 'Filter by category',
   })
   @IsOptional()

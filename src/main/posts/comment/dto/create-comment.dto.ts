@@ -6,13 +6,8 @@ import {
   MinLength,
 } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { PostType } from 'generated/prisma/enums';
 
-export enum PostType {
-  SPOTTER_POST = 'Spotter_Post',
-  OWNER_POST = 'Owner_Post',
-  BATTLE_POST = 'Battle_Post',
-  CHALLENGE_POST = 'Challenge_Post',
-}
 export class CreateCommentDto {
   @ApiProperty({
     description: 'Post ID where the comment will be added',
@@ -24,7 +19,7 @@ export class CreateCommentDto {
   @ApiProperty({
     description: 'Type of the post',
     enum: PostType,
-    example: PostType.SPOTTER_POST,
+    example: PostType.Spotter_Post,
   })
   @IsEnum(PostType)
   postType: PostType;
