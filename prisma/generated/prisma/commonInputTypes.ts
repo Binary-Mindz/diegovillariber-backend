@@ -1072,6 +1072,20 @@ export type EnumVehicleCategoryFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
 }
 
+export type EnumPhotoEditingDeclarationNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.PhotoEditingDeclaration | Prisma.EnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel> | $Enums.PhotoEditingDeclaration | null
+}
+
+export type EnumVideoEditingDeclarationNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.VideoEditingDeclaration | Prisma.EnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel> | $Enums.VideoEditingDeclaration | null
+}
+
 export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
@@ -1080,6 +1094,26 @@ export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
   _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+}
+
+export type EnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PhotoEditingDeclaration | Prisma.EnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel> | $Enums.PhotoEditingDeclaration | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel>
+}
+
+export type EnumVideoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VideoEditingDeclaration | Prisma.EnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumVideoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel> | $Enums.VideoEditingDeclaration | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel>
 }
 
 export type EnumProductCategoryFilter<$PrismaModel = never> = {
@@ -2526,6 +2560,20 @@ export type NestedEnumVehicleCategoryFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
 }
 
+export type NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.PhotoEditingDeclaration | Prisma.EnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel> | $Enums.PhotoEditingDeclaration | null
+}
+
+export type NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.VideoEditingDeclaration | Prisma.EnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel> | $Enums.VideoEditingDeclaration | null
+}
+
 export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
@@ -2534,6 +2582,26 @@ export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
   _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PhotoEditingDeclaration | Prisma.EnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PhotoEditingDeclaration[] | Prisma.ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel> | $Enums.PhotoEditingDeclaration | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumVideoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VideoEditingDeclaration | Prisma.EnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  in?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.VideoEditingDeclaration[] | Prisma.ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumVideoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel> | $Enums.VideoEditingDeclaration | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVideoEditingDeclarationNullableFilter<$PrismaModel>
 }
 
 export type NestedEnumProductCategoryFilter<$PrismaModel = never> = {

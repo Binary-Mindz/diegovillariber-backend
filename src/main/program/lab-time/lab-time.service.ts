@@ -77,6 +77,7 @@ export class LabTimeService {
         frontTireSize: dto.frontTireSize ?? null,
         frontPressure: dto.frontPressure ?? null,
         rearTireSize: dto.rearTireSize ?? null,
+        rearPressure: dto.rearPressure ?? null,
 
         drivingStyle: dto.drivingStyle,
         fuelLoad: dto.fuelLoad ?? null,

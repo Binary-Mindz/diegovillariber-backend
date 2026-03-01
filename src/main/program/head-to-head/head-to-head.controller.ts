@@ -28,6 +28,9 @@ import { VoteHeadToHeadDto } from './dto/vote-headtohead.dto';
 import { CreateHeadToHeadCommentDto } from './dto/comment-headtohead.dto';
 
 import { HeadToHeadService } from './head-to-head.service';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
+import { Role } from 'generated/prisma/enums';
 
 @ApiTags('HeadToHead')
 @Controller('head-to-head')
@@ -48,16 +51,19 @@ export class HeadToHeadController {
   }
 
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create HeadToHead battle' })
   async create(@GetUser('userId') userId: string, @Body() dto: CreateHeadToHeadBattleDto) {
+    console.log("userId " ,userId)
     return handleRequest(async () => this.service.createBattle(userId, dto), 'HeadToHead battle created successfully');
   }
 
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update HeadToHead battle (creator only)' })
@@ -70,7 +76,8 @@ export class HeadToHeadController {
   }
 
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete HeadToHead battle (creator only)' })

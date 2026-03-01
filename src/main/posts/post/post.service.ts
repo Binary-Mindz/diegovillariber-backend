@@ -8,7 +8,7 @@ import {
 import { CreatePostDto } from './dto/create.post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
-import { Prisma } from 'generated/prisma/client';
+import { MediaType, Prisma } from 'generated/prisma/client';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -61,6 +61,17 @@ export class PostService {
       if (!activeProfile.activeType) {
         throw new BadRequestException('Active profile type not set');
       }
+    const mediaType = dto.mediaType ?? MediaType.IMAGE;
+    if (mediaType === MediaType.IMAGE) {
+      if (dto.videoEditingDeclaration) {
+        throw new BadRequestException('videoEditingDeclaration is only allowed for VIDEO posts.');
+      }
+    } else if (mediaType === MediaType.VIDEO) {
+      if (dto.photoEditingDeclaration) {
+        throw new BadRequestException('photoEditingDeclaration is only allowed for IMAGE posts.');
+      }
+    }
+  
 
       const taggedUserIds = dto.taggedUserIds
         ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
@@ -107,7 +118,7 @@ export class PostService {
           postType: dto.postType ?? undefined,
           caption: dto.caption ?? null,
           mediaUrl: dto.mediaUrl ?? null,
-
+          mediaType,
           postLocation: dto.postLocation ?? null,
           locationName: dto.locationName ?? null,
           locationAddress: dto.locationAddress ?? null,
@@ -119,6 +130,8 @@ export class PostService {
           visiualStyle: dto.visiualStyle ?? [],
           contextActivity: dto.contextActivity ?? [],
           subject: dto.subject ?? [],
+          photoEditingDeclaration: dto.photoEditingDeclaration ?? null,
+          videoEditingDeclaration: dto.videoEditingDeclaration ?? null,
 
           hashtags: hashtagIds.length
             ? { connect: hashtagIds.map((id) => ({ id })) }
@@ -297,10 +310,26 @@ export class PostService {
         ...(dto.mediaUrl !== undefined
           ? { mediaUrl: dto.mediaUrl ?? null }
           : {}),
-        ...(dto.postLocation !== undefined
-          ? { postLocation: dto.postLocation ?? null }
+          // media
+          ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? null } : {}),
+          ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType ?? undefined } : {}),
+
+          // vehicleCategory
+          ...(dto.vehicleCategory !== undefined
+          ? { vehicleCategory: dto.vehicleCategory ?? undefined }
           : {}),
-        ...(dto.locationVisibility !== undefined
+
+          // declarations (with simple consistency check)
+           ...(dto.photoEditingDeclaration !== undefined
+           ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
+           : {}),
+           ...(dto.videoEditingDeclaration !== undefined
+           ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
+           : {}),
+           ...(dto.postLocation !== undefined
+           ? { postLocation: dto.postLocation ?? null }
+           : {}),
+          ...(dto.locationVisibility !== undefined
           ? { locationVisibility: dto.locationVisibility ?? null }
           : {}),
 

@@ -101,7 +101,7 @@ export class CreateLabTimeDto {
   @MaxLength(100)
   tireModel: string;
 
-  @ApiProperty({ enum: TireCompound, example: TireCompound.Slick })
+  @ApiProperty({ enum: TireCompound, example: TireCompound.SOFT })
   @IsEnum(TireCompound)
   tireCompund: TireCompound;
 
@@ -127,6 +127,12 @@ export class CreateLabTimeDto {
   @IsOptional()
   @IsInt()
   rearTireSize?: number;
+
+  @ApiPropertyOptional({ example: '32psi' })
+  @IsOptional()
+  @IsString()
+  @MaxLength(20)
+  rearPressure?: string;
 
   @ApiProperty({ enum: DriveStyle, example: DriveStyle.Moderate_Balanced_Approach })
   @IsEnum(DriveStyle)

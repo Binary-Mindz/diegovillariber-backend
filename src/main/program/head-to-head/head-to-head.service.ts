@@ -92,6 +92,11 @@ export class HeadToHeadService {
   }
 
  async createBattle(creatorId: string, dto: CreateHeadToHeadBattleDto) {
+  const user = await this.prisma.user.findFirst({where:{id:creatorId}})
+  console.log('creatorId:', creatorId);
+  console.log('user:', user);
+
+  return 
   if (dto.startDate >= dto.endDate) throw new BadRequestException('startDate must be before endDate');
 
   if (dto.accessType === BattleAccessType.AUTO_INVITE) {

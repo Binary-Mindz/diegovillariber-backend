@@ -7338,6 +7338,7 @@ export const LabTimeScalarFieldEnum = {
   frontTireSize: 'frontTireSize',
   frontPressure: 'frontPressure',
   rearTireSize: 'rearTireSize',
+  rearPressure: 'rearPressure',
   drivingStyle: 'drivingStyle',
   fuelLoad: 'fuelLoad',
   driverWeight: 'driverWeight',
@@ -7503,11 +7504,14 @@ export const PostScalarFieldEnum = {
   placeId: 'placeId',
   locationVisibility: 'locationVisibility',
   vehicleCategory: 'vehicleCategory',
+  mediaType: 'mediaType',
   like: 'like',
   comment: 'comment',
   share: 'share',
   contentBooster: 'contentBooster',
   point: 'point',
+  photoEditingDeclaration: 'photoEditingDeclaration',
+  videoEditingDeclaration: 'videoEditingDeclaration',
   visiualStyle: 'visiualStyle',
   contextActivity: 'contextActivity',
   subject: 'subject',
@@ -8638,6 +8642,34 @@ export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'VehicleCategory[]'
  */
 export type ListEnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PhotoEditingDeclaration'
+ */
+export type EnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoEditingDeclaration'>
+    
+
+
+/**
+ * Reference to a field of type 'PhotoEditingDeclaration[]'
+ */
+export type ListEnumPhotoEditingDeclarationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PhotoEditingDeclaration[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VideoEditingDeclaration'
+ */
+export type EnumVideoEditingDeclarationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VideoEditingDeclaration'>
+    
+
+
+/**
+ * Reference to a field of type 'VideoEditingDeclaration[]'
+ */
+export type ListEnumVideoEditingDeclarationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VideoEditingDeclaration[]'>
     
 
 
