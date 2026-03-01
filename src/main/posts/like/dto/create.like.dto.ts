@@ -8,14 +8,7 @@ import {
 } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-
-export enum PostType {
-  SPOTTER_POST = 'Spotter_Post',
-  OWNER_POST = 'Owner_Post',
-  BATTLE_POST = 'Battle_Post',
-  CHALLENGE_POST = 'Challenge_Post',
-}
-
+import { PostType } from 'generated/prisma/enums';
 export class CreateLikeDto {
   @ApiProperty({
     description: 'Post ID (UUID)',

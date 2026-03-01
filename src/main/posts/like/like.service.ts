@@ -3,8 +3,9 @@ import {
   NotFoundException,
   ConflictException,
 } from '@nestjs/common';
-import { CreateLikeDto, LikesQueryDto, PostType } from './dto/create.like.dto';
+import { CreateLikeDto, LikesQueryDto } from './dto/create.like.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { PostType } from 'generated/prisma/enums';
 
 @Injectable()
 export class LikeService {

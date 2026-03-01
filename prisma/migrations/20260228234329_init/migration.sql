@@ -23,7 +23,7 @@ CREATE TYPE "QuickPreset" AS ENUM ('NONE_ALL_DEVICE', 'MOBAILE_ONLY', 'DSLR_CAME
 CREATE TYPE "Brand" AS ENUM ('APPLE', 'SUMSUNG', 'GOOGLE', 'HUAWEI', 'XIAOMI', 'ONEPLUS', 'OPPO', 'VIVO', 'CANON', 'NIKON', 'SONY', 'FUJIFILM', 'PANASONIC', 'LEICA', 'OLYMPUS', 'PENTAX', 'GOPRO', 'DJI', 'INSTA360');
 
 -- CreateEnum
-CREATE TYPE "MediaType" AS ENUM ('IMAGE', 'VIDEO', 'RAW');
+CREATE TYPE "MediaType" AS ENUM ('IMAGE', 'VIDEO');
 
 -- CreateEnum
 CREATE TYPE "ReactionType" AS ENUM ('LIKE', 'LOVE', 'FIRE', 'WOW');
@@ -54,6 +54,12 @@ CREATE TYPE "SubmissionStatus" AS ENUM ('PENDING', 'SUBMITTED', 'APPROVED', 'REJ
 
 -- CreateEnum
 CREATE TYPE "BattleCategory" AS ENUM ('STYLE_BATTLE', 'STANCE_BATTLE', 'RACING_BATTLE', 'CLASSIC_BATTLE', 'JDM_BATTLE', 'EURO_BATTLE', 'MUSCLE_BATTLE', 'OFF_ROAD_BATTLE');
+
+-- CreateEnum
+CREATE TYPE "PhotoEditingDeclaration" AS ENUM ('NO_EDITING', 'EDITED_WITH_ADOBE_LIGHTROOM', 'EDITED_WITH_ADOBE_PHOTOSHOP', 'EDITED_WITH_SNAPSEED', 'EDITED_WITH_VSCO', 'EDITED_WITH_OTHER_SOFTWARE');
+
+-- CreateEnum
+CREATE TYPE "VideoEditingDeclaration" AS ENUM ('ADOBE_PREMIER_PRO', 'DAVINCI_RESOLVE', 'AVID_MEDIA_COMPOSER', 'FINAL_CUT_PRO');
 
 -- CreateEnum
 CREATE TYPE "VisiualStyle" AS ENUM ('Action', 'Aerial', 'Artistic', 'Drift', 'Black_And_White', 'Cinematic', 'Close_Up', 'Motion_Blur', 'Day', 'Detail_Shot', 'Golden_Hour', 'Long_Exposure', 'Macro', 'Night_Shot', 'Panoramic', 'Panning', 'Raw', 'Rollin_Shot', 'Wet_Conditions', 'Wide_Angle', 'Abandoned', 'AI_Generated');
@@ -92,7 +98,7 @@ CREATE TYPE "AccountStatus" AS ENUM ('ACTIVE', 'SUSPEND', 'INACTIVE');
 CREATE TYPE "Media" AS ENUM ('PHOTO', 'VIDEO');
 
 -- CreateEnum
-CREATE TYPE "PostType" AS ENUM ('Spotter_Post', 'Owner_Post', 'Battle_Post', 'Challenge_Post');
+CREATE TYPE "PostType" AS ENUM ('Spotter_Post', 'Owner_Post', 'ContentCretor_Post', 'ProBussiness_Post', 'ProDriver_Post', 'SimRacing_Post');
 
 -- CreateEnum
 CREATE TYPE "PointType" AS ENUM ('BATTLE_WIN', 'POST', 'LIKE', 'COMMENT', 'ONGOING');
@@ -155,7 +161,7 @@ CREATE TYPE "Weather" AS ENUM ('Sunny', 'Cloudy', 'Overcast', 'Light_Rain', 'Hea
 CREATE TYPE "SessionType" AS ENUM ('TRACK_DAY', 'PRIVATE_SECTION', 'RACE_WEEKEND', 'TEST_DAY', 'TIME_ATTACK_EVENT');
 
 -- CreateEnum
-CREATE TYPE "TireCompound" AS ENUM ('Slick', 'Semi_Slick', 'Street', 'All_Season', 'Rain');
+CREATE TYPE "TireCompound" AS ENUM ('SOFT', 'MEDIUM', 'HARD');
 
 -- CreateEnum
 CREATE TYPE "DriveStyle" AS ENUM ('Conservative_Leaving_Margin', 'Moderate_Balanced_Approach', 'Aggressive_Pushing_Hard', 'At_The_Limit_Full_Send');
@@ -176,7 +182,7 @@ CREATE TYPE "EventType" AS ENUM ('Race', 'League_Race', 'Hot_Lap_Session', 'Prac
 CREATE TYPE "ReportType" AS ENUM ('POST', 'PROFILE');
 
 -- CreateEnum
-CREATE TYPE "ProductCategory" AS ENUM ('Car_Tyres', 'Car_Parts', 'Car_Accessories');
+CREATE TYPE "ProductCategory" AS ENUM ('CAR_PARTS', 'CAR', 'BIKE', 'BIKE_PARTS', 'PHOTOGRAPHY', 'SIM_RACING');
 
 -- CreateEnum
 CREATE TYPE "CarClass" AS ENUM ('GT3', 'GT4', 'GTE', 'LMP2', 'F124', 'LMP1', 'FORMULA_1', 'FORMULA_2', 'FORMULA_3', 'TOURING_CAR', 'STOCK_CAR', 'RALLY', 'DRIFT', 'ROAD_CAR', 'PROTOTYPE', 'VINTAGE', 'OTHER');
@@ -881,11 +887,12 @@ CREATE TABLE "LabTime" (
     "humidity" INTEGER,
     "tireBrand" TEXT NOT NULL,
     "tireModel" TEXT NOT NULL,
-    "tireCompund" "TireCompound" NOT NULL DEFAULT 'Slick',
+    "tireCompund" "TireCompound" NOT NULL DEFAULT 'SOFT',
     "tireWear" INTEGER,
     "frontTireSize" INTEGER,
     "frontPressure" TEXT,
     "rearTireSize" INTEGER,
+    "rearPressure" TEXT,
     "drivingStyle" "DriveStyle" NOT NULL DEFAULT 'Moderate_Balanced_Approach',
     "fuelLoad" INTEGER,
     "driverWeight" INTEGER,
@@ -1051,11 +1058,14 @@ CREATE TABLE "Post" (
     "placeId" TEXT,
     "locationVisibility" TEXT,
     "vehicleCategory" "VehicleCategory" NOT NULL DEFAULT 'CLASSIC',
+    "mediaType" "MediaType" NOT NULL DEFAULT 'IMAGE',
     "like" INTEGER NOT NULL DEFAULT 0,
     "comment" INTEGER NOT NULL DEFAULT 0,
     "share" INTEGER NOT NULL DEFAULT 0,
     "contentBooster" BOOLEAN NOT NULL DEFAULT false,
     "point" INTEGER NOT NULL DEFAULT 5,
+    "photoEditingDeclaration" "PhotoEditingDeclaration",
+    "videoEditingDeclaration" "VideoEditingDeclaration",
     "visiualStyle" "VisiualStyle"[] DEFAULT ARRAY[]::"VisiualStyle"[],
     "contextActivity" "ContextActivity"[] DEFAULT ARRAY[]::"ContextActivity"[],
     "subject" "Subject"[] DEFAULT ARRAY[]::"Subject"[],
@@ -1092,7 +1102,7 @@ CREATE TABLE "ProductList" (
     "title" TEXT NOT NULL,
     "productImage" TEXT,
     "description" TEXT,
-    "category" "ProductCategory" NOT NULL DEFAULT 'Car_Parts',
+    "category" "ProductCategory" NOT NULL DEFAULT 'CAR',
     "tags" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "carBrand" TEXT,
     "carModel" TEXT,

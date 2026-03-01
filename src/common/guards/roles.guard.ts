@@ -1,6 +1,6 @@
-import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
-import { ROLES_KEY } from '../decorator/roles.tdecorator';
+import { CanActivate, ExecutionContext, Injectable } from "@nestjs/common";
+import { Reflector } from "@nestjs/core";
+import { ROLES_KEY } from "../decorator/roles.tdecorator";
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -15,6 +15,8 @@ export class RolesGuard implements CanActivate {
 
     const req = ctx.switchToHttp().getRequest();
     const user = req.user;
-    return roles.includes(user?.role);
+
+    const currentRole = user?.activeRole ?? user?.role;
+    return roles.includes(currentRole);
   }
 }

@@ -110,8 +110,7 @@ export type Brand = (typeof Brand)[keyof typeof Brand]
 
 export const MediaType = {
   IMAGE: 'IMAGE',
-  VIDEO: 'VIDEO',
-  RAW: 'RAW'
+  VIDEO: 'VIDEO'
 } as const
 
 export type MediaType = (typeof MediaType)[keyof typeof MediaType]
@@ -221,6 +220,28 @@ export const BattleCategory = {
 } as const
 
 export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory]
+
+
+export const PhotoEditingDeclaration = {
+  NO_EDITING: 'NO_EDITING',
+  EDITED_WITH_ADOBE_LIGHTROOM: 'EDITED_WITH_ADOBE_LIGHTROOM',
+  EDITED_WITH_ADOBE_PHOTOSHOP: 'EDITED_WITH_ADOBE_PHOTOSHOP',
+  EDITED_WITH_SNAPSEED: 'EDITED_WITH_SNAPSEED',
+  EDITED_WITH_VSCO: 'EDITED_WITH_VSCO',
+  EDITED_WITH_OTHER_SOFTWARE: 'EDITED_WITH_OTHER_SOFTWARE'
+} as const
+
+export type PhotoEditingDeclaration = (typeof PhotoEditingDeclaration)[keyof typeof PhotoEditingDeclaration]
+
+
+export const VideoEditingDeclaration = {
+  ADOBE_PREMIER_PRO: 'ADOBE_PREMIER_PRO',
+  DAVINCI_RESOLVE: 'DAVINCI_RESOLVE',
+  AVID_MEDIA_COMPOSER: 'AVID_MEDIA_COMPOSER',
+  FINAL_CUT_PRO: 'FINAL_CUT_PRO'
+} as const
+
+export type VideoEditingDeclaration = (typeof VideoEditingDeclaration)[keyof typeof VideoEditingDeclaration]
 
 
 export const VisiualStyle = {
@@ -383,8 +404,10 @@ export type Media = (typeof Media)[keyof typeof Media]
 export const PostType = {
   Spotter_Post: 'Spotter_Post',
   Owner_Post: 'Owner_Post',
-  Battle_Post: 'Battle_Post',
-  Challenge_Post: 'Challenge_Post'
+  ContentCretor_Post: 'ContentCretor_Post',
+  ProBussiness_Post: 'ProBussiness_Post',
+  ProDriver_Post: 'ProDriver_Post',
+  SimRacing_Post: 'SimRacing_Post'
 } as const
 
 export type PostType = (typeof PostType)[keyof typeof PostType]
@@ -629,11 +652,9 @@ export type SessionType = (typeof SessionType)[keyof typeof SessionType]
 
 
 export const TireCompound = {
-  Slick: 'Slick',
-  Semi_Slick: 'Semi_Slick',
-  Street: 'Street',
-  All_Season: 'All_Season',
-  Rain: 'Rain'
+  SOFT: 'SOFT',
+  MEDIUM: 'MEDIUM',
+  HARD: 'HARD'
 } as const
 
 export type TireCompound = (typeof TireCompound)[keyof typeof TireCompound]
@@ -719,9 +740,12 @@ export type ReportType = (typeof ReportType)[keyof typeof ReportType]
 
 
 export const ProductCategory = {
-  Car_Tyres: 'Car_Tyres',
-  Car_Parts: 'Car_Parts',
-  Car_Accessories: 'Car_Accessories'
+  CAR_PARTS: 'CAR_PARTS',
+  CAR: 'CAR',
+  BIKE: 'BIKE',
+  BIKE_PARTS: 'BIKE_PARTS',
+  PHOTOGRAPHY: 'PHOTOGRAPHY',
+  SIM_RACING: 'SIM_RACING'
 } as const
 
 export type ProductCategory = (typeof ProductCategory)[keyof typeof ProductCategory]
