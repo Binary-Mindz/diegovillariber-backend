@@ -17,10 +17,13 @@ import {
   ContextActivity,
   Subject,
   VehicleCategory,
+  MediaType,
+  PhotoEditingDeclaration,
+  VideoEditingDeclaration,
 } from 'generated/prisma/enums';
 
 export class CreatePostDto {
-  @ApiPropertyOptional({ enum: PostType, example: 'Spotter_Post' })
+  @ApiPropertyOptional({ enum: PostType, example: PostType.Spotter_Post })
   @IsOptional()
   @IsEnum(PostType)
   postType?: PostType;
@@ -35,6 +38,11 @@ export class CreatePostDto {
   @IsOptional()
   @IsString()
   mediaUrl?: string;
+
+  @ApiPropertyOptional({ enum: MediaType, example: MediaType.IMAGE })
+  @IsOptional()
+  @IsEnum(MediaType)
+  mediaType?: MediaType;
 
   // Optional: formatted location string (you already have it)
   @ApiPropertyOptional({ example: 'Dhaka, Bangladesh' })
@@ -78,7 +86,7 @@ export class CreatePostDto {
   @IsString()
   locationVisibility?: string;
 
-  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.CITY })
+  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.CLASSIC })
   @IsOptional()
   @IsEnum(VehicleCategory)
   vehicleCategory?: VehicleCategory;
@@ -92,6 +100,16 @@ export class CreatePostDto {
   @IsBoolean()
   contentBooster?: boolean;
 
+  
+  @ApiPropertyOptional({ enum: PhotoEditingDeclaration, example: PhotoEditingDeclaration.NO_EDITING })
+  @IsOptional()
+  @IsEnum(PhotoEditingDeclaration)
+  photoEditingDeclaration?: PhotoEditingDeclaration;
+
+  @ApiPropertyOptional({ enum: VideoEditingDeclaration, example: VideoEditingDeclaration.DAVINCI_RESOLVE })
+  @IsOptional()
+  @IsEnum(VideoEditingDeclaration)
+  videoEditingDeclaration?: VideoEditingDeclaration;
 
  
   @ApiPropertyOptional({

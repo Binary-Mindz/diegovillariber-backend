@@ -146,7 +146,6 @@ model ChallengeParticipant {
 enum MediaType {
   IMAGE
   VIDEO
-  RAW
 }
 
 model ChallengeSubmission {

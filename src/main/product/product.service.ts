@@ -25,7 +25,7 @@ export class ProductService {
         title: dto.title,
         productImage: dto.productImage ?? null,
         description: dto.description ?? null,
-        category: dto.category ?? ProductCategory.Car_Parts,
+        category: dto.category ?? ProductCategory.CAR,
         tags: dto.tags ?? [],
         carBrand: dto.carBrand ?? null,
         carModel: dto.carModel ?? null,

@@ -54,8 +54,10 @@ enum Media {
 enum PostType {
   Spotter_Post
   Owner_Post
-  Battle_Post
-  Challenge_Post
+  ContentCretor_Post
+  ProBussiness_Post
+  ProDriver_Post
+  SimRacing_Post
 }
 
 
@@ -239,11 +241,9 @@ enum SessionType {
 }
 
 enum TireCompound {
-  Slick
-  Semi_Slick
-  Street
-  All_Season
-  Rain
+  SOFT
+  MEDIUM
+  HARD
 }
 
 enum DriveStyle {
@@ -308,9 +308,12 @@ enum ReportType {
 }
 
 enum ProductCategory {
-  Car_Tyres
-  Car_Parts
-  Car_Accessories
+  CAR_PARTS
+  CAR
+  BIKE
+  BIKE_PARTS
+  PHOTOGRAPHY
+  SIM_RACING
 }
 
 
