@@ -27,9 +27,9 @@ export type AggregateHardwareSetup = {
 export type HardwareSetupMinAggregateOutputType = {
   id: string | null
   simRacingId: string | null
-  steeringWheel: string | null
-  wheelModel: string | null
-  wheelbase: string | null
+  steeringWheel: $Enums.SteeringWheel | null
+  wheelModel: $Enums.WheelModel | null
+  wheelbase: $Enums.WheelBase | null
   pedals: string | null
   pedelModel: string | null
   shifter: string | null
@@ -47,9 +47,9 @@ export type HardwareSetupMinAggregateOutputType = {
 export type HardwareSetupMaxAggregateOutputType = {
   id: string | null
   simRacingId: string | null
-  steeringWheel: string | null
-  wheelModel: string | null
-  wheelbase: string | null
+  steeringWheel: $Enums.SteeringWheel | null
+  wheelModel: $Enums.WheelModel | null
+  wheelbase: $Enums.WheelBase | null
   pedals: string | null
   pedelModel: string | null
   shifter: string | null
@@ -222,9 +222,9 @@ export type HardwareSetupGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 export type HardwareSetupGroupByOutputType = {
   id: string
   simRacingId: string
-  steeringWheel: string | null
-  wheelModel: string | null
-  wheelbase: string | null
+  steeringWheel: $Enums.SteeringWheel
+  wheelModel: $Enums.WheelModel
+  wheelbase: $Enums.WheelBase
   pedals: string | null
   pedelModel: string | null
   shifter: string | null
@@ -263,9 +263,9 @@ export type HardwareSetupWhereInput = {
   NOT?: Prisma.HardwareSetupWhereInput | Prisma.HardwareSetupWhereInput[]
   id?: Prisma.UuidFilter<"HardwareSetup"> | string
   simRacingId?: Prisma.UuidFilter<"HardwareSetup"> | string
-  steeringWheel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
-  wheelModel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
-  wheelbase?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFilter<"HardwareSetup"> | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFilter<"HardwareSetup"> | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFilter<"HardwareSetup"> | $Enums.WheelBase
   pedals?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
   pedelModel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
   shifter?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
@@ -284,9 +284,9 @@ export type HardwareSetupWhereInput = {
 export type HardwareSetupOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   simRacingId?: Prisma.SortOrder
-  steeringWheel?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelModel?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelbase?: Prisma.SortOrderInput | Prisma.SortOrder
+  steeringWheel?: Prisma.SortOrder
+  wheelModel?: Prisma.SortOrder
+  wheelbase?: Prisma.SortOrder
   pedals?: Prisma.SortOrderInput | Prisma.SortOrder
   pedelModel?: Prisma.SortOrderInput | Prisma.SortOrder
   shifter?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -308,9 +308,9 @@ export type HardwareSetupWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.HardwareSetupWhereInput | Prisma.HardwareSetupWhereInput[]
   OR?: Prisma.HardwareSetupWhereInput[]
   NOT?: Prisma.HardwareSetupWhereInput | Prisma.HardwareSetupWhereInput[]
-  steeringWheel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
-  wheelModel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
-  wheelbase?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFilter<"HardwareSetup"> | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFilter<"HardwareSetup"> | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFilter<"HardwareSetup"> | $Enums.WheelBase
   pedals?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
   pedelModel?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
   shifter?: Prisma.StringNullableFilter<"HardwareSetup"> | string | null
@@ -329,9 +329,9 @@ export type HardwareSetupWhereUniqueInput = Prisma.AtLeast<{
 export type HardwareSetupOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   simRacingId?: Prisma.SortOrder
-  steeringWheel?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelModel?: Prisma.SortOrderInput | Prisma.SortOrder
-  wheelbase?: Prisma.SortOrderInput | Prisma.SortOrder
+  steeringWheel?: Prisma.SortOrder
+  wheelModel?: Prisma.SortOrder
+  wheelbase?: Prisma.SortOrder
   pedals?: Prisma.SortOrderInput | Prisma.SortOrder
   pedelModel?: Prisma.SortOrderInput | Prisma.SortOrder
   shifter?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -355,9 +355,9 @@ export type HardwareSetupScalarWhereWithAggregatesInput = {
   NOT?: Prisma.HardwareSetupScalarWhereWithAggregatesInput | Prisma.HardwareSetupScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"HardwareSetup"> | string
   simRacingId?: Prisma.UuidWithAggregatesFilter<"HardwareSetup"> | string
-  steeringWheel?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
-  wheelModel?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
-  wheelbase?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelWithAggregatesFilter<"HardwareSetup"> | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelWithAggregatesFilter<"HardwareSetup"> | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseWithAggregatesFilter<"HardwareSetup"> | $Enums.WheelBase
   pedals?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
   pedelModel?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
   shifter?: Prisma.StringNullableWithAggregatesFilter<"HardwareSetup"> | string | null
@@ -374,9 +374,9 @@ export type HardwareSetupScalarWhereWithAggregatesInput = {
 
 export type HardwareSetupCreateInput = {
   id?: string
-  steeringWheel?: string | null
-  wheelModel?: string | null
-  wheelbase?: string | null
+  steeringWheel?: $Enums.SteeringWheel
+  wheelModel?: $Enums.WheelModel
+  wheelbase?: $Enums.WheelBase
   pedals?: string | null
   pedelModel?: string | null
   shifter?: string | null
@@ -395,9 +395,9 @@ export type HardwareSetupCreateInput = {
 export type HardwareSetupUncheckedCreateInput = {
   id?: string
   simRacingId: string
-  steeringWheel?: string | null
-  wheelModel?: string | null
-  wheelbase?: string | null
+  steeringWheel?: $Enums.SteeringWheel
+  wheelModel?: $Enums.WheelModel
+  wheelbase?: $Enums.WheelBase
   pedals?: string | null
   pedelModel?: string | null
   shifter?: string | null
@@ -414,9 +414,9 @@ export type HardwareSetupUncheckedCreateInput = {
 
 export type HardwareSetupUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -435,9 +435,9 @@ export type HardwareSetupUpdateInput = {
 export type HardwareSetupUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   simRacingId?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -455,9 +455,9 @@ export type HardwareSetupUncheckedUpdateInput = {
 export type HardwareSetupCreateManyInput = {
   id?: string
   simRacingId: string
-  steeringWheel?: string | null
-  wheelModel?: string | null
-  wheelbase?: string | null
+  steeringWheel?: $Enums.SteeringWheel
+  wheelModel?: $Enums.WheelModel
+  wheelbase?: $Enums.WheelBase
   pedals?: string | null
   pedelModel?: string | null
   shifter?: string | null
@@ -474,9 +474,9 @@ export type HardwareSetupCreateManyInput = {
 
 export type HardwareSetupUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -494,9 +494,9 @@ export type HardwareSetupUpdateManyMutationInput = {
 export type HardwareSetupUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   simRacingId?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -576,6 +576,18 @@ export type HardwareSetupNullableScalarRelationFilter = {
   isNot?: Prisma.HardwareSetupWhereInput | null
 }
 
+export type EnumSteeringWheelFieldUpdateOperationsInput = {
+  set?: $Enums.SteeringWheel
+}
+
+export type EnumWheelModelFieldUpdateOperationsInput = {
+  set?: $Enums.WheelModel
+}
+
+export type EnumWheelBaseFieldUpdateOperationsInput = {
+  set?: $Enums.WheelBase
+}
+
 export type HardwareSetupCreateNestedOneWithoutSimRacingInput = {
   create?: Prisma.XOR<Prisma.HardwareSetupCreateWithoutSimRacingInput, Prisma.HardwareSetupUncheckedCreateWithoutSimRacingInput>
   connectOrCreate?: Prisma.HardwareSetupCreateOrConnectWithoutSimRacingInput
@@ -610,9 +622,9 @@ export type HardwareSetupUncheckedUpdateOneWithoutSimRacingNestedInput = {
 
 export type HardwareSetupCreateWithoutSimRacingInput = {
   id?: string
-  steeringWheel?: string | null
-  wheelModel?: string | null
-  wheelbase?: string | null
+  steeringWheel?: $Enums.SteeringWheel
+  wheelModel?: $Enums.WheelModel
+  wheelbase?: $Enums.WheelBase
   pedals?: string | null
   pedelModel?: string | null
   shifter?: string | null
@@ -629,9 +641,9 @@ export type HardwareSetupCreateWithoutSimRacingInput = {
 
 export type HardwareSetupUncheckedCreateWithoutSimRacingInput = {
   id?: string
-  steeringWheel?: string | null
-  wheelModel?: string | null
-  wheelbase?: string | null
+  steeringWheel?: $Enums.SteeringWheel
+  wheelModel?: $Enums.WheelModel
+  wheelbase?: $Enums.WheelBase
   pedals?: string | null
   pedelModel?: string | null
   shifter?: string | null
@@ -664,9 +676,9 @@ export type HardwareSetupUpdateToOneWithWhereWithoutSimRacingInput = {
 
 export type HardwareSetupUpdateWithoutSimRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -683,9 +695,9 @@ export type HardwareSetupUpdateWithoutSimRacingInput = {
 
 export type HardwareSetupUncheckedUpdateWithoutSimRacingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  steeringWheel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  wheelbase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  steeringWheel?: Prisma.EnumSteeringWheelFieldUpdateOperationsInput | $Enums.SteeringWheel
+  wheelModel?: Prisma.EnumWheelModelFieldUpdateOperationsInput | $Enums.WheelModel
+  wheelbase?: Prisma.EnumWheelBaseFieldUpdateOperationsInput | $Enums.WheelBase
   pedals?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pedelModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   shifter?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -804,9 +816,9 @@ export type $HardwareSetupPayload<ExtArgs extends runtime.Types.Extensions.Inter
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     simRacingId: string
-    steeringWheel: string | null
-    wheelModel: string | null
-    wheelbase: string | null
+    steeringWheel: $Enums.SteeringWheel
+    wheelModel: $Enums.WheelModel
+    wheelbase: $Enums.WheelBase
     pedals: string | null
     pedelModel: string | null
     shifter: string | null
@@ -1245,9 +1257,9 @@ export interface Prisma__HardwareSetupClient<T, Null = never, ExtArgs extends ru
 export interface HardwareSetupFieldRefs {
   readonly id: Prisma.FieldRef<"HardwareSetup", 'String'>
   readonly simRacingId: Prisma.FieldRef<"HardwareSetup", 'String'>
-  readonly steeringWheel: Prisma.FieldRef<"HardwareSetup", 'String'>
-  readonly wheelModel: Prisma.FieldRef<"HardwareSetup", 'String'>
-  readonly wheelbase: Prisma.FieldRef<"HardwareSetup", 'String'>
+  readonly steeringWheel: Prisma.FieldRef<"HardwareSetup", 'SteeringWheel'>
+  readonly wheelModel: Prisma.FieldRef<"HardwareSetup", 'WheelModel'>
+  readonly wheelbase: Prisma.FieldRef<"HardwareSetup", 'WheelBase'>
   readonly pedals: Prisma.FieldRef<"HardwareSetup", 'String'>
   readonly pedelModel: Prisma.FieldRef<"HardwareSetup", 'String'>
   readonly shifter: Prisma.FieldRef<"HardwareSetup", 'String'>

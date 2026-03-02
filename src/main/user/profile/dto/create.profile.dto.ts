@@ -17,6 +17,9 @@ import {
   ContentCategory,
   Preference,
   VehicleCategory,
+  SteeringWheel,
+  WheelModel,
+  WheelBase,
 } from 'generated/prisma/enums';
 
 /* ---------------- Sub Profiles ---------------- */
@@ -73,24 +76,20 @@ export class ProDriverProfileDto {
 
 /* ---------------- Sim Racing ---------------- */
 export class HardwareSetupDto {
-  // ---- Wheel / Base ----
-  @ApiPropertyOptional({ example: 'Fanatec' })
+  @ApiPropertyOptional({ enum: SteeringWheel, example: SteeringWheel.FANATEC })
   @IsOptional()
-  @IsString()
-  @MaxLength(80)
-  steeringWheel?: string;
+  @IsEnum(SteeringWheel)
+  steeringWheel?: SteeringWheel;
 
-  @ApiPropertyOptional({ example: 'GT DD Pro Wheel' })
+  @ApiPropertyOptional({ enum: WheelModel, example: WheelModel.LOGITECH })
   @IsOptional()
-  @IsString()
-  @MaxLength(120)
-  wheelModel?: string;
+  @IsEnum(WheelModel)
+  wheelModel?: WheelModel;
 
-  @ApiPropertyOptional({ example: 'Direct Drive 8Nm' })
+  @ApiPropertyOptional({ enum: WheelBase, example: WheelBase.DESK_MOUNT })
   @IsOptional()
-  @IsString()
-  @MaxLength(120)
-  wheelbase?: string;
+  @IsEnum(WheelBase)
+  wheelbase?: WheelBase;
 
   // ---- Pedals ----
   @ApiPropertyOptional({ example: 'Heusinkveld' })
