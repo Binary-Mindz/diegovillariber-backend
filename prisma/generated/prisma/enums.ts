@@ -937,3 +937,59 @@ export const WheelBase = {
 } as const
 
 export type WheelBase = (typeof WheelBase)[keyof typeof WheelBase]
+
+
+export const NotificationType = {
+  LIKE: 'LIKE',
+  COMMENT: 'COMMENT',
+  FOLLOW: 'FOLLOW',
+  MENTION: 'MENTION',
+  TAGGED: 'TAGGED',
+  SHARE: 'SHARE',
+  BATTLE_INVITE: 'BATTLE_INVITE',
+  BATTLE_RESULT: 'BATTLE_RESULT',
+  CHALLENGE_INVITE: 'CHALLENGE_INVITE',
+  CHALLENGE_RESULT: 'CHALLENGE_RESULT',
+  LAPTIME_BEATEN: 'LAPTIME_BEATEN',
+  LAPTIME_COMPARE: 'LAPTIME_COMPARE',
+  SYSTEM: 'SYSTEM',
+  ADMIN: 'ADMIN'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const NotificationEntityType = {
+  POST: 'POST',
+  COMMENT: 'COMMENT',
+  USER: 'USER',
+  PROFILE: 'PROFILE',
+  BATTLE: 'BATTLE',
+  CHALLENGE: 'CHALLENGE',
+  SUBMIT_LAB_TIME: 'SUBMIT_LAB_TIME',
+  LAB_TIME: 'LAB_TIME',
+  PRIZE: 'PRIZE',
+  PAYMENT: 'PAYMENT',
+  EVENT: 'EVENT',
+  OTHER: 'OTHER'
+} as const
+
+export type NotificationEntityType = (typeof NotificationEntityType)[keyof typeof NotificationEntityType]
+
+
+export const NotificationChannel = {
+  IN_APP: 'IN_APP',
+  PUSH: 'PUSH',
+  EMAIL: 'EMAIL'
+} as const
+
+export type NotificationChannel = (typeof NotificationChannel)[keyof typeof NotificationChannel]
+
+
+export const NotificationStatus = {
+  UNREAD: 'UNREAD',
+  READ: 'READ',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type NotificationStatus = (typeof NotificationStatus)[keyof typeof NotificationStatus]

@@ -96,4 +96,10 @@ model User {
   challengeVotes ChallengeVote[]
 
   challengeComments ChallengeComment[]
+
+  notificationPreferences NotificationPreference[]
+
+  notifications Notification[]
+
+  notificationsActor Notification[] @relation("NotificationActor")
 }
