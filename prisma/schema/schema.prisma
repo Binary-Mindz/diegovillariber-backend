@@ -454,3 +454,54 @@ FULL_MOTION
 RIG
 DIY_RIG
 }
+
+enum NotificationType {
+  LIKE
+  COMMENT
+  FOLLOW
+  MENTION
+  TAGGED
+  SHARE
+
+  BATTLE_INVITE
+  BATTLE_RESULT
+  CHALLENGE_INVITE
+  CHALLENGE_RESULT
+
+  LAPTIME_BEATEN
+  LAPTIME_COMPARE
+
+  SYSTEM
+  ADMIN
+}
+
+enum NotificationEntityType {
+  POST
+  COMMENT
+  USER
+  PROFILE
+
+  BATTLE
+  CHALLENGE
+
+  SUBMIT_LAB_TIME
+  LAB_TIME
+
+  PRIZE
+  PAYMENT
+  EVENT
+
+  OTHER
+}
+
+enum NotificationChannel {
+  IN_APP
+  PUSH
+  EMAIL
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+  ARCHIVED
+}
