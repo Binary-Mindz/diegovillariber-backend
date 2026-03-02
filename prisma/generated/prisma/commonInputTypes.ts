@@ -776,6 +776,57 @@ export type EnumFileTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
 }
 
+export type EnumSteeringWheelFilter<$PrismaModel = never> = {
+  equals?: $Enums.SteeringWheel | Prisma.EnumSteeringWheelFieldRefInput<$PrismaModel>
+  in?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel> | $Enums.SteeringWheel
+}
+
+export type EnumWheelModelFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelModel | Prisma.EnumWheelModelFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelModelFilter<$PrismaModel> | $Enums.WheelModel
+}
+
+export type EnumWheelBaseFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelBase | Prisma.EnumWheelBaseFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel> | $Enums.WheelBase
+}
+
+export type EnumSteeringWheelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SteeringWheel | Prisma.EnumSteeringWheelFieldRefInput<$PrismaModel>
+  in?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSteeringWheelWithAggregatesFilter<$PrismaModel> | $Enums.SteeringWheel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel>
+}
+
+export type EnumWheelModelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelModel | Prisma.EnumWheelModelFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelModelWithAggregatesFilter<$PrismaModel> | $Enums.WheelModel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWheelModelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWheelModelFilter<$PrismaModel>
+}
+
+export type EnumWheelBaseWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelBase | Prisma.EnumWheelBaseFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelBaseWithAggregatesFilter<$PrismaModel> | $Enums.WheelBase
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel>
+}
+
 export type EnumHashtagCreatedByFilter<$PrismaModel = never> = {
   equals?: $Enums.HashtagCreatedBy | Prisma.EnumHashtagCreatedByFieldRefInput<$PrismaModel>
   in?: $Enums.HashtagCreatedBy[] | Prisma.ListEnumHashtagCreatedByFieldRefInput<$PrismaModel>
@@ -2262,6 +2313,57 @@ export type NestedEnumFileTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumFileTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumSteeringWheelFilter<$PrismaModel = never> = {
+  equals?: $Enums.SteeringWheel | Prisma.EnumSteeringWheelFieldRefInput<$PrismaModel>
+  in?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel> | $Enums.SteeringWheel
+}
+
+export type NestedEnumWheelModelFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelModel | Prisma.EnumWheelModelFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelModelFilter<$PrismaModel> | $Enums.WheelModel
+}
+
+export type NestedEnumWheelBaseFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelBase | Prisma.EnumWheelBaseFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel> | $Enums.WheelBase
+}
+
+export type NestedEnumSteeringWheelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SteeringWheel | Prisma.EnumSteeringWheelFieldRefInput<$PrismaModel>
+  in?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SteeringWheel[] | Prisma.ListEnumSteeringWheelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSteeringWheelWithAggregatesFilter<$PrismaModel> | $Enums.SteeringWheel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSteeringWheelFilter<$PrismaModel>
+}
+
+export type NestedEnumWheelModelWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelModel | Prisma.EnumWheelModelFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelModel[] | Prisma.ListEnumWheelModelFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelModelWithAggregatesFilter<$PrismaModel> | $Enums.WheelModel
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWheelModelFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWheelModelFilter<$PrismaModel>
+}
+
+export type NestedEnumWheelBaseWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WheelBase | Prisma.EnumWheelBaseFieldRefInput<$PrismaModel>
+  in?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WheelBase[] | Prisma.ListEnumWheelBaseFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWheelBaseWithAggregatesFilter<$PrismaModel> | $Enums.WheelBase
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWheelBaseFilter<$PrismaModel>
 }
 
 export type NestedEnumHashtagCreatedByFilter<$PrismaModel = never> = {

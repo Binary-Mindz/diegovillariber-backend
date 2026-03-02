@@ -3,9 +3,9 @@ model HardwareSetup {
   simRacingId String           @unique @db.Uuid
   simRacing   SimRacingProfile @relation(fields: [simRacingId], references: [id], onDelete: Cascade)
 
-  steeringWheel String?
-  wheelModel    String?
-  wheelbase     String?
+  steeringWheel SteeringWheel @default(FANATEC)
+  wheelModel    WheelModel @default(LOGITECH)
+  wheelbase     WheelBase @default(DESK_MOUNT)
   pedals        String?
   pedelModel    String?
   shifter       String?

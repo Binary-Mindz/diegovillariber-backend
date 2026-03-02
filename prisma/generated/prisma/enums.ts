@@ -892,3 +892,48 @@ export const UsageMode = {
 } as const
 
 export type UsageMode = (typeof UsageMode)[keyof typeof UsageMode]
+
+
+export const SteeringWheel = {
+  FANATEC: 'FANATEC',
+  THRUSTMASTER: 'THRUSTMASTER',
+  SIMUCUBE: 'SIMUCUBE',
+  MOZA_RACING: 'MOZA_RACING',
+  ASETEK_SIM_SPORTS: 'ASETEK_SIM_SPORTS',
+  SIMAGIC: 'SIMAGIC',
+  CAMMUS: 'CAMMUS',
+  VRS_DIRECT_FORCE: 'VRS_DIRECT_FORCE',
+  ACCUFORCE: 'ACCUFORCE',
+  AUGURY: 'AUGURY',
+  OTHER: 'OTHER'
+} as const
+
+export type SteeringWheel = (typeof SteeringWheel)[keyof typeof SteeringWheel]
+
+
+export const WheelModel = {
+  FANATEC: 'FANATEC',
+  LOGITECH: 'LOGITECH',
+  THRUSTMASTER: 'THRUSTMASTER',
+  HEUSINKVELD: 'HEUSINKVELD',
+  SIMUCUBE: 'SIMUCUBE',
+  MOZA_RACING: 'MOZA_RACING',
+  ASETEK_SIM_SPORTS: 'ASETEK_SIM_SPORTS',
+  SIMAGIC: 'SIMAGIC',
+  WAVE_ITALY: 'WAVE_ITALY',
+  OTHER: 'OTHER'
+} as const
+
+export type WheelModel = (typeof WheelModel)[keyof typeof WheelModel]
+
+
+export const WheelBase = {
+  DESK_MOUNT: 'DESK_MOUNT',
+  WHEEL_STAND: 'WHEEL_STAND',
+  COCKPIT: 'COCKPIT',
+  FULL_MOTION: 'FULL_MOTION',
+  RIG: 'RIG',
+  DIY_RIG: 'DIY_RIG'
+} as const
+
+export type WheelBase = (typeof WheelBase)[keyof typeof WheelBase]
