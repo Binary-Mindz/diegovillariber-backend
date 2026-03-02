@@ -21,6 +21,9 @@ import { SubmitLabTimeService } from './submit-lab-time.service';
 import { CreateSubmitLabTimeDto } from './dto/create-submit-lab-time.dto';
 import { UpdateSubmitLabTimeDto } from './dto/update-submit-lab-time.dto';
 import { SubmitLabTimeQueryDto } from './dto/submit-lab-time-query.dto';
+import { CompareSubmitLabTimeDto } from './dto/compare-submit-lab-time.dto';
+import { CompareHistoryDto } from './dto/compare-history.dto';
+import { SubmitLabTimeLeaderboardDto } from './dto/submit-lab-time-leaderboard.dto';
 
 @ApiTags('SubmitLabTime')
 @Controller('submit-lab-times')
@@ -44,6 +47,33 @@ export class SubmitLabTimeController {
   list(@GetUser('userId') userId: string, @Query() query: SubmitLabTimeQueryDto) {
     return handleRequest(async () => this.service.list(userId, query), 'Submitted laps fetched');
   }
+
+   @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('compare')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Compare best lap time (You vs Other user) by platform+circuit+class' })
+  compareBest(@GetUser('userId') userId: string, @Query() dto: CompareSubmitLabTimeDto) {
+    return handleRequest(async () => this.service.compareBest(userId, dto), 'Compare result');
+  }
+
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @Get('compare/history')
+  // @HttpCode(HttpStatus.OK)
+  // @ApiOperation({ summary: 'Compare recent laps history (You vs Other user) for trend' })
+  // compareHistory(@GetUser('userId') userId: string, @Query() dto: CompareHistoryDto) {
+  //   return handleRequest(async () => this.service.compareHistory(userId, dto), 'Compare history');
+  // }
+
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @Get('leaderboard')
+  // @HttpCode(HttpStatus.OK)
+  // @ApiOperation({ summary: 'Leaderboard (best lap per profile) for platform+circuit+class' })
+  // leaderboard(@GetUser('userId') userId: string, @Query() dto: SubmitLabTimeLeaderboardDto) {
+  //   return handleRequest(async () => this.service.leaderboard(userId, dto), 'Leaderboard fetched');
+  // }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
