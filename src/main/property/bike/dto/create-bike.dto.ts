@@ -1,6 +1,20 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsInt, IsOptional, IsString, IsUUID, MaxLength, Min } from 'class-validator';
-import { BikeBodyType, DriveCategory, DriveCategoryBike, DriveTrain, DriveTrainBike, Transmission } from 'generated/prisma/enums';
+import { ApiProperty, ApiPropertyOptional, PartialType } from '@nestjs/swagger';
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  IsUUID,
+  MaxLength,
+  Min,
+} from 'class-validator';
+import {
+  BikeBodyType,
+  DriveCategoryBike,
+  DriveTrainBike,
+  Transmission,
+} from 'generated/prisma/enums';
 
 export class CreateBikeDto {
   @ApiProperty({ example: 'garage-uuid' })
@@ -26,16 +40,19 @@ export class CreateBikeDto {
   model?: string;
 
   @ApiProperty({ enum: BikeBodyType, example: BikeBodyType.SPORT })
+  @IsOptional()
   @IsEnum(BikeBodyType)
-  bodyType: BikeBodyType;
+  bodyType?: BikeBodyType; // schema has default(SPORT)
 
   @ApiProperty({ enum: Transmission, example: Transmission.MANUAL })
+  @IsOptional()
   @IsEnum(Transmission)
-  transmission: Transmission;
+  transmission?: Transmission; // schema has default(MANUAL)
 
   @ApiProperty({ enum: DriveTrainBike, example: DriveTrainBike.CHAIN })
-  @IsEnum(DriveTrain)
-  driveTrain: DriveTrainBike;
+  @IsOptional()
+  @IsEnum(DriveTrainBike)
+  driveTrain?: DriveTrainBike; // schema has default(CHAIN)
 
   @ApiPropertyOptional({ example: 'Japan' })
   @IsOptional()
@@ -60,14 +77,15 @@ export class CreateBikeDto {
   @IsString()
   description?: string;
 
-  @ApiProperty({ enum: DriveCategoryBike, example: DriveCategoryBike })
-  @IsEnum(DriveCategory)
-  category: DriveCategoryBike;
+  @ApiProperty({ enum: DriveCategoryBike, example: DriveCategoryBike.DAILY_RIDER })
+  @IsOptional()
+  @IsEnum(DriveCategoryBike)
+  category?: DriveCategoryBike; // schema has default(DAILY_RIDER)
 
   @ApiPropertyOptional({ example: false })
   @IsOptional()
   @IsBoolean()
-  listOnMarketplace?: boolean;
+  listOnMarketplace?: boolean; // schema has default(false)
 
   @ApiPropertyOptional({ example: 950000 })
   @IsOptional()
