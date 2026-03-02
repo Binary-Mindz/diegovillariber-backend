@@ -298,6 +298,16 @@ export type Message = Prisma.MessageModel
  */
 export type MessageReceipt = Prisma.MessageReceiptModel
 /**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel
+/**
+ * Model NotificationPreference
+ * 
+ */
+export type NotificationPreference = Prisma.NotificationPreferenceModel
+/**
  * Model OfficialPartner
  * 
  */

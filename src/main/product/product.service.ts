@@ -99,7 +99,18 @@ export class ProductService {
     return this.prisma.productList.findMany({
       where: { ownerId },
       orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
-      include: { owner: true },
+       include: { owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+               imageUrl: true,
+               profileName: true
+              }
+            }
+          }
+        } },
     });
   }
 
@@ -107,7 +118,18 @@ export class ProductService {
   async getSingleProduct(id: string) {
     const product = await this.prisma.productList.findUnique({
       where: { id },
-      include: { owner: true },
+      include: { owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+               imageUrl: true,
+               profileName: true
+              }
+            }
+          }
+        } },
     });
     if (!product) throw new NotFoundException('Product not found');
     return product;
