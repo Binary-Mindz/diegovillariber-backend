@@ -75,7 +75,18 @@ export class ProductService {
         skip,
         take: limit,
         orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
-        include: { owner: true },
+        include: { owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+               imageUrl: true,
+               profileName: true
+              }
+            }
+          }
+        } },
       }),
       this.prisma.productList.count({ where }),
     ]);

@@ -4,6 +4,9 @@ import { CreateSubmitLabTimeDto } from './dto/create-submit-lab-time.dto';
 import { UpdateSubmitLabTimeDto } from './dto/update-submit-lab-time.dto';
 import { SubmitLabTimeQueryDto } from './dto/submit-lab-time-query.dto';
 import { Type } from 'generated/prisma/enums';
+import { CompareSubmitLabTimeDto } from './dto/compare-submit-lab-time.dto';
+import { CompareHistoryDto } from './dto/compare-history.dto';
+import { SubmitLabTimeLeaderboardDto } from './dto/submit-lab-time-leaderboard.dto';
 
 @Injectable()
 export class SubmitLabTimeService {
@@ -19,7 +22,7 @@ export class SubmitLabTimeService {
 
     const profile = await this.prisma.profile.findUnique({
       where: { id: user.activeProfileId },
-      select: { id: true, activeType: true },
+      select: { id: true, activeType: true, profileName: true, imageUrl:true },
     });
 
     if (!profile) throw new NotFoundException('Profile not found');
@@ -155,4 +158,135 @@ export class SubmitLabTimeService {
     await this.prisma.submitLabTime.delete({ where: { id } });
     return { deleted: true };
   }
+
+    async compareBest(userId: string, dto: CompareSubmitLabTimeDto) {
+    if (dto.otherUserId === userId) throw new BadRequestException('Cannot compare with yourself');
+
+    const me = await this.getActiveSimProfileOrThrow(userId);
+    const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
+
+    const whereCommon: any = {
+      simPlatform: dto.simPlatform,
+      circuit: dto.circuit,
+      carClass: dto.carClass,
+    };
+
+    const [myBest, otherBest] = await this.prisma.$transaction([
+      this.prisma.submitLabTime.findFirst({
+        where: { profileId: me.id, ...whereCommon },
+        orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
+      }),
+      this.prisma.submitLabTime.findFirst({
+        where: { profileId: other.id, ...whereCommon },
+        orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
+      }),
+    ]);
+
+    if (!myBest) throw new NotFoundException('You have no lap for this filter');
+    if (!otherBest) throw new NotFoundException('Other user has no lap for this filter');
+
+    const gapMs = otherBest.lapTimeMs - myBest.lapTimeMs;
+
+    return {
+      filter: whereCommon,
+      me: { profileId: me.id, profileName: me.profileName ?? null, best: myBest },
+      other: { profileId: other.id, profileName: other.profileName ?? null, best: otherBest },
+      gapMs, // + => other slower, - => other faster
+    };
+  }
+
+  // -------------------------
+  // 2) Compare history (trend)
+  // -------------------------
+  // async compareHistory(userId: string, dto: CompareHistoryDto) {
+  //   if (dto.otherUserId === userId) throw new BadRequestException('Cannot compare with yourself');
+
+  //   const take = dto.take ?? 20;
+
+  //   const me = await this.getActiveSimProfileOrThrow(userId);
+  //   const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
+
+  //   const whereCommon: any = {
+  //     simPlatform: dto.simPlatform,
+  //     circuit: dto.circuit,
+  //     carClass: dto.carClass,
+  //   };
+
+  //   const [myLaps, otherLaps] = await this.prisma.$transaction([
+  //     this.prisma.submitLabTime.findMany({
+  //       where: { profileId: me.id, ...whereCommon },
+  //       orderBy: [{ sessionDate: 'desc' }, { createdAt: 'desc' }],
+  //       take,
+  //     }),
+  //     this.prisma.submitLabTime.findMany({
+  //       where: { profileId: other.id, ...whereCommon },
+  //       orderBy: [{ sessionDate: 'desc' }, { createdAt: 'desc' }],
+  //       take,
+  //     }),
+  //   ]);
+
+  //   return {
+  //     filter: whereCommon,
+  //     take,
+  //     me: { profileId: me.id, profileName: me.profileName ?? null, laps: myLaps },
+  //     other: { profileId: other.id, profileName: other.profileName ?? null, laps: otherLaps },
+  //   };
+  // }
+
+  // async leaderboard(userId: string, dto: SubmitLabTimeLeaderboardDto) {
+  //   const limit = dto.limit ?? 50;
+
+  //   const me = await this.getActiveSimProfileOrThrow(userId);
+  //   const otherProfile = dto.otherUserId ? await this.getActiveSimProfileOrThrow(dto.otherUserId) : null;
+  //   const rows = await this.prisma.$queryRaw<
+  //     Array<{
+  //       id: string;
+  //       profileId: string;
+  //       lapTimeMs: number;
+  //       sessionDate: Date;
+  //       carName: string | null;
+  //     }>
+  //   >`
+  //     SELECT DISTINCT ON ("profileId")
+  //       "id", "profileId", "lapTimeMs", "sessionDate", "carName"
+  //     FROM "SubmitLabTime"
+  //     WHERE "simPlatform" = ${dto.simPlatform}
+  //       AND "circuit" = ${dto.circuit}
+  //       AND "carClass" = ${dto.carClass}
+  //     ORDER BY "profileId", "lapTimeMs" ASC, "sessionDate" DESC
+  //   `;
+
+  //   // Now sort globally by best lap
+  //   const bestSorted = rows
+  //     .sort((a, b) => a.lapTimeMs - b.lapTimeMs)
+  //     .slice(0, limit);
+
+  //   const profileIds = bestSorted.map((r) => r.profileId);
+
+  //   const profiles = await this.prisma.profile.findMany({
+  //     where: { id: { in: profileIds } },
+  //     select: { id: true, profileName: true, imageUrl: true },
+  //   });
+
+  //   const profileMap = new Map(profiles.map((p) => [p.id, p]));
+
+  //   const items = bestSorted.map((r, idx) => ({
+  //     rank: idx + 1,
+  //     profile: profileMap.get(r.profileId) ?? { id: r.profileId, profileName: null, imageUrl: null },
+  //     best: r,
+  //   }));
+
+  //   const myRank = items.find((x) => x.profile.id === me.id)?.rank ?? null;
+  //   const otherRank =
+  //     otherProfile ? items.find((x) => x.profile.id === otherProfile.id)?.rank ?? null : null;
+
+  //   return {
+  //     filter: { simPlatform: dto.simPlatform, circuit: dto.circuit, carClass: dto.carClass },
+  //     limit,
+  //     myRank,
+  //     otherRank,
+  //     items,
+  //   };
+  // }
+
 }
