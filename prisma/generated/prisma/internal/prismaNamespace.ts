@@ -8394,6 +8394,48 @@ export type ListEnumFileTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 
 
 /**
+ * Reference to a field of type 'SteeringWheel'
+ */
+export type EnumSteeringWheelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SteeringWheel'>
+    
+
+
+/**
+ * Reference to a field of type 'SteeringWheel[]'
+ */
+export type ListEnumSteeringWheelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SteeringWheel[]'>
+    
+
+
+/**
+ * Reference to a field of type 'WheelModel'
+ */
+export type EnumWheelModelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WheelModel'>
+    
+
+
+/**
+ * Reference to a field of type 'WheelModel[]'
+ */
+export type ListEnumWheelModelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WheelModel[]'>
+    
+
+
+/**
+ * Reference to a field of type 'WheelBase'
+ */
+export type EnumWheelBaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WheelBase'>
+    
+
+
+/**
+ * Reference to a field of type 'WheelBase[]'
+ */
+export type ListEnumWheelBaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WheelBase[]'>
+    
+
+
+/**
  * Reference to a field of type 'HashtagCreatedBy'
  */
 export type EnumHashtagCreatedByFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HashtagCreatedBy'>
