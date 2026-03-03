@@ -34,6 +34,14 @@ export class CreateProductDto {
   @IsString()
   description?: string;
 
+   @ApiPropertyOptional({
+    example: 'Please define location.',
+    description: 'dhaka, Bangldesh',
+  })
+  @IsOptional()
+  @IsString()
+  location?: string;
+
   @ApiPropertyOptional({
     enum: ProductCategory,
     example: ProductCategory.CAR,
