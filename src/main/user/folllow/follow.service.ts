@@ -125,6 +125,7 @@ export class FollowService {
             email: true,
             profile: {
               select: {
+                profileName:true,
                 imageUrl: true,
                 bio: true,
               },
@@ -152,6 +153,7 @@ export class FollowService {
             email: true,
             profile: {
               select: {
+                profileName: true,
                 imageUrl: true,
                 bio: true,
               },
@@ -238,6 +240,7 @@ export class FollowService {
         email: true,
         profile: {
           select: {
+            profileName:true,
             imageUrl: true,
             bio: true,
           },

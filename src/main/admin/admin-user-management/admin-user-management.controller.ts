@@ -14,9 +14,13 @@ import { AdminUserManagementService } from "./admin-user-management.service";
 export class AdminUserManagementController {
   constructor(private readonly adminUserManagementService: AdminUserManagementService) { }
  
-  @Get('stats')
+  @Get('overview')
   getUsersWithStats() {
-    return this.adminUserManagementService.getAllUsersWithStats();
+    return this.adminUserManagementService.getUserGrowthRetentionDashboard();
+  }
+  @Get('all-users')
+  getUsers(){
+    return this.adminUserManagementService.getUsers();
   }
   
 }
