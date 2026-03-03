@@ -35,7 +35,7 @@ export class CreateProductDto {
   description?: string;
 
    @ApiPropertyOptional({
-    example: 'Please define location.',
+    example: 'Dhaka,Bangldesh',
     description: 'dhaka, Bangldesh',
   })
   @IsOptional()

@@ -142,7 +142,7 @@ export class ChallengeService {
         rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
         maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
 
-        status: dto.status ?? ChallengeStatus.DRAFT,
+        status: dto.status ?? ChallengeStatus.PUBLISHED,
       },
       include: { creator: true },
     });
