@@ -25,6 +25,7 @@ export class ProductService {
         title: dto.title,
         productImage: dto.productImage ?? null,
         description: dto.description ?? null,
+        location: dto.location ?? null,
         category: dto.category ?? ProductCategory.CAR,
         tags: dto.tags ?? [],
         carBrand: dto.carBrand ?? null,
@@ -36,7 +37,16 @@ export class ProductService {
         // highlightProduct default false in schema (optional)
         highlightProduct: dto.highlightProduct ?? false,
       },
-      include: { owner: true },
+      include: { owner: {select: {
+        email:true,
+        id: true,
+        profile:{
+          select: {
+            imageUrl: true,
+            profileName: true
+          }
+        }
+      }} },
     });
   }
 
@@ -153,6 +163,7 @@ export class ProductService {
         title: dto.title ?? undefined,
         productImage: dto.productImage ?? undefined,
         description: dto.description ?? undefined,
+        location: dto.location ?? undefined,
         category: dto.category ?? undefined,
         tags: dto.tags ?? undefined,
         carBrand: dto.carBrand ?? undefined,

@@ -1073,6 +1073,7 @@ export const ProductListScalarFieldEnum = {
   ownerId: 'ownerId',
   title: 'title',
   productImage: 'productImage',
+  location: 'location',
   description: 'description',
   category: 'category',
   tags: 'tags',

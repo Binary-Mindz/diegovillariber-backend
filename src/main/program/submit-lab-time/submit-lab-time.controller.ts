@@ -22,8 +22,6 @@ import { CreateSubmitLabTimeDto } from './dto/create-submit-lab-time.dto';
 import { UpdateSubmitLabTimeDto } from './dto/update-submit-lab-time.dto';
 import { SubmitLabTimeQueryDto } from './dto/submit-lab-time-query.dto';
 import { CompareSubmitLabTimeDto } from './dto/compare-submit-lab-time.dto';
-import { CompareHistoryDto } from './dto/compare-history.dto';
-import { SubmitLabTimeLeaderboardDto } from './dto/submit-lab-time-leaderboard.dto';
 
 @ApiTags('SubmitLabTime')
 @Controller('submit-lab-times')
