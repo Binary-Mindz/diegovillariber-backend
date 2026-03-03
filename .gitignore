@@ -37,6 +37,8 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
+diego.json
+
 # temp directory
 .temp
 .tmp

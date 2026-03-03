@@ -67,7 +67,7 @@ export class CreateRawShiftBattleDto {
 
   @ApiPropertyOptional({
     enum: RawShiftStatus,
-    example: RawShiftStatus.DRAFT,
+    example: RawShiftStatus.PUBLISHED,
     description: 'Default DRAFT',
   })
   @IsOptional()

@@ -9,6 +9,8 @@ import { CreatePostDto } from './dto/create.post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
 import { MediaType, Prisma } from 'generated/prisma/client';
+import { NotificationsService } from '@/main/notification/notification.service';
+import { NotificationChannel, NotificationEntityType, NotificationStatus, NotificationType } from '@/main/notification/notification.types';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -22,170 +24,401 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
   return arr.length ? arr : undefined;
 }
 
+function extractMentions(text?: string) {
+  if (!text) return [];
+  const matches = text.match(/@([a-zA-Z0-9_.]{2,30})/g) ?? [];
+  return Array.from(new Set(matches.map((m) => m.slice(1).toLowerCase())));
+}
+
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notifications: NotificationsService,
+  ) { }
 
-  async createPost(userId: string, dto: CreatePostDto) {
-    const wantBoost = dto.contentBooster === true;
+  // async createPost(userId: string, dto: CreatePostDto) {
+  //   const wantBoost = dto.contentBooster === true;
 
-    const hasLat = typeof dto.latitude === 'number';
-    const hasLng = typeof dto.longitude === 'number';
+  //   const hasLat = typeof dto.latitude === 'number';
+  //   const hasLng = typeof dto.longitude === 'number';
 
-    if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
-      throw new BadRequestException(
-        'Both latitude and longitude must be provided together.',
-      );
-    }
-    const hashtagIds = dto.hashtagIds
-      ? Array.from(new Set(dto.hashtagIds))
-      : [];
+  //   if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+  //     throw new BadRequestException(
+  //       'Both latitude and longitude must be provided together.',
+  //     );
+  //   }
+  //   const hashtagIds = dto.hashtagIds
+  //     ? Array.from(new Set(dto.hashtagIds))
+  //     : [];
 
-    return this.prisma.$transaction(async (tx) => {
-      const user = await tx.user.findUnique({
-        where: { id: userId },
-        select: { id: true, totalPoints: true, activeProfileId: true },
-      });
-      if (!user) throw new NotFoundException('User not found');
+  //   return this.prisma.$transaction(async (tx) => {
+  //     const user = await tx.user.findUnique({
+  //       where: { id: userId },
+  //       select: { id: true, totalPoints: true, activeProfileId: true },
+  //     });
+  //     if (!user) throw new NotFoundException('User not found');
 
-      if (!user.activeProfileId) {
-        throw new BadRequestException('No active profile selected');
-      }
-      const activeProfile = await tx.profile.findFirst({
-        where: { id: user.activeProfileId, userId },
-        select: { id: true, activeType: true },
-      });
-      if (!activeProfile) {
-        throw new BadRequestException('Active profile not found for this user');
-      }
-      if (!activeProfile.activeType) {
-        throw new BadRequestException('Active profile type not set');
-      }
-    const mediaType = dto.mediaType ?? MediaType.IMAGE;
-    if (mediaType === MediaType.IMAGE) {
-      if (dto.videoEditingDeclaration) {
-        throw new BadRequestException('videoEditingDeclaration is only allowed for VIDEO posts.');
-      }
-    } else if (mediaType === MediaType.VIDEO) {
-      if (dto.photoEditingDeclaration) {
-        throw new BadRequestException('photoEditingDeclaration is only allowed for IMAGE posts.');
-      }
-    }
+  //     if (!user.activeProfileId) {
+  //       throw new BadRequestException('No active profile selected');
+  //     }
+  //     const activeProfile = await tx.profile.findFirst({
+  //       where: { id: user.activeProfileId, userId },
+  //       select: { id: true, activeType: true },
+  //     });
+  //     if (!activeProfile) {
+  //       throw new BadRequestException('Active profile not found for this user');
+  //     }
+  //     if (!activeProfile.activeType) {
+  //       throw new BadRequestException('Active profile type not set');
+  //     }
+  //   const mediaType = dto.mediaType ?? MediaType.IMAGE;
+  //   if (mediaType === MediaType.IMAGE) {
+  //     if (dto.videoEditingDeclaration) {
+  //       throw new BadRequestException('videoEditingDeclaration is only allowed for VIDEO posts.');
+  //     }
+  //   } else if (mediaType === MediaType.VIDEO) {
+  //     if (dto.photoEditingDeclaration) {
+  //       throw new BadRequestException('photoEditingDeclaration is only allowed for IMAGE posts.');
+  //     }
+  //   }
   
 
-      const taggedUserIds = dto.taggedUserIds
-        ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
-        : [];
+  //     const taggedUserIds = dto.taggedUserIds
+  //       ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
+  //       : [];
 
-      if (taggedUserIds.length) {
-        const found = await tx.user.findMany({
-          where: { id: { in: taggedUserIds } },
-          select: { id: true },
-        });
-        if (found.length !== taggedUserIds.length) {
-          throw new BadRequestException('One or more tagged users are invalid');
-        }
-      }
+  //     if (taggedUserIds.length) {
+  //       const found = await tx.user.findMany({
+  //         where: { id: { in: taggedUserIds } },
+  //         select: { id: true },
+  //       });
+  //       if (found.length !== taggedUserIds.length) {
+  //         throw new BadRequestException('One or more tagged users are invalid');
+  //       }
+  //     }
 
-      if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
-        throw new BadRequestException(
-          `Not enough points to boost. Need at least ${BOOST_COST_POINTS} points.`,
-        );
-      }
+  //     if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
+  //       throw new BadRequestException(
+  //         `Not enough points to boost. Need at least ${BOOST_COST_POINTS} points.`,
+  //       );
+  //     }
 
-      if (hashtagIds.length > 0) {
-        const found = await tx.hashtag.findMany({
-          where: {
-            id: { in: hashtagIds },
-            isActive: true,
-          },
-          select: { id: true },
-        });
+  //     if (hashtagIds.length > 0) {
+  //       const found = await tx.hashtag.findMany({
+  //         where: {
+  //           id: { in: hashtagIds },
+  //           isActive: true,
+  //         },
+  //         select: { id: true },
+  //       });
 
-        if (found.length !== hashtagIds.length) {
-          throw new BadRequestException('One or more hashtags are invalid or inactive.');
-        }
-      }
+  //       if (found.length !== hashtagIds.length) {
+  //         throw new BadRequestException('One or more hashtags are invalid or inactive.');
+  //       }
+  //     }
 
-      const post = await tx.post.create({
-        data: {
-          userId,
+  //     const post = await tx.post.create({
+  //       data: {
+  //         userId,
 
-          // ✅ active profile binding
-          profileId: activeProfile.id,
-          profileType: activeProfile.activeType,
+  //         // ✅ active profile binding
+  //         profileId: activeProfile.id,
+  //         profileType: activeProfile.activeType,
 
-          postType: dto.postType ?? undefined,
-          caption: dto.caption ?? null,
-          mediaUrl: dto.mediaUrl ?? null,
-          mediaType,
-          postLocation: dto.postLocation ?? null,
-          locationName: dto.locationName ?? null,
-          locationAddress: dto.locationAddress ?? null,
-          latitude: dto.latitude ?? null,
-          longitude: dto.longitude ?? null,
-          placeId: dto.placeId ?? null,
-          locationVisibility: dto.locationVisibility ?? null,
-          vehicleCategory: dto.vehicleCategory,
-          visiualStyle: dto.visiualStyle ?? [],
-          contextActivity: dto.contextActivity ?? [],
-          subject: dto.subject ?? [],
-          photoEditingDeclaration: dto.photoEditingDeclaration ?? null,
-          videoEditingDeclaration: dto.videoEditingDeclaration ?? null,
+  //         postType: dto.postType ?? undefined,
+  //         caption: dto.caption ?? null,
+  //         mediaUrl: dto.mediaUrl ?? null,
+  //         mediaType,
+  //         postLocation: dto.postLocation ?? null,
+  //         locationName: dto.locationName ?? null,
+  //         locationAddress: dto.locationAddress ?? null,
+  //         latitude: dto.latitude ?? null,
+  //         longitude: dto.longitude ?? null,
+  //         placeId: dto.placeId ?? null,
+  //         locationVisibility: dto.locationVisibility ?? null,
+  //         vehicleCategory: dto.vehicleCategory,
+  //         visiualStyle: dto.visiualStyle ?? [],
+  //         contextActivity: dto.contextActivity ?? [],
+  //         subject: dto.subject ?? [],
+  //         photoEditingDeclaration: dto.photoEditingDeclaration ?? null,
+  //         videoEditingDeclaration: dto.videoEditingDeclaration ?? null,
 
-          hashtags: hashtagIds.length
-            ? { connect: hashtagIds.map((id) => ({ id })) }
-            : undefined,
+  //         hashtags: hashtagIds.length
+  //           ? { connect: hashtagIds.map((id) => ({ id })) }
+  //           : undefined,
 
-          // ✅ tagged users connect
-          taggedUsers: taggedUserIds.length
-            ? { connect: taggedUserIds.map((id) => ({ id })) }
-            : undefined,
+  //         // ✅ tagged users connect
+  //         taggedUsers: taggedUserIds.length
+  //           ? { connect: taggedUserIds.map((id) => ({ id })) }
+  //           : undefined,
 
-          point: POST_REWARD_POINTS,
-          contentBooster: wantBoost,
-        },
-        include: {
-          hashtags: true,
-          taggedUsers: { select: { id: true } },
-          profile: { select: { id: true, imageUrl: true, activeType: true } },
-        },
-      });
+  //         point: POST_REWARD_POINTS,
+  //         contentBooster: wantBoost,
+  //       },
+  //       include: {
+  //         hashtags: true,
+  //         taggedUsers: { select: { id: true } },
+  //         profile: { select: { id: true, imageUrl: true, activeType: true } },
+  //       },
+  //     });
 
-      if (hashtagIds.length) {
-        await tx.hashtag.updateMany({
-          where: { id: { in: hashtagIds } },
-          data: { usageCount: { increment: 1 } },
-        });
-      }
+  //     if (hashtagIds.length) {
+  //       await tx.hashtag.updateMany({
+  //         where: { id: { in: hashtagIds } },
+  //         data: { usageCount: { increment: 1 } },
+  //       });
+  //     }
 
-      await tx.userPoint.create({
-        data: { userId, postId: post.id, points: POST_REWARD_POINTS },
-      });
+  //     await tx.userPoint.create({
+  //       data: { userId, postId: post.id, points: POST_REWARD_POINTS },
+  //     });
 
-      if (wantBoost) {
-        await tx.userPoint.create({
-          data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
-        });
-      }
+  //     if (wantBoost) {
+  //       await tx.userPoint.create({
+  //         data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
+  //       });
+  //     }
 
-      const delta = POST_REWARD_POINTS - (wantBoost ? BOOST_COST_POINTS : 0);
+  //     const delta = POST_REWARD_POINTS - (wantBoost ? BOOST_COST_POINTS : 0);
 
-      const updatedUser = await tx.user.update({
-        where: { id: userId },
-        data: { totalPoints: { increment: delta } },
-        select: { totalPoints: true },
-      });
+  //     const updatedUser = await tx.user.update({
+  //       where: { id: userId },
+  //       data: { totalPoints: { increment: delta } },
+  //       select: { totalPoints: true },
+  //     });
 
-      return {
-        post,
-        earnedPoints: POST_REWARD_POINTS,
-        boostCharged: wantBoost ? BOOST_COST_POINTS : 0,
-        totalDelta: delta,
-        userTotalPoints: updatedUser.totalPoints,
-      };
-    });
+  //     return {
+  //       post,
+  //       earnedPoints: POST_REWARD_POINTS,
+  //       boostCharged: wantBoost ? BOOST_COST_POINTS : 0,
+  //       totalDelta: delta,
+  //       userTotalPoints: updatedUser.totalPoints,
+  //     };
+  //   });
+  // }
+
+  async createPost(userId: string, dto: CreatePostDto) {
+  const wantBoost = dto.contentBooster === true;
+
+  const hasLat = typeof dto.latitude === 'number';
+  const hasLng = typeof dto.longitude === 'number';
+
+  if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+    throw new BadRequestException('Both latitude and longitude must be provided together.');
   }
+
+  const hashtagIds = dto.hashtagIds ? Array.from(new Set(dto.hashtagIds)) : [];
+
+  const mentionHandles = extractMentions(dto.caption);
+  const result = await this.prisma.$transaction(async (tx) => {
+    const user = await tx.user.findUnique({
+      where: { id: userId },
+      select: { id: true, totalPoints: true, activeProfileId: true },
+    });
+    if (!user) throw new NotFoundException('User not found');
+
+    if (!user.activeProfileId) throw new BadRequestException('No active profile selected');
+
+    const activeProfile = await tx.profile.findFirst({
+      where: { id: user.activeProfileId, userId },
+      select: { id: true, activeType: true },
+    });
+    if (!activeProfile) throw new BadRequestException('Active profile not found for this user');
+    if (!activeProfile.activeType) throw new BadRequestException('Active profile type not set');
+
+    const mediaType = dto.mediaType ?? MediaType.IMAGE;
+
+const photoDecl =
+  mediaType === MediaType.IMAGE ? (dto.photoEditingDeclaration ?? null) : null;
+
+const videoDecl =
+  mediaType === MediaType.VIDEO ? (dto.videoEditingDeclaration ?? null) : null;
+
+
+    const taggedUserIds = dto.taggedUserIds
+      ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId)
+      : [];
+
+    if (taggedUserIds.length) {
+      const found = await tx.user.findMany({
+        where: { id: { in: taggedUserIds } },
+        select: { id: true },
+      });
+      if (found.length !== taggedUserIds.length) {
+        throw new BadRequestException('One or more tagged users are invalid');
+      }
+    }
+
+    if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
+      throw new BadRequestException(`Not enough points to boost. Need at least ${BOOST_COST_POINTS} points.`);
+    }
+
+    if (hashtagIds.length > 0) {
+      const found = await tx.hashtag.findMany({
+        where: { id: { in: hashtagIds }, isActive: true },
+        select: { id: true },
+      });
+
+      if (found.length !== hashtagIds.length) {
+        throw new BadRequestException('One or more hashtags are invalid or inactive.');
+      }
+    }
+
+    // ✅ Resolve mentions -> userIds by Profile.instagramHandler
+    // (caption: "@rana" matches profile.instagramHandler = "rana")
+    let mentionedUserIds: string[] = [];
+    if (mentionHandles.length) {
+      const mentionedProfiles = await tx.profile.findMany({
+        where: {
+          instagramHandler: { in: mentionHandles },
+          suspend: false,
+        },
+        select: { userId: true },
+      });
+
+      mentionedUserIds = Array.from(
+        new Set(
+          mentionedProfiles
+            .map((p) => p.userId)
+            .filter((id) => id && id !== userId),
+        ),
+      );
+    }
+
+    // ✅ avoid double notify if user is both tagged and mentioned
+    const taggedSet = new Set(taggedUserIds);
+    mentionedUserIds = mentionedUserIds.filter((id) => !taggedSet.has(id));
+
+    const post = await tx.post.create({
+      data: {
+        userId,
+        profileId: activeProfile.id,
+        profileType: activeProfile.activeType,
+
+        postType: dto.postType ?? undefined,
+        caption: dto.caption ?? null,
+        mediaUrl: dto.mediaUrl ?? null,
+        mediaType,
+        postLocation: dto.postLocation ?? null,
+        locationName: dto.locationName ?? null,
+        locationAddress: dto.locationAddress ?? null,
+        latitude: dto.latitude ?? null,
+        longitude: dto.longitude ?? null,
+        placeId: dto.placeId ?? null,
+        locationVisibility: dto.locationVisibility ?? null,
+        vehicleCategory: dto.vehicleCategory,
+        visiualStyle: dto.visiualStyle ?? [],
+        contextActivity: dto.contextActivity ?? [],
+        subject: dto.subject ?? [],
+        photoEditingDeclaration: photoDecl,
+        videoEditingDeclaration: videoDecl,
+
+        hashtags: hashtagIds.length ? { connect: hashtagIds.map((id) => ({ id })) } : undefined,
+        taggedUsers: taggedUserIds.length ? { connect: taggedUserIds.map((id) => ({ id })) } : undefined,
+
+        point: POST_REWARD_POINTS,
+        contentBooster: wantBoost,
+      },
+      include: {
+        hashtags: true,
+        taggedUsers: { select: { id: true } },
+        profile: { select: { id: true, imageUrl: true, activeType: true } },
+      },
+    });
+
+    if (hashtagIds.length) {
+      await tx.hashtag.updateMany({
+        where: { id: { in: hashtagIds } },
+        data: { usageCount: { increment: 1 } },
+      });
+    }
+
+    await tx.userPoint.create({
+      data: { userId, postId: post.id, points: POST_REWARD_POINTS },
+    });
+
+    if (wantBoost) {
+      await tx.userPoint.create({
+        data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
+      });
+    }
+
+    const delta = POST_REWARD_POINTS - (wantBoost ? BOOST_COST_POINTS : 0);
+
+    const updatedUser = await tx.user.update({
+      where: { id: userId },
+      data: { totalPoints: { increment: delta } },
+      select: { totalPoints: true },
+    });
+
+    return {
+      post,
+      taggedUserIds,
+      mentionedUserIds,
+      earnedPoints: POST_REWARD_POINTS,
+      boostCharged: wantBoost ? BOOST_COST_POINTS : 0,
+      totalDelta: delta,
+      userTotalPoints: updatedUser.totalPoints,
+    };
+  });
+
+  // ✅ AFTER COMMIT: send notifications (Firestore + Push)
+  const postId = result.post.id;
+  const jobs: Promise<any>[] = [];
+
+  // TAGGED notifications
+  for (const receiverId of result.taggedUserIds ?? []) {
+    jobs.push(
+      this.notifications.notify(
+        {
+          userId: receiverId,
+          actorUserId: userId,
+          type: NotificationType.TAGGED,
+          channel: NotificationChannel.IN_APP,
+          status: NotificationStatus.UNREAD,
+
+          title: 'You were tagged in a post',
+          message: 'Someone tagged you in a post.',
+          entityType: NotificationEntityType.POST,
+          entityId: postId,
+          deepLink: `onyx://post/${postId}`,
+          groupKey: `TAGGED:POST:${postId}:${receiverId}`,
+          meta: { postId, mediaType: result.post.mediaType },
+        },
+        true,
+      ),
+    );
+  }
+
+  // MENTION notifications
+  for (const receiverId of result.mentionedUserIds ?? []) {
+    jobs.push(
+      this.notifications.notify(
+        {
+          userId: receiverId,
+          actorUserId: userId,
+          type: NotificationType.MENTION,
+          channel: NotificationChannel.IN_APP,
+          status: NotificationStatus.UNREAD,
+
+          title: 'You were mentioned',
+          message: 'Someone mentioned you in a post.',
+          entityType: NotificationEntityType.POST,
+          entityId: postId,
+          deepLink: `onyx://post/${postId}`,
+          groupKey: `MENTION:POST:${postId}:${receiverId}`,
+          meta: { postId },
+        },
+        true,
+      ),
+    );
+  }
+
+  await Promise.allSettled(jobs);
+
+  return result;
+}
 
   async getFeed(query: FeedQueryDto) {
     const page = query.page ?? 1;

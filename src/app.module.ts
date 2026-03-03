@@ -11,6 +11,8 @@ import { ProgramModule } from './main/program/program.module';
 import { ChatModule } from './main/chat/chat.module';
 import { FileModule } from './main/files/file.module';
 import { PropertyModule } from './main/property/property.module';
+import { FirebaseModule } from './main/firebase/firebase.module';
+import { NotificationsModule } from './main/notification/notification.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { PropertyModule } from './main/property/property.module';
     PropertyModule,
     ChatModule,
     FileModule,
+    FirebaseModule,
+    NotificationsModule,
     AdminModule
   ],
   controllers: [],
