@@ -115,8 +115,6 @@ export class RawShiftService {
 
       startDate,
       endDate,
-
-      // optional from dto, otherwise default in schema
       status: dto.status ?? RawShiftStatus.PUBLISHED,
     },
   });
