@@ -43,6 +43,7 @@ export type ProductListMinAggregateOutputType = {
   productImage: string | null
   description: string | null
   category: $Enums.ProductCategory | null
+  location: string | null
   carBrand: string | null
   carModel: string | null
   price: number | null
@@ -60,6 +61,7 @@ export type ProductListMaxAggregateOutputType = {
   productImage: string | null
   description: string | null
   category: $Enums.ProductCategory | null
+  location: string | null
   carBrand: string | null
   carModel: string | null
   price: number | null
@@ -77,6 +79,7 @@ export type ProductListCountAggregateOutputType = {
   productImage: number
   description: number
   category: number
+  location: number
   tags: number
   carBrand: number
   carModel: number
@@ -107,6 +110,7 @@ export type ProductListMinAggregateInputType = {
   productImage?: true
   description?: true
   category?: true
+  location?: true
   carBrand?: true
   carModel?: true
   price?: true
@@ -124,6 +128,7 @@ export type ProductListMaxAggregateInputType = {
   productImage?: true
   description?: true
   category?: true
+  location?: true
   carBrand?: true
   carModel?: true
   price?: true
@@ -141,6 +146,7 @@ export type ProductListCountAggregateInputType = {
   productImage?: true
   description?: true
   category?: true
+  location?: true
   tags?: true
   carBrand?: true
   carModel?: true
@@ -246,6 +252,7 @@ export type ProductListGroupByOutputType = {
   productImage: string | null
   description: string | null
   category: $Enums.ProductCategory
+  location: string | null
   tags: string[]
   carBrand: string | null
   carModel: string | null
@@ -287,6 +294,7 @@ export type ProductListWhereInput = {
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
+  location?: Prisma.StringNullableFilter<"ProductList"> | string | null
   tags?: Prisma.StringNullableListFilter<"ProductList">
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
@@ -306,6 +314,7 @@ export type ProductListOrderByWithRelationInput = {
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -328,6 +337,7 @@ export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
+  location?: Prisma.StringNullableFilter<"ProductList"> | string | null
   tags?: Prisma.StringNullableListFilter<"ProductList">
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
@@ -347,6 +357,7 @@ export type ProductListOrderByWithAggregationInput = {
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
+  location?: Prisma.SortOrderInput | Prisma.SortOrder
   tags?: Prisma.SortOrder
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -373,6 +384,7 @@ export type ProductListScalarWhereWithAggregatesInput = {
   productImage?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryWithAggregatesFilter<"ProductList"> | $Enums.ProductCategory
+  location?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   tags?: Prisma.StringNullableListFilter<"ProductList">
   carBrand?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
@@ -390,6 +402,7 @@ export type ProductListCreateInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -409,6 +422,7 @@ export type ProductListUncheckedCreateInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -426,6 +440,7 @@ export type ProductListUpdateInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -445,6 +460,7 @@ export type ProductListUncheckedUpdateInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -463,6 +479,7 @@ export type ProductListCreateManyInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -480,6 +497,7 @@ export type ProductListUpdateManyMutationInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -498,6 +516,7 @@ export type ProductListUncheckedUpdateManyInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -516,6 +535,7 @@ export type ProductListCountOrderByAggregateInput = {
   productImage?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  location?: Prisma.SortOrder
   tags?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
@@ -539,6 +559,7 @@ export type ProductListMaxOrderByAggregateInput = {
   productImage?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  location?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -556,6 +577,7 @@ export type ProductListMinOrderByAggregateInput = {
   productImage?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  location?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   price?: Prisma.SortOrder
@@ -642,6 +664,7 @@ export type ProductListCreateWithoutOwnerInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -659,6 +682,7 @@ export type ProductListUncheckedCreateWithoutOwnerInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -706,6 +730,7 @@ export type ProductListScalarWhereInput = {
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
+  location?: Prisma.StringNullableFilter<"ProductList"> | string | null
   tags?: Prisma.StringNullableListFilter<"ProductList">
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
@@ -723,6 +748,7 @@ export type ProductListCreateManyOwnerInput = {
   productImage?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
+  location?: string | null
   tags?: Prisma.ProductListCreatetagsInput | string[]
   carBrand?: string | null
   carModel?: string | null
@@ -740,6 +766,7 @@ export type ProductListUpdateWithoutOwnerInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -757,6 +784,7 @@ export type ProductListUncheckedUpdateWithoutOwnerInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -774,6 +802,7 @@ export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tags?: Prisma.ProductListUpdatetagsInput | string[]
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -794,6 +823,7 @@ export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   productImage?: boolean
   description?: boolean
   category?: boolean
+  location?: boolean
   tags?: boolean
   carBrand?: boolean
   carModel?: boolean
@@ -813,6 +843,7 @@ export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   productImage?: boolean
   description?: boolean
   category?: boolean
+  location?: boolean
   tags?: boolean
   carBrand?: boolean
   carModel?: boolean
@@ -832,6 +863,7 @@ export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   productImage?: boolean
   description?: boolean
   category?: boolean
+  location?: boolean
   tags?: boolean
   carBrand?: boolean
   carModel?: boolean
@@ -851,6 +883,7 @@ export type ProductListSelectScalar = {
   productImage?: boolean
   description?: boolean
   category?: boolean
+  location?: boolean
   tags?: boolean
   carBrand?: boolean
   carModel?: boolean
@@ -862,7 +895,7 @@ export type ProductListSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
+export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "description" | "category" | "location" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
 export type ProductListInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -885,6 +918,7 @@ export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.Interna
     productImage: string | null
     description: string | null
     category: $Enums.ProductCategory
+    location: string | null
     tags: string[]
     carBrand: string | null
     carModel: string | null
@@ -1324,6 +1358,7 @@ export interface ProductListFieldRefs {
   readonly productImage: Prisma.FieldRef<"ProductList", 'String'>
   readonly description: Prisma.FieldRef<"ProductList", 'String'>
   readonly category: Prisma.FieldRef<"ProductList", 'ProductCategory'>
+  readonly location: Prisma.FieldRef<"ProductList", 'String'>
   readonly tags: Prisma.FieldRef<"ProductList", 'String[]'>
   readonly carBrand: Prisma.FieldRef<"ProductList", 'String'>
   readonly carModel: Prisma.FieldRef<"ProductList", 'String'>

@@ -1075,6 +1075,7 @@ export const ProductListScalarFieldEnum = {
   productImage: 'productImage',
   description: 'description',
   category: 'category',
+  location: 'location',
   tags: 'tags',
   carBrand: 'carBrand',
   carModel: 'carModel',

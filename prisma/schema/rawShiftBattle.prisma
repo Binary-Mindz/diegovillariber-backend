@@ -1,5 +1,4 @@
 enum RawShiftStatus {
-  DRAFT
   PUBLISHED
   RUNNING
   COMPLETED
@@ -42,7 +41,7 @@ model RawShiftBattle {
   startDate   DateTime @db.Timestamptz(6)
   endDate     DateTime @db.Timestamptz(6)
 
-  status      RawShiftStatus @default(DRAFT)
+  status      RawShiftStatus @default(PUBLISHED)
 
   createdAt   DateTime @default(now()) @db.Timestamptz(6)
   updatedAt   DateTime @updatedAt @db.Timestamptz(6)
