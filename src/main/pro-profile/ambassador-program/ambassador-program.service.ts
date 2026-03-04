@@ -184,5 +184,22 @@ export class AmbassadorProgramService {
     return updated;
   }
 
+    async deleteById(id: string) {
+    const app = await this.prisma.ambassadorProgram.findUnique({
+      where: { id },
+      select: { id: true },
+    });
+
+    if (!app) {
+      throw new NotFoundException('Ambassador application not found.');
+    }
+
+    await this.prisma.ambassadorProgram.delete({
+      where: { id },
+    });
+
+    return { id, deleted: true };
+  }
+
 
 }

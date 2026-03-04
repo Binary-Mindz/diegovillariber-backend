@@ -70,9 +70,9 @@ enum PointType {
 }
 
 enum EventStatus {
-  PENDING
-  APPROVED
-  REJECTED
+  UPCOMING
+  ONGOING
+  COMPLETED
 }
 
 enum BuyStatus {

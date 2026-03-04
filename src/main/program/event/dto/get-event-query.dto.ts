@@ -1,13 +1,12 @@
-import { IsEnum, IsInt, IsISO8601, IsOptional, IsString, IsUUID, Max, Min } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, IsUUID, Max, Min, IsDateString } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { EventStatus, EventType } from 'generated/prisma/enums';
 
-
 export class GetEventsQueryDto {
   @ApiPropertyOptional({
     enum: EventStatus,
-    example: EventStatus.APPROVED,
+    example: EventStatus.UPCOMING,
     description: 'Filter by event status',
   })
   @IsOptional()
@@ -41,34 +40,28 @@ export class GetEventsQueryDto {
 
   @ApiPropertyOptional({
     example: '2026-02-01T00:00:00.000Z',
-    description: 'Start date >= from',
+    description: 'startDate >= from',
   })
   @IsOptional()
-  @IsISO8601()
+  @IsDateString()
   from?: string;
 
   @ApiPropertyOptional({
     example: '2026-03-01T00:00:00.000Z',
-    description: 'End date <= to',
+    description: 'endDate <= to',
   })
   @IsOptional()
-  @IsISO8601()
+  @IsDateString()
   to?: string;
 
-  @ApiPropertyOptional({
-    example: 1,
-    description: 'Page number (default = 1)',
-  })
+  @ApiPropertyOptional({ example: 1, description: 'Page number (default = 1)' })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
   page: number = 1;
 
-  @ApiPropertyOptional({
-    example: 20,
-    description: 'Items per page (default = 20)',
-  })
+  @ApiPropertyOptional({ example: 20, description: 'Items per page (default = 20)' })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
