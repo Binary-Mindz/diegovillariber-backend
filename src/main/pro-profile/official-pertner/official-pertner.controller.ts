@@ -19,23 +19,20 @@ import {
   ApiParam,
   ApiBearerAuth,
 } from '@nestjs/swagger';
-
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { OfficialPartnerService } from './official-pertner.service';
 import { CreateOfficialPartnerDto } from './dto/create-official-pertner.dto';
 import { UpdateOfficialPartnerDto } from './dto/update-official-pertner.dto';
-import { OfficialPartnerQueryDto } from './dto/official-pertner.dto';
 import { UpdateOfficialPartnerStatusDto } from './dto/update-request-status.dto';
-
-
-
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
+import { OfficialPartnerQueryDto } from './dto/official-partner.query.dto';
 @ApiTags('Official Partners')
 @Controller('official-partners')
 export class OfficialPartnerController {
   constructor(private readonly officialPartnerService: OfficialPartnerService) {}
-
 
   @Post()
   @ApiBearerAuth()
@@ -105,7 +102,8 @@ export class OfficialPartnerController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) // add RolesGuard + @Roles('admin') if you have it
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles("ADMIN") // add RolesGuard + @Roles('admin') if you have it
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'List official partner requests (admin)' })
   @ApiResponse({ status: 200, description: 'Requests fetched successfully' })
@@ -119,7 +117,8 @@ export class OfficialPartnerController {
 
   @Get(':id')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) 
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles("ADMIN") 
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get a request by id (admin)' })
   @ApiParam({ name: 'id', required: true })
@@ -134,7 +133,8 @@ export class OfficialPartnerController {
 
   @Patch(':id/status')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) // admin
+  @UseGuards(JwtAuthGuard, RolesGuard) 
+  @Roles("ADMIN") // admin
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Approve/Reject request (admin)' })
   @ApiParam({ name: 'id', required: true })

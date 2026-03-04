@@ -6,7 +6,8 @@ import { SubmitRawShiftEntryDto } from './dto/submit-rawshift-entry.dto';
 import { VoteRawShiftDto } from './dto/vote-rawshift.dto';
 import { CreateRawShiftCommentDto } from './dto/comment-rawshift.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { ParticipationScope, RawShiftEntryStatus, RawShiftStatus } from 'generated/prisma/enums';
+import { ParticipationScope, RawShiftEntryStatus, RawShiftStatus, Role } from 'generated/prisma/enums';
+import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
 export class RawShiftService {
@@ -17,32 +18,26 @@ export class RawShiftService {
   RawShiftStatus.RUNNING,
 ]);
 
-  async listBattles(query: RawShiftQueryDto) {
+    async listBattles(query: RawShiftQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
     const now = new Date();
 
-    const where: any = {};
-
-    // If explicit status provided, use it
-    if (query.status) where.status = query.status;
-
-    // Tab logic (screens: Active/Upcoming/Finished)
-    if (!query.status && query.tab) {
-      if (query.tab === RawShiftTab.UPCOMING) {
-        where.status = { in: [RawShiftStatus.PUBLISHED] };
-        where.startDate = { gt: now };
-      }
+    const where: Prisma.RawShiftBattleWhereInput = {};
+    
+    if (query.status) {
+      where.status = query.status;
+    } else {
       if (query.tab === RawShiftTab.ACTIVE) {
         where.status = { in: [RawShiftStatus.RUNNING, RawShiftStatus.PUBLISHED] };
         where.startDate = { lte: now };
         where.endDate = { gte: now };
-      }
-      if (query.tab === RawShiftTab.FINISHED) {
+      } else if (query.tab === RawShiftTab.FINISHED) {
         where.OR = [
           { status: RawShiftStatus.COMPLETED },
+          { status: RawShiftStatus.CANCELLED },
           { endDate: { lt: now } },
         ];
       }
@@ -54,7 +49,20 @@ export class RawShiftService {
         orderBy: { createdAt: 'desc' },
         skip,
         take: limit,
-        include: {
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          coverImage: true,
+          bannerImage: true,
+          location: true,
+          rawShiftPrice: true,
+          participantLimit: true,
+          status: true,
+          startDate: true,
+          endDate: true,
+          createdAt: true,
+
           _count: {
             select: { participants: true, entries: true, comments: true },
           },
@@ -64,14 +72,17 @@ export class RawShiftService {
     ]);
 
     return {
-      page,
-      limit,
-      total,
-      items,
+      data: items,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / limit)),
+      },
     };
   }
 
-  async getBattle(id: string) {
+   async getBattle(id: string) {
     const battle = await this.prisma.rawShiftBattle.findUnique({
       where: { id },
       include: {
@@ -93,70 +104,89 @@ export class RawShiftService {
   }
 
  async createBattle(userId: string, dto: CreateRawShiftBattleDto) {
-  const startDate = new Date(dto.startDate);
-  const endDate = new Date(dto.endDate);
+    const startDate = new Date(dto.startDate);
+    const endDate = new Date(dto.endDate);
 
-  if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
+    if (Number.isNaN(startDate.getTime())) throw new BadRequestException('Invalid startDate');
+    if (Number.isNaN(endDate.getTime())) throw new BadRequestException('Invalid endDate');
+    if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
 
-  return this.prisma.rawShiftBattle.create({
-    data: {
-      creatorId: userId,
-      title: dto.title,
-      description: dto.description,
-      coverImage: dto.coverImage,
-      bannerImage: dto.bannerImage,
-      participantLimit: dto.participantLimit,
+    return this.prisma.rawShiftBattle.create({
+      data: {
+        creatorId: userId,
+        title: dto.title,
+        description: dto.description ?? null,
+        coverImage: dto.coverImage ?? null,
+        bannerImage: dto.bannerImage ?? null,
+        participantLimit: dto.participantLimit ?? null,
+        rawShiftPrice: dto.rawShiftPrice, 
+        location: dto.location ?? null,
+        startDate,
+        endDate,
+        status: dto.status ?? RawShiftStatus.DRAFT,
+      },
+    });
+  }
 
-      // schema field (required)
-      rawShiftPrice: dto.rawShiftPrice,
-
-      // schema field (optional)
-      location: dto.location,
-
-      startDate,
-      endDate,
-
-      // optional from dto, otherwise default in schema
-      status: dto.status ?? RawShiftStatus.DRAFT,
-    },
-  });
-}
   async updateBattle(id: string, userId: string, dto: UpdateRawShiftBattleDto) {
-  const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
-  if (!battle) throw new NotFoundException('RawShift battle not found');
-  if (battle.creatorId !== userId) throw new ForbiddenException('Only creator can update');
+    const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
+    if (!battle) throw new NotFoundException('RawShift battle not found');
 
-  const startDate = dto.startDate ? new Date(dto.startDate) : battle.startDate;
-  const endDate = dto.endDate ? new Date(dto.endDate) : battle.endDate;
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true },
+    });
 
-  if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
+    const isAdmin = user?.role === Role.ADMIN;
 
-  return this.prisma.rawShiftBattle.update({
-    where: { id },
-    data: {
-      ...(dto.title !== undefined ? { title: dto.title } : {}),
-      ...(dto.description !== undefined ? { description: dto.description } : {}),
-      ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
-      ...(dto.bannerImage !== undefined ? { bannerImage: dto.bannerImage } : {}),
-      ...(dto.participantLimit !== undefined ? { participantLimit: dto.participantLimit } : {}),
-      ...(dto.rawShiftPrice !== undefined ? { rawShift: dto.rawShiftPrice } : {}),
-      ...(dto.location !== undefined ? { location: dto.location } : {}),
-      ...(dto.status !== undefined ? { status: dto.status } : {}),
+    if (!isAdmin && battle.creatorId !== userId) {
+      throw new ForbiddenException('Only creator can update');
+    }
 
-      // dates validated above
-      ...(dto.startDate !== undefined ? { startDate } : {}),
-      ...(dto.endDate !== undefined ? { endDate } : {}),
-    },
-  });
-}
+    const startDate = dto.startDate ? new Date(dto.startDate) : battle.startDate;
+    const endDate = dto.endDate ? new Date(dto.endDate) : battle.endDate;
+
+    if (dto.startDate && Number.isNaN(startDate.getTime())) throw new BadRequestException('Invalid startDate');
+    if (dto.endDate && Number.isNaN(endDate.getTime())) throw new BadRequestException('Invalid endDate');
+    if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
+
+    return this.prisma.rawShiftBattle.update({
+      where: { id },
+      data: {
+        ...(dto.title !== undefined ? { title: dto.title } : {}),
+        ...(dto.description !== undefined ? { description: dto.description } : {}),
+        ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
+        ...(dto.bannerImage !== undefined ? { bannerImage: dto.bannerImage } : {}),
+        ...(dto.participantLimit !== undefined ? { participantLimit: dto.participantLimit } : {}),
+        ...(dto.rawShiftPrice !== undefined ? { rawShiftPrice: dto.rawShiftPrice } : {}), // ✅ FIXED BUG
+        ...(dto.location !== undefined ? { location: dto.location } : {}),
+        ...(dto.status !== undefined ? { status: dto.status } : {}),
+        ...(dto.startDate !== undefined ? { startDate } : {}),
+        ...(dto.endDate !== undefined ? { endDate } : {}),
+      },
+    });
+  }
+
+
   async deleteBattle(id: string, userId: string) {
     const battle = await this.prisma.rawShiftBattle.findUnique({ where: { id } });
     if (!battle) throw new NotFoundException('RawShift battle not found');
-    if (battle.creatorId !== userId) throw new ForbiddenException('Only creator can delete');
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true },
+    });
+
+    const isAdmin = user?.role === Role.ADMIN;
+
+    if (!isAdmin && battle.creatorId !== userId) {
+      throw new ForbiddenException('Only creator can delete');
+    }
 
     await this.prisma.rawShiftBattle.delete({ where: { id } });
     return { success: true };
   }
+
 
 async joinBattle(battleId: string, userId: string) {
   const battle = await this.prisma.rawShiftBattle.findUnique({
@@ -166,7 +196,6 @@ async joinBattle(battleId: string, userId: string) {
   if (!battle)
     throw new NotFoundException('RawShift battle not found');
 
-  // ✅ FIXED (Type-safe check)
   if (!this.OPEN_RAWSHIFT_STATUSES.has(battle.status)) {
     throw new BadRequestException('Battle is not open for joining');
   }
