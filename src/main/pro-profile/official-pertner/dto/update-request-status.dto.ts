@@ -1,15 +1,16 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString } from 'class-validator';
-import { OfficialPartnerRequestStatusDto } from './official-pertner.dto';
+import { OfficialPartnerRequestStatus } from 'generated/prisma/enums';
+
 
 export class UpdateOfficialPartnerStatusDto {
   @ApiProperty({
-    enum: OfficialPartnerRequestStatusDto,
-    example: OfficialPartnerRequestStatusDto.APPROVED,
+    enum: OfficialPartnerRequestStatus,
+    example: OfficialPartnerRequestStatus.APPROVED,
     description: 'Admin decision on the partner request',
   })
-  @IsEnum(OfficialPartnerRequestStatusDto)
-  requestStatus: OfficialPartnerRequestStatusDto;
+  @IsEnum(OfficialPartnerRequestStatus)
+  requestStatus: OfficialPartnerRequestStatus;
 
   @ApiPropertyOptional({
     example: 'Approved after verification of company documents',

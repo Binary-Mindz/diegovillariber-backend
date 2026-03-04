@@ -7,17 +7,29 @@ import {
 } from '@nestjs/common';
 import { CreateOfficialPartnerDto } from './dto/create-official-pertner.dto';
 import { UpdateOfficialPartnerDto } from './dto/update-official-pertner.dto';
-import { OfficialPartnerQueryDto, OfficialPartnerRequestStatusDto } from './dto/official-pertner.dto';
 import { UpdateOfficialPartnerStatusDto } from './dto/update-request-status.dto';
-import { OfficialPartnerRequestStatus } from 'generated/prisma/enums';
+import { OfficialPartnerRequestStatus, Role } from 'generated/prisma/enums';
+import { OfficialPartnerQueryDto, OfficialPartnerTab } from './dto/official-partner.query.dto';
+import { Prisma } from 'generated/prisma/client';
+import { QueryMode } from 'generated/prisma/internal/prismaNamespace';
 
 
 @Injectable()
 export class OfficialPartnerService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async createRequest(userId: string, dto: CreateOfficialPartnerDto) {
-    // user can have only one request because userId is unique
+    async createRequest(userId: string, dto: CreateOfficialPartnerDto) {
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { role: true },
+    });
+
+    if (!user) throw new BadRequestException('User not found');
+
+    if (user.role === Role.ADMIN) {
+      throw new ForbiddenException('Admin cannot create official partner request.');
+    }
+
     const existing = await this.prisma.officialPartner.findUnique({
       where: { userId },
     });
@@ -40,9 +52,7 @@ export class OfficialPartnerService {
         country: dto.country ?? null,
         companyRegistrationNumber: dto.companyRegistrationNumber ?? null,
       },
-      include: {
-        user: true, // optional
-      },
+      include: { user: true },
     });
   }
 
@@ -103,20 +113,25 @@ export class OfficialPartnerService {
    * ----------------------*/
 
   async list(query: OfficialPartnerQueryDto) {
-    const page = Math.max(parseInt(query.page ?? '1', 10), 1);
-    const limit = Math.min(Math.max(parseInt(query.limit ?? '10', 10), 1), 100);
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    const where: any = {};
+    const where: Prisma.OfficialPartnerWhereInput = {};
 
-    if (query.status) where.requestStatus = query.status;
+    if (query.tab === OfficialPartnerTab.APPROVED_PARTNERS) {
+      where.requestStatus = OfficialPartnerRequestStatus.APPROVED;
+    } else if (query.tab === OfficialPartnerTab.APPLICATIONS) {
+      if (query.status) where.requestStatus = query.status;
+    } else if (query.tab === OfficialPartnerTab.CAMPAIGNS) {
+    }
 
     if (query.search?.trim()) {
       const s = query.search.trim();
       where.OR = [
-        { brandName: { contains: s, mode: 'insensitive' } },
-        { contactName: { contains: s, mode: 'insensitive' } },
-        { contactEmail: { contains: s, mode: 'insensitive' } },
+        { brandName: { contains: s, mode: QueryMode.insensitive } },
+        { contactName: { contains: s, mode: QueryMode.insensitive } },
+        { contactEmail: { contains: s, mode: QueryMode.insensitive } },
       ];
     }
 
@@ -126,23 +141,30 @@ export class OfficialPartnerService {
         skip,
         take: limit,
         orderBy: { createdAt: 'desc' },
-        include: { user: true }, // optional
+        include: {
+          user: { select: { id: true, email: true, role: true } },
+        },
       }),
       this.prisma.officialPartner.count({ where }),
     ]);
 
     return {
-      page,
-      limit,
-      total,
-      items,
+      data: items,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / limit)),
+      },
     };
   }
 
   async getById(id: string) {
     const request = await this.prisma.officialPartner.findUnique({
       where: { id },
-      include: { user: true }, // optional
+      include: {
+        user: { select: { id: true, email: true, role: true } },
+      },
     });
 
     if (!request) throw new NotFoundException('Official partner request not found.');
@@ -150,37 +172,35 @@ export class OfficialPartnerService {
   }
 
   async updateStatus(id: string, dto: UpdateOfficialPartnerStatusDto) {
-    const request = await this.prisma.officialPartner.findUnique({
-      where: { id },
+    const request = await this.prisma.officialPartner.findUnique({ where: { id } });
+    if (!request) throw new NotFoundException('Official partner request not found.');
+
+    // ✅ Transaction: update request + update user role
+    const result = await this.prisma.$transaction(async (tx) => {
+      const updated = await tx.officialPartner.update({
+        where: { id },
+        data: { requestStatus: dto.requestStatus },
+      });
+
+      if (dto.requestStatus === OfficialPartnerRequestStatus.APPROVED) {
+        await tx.user.update({
+          where: { id: request.userId },
+          data: { role: Role.OFFICIAL_PARTNER },
+        });
+      }
+
+      if (dto.requestStatus === OfficialPartnerRequestStatus.REJECTED) {
+        await tx.user.update({
+          where: { id: request.userId },
+          data: { role: Role.USER },
+        });
+      }
+
+      // if PENDING -> keep USER role as-is (optional)
+      return updated;
     });
 
-    if (!request) {
-      throw new NotFoundException('Official partner request not found.');
-    }
-
-    const updated = await this.prisma.officialPartner.update({
-      where: { id },
-      data: {
-        requestStatus:
-          dto.requestStatus as OfficialPartnerRequestStatus,
-      },
-    });
-
-    if (dto.requestStatus === 'APPROVED') {
-      await this.prisma.user.update({
-        where: { id: request.userId },
-        data: { role: 'OFFICIAL_PARTNER' },
-      });
-    }
-
-    if (dto.requestStatus === 'REJECTED') {
-      await this.prisma.user.update({
-        where: { id: request.userId },
-        data: { role: 'USER' },
-      });
-    }
-
-    return updated;
+    return result;
   }
 
 }

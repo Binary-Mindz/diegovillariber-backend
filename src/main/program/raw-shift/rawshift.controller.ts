@@ -6,6 +6,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseUUIDPipe,
   Patch,
   Post,
   Query,
@@ -24,6 +25,8 @@ import { SubmitRawShiftEntryDto } from './dto/submit-rawshift-entry.dto';
 import { VoteRawShiftDto } from './dto/vote-rawshift.dto';
 import { CreateRawShiftCommentDto } from './dto/comment-rawshift.dto';
 import { RawShiftService } from './rawshift.service';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
 
 @ApiTags('RawShift')
 @Controller('raw-shift')
@@ -31,59 +34,79 @@ export class RawShiftController {
   constructor(private readonly service: RawShiftService) {}
 
   @Get()
-  @ApiOperation({ summary: 'List RawShift battles (tabs: Active/Upcoming/Finished)' })
+  @ApiOperation({ summary: 'List RawShift battles (tabs: All/Active/Finished) with pagination' })
+  @ApiResponse({ status: 200 })
   async list(@Query() query: RawShiftQueryDto) {
-    return this.service.listBattles(query);
+    return handleRequest(
+      async () => this.service.listBattles(query),
+      'RawShift battles fetched successfully',
+      HttpStatus.OK,
+    );
   }
 
-  @Get(':id')
+ @Get(':id')
   @ApiOperation({ summary: 'Get RawShift battle details' })
   @ApiResponse({ status: 200 })
-  async details(@Param('id') id: string) {
-    return handleRequest(async () => {
-      return this.service.getBattle(id);
-    }, 'RawShift battle fetched successfully');
+  async details(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
+    return handleRequest(
+      async () => this.service.getBattle(id),
+      'RawShift battle fetched successfully',
+      HttpStatus.OK,
+    );
   }
 
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+ @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create RawShift battle' })
-  async create(
-    @GetUser('userId') userId: string,
-    @Body() dto: CreateRawShiftBattleDto,
-  ) {
-    return handleRequest(async () => {
-      return this.service.createBattle(userId, dto);
-    }, 'RawShift battle created successfully');
+  @ApiOperation({ summary: 'Create RawShift battle (Admin/Partner/Ambassador)' })
+  async create(@GetUser('userId') userId: string, @Body() dto: CreateRawShiftBattleDto) {
+    return handleRequest(
+      async () => this.service.createBattle(userId, dto),
+      'RawShift battle created successfully',
+      HttpStatus.CREATED,
+    );
   }
 
+  
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update RawShift battle (creator only)' })
+  @ApiOperation({ summary: 'Update RawShift battle (Admin any / others creator only)' })
   async update(
-    @Param('id') id: string,
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
     @GetUser('userId') userId: string,
     @Body() dto: UpdateRawShiftBattleDto,
   ) {
-    return handleRequest(async () => {
-      return this.service.updateBattle(id, userId, dto);
-    }, 'RawShift battle updated successfully');
+    return handleRequest(
+      async () => this.service.updateBattle(id, userId, dto),
+      'RawShift battle updated successfully',
+      HttpStatus.OK,
+    );
   }
 
+
+
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete RawShift battle (creator only)' })
-  async remove(@Param('id') id: string, @GetUser('userId') userId: string) {
-    return handleRequest(async () => {
-      return this.service.deleteBattle(id, userId);
-    }, 'RawShift battle deleted successfully');
+  @ApiOperation({ summary: 'Delete RawShift battle (Admin any / others creator only)' })
+  async remove(
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @GetUser('userId') userId: string,
+  ) {
+    return handleRequest(
+      async () => this.service.deleteBattle(id, userId),
+      'RawShift battle deleted successfully',
+      HttpStatus.OK,
+    );
   }
+
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
