@@ -50,9 +50,9 @@ export class CreateEventDto {
 
   @ApiProperty({ example: '2026-02-15T18:00:00Z' })
   @IsDateString()
-  startDate: Date;
+  startDate: string;
 
   @ApiProperty({ example: '2026-02-15T22:00:00Z' })
   @IsDateString()
-  endDate: Date;
+  endDate: string;
 }

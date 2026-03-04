@@ -425,9 +425,9 @@ export type PointType = (typeof PointType)[keyof typeof PointType]
 
 
 export const EventStatus = {
-  PENDING: 'PENDING',
-  APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED'
+  UPCOMING: 'UPCOMING',
+  ONGOING: 'ONGOING',
+  COMPLETED: 'COMPLETED'
 } as const
 
 export type EventStatus = (typeof EventStatus)[keyof typeof EventStatus]

@@ -11,10 +11,12 @@ import { ProgramModule } from './main/program/program.module';
 import { ChatModule } from './main/chat/chat.module';
 import { FileModule } from './main/files/file.module';
 import { PropertyModule } from './main/property/property.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
     PrismaModule,
     AuthModule,
     UserModule,

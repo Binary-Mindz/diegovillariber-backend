@@ -11,7 +11,7 @@ model Event {
   websiteLink String?
   price       Int
   eventType   EventType   @default(Race)
-  eventStatus EventStatus @default(PENDING)
+  eventStatus EventStatus @default(UPCOMING)
 
   startDate DateTime
   endDate   DateTime

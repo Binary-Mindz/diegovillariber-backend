@@ -28,6 +28,8 @@ import { UpdateAmbassadorProgramDto } from './dto/update-ambassador-program.dto'
 import { AmbassadorProgramQueryDto } from './dto/ambassador-program-query.dto';
 import { UpdateAmbassadorStatusDto } from './dto/update-ambassador-status.dto';
 import { AmbassadorProgramService } from './ambassador-program.service';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
 
 @ApiTags('Ambassador Program')
 @Controller('ambassador-program')
@@ -106,7 +108,8 @@ export class AmbassadorProgramController {
 
   @Get()
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) // add RolesGuard + @Roles('admin') if you have
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'List applications (admin)' })
   @ApiResponse({ status: 200, description: 'Applications fetched successfully' })
@@ -120,7 +123,8 @@ export class AmbassadorProgramController {
 
   @Get(':id')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) // admin
+   @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get application by id (admin)' })
   @ApiParam({ name: 'id', required: true })
@@ -135,7 +139,8 @@ export class AmbassadorProgramController {
 
   @Patch(':id/status')
   @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard) // admin
+   @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update application status (admin)' })
   @ApiParam({ name: 'id', required: true })
@@ -147,6 +152,22 @@ export class AmbassadorProgramController {
     return handleRequest(
       async () => this.ambassadorProgramService.updateStatus(id, dto),
       'Ambassador application status updated successfully',
+      HttpStatus.OK,
+    );
+  }
+
+  @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Delete application (admin)' })
+  @ApiParam({ name: 'id', required: true })
+  @ApiResponse({ status: 200, description: 'Application deleted successfully' })
+  async deleteById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
+    return handleRequest(
+      async () => this.ambassadorProgramService.deleteById(id),
+      'Ambassador application deleted successfully',
       HttpStatus.OK,
     );
   }
