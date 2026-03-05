@@ -52,51 +52,53 @@ export class ChallengeService {
     }
   }
 
-  async listChallenges(query: ChallengeQueryDto) {
-    const page = query.page ?? 1;
-    const limit = query.limit ?? 20;
-    const skip = (page - 1) * limit;
+async listChallenges(query: ChallengeQueryDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
 
-    const now = new Date();
+  const now = new Date();
 
-    const where: any = { };
-    const tab = query.tab ?? ChallengeTab.ACTIVE;
+  const where: any = {};
+  const tab = query.tab ?? ChallengeTab.ACTIVE;
 
-    if (tab === ChallengeTab.DRAFT) {
-      // Public list normally shouldn't show drafts. Keep it empty or handle via a separate "my drafts" endpoint.
-      where.status = ChallengeStatus.DRAFT;
-    } else if (tab === ChallengeTab.ACTIVE) {
-      where.status = ChallengeStatus.PUBLISHED;
-      where.startDate = { lte: now };
-      where.endDate = { gte: now };
-    } else if (tab === ChallengeTab.UPCOMING) {
-      where.status = ChallengeStatus.PUBLISHED;
-      where.startDate = { gt: now };
-    } else if (tab === ChallengeTab.FINISHED) {
-      where.OR = [
-        { status: ChallengeStatus.COMPLETED },
-        { endDate: { lt: now } },
-        { status: ChallengeStatus.CANCELLED },
-      ];
-    }
-
-    const [items, total] = await this.prisma.$transaction([
-      this.prisma.challenge.findMany({
-        where,
-        skip,
-        take: limit,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          creator: true,
-          _count: { select: { challengeParticipants: true, challengeSubmissions: true } },
-        },
-      }),
-      this.prisma.challenge.count({ where }),
-    ]);
-
-    return { page, limit, total, items };
+  if (query.category) {
+    where.category = query.category; 
   }
 
+  if (tab === ChallengeTab.DRAFT) {
+    where.status = ChallengeStatus.DRAFT;
+  } else if (tab === ChallengeTab.ACTIVE) {
+    where.status = ChallengeStatus.PUBLISHED;
+    where.startDate = { lte: now };
+    where.endDate = { gte: now };
+  } else if (tab === ChallengeTab.UPCOMING) {
+    where.status = ChallengeStatus.PUBLISHED;
+    where.startDate = { gt: now };
+  } else if (tab === ChallengeTab.FINISHED) {
+    where.OR = [
+      { status: ChallengeStatus.COMPLETED },
+      { endDate: { lt: now } },
+      { status: ChallengeStatus.CANCELLED },
+    ];
+  }
+
+  const [items, total] = await this.prisma.$transaction([
+    this.prisma.challenge.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' },
+      include: {
+        creator: true,
+        _count: { select: { challengeParticipants: true, challengeSubmissions: true } },
+      },
+    }),
+    this.prisma.challenge.count({ where }),
+  ]);
+
+  return { page, limit, total, items };
+}
   async getChallenge(id: string) {
     const challenge = await this.prisma.challenge.findUnique({
       where: { id },
@@ -219,7 +221,6 @@ export class ChallengeService {
         },
       });
     } catch {
-      // unique constraint: already joined
       return this.prisma.challengeParticipant.findUnique({
         where: { challengeId_userId: { challengeId, userId } },
       });
