@@ -135,7 +135,7 @@ export class RawShiftService {
         location: dto.location ?? null,
         startDate,
         endDate,
-        status: dto.status ?? RawShiftStatus.DRAFT,
+        status: dto.status ?? RawShiftStatus.PUBLISHED,
       },
     });
   }
