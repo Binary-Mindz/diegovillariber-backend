@@ -62,7 +62,17 @@ export class RawShiftService {
           startDate: true,
           endDate: true,
           createdAt: true,
-
+          creator:{
+            select:{
+             id: true,
+             profile:{
+              select: {
+                profileName: true,
+                imageUrl: true
+              }
+             }
+            }
+          },
           _count: {
             select: { participants: true, entries: true, comments: true },
           },
@@ -92,7 +102,9 @@ export class RawShiftService {
         entries: {
           orderBy: [{ score: 'desc' }, { createdAt: 'asc' }],
           include: {
-            user: { select: { id: true, email: true } },
+            user: { select: { id: true, email: true, profile:{select:{
+              profileName: true, imageUrl:true
+            }} } },
             _count: { select: { votes: true, comments: true } },
           },
         },
