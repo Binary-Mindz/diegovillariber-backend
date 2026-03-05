@@ -1,7 +1,15 @@
 // src/main/program/head-to-head/dto/headtohead-query.dto.ts
+
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
-import { BattleAccessType, BattleStatus, BattleCategory, Preference } from 'generated/prisma/enums';
+import { Type } from 'class-transformer';
+
+import {
+  BattleAccessType,
+  BattleStatus,
+  BattleCategory,
+  Preference,
+} from 'generated/prisma/enums';
 
 export class HeadToHeadQueryDto {
   @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.RUNNING })
@@ -31,6 +39,7 @@ export class HeadToHeadQueryDto {
 
   @ApiPropertyOptional({ example: 20, minimum: 1, maximum: 50 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(1)
   @Max(50)
@@ -38,6 +47,7 @@ export class HeadToHeadQueryDto {
 
   @ApiPropertyOptional({ example: 0, minimum: 0 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(0)
   offset?: number;

@@ -22,6 +22,27 @@ export class HeadToHeadService {
     return new Date();
   }
 
+
+private calcDurationDays(startDate: Date, endDate: Date): number {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+    throw new BadRequestException('Invalid startDate or endDate');
+  }
+
+  if (start >= end) {
+    throw new BadRequestException('startDate must be before endDate');
+  }
+
+  const ms = end.getTime() - start.getTime();
+  const days = ms / (1000 * 60 * 60 * 24);
+
+  // ceil to count partial day as a full day
+  return Math.ceil(days);
+}
+
+
  async listBattles(query: HeadToHeadQueryDto) {
   const where: Prisma.HeadToHeadBattleWhereInput = {
     ...(query.status ? { status: query.status } : {}),
@@ -93,10 +114,8 @@ export class HeadToHeadService {
 
  async createBattle(creatorId: string, dto: CreateHeadToHeadBattleDto) {
   const user = await this.prisma.user.findFirst({where:{id:creatorId}})
-  console.log('creatorId:', creatorId);
-  console.log('user:', user);
+   const durationDays = this.calcDurationDays(dto.startDate, dto.endDate);
 
-  return 
   if (dto.startDate >= dto.endDate) throw new BadRequestException('startDate must be before endDate');
 
   if (dto.accessType === BattleAccessType.AUTO_INVITE) {
@@ -113,33 +132,27 @@ export class HeadToHeadService {
       preference: dto.preference ?? Preference.CAR,
       description: dto.description,
       coverImage: dto.coverImage,
-
       battleCategory: dto.battleCategory ?? BattleCategory.STYLE_BATTLE,
       brandFilter: dto.brandFilter,
-      durationDays: dto.durationDays,
-
+      durationDays,
       winPrize: dto.winPrize,
       uploadImageOrVideo: dto.uploadImageOrVideo,
-
       cameraRequirement: dto.cameraRequirement ?? CameraRequirement.ANY,
       requireTrueShotVerified: dto.requireTrueShotVerified ?? false,
       rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
-
       accessType: dto.accessType ?? BattleAccessType.OPEN,
       autoInviteScope: dto.autoInviteScope,
       autoInviteCount: dto.autoInviteCount,
-
       participationScope: dto.participationScope ?? ParticipationScope.GLOBAL,
       radiusKm: dto.radiusKm,
       locationName: dto.locationName,
       latitude: dto.latitude as any,
       longitude: dto.longitude as any,
       placeId: dto.placeId,
-
       startDate: dto.startDate,
       endDate: dto.endDate,
 
-      status: dto.status ?? BattleStatus.DRAFT,
+      status: dto.status ?? BattleStatus.PUBLISHED,
 
       // auto-join creator
       participants: { create: { userId: creatorId, status: ParticipantStatus.JOINED } },
@@ -152,44 +165,53 @@ export class HeadToHeadService {
     if (!battle) throw new NotFoundException('Battle not found');
     if (battle.creatorId !== userId) throw new ForbiddenException('Only creator can update');
 
-    if (dto.startDate && dto.endDate && dto.startDate >= dto.endDate) {
+  const nextStartDate = dto.startDate ?? battle.startDate;
+  const nextEndDate = dto.endDate ?? battle.endDate;
+  const dateChanged = dto.startDate !== undefined || dto.endDate !== undefined;
+  let nextDurationDays: number | undefined = undefined;
+
+  if (dateChanged) {
+    if (nextStartDate >= nextEndDate) {
       throw new BadRequestException('startDate must be before endDate');
     }
+    nextDurationDays = this.calcDurationDays(nextStartDate, nextEndDate);
+  }
 
     return this.prisma.headToHeadBattle.update({
-      where: { id },
-       data: {
-    ...(dto.title !== undefined ? { title: dto.title } : {}),
-    ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
-    ...(dto.description !== undefined ? { description: dto.description } : {}),
-    ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
+    where: { id },
+    data: {
+      ...(dto.title !== undefined ? { title: dto.title } : {}),
+      ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
+      ...(dto.description !== undefined ? { description: dto.description } : {}),
+      ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
 
-    ...(dto.battleCategory !== undefined ? { battleCategory: dto.battleCategory } : {}),
-    ...(dto.brandFilter !== undefined ? { brandFilter: dto.brandFilter } : {}),
-    ...(dto.durationDays !== undefined ? { durationDays: dto.durationDays } : {}),
-    ...(dto.winPrize !== undefined ? { winPrize: dto.winPrize } : {}),
-    ...(dto.uploadImageOrVideo !== undefined ? { uploadImageOrVideo: dto.uploadImageOrVideo } : {}),
+      ...(dto.battleCategory !== undefined ? { battleCategory: dto.battleCategory } : {}),
+      ...(dto.brandFilter !== undefined ? { brandFilter: dto.brandFilter } : {}),
+      ...(nextDurationDays !== undefined ? { durationDays: nextDurationDays } : {}),
 
-    ...(dto.cameraRequirement !== undefined ? { cameraRequirement: dto.cameraRequirement } : {}),
-    ...(dto.requireTrueShotVerified !== undefined ? { requireTrueShotVerified: dto.requireTrueShotVerified } : {}),
-    ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
+      ...(dto.winPrize !== undefined ? { winPrize: dto.winPrize } : {}),
+      ...(dto.uploadImageOrVideo !== undefined ? { uploadImageOrVideo: dto.uploadImageOrVideo } : {}),
 
-    ...(dto.accessType !== undefined ? { accessType: dto.accessType } : {}),
-    ...(dto.autoInviteScope !== undefined ? { autoInviteScope: dto.autoInviteScope } : {}),
-    ...(dto.autoInviteCount !== undefined ? { autoInviteCount: dto.autoInviteCount } : {}),
+      ...(dto.cameraRequirement !== undefined ? { cameraRequirement: dto.cameraRequirement } : {}),
+      ...(dto.requireTrueShotVerified !== undefined ? { requireTrueShotVerified: dto.requireTrueShotVerified } : {}),
+      ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
 
-    ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
-    ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
-    ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
-    ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
-    ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
-    ...(dto.placeId !== undefined ? { placeId: dto.placeId } : {}),
+      ...(dto.accessType !== undefined ? { accessType: dto.accessType } : {}),
+      ...(dto.autoInviteScope !== undefined ? { autoInviteScope: dto.autoInviteScope } : {}),
+      ...(dto.autoInviteCount !== undefined ? { autoInviteCount: dto.autoInviteCount } : {}),
 
-    ...(dto.startDate !== undefined ? { startDate: dto.startDate } : {}),
-    ...(dto.endDate !== undefined ? { endDate: dto.endDate } : {}),
-    ...(dto.status !== undefined ? { status: dto.status } : {}),
-  },
-    });
+      ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
+      ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
+      ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
+      ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
+      ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
+      ...(dto.placeId !== undefined ? { placeId: dto.placeId } : {}),
+
+      ...(dto.startDate !== undefined ? { startDate: dto.startDate } : {}),
+      ...(dto.endDate !== undefined ? { endDate: dto.endDate } : {}),
+      ...(dto.status !== undefined ? { status: dto.status } : {}),
+    },
+  });
   }
 
   async deleteBattle(id: string, userId: string) {

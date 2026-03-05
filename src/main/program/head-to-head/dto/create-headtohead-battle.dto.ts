@@ -52,13 +52,6 @@ export class CreateHeadToHeadBattleDto {
   @IsString()
   brandFilter?: string;
 
-  @ApiPropertyOptional({ example: 7 })
-  @IsOptional()
-  @IsInt()
-  @Min(1)
-  @Max(365)
-  durationDays?: number;
-
   @ApiProperty({ example: 'Free Car Wash Coupon', description: 'required in schema' })
   @IsString()
   winPrize: string;
@@ -143,7 +136,7 @@ export class CreateHeadToHeadBattleDto {
   @IsDate()
   endDate: Date;
 
-  @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.DRAFT })
+  @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.PUBLISHED })
   @IsOptional()
   @IsEnum(BattleStatus)
   status?: BattleStatus;
