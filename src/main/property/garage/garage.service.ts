@@ -18,6 +18,7 @@ export class GarageService {
 
     return this.prisma.garage.findMany({
       where: { profileId: profile.id },
+      include:{cars: true, bikes: true},
       orderBy: { id: 'desc' },
     });
   }
@@ -27,6 +28,7 @@ export class GarageService {
       where: { id: garageId },
       include: {
         cars: true,
+        bikes: true
       },
     });
 
