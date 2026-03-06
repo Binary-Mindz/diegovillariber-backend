@@ -4,6 +4,8 @@ import { JwtAuthGuard } from "@/common/guards/jwt-auth.guard";
 import { RolesGuard } from "@/common/guards/roles.guard";
 import { Roles } from "@/common/decorator/roles.tdecorator";
 import { AdminOverviewService } from "./admin-overview.service";
+import { handleRequest } from "@/common/helpers/handle.request";
+
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -14,12 +16,18 @@ export class AdminOverviewController {
   constructor(private readonly adminOverviewService: AdminOverviewService) {}
 
   @Get('stats')
-  getStats() {
-    return this.adminOverviewService.getDashboardStats();
+  async getStats() {
+    return handleRequest(
+      () => this.adminOverviewService.getDashboardStats(),
+      "Dashboard stats fetched successfully"
+    );
   }
 
   @Get('weekly')
-  getWeekly() {
-    return this.adminOverviewService.getWeeklyEngagement();
+  async getWeekly() {
+    return handleRequest(
+      () => this.adminOverviewService.getWeeklyEngagement(),
+      "Weekly engagement fetched successfully"
+    );
   }
 }
