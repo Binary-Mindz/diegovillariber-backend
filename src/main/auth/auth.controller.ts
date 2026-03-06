@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -13,7 +13,7 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { handleRequest } from '@/common/helpers/handle.request';
-
+import { Response } from 'express';
 @Controller('auth')
 export class AuthController {
   constructor(private auth: AuthService) {}
@@ -28,16 +28,22 @@ export class AuthController {
     return this.auth.verifyEmail(dto.email, dto.otp);
   }
 
-  @Post('login')
-async login(@Body() dto: LoginDto) {
-  return handleRequest(async () => {
-    const result = await this.auth.login(
-      dto.email,
-      dto.password,
-      dto.loginAs,
-    );
-    return result;
-  }, 'Login successful');
+ @Post('login')
+@HttpCode(HttpStatus.OK)
+async login(
+  @Body() dto: LoginDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    async () => {
+      return await this.auth.login(dto.email, dto.password, dto.loginAs);
+    },
+    'Login successful',
+    HttpStatus.OK,
+  );
+
+  res.status(response.statusCode); // now works
+  return response;
 }
 
   @Post('refresh')

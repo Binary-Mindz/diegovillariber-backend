@@ -9,15 +9,19 @@ import {
   UseGuards,
   HttpCode,
   HttpStatus,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
+
 import {
   ApiTags,
   ApiBearerAuth,
   ApiOperation,
-  ApiResponse,
 } from '@nestjs/swagger';
+
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { handleRequest } from '@/common/helpers/handle.request';
+
 import { CreateHashtagDto } from './dto/create-hashtag.dto';
 import { UpdateHashtagDto } from './dto/update-hashtag.dto';
 import { HashtagQueryDto } from './dto/hashtag-query.dto';
@@ -33,12 +37,18 @@ export class HashtagController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create hashtag (Admin)' })
-  async createHashtag(@Body() dto: CreateHashtagDto) {
-    return handleRequest(
+  async createHashtag(
+    @Body() dto: CreateHashtagDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
       async () => this.hashtagService.createHashtag(dto),
       'Hashtag created successfully',
       HttpStatus.CREATED,
     );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @Patch(':id')
@@ -48,29 +58,41 @@ export class HashtagController {
   async updateHashtag(
     @Param('id') id: string,
     @Body() dto: UpdateHashtagDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(
+    const response = await handleRequest(
       async () => this.hashtagService.updateHashtag(id, dto),
       'Hashtag updated successfully',
     );
-  }
 
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get()
   @ApiOperation({ summary: 'Get active hashtags (User)' })
-  async getHashtags(@Query() query: HashtagQueryDto) {
-    return handleRequest(
+  async getHashtags(
+    @Query() query: HashtagQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
       async () => this.hashtagService.getHashtags(query),
       'Hashtags fetched successfully',
     );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @Get('trending')
   @ApiOperation({ summary: 'Get trending hashtags' })
-  async getTrending() {
-    return handleRequest(
+  async getTrending(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
       async () => this.hashtagService.getTrendingHashtags(),
       'Trending hashtags fetched successfully',
     );
+
+    res.status(response.statusCode);
+    return response;
   }
 }
