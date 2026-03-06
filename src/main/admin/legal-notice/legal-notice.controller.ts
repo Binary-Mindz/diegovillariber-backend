@@ -13,7 +13,7 @@ import { RolesGuard } from '@/common/guards/roles.guard';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { AdminLegalNoticeService } from './legal.notice.service';
 import { CreateLegalNoticeDto } from './dto/create-legal-notice.dto';
-
+import { handleRequest } from '@/common/helpers/handle.request';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -27,26 +27,39 @@ export class AdminLegalNoticeController {
 
   @Post()
   @ApiOperation({ summary: 'Create legal notice for any user profile' })
-  create(@Body() dto: CreateLegalNoticeDto) {
-    return this.adminLegalNoticeService.create(dto);
+  async create(@Body() dto: CreateLegalNoticeDto) {
+    return handleRequest(
+      () => this.adminLegalNoticeService.create(dto),
+      'Legal notice created successfully',
+      201,
+    );
   }
 
   @Get()
   @ApiOperation({ summary: 'List legal notices (optional profile filter)' })
   @ApiQuery({ name: 'profileId', required: false })
-  list(@Query('profileId') profileId?: string) {
-    return this.adminLegalNoticeService.list(profileId);
+  async list(@Query('profileId') profileId?: string) {
+    return handleRequest(
+      () => this.adminLegalNoticeService.list(profileId),
+      'Legal notices fetched successfully',
+    );
   }
 
   @Get('car/:carId')
   @ApiOperation({ summary: 'Get legal notices by carId' })
-  getByCar(@Param('carId') carId: string) {
-    return this.adminLegalNoticeService.getByCar(carId);
+  async getByCar(@Param('carId') carId: string) {
+    return handleRequest(
+      () => this.adminLegalNoticeService.getByCar(carId),
+      'Car legal notices fetched successfully',
+    );
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get single legal notice details' })
-  getOne(@Param('id') id: string) {
-    return this.adminLegalNoticeService.getOne(id);
+  async getOne(@Param('id') id: string) {
+    return handleRequest(
+      () => this.adminLegalNoticeService.getOne(id),
+      'Legal notice fetched successfully',
+    );
   }
 }

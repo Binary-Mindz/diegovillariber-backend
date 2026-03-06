@@ -4,6 +4,7 @@ import { JwtAuthGuard } from "@/common/guards/jwt-auth.guard";
 import { RolesGuard } from "@/common/guards/roles.guard";
 import { Roles } from "@/common/decorator/roles.tdecorator";
 import { AdminAnalyticService } from "./admin-analytic.service";
+import { handleRequest } from "@/common/helpers/handle.request";
 
 
 @ApiBearerAuth()
@@ -12,15 +13,21 @@ import { AdminAnalyticService } from "./admin-analytic.service";
 @ApiTags('Admin Analytic')
 @Controller('admin-analytic')
 export class AdminAnalyticController {
-  constructor(private readonly adminAnalyticService: AdminAnalyticService) { }
+  constructor(private readonly adminAnalyticService: AdminAnalyticService) {}
 
   @Get('advanced-stats')
-  getAdvancedStats() {
-    return this.adminAnalyticService.getAdvancedStats();
+  async getAdvancedStats() {
+    return handleRequest(
+      () => this.adminAnalyticService.getAdvancedStats(),
+      "Advanced analytics fetched successfully"
+    );
   }
 
   @Get('challenge-arena')
-  getChallengeStats() {
-    return this.adminAnalyticService.getChallengeStats();
+  async getChallengeStats() {
+    return handleRequest(
+      () => this.adminAnalyticService.getChallengeStats(),
+      "Challenge arena stats fetched successfully"
+    );
   }
 }

@@ -5,6 +5,7 @@ import { RolesGuard } from "@/common/guards/roles.guard";
 import { Roles } from "@/common/decorator/roles.tdecorator";
 import { AdminUserManagementService } from "./admin-user-management.service";
 import { PostModerationQueryDto } from "./dto/post-mpderation.query.dto";
+import { handleRequest } from "@/common/helpers/handle.request";
 
 
 @ApiBearerAuth()
@@ -13,29 +14,40 @@ import { PostModerationQueryDto } from "./dto/post-mpderation.query.dto";
 @ApiTags('Admin User Management')
 @Controller('admin-user-management')
 export class AdminUserManagementController {
-  constructor(private readonly adminUserManagementService: AdminUserManagementService) { }
- 
+  constructor(private readonly adminUserManagementService: AdminUserManagementService) {}
+
   @Get('overview')
-  getUsersWithStats() {
-    return this.adminUserManagementService.getUserGrowthRetentionDashboard();
+  async getUsersWithStats() {
+    return handleRequest(
+      () => this.adminUserManagementService.getUserGrowthRetentionDashboard(),
+      'User overview fetched successfully',
+    );
   }
+
   @Get('all-users')
-  getUsers(){
-    return this.adminUserManagementService.getUsers();
+  async getUsers() {
+    return handleRequest(
+      () => this.adminUserManagementService.getUsers(),
+      'Users fetched successfully',
+    );
   }
 
   @Get('moderation')
   @ApiOperation({ summary: 'List posts for moderation (All/Photo/Video + pagination)' })
   async list(@Query() query: PostModerationQueryDto) {
-    return this.adminUserManagementService.listPostsForModeration(query);
+    return handleRequest(
+      () => this.adminUserManagementService.listPostsForModeration(query),
+      'Moderation posts fetched successfully',
+    );
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete a post (moderation action)' })
   async remove(@Param('id', ParseUUIDPipe) id: string) {
-    return this.adminUserManagementService.deletePost(id);
+    return handleRequest(
+      () => this.adminUserManagementService.deletePost(id),
+      'Post deleted successfully',
+    );
   }
-
-  
 }
