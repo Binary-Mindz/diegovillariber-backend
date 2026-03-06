@@ -8,14 +8,14 @@ export async function handleRequest<T>(
 
     return {
       statusCode: successStatusCode,
-      status: 'success',
+      success: true,
       message,
       data,
     };
   } catch (err: any) {
     return {
       statusCode: err?.response?.statusCode || err?.status || 500,
-      status: 'error',
+       success: false,
       message: Array.isArray(err?.response?.message)
         ? err.response.message.join(', ')
         : err?.response?.message || err?.message || 'Something went wrong',

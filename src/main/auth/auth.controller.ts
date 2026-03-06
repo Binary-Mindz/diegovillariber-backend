@@ -12,6 +12,7 @@ import { ApiBearerAuth, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swag
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
+import { handleRequest } from '@/common/helpers/handle.request';
 
 @Controller('auth')
 export class AuthController {
@@ -28,9 +29,16 @@ export class AuthController {
   }
 
   @Post('login')
-  login(@Body() dto: LoginDto) {
-    return this.auth.login(dto.email, dto.password, dto.loginAs);
-  }
+async login(@Body() dto: LoginDto) {
+  return handleRequest(async () => {
+    const result = await this.auth.login(
+      dto.email,
+      dto.password,
+      dto.loginAs,
+    );
+    return result;
+  }, 'Login successful');
+}
 
   @Post('refresh')
   refresh(@Body() dto: RefreshTokenDto) {
