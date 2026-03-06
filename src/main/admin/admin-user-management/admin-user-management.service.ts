@@ -1,10 +1,11 @@
 import { PrismaService } from "@/common/prisma/prisma.service";
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { MediaType, Type } from "generated/prisma/enums";
+import { MediaType, Role, Type } from "generated/prisma/enums";
 import { PostModerationListResponse } from "./dto/post-moderation.response";
 import { ModerationMediaFilter, PostModerationQueryDto } from "./dto/post-mpderation.query.dto";
 import { Prisma } from "generated/prisma/client";
 import { QueryMode } from "generated/prisma/internal/prismaNamespace";
+import { GetUsersQueryDto } from "./dto/get-user-query.dto";
 
 @Injectable()
 export class AdminUserManagementService {
@@ -72,30 +73,60 @@ export class AdminUserManagementService {
   };
 }
 
-async getUsers(){
-  const users = await this.prisma.user.findMany({
-  orderBy: { createdAt: 'desc' },
-  take: 20,
-  skip: 0,
-  select: {
-    id: true,
-    email: true,
-    role: true,
-    createdAt: true,
-    activeProfileId: true,
-    profile: {
-      where: { id: { equals: undefined as any } },
+async getUsers(query: GetUsersQueryDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 10;
+
+  const safePage = page > 0 ? page : 1;
+  const safeLimit = limit > 0 ? limit : 10;
+  const skip = (safePage - 1) * safeLimit;
+
+  const where = {
+    role: {
+      not: Role.ADMIN,
+    },
+  };
+
+  const [users, total] = await Promise.all([
+    this.prisma.user.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+      take: safeLimit,
+      skip,
       select: {
         id: true,
-        profileName: true,
-        imageUrl: true,
-        activeType: true,
-        _count: { select: { posts: true, cars: true } },
+        email: true,
+        role: true,
+        createdAt: true,
+        activeProfileId: true,
+        profile: {
+          select: {
+            id: true,
+            profileName: true,
+            imageUrl: true,
+            activeType: true,
+            _count: {
+              select: {
+                posts: true,
+                cars: true,
+              },
+            },
+          },
+        },
       },
+    }),
+    this.prisma.user.count({ where }),
+  ]);
+
+  return {
+    data: users,
+    pagination: {
+      page: safePage,
+      limit: safeLimit,
+      total,
+      totalPages: Math.ceil(total / safeLimit),
     },
-  },
-});
-return users
+  };
 }
 
  async listPostsForModeration(
@@ -120,11 +151,6 @@ return users
         ? {
             OR: [
               { caption: { contains: q, mode: QueryMode.insensitive } },
-
-              // ✅ since relation "user" doesn't exist in your generated types,
-              // search user by joining manually is hard in single query.
-              // We'll support caption-only search for now.
-              // If you want search by user email/profileName, we can do it with a 2-step filter.
             ],
           }
         : {}),

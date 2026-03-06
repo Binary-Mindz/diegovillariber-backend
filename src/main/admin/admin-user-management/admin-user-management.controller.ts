@@ -20,6 +20,7 @@ import { handleRequest } from '@/common/helpers/handle.request';
 
 import { AdminUserManagementService } from './admin-user-management.service';
 import { PostModerationQueryDto } from './dto/post-mpderation.query.dto';
+import { GetUsersQueryDto } from './dto/get-user-query.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -42,16 +43,19 @@ export class AdminUserManagementController {
     return response;
   }
 
-  @Get('all-users')
-  async getUsers(@Res({ passthrough: true }) res: Response) {
-    const response = await handleRequest(
-      () => this.adminUserManagementService.getUsers(),
-      'Users fetched successfully',
-    );
+@Get('all-users')
+async getUsers(
+  @Query() query: GetUsersQueryDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.adminUserManagementService.getUsers(query),
+    'Users fetched successfully',
+  );
 
-    res.status(response.statusCode);
-    return response;
-  }
+  res.status(response.statusCode);
+  return response;
+}
 
   @Get('moderation')
   @ApiOperation({
