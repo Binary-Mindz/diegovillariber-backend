@@ -76,7 +76,7 @@ export class AdminUserManagementController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete a post (moderation action)' })
+  @ApiOperation({ summary: 'Delete a post (post moderation action)' })
   async remove(
     @Param('id', ParseUUIDPipe) id: string,
     @Res({ passthrough: true }) res: Response,
