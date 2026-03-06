@@ -43,19 +43,19 @@ export class AdminUserManagementController {
     return response;
   }
 
-@Get('all-users')
-async getUsers(
+  @Get('all-users')
+  async getUsers(
   @Query() query: GetUsersQueryDto,
   @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.adminUserManagementService.getUsers(query),
+  ) {
+     const response = await handleRequest(
+     () => this.adminUserManagementService.getUsers(query),
     'Users fetched successfully',
-  );
+   );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get('moderation')
   @ApiOperation({
