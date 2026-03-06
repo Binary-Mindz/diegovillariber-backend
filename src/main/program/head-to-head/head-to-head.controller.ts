@@ -1,4 +1,3 @@
-// src/head-to-head/head-to-head.controller.ts
 import {
   Body,
   Controller,
@@ -10,9 +9,16 @@ import {
   Patch,
   Post,
   Query,
+  Res,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Response } from 'express';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -38,32 +44,61 @@ export class HeadToHeadController {
   constructor(private readonly service: HeadToHeadService) {}
 
   @Get()
-  @ApiOperation({ summary: 'List HeadToHead battles (tabs: Active/Upcoming/Finished)' })
-  async list(@Query() query: HeadToHeadQueryDto) {
-    return this.service.listBattles(query);
+  @ApiOperation({
+    summary: 'List HeadToHead battles (tabs: Active/Upcoming/Finished)',
+  })
+  async list(
+    @Query() query: HeadToHeadQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.listBattles(query),
+      'HeadToHead battles fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get HeadToHead battle details' })
   @ApiResponse({ status: 200 })
-  async details(@Param('id') id: string) {
-    return handleRequest(async () => this.service.getBattle(id), 'HeadToHead battle fetched successfully');
+  async details(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.getBattle(id),
+      'HeadToHead battle fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create HeadToHead battle' })
-  async create(@GetUser('userId') userId: string, @Body() dto: CreateHeadToHeadBattleDto) {
-    console.log("userId " ,userId)
-    return handleRequest(async () => this.service.createBattle(userId, dto), 'HeadToHead battle created successfully');
+  async create(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateHeadToHeadBattleDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.createBattle(userId, dto),
+      'HeadToHead battle created successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update HeadToHead battle (creator only)' })
@@ -71,40 +106,79 @@ export class HeadToHeadController {
     @Param('id') id: string,
     @GetUser('userId') userId: string,
     @Body() dto: UpdateHeadToHeadBattleDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.updateBattle(id, userId, dto), 'HeadToHead battle updated successfully');
+    const response = await handleRequest(
+      () => this.service.updateBattle(id, userId, dto),
+      'HeadToHead battle updated successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN,Role.OFFICIAL_PARTNER,Role.AMBASSADOR)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete HeadToHead battle (creator only)' })
-  async remove(@Param('id') id: string, @GetUser('userId') userId: string) {
-    return handleRequest(async () => this.service.deleteBattle(id, userId), 'HeadToHead battle deleted successfully');
+  async remove(
+    @Param('id') id: string,
+    @GetUser('userId') userId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.deleteBattle(id, userId),
+      'HeadToHead battle deleted successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/join')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Join HeadToHead battle (creates participant). Handles accessType rules.' })
-  async join(@Param('id') battleId: string, @GetUser('userId') userId: string) {
-    return handleRequest(async () => this.service.joinBattle(battleId, userId), 'Joined HeadToHead battle successfully');
+  @ApiOperation({
+    summary:
+      'Join HeadToHead battle (creates participant). Handles accessType rules.',
+  })
+  async join(
+    @Param('id') battleId: string,
+    @GetUser('userId') userId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.joinBattle(battleId, userId),
+      'Joined HeadToHead battle successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/invite')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Invite a user to HeadToHead battle (creator only or inviter = creator)' })
+  @ApiOperation({
+    summary: 'Invite a user to HeadToHead battle (creator only or inviter = creator)',
+  })
   async invite(
     @Param('id') battleId: string,
     @GetUser('userId') inviterId: string,
     @Body() dto: InviteHeadToHeadDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.inviteUser(battleId, inviterId, dto), 'Invitation sent successfully');
+    const response = await handleRequest(
+      () => this.service.inviteUser(battleId, inviterId, dto),
+      'Invitation sent successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
@@ -116,34 +190,59 @@ export class HeadToHeadController {
     @Param('invitationId') invitationId: string,
     @GetUser('userId') userId: string,
     @Body() dto: RespondInvitationDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.respondInvitation(invitationId, userId, dto), 'Invitation updated successfully');
+    const response = await handleRequest(
+      () => this.service.respondInvitation(invitationId, userId, dto),
+      'Invitation updated successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/submit')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Submit HeadToHead media (Upsert: 1 submission per user per battle)' })
+  @ApiOperation({
+    summary: 'Submit HeadToHead media (Upsert: 1 submission per user per battle)',
+  })
   async submit(
     @Param('id') battleId: string,
     @GetUser('userId') userId: string,
     @Body() dto: SubmitHeadToHeadDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.submit(battleId, userId, dto), 'Submission submitted successfully');
+    const response = await handleRequest(
+      () => this.service.submit(battleId, userId, dto),
+      'Submission submitted successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('submissions/:submissionId/vote')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Vote on a HeadToHead submission (like/rating future-proof)' })
+  @ApiOperation({
+    summary: 'Vote on a HeadToHead submission (like/rating future-proof)',
+  })
   async vote(
     @Param('submissionId') submissionId: string,
     @GetUser('userId') userId: string,
     @Body() dto: VoteHeadToHeadDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.vote(submissionId, userId, dto), 'Vote submitted successfully');
+    const response = await handleRequest(
+      () => this.service.vote(submissionId, userId, dto),
+      'Vote submitted successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
@@ -155,16 +254,35 @@ export class HeadToHeadController {
     @Param('id') battleId: string,
     @GetUser('userId') userId: string,
     @Body() dto: CreateHeadToHeadCommentDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-    return handleRequest(async () => this.service.createComment(battleId, userId, dto), 'Comment added successfully');
+    const response = await handleRequest(
+      () => this.service.createComment(battleId, userId, dto),
+      'Comment added successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/complete')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Complete HeadToHead battle (creator only). Picks winner by highest votes.' })
-  async complete(@Param('id') battleId: string, @GetUser('userId') userId: string) {
-    return handleRequest(async () => this.service.completeBattle(battleId, userId), 'HeadToHead battle completed successfully');
+  @ApiOperation({
+    summary: 'Complete HeadToHead battle (creator only). Picks winner by highest votes.',
+  })
+  async complete(
+    @Param('id') battleId: string,
+    @GetUser('userId') userId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.completeBattle(battleId, userId),
+      'HeadToHead battle completed successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
   }
 }
