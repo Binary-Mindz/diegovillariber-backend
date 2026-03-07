@@ -50,7 +50,7 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: diego_app_prod
-        restart: always
+        restart: unless-stopped
         ports:
             - '8080:8080'
         env_file:
