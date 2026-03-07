@@ -10,6 +10,7 @@ import { UpdateNotificationPreferenceDto } from './dto/update-notification-prefe
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { FirebaseService } from '../firebase/firebase.service';
 import { NotificationChannel, NotificationStatus, NotificationType, Prisma } from 'generated/prisma/client';
+import { handlePrismaError } from '@/common/utils/error.handler';
 
 @Injectable()
 export class NotificationService {
@@ -148,7 +149,8 @@ export class NotificationService {
   }
 
   async getMyPreference(userId: string) {
-    let pref = await this.prisma.notificationPreference.findUnique({
+    try{  
+      let pref = await this.prisma.notificationPreference.findUnique({
       where: { userId },
     });
 
@@ -158,7 +160,9 @@ export class NotificationService {
       });
     }
 
-    return pref;
+    return pref;}catch(error){
+      handlePrismaError(error)
+    }
   }
 
   async updateMyPreference(
