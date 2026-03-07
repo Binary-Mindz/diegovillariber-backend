@@ -13,11 +13,7 @@ export class FirebaseService implements OnModuleInit {
       return;
     }
 
-    const p = process.env.FIREBASE_SERVICE_ACCOUNT_PATH || '/app/secrets/firebase-service-account.json';
-
-    const fullPath = path.isAbsolute(p) ? p : path.join(process.cwd(), p);
-    const file = fs.readFileSync(fullPath, 'utf8');
-    const serviceAccount = JSON.parse(file) as admin.ServiceAccount;
+    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT!);
 
     this.app = admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
