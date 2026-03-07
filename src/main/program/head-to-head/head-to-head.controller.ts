@@ -78,6 +78,7 @@ export class HeadToHeadController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiOperation({ summary: 'Create HeadToHead battle access: ADMIN, OFFICIAL_PARTNER, AMBASSADOR' })
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Post()
   @HttpCode(HttpStatus.CREATED)
@@ -101,7 +102,7 @@ export class HeadToHeadController {
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update HeadToHead battle (creator only)' })
+  @ApiOperation({ summary: 'Update HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR '})
   async update(
     @Param('id') id: string,
     @GetUser('userId') userId: string,
@@ -122,7 +123,7 @@ export class HeadToHeadController {
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete HeadToHead battle (creator only)' })
+  @ApiOperation({ summary: 'Delete HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR' })
   async remove(
     @Param('id') id: string,
     @GetUser('userId') userId: string,

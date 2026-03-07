@@ -13,6 +13,8 @@ import { CreateHeadToHeadCommentDto } from './dto/comment-headtohead.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { BattleAccessType, BattleCategory, BattleStatus, CameraRequirement, InvitationStatus, ParticipantStatus, ParticipationScope, Preference, SubmissionStatus } from 'generated/prisma/enums';
 import { Prisma } from 'generated/prisma/client';
+import { NODATA } from 'node:dns';
+import { handlePrismaError } from '@/common/utils/error.handler';
 
 @Injectable()
 export class HeadToHeadService {
@@ -37,11 +39,9 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
 
   const ms = end.getTime() - start.getTime();
   const days = ms / (1000 * 60 * 60 * 24);
-
-  // ceil to count partial day as a full day
+  
   return Math.ceil(days);
 }
-
 
  async listBattles(query: HeadToHeadQueryDto) {
   const where: Prisma.HeadToHeadBattleWhereInput = {
@@ -113,7 +113,11 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
   }
 
  async createBattle(creatorId: string, dto: CreateHeadToHeadBattleDto) {
+  try{
   const user = await this.prisma.user.findFirst({where:{id:creatorId}})
+  if(!user){
+    throw new NotFoundException("Creator Not Found")
+  }
    const durationDays = this.calcDurationDays(dto.startDate, dto.endDate);
 
   if (dto.startDate >= dto.endDate) throw new BadRequestException('startDate must be before endDate');
@@ -123,11 +127,9 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
       throw new BadRequestException('autoInviteScope and autoInviteCount are required when accessType = AUTO_INVITE');
     }
   }
-
   return this.prisma.headToHeadBattle.create({
     data: {
-      creatorId,
-
+      creatorId:user.id,
       title: dto.title,
       preference: dto.preference ?? Preference.CAR,
       description: dto.description,
@@ -158,6 +160,9 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
       participants: { create: { userId: creatorId, status: ParticipantStatus.JOINED } },
     },
   });
+  }catch(error){
+    handlePrismaError(error)
+  }
 }
 
   async updateBattle(id: string, userId: string, dto: UpdateHeadToHeadBattleDto) {
