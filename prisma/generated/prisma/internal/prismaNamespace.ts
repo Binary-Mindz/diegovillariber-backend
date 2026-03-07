@@ -438,6 +438,7 @@ export const ModelName = {
   MessageReceipt: 'MessageReceipt',
   Notification: 'Notification',
   NotificationPreference: 'NotificationPreference',
+  DeviceToken: 'DeviceToken',
   OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
@@ -484,7 +485,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4484,6 +4485,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    DeviceToken: {
+      payload: Prisma.$DeviceTokenPayload<ExtArgs>
+      fields: Prisma.DeviceTokenFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DeviceTokenFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DeviceTokenFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        findFirst: {
+          args: Prisma.DeviceTokenFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DeviceTokenFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        findMany: {
+          args: Prisma.DeviceTokenFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>[]
+        }
+        create: {
+          args: Prisma.DeviceTokenCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        createMany: {
+          args: Prisma.DeviceTokenCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DeviceTokenCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>[]
+        }
+        delete: {
+          args: Prisma.DeviceTokenDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        update: {
+          args: Prisma.DeviceTokenUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        deleteMany: {
+          args: Prisma.DeviceTokenDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DeviceTokenUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DeviceTokenUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>[]
+        }
+        upsert: {
+          args: Prisma.DeviceTokenUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DeviceTokenPayload>
+        }
+        aggregate: {
+          args: Prisma.DeviceTokenAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDeviceToken>
+        }
+        groupBy: {
+          args: Prisma.DeviceTokenGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeviceTokenGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DeviceTokenCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DeviceTokenCountAggregateOutputType> | number
+        }
+      }
+    }
     OfficialPartner: {
       payload: Prisma.$OfficialPartnerPayload<ExtArgs>
       fields: Prisma.OfficialPartnerFieldRefs
@@ -7636,6 +7711,19 @@ export const NotificationPreferenceScalarFieldEnum = {
 export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
 
 
+export const DeviceTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  platform: 'platform',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DeviceTokenScalarFieldEnum = (typeof DeviceTokenScalarFieldEnum)[keyof typeof DeviceTokenScalarFieldEnum]
+
+
 export const OfficialPartnerScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -9434,6 +9522,7 @@ export type GlobalOmitConfig = {
   messageReceipt?: Prisma.MessageReceiptOmit
   notification?: Prisma.NotificationOmit
   notificationPreference?: Prisma.NotificationPreferenceOmit
+  deviceToken?: Prisma.DeviceTokenOmit
   officialPartner?: Prisma.OfficialPartnerOmit
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit

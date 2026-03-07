@@ -102,4 +102,6 @@ model User {
   notifications Notification[]
 
   notificationsActor Notification[] @relation("NotificationActor")
+
+  deviceTokens DeviceToken[]
 }

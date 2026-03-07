@@ -308,6 +308,11 @@ export type Notification = Prisma.NotificationModel
  */
 export type NotificationPreference = Prisma.NotificationPreferenceModel
 /**
+ * Model DeviceToken
+ * 
+ */
+export type DeviceToken = Prisma.DeviceTokenModel
+/**
  * Model OfficialPartner
  * 
  */

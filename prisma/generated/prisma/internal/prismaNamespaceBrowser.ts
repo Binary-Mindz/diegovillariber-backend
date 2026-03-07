@@ -105,6 +105,7 @@ export const ModelName = {
   MessageReceipt: 'MessageReceipt',
   Notification: 'Notification',
   NotificationPreference: 'NotificationPreference',
+  DeviceToken: 'DeviceToken',
   OfficialPartner: 'OfficialPartner',
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
@@ -971,6 +972,19 @@ export const NotificationPreferenceScalarFieldEnum = {
 } as const
 
 export type NotificationPreferenceScalarFieldEnum = (typeof NotificationPreferenceScalarFieldEnum)[keyof typeof NotificationPreferenceScalarFieldEnum]
+
+
+export const DeviceTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  token: 'token',
+  platform: 'platform',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DeviceTokenScalarFieldEnum = (typeof DeviceTokenScalarFieldEnum)[keyof typeof DeviceTokenScalarFieldEnum]
 
 
 export const OfficialPartnerScalarFieldEnum = {

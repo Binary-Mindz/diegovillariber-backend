@@ -54,3 +54,20 @@ model NotificationPreference {
 
   @@map("NotificationPreference")
 }
+
+model DeviceToken {
+  id        String   @id @default(uuid()) @db.Uuid
+
+  userId    String   @db.Uuid
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  token     String   @unique
+  platform  String?  @db.VarChar(20) // android | ios | web
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+
+  @@index([userId, isActive])
+  @@map("DeviceToken")
+}

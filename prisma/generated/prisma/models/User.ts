@@ -426,6 +426,7 @@ export type UserWhereInput = {
   notificationPreferences?: Prisma.NotificationPreferenceListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   notificationsActor?: Prisma.NotificationListRelationFilter
+  deviceTokens?: Prisma.DeviceTokenListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -502,6 +503,7 @@ export type UserOrderByWithRelationInput = {
   notificationPreferences?: Prisma.NotificationPreferenceOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   notificationsActor?: Prisma.NotificationOrderByRelationAggregateInput
+  deviceTokens?: Prisma.DeviceTokenOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -581,6 +583,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   notificationPreferences?: Prisma.NotificationPreferenceListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   notificationsActor?: Prisma.NotificationListRelationFilter
+  deviceTokens?: Prisma.DeviceTokenListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -717,6 +720,7 @@ export type UserCreateInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -793,6 +797,7 @@ export type UserUncheckedCreateInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -869,6 +874,7 @@ export type UserUpdateInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -945,6 +951,7 @@ export type UserUncheckedUpdateInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1563,6 +1570,20 @@ export type UserUpdateOneRequiredWithoutNotificationPreferencesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutNotificationPreferencesInput, Prisma.UserUpdateWithoutNotificationPreferencesInput>, Prisma.UserUncheckedUpdateWithoutNotificationPreferencesInput>
 }
 
+export type UserCreateNestedOneWithoutDeviceTokensInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeviceTokensInput, Prisma.UserUncheckedCreateWithoutDeviceTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeviceTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutDeviceTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDeviceTokensInput, Prisma.UserUncheckedCreateWithoutDeviceTokensInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDeviceTokensInput
+  upsert?: Prisma.UserUpsertWithoutDeviceTokensInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDeviceTokensInput, Prisma.UserUpdateWithoutDeviceTokensInput>, Prisma.UserUncheckedUpdateWithoutDeviceTokensInput>
+}
+
 export type UserCreateNestedOneWithoutOfficialPartnersInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutOfficialPartnersInput, Prisma.UserUncheckedCreateWithoutOfficialPartnersInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutOfficialPartnersInput
@@ -1954,6 +1975,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2029,6 +2051,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2120,6 +2143,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2195,6 +2219,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2270,6 +2295,7 @@ export type UserCreateWithoutChallengesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2345,6 +2371,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2436,6 +2463,7 @@ export type UserUpdateWithoutChallengesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -2511,6 +2539,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -2586,6 +2615,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -2661,6 +2691,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -2752,6 +2783,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -2827,6 +2859,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -2902,6 +2935,7 @@ export type UserCreateWithoutChallengeReactionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -2977,6 +3011,7 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3068,6 +3103,7 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3143,6 +3179,7 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3218,6 +3255,7 @@ export type UserCreateWithoutChallengeVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -3293,6 +3331,7 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -3384,6 +3423,7 @@ export type UserUpdateWithoutChallengeVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -3459,6 +3499,7 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -3534,6 +3575,7 @@ export type UserCreateWithoutChallengeCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -3609,6 +3651,7 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -3700,6 +3743,7 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -3775,6 +3819,7 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -3850,6 +3895,7 @@ export type UserCreateWithoutCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -3925,6 +3971,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4016,6 +4063,7 @@ export type UserUpdateWithoutCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4091,6 +4139,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -4166,6 +4215,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -4241,6 +4291,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -4332,6 +4383,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -4407,6 +4459,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4482,6 +4535,7 @@ export type UserCreateWithoutEventsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4557,6 +4611,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -4648,6 +4703,7 @@ export type UserUpdateWithoutEventsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -4723,6 +4779,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -4798,6 +4855,7 @@ export type UserCreateWithoutFollowingInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -4873,6 +4931,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -4953,6 +5012,7 @@ export type UserCreateWithoutFollowersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5028,6 +5088,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5119,6 +5180,7 @@ export type UserUpdateWithoutFollowingInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5194,6 +5256,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5280,6 +5343,7 @@ export type UserUpdateWithoutFollowersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5355,6 +5419,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5430,6 +5495,7 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5505,6 +5571,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -5585,6 +5652,7 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -5660,6 +5728,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -5751,6 +5820,7 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5826,6 +5896,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -5912,6 +5983,7 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -5987,6 +6059,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -6062,6 +6135,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -6137,6 +6211,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -6228,6 +6303,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -6303,6 +6379,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -6378,6 +6455,7 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -6453,6 +6531,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -6533,6 +6612,7 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -6608,6 +6688,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -6699,6 +6780,7 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -6774,6 +6856,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -6860,6 +6943,7 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -6935,6 +7019,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -7010,6 +7095,7 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -7085,6 +7171,7 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -7176,6 +7263,7 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -7251,6 +7339,7 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -7326,6 +7415,7 @@ export type UserCreateWithoutBattleVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -7401,6 +7491,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -7492,6 +7583,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -7567,6 +7659,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -7642,6 +7735,7 @@ export type UserCreateWithoutBattleCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -7717,6 +7811,7 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -7808,6 +7903,7 @@ export type UserUpdateWithoutBattleCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -7883,6 +7979,7 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -7958,6 +8055,7 @@ export type UserCreateWithoutHidePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -8033,6 +8131,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -8124,6 +8223,7 @@ export type UserUpdateWithoutHidePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -8199,6 +8299,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -8274,6 +8375,7 @@ export type UserCreateWithoutLikesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -8349,6 +8451,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -8440,6 +8543,7 @@ export type UserUpdateWithoutLikesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -8515,6 +8619,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -8590,6 +8695,7 @@ export type UserCreateWithoutLivesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -8665,6 +8771,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -8756,6 +8863,7 @@ export type UserUpdateWithoutLivesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -8831,6 +8939,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -8906,6 +9015,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -8981,6 +9091,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -9072,6 +9183,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -9147,6 +9259,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -9222,6 +9335,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -9297,6 +9411,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -9377,6 +9492,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -9452,6 +9568,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -9543,6 +9660,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -9618,6 +9736,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -9704,6 +9823,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -9779,6 +9899,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -9854,6 +9975,7 @@ export type UserCreateWithoutMessagesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -9929,6 +10051,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -10020,6 +10143,7 @@ export type UserUpdateWithoutMessagesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -10095,6 +10219,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -10170,6 +10295,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -10245,6 +10371,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -10336,6 +10463,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -10411,6 +10539,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -10486,6 +10615,7 @@ export type UserCreateWithoutNotificationsInput = {
   challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -10561,6 +10691,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -10641,6 +10772,7 @@ export type UserCreateWithoutNotificationsActorInput = {
   challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -10716,6 +10848,7 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -10807,6 +10940,7 @@ export type UserUpdateWithoutNotificationsInput = {
   challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -10882,6 +11016,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -10968,6 +11103,7 @@ export type UserUpdateWithoutNotificationsActorInput = {
   challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -11043,6 +11179,7 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -11118,6 +11255,7 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -11193,6 +11331,7 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -11284,6 +11423,7 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -11357,6 +11497,327 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
   challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
   challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutDeviceTokensInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+}
+
+export type UserUncheckedCreateWithoutDeviceTokensInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+}
+
+export type UserCreateOrConnectWithoutDeviceTokensInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeviceTokensInput, Prisma.UserUncheckedCreateWithoutDeviceTokensInput>
+}
+
+export type UserUpsertWithoutDeviceTokensInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDeviceTokensInput, Prisma.UserUncheckedUpdateWithoutDeviceTokensInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDeviceTokensInput, Prisma.UserUncheckedCreateWithoutDeviceTokensInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutDeviceTokensInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDeviceTokensInput, Prisma.UserUncheckedUpdateWithoutDeviceTokensInput>
+}
+
+export type UserUpdateWithoutDeviceTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutDeviceTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
 }
@@ -11434,6 +11895,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -11509,6 +11971,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -11600,6 +12063,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -11675,6 +12139,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -11750,6 +12215,7 @@ export type UserCreateWithoutPaymentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -11825,6 +12291,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -11916,6 +12383,7 @@ export type UserUpdateWithoutPaymentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -11991,6 +12459,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -12066,6 +12535,7 @@ export type UserCreateWithoutPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -12141,6 +12611,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -12221,6 +12692,7 @@ export type UserCreateWithoutTaggedInPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -12296,6 +12768,7 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -12387,6 +12860,7 @@ export type UserUpdateWithoutPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -12462,6 +12936,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -12582,6 +13057,7 @@ export type UserCreateWithoutPrizesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -12657,6 +13133,7 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -12748,6 +13225,7 @@ export type UserUpdateWithoutPrizesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -12823,6 +13301,7 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -12898,6 +13377,7 @@ export type UserCreateWithoutProductListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -12973,6 +13453,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -13064,6 +13545,7 @@ export type UserUpdateWithoutProductListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -13139,6 +13621,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -13214,6 +13697,7 @@ export type UserCreateWithoutProfileInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -13289,6 +13773,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -13380,6 +13865,7 @@ export type UserUpdateWithoutProfileInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -13455,6 +13941,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -13530,6 +14017,7 @@ export type UserCreateWithoutRacingVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -13605,6 +14093,7 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -13696,6 +14185,7 @@ export type UserUpdateWithoutRacingVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -13771,6 +14261,7 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -13846,6 +14337,7 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -13921,6 +14413,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -14001,6 +14494,7 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -14076,6 +14570,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -14167,6 +14662,7 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -14242,6 +14738,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -14328,6 +14825,7 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -14403,6 +14901,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -14478,6 +14977,7 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -14553,6 +15053,7 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -14644,6 +15145,7 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -14719,6 +15221,7 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -14794,6 +15297,7 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -14869,6 +15373,7 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -14960,6 +15465,7 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -15035,6 +15541,7 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -15110,6 +15617,7 @@ export type UserCreateWithoutRawShiftVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -15185,6 +15693,7 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -15276,6 +15785,7 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -15351,6 +15861,7 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -15426,6 +15937,7 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -15501,6 +16013,7 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -15592,6 +16105,7 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -15667,6 +16181,7 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -15742,6 +16257,7 @@ export type UserCreateWithoutReportsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -15817,6 +16333,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -15908,6 +16425,7 @@ export type UserUpdateWithoutReportsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -15983,6 +16501,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -16058,6 +16577,7 @@ export type UserCreateWithoutRepostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -16133,6 +16653,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -16224,6 +16745,7 @@ export type UserUpdateWithoutRepostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -16299,6 +16821,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -16374,6 +16897,7 @@ export type UserCreateWithoutSavePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -16449,6 +16973,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -16540,6 +17065,7 @@ export type UserUpdateWithoutSavePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -16615,6 +17141,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -16690,6 +17217,7 @@ export type UserCreateWithoutSharesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -16765,6 +17293,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -16856,6 +17385,7 @@ export type UserUpdateWithoutSharesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -16931,6 +17461,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -17006,6 +17537,7 @@ export type UserCreateWithoutUserPointsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -17081,6 +17613,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -17172,6 +17705,7 @@ export type UserUpdateWithoutUserPointsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -17247,6 +17781,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -17322,6 +17857,7 @@ export type UserCreateWithoutWishListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -17397,6 +17933,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -17488,6 +18025,7 @@ export type UserUpdateWithoutWishListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -17563,6 +18101,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -17638,6 +18177,7 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -17713,6 +18253,7 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -17795,6 +18336,7 @@ export type UserCountOutputType = {
   notificationPreferences: number
   notifications: number
   notificationsActor: number
+  deviceTokens: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -17846,6 +18388,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   notificationPreferences?: boolean | UserCountOutputTypeCountNotificationPreferencesArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
   notificationsActor?: boolean | UserCountOutputTypeCountNotificationsActorArgs
+  deviceTokens?: boolean | UserCountOutputTypeCountDeviceTokensArgs
 }
 
 /**
@@ -18194,6 +18737,13 @@ export type UserCountOutputTypeCountNotificationsActorArgs<ExtArgs extends runti
   where?: Prisma.NotificationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDeviceTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DeviceTokenWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -18269,6 +18819,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   notificationPreferences?: boolean | Prisma.User$notificationPreferencesArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   notificationsActor?: boolean | Prisma.User$notificationsActorArgs<ExtArgs>
+  deviceTokens?: boolean | Prisma.User$deviceTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -18402,6 +18953,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   notificationPreferences?: boolean | Prisma.User$notificationPreferencesArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   notificationsActor?: boolean | Prisma.User$notificationsActorArgs<ExtArgs>
+  deviceTokens?: boolean | Prisma.User$deviceTokensArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -18460,6 +19012,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     notificationPreferences: Prisma.$NotificationPreferencePayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     notificationsActor: Prisma.$NotificationPayload<ExtArgs>[]
+    deviceTokens: Prisma.$DeviceTokenPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -18929,6 +19482,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   notificationPreferences<T extends Prisma.User$notificationPreferencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationPreferencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPreferencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notificationsActor<T extends Prisma.User$notificationsActorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsActorArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  deviceTokens<T extends Prisma.User$deviceTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deviceTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -20556,6 +21110,30 @@ export type User$notificationsActorArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.deviceTokens
+ */
+export type User$deviceTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DeviceToken
+   */
+  select?: Prisma.DeviceTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DeviceToken
+   */
+  omit?: Prisma.DeviceTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DeviceTokenInclude<ExtArgs> | null
+  where?: Prisma.DeviceTokenWhereInput
+  orderBy?: Prisma.DeviceTokenOrderByWithRelationInput | Prisma.DeviceTokenOrderByWithRelationInput[]
+  cursor?: Prisma.DeviceTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DeviceTokenScalarFieldEnum | Prisma.DeviceTokenScalarFieldEnum[]
 }
 
 /**
