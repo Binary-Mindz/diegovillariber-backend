@@ -58,6 +58,9 @@ jobs:
 
                       echo "🗄️ Run database migrations"
                       docker exec diego_app_prod pnpm run prisma:deploy 
+                    
+                      echo "Running seed in production"
+                      docker exec diego_app_prod node dist/src/common/seed/seed.js
 
                       echo "🧹 Cleanup old images"
                       docker image prune -af
