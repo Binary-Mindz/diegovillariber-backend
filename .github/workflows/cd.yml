@@ -43,16 +43,7 @@ jobs:
                       set -e
 
                       cd ~/${{ secrets.PACKAGE_NAME }}
-
-                      echo "📁 Create repository secrets"
-                      mkdir -p secrets
-
-                      echo "🔐 Write Firebase service account"
-                      cat > secrets/firebase-service-account.json <<'EOF'
-                      ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
-                      EOF
                     
-                      chmod 600 secrets/firebase-service-account.json
 
                       echo "🐳 Pull latest images"
                       docker compose  pull
