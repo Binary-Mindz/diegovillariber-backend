@@ -13,10 +13,7 @@ export class FirebaseService implements OnModuleInit {
       return;
     }
 
-    const p = process.env.FIREBASE_SERVICE_ACCOUNT_PATH;
-    if (!p) {
-      throw new Error('FIREBASE_SERVICE_ACCOUNT_PATH missing');
-    }
+    const p = process.env.FIREBASE_SERVICE_ACCOUNT_PATH || '/app/secrets/firebase-service-account.json';
 
     const fullPath = path.isAbsolute(p) ? p : path.join(process.cwd(), p);
     const file = fs.readFileSync(fullPath, 'utf8');
