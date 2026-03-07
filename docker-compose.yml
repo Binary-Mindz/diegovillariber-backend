@@ -7,7 +7,6 @@ services:
             POSTGRES_USER: ${DB_USER}
             POSTGRES_PASSWORD: ${DB_PASSWORD}
             POSTGRES_DB: ${DB_NAME}
-            PGDATA: /var/lib/postgresql/18/docker
         volumes:
             - postgres_data_prod:/var/lib/postgresql/data
             - ./backups:/backups
