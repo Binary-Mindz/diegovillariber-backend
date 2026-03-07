@@ -8,6 +8,8 @@ import { CreateRawShiftCommentDto } from './dto/comment-rawshift.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { ParticipationScope, RawShiftEntryStatus, RawShiftStatus, Role } from 'generated/prisma/enums';
 import { Prisma } from 'generated/prisma/client';
+import { allowedNodeEnvironmentFlags } from 'node:process';
+import { handlePrismaError } from '@/common/utils/error.handler';
 
 @Injectable()
 export class RawShiftService {
@@ -116,16 +118,20 @@ export class RawShiftService {
   }
 
  async createBattle(userId: string, dto: CreateRawShiftBattleDto) {
+  try{
+const user = await this.prisma.user.findFirst({where: {id:userId}})
+  if(!user){
+    throw new NotFoundException("Creator Not Found")
+  }
     const startDate = new Date(dto.startDate);
     const endDate = new Date(dto.endDate);
 
     if (Number.isNaN(startDate.getTime())) throw new BadRequestException('Invalid startDate');
     if (Number.isNaN(endDate.getTime())) throw new BadRequestException('Invalid endDate');
     if (endDate <= startDate) throw new BadRequestException('endDate must be after startDate');
-
     return this.prisma.rawShiftBattle.create({
       data: {
-        creatorId: userId,
+        creatorId: user.id,
         title: dto.title,
         description: dto.description ?? null,
         coverImage: dto.coverImage ?? null,
@@ -138,6 +144,9 @@ export class RawShiftService {
         status: dto.status ?? RawShiftStatus.PUBLISHED,
       },
     });
+  }catch(error){
+    handlePrismaError(error)
+  }
   }
 
   async updateBattle(id: string, userId: string, dto: UpdateRawShiftBattleDto) {
