@@ -56,30 +56,55 @@ async listChallenges(query: ChallengeQueryDto) {
   const page = query.page ?? 1;
   const limit = query.limit ?? 20;
   const skip = (page - 1) * limit;
-
   const now = new Date();
 
   const where: any = {};
+
+  // tab filter
   const tab = query.tab ?? ChallengeTab.ACTIVE;
 
-  if (query.category) {
-    where.category = query.category; 
-  }
-
-  if (tab === ChallengeTab.DRAFT) {
-    where.status = ChallengeStatus.DRAFT;
-  } else if (tab === ChallengeTab.ACTIVE) {
-    where.status = ChallengeStatus.PUBLISHED;
-    where.startDate = { lte: now };
-    where.endDate = { gte: now };
+  if (tab === ChallengeTab.ACTIVE) {
+    where.AND = [
+      { startDate: { lte: now } },
+      { endDate: { gte: now } },
+      { status: { not: ChallengeStatus.FINISHED } },
+    ];
   } else if (tab === ChallengeTab.UPCOMING) {
-    where.status = ChallengeStatus.PUBLISHED;
-    where.startDate = { gt: now };
+    where.AND = [
+      { startDate: { gt: now } },
+      { status: { not: ChallengeStatus.FINISHED } },
+    ];
   } else if (tab === ChallengeTab.FINISHED) {
     where.OR = [
-      { status: ChallengeStatus.COMPLETED },
+      { status: ChallengeStatus.FINISHED },
       { endDate: { lt: now } },
-      { status: ChallengeStatus.CANCELLED },
+    ];
+  }
+
+  // optional filters
+  if (query.category) {
+    where.category = query.category;
+  }
+
+  if (query.type) {
+    where.type = query.type;
+  }
+
+  if (query.preference) {
+    where.preference = query.preference;
+  }
+
+  if (query.participationScope) {
+    where.participationScope = query.participationScope;
+  }
+
+  if (query.search) {
+    where.OR = [
+      ...(where.OR ?? []),
+      { title: { contains: query.search, mode: 'insensitive' } },
+      { description: { contains: query.search, mode: 'insensitive' } },
+      { locationName: { contains: query.search, mode: 'insensitive' } },
+      { challengePrize: { contains: query.search, mode: 'insensitive' } },
     ];
   }
 
@@ -88,17 +113,115 @@ async listChallenges(query: ChallengeQueryDto) {
       where,
       skip,
       take: limit,
-      orderBy: { createdAt: 'desc' },
+      orderBy: [
+        { startDate: 'asc' },
+        { createdAt: 'desc' },
+      ],
       include: {
-        creator: true,
-        _count: { select: { challengeParticipants: true, challengeSubmissions: true } },
+        creator: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+        _count: {
+          select: {
+            challengeParticipants: true,
+            challengeSubmissions: true,
+          },
+        },
       },
     }),
     this.prisma.challenge.count({ where }),
   ]);
 
-  return { page, limit, total, items };
+  return {
+    page,
+    limit,
+    total,
+    totalPages: Math.ceil(total / limit),
+    items,
+  };
 }
+
+async listAdminCreatedChallenges(query: ChallengeQueryDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
+  const now = new Date();
+
+  const where: any = {
+    creator: {
+      role: 'ADMIN', // <-- তোমার actual enum/value অনুযায়ী change করো
+    },
+  };
+
+  const tab = query.tab ?? ChallengeTab.ACTIVE;
+
+  if (tab === ChallengeTab.ACTIVE) {
+    where.AND = [
+      ...(where.AND ?? []),
+      { startDate: { lte: now } },
+      { endDate: { gte: now } },
+      { status: { not: ChallengeStatus.FINISHED } },
+    ];
+  } else if (tab === ChallengeTab.UPCOMING) {
+    where.AND = [
+      ...(where.AND ?? []),
+      { startDate: { gt: now } },
+      { status: { not: ChallengeStatus.FINISHED } },
+    ];
+  } else if (tab === ChallengeTab.FINISHED) {
+    where.OR = [
+      { status: ChallengeStatus.FINISHED },
+      { endDate: { lt: now } },
+    ];
+  }
+
+  if (query.category) where.category = query.category;
+  if (query.type) where.type = query.type;
+  if (query.preference) where.preference = query.preference;
+  if (query.participationScope) where.participationScope = query.participationScope;
+
+  if (query.search) {
+    where.OR = [
+      ...(where.OR ?? []),
+      { title: { contains: query.search, mode: 'insensitive' } },
+      { description: { contains: query.search, mode: 'insensitive' } },
+      { locationName: { contains: query.search, mode: 'insensitive' } },
+      { challengePrize: { contains: query.search, mode: 'insensitive' } },
+    ];
+  }
+
+  const [items, total] = await this.prisma.$transaction([
+    this.prisma.challenge.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: [{ createdAt: 'desc' }],
+      include: {
+        creator: true,
+        _count: {
+          select: {
+            challengeParticipants: true,
+            challengeSubmissions: true,
+          },
+        },
+      },
+    }),
+    this.prisma.challenge.count({ where }),
+  ]);
+
+  return {
+    page,
+    limit,
+    total,
+    totalPages: Math.ceil(total / limit),
+    items,
+  };
+}
+
+
   async getChallenge(id: string) {
     const challenge = await this.prisma.challenge.findUnique({
       where: { id },
@@ -144,7 +267,7 @@ async listChallenges(query: ChallengeQueryDto) {
         rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
         maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
 
-        status: dto.status ?? ChallengeStatus.PUBLISHED,
+        status: dto.status ?? ChallengeStatus.UPCOMING,
       },
       include: { creator: true },
     });
@@ -210,7 +333,7 @@ async listChallenges(query: ChallengeQueryDto) {
   async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
     if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.status !== ChallengeStatus.PUBLISHED) throw new BadRequestException('Challenge is not open to join');
+    if (challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Challenge is not open to join');
 
     try {
       return await this.prisma.challengeParticipant.create({
@@ -249,7 +372,7 @@ async listChallenges(query: ChallengeQueryDto) {
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     const now = new Date();
-    if (challenge.status !== ChallengeStatus.PUBLISHED) throw new BadRequestException('Challenge is not accepting submissions');
+    if (challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Challenge is not accepting submissions');
     if (now < challenge.startDate) throw new BadRequestException('Challenge not started yet');
     if (now > challenge.endDate) throw new BadRequestException('Challenge already ended');
 
@@ -304,7 +427,7 @@ async listChallenges(query: ChallengeQueryDto) {
     if (!submission) throw new NotFoundException('Submission not found');
 
     if (submission.participant.userId === userId) throw new BadRequestException('You cannot vote on your own submission');
-    if (submission.challenge.status !== ChallengeStatus.PUBLISHED) throw new BadRequestException('Voting is closed');
+    if (submission.challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Voting is closed');
 
     const weight = dto.weight ?? 1;
 
@@ -399,7 +522,7 @@ async listChallenges(query: ChallengeQueryDto) {
   if (!challenge) throw new NotFoundException('Challenge not found');
   if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can complete this challenge');
 
-  if (challenge.status === ChallengeStatus.COMPLETED) {
+  if (challenge.status === ChallengeStatus.FINISHED) {
     return this.prisma.challengeResult.findUnique({
       where: { challengeId },
       include: { winners: true },
@@ -455,7 +578,7 @@ async listChallenges(query: ChallengeQueryDto) {
     await tx.challenge.update({
       where: { id: challengeId },
       data: {
-        status: ChallengeStatus.COMPLETED,
+        status: ChallengeStatus.FINISHED,
       },
     });
 

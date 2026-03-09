@@ -103,7 +103,6 @@ export class CreateHeadToHeadBattleDto {
   @ApiPropertyOptional({ example: 25 })
   @IsOptional()
   @IsInt()
-  @Min(1)
   @Max(20000)
   radiusKm?: number;
 

@@ -237,4 +237,60 @@ async getUsers(query: GetUsersQueryDto) {
     return { message: "Post deleted successfully" };
   }
 
+
+  async deleteUser(userId: string) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      id: true,
+      role: true,
+    },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  if (user.role === Role.ADMIN) {
+    throw new NotFoundException('Admin user cannot be deleted from this endpoint');
+  }
+
+  await this.prisma.$transaction(async (tx) => {
+    // delete child/dependent data first if needed
+    await tx.challengeParticipant.deleteMany({
+      where: { userId },
+    });
+
+    await tx.challengeVote.deleteMany({
+      where: { userId },
+    });
+
+    await tx.challengeReaction.deleteMany({
+      where: { userId },
+    });
+
+    await tx.challengeComment.deleteMany({
+      where: { userId },
+    });
+
+    await tx.challenge.deleteMany({
+      where: { creatorId: userId },
+    });
+
+    await tx.post.deleteMany({
+      where: { userId },
+    });
+
+    await tx.profile.deleteMany({
+      where: { userId },
+    });
+
+    await tx.user.delete({
+      where: { id: userId },
+    });
+  });
+
+  return { id: userId, deleted: true };
+}
+
 }

@@ -47,10 +47,9 @@ export type ParticipationScope = (typeof ParticipationScope)[keyof typeof Partic
 
 
 export const ChallengeStatus = {
-  DRAFT: 'DRAFT',
-  PUBLISHED: 'PUBLISHED',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
+  ACTIVE: 'ACTIVE',
+  UPCOMING: 'UPCOMING',
+  FINISHED: 'FINISHED'
 } as const
 
 export type ChallengeStatus = (typeof ChallengeStatus)[keyof typeof ChallengeStatus]
