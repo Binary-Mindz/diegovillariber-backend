@@ -24,7 +24,7 @@ export class AdminOverviewService {
       this.prisma.event.count(),
       this.prisma.challenge.count(),
       this.prisma.challenge.count({
-        where: { status : ChallengeStatus.PUBLISHED}
+        where: { status : ChallengeStatus.UPCOMING}
       }),
       this.prisma.headToHeadBattle.count(),
     ]);

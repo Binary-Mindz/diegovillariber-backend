@@ -37,6 +37,15 @@ export class ChallengeController {
     return this.service.listChallenges(query);
   }
 
+  @Get('admin/created')
+  @ApiOperation({ summary: 'List challenges created by admin users' })
+  async listAdminCreatedChallenges(@Query() query: ChallengeQueryDto) {
+    return handleRequest(
+      async () => this.service.listAdminCreatedChallenges(query),
+      'Admin created challenges fetched successfully',
+    );
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get challenge details' })
   @ApiResponse({ status: 200 })

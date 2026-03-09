@@ -30,7 +30,7 @@ import { GetUsersQueryDto } from './dto/get-user-query.dto';
 export class AdminUserManagementController {
   constructor(
     private readonly adminUserManagementService: AdminUserManagementService,
-  ) {}
+  ) { }
 
   @Get('overview')
   async getUsersWithStats(@Res({ passthrough: true }) res: Response) {
@@ -45,13 +45,13 @@ export class AdminUserManagementController {
 
   @Get('all-users')
   async getUsers(
-  @Query() query: GetUsersQueryDto,
-  @Res({ passthrough: true }) res: Response,
+    @Query() query: GetUsersQueryDto,
+    @Res({ passthrough: true }) res: Response,
   ) {
-     const response = await handleRequest(
-     () => this.adminUserManagementService.getUsers(query),
-    'Users fetched successfully',
-   );
+    const response = await handleRequest(
+      () => this.adminUserManagementService.getUsers(query),
+      'Users fetched successfully',
+    );
 
     res.status(response.statusCode);
     return response;
@@ -84,6 +84,22 @@ export class AdminUserManagementController {
     const response = await handleRequest(
       () => this.adminUserManagementService.deletePost(id),
       'Post deleted successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+  
+  @Delete('users/:id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Delete a user (admin only)' })
+  async deleteUser(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.adminUserManagementService.deleteUser(id),
+      'User deleted successfully',
     );
 
     res.status(response.statusCode);
