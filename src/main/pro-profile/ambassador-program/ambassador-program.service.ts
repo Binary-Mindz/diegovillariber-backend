@@ -12,6 +12,8 @@ import { AmbassadorProgramQueryDto } from './dto/ambassador-program-query.dto';
 import { UpdateAmbassadorStatusDto } from './dto/update-ambassador-status.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { AmbassadorStatus } from 'generated/prisma/enums';
+import { Prisma } from 'generated/prisma/client';
+import { QueryMode } from 'generated/prisma/internal/prismaNamespace';
 
 @Injectable()
 export class AmbassadorProgramService {
@@ -110,20 +112,22 @@ export class AmbassadorProgramService {
   /** ADMIN */
 
   async list(query: AmbassadorProgramQueryDto) {
-    const page = Math.max(parseInt(query.page ?? '1', 10), 1);
-    const limit = Math.min(Math.max(parseInt(query.limit ?? '10', 10), 1), 100);
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    const where: any = {};
+    const where: Prisma.AmbassadorProgramWhereInput = {};
 
-    if (query.status) where.status = query.status;
+    if (query.status) {
+      where.status = query.status;
+    }
 
     if (query.search?.trim()) {
       const s = query.search.trim();
       where.OR = [
-        { motorspotName: { contains: s, mode: 'insensitive' } },
-        { contactName: { contains: s, mode: 'insensitive' } },
-        { email: { contains: s, mode: 'insensitive' } },
+        { motorspotName: { contains: s, mode: QueryMode.insensitive } },
+        { contactName: { contains: s, mode: QueryMode.insensitive } },
+        { email: { contains: s, mode: QueryMode.insensitive } },
       ];
     }
 
@@ -133,12 +137,22 @@ export class AmbassadorProgramService {
         skip,
         take: limit,
         orderBy: { createdAt: 'desc' },
-        include: { user: true },
+        include: {
+          user: { select: { id: true, email: true, role: true } },
+        },
       }),
       this.prisma.ambassadorProgram.count({ where }),
     ]);
 
-    return { page, limit, total, items };
+    return {
+      data: items,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.max(1, Math.ceil(total / limit)),
+      },
+    };
   }
 
   async getById(id: string) {
@@ -184,7 +198,7 @@ export class AmbassadorProgramService {
     return updated;
   }
 
-    async deleteById(id: string) {
+  async deleteById(id: string) {
     const app = await this.prisma.ambassadorProgram.findUnique({
       where: { id },
       select: { id: true },

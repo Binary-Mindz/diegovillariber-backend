@@ -1,5 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsNumberString, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, Min, Max } from 'class-validator';
+import { Type } from 'class-transformer';
 
 export enum AmbassadorStatusDto {
   PENDING = 'PENDING',
@@ -9,20 +10,28 @@ export enum AmbassadorStatusDto {
 
 export class AmbassadorProgramQueryDto {
   @ApiPropertyOptional({
-    example: '1',
+    example: 1,
     description: 'Page number for pagination',
+    default: 1,
   })
   @IsOptional()
-  @IsNumberString()
-  page?: string;
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  page?: number;
 
   @ApiPropertyOptional({
-    example: '10',
+    example: 10,
     description: 'Number of records per page',
+    default: 10,
+    maximum: 100,
   })
   @IsOptional()
-  @IsNumberString()
-  limit?: string;
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(100)
+  limit?: number;
 
   @ApiPropertyOptional({
     enum: AmbassadorStatusDto,
