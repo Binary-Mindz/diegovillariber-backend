@@ -67,7 +67,9 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
     take: Math.min(query.limit ?? 20, 50),
     skip: query.offset ?? 0,
     include: {
-      creator: { select: { id: true, email: true } },
+      creator: { select: { id: true, email: true , profile: {select:{
+        profileName: true, imageUrl: true
+      }} } },
       _count: { select: { participants: true, submissions: true, battleComments: true, battleVotes: true } },
     },
   });
@@ -77,7 +79,12 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
     const battle = await this.prisma.headToHeadBattle.findUnique({
       where: { id },
       include: {
-        creator: { select: { id: true, email: true } },
+        creator: { select: { id: true, email: true , profile: {
+          select: {
+            profileName: true, 
+            imageUrl: true, 
+          }
+        }} },
         winnerUser: { select: { id: true, email: true } },
         participants: {
           orderBy: { joinedAt: 'asc' },
