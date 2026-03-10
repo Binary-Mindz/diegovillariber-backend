@@ -31,4 +31,12 @@ model Profile {
   labTimes               LabTime[]
   submitLabTimes         SubmitLabTime[]
   bikes                  Bike[]
+
+  splitScreenMatchRequests SplitScreenMatchRequest[]
+
+  splitScreenBattlesLeftUser SplitScreenBattle[] @relation("SplitScreenLeftProfile")
+
+  splitScreenBattleParticipants SplitScreenBattleParticipant[]
+
+  splitScreenBattlesRightUser SplitScreenBattle[] @relation("SplitScreenRightProfile")
 }

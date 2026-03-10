@@ -11,7 +11,7 @@ CREATE TYPE "Preference" AS ENUM ('CAR', 'BIKE', 'BOTH');
 CREATE TYPE "ParticipationScope" AS ENUM ('GLOBAL', 'RADIUS');
 
 -- CreateEnum
-CREATE TYPE "ChallengeStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'COMPLETED', 'CANCELLED');
+CREATE TYPE "ChallengeStatus" AS ENUM ('ACTIVE', 'UPCOMING', 'FINISHED');
 
 -- CreateEnum
 CREATE TYPE "DeviceType" AS ENUM ('MOBILE', 'DSLR', 'MIRRORLESS', 'ACTION_CAMERA', 'DRONE', 'OTHER');
@@ -104,7 +104,7 @@ CREATE TYPE "PostType" AS ENUM ('Spotter_Post', 'Owner_Post', 'ContentCretor_Pos
 CREATE TYPE "PointType" AS ENUM ('BATTLE_WIN', 'POST', 'LIKE', 'COMMENT', 'ONGOING');
 
 -- CreateEnum
-CREATE TYPE "EventStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
+CREATE TYPE "EventStatus" AS ENUM ('UPCOMING', 'ONGOING', 'COMPLETED');
 
 -- CreateEnum
 CREATE TYPE "BuyStatus" AS ENUM ('PENDING', 'PAID', 'CANCELLED', 'REFUNDED');
@@ -219,6 +219,57 @@ CREATE TYPE "DriverLevel" AS ENUM ('Amateur', 'Semi_Pro', 'Pro');
 
 -- CreateEnum
 CREATE TYPE "UsageMode" AS ENUM ('Daily', 'Weekend', 'Track_Only', 'Show_Only');
+
+-- CreateEnum
+CREATE TYPE "SteeringWheel" AS ENUM ('FANATEC', 'THRUSTMASTER', 'SIMUCUBE', 'MOZA_RACING', 'ASETEK_SIM_SPORTS', 'SIMAGIC', 'CAMMUS', 'VRS_DIRECT_FORCE', 'ACCUFORCE', 'AUGURY', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "WheelModel" AS ENUM ('FANATEC', 'LOGITECH', 'THRUSTMASTER', 'HEUSINKVELD', 'SIMUCUBE', 'MOZA_RACING', 'ASETEK_SIM_SPORTS', 'SIMAGIC', 'WAVE_ITALY', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "WheelBase" AS ENUM ('DESK_MOUNT', 'WHEEL_STAND', 'COCKPIT', 'FULL_MOTION', 'RIG', 'DIY_RIG');
+
+-- CreateEnum
+CREATE TYPE "NotificationType" AS ENUM ('LIKE', 'COMMENT', 'FOLLOW', 'MENTION', 'TAGGED', 'SHARE', 'BATTLE_INVITE', 'BATTLE_RESULT', 'CHALLENGE_INVITE', 'CHALLENGE_RESULT', 'LAPTIME_BEATEN', 'LAPTIME_COMPARE', 'SYSTEM', 'ADMIN');
+
+-- CreateEnum
+CREATE TYPE "NotificationEntityType" AS ENUM ('POST', 'COMMENT', 'USER', 'PROFILE', 'BATTLE', 'CHALLENGE', 'SUBMIT_LAB_TIME', 'LAB_TIME', 'PRIZE', 'PAYMENT', 'EVENT', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "NotificationChannel" AS ENUM ('IN_APP', 'PUSH', 'EMAIL');
+
+-- CreateEnum
+CREATE TYPE "NotificationStatus" AS ENUM ('UNREAD', 'READ', 'ARCHIVED');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenArenaStatus" AS ENUM ('ACTIVE', 'INACTIVE');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenMatchStatus" AS ENUM ('SEARCHING', 'MATCHED', 'CANCELLED', 'EXPIRED');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenBattleStatus" AS ENUM ('PENDING', 'LIVE', 'COMPLETED', 'CANCELLED');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenBattleCategory" AS ENUM ('STYLES', 'RACING', 'CLASSIC', 'STANCE', 'DRIFT', 'OFF_ROAD');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenMatchmakingMode" AS ENUM ('ANYONE', 'ONLINE_ONLY');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenPreferenceMode" AS ENUM ('ANY_CAR_BRAND', 'SAME_BRAND_ONLY', 'SAME_MODEL_ONLY', 'SPECIFIC_BRAND', 'SIMILAR_PRESTIGE');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenLeagueCode" AS ENUM ('WORLD', 'EUROPE', 'USA', 'UK', 'FRANCE', 'GERMANY', 'SPAIN');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenDivision" AS ENUM ('D1', 'D2', 'D3');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenVoteType" AS ENUM ('LEFT', 'RIGHT');
+
+-- CreateEnum
+CREATE TYPE "SplitScreenParticipantResult" AS ENUM ('WIN', 'LOSS', 'DRAW');
 
 -- CreateTable
 CREATE TABLE "AdvancedCarData" (
@@ -414,7 +465,7 @@ CREATE TABLE "Challenge" (
     "requireTrueShotVerification" BOOLEAN NOT NULL DEFAULT false,
     "rejectEditedPhotos" BOOLEAN NOT NULL DEFAULT false,
     "maxEntriesPerUser" INTEGER NOT NULL DEFAULT 1,
-    "status" "ChallengeStatus" NOT NULL DEFAULT 'DRAFT',
+    "status" "ChallengeStatus" DEFAULT 'UPCOMING',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
 
@@ -663,7 +714,7 @@ CREATE TABLE "Event" (
     "websiteLink" TEXT,
     "price" INTEGER NOT NULL,
     "eventType" "EventType" NOT NULL DEFAULT 'Race',
-    "eventStatus" "EventStatus" NOT NULL DEFAULT 'PENDING',
+    "eventStatus" "EventStatus" NOT NULL DEFAULT 'UPCOMING',
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -712,9 +763,9 @@ CREATE TABLE "Garage" (
 CREATE TABLE "HardwareSetup" (
     "id" UUID NOT NULL,
     "simRacingId" UUID NOT NULL,
-    "steeringWheel" TEXT,
-    "wheelModel" TEXT,
-    "wheelbase" TEXT,
+    "steeringWheel" "SteeringWheel" NOT NULL DEFAULT 'FANATEC',
+    "wheelModel" "WheelModel" NOT NULL DEFAULT 'LOGITECH',
+    "wheelbase" "WheelBase" NOT NULL DEFAULT 'DESK_MOUNT',
     "pedals" TEXT,
     "pedelModel" TEXT,
     "shifter" TEXT,
@@ -1001,6 +1052,58 @@ CREATE TABLE "MessageReceipt" (
 );
 
 -- CreateTable
+CREATE TABLE "Notification" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "actorUserId" UUID,
+    "type" "NotificationType" NOT NULL,
+    "channel" "NotificationChannel" NOT NULL DEFAULT 'IN_APP',
+    "status" "NotificationStatus" NOT NULL DEFAULT 'UNREAD',
+    "title" VARCHAR(120),
+    "message" TEXT,
+    "deepLink" VARCHAR(500),
+    "entityType" "NotificationEntityType",
+    "entityId" UUID,
+    "meta" JSONB,
+    "groupKey" VARCHAR(200),
+    "readAt" TIMESTAMPTZ(6),
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "Notification_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "NotificationPreference" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "inAppEnabled" BOOLEAN NOT NULL DEFAULT true,
+    "pushEnabled" BOOLEAN NOT NULL DEFAULT true,
+    "emailEnabled" BOOLEAN NOT NULL DEFAULT false,
+    "mutedTypes" "NotificationType"[],
+    "quietStart" VARCHAR(5),
+    "quietEnd" VARCHAR(5),
+    "timezone" VARCHAR(50),
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "NotificationPreference_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "DeviceToken" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "token" TEXT NOT NULL,
+    "platform" VARCHAR(20),
+    "isActive" BOOLEAN NOT NULL DEFAULT true,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+
+    CONSTRAINT "DeviceToken_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "OfficialPartner" (
     "id" UUID NOT NULL,
     "userId" UUID NOT NULL,
@@ -1101,6 +1204,7 @@ CREATE TABLE "ProductList" (
     "ownerId" UUID NOT NULL,
     "title" TEXT NOT NULL,
     "productImage" TEXT,
+    "location" TEXT,
     "description" TEXT,
     "category" "ProductCategory" NOT NULL DEFAULT 'CAR',
     "tags" TEXT[] DEFAULT ARRAY[]::TEXT[],
@@ -1129,6 +1233,7 @@ CREATE TABLE "Profile" (
     "preference" "Preference",
     "isActive" "IsActive" NOT NULL DEFAULT 'ACTIVE',
     "suspend" BOOLEAN NOT NULL DEFAULT false,
+    "locationStatus" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
@@ -1294,6 +1399,91 @@ CREATE TABLE "SimRacingProfile" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "SimRacingProfile_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SplitScreenMatchRequest" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "carId" UUID NOT NULL,
+    "league" "SplitScreenLeagueCode" NOT NULL,
+    "division" "SplitScreenDivision" NOT NULL,
+    "matchmakingMode" "SplitScreenMatchmakingMode" NOT NULL DEFAULT 'ANYONE',
+    "preferenceMode" "SplitScreenPreferenceMode" NOT NULL DEFAULT 'ANY_CAR_BRAND',
+    "preferredBrand" TEXT,
+    "battleCategory" "SplitScreenBattleCategory" NOT NULL,
+    "prestigePoint" INTEGER,
+    "status" "SplitScreenMatchStatus" NOT NULL DEFAULT 'SEARCHING',
+    "matchedBattleId" UUID,
+    "expiresAt" TIMESTAMP(3),
+    "cancelledAt" TIMESTAMP(3),
+    "matchedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SplitScreenMatchRequest_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SplitScreenBattle" (
+    "id" UUID NOT NULL,
+    "league" "SplitScreenLeagueCode" NOT NULL,
+    "division" "SplitScreenDivision" NOT NULL,
+    "category" "SplitScreenBattleCategory" NOT NULL,
+    "matchmakingMode" "SplitScreenMatchmakingMode" NOT NULL DEFAULT 'ANYONE',
+    "preferenceMode" "SplitScreenPreferenceMode" NOT NULL DEFAULT 'ANY_CAR_BRAND',
+    "preferredBrand" TEXT,
+    "leftUserId" UUID NOT NULL,
+    "leftProfileId" UUID NOT NULL,
+    "leftCarId" UUID NOT NULL,
+    "rightUserId" UUID NOT NULL,
+    "rightProfileId" UUID NOT NULL,
+    "rightCarId" UUID NOT NULL,
+    "leftRequestId" UUID,
+    "rightRequestId" UUID,
+    "status" "SplitScreenBattleStatus" NOT NULL DEFAULT 'LIVE',
+    "totalVotes" INTEGER NOT NULL DEFAULT 0,
+    "leftVotes" INTEGER NOT NULL DEFAULT 0,
+    "rightVotes" INTEGER NOT NULL DEFAULT 0,
+    "entryPrestige" INTEGER NOT NULL DEFAULT 300,
+    "prizePool" INTEGER NOT NULL DEFAULT 450,
+    "winnerSide" "SplitScreenVoteType",
+    "startedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "completedAt" TIMESTAMP(3),
+    "cancelledAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SplitScreenBattle_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SplitScreenBattleParticipant" (
+    "id" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "carId" UUID NOT NULL,
+    "side" "SplitScreenVoteType" NOT NULL,
+    "votes" INTEGER NOT NULL DEFAULT 0,
+    "result" "SplitScreenParticipantResult",
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SplitScreenBattleParticipant_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SplitScreenBattleVote" (
+    "id" UUID NOT NULL,
+    "battleId" UUID NOT NULL,
+    "voterId" UUID NOT NULL,
+    "vote" "SplitScreenVoteType" NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SplitScreenBattleVote_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1715,6 +1905,30 @@ CREATE INDEX "MessageReceipt_userId_status_idx" ON "MessageReceipt"("userId", "s
 CREATE UNIQUE INDEX "MessageReceipt_messageId_userId_key" ON "MessageReceipt"("messageId", "userId");
 
 -- CreateIndex
+CREATE INDEX "Notification_userId_status_createdAt_idx" ON "Notification"("userId", "status", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "Notification_userId_createdAt_idx" ON "Notification"("userId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "Notification_entityType_entityId_idx" ON "Notification"("entityType", "entityId");
+
+-- CreateIndex
+CREATE INDEX "Notification_groupKey_idx" ON "Notification"("groupKey");
+
+-- CreateIndex
+CREATE INDEX "Notification_type_idx" ON "Notification"("type");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "NotificationPreference_userId_key" ON "NotificationPreference"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "DeviceToken_token_key" ON "DeviceToken"("token");
+
+-- CreateIndex
+CREATE INDEX "DeviceToken_userId_isActive_idx" ON "DeviceToken"("userId", "isActive");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "OfficialPartner_userId_key" ON "OfficialPartner"("userId");
 
 -- CreateIndex
@@ -1800,6 +2014,51 @@ CREATE UNIQUE INDEX "Share_userId_postId_key" ON "Share"("userId", "postId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "SimRacingProfile_profileId_key" ON "SimRacingProfile"("profileId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenMatchRequest_status_league_division_battleCatego_idx" ON "SplitScreenMatchRequest"("status", "league", "division", "battleCategory");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenMatchRequest_userId_status_idx" ON "SplitScreenMatchRequest"("userId", "status");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenMatchRequest_profileId_idx" ON "SplitScreenMatchRequest"("profileId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenMatchRequest_carId_idx" ON "SplitScreenMatchRequest"("carId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SplitScreenBattle_leftRequestId_key" ON "SplitScreenBattle"("leftRequestId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SplitScreenBattle_rightRequestId_key" ON "SplitScreenBattle"("rightRequestId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattle_status_league_division_idx" ON "SplitScreenBattle"("status", "league", "division");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattle_leftUserId_idx" ON "SplitScreenBattle"("leftUserId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattle_rightUserId_idx" ON "SplitScreenBattle"("rightUserId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattleParticipant_userId_idx" ON "SplitScreenBattleParticipant"("userId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattleParticipant_profileId_idx" ON "SplitScreenBattleParticipant"("profileId");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattleParticipant_carId_idx" ON "SplitScreenBattleParticipant"("carId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SplitScreenBattleParticipant_battleId_side_key" ON "SplitScreenBattleParticipant"("battleId", "side");
+
+-- CreateIndex
+CREATE INDEX "SplitScreenBattleVote_battleId_vote_idx" ON "SplitScreenBattleVote"("battleId", "vote");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SplitScreenBattleVote_battleId_voterId_key" ON "SplitScreenBattleVote"("battleId", "voterId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "SpotterProfile_profileId_key" ON "SpotterProfile"("profileId");
@@ -2111,6 +2370,18 @@ ALTER TABLE "MessageReceipt" ADD CONSTRAINT "MessageReceipt_messageId_fkey" FORE
 ALTER TABLE "MessageReceipt" ADD CONSTRAINT "MessageReceipt_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Notification" ADD CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Notification" ADD CONSTRAINT "Notification_actorUserId_fkey" FOREIGN KEY ("actorUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "NotificationPreference" ADD CONSTRAINT "NotificationPreference_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "DeviceToken" ADD CONSTRAINT "DeviceToken_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "OfficialPartner" ADD CONSTRAINT "OfficialPartner_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -2202,6 +2473,60 @@ ALTER TABLE "Share" ADD CONSTRAINT "Share_userId_fkey" FOREIGN KEY ("userId") RE
 
 -- AddForeignKey
 ALTER TABLE "SimRacingProfile" ADD CONSTRAINT "SimRacingProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenMatchRequest" ADD CONSTRAINT "SplitScreenMatchRequest_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenMatchRequest" ADD CONSTRAINT "SplitScreenMatchRequest_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenMatchRequest" ADD CONSTRAINT "SplitScreenMatchRequest_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenMatchRequest" ADD CONSTRAINT "SplitScreenMatchRequest_matchedBattleId_fkey" FOREIGN KEY ("matchedBattleId") REFERENCES "SplitScreenBattle"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_leftUserId_fkey" FOREIGN KEY ("leftUserId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_leftProfileId_fkey" FOREIGN KEY ("leftProfileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_leftCarId_fkey" FOREIGN KEY ("leftCarId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_rightUserId_fkey" FOREIGN KEY ("rightUserId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_rightProfileId_fkey" FOREIGN KEY ("rightProfileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_rightCarId_fkey" FOREIGN KEY ("rightCarId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_leftRequestId_fkey" FOREIGN KEY ("leftRequestId") REFERENCES "SplitScreenMatchRequest"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattle" ADD CONSTRAINT "SplitScreenBattle_rightRequestId_fkey" FOREIGN KEY ("rightRequestId") REFERENCES "SplitScreenMatchRequest"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleParticipant" ADD CONSTRAINT "SplitScreenBattleParticipant_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "SplitScreenBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleParticipant" ADD CONSTRAINT "SplitScreenBattleParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleParticipant" ADD CONSTRAINT "SplitScreenBattleParticipant_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleParticipant" ADD CONSTRAINT "SplitScreenBattleParticipant_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleVote" ADD CONSTRAINT "SplitScreenBattleVote_battleId_fkey" FOREIGN KEY ("battleId") REFERENCES "SplitScreenBattle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SplitScreenBattleVote" ADD CONSTRAINT "SplitScreenBattleVote_voterId_fkey" FOREIGN KEY ("voterId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

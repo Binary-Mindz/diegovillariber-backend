@@ -127,13 +127,10 @@ export const ModelName = {
   SetupDescriptionPhoto: 'SetupDescriptionPhoto',
   Share: 'Share',
   SimRacingProfile: 'SimRacingProfile',
+  SplitScreenMatchRequest: 'SplitScreenMatchRequest',
   SplitScreenBattle: 'SplitScreenBattle',
-  SplitScreenParticipant: 'SplitScreenParticipant',
-  SplitScreenInvitation: 'SplitScreenInvitation',
-  SplitScreenSubmission: 'SplitScreenSubmission',
-  SplitScreenVote: 'SplitScreenVote',
-  SplitScreenComment: 'SplitScreenComment',
-  SplitScreenResult: 'SplitScreenResult',
+  SplitScreenBattleParticipant: 'SplitScreenBattleParticipant',
+  SplitScreenBattleVote: 'SplitScreenBattleVote',
   SpotterProfile: 'SpotterProfile',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
@@ -1292,31 +1289,56 @@ export const SimRacingProfileScalarFieldEnum = {
 export type SimRacingProfileScalarFieldEnum = (typeof SimRacingProfileScalarFieldEnum)[keyof typeof SimRacingProfileScalarFieldEnum]
 
 
+export const SplitScreenMatchRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  profileId: 'profileId',
+  carId: 'carId',
+  league: 'league',
+  division: 'division',
+  matchmakingMode: 'matchmakingMode',
+  preferenceMode: 'preferenceMode',
+  preferredBrand: 'preferredBrand',
+  battleCategory: 'battleCategory',
+  prestigePoint: 'prestigePoint',
+  status: 'status',
+  matchedBattleId: 'matchedBattleId',
+  expiresAt: 'expiresAt',
+  cancelledAt: 'cancelledAt',
+  matchedAt: 'matchedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenMatchRequestScalarFieldEnum = (typeof SplitScreenMatchRequestScalarFieldEnum)[keyof typeof SplitScreenMatchRequestScalarFieldEnum]
+
+
 export const SplitScreenBattleScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  description: 'description',
-  creatorId: 'creatorId',
+  league: 'league',
+  division: 'division',
   category: 'category',
   matchmakingMode: 'matchmakingMode',
   preferenceMode: 'preferenceMode',
   preferredBrand: 'preferredBrand',
-  similarPrestigeRange: 'similarPrestigeRange',
-  accessType: 'accessType',
+  leftUserId: 'leftUserId',
+  leftProfileId: 'leftProfileId',
+  leftCarId: 'leftCarId',
+  rightUserId: 'rightUserId',
+  rightProfileId: 'rightProfileId',
+  rightCarId: 'rightCarId',
+  leftRequestId: 'leftRequestId',
+  rightRequestId: 'rightRequestId',
   status: 'status',
-  maxParticipants: 'maxParticipants',
-  entryCost: 'entryCost',
+  totalVotes: 'totalVotes',
+  leftVotes: 'leftVotes',
+  rightVotes: 'rightVotes',
+  entryPrestige: 'entryPrestige',
   prizePool: 'prizePool',
-  winnerPointReward: 'winnerPointReward',
-  votingDurationHours: 'votingDurationHours',
-  startsAt: 'startsAt',
-  votingStartsAt: 'votingStartsAt',
-  votingEndsAt: 'votingEndsAt',
+  winnerSide: 'winnerSide',
+  startedAt: 'startedAt',
   completedAt: 'completedAt',
   cancelledAt: 'cancelledAt',
-  totalVotes: 'totalVotes',
-  totalComments: 'totalComments',
-  winnerId: 'winnerId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1324,95 +1346,32 @@ export const SplitScreenBattleScalarFieldEnum = {
 export type SplitScreenBattleScalarFieldEnum = (typeof SplitScreenBattleScalarFieldEnum)[keyof typeof SplitScreenBattleScalarFieldEnum]
 
 
-export const SplitScreenParticipantScalarFieldEnum = {
+export const SplitScreenBattleParticipantScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
   userId: 'userId',
   profileId: 'profileId',
-  lane: 'lane',
-  carBrand: 'carBrand',
-  carModel: 'carModel',
-  carYear: 'carYear',
-  carImageUrl: 'carImageUrl',
-  prestigePoints: 'prestigePoints',
-  joinedAt: 'joinedAt',
-  score: 'score',
-  isWinner: 'isWinner',
-  submissionStatus: 'submissionStatus',
+  carId: 'carId',
+  side: 'side',
+  votes: 'votes',
+  result: 'result',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type SplitScreenParticipantScalarFieldEnum = (typeof SplitScreenParticipantScalarFieldEnum)[keyof typeof SplitScreenParticipantScalarFieldEnum]
+export type SplitScreenBattleParticipantScalarFieldEnum = (typeof SplitScreenBattleParticipantScalarFieldEnum)[keyof typeof SplitScreenBattleParticipantScalarFieldEnum]
 
 
-export const SplitScreenInvitationScalarFieldEnum = {
+export const SplitScreenBattleVoteScalarFieldEnum = {
   id: 'id',
   battleId: 'battleId',
-  inviterId: 'inviterId',
-  inviteeId: 'inviteeId',
-  status: 'status',
-  respondedAt: 'respondedAt',
-  expiresAt: 'expiresAt',
+  voterId: 'voterId',
+  vote: 'vote',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type SplitScreenInvitationScalarFieldEnum = (typeof SplitScreenInvitationScalarFieldEnum)[keyof typeof SplitScreenInvitationScalarFieldEnum]
-
-
-export const SplitScreenSubmissionScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  participantId: 'participantId',
-  userId: 'userId',
-  mediaUrl: 'mediaUrl',
-  thumbnailUrl: 'thumbnailUrl',
-  caption: 'caption',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SplitScreenSubmissionScalarFieldEnum = (typeof SplitScreenSubmissionScalarFieldEnum)[keyof typeof SplitScreenSubmissionScalarFieldEnum]
-
-
-export const SplitScreenVoteScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  submissionId: 'submissionId',
-  userId: 'userId',
-  voteType: 'voteType',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SplitScreenVoteScalarFieldEnum = (typeof SplitScreenVoteScalarFieldEnum)[keyof typeof SplitScreenVoteScalarFieldEnum]
-
-
-export const SplitScreenCommentScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  userId: 'userId',
-  submissionId: 'submissionId',
-  content: 'content',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type SplitScreenCommentScalarFieldEnum = (typeof SplitScreenCommentScalarFieldEnum)[keyof typeof SplitScreenCommentScalarFieldEnum]
-
-
-export const SplitScreenResultScalarFieldEnum = {
-  id: 'id',
-  battleId: 'battleId',
-  participantId: 'participantId',
-  userId: 'userId',
-  resultType: 'resultType',
-  earnedPoints: 'earnedPoints',
-  createdAt: 'createdAt'
-} as const
-
-export type SplitScreenResultScalarFieldEnum = (typeof SplitScreenResultScalarFieldEnum)[keyof typeof SplitScreenResultScalarFieldEnum]
+export type SplitScreenBattleVoteScalarFieldEnum = (typeof SplitScreenBattleVoteScalarFieldEnum)[keyof typeof SplitScreenBattleVoteScalarFieldEnum]
 
 
 export const SpotterProfileScalarFieldEnum = {

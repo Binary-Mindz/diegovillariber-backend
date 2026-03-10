@@ -994,11 +994,27 @@ export const NotificationStatus = {
 export type NotificationStatus = (typeof NotificationStatus)[keyof typeof NotificationStatus]
 
 
+export const SplitScreenArenaStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type SplitScreenArenaStatus = (typeof SplitScreenArenaStatus)[keyof typeof SplitScreenArenaStatus]
+
+
+export const SplitScreenMatchStatus = {
+  SEARCHING: 'SEARCHING',
+  MATCHED: 'MATCHED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type SplitScreenMatchStatus = (typeof SplitScreenMatchStatus)[keyof typeof SplitScreenMatchStatus]
+
+
 export const SplitScreenBattleStatus = {
-  DRAFT: 'DRAFT',
-  OPEN: 'OPEN',
+  PENDING: 'PENDING',
   LIVE: 'LIVE',
-  VOTING: 'VOTING',
   COMPLETED: 'COMPLETED',
   CANCELLED: 'CANCELLED'
 } as const
@@ -1037,36 +1053,40 @@ export const SplitScreenPreferenceMode = {
 export type SplitScreenPreferenceMode = (typeof SplitScreenPreferenceMode)[keyof typeof SplitScreenPreferenceMode]
 
 
-export const SplitScreenInvitationStatus = {
-  PENDING: 'PENDING',
-  ACCEPTED: 'ACCEPTED',
-  DECLINED: 'DECLINED',
-  CANCELLED: 'CANCELLED',
-  EXPIRED: 'EXPIRED'
+export const SplitScreenLeagueCode = {
+  WORLD: 'WORLD',
+  EUROPE: 'EUROPE',
+  USA: 'USA',
+  UK: 'UK',
+  FRANCE: 'FRANCE',
+  GERMANY: 'GERMANY',
+  SPAIN: 'SPAIN'
 } as const
 
-export type SplitScreenInvitationStatus = (typeof SplitScreenInvitationStatus)[keyof typeof SplitScreenInvitationStatus]
+export type SplitScreenLeagueCode = (typeof SplitScreenLeagueCode)[keyof typeof SplitScreenLeagueCode]
 
 
-export const SplitScreenSubmissionStatus = {
-  PENDING: 'PENDING',
-  SUBMITTED: 'SUBMITTED'
+export const SplitScreenDivision = {
+  D1: 'D1',
+  D2: 'D2',
+  D3: 'D3'
 } as const
 
-export type SplitScreenSubmissionStatus = (typeof SplitScreenSubmissionStatus)[keyof typeof SplitScreenSubmissionStatus]
+export type SplitScreenDivision = (typeof SplitScreenDivision)[keyof typeof SplitScreenDivision]
 
 
 export const SplitScreenVoteType = {
-  UPVOTE: 'UPVOTE'
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT'
 } as const
 
 export type SplitScreenVoteType = (typeof SplitScreenVoteType)[keyof typeof SplitScreenVoteType]
 
 
-export const SplitScreenResultType = {
+export const SplitScreenParticipantResult = {
   WIN: 'WIN',
   LOSS: 'LOSS',
   DRAW: 'DRAW'
 } as const
 
-export type SplitScreenResultType = (typeof SplitScreenResultType)[keyof typeof SplitScreenResultType]
+export type SplitScreenParticipantResult = (typeof SplitScreenParticipantResult)[keyof typeof SplitScreenParticipantResult]

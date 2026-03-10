@@ -308,6 +308,10 @@ export type CarWhereInput = {
   garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
   advancedCarDatas?: Prisma.AdvancedCarDataListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestListRelationFilter
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleListRelationFilter
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
 }
 
 export type CarOrderByWithRelationInput = {
@@ -331,6 +335,10 @@ export type CarOrderByWithRelationInput = {
   garage?: Prisma.GarageOrderByWithRelationInput
   advancedCarDatas?: Prisma.AdvancedCarDataOrderByRelationAggregateInput
   legalNotices?: Prisma.LegalNoticeOrderByRelationAggregateInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestOrderByRelationAggregateInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantOrderByRelationAggregateInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
 }
 
 export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -357,6 +365,10 @@ export type CarWhereUniqueInput = Prisma.AtLeast<{
   garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
   advancedCarDatas?: Prisma.AdvancedCarDataListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestListRelationFilter
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleListRelationFilter
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
 }, "id">
 
 export type CarOrderByWithAggregationInput = {
@@ -424,6 +436,10 @@ export type CarCreateInput = {
   garage: Prisma.GarageCreateNestedOneWithoutCarsInput
   advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUncheckedCreateInput = {
@@ -445,6 +461,10 @@ export type CarUncheckedCreateInput = {
   price?: number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUpdateInput = {
@@ -466,6 +486,10 @@ export type CarUpdateInput = {
   garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
   advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateInput = {
@@ -487,6 +511,10 @@ export type CarUncheckedUpdateInput = {
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarCreateManyInput = {
@@ -755,6 +783,62 @@ export type CarUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.CarScalarWhereInput | Prisma.CarScalarWhereInput[]
 }
 
+export type CarCreateNestedOneWithoutSplitScreenMatchRequestsInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedCreateWithoutSplitScreenMatchRequestsInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenMatchRequestsInput
+  connect?: Prisma.CarWhereUniqueInput
+}
+
+export type CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedCreateWithoutSplitScreenMatchRequestsInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenMatchRequestsInput
+  upsert?: Prisma.CarUpsertWithoutSplitScreenMatchRequestsInput
+  connect?: Prisma.CarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutSplitScreenMatchRequestsInput, Prisma.CarUpdateWithoutSplitScreenMatchRequestsInput>, Prisma.CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput>
+}
+
+export type CarCreateNestedOneWithoutSplitScreenBattlesLeftUserInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattlesLeftUserInput
+  connect?: Prisma.CarWhereUniqueInput
+}
+
+export type CarCreateNestedOneWithoutSplitScreenBattlesRightUserInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattlesRightUserInput
+  connect?: Prisma.CarWhereUniqueInput
+}
+
+export type CarUpdateOneRequiredWithoutSplitScreenBattlesLeftUserNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattlesLeftUserInput
+  upsert?: Prisma.CarUpsertWithoutSplitScreenBattlesLeftUserInput
+  connect?: Prisma.CarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUpdateWithoutSplitScreenBattlesLeftUserInput>, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput>
+}
+
+export type CarUpdateOneRequiredWithoutSplitScreenBattlesRightUserNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattlesRightUserInput
+  upsert?: Prisma.CarUpsertWithoutSplitScreenBattlesRightUserInput
+  connect?: Prisma.CarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutSplitScreenBattlesRightUserInput, Prisma.CarUpdateWithoutSplitScreenBattlesRightUserInput>, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput>
+}
+
+export type CarCreateNestedOneWithoutSplitScreenBattleParticipantsInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattleParticipantsInput
+  connect?: Prisma.CarWhereUniqueInput
+}
+
+export type CarUpdateOneRequiredWithoutSplitScreenBattleParticipantsNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutSplitScreenBattleParticipantsInput
+  upsert?: Prisma.CarUpsertWithoutSplitScreenBattleParticipantsInput
+  connect?: Prisma.CarWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutSplitScreenBattleParticipantsInput, Prisma.CarUpdateWithoutSplitScreenBattleParticipantsInput>, Prisma.CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput>
+}
+
 export type CarCreateWithoutAdvancedCarDatasInput = {
   id?: string
   image?: string | null
@@ -773,6 +857,10 @@ export type CarCreateWithoutAdvancedCarDatasInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
   garage: Prisma.GarageCreateNestedOneWithoutCarsInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUncheckedCreateWithoutAdvancedCarDatasInput = {
@@ -793,6 +881,10 @@ export type CarUncheckedCreateWithoutAdvancedCarDatasInput = {
   listOnMarketplace?: boolean
   price?: number | null
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
 }
 
 export type CarCreateOrConnectWithoutAdvancedCarDatasInput = {
@@ -829,6 +921,10 @@ export type CarUpdateWithoutAdvancedCarDatasInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
   garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutAdvancedCarDatasInput = {
@@ -849,6 +945,10 @@ export type CarUncheckedUpdateWithoutAdvancedCarDatasInput = {
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarCreateWithoutGarageInput = {
@@ -869,6 +969,10 @@ export type CarCreateWithoutGarageInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
   advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUncheckedCreateWithoutGarageInput = {
@@ -889,6 +993,10 @@ export type CarUncheckedCreateWithoutGarageInput = {
   price?: number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
 }
 
 export type CarCreateOrConnectWithoutGarageInput = {
@@ -957,6 +1065,10 @@ export type CarCreateWithoutLegalNoticesInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
   garage: Prisma.GarageCreateNestedOneWithoutCarsInput
   advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUncheckedCreateWithoutLegalNoticesInput = {
@@ -977,6 +1089,10 @@ export type CarUncheckedCreateWithoutLegalNoticesInput = {
   listOnMarketplace?: boolean
   price?: number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
 }
 
 export type CarCreateOrConnectWithoutLegalNoticesInput = {
@@ -1013,6 +1129,10 @@ export type CarUpdateWithoutLegalNoticesInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
   garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
   advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1033,6 +1153,10 @@ export type CarUncheckedUpdateWithoutLegalNoticesInput = {
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarCreateWithoutProfileInput = {
@@ -1053,6 +1177,10 @@ export type CarCreateWithoutProfileInput = {
   garage: Prisma.GarageCreateNestedOneWithoutCarsInput
   advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
 }
 
 export type CarUncheckedCreateWithoutProfileInput = {
@@ -1073,6 +1201,10 @@ export type CarUncheckedCreateWithoutProfileInput = {
   price?: number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
 }
 
 export type CarCreateOrConnectWithoutProfileInput = {
@@ -1099,6 +1231,454 @@ export type CarUpdateWithWhereUniqueWithoutProfileInput = {
 export type CarUpdateManyWithWhereWithoutProfileInput = {
   where: Prisma.CarScalarWhereInput
   data: Prisma.XOR<Prisma.CarUpdateManyMutationInput, Prisma.CarUncheckedUpdateManyWithoutProfileInput>
+}
+
+export type CarCreateWithoutSplitScreenMatchRequestsInput = {
+  id?: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
+  garage: Prisma.GarageCreateNestedOneWithoutCarsInput
+  advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
+}
+
+export type CarUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
+  id?: string
+  profileId: string
+  garageId: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
+}
+
+export type CarCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedCreateWithoutSplitScreenMatchRequestsInput>
+}
+
+export type CarUpsertWithoutSplitScreenMatchRequestsInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedCreateWithoutSplitScreenMatchRequestsInput>
+  where?: Prisma.CarWhereInput
+}
+
+export type CarUpdateToOneWithWhereWithoutSplitScreenMatchRequestsInput = {
+  where?: Prisma.CarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenMatchRequestsInput, Prisma.CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput>
+}
+
+export type CarUpdateWithoutSplitScreenMatchRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
+  advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
+}
+
+export type CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
+}
+
+export type CarCreateWithoutSplitScreenBattlesLeftUserInput = {
+  id?: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
+  garage: Prisma.GarageCreateNestedOneWithoutCarsInput
+  advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
+}
+
+export type CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
+  id?: string
+  profileId: string
+  garageId: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
+}
+
+export type CarCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput>
+}
+
+export type CarCreateWithoutSplitScreenBattlesRightUserInput = {
+  id?: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
+  garage: Prisma.GarageCreateNestedOneWithoutCarsInput
+  advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
+}
+
+export type CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
+  id?: string
+  profileId: string
+  garageId: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
+}
+
+export type CarCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput>
+}
+
+export type CarUpsertWithoutSplitScreenBattlesLeftUserInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput>
+  where?: Prisma.CarWhereInput
+}
+
+export type CarUpdateToOneWithWhereWithoutSplitScreenBattlesLeftUserInput = {
+  where?: Prisma.CarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattlesLeftUserInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput>
+}
+
+export type CarUpdateWithoutSplitScreenBattlesLeftUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
+  advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
+}
+
+export type CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
+}
+
+export type CarUpsertWithoutSplitScreenBattlesRightUserInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput>
+  where?: Prisma.CarWhereInput
+}
+
+export type CarUpdateToOneWithWhereWithoutSplitScreenBattlesRightUserInput = {
+  where?: Prisma.CarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattlesRightUserInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput>
+}
+
+export type CarUpdateWithoutSplitScreenBattlesRightUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
+  advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+}
+
+export type CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+}
+
+export type CarCreateWithoutSplitScreenBattleParticipantsInput = {
+  id?: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  profile: Prisma.ProfileCreateNestedOneWithoutCarsInput
+  garage: Prisma.GarageCreateNestedOneWithoutCarsInput
+  advancedCarDatas?: Prisma.AdvancedCarDataCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
+}
+
+export type CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
+  id?: string
+  profileId: string
+  garageId: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrain
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategory
+  listOnMarketplace?: boolean
+  price?: number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedCreateNestedManyWithoutCarInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutCarInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutCarInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftCarInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
+}
+
+export type CarCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
+  where: Prisma.CarWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput>
+}
+
+export type CarUpsertWithoutSplitScreenBattleParticipantsInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput>
+  where?: Prisma.CarWhereInput
+}
+
+export type CarUpdateToOneWithWhereWithoutSplitScreenBattleParticipantsInput = {
+  where?: Prisma.CarWhereInput
+  data: Prisma.XOR<Prisma.CarUpdateWithoutSplitScreenBattleParticipantsInput, Prisma.CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput>
+}
+
+export type CarUpdateWithoutSplitScreenBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
+  advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
+}
+
+export type CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBodyTypeFieldUpdateOperationsInput | $Enums.BodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarCreateManyGarageInput = {
@@ -1137,6 +1717,10 @@ export type CarUpdateWithoutGarageInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutCarsNestedInput
   advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutGarageInput = {
@@ -1157,6 +1741,10 @@ export type CarUncheckedUpdateWithoutGarageInput = {
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutGarageInput = {
@@ -1213,6 +1801,10 @@ export type CarUpdateWithoutProfileInput = {
   garage?: Prisma.GarageUpdateOneRequiredWithoutCarsNestedInput
   advancedCarDatas?: Prisma.AdvancedCarDataUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutProfileInput = {
@@ -1233,6 +1825,10 @@ export type CarUncheckedUpdateWithoutProfileInput = {
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   advancedCarDatas?: Prisma.AdvancedCarDataUncheckedUpdateManyWithoutCarNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftCarNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutProfileInput = {
@@ -1261,11 +1857,19 @@ export type CarUncheckedUpdateManyWithoutProfileInput = {
 export type CarCountOutputType = {
   advancedCarDatas: number
   legalNotices: number
+  splitScreenMatchRequests: number
+  splitScreenBattlesLeftUser: number
+  splitScreenBattleParticipants: number
+  splitScreenBattlesRightUser: number
 }
 
 export type CarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedCarDatas?: boolean | CarCountOutputTypeCountAdvancedCarDatasArgs
   legalNotices?: boolean | CarCountOutputTypeCountLegalNoticesArgs
+  splitScreenMatchRequests?: boolean | CarCountOutputTypeCountSplitScreenMatchRequestsArgs
+  splitScreenBattlesLeftUser?: boolean | CarCountOutputTypeCountSplitScreenBattlesLeftUserArgs
+  splitScreenBattleParticipants?: boolean | CarCountOutputTypeCountSplitScreenBattleParticipantsArgs
+  splitScreenBattlesRightUser?: boolean | CarCountOutputTypeCountSplitScreenBattlesRightUserArgs
 }
 
 /**
@@ -1292,6 +1896,34 @@ export type CarCountOutputTypeCountLegalNoticesArgs<ExtArgs extends runtime.Type
   where?: Prisma.LegalNoticeWhereInput
 }
 
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeCountSplitScreenMatchRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenMatchRequestWhereInput
+}
+
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeCountSplitScreenBattlesLeftUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenBattleWhereInput
+}
+
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeCountSplitScreenBattleParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenBattleParticipantWhereInput
+}
+
+/**
+ * CarCountOutputType without action
+ */
+export type CarCountOutputTypeCountSplitScreenBattlesRightUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenBattleWhereInput
+}
+
 
 export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1314,6 +1946,10 @@ export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
   advancedCarDatas?: boolean | Prisma.Car$advancedCarDatasArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Car$legalNoticesArgs<ExtArgs>
+  splitScreenMatchRequests?: boolean | Prisma.Car$splitScreenMatchRequestsArgs<ExtArgs>
+  splitScreenBattlesLeftUser?: boolean | Prisma.Car$splitScreenBattlesLeftUserArgs<ExtArgs>
+  splitScreenBattleParticipants?: boolean | Prisma.Car$splitScreenBattleParticipantsArgs<ExtArgs>
+  splitScreenBattlesRightUser?: boolean | Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
@@ -1384,6 +2020,10 @@ export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
   advancedCarDatas?: boolean | Prisma.Car$advancedCarDatasArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Car$legalNoticesArgs<ExtArgs>
+  splitScreenMatchRequests?: boolean | Prisma.Car$splitScreenMatchRequestsArgs<ExtArgs>
+  splitScreenBattlesLeftUser?: boolean | Prisma.Car$splitScreenBattlesLeftUserArgs<ExtArgs>
+  splitScreenBattleParticipants?: boolean | Prisma.Car$splitScreenBattleParticipantsArgs<ExtArgs>
+  splitScreenBattlesRightUser?: boolean | Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CarIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1402,6 +2042,10 @@ export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     garage: Prisma.$GaragePayload<ExtArgs>
     advancedCarDatas: Prisma.$AdvancedCarDataPayload<ExtArgs>[]
     legalNotices: Prisma.$LegalNoticePayload<ExtArgs>[]
+    splitScreenMatchRequests: Prisma.$SplitScreenMatchRequestPayload<ExtArgs>[]
+    splitScreenBattlesLeftUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
+    splitScreenBattleParticipants: Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>[]
+    splitScreenBattlesRightUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1818,6 +2462,10 @@ export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Type
   garage<T extends Prisma.GarageDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GarageDefaultArgs<ExtArgs>>): Prisma.Prisma__GarageClient<runtime.Types.Result.GetResult<Prisma.$GaragePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   advancedCarDatas<T extends Prisma.Car$advancedCarDatasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$advancedCarDatasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdvancedCarDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   legalNotices<T extends Prisma.Car$legalNoticesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$legalNoticesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LegalNoticePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenMatchRequests<T extends Prisma.Car$splitScreenMatchRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$splitScreenMatchRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenMatchRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenBattlesLeftUser<T extends Prisma.Car$splitScreenBattlesLeftUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$splitScreenBattlesLeftUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenBattleParticipants<T extends Prisma.Car$splitScreenBattleParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$splitScreenBattleParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenBattlesRightUser<T extends Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2304,6 +2952,102 @@ export type Car$legalNoticesArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.LegalNoticeScalarFieldEnum | Prisma.LegalNoticeScalarFieldEnum[]
+}
+
+/**
+ * Car.splitScreenMatchRequests
+ */
+export type Car$splitScreenMatchRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenMatchRequest
+   */
+  select?: Prisma.SplitScreenMatchRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenMatchRequest
+   */
+  omit?: Prisma.SplitScreenMatchRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenMatchRequestInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenMatchRequestWhereInput
+  orderBy?: Prisma.SplitScreenMatchRequestOrderByWithRelationInput | Prisma.SplitScreenMatchRequestOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenMatchRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenMatchRequestScalarFieldEnum | Prisma.SplitScreenMatchRequestScalarFieldEnum[]
+}
+
+/**
+ * Car.splitScreenBattlesLeftUser
+ */
+export type Car$splitScreenBattlesLeftUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenBattle
+   */
+  select?: Prisma.SplitScreenBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenBattle
+   */
+  omit?: Prisma.SplitScreenBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenBattleInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenBattleWhereInput
+  orderBy?: Prisma.SplitScreenBattleOrderByWithRelationInput | Prisma.SplitScreenBattleOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenBattleScalarFieldEnum | Prisma.SplitScreenBattleScalarFieldEnum[]
+}
+
+/**
+ * Car.splitScreenBattleParticipants
+ */
+export type Car$splitScreenBattleParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenBattleParticipant
+   */
+  select?: Prisma.SplitScreenBattleParticipantSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenBattleParticipant
+   */
+  omit?: Prisma.SplitScreenBattleParticipantOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenBattleParticipantInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenBattleParticipantWhereInput
+  orderBy?: Prisma.SplitScreenBattleParticipantOrderByWithRelationInput | Prisma.SplitScreenBattleParticipantOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenBattleParticipantWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenBattleParticipantScalarFieldEnum | Prisma.SplitScreenBattleParticipantScalarFieldEnum[]
+}
+
+/**
+ * Car.splitScreenBattlesRightUser
+ */
+export type Car$splitScreenBattlesRightUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenBattle
+   */
+  select?: Prisma.SplitScreenBattleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenBattle
+   */
+  omit?: Prisma.SplitScreenBattleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenBattleInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenBattleWhereInput
+  orderBy?: Prisma.SplitScreenBattleOrderByWithRelationInput | Prisma.SplitScreenBattleOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenBattleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenBattleScalarFieldEnum | Prisma.SplitScreenBattleScalarFieldEnum[]
 }
 
 /**

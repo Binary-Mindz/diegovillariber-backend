@@ -1,8 +1,12 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsOptional } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum } from 'class-validator';
+import { SplitScreenVoteType } from 'generated/prisma/enums';
 
-export class VoteSplitScreenDto {
-  @ApiPropertyOptional({ example: 'Optional for future expansion' })
-  @IsOptional()
-  reaction?: string;
+export class VoteSplitScreenBattleDto {
+  @ApiProperty({
+    enum: SplitScreenVoteType,
+    example: SplitScreenVoteType.RIGHT,
+  })
+  @IsEnum(SplitScreenVoteType)
+  vote: SplitScreenVoteType;
 }
