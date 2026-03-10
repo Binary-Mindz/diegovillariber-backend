@@ -17,9 +17,9 @@ model VirtualSimRacingEvent {
   notes          String?
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
-   @@index([profileId])
-   @@index([simPlatform, eventType])
-   @@index([dateAndTime])
+  @@index([profileId])
+  @@index([simPlatform, eventType])
+  @@index([dateAndTime])
 }

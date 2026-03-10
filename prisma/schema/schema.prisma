@@ -40,7 +40,7 @@ enum IsActive {
   INACTIVE
 }
 
-enum AccountStatus  {
+enum AccountStatus {
   ACTIVE
   SUSPEND
   INACTIVE
@@ -59,7 +59,6 @@ enum PostType {
   ProDriver_Post
   SimRacing_Post
 }
-
 
 enum PointType {
   BATTLE_WIN
@@ -128,7 +127,6 @@ enum VehicleCategory {
   TRACK
   CLASSIC
 
- 
   NAKED
   ADVENTURE
   TOURING
@@ -165,6 +163,7 @@ enum BodyType {
   TRACK
   CLASSIC
 }
+
 enum BikeBodyType {
   SPORT
   NAKED
@@ -194,12 +193,12 @@ enum DriveTrain {
   AWD
   FOUR_WD
 }
+
 enum DriveTrainBike {
   CHAIN
   BELT
   SHAFT
 }
-
 
 enum DriveCategory {
   DAILY_DRIVE
@@ -316,7 +315,6 @@ enum ProductCategory {
   SIM_RACING
 }
 
-
 enum CarClass {
   GT3
   GT4
@@ -336,6 +334,7 @@ enum CarClass {
   VINTAGE
   OTHER
 }
+
 enum Circuit {
   Spa_Francorchamps
   Nurburgring_Nordschleife
@@ -383,6 +382,7 @@ enum ReceiptStatus {
   DELIVERED
   READ
 }
+
 enum FuelType {
   Gasoline
   Diesel
@@ -421,38 +421,41 @@ enum UsageMode {
   Track_Only
   Show_Only
 }
+
 enum SteeringWheel {
-FANATEC
-THRUSTMASTER
-SIMUCUBE
-MOZA_RACING
-ASETEK_SIM_SPORTS
-SIMAGIC
-CAMMUS
-VRS_DIRECT_FORCE
-ACCUFORCE
-AUGURY
-OTHER
+  FANATEC
+  THRUSTMASTER
+  SIMUCUBE
+  MOZA_RACING
+  ASETEK_SIM_SPORTS
+  SIMAGIC
+  CAMMUS
+  VRS_DIRECT_FORCE
+  ACCUFORCE
+  AUGURY
+  OTHER
 }
+
 enum WheelModel {
-FANATEC
-LOGITECH
-THRUSTMASTER
-HEUSINKVELD
-SIMUCUBE
-MOZA_RACING
-ASETEK_SIM_SPORTS
-SIMAGIC
-WAVE_ITALY
-OTHER
+  FANATEC
+  LOGITECH
+  THRUSTMASTER
+  HEUSINKVELD
+  SIMUCUBE
+  MOZA_RACING
+  ASETEK_SIM_SPORTS
+  SIMAGIC
+  WAVE_ITALY
+  OTHER
 }
+
 enum WheelBase {
-DESK_MOUNT
-WHEEL_STAND
-COCKPIT
-FULL_MOTION
-RIG
-DIY_RIG
+  DESK_MOUNT
+  WHEEL_STAND
+  COCKPIT
+  FULL_MOTION
+  RIG
+  DIY_RIG
 }
 
 enum NotificationType {

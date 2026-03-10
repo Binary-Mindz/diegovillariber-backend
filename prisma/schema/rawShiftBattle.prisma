@@ -22,7 +22,7 @@ enum RawShiftSoftware {
 }
 
 model RawShiftBattle {
-  id          String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   creatorId String @db.Uuid
   creator   User   @relation("RawShiftCreator", fields: [creatorId], references: [id], onDelete: Cascade)
@@ -30,22 +30,22 @@ model RawShiftBattle {
   winnerUserId String? @db.Uuid
   winnerUser   User?   @relation("RawShiftWinner", fields: [winnerUserId], references: [id], onDelete: SetNull)
 
-  title       String   @db.VarChar(255)
-  description String?  @db.Text
+  title       String  @db.VarChar(255)
+  description String? @db.Text
 
-  coverImage  String?
-  bannerImage String?
-  participantLimit Int?     
-  rawShiftPrice      String
-  location      String?  @db.VarChar(150)
-  
-  startDate   DateTime @db.Timestamptz(6)
-  endDate     DateTime @db.Timestamptz(6)
+  coverImage       String?
+  bannerImage      String?
+  participantLimit Int?
+  rawShiftPrice    String
+  location         String? @db.VarChar(150)
 
-  status      RawShiftStatus @default(DRAFT)
+  startDate DateTime @db.Timestamptz(6)
+  endDate   DateTime @db.Timestamptz(6)
 
-  createdAt   DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt   DateTime @updatedAt @db.Timestamptz(6)
+  status RawShiftStatus @default(DRAFT)
+
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   participants RawShiftParticipant[]
   entries      RawShiftEntry[]
@@ -58,16 +58,16 @@ model RawShiftBattle {
 }
 
 model RawShiftParticipant {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId  String @db.Uuid
-  userId    String @db.Uuid
+  battleId String @db.Uuid
+  userId   String @db.Uuid
 
-  battle    RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  battle RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  joinedAt  DateTime @default(now()) @db.Timestamptz(6)
-  leftAt    DateTime? // if user leaves (optional)
+  joinedAt DateTime  @default(now()) @db.Timestamptz(6)
+  leftAt   DateTime? // if user leaves (optional)
 
   @@unique([battleId, userId])
   @@index([userId])
@@ -75,31 +75,31 @@ model RawShiftParticipant {
 }
 
 model RawShiftEntry {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId  String @db.Uuid
-  userId    String @db.Uuid
+  battleId String @db.Uuid
+  userId   String @db.Uuid
 
-  battle    RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  battle RawShiftBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  rawMediaUrl       String
-  rawThumbnailUrl   String?
-  editedMediaUrl    String
+  rawMediaUrl        String
+  rawThumbnailUrl    String?
+  editedMediaUrl     String
   editedThumbnailUrl String?
 
-  caption     String?
-  hashtags    String[] @default([]) // “#cars #editing” etc (optional)
+  caption  String?
+  hashtags String[] @default([]) // “#cars #editing” etc (optional)
 
-  status     RawShiftEntryStatus @default(SUBMITTED)
+  status RawShiftEntryStatus @default(SUBMITTED)
 
   // Voting / scoring (optional but useful for winner selection)
-  score      Int @default(0) // can be computed from votes
-  createdAt  DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt  DateTime @updatedAt @db.Timestamptz(6)
+  score     Int      @default(0) // can be computed from votes
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
-  votes      RawShiftVote[]
-  comments   RawShiftComment[]
+  votes    RawShiftVote[]
+  comments RawShiftComment[]
 
   @@unique([battleId, userId])
   @@index([battleId])
@@ -108,16 +108,16 @@ model RawShiftEntry {
 }
 
 model RawShiftVote {
-  id       String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  entryId  String @db.Uuid
-  userId   String @db.Uuid
+  entryId String @db.Uuid
+  userId  String @db.Uuid
 
-  entry    RawShiftEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
-  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entry RawShiftEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  user  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // voteType can be used if you want 1-5 rating later
-  value    Int @default(1)
+  value Int @default(1)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
 
@@ -127,17 +127,17 @@ model RawShiftVote {
 }
 
 model RawShiftComment {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId  String? @db.Uuid
-  entryId   String? @db.Uuid
-  userId    String  @db.Uuid
+  battleId String? @db.Uuid
+  entryId  String? @db.Uuid
+  userId   String  @db.Uuid
 
-  battle    RawShiftBattle? @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  entry     RawShiftEntry?  @relation(fields: [entryId], references: [id], onDelete: Cascade)
-  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  battle RawShiftBattle? @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  entry  RawShiftEntry?  @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  user   User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  message   String @db.Text
+  message String @db.Text
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
 

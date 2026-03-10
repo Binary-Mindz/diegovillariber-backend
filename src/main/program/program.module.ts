@@ -8,9 +8,10 @@ import { ChallengeModule } from "./challenge/challenge.module";
 import { LabTimeModule } from "./lab-time/lab-time.module";
 import { SubmitLabTimeModule } from "./submit-lab-time/submit-lab-time.module";
 import { VirtualSimEventModule } from "./virtual-sim-event/virtual-sim-event.module";
+import { SplitScreenModule } from "./split-screen/split-screen.module";
 
 @Module({
-  imports: [PrizeModule,EventModule, RawShiftModule, HeadToHeadModule, ChallengeModule, LabTimeModule, SubmitLabTimeModule, VirtualSimEventModule],
+  imports: [PrizeModule,EventModule, RawShiftModule, HeadToHeadModule, ChallengeModule, LabTimeModule, SubmitLabTimeModule, VirtualSimEventModule, SplitScreenModule],
   controllers: [],
   providers: [],
   exports: [],

@@ -1,8 +1,8 @@
 model SubmitLabTime {
-  id        String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  profileId String   @db.Uuid
-  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String  @db.Uuid
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   simPlatform Platform @default(iRacing)
   circuit     Circuit  @default(Spa_Francorchamps)
@@ -10,12 +10,12 @@ model SubmitLabTime {
   carName  String?
   carClass CarClass @default(DRIFT)
 
-  lapTimeMs  Int
+  lapTimeMs   Int
   sessionDate DateTime @db.Timestamptz(6)
 
-  videoLink       String? @db.VarChar(500)
+  videoLink       String?         @db.VarChar(500)
   telemetrySource TelemetrySource @default(iRacing_MoTec)
-  telemetryData   String? @db.Text
+  telemetryData   String?         @db.Text
 
   tractionControl Boolean @default(false)
   abs             Boolean @default(false)
@@ -24,14 +24,14 @@ model SubmitLabTime {
   racingLine      Boolean @default(false)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   @@index([profileId])
   @@index([circuit])
   @@index([carClass])
   @@index([simPlatform])
   @@index([lapTimeMs])
-  @@index([circuit, carClass, lapTimeMs]) 
-  @@index([profileId, circuit])           
+  @@index([circuit, carClass, lapTimeMs])
+  @@index([profileId, circuit])
   @@map("SubmitLabTime")
 }

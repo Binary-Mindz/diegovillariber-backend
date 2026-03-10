@@ -17,6 +17,7 @@ import {
   ReactionType,
   SubmissionStatus,
 } from 'generated/prisma/enums';
+import { profile } from 'console';
 
 @Injectable()
 export class ChallengeService {
@@ -27,7 +28,7 @@ export class ChallengeService {
     creator: {
       select: {
         id: true,
-        email: true,
+        email: true
       },
     },
     challengeParticipants: {

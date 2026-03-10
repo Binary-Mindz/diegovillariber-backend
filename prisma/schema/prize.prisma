@@ -1,10 +1,10 @@
 model Prize {
-  id          String           @id @default(uuid()) @db.Uuid
- 
-  prizeName    String
-   // Admin who created it
-  createdById String      @db.Uuid
-  createdBy   User        @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  id String @id @default(uuid()) @db.Uuid
+
+  prizeName   String
+  // Admin who created it
+  createdById String @db.Uuid
+  createdBy   User   @relation(fields: [createdById], references: [id], onDelete: Restrict)
 
   @@map("Prize")
 }

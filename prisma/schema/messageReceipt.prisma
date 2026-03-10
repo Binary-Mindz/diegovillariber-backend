@@ -6,8 +6,8 @@ model MessageReceipt {
   updatedAt DateTime      @updatedAt
   createdAt DateTime      @default(now())
 
-  message   Message       @relation(fields: [messageId], references: [id], onDelete: Cascade)
-  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  message Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([messageId, userId])
   @@index([userId, status])

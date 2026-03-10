@@ -1,5 +1,5 @@
 model Bike {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   profileId String @db.Uuid
   garageId  String @db.Uuid
@@ -7,12 +7,12 @@ model Bike {
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
   garage  Garage  @relation(fields: [garageId], references: [id], onDelete: Cascade)
 
-  image       String?
-  make        String?
-  model       String?
-  bodyType    BikeBodyType @default(SPORT)
-  transmission Transmission @default(MANUAL)
-  driveTrain   DriveTrainBike   @default(CHAIN)
+  image        String?
+  make         String?
+  model        String?
+  bodyType     BikeBodyType   @default(SPORT)
+  transmission Transmission   @default(MANUAL)
+  driveTrain   DriveTrainBike @default(CHAIN)
 
   country     String?
   color       String?
@@ -20,14 +20,14 @@ model Bike {
   description String?
 
   category          DriveCategoryBike @default(DAILY_RIDER)
-  listOnMarketplace Boolean       @default(false)
+  listOnMarketplace Boolean           @default(false)
   price             Int?
 
   advancedBikeDatas AdvancedBikeData[]
   legalNotices      LegalNotice[]
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   @@index([profileId])
   @@index([garageId])
@@ -39,32 +39,33 @@ model Bike {
 }
 
 model AdvancedBikeData {
-  id    String @id @default(uuid()) @db.Uuid
+  id     String @id @default(uuid()) @db.Uuid
   bikeId String @db.Uuid
-  bike   Bike    @relation(fields: [bikeId], references: [id], onDelete: Cascade)
+  bike   Bike   @relation(fields: [bikeId], references: [id], onDelete: Cascade)
 
-  engineAndPerformance    EngineAndPerformance?
-  driverTrain             BikeDriveTrains?
-  suspensions Suspension?
-  wheelAndTires BikeWheelTires?
-  bikeElectronics BikeElectronics?
-  bikeUsageAndNotes BikeUsageAndNotes?
+  engineAndPerformance EngineAndPerformance?
+  driverTrain          BikeDriveTrains?
+  suspensions          Suspension?
+  wheelAndTires        BikeWheelTires?
+  bikeElectronics      BikeElectronics?
+  bikeUsageAndNotes    BikeUsageAndNotes?
 }
+
 model EngineAndPerformance {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
-  engineType  String
+  engineType   String
   displacement Int?
-  power Int?
-  torque Int?
-  ecu String?
+  power        Int?
+  torque       Int?
+  ecu          String?
 }
 
 model BikeDriveTrains {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
   transmissionMods String?
@@ -73,44 +74,45 @@ model BikeDriveTrains {
 }
 
 model Suspension {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
-  frontSuspension    String?
-  rearSuspension     String?
-  frontBrakes        String?
-  rearBrake          String?
-  abs                String?
-  notes              String?
+  frontSuspension String?
+  rearSuspension  String?
+  frontBrakes     String?
+  rearBrake       String?
+  abs             String?
+  notes           String?
 }
 
 model BikeWheelTires {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
-  wheels     String?
-  tires      String?
+  wheels String?
+  tires  String?
 }
 
 model BikeElectronics {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
-  riding              String?
-  tractionControl     String?
-  wheelieControl      String?
+  riding          String?
+  tractionControl String?
+  wheelieControl  String?
 }
+
 model BikeUsageAndNotes {
-  id                String          @id @default(uuid()) @db.Uuid
-  advancedBikeDataId String          @unique @db.Uuid
+  id                 String           @id @default(uuid()) @db.Uuid
+  advancedBikeDataId String           @unique @db.Uuid
   advancedBikeData   AdvancedBikeData @relation(fields: [advancedBikeDataId], references: [id], onDelete: Cascade)
 
-  weight    Int?
+  weight       Int?
   primaryUsage String?
-  ridingLevel   String?
-  buildStatus    String?
-  notes   String?
+  ridingLevel  String?
+  buildStatus  String?
+  notes        String?
 }
