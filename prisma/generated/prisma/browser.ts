@@ -398,6 +398,31 @@ export type Share = Prisma.ShareModel
  */
 export type SimRacingProfile = Prisma.SimRacingProfileModel
 /**
+ * Model SplitScreenBattle
+ * 
+ */
+export type SplitScreenBattle = Prisma.SplitScreenBattleModel
+/**
+ * Model SplitScreenParticipant
+ * 
+ */
+export type SplitScreenParticipant = Prisma.SplitScreenParticipantModel
+/**
+ * Model SplitScreenVote
+ * 
+ */
+export type SplitScreenVote = Prisma.SplitScreenVoteModel
+/**
+ * Model SplitScreenReward
+ * 
+ */
+export type SplitScreenReward = Prisma.SplitScreenRewardModel
+/**
+ * Model SplitScreenResult
+ * 
+ */
+export type SplitScreenResult = Prisma.SplitScreenResultModel
+/**
  * Model SpotterProfile
  * 
  */

@@ -992,3 +992,52 @@ export const NotificationStatus = {
 } as const
 
 export type NotificationStatus = (typeof NotificationStatus)[keyof typeof NotificationStatus]
+
+
+export const SplitScreenBattleStatus = {
+  OPEN: 'OPEN',
+  MATCHED: 'MATCHED',
+  LIVE: 'LIVE',
+  VOTING: 'VOTING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SplitScreenBattleStatus = (typeof SplitScreenBattleStatus)[keyof typeof SplitScreenBattleStatus]
+
+
+export const SplitScreenCategory = {
+  STYLES: 'STYLES',
+  RACING: 'RACING',
+  CLASSIC: 'CLASSIC',
+  STANCE: 'STANCE',
+  DRIFT: 'DRIFT',
+  OFF_ROAD: 'OFF_ROAD'
+} as const
+
+export type SplitScreenCategory = (typeof SplitScreenCategory)[keyof typeof SplitScreenCategory]
+
+
+export const SplitScreenMatchMode = {
+  ANYONE: 'ANYONE',
+  ONLINE_ONLY: 'ONLINE_ONLY'
+} as const
+
+export type SplitScreenMatchMode = (typeof SplitScreenMatchMode)[keyof typeof SplitScreenMatchMode]
+
+
+export const SplitScreenVoteStatus = {
+  ACTIVE: 'ACTIVE',
+  REVOKED: 'REVOKED'
+} as const
+
+export type SplitScreenVoteStatus = (typeof SplitScreenVoteStatus)[keyof typeof SplitScreenVoteStatus]
+
+
+export const SplitScreenResultType = {
+  WIN: 'WIN',
+  LOSS: 'LOSS',
+  DRAW: 'DRAW'
+} as const
+
+export type SplitScreenResultType = (typeof SplitScreenResultType)[keyof typeof SplitScreenResultType]
