@@ -1,8 +1,18 @@
+enum SplitScreenArenaStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum SplitScreenMatchStatus {
+  SEARCHING
+  MATCHED
+  CANCELLED
+  EXPIRED
+}
+
 enum SplitScreenBattleStatus {
-  DRAFT
-  OPEN
+  PENDING
   LIVE
-  VOTING
   COMPLETED
   CANCELLED
 }
@@ -29,219 +39,173 @@ enum SplitScreenPreferenceMode {
   SIMILAR_PRESTIGE
 }
 
-enum SplitScreenInvitationStatus {
-  PENDING
-  ACCEPTED
-  DECLINED
-  CANCELLED
-  EXPIRED
+enum SplitScreenLeagueCode {
+  WORLD
+  EUROPE
+  USA
+  UK
+  FRANCE
+  GERMANY
+  SPAIN
 }
 
-enum SplitScreenSubmissionStatus {
-  PENDING
-  SUBMITTED
+enum SplitScreenDivision {
+  D1
+  D2
+  D3
 }
 
 enum SplitScreenVoteType {
-  UPVOTE
+  LEFT
+  RIGHT
 }
 
-enum SplitScreenResultType {
+enum SplitScreenParticipantResult {
   WIN
   LOSS
   DRAW
 }
 
+model SplitScreenMatchRequest {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId    String @db.Uuid
+  profileId String @db.Uuid
+  carId     String @db.Uuid
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  car     Car     @relation(fields: [carId], references: [id], onDelete: Cascade)
+
+  league   SplitScreenLeagueCode
+  division SplitScreenDivision
+
+  matchmakingMode SplitScreenMatchmakingMode @default(ANYONE)
+  preferenceMode  SplitScreenPreferenceMode  @default(ANY_CAR_BRAND)
+  preferredBrand  String?
+  battleCategory  SplitScreenBattleCategory
+
+  prestigePoint Int? // optional if later needed for similar prestige matching
+
+  status SplitScreenMatchStatus @default(SEARCHING)
+
+  matchedBattleId String?            @db.Uuid
+  matchedBattle   SplitScreenBattle? @relation("BattleFromRequest", fields: [matchedBattleId], references: [id])
+
+  expiresAt   DateTime?
+  cancelledAt DateTime?
+  matchedAt   DateTime?
+
+  createdAt                   DateTime            @default(now())
+  updatedAt                   DateTime            @updatedAt
+  splitScreenBattlesLeftUser  SplitScreenBattle[] @relation("LeftRequestBattle")
+  splitScreenBattlesRightUser SplitScreenBattle[] @relation("RightRequestBattle")
+
+  @@index([status, league, division, battleCategory])
+  @@index([userId, status])
+  @@index([profileId])
+  @@index([carId])
+}
+
 model SplitScreenBattle {
-  id          String  @id @default(uuid()) @db.Uuid
-  title       String?
-  description String?
-  creatorId   String  @db.Uuid
-  creator     User    @relation("SplitScreenBattleCreator", fields: [creatorId], references: [id])
+  id String @id @default(uuid()) @db.Uuid
 
-  category             SplitScreenBattleCategory
-  matchmakingMode      SplitScreenMatchmakingMode @default(ANYONE)
-  preferenceMode       SplitScreenPreferenceMode  @default(ANY_CAR_BRAND)
-  preferredBrand       String?
-  similarPrestigeRange Int?
+  league   SplitScreenLeagueCode
+  division SplitScreenDivision
+  category SplitScreenBattleCategory
 
-  accessType BattleAccessType        @default(OPEN)
-  status     SplitScreenBattleStatus @default(OPEN)
+  matchmakingMode SplitScreenMatchmakingMode @default(ANYONE)
+  preferenceMode  SplitScreenPreferenceMode  @default(ANY_CAR_BRAND)
+  preferredBrand  String?
 
-  maxParticipants     Int @default(2)
-  entryCost           Int @default(0)
-  prizePool           Int @default(0)
-  winnerPointReward   Int @default(450)
-  votingDurationHours Int @default(24)
+  leftUserId    String @db.Uuid
+  leftProfileId String @db.Uuid
+  leftCarId     String @db.Uuid
 
-  startsAt       DateTime?
-  votingStartsAt DateTime?
-  votingEndsAt   DateTime?
-  completedAt    DateTime?
-  cancelledAt    DateTime?
+  rightUserId    String @db.Uuid
+  rightProfileId String @db.Uuid
+  rightCarId     String @db.Uuid
+
+  leftUser    User    @relation("SplitScreenLeftUser", fields: [leftUserId], references: [id], onDelete: Cascade)
+  leftProfile Profile @relation("SplitScreenLeftProfile", fields: [leftProfileId], references: [id], onDelete: Cascade)
+  leftCar     Car     @relation("SplitScreenLeftCar", fields: [leftCarId], references: [id], onDelete: Cascade)
+
+  rightUser    User    @relation("SplitScreenRightUser", fields: [rightUserId], references: [id], onDelete: Cascade)
+  rightProfile Profile @relation("SplitScreenRightProfile", fields: [rightProfileId], references: [id], onDelete: Cascade)
+  rightCar     Car     @relation("SplitScreenRightCar", fields: [rightCarId], references: [id], onDelete: Cascade)
+
+  leftRequestId  String? @unique @db.Uuid
+  rightRequestId String? @unique @db.Uuid
+
+  leftRequest  SplitScreenMatchRequest? @relation("LeftRequestBattle", fields: [leftRequestId], references: [id])
+  rightRequest SplitScreenMatchRequest? @relation("RightRequestBattle", fields: [rightRequestId], references: [id])
+
+  status SplitScreenBattleStatus @default(LIVE)
 
   totalVotes    Int @default(0)
-  totalComments Int @default(0)
+  leftVotes     Int @default(0)
+  rightVotes    Int @default(0)
+  entryPrestige Int @default(300)
+  prizePool     Int @default(450)
 
-  winnerId String? @db.Uuid
-  winner   User?   @relation("SplitScreenBattleWinner", fields: [winnerId], references: [id])
+  winnerSide SplitScreenVoteType?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  cancelledAt DateTime?
 
-  participants SplitScreenParticipant[]
-  invitations  SplitScreenInvitation[]
-  submissions  SplitScreenSubmission[]
-  votes        SplitScreenVote[]
-  comments     SplitScreenComment[]
-  results      SplitScreenResult[]
-  pointLogs    UserPoint[]
-
-  @@index([creatorId])
-  @@index([winnerId])
-  @@index([status])
-  @@index([category])
-  @@index([createdAt])
-}
-
-model SplitScreenParticipant {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-
-  userId String @db.Uuid
-  user   User   @relation("SplitScreenBattleParticipant", fields: [userId], references: [id])
-
-  profileId      String? @db.Uuid
-  lane           Int
-  carBrand       String?
-  carModel       String?
-  carYear        Int?
-  carImageUrl    String?
-  prestigePoints Int     @default(0)
-
-  joinedAt         DateTime                    @default(now())
-  score            Int                         @default(0)
-  isWinner         Boolean                     @default(false)
-  submissionStatus SplitScreenSubmissionStatus @default(PENDING)
+  votes        SplitScreenBattleVote[]
+  participants SplitScreenBattleParticipant[]
+  requests     SplitScreenMatchRequest[]      @relation("BattleFromRequest")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  submission SplitScreenSubmission?
-  results    SplitScreenResult[]
-
-  @@unique([battleId, userId])
-  @@unique([battleId, lane])
-  @@index([userId])
+  @@index([status, league, division])
+  @@index([leftUserId])
+  @@index([rightUserId])
 }
 
-model SplitScreenInvitation {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+model SplitScreenBattleParticipant {
+  id String @id @default(uuid()) @db.Uuid
 
-  inviterId String @db.Uuid
-  inviter   User   @relation("SplitScreenInviter", fields: [inviterId], references: [id])
+  battleId  String @db.Uuid
+  userId    String @db.Uuid
+  profileId String @db.Uuid
+  carId     String @db.Uuid
 
-  inviteeId String @db.Uuid
-  invitee   User   @relation("SplitScreenInvitee", fields: [inviteeId], references: [id])
+  side SplitScreenVoteType
 
-  status      SplitScreenInvitationStatus @default(PENDING)
-  respondedAt DateTime?
-  expiresAt   DateTime?
+  votes  Int                           @default(0)
+  result SplitScreenParticipantResult?
+
+  battle  SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user    User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  profile Profile           @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  car     Car               @relation(fields: [carId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([battleId, inviteeId])
-  @@index([battleId])
-  @@index([inviterId])
-  @@index([inviteeId])
-  @@index([status])
+  @@unique([battleId, side])
+  @@index([userId])
+  @@index([profileId])
+  @@index([carId])
 }
 
-model SplitScreenSubmission {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+model SplitScreenBattleVote {
+  id String @id @default(uuid()) @db.Uuid
 
-  participantId String                 @unique @db.Uuid
-  participant   SplitScreenParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+  battleId String              @db.Uuid
+  voterId  String              @db.Uuid
+  vote     SplitScreenVoteType
 
-  userId String @db.Uuid
-  user   User   @relation("SplitScreenSubmissionUser", fields: [userId], references: [id])
-
-  mediaUrl     String
-  thumbnailUrl String?
-  caption      String?
+  battle SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  voter  User              @relation(fields: [voterId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  votes    SplitScreenVote[]
-  comments SplitScreenComment[]
-
-  @@unique([battleId, userId])
-  @@index([battleId])
-  @@index([userId])
-}
-
-model SplitScreenVote {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-
-  submissionId String                @db.Uuid
-  submission   SplitScreenSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
-
-  userId String @db.Uuid
-  user   User   @relation("SplitScreenVoteUser", fields: [userId], references: [id])
-
-  voteType  SplitScreenVoteType @default(UPVOTE)
-  createdAt DateTime            @default(now())
-  updatedAt DateTime            @updatedAt
-
-  @@unique([battleId, userId])
-  @@index([submissionId])
-  @@index([userId])
-}
-
-model SplitScreenComment {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-
-  userId String @db.Uuid
-  user   User   @relation("SplitScreenCommentUser", fields: [userId], references: [id])
-
-  submissionId String?                @db.Uuid
-  submission   SplitScreenSubmission? @relation(fields: [submissionId], references: [id], onDelete: Cascade)
-
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([battleId])
-  @@index([userId])
-  @@index([submissionId])
-}
-
-model SplitScreenResult {
-  id       String            @id @default(uuid()) @db.Uuid
-  battleId String            @db.Uuid
-  battle   SplitScreenBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-
-  participantId String                 @db.Uuid
-  participant   SplitScreenParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
-
-  userId String @db.Uuid
-  user   User   @relation("SplitScreenResultUser", fields: [userId], references: [id])
-
-  resultType   SplitScreenResultType
-  earnedPoints Int                   @default(0)
-  createdAt    DateTime              @default(now())
-
-  @@index([battleId])
-  @@index([userId])
+  @@unique([battleId, voterId])
+  @@index([battleId, vote])
 }

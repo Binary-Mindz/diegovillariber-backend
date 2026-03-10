@@ -17,6 +17,4 @@ model UserPoint {
   follow   Follow? @relation(fields: [followId], references: [id])
 
   points Int
-
-  splitScreenBattles SplitScreenBattle[]
 }

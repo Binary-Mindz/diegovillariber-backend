@@ -21,4 +21,12 @@ model Car {
   price             Int?
   advancedCarDatas  AdvancedCarData[]
   legalNotices      LegalNotice[]
+
+  splitScreenMatchRequests SplitScreenMatchRequest[]
+
+  splitScreenBattlesLeftUser SplitScreenBattle[] @relation("SplitScreenLeftCar")
+
+  splitScreenBattleParticipants SplitScreenBattleParticipant[]
+
+  splitScreenBattlesRightUser SplitScreenBattle[] @relation("SplitScreenRightCar")
 }

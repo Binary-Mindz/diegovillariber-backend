@@ -418,40 +418,25 @@ export type Share = Prisma.ShareModel
  */
 export type SimRacingProfile = Prisma.SimRacingProfileModel
 /**
+ * Model SplitScreenMatchRequest
+ * 
+ */
+export type SplitScreenMatchRequest = Prisma.SplitScreenMatchRequestModel
+/**
  * Model SplitScreenBattle
  * 
  */
 export type SplitScreenBattle = Prisma.SplitScreenBattleModel
 /**
- * Model SplitScreenParticipant
+ * Model SplitScreenBattleParticipant
  * 
  */
-export type SplitScreenParticipant = Prisma.SplitScreenParticipantModel
+export type SplitScreenBattleParticipant = Prisma.SplitScreenBattleParticipantModel
 /**
- * Model SplitScreenInvitation
+ * Model SplitScreenBattleVote
  * 
  */
-export type SplitScreenInvitation = Prisma.SplitScreenInvitationModel
-/**
- * Model SplitScreenSubmission
- * 
- */
-export type SplitScreenSubmission = Prisma.SplitScreenSubmissionModel
-/**
- * Model SplitScreenVote
- * 
- */
-export type SplitScreenVote = Prisma.SplitScreenVoteModel
-/**
- * Model SplitScreenComment
- * 
- */
-export type SplitScreenComment = Prisma.SplitScreenCommentModel
-/**
- * Model SplitScreenResult
- * 
- */
-export type SplitScreenResult = Prisma.SplitScreenResultModel
+export type SplitScreenBattleVote = Prisma.SplitScreenBattleVoteModel
 /**
  * Model SpotterProfile
  * 
