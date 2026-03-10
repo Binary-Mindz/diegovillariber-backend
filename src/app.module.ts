@@ -14,6 +14,7 @@ import { PropertyModule } from './main/property/property.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { FirebaseModule } from './main/firebase/firebase.module';
 import { NotificationModule } from './main/notification/notification.module';
+import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { NotificationModule } from './main/notification/notification.module';
     FileModule,
     FirebaseModule,
     NotificationModule,
+    MotorsportRankingModule,
     AdminModule
   ],
   controllers: [],
