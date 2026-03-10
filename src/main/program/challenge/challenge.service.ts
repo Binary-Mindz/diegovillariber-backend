@@ -96,23 +96,13 @@ async listChallenges(query: ChallengeQueryDto) {
   // tab filter
   const tab = query.tab ?? ChallengeTab.ACTIVE;
 
-  if (tab === ChallengeTab.ACTIVE) {
-    where.AND = [
-      { startDate: { lte: now } },
-      { endDate: { gte: now } },
-      { status: { not: ChallengeStatus.FINISHED } },
-    ];
-  } else if (tab === ChallengeTab.UPCOMING) {
-    where.AND = [
-      { startDate: { gt: now } },
-      { status: { not: ChallengeStatus.FINISHED } },
-    ];
-  } else if (tab === ChallengeTab.FINISHED) {
-    where.OR = [
-      { status: ChallengeStatus.FINISHED },
-      { endDate: { lt: now } },
-    ];
-  }
+if (tab === ChallengeTab.ACTIVE) {
+  where.status = ChallengeStatus.ACTIVE;
+} else if (tab === ChallengeTab.UPCOMING) {
+  where.status = ChallengeStatus.UPCOMING;
+} else if (tab === ChallengeTab.FINISHED) {
+  where.status = ChallengeStatus.FINISHED;
+}
 
   // optional filters
   if (query.category) {
@@ -299,8 +289,7 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
         requireTrueShotVerification: dto.requireTrueShotVerification ?? false,
         rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
         maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
-
-        status: dto.status ?? ChallengeStatus.UPCOMING,
+        status: ChallengeStatus.UPCOMING,
       },
       include: { creator: true },
     });
@@ -348,7 +337,6 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
           : {}),
         ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
         ...(dto.maxEntriesPerUser !== undefined ? { maxEntriesPerUser: dto.maxEntriesPerUser } : {}),
-        ...(dto.status !== undefined ? { status: dto.status } : {}),
       },
       include: { creator: true },
     });
@@ -456,44 +444,55 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
     });
   }
 
-  async vote(submissionId: string, userId: string, dto: VoteChallengeDto) {
-    const submission = await this.prisma.challengeSubmission.findUnique({
-      where: { id: submissionId },
-      include: { participant: true, challenge: true },
-    });
-    if (!submission) throw new NotFoundException('Submission not found');
+ async vote(submissionId: string, userId: string, dto: VoteChallengeDto) {
+  const submission = await this.prisma.challengeSubmission.findUnique({
+    where: { id: submissionId },
+    include: { participant: true, challenge: true },
+  });
 
-    if (submission.participant.userId === userId) throw new BadRequestException('You cannot vote on your own submission');
-    if (submission.challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Voting is closed');
-
-    const weight = dto.weight ?? 1;
-
-    return this.prisma.$transaction(async (tx) => {
-      // upsert (one vote per user per submission)
-      const vote = await tx.challengeVote.upsert({
-        where: { submissionId_userId: { submissionId, userId } },
-        create: { submissionId, userId, weight },
-        update: { weight },
-      });
-
-      // recompute counts
-      const agg = await tx.challengeVote.aggregate({
-        where: { submissionId },
-        _sum: { weight: true },
-        _count: { id: true },
-      });
-
-      await tx.challengeSubmission.update({
-        where: { id: submissionId },
-        data: {
-          voteCount: agg._count.id,
-          score: agg._sum.weight ?? 0,
-        },
-      });
-
-      return vote;
-    });
+  if (!submission) {
+    throw new NotFoundException('Submission not found');
   }
+
+  if (submission.participant.userId === userId) {
+    throw new BadRequestException('You cannot vote on your own submission');
+  }
+
+  if (submission.challenge.status !== ChallengeStatus.ACTIVE) {
+    throw new BadRequestException('Voting is closed');
+  }
+
+  const now = new Date();
+  if (now < submission.challenge.startDate || now > submission.challenge.endDate) {
+    throw new BadRequestException('Voting is allowed only during active challenge time');
+  }
+
+  const weight = dto.weight ?? 1;
+
+  return this.prisma.$transaction(async (tx) => {
+    const vote = await tx.challengeVote.upsert({
+      where: { submissionId_userId: { submissionId, userId } },
+      create: { submissionId, userId, weight },
+      update: { weight },
+    });
+
+    const agg = await tx.challengeVote.aggregate({
+      where: { submissionId },
+      _sum: { weight: true },
+      _count: { id: true },
+    });
+
+    await tx.challengeSubmission.update({
+      where: { id: submissionId },
+      data: {
+        voteCount: agg._count.id,
+        score: agg._sum.weight ?? 0,
+      },
+    });
+
+    return vote;
+  });
+}
 
   async react(submissionId: string, userId: string, dto: ReactChallengeDto) {
     const type = dto.type ?? ReactionType.LIKE;
