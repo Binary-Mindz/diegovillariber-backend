@@ -1,34 +1,34 @@
 model User {
-  id                String    @id @default(uuid()) @db.Uuid
-  email             String    @unique
+  id                String        @id @default(uuid()) @db.Uuid
+  email             String        @unique
   phone             String?
   password          String
-  role              Role      @default(USER)
+  role              Role          @default(USER)
   activeRole        Role?
   otp               String?
   expiresIn         String?
-  isEmailVerified   Boolean   @default(false)
-  accountStatus     AccountStatus  @default(ACTIVE)
+  isEmailVerified   Boolean       @default(false)
+  accountStatus     AccountStatus @default(ACTIVE)
   emailOtp          String?
   emailOtpExpiresAt DateTime?
   resetOtp          String?
   resetOtpExpiresAt DateTime?
   refreshTokenHash  String?
-  totalPoints       Int       @default(0)
-  balance           Int       @default(0)
-  likeCount         Int       @default(0)
-  commentCount      Int       @default(0)
-  shareCount        Int       @default(0)
-  activeProfileId   String?   @db.Uuid
+  totalPoints       Int           @default(0)
+  balance           Int           @default(0)
+  likeCount         Int           @default(0)
+  commentCount      Int           @default(0)
+  shareCount        Int           @default(0)
+  activeProfileId   String?       @db.Uuid
 
   profile  Profile[]
   posts    Post[]
   events   Event[]
   payments Payment[]
 
-  following             Follow[]               @relation("UserFollowing")
-  followers             Follow[]               @relation("UserFollowers")
-  
+  following Follow[] @relation("UserFollowing")
+  followers Follow[] @relation("UserFollowers")
+
   productLists          ProductList[]
   reports               Report[]
   shares                Share[]
@@ -62,7 +62,6 @@ model User {
 
   taggedInPosts Post[] @relation("PostTaggedUsers")
 
-  
   headToHeadBattlesCreated HeadToHeadBattle[] @relation("H2HCreator")
 
   headToHeadBattlesWon HeadToHeadBattle[] @relation("H2HWinner")
@@ -104,15 +103,14 @@ model User {
   notificationsActor Notification[] @relation("NotificationActor")
 
   deviceTokens DeviceToken[]
-  
-  splitScreenBattlesCreated  SplitScreenBattle[]       @relation("SplitScreenBattleCreator")
-  splitScreenBattlesWon      SplitScreenBattle[]       @relation("SplitScreenBattleWinner")
-  splitScreenParticipants    SplitScreenParticipant[]  @relation("SplitScreenBattleParticipant")
-  splitScreenInvitationsSent SplitScreenInvitation[]   @relation("SplitScreenInviter")
-  splitScreenInvitationsRecv SplitScreenInvitation[]   @relation("SplitScreenInvitee")
-  splitScreenSubmissions     SplitScreenSubmission[]   @relation("SplitScreenSubmissionUser")
-  splitScreenVotes           SplitScreenVote[]         @relation("SplitScreenVoteUser")
-  splitScreenComments        SplitScreenComment[]      @relation("SplitScreenCommentUser")
-  splitScreenResults         SplitScreenResult[]       @relation("SplitScreenResultUser")
 
+  splitScreenBattlesCreated  SplitScreenBattle[]      @relation("SplitScreenBattleCreator")
+  splitScreenBattlesWon      SplitScreenBattle[]      @relation("SplitScreenBattleWinner")
+  splitScreenParticipants    SplitScreenParticipant[] @relation("SplitScreenBattleParticipant")
+  splitScreenInvitationsSent SplitScreenInvitation[]  @relation("SplitScreenInviter")
+  splitScreenInvitationsRecv SplitScreenInvitation[]  @relation("SplitScreenInvitee")
+  splitScreenSubmissions     SplitScreenSubmission[]  @relation("SplitScreenSubmissionUser")
+  splitScreenVotes           SplitScreenVote[]        @relation("SplitScreenVoteUser")
+  splitScreenComments        SplitScreenComment[]     @relation("SplitScreenCommentUser")
+  splitScreenResults         SplitScreenResult[]      @relation("SplitScreenResultUser")
 }

@@ -1,29 +1,29 @@
 model Notification {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  userId    String @db.Uuid
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   actorUserId String? @db.Uuid
   actorUser   User?   @relation("NotificationActor", fields: [actorUserId], references: [id], onDelete: SetNull)
 
-  type      NotificationType
-  channel   NotificationChannel @default(IN_APP)
-  status    NotificationStatus  @default(UNREAD)
+  type    NotificationType
+  channel NotificationChannel @default(IN_APP)
+  status  NotificationStatus  @default(UNREAD)
 
-  title     String?  @db.VarChar(120)
-  message   String?  @db.Text
+  title   String? @db.VarChar(120)
+  message String? @db.Text
 
-  deepLink  String?  @db.VarChar(500)
+  deepLink String? @db.VarChar(500)
 
   entityType NotificationEntityType?
-  entityId   String? @db.Uuid
-  meta      Json?
-  groupKey  String? @db.VarChar(200)
+  entityId   String?                 @db.Uuid
+  meta       Json?
+  groupKey   String?                 @db.VarChar(200)
 
   readAt    DateTime? @db.Timestamptz(6)
   createdAt DateTime  @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime  @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(6)
 
   @@index([userId, status, createdAt])
   @@index([userId, createdAt])
@@ -34,7 +34,7 @@ model Notification {
 }
 
 model NotificationPreference {
-  id     String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   userId String @unique @db.Uuid
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -43,30 +43,30 @@ model NotificationPreference {
   pushEnabled  Boolean @default(true)
   emailEnabled Boolean @default(false)
 
-  mutedTypes   NotificationType[] 
+  mutedTypes NotificationType[]
 
-  quietStart   String? @db.VarChar(5) 
-  quietEnd     String? @db.VarChar(5) 
-  timezone     String? @db.VarChar(50)
+  quietStart String? @db.VarChar(5)
+  quietEnd   String? @db.VarChar(5)
+  timezone   String? @db.VarChar(50)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   @@map("NotificationPreference")
 }
 
 model DeviceToken {
-  id        String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  userId    String   @db.Uuid
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  token     String   @unique
-  platform  String?  @db.VarChar(20) // android | ios | web
-  isActive  Boolean  @default(true)
+  token    String  @unique
+  platform String? @db.VarChar(20) // android | ios | web
+  isActive Boolean @default(true)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt      @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
   @@index([userId, isActive])
   @@map("DeviceToken")

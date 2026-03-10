@@ -7,7 +7,7 @@ model Garage {
   description String?
   location    String?
 
-  cars Car[]
+  cars  Car[]
   bikes Bike[]
 
   @@index([profileId])

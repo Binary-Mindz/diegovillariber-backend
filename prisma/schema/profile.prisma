@@ -11,9 +11,9 @@ model Profile {
   accountType      AccountType @default(PUBLIC)
   preference       Preference?
 
-  isActive IsActive @default(ACTIVE)
-  suspend  Boolean  @default(false)
-  locationStatus Boolean   @default(false)
+  isActive       IsActive @default(ACTIVE)
+  suspend        Boolean  @default(false)
+  locationStatus Boolean  @default(false)
 
   spotter   SpotterProfile?
   owner     OwnerProfile?
@@ -27,9 +27,8 @@ model Profile {
   virtualGarages         VirtualGarage[]
   virtualSimRacingEvents VirtualSimRacingEvent[]
   legalNotices           LegalNotice[]
-  posts Post[]
-  labTimes LabTime[]
-  submitLabTimes SubmitLabTime[]
-  bikes Bike[]
+  posts                  Post[]
+  labTimes               LabTime[]
+  submitLabTimes         SubmitLabTime[]
+  bikes                  Bike[]
 }
-

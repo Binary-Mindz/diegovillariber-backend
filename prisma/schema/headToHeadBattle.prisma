@@ -1,8 +1,8 @@
 enum BattleAccessType {
-  OPEN               // anyone can join
-  INVITATION_ONLY    // only invited users
-  AUTO_INVITE        // system sends invites automatically
-  FOLLOWERS_ONLY     // only followers can join
+  OPEN // anyone can join
+  INVITATION_ONLY // only invited users
+  AUTO_INVITE // system sends invites automatically
+  FOLLOWERS_ONLY // only followers can join
 }
 
 enum AutoInviteScope {
@@ -15,7 +15,7 @@ enum CameraRequirement {
   ANY
   MOBILE_ONLY
   DSLR_MIRRORLESS_ONLY
-  PROFESSIONAL_ONLY   // DSLR/Mirrorless + Pro cameras
+  PROFESSIONAL_ONLY // DSLR/Mirrorless + Pro cameras
 }
 
 enum BattleStatus {
@@ -58,100 +58,98 @@ enum BattleCategory {
 }
 
 model HeadToHeadBattle {
-  id          String   @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   creatorId String @db.Uuid
   creator   User   @relation("H2HCreator", fields: [creatorId], references: [id], onDelete: Cascade)
 
   winnerUserId String? @db.Uuid
   winnerUser   User?   @relation("H2HWinner", fields: [winnerUserId], references: [id], onDelete: SetNull)
-  
-  title       String   @db.VarChar(255)
-  preference  Preference @default(CAR)
-  description String?  @db.Text
 
-  coverImage  String?
-  battleCategory BattleCategory @default(STYLE_BATTLE)
-  brandFilter    String? 
-  durationDays Int? 
-  winPrize    String 
+  title       String     @db.VarChar(255)
+  preference  Preference @default(CAR)
+  description String?    @db.Text
+
+  coverImage         String?
+  battleCategory     BattleCategory @default(STYLE_BATTLE)
+  brandFilter        String?
+  durationDays       Int?
+  winPrize           String
   uploadImageOrVideo String
-  
 
   // Requirements
-  cameraRequirement        CameraRequirement @default(ANY)
-  requireTrueShotVerified  Boolean          @default(false)
-  rejectEditedPhotos       Boolean          @default(false)
+  cameraRequirement       CameraRequirement @default(ANY)
+  requireTrueShotVerified Boolean           @default(false)
+  rejectEditedPhotos      Boolean           @default(false)
 
   // Access / Privacy
-  accessType      BattleAccessType @default(OPEN)
+  accessType BattleAccessType @default(OPEN)
 
   // Auto invite settings (only when accessType = AUTO_INVITE)
   autoInviteScope AutoInviteScope?
-  autoInviteCount Int?             // 1..1000+
-  
+  autoInviteCount Int? // 1..1000+
+
   // Location & radius
   participationScope ParticipationScope @default(GLOBAL)
-  radiusKm          Int?                 // used when scope = RADIUS
-  locationName      String?              @db.VarChar(150)
-  latitude          Decimal?             @db.Decimal(9,6)
-  longitude         Decimal?             @db.Decimal(9,6)
-  placeId           String?              @db.VarChar(120)
+  radiusKm           Int? // used when scope = RADIUS
+  locationName       String?            @db.VarChar(150)
+  latitude           Decimal?           @db.Decimal(9, 6)
+  longitude          Decimal?           @db.Decimal(9, 6)
+  placeId            String?            @db.VarChar(120)
 
   // Timing
-  startDate   DateTime @db.Timestamptz(6)
-  endDate     DateTime @db.Timestamptz(6)
-   // UI shows “7 days” style; optional derived too
+  startDate DateTime @db.Timestamptz(6)
+  endDate   DateTime @db.Timestamptz(6)
+  // UI shows “7 days” style; optional derived too
 
-  status      BattleStatus @default(DRAFT)
+  status BattleStatus @default(DRAFT)
 
-  createdAt   DateTime @default(now()) @db.Timestamptz(6)
-  updatedAt   DateTime @updatedAt @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
-  participants BattleParticipant[]
-  invitations  BattleInvitation[]
-  submissions  BattleSubmission[]
-
+  participants   BattleParticipant[]
+  invitations    BattleInvitation[]
+  submissions    BattleSubmission[]
+  battleComments BattleComment[]
+  battleVotes    BattleVote[]
 
   @@index([creatorId])
   @@index([status])
   @@index([accessType])
-  battleComments BattleComment[]
-  battleVotes BattleVote[]
 }
 
 model BattleParticipant {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId  String @db.Uuid
-  userId    String @db.Uuid
+  battleId String @db.Uuid
+  userId   String @db.Uuid
 
-  battle    HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  battle HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  status    ParticipantStatus @default(JOINED)
+  status ParticipantStatus @default(JOINED)
 
-  joinedAt  DateTime @default(now()) @db.Timestamptz(6)
+  joinedAt DateTime @default(now()) @db.Timestamptz(6)
 
   @@unique([battleId, userId])
   @@index([userId])
 }
 
 model BattleInvitation {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
   battleId  String @db.Uuid
   inviterId String @db.Uuid
   inviteeId String @db.Uuid
 
-  battle  HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  battle HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
 
   inviter User @relation("H2HInviter", fields: [inviterId], references: [id], onDelete: Cascade)
   invitee User @relation("H2HInvitee", fields: [inviteeId], references: [id], onDelete: Cascade)
 
-  status    InvitationStatus @default(PENDING)
+  status InvitationStatus @default(PENDING)
 
-  sentAt    DateTime @default(now()) @db.Timestamptz(6)
+  sentAt      DateTime  @default(now()) @db.Timestamptz(6)
   respondedAt DateTime?
 
   @@unique([battleId, inviteeId]) // same user can't be invited twice for same battle
@@ -160,12 +158,12 @@ model BattleInvitation {
 }
 
 model BattleSubmission {
-  id        String @id @default(uuid()) @db.Uuid
-battleId String @db.Uuid
+  id       String @id @default(uuid()) @db.Uuid
+  battleId String @db.Uuid
   userId   String @db.Uuid
 
   battle HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  user   User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   mediaUrl     String
   thumbnailUrl String?
@@ -175,12 +173,12 @@ battleId String @db.Uuid
   isTrueShotVerified Boolean @default(false)
   isEditedDetected   Boolean @default(false)
 
-  status     SubmissionStatus @default(SUBMITTED)
+  status SubmissionStatus @default(SUBMITTED)
 
   votes    BattleVote[]
   comments BattleComment[]
 
-  createdAt  DateTime @default(now()) @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
 
   @@unique([battleId, userId]) // head2head: usually 1 submission per user (change if needed)
   @@index([battleId])
@@ -188,17 +186,17 @@ battleId String @db.Uuid
 
 model BattleVote {
   id           String @id @default(uuid()) @db.Uuid
-submissionId String @db.Uuid
+  submissionId String @db.Uuid
   userId       String @db.Uuid
   battleId     String @db.Uuid
 
   submission BattleSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
-  voter      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  voter      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   battle     HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
   // 1 means like-vote, future-proof to rating
-  value        Int @default(1)
+  value      Int              @default(1)
 
-  createdAt    DateTime @default(now()) @db.Timestamptz(6)
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
 
   @@unique([submissionId, userId]) // one vote per user per submission
   @@index([battleId])
@@ -207,18 +205,18 @@ submissionId String @db.Uuid
 }
 
 model BattleComment {
-  id        String @id @default(uuid()) @db.Uuid
+  id String @id @default(uuid()) @db.Uuid
 
-  battleId  String @db.Uuid
-  userId    String @db.Uuid
+  battleId String @db.Uuid
+  userId   String @db.Uuid
 
   submissionId String? @db.Uuid
 
-  battle    HeadToHeadBattle @relation(fields: [battleId], references: [id], onDelete: Cascade)
-  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  battle     HeadToHeadBattle  @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   submission BattleSubmission? @relation(fields: [submissionId], references: [id], onDelete: Cascade)
 
-  message   String @db.Text
+  message   String   @db.Text
   createdAt DateTime @default(now()) @db.Timestamptz(6)
 
   @@index([battleId])

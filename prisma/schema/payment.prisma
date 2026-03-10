@@ -8,5 +8,4 @@ model Payment {
   paymentMethod String? // optional: card, wallet, stripe, etc.
 
   createdAt DateTime @default(now())
-
 }
