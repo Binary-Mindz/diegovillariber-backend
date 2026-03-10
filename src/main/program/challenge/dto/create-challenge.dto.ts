@@ -123,9 +123,4 @@ export class CreateChallengeDto {
   @Min(1)
   @Max(50)
   maxEntriesPerUser?: number;
-
-  @ApiPropertyOptional({ enum: ChallengeStatus, example: ChallengeStatus.UPCOMING })
-  @IsOptional()
-  @IsEnum(ChallengeStatus)
-  status?: ChallengeStatus;
 }
