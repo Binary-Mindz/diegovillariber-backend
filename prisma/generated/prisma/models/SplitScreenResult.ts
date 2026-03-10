@@ -39,7 +39,7 @@ export type SplitScreenResultMinAggregateOutputType = {
   battleId: string | null
   participantId: string | null
   userId: string | null
-  result: $Enums.SplitScreenResultType | null
+  resultType: $Enums.SplitScreenResultType | null
   earnedPoints: number | null
   createdAt: Date | null
 }
@@ -49,7 +49,7 @@ export type SplitScreenResultMaxAggregateOutputType = {
   battleId: string | null
   participantId: string | null
   userId: string | null
-  result: $Enums.SplitScreenResultType | null
+  resultType: $Enums.SplitScreenResultType | null
   earnedPoints: number | null
   createdAt: Date | null
 }
@@ -59,7 +59,7 @@ export type SplitScreenResultCountAggregateOutputType = {
   battleId: number
   participantId: number
   userId: number
-  result: number
+  resultType: number
   earnedPoints: number
   createdAt: number
   _all: number
@@ -79,7 +79,7 @@ export type SplitScreenResultMinAggregateInputType = {
   battleId?: true
   participantId?: true
   userId?: true
-  result?: true
+  resultType?: true
   earnedPoints?: true
   createdAt?: true
 }
@@ -89,7 +89,7 @@ export type SplitScreenResultMaxAggregateInputType = {
   battleId?: true
   participantId?: true
   userId?: true
-  result?: true
+  resultType?: true
   earnedPoints?: true
   createdAt?: true
 }
@@ -99,7 +99,7 @@ export type SplitScreenResultCountAggregateInputType = {
   battleId?: true
   participantId?: true
   userId?: true
-  result?: true
+  resultType?: true
   earnedPoints?: true
   createdAt?: true
   _all?: true
@@ -196,7 +196,7 @@ export type SplitScreenResultGroupByOutputType = {
   battleId: string
   participantId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints: number
   createdAt: Date
   _count: SplitScreenResultCountAggregateOutputType | null
@@ -229,7 +229,7 @@ export type SplitScreenResultWhereInput = {
   battleId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   participantId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   userId?: Prisma.UuidFilter<"SplitScreenResult"> | string
-  result?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFilter<"SplitScreenResult"> | number
   createdAt?: Prisma.DateTimeFilter<"SplitScreenResult"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
@@ -242,7 +242,7 @@ export type SplitScreenResultOrderByWithRelationInput = {
   battleId?: Prisma.SortOrder
   participantId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  result?: Prisma.SortOrder
+  resultType?: Prisma.SortOrder
   earnedPoints?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   battle?: Prisma.SplitScreenBattleOrderByWithRelationInput
@@ -258,7 +258,7 @@ export type SplitScreenResultWhereUniqueInput = Prisma.AtLeast<{
   battleId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   participantId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   userId?: Prisma.UuidFilter<"SplitScreenResult"> | string
-  result?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFilter<"SplitScreenResult"> | number
   createdAt?: Prisma.DateTimeFilter<"SplitScreenResult"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
@@ -271,7 +271,7 @@ export type SplitScreenResultOrderByWithAggregationInput = {
   battleId?: Prisma.SortOrder
   participantId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  result?: Prisma.SortOrder
+  resultType?: Prisma.SortOrder
   earnedPoints?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.SplitScreenResultCountOrderByAggregateInput
@@ -289,18 +289,18 @@ export type SplitScreenResultScalarWhereWithAggregatesInput = {
   battleId?: Prisma.UuidWithAggregatesFilter<"SplitScreenResult"> | string
   participantId?: Prisma.UuidWithAggregatesFilter<"SplitScreenResult"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"SplitScreenResult"> | string
-  result?: Prisma.EnumSplitScreenResultTypeWithAggregatesFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeWithAggregatesFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntWithAggregatesFilter<"SplitScreenResult"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenResult"> | Date | string
 }
 
 export type SplitScreenResultCreateInput = {
   id?: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutResultsInput
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenResultsInput
+  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutResultsInput
   user: Prisma.UserCreateNestedOneWithoutSplitScreenResultsInput
 }
 
@@ -309,18 +309,18 @@ export type SplitScreenResultUncheckedCreateInput = {
   battleId: string
   participantId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
 
 export type SplitScreenResultUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutResultsNestedInput
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenResultsNestedInput
+  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutResultsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenResultsNestedInput
 }
 
@@ -329,7 +329,7 @@ export type SplitScreenResultUncheckedUpdateInput = {
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -339,14 +339,14 @@ export type SplitScreenResultCreateManyInput = {
   battleId: string
   participantId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
 
 export type SplitScreenResultUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -356,7 +356,7 @@ export type SplitScreenResultUncheckedUpdateManyInput = {
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -376,7 +376,7 @@ export type SplitScreenResultCountOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   participantId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  result?: Prisma.SortOrder
+  resultType?: Prisma.SortOrder
   earnedPoints?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -390,7 +390,7 @@ export type SplitScreenResultMaxOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   participantId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  result?: Prisma.SortOrder
+  resultType?: Prisma.SortOrder
   earnedPoints?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -400,7 +400,7 @@ export type SplitScreenResultMinOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   participantId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  result?: Prisma.SortOrder
+  resultType?: Prisma.SortOrder
   earnedPoints?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -541,10 +541,10 @@ export type SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput = {
 
 export type SplitScreenResultCreateWithoutBattleInput = {
   id?: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenResultsInput
+  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutResultsInput
   user: Prisma.UserCreateNestedOneWithoutSplitScreenResultsInput
 }
 
@@ -552,7 +552,7 @@ export type SplitScreenResultUncheckedCreateWithoutBattleInput = {
   id?: string
   participantId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
@@ -591,14 +591,14 @@ export type SplitScreenResultScalarWhereInput = {
   battleId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   participantId?: Prisma.UuidFilter<"SplitScreenResult"> | string
   userId?: Prisma.UuidFilter<"SplitScreenResult"> | string
-  result?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFilter<"SplitScreenResult"> | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFilter<"SplitScreenResult"> | number
   createdAt?: Prisma.DateTimeFilter<"SplitScreenResult"> | Date | string
 }
 
 export type SplitScreenResultCreateWithoutParticipantInput = {
   id?: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutResultsInput
@@ -609,7 +609,7 @@ export type SplitScreenResultUncheckedCreateWithoutParticipantInput = {
   id?: string
   battleId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
@@ -642,18 +642,18 @@ export type SplitScreenResultUpdateManyWithWhereWithoutParticipantInput = {
 
 export type SplitScreenResultCreateWithoutUserInput = {
   id?: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutResultsInput
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenResultsInput
+  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutResultsInput
 }
 
 export type SplitScreenResultUncheckedCreateWithoutUserInput = {
   id?: string
   battleId: string
   participantId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
@@ -688,17 +688,17 @@ export type SplitScreenResultCreateManyBattleInput = {
   id?: string
   participantId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
 
 export type SplitScreenResultUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenResultsNestedInput
+  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutResultsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenResultsNestedInput
 }
 
@@ -706,7 +706,7 @@ export type SplitScreenResultUncheckedUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -715,7 +715,7 @@ export type SplitScreenResultUncheckedUpdateManyWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -724,14 +724,14 @@ export type SplitScreenResultCreateManyParticipantInput = {
   id?: string
   battleId: string
   userId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
 
 export type SplitScreenResultUpdateWithoutParticipantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutResultsNestedInput
@@ -742,7 +742,7 @@ export type SplitScreenResultUncheckedUpdateWithoutParticipantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -751,7 +751,7 @@ export type SplitScreenResultUncheckedUpdateManyWithoutParticipantInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -760,25 +760,25 @@ export type SplitScreenResultCreateManyUserInput = {
   id?: string
   battleId: string
   participantId: string
-  result: $Enums.SplitScreenResultType
+  resultType: $Enums.SplitScreenResultType
   earnedPoints?: number
   createdAt?: Date | string
 }
 
 export type SplitScreenResultUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutResultsNestedInput
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenResultsNestedInput
+  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutResultsNestedInput
 }
 
 export type SplitScreenResultUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -787,7 +787,7 @@ export type SplitScreenResultUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  result?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
+  resultType?: Prisma.EnumSplitScreenResultTypeFieldUpdateOperationsInput | $Enums.SplitScreenResultType
   earnedPoints?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -799,7 +799,7 @@ export type SplitScreenResultSelect<ExtArgs extends runtime.Types.Extensions.Int
   battleId?: boolean
   participantId?: boolean
   userId?: boolean
-  result?: boolean
+  resultType?: boolean
   earnedPoints?: boolean
   createdAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
@@ -812,7 +812,7 @@ export type SplitScreenResultSelectCreateManyAndReturn<ExtArgs extends runtime.T
   battleId?: boolean
   participantId?: boolean
   userId?: boolean
-  result?: boolean
+  resultType?: boolean
   earnedPoints?: boolean
   createdAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
@@ -825,7 +825,7 @@ export type SplitScreenResultSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   battleId?: boolean
   participantId?: boolean
   userId?: boolean
-  result?: boolean
+  resultType?: boolean
   earnedPoints?: boolean
   createdAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
@@ -838,12 +838,12 @@ export type SplitScreenResultSelectScalar = {
   battleId?: boolean
   participantId?: boolean
   userId?: boolean
-  result?: boolean
+  resultType?: boolean
   earnedPoints?: boolean
   createdAt?: boolean
 }
 
-export type SplitScreenResultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "participantId" | "userId" | "result" | "earnedPoints" | "createdAt", ExtArgs["result"]["splitScreenResult"]>
+export type SplitScreenResultOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "participantId" | "userId" | "resultType" | "earnedPoints" | "createdAt", ExtArgs["result"]["splitScreenResult"]>
 export type SplitScreenResultInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
   participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
@@ -872,7 +872,7 @@ export type $SplitScreenResultPayload<ExtArgs extends runtime.Types.Extensions.I
     battleId: string
     participantId: string
     userId: string
-    result: $Enums.SplitScreenResultType
+    resultType: $Enums.SplitScreenResultType
     earnedPoints: number
     createdAt: Date
   }, ExtArgs["result"]["splitScreenResult"]>
@@ -1305,7 +1305,7 @@ export interface SplitScreenResultFieldRefs {
   readonly battleId: Prisma.FieldRef<"SplitScreenResult", 'String'>
   readonly participantId: Prisma.FieldRef<"SplitScreenResult", 'String'>
   readonly userId: Prisma.FieldRef<"SplitScreenResult", 'String'>
-  readonly result: Prisma.FieldRef<"SplitScreenResult", 'SplitScreenResultType'>
+  readonly resultType: Prisma.FieldRef<"SplitScreenResult", 'SplitScreenResultType'>
   readonly earnedPoints: Prisma.FieldRef<"SplitScreenResult", 'Int'>
   readonly createdAt: Prisma.FieldRef<"SplitScreenResult", 'DateTime'>
 }

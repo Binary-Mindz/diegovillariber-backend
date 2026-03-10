@@ -27,9 +27,9 @@ export type AggregateSplitScreenVote = {
 export type SplitScreenVoteMinAggregateOutputType = {
   id: string | null
   battleId: string | null
-  voterId: string | null
-  participantId: string | null
-  status: $Enums.SplitScreenVoteStatus | null
+  submissionId: string | null
+  userId: string | null
+  voteType: $Enums.SplitScreenVoteType | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -37,9 +37,9 @@ export type SplitScreenVoteMinAggregateOutputType = {
 export type SplitScreenVoteMaxAggregateOutputType = {
   id: string | null
   battleId: string | null
-  voterId: string | null
-  participantId: string | null
-  status: $Enums.SplitScreenVoteStatus | null
+  submissionId: string | null
+  userId: string | null
+  voteType: $Enums.SplitScreenVoteType | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -47,9 +47,9 @@ export type SplitScreenVoteMaxAggregateOutputType = {
 export type SplitScreenVoteCountAggregateOutputType = {
   id: number
   battleId: number
-  voterId: number
-  participantId: number
-  status: number
+  submissionId: number
+  userId: number
+  voteType: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -59,9 +59,9 @@ export type SplitScreenVoteCountAggregateOutputType = {
 export type SplitScreenVoteMinAggregateInputType = {
   id?: true
   battleId?: true
-  voterId?: true
-  participantId?: true
-  status?: true
+  submissionId?: true
+  userId?: true
+  voteType?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -69,9 +69,9 @@ export type SplitScreenVoteMinAggregateInputType = {
 export type SplitScreenVoteMaxAggregateInputType = {
   id?: true
   battleId?: true
-  voterId?: true
-  participantId?: true
-  status?: true
+  submissionId?: true
+  userId?: true
+  voteType?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -79,9 +79,9 @@ export type SplitScreenVoteMaxAggregateInputType = {
 export type SplitScreenVoteCountAggregateInputType = {
   id?: true
   battleId?: true
-  voterId?: true
-  participantId?: true
-  status?: true
+  submissionId?: true
+  userId?: true
+  voteType?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -162,9 +162,9 @@ export type SplitScreenVoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 export type SplitScreenVoteGroupByOutputType = {
   id: string
   battleId: string
-  voterId: string
-  participantId: string
-  status: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  userId: string
+  voteType: $Enums.SplitScreenVoteType
   createdAt: Date
   updatedAt: Date
   _count: SplitScreenVoteCountAggregateOutputType | null
@@ -193,52 +193,52 @@ export type SplitScreenVoteWhereInput = {
   NOT?: Prisma.SplitScreenVoteWhereInput | Prisma.SplitScreenVoteWhereInput[]
   id?: Prisma.UuidFilter<"SplitScreenVote"> | string
   battleId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  voterId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  participantId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  status?: Prisma.EnumSplitScreenVoteStatusFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  userId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
-  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  participant?: Prisma.XOR<Prisma.SplitScreenParticipantScalarRelationFilter, Prisma.SplitScreenParticipantWhereInput>
+  submission?: Prisma.XOR<Prisma.SplitScreenSubmissionScalarRelationFilter, Prisma.SplitScreenSubmissionWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type SplitScreenVoteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  voterId?: Prisma.SortOrder
-  participantId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  voteType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   battle?: Prisma.SplitScreenBattleOrderByWithRelationInput
-  voter?: Prisma.UserOrderByWithRelationInput
-  participant?: Prisma.SplitScreenParticipantOrderByWithRelationInput
+  submission?: Prisma.SplitScreenSubmissionOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type SplitScreenVoteWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  battleId_voterId?: Prisma.SplitScreenVoteBattleIdVoterIdCompoundUniqueInput
+  battleId_userId?: Prisma.SplitScreenVoteBattleIdUserIdCompoundUniqueInput
   AND?: Prisma.SplitScreenVoteWhereInput | Prisma.SplitScreenVoteWhereInput[]
   OR?: Prisma.SplitScreenVoteWhereInput[]
   NOT?: Prisma.SplitScreenVoteWhereInput | Prisma.SplitScreenVoteWhereInput[]
   battleId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  voterId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  participantId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  status?: Prisma.EnumSplitScreenVoteStatusFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  userId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
-  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  participant?: Prisma.XOR<Prisma.SplitScreenParticipantScalarRelationFilter, Prisma.SplitScreenParticipantWhereInput>
-}, "id" | "battleId_voterId">
+  submission?: Prisma.XOR<Prisma.SplitScreenSubmissionScalarRelationFilter, Prisma.SplitScreenSubmissionWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+}, "id" | "battleId_userId">
 
 export type SplitScreenVoteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  voterId?: Prisma.SortOrder
-  participantId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  voteType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SplitScreenVoteCountOrderByAggregateInput
@@ -252,49 +252,49 @@ export type SplitScreenVoteScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SplitScreenVoteScalarWhereWithAggregatesInput | Prisma.SplitScreenVoteScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
   battleId?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
-  voterId?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
-  participantId?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
-  status?: Prisma.EnumSplitScreenVoteStatusWithAggregatesFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
+  userId?: Prisma.UuidWithAggregatesFilter<"SplitScreenVote"> | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeWithAggregatesFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenVote"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenVote"> | Date | string
 }
 
 export type SplitScreenVoteCreateInput = {
   id?: string
-  status?: $Enums.SplitScreenVoteStatus
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutVotesInput
-  voter: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenVotesInput
+  submission: Prisma.SplitScreenSubmissionCreateNestedOneWithoutVotesInput
+  user: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
 }
 
 export type SplitScreenVoteUncheckedCreateInput = {
   id?: string
   battleId: string
-  voterId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SplitScreenVoteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutVotesNestedInput
-  voter?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenVotesNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneRequiredWithoutVotesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
 }
 
 export type SplitScreenVoteUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -302,16 +302,16 @@ export type SplitScreenVoteUncheckedUpdateInput = {
 export type SplitScreenVoteCreateManyInput = {
   id?: string
   battleId: string
-  voterId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SplitScreenVoteUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -319,9 +319,9 @@ export type SplitScreenVoteUpdateManyMutationInput = {
 export type SplitScreenVoteUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -336,17 +336,17 @@ export type SplitScreenVoteOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type SplitScreenVoteBattleIdVoterIdCompoundUniqueInput = {
+export type SplitScreenVoteBattleIdUserIdCompoundUniqueInput = {
   battleId: string
-  voterId: string
+  userId: string
 }
 
 export type SplitScreenVoteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  voterId?: Prisma.SortOrder
-  participantId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  voteType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -354,9 +354,9 @@ export type SplitScreenVoteCountOrderByAggregateInput = {
 export type SplitScreenVoteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  voterId?: Prisma.SortOrder
-  participantId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  voteType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -364,9 +364,9 @@ export type SplitScreenVoteMaxOrderByAggregateInput = {
 export type SplitScreenVoteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   battleId?: Prisma.SortOrder
-  voterId?: Prisma.SortOrder
-  participantId?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  submissionId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  voteType?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -413,108 +413,108 @@ export type SplitScreenVoteUncheckedUpdateManyWithoutBattleNestedInput = {
   deleteMany?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
 }
 
-export type SplitScreenVoteCreateNestedManyWithoutParticipantInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput> | Prisma.SplitScreenVoteCreateWithoutParticipantInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput | Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyParticipantInputEnvelope
+export type SplitScreenVoteCreateNestedManyWithoutSubmissionInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput> | Prisma.SplitScreenVoteCreateWithoutSubmissionInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput | Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManySubmissionInputEnvelope
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
 }
 
-export type SplitScreenVoteUncheckedCreateNestedManyWithoutParticipantInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput> | Prisma.SplitScreenVoteCreateWithoutParticipantInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput | Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyParticipantInputEnvelope
+export type SplitScreenVoteUncheckedCreateNestedManyWithoutSubmissionInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput> | Prisma.SplitScreenVoteCreateWithoutSubmissionInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput | Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManySubmissionInputEnvelope
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
 }
 
-export type SplitScreenVoteUpdateManyWithoutParticipantNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput> | Prisma.SplitScreenVoteCreateWithoutParticipantInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput | Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput[]
-  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutParticipantInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutParticipantInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyParticipantInputEnvelope
+export type SplitScreenVoteUpdateManyWithoutSubmissionNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput> | Prisma.SplitScreenVoteCreateWithoutSubmissionInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput | Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput[]
+  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutSubmissionInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutSubmissionInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManySubmissionInputEnvelope
   set?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   disconnect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   delete?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
-  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutParticipantInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutParticipantInput[]
-  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutParticipantInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutParticipantInput[]
+  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutSubmissionInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutSubmissionInput[]
+  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutSubmissionInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutSubmissionInput[]
   deleteMany?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
 }
 
-export type SplitScreenVoteUncheckedUpdateManyWithoutParticipantNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput> | Prisma.SplitScreenVoteCreateWithoutParticipantInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput | Prisma.SplitScreenVoteCreateOrConnectWithoutParticipantInput[]
-  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutParticipantInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutParticipantInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyParticipantInputEnvelope
+export type SplitScreenVoteUncheckedUpdateManyWithoutSubmissionNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput> | Prisma.SplitScreenVoteCreateWithoutSubmissionInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput | Prisma.SplitScreenVoteCreateOrConnectWithoutSubmissionInput[]
+  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutSubmissionInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutSubmissionInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManySubmissionInputEnvelope
   set?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   disconnect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   delete?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
-  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutParticipantInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutParticipantInput[]
-  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutParticipantInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutParticipantInput[]
+  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutSubmissionInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutSubmissionInput[]
+  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutSubmissionInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutSubmissionInput[]
   deleteMany?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
 }
 
-export type EnumSplitScreenVoteStatusFieldUpdateOperationsInput = {
-  set?: $Enums.SplitScreenVoteStatus
+export type EnumSplitScreenVoteTypeFieldUpdateOperationsInput = {
+  set?: $Enums.SplitScreenVoteType
 }
 
-export type SplitScreenVoteCreateNestedManyWithoutVoterInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput> | Prisma.SplitScreenVoteCreateWithoutVoterInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput | Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyVoterInputEnvelope
+export type SplitScreenVoteCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput> | Prisma.SplitScreenVoteCreateWithoutUserInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput | Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManyUserInputEnvelope
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
 }
 
-export type SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput> | Prisma.SplitScreenVoteCreateWithoutVoterInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput | Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyVoterInputEnvelope
+export type SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput> | Prisma.SplitScreenVoteCreateWithoutUserInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput | Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManyUserInputEnvelope
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
 }
 
-export type SplitScreenVoteUpdateManyWithoutVoterNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput> | Prisma.SplitScreenVoteCreateWithoutVoterInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput | Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput[]
-  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutVoterInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyVoterInputEnvelope
+export type SplitScreenVoteUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput> | Prisma.SplitScreenVoteCreateWithoutUserInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput | Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManyUserInputEnvelope
   set?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   disconnect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   delete?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
-  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutVoterInput[]
-  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutVoterInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutVoterInput[]
+  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutUserInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
 }
 
-export type SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput> | Prisma.SplitScreenVoteCreateWithoutVoterInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput[]
-  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput | Prisma.SplitScreenVoteCreateOrConnectWithoutVoterInput[]
-  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutVoterInput[]
-  createMany?: Prisma.SplitScreenVoteCreateManyVoterInputEnvelope
+export type SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput> | Prisma.SplitScreenVoteCreateWithoutUserInput[] | Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput | Prisma.SplitScreenVoteCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.SplitScreenVoteUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.SplitScreenVoteCreateManyUserInputEnvelope
   set?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   disconnect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   delete?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
   connect?: Prisma.SplitScreenVoteWhereUniqueInput | Prisma.SplitScreenVoteWhereUniqueInput[]
-  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutVoterInput[]
-  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutVoterInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutVoterInput[]
+  update?: Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.SplitScreenVoteUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.SplitScreenVoteUpdateManyWithWhereWithoutUserInput | Prisma.SplitScreenVoteUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
 }
 
 export type SplitScreenVoteCreateWithoutBattleInput = {
   id?: string
-  status?: $Enums.SplitScreenVoteStatus
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
-  voter: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenVotesInput
+  submission: Prisma.SplitScreenSubmissionCreateNestedOneWithoutVotesInput
+  user: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
 }
 
 export type SplitScreenVoteUncheckedCreateWithoutBattleInput = {
   id?: string
-  voterId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -551,205 +551,205 @@ export type SplitScreenVoteScalarWhereInput = {
   NOT?: Prisma.SplitScreenVoteScalarWhereInput | Prisma.SplitScreenVoteScalarWhereInput[]
   id?: Prisma.UuidFilter<"SplitScreenVote"> | string
   battleId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  voterId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  participantId?: Prisma.UuidFilter<"SplitScreenVote"> | string
-  status?: Prisma.EnumSplitScreenVoteStatusFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  userId?: Prisma.UuidFilter<"SplitScreenVote"> | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFilter<"SplitScreenVote"> | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenVote"> | Date | string
 }
 
-export type SplitScreenVoteCreateWithoutParticipantInput = {
+export type SplitScreenVoteCreateWithoutSubmissionInput = {
   id?: string
-  status?: $Enums.SplitScreenVoteStatus
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutVotesInput
-  voter: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
+  user: Prisma.UserCreateNestedOneWithoutSplitScreenVotesInput
 }
 
-export type SplitScreenVoteUncheckedCreateWithoutParticipantInput = {
+export type SplitScreenVoteUncheckedCreateWithoutSubmissionInput = {
   id?: string
   battleId: string
-  voterId: string
-  status?: $Enums.SplitScreenVoteStatus
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SplitScreenVoteCreateOrConnectWithoutParticipantInput = {
+export type SplitScreenVoteCreateOrConnectWithoutSubmissionInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput>
+  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput>
 }
 
-export type SplitScreenVoteCreateManyParticipantInputEnvelope = {
-  data: Prisma.SplitScreenVoteCreateManyParticipantInput | Prisma.SplitScreenVoteCreateManyParticipantInput[]
+export type SplitScreenVoteCreateManySubmissionInputEnvelope = {
+  data: Prisma.SplitScreenVoteCreateManySubmissionInput | Prisma.SplitScreenVoteCreateManySubmissionInput[]
   skipDuplicates?: boolean
 }
 
-export type SplitScreenVoteUpsertWithWhereUniqueWithoutParticipantInput = {
+export type SplitScreenVoteUpsertWithWhereUniqueWithoutSubmissionInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  update: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutParticipantInput>
-  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedCreateWithoutParticipantInput>
+  update: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutSubmissionInput>
+  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedCreateWithoutSubmissionInput>
 }
 
-export type SplitScreenVoteUpdateWithWhereUniqueWithoutParticipantInput = {
+export type SplitScreenVoteUpdateWithWhereUniqueWithoutSubmissionInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutParticipantInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutParticipantInput>
+  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutSubmissionInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutSubmissionInput>
 }
 
-export type SplitScreenVoteUpdateManyWithWhereWithoutParticipantInput = {
+export type SplitScreenVoteUpdateManyWithWhereWithoutSubmissionInput = {
   where: Prisma.SplitScreenVoteScalarWhereInput
-  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateManyMutationInput, Prisma.SplitScreenVoteUncheckedUpdateManyWithoutParticipantInput>
+  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateManyMutationInput, Prisma.SplitScreenVoteUncheckedUpdateManyWithoutSubmissionInput>
 }
 
-export type SplitScreenVoteCreateWithoutVoterInput = {
+export type SplitScreenVoteCreateWithoutUserInput = {
   id?: string
-  status?: $Enums.SplitScreenVoteStatus
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutVotesInput
-  participant: Prisma.SplitScreenParticipantCreateNestedOneWithoutSplitScreenVotesInput
+  submission: Prisma.SplitScreenSubmissionCreateNestedOneWithoutVotesInput
 }
 
-export type SplitScreenVoteUncheckedCreateWithoutVoterInput = {
+export type SplitScreenVoteUncheckedCreateWithoutUserInput = {
   id?: string
   battleId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SplitScreenVoteCreateOrConnectWithoutVoterInput = {
+export type SplitScreenVoteCreateOrConnectWithoutUserInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput>
+  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput>
 }
 
-export type SplitScreenVoteCreateManyVoterInputEnvelope = {
-  data: Prisma.SplitScreenVoteCreateManyVoterInput | Prisma.SplitScreenVoteCreateManyVoterInput[]
+export type SplitScreenVoteCreateManyUserInputEnvelope = {
+  data: Prisma.SplitScreenVoteCreateManyUserInput | Prisma.SplitScreenVoteCreateManyUserInput[]
   skipDuplicates?: boolean
 }
 
-export type SplitScreenVoteUpsertWithWhereUniqueWithoutVoterInput = {
+export type SplitScreenVoteUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  update: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutVoterInput>
-  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedCreateWithoutVoterInput>
+  update: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutUserInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.SplitScreenVoteCreateWithoutUserInput, Prisma.SplitScreenVoteUncheckedCreateWithoutUserInput>
 }
 
-export type SplitScreenVoteUpdateWithWhereUniqueWithoutVoterInput = {
+export type SplitScreenVoteUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.SplitScreenVoteWhereUniqueInput
-  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutVoterInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutVoterInput>
+  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateWithoutUserInput, Prisma.SplitScreenVoteUncheckedUpdateWithoutUserInput>
 }
 
-export type SplitScreenVoteUpdateManyWithWhereWithoutVoterInput = {
+export type SplitScreenVoteUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.SplitScreenVoteScalarWhereInput
-  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateManyMutationInput, Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterInput>
+  data: Prisma.XOR<Prisma.SplitScreenVoteUpdateManyMutationInput, Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserInput>
 }
 
 export type SplitScreenVoteCreateManyBattleInput = {
   id?: string
-  voterId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type SplitScreenVoteUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  voter?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenVotesNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneRequiredWithoutVotesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
 }
 
 export type SplitScreenVoteUncheckedUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type SplitScreenVoteUncheckedUpdateManyWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SplitScreenVoteCreateManyParticipantInput = {
+export type SplitScreenVoteCreateManySubmissionInput = {
   id?: string
   battleId: string
-  voterId: string
-  status?: $Enums.SplitScreenVoteStatus
+  userId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SplitScreenVoteUpdateWithoutParticipantInput = {
+export type SplitScreenVoteUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutVotesNestedInput
-  voter?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput
 }
 
-export type SplitScreenVoteUncheckedUpdateWithoutParticipantInput = {
+export type SplitScreenVoteUncheckedUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SplitScreenVoteUncheckedUpdateManyWithoutParticipantInput = {
+export type SplitScreenVoteUncheckedUpdateManyWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  voterId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SplitScreenVoteCreateManyVoterInput = {
+export type SplitScreenVoteCreateManyUserInput = {
   id?: string
   battleId: string
-  participantId: string
-  status?: $Enums.SplitScreenVoteStatus
+  submissionId: string
+  voteType?: $Enums.SplitScreenVoteType
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type SplitScreenVoteUpdateWithoutVoterInput = {
+export type SplitScreenVoteUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutVotesNestedInput
-  participant?: Prisma.SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenVotesNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneRequiredWithoutVotesNestedInput
 }
 
-export type SplitScreenVoteUncheckedUpdateWithoutVoterInput = {
+export type SplitScreenVoteUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SplitScreenVoteUncheckedUpdateManyWithoutVoterInput = {
+export type SplitScreenVoteUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
-  participantId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumSplitScreenVoteStatusFieldUpdateOperationsInput | $Enums.SplitScreenVoteStatus
+  submissionId?: Prisma.StringFieldUpdateOperationsInput | string
+  voteType?: Prisma.EnumSplitScreenVoteTypeFieldUpdateOperationsInput | $Enums.SplitScreenVoteType
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -759,82 +759,82 @@ export type SplitScreenVoteUncheckedUpdateManyWithoutVoterInput = {
 export type SplitScreenVoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   battleId?: boolean
-  voterId?: boolean
-  participantId?: boolean
-  status?: boolean
+  submissionId?: boolean
+  userId?: boolean
+  voteType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["splitScreenVote"]>
 
 export type SplitScreenVoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   battleId?: boolean
-  voterId?: boolean
-  participantId?: boolean
-  status?: boolean
+  submissionId?: boolean
+  userId?: boolean
+  voteType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["splitScreenVote"]>
 
 export type SplitScreenVoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   battleId?: boolean
-  voterId?: boolean
-  participantId?: boolean
-  status?: boolean
+  submissionId?: boolean
+  userId?: boolean
+  voteType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["splitScreenVote"]>
 
 export type SplitScreenVoteSelectScalar = {
   id?: boolean
   battleId?: boolean
-  voterId?: boolean
-  participantId?: boolean
-  status?: boolean
+  submissionId?: boolean
+  userId?: boolean
+  voteType?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SplitScreenVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "voterId" | "participantId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["splitScreenVote"]>
+export type SplitScreenVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "submissionId" | "userId" | "voteType" | "createdAt" | "updatedAt", ExtArgs["result"]["splitScreenVote"]>
 export type SplitScreenVoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SplitScreenVoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type SplitScreenVoteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
-  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  participant?: boolean | Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $SplitScreenVotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "SplitScreenVote"
   objects: {
     battle: Prisma.$SplitScreenBattlePayload<ExtArgs>
-    voter: Prisma.$UserPayload<ExtArgs>
-    participant: Prisma.$SplitScreenParticipantPayload<ExtArgs>
+    submission: Prisma.$SplitScreenSubmissionPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     battleId: string
-    voterId: string
-    participantId: string
-    status: $Enums.SplitScreenVoteStatus
+    submissionId: string
+    userId: string
+    voteType: $Enums.SplitScreenVoteType
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["splitScreenVote"]>
@@ -1232,8 +1232,8 @@ readonly fields: SplitScreenVoteFieldRefs;
 export interface Prisma__SplitScreenVoteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   battle<T extends Prisma.SplitScreenBattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenBattleDefaultArgs<ExtArgs>>): Prisma.Prisma__SplitScreenBattleClient<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  voter<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  participant<T extends Prisma.SplitScreenParticipantDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenParticipantDefaultArgs<ExtArgs>>): Prisma.Prisma__SplitScreenParticipantClient<runtime.Types.Result.GetResult<Prisma.$SplitScreenParticipantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  submission<T extends Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenSubmissionDefaultArgs<ExtArgs>>): Prisma.Prisma__SplitScreenSubmissionClient<runtime.Types.Result.GetResult<Prisma.$SplitScreenSubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1265,9 +1265,9 @@ export interface Prisma__SplitScreenVoteClient<T, Null = never, ExtArgs extends 
 export interface SplitScreenVoteFieldRefs {
   readonly id: Prisma.FieldRef<"SplitScreenVote", 'String'>
   readonly battleId: Prisma.FieldRef<"SplitScreenVote", 'String'>
-  readonly voterId: Prisma.FieldRef<"SplitScreenVote", 'String'>
-  readonly participantId: Prisma.FieldRef<"SplitScreenVote", 'String'>
-  readonly status: Prisma.FieldRef<"SplitScreenVote", 'SplitScreenVoteStatus'>
+  readonly submissionId: Prisma.FieldRef<"SplitScreenVote", 'String'>
+  readonly userId: Prisma.FieldRef<"SplitScreenVote", 'String'>
+  readonly voteType: Prisma.FieldRef<"SplitScreenVote", 'SplitScreenVoteType'>
   readonly createdAt: Prisma.FieldRef<"SplitScreenVote", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SplitScreenVote", 'DateTime'>
 }

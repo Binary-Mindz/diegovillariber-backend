@@ -995,8 +995,8 @@ export type NotificationStatus = (typeof NotificationStatus)[keyof typeof Notifi
 
 
 export const SplitScreenBattleStatus = {
+  DRAFT: 'DRAFT',
   OPEN: 'OPEN',
-  MATCHED: 'MATCHED',
   LIVE: 'LIVE',
   VOTING: 'VOTING',
   COMPLETED: 'COMPLETED',
@@ -1006,7 +1006,7 @@ export const SplitScreenBattleStatus = {
 export type SplitScreenBattleStatus = (typeof SplitScreenBattleStatus)[keyof typeof SplitScreenBattleStatus]
 
 
-export const SplitScreenCategory = {
+export const SplitScreenBattleCategory = {
   STYLES: 'STYLES',
   RACING: 'RACING',
   CLASSIC: 'CLASSIC',
@@ -1015,23 +1015,52 @@ export const SplitScreenCategory = {
   OFF_ROAD: 'OFF_ROAD'
 } as const
 
-export type SplitScreenCategory = (typeof SplitScreenCategory)[keyof typeof SplitScreenCategory]
+export type SplitScreenBattleCategory = (typeof SplitScreenBattleCategory)[keyof typeof SplitScreenBattleCategory]
 
 
-export const SplitScreenMatchMode = {
+export const SplitScreenMatchmakingMode = {
   ANYONE: 'ANYONE',
   ONLINE_ONLY: 'ONLINE_ONLY'
 } as const
 
-export type SplitScreenMatchMode = (typeof SplitScreenMatchMode)[keyof typeof SplitScreenMatchMode]
+export type SplitScreenMatchmakingMode = (typeof SplitScreenMatchmakingMode)[keyof typeof SplitScreenMatchmakingMode]
 
 
-export const SplitScreenVoteStatus = {
-  ACTIVE: 'ACTIVE',
-  REVOKED: 'REVOKED'
+export const SplitScreenPreferenceMode = {
+  ANY_CAR_BRAND: 'ANY_CAR_BRAND',
+  SAME_BRAND_ONLY: 'SAME_BRAND_ONLY',
+  SAME_MODEL_ONLY: 'SAME_MODEL_ONLY',
+  SPECIFIC_BRAND: 'SPECIFIC_BRAND',
+  SIMILAR_PRESTIGE: 'SIMILAR_PRESTIGE'
 } as const
 
-export type SplitScreenVoteStatus = (typeof SplitScreenVoteStatus)[keyof typeof SplitScreenVoteStatus]
+export type SplitScreenPreferenceMode = (typeof SplitScreenPreferenceMode)[keyof typeof SplitScreenPreferenceMode]
+
+
+export const SplitScreenInvitationStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  CANCELLED: 'CANCELLED',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type SplitScreenInvitationStatus = (typeof SplitScreenInvitationStatus)[keyof typeof SplitScreenInvitationStatus]
+
+
+export const SplitScreenSubmissionStatus = {
+  PENDING: 'PENDING',
+  SUBMITTED: 'SUBMITTED'
+} as const
+
+export type SplitScreenSubmissionStatus = (typeof SplitScreenSubmissionStatus)[keyof typeof SplitScreenSubmissionStatus]
+
+
+export const SplitScreenVoteType = {
+  UPVOTE: 'UPVOTE'
+} as const
+
+export type SplitScreenVoteType = (typeof SplitScreenVoteType)[keyof typeof SplitScreenVoteType]
 
 
 export const SplitScreenResultType = {

@@ -427,12 +427,15 @@ export type UserWhereInput = {
   notifications?: Prisma.NotificationListRelationFilter
   notificationsActor?: Prisma.NotificationListRelationFilter
   deviceTokens?: Prisma.DeviceTokenListRelationFilter
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleListRelationFilter
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleListRelationFilter
-  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
-  splitScreenRewards?: Prisma.SplitScreenRewardListRelationFilter
-  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleListRelationFilter
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenParticipants?: Prisma.SplitScreenParticipantListRelationFilter
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationListRelationFilter
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationListRelationFilter
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionListRelationFilter
+  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  splitScreenComments?: Prisma.SplitScreenCommentListRelationFilter
+  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -510,12 +513,15 @@ export type UserOrderByWithRelationInput = {
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   notificationsActor?: Prisma.NotificationOrderByRelationAggregateInput
   deviceTokens?: Prisma.DeviceTokenOrderByRelationAggregateInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
-  splitScreenResults?: Prisma.SplitScreenResultOrderByRelationAggregateInput
-  splitScreenRewards?: Prisma.SplitScreenRewardOrderByRelationAggregateInput
-  splitScreenVotes?: Prisma.SplitScreenVoteOrderByRelationAggregateInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantOrderByRelationAggregateInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationOrderByRelationAggregateInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationOrderByRelationAggregateInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionOrderByRelationAggregateInput
+  splitScreenVotes?: Prisma.SplitScreenVoteOrderByRelationAggregateInput
+  splitScreenComments?: Prisma.SplitScreenCommentOrderByRelationAggregateInput
+  splitScreenResults?: Prisma.SplitScreenResultOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -596,12 +602,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   notifications?: Prisma.NotificationListRelationFilter
   notificationsActor?: Prisma.NotificationListRelationFilter
   deviceTokens?: Prisma.DeviceTokenListRelationFilter
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleListRelationFilter
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleListRelationFilter
-  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
-  splitScreenRewards?: Prisma.SplitScreenRewardListRelationFilter
-  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleListRelationFilter
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenParticipants?: Prisma.SplitScreenParticipantListRelationFilter
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationListRelationFilter
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationListRelationFilter
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionListRelationFilter
+  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  splitScreenComments?: Prisma.SplitScreenCommentListRelationFilter
+  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -739,12 +748,15 @@ export type UserCreateInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -822,12 +834,15 @@ export type UserUncheckedCreateInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -905,12 +920,15 @@ export type UserUpdateInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -988,12 +1006,15 @@ export type UserUncheckedUpdateInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1904,34 +1925,34 @@ export type UserUpdateOneRequiredWithoutSharesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSharesInput, Prisma.UserUpdateWithoutSharesInput>, Prisma.UserUncheckedUpdateWithoutSharesInput>
 }
 
-export type UserCreateNestedOneWithoutSplitScreenBattlesCreatorInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesCreatorInput
+export type UserCreateNestedOneWithoutSplitScreenBattlesCreatedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesCreatedInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserCreateNestedOneWithoutSplitScreenBattlesWinnerInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesWinnerInput
+export type UserCreateNestedOneWithoutSplitScreenBattlesWonInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesWonInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutSplitScreenBattlesCreatorNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesCreatorInput
-  upsert?: Prisma.UserUpsertWithoutSplitScreenBattlesCreatorInput
+export type UserUpdateOneRequiredWithoutSplitScreenBattlesCreatedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesCreatedInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenBattlesCreatedInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenBattlesCreatorInput, Prisma.UserUpdateWithoutSplitScreenBattlesCreatorInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatorInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenBattlesCreatedInput, Prisma.UserUpdateWithoutSplitScreenBattlesCreatedInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatedInput>
 }
 
-export type UserUpdateOneWithoutSplitScreenBattlesWinnerNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesWinnerInput
-  upsert?: Prisma.UserUpsertWithoutSplitScreenBattlesWinnerInput
+export type UserUpdateOneWithoutSplitScreenBattlesWonNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWonInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenBattlesWonInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenBattlesWonInput
   disconnect?: Prisma.UserWhereInput | boolean
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenBattlesWinnerInput, Prisma.UserUpdateWithoutSplitScreenBattlesWinnerInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWinnerInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenBattlesWonInput, Prisma.UserUpdateWithoutSplitScreenBattlesWonInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWonInput>
 }
 
 export type UserCreateNestedOneWithoutSplitScreenParticipantsInput = {
@@ -1948,6 +1969,48 @@ export type UserUpdateOneRequiredWithoutSplitScreenParticipantsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenParticipantsInput, Prisma.UserUpdateWithoutSplitScreenParticipantsInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenParticipantsInput>
 }
 
+export type UserCreateNestedOneWithoutSplitScreenInvitationsSentInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenInvitationsSentInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutSplitScreenInvitationsRecvInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsRecvInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenInvitationsRecvInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSplitScreenInvitationsSentNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsSentInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenInvitationsSentInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenInvitationsSentInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenInvitationsSentInput, Prisma.UserUpdateWithoutSplitScreenInvitationsSentInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsSentInput>
+}
+
+export type UserUpdateOneRequiredWithoutSplitScreenInvitationsRecvNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsRecvInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenInvitationsRecvInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenInvitationsRecvInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenInvitationsRecvInput, Prisma.UserUpdateWithoutSplitScreenInvitationsRecvInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsRecvInput>
+}
+
+export type UserCreateNestedOneWithoutSplitScreenSubmissionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedCreateWithoutSplitScreenSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSplitScreenSubmissionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedCreateWithoutSplitScreenSubmissionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenSubmissionsInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenSubmissionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenSubmissionsInput, Prisma.UserUpdateWithoutSplitScreenSubmissionsInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenSubmissionsInput>
+}
+
 export type UserCreateNestedOneWithoutSplitScreenVotesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenVotesInput, Prisma.UserUncheckedCreateWithoutSplitScreenVotesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenVotesInput
@@ -1962,18 +2025,18 @@ export type UserUpdateOneRequiredWithoutSplitScreenVotesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenVotesInput, Prisma.UserUpdateWithoutSplitScreenVotesInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenVotesInput>
 }
 
-export type UserCreateNestedOneWithoutSplitScreenRewardsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedCreateWithoutSplitScreenRewardsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenRewardsInput
+export type UserCreateNestedOneWithoutSplitScreenCommentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedCreateWithoutSplitScreenCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenCommentsInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutSplitScreenRewardsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedCreateWithoutSplitScreenRewardsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenRewardsInput
-  upsert?: Prisma.UserUpsertWithoutSplitScreenRewardsInput
+export type UserUpdateOneRequiredWithoutSplitScreenCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedCreateWithoutSplitScreenCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSplitScreenCommentsInput
+  upsert?: Prisma.UserUpsertWithoutSplitScreenCommentsInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenRewardsInput, Prisma.UserUpdateWithoutSplitScreenRewardsInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenRewardsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSplitScreenCommentsInput, Prisma.UserUpdateWithoutSplitScreenCommentsInput>, Prisma.UserUncheckedUpdateWithoutSplitScreenCommentsInput>
 }
 
 export type UserCreateNestedOneWithoutSplitScreenResultsInput = {
@@ -2104,12 +2167,15 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2186,12 +2252,15 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2284,12 +2353,15 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2366,12 +2438,15 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2448,12 +2523,15 @@ export type UserCreateWithoutChallengesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2530,12 +2608,15 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2628,12 +2709,15 @@ export type UserUpdateWithoutChallengesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -2710,12 +2794,15 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -2792,12 +2879,15 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -2874,12 +2964,15 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -2972,12 +3065,15 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -3054,12 +3150,15 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -3136,12 +3235,15 @@ export type UserCreateWithoutChallengeReactionsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -3218,12 +3320,15 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3316,12 +3421,15 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3398,12 +3506,15 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3480,12 +3591,15 @@ export type UserCreateWithoutChallengeVotesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -3562,12 +3676,15 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -3660,12 +3777,15 @@ export type UserUpdateWithoutChallengeVotesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -3742,12 +3862,15 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -3824,12 +3947,15 @@ export type UserCreateWithoutChallengeCommentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -3906,12 +4032,15 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -4004,12 +4133,15 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -4086,12 +4218,15 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4168,12 +4303,15 @@ export type UserCreateWithoutCommentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4250,12 +4388,15 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4348,12 +4489,15 @@ export type UserUpdateWithoutCommentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4430,12 +4574,15 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -4512,12 +4659,15 @@ export type UserCreateWithoutConversationParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -4594,12 +4744,15 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -4692,12 +4845,15 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -4774,12 +4930,15 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4856,12 +5015,15 @@ export type UserCreateWithoutEventsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4938,12 +5100,15 @@ export type UserUncheckedCreateWithoutEventsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -5036,12 +5201,15 @@ export type UserUpdateWithoutEventsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5118,12 +5286,15 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5200,12 +5371,15 @@ export type UserCreateWithoutFollowingInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5282,12 +5456,15 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5369,12 +5546,15 @@ export type UserCreateWithoutFollowersInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5451,12 +5631,15 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5549,12 +5732,15 @@ export type UserUpdateWithoutFollowingInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5631,12 +5817,15 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5724,12 +5913,15 @@ export type UserUpdateWithoutFollowersInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5806,12 +5998,15 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5888,12 +6083,15 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5970,12 +6168,15 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -6057,12 +6258,15 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -6139,12 +6343,15 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -6237,12 +6444,15 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6319,12 +6529,15 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -6412,12 +6625,15 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -6494,12 +6710,15 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -6576,12 +6795,15 @@ export type UserCreateWithoutBattleParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -6658,12 +6880,15 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -6756,12 +6981,15 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -6838,12 +7066,15 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -6920,12 +7151,15 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -7002,12 +7236,15 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -7089,12 +7326,15 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -7171,12 +7411,15 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -7269,12 +7512,15 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -7351,12 +7597,15 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -7444,12 +7693,15 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -7526,12 +7778,15 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -7608,12 +7863,15 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -7690,12 +7948,15 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -7788,12 +8049,15 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -7870,12 +8134,15 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -7952,12 +8219,15 @@ export type UserCreateWithoutBattleVotesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -8034,12 +8304,15 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -8132,12 +8405,15 @@ export type UserUpdateWithoutBattleVotesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -8214,12 +8490,15 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -8296,12 +8575,15 @@ export type UserCreateWithoutBattleCommentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -8378,12 +8660,15 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -8476,12 +8761,15 @@ export type UserUpdateWithoutBattleCommentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -8558,12 +8846,15 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -8640,12 +8931,15 @@ export type UserCreateWithoutHidePostsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -8722,12 +9016,15 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -8820,12 +9117,15 @@ export type UserUpdateWithoutHidePostsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -8902,12 +9202,15 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -8984,12 +9287,15 @@ export type UserCreateWithoutLikesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -9066,12 +9372,15 @@ export type UserUncheckedCreateWithoutLikesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -9164,12 +9473,15 @@ export type UserUpdateWithoutLikesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -9246,12 +9558,15 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -9328,12 +9643,15 @@ export type UserCreateWithoutLivesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -9410,12 +9728,15 @@ export type UserUncheckedCreateWithoutLivesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -9508,12 +9829,15 @@ export type UserUpdateWithoutLivesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -9590,12 +9914,15 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -9672,12 +9999,15 @@ export type UserCreateWithoutLiveParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -9754,12 +10084,15 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -9852,12 +10185,15 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -9934,12 +10270,15 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -10016,12 +10355,15 @@ export type UserCreateWithoutLiveRewardsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -10098,12 +10440,15 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -10185,12 +10530,15 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -10267,12 +10615,15 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -10365,12 +10716,15 @@ export type UserUpdateWithoutLiveRewardsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -10447,12 +10801,15 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -10540,12 +10897,15 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -10622,12 +10982,15 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -10704,12 +11067,15 @@ export type UserCreateWithoutMessagesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -10786,12 +11152,15 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -10884,12 +11253,15 @@ export type UserUpdateWithoutMessagesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -10966,12 +11338,15 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -11048,12 +11423,15 @@ export type UserCreateWithoutMessageReceiptsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -11130,12 +11508,15 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -11228,12 +11609,15 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -11310,12 +11694,15 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -11392,12 +11779,15 @@ export type UserCreateWithoutNotificationsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -11474,12 +11864,15 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -11561,12 +11954,15 @@ export type UserCreateWithoutNotificationsActorInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -11643,12 +12039,15 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -11741,12 +12140,15 @@ export type UserUpdateWithoutNotificationsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -11823,12 +12225,15 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -11916,12 +12321,15 @@ export type UserUpdateWithoutNotificationsActorInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -11998,12 +12406,15 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -12080,12 +12491,15 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -12162,12 +12576,15 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -12260,12 +12677,15 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -12342,12 +12762,15 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDeviceTokensInput = {
@@ -12424,12 +12847,15 @@ export type UserCreateWithoutDeviceTokensInput = {
   notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDeviceTokensInput = {
@@ -12506,12 +12932,15 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDeviceTokensInput = {
@@ -12604,12 +13033,15 @@ export type UserUpdateWithoutDeviceTokensInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeviceTokensInput = {
@@ -12686,12 +13118,15 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -12768,12 +13203,15 @@ export type UserCreateWithoutOfficialPartnersInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -12850,12 +13288,15 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -12948,12 +13389,15 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -13030,12 +13474,15 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -13112,12 +13559,15 @@ export type UserCreateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -13194,12 +13644,15 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -13292,12 +13745,15 @@ export type UserUpdateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -13374,12 +13830,15 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -13456,12 +13915,15 @@ export type UserCreateWithoutPostsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -13538,12 +14000,15 @@ export type UserUncheckedCreateWithoutPostsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -13625,12 +14090,15 @@ export type UserCreateWithoutTaggedInPostsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -13707,12 +14175,15 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -13805,12 +14276,15 @@ export type UserUpdateWithoutPostsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -13887,12 +14361,15 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -14014,12 +14491,15 @@ export type UserCreateWithoutPrizesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -14096,12 +14576,15 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -14194,12 +14677,15 @@ export type UserUpdateWithoutPrizesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -14276,12 +14762,15 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -14358,12 +14847,15 @@ export type UserCreateWithoutProductListsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -14440,12 +14932,15 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -14538,12 +15033,15 @@ export type UserUpdateWithoutProductListsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -14620,12 +15118,15 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -14702,12 +15203,15 @@ export type UserCreateWithoutProfileInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -14784,12 +15288,15 @@ export type UserUncheckedCreateWithoutProfileInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -14882,12 +15389,15 @@ export type UserUpdateWithoutProfileInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -14964,12 +15474,15 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesInput = {
@@ -15046,12 +15559,15 @@ export type UserCreateWithoutRacingVotesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesInput = {
@@ -15128,12 +15644,15 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesInput = {
@@ -15226,12 +15745,15 @@ export type UserUpdateWithoutRacingVotesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesInput = {
@@ -15308,12 +15830,15 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -15390,12 +15915,15 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -15472,12 +16000,15 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -15559,12 +16090,15 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -15641,12 +16175,15 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -15739,12 +16276,15 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -15821,12 +16361,15 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -15914,12 +16457,15 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -15996,12 +16542,15 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -16078,12 +16627,15 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -16160,12 +16712,15 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -16258,12 +16813,15 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -16340,12 +16898,15 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -16422,12 +16983,15 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -16504,12 +17068,15 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -16602,12 +17169,15 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -16684,12 +17254,15 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -16766,12 +17339,15 @@ export type UserCreateWithoutRawShiftVotesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -16848,12 +17424,15 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -16946,12 +17525,15 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -17028,12 +17610,15 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -17110,12 +17695,15 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -17192,12 +17780,15 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -17290,12 +17881,15 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -17372,12 +17966,15 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -17454,12 +18051,15 @@ export type UserCreateWithoutReportsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -17536,12 +18136,15 @@ export type UserUncheckedCreateWithoutReportsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -17634,12 +18237,15 @@ export type UserUpdateWithoutReportsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -17716,12 +18322,15 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -17798,12 +18407,15 @@ export type UserCreateWithoutRepostsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -17880,12 +18492,15 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -17978,12 +18593,15 @@ export type UserUpdateWithoutRepostsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -18060,12 +18678,15 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -18142,12 +18763,15 @@ export type UserCreateWithoutSavePostsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -18224,12 +18848,15 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -18322,12 +18949,15 @@ export type UserUpdateWithoutSavePostsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -18404,12 +19034,15 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -18486,12 +19119,15 @@ export type UserCreateWithoutSharesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -18568,12 +19204,15 @@ export type UserUncheckedCreateWithoutSharesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -18666,12 +19305,15 @@ export type UserUpdateWithoutSharesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -18748,15 +19390,18 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutSplitScreenBattlesCreatorInput = {
+export type UserCreateWithoutSplitScreenBattlesCreatedInput = {
   id?: string
   email: string
   phone?: string | null
@@ -18831,14 +19476,17 @@ export type UserCreateWithoutSplitScreenBattlesCreatorInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput = {
+export type UserUncheckedCreateWithoutSplitScreenBattlesCreatedInput = {
   id?: string
   email: string
   phone?: string | null
@@ -18913,19 +19561,22 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutSplitScreenBattlesCreatorInput = {
+export type UserCreateOrConnectWithoutSplitScreenBattlesCreatedInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatedInput>
 }
 
-export type UserCreateWithoutSplitScreenBattlesWinnerInput = {
+export type UserCreateWithoutSplitScreenBattlesWonInput = {
   id?: string
   email: string
   phone?: string | null
@@ -19000,14 +19651,17 @@ export type UserCreateWithoutSplitScreenBattlesWinnerInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput = {
+export type UserUncheckedCreateWithoutSplitScreenBattlesWonInput = {
   id?: string
   email: string
   phone?: string | null
@@ -19082,30 +19736,33 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutSplitScreenBattlesWinnerInput = {
+export type UserCreateOrConnectWithoutSplitScreenBattlesWonInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWonInput>
 }
 
-export type UserUpsertWithoutSplitScreenBattlesCreatorInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatorInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatorInput>
+export type UserUpsertWithoutSplitScreenBattlesCreatedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesCreatedInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutSplitScreenBattlesCreatorInput = {
+export type UserUpdateToOneWithWhereWithoutSplitScreenBattlesCreatedInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesCreatorInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatorInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesCreatedInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesCreatedInput>
 }
 
-export type UserUpdateWithoutSplitScreenBattlesCreatorInput = {
+export type UserUpdateWithoutSplitScreenBattlesCreatedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19180,14 +19837,17 @@ export type UserUpdateWithoutSplitScreenBattlesCreatorInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutSplitScreenBattlesCreatorInput = {
+export type UserUncheckedUpdateWithoutSplitScreenBattlesCreatedInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19262,25 +19922,28 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesCreatorInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserUpsertWithoutSplitScreenBattlesWinnerInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWinnerInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWinnerInput>
+export type UserUpsertWithoutSplitScreenBattlesWonInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWonInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedCreateWithoutSplitScreenBattlesWonInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutSplitScreenBattlesWinnerInput = {
+export type UserUpdateToOneWithWhereWithoutSplitScreenBattlesWonInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesWinnerInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWinnerInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenBattlesWonInput, Prisma.UserUncheckedUpdateWithoutSplitScreenBattlesWonInput>
 }
 
-export type UserUpdateWithoutSplitScreenBattlesWinnerInput = {
+export type UserUpdateWithoutSplitScreenBattlesWonInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19355,14 +20018,17 @@ export type UserUpdateWithoutSplitScreenBattlesWinnerInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutSplitScreenBattlesWinnerInput = {
+export type UserUncheckedUpdateWithoutSplitScreenBattlesWonInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19437,11 +20103,14 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesWinnerInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenParticipantsInput = {
@@ -19519,11 +20188,14 @@ export type UserCreateWithoutSplitScreenParticipantsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
   splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenParticipantsInput = {
@@ -19601,11 +20273,14 @@ export type UserUncheckedCreateWithoutSplitScreenParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
   splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenParticipantsInput = {
@@ -19699,11 +20374,14 @@ export type UserUpdateWithoutSplitScreenParticipantsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
   splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenParticipantsInput = {
@@ -19781,11 +20459,1082 @@ export type UserUncheckedUpdateWithoutSplitScreenParticipantsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
   splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+}
+
+export type UserCreateWithoutSplitScreenInvitationsSentInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSplitScreenInvitationsSentInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSplitScreenInvitationsSentInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsSentInput>
+}
+
+export type UserCreateWithoutSplitScreenInvitationsRecvInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSplitScreenInvitationsRecvInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSplitScreenInvitationsRecvInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsRecvInput>
+}
+
+export type UserUpsertWithoutSplitScreenInvitationsSentInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsSentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsSentInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSplitScreenInvitationsSentInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenInvitationsSentInput, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsSentInput>
+}
+
+export type UserUpdateWithoutSplitScreenInvitationsSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSplitScreenInvitationsSentInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUpsertWithoutSplitScreenInvitationsRecvInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsRecvInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedCreateWithoutSplitScreenInvitationsRecvInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSplitScreenInvitationsRecvInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenInvitationsRecvInput, Prisma.UserUncheckedUpdateWithoutSplitScreenInvitationsRecvInput>
+}
+
+export type UserUpdateWithoutSplitScreenInvitationsRecvInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSplitScreenInvitationsRecvInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSplitScreenSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSplitScreenSubmissionsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSplitScreenSubmissionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedCreateWithoutSplitScreenSubmissionsInput>
+}
+
+export type UserUpsertWithoutSplitScreenSubmissionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenSubmissionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedCreateWithoutSplitScreenSubmissionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSplitScreenSubmissionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenSubmissionsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenSubmissionsInput>
+}
+
+export type UserUpdateWithoutSplitScreenSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSplitScreenSubmissionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
+  splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenVotesInput = {
@@ -19863,11 +21612,14 @@ export type UserCreateWithoutSplitScreenVotesInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenVotesInput = {
@@ -19945,11 +21697,14 @@ export type UserUncheckedCreateWithoutSplitScreenVotesInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenVotesInput = {
@@ -20043,11 +21798,14 @@ export type UserUpdateWithoutSplitScreenVotesInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenVotesInput = {
@@ -20125,14 +21883,17 @@ export type UserUncheckedUpdateWithoutSplitScreenVotesInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutSplitScreenRewardsInput = {
+export type UserCreateWithoutSplitScreenCommentsInput = {
   id?: string
   email: string
   phone?: string | null
@@ -20207,14 +21968,17 @@ export type UserCreateWithoutSplitScreenRewardsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutSplitScreenRewardsInput = {
+export type UserUncheckedCreateWithoutSplitScreenCommentsInput = {
   id?: string
   email: string
   phone?: string | null
@@ -20289,30 +22053,33 @@ export type UserUncheckedCreateWithoutSplitScreenRewardsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutSplitScreenRewardsInput = {
+export type UserCreateOrConnectWithoutSplitScreenCommentsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedCreateWithoutSplitScreenRewardsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedCreateWithoutSplitScreenCommentsInput>
 }
 
-export type UserUpsertWithoutSplitScreenRewardsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenRewardsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedCreateWithoutSplitScreenRewardsInput>
+export type UserUpsertWithoutSplitScreenCommentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenCommentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedCreateWithoutSplitScreenCommentsInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutSplitScreenRewardsInput = {
+export type UserUpdateToOneWithWhereWithoutSplitScreenCommentsInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenRewardsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenRewardsInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSplitScreenCommentsInput, Prisma.UserUncheckedUpdateWithoutSplitScreenCommentsInput>
 }
 
-export type UserUpdateWithoutSplitScreenRewardsInput = {
+export type UserUpdateWithoutSplitScreenCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20387,14 +22154,17 @@ export type UserUpdateWithoutSplitScreenRewardsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutSplitScreenRewardsInput = {
+export type UserUncheckedUpdateWithoutSplitScreenCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20469,11 +22239,14 @@ export type UserUncheckedUpdateWithoutSplitScreenRewardsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenResultsInput = {
@@ -20551,11 +22324,14 @@ export type UserCreateWithoutSplitScreenResultsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenResultsInput = {
@@ -20633,11 +22409,14 @@ export type UserUncheckedCreateWithoutSplitScreenResultsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenResultsInput = {
@@ -20731,11 +22510,14 @@ export type UserUpdateWithoutSplitScreenResultsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenResultsInput = {
@@ -20813,11 +22595,14 @@ export type UserUncheckedUpdateWithoutSplitScreenResultsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -20894,12 +22679,15 @@ export type UserCreateWithoutUserPointsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -20976,12 +22764,15 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -21074,12 +22865,15 @@ export type UserUpdateWithoutUserPointsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -21156,12 +22950,15 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -21238,12 +23035,15 @@ export type UserCreateWithoutWishListsInput = {
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -21320,12 +23120,15 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
   deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatedByInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedCreateNestedManyWithoutUserInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutCreatorInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutWinnerInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedCreateNestedManyWithoutUserInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviterInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedCreateNestedManyWithoutUserInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutUserInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedCreateNestedManyWithoutUserInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -21418,12 +23221,15 @@ export type UserUpdateWithoutWishListsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -21500,12 +23306,15 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -21582,12 +23391,15 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -21664,12 +23476,15 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
   deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenBattlesCreator?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatedByNestedInput
-  splitScreenBattlesWinner?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenRewards?: Prisma.SplitScreenRewardUncheckedUpdateManyWithoutUserNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattlesCreated?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  splitScreenBattlesWon?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutWinnerNestedInput
   splitScreenParticipants?: Prisma.SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenInvitationsSent?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  splitScreenInvitationsRecv?: Prisma.SplitScreenInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  splitScreenSubmissions?: Prisma.SplitScreenSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenComments?: Prisma.SplitScreenCommentUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -21753,12 +23568,15 @@ export type UserCountOutputType = {
   notifications: number
   notificationsActor: number
   deviceTokens: number
-  splitScreenBattlesCreator: number
-  splitScreenBattlesWinner: number
-  splitScreenResults: number
-  splitScreenRewards: number
-  splitScreenVotes: number
+  splitScreenBattlesCreated: number
+  splitScreenBattlesWon: number
   splitScreenParticipants: number
+  splitScreenInvitationsSent: number
+  splitScreenInvitationsRecv: number
+  splitScreenSubmissions: number
+  splitScreenVotes: number
+  splitScreenComments: number
+  splitScreenResults: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -21811,12 +23629,15 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
   notificationsActor?: boolean | UserCountOutputTypeCountNotificationsActorArgs
   deviceTokens?: boolean | UserCountOutputTypeCountDeviceTokensArgs
-  splitScreenBattlesCreator?: boolean | UserCountOutputTypeCountSplitScreenBattlesCreatorArgs
-  splitScreenBattlesWinner?: boolean | UserCountOutputTypeCountSplitScreenBattlesWinnerArgs
-  splitScreenResults?: boolean | UserCountOutputTypeCountSplitScreenResultsArgs
-  splitScreenRewards?: boolean | UserCountOutputTypeCountSplitScreenRewardsArgs
-  splitScreenVotes?: boolean | UserCountOutputTypeCountSplitScreenVotesArgs
+  splitScreenBattlesCreated?: boolean | UserCountOutputTypeCountSplitScreenBattlesCreatedArgs
+  splitScreenBattlesWon?: boolean | UserCountOutputTypeCountSplitScreenBattlesWonArgs
   splitScreenParticipants?: boolean | UserCountOutputTypeCountSplitScreenParticipantsArgs
+  splitScreenInvitationsSent?: boolean | UserCountOutputTypeCountSplitScreenInvitationsSentArgs
+  splitScreenInvitationsRecv?: boolean | UserCountOutputTypeCountSplitScreenInvitationsRecvArgs
+  splitScreenSubmissions?: boolean | UserCountOutputTypeCountSplitScreenSubmissionsArgs
+  splitScreenVotes?: boolean | UserCountOutputTypeCountSplitScreenVotesArgs
+  splitScreenComments?: boolean | UserCountOutputTypeCountSplitScreenCommentsArgs
+  splitScreenResults?: boolean | UserCountOutputTypeCountSplitScreenResultsArgs
 }
 
 /**
@@ -22175,29 +23996,43 @@ export type UserCountOutputTypeCountDeviceTokensArgs<ExtArgs extends runtime.Typ
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSplitScreenBattlesCreatorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountSplitScreenBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SplitScreenBattleWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSplitScreenBattlesWinnerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountSplitScreenBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SplitScreenBattleWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSplitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SplitScreenResultWhereInput
+export type UserCountOutputTypeCountSplitScreenParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenParticipantWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSplitScreenRewardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SplitScreenRewardWhereInput
+export type UserCountOutputTypeCountSplitScreenInvitationsSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenInvitationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSplitScreenInvitationsRecvArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenInvitationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSplitScreenSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenSubmissionWhereInput
 }
 
 /**
@@ -22210,8 +24045,15 @@ export type UserCountOutputTypeCountSplitScreenVotesArgs<ExtArgs extends runtime
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountSplitScreenParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SplitScreenParticipantWhereInput
+export type UserCountOutputTypeCountSplitScreenCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenCommentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSplitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SplitScreenResultWhereInput
 }
 
 
@@ -22290,12 +24132,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   notificationsActor?: boolean | Prisma.User$notificationsActorArgs<ExtArgs>
   deviceTokens?: boolean | Prisma.User$deviceTokensArgs<ExtArgs>
-  splitScreenBattlesCreator?: boolean | Prisma.User$splitScreenBattlesCreatorArgs<ExtArgs>
-  splitScreenBattlesWinner?: boolean | Prisma.User$splitScreenBattlesWinnerArgs<ExtArgs>
-  splitScreenResults?: boolean | Prisma.User$splitScreenResultsArgs<ExtArgs>
-  splitScreenRewards?: boolean | Prisma.User$splitScreenRewardsArgs<ExtArgs>
-  splitScreenVotes?: boolean | Prisma.User$splitScreenVotesArgs<ExtArgs>
+  splitScreenBattlesCreated?: boolean | Prisma.User$splitScreenBattlesCreatedArgs<ExtArgs>
+  splitScreenBattlesWon?: boolean | Prisma.User$splitScreenBattlesWonArgs<ExtArgs>
   splitScreenParticipants?: boolean | Prisma.User$splitScreenParticipantsArgs<ExtArgs>
+  splitScreenInvitationsSent?: boolean | Prisma.User$splitScreenInvitationsSentArgs<ExtArgs>
+  splitScreenInvitationsRecv?: boolean | Prisma.User$splitScreenInvitationsRecvArgs<ExtArgs>
+  splitScreenSubmissions?: boolean | Prisma.User$splitScreenSubmissionsArgs<ExtArgs>
+  splitScreenVotes?: boolean | Prisma.User$splitScreenVotesArgs<ExtArgs>
+  splitScreenComments?: boolean | Prisma.User$splitScreenCommentsArgs<ExtArgs>
+  splitScreenResults?: boolean | Prisma.User$splitScreenResultsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -22430,12 +24275,15 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   notificationsActor?: boolean | Prisma.User$notificationsActorArgs<ExtArgs>
   deviceTokens?: boolean | Prisma.User$deviceTokensArgs<ExtArgs>
-  splitScreenBattlesCreator?: boolean | Prisma.User$splitScreenBattlesCreatorArgs<ExtArgs>
-  splitScreenBattlesWinner?: boolean | Prisma.User$splitScreenBattlesWinnerArgs<ExtArgs>
-  splitScreenResults?: boolean | Prisma.User$splitScreenResultsArgs<ExtArgs>
-  splitScreenRewards?: boolean | Prisma.User$splitScreenRewardsArgs<ExtArgs>
-  splitScreenVotes?: boolean | Prisma.User$splitScreenVotesArgs<ExtArgs>
+  splitScreenBattlesCreated?: boolean | Prisma.User$splitScreenBattlesCreatedArgs<ExtArgs>
+  splitScreenBattlesWon?: boolean | Prisma.User$splitScreenBattlesWonArgs<ExtArgs>
   splitScreenParticipants?: boolean | Prisma.User$splitScreenParticipantsArgs<ExtArgs>
+  splitScreenInvitationsSent?: boolean | Prisma.User$splitScreenInvitationsSentArgs<ExtArgs>
+  splitScreenInvitationsRecv?: boolean | Prisma.User$splitScreenInvitationsRecvArgs<ExtArgs>
+  splitScreenSubmissions?: boolean | Prisma.User$splitScreenSubmissionsArgs<ExtArgs>
+  splitScreenVotes?: boolean | Prisma.User$splitScreenVotesArgs<ExtArgs>
+  splitScreenComments?: boolean | Prisma.User$splitScreenCommentsArgs<ExtArgs>
+  splitScreenResults?: boolean | Prisma.User$splitScreenResultsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -22495,12 +24343,15 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     notificationsActor: Prisma.$NotificationPayload<ExtArgs>[]
     deviceTokens: Prisma.$DeviceTokenPayload<ExtArgs>[]
-    splitScreenBattlesCreator: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
-    splitScreenBattlesWinner: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
-    splitScreenResults: Prisma.$SplitScreenResultPayload<ExtArgs>[]
-    splitScreenRewards: Prisma.$SplitScreenRewardPayload<ExtArgs>[]
-    splitScreenVotes: Prisma.$SplitScreenVotePayload<ExtArgs>[]
+    splitScreenBattlesCreated: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
+    splitScreenBattlesWon: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
     splitScreenParticipants: Prisma.$SplitScreenParticipantPayload<ExtArgs>[]
+    splitScreenInvitationsSent: Prisma.$SplitScreenInvitationPayload<ExtArgs>[]
+    splitScreenInvitationsRecv: Prisma.$SplitScreenInvitationPayload<ExtArgs>[]
+    splitScreenSubmissions: Prisma.$SplitScreenSubmissionPayload<ExtArgs>[]
+    splitScreenVotes: Prisma.$SplitScreenVotePayload<ExtArgs>[]
+    splitScreenComments: Prisma.$SplitScreenCommentPayload<ExtArgs>[]
+    splitScreenResults: Prisma.$SplitScreenResultPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -22971,12 +24822,15 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notificationsActor<T extends Prisma.User$notificationsActorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsActorArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   deviceTokens<T extends Prisma.User$deviceTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$deviceTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DeviceTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenBattlesCreator<T extends Prisma.User$splitScreenBattlesCreatorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattlesCreatorArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenBattlesWinner<T extends Prisma.User$splitScreenBattlesWinnerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattlesWinnerArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenResults<T extends Prisma.User$splitScreenResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenRewards<T extends Prisma.User$splitScreenRewardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenRewardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenRewardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenVotes<T extends Prisma.User$splitScreenVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenBattlesCreated<T extends Prisma.User$splitScreenBattlesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattlesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenBattlesWon<T extends Prisma.User$splitScreenBattlesWonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattlesWonArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   splitScreenParticipants<T extends Prisma.User$splitScreenParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenInvitationsSent<T extends Prisma.User$splitScreenInvitationsSentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenInvitationsSentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenInvitationsRecv<T extends Prisma.User$splitScreenInvitationsRecvArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenInvitationsRecvArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenSubmissions<T extends Prisma.User$splitScreenSubmissionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenSubmissionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenSubmissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenVotes<T extends Prisma.User$splitScreenVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenComments<T extends Prisma.User$splitScreenCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  splitScreenResults<T extends Prisma.User$splitScreenResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -24631,9 +26485,9 @@ export type User$deviceTokensArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
- * User.splitScreenBattlesCreator
+ * User.splitScreenBattlesCreated
  */
-export type User$splitScreenBattlesCreatorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$splitScreenBattlesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the SplitScreenBattle
    */
@@ -24655,9 +26509,9 @@ export type User$splitScreenBattlesCreatorArgs<ExtArgs extends runtime.Types.Ext
 }
 
 /**
- * User.splitScreenBattlesWinner
+ * User.splitScreenBattlesWon
  */
-export type User$splitScreenBattlesWinnerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$splitScreenBattlesWonArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the SplitScreenBattle
    */
@@ -24679,51 +26533,99 @@ export type User$splitScreenBattlesWinnerArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
- * User.splitScreenResults
+ * User.splitScreenParticipants
  */
-export type User$splitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$splitScreenParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SplitScreenResult
+   * Select specific fields to fetch from the SplitScreenParticipant
    */
-  select?: Prisma.SplitScreenResultSelect<ExtArgs> | null
+  select?: Prisma.SplitScreenParticipantSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SplitScreenResult
+   * Omit specific fields from the SplitScreenParticipant
    */
-  omit?: Prisma.SplitScreenResultOmit<ExtArgs> | null
+  omit?: Prisma.SplitScreenParticipantOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SplitScreenResultInclude<ExtArgs> | null
-  where?: Prisma.SplitScreenResultWhereInput
-  orderBy?: Prisma.SplitScreenResultOrderByWithRelationInput | Prisma.SplitScreenResultOrderByWithRelationInput[]
-  cursor?: Prisma.SplitScreenResultWhereUniqueInput
+  include?: Prisma.SplitScreenParticipantInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenParticipantWhereInput
+  orderBy?: Prisma.SplitScreenParticipantOrderByWithRelationInput | Prisma.SplitScreenParticipantOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenParticipantWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SplitScreenResultScalarFieldEnum | Prisma.SplitScreenResultScalarFieldEnum[]
+  distinct?: Prisma.SplitScreenParticipantScalarFieldEnum | Prisma.SplitScreenParticipantScalarFieldEnum[]
 }
 
 /**
- * User.splitScreenRewards
+ * User.splitScreenInvitationsSent
  */
-export type User$splitScreenRewardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$splitScreenInvitationsSentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SplitScreenReward
+   * Select specific fields to fetch from the SplitScreenInvitation
    */
-  select?: Prisma.SplitScreenRewardSelect<ExtArgs> | null
+  select?: Prisma.SplitScreenInvitationSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SplitScreenReward
+   * Omit specific fields from the SplitScreenInvitation
    */
-  omit?: Prisma.SplitScreenRewardOmit<ExtArgs> | null
+  omit?: Prisma.SplitScreenInvitationOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SplitScreenRewardInclude<ExtArgs> | null
-  where?: Prisma.SplitScreenRewardWhereInput
-  orderBy?: Prisma.SplitScreenRewardOrderByWithRelationInput | Prisma.SplitScreenRewardOrderByWithRelationInput[]
-  cursor?: Prisma.SplitScreenRewardWhereUniqueInput
+  include?: Prisma.SplitScreenInvitationInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenInvitationWhereInput
+  orderBy?: Prisma.SplitScreenInvitationOrderByWithRelationInput | Prisma.SplitScreenInvitationOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenInvitationWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SplitScreenRewardScalarFieldEnum | Prisma.SplitScreenRewardScalarFieldEnum[]
+  distinct?: Prisma.SplitScreenInvitationScalarFieldEnum | Prisma.SplitScreenInvitationScalarFieldEnum[]
+}
+
+/**
+ * User.splitScreenInvitationsRecv
+ */
+export type User$splitScreenInvitationsRecvArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenInvitation
+   */
+  select?: Prisma.SplitScreenInvitationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenInvitation
+   */
+  omit?: Prisma.SplitScreenInvitationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenInvitationInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenInvitationWhereInput
+  orderBy?: Prisma.SplitScreenInvitationOrderByWithRelationInput | Prisma.SplitScreenInvitationOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenInvitationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenInvitationScalarFieldEnum | Prisma.SplitScreenInvitationScalarFieldEnum[]
+}
+
+/**
+ * User.splitScreenSubmissions
+ */
+export type User$splitScreenSubmissionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenSubmission
+   */
+  select?: Prisma.SplitScreenSubmissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenSubmission
+   */
+  omit?: Prisma.SplitScreenSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenSubmissionInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenSubmissionWhereInput
+  orderBy?: Prisma.SplitScreenSubmissionOrderByWithRelationInput | Prisma.SplitScreenSubmissionOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenSubmissionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenSubmissionScalarFieldEnum | Prisma.SplitScreenSubmissionScalarFieldEnum[]
 }
 
 /**
@@ -24751,27 +26653,51 @@ export type User$splitScreenVotesArgs<ExtArgs extends runtime.Types.Extensions.I
 }
 
 /**
- * User.splitScreenParticipants
+ * User.splitScreenComments
  */
-export type User$splitScreenParticipantsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$splitScreenCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SplitScreenParticipant
+   * Select specific fields to fetch from the SplitScreenComment
    */
-  select?: Prisma.SplitScreenParticipantSelect<ExtArgs> | null
+  select?: Prisma.SplitScreenCommentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SplitScreenParticipant
+   * Omit specific fields from the SplitScreenComment
    */
-  omit?: Prisma.SplitScreenParticipantOmit<ExtArgs> | null
+  omit?: Prisma.SplitScreenCommentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SplitScreenParticipantInclude<ExtArgs> | null
-  where?: Prisma.SplitScreenParticipantWhereInput
-  orderBy?: Prisma.SplitScreenParticipantOrderByWithRelationInput | Prisma.SplitScreenParticipantOrderByWithRelationInput[]
-  cursor?: Prisma.SplitScreenParticipantWhereUniqueInput
+  include?: Prisma.SplitScreenCommentInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenCommentWhereInput
+  orderBy?: Prisma.SplitScreenCommentOrderByWithRelationInput | Prisma.SplitScreenCommentOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenCommentWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SplitScreenParticipantScalarFieldEnum | Prisma.SplitScreenParticipantScalarFieldEnum[]
+  distinct?: Prisma.SplitScreenCommentScalarFieldEnum | Prisma.SplitScreenCommentScalarFieldEnum[]
+}
+
+/**
+ * User.splitScreenResults
+ */
+export type User$splitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenResult
+   */
+  select?: Prisma.SplitScreenResultSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenResult
+   */
+  omit?: Prisma.SplitScreenResultOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenResultInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenResultWhereInput
+  orderBy?: Prisma.SplitScreenResultOrderByWithRelationInput | Prisma.SplitScreenResultOrderByWithRelationInput[]
+  cursor?: Prisma.SplitScreenResultWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SplitScreenResultScalarFieldEnum | Prisma.SplitScreenResultScalarFieldEnum[]
 }
 
 /**

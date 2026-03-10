@@ -428,15 +428,25 @@ export type SplitScreenBattle = Prisma.SplitScreenBattleModel
  */
 export type SplitScreenParticipant = Prisma.SplitScreenParticipantModel
 /**
+ * Model SplitScreenInvitation
+ * 
+ */
+export type SplitScreenInvitation = Prisma.SplitScreenInvitationModel
+/**
+ * Model SplitScreenSubmission
+ * 
+ */
+export type SplitScreenSubmission = Prisma.SplitScreenSubmissionModel
+/**
  * Model SplitScreenVote
  * 
  */
 export type SplitScreenVote = Prisma.SplitScreenVoteModel
 /**
- * Model SplitScreenReward
+ * Model SplitScreenComment
  * 
  */
-export type SplitScreenReward = Prisma.SplitScreenRewardModel
+export type SplitScreenComment = Prisma.SplitScreenCommentModel
 /**
  * Model SplitScreenResult
  * 

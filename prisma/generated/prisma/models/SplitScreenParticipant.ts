@@ -27,14 +27,16 @@ export type AggregateSplitScreenParticipant = {
 }
 
 export type SplitScreenParticipantAvgAggregateOutputType = {
-  carYear: number | null
   lane: number | null
+  carYear: number | null
+  prestigePoints: number | null
   score: number | null
 }
 
 export type SplitScreenParticipantSumAggregateOutputType = {
-  carYear: number | null
   lane: number | null
+  carYear: number | null
+  prestigePoints: number | null
   score: number | null
 }
 
@@ -43,13 +45,16 @@ export type SplitScreenParticipantMinAggregateOutputType = {
   battleId: string | null
   userId: string | null
   profileId: string | null
+  lane: number | null
   carBrand: string | null
   carModel: string | null
   carYear: number | null
   carImageUrl: string | null
-  lane: number | null
+  prestigePoints: number | null
+  joinedAt: Date | null
   score: number | null
   isWinner: boolean | null
+  submissionStatus: $Enums.SplitScreenSubmissionStatus | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,13 +64,16 @@ export type SplitScreenParticipantMaxAggregateOutputType = {
   battleId: string | null
   userId: string | null
   profileId: string | null
+  lane: number | null
   carBrand: string | null
   carModel: string | null
   carYear: number | null
   carImageUrl: string | null
-  lane: number | null
+  prestigePoints: number | null
+  joinedAt: Date | null
   score: number | null
   isWinner: boolean | null
+  submissionStatus: $Enums.SplitScreenSubmissionStatus | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -75,13 +83,16 @@ export type SplitScreenParticipantCountAggregateOutputType = {
   battleId: number
   userId: number
   profileId: number
+  lane: number
   carBrand: number
   carModel: number
   carYear: number
   carImageUrl: number
-  lane: number
+  prestigePoints: number
+  joinedAt: number
   score: number
   isWinner: number
+  submissionStatus: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -89,14 +100,16 @@ export type SplitScreenParticipantCountAggregateOutputType = {
 
 
 export type SplitScreenParticipantAvgAggregateInputType = {
-  carYear?: true
   lane?: true
+  carYear?: true
+  prestigePoints?: true
   score?: true
 }
 
 export type SplitScreenParticipantSumAggregateInputType = {
-  carYear?: true
   lane?: true
+  carYear?: true
+  prestigePoints?: true
   score?: true
 }
 
@@ -105,13 +118,16 @@ export type SplitScreenParticipantMinAggregateInputType = {
   battleId?: true
   userId?: true
   profileId?: true
+  lane?: true
   carBrand?: true
   carModel?: true
   carYear?: true
   carImageUrl?: true
-  lane?: true
+  prestigePoints?: true
+  joinedAt?: true
   score?: true
   isWinner?: true
+  submissionStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -121,13 +137,16 @@ export type SplitScreenParticipantMaxAggregateInputType = {
   battleId?: true
   userId?: true
   profileId?: true
+  lane?: true
   carBrand?: true
   carModel?: true
   carYear?: true
   carImageUrl?: true
-  lane?: true
+  prestigePoints?: true
+  joinedAt?: true
   score?: true
   isWinner?: true
+  submissionStatus?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -137,13 +156,16 @@ export type SplitScreenParticipantCountAggregateInputType = {
   battleId?: true
   userId?: true
   profileId?: true
+  lane?: true
   carBrand?: true
   carModel?: true
   carYear?: true
   carImageUrl?: true
-  lane?: true
+  prestigePoints?: true
+  joinedAt?: true
   score?: true
   isWinner?: true
+  submissionStatus?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -240,13 +262,16 @@ export type SplitScreenParticipantGroupByOutputType = {
   battleId: string
   userId: string
   profileId: string | null
+  lane: number
   carBrand: string | null
   carModel: string | null
   carYear: number | null
   carImageUrl: string | null
-  lane: number
+  prestigePoints: number
+  joinedAt: Date
   score: number
   isWinner: boolean
+  submissionStatus: $Enums.SplitScreenSubmissionStatus
   createdAt: Date
   updatedAt: Date
   _count: SplitScreenParticipantCountAggregateOutputType | null
@@ -279,19 +304,22 @@ export type SplitScreenParticipantWhereInput = {
   battleId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   userId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   profileId?: Prisma.UuidNullableFilter<"SplitScreenParticipant"> | string | null
+  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   carBrand?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carModel?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carYear?: Prisma.IntNullableFilter<"SplitScreenParticipant"> | number | null
   carImageUrl?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
-  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  prestigePoints?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  joinedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   score?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   isWinner?: Prisma.BoolFilter<"SplitScreenParticipant"> | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFilter<"SplitScreenParticipant"> | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
-  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  submission?: Prisma.XOR<Prisma.SplitScreenSubmissionNullableScalarRelationFilter, Prisma.SplitScreenSubmissionWhereInput> | null
+  results?: Prisma.SplitScreenResultListRelationFilter
 }
 
 export type SplitScreenParticipantOrderByWithRelationInput = {
@@ -299,19 +327,22 @@ export type SplitScreenParticipantOrderByWithRelationInput = {
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
+  lane?: Prisma.SortOrder
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
   carYear?: Prisma.SortOrderInput | Prisma.SortOrder
   carImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  lane?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
+  joinedAt?: Prisma.SortOrder
   score?: Prisma.SortOrder
   isWinner?: Prisma.SortOrder
+  submissionStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   battle?: Prisma.SplitScreenBattleOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
-  splitScreenResults?: Prisma.SplitScreenResultOrderByRelationAggregateInput
-  splitScreenVotes?: Prisma.SplitScreenVoteOrderByRelationAggregateInput
+  submission?: Prisma.SplitScreenSubmissionOrderByWithRelationInput
+  results?: Prisma.SplitScreenResultOrderByRelationAggregateInput
 }
 
 export type SplitScreenParticipantWhereUniqueInput = Prisma.AtLeast<{
@@ -324,19 +355,22 @@ export type SplitScreenParticipantWhereUniqueInput = Prisma.AtLeast<{
   battleId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   userId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   profileId?: Prisma.UuidNullableFilter<"SplitScreenParticipant"> | string | null
+  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   carBrand?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carModel?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carYear?: Prisma.IntNullableFilter<"SplitScreenParticipant"> | number | null
   carImageUrl?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
-  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  prestigePoints?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  joinedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   score?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   isWinner?: Prisma.BoolFilter<"SplitScreenParticipant"> | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFilter<"SplitScreenParticipant"> | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   battle?: Prisma.XOR<Prisma.SplitScreenBattleScalarRelationFilter, Prisma.SplitScreenBattleWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  splitScreenResults?: Prisma.SplitScreenResultListRelationFilter
-  splitScreenVotes?: Prisma.SplitScreenVoteListRelationFilter
+  submission?: Prisma.XOR<Prisma.SplitScreenSubmissionNullableScalarRelationFilter, Prisma.SplitScreenSubmissionWhereInput> | null
+  results?: Prisma.SplitScreenResultListRelationFilter
 }, "id" | "battleId_userId" | "battleId_lane">
 
 export type SplitScreenParticipantOrderByWithAggregationInput = {
@@ -344,13 +378,16 @@ export type SplitScreenParticipantOrderByWithAggregationInput = {
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
+  lane?: Prisma.SortOrder
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
   carYear?: Prisma.SortOrderInput | Prisma.SortOrder
   carImageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  lane?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
+  joinedAt?: Prisma.SortOrder
   score?: Prisma.SortOrder
   isWinner?: Prisma.SortOrder
+  submissionStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.SplitScreenParticipantCountOrderByAggregateInput
@@ -368,13 +405,16 @@ export type SplitScreenParticipantScalarWhereWithAggregatesInput = {
   battleId?: Prisma.UuidWithAggregatesFilter<"SplitScreenParticipant"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"SplitScreenParticipant"> | string
   profileId?: Prisma.UuidNullableWithAggregatesFilter<"SplitScreenParticipant"> | string | null
+  lane?: Prisma.IntWithAggregatesFilter<"SplitScreenParticipant"> | number
   carBrand?: Prisma.StringNullableWithAggregatesFilter<"SplitScreenParticipant"> | string | null
   carModel?: Prisma.StringNullableWithAggregatesFilter<"SplitScreenParticipant"> | string | null
   carYear?: Prisma.IntNullableWithAggregatesFilter<"SplitScreenParticipant"> | number | null
   carImageUrl?: Prisma.StringNullableWithAggregatesFilter<"SplitScreenParticipant"> | string | null
-  lane?: Prisma.IntWithAggregatesFilter<"SplitScreenParticipant"> | number
+  prestigePoints?: Prisma.IntWithAggregatesFilter<"SplitScreenParticipant"> | number
+  joinedAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenParticipant"> | Date | string
   score?: Prisma.IntWithAggregatesFilter<"SplitScreenParticipant"> | number
   isWinner?: Prisma.BoolWithAggregatesFilter<"SplitScreenParticipant"> | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusWithAggregatesFilter<"SplitScreenParticipant"> | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenParticipant"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenParticipant"> | Date | string
 }
@@ -382,19 +422,22 @@ export type SplitScreenParticipantScalarWhereWithAggregatesInput = {
 export type SplitScreenParticipantCreateInput = {
   id?: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutSplitScreenParticipantsInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantUncheckedCreateInput = {
@@ -402,35 +445,41 @@ export type SplitScreenParticipantUncheckedCreateInput = {
   battleId: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenParticipantsNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantUncheckedUpdateInput = {
@@ -438,17 +487,20 @@ export type SplitScreenParticipantUncheckedUpdateInput = {
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantCreateManyInput = {
@@ -456,13 +508,16 @@ export type SplitScreenParticipantCreateManyInput = {
   battleId: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -470,13 +525,16 @@ export type SplitScreenParticipantCreateManyInput = {
 export type SplitScreenParticipantUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -486,13 +544,16 @@ export type SplitScreenParticipantUncheckedUpdateManyInput = {
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -522,20 +583,24 @@ export type SplitScreenParticipantCountOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  lane?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carYear?: Prisma.SortOrder
   carImageUrl?: Prisma.SortOrder
-  lane?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
+  joinedAt?: Prisma.SortOrder
   score?: Prisma.SortOrder
   isWinner?: Prisma.SortOrder
+  submissionStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SplitScreenParticipantAvgOrderByAggregateInput = {
-  carYear?: Prisma.SortOrder
   lane?: Prisma.SortOrder
+  carYear?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
   score?: Prisma.SortOrder
 }
 
@@ -544,13 +609,16 @@ export type SplitScreenParticipantMaxOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  lane?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carYear?: Prisma.SortOrder
   carImageUrl?: Prisma.SortOrder
-  lane?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
+  joinedAt?: Prisma.SortOrder
   score?: Prisma.SortOrder
   isWinner?: Prisma.SortOrder
+  submissionStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -560,20 +628,24 @@ export type SplitScreenParticipantMinOrderByAggregateInput = {
   battleId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
+  lane?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   carYear?: Prisma.SortOrder
   carImageUrl?: Prisma.SortOrder
-  lane?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
+  joinedAt?: Prisma.SortOrder
   score?: Prisma.SortOrder
   isWinner?: Prisma.SortOrder
+  submissionStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type SplitScreenParticipantSumOrderByAggregateInput = {
-  carYear?: Prisma.SortOrder
   lane?: Prisma.SortOrder
+  carYear?: Prisma.SortOrder
+  prestigePoints?: Prisma.SortOrder
   score?: Prisma.SortOrder
 }
 
@@ -624,32 +696,36 @@ export type SplitScreenParticipantUncheckedUpdateManyWithoutBattleNestedInput = 
   deleteMany?: Prisma.SplitScreenParticipantScalarWhereInput | Prisma.SplitScreenParticipantScalarWhereInput[]
 }
 
-export type SplitScreenParticipantCreateNestedOneWithoutSplitScreenVotesInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenVotesInput>
-  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSplitScreenVotesInput
+export type EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput = {
+  set?: $Enums.SplitScreenSubmissionStatus
+}
+
+export type SplitScreenParticipantCreateNestedOneWithoutSubmissionInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSubmissionInput>
+  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSubmissionInput
   connect?: Prisma.SplitScreenParticipantWhereUniqueInput
 }
 
-export type SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenVotesNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenVotesInput>
-  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSplitScreenVotesInput
-  upsert?: Prisma.SplitScreenParticipantUpsertWithoutSplitScreenVotesInput
+export type SplitScreenParticipantUpdateOneRequiredWithoutSubmissionNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSubmissionInput>
+  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSubmissionInput
+  upsert?: Prisma.SplitScreenParticipantUpsertWithoutSubmissionInput
   connect?: Prisma.SplitScreenParticipantWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SplitScreenParticipantUpdateToOneWithWhereWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUpdateWithoutSplitScreenVotesInput>, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenVotesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SplitScreenParticipantUpdateToOneWithWhereWithoutSubmissionInput, Prisma.SplitScreenParticipantUpdateWithoutSubmissionInput>, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSubmissionInput>
 }
 
-export type SplitScreenParticipantCreateNestedOneWithoutSplitScreenResultsInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenResultsInput>
-  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSplitScreenResultsInput
+export type SplitScreenParticipantCreateNestedOneWithoutResultsInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutResultsInput>
+  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutResultsInput
   connect?: Prisma.SplitScreenParticipantWhereUniqueInput
 }
 
-export type SplitScreenParticipantUpdateOneRequiredWithoutSplitScreenResultsNestedInput = {
-  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenResultsInput>
-  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutSplitScreenResultsInput
-  upsert?: Prisma.SplitScreenParticipantUpsertWithoutSplitScreenResultsInput
+export type SplitScreenParticipantUpdateOneRequiredWithoutResultsNestedInput = {
+  create?: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutResultsInput>
+  connectOrCreate?: Prisma.SplitScreenParticipantCreateOrConnectWithoutResultsInput
+  upsert?: Prisma.SplitScreenParticipantUpsertWithoutResultsInput
   connect?: Prisma.SplitScreenParticipantWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SplitScreenParticipantUpdateToOneWithWhereWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUpdateWithoutSplitScreenResultsInput>, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenResultsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SplitScreenParticipantUpdateToOneWithWhereWithoutResultsInput, Prisma.SplitScreenParticipantUpdateWithoutResultsInput>, Prisma.SplitScreenParticipantUncheckedUpdateWithoutResultsInput>
 }
 
 export type SplitScreenParticipantCreateNestedManyWithoutUserInput = {
@@ -697,35 +773,41 @@ export type SplitScreenParticipantUncheckedUpdateManyWithoutUserNestedInput = {
 export type SplitScreenParticipantCreateWithoutBattleInput = {
   id?: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutSplitScreenParticipantsInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantUncheckedCreateWithoutBattleInput = {
   id?: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantCreateOrConnectWithoutBattleInput = {
@@ -762,217 +844,250 @@ export type SplitScreenParticipantScalarWhereInput = {
   battleId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   userId?: Prisma.UuidFilter<"SplitScreenParticipant"> | string
   profileId?: Prisma.UuidNullableFilter<"SplitScreenParticipant"> | string | null
+  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   carBrand?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carModel?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
   carYear?: Prisma.IntNullableFilter<"SplitScreenParticipant"> | number | null
   carImageUrl?: Prisma.StringNullableFilter<"SplitScreenParticipant"> | string | null
-  lane?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  prestigePoints?: Prisma.IntFilter<"SplitScreenParticipant"> | number
+  joinedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   score?: Prisma.IntFilter<"SplitScreenParticipant"> | number
   isWinner?: Prisma.BoolFilter<"SplitScreenParticipant"> | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFilter<"SplitScreenParticipant"> | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenParticipant"> | Date | string
 }
 
-export type SplitScreenParticipantCreateWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantCreateWithoutSubmissionInput = {
   id?: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutSplitScreenParticipantsInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
+  results?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
 }
 
-export type SplitScreenParticipantUncheckedCreateWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantUncheckedCreateWithoutSubmissionInput = {
   id?: string
   battleId: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
+  results?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
 }
 
-export type SplitScreenParticipantCreateOrConnectWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantCreateOrConnectWithoutSubmissionInput = {
   where: Prisma.SplitScreenParticipantWhereUniqueInput
-  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenVotesInput>
+  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSubmissionInput>
 }
 
-export type SplitScreenParticipantUpsertWithoutSplitScreenVotesInput = {
-  update: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenVotesInput>
-  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenVotesInput>
+export type SplitScreenParticipantUpsertWithoutSubmissionInput = {
+  update: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSubmissionInput>
+  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSubmissionInput>
   where?: Prisma.SplitScreenParticipantWhereInput
 }
 
-export type SplitScreenParticipantUpdateToOneWithWhereWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantUpdateToOneWithWhereWithoutSubmissionInput = {
   where?: Prisma.SplitScreenParticipantWhereInput
-  data: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSplitScreenVotesInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenVotesInput>
+  data: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSubmissionInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSubmissionInput>
 }
 
-export type SplitScreenParticipantUpdateWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenParticipantsNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
 }
 
-export type SplitScreenParticipantUncheckedUpdateWithoutSplitScreenVotesInput = {
+export type SplitScreenParticipantUncheckedUpdateWithoutSubmissionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
 }
 
-export type SplitScreenParticipantCreateWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantCreateWithoutResultsInput = {
   id?: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutParticipantsInput
   user: Prisma.UserCreateNestedOneWithoutSplitScreenParticipantsInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionCreateNestedOneWithoutParticipantInput
 }
 
-export type SplitScreenParticipantUncheckedCreateWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantUncheckedCreateWithoutResultsInput = {
   id?: string
   battleId: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedCreateNestedOneWithoutParticipantInput
 }
 
-export type SplitScreenParticipantCreateOrConnectWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantCreateOrConnectWithoutResultsInput = {
   where: Prisma.SplitScreenParticipantWhereUniqueInput
-  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenResultsInput>
+  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutResultsInput>
 }
 
-export type SplitScreenParticipantUpsertWithoutSplitScreenResultsInput = {
-  update: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenResultsInput>
-  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutSplitScreenResultsInput>
+export type SplitScreenParticipantUpsertWithoutResultsInput = {
+  update: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutResultsInput>
+  create: Prisma.XOR<Prisma.SplitScreenParticipantCreateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedCreateWithoutResultsInput>
   where?: Prisma.SplitScreenParticipantWhereInput
 }
 
-export type SplitScreenParticipantUpdateToOneWithWhereWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantUpdateToOneWithWhereWithoutResultsInput = {
   where?: Prisma.SplitScreenParticipantWhereInput
-  data: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutSplitScreenResultsInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutSplitScreenResultsInput>
+  data: Prisma.XOR<Prisma.SplitScreenParticipantUpdateWithoutResultsInput, Prisma.SplitScreenParticipantUncheckedUpdateWithoutResultsInput>
 }
 
-export type SplitScreenParticipantUpdateWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantUpdateWithoutResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutParticipantsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenParticipantsNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneWithoutParticipantNestedInput
 }
 
-export type SplitScreenParticipantUncheckedUpdateWithoutSplitScreenResultsInput = {
+export type SplitScreenParticipantUncheckedUpdateWithoutResultsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedUpdateOneWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantCreateWithoutUserInput = {
   id?: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   battle: Prisma.SplitScreenBattleCreateNestedOneWithoutParticipantsInput
-  splitScreenResults?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantUncheckedCreateWithoutUserInput = {
   id?: string
   battleId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedCreateNestedManyWithoutParticipantInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedCreateNestedOneWithoutParticipantInput
+  results?: Prisma.SplitScreenResultUncheckedCreateNestedManyWithoutParticipantInput
 }
 
 export type SplitScreenParticipantCreateOrConnectWithoutUserInput = {
@@ -1005,13 +1120,16 @@ export type SplitScreenParticipantCreateManyBattleInput = {
   id?: string
   userId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1019,48 +1137,57 @@ export type SplitScreenParticipantCreateManyBattleInput = {
 export type SplitScreenParticipantUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenParticipantsNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantUncheckedUpdateWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantUncheckedUpdateManyWithoutBattleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1069,13 +1196,16 @@ export type SplitScreenParticipantCreateManyUserInput = {
   id?: string
   battleId: string
   profileId?: string | null
+  lane: number
   carBrand?: string | null
   carModel?: string | null
   carYear?: number | null
   carImageUrl?: string | null
-  lane: number
+  prestigePoints?: number
+  joinedAt?: Date | string
   score?: number
   isWinner?: boolean
+  submissionStatus?: $Enums.SplitScreenSubmissionStatus
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1083,48 +1213,57 @@ export type SplitScreenParticipantCreateManyUserInput = {
 export type SplitScreenParticipantUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   battle?: Prisma.SplitScreenBattleUpdateOneRequiredWithoutParticipantsNestedInput
-  splitScreenResults?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  splitScreenResults?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
-  splitScreenVotes?: Prisma.SplitScreenVoteUncheckedUpdateManyWithoutParticipantNestedInput
+  submission?: Prisma.SplitScreenSubmissionUncheckedUpdateOneWithoutParticipantNestedInput
+  results?: Prisma.SplitScreenResultUncheckedUpdateManyWithoutParticipantNestedInput
 }
 
 export type SplitScreenParticipantUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   battleId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lane?: Prisma.IntFieldUpdateOperationsInput | number
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carYear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   carImageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lane?: Prisma.IntFieldUpdateOperationsInput | number
+  prestigePoints?: Prisma.IntFieldUpdateOperationsInput | number
+  joinedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   score?: Prisma.IntFieldUpdateOperationsInput | number
   isWinner?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  submissionStatus?: Prisma.EnumSplitScreenSubmissionStatusFieldUpdateOperationsInput | $Enums.SplitScreenSubmissionStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1135,13 +1274,11 @@ export type SplitScreenParticipantUncheckedUpdateManyWithoutUserInput = {
  */
 
 export type SplitScreenParticipantCountOutputType = {
-  splitScreenResults: number
-  splitScreenVotes: number
+  results: number
 }
 
 export type SplitScreenParticipantCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  splitScreenResults?: boolean | SplitScreenParticipantCountOutputTypeCountSplitScreenResultsArgs
-  splitScreenVotes?: boolean | SplitScreenParticipantCountOutputTypeCountSplitScreenVotesArgs
+  results?: boolean | SplitScreenParticipantCountOutputTypeCountResultsArgs
 }
 
 /**
@@ -1157,15 +1294,8 @@ export type SplitScreenParticipantCountOutputTypeDefaultArgs<ExtArgs extends run
 /**
  * SplitScreenParticipantCountOutputType without action
  */
-export type SplitScreenParticipantCountOutputTypeCountSplitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SplitScreenParticipantCountOutputTypeCountResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SplitScreenResultWhereInput
-}
-
-/**
- * SplitScreenParticipantCountOutputType without action
- */
-export type SplitScreenParticipantCountOutputTypeCountSplitScreenVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SplitScreenVoteWhereInput
 }
 
 
@@ -1174,19 +1304,22 @@ export type SplitScreenParticipantSelect<ExtArgs extends runtime.Types.Extension
   battleId?: boolean
   userId?: boolean
   profileId?: boolean
+  lane?: boolean
   carBrand?: boolean
   carModel?: boolean
   carYear?: boolean
   carImageUrl?: boolean
-  lane?: boolean
+  prestigePoints?: boolean
+  joinedAt?: boolean
   score?: boolean
   isWinner?: boolean
+  submissionStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  splitScreenResults?: boolean | Prisma.SplitScreenParticipant$splitScreenResultsArgs<ExtArgs>
-  splitScreenVotes?: boolean | Prisma.SplitScreenParticipant$splitScreenVotesArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenParticipant$submissionArgs<ExtArgs>
+  results?: boolean | Prisma.SplitScreenParticipant$resultsArgs<ExtArgs>
   _count?: boolean | Prisma.SplitScreenParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["splitScreenParticipant"]>
 
@@ -1195,13 +1328,16 @@ export type SplitScreenParticipantSelectCreateManyAndReturn<ExtArgs extends runt
   battleId?: boolean
   userId?: boolean
   profileId?: boolean
+  lane?: boolean
   carBrand?: boolean
   carModel?: boolean
   carYear?: boolean
   carImageUrl?: boolean
-  lane?: boolean
+  prestigePoints?: boolean
+  joinedAt?: boolean
   score?: boolean
   isWinner?: boolean
+  submissionStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
@@ -1213,13 +1349,16 @@ export type SplitScreenParticipantSelectUpdateManyAndReturn<ExtArgs extends runt
   battleId?: boolean
   userId?: boolean
   profileId?: boolean
+  lane?: boolean
   carBrand?: boolean
   carModel?: boolean
   carYear?: boolean
   carImageUrl?: boolean
-  lane?: boolean
+  prestigePoints?: boolean
+  joinedAt?: boolean
   score?: boolean
   isWinner?: boolean
+  submissionStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
@@ -1231,23 +1370,26 @@ export type SplitScreenParticipantSelectScalar = {
   battleId?: boolean
   userId?: boolean
   profileId?: boolean
+  lane?: boolean
   carBrand?: boolean
   carModel?: boolean
   carYear?: boolean
   carImageUrl?: boolean
-  lane?: boolean
+  prestigePoints?: boolean
+  joinedAt?: boolean
   score?: boolean
   isWinner?: boolean
+  submissionStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type SplitScreenParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "userId" | "profileId" | "carBrand" | "carModel" | "carYear" | "carImageUrl" | "lane" | "score" | "isWinner" | "createdAt" | "updatedAt", ExtArgs["result"]["splitScreenParticipant"]>
+export type SplitScreenParticipantOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "battleId" | "userId" | "profileId" | "lane" | "carBrand" | "carModel" | "carYear" | "carImageUrl" | "prestigePoints" | "joinedAt" | "score" | "isWinner" | "submissionStatus" | "createdAt" | "updatedAt", ExtArgs["result"]["splitScreenParticipant"]>
 export type SplitScreenParticipantInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   battle?: boolean | Prisma.SplitScreenBattleDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  splitScreenResults?: boolean | Prisma.SplitScreenParticipant$splitScreenResultsArgs<ExtArgs>
-  splitScreenVotes?: boolean | Prisma.SplitScreenParticipant$splitScreenVotesArgs<ExtArgs>
+  submission?: boolean | Prisma.SplitScreenParticipant$submissionArgs<ExtArgs>
+  results?: boolean | Prisma.SplitScreenParticipant$resultsArgs<ExtArgs>
   _count?: boolean | Prisma.SplitScreenParticipantCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SplitScreenParticipantIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1264,21 +1406,24 @@ export type $SplitScreenParticipantPayload<ExtArgs extends runtime.Types.Extensi
   objects: {
     battle: Prisma.$SplitScreenBattlePayload<ExtArgs>
     user: Prisma.$UserPayload<ExtArgs>
-    splitScreenResults: Prisma.$SplitScreenResultPayload<ExtArgs>[]
-    splitScreenVotes: Prisma.$SplitScreenVotePayload<ExtArgs>[]
+    submission: Prisma.$SplitScreenSubmissionPayload<ExtArgs> | null
+    results: Prisma.$SplitScreenResultPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     battleId: string
     userId: string
     profileId: string | null
+    lane: number
     carBrand: string | null
     carModel: string | null
     carYear: number | null
     carImageUrl: string | null
-    lane: number
+    prestigePoints: number
+    joinedAt: Date
     score: number
     isWinner: boolean
+    submissionStatus: $Enums.SplitScreenSubmissionStatus
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["splitScreenParticipant"]>
@@ -1677,8 +1822,8 @@ export interface Prisma__SplitScreenParticipantClient<T, Null = never, ExtArgs e
   readonly [Symbol.toStringTag]: "PrismaPromise"
   battle<T extends Prisma.SplitScreenBattleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenBattleDefaultArgs<ExtArgs>>): Prisma.Prisma__SplitScreenBattleClient<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  splitScreenResults<T extends Prisma.SplitScreenParticipant$splitScreenResultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenParticipant$splitScreenResultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  splitScreenVotes<T extends Prisma.SplitScreenParticipant$splitScreenVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenParticipant$splitScreenVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  submission<T extends Prisma.SplitScreenParticipant$submissionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenParticipant$submissionArgs<ExtArgs>>): Prisma.Prisma__SplitScreenSubmissionClient<runtime.Types.Result.GetResult<Prisma.$SplitScreenSubmissionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  results<T extends Prisma.SplitScreenParticipant$resultsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SplitScreenParticipant$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1712,13 +1857,16 @@ export interface SplitScreenParticipantFieldRefs {
   readonly battleId: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
   readonly userId: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
   readonly profileId: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
+  readonly lane: Prisma.FieldRef<"SplitScreenParticipant", 'Int'>
   readonly carBrand: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
   readonly carModel: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
   readonly carYear: Prisma.FieldRef<"SplitScreenParticipant", 'Int'>
   readonly carImageUrl: Prisma.FieldRef<"SplitScreenParticipant", 'String'>
-  readonly lane: Prisma.FieldRef<"SplitScreenParticipant", 'Int'>
+  readonly prestigePoints: Prisma.FieldRef<"SplitScreenParticipant", 'Int'>
+  readonly joinedAt: Prisma.FieldRef<"SplitScreenParticipant", 'DateTime'>
   readonly score: Prisma.FieldRef<"SplitScreenParticipant", 'Int'>
   readonly isWinner: Prisma.FieldRef<"SplitScreenParticipant", 'Boolean'>
+  readonly submissionStatus: Prisma.FieldRef<"SplitScreenParticipant", 'SplitScreenSubmissionStatus'>
   readonly createdAt: Prisma.FieldRef<"SplitScreenParticipant", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SplitScreenParticipant", 'DateTime'>
 }
@@ -2117,9 +2265,28 @@ export type SplitScreenParticipantDeleteManyArgs<ExtArgs extends runtime.Types.E
 }
 
 /**
- * SplitScreenParticipant.splitScreenResults
+ * SplitScreenParticipant.submission
  */
-export type SplitScreenParticipant$splitScreenResultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SplitScreenParticipant$submissionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SplitScreenSubmission
+   */
+  select?: Prisma.SplitScreenSubmissionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SplitScreenSubmission
+   */
+  omit?: Prisma.SplitScreenSubmissionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SplitScreenSubmissionInclude<ExtArgs> | null
+  where?: Prisma.SplitScreenSubmissionWhereInput
+}
+
+/**
+ * SplitScreenParticipant.results
+ */
+export type SplitScreenParticipant$resultsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the SplitScreenResult
    */
@@ -2138,30 +2305,6 @@ export type SplitScreenParticipant$splitScreenResultsArgs<ExtArgs extends runtim
   take?: number
   skip?: number
   distinct?: Prisma.SplitScreenResultScalarFieldEnum | Prisma.SplitScreenResultScalarFieldEnum[]
-}
-
-/**
- * SplitScreenParticipant.splitScreenVotes
- */
-export type SplitScreenParticipant$splitScreenVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SplitScreenVote
-   */
-  select?: Prisma.SplitScreenVoteSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SplitScreenVote
-   */
-  omit?: Prisma.SplitScreenVoteOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SplitScreenVoteInclude<ExtArgs> | null
-  where?: Prisma.SplitScreenVoteWhereInput
-  orderBy?: Prisma.SplitScreenVoteOrderByWithRelationInput | Prisma.SplitScreenVoteOrderByWithRelationInput[]
-  cursor?: Prisma.SplitScreenVoteWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SplitScreenVoteScalarFieldEnum | Prisma.SplitScreenVoteScalarFieldEnum[]
 }
 
 /**
