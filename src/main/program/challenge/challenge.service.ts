@@ -23,23 +23,55 @@ export class ChallengeService {
   constructor(private readonly prisma: PrismaService) {}
 
   private challengeIncludes() {
-    return {
-      creator: { select: { id: true, userId: true, email: true } as any }, // adjust to your User fields
-      challengeParticipants: true,
-      challengeSubmissions: {
-        include: {
-          media: true,
-          votes: true,
-          reactions: true,
-          comments: { include: { replies: true } },
-          participant: { include: { user: true } },
-        },
-        orderBy: { createdAt: 'desc' as const },
+  return {
+    creator: {
+      select: {
+        id: true,
+        email: true,
       },
-      challengeResults: { include: { winners: true } },
-    };
-  }
-
+    },
+    challengeParticipants: {
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+      },
+    },
+    challengeSubmissions: {
+      include: {
+        media: true,
+        votes: true,
+        reactions: true,
+        comments: {
+          include: {
+            replies: true,
+          },
+        },
+        participant: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                email: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc' as const,
+      },
+    },
+    challengeResults: {
+      include: {
+        winners: true,
+      },
+    },
+  };
+}
   private validateDates(start: Date, end: Date) {
     if (end <= start) throw new BadRequestException('endDate must be greater than startDate');
   }
@@ -333,8 +365,12 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
     if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Challenge is not open to join');
-
+    if (
+       challenge.status !== ChallengeStatus.UPCOMING &&
+       challenge.status !== ChallengeStatus.ACTIVE
+       ) {
+  throw new BadRequestException('Challenge is not open to join');
+         }
     try {
       return await this.prisma.challengeParticipant.create({
         data: {
