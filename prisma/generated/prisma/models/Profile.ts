@@ -36,6 +36,7 @@ export type ProfileMinAggregateOutputType = {
   preference: $Enums.Preference | null
   isActive: $Enums.IsActive | null
   suspend: boolean | null
+  locationStatus: boolean | null
 }
 
 export type ProfileMaxAggregateOutputType = {
@@ -50,6 +51,7 @@ export type ProfileMaxAggregateOutputType = {
   preference: $Enums.Preference | null
   isActive: $Enums.IsActive | null
   suspend: boolean | null
+  locationStatus: boolean | null
 }
 
 export type ProfileCountAggregateOutputType = {
@@ -64,6 +66,7 @@ export type ProfileCountAggregateOutputType = {
   preference: number
   isActive: number
   suspend: number
+  locationStatus: number
   _all: number
 }
 
@@ -80,6 +83,7 @@ export type ProfileMinAggregateInputType = {
   preference?: true
   isActive?: true
   suspend?: true
+  locationStatus?: true
 }
 
 export type ProfileMaxAggregateInputType = {
@@ -94,6 +98,7 @@ export type ProfileMaxAggregateInputType = {
   preference?: true
   isActive?: true
   suspend?: true
+  locationStatus?: true
 }
 
 export type ProfileCountAggregateInputType = {
@@ -108,6 +113,7 @@ export type ProfileCountAggregateInputType = {
   preference?: true
   isActive?: true
   suspend?: true
+  locationStatus?: true
   _all?: true
 }
 
@@ -195,6 +201,7 @@ export type ProfileGroupByOutputType = {
   preference: $Enums.Preference | null
   isActive: $Enums.IsActive
   suspend: boolean
+  locationStatus: boolean
   _count: ProfileCountAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
@@ -230,6 +237,7 @@ export type ProfileWhereInput = {
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
+  locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   spotter?: Prisma.XOR<Prisma.SpotterProfileNullableScalarRelationFilter, Prisma.SpotterProfileWhereInput> | null
   owner?: Prisma.XOR<Prisma.OwnerProfileNullableScalarRelationFilter, Prisma.OwnerProfileWhereInput> | null
@@ -260,6 +268,7 @@ export type ProfileOrderByWithRelationInput = {
   preference?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
+  locationStatus?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   spotter?: Prisma.SpotterProfileOrderByWithRelationInput
   owner?: Prisma.OwnerProfileOrderByWithRelationInput
@@ -293,6 +302,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
+  locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   spotter?: Prisma.XOR<Prisma.SpotterProfileNullableScalarRelationFilter, Prisma.SpotterProfileWhereInput> | null
   owner?: Prisma.XOR<Prisma.OwnerProfileNullableScalarRelationFilter, Prisma.OwnerProfileWhereInput> | null
@@ -323,6 +333,7 @@ export type ProfileOrderByWithAggregationInput = {
   preference?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
+  locationStatus?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
   _max?: Prisma.ProfileMaxOrderByAggregateInput
   _min?: Prisma.ProfileMinOrderByAggregateInput
@@ -343,6 +354,7 @@ export type ProfileScalarWhereWithAggregatesInput = {
   preference?: Prisma.EnumPreferenceNullableWithAggregatesFilter<"Profile"> | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveWithAggregatesFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
+  locationStatus?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
 }
 
 export type ProfileCreateInput = {
@@ -356,6 +368,7 @@ export type ProfileCreateInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -386,6 +399,7 @@ export type ProfileUncheckedCreateInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -414,6 +428,7 @@ export type ProfileUpdateInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -444,6 +459,7 @@ export type ProfileUncheckedUpdateInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -473,6 +489,7 @@ export type ProfileCreateManyInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
 }
 
 export type ProfileUpdateManyMutationInput = {
@@ -486,6 +503,7 @@ export type ProfileUpdateManyMutationInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProfileUncheckedUpdateManyInput = {
@@ -500,6 +518,7 @@ export type ProfileUncheckedUpdateManyInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type ProfileScalarRelationFilter = {
@@ -524,6 +543,7 @@ export type ProfileCountOrderByAggregateInput = {
   preference?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
+  locationStatus?: Prisma.SortOrder
 }
 
 export type ProfileMaxOrderByAggregateInput = {
@@ -538,6 +558,7 @@ export type ProfileMaxOrderByAggregateInput = {
   preference?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
+  locationStatus?: Prisma.SortOrder
 }
 
 export type ProfileMinOrderByAggregateInput = {
@@ -552,6 +573,7 @@ export type ProfileMinOrderByAggregateInput = {
   preference?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
+  locationStatus?: Prisma.SortOrder
 }
 
 export type ProfileListRelationFilter = {
@@ -841,6 +863,7 @@ export type ProfileCreateWithoutBikesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -870,6 +893,7 @@ export type ProfileUncheckedCreateWithoutBikesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -913,6 +937,7 @@ export type ProfileUpdateWithoutBikesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -942,6 +967,7 @@ export type ProfileUncheckedUpdateWithoutBikesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -969,6 +995,7 @@ export type ProfileCreateWithoutBusinessInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -998,6 +1025,7 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1041,6 +1069,7 @@ export type ProfileUpdateWithoutBusinessInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1070,6 +1099,7 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1097,6 +1127,7 @@ export type ProfileCreateWithoutCarsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1126,6 +1157,7 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1169,6 +1201,7 @@ export type ProfileUpdateWithoutCarsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1198,6 +1231,7 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1225,6 +1259,7 @@ export type ProfileCreateWithoutCreatorInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1254,6 +1289,7 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1297,6 +1333,7 @@ export type ProfileUpdateWithoutCreatorInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1326,6 +1363,7 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1353,6 +1391,7 @@ export type ProfileCreateWithoutGaragesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1382,6 +1421,7 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1425,6 +1465,7 @@ export type ProfileUpdateWithoutGaragesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1454,6 +1495,7 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1481,6 +1523,7 @@ export type ProfileCreateWithoutLabTimesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1510,6 +1553,7 @@ export type ProfileUncheckedCreateWithoutLabTimesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1553,6 +1597,7 @@ export type ProfileUpdateWithoutLabTimesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1582,6 +1627,7 @@ export type ProfileUncheckedUpdateWithoutLabTimesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1609,6 +1655,7 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1638,6 +1685,7 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1681,6 +1729,7 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1710,6 +1759,7 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1737,6 +1787,7 @@ export type ProfileCreateWithoutOwnerInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -1766,6 +1817,7 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1809,6 +1861,7 @@ export type ProfileUpdateWithoutOwnerInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -1838,6 +1891,7 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1865,6 +1919,7 @@ export type ProfileCreateWithoutPostsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1894,6 +1949,7 @@ export type ProfileUncheckedCreateWithoutPostsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1937,6 +1993,7 @@ export type ProfileUpdateWithoutPostsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1966,6 +2023,7 @@ export type ProfileUncheckedUpdateWithoutPostsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1993,6 +2051,7 @@ export type ProfileCreateWithoutProDriverInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2022,6 +2081,7 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2065,6 +2125,7 @@ export type ProfileUpdateWithoutProDriverInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2094,6 +2155,7 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2121,6 +2183,7 @@ export type ProfileCreateWithoutSimRacingInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2150,6 +2213,7 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2193,6 +2257,7 @@ export type ProfileUpdateWithoutSimRacingInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2222,6 +2287,7 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2249,6 +2315,7 @@ export type ProfileCreateWithoutSpotterInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -2278,6 +2345,7 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2321,6 +2389,7 @@ export type ProfileUpdateWithoutSpotterInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -2350,6 +2419,7 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2377,6 +2447,7 @@ export type ProfileCreateWithoutSubmitLabTimesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2406,6 +2477,7 @@ export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2449,6 +2521,7 @@ export type ProfileUpdateWithoutSubmitLabTimesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2478,6 +2551,7 @@ export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2505,6 +2579,7 @@ export type ProfileCreateWithoutUserInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -2533,6 +2608,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2591,6 +2667,7 @@ export type ProfileScalarWhereInput = {
   preference?: Prisma.EnumPreferenceNullableFilter<"Profile"> | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
+  locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
 }
 
 export type ProfileCreateWithoutVirtualGaragesInput = {
@@ -2604,6 +2681,7 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2633,6 +2711,7 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2676,6 +2755,7 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2705,6 +2785,7 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2732,6 +2813,7 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2761,6 +2843,7 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2804,6 +2887,7 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2833,6 +2917,7 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2860,6 +2945,7 @@ export type ProfileCreateManyUserInput = {
   preference?: $Enums.Preference | null
   isActive?: $Enums.IsActive
   suspend?: boolean
+  locationStatus?: boolean
 }
 
 export type ProfileUpdateWithoutUserInput = {
@@ -2873,6 +2959,7 @@ export type ProfileUpdateWithoutUserInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -2901,6 +2988,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2929,6 +3017,7 @@ export type ProfileUncheckedUpdateManyWithoutUserInput = {
   preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -3046,6 +3135,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   preference?: boolean
   isActive?: boolean
   suspend?: boolean
+  locationStatus?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
   owner?: boolean | Prisma.Profile$ownerArgs<ExtArgs>
@@ -3077,6 +3167,7 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   preference?: boolean
   isActive?: boolean
   suspend?: boolean
+  locationStatus?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -3092,6 +3183,7 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   preference?: boolean
   isActive?: boolean
   suspend?: boolean
+  locationStatus?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -3107,9 +3199,10 @@ export type ProfileSelectScalar = {
   preference?: boolean
   isActive?: boolean
   suspend?: boolean
+  locationStatus?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "activeType" | "profileName" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "activeType" | "profileName" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend" | "locationStatus", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
@@ -3168,6 +3261,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     preference: $Enums.Preference | null
     isActive: $Enums.IsActive
     suspend: boolean
+    locationStatus: boolean
   }, ExtArgs["result"]["profile"]>
   composites: {}
 }
@@ -3618,6 +3712,7 @@ export interface ProfileFieldRefs {
   readonly preference: Prisma.FieldRef<"Profile", 'Preference'>
   readonly isActive: Prisma.FieldRef<"Profile", 'IsActive'>
   readonly suspend: Prisma.FieldRef<"Profile", 'Boolean'>
+  readonly locationStatus: Prisma.FieldRef<"Profile", 'Boolean'>
 }
     
 

@@ -1405,6 +1405,142 @@ export type EnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
 }
 
+export type EnumSplitScreenBattleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleCategory | Prisma.EnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel> | $Enums.SplitScreenBattleCategory
+}
+
+export type EnumSplitScreenMatchmakingModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenMatchmakingMode | Prisma.EnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel> | $Enums.SplitScreenMatchmakingMode
+}
+
+export type EnumSplitScreenPreferenceModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenPreferenceMode | Prisma.EnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel> | $Enums.SplitScreenPreferenceMode
+}
+
+export type EnumSplitScreenBattleStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleStatus | Prisma.EnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel> | $Enums.SplitScreenBattleStatus
+}
+
+export type EnumSplitScreenBattleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleCategory | Prisma.EnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenBattleCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenMatchmakingModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenMatchmakingMode | Prisma.EnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenMatchmakingModeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenMatchmakingMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenPreferenceModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenPreferenceMode | Prisma.EnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenPreferenceModeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenPreferenceMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenBattleStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleStatus | Prisma.EnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenBattleStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenSubmissionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenSubmissionStatus | Prisma.EnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel> | $Enums.SplitScreenSubmissionStatus
+}
+
+export type EnumSplitScreenSubmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenSubmissionStatus | Prisma.EnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenSubmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenSubmissionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenInvitationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenInvitationStatus | Prisma.EnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel> | $Enums.SplitScreenInvitationStatus
+}
+
+export type EnumSplitScreenInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenInvitationStatus | Prisma.EnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenInvitationStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenInvitationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenVoteTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenVoteType | Prisma.EnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel> | $Enums.SplitScreenVoteType
+}
+
+export type EnumSplitScreenVoteTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenVoteType | Prisma.EnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenVoteTypeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenVoteType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel>
+}
+
+export type EnumSplitScreenResultTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenResultType | Prisma.EnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel> | $Enums.SplitScreenResultType
+}
+
+export type EnumSplitScreenResultTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenResultType | Prisma.EnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenResultTypeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenResultType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel>
+}
+
 export type EnumPlatformFilter<$PrismaModel = never> = {
   equals?: $Enums.Platform | Prisma.EnumPlatformFieldRefInput<$PrismaModel>
   in?: $Enums.Platform[] | Prisma.ListEnumPlatformFieldRefInput<$PrismaModel>
@@ -3034,6 +3170,142 @@ export type NestedEnumReportTypeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumReportTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleCategory | Prisma.EnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel> | $Enums.SplitScreenBattleCategory
+}
+
+export type NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenMatchmakingMode | Prisma.EnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel> | $Enums.SplitScreenMatchmakingMode
+}
+
+export type NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenPreferenceMode | Prisma.EnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel> | $Enums.SplitScreenPreferenceMode
+}
+
+export type NestedEnumSplitScreenBattleStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleStatus | Prisma.EnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel> | $Enums.SplitScreenBattleStatus
+}
+
+export type NestedEnumSplitScreenBattleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleCategory | Prisma.EnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleCategory[] | Prisma.ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenBattleCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenBattleCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenMatchmakingModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenMatchmakingMode | Prisma.EnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenMatchmakingMode[] | Prisma.ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenMatchmakingModeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenMatchmakingMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenMatchmakingModeFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenPreferenceModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenPreferenceMode | Prisma.EnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenPreferenceMode[] | Prisma.ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenPreferenceModeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenPreferenceMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenPreferenceModeFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenBattleStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenBattleStatus | Prisma.EnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenBattleStatus[] | Prisma.ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenBattleStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenBattleStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenBattleStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenSubmissionStatus | Prisma.EnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel> | $Enums.SplitScreenSubmissionStatus
+}
+
+export type NestedEnumSplitScreenSubmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenSubmissionStatus | Prisma.EnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenSubmissionStatus[] | Prisma.ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenSubmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenSubmissionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenSubmissionStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenInvitationStatus | Prisma.EnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel> | $Enums.SplitScreenInvitationStatus
+}
+
+export type NestedEnumSplitScreenInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenInvitationStatus | Prisma.EnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenInvitationStatus[] | Prisma.ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenInvitationStatusWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenInvitationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenInvitationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenVoteTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenVoteType | Prisma.EnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel> | $Enums.SplitScreenVoteType
+}
+
+export type NestedEnumSplitScreenVoteTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenVoteType | Prisma.EnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenVoteType[] | Prisma.ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenVoteTypeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenVoteType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenVoteTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumSplitScreenResultTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenResultType | Prisma.EnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel> | $Enums.SplitScreenResultType
+}
+
+export type NestedEnumSplitScreenResultTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SplitScreenResultType | Prisma.EnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SplitScreenResultType[] | Prisma.ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSplitScreenResultTypeWithAggregatesFilter<$PrismaModel> | $Enums.SplitScreenResultType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSplitScreenResultTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumPlatformFilter<$PrismaModel = never> = {

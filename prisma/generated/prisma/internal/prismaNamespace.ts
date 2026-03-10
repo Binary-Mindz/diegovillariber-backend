@@ -460,6 +460,13 @@ export const ModelName = {
   SetupDescriptionPhoto: 'SetupDescriptionPhoto',
   Share: 'Share',
   SimRacingProfile: 'SimRacingProfile',
+  SplitScreenBattle: 'SplitScreenBattle',
+  SplitScreenParticipant: 'SplitScreenParticipant',
+  SplitScreenInvitation: 'SplitScreenInvitation',
+  SplitScreenSubmission: 'SplitScreenSubmission',
+  SplitScreenVote: 'SplitScreenVote',
+  SplitScreenComment: 'SplitScreenComment',
+  SplitScreenResult: 'SplitScreenResult',
   SpotterProfile: 'SpotterProfile',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
@@ -485,7 +492,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenBattle" | "splitScreenParticipant" | "splitScreenInvitation" | "splitScreenSubmission" | "splitScreenVote" | "splitScreenComment" | "splitScreenResult" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6113,6 +6120,524 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SplitScreenBattle: {
+      payload: Prisma.$SplitScreenBattlePayload<ExtArgs>
+      fields: Prisma.SplitScreenBattleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenBattleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenBattleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenBattleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenBattleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenBattleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenBattleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenBattleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenBattleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenBattleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        update: {
+          args: Prisma.SplitScreenBattleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenBattleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenBattleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenBattleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenBattleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenBattlePayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenBattleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenBattle>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenBattleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenBattleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenBattleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenBattleCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenParticipant: {
+      payload: Prisma.$SplitScreenParticipantPayload<ExtArgs>
+      fields: Prisma.SplitScreenParticipantFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenParticipantFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenParticipantFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenParticipantFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenParticipantFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenParticipantFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenParticipantCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenParticipantCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenParticipantCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenParticipantDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        update: {
+          args: Prisma.SplitScreenParticipantUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenParticipantDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenParticipantUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenParticipantUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenParticipantUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenParticipantPayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenParticipantAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenParticipant>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenParticipantGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenParticipantGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenParticipantCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenParticipantCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenInvitation: {
+      payload: Prisma.$SplitScreenInvitationPayload<ExtArgs>
+      fields: Prisma.SplitScreenInvitationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenInvitationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenInvitationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenInvitationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenInvitationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenInvitationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenInvitationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenInvitationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenInvitationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenInvitationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        update: {
+          args: Prisma.SplitScreenInvitationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenInvitationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenInvitationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenInvitationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenInvitationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenInvitationPayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenInvitationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenInvitation>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenInvitationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenInvitationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenInvitationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenInvitationCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenSubmission: {
+      payload: Prisma.$SplitScreenSubmissionPayload<ExtArgs>
+      fields: Prisma.SplitScreenSubmissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenSubmissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenSubmissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenSubmissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenSubmissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenSubmissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenSubmissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenSubmissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenSubmissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenSubmissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        update: {
+          args: Prisma.SplitScreenSubmissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenSubmissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenSubmissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenSubmissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenSubmissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenSubmissionPayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenSubmissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenSubmission>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenSubmissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenSubmissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenSubmissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenSubmissionCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenVote: {
+      payload: Prisma.$SplitScreenVotePayload<ExtArgs>
+      fields: Prisma.SplitScreenVoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenVoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenVoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenVoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenVoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenVoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenVoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenVoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenVoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenVoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        update: {
+          args: Prisma.SplitScreenVoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenVoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenVoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenVoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenVoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenVotePayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenVoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenVote>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenVoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenVoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenVoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenVoteCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenComment: {
+      payload: Prisma.$SplitScreenCommentPayload<ExtArgs>
+      fields: Prisma.SplitScreenCommentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenCommentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenCommentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenCommentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenCommentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenCommentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenCommentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenCommentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenCommentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenCommentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        update: {
+          args: Prisma.SplitScreenCommentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenCommentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenCommentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenCommentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenCommentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenCommentPayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenCommentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenComment>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenCommentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenCommentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenCommentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenCommentCountAggregateOutputType> | number
+        }
+      }
+    }
+    SplitScreenResult: {
+      payload: Prisma.$SplitScreenResultPayload<ExtArgs>
+      fields: Prisma.SplitScreenResultFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SplitScreenResultFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SplitScreenResultFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        findFirst: {
+          args: Prisma.SplitScreenResultFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SplitScreenResultFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        findMany: {
+          args: Prisma.SplitScreenResultFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>[]
+        }
+        create: {
+          args: Prisma.SplitScreenResultCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        createMany: {
+          args: Prisma.SplitScreenResultCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SplitScreenResultCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>[]
+        }
+        delete: {
+          args: Prisma.SplitScreenResultDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        update: {
+          args: Prisma.SplitScreenResultUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        deleteMany: {
+          args: Prisma.SplitScreenResultDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SplitScreenResultUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SplitScreenResultUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>[]
+        }
+        upsert: {
+          args: Prisma.SplitScreenResultUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SplitScreenResultPayload>
+        }
+        aggregate: {
+          args: Prisma.SplitScreenResultAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSplitScreenResult>
+        }
+        groupBy: {
+          args: Prisma.SplitScreenResultGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenResultGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SplitScreenResultCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SplitScreenResultCountAggregateOutputType> | number
+        }
+      }
+    }
     SpotterProfile: {
       payload: Prisma.$SpotterProfilePayload<ExtArgs>
       fields: Prisma.SpotterProfileFieldRefs
@@ -7852,7 +8377,8 @@ export const ProfileScalarFieldEnum = {
   accountType: 'accountType',
   preference: 'preference',
   isActive: 'isActive',
-  suspend: 'suspend'
+  suspend: 'suspend',
+  locationStatus: 'locationStatus'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
@@ -8019,6 +8545,129 @@ export const SimRacingProfileScalarFieldEnum = {
 } as const
 
 export type SimRacingProfileScalarFieldEnum = (typeof SimRacingProfileScalarFieldEnum)[keyof typeof SimRacingProfileScalarFieldEnum]
+
+
+export const SplitScreenBattleScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  creatorId: 'creatorId',
+  category: 'category',
+  matchmakingMode: 'matchmakingMode',
+  preferenceMode: 'preferenceMode',
+  preferredBrand: 'preferredBrand',
+  similarPrestigeRange: 'similarPrestigeRange',
+  accessType: 'accessType',
+  status: 'status',
+  maxParticipants: 'maxParticipants',
+  entryCost: 'entryCost',
+  prizePool: 'prizePool',
+  winnerPointReward: 'winnerPointReward',
+  votingDurationHours: 'votingDurationHours',
+  startsAt: 'startsAt',
+  votingStartsAt: 'votingStartsAt',
+  votingEndsAt: 'votingEndsAt',
+  completedAt: 'completedAt',
+  cancelledAt: 'cancelledAt',
+  totalVotes: 'totalVotes',
+  totalComments: 'totalComments',
+  winnerId: 'winnerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenBattleScalarFieldEnum = (typeof SplitScreenBattleScalarFieldEnum)[keyof typeof SplitScreenBattleScalarFieldEnum]
+
+
+export const SplitScreenParticipantScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  profileId: 'profileId',
+  lane: 'lane',
+  carBrand: 'carBrand',
+  carModel: 'carModel',
+  carYear: 'carYear',
+  carImageUrl: 'carImageUrl',
+  prestigePoints: 'prestigePoints',
+  joinedAt: 'joinedAt',
+  score: 'score',
+  isWinner: 'isWinner',
+  submissionStatus: 'submissionStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenParticipantScalarFieldEnum = (typeof SplitScreenParticipantScalarFieldEnum)[keyof typeof SplitScreenParticipantScalarFieldEnum]
+
+
+export const SplitScreenInvitationScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  inviterId: 'inviterId',
+  inviteeId: 'inviteeId',
+  status: 'status',
+  respondedAt: 'respondedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenInvitationScalarFieldEnum = (typeof SplitScreenInvitationScalarFieldEnum)[keyof typeof SplitScreenInvitationScalarFieldEnum]
+
+
+export const SplitScreenSubmissionScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  participantId: 'participantId',
+  userId: 'userId',
+  mediaUrl: 'mediaUrl',
+  thumbnailUrl: 'thumbnailUrl',
+  caption: 'caption',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenSubmissionScalarFieldEnum = (typeof SplitScreenSubmissionScalarFieldEnum)[keyof typeof SplitScreenSubmissionScalarFieldEnum]
+
+
+export const SplitScreenVoteScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  submissionId: 'submissionId',
+  userId: 'userId',
+  voteType: 'voteType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenVoteScalarFieldEnum = (typeof SplitScreenVoteScalarFieldEnum)[keyof typeof SplitScreenVoteScalarFieldEnum]
+
+
+export const SplitScreenCommentScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  userId: 'userId',
+  submissionId: 'submissionId',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SplitScreenCommentScalarFieldEnum = (typeof SplitScreenCommentScalarFieldEnum)[keyof typeof SplitScreenCommentScalarFieldEnum]
+
+
+export const SplitScreenResultScalarFieldEnum = {
+  id: 'id',
+  battleId: 'battleId',
+  participantId: 'participantId',
+  userId: 'userId',
+  resultType: 'resultType',
+  earnedPoints: 'earnedPoints',
+  createdAt: 'createdAt'
+} as const
+
+export type SplitScreenResultScalarFieldEnum = (typeof SplitScreenResultScalarFieldEnum)[keyof typeof SplitScreenResultScalarFieldEnum]
 
 
 export const SpotterProfileScalarFieldEnum = {
@@ -9207,6 +9856,118 @@ export type ListEnumReportTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
+ * Reference to a field of type 'SplitScreenBattleCategory'
+ */
+export type EnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenBattleCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenBattleCategory[]'
+ */
+export type ListEnumSplitScreenBattleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenBattleCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenMatchmakingMode'
+ */
+export type EnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenMatchmakingMode'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenMatchmakingMode[]'
+ */
+export type ListEnumSplitScreenMatchmakingModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenMatchmakingMode[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenPreferenceMode'
+ */
+export type EnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenPreferenceMode'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenPreferenceMode[]'
+ */
+export type ListEnumSplitScreenPreferenceModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenPreferenceMode[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenBattleStatus'
+ */
+export type EnumSplitScreenBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenBattleStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenBattleStatus[]'
+ */
+export type ListEnumSplitScreenBattleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenBattleStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenSubmissionStatus'
+ */
+export type EnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenSubmissionStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenSubmissionStatus[]'
+ */
+export type ListEnumSplitScreenSubmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenSubmissionStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenInvitationStatus'
+ */
+export type EnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenInvitationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenInvitationStatus[]'
+ */
+export type ListEnumSplitScreenInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenInvitationStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenVoteType'
+ */
+export type EnumSplitScreenVoteTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenVoteType'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenVoteType[]'
+ */
+export type ListEnumSplitScreenVoteTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenVoteType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenResultType'
+ */
+export type EnumSplitScreenResultTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenResultType'>
+    
+
+
+/**
+ * Reference to a field of type 'SplitScreenResultType[]'
+ */
+export type ListEnumSplitScreenResultTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SplitScreenResultType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Platform'
  */
 export type EnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform'>
@@ -9544,6 +10305,13 @@ export type GlobalOmitConfig = {
   setupDescriptionPhoto?: Prisma.SetupDescriptionPhotoOmit
   share?: Prisma.ShareOmit
   simRacingProfile?: Prisma.SimRacingProfileOmit
+  splitScreenBattle?: Prisma.SplitScreenBattleOmit
+  splitScreenParticipant?: Prisma.SplitScreenParticipantOmit
+  splitScreenInvitation?: Prisma.SplitScreenInvitationOmit
+  splitScreenSubmission?: Prisma.SplitScreenSubmissionOmit
+  splitScreenVote?: Prisma.SplitScreenVoteOmit
+  splitScreenComment?: Prisma.SplitScreenCommentOmit
+  splitScreenResult?: Prisma.SplitScreenResultOmit
   spotterProfile?: Prisma.SpotterProfileOmit
   submitLabTime?: Prisma.SubmitLabTimeOmit
   tuningAero?: Prisma.TuningAeroOmit

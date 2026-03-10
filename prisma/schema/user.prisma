@@ -104,4 +104,15 @@ model User {
   notificationsActor Notification[] @relation("NotificationActor")
 
   deviceTokens DeviceToken[]
+  
+  splitScreenBattlesCreated  SplitScreenBattle[]       @relation("SplitScreenBattleCreator")
+  splitScreenBattlesWon      SplitScreenBattle[]       @relation("SplitScreenBattleWinner")
+  splitScreenParticipants    SplitScreenParticipant[]  @relation("SplitScreenBattleParticipant")
+  splitScreenInvitationsSent SplitScreenInvitation[]   @relation("SplitScreenInviter")
+  splitScreenInvitationsRecv SplitScreenInvitation[]   @relation("SplitScreenInvitee")
+  splitScreenSubmissions     SplitScreenSubmission[]   @relation("SplitScreenSubmissionUser")
+  splitScreenVotes           SplitScreenVote[]         @relation("SplitScreenVoteUser")
+  splitScreenComments        SplitScreenComment[]      @relation("SplitScreenCommentUser")
+  splitScreenResults         SplitScreenResult[]       @relation("SplitScreenResultUser")
+
 }
