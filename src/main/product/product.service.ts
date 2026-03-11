@@ -7,7 +7,7 @@ import {
 
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { Prisma } from 'generated/prisma/client';
-import { ProductCategory } from 'generated/prisma/enums';
+import { ProductCategory, Role } from 'generated/prisma/enums';
 
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -180,12 +180,44 @@ export class ProductService {
   }
 
   // 6) Delete (owner only)
-  async deleteProduct(id: string, ownerId: string) {
-    const current = await this.prisma.productList.findUnique({ where: { id } });
-    if (!current) throw new NotFoundException('Product not found');
-    if (current.ownerId !== ownerId) throw new ForbiddenException('Not your product');
+  async deleteProduct(id: string, userId: string) {
+    const product = await this.prisma.productList.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        ownerId: true,
+      },
+    });
 
-    await this.prisma.productList.delete({ where: { id } });
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        role: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const isCreator = product.ownerId === userId;
+    const isAdmin =
+      user.role.includes(Role.ADMIN) 
+    if (!isCreator && !isAdmin) {
+      throw new ForbiddenException(
+        'Only creator or admin can delete this product',
+      );
+    }
+
+    await this.prisma.productList.delete({
+      where: { id },
+    });
+
     return { success: true };
   }
 

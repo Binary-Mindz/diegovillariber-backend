@@ -108,11 +108,29 @@ export class CarService {
     });
   }
 
-  async getCars(){
-    const cars = await this.prisma.car.findMany({})
-    return cars
-  }
+async getCars(page?: number, limit?: number) {
+  const currentPage = page ?? 1;
+  const currentLimit = limit ?? 10;
+  const skip = (currentPage - 1) * currentLimit;
 
+  const [cars, total] = await Promise.all([
+    this.prisma.car.findMany({
+      skip,
+      take: currentLimit,
+    }),
+    this.prisma.car.count(),
+  ]);
+
+  return {
+    data: cars,
+    meta: {
+      page: currentPage,
+      limit: currentLimit,
+      total,
+      totalPages: Math.ceil(total / currentLimit),
+    },
+  };
+}
   async update(userId: string, carId: string, dto: UpdateCarDto) {
     await this.validateOwnership(userId, carId);
     return this.prisma.car.update({

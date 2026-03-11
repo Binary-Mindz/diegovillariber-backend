@@ -9,6 +9,7 @@ import {
   UseGuards,
   HttpCode,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
@@ -27,6 +28,7 @@ import { UpdateTuningAeroDto } from './dto/update-tuning-aero.dto';
 import { UpdateInteriorSafetyDto } from './dto/update-interior-safety.dto';
 import { UpdateUsageNotesDto } from './dto/update-usage-notes.dto';
 import { UpdateWheelsTiresDto } from './dto/update-wheels-tires.dto';
+import { GetCarsQueryDto } from './dto/get-car-query.dto';
 
 @ApiTags('Cars')
 @Controller('cars')
@@ -42,10 +44,14 @@ export class CarController {
     return handleRequest(async () => this.carService.create(userId, dto), 'Car created successfully');
   }
 
-  @Get('/cars')
-  getCars(){
-    return handleRequest(async () => this.carService.getCars(), 'Cars get successfully');
-  }
+@Get('/cars')
+@ApiOperation({ summary: 'Get cars with pagination' })
+getCars(@Query() query: GetCarsQueryDto) {
+  return handleRequest(
+    async () => this.carService.getCars(query.page, query.limit),
+    'Cars get successfully',
+  );
+}
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
