@@ -1,7 +1,7 @@
 model VirtualSimRacingEvent {
   id        String  @id @default(uuid()) @db.Uuid
   profileId String  @db.Uuid
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   eventTitle     String
   simPlatform    Platform   @default(iRacing)

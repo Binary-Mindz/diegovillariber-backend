@@ -2,5 +2,5 @@ model SpotterProfile {
   id          String  @id @default(uuid()) @db.Uuid
   profileType Type    @default(SPOTTER)
   profileId   String  @unique @db.Uuid
-  profile     Profile @relation(fields: [profileId], references: [id])
+  profile     Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }

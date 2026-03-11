@@ -1,7 +1,7 @@
 model ContentCreatorProfile {
   id               String          @id @default(uuid()) @db.Uuid
   profileId        String          @unique @db.Uuid
-  profile          Profile         @relation(fields: [profileId], references: [id])
+  profile          Profile         @relation(fields: [profileId], references: [id], onDelete: Cascade)
   creatorCategory  ContentCategory @default(PHOTOGRAPHY)
   profileType      Type            @default(CONTENT_CREATOR)
   youtubeChanel    String?

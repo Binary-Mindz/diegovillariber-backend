@@ -88,7 +88,7 @@ export class HeadToHeadController {
     @Body() dto: CreateHeadToHeadBattleDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    console.log("userId",  userId)
+    console.log("userId", userId)
     const response = await handleRequest(
       () => this.service.createBattle(userId, dto),
       'HeadToHead battle created successfully',

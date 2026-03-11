@@ -4,7 +4,7 @@ model Post {
   user   User   @relation(fields: [userId], references: [id])
 
   profileId          String?  @db.Uuid
-  profile            Profile? @relation(fields: [profileId], references: [id])
+  profile            Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
   profileType        Type?
   postType           PostType @default(Spotter_Post)
   caption            String?
