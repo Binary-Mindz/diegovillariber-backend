@@ -134,6 +134,7 @@ export const ModelName = {
   SpotterProfile: 'SpotterProfile',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
+  Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
   User: 'User',
   UserPoint: 'UserPoint',
@@ -1420,6 +1421,22 @@ export const TuningAeroScalarFieldEnum = {
 } as const
 
 export type TuningAeroScalarFieldEnum = (typeof TuningAeroScalarFieldEnum)[keyof typeof TuningAeroScalarFieldEnum]
+
+
+export const TutorialScalarFieldEnum = {
+  id: 'id',
+  sectionCode: 'sectionCode',
+  title: 'title',
+  description: 'description',
+  videoUrl: 'videoUrl',
+  order: 'order',
+  learnVersion: 'learnVersion',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TutorialScalarFieldEnum = (typeof TutorialScalarFieldEnum)[keyof typeof TutorialScalarFieldEnum]
 
 
 export const UsageNotesScalarFieldEnum = {
