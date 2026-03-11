@@ -15,6 +15,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { FirebaseModule } from './main/firebase/firebase.module';
 import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.module';
 import { NotificationModule } from './main/notification/notification.module';
+import { RacingVoteModule } from './main/racing-vote/racing-vote.module';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import { NotificationModule } from './main/notification/notification.module';
     FileModule,
     NotificationModule,
     FirebaseModule,
-
+    RacingVoteModule,
     MotorsportRankingModule,
     AdminModule
   ],
