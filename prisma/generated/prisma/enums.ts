@@ -1090,3 +1090,12 @@ export const SplitScreenParticipantResult = {
 } as const
 
 export type SplitScreenParticipantResult = (typeof SplitScreenParticipantResult)[keyof typeof SplitScreenParticipantResult]
+
+
+export const TutorialStatus = {
+  DRAFT: 'DRAFT',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type TutorialStatus = (typeof TutorialStatus)[keyof typeof TutorialStatus]

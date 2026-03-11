@@ -433,6 +433,11 @@ export type SubmitLabTime = Prisma.SubmitLabTimeModel
  */
 export type TuningAero = Prisma.TuningAeroModel
 /**
+ * Model Tutorial
+ * 
+ */
+export type Tutorial = Prisma.TutorialModel
+/**
  * Model UsageNotes
  * 
  */

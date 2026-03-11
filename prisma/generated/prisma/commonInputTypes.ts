@@ -1660,6 +1660,23 @@ export type EnumEcuTuneWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
 }
 
+export type EnumTutorialStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.TutorialStatus | Prisma.EnumTutorialStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel> | $Enums.TutorialStatus
+}
+
+export type EnumTutorialStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TutorialStatus | Prisma.EnumTutorialStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTutorialStatusWithAggregatesFilter<$PrismaModel> | $Enums.TutorialStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel>
+}
+
 export type EnumUsageCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.UsageCategory | Prisma.EnumUsageCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.UsageCategory[] | Prisma.ListEnumUsageCategoryFieldRefInput<$PrismaModel>
@@ -3459,6 +3476,23 @@ export type NestedEnumEcuTuneWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
   _max?: Prisma.NestedEnumEcuTuneFilter<$PrismaModel>
+}
+
+export type NestedEnumTutorialStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.TutorialStatus | Prisma.EnumTutorialStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel> | $Enums.TutorialStatus
+}
+
+export type NestedEnumTutorialStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TutorialStatus | Prisma.EnumTutorialStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.TutorialStatus[] | Prisma.ListEnumTutorialStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumTutorialStatusWithAggregatesFilter<$PrismaModel> | $Enums.TutorialStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTutorialStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumUsageCategoryFilter<$PrismaModel = never> = {

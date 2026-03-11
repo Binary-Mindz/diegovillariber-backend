@@ -1,0 +1,19 @@
+model Tutorial {
+  id           String         @id @default(uuid()) @db.Uuid
+  sectionCode  String         @db.VarChar(100)
+  title        String         @db.VarChar(255)
+  description  String?        @db.Text
+  videoUrl     String         @db.Text
+  order        Int            @default(1)
+  learnVersion Int            @default(1)
+  status       TutorialStatus @default(PUBLISHED)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@unique([sectionCode, learnVersion, order])
+}
+enum TutorialStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}

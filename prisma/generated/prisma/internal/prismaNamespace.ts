@@ -467,6 +467,7 @@ export const ModelName = {
   SpotterProfile: 'SpotterProfile',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
+  Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
   User: 'User',
   UserPoint: 'UserPoint',
@@ -489,7 +490,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6635,6 +6636,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Tutorial: {
+      payload: Prisma.$TutorialPayload<ExtArgs>
+      fields: Prisma.TutorialFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TutorialFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TutorialFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        findFirst: {
+          args: Prisma.TutorialFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TutorialFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        findMany: {
+          args: Prisma.TutorialFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>[]
+        }
+        create: {
+          args: Prisma.TutorialCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        createMany: {
+          args: Prisma.TutorialCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TutorialCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>[]
+        }
+        delete: {
+          args: Prisma.TutorialDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        update: {
+          args: Prisma.TutorialUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        deleteMany: {
+          args: Prisma.TutorialDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TutorialUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TutorialUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>[]
+        }
+        upsert: {
+          args: Prisma.TutorialUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorialPayload>
+        }
+        aggregate: {
+          args: Prisma.TutorialAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTutorial>
+        }
+        groupBy: {
+          args: Prisma.TutorialGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TutorialGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TutorialCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TutorialCountAggregateOutputType> | number
+        }
+      }
+    }
     UsageNotes: {
       payload: Prisma.$UsageNotesPayload<ExtArgs>
       fields: Prisma.UsageNotesFieldRefs
@@ -8455,6 +8530,22 @@ export const TuningAeroScalarFieldEnum = {
 export type TuningAeroScalarFieldEnum = (typeof TuningAeroScalarFieldEnum)[keyof typeof TuningAeroScalarFieldEnum]
 
 
+export const TutorialScalarFieldEnum = {
+  id: 'id',
+  sectionCode: 'sectionCode',
+  title: 'title',
+  description: 'description',
+  videoUrl: 'videoUrl',
+  order: 'order',
+  learnVersion: 'learnVersion',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TutorialScalarFieldEnum = (typeof TutorialScalarFieldEnum)[keyof typeof TutorialScalarFieldEnum]
+
+
 export const UsageNotesScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -9794,6 +9885,20 @@ export type ListEnumEcuTuneFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
 
 
 /**
+ * Reference to a field of type 'TutorialStatus'
+ */
+export type EnumTutorialStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorialStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'TutorialStatus[]'
+ */
+export type ListEnumTutorialStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorialStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'UsageCategory'
  */
 export type EnumUsageCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UsageCategory'>
@@ -10068,6 +10173,7 @@ export type GlobalOmitConfig = {
   spotterProfile?: Prisma.SpotterProfileOmit
   submitLabTime?: Prisma.SubmitLabTimeOmit
   tuningAero?: Prisma.TuningAeroOmit
+  tutorial?: Prisma.TutorialOmit
   usageNotes?: Prisma.UsageNotesOmit
   user?: Prisma.UserOmit
   userPoint?: Prisma.UserPointOmit
