@@ -20,21 +20,29 @@ export class NotificationService {
   ) {}
 
   async registerDeviceToken(userId: string, dto: RegisterDeviceTokenDto) {
-    return this.prisma.deviceToken.upsert({
-      where: { token: dto.token },
-      update: {
-        userId,
-        platform: dto.platform ?? null,
-        isActive: true,
+  const { token, platform } = dto;
+
+  return this.prisma.deviceToken.upsert({
+    where: {
+      token,
+    },
+    update: {
+      platform: platform ?? null,
+      isActive: true,
+      user: {
+        connect: { id: userId },
       },
-      create: {
-        userId,
-        token: dto.token,
-        platform: dto.platform ?? null,
-        isActive: true,
+    },
+    create: {
+      token,
+      platform: platform ?? null,
+      isActive: true,
+      user: {
+        connect: { id: userId },
       },
-    });
-  }
+    },
+  });
+}
 
   async removeDeviceToken(userId: string, token: string) {
     const existing = await this.prisma.deviceToken.findUnique({

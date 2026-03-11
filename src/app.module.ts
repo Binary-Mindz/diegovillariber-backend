@@ -13,8 +13,8 @@ import { FileModule } from './main/files/file.module';
 import { PropertyModule } from './main/property/property.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { FirebaseModule } from './main/firebase/firebase.module';
-import { NotificationModule } from './main/notification/notification.module';
 import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.module';
+import { NotificationModule } from './main/notification/notification.module';
 
 @Module({
   imports: [
@@ -30,8 +30,9 @@ import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.mo
     PropertyModule,
     ChatModule,
     FileModule,
-    FirebaseModule,
     NotificationModule,
+    FirebaseModule,
+
     MotorsportRankingModule,
     AdminModule
   ],
