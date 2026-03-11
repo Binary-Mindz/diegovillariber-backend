@@ -18,6 +18,7 @@ import {
   SubmissionStatus,
 } from 'generated/prisma/enums';
 import { profile } from 'console';
+import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
 export class ChallengeService {
@@ -254,16 +255,36 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
     return challenge;
   }
 
-  async createChallenge(userId: string, dto: CreateChallengeDto) {
+async createChallenge(userId: string, dto: CreateChallengeDto) {
+  try {
+    const creator = await this.prisma.user.findFirst({
+      where: {
+        OR: [
+          { id: userId }
+        ],
+      },
+      select: {
+        id: true
+      },
+    });
+
+    if (!creator) {
+      throw new NotFoundException('Creator user not found');
+    }
+
     const startDate = new Date(dto.startDate);
     const endDate = new Date(dto.endDate);
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+      throw new BadRequestException('Invalid startDate or endDate');
+    }
 
     this.validateDates(startDate, endDate);
     this.validateScope(dto);
 
-    return this.prisma.challenge.create({
+    return await this.prisma.challenge.create({
       data: {
-        creatorId: userId,
+        creatorId: creator.id,
         title: dto.title,
         description: dto.description,
         type: dto.type,
@@ -271,7 +292,8 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
         preference: dto.preference,
         coverImage: dto.coverImage,
 
-        participationScope: dto.participationScope ?? ParticipationScope.GLOBAL,
+        participationScope:
+          dto.participationScope ?? ParticipationScope.GLOBAL,
         radiusKm: dto.radiusKm,
         locationName: dto.locationName,
         latitude: dto.latitude as any,
@@ -286,14 +308,36 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
         deviceType: dto.deviceType,
         brand: dto.brand,
 
-        requireTrueShotVerification: dto.requireTrueShotVerification ?? false,
+        requireTrueShotVerification:
+          dto.requireTrueShotVerification ?? false,
         rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
         maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
         status: ChallengeStatus.UPCOMING,
       },
       include: { creator: true },
     });
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === 'P2003') {
+        throw new BadRequestException(
+          'Invalid related reference data provided for challenge creation',
+        );
+      }
+
+      if (error.code === 'P2002') {
+        throw new BadRequestException(
+          'Duplicate data violates a unique constraint',
+        );
+      }
+
+      if (error.code === 'P2025') {
+        throw new NotFoundException('Required related record was not found');
+      }
+    }
+
+    throw error;
   }
+}
 
   async updateChallenge(id: string, userId: string, dto: UpdateChallengeDto) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id } });
@@ -397,7 +441,12 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     const now = new Date();
-    if (challenge.status !== ChallengeStatus.UPCOMING) throw new BadRequestException('Challenge is not accepting submissions');
+   if (
+  challenge.status !== ChallengeStatus.UPCOMING &&
+  challenge.status !== ChallengeStatus.ACTIVE
+) {
+  throw new BadRequestException('Challenge is not accepting submissions');
+}
     if (now < challenge.startDate) throw new BadRequestException('Challenge not started yet');
     if (now > challenge.endDate) throw new BadRequestException('Challenge already ended');
 
