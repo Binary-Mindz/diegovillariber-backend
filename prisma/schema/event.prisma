@@ -8,6 +8,10 @@ model Event {
   eventTitle  String
   description String?
   location    String?
+  locationAddress    String?
+  latitude           Decimal? @db.Decimal(9, 6)
+  longitude          Decimal? @db.Decimal(9, 6)
+  placeId            String?
   websiteLink String?
   price       Int
   eventType   EventType   @default(Race)

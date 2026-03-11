@@ -27,10 +27,14 @@ export type AggregateEvent = {
 }
 
 export type EventAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   price: number | null
 }
 
 export type EventSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   price: number | null
 }
 
@@ -42,6 +46,10 @@ export type EventMinAggregateOutputType = {
   eventTitle: string | null
   description: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   websiteLink: string | null
   price: number | null
   eventType: $Enums.EventType | null
@@ -59,6 +67,10 @@ export type EventMaxAggregateOutputType = {
   eventTitle: string | null
   description: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   websiteLink: string | null
   price: number | null
   eventType: $Enums.EventType | null
@@ -76,6 +88,10 @@ export type EventCountAggregateOutputType = {
   eventTitle: number
   description: number
   location: number
+  locationAddress: number
+  latitude: number
+  longitude: number
+  placeId: number
   websiteLink: number
   price: number
   eventType: number
@@ -88,10 +104,14 @@ export type EventCountAggregateOutputType = {
 
 
 export type EventAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
   price?: true
 }
 
 export type EventSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
   price?: true
 }
 
@@ -103,6 +123,10 @@ export type EventMinAggregateInputType = {
   eventTitle?: true
   description?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   websiteLink?: true
   price?: true
   eventType?: true
@@ -120,6 +144,10 @@ export type EventMaxAggregateInputType = {
   eventTitle?: true
   description?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   websiteLink?: true
   price?: true
   eventType?: true
@@ -137,6 +165,10 @@ export type EventCountAggregateInputType = {
   eventTitle?: true
   description?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   websiteLink?: true
   price?: true
   eventType?: true
@@ -241,6 +273,10 @@ export type EventGroupByOutputType = {
   eventTitle: string
   description: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   websiteLink: string | null
   price: number
   eventType: $Enums.EventType
@@ -281,6 +317,10 @@ export type EventWhereInput = {
   eventTitle?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Event"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Event"> | string | null
   websiteLink?: Prisma.StringNullableFilter<"Event"> | string | null
   price?: Prisma.IntFilter<"Event"> | number
   eventType?: Prisma.EnumEventTypeFilter<"Event"> | $Enums.EventType
@@ -299,6 +339,10 @@ export type EventOrderByWithRelationInput = {
   eventTitle?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   websiteLink?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   eventType?: Prisma.SortOrder
@@ -320,6 +364,10 @@ export type EventWhereUniqueInput = Prisma.AtLeast<{
   eventTitle?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Event"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Event"> | string | null
   websiteLink?: Prisma.StringNullableFilter<"Event"> | string | null
   price?: Prisma.IntFilter<"Event"> | number
   eventType?: Prisma.EnumEventTypeFilter<"Event"> | $Enums.EventType
@@ -338,6 +386,10 @@ export type EventOrderByWithAggregationInput = {
   eventTitle?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   websiteLink?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   eventType?: Prisma.SortOrder
@@ -363,6 +415,10 @@ export type EventScalarWhereWithAggregatesInput = {
   eventTitle?: Prisma.StringWithAggregatesFilter<"Event"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
+  locationAddress?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   websiteLink?: Prisma.StringNullableWithAggregatesFilter<"Event"> | string | null
   price?: Prisma.IntWithAggregatesFilter<"Event"> | number
   eventType?: Prisma.EnumEventTypeWithAggregatesFilter<"Event"> | $Enums.EventType
@@ -379,6 +435,10 @@ export type EventCreateInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -397,6 +457,10 @@ export type EventUncheckedCreateInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -413,6 +477,10 @@ export type EventUpdateInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -431,6 +499,10 @@ export type EventUncheckedUpdateInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -448,6 +520,10 @@ export type EventCreateManyInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -464,6 +540,10 @@ export type EventUpdateManyMutationInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -481,6 +561,10 @@ export type EventUncheckedUpdateManyInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -498,6 +582,10 @@ export type EventCountOrderByAggregateInput = {
   eventTitle?: Prisma.SortOrder
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   websiteLink?: Prisma.SortOrder
   price?: Prisma.SortOrder
   eventType?: Prisma.SortOrder
@@ -508,6 +596,8 @@ export type EventCountOrderByAggregateInput = {
 }
 
 export type EventAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
@@ -519,6 +609,10 @@ export type EventMaxOrderByAggregateInput = {
   eventTitle?: Prisma.SortOrder
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   websiteLink?: Prisma.SortOrder
   price?: Prisma.SortOrder
   eventType?: Prisma.SortOrder
@@ -536,6 +630,10 @@ export type EventMinOrderByAggregateInput = {
   eventTitle?: Prisma.SortOrder
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   websiteLink?: Prisma.SortOrder
   price?: Prisma.SortOrder
   eventType?: Prisma.SortOrder
@@ -546,6 +644,8 @@ export type EventMinOrderByAggregateInput = {
 }
 
 export type EventSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   price?: Prisma.SortOrder
 }
 
@@ -620,6 +720,10 @@ export type EventCreateWithoutOwnerInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -636,6 +740,10 @@ export type EventUncheckedCreateWithoutOwnerInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -682,6 +790,10 @@ export type EventScalarWhereInput = {
   eventTitle?: Prisma.StringFilter<"Event"> | string
   description?: Prisma.StringNullableFilter<"Event"> | string | null
   location?: Prisma.StringNullableFilter<"Event"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"Event"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Event"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"Event"> | string | null
   websiteLink?: Prisma.StringNullableFilter<"Event"> | string | null
   price?: Prisma.IntFilter<"Event"> | number
   eventType?: Prisma.EnumEventTypeFilter<"Event"> | $Enums.EventType
@@ -698,6 +810,10 @@ export type EventCreateManyOwnerInput = {
   eventTitle: string
   description?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   websiteLink?: string | null
   price: number
   eventType?: $Enums.EventType
@@ -714,6 +830,10 @@ export type EventUpdateWithoutOwnerInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -730,6 +850,10 @@ export type EventUncheckedUpdateWithoutOwnerInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -746,6 +870,10 @@ export type EventUncheckedUpdateManyWithoutOwnerInput = {
   eventTitle?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   websiteLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   eventType?: Prisma.EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
@@ -765,6 +893,10 @@ export type EventSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   eventTitle?: boolean
   description?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   websiteLink?: boolean
   price?: boolean
   eventType?: boolean
@@ -783,6 +915,10 @@ export type EventSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   eventTitle?: boolean
   description?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   websiteLink?: boolean
   price?: boolean
   eventType?: boolean
@@ -801,6 +937,10 @@ export type EventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   eventTitle?: boolean
   description?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   websiteLink?: boolean
   price?: boolean
   eventType?: boolean
@@ -819,6 +959,10 @@ export type EventSelectScalar = {
   eventTitle?: boolean
   description?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   websiteLink?: boolean
   price?: boolean
   eventType?: boolean
@@ -828,7 +972,7 @@ export type EventSelectScalar = {
   createdAt?: boolean
 }
 
-export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "profileType" | "coverImage" | "eventTitle" | "description" | "location" | "websiteLink" | "price" | "eventType" | "eventStatus" | "startDate" | "endDate" | "createdAt", ExtArgs["result"]["event"]>
+export type EventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "profileType" | "coverImage" | "eventTitle" | "description" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "websiteLink" | "price" | "eventType" | "eventStatus" | "startDate" | "endDate" | "createdAt", ExtArgs["result"]["event"]>
 export type EventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -852,6 +996,10 @@ export type $EventPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     eventTitle: string
     description: string | null
     location: string | null
+    locationAddress: string | null
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    placeId: string | null
     websiteLink: string | null
     price: number
     eventType: $Enums.EventType
@@ -1290,6 +1438,10 @@ export interface EventFieldRefs {
   readonly eventTitle: Prisma.FieldRef<"Event", 'String'>
   readonly description: Prisma.FieldRef<"Event", 'String'>
   readonly location: Prisma.FieldRef<"Event", 'String'>
+  readonly locationAddress: Prisma.FieldRef<"Event", 'String'>
+  readonly latitude: Prisma.FieldRef<"Event", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Event", 'Decimal'>
+  readonly placeId: Prisma.FieldRef<"Event", 'String'>
   readonly websiteLink: Prisma.FieldRef<"Event", 'String'>
   readonly price: Prisma.FieldRef<"Event", 'Int'>
   readonly eventType: Prisma.FieldRef<"Event", 'EventType'>

@@ -3,8 +3,8 @@ model Car {
   profileId String @db.Uuid
   garageId  String @db.Uuid
 
-  profile Profile @relation(fields: [profileId], references: [id])
-  garage  Garage  @relation(fields: [garageId], references: [id])
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  garage  Garage  @relation(fields: [garageId], references: [id], onDelete: Cascade)
 
   image             String?
   make              String?
