@@ -1145,7 +1145,8 @@ export type RacingScalarFieldEnum = (typeof RacingScalarFieldEnum)[keyof typeof 
 
 export const RacingVoteScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
+  voterId: 'voterId',
+  targetUserId: 'targetUserId',
   postId: 'postId',
   point: 'point',
   createdAt: 'createdAt'

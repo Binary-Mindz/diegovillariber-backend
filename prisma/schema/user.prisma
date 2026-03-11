@@ -39,7 +39,6 @@ model User {
   lives                 Live[]                 @relation("HostedLives")
   liveParticipants      LiveParticipant[]
   reposts               Repost[]
-  racingVotes           RacingVote[]
   savePosts             SavePost[]
   hidePosts             HidePost[]
   wishLists             WishList[]
@@ -113,4 +112,7 @@ model User {
   splitScreenBattleVotes SplitScreenBattleVote[]
 
   splitScreenBattleParticipants SplitScreenBattleParticipant[]
+
+  racingVotesGiven    RacingVote[] @relation("RacingVoteVoter")
+  racingVotesReceived RacingVote[] @relation("RacingVoteReceiver")
 }

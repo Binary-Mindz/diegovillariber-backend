@@ -392,7 +392,6 @@ export type UserWhereInput = {
   lives?: Prisma.LiveListRelationFilter
   liveParticipants?: Prisma.LiveParticipantListRelationFilter
   reposts?: Prisma.RepostListRelationFilter
-  racingVotes?: Prisma.RacingVoteListRelationFilter
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
   wishLists?: Prisma.WishListListRelationFilter
@@ -432,6 +431,8 @@ export type UserWhereInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteListRelationFilter
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
+  racingVotesGiven?: Prisma.RacingVoteListRelationFilter
+  racingVotesReceived?: Prisma.RacingVoteListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -474,7 +475,6 @@ export type UserOrderByWithRelationInput = {
   lives?: Prisma.LiveOrderByRelationAggregateInput
   liveParticipants?: Prisma.LiveParticipantOrderByRelationAggregateInput
   reposts?: Prisma.RepostOrderByRelationAggregateInput
-  racingVotes?: Prisma.RacingVoteOrderByRelationAggregateInput
   savePosts?: Prisma.SavePostOrderByRelationAggregateInput
   hidePosts?: Prisma.HidePostOrderByRelationAggregateInput
   wishLists?: Prisma.WishListOrderByRelationAggregateInput
@@ -514,6 +514,8 @@ export type UserOrderByWithRelationInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteOrderByRelationAggregateInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantOrderByRelationAggregateInput
+  racingVotesGiven?: Prisma.RacingVoteOrderByRelationAggregateInput
+  racingVotesReceived?: Prisma.RacingVoteOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -559,7 +561,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   lives?: Prisma.LiveListRelationFilter
   liveParticipants?: Prisma.LiveParticipantListRelationFilter
   reposts?: Prisma.RepostListRelationFilter
-  racingVotes?: Prisma.RacingVoteListRelationFilter
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
   wishLists?: Prisma.WishListListRelationFilter
@@ -599,6 +600,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteListRelationFilter
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
+  racingVotesGiven?: Prisma.RacingVoteListRelationFilter
+  racingVotesReceived?: Prisma.RacingVoteListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -701,7 +704,6 @@ export type UserCreateInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -741,6 +743,8 @@ export type UserCreateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -783,7 +787,6 @@ export type UserUncheckedCreateInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -823,6 +826,8 @@ export type UserUncheckedCreateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUpdateInput = {
@@ -865,7 +870,6 @@ export type UserUpdateInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -905,6 +909,8 @@ export type UserUpdateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -947,7 +953,6 @@ export type UserUncheckedUpdateInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -987,6 +992,8 @@ export type UserUncheckedUpdateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1741,18 +1748,34 @@ export type UserUpdateOneRequiredWithoutProfileNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutProfileInput, Prisma.UserUpdateWithoutProfileInput>, Prisma.UserUncheckedUpdateWithoutProfileInput>
 }
 
-export type UserCreateNestedOneWithoutRacingVotesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesInput, Prisma.UserUncheckedCreateWithoutRacingVotesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesInput
+export type UserCreateNestedOneWithoutRacingVotesGivenInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesGivenInput, Prisma.UserUncheckedCreateWithoutRacingVotesGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesGivenInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutRacingVotesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesInput, Prisma.UserUncheckedCreateWithoutRacingVotesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesInput
-  upsert?: Prisma.UserUpsertWithoutRacingVotesInput
+export type UserCreateNestedOneWithoutRacingVotesReceivedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedCreateWithoutRacingVotesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesReceivedInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRacingVotesInput, Prisma.UserUpdateWithoutRacingVotesInput>, Prisma.UserUncheckedUpdateWithoutRacingVotesInput>
+}
+
+export type UserUpdateOneRequiredWithoutRacingVotesGivenNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesGivenInput, Prisma.UserUncheckedCreateWithoutRacingVotesGivenInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesGivenInput
+  upsert?: Prisma.UserUpsertWithoutRacingVotesGivenInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRacingVotesGivenInput, Prisma.UserUpdateWithoutRacingVotesGivenInput>, Prisma.UserUncheckedUpdateWithoutRacingVotesGivenInput>
+}
+
+export type UserUpdateOneWithoutRacingVotesReceivedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedCreateWithoutRacingVotesReceivedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutRacingVotesReceivedInput
+  upsert?: Prisma.UserUpsertWithoutRacingVotesReceivedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRacingVotesReceivedInput, Prisma.UserUpdateWithoutRacingVotesReceivedInput>, Prisma.UserUncheckedUpdateWithoutRacingVotesReceivedInput>
 }
 
 export type UserCreateNestedOneWithoutRawShiftBattlesCreatedInput = {
@@ -2047,7 +2070,6 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -2086,6 +2108,8 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2128,7 +2152,6 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -2167,6 +2190,8 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2225,7 +2250,6 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -2264,6 +2288,8 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2306,7 +2332,6 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -2345,6 +2370,8 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2387,7 +2414,6 @@ export type UserCreateWithoutChallengesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -2426,6 +2452,8 @@ export type UserCreateWithoutChallengesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2468,7 +2496,6 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -2507,6 +2534,8 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2565,7 +2594,6 @@ export type UserUpdateWithoutChallengesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -2604,6 +2632,8 @@ export type UserUpdateWithoutChallengesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -2646,7 +2676,6 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -2685,6 +2714,8 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -2727,7 +2758,6 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -2766,6 +2796,8 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -2808,7 +2840,6 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -2847,6 +2878,8 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -2905,7 +2938,6 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -2944,6 +2976,8 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -2986,7 +3020,6 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -3025,6 +3058,8 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -3067,7 +3102,6 @@ export type UserCreateWithoutChallengeReactionsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -3106,6 +3140,8 @@ export type UserCreateWithoutChallengeReactionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -3148,7 +3184,6 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -3187,6 +3222,8 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3245,7 +3282,6 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -3284,6 +3320,8 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3326,7 +3364,6 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -3365,6 +3402,8 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3407,7 +3446,6 @@ export type UserCreateWithoutChallengeVotesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -3446,6 +3484,8 @@ export type UserCreateWithoutChallengeVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -3488,7 +3528,6 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -3527,6 +3566,8 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -3585,7 +3626,6 @@ export type UserUpdateWithoutChallengeVotesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -3624,6 +3664,8 @@ export type UserUpdateWithoutChallengeVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -3666,7 +3708,6 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -3705,6 +3746,8 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -3747,7 +3790,6 @@ export type UserCreateWithoutChallengeCommentsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -3786,6 +3828,8 @@ export type UserCreateWithoutChallengeCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -3828,7 +3872,6 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -3867,6 +3910,8 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -3925,7 +3970,6 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -3964,6 +4008,8 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -4006,7 +4052,6 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -4045,6 +4090,8 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4086,7 +4133,6 @@ export type UserCreateWithoutCommentsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -4126,6 +4172,8 @@ export type UserCreateWithoutCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4167,7 +4215,6 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -4207,6 +4254,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4264,7 +4313,6 @@ export type UserUpdateWithoutCommentsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -4304,6 +4352,8 @@ export type UserUpdateWithoutCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4345,7 +4395,6 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -4385,6 +4434,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -4427,7 +4478,6 @@ export type UserCreateWithoutConversationParticipantsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -4466,6 +4516,8 @@ export type UserCreateWithoutConversationParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -4508,7 +4560,6 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -4547,6 +4598,8 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -4605,7 +4658,6 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -4644,6 +4696,8 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -4686,7 +4740,6 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -4725,6 +4778,8 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -4766,7 +4821,6 @@ export type UserCreateWithoutEventsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -4806,6 +4860,8 @@ export type UserCreateWithoutEventsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -4847,7 +4903,6 @@ export type UserUncheckedCreateWithoutEventsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -4887,6 +4942,8 @@ export type UserUncheckedCreateWithoutEventsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -4944,7 +5001,6 @@ export type UserUpdateWithoutEventsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -4984,6 +5040,8 @@ export type UserUpdateWithoutEventsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5025,7 +5083,6 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -5065,6 +5122,8 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5106,7 +5165,6 @@ export type UserCreateWithoutFollowingInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -5146,6 +5204,8 @@ export type UserCreateWithoutFollowingInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5187,7 +5247,6 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -5227,6 +5286,8 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5273,7 +5334,6 @@ export type UserCreateWithoutFollowersInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -5313,6 +5373,8 @@ export type UserCreateWithoutFollowersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5354,7 +5416,6 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -5394,6 +5455,8 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5451,7 +5514,6 @@ export type UserUpdateWithoutFollowingInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -5491,6 +5553,8 @@ export type UserUpdateWithoutFollowingInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5532,7 +5596,6 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -5572,6 +5635,8 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5624,7 +5689,6 @@ export type UserUpdateWithoutFollowersInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -5664,6 +5728,8 @@ export type UserUpdateWithoutFollowersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -5705,7 +5771,6 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -5745,6 +5810,8 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5787,7 +5854,6 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -5826,6 +5892,8 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -5868,7 +5936,6 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -5907,6 +5974,8 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -5954,7 +6023,6 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -5993,6 +6061,8 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -6035,7 +6105,6 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -6074,6 +6143,8 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -6132,7 +6203,6 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -6171,6 +6241,8 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6213,7 +6285,6 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -6252,6 +6323,8 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -6305,7 +6378,6 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -6344,6 +6416,8 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -6386,7 +6460,6 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -6425,6 +6498,8 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -6467,7 +6542,6 @@ export type UserCreateWithoutBattleParticipantsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -6506,6 +6580,8 @@ export type UserCreateWithoutBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -6548,7 +6624,6 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -6587,6 +6662,8 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -6645,7 +6722,6 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -6684,6 +6760,8 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -6726,7 +6804,6 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -6765,6 +6842,8 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -6807,7 +6886,6 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -6846,6 +6924,8 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -6888,7 +6968,6 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -6927,6 +7006,8 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -6974,7 +7055,6 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -7013,6 +7093,8 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -7055,7 +7137,6 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -7094,6 +7175,8 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -7152,7 +7235,6 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -7191,6 +7273,8 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -7233,7 +7317,6 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -7272,6 +7355,8 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -7325,7 +7410,6 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -7364,6 +7448,8 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -7406,7 +7492,6 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -7445,6 +7530,8 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -7487,7 +7574,6 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -7526,6 +7612,8 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -7568,7 +7656,6 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -7607,6 +7694,8 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -7665,7 +7754,6 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -7704,6 +7792,8 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -7746,7 +7836,6 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -7785,6 +7874,8 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -7827,7 +7918,6 @@ export type UserCreateWithoutBattleVotesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -7866,6 +7956,8 @@ export type UserCreateWithoutBattleVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -7908,7 +8000,6 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -7947,6 +8038,8 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -8005,7 +8098,6 @@ export type UserUpdateWithoutBattleVotesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -8044,6 +8136,8 @@ export type UserUpdateWithoutBattleVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -8086,7 +8180,6 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -8125,6 +8218,8 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -8167,7 +8262,6 @@ export type UserCreateWithoutBattleCommentsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -8206,6 +8300,8 @@ export type UserCreateWithoutBattleCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -8248,7 +8344,6 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -8287,6 +8382,8 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -8345,7 +8442,6 @@ export type UserUpdateWithoutBattleCommentsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -8384,6 +8480,8 @@ export type UserUpdateWithoutBattleCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -8426,7 +8524,6 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -8465,6 +8562,8 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -8507,7 +8606,6 @@ export type UserCreateWithoutHidePostsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
@@ -8546,6 +8644,8 @@ export type UserCreateWithoutHidePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -8588,7 +8688,6 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
@@ -8627,6 +8726,8 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -8685,7 +8786,6 @@ export type UserUpdateWithoutHidePostsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
@@ -8724,6 +8824,8 @@ export type UserUpdateWithoutHidePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -8766,7 +8868,6 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
@@ -8805,6 +8906,8 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -8846,7 +8949,6 @@ export type UserCreateWithoutLikesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -8886,6 +8988,8 @@ export type UserCreateWithoutLikesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -8927,7 +9031,6 @@ export type UserUncheckedCreateWithoutLikesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -8967,6 +9070,8 @@ export type UserUncheckedCreateWithoutLikesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -9024,7 +9129,6 @@ export type UserUpdateWithoutLikesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -9064,6 +9168,8 @@ export type UserUpdateWithoutLikesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -9105,7 +9211,6 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -9145,6 +9250,8 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -9186,7 +9293,6 @@ export type UserCreateWithoutLivesInput = {
   liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -9226,6 +9332,8 @@ export type UserCreateWithoutLivesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -9267,7 +9375,6 @@ export type UserUncheckedCreateWithoutLivesInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -9307,6 +9414,8 @@ export type UserUncheckedCreateWithoutLivesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -9364,7 +9473,6 @@ export type UserUpdateWithoutLivesInput = {
   liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -9404,6 +9512,8 @@ export type UserUpdateWithoutLivesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -9445,7 +9555,6 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -9485,6 +9594,8 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -9526,7 +9637,6 @@ export type UserCreateWithoutLiveParticipantsInput = {
   liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -9566,6 +9676,8 @@ export type UserCreateWithoutLiveParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -9607,7 +9719,6 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -9647,6 +9758,8 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -9704,7 +9817,6 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -9744,6 +9856,8 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -9785,7 +9899,6 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -9825,6 +9938,8 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -9866,7 +9981,6 @@ export type UserCreateWithoutLiveRewardsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -9906,6 +10020,8 @@ export type UserCreateWithoutLiveRewardsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -9947,7 +10063,6 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -9987,6 +10102,8 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -10033,7 +10150,6 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -10073,6 +10189,8 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -10114,7 +10232,6 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -10154,6 +10271,8 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -10211,7 +10330,6 @@ export type UserUpdateWithoutLiveRewardsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -10251,6 +10369,8 @@ export type UserUpdateWithoutLiveRewardsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -10292,7 +10412,6 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -10332,6 +10451,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -10384,7 +10505,6 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -10424,6 +10544,8 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -10465,7 +10587,6 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -10505,6 +10626,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -10547,7 +10670,6 @@ export type UserCreateWithoutMessagesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -10586,6 +10708,8 @@ export type UserCreateWithoutMessagesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -10628,7 +10752,6 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -10667,6 +10790,8 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -10725,7 +10850,6 @@ export type UserUpdateWithoutMessagesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -10764,6 +10888,8 @@ export type UserUpdateWithoutMessagesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -10806,7 +10932,6 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -10845,6 +10970,8 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -10887,7 +11014,6 @@ export type UserCreateWithoutMessageReceiptsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -10926,6 +11052,8 @@ export type UserCreateWithoutMessageReceiptsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -10968,7 +11096,6 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -11007,6 +11134,8 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -11065,7 +11194,6 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -11104,6 +11232,8 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -11146,7 +11276,6 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -11185,6 +11314,8 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -11227,7 +11358,6 @@ export type UserCreateWithoutNotificationsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -11266,6 +11396,8 @@ export type UserCreateWithoutNotificationsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -11308,7 +11440,6 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -11347,6 +11478,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -11394,7 +11527,6 @@ export type UserCreateWithoutNotificationsActorInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -11433,6 +11565,8 @@ export type UserCreateWithoutNotificationsActorInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -11475,7 +11609,6 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -11514,6 +11647,8 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -11572,7 +11707,6 @@ export type UserUpdateWithoutNotificationsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -11611,6 +11745,8 @@ export type UserUpdateWithoutNotificationsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -11653,7 +11789,6 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -11692,6 +11827,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -11745,7 +11882,6 @@ export type UserUpdateWithoutNotificationsActorInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -11784,6 +11920,8 @@ export type UserUpdateWithoutNotificationsActorInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -11826,7 +11964,6 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -11865,6 +12002,8 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -11907,7 +12046,6 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -11946,6 +12084,8 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -11988,7 +12128,6 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -12027,6 +12166,8 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -12085,7 +12226,6 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -12124,6 +12264,8 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -12166,7 +12308,6 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -12205,6 +12346,8 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutDeviceTokensInput = {
@@ -12247,7 +12390,6 @@ export type UserCreateWithoutDeviceTokensInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -12286,6 +12428,8 @@ export type UserCreateWithoutDeviceTokensInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutDeviceTokensInput = {
@@ -12328,7 +12472,6 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -12367,6 +12510,8 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutDeviceTokensInput = {
@@ -12425,7 +12570,6 @@ export type UserUpdateWithoutDeviceTokensInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -12464,6 +12608,8 @@ export type UserUpdateWithoutDeviceTokensInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeviceTokensInput = {
@@ -12506,7 +12652,6 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -12545,6 +12690,8 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -12587,7 +12734,6 @@ export type UserCreateWithoutOfficialPartnersInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -12626,6 +12772,8 @@ export type UserCreateWithoutOfficialPartnersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -12668,7 +12816,6 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -12707,6 +12854,8 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -12765,7 +12914,6 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -12804,6 +12952,8 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -12846,7 +12996,6 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -12885,6 +13034,8 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -12926,7 +13077,6 @@ export type UserCreateWithoutPaymentsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -12966,6 +13116,8 @@ export type UserCreateWithoutPaymentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -13007,7 +13159,6 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -13047,6 +13198,8 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -13104,7 +13257,6 @@ export type UserUpdateWithoutPaymentsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -13144,6 +13296,8 @@ export type UserUpdateWithoutPaymentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -13185,7 +13339,6 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -13225,6 +13378,8 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -13266,7 +13421,6 @@ export type UserCreateWithoutPostsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -13306,6 +13460,8 @@ export type UserCreateWithoutPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -13347,7 +13503,6 @@ export type UserUncheckedCreateWithoutPostsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -13387,6 +13542,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -13434,7 +13591,6 @@ export type UserCreateWithoutTaggedInPostsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -13473,6 +13629,8 @@ export type UserCreateWithoutTaggedInPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -13515,7 +13673,6 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -13554,6 +13711,8 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -13611,7 +13770,6 @@ export type UserUpdateWithoutPostsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -13651,6 +13809,8 @@ export type UserUpdateWithoutPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -13692,7 +13852,6 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -13732,6 +13891,8 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -13819,7 +13980,6 @@ export type UserCreateWithoutPrizesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -13858,6 +14018,8 @@ export type UserCreateWithoutPrizesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -13900,7 +14062,6 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -13939,6 +14100,8 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -13997,7 +14160,6 @@ export type UserUpdateWithoutPrizesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -14036,6 +14198,8 @@ export type UserUpdateWithoutPrizesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -14078,7 +14242,6 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -14117,6 +14280,8 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -14158,7 +14323,6 @@ export type UserCreateWithoutProductListsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -14198,6 +14362,8 @@ export type UserCreateWithoutProductListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -14239,7 +14405,6 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -14279,6 +14444,8 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -14336,7 +14503,6 @@ export type UserUpdateWithoutProductListsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -14376,6 +14542,8 @@ export type UserUpdateWithoutProductListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -14417,7 +14585,6 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -14457,6 +14624,8 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -14498,7 +14667,6 @@ export type UserCreateWithoutProfileInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -14538,6 +14706,8 @@ export type UserCreateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -14579,7 +14749,6 @@ export type UserUncheckedCreateWithoutProfileInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -14619,6 +14788,8 @@ export type UserUncheckedCreateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -14676,7 +14847,6 @@ export type UserUpdateWithoutProfileInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -14716,6 +14886,8 @@ export type UserUpdateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -14757,7 +14929,6 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -14797,9 +14968,11 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
-export type UserCreateWithoutRacingVotesInput = {
+export type UserCreateWithoutRacingVotesGivenInput = {
   id?: string
   email: string
   phone?: string | null
@@ -14878,9 +15051,10 @@ export type UserCreateWithoutRacingVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
-export type UserUncheckedCreateWithoutRacingVotesInput = {
+export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   id?: string
   email: string
   phone?: string | null
@@ -14959,25 +15133,195 @@ export type UserUncheckedCreateWithoutRacingVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
-export type UserCreateOrConnectWithoutRacingVotesInput = {
+export type UserCreateOrConnectWithoutRacingVotesGivenInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesInput, Prisma.UserUncheckedCreateWithoutRacingVotesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesGivenInput, Prisma.UserUncheckedCreateWithoutRacingVotesGivenInput>
 }
 
-export type UserUpsertWithoutRacingVotesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesInput, Prisma.UserUncheckedUpdateWithoutRacingVotesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesInput, Prisma.UserUncheckedCreateWithoutRacingVotesInput>
+export type UserCreateWithoutRacingVotesReceivedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+}
+
+export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+}
+
+export type UserCreateOrConnectWithoutRacingVotesReceivedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedCreateWithoutRacingVotesReceivedInput>
+}
+
+export type UserUpsertWithoutRacingVotesGivenInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesGivenInput, Prisma.UserUncheckedUpdateWithoutRacingVotesGivenInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesGivenInput, Prisma.UserUncheckedCreateWithoutRacingVotesGivenInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutRacingVotesInput = {
+export type UserUpdateToOneWithWhereWithoutRacingVotesGivenInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesInput, Prisma.UserUncheckedUpdateWithoutRacingVotesInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesGivenInput, Prisma.UserUncheckedUpdateWithoutRacingVotesGivenInput>
 }
 
-export type UserUpdateWithoutRacingVotesInput = {
+export type UserUpdateWithoutRacingVotesGivenInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15056,9 +15400,10 @@ export type UserUpdateWithoutRacingVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutRacingVotesInput = {
+export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15137,6 +15482,182 @@ export type UserUncheckedUpdateWithoutRacingVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+}
+
+export type UserUpsertWithoutRacingVotesReceivedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedUpdateWithoutRacingVotesReceivedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedCreateWithoutRacingVotesReceivedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutRacingVotesReceivedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutRacingVotesReceivedInput, Prisma.UserUncheckedUpdateWithoutRacingVotesReceivedInput>
+}
+
+export type UserUpdateWithoutRacingVotesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+}
+
+export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -15179,7 +15700,6 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -15218,6 +15738,8 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -15260,7 +15782,6 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -15299,6 +15820,8 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -15346,7 +15869,6 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -15385,6 +15907,8 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -15427,7 +15951,6 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -15466,6 +15989,8 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -15524,7 +16049,6 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -15563,6 +16087,8 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -15605,7 +16131,6 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -15644,6 +16169,8 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -15697,7 +16224,6 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -15736,6 +16262,8 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -15778,7 +16306,6 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -15817,6 +16344,8 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -15859,7 +16388,6 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -15898,6 +16426,8 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -15940,7 +16470,6 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -15979,6 +16508,8 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -16037,7 +16568,6 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -16076,6 +16606,8 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -16118,7 +16650,6 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -16157,6 +16688,8 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -16199,7 +16732,6 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -16238,6 +16770,8 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -16280,7 +16814,6 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -16319,6 +16852,8 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -16377,7 +16912,6 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -16416,6 +16950,8 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -16458,7 +16994,6 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -16497,6 +17032,8 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -16539,7 +17076,6 @@ export type UserCreateWithoutRawShiftVotesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -16578,6 +17114,8 @@ export type UserCreateWithoutRawShiftVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -16620,7 +17158,6 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -16659,6 +17196,8 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -16717,7 +17256,6 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -16756,6 +17294,8 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -16798,7 +17338,6 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -16837,6 +17376,8 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -16879,7 +17420,6 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -16918,6 +17458,8 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -16960,7 +17502,6 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -16999,6 +17540,8 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -17057,7 +17600,6 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -17096,6 +17638,8 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -17138,7 +17682,6 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -17177,6 +17720,8 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -17218,7 +17763,6 @@ export type UserCreateWithoutReportsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -17258,6 +17802,8 @@ export type UserCreateWithoutReportsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -17299,7 +17845,6 @@ export type UserUncheckedCreateWithoutReportsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -17339,6 +17884,8 @@ export type UserUncheckedCreateWithoutReportsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -17396,7 +17943,6 @@ export type UserUpdateWithoutReportsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -17436,6 +17982,8 @@ export type UserUpdateWithoutReportsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -17477,7 +18025,6 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -17517,6 +18064,8 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -17558,7 +18107,6 @@ export type UserCreateWithoutRepostsInput = {
   liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -17598,6 +18146,8 @@ export type UserCreateWithoutRepostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -17639,7 +18189,6 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -17679,6 +18228,8 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -17736,7 +18287,6 @@ export type UserUpdateWithoutRepostsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -17776,6 +18326,8 @@ export type UserUpdateWithoutRepostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -17817,7 +18369,6 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -17857,6 +18408,8 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -17899,7 +18452,6 @@ export type UserCreateWithoutSavePostsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
@@ -17938,6 +18490,8 @@ export type UserCreateWithoutSavePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -17980,7 +18534,6 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
@@ -18019,6 +18572,8 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -18077,7 +18632,6 @@ export type UserUpdateWithoutSavePostsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
@@ -18116,6 +18670,8 @@ export type UserUpdateWithoutSavePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -18158,7 +18714,6 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
@@ -18197,6 +18752,8 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -18238,7 +18795,6 @@ export type UserCreateWithoutSharesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -18278,6 +18834,8 @@ export type UserCreateWithoutSharesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -18319,7 +18877,6 @@ export type UserUncheckedCreateWithoutSharesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -18359,6 +18916,8 @@ export type UserUncheckedCreateWithoutSharesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -18416,7 +18975,6 @@ export type UserUpdateWithoutSharesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -18456,6 +19014,8 @@ export type UserUpdateWithoutSharesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -18497,7 +19057,6 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -18537,6 +19096,8 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenMatchRequestsInput = {
@@ -18579,7 +19140,6 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -18618,6 +19178,8 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -18660,7 +19222,6 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -18699,6 +19260,8 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -18757,7 +19320,6 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -18796,6 +19358,8 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -18838,7 +19402,6 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -18877,6 +19440,8 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -18919,7 +19484,6 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -18958,6 +19522,8 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -19000,7 +19566,6 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -19039,6 +19604,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -19086,7 +19653,6 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -19125,6 +19691,8 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -19167,7 +19735,6 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -19206,6 +19773,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -19264,7 +19833,6 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -19303,6 +19871,8 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -19345,7 +19915,6 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -19384,6 +19953,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -19437,7 +20008,6 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -19476,6 +20046,8 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -19518,7 +20090,6 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -19557,6 +20128,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -19599,7 +20172,6 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -19638,6 +20210,8 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -19680,7 +20254,6 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -19719,6 +20292,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -19777,7 +20352,6 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -19816,6 +20390,8 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -19858,7 +20434,6 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -19897,6 +20472,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleVotesInput = {
@@ -19939,7 +20516,6 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -19978,6 +20554,8 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
@@ -20020,7 +20598,6 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -20059,6 +20636,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleVotesInput = {
@@ -20117,7 +20696,6 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -20156,6 +20734,8 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
@@ -20198,7 +20778,6 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -20237,6 +20816,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -20279,7 +20860,6 @@ export type UserCreateWithoutUserPointsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
@@ -20318,6 +20898,8 @@ export type UserCreateWithoutUserPointsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -20360,7 +20942,6 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
@@ -20399,6 +20980,8 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -20457,7 +21040,6 @@ export type UserUpdateWithoutUserPointsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -20496,6 +21078,8 @@ export type UserUpdateWithoutUserPointsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -20538,7 +21122,6 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -20577,6 +21160,8 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -20619,7 +21204,6 @@ export type UserCreateWithoutWishListsInput = {
   lives?: Prisma.LiveCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
@@ -20658,6 +21242,8 @@ export type UserCreateWithoutWishListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -20700,7 +21286,6 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
   liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutUserInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
   battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
@@ -20739,6 +21324,8 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -20797,7 +21384,6 @@ export type UserUpdateWithoutWishListsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
@@ -20836,6 +21422,8 @@ export type UserUpdateWithoutWishListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -20878,7 +21466,6 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
@@ -20917,6 +21504,8 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -20959,7 +21548,6 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
@@ -20998,6 +21586,8 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -21040,7 +21630,6 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
   liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutUserNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
@@ -21079,6 +21668,8 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -21129,7 +21720,6 @@ export type UserCountOutputType = {
   lives: number
   liveParticipants: number
   reposts: number
-  racingVotes: number
   savePosts: number
   hidePosts: number
   wishLists: number
@@ -21167,6 +21757,8 @@ export type UserCountOutputType = {
   splitScreenBattlesRightUser: number
   splitScreenBattleVotes: number
   splitScreenBattleParticipants: number
+  racingVotesGiven: number
+  racingVotesReceived: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -21186,7 +21778,6 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   lives?: boolean | UserCountOutputTypeCountLivesArgs
   liveParticipants?: boolean | UserCountOutputTypeCountLiveParticipantsArgs
   reposts?: boolean | UserCountOutputTypeCountRepostsArgs
-  racingVotes?: boolean | UserCountOutputTypeCountRacingVotesArgs
   savePosts?: boolean | UserCountOutputTypeCountSavePostsArgs
   hidePosts?: boolean | UserCountOutputTypeCountHidePostsArgs
   wishLists?: boolean | UserCountOutputTypeCountWishListsArgs
@@ -21224,6 +21815,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   splitScreenBattlesRightUser?: boolean | UserCountOutputTypeCountSplitScreenBattlesRightUserArgs
   splitScreenBattleVotes?: boolean | UserCountOutputTypeCountSplitScreenBattleVotesArgs
   splitScreenBattleParticipants?: boolean | UserCountOutputTypeCountSplitScreenBattleParticipantsArgs
+  racingVotesGiven?: boolean | UserCountOutputTypeCountRacingVotesGivenArgs
+  racingVotesReceived?: boolean | UserCountOutputTypeCountRacingVotesReceivedArgs
 }
 
 /**
@@ -21346,13 +21939,6 @@ export type UserCountOutputTypeCountLiveParticipantsArgs<ExtArgs extends runtime
  */
 export type UserCountOutputTypeCountRepostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.RepostWhereInput
-}
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountRacingVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.RacingVoteWhereInput
 }
 
 /**
@@ -21614,6 +22200,20 @@ export type UserCountOutputTypeCountSplitScreenBattleParticipantsArgs<ExtArgs ex
   where?: Prisma.SplitScreenBattleParticipantWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRacingVotesGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RacingVoteWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountRacingVotesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RacingVoteWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -21655,7 +22255,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   lives?: boolean | Prisma.User$livesArgs<ExtArgs>
   liveParticipants?: boolean | Prisma.User$liveParticipantsArgs<ExtArgs>
   reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>
-  racingVotes?: boolean | Prisma.User$racingVotesArgs<ExtArgs>
   savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>
   wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>
@@ -21695,6 +22294,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   splitScreenBattlesRightUser?: boolean | Prisma.User$splitScreenBattlesRightUserArgs<ExtArgs>
   splitScreenBattleVotes?: boolean | Prisma.User$splitScreenBattleVotesArgs<ExtArgs>
   splitScreenBattleParticipants?: boolean | Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>
+  racingVotesGiven?: boolean | Prisma.User$racingVotesGivenArgs<ExtArgs>
+  racingVotesReceived?: boolean | Prisma.User$racingVotesReceivedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -21794,7 +22395,6 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   lives?: boolean | Prisma.User$livesArgs<ExtArgs>
   liveParticipants?: boolean | Prisma.User$liveParticipantsArgs<ExtArgs>
   reposts?: boolean | Prisma.User$repostsArgs<ExtArgs>
-  racingVotes?: boolean | Prisma.User$racingVotesArgs<ExtArgs>
   savePosts?: boolean | Prisma.User$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.User$hidePostsArgs<ExtArgs>
   wishLists?: boolean | Prisma.User$wishListsArgs<ExtArgs>
@@ -21834,6 +22434,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   splitScreenBattlesRightUser?: boolean | Prisma.User$splitScreenBattlesRightUserArgs<ExtArgs>
   splitScreenBattleVotes?: boolean | Prisma.User$splitScreenBattleVotesArgs<ExtArgs>
   splitScreenBattleParticipants?: boolean | Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>
+  racingVotesGiven?: boolean | Prisma.User$racingVotesGivenArgs<ExtArgs>
+  racingVotesReceived?: boolean | Prisma.User$racingVotesReceivedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -21858,7 +22460,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     lives: Prisma.$LivePayload<ExtArgs>[]
     liveParticipants: Prisma.$LiveParticipantPayload<ExtArgs>[]
     reposts: Prisma.$RepostPayload<ExtArgs>[]
-    racingVotes: Prisma.$RacingVotePayload<ExtArgs>[]
     savePosts: Prisma.$SavePostPayload<ExtArgs>[]
     hidePosts: Prisma.$HidePostPayload<ExtArgs>[]
     wishLists: Prisma.$WishListPayload<ExtArgs>[]
@@ -21898,6 +22499,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     splitScreenBattlesRightUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
     splitScreenBattleVotes: Prisma.$SplitScreenBattleVotePayload<ExtArgs>[]
     splitScreenBattleParticipants: Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>[]
+    racingVotesGiven: Prisma.$RacingVotePayload<ExtArgs>[]
+    racingVotesReceived: Prisma.$RacingVotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -22333,7 +22936,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   lives<T extends Prisma.User$livesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$livesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LivePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   liveParticipants<T extends Prisma.User$liveParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$liveParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LiveParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reposts<T extends Prisma.User$repostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$repostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RepostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  racingVotes<T extends Prisma.User$racingVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$racingVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   savePosts<T extends Prisma.User$savePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hidePosts<T extends Prisma.User$hidePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hidePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HidePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   wishLists<T extends Prisma.User$wishListsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$wishListsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -22373,6 +22975,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   splitScreenBattlesRightUser<T extends Prisma.User$splitScreenBattlesRightUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattlesRightUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   splitScreenBattleVotes<T extends Prisma.User$splitScreenBattleVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattleVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattleVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   splitScreenBattleParticipants<T extends Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  racingVotesGiven<T extends Prisma.User$racingVotesGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$racingVotesGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  racingVotesReceived<T extends Prisma.User$racingVotesReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$racingVotesReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23194,30 +23798,6 @@ export type User$repostsArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.RepostScalarFieldEnum | Prisma.RepostScalarFieldEnum[]
-}
-
-/**
- * User.racingVotes
- */
-export type User$racingVotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the RacingVote
-   */
-  select?: Prisma.RacingVoteSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the RacingVote
-   */
-  omit?: Prisma.RacingVoteOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.RacingVoteInclude<ExtArgs> | null
-  where?: Prisma.RacingVoteWhereInput
-  orderBy?: Prisma.RacingVoteOrderByWithRelationInput | Prisma.RacingVoteOrderByWithRelationInput[]
-  cursor?: Prisma.RacingVoteWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.RacingVoteScalarFieldEnum | Prisma.RacingVoteScalarFieldEnum[]
 }
 
 /**
@@ -24144,6 +24724,54 @@ export type User$splitScreenBattleParticipantsArgs<ExtArgs extends runtime.Types
   take?: number
   skip?: number
   distinct?: Prisma.SplitScreenBattleParticipantScalarFieldEnum | Prisma.SplitScreenBattleParticipantScalarFieldEnum[]
+}
+
+/**
+ * User.racingVotesGiven
+ */
+export type User$racingVotesGivenArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RacingVote
+   */
+  select?: Prisma.RacingVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RacingVote
+   */
+  omit?: Prisma.RacingVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RacingVoteInclude<ExtArgs> | null
+  where?: Prisma.RacingVoteWhereInput
+  orderBy?: Prisma.RacingVoteOrderByWithRelationInput | Prisma.RacingVoteOrderByWithRelationInput[]
+  cursor?: Prisma.RacingVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RacingVoteScalarFieldEnum | Prisma.RacingVoteScalarFieldEnum[]
+}
+
+/**
+ * User.racingVotesReceived
+ */
+export type User$racingVotesReceivedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RacingVote
+   */
+  select?: Prisma.RacingVoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RacingVote
+   */
+  omit?: Prisma.RacingVoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RacingVoteInclude<ExtArgs> | null
+  where?: Prisma.RacingVoteWhereInput
+  orderBy?: Prisma.RacingVoteOrderByWithRelationInput | Prisma.RacingVoteOrderByWithRelationInput[]
+  cursor?: Prisma.RacingVoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RacingVoteScalarFieldEnum | Prisma.RacingVoteScalarFieldEnum[]
 }
 
 /**

@@ -1152,10 +1152,12 @@ export type PostCreateNestedOneWithoutRacingVotesInput = {
   connect?: Prisma.PostWhereUniqueInput
 }
 
-export type PostUpdateOneRequiredWithoutRacingVotesNestedInput = {
+export type PostUpdateOneWithoutRacingVotesNestedInput = {
   create?: Prisma.XOR<Prisma.PostCreateWithoutRacingVotesInput, Prisma.PostUncheckedCreateWithoutRacingVotesInput>
   connectOrCreate?: Prisma.PostCreateOrConnectWithoutRacingVotesInput
   upsert?: Prisma.PostUpsertWithoutRacingVotesInput
+  disconnect?: Prisma.PostWhereInput | boolean
+  delete?: Prisma.PostWhereInput | boolean
   connect?: Prisma.PostWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutRacingVotesInput, Prisma.PostUpdateWithoutRacingVotesInput>, Prisma.PostUncheckedUpdateWithoutRacingVotesInput>
 }

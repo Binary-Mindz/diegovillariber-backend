@@ -9,6 +9,8 @@ import {
   UseGuards,
   HttpCode,
   HttpStatus,
+  Query,
+  Res,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -17,12 +19,16 @@ import {
 } from '@nestjs/swagger';
 
 
-import { CreateGarageDto } from './dto/create-garage.dto';
+
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { GarageService } from './garage.service';
 import { UpdateGarageDto } from './dto/update-garage.dto';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Roles } from '@/common/decorator/roles.tdecorator';
+import { GetAllGaragesQueryDto } from './dto/get-all-garage-query.dto';
+import { Response } from 'express';
 
 @ApiTags('Garages')
 @Controller('garages')
@@ -39,6 +45,23 @@ export class GarageController {
       return this.garageService.getUserGarages(userId);
     }, 'Garages fetched');
   }
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('ADMIN')
+@Get('admin/all')
+@ApiOperation({ summary: 'Get all garages with pagination (Admin only)' })
+async getAllGarages(
+  @Query() query: GetAllGaragesQueryDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.garageService.getAllGarages(query),
+    'Garages fetched successfully',
+  );
+
+  res.status(response.statusCode);
+  return response;
+}
 
   
   @Get(':id')

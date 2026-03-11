@@ -36,7 +36,8 @@ export type RacingVoteSumAggregateOutputType = {
 
 export type RacingVoteMinAggregateOutputType = {
   id: string | null
-  userId: string | null
+  voterId: string | null
+  targetUserId: string | null
   postId: string | null
   point: number | null
   createdAt: Date | null
@@ -44,7 +45,8 @@ export type RacingVoteMinAggregateOutputType = {
 
 export type RacingVoteMaxAggregateOutputType = {
   id: string | null
-  userId: string | null
+  voterId: string | null
+  targetUserId: string | null
   postId: string | null
   point: number | null
   createdAt: Date | null
@@ -52,7 +54,8 @@ export type RacingVoteMaxAggregateOutputType = {
 
 export type RacingVoteCountAggregateOutputType = {
   id: number
-  userId: number
+  voterId: number
+  targetUserId: number
   postId: number
   point: number
   createdAt: number
@@ -70,7 +73,8 @@ export type RacingVoteSumAggregateInputType = {
 
 export type RacingVoteMinAggregateInputType = {
   id?: true
-  userId?: true
+  voterId?: true
+  targetUserId?: true
   postId?: true
   point?: true
   createdAt?: true
@@ -78,7 +82,8 @@ export type RacingVoteMinAggregateInputType = {
 
 export type RacingVoteMaxAggregateInputType = {
   id?: true
-  userId?: true
+  voterId?: true
+  targetUserId?: true
   postId?: true
   point?: true
   createdAt?: true
@@ -86,7 +91,8 @@ export type RacingVoteMaxAggregateInputType = {
 
 export type RacingVoteCountAggregateInputType = {
   id?: true
-  userId?: true
+  voterId?: true
+  targetUserId?: true
   postId?: true
   point?: true
   createdAt?: true
@@ -181,8 +187,9 @@ export type RacingVoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inter
 
 export type RacingVoteGroupByOutputType = {
   id: string
-  userId: string
-  postId: string
+  voterId: string
+  targetUserId: string | null
+  postId: string | null
   point: number
   createdAt: Date
   _count: RacingVoteCountAggregateOutputType | null
@@ -212,42 +219,48 @@ export type RacingVoteWhereInput = {
   OR?: Prisma.RacingVoteWhereInput[]
   NOT?: Prisma.RacingVoteWhereInput | Prisma.RacingVoteWhereInput[]
   id?: Prisma.UuidFilter<"RacingVote"> | string
-  userId?: Prisma.UuidFilter<"RacingVote"> | string
-  postId?: Prisma.UuidFilter<"RacingVote"> | string
+  voterId?: Prisma.UuidFilter<"RacingVote"> | string
+  targetUserId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
+  postId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
   point?: Prisma.IntFilter<"RacingVote"> | number
   createdAt?: Prisma.DateTimeFilter<"RacingVote"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  post?: Prisma.XOR<Prisma.PostScalarRelationFilter, Prisma.PostWhereInput>
+  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  targetUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
 }
 
 export type RacingVoteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrder
+  voterId?: Prisma.SortOrder
+  targetUserId?: Prisma.SortOrderInput | Prisma.SortOrder
+  postId?: Prisma.SortOrderInput | Prisma.SortOrder
   point?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  user?: Prisma.UserOrderByWithRelationInput
+  voter?: Prisma.UserOrderByWithRelationInput
+  targetUser?: Prisma.UserOrderByWithRelationInput
   post?: Prisma.PostOrderByWithRelationInput
 }
 
 export type RacingVoteWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId_postId?: Prisma.RacingVoteUserIdPostIdCompoundUniqueInput
   AND?: Prisma.RacingVoteWhereInput | Prisma.RacingVoteWhereInput[]
   OR?: Prisma.RacingVoteWhereInput[]
   NOT?: Prisma.RacingVoteWhereInput | Prisma.RacingVoteWhereInput[]
-  userId?: Prisma.UuidFilter<"RacingVote"> | string
-  postId?: Prisma.UuidFilter<"RacingVote"> | string
+  voterId?: Prisma.UuidFilter<"RacingVote"> | string
+  targetUserId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
+  postId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
   point?: Prisma.IntFilter<"RacingVote"> | number
   createdAt?: Prisma.DateTimeFilter<"RacingVote"> | Date | string
-  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  post?: Prisma.XOR<Prisma.PostScalarRelationFilter, Prisma.PostWhereInput>
-}, "id" | "userId_postId">
+  voter?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  targetUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
+}, "id">
 
 export type RacingVoteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrder
+  voterId?: Prisma.SortOrder
+  targetUserId?: Prisma.SortOrderInput | Prisma.SortOrder
+  postId?: Prisma.SortOrderInput | Prisma.SortOrder
   point?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.RacingVoteCountOrderByAggregateInput
@@ -262,8 +275,9 @@ export type RacingVoteScalarWhereWithAggregatesInput = {
   OR?: Prisma.RacingVoteScalarWhereWithAggregatesInput[]
   NOT?: Prisma.RacingVoteScalarWhereWithAggregatesInput | Prisma.RacingVoteScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"RacingVote"> | string
-  userId?: Prisma.UuidWithAggregatesFilter<"RacingVote"> | string
-  postId?: Prisma.UuidWithAggregatesFilter<"RacingVote"> | string
+  voterId?: Prisma.UuidWithAggregatesFilter<"RacingVote"> | string
+  targetUserId?: Prisma.UuidNullableWithAggregatesFilter<"RacingVote"> | string | null
+  postId?: Prisma.UuidNullableWithAggregatesFilter<"RacingVote"> | string | null
   point?: Prisma.IntWithAggregatesFilter<"RacingVote"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RacingVote"> | Date | string
 }
@@ -272,14 +286,16 @@ export type RacingVoteCreateInput = {
   id?: string
   point?: number
   createdAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutRacingVotesInput
-  post: Prisma.PostCreateNestedOneWithoutRacingVotesInput
+  voter: Prisma.UserCreateNestedOneWithoutRacingVotesGivenInput
+  targetUser?: Prisma.UserCreateNestedOneWithoutRacingVotesReceivedInput
+  post?: Prisma.PostCreateNestedOneWithoutRacingVotesInput
 }
 
 export type RacingVoteUncheckedCreateInput = {
   id?: string
-  userId: string
-  postId: string
+  voterId: string
+  targetUserId?: string | null
+  postId?: string | null
   point?: number
   createdAt?: Date | string
 }
@@ -288,22 +304,25 @@ export type RacingVoteUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutRacingVotesNestedInput
-  post?: Prisma.PostUpdateOneRequiredWithoutRacingVotesNestedInput
+  voter?: Prisma.UserUpdateOneRequiredWithoutRacingVotesGivenNestedInput
+  targetUser?: Prisma.UserUpdateOneWithoutRacingVotesReceivedNestedInput
+  post?: Prisma.PostUpdateOneWithoutRacingVotesNestedInput
 }
 
 export type RacingVoteUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RacingVoteCreateManyInput = {
   id?: string
-  userId: string
-  postId: string
+  voterId: string
+  targetUserId?: string | null
+  postId?: string | null
   point?: number
   createdAt?: Date | string
 }
@@ -316,8 +335,9 @@ export type RacingVoteUpdateManyMutationInput = {
 
 export type RacingVoteUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -332,14 +352,10 @@ export type RacingVoteOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RacingVoteUserIdPostIdCompoundUniqueInput = {
-  userId: string
-  postId: string
-}
-
 export type RacingVoteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  voterId?: Prisma.SortOrder
+  targetUserId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
   point?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -351,7 +367,8 @@ export type RacingVoteAvgOrderByAggregateInput = {
 
 export type RacingVoteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  voterId?: Prisma.SortOrder
+  targetUserId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
   point?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -359,7 +376,8 @@ export type RacingVoteMaxOrderByAggregateInput = {
 
 export type RacingVoteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
+  voterId?: Prisma.SortOrder
+  targetUserId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
   point?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -411,45 +429,87 @@ export type RacingVoteUncheckedUpdateManyWithoutPostNestedInput = {
   deleteMany?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
 }
 
-export type RacingVoteCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput> | Prisma.RacingVoteCreateWithoutUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutUserInput | Prisma.RacingVoteCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.RacingVoteCreateManyUserInputEnvelope
+export type RacingVoteCreateNestedManyWithoutVoterInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput> | Prisma.RacingVoteCreateWithoutVoterInput[] | Prisma.RacingVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutVoterInput | Prisma.RacingVoteCreateOrConnectWithoutVoterInput[]
+  createMany?: Prisma.RacingVoteCreateManyVoterInputEnvelope
   connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
 }
 
-export type RacingVoteUncheckedCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput> | Prisma.RacingVoteCreateWithoutUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutUserInput | Prisma.RacingVoteCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.RacingVoteCreateManyUserInputEnvelope
+export type RacingVoteCreateNestedManyWithoutTargetUserInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput> | Prisma.RacingVoteCreateWithoutTargetUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput | Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput[]
+  createMany?: Prisma.RacingVoteCreateManyTargetUserInputEnvelope
   connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
 }
 
-export type RacingVoteUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput> | Prisma.RacingVoteCreateWithoutUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutUserInput | Prisma.RacingVoteCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.RacingVoteCreateManyUserInputEnvelope
+export type RacingVoteUncheckedCreateNestedManyWithoutVoterInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput> | Prisma.RacingVoteCreateWithoutVoterInput[] | Prisma.RacingVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutVoterInput | Prisma.RacingVoteCreateOrConnectWithoutVoterInput[]
+  createMany?: Prisma.RacingVoteCreateManyVoterInputEnvelope
+  connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+}
+
+export type RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput> | Prisma.RacingVoteCreateWithoutTargetUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput | Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput[]
+  createMany?: Prisma.RacingVoteCreateManyTargetUserInputEnvelope
+  connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+}
+
+export type RacingVoteUpdateManyWithoutVoterNestedInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput> | Prisma.RacingVoteCreateWithoutVoterInput[] | Prisma.RacingVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutVoterInput | Prisma.RacingVoteCreateOrConnectWithoutVoterInput[]
+  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutVoterInput[]
+  createMany?: Prisma.RacingVoteCreateManyVoterInputEnvelope
   set?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   disconnect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   delete?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
-  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutUserInput | Prisma.RacingVoteUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutVoterInput[]
+  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutVoterInput | Prisma.RacingVoteUpdateManyWithWhereWithoutVoterInput[]
   deleteMany?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
 }
 
-export type RacingVoteUncheckedUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput> | Prisma.RacingVoteCreateWithoutUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutUserInput | Prisma.RacingVoteCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutUserInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.RacingVoteCreateManyUserInputEnvelope
+export type RacingVoteUpdateManyWithoutTargetUserNestedInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput> | Prisma.RacingVoteCreateWithoutTargetUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput | Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput[]
+  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutTargetUserInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutTargetUserInput[]
+  createMany?: Prisma.RacingVoteCreateManyTargetUserInputEnvelope
   set?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   disconnect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   delete?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
   connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
-  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutUserInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutUserInput | Prisma.RacingVoteUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutTargetUserInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutTargetUserInput[]
+  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutTargetUserInput | Prisma.RacingVoteUpdateManyWithWhereWithoutTargetUserInput[]
+  deleteMany?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
+}
+
+export type RacingVoteUncheckedUpdateManyWithoutVoterNestedInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput> | Prisma.RacingVoteCreateWithoutVoterInput[] | Prisma.RacingVoteUncheckedCreateWithoutVoterInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutVoterInput | Prisma.RacingVoteCreateOrConnectWithoutVoterInput[]
+  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutVoterInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutVoterInput[]
+  createMany?: Prisma.RacingVoteCreateManyVoterInputEnvelope
+  set?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  disconnect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  delete?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutVoterInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutVoterInput[]
+  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutVoterInput | Prisma.RacingVoteUpdateManyWithWhereWithoutVoterInput[]
+  deleteMany?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
+}
+
+export type RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput = {
+  create?: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput> | Prisma.RacingVoteCreateWithoutTargetUserInput[] | Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput[]
+  connectOrCreate?: Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput | Prisma.RacingVoteCreateOrConnectWithoutTargetUserInput[]
+  upsert?: Prisma.RacingVoteUpsertWithWhereUniqueWithoutTargetUserInput | Prisma.RacingVoteUpsertWithWhereUniqueWithoutTargetUserInput[]
+  createMany?: Prisma.RacingVoteCreateManyTargetUserInputEnvelope
+  set?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  disconnect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  delete?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  connect?: Prisma.RacingVoteWhereUniqueInput | Prisma.RacingVoteWhereUniqueInput[]
+  update?: Prisma.RacingVoteUpdateWithWhereUniqueWithoutTargetUserInput | Prisma.RacingVoteUpdateWithWhereUniqueWithoutTargetUserInput[]
+  updateMany?: Prisma.RacingVoteUpdateManyWithWhereWithoutTargetUserInput | Prisma.RacingVoteUpdateManyWithWhereWithoutTargetUserInput[]
   deleteMany?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
 }
 
@@ -457,12 +517,14 @@ export type RacingVoteCreateWithoutPostInput = {
   id?: string
   point?: number
   createdAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutRacingVotesInput
+  voter: Prisma.UserCreateNestedOneWithoutRacingVotesGivenInput
+  targetUser?: Prisma.UserCreateNestedOneWithoutRacingVotesReceivedInput
 }
 
 export type RacingVoteUncheckedCreateWithoutPostInput = {
   id?: string
-  userId: string
+  voterId: string
+  targetUserId?: string | null
   point?: number
   createdAt?: Date | string
 }
@@ -498,55 +560,101 @@ export type RacingVoteScalarWhereInput = {
   OR?: Prisma.RacingVoteScalarWhereInput[]
   NOT?: Prisma.RacingVoteScalarWhereInput | Prisma.RacingVoteScalarWhereInput[]
   id?: Prisma.UuidFilter<"RacingVote"> | string
-  userId?: Prisma.UuidFilter<"RacingVote"> | string
-  postId?: Prisma.UuidFilter<"RacingVote"> | string
+  voterId?: Prisma.UuidFilter<"RacingVote"> | string
+  targetUserId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
+  postId?: Prisma.UuidNullableFilter<"RacingVote"> | string | null
   point?: Prisma.IntFilter<"RacingVote"> | number
   createdAt?: Prisma.DateTimeFilter<"RacingVote"> | Date | string
 }
 
-export type RacingVoteCreateWithoutUserInput = {
+export type RacingVoteCreateWithoutVoterInput = {
   id?: string
   point?: number
   createdAt?: Date | string
-  post: Prisma.PostCreateNestedOneWithoutRacingVotesInput
+  targetUser?: Prisma.UserCreateNestedOneWithoutRacingVotesReceivedInput
+  post?: Prisma.PostCreateNestedOneWithoutRacingVotesInput
 }
 
-export type RacingVoteUncheckedCreateWithoutUserInput = {
+export type RacingVoteUncheckedCreateWithoutVoterInput = {
   id?: string
-  postId: string
+  targetUserId?: string | null
+  postId?: string | null
   point?: number
   createdAt?: Date | string
 }
 
-export type RacingVoteCreateOrConnectWithoutUserInput = {
+export type RacingVoteCreateOrConnectWithoutVoterInput = {
   where: Prisma.RacingVoteWhereUniqueInput
-  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput>
+  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput>
 }
 
-export type RacingVoteCreateManyUserInputEnvelope = {
-  data: Prisma.RacingVoteCreateManyUserInput | Prisma.RacingVoteCreateManyUserInput[]
+export type RacingVoteCreateManyVoterInputEnvelope = {
+  data: Prisma.RacingVoteCreateManyVoterInput | Prisma.RacingVoteCreateManyVoterInput[]
   skipDuplicates?: boolean
 }
 
-export type RacingVoteUpsertWithWhereUniqueWithoutUserInput = {
-  where: Prisma.RacingVoteWhereUniqueInput
-  update: Prisma.XOR<Prisma.RacingVoteUpdateWithoutUserInput, Prisma.RacingVoteUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutUserInput, Prisma.RacingVoteUncheckedCreateWithoutUserInput>
+export type RacingVoteCreateWithoutTargetUserInput = {
+  id?: string
+  point?: number
+  createdAt?: Date | string
+  voter: Prisma.UserCreateNestedOneWithoutRacingVotesGivenInput
+  post?: Prisma.PostCreateNestedOneWithoutRacingVotesInput
 }
 
-export type RacingVoteUpdateWithWhereUniqueWithoutUserInput = {
-  where: Prisma.RacingVoteWhereUniqueInput
-  data: Prisma.XOR<Prisma.RacingVoteUpdateWithoutUserInput, Prisma.RacingVoteUncheckedUpdateWithoutUserInput>
+export type RacingVoteUncheckedCreateWithoutTargetUserInput = {
+  id?: string
+  voterId: string
+  postId?: string | null
+  point?: number
+  createdAt?: Date | string
 }
 
-export type RacingVoteUpdateManyWithWhereWithoutUserInput = {
+export type RacingVoteCreateOrConnectWithoutTargetUserInput = {
+  where: Prisma.RacingVoteWhereUniqueInput
+  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput>
+}
+
+export type RacingVoteCreateManyTargetUserInputEnvelope = {
+  data: Prisma.RacingVoteCreateManyTargetUserInput | Prisma.RacingVoteCreateManyTargetUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type RacingVoteUpsertWithWhereUniqueWithoutVoterInput = {
+  where: Prisma.RacingVoteWhereUniqueInput
+  update: Prisma.XOR<Prisma.RacingVoteUpdateWithoutVoterInput, Prisma.RacingVoteUncheckedUpdateWithoutVoterInput>
+  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutVoterInput, Prisma.RacingVoteUncheckedCreateWithoutVoterInput>
+}
+
+export type RacingVoteUpdateWithWhereUniqueWithoutVoterInput = {
+  where: Prisma.RacingVoteWhereUniqueInput
+  data: Prisma.XOR<Prisma.RacingVoteUpdateWithoutVoterInput, Prisma.RacingVoteUncheckedUpdateWithoutVoterInput>
+}
+
+export type RacingVoteUpdateManyWithWhereWithoutVoterInput = {
   where: Prisma.RacingVoteScalarWhereInput
-  data: Prisma.XOR<Prisma.RacingVoteUpdateManyMutationInput, Prisma.RacingVoteUncheckedUpdateManyWithoutUserInput>
+  data: Prisma.XOR<Prisma.RacingVoteUpdateManyMutationInput, Prisma.RacingVoteUncheckedUpdateManyWithoutVoterInput>
+}
+
+export type RacingVoteUpsertWithWhereUniqueWithoutTargetUserInput = {
+  where: Prisma.RacingVoteWhereUniqueInput
+  update: Prisma.XOR<Prisma.RacingVoteUpdateWithoutTargetUserInput, Prisma.RacingVoteUncheckedUpdateWithoutTargetUserInput>
+  create: Prisma.XOR<Prisma.RacingVoteCreateWithoutTargetUserInput, Prisma.RacingVoteUncheckedCreateWithoutTargetUserInput>
+}
+
+export type RacingVoteUpdateWithWhereUniqueWithoutTargetUserInput = {
+  where: Prisma.RacingVoteWhereUniqueInput
+  data: Prisma.XOR<Prisma.RacingVoteUpdateWithoutTargetUserInput, Prisma.RacingVoteUncheckedUpdateWithoutTargetUserInput>
+}
+
+export type RacingVoteUpdateManyWithWhereWithoutTargetUserInput = {
+  where: Prisma.RacingVoteScalarWhereInput
+  data: Prisma.XOR<Prisma.RacingVoteUpdateManyMutationInput, Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserInput>
 }
 
 export type RacingVoteCreateManyPostInput = {
   id?: string
-  userId: string
+  voterId: string
+  targetUserId?: string | null
   point?: number
   createdAt?: Date | string
 }
@@ -555,47 +663,86 @@ export type RacingVoteUpdateWithoutPostInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutRacingVotesNestedInput
+  voter?: Prisma.UserUpdateOneRequiredWithoutRacingVotesGivenNestedInput
+  targetUser?: Prisma.UserUpdateOneWithoutRacingVotesReceivedNestedInput
 }
 
 export type RacingVoteUncheckedUpdateWithoutPostInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RacingVoteUncheckedUpdateManyWithoutPostInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type RacingVoteCreateManyUserInput = {
+export type RacingVoteCreateManyVoterInput = {
   id?: string
-  postId: string
+  targetUserId?: string | null
+  postId?: string | null
   point?: number
   createdAt?: Date | string
 }
 
-export type RacingVoteUpdateWithoutUserInput = {
+export type RacingVoteCreateManyTargetUserInput = {
+  id?: string
+  voterId: string
+  postId?: string | null
+  point?: number
+  createdAt?: Date | string
+}
+
+export type RacingVoteUpdateWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  post?: Prisma.PostUpdateOneRequiredWithoutRacingVotesNestedInput
+  targetUser?: Prisma.UserUpdateOneWithoutRacingVotesReceivedNestedInput
+  post?: Prisma.PostUpdateOneWithoutRacingVotesNestedInput
 }
 
-export type RacingVoteUncheckedUpdateWithoutUserInput = {
+export type RacingVoteUncheckedUpdateWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type RacingVoteUncheckedUpdateManyWithoutUserInput = {
+export type RacingVoteUncheckedUpdateManyWithoutVoterInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type RacingVoteUpdateWithoutTargetUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  voter?: Prisma.UserUpdateOneRequiredWithoutRacingVotesGivenNestedInput
+  post?: Prisma.PostUpdateOneWithoutRacingVotesNestedInput
+}
+
+export type RacingVoteUncheckedUpdateWithoutTargetUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type RacingVoteUncheckedUpdateManyWithoutTargetUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  voterId?: Prisma.StringFieldUpdateOperationsInput | string
+  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   point?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -604,66 +751,78 @@ export type RacingVoteUncheckedUpdateManyWithoutUserInput = {
 
 export type RacingVoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
+  voterId?: boolean
+  targetUserId?: boolean
   postId?: boolean
   point?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }, ExtArgs["result"]["racingVote"]>
 
 export type RacingVoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
+  voterId?: boolean
+  targetUserId?: boolean
   postId?: boolean
   point?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }, ExtArgs["result"]["racingVote"]>
 
 export type RacingVoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userId?: boolean
+  voterId?: boolean
+  targetUserId?: boolean
   postId?: boolean
   point?: boolean
   createdAt?: boolean
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }, ExtArgs["result"]["racingVote"]>
 
 export type RacingVoteSelectScalar = {
   id?: boolean
-  userId?: boolean
+  voterId?: boolean
+  targetUserId?: boolean
   postId?: boolean
   point?: boolean
   createdAt?: boolean
 }
 
-export type RacingVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postId" | "point" | "createdAt", ExtArgs["result"]["racingVote"]>
+export type RacingVoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "voterId" | "targetUserId" | "postId" | "point" | "createdAt", ExtArgs["result"]["racingVote"]>
 export type RacingVoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }
 export type RacingVoteIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }
 export type RacingVoteIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.PostDefaultArgs<ExtArgs>
+  voter?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  targetUser?: boolean | Prisma.RacingVote$targetUserArgs<ExtArgs>
+  post?: boolean | Prisma.RacingVote$postArgs<ExtArgs>
 }
 
 export type $RacingVotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RacingVote"
   objects: {
-    user: Prisma.$UserPayload<ExtArgs>
-    post: Prisma.$PostPayload<ExtArgs>
+    voter: Prisma.$UserPayload<ExtArgs>
+    targetUser: Prisma.$UserPayload<ExtArgs> | null
+    post: Prisma.$PostPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    userId: string
-    postId: string
+    voterId: string
+    targetUserId: string | null
+    postId: string | null
     point: number
     createdAt: Date
   }, ExtArgs["result"]["racingVote"]>
@@ -1060,8 +1219,9 @@ readonly fields: RacingVoteFieldRefs;
  */
 export interface Prisma__RacingVoteClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  post<T extends Prisma.PostDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PostDefaultArgs<ExtArgs>>): Prisma.Prisma__PostClient<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  voter<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  targetUser<T extends Prisma.RacingVote$targetUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RacingVote$targetUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  post<T extends Prisma.RacingVote$postArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RacingVote$postArgs<ExtArgs>>): Prisma.Prisma__PostClient<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1092,7 +1252,8 @@ export interface Prisma__RacingVoteClient<T, Null = never, ExtArgs extends runti
  */
 export interface RacingVoteFieldRefs {
   readonly id: Prisma.FieldRef<"RacingVote", 'String'>
-  readonly userId: Prisma.FieldRef<"RacingVote", 'String'>
+  readonly voterId: Prisma.FieldRef<"RacingVote", 'String'>
+  readonly targetUserId: Prisma.FieldRef<"RacingVote", 'String'>
   readonly postId: Prisma.FieldRef<"RacingVote", 'String'>
   readonly point: Prisma.FieldRef<"RacingVote", 'Int'>
   readonly createdAt: Prisma.FieldRef<"RacingVote", 'DateTime'>
@@ -1489,6 +1650,44 @@ export type RacingVoteDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many RacingVotes to delete.
    */
   limit?: number
+}
+
+/**
+ * RacingVote.targetUser
+ */
+export type RacingVote$targetUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * RacingVote.post
+ */
+export type RacingVote$postArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
 }
 
 /**
