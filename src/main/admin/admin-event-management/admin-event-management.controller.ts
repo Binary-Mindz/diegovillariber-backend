@@ -8,6 +8,7 @@ import {
   Query,
   UseGuards,
   Res,
+  Param,
 } from '@nestjs/common';
 import { Response } from 'express';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -49,6 +50,34 @@ export class AdminEventManagementController {
     const response = await handleRequest(
       () => this.adminEventManagementervice.getAllEvents(query),
       'Events fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+    @Get(':id')
+  async getSingleEvent(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getSingleEvent(id),
+      'Event fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Delete(':id')
+  async deleteEvent(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.deleteEvent(id),
+      'Event deleted successfully',
     );
 
     res.status(response.statusCode);

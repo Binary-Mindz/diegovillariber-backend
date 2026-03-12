@@ -3,9 +3,10 @@ import {
   Get,
   UseGuards,
   Res,
+  Query,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -13,6 +14,8 @@ import { Roles } from '@/common/decorator/roles.tdecorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 
 import { AdminAnalyticService } from './admin-analytic.service';
+import { TopContentCreatorQueryDto } from './dto/top-content-creator-query.dto';
+import { GetMostEngagedPostsQueryDto } from './dto/get-most-engaged-posts-query.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -43,4 +46,22 @@ export class AdminAnalyticController {
     res.status(response.statusCode);
     return response;
   }
+
+ @Get('top-content-creators')
+async getTopCreators(
+  @Query() query: TopContentCreatorQueryDto,
+  @Res() res: Response,
+) {
+  const response = await this.adminAnalyticService.getTopContentCreators(query);
+
+  return res.status(response.statusCode).json(response);
+}
+
+@Get('most-engaged-posts')
+  @ApiOperation({ summary: 'Get most engaged posts ranked by likes and comments' })
+  async getMostEngagedPosts(@Query() query: GetMostEngagedPostsQueryDto) {
+    return this.adminAnalyticService.getMostEngagedPosts(query);
+  }
+
+
 }

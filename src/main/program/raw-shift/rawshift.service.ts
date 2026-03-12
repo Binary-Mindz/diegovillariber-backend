@@ -16,8 +16,8 @@ export class RawShiftService {
   constructor(private readonly prisma: PrismaService) {}
 
   private readonly OPEN_RAWSHIFT_STATUSES = new Set<RawShiftStatus>([
-  RawShiftStatus.PUBLISHED,
-  RawShiftStatus.RUNNING,
+  RawShiftStatus.ACTIVE,
+  RawShiftStatus.UPCOMING,
 ]);
 
     async listBattles(query: RawShiftQueryDto) {
@@ -33,13 +33,12 @@ export class RawShiftService {
       where.status = query.status;
     } else {
       if (query.tab === RawShiftTab.ACTIVE) {
-        where.status = { in: [RawShiftStatus.RUNNING, RawShiftStatus.PUBLISHED] };
+        where.status = { in: [RawShiftStatus.ACTIVE, RawShiftStatus.UPCOMING] };
         where.startDate = { lte: now };
         where.endDate = { gte: now };
       } else if (query.tab === RawShiftTab.FINISHED) {
         where.OR = [
-          { status: RawShiftStatus.COMPLETED },
-          { status: RawShiftStatus.CANCELLED },
+          { status: RawShiftStatus.FINISHED },
           { endDate: { lt: now } },
         ];
       }
@@ -140,8 +139,7 @@ const user = await this.prisma.user.findFirst({where: {id:userId}})
         rawShiftPrice: dto.rawShiftPrice, 
         location: dto.location ?? null,
         startDate,
-        endDate,
-        status: dto.status ?? RawShiftStatus.PUBLISHED,
+        endDate
       },
     });
   }catch(error){
@@ -181,7 +179,6 @@ const user = await this.prisma.user.findFirst({where: {id:userId}})
         ...(dto.participantLimit !== undefined ? { participantLimit: dto.participantLimit } : {}),
         ...(dto.rawShiftPrice !== undefined ? { rawShiftPrice: dto.rawShiftPrice } : {}), // ✅ FIXED BUG
         ...(dto.location !== undefined ? { location: dto.location } : {}),
-        ...(dto.status !== undefined ? { status: dto.status } : {}),
         ...(dto.startDate !== undefined ? { startDate } : {}),
         ...(dto.endDate !== undefined ? { endDate } : {}),
       },
@@ -371,7 +368,7 @@ async submitEntry(
       if (eligible.length === 0) {
         return tx.rawShiftBattle.update({
           where: { id: battleId },
-          data: { status: RawShiftStatus.COMPLETED, winnerUserId: null },
+          data: { status: RawShiftStatus.FINISHED, winnerUserId: null },
         });
       }
 
@@ -385,7 +382,7 @@ async submitEntry(
       return tx.rawShiftBattle.update({
         where: { id: battleId },
         data: {
-          status: RawShiftStatus.COMPLETED,
+          status: RawShiftStatus.FINISHED,
           winnerUserId: winner.userId,
         },
       });

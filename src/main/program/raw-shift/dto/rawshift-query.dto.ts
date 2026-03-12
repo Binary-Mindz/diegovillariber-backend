@@ -6,6 +6,7 @@ import { RawShiftStatus } from 'generated/prisma/enums';
 export enum RawShiftTab {
   ALL = 'ALL',
   ACTIVE = 'ACTIVE',
+  UPCOMING = 'UPCOMING',
   FINISHED = 'FINISHED',
 }
 
