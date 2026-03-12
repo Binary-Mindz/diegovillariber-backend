@@ -147,9 +147,9 @@ export class MotorsportRankingService {
         battle: {
           status: {
             in: [
-              BattleStatus.PUBLISHED,
-              BattleStatus.RUNNING,
-              BattleStatus.COMPLETED,
+              BattleStatus.UPCOMING,
+              BattleStatus.ACTIVE,
+              BattleStatus.FINISHED,
             ],
           },
         },

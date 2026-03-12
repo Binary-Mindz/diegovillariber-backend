@@ -16,7 +16,6 @@ import {
   AutoInviteScope,
   BattleAccessType,
   BattleCategory,
-  BattleStatus,
   CameraRequirement,
   ParticipationScope,
   Preference,
@@ -134,9 +133,4 @@ export class CreateHeadToHeadBattleDto {
   @Type(() => Date)
   @IsDate()
   endDate: Date;
-
-  @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.PUBLISHED })
-  @IsOptional()
-  @IsEnum(BattleStatus)
-  status?: BattleStatus;
 }

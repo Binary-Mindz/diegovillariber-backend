@@ -168,11 +168,9 @@ export type CameraRequirement = (typeof CameraRequirement)[keyof typeof CameraRe
 
 
 export const BattleStatus = {
-  DRAFT: 'DRAFT',
-  PUBLISHED: 'PUBLISHED',
-  RUNNING: 'RUNNING',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
+  ACTIVE: 'ACTIVE',
+  UPCOMING: 'UPCOMING',
+  FINISHED: 'FINISHED'
 } as const
 
 export type BattleStatus = (typeof BattleStatus)[keyof typeof BattleStatus]

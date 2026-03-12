@@ -19,11 +19,9 @@ enum CameraRequirement {
 }
 
 enum BattleStatus {
-  DRAFT
-  PUBLISHED
-  RUNNING
-  COMPLETED
-  CANCELLED
+  ACTIVE
+  UPCOMING
+  FINISHED
 }
 
 enum InvitationStatus {
@@ -102,7 +100,7 @@ model HeadToHeadBattle {
   endDate   DateTime @db.Timestamptz(6)
   // UI shows “7 days” style; optional derived too
 
-  status BattleStatus @default(DRAFT)
+  status BattleStatus @default(UPCOMING)
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
