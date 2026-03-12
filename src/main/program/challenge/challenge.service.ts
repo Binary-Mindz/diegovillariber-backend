@@ -243,7 +243,6 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   };
 }
 
-
   async getChallenge(id: string) {
     const challenge = await this.prisma.challenge.findUnique({
       where: { id },
