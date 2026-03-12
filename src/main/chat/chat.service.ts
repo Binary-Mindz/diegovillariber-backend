@@ -113,6 +113,130 @@ export class ChatService {
     return msg;
   }
 
+    async sendBroadcastMessage(
+    adminId: string,
+    dto: {
+      content?: string;
+      fileUrl?: string;
+      targetUserIds?: string[];
+    },
+  ) {
+    const hasText = !!dto.content?.trim();
+    const hasFile = !!dto.fileUrl?.trim();
+
+    if (!hasText && !hasFile) {
+      throw new BadRequestException('Either content or fileUrl is required');
+    }
+
+    if (hasFile) {
+      this.assertHttpsUrl(dto.fileUrl!);
+    }
+
+    const admin = await this.prisma.user.findUnique({
+      where: { id: adminId },
+      select: {
+        id: true,
+        role: true,
+      },
+    });
+
+    if (!admin) {
+      throw new NotFoundException('Admin user not found');
+    }
+
+    const isAdmin =
+      admin.role?.includes('ROLE_ADMIN' as any)
+
+    if (!isAdmin) {
+      throw new ForbiddenException('Only admin can send broadcast');
+    }
+
+    const users = await this.prisma.user.findMany({
+      where: dto.targetUserIds?.length
+        ? {
+            id: {
+              in: dto.targetUserIds,
+              not: adminId,
+            },
+          }
+        : {
+            id: {
+              not: adminId,
+            },
+          },
+      select: {
+        id: true,
+        email: true,
+      },
+    });
+
+    const results: Array<{
+      receiverId: string;
+      conversationId: string;
+      message: any;
+    }> = [];
+
+    for (const user of users) {
+      const convo = await this.getOrCreateOneToOneConversation(adminId, user.id);
+
+      const created = await this.prisma.$transaction(async (tx) => {
+        const msg = await tx.message.create({
+          data: {
+            conversationId: convo.id,
+            senderId: adminId,
+            content: hasText ? dto.content!.trim() : null,
+            fileUrl: hasFile ? dto.fileUrl!.trim() : null,
+            clientMsgId: null,
+            messageReceipts: {
+              createMany: {
+                data: [
+                  { userId: adminId, status: ReceiptStatus.READ },
+                  { userId: user.id, status: ReceiptStatus.SENT },
+                ],
+              },
+            },
+          },
+          include: {
+            messageReceipts: true,
+          },
+        });
+
+        await tx.conversationParticipant.update({
+          where: {
+            conversationId_userId: {
+              conversationId: convo.id,
+              userId: user.id,
+            },
+          },
+          data: {
+            unreadCount: { increment: 1 },
+          },
+        });
+
+        await tx.conversation.update({
+          where: { id: convo.id },
+          data: {
+            lastMessageId: msg.id,
+            lastMessageAt: msg.createdAt,
+          },
+        });
+
+        return msg;
+      });
+
+      results.push({
+        receiverId: user.id,
+        conversationId: convo.id,
+        message: created,
+      });
+    }
+
+    return {
+      total: results.length,
+      messages: results,
+    };
+  }
+
   async listConversations(userId: string, limit = 20, offset = 0) {
     const rows = await this.prisma.conversationParticipant.findMany({
       where: { userId },
