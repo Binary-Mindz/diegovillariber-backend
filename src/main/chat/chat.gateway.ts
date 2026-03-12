@@ -276,4 +276,41 @@ export class ChatGateway
       isTyping: !!data.isTyping,
     });
   }
+
+  @SubscribeMessage('admin_broadcast')
+async adminBroadcast(
+  @MessageBody()
+  data: {
+    content?: string;
+    fileUrl?: string;
+    targetUserIds?: string[];
+  },
+  @ConnectedSocket() client: Socket,
+) {
+  try {
+    const adminId = client.data?.userId as string | undefined;
+
+    if (!adminId) {
+      client.emit('error', { message: 'Unauthenticated socket' });
+      return;
+    }
+
+    const result = await this.chatService.sendBroadcastMessage(adminId, data);
+
+    for (const item of result.messages) {
+      this.server.to(item.receiverId).emit('receive_message', item.message);
+    }
+
+    client.emit('broadcast_sent', {
+      success: true,
+      total: result.total,
+    });
+  } catch (error: any) {
+    client.emit('error', {
+      message: error?.message ?? 'Broadcast failed',
+    });
+  }
+}
+
+
 }

@@ -44,37 +44,80 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
 }
 
  async listBattles(query: HeadToHeadQueryDto) {
-  const where: Prisma.HeadToHeadBattleWhereInput = {
-    ...(query.status ? { status: query.status } : {}),
-    ...(query.accessType ? { accessType: query.accessType } : {}),
-    ...(query.battleCategory ? { battleCategory: query.battleCategory } : {}),
-    ...(query.preference ? { preference: query.preference } : {}),
-    ...(query.q
-      ? {
-          OR: [
-            { title: { contains: query.q, mode: 'insensitive' } },
-            { description: { contains: query.q, mode: 'insensitive' } },
-            { locationName: { contains: query.q, mode: 'insensitive' } },
-            { brandFilter: { contains: query.q, mode: 'insensitive' } },
-          ],
-        }
-      : {}),
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
+
+  const where: Prisma.HeadToHeadBattleWhereInput = {};
+
+  // tab/status filter
+  if (query.status) {
+    where.status = query.status;
+  }
+
+  // optional filters
+  if (query.accessType) {
+    where.accessType = query.accessType;
+  }
+
+  if (query.battleCategory) {
+    where.battleCategory = query.battleCategory;
+  }
+
+  if (query.preference) {
+    where.preference = query.preference;
+  }
+
+  if (query.q) {
+    where.OR = [
+      ...(where.OR ?? []),
+      { title: { contains: query.q, mode: 'insensitive' } },
+      { description: { contains: query.q, mode: 'insensitive' } },
+      { locationName: { contains: query.q, mode: 'insensitive' } },
+      { brandFilter: { contains: query.q, mode: 'insensitive' } },
+    ];
+  }
+
+  const [items, total] = await this.prisma.$transaction([
+    this.prisma.headToHeadBattle.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: [{ createdAt: 'desc' }],
+      include: {
+        creator: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
+        _count: {
+          select: {
+            participants: true,
+            submissions: true,
+            battleComments: true,
+            battleVotes: true,
+          },
+        },
+      },
+    }),
+    this.prisma.headToHeadBattle.count({ where }),
+  ]);
+
+  return {
+    page,
+    limit,
+    total,
+    totalPages: Math.ceil(total / limit),
+    items,
   };
-
-  return this.prisma.headToHeadBattle.findMany({
-    where,
-    orderBy: [{ createdAt: 'desc' }],
-    take: Math.min(query.limit ?? 20, 50),
-    skip: query.offset ?? 0,
-    include: {
-      creator: { select: { id: true, email: true , profile: {select:{
-        profileName: true, imageUrl: true
-      }} } },
-      _count: { select: { participants: true, submissions: true, battleComments: true, battleVotes: true } },
-    },
-  });
 }
-
   async getBattle(id: string) {
     const battle = await this.prisma.headToHeadBattle.findUnique({
       where: { id },
