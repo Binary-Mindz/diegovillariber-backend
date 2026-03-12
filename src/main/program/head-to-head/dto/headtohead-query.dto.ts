@@ -1,29 +1,31 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
-
 import {
   BattleAccessType,
-  BattleStatus,
   BattleCategory,
   Preference,
+  ParticipationScope,
 } from 'generated/prisma/enums';
 
+export enum HeadToHeadTab {
+  ACTIVE = 'ACTIVE',
+  UPCOMING = 'UPCOMING',
+  FINISHED = 'FINISHED',
+}
+
 export class HeadToHeadQueryDto {
-  @ApiPropertyOptional({ enum: BattleStatus, example: BattleStatus.RUNNING })
+  @ApiPropertyOptional({ enum: HeadToHeadTab, example: HeadToHeadTab.ACTIVE })
   @IsOptional()
-  @IsEnum(BattleStatus)
-  status?: BattleStatus;
+  @IsEnum(HeadToHeadTab)
+  tab?: HeadToHeadTab;
 
   @ApiPropertyOptional({ enum: BattleAccessType, example: BattleAccessType.OPEN })
   @IsOptional()
   @IsEnum(BattleAccessType)
   accessType?: BattleAccessType;
 
-  @ApiPropertyOptional({
-    enum: BattleCategory,
-    example: BattleCategory.STYLE_BATTLE,
-  })
+  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
   @IsOptional()
   @IsEnum(BattleCategory)
   battleCategory?: BattleCategory;
@@ -33,26 +35,31 @@ export class HeadToHeadQueryDto {
   @IsEnum(Preference)
   preference?: Preference;
 
+  @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
+  @IsOptional()
+  @IsEnum(ParticipationScope)
+  participationScope?: ParticipationScope;
+
   @ApiPropertyOptional({
     example: 'bmw',
-    description: 'Search by battle title / description / location / brand filter / creator name / creator email',
+    description: 'Search by battle title / description / location / brand / creator name / creator email',
   })
   @IsOptional()
   @IsString()
   search?: string;
 
-  @ApiPropertyOptional({ example: 1 })
+  @ApiPropertyOptional({ example: 1, default: 1 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  page: number = 1;
+  page?: number = 1;
 
-  @ApiPropertyOptional({ example: 20 })
+  @ApiPropertyOptional({ example: 20, default: 20, maximum: 50 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  @Max(100)
-  limit: number = 20;
+  @Max(50)
+  limit?: number = 20;
 }

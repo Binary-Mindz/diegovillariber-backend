@@ -2,7 +2,7 @@
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 
 
-import { HeadToHeadQueryDto } from './dto/headtohead-query.dto';
+import { HeadToHeadQueryDto, HeadToHeadTab } from './dto/headtohead-query.dto';
 import { CreateHeadToHeadBattleDto } from './dto/create-headtohead-battle.dto';
 import { UpdateHeadToHeadBattleDto } from './dto/update-headtohead-battle.dto';
 import { InviteHeadToHeadDto } from './dto/invite-headtohead.dto';
@@ -44,35 +44,36 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
 }
 
 async listBattles(query: HeadToHeadQueryDto) {
-  const {
-    status,
-    accessType,
-    battleCategory,
-    preference,
-    search,
-    page = 1,
-    limit = 20,
-  } = query;
-
-  const safeLimit = Math.min(Math.max(limit, 1), 100);
-  const safePage = Math.max(page, 1);
-  const skip = (safePage - 1) * safeLimit;
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
 
   const where: Prisma.HeadToHeadBattleWhereInput = {};
 
-  if (status) where.status = status;
-  if (accessType) where.accessType = accessType;
-  if (battleCategory) where.battleCategory = battleCategory;
-  if (preference) where.preference = preference;
+  const tab = query.tab ?? HeadToHeadTab.ACTIVE;
 
-  if (search?.trim()) {
-    const s = search.trim();
+  if (tab === HeadToHeadTab.ACTIVE) {
+    where.status = BattleStatus.ACTIVE;
+  } else if (tab === HeadToHeadTab.UPCOMING) {
+    where.status = BattleStatus.UPCOMING;
+  } else if (tab === HeadToHeadTab.FINISHED) {
+    where.status = BattleStatus.FINISHED;
+  }
+
+  if (query.accessType) where.accessType = query.accessType;
+  if (query.battleCategory) where.battleCategory = query.battleCategory;
+  if (query.preference) where.preference = query.preference;
+  if (query.participationScope) where.participationScope = query.participationScope;
+
+  if (query.search?.trim()) {
+    const s = query.search.trim();
 
     where.OR = [
       { title: { contains: s, mode: 'insensitive' } },
       { description: { contains: s, mode: 'insensitive' } },
       { locationName: { contains: s, mode: 'insensitive' } },
       { brandFilter: { contains: s, mode: 'insensitive' } },
+      { winPrize: { contains: s, mode: 'insensitive' } },
       { creator: { email: { contains: s, mode: 'insensitive' } } },
       {
         creator: {
@@ -90,29 +91,21 @@ async listBattles(query: HeadToHeadQueryDto) {
     this.prisma.headToHeadBattle.findMany({
       where,
       skip,
-      take: safeLimit,
-      orderBy: { createdAt: 'desc' },
+      take: limit,
+      orderBy: [
+        { startDate: 'asc' },
+        { createdAt: 'desc' },
+      ],
       include: {
-        creator: {
-          select: {
-            id: true,
-            email: true,
-            profile: {
-              select: {
-                id: true,
-                profileName: true,
-                imageUrl: true,
-              },
-              take: 1,
-            },
-          },
-        },
+        creator: true,
+        winnerUser: true,
         _count: {
           select: {
             participants: true,
             submissions: true,
             battleComments: true,
             battleVotes: true,
+            invitations: true,
           },
         },
       },
@@ -120,41 +113,13 @@ async listBattles(query: HeadToHeadQueryDto) {
     this.prisma.headToHeadBattle.count({ where }),
   ]);
 
-  const rows = items.map((battle) => {
-    const creatorName =
-      battle.creator?.profile?.[0]?.profileName ?? battle.creator?.email ?? 'Unknown';
-
-    return {
-      id: battle.id,
-      title: battle.title,
-      battleCategory: battle.battleCategory,
-      accessType: battle.accessType,
-      preference: battle.preference,
-      creator: {
-        id: battle.creator?.id,
-        name: creatorName,
-        email: battle.creator?.email ?? null,
-        imageUrl: battle.creator?.profile?.[0]?.imageUrl ?? null,
-      },
-      createdAt: battle.createdAt,
-      locationName: battle.locationName ?? null,
-      status: battle.status,
-      counts: {
-        participants: battle._count.participants,
-        submissions: battle._count.submissions,
-        comments: battle._count.battleComments,
-        votes: battle._count.battleVotes,
-      },
-    };
-  });
-
   return {
-    items: rows,
+    items,
     meta: {
       total,
-      page: safePage,
-      limit: safeLimit,
-      totalPages: Math.ceil(total / safeLimit),
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
     },
   };
 }
@@ -243,9 +208,6 @@ async listBattles(query: HeadToHeadQueryDto) {
       placeId: dto.placeId,
       startDate: dto.startDate,
       endDate: dto.endDate,
-
-      status: dto.status ?? BattleStatus.PUBLISHED,
-
       // auto-join creator
       participants: { create: { userId: creatorId, status: ParticipantStatus.JOINED } },
     },
@@ -304,7 +266,6 @@ async listBattles(query: HeadToHeadQueryDto) {
 
       ...(dto.startDate !== undefined ? { startDate: dto.startDate } : {}),
       ...(dto.endDate !== undefined ? { endDate: dto.endDate } : {}),
-      ...(dto.status !== undefined ? { status: dto.status } : {}),
     },
   });
   }
@@ -441,8 +402,8 @@ async listBattles(query: HeadToHeadQueryDto) {
     if (submission.userId === userId) throw new BadRequestException('Cannot vote on your own submission');
 
     // Optional: only allow voting when battle is RUNNING
-    if (submission.battle.status !== BattleStatus.RUNNING) {
-      throw new BadRequestException('Voting is allowed only when battle is RUNNING');
+    if (submission.battle.status !== BattleStatus.ACTIVE) {
+      throw new BadRequestException('Voting is allowed only when battle is Active');
     }
 
     return this.prisma.battleVote.upsert({
@@ -495,7 +456,7 @@ async listBattles(query: HeadToHeadQueryDto) {
       const updated = await tx.headToHeadBattle.update({
         where: { id: battleId },
         data: {
-          status: BattleStatus.COMPLETED,
+          status: BattleStatus.FINISHED,
           winnerUserId: winner.userId,
         },
       });

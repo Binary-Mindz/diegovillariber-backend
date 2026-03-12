@@ -13,37 +13,44 @@ export class HeadToHeadBattleCron {
   async syncBattleStatuses() {
     const now = new Date();
 
-    
-    const toRunning = await this.prisma.headToHeadBattle.updateMany({
+    const toActive = await this.prisma.headToHeadBattle.updateMany({
       where: {
-        status: BattleStatus.PUBLISHED,
+        status: BattleStatus.UPCOMING,
         startDate: { lte: now },
-        endDate: { gt: now }, 
+        endDate: { gt: now },
       },
-      data: { status: BattleStatus.RUNNING },
+      data: {
+        status: BattleStatus.ACTIVE,
+      },
     });
 
-  
-    const toCompleted = await this.prisma.headToHeadBattle.updateMany({
+    const toFinishedFromActive = await this.prisma.headToHeadBattle.updateMany({
       where: {
-        status: BattleStatus.RUNNING,
+        status: BattleStatus.ACTIVE,
         endDate: { lte: now },
       },
-      data: { status: BattleStatus.COMPLETED },
+      data: {
+        status: BattleStatus.FINISHED,
+      },
     });
 
-    
-    const publishedExpired = await this.prisma.headToHeadBattle.updateMany({
+    const toFinishedFromUpcoming = await this.prisma.headToHeadBattle.updateMany({
       where: {
-        status: BattleStatus.PUBLISHED,
+        status: BattleStatus.UPCOMING,
         endDate: { lte: now },
       },
-      data: { status: BattleStatus.COMPLETED },
+      data: {
+        status: BattleStatus.FINISHED,
+      },
     });
 
-    if (toRunning.count || toCompleted.count || publishedExpired.count) {
+    if (
+      toActive.count ||
+      toFinishedFromActive.count ||
+      toFinishedFromUpcoming.count
+    ) {
       this.logger.log(
-        `status sync: RUNNING=${toRunning.count}, COMPLETED=${toCompleted.count}, PUBLISHED_EXPIRED=${publishedExpired.count}`,
+        `Battle status sync: ACTIVE=${toActive.count}, FINISHED_FROM_ACTIVE=${toFinishedFromActive.count}, FINISHED_FROM_UPCOMING=${toFinishedFromUpcoming.count}`,
       );
     }
   }

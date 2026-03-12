@@ -13,7 +13,6 @@ import {
 import {
   Brand,
   ChallengeCategory,
-  ChallengeStatus,
   ChallengeType,
   DeviceType,
   ParticipationScope,
