@@ -89,24 +89,14 @@ export class ChallengeService {
   }
 
 async listChallenges(query: ChallengeQueryDto) {
-  const {
-    tab = ChallengeTab.ACTIVE,
-    category,
-    type,
-    preference,
-    participationScope,
-    search,
-    page = 1,
-    limit = 20,
-  } = query;
-
-  const safeLimit = Math.min(Math.max(limit, 1), 100);
-  const safePage = Math.max(page, 1);
-  const skip = (safePage - 1) * safeLimit;
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
 
   const where: any = {};
 
-  // tab filter
+  const tab = query.tab ?? ChallengeTab.ACTIVE;
+
   if (tab === ChallengeTab.ACTIVE) {
     where.status = ChallengeStatus.ACTIVE;
   } else if (tab === ChallengeTab.UPCOMING) {
@@ -115,14 +105,13 @@ async listChallenges(query: ChallengeQueryDto) {
     where.status = ChallengeStatus.FINISHED;
   }
 
-  // optional filters
-  if (category) where.category = category;
-  if (type) where.type = type;
-  if (preference) where.preference = preference;
-  if (participationScope) where.participationScope = participationScope;
+  if (query.category) where.category = query.category;
+  if (query.type) where.type = query.type;
+  if (query.preference) where.preference = query.preference;
+  if (query.participationScope) where.participationScope = query.participationScope;
 
-  if (search?.trim()) {
-    const s = search.trim();
+  if (query.search?.trim()) {
+    const s = query.search.trim();
 
     where.OR = [
       { title: { contains: s, mode: 'insensitive' } },
@@ -146,26 +135,13 @@ async listChallenges(query: ChallengeQueryDto) {
     this.prisma.challenge.findMany({
       where,
       skip,
-      take: safeLimit,
+      take: limit,
       orderBy: [
         { startDate: 'asc' },
         { createdAt: 'desc' },
       ],
       include: {
-        creator: {
-          select: {
-            id: true,
-            email: true,
-            profile: {
-              select: {
-                id: true,
-                profileName: true,
-                imageUrl: true,
-              },
-              take: 1,
-            },
-          },
-        },
+        creator: true,
         _count: {
           select: {
             challengeParticipants: true,
@@ -177,45 +153,13 @@ async listChallenges(query: ChallengeQueryDto) {
     this.prisma.challenge.count({ where }),
   ]);
 
-  const rows = items.map((challenge) => {
-    const creatorName =
-      challenge.creator?.profile?.[0]?.profileName ??
-      challenge.creator?.email ??
-      'Unknown';
-
-    return {
-      id: challenge.id,
-      title: challenge.title,
-      category: challenge.category,
-      type: challenge.type,
-      preference: challenge.preference,
-      participationScope: challenge.participationScope,
-      creator: {
-        id: challenge.creator?.id,
-        name: creatorName,
-        email: challenge.creator?.email ?? null,
-        imageUrl: challenge.creator?.profile?.[0]?.imageUrl ?? null,
-      },
-      createdAt: challenge.createdAt,
-      startDate: challenge.startDate,
-      endDate: challenge.endDate,
-      locationName: challenge.locationName ?? null,
-      challengePrize: challenge.challengePrize ?? null,
-      status: challenge.status,
-      counts: {
-        participants: challenge._count.challengeParticipants,
-        submissions: challenge._count.challengeSubmissions,
-      },
-    };
-  });
-
   return {
-    items: rows,
+    items,
     meta: {
       total,
-      page: safePage,
-      limit: safeLimit,
-      totalPages: Math.ceil(total / safeLimit),
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
     },
   };
 }
@@ -228,7 +172,7 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
 
   const where: any = {
     creator: {
-      role: 'ADMIN', // <-- তোমার actual enum/value অনুযায়ী change করো
+      role: 'ADMIN',
     },
   };
 
@@ -289,11 +233,13 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   ]);
 
   return {
-    page,
-    limit,
-    total,
-    totalPages: Math.ceil(total / limit),
-    items,
+    items,  
+    meta: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    },
   };
 }
 
