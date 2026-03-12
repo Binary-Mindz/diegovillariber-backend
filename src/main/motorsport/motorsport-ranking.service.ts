@@ -285,9 +285,9 @@ export class MotorsportRankingService {
         battle: {
           status: {
             in: [
-              RawShiftStatus.PUBLISHED,
-              RawShiftStatus.RUNNING,
-              RawShiftStatus.COMPLETED,
+              RawShiftStatus.UPCOMING,
+              RawShiftStatus.ACTIVE,
+              RawShiftStatus.FINISHED,
             ],
           },
         },

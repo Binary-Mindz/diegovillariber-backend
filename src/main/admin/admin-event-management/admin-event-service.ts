@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { GetAdminEventsQueryDto } from './dto/get-admin-events.query.dto';
 
@@ -257,6 +257,83 @@ export class AdminEventManagementervice {
   };
 }
 
+  async getSingleEvent(id: string) {
+    const event = await this.prisma.event.findUnique({
+      where: { id },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            phone: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
+    });
+
+    if (!event) {
+      throw new NotFoundException('Event not found');
+    }
+
+    const creatorName =
+      event.owner?.profile?.[0]?.profileName ??
+      event.owner?.email ??
+      event.owner?.phone ??
+      'Unknown';
+
+    return {
+      statusCode: 200,
+      data: {
+        id: event.id,
+        eventTitle: event.eventTitle,
+        description: event.description ?? null,
+        eventType: event.eventType,
+        eventStatus: event.eventStatus,
+        createdAt: event.createdAt,
+        startDate: event.startDate ?? null,
+        endDate: event.endDate ?? null,
+        location: event.location ?? null,
+        creator: {
+          id: event.owner?.id ?? null,
+          name: creatorName,
+          email: event.owner?.email ?? null,
+          phone: event.owner?.phone ?? null,
+          imageUrl: event.owner?.profile?.[0]?.imageUrl ?? null,
+          profileId: event.owner?.profile?.[0]?.id ?? null,
+        },
+      },
+    };
+  }
+
+  async deleteEvent(id: string) {
+    const event = await this.prisma.event.findUnique({
+      where: { id },
+      select: { id: true },
+    });
+
+    if (!event) {
+      throw new NotFoundException('Event not found');
+    }
+
+    await this.prisma.event.delete({
+      where: { id },
+    });
+
+    return {
+      statusCode: 200,
+      data: {
+        id,
+      },
+    };
+  }
 
   async deleteAllProDriverEvents() {
     const result = await this.prisma.event.deleteMany({

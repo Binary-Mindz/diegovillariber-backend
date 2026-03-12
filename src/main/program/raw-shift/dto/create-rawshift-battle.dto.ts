@@ -64,13 +64,4 @@ export class CreateRawShiftBattleDto {
   })
   @IsDateString()
   endDate: string;
-
-  @ApiPropertyOptional({
-    enum: RawShiftStatus,
-    example: RawShiftStatus.PUBLISHED,
-    description: 'Default DRAFT',
-  })
-  @IsOptional()
-  @IsEnum(RawShiftStatus)
-  status?: RawShiftStatus;
 }

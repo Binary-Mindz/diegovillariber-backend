@@ -313,11 +313,9 @@ export type Subject = (typeof Subject)[keyof typeof Subject]
 
 
 export const RawShiftStatus = {
-  DRAFT: 'DRAFT',
-  PUBLISHED: 'PUBLISHED',
-  RUNNING: 'RUNNING',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
+  ACTIVE: 'ACTIVE',
+  UPCOMING: 'UPCOMING',
+  FINISHED: 'FINISHED'
 } as const
 
 export type RawShiftStatus = (typeof RawShiftStatus)[keyof typeof RawShiftStatus]
