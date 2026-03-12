@@ -43,38 +43,46 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
   return Math.ceil(days);
 }
 
- async listBattles(query: HeadToHeadQueryDto) {
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 20;
-  const skip = (page - 1) * limit;
+async listBattles(query: HeadToHeadQueryDto) {
+  const {
+    status,
+    accessType,
+    battleCategory,
+    preference,
+    search,
+    page = 1,
+    limit = 20,
+  } = query;
+
+  const safeLimit = Math.min(Math.max(limit, 1), 100);
+  const safePage = Math.max(page, 1);
+  const skip = (safePage - 1) * safeLimit;
 
   const where: Prisma.HeadToHeadBattleWhereInput = {};
 
-  // tab/status filter
-  if (query.status) {
-    where.status = query.status;
-  }
+  if (status) where.status = status;
+  if (accessType) where.accessType = accessType;
+  if (battleCategory) where.battleCategory = battleCategory;
+  if (preference) where.preference = preference;
 
-  // optional filters
-  if (query.accessType) {
-    where.accessType = query.accessType;
-  }
+  if (search?.trim()) {
+    const s = search.trim();
 
-  if (query.battleCategory) {
-    where.battleCategory = query.battleCategory;
-  }
-
-  if (query.preference) {
-    where.preference = query.preference;
-  }
-
-  if (query.q) {
     where.OR = [
-      ...(where.OR ?? []),
-      { title: { contains: query.q, mode: 'insensitive' } },
-      { description: { contains: query.q, mode: 'insensitive' } },
-      { locationName: { contains: query.q, mode: 'insensitive' } },
-      { brandFilter: { contains: query.q, mode: 'insensitive' } },
+      { title: { contains: s, mode: 'insensitive' } },
+      { description: { contains: s, mode: 'insensitive' } },
+      { locationName: { contains: s, mode: 'insensitive' } },
+      { brandFilter: { contains: s, mode: 'insensitive' } },
+      { creator: { email: { contains: s, mode: 'insensitive' } } },
+      {
+        creator: {
+          profile: {
+            some: {
+              profileName: { contains: s, mode: 'insensitive' },
+            },
+          },
+        },
+      },
     ];
   }
 
@@ -82,8 +90,8 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
     this.prisma.headToHeadBattle.findMany({
       where,
       skip,
-      take: limit,
-      orderBy: [{ createdAt: 'desc' }],
+      take: safeLimit,
+      orderBy: { createdAt: 'desc' },
       include: {
         creator: {
           select: {
@@ -91,9 +99,11 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
             email: true,
             profile: {
               select: {
+                id: true,
                 profileName: true,
                 imageUrl: true,
               },
+              take: 1,
             },
           },
         },
@@ -110,12 +120,42 @@ private calcDurationDays(startDate: Date, endDate: Date): number {
     this.prisma.headToHeadBattle.count({ where }),
   ]);
 
+  const rows = items.map((battle) => {
+    const creatorName =
+      battle.creator?.profile?.[0]?.profileName ?? battle.creator?.email ?? 'Unknown';
+
+    return {
+      id: battle.id,
+      title: battle.title,
+      battleCategory: battle.battleCategory,
+      accessType: battle.accessType,
+      preference: battle.preference,
+      creator: {
+        id: battle.creator?.id,
+        name: creatorName,
+        email: battle.creator?.email ?? null,
+        imageUrl: battle.creator?.profile?.[0]?.imageUrl ?? null,
+      },
+      createdAt: battle.createdAt,
+      locationName: battle.locationName ?? null,
+      status: battle.status,
+      counts: {
+        participants: battle._count.participants,
+        submissions: battle._count.submissions,
+        comments: battle._count.battleComments,
+        votes: battle._count.battleVotes,
+      },
+    };
+  });
+
   return {
-    page,
-    limit,
-    total,
-    totalPages: Math.ceil(total / limit),
-    items,
+    items: rows,
+    meta: {
+      total,
+      page: safePage,
+      limit: safeLimit,
+      totalPages: Math.ceil(total / safeLimit),
+    },
   };
 }
   async getBattle(id: string) {

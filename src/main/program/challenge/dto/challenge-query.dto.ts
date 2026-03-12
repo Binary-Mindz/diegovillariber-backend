@@ -35,28 +35,34 @@ export class ChallengeQueryDto {
   @IsEnum(Preference)
   preference?: Preference;
 
-  @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
+  @ApiPropertyOptional({
+    enum: ParticipationScope,
+    example: ParticipationScope.GLOBAL,
+  })
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;
 
-  @ApiPropertyOptional({ example: 'sunset' })
+  @ApiPropertyOptional({
+    example: 'sunset',
+    description: 'Search by challenge title / description / location / prize / creator name / creator email',
+  })
   @IsOptional()
   @IsString()
   search?: string;
 
-  @ApiPropertyOptional({ example: 1, default: 1 })
+  @ApiPropertyOptional({ example: 1 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  page?: number = 1;
+  page: number = 1;
 
-  @ApiPropertyOptional({ example: 20, default: 20, maximum: 50 })
+  @ApiPropertyOptional({ example: 20 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  @Max(50)
-  limit?: number = 20;
+  @Max(100)
+  limit: number = 20;
 }
