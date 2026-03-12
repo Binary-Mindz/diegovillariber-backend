@@ -74,6 +74,8 @@ export class ChallengeService {
     },
   };
 }
+
+
   private validateDates(start: Date, end: Date) {
     if (end <= start) throw new BadRequestException('endDate must be greater than startDate');
   }
