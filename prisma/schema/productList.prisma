@@ -7,7 +7,11 @@ model ProductList {
   // form fields
   title        String
   productImage String?
-  location     String? // if you later support multiple images, make this String[]
+  location     String?
+  locationAddress    String?
+  latitude           Decimal? @db.Decimal(9, 6)
+  longitude          Decimal? @db.Decimal(9, 6)
+  placeId            String?
   description  String?
   category     ProductCategory @default(CAR)
 

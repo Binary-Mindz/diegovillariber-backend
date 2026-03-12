@@ -3,12 +3,15 @@ import {
   IsBoolean,
   IsEnum,
   IsInt,
+  IsLatitude,
+  IsLongitude,
   IsOptional,
   IsString,
   Min,
 } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { ProductCategory } from 'generated/prisma/enums';
+import { Type } from 'class-transformer';
 
 export class CreateProductDto {
   @ApiProperty({
@@ -41,6 +44,37 @@ export class CreateProductDto {
   @IsOptional()
   @IsString()
   location?: string;
+
+    @ApiPropertyOptional({ example: 'Purbachal, Dhaka, Bangladesh' })
+    @IsOptional()
+    @IsString()
+    locationAddress?: string;
+  
+    @ApiPropertyOptional({
+      example: 23.8103,
+      description: 'Latitude of the event location',
+    })
+    @IsOptional()
+    @Type(() => Number)
+    @IsLatitude()
+    latitude?: number;
+  
+    @ApiPropertyOptional({
+      example: 90.4125,
+      description: 'Longitude of the event location',
+    })
+    @IsOptional()
+    @Type(() => Number)
+    @IsLongitude()
+    longitude?: number;
+  
+    @ApiPropertyOptional({
+      example: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+      description: 'Google place id or map place id',
+    })
+    @IsOptional()
+    @IsString()
+    placeId?: string;
 
   @ApiPropertyOptional({
     enum: ProductCategory,

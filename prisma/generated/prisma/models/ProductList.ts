@@ -27,11 +27,15 @@ export type AggregateProductList = {
 }
 
 export type ProductListAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   price: number | null
   quantity: number | null
 }
 
 export type ProductListSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   price: number | null
   quantity: number | null
 }
@@ -42,6 +46,10 @@ export type ProductListMinAggregateOutputType = {
   title: string | null
   productImage: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   description: string | null
   category: $Enums.ProductCategory | null
   carBrand: string | null
@@ -60,6 +68,10 @@ export type ProductListMaxAggregateOutputType = {
   title: string | null
   productImage: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   description: string | null
   category: $Enums.ProductCategory | null
   carBrand: string | null
@@ -78,6 +90,10 @@ export type ProductListCountAggregateOutputType = {
   title: number
   productImage: number
   location: number
+  locationAddress: number
+  latitude: number
+  longitude: number
+  placeId: number
   description: number
   category: number
   tags: number
@@ -94,11 +110,15 @@ export type ProductListCountAggregateOutputType = {
 
 
 export type ProductListAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
   price?: true
   quantity?: true
 }
 
 export type ProductListSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
   price?: true
   quantity?: true
 }
@@ -109,6 +129,10 @@ export type ProductListMinAggregateInputType = {
   title?: true
   productImage?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   description?: true
   category?: true
   carBrand?: true
@@ -127,6 +151,10 @@ export type ProductListMaxAggregateInputType = {
   title?: true
   productImage?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   description?: true
   category?: true
   carBrand?: true
@@ -145,6 +173,10 @@ export type ProductListCountAggregateInputType = {
   title?: true
   productImage?: true
   location?: true
+  locationAddress?: true
+  latitude?: true
+  longitude?: true
+  placeId?: true
   description?: true
   category?: true
   tags?: true
@@ -251,6 +283,10 @@ export type ProductListGroupByOutputType = {
   title: string
   productImage: string | null
   location: string | null
+  locationAddress: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  placeId: string | null
   description: string | null
   category: $Enums.ProductCategory
   tags: string[]
@@ -293,6 +329,10 @@ export type ProductListWhereInput = {
   title?: Prisma.StringFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
   tags?: Prisma.StringNullableListFilter<"ProductList">
@@ -313,6 +353,10 @@ export type ProductListOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
@@ -336,6 +380,10 @@ export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
   tags?: Prisma.StringNullableListFilter<"ProductList">
@@ -356,6 +404,10 @@ export type ProductListOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  placeId?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
@@ -383,6 +435,10 @@ export type ProductListScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
+  locationAddress?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryWithAggregatesFilter<"ProductList"> | $Enums.ProductCategory
   tags?: Prisma.StringNullableListFilter<"ProductList">
@@ -401,6 +457,10 @@ export type ProductListCreateInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -421,6 +481,10 @@ export type ProductListUncheckedCreateInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -439,6 +503,10 @@ export type ProductListUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -459,6 +527,10 @@ export type ProductListUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -478,6 +550,10 @@ export type ProductListCreateManyInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -496,6 +572,10 @@ export type ProductListUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -515,6 +595,10 @@ export type ProductListUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -534,6 +618,10 @@ export type ProductListCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   tags?: Prisma.SortOrder
@@ -548,6 +636,8 @@ export type ProductListCountOrderByAggregateInput = {
 }
 
 export type ProductListAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
 }
@@ -558,6 +648,10 @@ export type ProductListMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
@@ -576,6 +670,10 @@ export type ProductListMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  locationAddress?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  placeId?: Prisma.SortOrder
   description?: Prisma.SortOrder
   category?: Prisma.SortOrder
   carBrand?: Prisma.SortOrder
@@ -589,6 +687,8 @@ export type ProductListMinOrderByAggregateInput = {
 }
 
 export type ProductListSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   price?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
 }
@@ -663,6 +763,10 @@ export type ProductListCreateWithoutOwnerInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -681,6 +785,10 @@ export type ProductListUncheckedCreateWithoutOwnerInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -729,6 +837,10 @@ export type ProductListScalarWhereInput = {
   title?: Prisma.StringFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  locationAddress?: Prisma.StringNullableFilter<"ProductList"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"ProductList"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.StringNullableFilter<"ProductList"> | string | null
   description?: Prisma.StringNullableFilter<"ProductList"> | string | null
   category?: Prisma.EnumProductCategoryFilter<"ProductList"> | $Enums.ProductCategory
   tags?: Prisma.StringNullableListFilter<"ProductList">
@@ -747,6 +859,10 @@ export type ProductListCreateManyOwnerInput = {
   title: string
   productImage?: string | null
   location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
   description?: string | null
   category?: $Enums.ProductCategory
   tags?: Prisma.ProductListCreatetagsInput | string[]
@@ -765,6 +881,10 @@ export type ProductListUpdateWithoutOwnerInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -783,6 +903,10 @@ export type ProductListUncheckedUpdateWithoutOwnerInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -801,6 +925,10 @@ export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
   tags?: Prisma.ProductListUpdatetagsInput | string[]
@@ -822,6 +950,10 @@ export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   title?: boolean
   productImage?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   description?: boolean
   category?: boolean
   tags?: boolean
@@ -842,6 +974,10 @@ export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   title?: boolean
   productImage?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   description?: boolean
   category?: boolean
   tags?: boolean
@@ -862,6 +998,10 @@ export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   title?: boolean
   productImage?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   description?: boolean
   category?: boolean
   tags?: boolean
@@ -882,6 +1022,10 @@ export type ProductListSelectScalar = {
   title?: boolean
   productImage?: boolean
   location?: boolean
+  locationAddress?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  placeId?: boolean
   description?: boolean
   category?: boolean
   tags?: boolean
@@ -895,7 +1039,7 @@ export type ProductListSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "location" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
+export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
 export type ProductListInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -917,6 +1061,10 @@ export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.Interna
     title: string
     productImage: string | null
     location: string | null
+    locationAddress: string | null
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    placeId: string | null
     description: string | null
     category: $Enums.ProductCategory
     tags: string[]
@@ -1357,6 +1505,10 @@ export interface ProductListFieldRefs {
   readonly title: Prisma.FieldRef<"ProductList", 'String'>
   readonly productImage: Prisma.FieldRef<"ProductList", 'String'>
   readonly location: Prisma.FieldRef<"ProductList", 'String'>
+  readonly locationAddress: Prisma.FieldRef<"ProductList", 'String'>
+  readonly latitude: Prisma.FieldRef<"ProductList", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"ProductList", 'Decimal'>
+  readonly placeId: Prisma.FieldRef<"ProductList", 'String'>
   readonly description: Prisma.FieldRef<"ProductList", 'String'>
   readonly category: Prisma.FieldRef<"ProductList", 'ProductCategory'>
   readonly tags: Prisma.FieldRef<"ProductList", 'String[]'>
