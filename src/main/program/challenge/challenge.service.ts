@@ -87,48 +87,56 @@ export class ChallengeService {
   }
 
 async listChallenges(query: ChallengeQueryDto) {
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 20;
-  const skip = (page - 1) * limit;
-  const now = new Date();
+  const {
+    tab = ChallengeTab.ACTIVE,
+    category,
+    type,
+    preference,
+    participationScope,
+    search,
+    page = 1,
+    limit = 20,
+  } = query;
+
+  const safeLimit = Math.min(Math.max(limit, 1), 100);
+  const safePage = Math.max(page, 1);
+  const skip = (safePage - 1) * safeLimit;
 
   const where: any = {};
 
   // tab filter
-  const tab = query.tab ?? ChallengeTab.ACTIVE;
-
-if (tab === ChallengeTab.ACTIVE) {
-  where.status = ChallengeStatus.ACTIVE;
-} else if (tab === ChallengeTab.UPCOMING) {
-  where.status = ChallengeStatus.UPCOMING;
-} else if (tab === ChallengeTab.FINISHED) {
-  where.status = ChallengeStatus.FINISHED;
-}
+  if (tab === ChallengeTab.ACTIVE) {
+    where.status = ChallengeStatus.ACTIVE;
+  } else if (tab === ChallengeTab.UPCOMING) {
+    where.status = ChallengeStatus.UPCOMING;
+  } else if (tab === ChallengeTab.FINISHED) {
+    where.status = ChallengeStatus.FINISHED;
+  }
 
   // optional filters
-  if (query.category) {
-    where.category = query.category;
-  }
+  if (category) where.category = category;
+  if (type) where.type = type;
+  if (preference) where.preference = preference;
+  if (participationScope) where.participationScope = participationScope;
 
-  if (query.type) {
-    where.type = query.type;
-  }
+  if (search?.trim()) {
+    const s = search.trim();
 
-  if (query.preference) {
-    where.preference = query.preference;
-  }
-
-  if (query.participationScope) {
-    where.participationScope = query.participationScope;
-  }
-
-  if (query.search) {
     where.OR = [
-      ...(where.OR ?? []),
-      { title: { contains: query.search, mode: 'insensitive' } },
-      { description: { contains: query.search, mode: 'insensitive' } },
-      { locationName: { contains: query.search, mode: 'insensitive' } },
-      { challengePrize: { contains: query.search, mode: 'insensitive' } },
+      { title: { contains: s, mode: 'insensitive' } },
+      { description: { contains: s, mode: 'insensitive' } },
+      { locationName: { contains: s, mode: 'insensitive' } },
+      { challengePrize: { contains: s, mode: 'insensitive' } },
+      { creator: { email: { contains: s, mode: 'insensitive' } } },
+      {
+        creator: {
+          profile: {
+            some: {
+              profileName: { contains: s, mode: 'insensitive' },
+            },
+          },
+        },
+      },
     ];
   }
 
@@ -136,7 +144,7 @@ if (tab === ChallengeTab.ACTIVE) {
     this.prisma.challenge.findMany({
       where,
       skip,
-      take: limit,
+      take: safeLimit,
       orderBy: [
         { startDate: 'asc' },
         { createdAt: 'desc' },
@@ -146,6 +154,14 @@ if (tab === ChallengeTab.ACTIVE) {
           select: {
             id: true,
             email: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
+              take: 1,
+            },
           },
         },
         _count: {
@@ -159,12 +175,46 @@ if (tab === ChallengeTab.ACTIVE) {
     this.prisma.challenge.count({ where }),
   ]);
 
+  const rows = items.map((challenge) => {
+    const creatorName =
+      challenge.creator?.profile?.[0]?.profileName ??
+      challenge.creator?.email ??
+      'Unknown';
+
+    return {
+      id: challenge.id,
+      title: challenge.title,
+      category: challenge.category,
+      type: challenge.type,
+      preference: challenge.preference,
+      participationScope: challenge.participationScope,
+      creator: {
+        id: challenge.creator?.id,
+        name: creatorName,
+        email: challenge.creator?.email ?? null,
+        imageUrl: challenge.creator?.profile?.[0]?.imageUrl ?? null,
+      },
+      createdAt: challenge.createdAt,
+      startDate: challenge.startDate,
+      endDate: challenge.endDate,
+      locationName: challenge.locationName ?? null,
+      challengePrize: challenge.challengePrize ?? null,
+      status: challenge.status,
+      counts: {
+        participants: challenge._count.challengeParticipants,
+        submissions: challenge._count.challengeSubmissions,
+      },
+    };
+  });
+
   return {
-    page,
-    limit,
-    total,
-    totalPages: Math.ceil(total / limit),
-    items,
+    items: rows,
+    meta: {
+      total,
+      page: safePage,
+      limit: safeLimit,
+      totalPages: Math.ceil(total / safeLimit),
+    },
   };
 }
 

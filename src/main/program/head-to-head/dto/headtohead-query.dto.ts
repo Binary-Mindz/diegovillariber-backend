@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
+import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 
 import {
   BattleAccessType,
@@ -20,7 +20,10 @@ export class HeadToHeadQueryDto {
   @IsEnum(BattleAccessType)
   accessType?: BattleAccessType;
 
-  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
+  @ApiPropertyOptional({
+    enum: BattleCategory,
+    example: BattleCategory.STYLE_BATTLE,
+  })
   @IsOptional()
   @IsEnum(BattleCategory)
   battleCategory?: BattleCategory;
@@ -30,23 +33,26 @@ export class HeadToHeadQueryDto {
   @IsEnum(Preference)
   preference?: Preference;
 
-  @ApiPropertyOptional({ example: 'bmw' })
+  @ApiPropertyOptional({
+    example: 'bmw',
+    description: 'Search by battle title / description / location / brand filter / creator name / creator email',
+  })
   @IsOptional()
   @IsString()
-  q?: string;
+  search?: string;
 
-  @ApiPropertyOptional({ example: 1, minimum: 1 })
+  @ApiPropertyOptional({ example: 1 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  page?: number;
+  page: number = 1;
 
-  @ApiPropertyOptional({ example: 20, minimum: 1, maximum: 50 })
+  @ApiPropertyOptional({ example: 20 })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  @Max(50)
-  limit?: number;
+  @Max(100)
+  limit: number = 20;
 }
