@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Ad: 'Ad',
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
   Bike: 'Bike',
@@ -158,6 +159,59 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const AdScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  linkUrl: 'linkUrl',
+  bannerUrl: 'bannerUrl',
+  localRatio: 'localRatio',
+  nationRatio: 'nationRatio',
+  worldWide: 'worldWide',
+  targetUrl: 'targetUrl',
+  altText: 'altText',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  vehicleType: 'vehicleType',
+  placement: 'placement',
+  minimumPoint: 'minimumPoint',
+  maximumPoint: 'maximumPoint',
+  cap: 'cap',
+  dailyBudget: 'dailyBudget',
+  totalBudget: 'totalBudget',
+  countryCode: 'countryCode',
+  languages: 'languages',
+  tags: 'tags',
+  spotter: 'spotter',
+  proDriver: 'proDriver',
+  owner: 'owner',
+  proBussiness: 'proBussiness',
+  contentCreator: 'contentCreator',
+  simRacingDriver: 'simRacingDriver',
+  enableAdGlobally: 'enableAdGlobally',
+  showAd: 'showAd',
+  maxAdPerPage: 'maxAdPerPage',
+  rotationIntervel: 'rotationIntervel',
+  bannerWidth: 'bannerWidth',
+  bannerHeight: 'bannerHeight',
+  prioritize: 'prioritize',
+  autoPause: 'autoPause',
+  minimumCTR: 'minimumCTR',
+  enableBannerAnimation: 'enableBannerAnimation',
+  autoRotationEnabled: 'autoRotationEnabled',
+  previewMode: 'previewMode',
+  showFeed: 'showFeed',
+  showProfile: 'showProfile',
+  showMarketPlace: 'showMarketPlace',
+  showEvent: 'showEvent',
+  showChallenges: 'showChallenges',
+  showBattle: 'showBattle',
+  adStatus: 'adStatus'
+} as const
+
+export type AdScalarFieldEnum = (typeof AdScalarFieldEnum)[keyof typeof AdScalarFieldEnum]
 
 
 export const AdvancedCarDataScalarFieldEnum = {

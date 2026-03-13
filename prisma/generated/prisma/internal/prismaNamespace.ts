@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  Ad: 'Ad',
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
   Bike: 'Bike',
@@ -490,10 +491,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    Ad: {
+      payload: Prisma.$AdPayload<ExtArgs>
+      fields: Prisma.AdFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        findFirst: {
+          args: Prisma.AdFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        findMany: {
+          args: Prisma.AdFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>[]
+        }
+        create: {
+          args: Prisma.AdCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        createMany: {
+          args: Prisma.AdCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>[]
+        }
+        delete: {
+          args: Prisma.AdDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        update: {
+          args: Prisma.AdUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        deleteMany: {
+          args: Prisma.AdDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>[]
+        }
+        upsert: {
+          args: Prisma.AdUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdPayload>
+        }
+        aggregate: {
+          args: Prisma.AdAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAd>
+        }
+        groupBy: {
+          args: Prisma.AdGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdCountAggregateOutputType> | number
+        }
+      }
+    }
     AdvancedCarData: {
       payload: Prisma.$AdvancedCarDataPayload<ExtArgs>
       fields: Prisma.AdvancedCarDataFieldRefs
@@ -7267,6 +7342,59 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AdScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  linkUrl: 'linkUrl',
+  bannerUrl: 'bannerUrl',
+  localRatio: 'localRatio',
+  nationRatio: 'nationRatio',
+  worldWide: 'worldWide',
+  targetUrl: 'targetUrl',
+  altText: 'altText',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  vehicleType: 'vehicleType',
+  placement: 'placement',
+  minimumPoint: 'minimumPoint',
+  maximumPoint: 'maximumPoint',
+  cap: 'cap',
+  dailyBudget: 'dailyBudget',
+  totalBudget: 'totalBudget',
+  countryCode: 'countryCode',
+  languages: 'languages',
+  tags: 'tags',
+  spotter: 'spotter',
+  proDriver: 'proDriver',
+  owner: 'owner',
+  proBussiness: 'proBussiness',
+  contentCreator: 'contentCreator',
+  simRacingDriver: 'simRacingDriver',
+  enableAdGlobally: 'enableAdGlobally',
+  showAd: 'showAd',
+  maxAdPerPage: 'maxAdPerPage',
+  rotationIntervel: 'rotationIntervel',
+  bannerWidth: 'bannerWidth',
+  bannerHeight: 'bannerHeight',
+  prioritize: 'prioritize',
+  autoPause: 'autoPause',
+  minimumCTR: 'minimumCTR',
+  enableBannerAnimation: 'enableBannerAnimation',
+  autoRotationEnabled: 'autoRotationEnabled',
+  previewMode: 'previewMode',
+  showFeed: 'showFeed',
+  showProfile: 'showProfile',
+  showMarketPlace: 'showMarketPlace',
+  showEvent: 'showEvent',
+  showChallenges: 'showChallenges',
+  showBattle: 'showBattle',
+  adStatus: 'adStatus'
+} as const
+
+export type AdScalarFieldEnum = (typeof AdScalarFieldEnum)[keyof typeof AdScalarFieldEnum]
+
+
 export const AdvancedCarDataScalarFieldEnum = {
   id: 'id',
   carId: 'carId'
@@ -8734,16 +8862,16 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'AmbassadorStatus'
+ * Reference to a field of type 'LinkType'
  */
-export type EnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus'>
+export type EnumLinkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkType'>
     
 
 
 /**
- * Reference to a field of type 'AmbassadorStatus[]'
+ * Reference to a field of type 'LinkType[]'
  */
-export type ListEnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus[]'>
+export type ListEnumLinkTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkType[]'>
     
 
 
@@ -8772,6 +8900,97 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference'
+ */
+export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
+    
+
+
+/**
+ * Reference to a field of type 'Preference[]'
+ */
+export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Placement'
+ */
+export type EnumPlacementFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Placement'>
+    
+
+
+/**
+ * Reference to a field of type 'Placement[]'
+ */
+export type ListEnumPlacementFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Placement[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'BannerWidth'
+ */
+export type EnumBannerWidthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BannerWidth'>
+    
+
+
+/**
+ * Reference to a field of type 'BannerWidth[]'
+ */
+export type ListEnumBannerWidthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BannerWidth[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BannerHeight'
+ */
+export type EnumBannerHeightFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BannerHeight'>
+    
+
+
+/**
+ * Reference to a field of type 'BannerHeight[]'
+ */
+export type ListEnumBannerHeightFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BannerHeight[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AdStatus'
+ */
+export type EnumAdStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AdStatus[]'
+ */
+export type ListEnumAdStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AmbassadorStatus'
+ */
+export type EnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AmbassadorStatus[]'
+ */
+export type ListEnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AmbassadorStatus[]'>
     
 
 
@@ -8828,13 +9047,6 @@ export type EnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType
  * Reference to a field of type 'DriveCategoryBike[]'
  */
 export type ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategoryBike[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -8933,20 +9145,6 @@ export type EnumChallengeCategoryFieldRefInput<$PrismaModel> = FieldRefInputType
  * Reference to a field of type 'ChallengeCategory[]'
  */
 export type ListEnumChallengeCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChallengeCategory[]'>
-    
-
-
-/**
- * Reference to a field of type 'Preference'
- */
-export type EnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference'>
-    
-
-
-/**
- * Reference to a field of type 'Preference[]'
- */
-export type ListEnumPreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Preference[]'>
     
 
 
@@ -10094,6 +10292,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  ad?: Prisma.AdOmit
   advancedCarData?: Prisma.AdvancedCarDataOmit
   ambassadorProgram?: Prisma.AmbassadorProgramOmit
   bike?: Prisma.BikeOmit

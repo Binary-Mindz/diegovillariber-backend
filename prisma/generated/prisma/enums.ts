@@ -9,6 +9,53 @@
 * 🟢 You can import this file directly.
 */
 
+export const AdStatus = {
+  ACTIVE: 'ACTIVE',
+  PAUSE: 'PAUSE'
+} as const
+
+export type AdStatus = (typeof AdStatus)[keyof typeof AdStatus]
+
+
+export const BannerWidth = {
+  FULL_WIDTH: 'FULL_WIDTH',
+  CONTAINED: 'CONTAINED',
+  NARROW: 'NARROW',
+  CUSTOM: 'CUSTOM'
+} as const
+
+export type BannerWidth = (typeof BannerWidth)[keyof typeof BannerWidth]
+
+
+export const BannerHeight = {
+  AUTO_HEIGHT: 'AUTO_HEIGHT',
+  SMALL: 'SMALL',
+  MEDIUM: 'MEDIUM',
+  LARGE: 'LARGE',
+  EXTRA_LARGE: 'EXTRA_LARGE'
+} as const
+
+export type BannerHeight = (typeof BannerHeight)[keyof typeof BannerHeight]
+
+
+export const Placement = {
+  ALL: 'ALL',
+  IOS: 'IOS',
+  ANDROID: 'ANDROID',
+  WEB: 'WEB'
+} as const
+
+export type Placement = (typeof Placement)[keyof typeof Placement]
+
+
+export const LinkType = {
+  EXTERNAL_LINK: 'EXTERNAL_LINK',
+  POST_LINK: 'POST_LINK'
+} as const
+
+export type LinkType = (typeof LinkType)[keyof typeof LinkType]
+
+
 export const ChallengeType = {
   PHOTO: 'PHOTO',
   VIDEO: 'VIDEO',
