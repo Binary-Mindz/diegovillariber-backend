@@ -624,20 +624,12 @@ export type EnumAmbassadorStatusFieldUpdateOperationsInput = {
   set?: $Enums.AmbassadorStatus
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type AmbassadorProgramCreateNestedOneWithoutUserInput = {

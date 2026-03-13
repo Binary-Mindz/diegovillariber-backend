@@ -1,0 +1,79 @@
+model Ad {
+id    String @id @default(uuid()) @db.Uuid
+title String
+link LinkType @default( EXTERNAL_LINK)
+linkUrl String
+bannerUrl String?
+localRatio Int?
+nationRatio Int?
+worldWide String?
+targetUrl String?
+altText String?
+startDate DateTime
+endDate   DateTime 
+vehicleType Preference @default(CAR)
+placement Placement @default(ALL)
+minimumPoint Int?
+maximumPoint Int?
+cap Int?
+dailyBudget String?
+totalBudget String?
+countryCode String?
+languages String?
+tags String?
+spotter Boolean @default(false)
+proDriver Boolean @default(false)
+owner Boolean @default(false)
+proBussiness Boolean @default(false)
+contentCreator Boolean @default(false)
+simRacingDriver Boolean @default(false)
+enableAdGlobally Boolean @default(false)
+showAd Int?
+maxAdPerPage Int?
+rotationIntervel Int?
+bannerWidth BannerWidth @default(FULL_WIDTH)
+bannerHeight BannerHeight @default(AUTO_HEIGHT)
+prioritize Boolean @default(false)
+autoPause  Boolean @default(false)
+minimumCTR Int?
+enableBannerAnimation Boolean @default(false)
+autoRotationEnabled Boolean @default(false)
+previewMode Boolean @default(false)
+showFeed Boolean @default(false)
+showProfile Boolean @default(false)
+showMarketPlace Boolean @default(false)
+showEvent Boolean @default(false)
+showChallenges Boolean @default(false)
+showBattle Boolean @default(false)
+adStatus AdStatus @default(PAUSE)
+}
+
+enum AdStatus {
+  ACTIVE
+  PAUSE
+}
+
+enum BannerWidth {
+  FULL_WIDTH
+  CONTAINED
+  NARROW
+  CUSTOM
+}
+enum BannerHeight {
+ AUTO_HEIGHT
+ SMALL
+ MEDIUM
+ LARGE
+ EXTRA_LARGE 
+}
+enum Placement {
+  ALL
+  IOS
+  ANDROID
+  WEB
+}
+
+enum LinkType{
+  EXTERNAL_LINK
+  POST_LINK
+}

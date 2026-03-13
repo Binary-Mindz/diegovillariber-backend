@@ -305,10 +305,6 @@ export type AdvancedCarDataScalarRelationFilter = {
   isNot?: Prisma.AdvancedCarDataWhereInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type AdvancedCarDataCreateNestedManyWithoutCarInput = {
   create?: Prisma.XOR<Prisma.AdvancedCarDataCreateWithoutCarInput, Prisma.AdvancedCarDataUncheckedCreateWithoutCarInput> | Prisma.AdvancedCarDataCreateWithoutCarInput[] | Prisma.AdvancedCarDataUncheckedCreateWithoutCarInput[]
   connectOrCreate?: Prisma.AdvancedCarDataCreateOrConnectWithoutCarInput | Prisma.AdvancedCarDataCreateOrConnectWithoutCarInput[]

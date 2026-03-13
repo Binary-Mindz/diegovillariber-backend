@@ -689,18 +689,6 @@ export type EnumDriveCategoryBikeFieldUpdateOperationsInput = {
   set?: $Enums.DriveCategoryBike
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type BikeCreateNestedOneWithoutAdvancedBikeDatasInput = {
   create?: Prisma.XOR<Prisma.BikeCreateWithoutAdvancedBikeDatasInput, Prisma.BikeUncheckedCreateWithoutAdvancedBikeDatasInput>
   connectOrCreate?: Prisma.BikeCreateOrConnectWithoutAdvancedBikeDatasInput
