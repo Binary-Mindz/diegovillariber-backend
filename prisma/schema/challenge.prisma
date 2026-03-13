@@ -109,6 +109,7 @@ model Challenge {
   challengeParticipants       ChallengeParticipant[]
   challengeResults            ChallengeResult[]
   challengeWinners            ChallengeWinner[]
+  programType  ProgramType @default(CHALLENGE)
 
   @@index([creatorId])
   @@index([status])

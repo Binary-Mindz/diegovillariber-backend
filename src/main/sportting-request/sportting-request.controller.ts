@@ -30,7 +30,7 @@ export class SpottingRequestController {
 
   @Post()
   async create(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: CreateSpottingRequestDto,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -45,7 +45,7 @@ export class SpottingRequestController {
 
   @Get('my')
   async myRequests(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
@@ -59,7 +59,7 @@ export class SpottingRequestController {
 
   @Patch(':id/pause')
   async pause(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -74,7 +74,7 @@ export class SpottingRequestController {
 
   @Patch(':id/activate')
   async activate(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -89,7 +89,7 @@ export class SpottingRequestController {
 
   @Patch(':id/cancel')
   async cancel(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -104,7 +104,7 @@ export class SpottingRequestController {
 
   @Get(':id/matches')
   async matches(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -119,7 +119,7 @@ export class SpottingRequestController {
 
   @Post('nearby-posts')
   async nearbyPosts(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: NearbyPostsDto,
     @Res({ passthrough: true }) res: Response,
   ) {

@@ -100,7 +100,7 @@ model SplitScreenMatchRequest {
   updatedAt                   DateTime            @updatedAt
   splitScreenBattlesLeftUser  SplitScreenBattle[] @relation("LeftRequestBattle")
   splitScreenBattlesRightUser SplitScreenBattle[] @relation("RightRequestBattle")
-
+  programType  ProgramType @default(SPLIT_SCREEN)
   @@index([status, league, division, battleCategory])
   @@index([userId, status])
   @@index([profileId])

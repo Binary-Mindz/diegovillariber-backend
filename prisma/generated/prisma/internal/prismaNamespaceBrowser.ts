@@ -412,7 +412,8 @@ export const ChallengeScalarFieldEnum = {
   maxEntriesPerUser: 'maxEntriesPerUser',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type ChallengeScalarFieldEnum = (typeof ChallengeScalarFieldEnum)[keyof typeof ChallengeScalarFieldEnum]
@@ -776,7 +777,8 @@ export const HeadToHeadBattleScalarFieldEnum = {
   endDate: 'endDate',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type HeadToHeadBattleScalarFieldEnum = (typeof HeadToHeadBattleScalarFieldEnum)[keyof typeof HeadToHeadBattleScalarFieldEnum]
@@ -1233,7 +1235,8 @@ export const RawShiftBattleScalarFieldEnum = {
   endDate: 'endDate',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type RawShiftBattleScalarFieldEnum = (typeof RawShiftBattleScalarFieldEnum)[keyof typeof RawShiftBattleScalarFieldEnum]
@@ -1375,7 +1378,8 @@ export const SplitScreenMatchRequestScalarFieldEnum = {
   cancelledAt: 'cancelledAt',
   matchedAt: 'matchedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type SplitScreenMatchRequestScalarFieldEnum = (typeof SplitScreenMatchRequestScalarFieldEnum)[keyof typeof SplitScreenMatchRequestScalarFieldEnum]

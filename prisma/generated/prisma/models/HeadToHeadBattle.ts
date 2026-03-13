@@ -72,6 +72,7 @@ export type HeadToHeadBattleMinAggregateOutputType = {
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type HeadToHeadBattleMaxAggregateOutputType = {
@@ -104,6 +105,7 @@ export type HeadToHeadBattleMaxAggregateOutputType = {
   status: $Enums.BattleStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type HeadToHeadBattleCountAggregateOutputType = {
@@ -136,6 +138,7 @@ export type HeadToHeadBattleCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  programType: number
   _all: number
 }
 
@@ -186,6 +189,7 @@ export type HeadToHeadBattleMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type HeadToHeadBattleMaxAggregateInputType = {
@@ -218,6 +222,7 @@ export type HeadToHeadBattleMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type HeadToHeadBattleCountAggregateInputType = {
@@ -250,6 +255,7 @@ export type HeadToHeadBattleCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
   _all?: true
 }
 
@@ -369,6 +375,7 @@ export type HeadToHeadBattleGroupByOutputType = {
   status: $Enums.BattleStatus
   createdAt: Date
   updatedAt: Date
+  programType: $Enums.ProgramType
   _count: HeadToHeadBattleCountAggregateOutputType | null
   _avg: HeadToHeadBattleAvgAggregateOutputType | null
   _sum: HeadToHeadBattleSumAggregateOutputType | null
@@ -424,6 +431,7 @@ export type HeadToHeadBattleWhereInput = {
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"HeadToHeadBattle"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.BattleParticipantListRelationFilter
@@ -463,6 +471,7 @@ export type HeadToHeadBattleOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
   winnerUser?: Prisma.UserOrderByWithRelationInput
   participants?: Prisma.BattleParticipantOrderByRelationAggregateInput
@@ -505,6 +514,7 @@ export type HeadToHeadBattleWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"HeadToHeadBattle"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.BattleParticipantListRelationFilter
@@ -544,6 +554,7 @@ export type HeadToHeadBattleOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   _count?: Prisma.HeadToHeadBattleCountOrderByAggregateInput
   _avg?: Prisma.HeadToHeadBattleAvgOrderByAggregateInput
   _max?: Prisma.HeadToHeadBattleMaxOrderByAggregateInput
@@ -584,6 +595,7 @@ export type HeadToHeadBattleScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumBattleStatusWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"HeadToHeadBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeWithAggregatesFilter<"HeadToHeadBattle"> | $Enums.ProgramType
 }
 
 export type HeadToHeadBattleCreateInput = {
@@ -614,6 +626,7 @@ export type HeadToHeadBattleCreateInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
@@ -653,6 +666,7 @@ export type HeadToHeadBattleUncheckedCreateInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
@@ -688,6 +702,7 @@ export type HeadToHeadBattleUpdateInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
@@ -727,6 +742,7 @@ export type HeadToHeadBattleUncheckedUpdateInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
@@ -764,6 +780,7 @@ export type HeadToHeadBattleCreateManyInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type HeadToHeadBattleUpdateManyMutationInput = {
@@ -794,6 +811,7 @@ export type HeadToHeadBattleUpdateManyMutationInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type HeadToHeadBattleUncheckedUpdateManyInput = {
@@ -826,6 +844,7 @@ export type HeadToHeadBattleUncheckedUpdateManyInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type HeadToHeadBattleCountOrderByAggregateInput = {
@@ -858,6 +877,7 @@ export type HeadToHeadBattleCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleAvgOrderByAggregateInput = {
@@ -898,6 +918,7 @@ export type HeadToHeadBattleMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleMinOrderByAggregateInput = {
@@ -930,6 +951,7 @@ export type HeadToHeadBattleMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type HeadToHeadBattleSumOrderByAggregateInput = {
@@ -1157,6 +1179,7 @@ export type HeadToHeadBattleCreateWithoutParticipantsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
@@ -1195,6 +1218,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutParticipantsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
   battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -1245,6 +1269,7 @@ export type HeadToHeadBattleUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
@@ -1283,6 +1308,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
   battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -1317,6 +1343,7 @@ export type HeadToHeadBattleCreateWithoutInvitationsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
@@ -1355,6 +1382,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutInvitationsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
   battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -1405,6 +1433,7 @@ export type HeadToHeadBattleUpdateWithoutInvitationsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
@@ -1443,6 +1472,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutInvitationsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
   battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -1477,6 +1507,7 @@ export type HeadToHeadBattleCreateWithoutSubmissionsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
@@ -1515,6 +1546,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutSubmissionsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -1565,6 +1597,7 @@ export type HeadToHeadBattleUpdateWithoutSubmissionsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
@@ -1603,6 +1636,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutSubmissionsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -1637,6 +1671,7 @@ export type HeadToHeadBattleCreateWithoutBattleVotesInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
@@ -1675,6 +1710,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleVotesInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
@@ -1725,6 +1761,7 @@ export type HeadToHeadBattleUpdateWithoutBattleVotesInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
@@ -1763,6 +1800,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleVotesInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
@@ -1797,6 +1835,7 @@ export type HeadToHeadBattleCreateWithoutBattleCommentsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
@@ -1835,6 +1874,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutBattleCommentsInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
@@ -1885,6 +1925,7 @@ export type HeadToHeadBattleUpdateWithoutBattleCommentsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
@@ -1923,6 +1964,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutBattleCommentsInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
@@ -1957,6 +1999,7 @@ export type HeadToHeadBattleCreateWithoutCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   winnerUser?: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesWonInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
@@ -1994,6 +2037,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
@@ -2039,6 +2083,7 @@ export type HeadToHeadBattleCreateWithoutWinnerUserInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutHeadToHeadBattlesCreatedInput
   participants?: Prisma.BattleParticipantCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationCreateNestedManyWithoutBattleInput
@@ -2076,6 +2121,7 @@ export type HeadToHeadBattleUncheckedCreateWithoutWinnerUserInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutBattleInput
   invitations?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutBattleInput
   submissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutBattleInput
@@ -2142,6 +2188,7 @@ export type HeadToHeadBattleScalarWhereInput = {
   status?: Prisma.EnumBattleStatusFilter<"HeadToHeadBattle"> | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"HeadToHeadBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"HeadToHeadBattle"> | $Enums.ProgramType
 }
 
 export type HeadToHeadBattleUpsertWithWhereUniqueWithoutWinnerUserInput = {
@@ -2189,6 +2236,7 @@ export type HeadToHeadBattleCreateManyCreatorInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type HeadToHeadBattleCreateManyWinnerUserInput = {
@@ -2220,6 +2268,7 @@ export type HeadToHeadBattleCreateManyWinnerUserInput = {
   status?: $Enums.BattleStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type HeadToHeadBattleUpdateWithoutCreatorInput = {
@@ -2250,6 +2299,7 @@ export type HeadToHeadBattleUpdateWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   winnerUser?: Prisma.UserUpdateOneWithoutHeadToHeadBattlesWonNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
@@ -2287,6 +2337,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
@@ -2323,6 +2374,7 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutCreatorInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
@@ -2353,6 +2405,7 @@ export type HeadToHeadBattleUpdateWithoutWinnerUserInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutHeadToHeadBattlesCreatedNestedInput
   participants?: Prisma.BattleParticipantUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUpdateManyWithoutBattleNestedInput
@@ -2390,6 +2443,7 @@ export type HeadToHeadBattleUncheckedUpdateWithoutWinnerUserInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutBattleNestedInput
   invitations?: Prisma.BattleInvitationUncheckedUpdateManyWithoutBattleNestedInput
   submissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutBattleNestedInput
@@ -2426,6 +2480,7 @@ export type HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserInput = {
   status?: Prisma.EnumBattleStatusFieldUpdateOperationsInput | $Enums.BattleStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 
@@ -2525,6 +2580,7 @@ export type HeadToHeadBattleSelect<ExtArgs extends runtime.Types.Extensions.Inte
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
   participants?: boolean | Prisma.HeadToHeadBattle$participantsArgs<ExtArgs>
@@ -2565,6 +2621,7 @@ export type HeadToHeadBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["headToHeadBattle"]>
@@ -2599,6 +2656,7 @@ export type HeadToHeadBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["headToHeadBattle"]>
@@ -2633,9 +2691,10 @@ export type HeadToHeadBattleSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
 }
 
-export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "preference" | "description" | "coverImage" | "battleCategory" | "brandFilter" | "durationDays" | "winPrize" | "uploadImageOrVideo" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["headToHeadBattle"]>
+export type HeadToHeadBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "preference" | "description" | "coverImage" | "battleCategory" | "brandFilter" | "durationDays" | "winPrize" | "uploadImageOrVideo" | "cameraRequirement" | "requireTrueShotVerified" | "rejectEditedPhotos" | "accessType" | "autoInviteScope" | "autoInviteCount" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "placeId" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["headToHeadBattle"]>
 export type HeadToHeadBattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.HeadToHeadBattle$winnerUserArgs<ExtArgs>
@@ -2696,6 +2755,7 @@ export type $HeadToHeadBattlePayload<ExtArgs extends runtime.Types.Extensions.In
     status: $Enums.BattleStatus
     createdAt: Date
     updatedAt: Date
+    programType: $Enums.ProgramType
   }, ExtArgs["result"]["headToHeadBattle"]>
   composites: {}
 }
@@ -3155,6 +3215,7 @@ export interface HeadToHeadBattleFieldRefs {
   readonly status: Prisma.FieldRef<"HeadToHeadBattle", 'BattleStatus'>
   readonly createdAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"HeadToHeadBattle", 'DateTime'>
+  readonly programType: Prisma.FieldRef<"HeadToHeadBattle", 'ProgramType'>
 }
     
 

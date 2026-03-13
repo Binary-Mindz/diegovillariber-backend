@@ -38,7 +38,7 @@ async getMySummary(
 
   @Get('me/history')
   async getMyHistory(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Query('page') page = '1',
     @Query('limit') limit = '10',
     @Res({ passthrough: true }) res: Response,

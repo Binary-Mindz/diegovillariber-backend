@@ -48,6 +48,7 @@ model RawShiftBattle {
   participants RawShiftParticipant[]
   entries      RawShiftEntry[]
   comments     RawShiftComment[]
+  programType  ProgramType @default(RAW_SHIFT)
 
   @@index([creatorId])
   @@index([status])

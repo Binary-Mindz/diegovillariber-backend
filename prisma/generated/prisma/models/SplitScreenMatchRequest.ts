@@ -53,6 +53,7 @@ export type SplitScreenMatchRequestMinAggregateOutputType = {
   matchedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type SplitScreenMatchRequestMaxAggregateOutputType = {
@@ -74,6 +75,7 @@ export type SplitScreenMatchRequestMaxAggregateOutputType = {
   matchedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type SplitScreenMatchRequestCountAggregateOutputType = {
@@ -95,6 +97,7 @@ export type SplitScreenMatchRequestCountAggregateOutputType = {
   matchedAt: number
   createdAt: number
   updatedAt: number
+  programType: number
   _all: number
 }
 
@@ -126,6 +129,7 @@ export type SplitScreenMatchRequestMinAggregateInputType = {
   matchedAt?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type SplitScreenMatchRequestMaxAggregateInputType = {
@@ -147,6 +151,7 @@ export type SplitScreenMatchRequestMaxAggregateInputType = {
   matchedAt?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type SplitScreenMatchRequestCountAggregateInputType = {
@@ -168,6 +173,7 @@ export type SplitScreenMatchRequestCountAggregateInputType = {
   matchedAt?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
   _all?: true
 }
 
@@ -276,6 +282,7 @@ export type SplitScreenMatchRequestGroupByOutputType = {
   matchedAt: Date | null
   createdAt: Date
   updatedAt: Date
+  programType: $Enums.ProgramType
   _count: SplitScreenMatchRequestCountAggregateOutputType | null
   _avg: SplitScreenMatchRequestAvgAggregateOutputType | null
   _sum: SplitScreenMatchRequestSumAggregateOutputType | null
@@ -320,6 +327,7 @@ export type SplitScreenMatchRequestWhereInput = {
   matchedAt?: Prisma.DateTimeNullableFilter<"SplitScreenMatchRequest"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"SplitScreenMatchRequest"> | $Enums.ProgramType
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
@@ -347,6 +355,7 @@ export type SplitScreenMatchRequestOrderByWithRelationInput = {
   matchedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   profile?: Prisma.ProfileOrderByWithRelationInput
   car?: Prisma.CarOrderByWithRelationInput
@@ -377,6 +386,7 @@ export type SplitScreenMatchRequestWhereUniqueInput = Prisma.AtLeast<{
   matchedAt?: Prisma.DateTimeNullableFilter<"SplitScreenMatchRequest"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"SplitScreenMatchRequest"> | $Enums.ProgramType
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
@@ -404,6 +414,7 @@ export type SplitScreenMatchRequestOrderByWithAggregationInput = {
   matchedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   _count?: Prisma.SplitScreenMatchRequestCountOrderByAggregateInput
   _avg?: Prisma.SplitScreenMatchRequestAvgOrderByAggregateInput
   _max?: Prisma.SplitScreenMatchRequestMaxOrderByAggregateInput
@@ -433,6 +444,7 @@ export type SplitScreenMatchRequestScalarWhereWithAggregatesInput = {
   matchedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"SplitScreenMatchRequest"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenMatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"SplitScreenMatchRequest"> | Date | string
+  programType?: Prisma.EnumProgramTypeWithAggregatesFilter<"SplitScreenMatchRequest"> | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestCreateInput = {
@@ -450,6 +462,7 @@ export type SplitScreenMatchRequestCreateInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
@@ -477,6 +490,7 @@ export type SplitScreenMatchRequestUncheckedCreateInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
@@ -496,6 +510,7 @@ export type SplitScreenMatchRequestUpdateInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
@@ -523,6 +538,7 @@ export type SplitScreenMatchRequestUncheckedUpdateInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
@@ -546,6 +562,7 @@ export type SplitScreenMatchRequestCreateManyInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUpdateManyMutationInput = {
@@ -563,6 +580,7 @@ export type SplitScreenMatchRequestUpdateManyMutationInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUncheckedUpdateManyInput = {
@@ -584,6 +602,7 @@ export type SplitScreenMatchRequestUncheckedUpdateManyInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestListRelationFilter = {
@@ -615,6 +634,7 @@ export type SplitScreenMatchRequestCountOrderByAggregateInput = {
   matchedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type SplitScreenMatchRequestAvgOrderByAggregateInput = {
@@ -640,6 +660,7 @@ export type SplitScreenMatchRequestMaxOrderByAggregateInput = {
   matchedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type SplitScreenMatchRequestMinOrderByAggregateInput = {
@@ -661,6 +682,7 @@ export type SplitScreenMatchRequestMinOrderByAggregateInput = {
   matchedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type SplitScreenMatchRequestSumOrderByAggregateInput = {
@@ -911,6 +933,7 @@ export type SplitScreenMatchRequestCreateWithoutCarInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   matchedBattle?: Prisma.SplitScreenBattleCreateNestedOneWithoutRequestsInput
@@ -936,6 +959,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutCarInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
@@ -988,6 +1012,7 @@ export type SplitScreenMatchRequestScalarWhereInput = {
   matchedAt?: Prisma.DateTimeNullableFilter<"SplitScreenMatchRequest"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"SplitScreenMatchRequest"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"SplitScreenMatchRequest"> | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestCreateWithoutProfileInput = {
@@ -1005,6 +1030,7 @@ export type SplitScreenMatchRequestCreateWithoutProfileInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
   matchedBattle?: Prisma.SplitScreenBattleCreateNestedOneWithoutRequestsInput
@@ -1030,6 +1056,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutProfileInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
@@ -1075,6 +1102,7 @@ export type SplitScreenMatchRequestCreateWithoutSplitScreenBattlesLeftUserInput 
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
@@ -1101,6 +1129,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutSplitScreenBattlesLeftU
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
 
@@ -1124,6 +1153,7 @@ export type SplitScreenMatchRequestCreateWithoutSplitScreenBattlesRightUserInput
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
@@ -1150,6 +1180,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutSplitScreenBattlesRight
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
 }
 
@@ -1173,6 +1204,7 @@ export type SplitScreenMatchRequestCreateWithoutMatchedBattleInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   user: Prisma.UserCreateNestedOneWithoutSplitScreenMatchRequestsInput
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
@@ -1198,6 +1230,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutMatchedBattleInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
@@ -1238,6 +1271,7 @@ export type SplitScreenMatchRequestUpdateWithoutSplitScreenBattlesLeftUserInput 
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
@@ -1264,6 +1298,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutSplitScreenBattlesLeftU
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
 
@@ -1293,6 +1328,7 @@ export type SplitScreenMatchRequestUpdateWithoutSplitScreenBattlesRightUserInput
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
@@ -1319,6 +1355,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutSplitScreenBattlesRight
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
 }
 
@@ -1353,6 +1390,7 @@ export type SplitScreenMatchRequestCreateWithoutUserInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   profile: Prisma.ProfileCreateNestedOneWithoutSplitScreenMatchRequestsInput
   car: Prisma.CarCreateNestedOneWithoutSplitScreenMatchRequestsInput
   matchedBattle?: Prisma.SplitScreenBattleCreateNestedOneWithoutRequestsInput
@@ -1378,6 +1416,7 @@ export type SplitScreenMatchRequestUncheckedCreateWithoutUserInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftRequestInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightRequestInput
 }
@@ -1426,6 +1465,7 @@ export type SplitScreenMatchRequestCreateManyCarInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUpdateWithoutCarInput = {
@@ -1443,6 +1483,7 @@ export type SplitScreenMatchRequestUpdateWithoutCarInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   matchedBattle?: Prisma.SplitScreenBattleUpdateOneWithoutRequestsNestedInput
@@ -1468,6 +1509,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutCarInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
@@ -1490,6 +1532,7 @@ export type SplitScreenMatchRequestUncheckedUpdateManyWithoutCarInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestCreateManyProfileInput = {
@@ -1510,6 +1553,7 @@ export type SplitScreenMatchRequestCreateManyProfileInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUpdateWithoutProfileInput = {
@@ -1527,6 +1571,7 @@ export type SplitScreenMatchRequestUpdateWithoutProfileInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   matchedBattle?: Prisma.SplitScreenBattleUpdateOneWithoutRequestsNestedInput
@@ -1552,6 +1597,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutProfileInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
@@ -1574,6 +1620,7 @@ export type SplitScreenMatchRequestUncheckedUpdateManyWithoutProfileInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestCreateManyMatchedBattleInput = {
@@ -1594,6 +1641,7 @@ export type SplitScreenMatchRequestCreateManyMatchedBattleInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUpdateWithoutMatchedBattleInput = {
@@ -1611,6 +1659,7 @@ export type SplitScreenMatchRequestUpdateWithoutMatchedBattleInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   user?: Prisma.UserUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
@@ -1636,6 +1685,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutMatchedBattleInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
@@ -1658,6 +1708,7 @@ export type SplitScreenMatchRequestUncheckedUpdateManyWithoutMatchedBattleInput 
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestCreateManyUserInput = {
@@ -1678,6 +1729,7 @@ export type SplitScreenMatchRequestCreateManyUserInput = {
   matchedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type SplitScreenMatchRequestUpdateWithoutUserInput = {
@@ -1695,6 +1747,7 @@ export type SplitScreenMatchRequestUpdateWithoutUserInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   profile?: Prisma.ProfileUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   car?: Prisma.CarUpdateOneRequiredWithoutSplitScreenMatchRequestsNestedInput
   matchedBattle?: Prisma.SplitScreenBattleUpdateOneWithoutRequestsNestedInput
@@ -1720,6 +1773,7 @@ export type SplitScreenMatchRequestUncheckedUpdateWithoutUserInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftRequestNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightRequestNestedInput
 }
@@ -1742,6 +1796,7 @@ export type SplitScreenMatchRequestUncheckedUpdateManyWithoutUserInput = {
   matchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 
@@ -1803,6 +1858,7 @@ export type SplitScreenMatchRequestSelect<ExtArgs extends runtime.Types.Extensio
   matchedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
@@ -1831,6 +1887,7 @@ export type SplitScreenMatchRequestSelectCreateManyAndReturn<ExtArgs extends run
   matchedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
@@ -1856,6 +1913,7 @@ export type SplitScreenMatchRequestSelectUpdateManyAndReturn<ExtArgs extends run
   matchedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
@@ -1881,9 +1939,10 @@ export type SplitScreenMatchRequestSelectScalar = {
   matchedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
 }
 
-export type SplitScreenMatchRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "league" | "division" | "matchmakingMode" | "preferenceMode" | "preferredBrand" | "battleCategory" | "prestigePoint" | "status" | "matchedBattleId" | "expiresAt" | "cancelledAt" | "matchedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["splitScreenMatchRequest"]>
+export type SplitScreenMatchRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "league" | "division" | "matchmakingMode" | "preferenceMode" | "preferredBrand" | "battleCategory" | "prestigePoint" | "status" | "matchedBattleId" | "expiresAt" | "cancelledAt" | "matchedAt" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["splitScreenMatchRequest"]>
 export type SplitScreenMatchRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
@@ -1935,6 +1994,7 @@ export type $SplitScreenMatchRequestPayload<ExtArgs extends runtime.Types.Extens
     matchedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    programType: $Enums.ProgramType
   }, ExtArgs["result"]["splitScreenMatchRequest"]>
   composites: {}
 }
@@ -2382,6 +2442,7 @@ export interface SplitScreenMatchRequestFieldRefs {
   readonly matchedAt: Prisma.FieldRef<"SplitScreenMatchRequest", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"SplitScreenMatchRequest", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"SplitScreenMatchRequest", 'DateTime'>
+  readonly programType: Prisma.FieldRef<"SplitScreenMatchRequest", 'ProgramType'>
 }
     
 

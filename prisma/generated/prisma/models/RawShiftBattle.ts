@@ -50,6 +50,7 @@ export type RawShiftBattleMinAggregateOutputType = {
   status: $Enums.RawShiftStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type RawShiftBattleMaxAggregateOutputType = {
@@ -68,6 +69,7 @@ export type RawShiftBattleMaxAggregateOutputType = {
   status: $Enums.RawShiftStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type RawShiftBattleCountAggregateOutputType = {
@@ -86,6 +88,7 @@ export type RawShiftBattleCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  programType: number
   _all: number
 }
 
@@ -114,6 +117,7 @@ export type RawShiftBattleMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type RawShiftBattleMaxAggregateInputType = {
@@ -132,6 +136,7 @@ export type RawShiftBattleMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type RawShiftBattleCountAggregateInputType = {
@@ -150,6 +155,7 @@ export type RawShiftBattleCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
   _all?: true
 }
 
@@ -255,6 +261,7 @@ export type RawShiftBattleGroupByOutputType = {
   status: $Enums.RawShiftStatus
   createdAt: Date
   updatedAt: Date
+  programType: $Enums.ProgramType
   _count: RawShiftBattleCountAggregateOutputType | null
   _avg: RawShiftBattleAvgAggregateOutputType | null
   _sum: RawShiftBattleSumAggregateOutputType | null
@@ -296,6 +303,7 @@ export type RawShiftBattleWhereInput = {
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"RawShiftBattle"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.RawShiftParticipantListRelationFilter
@@ -319,6 +327,7 @@ export type RawShiftBattleOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
   winnerUser?: Prisma.UserOrderByWithRelationInput
   participants?: Prisma.RawShiftParticipantOrderByRelationAggregateInput
@@ -345,6 +354,7 @@ export type RawShiftBattleWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"RawShiftBattle"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   winnerUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   participants?: Prisma.RawShiftParticipantListRelationFilter
@@ -368,6 +378,7 @@ export type RawShiftBattleOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   _count?: Prisma.RawShiftBattleCountOrderByAggregateInput
   _avg?: Prisma.RawShiftBattleAvgOrderByAggregateInput
   _max?: Prisma.RawShiftBattleMaxOrderByAggregateInput
@@ -394,6 +405,7 @@ export type RawShiftBattleScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumRawShiftStatusWithAggregatesFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RawShiftBattle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RawShiftBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeWithAggregatesFilter<"RawShiftBattle"> | $Enums.ProgramType
 }
 
 export type RawShiftBattleCreateInput = {
@@ -410,6 +422,7 @@ export type RawShiftBattleCreateInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutRawShiftBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutRawShiftBattlesWonInput
   participants?: Prisma.RawShiftParticipantCreateNestedManyWithoutBattleInput
@@ -433,6 +446,7 @@ export type RawShiftBattleUncheckedCreateInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutBattleInput
   comments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -452,6 +466,7 @@ export type RawShiftBattleUpdateInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutRawShiftBattlesWonNestedInput
   participants?: Prisma.RawShiftParticipantUpdateManyWithoutBattleNestedInput
@@ -475,6 +490,7 @@ export type RawShiftBattleUncheckedUpdateInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutBattleNestedInput
   comments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -496,6 +512,7 @@ export type RawShiftBattleCreateManyInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type RawShiftBattleUpdateManyMutationInput = {
@@ -512,6 +529,7 @@ export type RawShiftBattleUpdateManyMutationInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type RawShiftBattleUncheckedUpdateManyInput = {
@@ -530,6 +548,7 @@ export type RawShiftBattleUncheckedUpdateManyInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type RawShiftBattleCountOrderByAggregateInput = {
@@ -548,6 +567,7 @@ export type RawShiftBattleCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type RawShiftBattleAvgOrderByAggregateInput = {
@@ -570,6 +590,7 @@ export type RawShiftBattleMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type RawShiftBattleMinOrderByAggregateInput = {
@@ -588,6 +609,7 @@ export type RawShiftBattleMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type RawShiftBattleSumOrderByAggregateInput = {
@@ -760,6 +782,7 @@ export type RawShiftBattleCreateWithoutParticipantsInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutRawShiftBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutRawShiftBattlesWonInput
   entries?: Prisma.RawShiftEntryCreateNestedManyWithoutBattleInput
@@ -782,6 +805,7 @@ export type RawShiftBattleUncheckedCreateWithoutParticipantsInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   entries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutBattleInput
   comments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutBattleInput
 }
@@ -816,6 +840,7 @@ export type RawShiftBattleUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutRawShiftBattlesWonNestedInput
   entries?: Prisma.RawShiftEntryUpdateManyWithoutBattleNestedInput
@@ -838,6 +863,7 @@ export type RawShiftBattleUncheckedUpdateWithoutParticipantsInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   entries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutBattleNestedInput
   comments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutBattleNestedInput
 }
@@ -856,6 +882,7 @@ export type RawShiftBattleCreateWithoutEntriesInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutRawShiftBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutRawShiftBattlesWonInput
   participants?: Prisma.RawShiftParticipantCreateNestedManyWithoutBattleInput
@@ -878,6 +905,7 @@ export type RawShiftBattleUncheckedCreateWithoutEntriesInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutBattleInput
   comments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutBattleInput
 }
@@ -912,6 +940,7 @@ export type RawShiftBattleUpdateWithoutEntriesInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutRawShiftBattlesWonNestedInput
   participants?: Prisma.RawShiftParticipantUpdateManyWithoutBattleNestedInput
@@ -934,6 +963,7 @@ export type RawShiftBattleUncheckedUpdateWithoutEntriesInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutBattleNestedInput
   comments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutBattleNestedInput
 }
@@ -952,6 +982,7 @@ export type RawShiftBattleCreateWithoutCommentsInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutRawShiftBattlesCreatedInput
   winnerUser?: Prisma.UserCreateNestedOneWithoutRawShiftBattlesWonInput
   participants?: Prisma.RawShiftParticipantCreateNestedManyWithoutBattleInput
@@ -974,6 +1005,7 @@ export type RawShiftBattleUncheckedCreateWithoutCommentsInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutBattleInput
 }
@@ -1008,6 +1040,7 @@ export type RawShiftBattleUpdateWithoutCommentsInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput
   winnerUser?: Prisma.UserUpdateOneWithoutRawShiftBattlesWonNestedInput
   participants?: Prisma.RawShiftParticipantUpdateManyWithoutBattleNestedInput
@@ -1030,6 +1063,7 @@ export type RawShiftBattleUncheckedUpdateWithoutCommentsInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutBattleNestedInput
 }
@@ -1048,6 +1082,7 @@ export type RawShiftBattleCreateWithoutCreatorInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   winnerUser?: Prisma.UserCreateNestedOneWithoutRawShiftBattlesWonInput
   participants?: Prisma.RawShiftParticipantCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryCreateNestedManyWithoutBattleInput
@@ -1069,6 +1104,7 @@ export type RawShiftBattleUncheckedCreateWithoutCreatorInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutBattleInput
   comments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -1098,6 +1134,7 @@ export type RawShiftBattleCreateWithoutWinnerUserInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutRawShiftBattlesCreatedInput
   participants?: Prisma.RawShiftParticipantCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryCreateNestedManyWithoutBattleInput
@@ -1119,6 +1156,7 @@ export type RawShiftBattleUncheckedCreateWithoutWinnerUserInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutBattleInput
   entries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutBattleInput
   comments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutBattleInput
@@ -1169,6 +1207,7 @@ export type RawShiftBattleScalarWhereInput = {
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"RawShiftBattle"> | $Enums.ProgramType
 }
 
 export type RawShiftBattleUpsertWithWhereUniqueWithoutWinnerUserInput = {
@@ -1202,6 +1241,7 @@ export type RawShiftBattleCreateManyCreatorInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type RawShiftBattleCreateManyWinnerUserInput = {
@@ -1219,6 +1259,7 @@ export type RawShiftBattleCreateManyWinnerUserInput = {
   status?: $Enums.RawShiftStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type RawShiftBattleUpdateWithoutCreatorInput = {
@@ -1235,6 +1276,7 @@ export type RawShiftBattleUpdateWithoutCreatorInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   winnerUser?: Prisma.UserUpdateOneWithoutRawShiftBattlesWonNestedInput
   participants?: Prisma.RawShiftParticipantUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUpdateManyWithoutBattleNestedInput
@@ -1256,6 +1298,7 @@ export type RawShiftBattleUncheckedUpdateWithoutCreatorInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutBattleNestedInput
   comments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -1276,6 +1319,7 @@ export type RawShiftBattleUncheckedUpdateManyWithoutCreatorInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type RawShiftBattleUpdateWithoutWinnerUserInput = {
@@ -1292,6 +1336,7 @@ export type RawShiftBattleUpdateWithoutWinnerUserInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutRawShiftBattlesCreatedNestedInput
   participants?: Prisma.RawShiftParticipantUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUpdateManyWithoutBattleNestedInput
@@ -1313,6 +1358,7 @@ export type RawShiftBattleUncheckedUpdateWithoutWinnerUserInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   participants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutBattleNestedInput
   entries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutBattleNestedInput
   comments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutBattleNestedInput
@@ -1333,6 +1379,7 @@ export type RawShiftBattleUncheckedUpdateManyWithoutWinnerUserInput = {
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 
@@ -1400,6 +1447,7 @@ export type RawShiftBattleSelect<ExtArgs extends runtime.Types.Extensions.Intern
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.RawShiftBattle$winnerUserArgs<ExtArgs>
   participants?: boolean | Prisma.RawShiftBattle$participantsArgs<ExtArgs>
@@ -1424,6 +1472,7 @@ export type RawShiftBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.RawShiftBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["rawShiftBattle"]>
@@ -1444,6 +1493,7 @@ export type RawShiftBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.RawShiftBattle$winnerUserArgs<ExtArgs>
 }, ExtArgs["result"]["rawShiftBattle"]>
@@ -1464,9 +1514,10 @@ export type RawShiftBattleSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
 }
 
-export type RawShiftBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "coverImage" | "bannerImage" | "participantLimit" | "rawShiftPrice" | "location" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["rawShiftBattle"]>
+export type RawShiftBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "coverImage" | "bannerImage" | "participantLimit" | "rawShiftPrice" | "location" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["rawShiftBattle"]>
 export type RawShiftBattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.RawShiftBattle$winnerUserArgs<ExtArgs>
@@ -1509,6 +1560,7 @@ export type $RawShiftBattlePayload<ExtArgs extends runtime.Types.Extensions.Inte
     status: $Enums.RawShiftStatus
     createdAt: Date
     updatedAt: Date
+    programType: $Enums.ProgramType
   }, ExtArgs["result"]["rawShiftBattle"]>
   composites: {}
 }
@@ -1952,6 +2004,7 @@ export interface RawShiftBattleFieldRefs {
   readonly status: Prisma.FieldRef<"RawShiftBattle", 'RawShiftStatus'>
   readonly createdAt: Prisma.FieldRef<"RawShiftBattle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"RawShiftBattle", 'DateTime'>
+  readonly programType: Prisma.FieldRef<"RawShiftBattle", 'ProgramType'>
 }
     
 

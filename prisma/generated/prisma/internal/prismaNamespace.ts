@@ -7815,7 +7815,8 @@ export const ChallengeScalarFieldEnum = {
   maxEntriesPerUser: 'maxEntriesPerUser',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type ChallengeScalarFieldEnum = (typeof ChallengeScalarFieldEnum)[keyof typeof ChallengeScalarFieldEnum]
@@ -8179,7 +8180,8 @@ export const HeadToHeadBattleScalarFieldEnum = {
   endDate: 'endDate',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type HeadToHeadBattleScalarFieldEnum = (typeof HeadToHeadBattleScalarFieldEnum)[keyof typeof HeadToHeadBattleScalarFieldEnum]
@@ -8636,7 +8638,8 @@ export const RawShiftBattleScalarFieldEnum = {
   endDate: 'endDate',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type RawShiftBattleScalarFieldEnum = (typeof RawShiftBattleScalarFieldEnum)[keyof typeof RawShiftBattleScalarFieldEnum]
@@ -8778,7 +8781,8 @@ export const SplitScreenMatchRequestScalarFieldEnum = {
   cancelledAt: 'cancelledAt',
   matchedAt: 'matchedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  programType: 'programType'
 } as const
 
 export type SplitScreenMatchRequestScalarFieldEnum = (typeof SplitScreenMatchRequestScalarFieldEnum)[keyof typeof SplitScreenMatchRequestScalarFieldEnum]
@@ -9499,6 +9503,20 @@ export type EnumChallengeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$
  * Reference to a field of type 'ChallengeStatus[]'
  */
 export type ListEnumChallengeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChallengeStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ProgramType'
+ */
+export type EnumProgramTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProgramType'>
+    
+
+
+/**
+ * Reference to a field of type 'ProgramType[]'
+ */
+export type ListEnumProgramTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProgramType[]'>
     
 
 

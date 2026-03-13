@@ -1037,6 +1037,16 @@ export const NotificationStatus = {
 export type NotificationStatus = (typeof NotificationStatus)[keyof typeof NotificationStatus]
 
 
+export const ProgramType = {
+  CHALLENGE: 'CHALLENGE',
+  RAW_SHIFT: 'RAW_SHIFT',
+  SPLIT_SCREEN: 'SPLIT_SCREEN',
+  HEAD_TO_HEAD: 'HEAD_TO_HEAD'
+} as const
+
+export type ProgramType = (typeof ProgramType)[keyof typeof ProgramType]
+
+
 export const SplitScreenArenaStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'
