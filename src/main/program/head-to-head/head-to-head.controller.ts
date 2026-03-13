@@ -43,22 +43,22 @@ import { Role } from 'generated/prisma/enums';
 export class HeadToHeadController {
   constructor(private readonly service: HeadToHeadService) {}
 
-  @Get()
-  @ApiOperation({
-    summary: 'List HeadToHead battles (tabs: Active/Upcoming/Finished)',
-  })
-  async list(
-    @Query() query: HeadToHeadQueryDto,
-    @Res({ passthrough: true }) res: Response,
-  ) {
-    const response = await handleRequest(
-      () => this.service.listBattles(query),
-      'HeadToHead battles fetched successfully',
-    );
+ @Get()
+@ApiOperation({
+  summary: 'List HeadToHead battles (tabs: All/Active/Upcoming/Finished)',
+})
+async list(
+  @Query() query: HeadToHeadQueryDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.service.listBattles(query),
+    'HeadToHead battles fetched successfully',
+  );
 
-    res.status(response.statusCode);
-    return response;
-  }
+  res.status(response.statusCode);
+  return response;
+}
 
   @Get(':id')
   @ApiOperation({ summary: 'Get HeadToHead battle details' })
