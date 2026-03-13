@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  Post,
   Query,
   Res,
   UseGuards,
@@ -11,6 +12,7 @@ import {
 import { Response } from 'express';
 import {
   ApiBearerAuth,
+  ApiBody,
   ApiOperation,
   ApiParam,
   ApiQuery,
@@ -22,6 +24,7 @@ import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { UserBlockService } from './user-block.service';
 import { BlockStatusQueryDto } from './dto/block-status-query.dto';
+import { BlockUserDto } from './dto/block-user.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -29,6 +32,24 @@ import { BlockStatusQueryDto } from './dto/block-status-query.dto';
 @Controller('user-blocks')
 export class UserBlockController {
   constructor(private readonly userBlockService: UserBlockService) {}
+
+  @Post()
+  @ApiOperation({ summary: 'Block a user' })
+  @ApiBody({ type: BlockUserDto })
+  async blockUser(
+    @GetUser('userId') userId: string,
+    @Body() dto: BlockUserDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () =>
+        this.userBlockService.blockUser(userId, dto.targetUserId, dto.reason),
+      'User blocked successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get('my')
   @ApiOperation({ summary: 'Get my blocked users list' })

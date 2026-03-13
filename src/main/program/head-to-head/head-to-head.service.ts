@@ -49,8 +49,7 @@ async listBattles(query: HeadToHeadQueryDto) {
   const skip = (page - 1) * limit;
 
   const where: Prisma.HeadToHeadBattleWhereInput = {};
-
-  const tab = query.tab ?? HeadToHeadTab.ACTIVE;
+  const tab = query.tab ?? HeadToHeadTab;
 
   if (tab === HeadToHeadTab.ACTIVE) {
     where.status = BattleStatus.ACTIVE;
@@ -59,11 +58,23 @@ async listBattles(query: HeadToHeadQueryDto) {
   } else if (tab === HeadToHeadTab.FINISHED) {
     where.status = BattleStatus.FINISHED;
   }
+  // ALL হলে status filter apply হবে না
 
-  if (query.accessType) where.accessType = query.accessType;
-  if (query.battleCategory) where.battleCategory = query.battleCategory;
-  if (query.preference) where.preference = query.preference;
-  if (query.participationScope) where.participationScope = query.participationScope;
+  if (query.accessType) {
+    where.accessType = query.accessType;
+  }
+
+  if (query.battleCategory) {
+    where.battleCategory = query.battleCategory;
+  }
+
+  if (query.preference) {
+    where.preference = query.preference;
+  }
+
+  if (query.participationScope) {
+    where.participationScope = query.participationScope;
+  }
 
   if (query.search?.trim()) {
     const s = query.search.trim();
@@ -74,7 +85,11 @@ async listBattles(query: HeadToHeadQueryDto) {
       { locationName: { contains: s, mode: 'insensitive' } },
       { brandFilter: { contains: s, mode: 'insensitive' } },
       { winPrize: { contains: s, mode: 'insensitive' } },
-      { creator: { email: { contains: s, mode: 'insensitive' } } },
+      {
+        creator: {
+          email: { contains: s, mode: 'insensitive' },
+        },
+      },
       {
         creator: {
           profile: {
@@ -87,18 +102,44 @@ async listBattles(query: HeadToHeadQueryDto) {
     ];
   }
 
+  const orderBy: Prisma.HeadToHeadBattleOrderByWithRelationInput[] =
+    tab === HeadToHeadTab.FINISHED
+      ? [{ endDate: 'desc' }, { createdAt: 'desc' }]
+      : [{ startDate: 'asc' }, { createdAt: 'desc' }];
+
   const [items, total] = await this.prisma.$transaction([
     this.prisma.headToHeadBattle.findMany({
       where,
       skip,
       take: limit,
-      orderBy: [
-        { startDate: 'asc' },
-        { createdAt: 'desc' },
-      ],
+      orderBy,
       include: {
-        creator: true,
-        winnerUser: true,
+        creator: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
+        winnerUser: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
         _count: {
           select: {
             participants: true,
@@ -123,6 +164,7 @@ async listBattles(query: HeadToHeadQueryDto) {
     },
   };
 }
+
   async getBattle(id: string) {
     const battle = await this.prisma.headToHeadBattle.findUnique({
       where: { id },

@@ -415,7 +415,6 @@ export class AuthService {
     return user;
   }
 
-
   async getUserById(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
@@ -445,4 +444,23 @@ export class AuthService {
 
     return user;
   }
+
+ async deleteMe(userId: string) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true },
+  });
+
+  if (!user) throw new NotFoundException('User not found');
+
+  await this.prisma.user.delete({
+    where: { id: userId },
+  });
+
+  return {
+    message: 'User deleted',
+  };
 }
+
+}
+

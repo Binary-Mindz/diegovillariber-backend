@@ -6,7 +6,6 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
-
 @Injectable()
 export class UserBlockService {
   constructor(private readonly prisma: PrismaService) {}
@@ -47,7 +46,6 @@ export class UserBlockService {
         },
       });
 
-      // optional: remove follow relation both directions
       await tx.follow.deleteMany({
         where: {
           OR: [
@@ -63,10 +61,48 @@ export class UserBlockService {
         },
       });
 
-      return block;
+      return tx.userBlock.findUnique({
+        where: { id: block.id },
+        include: {
+          blockedUser: {
+            select: {
+              id: true,
+              email: true,
+              profile: {
+                select: {
+                  id: true,
+                  profileName: true,
+                  imageUrl: true,
+                  accountType: true,
+                },
+                take: 1,
+              },
+            },
+          },
+        },
+      });
     });
 
-    return result;
+    return {
+      statusCode: 201,
+      data: {
+        id: result?.id,
+        reason: result?.reason ?? null,
+        createdAt: result?.createdAt,
+        user: {
+          id: result?.blockedUser?.id ?? null,
+          email: result?.blockedUser?.email ?? null,
+          profile: result?.blockedUser?.profile?.[0]
+            ? {
+                id: result.blockedUser.profile[0].id,
+                profileName: result.blockedUser.profile[0].profileName,
+                imageUrl: result.blockedUser.profile[0].imageUrl,
+                accountType: result.blockedUser.profile[0].accountType,
+              }
+            : null,
+        },
+      },
+    };
   }
 
   async unblockUser(userId: string, targetUserId: string) {
@@ -93,7 +129,13 @@ export class UserBlockService {
       },
     });
 
-    return null;
+    return {
+      statusCode: 200,
+      data: {
+        unblocked: true,
+        targetUserId,
+      },
+    };
   }
 
   async getMyBlockedUsers(userId: string) {
@@ -116,37 +158,44 @@ export class UserBlockService {
                 imageUrl: true,
                 accountType: true,
               },
+              take: 1,
             },
           },
         },
       },
     });
 
-    return blocks.map((item) => ({
-      id: item.id,
-      reason: item.reason,
-      createdAt: item.createdAt,
-      user: {
-        id: item.blockedUser.id,
-        email: item.blockedUser.email,
-        profile: item.blockedUser.profile?.[0]
-          ? {
-              id: item.blockedUser.profile[0].id,
-              profileName: item.blockedUser.profile[0].profileName,
-              imageUrl: item.blockedUser.profile[0].imageUrl,
-              accountType: item.blockedUser.profile[0].accountType,
-            }
-          : null,
-      },
-    }));
+    return {
+      statusCode: 200,
+      data: blocks.map((item) => ({
+        id: item.id,
+        reason: item.reason,
+        createdAt: item.createdAt,
+        user: {
+          id: item.blockedUser.id,
+          email: item.blockedUser.email,
+          profile: item.blockedUser.profile?.[0]
+            ? {
+                id: item.blockedUser.profile[0].id,
+                profileName: item.blockedUser.profile[0].profileName,
+                imageUrl: item.blockedUser.profile[0].imageUrl,
+                accountType: item.blockedUser.profile[0].accountType,
+              }
+            : null,
+        },
+      })),
+    };
   }
 
   async getBlockStatus(userId: string, targetUserId: string) {
     if (userId === targetUserId) {
       return {
-        blockedByMe: false,
-        blockedMe: false,
-        eitherBlocked: false,
+        statusCode: 200,
+        data: {
+          blockedByMe: false,
+          blockedMe: false,
+          eitherBlocked: false,
+        },
       };
     }
 
@@ -172,9 +221,12 @@ export class UserBlockService {
     ]);
 
     return {
-      blockedByMe: !!blockedByMe,
-      blockedMe: !!blockedMe,
-      eitherBlocked: !!blockedByMe || !!blockedMe,
+      statusCode: 200,
+      data: {
+        blockedByMe: !!blockedByMe,
+        blockedMe: !!blockedMe,
+        eitherBlocked: !!blockedByMe || !!blockedMe,
+      },
     };
   }
 
@@ -209,10 +261,7 @@ export class UserBlockService {
   async getExcludedUserIds(userId: string): Promise<string[]> {
     const blocks = await this.prisma.userBlock.findMany({
       where: {
-        OR: [
-          { blockerId: userId },
-          { blockedUserId: userId },
-        ],
+        OR: [{ blockerId: userId }, { blockedUserId: userId }],
       },
       select: {
         blockerId: true,

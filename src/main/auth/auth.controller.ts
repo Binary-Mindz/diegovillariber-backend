@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -100,6 +100,14 @@ async login(
   getMe(@GetUser('userId') userId: string) {
     return this.auth.getMe(userId);
   }
+
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Delete('delete-me')
+@ApiOperation({ summary: 'Delete my account' })
+deleteMe(@GetUser('userId') userId: string) {
+  return this.auth.deleteMe(userId);
+}
 
   // Example: admin only route
   @ApiBearerAuth()
