@@ -67,6 +67,7 @@ export type ChallengeMinAggregateOutputType = {
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type ChallengeMaxAggregateOutputType = {
@@ -96,6 +97,7 @@ export type ChallengeMaxAggregateOutputType = {
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  programType: $Enums.ProgramType | null
 }
 
 export type ChallengeCountAggregateOutputType = {
@@ -125,6 +127,7 @@ export type ChallengeCountAggregateOutputType = {
   status: number
   createdAt: number
   updatedAt: number
+  programType: number
   _all: number
 }
 
@@ -170,6 +173,7 @@ export type ChallengeMinAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type ChallengeMaxAggregateInputType = {
@@ -199,6 +203,7 @@ export type ChallengeMaxAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
 }
 
 export type ChallengeCountAggregateInputType = {
@@ -228,6 +233,7 @@ export type ChallengeCountAggregateInputType = {
   status?: true
   createdAt?: true
   updatedAt?: true
+  programType?: true
   _all?: true
 }
 
@@ -344,6 +350,7 @@ export type ChallengeGroupByOutputType = {
   status: $Enums.ChallengeStatus | null
   createdAt: Date
   updatedAt: Date
+  programType: $Enums.ProgramType
   _count: ChallengeCountAggregateOutputType | null
   _avg: ChallengeAvgAggregateOutputType | null
   _sum: ChallengeSumAggregateOutputType | null
@@ -396,6 +403,7 @@ export type ChallengeWhereInput = {
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"Challenge"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
@@ -430,6 +438,7 @@ export type ChallengeOrderByWithRelationInput = {
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
   challengeSubmissions?: Prisma.ChallengeSubmissionOrderByRelationAggregateInput
   challengeParticipants?: Prisma.ChallengeParticipantOrderByRelationAggregateInput
@@ -467,6 +476,7 @@ export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"Challenge"> | $Enums.ProgramType
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   challengeSubmissions?: Prisma.ChallengeSubmissionListRelationFilter
   challengeParticipants?: Prisma.ChallengeParticipantListRelationFilter
@@ -501,6 +511,7 @@ export type ChallengeOrderByWithAggregationInput = {
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
   _count?: Prisma.ChallengeCountOrderByAggregateInput
   _avg?: Prisma.ChallengeAvgOrderByAggregateInput
   _max?: Prisma.ChallengeMaxOrderByAggregateInput
@@ -538,6 +549,7 @@ export type ChallengeScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumChallengeStatusNullableWithAggregatesFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
+  programType?: Prisma.EnumProgramTypeWithAggregatesFilter<"Challenge"> | $Enums.ProgramType
 }
 
 export type ChallengeCreateInput = {
@@ -566,6 +578,7 @@ export type ChallengeCreateInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
   challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
@@ -600,6 +613,7 @@ export type ChallengeUncheckedCreateInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
@@ -632,6 +646,7 @@ export type ChallengeUpdateInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
   challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
@@ -666,6 +681,7 @@ export type ChallengeUncheckedUpdateInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
@@ -699,6 +715,7 @@ export type ChallengeCreateManyInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type ChallengeUpdateManyMutationInput = {
@@ -727,6 +744,7 @@ export type ChallengeUpdateManyMutationInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type ChallengeUncheckedUpdateManyInput = {
@@ -756,6 +774,7 @@ export type ChallengeUncheckedUpdateManyInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 export type ChallengeCountOrderByAggregateInput = {
@@ -785,6 +804,7 @@ export type ChallengeCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type ChallengeAvgOrderByAggregateInput = {
@@ -821,6 +841,7 @@ export type ChallengeMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type ChallengeMinOrderByAggregateInput = {
@@ -850,6 +871,7 @@ export type ChallengeMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  programType?: Prisma.SortOrder
 }
 
 export type ChallengeSumOrderByAggregateInput = {
@@ -908,6 +930,10 @@ export type EnumBrandFieldUpdateOperationsInput = {
 
 export type NullableEnumChallengeStatusFieldUpdateOperationsInput = {
   set?: $Enums.ChallengeStatus | null
+}
+
+export type EnumProgramTypeFieldUpdateOperationsInput = {
+  set?: $Enums.ProgramType
 }
 
 export type ChallengeCreateNestedOneWithoutChallengeParticipantsInput = {
@@ -1034,6 +1060,7 @@ export type ChallengeCreateWithoutChallengeParticipantsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
   challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
@@ -1067,6 +1094,7 @@ export type ChallengeUncheckedCreateWithoutChallengeParticipantsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
@@ -1114,6 +1142,7 @@ export type ChallengeUpdateWithoutChallengeParticipantsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
   challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
@@ -1147,6 +1176,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeParticipantsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
@@ -1178,6 +1208,7 @@ export type ChallengeCreateWithoutChallengeSubmissionsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
@@ -1211,6 +1242,7 @@ export type ChallengeUncheckedCreateWithoutChallengeSubmissionsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
@@ -1258,6 +1290,7 @@ export type ChallengeUpdateWithoutChallengeSubmissionsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
@@ -1291,6 +1324,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
@@ -1322,6 +1356,7 @@ export type ChallengeCreateWithoutChallengeResultsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
   challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
@@ -1355,6 +1390,7 @@ export type ChallengeUncheckedCreateWithoutChallengeResultsInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedCreateNestedManyWithoutChallengeInput
@@ -1402,6 +1438,7 @@ export type ChallengeUpdateWithoutChallengeResultsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
   challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
@@ -1435,6 +1472,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeResultsInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
   challengeWinners?: Prisma.ChallengeWinnerUncheckedUpdateManyWithoutChallengeNestedInput
@@ -1466,6 +1504,7 @@ export type ChallengeCreateWithoutChallengeWinnersInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   creator: Prisma.UserCreateNestedOneWithoutChallengesInput
   challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
@@ -1499,6 +1538,7 @@ export type ChallengeUncheckedCreateWithoutChallengeWinnersInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
@@ -1546,6 +1586,7 @@ export type ChallengeUpdateWithoutChallengeWinnersInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   creator?: Prisma.UserUpdateOneRequiredWithoutChallengesNestedInput
   challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
@@ -1579,6 +1620,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeWinnersInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
@@ -1610,6 +1652,7 @@ export type ChallengeCreateWithoutCreatorInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultCreateNestedManyWithoutChallengeInput
@@ -1642,6 +1685,7 @@ export type ChallengeUncheckedCreateWithoutCreatorInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedCreateNestedManyWithoutChallengeInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutChallengeInput
   challengeResults?: Prisma.ChallengeResultUncheckedCreateNestedManyWithoutChallengeInput
@@ -1704,6 +1748,7 @@ export type ChallengeScalarWhereInput = {
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
+  programType?: Prisma.EnumProgramTypeFilter<"Challenge"> | $Enums.ProgramType
 }
 
 export type ChallengeCreateManyCreatorInput = {
@@ -1732,6 +1777,7 @@ export type ChallengeCreateManyCreatorInput = {
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  programType?: $Enums.ProgramType
 }
 
 export type ChallengeUpdateWithoutCreatorInput = {
@@ -1760,6 +1806,7 @@ export type ChallengeUpdateWithoutCreatorInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUpdateManyWithoutChallengeNestedInput
@@ -1792,6 +1839,7 @@ export type ChallengeUncheckedUpdateWithoutCreatorInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   challengeSubmissions?: Prisma.ChallengeSubmissionUncheckedUpdateManyWithoutChallengeNestedInput
   challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutChallengeNestedInput
   challengeResults?: Prisma.ChallengeResultUncheckedUpdateManyWithoutChallengeNestedInput
@@ -1824,6 +1872,7 @@ export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  programType?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
 }
 
 
@@ -1911,6 +1960,7 @@ export type ChallengeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
   challengeParticipants?: boolean | Prisma.Challenge$challengeParticipantsArgs<ExtArgs>
@@ -1946,6 +1996,7 @@ export type ChallengeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
@@ -1976,6 +2027,7 @@ export type ChallengeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["challenge"]>
 
@@ -2006,9 +2058,10 @@ export type ChallengeSelectScalar = {
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  programType?: boolean
 }
 
-export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "challengePrize" | "enableDeviceRestriction" | "quickPreset" | "deviceType" | "brand" | "requireTrueShotVerification" | "rejectEditedPhotos" | "maxEntriesPerUser" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["challenge"]>
+export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "challengePrize" | "enableDeviceRestriction" | "quickPreset" | "deviceType" | "brand" | "requireTrueShotVerification" | "rejectEditedPhotos" | "maxEntriesPerUser" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["challenge"]>
 export type ChallengeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
@@ -2060,6 +2113,7 @@ export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     status: $Enums.ChallengeStatus | null
     createdAt: Date
     updatedAt: Date
+    programType: $Enums.ProgramType
   }, ExtArgs["result"]["challenge"]>
   composites: {}
 }
@@ -2514,6 +2568,7 @@ export interface ChallengeFieldRefs {
   readonly status: Prisma.FieldRef<"Challenge", 'ChallengeStatus'>
   readonly createdAt: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Challenge", 'DateTime'>
+  readonly programType: Prisma.FieldRef<"Challenge", 'ProgramType'>
 }
     
 

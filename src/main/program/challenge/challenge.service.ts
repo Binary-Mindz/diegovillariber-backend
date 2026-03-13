@@ -93,53 +93,67 @@ async listChallenges(query: ChallengeQueryDto) {
   const limit = query.limit ?? 20;
   const skip = (page - 1) * limit;
 
-  const where: any = {};
+  const tab = query.tab; 
 
-  const tab = query.tab ?? ChallengeTab.ACTIVE;
+  const andConditions: Prisma.ChallengeWhereInput[] = [];
 
   if (tab === ChallengeTab.ACTIVE) {
-    where.status = ChallengeStatus.ACTIVE;
+    andConditions.push({ status: ChallengeStatus.ACTIVE });
   } else if (tab === ChallengeTab.UPCOMING) {
-    where.status = ChallengeStatus.UPCOMING;
+    andConditions.push({ status: ChallengeStatus.UPCOMING });
   } else if (tab === ChallengeTab.FINISHED) {
-    where.status = ChallengeStatus.FINISHED;
+    andConditions.push({ status: ChallengeStatus.FINISHED });
   }
 
-  if (query.category) where.category = query.category;
-  if (query.type) where.type = query.type;
-  if (query.preference) where.preference = query.preference;
-  if (query.participationScope) where.participationScope = query.participationScope;
+  // exact filters
+  if (query.category) andConditions.push({ category: query.category });
+  if (query.type) andConditions.push({ type: query.type });
+  if (query.preference) andConditions.push({ preference: query.preference });
+  if (query.participationScope)
+    andConditions.push({ participationScope: query.participationScope });
+  if (query.deviceType) andConditions.push({ deviceType: query.deviceType });
+  if (query.quickPreset) andConditions.push({ quickPreset: query.quickPreset });
+  if (query.brand) andConditions.push({ brand: query.brand });
 
+  if (query.enableDeviceRestriction !== undefined) {
+    andConditions.push({
+      enableDeviceRestriction: query.enableDeviceRestriction === 'true',
+    });
+  }
+
+  // search
   if (query.search?.trim()) {
     const s = query.search.trim();
 
-    where.OR = [
-      { title: { contains: s, mode: 'insensitive' } },
-      { description: { contains: s, mode: 'insensitive' } },
-      { locationName: { contains: s, mode: 'insensitive' } },
-      { challengePrize: { contains: s, mode: 'insensitive' } },
-      { creator: { email: { contains: s, mode: 'insensitive' } } },
-      {
-        creator: {
-          profile: {
-            some: {
-              profileName: { contains: s, mode: 'insensitive' },
+    andConditions.push({
+      OR: [
+        { title: { contains: s, mode: 'insensitive' } },
+        { description: { contains: s, mode: 'insensitive' } },
+        { locationName: { contains: s, mode: 'insensitive' } },
+        { challengePrize: { contains: s, mode: 'insensitive' } },
+        { creator: { email: { contains: s, mode: 'insensitive' } } },
+        {
+          creator: {
+            profile: {
+              some: {
+                profileName: { contains: s, mode: 'insensitive' },
+              },
             },
           },
         },
-      },
-    ];
+      ],
+    });
   }
+
+  const where: Prisma.ChallengeWhereInput =
+    andConditions.length ? { AND: andConditions } : {};
 
   const [items, total] = await this.prisma.$transaction([
     this.prisma.challenge.findMany({
       where,
       skip,
       take: limit,
-      orderBy: [
-        { startDate: 'asc' },
-        { createdAt: 'desc' },
-      ],
+      orderBy: [{ startDate: 'asc' }, { createdAt: 'desc' }],
       include: {
         creator: true,
         _count: {
@@ -164,53 +178,198 @@ async listChallenges(query: ChallengeQueryDto) {
   };
 }
 
+// async listAdminCreatedChallenges(query: ChallengeQueryDto) {
+//   const page = query.page ?? 1;
+//   const limit = query.limit ?? 20;
+//   const skip = (page - 1) * limit;
+//   const now = new Date();
+
+//   const where: any = {
+//     creator: {
+//       role: 'ADMIN',
+//     },
+//   };
+
+//   const tab = query.tab ?? ChallengeTab.ACTIVE;
+
+//   if (tab === ChallengeTab.ACTIVE) {
+//     where.AND = [
+//       ...(where.AND ?? []),
+//       { startDate: { lte: now } },
+//       { endDate: { gte: now } },
+//       { status: { not: ChallengeStatus.FINISHED } },
+//     ];
+//   } else if (tab === ChallengeTab.UPCOMING) {
+//     where.AND = [
+//       ...(where.AND ?? []),
+//       { startDate: { gt: now } },
+//       { status: { not: ChallengeStatus.FINISHED } },
+//     ];
+//   } else if (tab === ChallengeTab.FINISHED) {
+//     where.OR = [
+//       { status: ChallengeStatus.FINISHED },
+//       { endDate: { lt: now } },
+//     ];
+//   }
+
+//   if (query.category) where.category = query.category;
+//   if (query.type) where.type = query.type;
+//   if (query.preference) where.preference = query.preference;
+//   if (query.participationScope) where.participationScope = query.participationScope;
+
+//   if (query.search) {
+//     where.OR = [
+//       ...(where.OR ?? []),
+//       { title: { contains: query.search, mode: 'insensitive' } },
+//       { description: { contains: query.search, mode: 'insensitive' } },
+//       { locationName: { contains: query.search, mode: 'insensitive' } },
+//       { challengePrize: { contains: query.search, mode: 'insensitive' } },
+//     ];
+//   }
+
+//   const [items, total] = await this.prisma.$transaction([
+//     this.prisma.challenge.findMany({
+//       where,
+//       skip,
+//       take: limit,
+//       orderBy: [{ createdAt: 'desc' }],
+//       include: {
+//         creator: true,
+//         _count: {
+//           select: {
+//             challengeParticipants: true,
+//             challengeSubmissions: true,
+//           },
+//         },
+//       },
+//     }),
+//     this.prisma.challenge.count({ where }),
+//   ]);
+
+//   return {
+//     items,  
+//     meta: {
+//       total,
+//       page,
+//       limit,
+//       totalPages: Math.ceil(total / limit),
+//     },
+//   };
+// }
+
 async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   const page = query.page ?? 1;
   const limit = query.limit ?? 20;
   const skip = (page - 1) * limit;
   const now = new Date();
 
-  const where: any = {
-    creator: {
-      role: 'ADMIN',
+  const andConditions: Prisma.ChallengeWhereInput[] = [
+    {
+      creator: {
+        role: 'ADMIN',
+      },
     },
-  };
+  ];
 
-  const tab = query.tab ?? ChallengeTab.ACTIVE;
+  const tab = query.tab;
 
+  // tab filter only if provided
   if (tab === ChallengeTab.ACTIVE) {
-    where.AND = [
-      ...(where.AND ?? []),
+    andConditions.push(
       { startDate: { lte: now } },
       { endDate: { gte: now } },
       { status: { not: ChallengeStatus.FINISHED } },
-    ];
+    );
   } else if (tab === ChallengeTab.UPCOMING) {
-    where.AND = [
-      ...(where.AND ?? []),
+    andConditions.push(
       { startDate: { gt: now } },
       { status: { not: ChallengeStatus.FINISHED } },
-    ];
+    );
   } else if (tab === ChallengeTab.FINISHED) {
-    where.OR = [
-      { status: ChallengeStatus.FINISHED },
-      { endDate: { lt: now } },
-    ];
+    andConditions.push({
+      OR: [
+        { status: ChallengeStatus.FINISHED },
+        { endDate: { lt: now } },
+      ],
+    });
   }
 
-  if (query.category) where.category = query.category;
-  if (query.type) where.type = query.type;
-  if (query.preference) where.preference = query.preference;
-  if (query.participationScope) where.participationScope = query.participationScope;
+  // exact filters
+  if (query.category) {
+    andConditions.push({ category: query.category });
+  }
 
-  if (query.search) {
-    where.OR = [
-      ...(where.OR ?? []),
-      { title: { contains: query.search, mode: 'insensitive' } },
-      { description: { contains: query.search, mode: 'insensitive' } },
-      { locationName: { contains: query.search, mode: 'insensitive' } },
-      { challengePrize: { contains: query.search, mode: 'insensitive' } },
-    ];
+  if (query.type) {
+    andConditions.push({ type: query.type });
+  }
+
+  if (query.preference) {
+    andConditions.push({ preference: query.preference });
+  }
+
+  if (query.participationScope) {
+    andConditions.push({ participationScope: query.participationScope });
+  }
+
+  if (query.deviceType) {
+    andConditions.push({ deviceType: query.deviceType });
+  }
+
+  if (query.quickPreset) {
+    andConditions.push({ quickPreset: query.quickPreset });
+  }
+
+  if (query.brand) {
+    andConditions.push({ brand: query.brand });
+  }
+
+  if (query.enableDeviceRestriction !== undefined) {
+    andConditions.push({
+      enableDeviceRestriction: query.enableDeviceRestriction === 'true',
+    });
+  }
+
+  // search filter
+  if (query.search?.trim()) {
+    const s = query.search.trim();
+
+    andConditions.push({
+      OR: [
+        { title: { contains: s, mode: 'insensitive' } },
+        { description: { contains: s, mode: 'insensitive' } },
+        { locationName: { contains: s, mode: 'insensitive' } },
+        { challengePrize: { contains: s, mode: 'insensitive' } },
+        {
+          creator: {
+            email: { contains: s, mode: 'insensitive' },
+          },
+        },
+        {
+          creator: {
+            profile: {
+              some: {
+                profileName: { contains: s, mode: 'insensitive' },
+              },
+            },
+          },
+        },
+      ],
+    });
+  }
+
+  const where: Prisma.ChallengeWhereInput =
+    andConditions.length > 0 ? { AND: andConditions } : {};
+
+  let orderBy: Prisma.ChallengeOrderByWithRelationInput[] = [];
+
+  if (tab === ChallengeTab.UPCOMING) {
+    orderBy = [{ startDate: 'asc' }, { createdAt: 'desc' }];
+  } else if (tab === ChallengeTab.ACTIVE) {
+    orderBy = [{ endDate: 'asc' }, { createdAt: 'desc' }];
+  } else if (tab === ChallengeTab.FINISHED) {
+    orderBy = [{ endDate: 'desc' }, { createdAt: 'desc' }];
+  } else {
+    orderBy = [{ createdAt: 'desc' }];
   }
 
   const [items, total] = await this.prisma.$transaction([
@@ -218,7 +377,7 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
       where,
       skip,
       take: limit,
-      orderBy: [{ createdAt: 'desc' }],
+      orderBy,
       include: {
         creator: true,
         _count: {
@@ -233,12 +392,12 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   ]);
 
   return {
-    items,  
+    items,
     meta: {
       total,
       page,
       limit,
-      totalPages: Math.ceil(total / limit),
+      totalPages: Math.ceil(total / limit)
     },
   };
 }

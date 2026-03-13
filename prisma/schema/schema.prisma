@@ -508,3 +508,9 @@ enum NotificationStatus {
   READ
   ARCHIVED
 }
+enum ProgramType {
+  CHALLENGE
+  RAW_SHIFT
+  SPLIT_SCREEN
+  HEAD_TO_HEAD
+}

@@ -110,6 +110,7 @@ model HeadToHeadBattle {
   submissions    BattleSubmission[]
   battleComments BattleComment[]
   battleVotes    BattleVote[]
+  programType  ProgramType @default(HEAD_TO_HEAD)
 
   @@index([creatorId])
   @@index([status])

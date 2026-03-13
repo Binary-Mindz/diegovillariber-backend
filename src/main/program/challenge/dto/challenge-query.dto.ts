@@ -1,11 +1,22 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 import {
+  IsBooleanString,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
+import {
+  Brand,
   ChallengeCategory,
   ChallengeType,
-  Preference,
+  DeviceType,
   ParticipationScope,
+  Preference,
+  QuickPreset,
 } from 'generated/prisma/enums';
 
 export enum ChallengeTab {
@@ -42,6 +53,29 @@ export class ChallengeQueryDto {
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;
+
+  @ApiPropertyOptional({ enum: DeviceType, example: DeviceType.MOBILE })
+  @IsOptional()
+  @IsEnum(DeviceType)
+  deviceType?: DeviceType;
+
+  @ApiPropertyOptional({ enum: QuickPreset, example: QuickPreset.NONE_ALL_DEVICE })
+  @IsOptional()
+  @IsEnum(QuickPreset)
+  quickPreset?: QuickPreset;
+
+  @ApiPropertyOptional({ enum: Brand, example: Brand.APPLE })
+  @IsOptional()
+  @IsEnum(Brand)
+  brand?: Brand;
+
+  @ApiPropertyOptional({
+    example: 'true',
+    description: 'Filter only challenges with device restriction enabled',
+  })
+  @IsOptional()
+  @IsBooleanString()
+  enableDeviceRestriction?: string;
 
   @ApiPropertyOptional({
     example: 'sunset',

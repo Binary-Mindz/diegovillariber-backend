@@ -20,9 +20,7 @@ import {
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
-
 import { UserBlockService } from './user-block.service';
-import { BlockUserDto } from './dto/block-user.dto';
 import { BlockStatusQueryDto } from './dto/block-status-query.dto';
 
 @ApiBearerAuth()
@@ -35,7 +33,7 @@ export class UserBlockController {
   @Get('my')
   @ApiOperation({ summary: 'Get my blocked users list' })
   async getMyBlockedUsers(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
@@ -51,7 +49,7 @@ export class UserBlockController {
   @ApiOperation({ summary: 'Check block status with another user' })
   @ApiQuery({ name: 'targetUserId', required: true, type: String })
   async getBlockStatus(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Query() query: BlockStatusQueryDto,
     @Res({ passthrough: true }) res: Response,
   ) {
@@ -68,7 +66,7 @@ export class UserBlockController {
   @ApiOperation({ summary: 'Unblock a user' })
   @ApiParam({ name: 'targetUserId', type: String })
   async unblockUser(
-    @GetUser('id') userId: string,
+    @GetUser('userId') userId: string,
     @Param('targetUserId') targetUserId: string,
     @Res({ passthrough: true }) res: Response,
   ) {

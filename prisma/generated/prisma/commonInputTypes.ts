@@ -536,6 +536,13 @@ export type EnumChallengeStatusNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel> | $Enums.ChallengeStatus | null
 }
 
+export type EnumProgramTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel> | $Enums.ProgramType
+}
+
 export type EnumChallengeTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.ChallengeType | Prisma.EnumChallengeTypeFieldRefInput<$PrismaModel>
   in?: $Enums.ChallengeType[] | Prisma.ListEnumChallengeTypeFieldRefInput<$PrismaModel>
@@ -620,6 +627,16 @@ export type EnumChallengeStatusNullableWithAggregatesFilter<$PrismaModel = never
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel>
+}
+
+export type EnumProgramTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProgramType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
 }
 
 export type EnumParticipantStatusFilter<$PrismaModel = never> = {
@@ -2512,6 +2529,13 @@ export type NestedEnumChallengeStatusNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel> | $Enums.ChallengeStatus | null
 }
 
+export type NestedEnumProgramTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel> | $Enums.ProgramType
+}
+
 export type NestedEnumChallengeTypeWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.ChallengeType | Prisma.EnumChallengeTypeFieldRefInput<$PrismaModel>
   in?: $Enums.ChallengeType[] | Prisma.ListEnumChallengeTypeFieldRefInput<$PrismaModel>
@@ -2596,6 +2620,16 @@ export type NestedEnumChallengeStatusNullableWithAggregatesFilter<$PrismaModel =
   _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
   _min?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel>
   _max?: Prisma.NestedEnumChallengeStatusNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProgramType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumParticipantStatusFilter<$PrismaModel = never> = {
