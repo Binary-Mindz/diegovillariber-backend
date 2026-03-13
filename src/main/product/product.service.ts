@@ -188,47 +188,49 @@ export class ProductService {
   }
 
   // 6) Delete (owner only)
-  async deleteProduct(id: string, userId: string) {
-    const product = await this.prisma.productList.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        ownerId: true,
-      },
-    });
+async deleteProduct(id: string, userId: string) {
+  const product = await this.prisma.productList.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      ownerId: true,
+    },
+  });
 
-    if (!product) {
-      throw new NotFoundException('Product not found');
-    }
-
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      select: {
-        id: true,
-        role: true,
-      },
-    });
-
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-
-    const isCreator = product.ownerId === userId;
-    const isAdmin =
-      user.role.includes(Role.ADMIN) 
-    if (!isCreator && !isAdmin) {
-      throw new ForbiddenException(
-        'Only creator or admin can delete this product',
-      );
-    }
-
-    await this.prisma.productList.delete({
-      where: { id },
-    });
-
-    return { success: true };
+  if (!product) {
+    throw new NotFoundException('Product not found');
   }
 
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      id: true,
+      role: true,
+    },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  const isOwner = product.ownerId === userId;
+  const isAdmin = user.role === Role.ADMIN;
+
+  if (!isOwner && !isAdmin) {
+    throw new ForbiddenException(
+      'Only owner or admin can delete this product',
+    );
+  }
+
+  await this.prisma.productList.delete({
+    where: { id },
+  });
+
+  return {
+    deleted: true,
+    productId: id,
+  };
+}
   // Highlight toggle (owner only)
   async setHighlight(ownerId: string, productId: string, on: boolean) {
     const product = await this.prisma.productList.findUnique({

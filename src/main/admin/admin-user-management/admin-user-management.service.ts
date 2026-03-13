@@ -74,18 +74,54 @@ export class AdminUserManagementService {
 }
 
 async getUsers(query: GetUsersQueryDto) {
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 10;
-
-  const safePage = page > 0 ? page : 1;
-  const safeLimit = limit > 0 ? limit : 10;
-  const skip = (safePage - 1) * safeLimit;
+  const hasPagination =
+    query.page !== undefined || query.limit !== undefined;
 
   const where = {
     role: {
       not: Role.ADMIN,
     },
   };
+
+  if (!hasPagination) {
+    const users = await this.prisma.user.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+      select: {
+        id: true,
+        email: true,
+        role: true,
+        createdAt: true,
+        activeProfileId: true,
+        profile: {
+          select: {
+            id: true,
+            profileName: true,
+            imageUrl: true,
+            activeType: true,
+            _count: {
+              select: {
+                posts: true,
+                cars: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    return {
+      data: users,
+      pagination: null,
+    };
+  }
+
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 10;
+
+  const safePage = page > 0 ? page : 1;
+  const safeLimit = limit > 0 ? limit : 10;
+  const skip = (safePage - 1) * safeLimit;
 
   const [users, total] = await Promise.all([
     this.prisma.user.findMany({
@@ -128,7 +164,6 @@ async getUsers(query: GetUsersQueryDto) {
     },
   };
 }
-
  async listPostsForModeration(
     aquery: PostModerationQueryDto
   ): Promise<PostModerationListResponse> {

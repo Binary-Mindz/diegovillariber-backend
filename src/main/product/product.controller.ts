@@ -97,21 +97,20 @@ export class ProductController {
     }, 'Product updated successfully');
   }
 
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @Delete(':id')
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete product (only owner can delete)' })
-  @ApiResponse({ status: 200 })
-  async deleteProduct(
-    @Param('id') id: string,
-    @GetUser('userId') userId: string,
-  ) {
-    return handleRequest(async () => {
-      const result = await this.productsService.deleteProduct(id, userId);
-      return result;
-    }, 'Product deleted successfully');
-  }
+ @ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Delete(':id')
+@HttpCode(HttpStatus.OK)
+@ApiOperation({ summary: 'Delete product (owner or admin)' })
+async deleteProduct(
+  @Param('id') id: string,
+  @GetUser('userId') userId: string,
+) {
+  return handleRequest(
+    () => this.productsService.deleteProduct(id, userId),
+    'Product deleted successfully',
+  );
+}
 
   // =========================
   // Highlight (Boolean Toggle)
