@@ -3,19 +3,19 @@ model Event {
   ownerId String @db.Uuid
   owner   User   @relation(fields: [ownerId], references: [id])
 
-  profileType Type?
-  coverImage  String
-  eventTitle  String
-  description String?
-  location    String?
-  locationAddress    String?
-  latitude           Decimal? @db.Decimal(9, 6)
-  longitude          Decimal? @db.Decimal(9, 6)
-  placeId            String?
-  websiteLink String?
-  price       Int
-  eventType   EventType   @default(Race)
-  eventStatus EventStatus @default(UPCOMING)
+  profileType     Type?
+  coverImage      String
+  eventTitle      String
+  description     String?
+  location        String?
+  locationAddress String?
+  latitude        Decimal?    @db.Decimal(9, 6)
+  longitude       Decimal?    @db.Decimal(9, 6)
+  placeId         String?
+  websiteLink     String?
+  price           Int
+  eventType       EventType   @default(Race)
+  eventStatus     EventStatus @default(UPCOMING)
 
   startDate DateTime
   endDate   DateTime

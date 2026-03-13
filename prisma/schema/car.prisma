@@ -29,4 +29,8 @@ model Car {
   splitScreenBattleParticipants SplitScreenBattleParticipant[]
 
   splitScreenBattlesRightUser SplitScreenBattle[] @relation("SplitScreenRightCar")
+
+  spottingRequests SpottingRequest[]
+
+  posts Post[]
 }

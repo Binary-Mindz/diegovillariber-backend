@@ -12,6 +12,7 @@ model Tutorial {
 
   @@unique([sectionCode, learnVersion, order])
 }
+
 enum TutorialStatus {
   DRAFT
   PUBLISHED

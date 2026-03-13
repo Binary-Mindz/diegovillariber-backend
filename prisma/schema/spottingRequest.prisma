@@ -1,0 +1,40 @@
+model SpottingRequest {
+  id        String  @id @default(uuid()) @db.Uuid
+  userId    String  @db.Uuid
+  profileId String? @db.Uuid
+  carId     String? @db.Uuid
+
+  title String? @db.VarChar(150)
+
+  brand String? @db.VarChar(100)
+  model String? @db.VarChar(100)
+
+  latitude  Decimal @db.Decimal(9, 6)
+  longitude Decimal @db.Decimal(9, 6)
+  radiusKm  Int     @default(50)
+
+  status        SpottingRequestStatus @default(ACTIVE)
+  expiresAt     DateTime?
+  lastMatchedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  profile Profile? @relation(fields: [profileId], references: [id], onDelete: SetNull)
+  car     Car?     @relation(fields: [carId], references: [id], onDelete: SetNull)
+
+  matches SpottingMatch[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([brand, model])
+}
+
+enum SpottingRequestStatus {
+  ACTIVE
+  PAUSED
+  MATCHED
+  EXPIRED
+  CANCELLED
+}

@@ -1135,6 +1135,17 @@ export const SplitScreenParticipantResult = {
 export type SplitScreenParticipantResult = (typeof SplitScreenParticipantResult)[keyof typeof SplitScreenParticipantResult]
 
 
+export const SpottingRequestStatus = {
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  MATCHED: 'MATCHED',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SpottingRequestStatus = (typeof SpottingRequestStatus)[keyof typeof SpottingRequestStatus]
+
+
 export const TutorialStatus = {
   DRAFT: 'DRAFT',
   PUBLISHED: 'PUBLISHED',

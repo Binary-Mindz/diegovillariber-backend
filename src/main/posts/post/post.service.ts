@@ -26,6 +26,34 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 export class PostService {
   constructor(private readonly prisma: PrismaService) { }
 
+  private async getExcludedUserIds(userId: string): Promise<string[]> {
+  const blocks = await this.prisma.userBlock.findMany({
+    where: {
+      OR: [
+        { blockerId: userId },
+        { blockedUserId: userId },
+      ],
+    },
+    select: {
+      blockerId: true,
+      blockedUserId: true,
+    },
+  });
+
+  const excludedUserIds = new Set<string>();
+
+  for (const block of blocks) {
+    if (block.blockerId !== userId) {
+      excludedUserIds.add(block.blockerId);
+    }
+    if (block.blockedUserId !== userId) {
+      excludedUserIds.add(block.blockedUserId);
+    }
+  }
+
+  return [...excludedUserIds];
+}
+
   async createPost(userId: string, dto: CreatePostDto) {
     const wantBoost = dto.contentBooster === true;
 
@@ -77,15 +105,41 @@ export class PostService {
         ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
         : [];
 
-      if (taggedUserIds.length) {
-        const found = await tx.user.findMany({
-          where: { id: { in: taggedUserIds } },
-          select: { id: true },
-        });
-        if (found.length !== taggedUserIds.length) {
-          throw new BadRequestException('One or more tagged users are invalid');
-        }
-      }
+     if (taggedUserIds.length) {
+  const found = await tx.user.findMany({
+    where: { id: { in: taggedUserIds } },
+    select: { id: true },
+  });
+
+  if (found.length !== taggedUserIds.length) {
+    throw new BadRequestException('One or more tagged users are invalid');
+  }
+
+  const blockedRelations = await tx.userBlock.findMany({
+    where: {
+      OR: taggedUserIds.flatMap((targetUserId) => [
+        {
+          blockerId: userId,
+          blockedUserId: targetUserId,
+        },
+        {
+          blockerId: targetUserId,
+          blockedUserId: userId,
+        },
+      ]),
+    },
+    select: {
+      blockerId: true,
+      blockedUserId: true,
+    },
+  });
+
+  if (blockedRelations.length > 0) {
+    throw new BadRequestException(
+      'You cannot tag users who are blocked or who blocked you',
+    );
+  }
+}
 
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
         throw new BadRequestException(
@@ -187,94 +241,120 @@ export class PostService {
     });
   }
 
-  async getFeed(query: FeedQueryDto) {
-    const page = query.page ?? 1;
-    const limit = query.limit ?? 10;
-    const skip = (page - 1) * limit;
+async getFeed(userId: string, query: FeedQueryDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 10;
+  const skip = (page - 1) * limit;
 
-    if (page < 1) throw new BadRequestException('page must be >= 1');
-    if (limit < 1 || limit > 50)
-      throw new BadRequestException('limit must be between 1 and 50');
+  if (page < 1) throw new BadRequestException('page must be >= 1');
+  if (limit < 1 || limit > 50) {
+    throw new BadRequestException('limit must be between 1 and 50');
+  }
 
-    const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
-    const contextActivity = parseCsvEnum<any>(query.contextActivity);
-    const subject = parseCsvEnum<any>(query.subject);
+  const excludedUserIds = await this.getExcludedUserIds(userId);
 
-    const where: Prisma.PostWhereInput = {
-      ...(query.postType ? { postType: query.postType } : {}),
-      ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
-      ...(query.location
-        ? { postLocation: { contains: query.location, mode: 'insensitive' } }
-        : {}),
-      ...(query.search
-        ? {
+  const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
+  const contextActivity = parseCsvEnum<any>(query.contextActivity);
+  const subject = parseCsvEnum<any>(query.subject);
+
+  const where: Prisma.PostWhereInput = {
+    userId: {
+      notIn: excludedUserIds,
+    },
+
+    ...(query.postType ? { postType: query.postType } : {}),
+    ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
+    ...(query.location
+      ? { postLocation: { contains: query.location, mode: 'insensitive' } }
+      : {}),
+    ...(query.search
+      ? {
           OR: [
             { caption: { contains: query.search, mode: 'insensitive' } },
             { postLocation: { contains: query.search, mode: 'insensitive' } },
           ],
         }
-        : {}),
+      : {}),
 
-      ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
-      ...(contextActivity
-        ? { contextActivity: { hasSome: contextActivity } }
-        : {}),
-      ...(subject ? { subject: { hasSome: subject } } : {}),
-    };
+    ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
+    ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
+    ...(subject ? { subject: { hasSome: subject } } : {}),
+  };
 
-    const orderBy: Prisma.PostOrderByWithRelationInput[] =
-      query.sort === 'topLiked'
-        ? [{ like: 'desc' }, { createdAt: 'desc' }]
-        : query.sort === 'boosted'
-          ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-          : [{ createdAt: 'desc' }];
+  const orderBy: Prisma.PostOrderByWithRelationInput[] =
+    query.sort === 'topLiked'
+      ? [{ like: 'desc' }, { createdAt: 'desc' }]
+      : query.sort === 'boosted'
+      ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
+      : [{ createdAt: 'desc' }];
 
-    const [data, total] = await this.prisma.$transaction([
-      this.prisma.post.findMany({
-        where,
-        orderBy,
-        skip,
-        take: limit,
-        include: {
-          user: { select: { id: true} },
-          profile: { select: { id: true, imageUrl: true, activeType: true } },
-          hashtags: true,
-          taggedUsers: { select: { id: true } },
-        }
-      }),
-      this.prisma.post.count({ where }),
-    ]);
-
-    const totalPages = Math.ceil(total / limit);
-
-    return {
-      data,
-      meta: {
-        page,
-        limit,
-        total,
-        totalPages,
-        hasNextPage: page < totalPages,
-        hasPrevPage: page > 1,
-      },
-    };
-  }
-
-  async getSinglePost(postId: string) {
-    const post = await this.prisma.post.findUnique({
-      where: { id: postId },
+  const [data, total] = await this.prisma.$transaction([
+    this.prisma.post.findMany({
+      where,
+      orderBy,
+      skip,
+      take: limit,
       include: {
-        user: { select: { id: true} },
+        user: { select: { id: true } },
         profile: { select: { id: true, imageUrl: true, activeType: true } },
         hashtags: true,
         taggedUsers: { select: { id: true } },
-      }
-    });
+      },
+    }),
+    this.prisma.post.count({ where }),
+  ]);
 
-    if (!post) throw new NotFoundException('Post not found');
-    return post;
+  const totalPages = Math.ceil(total / limit);
+
+  return {
+    data,
+    meta: {
+      page,
+      limit,
+      total,
+      totalPages,
+      hasNextPage: page < totalPages,
+      hasPrevPage: page > 1,
+    },
+  };
+}
+ async getSinglePost(userId: string, postId: string) {
+  const post = await this.prisma.post.findUnique({
+    where: { id: postId },
+    include: {
+      user: { select: { id: true } },
+      profile: { select: { id: true, imageUrl: true, activeType: true } },
+      hashtags: true,
+      taggedUsers: { select: { id: true } },
+    },
+  });
+
+  if (!post) {
+    throw new NotFoundException('Post not found');
   }
 
+  const blockedRelation = await this.prisma.userBlock.findFirst({
+    where: {
+      OR: [
+        {
+          blockerId: userId,
+          blockedUserId: post.userId,
+        },
+        {
+          blockerId: post.userId,
+          blockedUserId: userId,
+        },
+      ],
+    },
+    select: { id: true },
+  });
+
+  if (blockedRelation) {
+    throw new NotFoundException('Post not found');
+  }
+
+  return post;
+}
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
       throw new BadRequestException('contentBooster cannot be updated');

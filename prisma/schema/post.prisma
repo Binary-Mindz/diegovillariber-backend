@@ -3,8 +3,12 @@ model Post {
   userId String @db.Uuid
   user   User   @relation(fields: [userId], references: [id])
 
-  profileId          String?  @db.Uuid
-  profile            Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String?  @db.Uuid
+  profile   Profile? @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  carId String? @db.Uuid
+  car   Car?    @relation(fields: [carId], references: [id], onDelete: SetNull)
+
   profileType        Type?
   postType           PostType @default(Spotter_Post)
   caption            String?
@@ -44,6 +48,8 @@ model Post {
 
   likes    Like[]
   comments Comment[]
+
+  spottingMatches SpottingMatch[]
 }
 
 enum PhotoEditingDeclaration {

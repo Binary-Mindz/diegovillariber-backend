@@ -258,6 +258,7 @@ export type ProfileWhereInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
+  spottingRequests?: Prisma.SpottingRequestListRelationFilter
 }
 
 export type ProfileOrderByWithRelationInput = {
@@ -293,6 +294,7 @@ export type ProfileOrderByWithRelationInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantOrderByRelationAggregateInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
+  spottingRequests?: Prisma.SpottingRequestOrderByRelationAggregateInput
 }
 
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -331,6 +333,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleListRelationFilter
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
+  spottingRequests?: Prisma.SpottingRequestListRelationFilter
 }, "id" | "userId">
 
 export type ProfileOrderByWithAggregationInput = {
@@ -401,6 +404,7 @@ export type ProfileCreateInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateInput = {
@@ -435,6 +439,7 @@ export type ProfileUncheckedCreateInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUpdateInput = {
@@ -469,6 +474,7 @@ export type ProfileUpdateInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateInput = {
@@ -503,6 +509,7 @@ export type ProfileUncheckedUpdateInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyInput = {
@@ -852,6 +859,22 @@ export type ProfileUpdateOneRequiredWithoutSpotterNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSpotterInput, Prisma.ProfileUpdateWithoutSpotterInput>, Prisma.ProfileUncheckedUpdateWithoutSpotterInput>
 }
 
+export type ProfileCreateNestedOneWithoutSpottingRequestsInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedCreateWithoutSpottingRequestsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSpottingRequestsInput
+  connect?: Prisma.ProfileWhereUniqueInput
+}
+
+export type ProfileUpdateOneWithoutSpottingRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProfileCreateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedCreateWithoutSpottingRequestsInput>
+  connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSpottingRequestsInput
+  upsert?: Prisma.ProfileUpsertWithoutSpottingRequestsInput
+  disconnect?: Prisma.ProfileWhereInput | boolean
+  delete?: Prisma.ProfileWhereInput | boolean
+  connect?: Prisma.ProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProfileUpdateToOneWithWhereWithoutSpottingRequestsInput, Prisma.ProfileUpdateWithoutSpottingRequestsInput>, Prisma.ProfileUncheckedUpdateWithoutSpottingRequestsInput>
+}
+
 export type ProfileCreateNestedOneWithoutSubmitLabTimesInput = {
   create?: Prisma.XOR<Prisma.ProfileCreateWithoutSubmitLabTimesInput, Prisma.ProfileUncheckedCreateWithoutSubmitLabTimesInput>
   connectOrCreate?: Prisma.ProfileCreateOrConnectWithoutSubmitLabTimesInput
@@ -967,6 +990,7 @@ export type ProfileCreateWithoutBikesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutBikesInput = {
@@ -1000,6 +1024,7 @@ export type ProfileUncheckedCreateWithoutBikesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutBikesInput = {
@@ -1049,6 +1074,7 @@ export type ProfileUpdateWithoutBikesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutBikesInput = {
@@ -1082,6 +1108,7 @@ export type ProfileUncheckedUpdateWithoutBikesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutBusinessInput = {
@@ -1115,6 +1142,7 @@ export type ProfileCreateWithoutBusinessInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutBusinessInput = {
@@ -1148,6 +1176,7 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutBusinessInput = {
@@ -1197,6 +1226,7 @@ export type ProfileUpdateWithoutBusinessInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutBusinessInput = {
@@ -1230,6 +1260,7 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCarsInput = {
@@ -1263,6 +1294,7 @@ export type ProfileCreateWithoutCarsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCarsInput = {
@@ -1296,6 +1328,7 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCarsInput = {
@@ -1345,6 +1378,7 @@ export type ProfileUpdateWithoutCarsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCarsInput = {
@@ -1378,6 +1412,7 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutCreatorInput = {
@@ -1411,6 +1446,7 @@ export type ProfileCreateWithoutCreatorInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutCreatorInput = {
@@ -1444,6 +1480,7 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutCreatorInput = {
@@ -1493,6 +1530,7 @@ export type ProfileUpdateWithoutCreatorInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutCreatorInput = {
@@ -1526,6 +1564,7 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutGaragesInput = {
@@ -1559,6 +1598,7 @@ export type ProfileCreateWithoutGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutGaragesInput = {
@@ -1592,6 +1632,7 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutGaragesInput = {
@@ -1641,6 +1682,7 @@ export type ProfileUpdateWithoutGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutGaragesInput = {
@@ -1674,6 +1716,7 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutLabTimesInput = {
@@ -1707,6 +1750,7 @@ export type ProfileCreateWithoutLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutLabTimesInput = {
@@ -1740,6 +1784,7 @@ export type ProfileUncheckedCreateWithoutLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutLabTimesInput = {
@@ -1789,6 +1834,7 @@ export type ProfileUpdateWithoutLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutLabTimesInput = {
@@ -1822,6 +1868,7 @@ export type ProfileUncheckedUpdateWithoutLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutLegalNoticesInput = {
@@ -1855,6 +1902,7 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
@@ -1888,6 +1936,7 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutLegalNoticesInput = {
@@ -1937,6 +1986,7 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1970,6 +2020,7 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutOwnerInput = {
@@ -2003,6 +2054,7 @@ export type ProfileCreateWithoutOwnerInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutOwnerInput = {
@@ -2036,6 +2088,7 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutOwnerInput = {
@@ -2085,6 +2138,7 @@ export type ProfileUpdateWithoutOwnerInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutOwnerInput = {
@@ -2118,6 +2172,7 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutPostsInput = {
@@ -2151,6 +2206,7 @@ export type ProfileCreateWithoutPostsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutPostsInput = {
@@ -2184,6 +2240,7 @@ export type ProfileUncheckedCreateWithoutPostsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutPostsInput = {
@@ -2233,6 +2290,7 @@ export type ProfileUpdateWithoutPostsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutPostsInput = {
@@ -2266,6 +2324,7 @@ export type ProfileUncheckedUpdateWithoutPostsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutProDriverInput = {
@@ -2299,6 +2358,7 @@ export type ProfileCreateWithoutProDriverInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutProDriverInput = {
@@ -2332,6 +2392,7 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutProDriverInput = {
@@ -2381,6 +2442,7 @@ export type ProfileUpdateWithoutProDriverInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutProDriverInput = {
@@ -2414,6 +2476,7 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSimRacingInput = {
@@ -2447,6 +2510,7 @@ export type ProfileCreateWithoutSimRacingInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSimRacingInput = {
@@ -2480,6 +2544,7 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSimRacingInput = {
@@ -2529,6 +2594,7 @@ export type ProfileUpdateWithoutSimRacingInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSimRacingInput = {
@@ -2562,6 +2628,7 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSplitScreenMatchRequestsInput = {
@@ -2595,6 +2662,7 @@ export type ProfileCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -2628,6 +2696,7 @@ export type ProfileUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -2677,6 +2746,7 @@ export type ProfileUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -2710,6 +2780,7 @@ export type ProfileUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -2743,6 +2814,7 @@ export type ProfileCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -2776,6 +2848,7 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -2814,6 +2887,7 @@ export type ProfileCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutProfileInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -2847,6 +2921,7 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -2896,6 +2971,7 @@ export type ProfileUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -2929,6 +3005,7 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -2973,6 +3050,7 @@ export type ProfileUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutProfileNestedInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -3006,6 +3084,7 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -3039,6 +3118,7 @@ export type ProfileCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutProfileInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -3072,6 +3152,7 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -3121,6 +3202,7 @@ export type ProfileUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutProfileNestedInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -3154,6 +3236,7 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutSpotterInput = {
@@ -3187,6 +3270,7 @@ export type ProfileCreateWithoutSpotterInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSpotterInput = {
@@ -3220,6 +3304,7 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSpotterInput = {
@@ -3269,6 +3354,7 @@ export type ProfileUpdateWithoutSpotterInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSpotterInput = {
@@ -3284,6 +3370,159 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUncheckedUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUncheckedUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUncheckedUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUncheckedUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutProfileNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  submitLabTimes?: Prisma.SubmitLabTimeUncheckedUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutProfileNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutProfileNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
+}
+
+export type ProfileCreateWithoutSpottingRequestsInput = {
+  id?: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  locationStatus?: boolean
+  user: Prisma.UserCreateNestedOneWithoutProfileInput
+  spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostCreateNestedManyWithoutProfileInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutProfileInput
+  submitLabTimes?: Prisma.SubmitLabTimeCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutProfileInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutProfileInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+}
+
+export type ProfileUncheckedCreateWithoutSpottingRequestsInput = {
+  id?: string
+  userId: string
+  activeType?: $Enums.Type | null
+  profileName?: string | null
+  bio?: string | null
+  imageUrl?: string | null
+  instagramHandler?: string | null
+  accountType?: $Enums.AccountType
+  preference?: $Enums.Preference | null
+  isActive?: $Enums.IsActive
+  suspend?: boolean
+  locationStatus?: boolean
+  spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
+  owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
+  creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
+  business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
+  proDriver?: Prisma.ProDriverProfileUncheckedCreateNestedOneWithoutProfileInput
+  simRacing?: Prisma.SimRacingProfileUncheckedCreateNestedOneWithoutProfileInput
+  garages?: Prisma.GarageUncheckedCreateNestedManyWithoutProfileInput
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutProfileInput
+  virtualGarages?: Prisma.VirtualGarageUncheckedCreateNestedManyWithoutProfileInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUncheckedCreateNestedManyWithoutProfileInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutProfileInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutProfileInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutProfileInput
+  submitLabTimes?: Prisma.SubmitLabTimeUncheckedCreateNestedManyWithoutProfileInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutProfileInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutProfileInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+}
+
+export type ProfileCreateOrConnectWithoutSpottingRequestsInput = {
+  where: Prisma.ProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedCreateWithoutSpottingRequestsInput>
+}
+
+export type ProfileUpsertWithoutSpottingRequestsInput = {
+  update: Prisma.XOR<Prisma.ProfileUpdateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedUpdateWithoutSpottingRequestsInput>
+  create: Prisma.XOR<Prisma.ProfileCreateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedCreateWithoutSpottingRequestsInput>
+  where?: Prisma.ProfileWhereInput
+}
+
+export type ProfileUpdateToOneWithWhereWithoutSpottingRequestsInput = {
+  where?: Prisma.ProfileWhereInput
+  data: Prisma.XOR<Prisma.ProfileUpdateWithoutSpottingRequestsInput, Prisma.ProfileUncheckedUpdateWithoutSpottingRequestsInput>
+}
+
+export type ProfileUpdateWithoutSpottingRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
+  spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
+  owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
+  creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
+  business?: Prisma.BusinessProfileUpdateOneWithoutProfileNestedInput
+  proDriver?: Prisma.ProDriverProfileUpdateOneWithoutProfileNestedInput
+  simRacing?: Prisma.SimRacingProfileUpdateOneWithoutProfileNestedInput
+  garages?: Prisma.GarageUpdateManyWithoutProfileNestedInput
+  cars?: Prisma.CarUpdateManyWithoutProfileNestedInput
+  virtualGarages?: Prisma.VirtualGarageUpdateManyWithoutProfileNestedInput
+  virtualSimRacingEvents?: Prisma.VirtualSimRacingEventUpdateManyWithoutProfileNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutProfileNestedInput
+  posts?: Prisma.PostUpdateManyWithoutProfileNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutProfileNestedInput
+  submitLabTimes?: Prisma.SubmitLabTimeUpdateManyWithoutProfileNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutProfileNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutProfileNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+}
+
+export type ProfileUncheckedUpdateWithoutSpottingRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  activeType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  profileName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagramHandler?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  accountType?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType
+  preference?: Prisma.NullableEnumPreferenceFieldUpdateOperationsInput | $Enums.Preference | null
+  isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
+  suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3335,6 +3574,7 @@ export type ProfileCreateWithoutSubmitLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
@@ -3368,6 +3608,7 @@ export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutSubmitLabTimesInput = {
@@ -3417,6 +3658,7 @@ export type ProfileUpdateWithoutSubmitLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
@@ -3450,6 +3692,7 @@ export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutUserInput = {
@@ -3483,6 +3726,7 @@ export type ProfileCreateWithoutUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutUserInput = {
@@ -3516,6 +3760,7 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutUserInput = {
@@ -3593,6 +3838,7 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
@@ -3626,6 +3872,7 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualGaragesInput = {
@@ -3675,6 +3922,7 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
@@ -3708,6 +3956,7 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
@@ -3741,6 +3990,7 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
@@ -3774,6 +4024,7 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftProfileInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutProfileInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightProfileInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutProfileInput
 }
 
 export type ProfileCreateOrConnectWithoutVirtualSimRacingEventsInput = {
@@ -3823,6 +4074,7 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
@@ -3856,6 +4108,7 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileCreateManyUserInput = {
@@ -3903,6 +4156,7 @@ export type ProfileUpdateWithoutUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateWithoutUserInput = {
@@ -3936,6 +4190,7 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftProfileNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutProfileNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightProfileNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutProfileNestedInput
 }
 
 export type ProfileUncheckedUpdateManyWithoutUserInput = {
@@ -3971,6 +4226,7 @@ export type ProfileCountOutputType = {
   splitScreenBattlesLeftUser: number
   splitScreenBattleParticipants: number
   splitScreenBattlesRightUser: number
+  spottingRequests: number
 }
 
 export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3987,6 +4243,7 @@ export type ProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   splitScreenBattlesLeftUser?: boolean | ProfileCountOutputTypeCountSplitScreenBattlesLeftUserArgs
   splitScreenBattleParticipants?: boolean | ProfileCountOutputTypeCountSplitScreenBattleParticipantsArgs
   splitScreenBattlesRightUser?: boolean | ProfileCountOutputTypeCountSplitScreenBattlesRightUserArgs
+  spottingRequests?: boolean | ProfileCountOutputTypeCountSpottingRequestsArgs
 }
 
 /**
@@ -4090,6 +4347,13 @@ export type ProfileCountOutputTypeCountSplitScreenBattlesRightUserArgs<ExtArgs e
   where?: Prisma.SplitScreenBattleWhereInput
 }
 
+/**
+ * ProfileCountOutputType without action
+ */
+export type ProfileCountOutputTypeCountSpottingRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SpottingRequestWhereInput
+}
+
 
 export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -4124,6 +4388,7 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   splitScreenBattlesLeftUser?: boolean | Prisma.Profile$splitScreenBattlesLeftUserArgs<ExtArgs>
   splitScreenBattleParticipants?: boolean | Prisma.Profile$splitScreenBattleParticipantsArgs<ExtArgs>
   splitScreenBattlesRightUser?: boolean | Prisma.Profile$splitScreenBattlesRightUserArgs<ExtArgs>
+  spottingRequests?: boolean | Prisma.Profile$spottingRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -4196,6 +4461,7 @@ export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   splitScreenBattlesLeftUser?: boolean | Prisma.Profile$splitScreenBattlesLeftUserArgs<ExtArgs>
   splitScreenBattleParticipants?: boolean | Prisma.Profile$splitScreenBattleParticipantsArgs<ExtArgs>
   splitScreenBattlesRightUser?: boolean | Prisma.Profile$splitScreenBattlesRightUserArgs<ExtArgs>
+  spottingRequests?: boolean | Prisma.Profile$spottingRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.ProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -4228,6 +4494,7 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     splitScreenBattlesLeftUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
     splitScreenBattleParticipants: Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>[]
     splitScreenBattlesRightUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
+    spottingRequests: Prisma.$SpottingRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4656,6 +4923,7 @@ export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends runtime.
   splitScreenBattlesLeftUser<T extends Prisma.Profile$splitScreenBattlesLeftUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$splitScreenBattlesLeftUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   splitScreenBattleParticipants<T extends Prisma.Profile$splitScreenBattleParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$splitScreenBattleParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   splitScreenBattlesRightUser<T extends Prisma.Profile$splitScreenBattlesRightUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$splitScreenBattlesRightUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  spottingRequests<T extends Prisma.Profile$spottingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Profile$spottingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5516,6 +5784,30 @@ export type Profile$splitScreenBattlesRightUserArgs<ExtArgs extends runtime.Type
   take?: number
   skip?: number
   distinct?: Prisma.SplitScreenBattleScalarFieldEnum | Prisma.SplitScreenBattleScalarFieldEnum[]
+}
+
+/**
+ * Profile.spottingRequests
+ */
+export type Profile$spottingRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SpottingRequest
+   */
+  select?: Prisma.SpottingRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SpottingRequest
+   */
+  omit?: Prisma.SpottingRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SpottingRequestInclude<ExtArgs> | null
+  where?: Prisma.SpottingRequestWhereInput
+  orderBy?: Prisma.SpottingRequestOrderByWithRelationInput | Prisma.SpottingRequestOrderByWithRelationInput[]
+  cursor?: Prisma.SpottingRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SpottingRequestScalarFieldEnum | Prisma.SpottingRequestScalarFieldEnum[]
 }
 
 /**

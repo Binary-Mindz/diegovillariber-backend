@@ -5,15 +5,15 @@ model ProductList {
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
   // form fields
-  title        String
-  productImage String?
-  location     String?
-  locationAddress    String?
-  latitude           Decimal? @db.Decimal(9, 6)
-  longitude          Decimal? @db.Decimal(9, 6)
-  placeId            String?
-  description  String?
-  category     ProductCategory @default(CAR)
+  title           String
+  productImage    String?
+  location        String?
+  locationAddress String?
+  latitude        Decimal?        @db.Decimal(9, 6)
+  longitude       Decimal?        @db.Decimal(9, 6)
+  placeId         String?
+  description     String?
+  category        ProductCategory @default(CAR)
 
   tags String[] @default([]) // comma separated in UI -> store as array
 
