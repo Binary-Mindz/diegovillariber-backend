@@ -11,7 +11,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -20,6 +20,7 @@ import { handleRequest } from '@/common/helpers/handle.request';
 
 import { AdminEventManagementervice } from './admin-event-service';
 import { GetAdminEventsQueryDto } from './dto/get-admin-events.query.dto';
+import { EngagementQueryDto } from './dto/engagemant-query.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -36,6 +37,97 @@ export class AdminEventManagementController {
     const response = await handleRequest(
       () => this.adminEventManagementervice.getEventsOverview(),
       'Events overview fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+    @Get('retention-overview')
+  @ApiOperation({ summary: 'Get retention overview analytics' })
+  async getRetentionOverview(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getRetentionOverview(),
+      'Retention overview fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Get('retention-cohort')
+  @ApiOperation({ summary: 'Get cohort retention analytics' })
+  async getCohortRetention(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getCohortRetention(),
+      'Cohort retention fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Get('retention-churn-health')
+  @ApiOperation({ summary: 'Get churn and user health analytics' })
+  async getChurnAndHealth(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getChurnAndHealth(),
+      'Churn and user health fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Get('retention-power-users')
+  @ApiOperation({ summary: 'Get power users analytics' })
+  async getPowerUsers(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getPowerUsers(),
+      'Power users fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+
+  @Get('engagement-overview')
+  @ApiOperation({ summary: 'Get engagement overview analytics' })
+  @ApiQuery({ name: 'page', required: false, example: 1 })
+  @ApiQuery({ name: 'limit', required: false, example: 5 })
+  async getEngagementOverview(
+    @Query() query: EngagementQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getEngagementOverview(query),
+      'Engagement overview fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Get('brand-metrics')
+  @ApiOperation({ summary: 'Get brand metrics overview' })
+  async getBrandMetrics(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getBrandMetricsOverview(),
+      'Brand metrics fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+
+  @Get('economy-overview')
+  @ApiOperation({ summary: 'Get economy overview analytics' })
+  async getEconomyOverview(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminEventManagementervice.getEconomyOverview(),
+      'Economy overview fetched successfully',
     );
 
     res.status(response.statusCode);

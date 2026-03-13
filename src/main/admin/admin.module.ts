@@ -7,9 +7,10 @@ import { AdminLegalNoticeModule } from './legal-notice/legal-notice.module';
 import { AdminEventManagementModule } from './admin-event-management/admin-event-management.module';
 import { AdminReportModule } from './admin-report/admin-report.module';
 import { AdminTutorialModule } from './admin-tutorial/admin-tutorial.module';
+import { AdminSimRacingModule } from './admin-sim-racing/admin-sim-racing.module';
 
 @Module({
-  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, HashtagModule, AdminEventManagementModule, AdminReportModule],
+  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule],
   controllers: [],
   providers: [],
   exports: [],
