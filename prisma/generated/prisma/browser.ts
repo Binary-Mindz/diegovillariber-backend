@@ -428,6 +428,16 @@ export type SplitScreenBattleVote = Prisma.SplitScreenBattleVoteModel
  */
 export type SpotterProfile = Prisma.SpotterProfileModel
 /**
+ * Model SpottingMatch
+ * 
+ */
+export type SpottingMatch = Prisma.SpottingMatchModel
+/**
+ * Model SpottingRequest
+ * 
+ */
+export type SpottingRequest = Prisma.SpottingRequestModel
+/**
  * Model SubmitLabTime
  * 
  */
@@ -452,6 +462,11 @@ export type UsageNotes = Prisma.UsageNotesModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model UserBlock
+ * 
+ */
+export type UserBlock = Prisma.UserBlockModel
 /**
  * Model UserPoint
  * 

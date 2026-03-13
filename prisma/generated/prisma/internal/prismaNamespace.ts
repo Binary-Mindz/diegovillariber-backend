@@ -466,11 +466,14 @@ export const ModelName = {
   SplitScreenBattleParticipant: 'SplitScreenBattleParticipant',
   SplitScreenBattleVote: 'SplitScreenBattleVote',
   SpotterProfile: 'SpotterProfile',
+  SpottingMatch: 'SpottingMatch',
+  SpottingRequest: 'SpottingRequest',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
   Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
   User: 'User',
+  UserBlock: 'UserBlock',
   UserPoint: 'UserPoint',
   VirtualGarage: 'VirtualGarage',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
@@ -491,7 +494,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6563,6 +6566,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SpottingMatch: {
+      payload: Prisma.$SpottingMatchPayload<ExtArgs>
+      fields: Prisma.SpottingMatchFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SpottingMatchFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SpottingMatchFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        findFirst: {
+          args: Prisma.SpottingMatchFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SpottingMatchFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        findMany: {
+          args: Prisma.SpottingMatchFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>[]
+        }
+        create: {
+          args: Prisma.SpottingMatchCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        createMany: {
+          args: Prisma.SpottingMatchCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SpottingMatchCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>[]
+        }
+        delete: {
+          args: Prisma.SpottingMatchDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        update: {
+          args: Prisma.SpottingMatchUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        deleteMany: {
+          args: Prisma.SpottingMatchDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SpottingMatchUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SpottingMatchUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>[]
+        }
+        upsert: {
+          args: Prisma.SpottingMatchUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingMatchPayload>
+        }
+        aggregate: {
+          args: Prisma.SpottingMatchAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSpottingMatch>
+        }
+        groupBy: {
+          args: Prisma.SpottingMatchGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpottingMatchGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SpottingMatchCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpottingMatchCountAggregateOutputType> | number
+        }
+      }
+    }
+    SpottingRequest: {
+      payload: Prisma.$SpottingRequestPayload<ExtArgs>
+      fields: Prisma.SpottingRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SpottingRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SpottingRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.SpottingRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SpottingRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        findMany: {
+          args: Prisma.SpottingRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>[]
+        }
+        create: {
+          args: Prisma.SpottingRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        createMany: {
+          args: Prisma.SpottingRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SpottingRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.SpottingRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        update: {
+          args: Prisma.SpottingRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.SpottingRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SpottingRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SpottingRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.SpottingRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpottingRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.SpottingRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSpottingRequest>
+        }
+        groupBy: {
+          args: Prisma.SpottingRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpottingRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SpottingRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SpottingRequestCountAggregateOutputType> | number
+        }
+      }
+    }
     SubmitLabTime: {
       payload: Prisma.$SubmitLabTimePayload<ExtArgs>
       fields: Prisma.SubmitLabTimeFieldRefs
@@ -6930,6 +7081,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.UserCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
+        }
+      }
+    }
+    UserBlock: {
+      payload: Prisma.$UserBlockPayload<ExtArgs>
+      fields: Prisma.UserBlockFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserBlockFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserBlockFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        findFirst: {
+          args: Prisma.UserBlockFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserBlockFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        findMany: {
+          args: Prisma.UserBlockFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>[]
+        }
+        create: {
+          args: Prisma.UserBlockCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        createMany: {
+          args: Prisma.UserBlockCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserBlockCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>[]
+        }
+        delete: {
+          args: Prisma.UserBlockDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        update: {
+          args: Prisma.UserBlockUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserBlockDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserBlockUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserBlockUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserBlockUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserBlockPayload>
+        }
+        aggregate: {
+          args: Prisma.UserBlockAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserBlock>
+        }
+        groupBy: {
+          args: Prisma.UserBlockGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserBlockGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserBlockCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserBlockCountAggregateOutputType> | number
         }
       }
     }
@@ -8276,6 +8501,7 @@ export const PostScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   profileId: 'profileId',
+  carId: 'carId',
   profileType: 'profileType',
   postType: 'postType',
   caption: 'caption',
@@ -8628,6 +8854,39 @@ export const SpotterProfileScalarFieldEnum = {
 export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnum)[keyof typeof SpotterProfileScalarFieldEnum]
 
 
+export const SpottingMatchScalarFieldEnum = {
+  id: 'id',
+  spottingRequestId: 'spottingRequestId',
+  postId: 'postId',
+  spottedUserId: 'spottedUserId',
+  distanceKm: 'distanceKm',
+  createdAt: 'createdAt'
+} as const
+
+export type SpottingMatchScalarFieldEnum = (typeof SpottingMatchScalarFieldEnum)[keyof typeof SpottingMatchScalarFieldEnum]
+
+
+export const SpottingRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  profileId: 'profileId',
+  carId: 'carId',
+  title: 'title',
+  brand: 'brand',
+  model: 'model',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  radiusKm: 'radiusKm',
+  status: 'status',
+  expiresAt: 'expiresAt',
+  lastMatchedAt: 'lastMatchedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SpottingRequestScalarFieldEnum = (typeof SpottingRequestScalarFieldEnum)[keyof typeof SpottingRequestScalarFieldEnum]
+
+
 export const SubmitLabTimeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -8717,6 +8976,17 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserBlockScalarFieldEnum = {
+  id: 'id',
+  blockerId: 'blockerId',
+  blockedUserId: 'blockedUserId',
+  reason: 'reason',
+  createdAt: 'createdAt'
+} as const
+
+export type UserBlockScalarFieldEnum = (typeof UserBlockScalarFieldEnum)[keyof typeof UserBlockScalarFieldEnum]
 
 
 export const UserPointScalarFieldEnum = {
@@ -10017,6 +10287,34 @@ export type ListEnumSplitScreenParticipantResultFieldRefInput<$PrismaModel> = Fi
 
 
 /**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SpottingRequestStatus'
+ */
+export type EnumSpottingRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SpottingRequestStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SpottingRequestStatus[]'
+ */
+export type ListEnumSpottingRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SpottingRequestStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'Platform'
  */
 export type EnumPlatformFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Platform'>
@@ -10167,20 +10465,6 @@ export type EnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'AccountStatus[]'
  */
 export type ListEnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AccountStatus[]'>
-    
-
-
-/**
- * Reference to a field of type 'Float'
- */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-/**
- * Reference to a field of type 'Float[]'
- */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -10374,11 +10658,14 @@ export type GlobalOmitConfig = {
   splitScreenBattleParticipant?: Prisma.SplitScreenBattleParticipantOmit
   splitScreenBattleVote?: Prisma.SplitScreenBattleVoteOmit
   spotterProfile?: Prisma.SpotterProfileOmit
+  spottingMatch?: Prisma.SpottingMatchOmit
+  spottingRequest?: Prisma.SpottingRequestOmit
   submitLabTime?: Prisma.SubmitLabTimeOmit
   tuningAero?: Prisma.TuningAeroOmit
   tutorial?: Prisma.TutorialOmit
   usageNotes?: Prisma.UsageNotesOmit
   user?: Prisma.UserOmit
+  userBlock?: Prisma.UserBlockOmit
   userPoint?: Prisma.UserPointOmit
   virtualGarage?: Prisma.VirtualGarageOmit
   virtualSimRacingEvent?: Prisma.VirtualSimRacingEventOmit

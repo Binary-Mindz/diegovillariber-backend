@@ -133,11 +133,14 @@ export const ModelName = {
   SplitScreenBattleParticipant: 'SplitScreenBattleParticipant',
   SplitScreenBattleVote: 'SplitScreenBattleVote',
   SpotterProfile: 'SpotterProfile',
+  SpottingMatch: 'SpottingMatch',
+  SpottingRequest: 'SpottingRequest',
   SubmitLabTime: 'SubmitLabTime',
   TuningAero: 'TuningAero',
   Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
   User: 'User',
+  UserBlock: 'UserBlock',
   UserPoint: 'UserPoint',
   VirtualGarage: 'VirtualGarage',
   VirtualSimRacingEvent: 'VirtualSimRacingEvent',
@@ -1095,6 +1098,7 @@ export const PostScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   profileId: 'profileId',
+  carId: 'carId',
   profileType: 'profileType',
   postType: 'postType',
   caption: 'caption',
@@ -1447,6 +1451,39 @@ export const SpotterProfileScalarFieldEnum = {
 export type SpotterProfileScalarFieldEnum = (typeof SpotterProfileScalarFieldEnum)[keyof typeof SpotterProfileScalarFieldEnum]
 
 
+export const SpottingMatchScalarFieldEnum = {
+  id: 'id',
+  spottingRequestId: 'spottingRequestId',
+  postId: 'postId',
+  spottedUserId: 'spottedUserId',
+  distanceKm: 'distanceKm',
+  createdAt: 'createdAt'
+} as const
+
+export type SpottingMatchScalarFieldEnum = (typeof SpottingMatchScalarFieldEnum)[keyof typeof SpottingMatchScalarFieldEnum]
+
+
+export const SpottingRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  profileId: 'profileId',
+  carId: 'carId',
+  title: 'title',
+  brand: 'brand',
+  model: 'model',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  radiusKm: 'radiusKm',
+  status: 'status',
+  expiresAt: 'expiresAt',
+  lastMatchedAt: 'lastMatchedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SpottingRequestScalarFieldEnum = (typeof SpottingRequestScalarFieldEnum)[keyof typeof SpottingRequestScalarFieldEnum]
+
+
 export const SubmitLabTimeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -1536,6 +1573,17 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const UserBlockScalarFieldEnum = {
+  id: 'id',
+  blockerId: 'blockerId',
+  blockedUserId: 'blockedUserId',
+  reason: 'reason',
+  createdAt: 'createdAt'
+} as const
+
+export type UserBlockScalarFieldEnum = (typeof UserBlockScalarFieldEnum)[keyof typeof UserBlockScalarFieldEnum]
 
 
 export const UserPointScalarFieldEnum = {

@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
   Query,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -17,6 +18,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { Response } from 'express';
 import { PostService } from './post.service';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { CreatePostDto } from './dto/create.post.dto';
@@ -48,24 +50,38 @@ export class PostController {
     }, 'Post created successfully');
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get('feed')
-  @ApiOperation({
-    summary: 'Get feed with search, filters, sorting and pagination',
-  })
-  async feed(@Query() query: FeedQueryDto) {
-    return this.postsService.getFeed(query);
-  }
+async getFeed(
+  @GetUser('id') userId: string,
+  @Query() query: FeedQueryDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.postsService.getFeed(userId, query),
+    'Feed fetched successfully',
+  );
 
-  @Get(':id')
-  @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get single post by id' })
-  @ApiResponse({ status: 200 })
-  async getSinglePost(@Param('id') id: string) {
-    return handleRequest(async () => {
-      const post = await this.postsService.getSinglePost(id);
-      return post;
-    }, 'Post fetched successfully');
-  }
+  res.status(response.statusCode);
+  return response;
+}
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+ @Get(':postId')
+async getSinglePost(
+  @GetUser('id') userId: string,
+  @Param('postId') postId: string,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.postsService.getSinglePost(userId, postId),
+    'Post fetched successfully',
+  );
+
+  res.status(response.statusCode);
+  return response;
+}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

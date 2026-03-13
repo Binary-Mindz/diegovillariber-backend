@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { ProfileModule } from './profile/profile.module';
 import { FollowModule } from './folllow/follow.module';
 import { ReportModule } from './report/report.module';
+import { UserBlockModule } from './user-block/user-block.module';
+import { UserPointModule } from './user-point/user-point.module';
 
 @Module({
-  imports: [ProfileModule, FollowModule, ReportModule],
+  imports: [ProfileModule, FollowModule, ReportModule, UserBlockModule, UserPointModule],
   controllers: [],
   providers: [],
   exports: [],

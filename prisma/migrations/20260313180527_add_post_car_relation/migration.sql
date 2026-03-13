@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Post" ADD COLUMN     "carId" UUID;
+
+-- AddForeignKey
+ALTER TABLE "Post" ADD CONSTRAINT "Post_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE SET NULL ON UPDATE CASCADE;

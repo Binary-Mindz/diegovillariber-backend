@@ -522,14 +522,6 @@ export type WheelsTiresUncheckedUpdateOneWithoutAdvancedCarDataNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.WheelsTiresUpdateToOneWithWhereWithoutAdvancedCarDataInput, Prisma.WheelsTiresUpdateWithoutAdvancedCarDataInput>, Prisma.WheelsTiresUncheckedUpdateWithoutAdvancedCarDataInput>
 }
 
-export type NullableFloatFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type WheelsTiresCreateWithoutAdvancedCarDataInput = {
   id?: string
   tires?: string | null

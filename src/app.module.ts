@@ -16,6 +16,7 @@ import { FirebaseModule } from './main/firebase/firebase.module';
 import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.module';
 import { NotificationModule } from './main/notification/notification.module';
 import { RacingVoteModule } from './main/racing-vote/racing-vote.module';
+import { SpottingRequestModule } from './main/sportting-request/sportting-request.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { RacingVoteModule } from './main/racing-vote/racing-vote.module';
     ChatModule,
     FileModule,
     NotificationModule,
+    SpottingRequestModule,
     FirebaseModule,
     RacingVoteModule,
     MotorsportRankingModule,

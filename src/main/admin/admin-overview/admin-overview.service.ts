@@ -1,6 +1,6 @@
 import { PrismaService } from "@/common/prisma/prisma.service";
 import { Injectable } from "@nestjs/common";
-import { ChallengeStatus } from "generated/prisma/enums";
+import { ChallengeStatus, MediaType } from "generated/prisma/enums";
 
 @Injectable()
 export class AdminOverviewService {
@@ -63,6 +63,31 @@ export class AdminOverviewService {
 
     ORDER BY date ASC;
   `;
+  }
+
+  async getSystemStats() {
+    const [totalUsers, totalPosts, totalPhotos, totalVideos] =
+      await this.prisma.$transaction([
+        this.prisma.user.count(),
+        this.prisma.post.count(),
+        this.prisma.post.count({
+          where: {
+            mediaType: MediaType.IMAGE,
+          },
+        }),
+        this.prisma.post.count({
+          where: {
+            mediaType: MediaType.VIDEO,
+          },
+        }),
+      ]);
+
+    return {
+      totalUsers,
+      totalPosts,
+      totalPhotos,
+      totalVideos,
+    };
   }
 
 }

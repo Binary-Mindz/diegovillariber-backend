@@ -42,4 +42,16 @@ export class AdminOverviewController {
     res.status(response.statusCode);
     return response;
   }
+
+  @Get("systemStats")
+  async getSystemStats(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.adminOverviewService.getSystemStats(),
+      "Dashboard stats fetched successfully"
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+  
 }

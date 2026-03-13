@@ -1,7 +1,7 @@
 enum RawShiftStatus {
- ACTIVE
- UPCOMING
- FINISHED
+  ACTIVE
+  UPCOMING
+  FINISHED
 }
 
 enum RawShiftEntryStatus {

@@ -115,4 +115,11 @@ model User {
 
   racingVotesGiven    RacingVote[] @relation("RacingVoteVoter")
   racingVotesReceived RacingVote[] @relation("RacingVoteReceiver")
+
+  blockedUsers   UserBlock[] @relation("UserBlocksInitiated")
+  blockedByUsers UserBlock[] @relation("UserBlocksReceived")
+
+  spottingRequests SpottingRequest[]
+
+  spottingMatches SpottingMatch[]
 }
