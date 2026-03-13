@@ -17,9 +17,8 @@ import { ProductFeedQueryDto } from './dto/product-feed-query.dto';
 export class ProductService {
   constructor(private readonly prisma: PrismaService) {}
 
-  // 1) Create
   async createProduct(ownerId: string, dto: CreateProductDto) {
-    return this.prisma.productList.create({
+    const product = await this.prisma.productList.create({
       data: {
         ownerId,
         title: dto.title,
@@ -37,27 +36,61 @@ export class ProductService {
         price: dto.price,
         quantity: dto.quantity,
         showWhatsappNo: dto.showWhatsappNo ?? false,
-
-        // highlightProduct default false in schema (optional)
         highlightProduct: dto.highlightProduct ?? false,
       },
-      include: { owner: {select: {
-        email:true,
-        id: true,
-        profile:{
+      include: {
+        owner: {
           select: {
-            imageUrl: true,
-            profileName: true
-          }
-        }
-      }} },
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
+
+    return {
+      statusCode: 201,
+      data: {
+        id: product.id,
+        title: product.title,
+        productImage: product.productImage,
+        description: product.description,
+        location: product.location,
+        locationAddress: product.locationAddress,
+        latitude: product.latitude,
+        longitude: product.longitude,
+        placeId: product.placeId,
+        category: product.category,
+        tags: product.tags,
+        carBrand: product.carBrand,
+        carModel: product.carModel,
+        price: product.price,
+        quantity: product.quantity,
+        showWhatsappNo: product.showWhatsappNo,
+        highlightProduct: product.highlightProduct,
+        createdAt: product.createdAt,
+        owner: {
+          id: product.owner?.id ?? null,
+          email: product.owner?.email ?? null,
+          profileId: product.owner?.profile?.[0]?.id ?? null,
+          profileName: product.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      },
+    };
   }
 
-  // 2) Feed (highlighted first)
   async getFeed(query: ProductFeedQueryDto) {
-    const page = query.page ?? 1;
-    const limit = query.limit ?? 10;
+    const page = Math.max(Number(query.page ?? 1), 1);
+    const limit = Math.min(Math.max(Number(query.limit ?? 10), 1), 100);
     const skip = (page - 1) * limit;
 
     const where: Prisma.ProductListWhereInput = {};
@@ -69,99 +102,228 @@ export class ProductService {
         { description: { contains: q, mode: 'insensitive' } },
         { carBrand: { contains: q, mode: 'insensitive' } },
         { carModel: { contains: q, mode: 'insensitive' } },
-        { tags: { has: q } }, // exact tag match (optional)
+        { tags: { has: q } },
       ];
     }
 
     if (query.category) where.category = query.category;
 
     if (query.carBrand?.trim()) {
-      where.carBrand = { contains: query.carBrand.trim(), mode: 'insensitive' };
-    }
-    if (query.carModel?.trim()) {
-      where.carModel = { contains: query.carModel.trim(), mode: 'insensitive' };
+      where.carBrand = {
+        contains: query.carBrand.trim(),
+        mode: 'insensitive',
+      };
     }
 
-    // Sorting: highlighted first, then newest
-    const [data, total] = await Promise.all([
+    if (query.carModel?.trim()) {
+      where.carModel = {
+        contains: query.carModel.trim(),
+        mode: 'insensitive',
+      };
+    }
+
+    const [items, total] = await this.prisma.$transaction([
       this.prisma.productList.findMany({
         where,
         skip,
         take: limit,
         orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
-        include: { owner: {
-          select: {
-            id: true,
-            email: true,
-            profile: {
-              select: {
-               imageUrl: true,
-               profileName: true
-              }
-            }
-          }
-        } },
+        include: {
+          owner: {
+            select: {
+              id: true,
+              email: true,
+              profile: {
+                select: {
+                  id: true,
+                  imageUrl: true,
+                  profileName: true,
+                },
+                take: 1,
+              },
+            },
+          },
+        },
       }),
       this.prisma.productList.count({ where }),
     ]);
 
-    return { page, limit, total, data };
+    const data = items.map((product) => ({
+      id: product.id,
+      title: product.title,
+      productImage: product.productImage,
+      description: product.description,
+      location: product.location,
+      locationAddress: product.locationAddress,
+      latitude: product.latitude,
+      longitude: product.longitude,
+      placeId: product.placeId,
+      category: product.category,
+      tags: product.tags,
+      carBrand: product.carBrand,
+      carModel: product.carModel,
+      price: product.price,
+      quantity: product.quantity,
+      showWhatsappNo: product.showWhatsappNo,
+      highlightProduct: product.highlightProduct,
+      createdAt: product.createdAt,
+      owner: {
+        id: product.owner?.id ?? null,
+        email: product.owner?.email ?? null,
+        profileId: product.owner?.profile?.[0]?.id ?? null,
+        profileName: product.owner?.profile?.[0]?.profileName ?? null,
+        imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+      },
+    }));
+
+    return {
+      statusCode: 200,
+      data: {
+        items: data,
+        meta: {
+          total,
+          page,
+          limit,
+          totalPages: Math.ceil(total / limit),
+        },
+      },
+    };
   }
 
-  // 3) My Products
   async getMyProducts(ownerId: string) {
-    return this.prisma.productList.findMany({
+    const items = await this.prisma.productList.findMany({
       where: { ownerId },
       orderBy: [{ highlightProduct: 'desc' }, { createdAt: 'desc' }],
-       include: { owner: {
+      include: {
+        owner: {
           select: {
             id: true,
             email: true,
             profile: {
               select: {
-               imageUrl: true,
-               profileName: true
-              }
-            }
-          }
-        } },
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
+
+    return {
+      statusCode: 200,
+      data: items.map((product) => ({
+        id: product.id,
+        title: product.title,
+        productImage: product.productImage,
+        description: product.description,
+        location: product.location,
+        locationAddress: product.locationAddress,
+        latitude: product.latitude,
+        longitude: product.longitude,
+        placeId: product.placeId,
+        category: product.category,
+        tags: product.tags,
+        carBrand: product.carBrand,
+        carModel: product.carModel,
+        price: product.price,
+        quantity: product.quantity,
+        showWhatsappNo: product.showWhatsappNo,
+        highlightProduct: product.highlightProduct,
+        createdAt: product.createdAt,
+        owner: {
+          id: product.owner?.id ?? null,
+          email: product.owner?.email ?? null,
+          profileId: product.owner?.profile?.[0]?.id ?? null,
+          profileName: product.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      })),
+    };
   }
 
-  // 4) Single
   async getSingleProduct(id: string) {
     const product = await this.prisma.productList.findUnique({
       where: { id },
-      include: { owner: {
+      include: {
+        owner: {
           select: {
             id: true,
             email: true,
             profile: {
               select: {
-               imageUrl: true,
-               profileName: true
-              }
-            }
-          }
-        } },
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
-    if (!product) throw new NotFoundException('Product not found');
-    return product;
+
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    return {
+      statusCode: 200,
+      data: {
+        id: product.id,
+        title: product.title,
+        productImage: product.productImage,
+        description: product.description,
+        location: product.location,
+        locationAddress: product.locationAddress,
+        latitude: product.latitude,
+        longitude: product.longitude,
+        placeId: product.placeId,
+        category: product.category,
+        tags: product.tags,
+        carBrand: product.carBrand,
+        carModel: product.carModel,
+        price: product.price,
+        quantity: product.quantity,
+        showWhatsappNo: product.showWhatsappNo,
+        highlightProduct: product.highlightProduct,
+        createdAt: product.createdAt,
+        updatedAt: product.updatedAt,
+        owner: {
+          id: product.owner?.id ?? null,
+          email: product.owner?.email ?? null,
+          profileId: product.owner?.profile?.[0]?.id ?? null,
+          profileName: product.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      },
+    };
   }
 
-  // 5) Update (owner only)
   async updateProduct(id: string, ownerId: string, dto: UpdateProductDto) {
-    const current = await this.prisma.productList.findUnique({ where: { id } });
-    if (!current) throw new NotFoundException('Product not found');
-    if (current.ownerId !== ownerId) throw new ForbiddenException('Not your product');
+    const current = await this.prisma.productList.findUnique({
+      where: { id },
+    });
 
-    // (Optional) quantity/price validation
-    if (dto.price !== undefined && dto.price < 0)
+    if (!current) {
+      throw new NotFoundException('Product not found');
+    }
+
+    if (current.ownerId !== ownerId) {
+      throw new ForbiddenException('Not your product');
+    }
+
+    if (dto.price !== undefined && dto.price < 0) {
       throw new BadRequestException('Price cannot be negative');
-    if (dto.quantity !== undefined && dto.quantity < 0)
-      throw new BadRequestException('Quantity cannot be negative');
+    }
 
-    return this.prisma.productList.update({
+    if (dto.quantity !== undefined && dto.quantity < 0) {
+      throw new BadRequestException('Quantity cannot be negative');
+    }
+
+    const product = await this.prisma.productList.update({
       where: { id },
       data: {
         title: dto.title ?? undefined,
@@ -179,15 +341,57 @@ export class ProductService {
         price: dto.price ?? undefined,
         quantity: dto.quantity ?? undefined,
         showWhatsappNo: dto.showWhatsappNo ?? undefined,
-
-        // highlightProduct generally handled via setHighlight(), but keep if you want:
-        // highlightProduct: dto.highlightProduct ?? undefined,
       },
-      include: { owner: true },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
+
+    return {
+      statusCode: 200,
+      data: {
+        id: product.id,
+        title: product.title,
+        productImage: product.productImage,
+        description: product.description,
+        location: product.location,
+        locationAddress: product.locationAddress,
+        latitude: product.latitude,
+        longitude: product.longitude,
+        placeId: product.placeId,
+        category: product.category,
+        tags: product.tags,
+        carBrand: product.carBrand,
+        carModel: product.carModel,
+        price: product.price,
+        quantity: product.quantity,
+        showWhatsappNo: product.showWhatsappNo,
+        highlightProduct: product.highlightProduct,
+        updatedAt: product.updatedAt,
+        owner: {
+          id: product.owner?.id ?? null,
+          email: product.owner?.email ?? null,
+          profileId: product.owner?.profile?.[0]?.id ?? null,
+          profileName: product.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      },
+    };
   }
 
-  // 6) Delete (owner only)
   async deleteProduct(id: string, userId: string) {
     const product = await this.prisma.productList.findUnique({
       where: { id },
@@ -213,39 +417,99 @@ export class ProductService {
       throw new NotFoundException('User not found');
     }
 
-    const isCreator = product.ownerId === userId;
-    const isAdmin =
-      user.role.includes(Role.ADMIN) 
-    if (!isCreator && !isAdmin) {
-      throw new ForbiddenException(
-        'Only creator or admin can delete this product',
-      );
+    const isOwner = product.ownerId === userId;
+    const isAdmin = user.role === Role.ADMIN;
+
+    if (!isOwner && !isAdmin) {
+      throw new ForbiddenException('Only owner or admin can delete this product');
     }
 
     await this.prisma.productList.delete({
       where: { id },
     });
 
-    return { success: true };
+    return {
+      statusCode: 200,
+      data: {
+        deleted: true,
+        productId: id,
+      },
+    };
   }
 
-  // Highlight toggle (owner only)
   async setHighlight(ownerId: string, productId: string, on: boolean) {
     const product = await this.prisma.productList.findUnique({
       where: { id: productId },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
-    if (!product) throw new NotFoundException('Product not found');
-    if (product.ownerId !== ownerId) throw new ForbiddenException('Not your product');
 
-    if (on === true && product.highlightProduct === true)
+    if (!product) {
+      throw new NotFoundException('Product not found');
+    }
+
+    if (product.ownerId !== ownerId) {
+      throw new ForbiddenException('Not your product');
+    }
+
+    if (on === true && product.highlightProduct === true) {
       throw new BadRequestException('Already highlighted');
-    if (on === false && product.highlightProduct === false)
-      throw new BadRequestException('Already unhighlighted');
+    }
 
-    return this.prisma.productList.update({
+    if (on === false && product.highlightProduct === false) {
+      throw new BadRequestException('Already unhighlighted');
+    }
+
+    const updated = await this.prisma.productList.update({
       where: { id: productId },
       data: { highlightProduct: on },
-      include: { owner: true },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                imageUrl: true,
+                profileName: true,
+              },
+              take: 1,
+            },
+          },
+        },
+      },
     });
+
+    return {
+      statusCode: 200,
+      data: {
+        id: updated.id,
+        title: updated.title,
+        highlightProduct: updated.highlightProduct,
+        updatedAt: updated.updatedAt,
+        owner: {
+          id: updated.owner?.id ?? null,
+          email: updated.owner?.email ?? null,
+          profileId: updated.owner?.profile?.[0]?.id ?? null,
+          profileName: updated.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: updated.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      },
+    };
   }
 }
