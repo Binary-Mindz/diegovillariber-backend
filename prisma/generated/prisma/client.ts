@@ -338,6 +338,11 @@ export type Payment = Prisma.PaymentModel
  */
 export type Post = Prisma.PostModel
 /**
+ * Model PostRating
+ * 
+ */
+export type PostRating = Prisma.PostRatingModel
+/**
  * Model Prize
  * 
  */

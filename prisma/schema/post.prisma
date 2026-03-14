@@ -31,6 +31,10 @@ model Post {
   photoEditingDeclaration PhotoEditingDeclaration?
   videoEditingDeclaration VideoEditingDeclaration?
 
+  ratingCount   Int      @default(0)
+  ratingTotal   Int      @default(0)
+  ratingAverage Decimal  @default(0) @db.Decimal(10, 2)
+
   taggedUsers User[] @relation("PostTaggedUsers")
 
   visiualStyle    VisiualStyle[]    @default([])
@@ -48,6 +52,7 @@ model Post {
 
   likes    Like[]
   comments Comment[]
+  postRatings PostRating[]
 
   spottingMatches SpottingMatch[]
 }

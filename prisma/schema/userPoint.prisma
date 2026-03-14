@@ -5,16 +5,16 @@ model UserPoint {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   postId String? @db.Uuid
-  post   Post?   @relation(fields: [postId], references: [id])
+  post   Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   likeId String? @db.Uuid
-  like   Like?   @relation(fields: [likeId], references: [id])
+  like   Like?   @relation(fields: [likeId], references: [id], onDelete: Cascade)
 
   commentId String?  @db.Uuid
-  comment   Comment? @relation(fields: [commentId], references: [id])
+  comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
 
   followId String? @db.Uuid
-  follow   Follow? @relation(fields: [followId], references: [id])
+  follow   Follow? @relation(fields: [followId], references: [id], onDelete: Cascade)
 
   points Int
 }

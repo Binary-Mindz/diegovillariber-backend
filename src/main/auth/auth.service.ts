@@ -13,7 +13,7 @@ import type { SignOptions } from 'jsonwebtoken';
 import { SignUpDto } from './dto/signup.dto';
 import { generateOtp, otpExpiry } from '@/common/utils/otp';
 import { AccountType, IsActive, Role, Type } from 'generated/prisma/enums';
-
+import { randomUUID } from 'crypto';
 @Injectable()
 export class AuthService {
   constructor(
@@ -29,6 +29,11 @@ export class AuthService {
   private async compare(raw: string, hashed: string) {
     return bcrypt.compare(raw, hashed);
   }
+
+  private generateTempLoginToken() {
+  return randomUUID();
+  }
+
 
   private signAccessToken(user: { id: string; role: string; email: string }) {
     const secret = process.env.JWT_ACCESS_SECRET;
@@ -231,83 +236,229 @@ export class AuthService {
     return { message: 'Email verified successfully' };
   }
 
-  async login(email: string, password: string, loginAs?: Role) {
-    const user = await this.prisma.user.findUnique({
-      where: { email },
-      include: {
-        ambassadorPrograms: true,
-        officialPartners: true,
+ async login(email: string, password: string, loginAs?: Role) {
+  const user = await this.prisma.user.findUnique({
+    where: { email },
+    include: {
+      ambassadorPrograms: true,
+      officialPartners: true,
+    },
+  });
+
+  if (!user) throw new UnauthorizedException('Invalid credentials');
+
+  const ok = await this.compare(password, user.password);
+  if (!ok) throw new UnauthorizedException('Invalid credentials');
+
+  if (!user.isEmailVerified) {
+    throw new ForbiddenException('Email not verified');
+  }
+
+  let selectedRole = user.role;
+
+  if (loginAs === 'AMBASSADOR') {
+    if (
+      !user.ambassadorPrograms ||
+      user.ambassadorPrograms.status !== 'APPROVED'
+    ) {
+      throw new ForbiddenException('Ambassador not approved');
+    }
+    selectedRole = 'AMBASSADOR';
+  }
+
+  if (loginAs === 'OFFICIAL_PARTNER') {
+    if (
+      !user.officialPartners ||
+      user.officialPartners.requestStatus !== 'APPROVED'
+    ) {
+      throw new ForbiddenException('Official Partner not approved');
+    }
+    selectedRole = 'OFFICIAL_PARTNER';
+  }
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: { activeRole: selectedRole },
+  });
+
+  if (user.isTwoFactorEnabled) {
+    const otp = generateOtp(6);
+    const expires = otpExpiry(10);
+    const tempToken = this.generateTempLoginToken();
+
+    await this.prisma.user.update({
+      where: { id: user.id },
+      data: {
+        twoFactorOtp: otp,
+        twoFactorOtpExpiresAt: expires,
+        twoFactorTempToken: tempToken,
       },
     });
 
-    if (!user) throw new UnauthorizedException('Invalid credentials');
-
-    const ok = await this.compare(password, user.password);
-    if (!ok) throw new UnauthorizedException('Invalid credentials');
-
-    if (!user.isEmailVerified) {
-      throw new ForbiddenException('Email not verified');
-    }
-
-    let selectedRole = user.role;
-
-    if (loginAs === 'AMBASSADOR') {
-      if (
-        !user.ambassadorPrograms ||
-        user.ambassadorPrograms.status !== 'APPROVED'
-      ) {
-        throw new ForbiddenException('Ambassador not approved');
-      }
-      selectedRole = 'AMBASSADOR';
-    }
-
-    if (loginAs === 'OFFICIAL_PARTNER') {
-      if (
-        !user.officialPartners ||
-        user.officialPartners.requestStatus !== 'APPROVED'
-      ) {
-        throw new ForbiddenException('Official Partner not approved');
-      }
-      selectedRole = 'OFFICIAL_PARTNER';
-    }
-
-
-    await this.prisma.user.update({
-      where: { id: user.id },
-      data: { activeRole: selectedRole },
-    });
-
-    const accessToken = this.signAccessToken({
-      id: user.id,
-      role: selectedRole,
-      email: user.email,
-    });
-
-    const refreshToken = this.signRefreshToken({
-      id: user.id,
-      role: selectedRole,
-      email: user.email,
-    });
-
-    await this.prisma.user.update({
-      where: { id: user.id },
-      data: { refreshTokenHash: await this.hash(refreshToken) },
-    });
+    await this.mail.sendOtpEmail(user.email, 'Your login verification OTP', otp);
 
     return {
-      message: 'Login successful',
-      user: {
-        id: user.id,
-        email: user.email,
-        role: selectedRole,
-      },
-      tokens: {
-        accessToken,
-        refreshToken,
-      },
+      message: 'OTP sent to your email',
+      requiresTwoFactor: true,
+      tempToken,
     };
   }
 
+  const accessToken = this.signAccessToken({
+    id: user.id,
+    role: selectedRole,
+    email: user.email,
+  });
+
+  const refreshToken = this.signRefreshToken({
+    id: user.id,
+    role: selectedRole,
+    email: user.email,
+  });
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: { refreshTokenHash: await this.hash(refreshToken) },
+  });
+
+  return {
+    message: 'Login successful',
+    requiresTwoFactor: false,
+    user: {
+      id: user.id,
+      email: user.email,
+      role: selectedRole,
+    },
+    tokens: {
+      accessToken,
+      refreshToken,
+    },
+  };
+}
+
+async verifyLoginOtp(tempToken: string, otp: string) {
+  const user = await this.prisma.user.findFirst({
+    where: {
+      twoFactorTempToken: tempToken,
+    },
+  });
+
+  if (!user) {
+    throw new UnauthorizedException('Invalid or expired temporary login session');
+  }
+
+  if (!user.twoFactorOtp || !user.twoFactorOtpExpiresAt) {
+    throw new BadRequestException('No OTP found for login verification');
+  }
+
+  if (user.twoFactorOtp !== otp) {
+    throw new BadRequestException('Invalid OTP');
+  }
+
+  if (user.twoFactorOtpExpiresAt < new Date()) {
+    throw new BadRequestException('OTP expired');
+  }
+
+  const roleToUse = user.activeRole ?? user.role;
+
+  const accessToken = this.signAccessToken({
+    id: user.id,
+    role: roleToUse,
+    email: user.email,
+  });
+
+  const refreshToken = this.signRefreshToken({
+    id: user.id,
+    role: roleToUse,
+    email: user.email,
+  });
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: {
+      refreshTokenHash: await this.hash(refreshToken),
+      twoFactorOtp: null,
+      twoFactorOtpExpiresAt: null,
+      twoFactorTempToken: null,
+    },
+  });
+
+  return {
+    message: 'Login successful',
+    requiresTwoFactor: false,
+    user: {
+      id: user.id,
+      email: user.email,
+      role: roleToUse,
+    },
+    tokens: {
+      accessToken,
+      refreshToken,
+    },
+  };
+}
+
+async resendLoginOtp(tempToken: string) {
+  const user = await this.prisma.user.findFirst({
+    where: {
+      twoFactorTempToken: tempToken,
+    },
+  });
+
+  if (!user) {
+    throw new UnauthorizedException('Invalid or expired temporary login session');
+  }
+
+  if (!user.isTwoFactorEnabled) {
+    throw new BadRequestException('Two-factor authentication is disabled');
+  }
+
+  const otp = generateOtp(6);
+  const expires = otpExpiry(10);
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: {
+      twoFactorOtp: otp,
+      twoFactorOtpExpiresAt: expires,
+    },
+  });
+
+  await this.mail.sendOtpEmail(user.email, 'Your login verification OTP', otp);
+
+  return {
+    message: 'OTP resent successfully',
+  };
+}
+
+async toggleTwoFactor(userId: string, enabled: boolean) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  await this.prisma.user.update({
+    where: { id: userId },
+    data: {
+      isTwoFactorEnabled: enabled,
+      ...(enabled
+        ? {}
+        : {
+            twoFactorOtp: null,
+            twoFactorOtpExpiresAt: null,
+            twoFactorTempToken: null,
+          }),
+    },
+  });
+
+  return {
+    message: `Two-factor authentication ${enabled ? 'enabled' : 'disabled'} successfully`,
+    isTwoFactorEnabled: enabled,
+  };
+}
 
   async refreshTokens(userId: string, refreshToken: string) {
     const user = await this.prisma.user.findUnique({ where: { id: userId } });
@@ -424,6 +575,7 @@ export class AuthService {
         phone: true,
         role: true,
         isEmailVerified: true,
+        isTwoFactorEnabled:true,
         totalPoints: true,
         balance: true,
         likeCount: true,
