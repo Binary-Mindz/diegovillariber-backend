@@ -1,0 +1,79 @@
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Transform, Type } from 'class-transformer';
+import { IsBoolean, IsNumber, IsOptional, Max, Min } from 'class-validator';
+
+const toBoolean = ({ value }: { value: any }) => {
+  if (value === true || value === 'true' || value === 1 || value === '1') {
+    return true;
+  }
+  if (value === false || value === 'false' || value === 0 || value === '0') {
+    return false;
+  }
+  return undefined;
+};
+
+export class MapQueryDto {
+  @ApiPropertyOptional({ example: 23.8103 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  lat?: number;
+
+  @ApiPropertyOptional({ example: 90.4125 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  lng?: number;
+
+  @ApiPropertyOptional({ example: 50, default: 50 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  @Max(500)
+  radiusKm?: number = 50;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showSpotter?: boolean = true;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showOwner?: boolean = true;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  highRated?: boolean = false;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showBattles?: boolean = true;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showChallenges?: boolean = true;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  regionOnly?: boolean = false;
+
+  @ApiPropertyOptional({ example: 100, default: 100 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(1)
+  @Max(300)
+  limit?: number = 100;
+}

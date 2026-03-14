@@ -113,6 +113,9 @@ model Challenge {
 
   @@index([creatorId])
   @@index([status])
+  @@index([latitude, longitude])
+  @@index([participationScope])
+  @@index([startDate, endDate])
 }
 
 model ChallengeParticipant {

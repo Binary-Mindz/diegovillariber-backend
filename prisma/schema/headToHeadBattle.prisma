@@ -113,8 +113,10 @@ model HeadToHeadBattle {
   programType  ProgramType @default(HEAD_TO_HEAD)
 
   @@index([creatorId])
-  @@index([status])
   @@index([accessType])
+  @@index([latitude, longitude])
+  @@index([status, participationScope])
+  @@index([startDate, endDate])
 }
 
 model BattleParticipant {

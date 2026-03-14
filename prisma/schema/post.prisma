@@ -57,6 +57,11 @@ model Post {
   postRatings PostRating[]
 
   spottingMatches SpottingMatch[]
+
+  @@index([profileType])
+  @@index([latitude, longitude])
+  @@index([ratingAverage])
+  @@index([createdAt])
 }
 
 enum PhotoEditingDeclaration {
