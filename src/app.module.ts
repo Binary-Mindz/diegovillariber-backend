@@ -18,6 +18,7 @@ import { NotificationModule } from './main/notification/notification.module';
 import { RacingVoteModule } from './main/racing-vote/racing-vote.module';
 import { SpottingRequestModule } from './main/sportting-request/sportting-request.module';
 import { DiscoverModule } from './main/discover/discover.module';
+import { MapModule } from './main/map/map.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { DiscoverModule } from './main/discover/discover.module';
     FirebaseModule,
     RacingVoteModule,
     MotorsportRankingModule,
+    MapModule,
     AdminModule
   ],
   controllers: [],
