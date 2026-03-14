@@ -45,44 +45,45 @@ export class RacingVoteService {
     return { startUtc, endUtc };
   }
 
-  async createVote(voterId: string, dto: CreateRacingVoteDto) {
-    const { startUtc, endUtc } = this.getDhakaDayRange();
+ async createVote(voterId: string, dto: CreateRacingVoteDto) {
+  const { startUtc, endUtc } = this.getDhakaDayRange();
 
-    const todayVoteCount = await this.prisma.racingVote.count({
-      where: {
-        voterId,
-        createdAt: {
-          gte: startUtc,
-          lte: endUtc,
-        },
+  const todayVoteCount = await this.prisma.racingVote.count({
+    where: {
+      voterId,
+      createdAt: {
+        gte: startUtc,
+        lte: endUtc,
       },
-    });
+    },
+  });
 
-    if (todayVoteCount >= this.DAILY_LIMIT) {
-      throw new BadRequestException(
-        `You can vote maximum ${this.DAILY_LIMIT} times in a day`,
-      );
+  if (todayVoteCount >= this.DAILY_LIMIT) {
+    throw new BadRequestException(
+      `You can vote maximum ${this.DAILY_LIMIT} times in a day`,
+    );
+  }
+
+  if (dto.targetType === RacingVoteTargetType.USER) {
+    if (!dto.targetUserId) {
+      throw new BadRequestException('targetUserId is required');
     }
 
-    if (dto.targetType === RacingVoteTargetType.USER) {
-      if (!dto.targetUserId) {
-        throw new BadRequestException('targetUserId is required');
-      }
+    if (dto.targetUserId === voterId) {
+      throw new BadRequestException('You cannot vote for yourself');
+    }
 
-      if (dto.targetUserId === voterId) {
-        throw new BadRequestException('You cannot vote for yourself');
-      }
+    const targetUser = await this.prisma.user.findUnique({
+      where: { id: dto.targetUserId },
+      select: { id: true, totalPoints: true },
+    });
 
-      const targetUser = await this.prisma.user.findUnique({
-        where: { id: dto.targetUserId },
-        select: { id: true, totalPoints: true },
-      });
+    if (!targetUser) {
+      throw new NotFoundException('Target user not found');
+    }
 
-      if (!targetUser) {
-        throw new NotFoundException('Target user not found');
-      }
-
-      const alreadyVotedTodayForSameUser = await this.prisma.racingVote.findFirst({
+    const alreadyVotedTodayForSameUser =
+      await this.prisma.racingVote.findFirst({
         where: {
           voterId,
           targetUserId: dto.targetUserId,
@@ -93,68 +94,72 @@ export class RacingVoteService {
         },
       });
 
-      if (alreadyVotedTodayForSameUser) {
-        throw new BadRequestException(
-          'You already voted for this user today',
-        );
-      }
-
-      return this.prisma.$transaction(async (tx) => {
-        const vote = await tx.racingVote.create({
-          data: {
-            voterId,
-            targetUserId: dto.targetUserId,
-            point: this.DEFAULT_POINT,
-          },
-          include: {
-            voter: { select: { id: true, email: true } },
-            targetUser: { select: { id: true, email: true, totalPoints: true } },
-          },
-        });
-
-        await tx.user.update({
-          where: { id: dto.targetUserId },
-          data: {
-            totalPoints: {
-              increment: this.DEFAULT_POINT,
-            },
-          },
-        });
-
-        const remainingVotes = this.DAILY_LIMIT - (todayVoteCount + 1);
-
-        return {
-          vote,
-          targetType: dto.targetType,
-          pointsAdded: this.DEFAULT_POINT,
-          remainingVotesToday: remainingVotes,
-        };
-      });
+    if (alreadyVotedTodayForSameUser) {
+      throw new BadRequestException(
+        'You already voted for this user today',
+      );
     }
 
-    if (dto.targetType === RacingVoteTargetType.POST) {
-      if (!dto.postId) {
-        throw new BadRequestException('postId is required');
-      }
-
-      const post = await this.prisma.post.findUnique({
-        where: { id: dto.postId },
-        select: {
-          id: true,
-          userId: true,
-          point: true,
+    return this.prisma.$transaction(async (tx) => {
+      const vote = await tx.racingVote.create({
+        data: {
+          voterId,
+          targetUserId: dto.targetUserId,
+          point: this.DEFAULT_POINT,
+        },
+        include: {
+          voter: { select: { id: true, email: true } },
+          targetUser: {
+            select: { id: true, email: true, totalPoints: true },
+          },
         },
       });
 
-      if (!post) {
-        throw new NotFoundException('Post not found');
-      }
+      await tx.user.update({
+        where: { id: dto.targetUserId },
+        data: {
+          totalPoints: {
+            increment: this.DEFAULT_POINT,
+          },
+        },
+      });
 
-      if (post.userId === voterId) {
-        throw new BadRequestException('You cannot vote for your own post');
-      }
+      const remainingVotes = this.DAILY_LIMIT - (todayVoteCount + 1);
 
-      const alreadyVotedTodayForSamePost = await this.prisma.racingVote.findFirst({
+      return {
+        vote,
+        targetType: dto.targetType,
+        pointsAdded: this.DEFAULT_POINT,
+        remainingVotesToday: remainingVotes,
+      };
+    });
+  }
+
+  if (dto.targetType === RacingVoteTargetType.POST) {
+    if (!dto.postId) {
+      throw new BadRequestException('postId is required');
+    }
+
+    const post = await this.prisma.post.findUnique({
+      where: { id: dto.postId },
+      select: {
+        id: true,
+        userId: true,
+        point: true,
+        racingVote: true,
+      },
+    });
+
+    if (!post) {
+      throw new NotFoundException('Post not found');
+    }
+
+    if (post.userId === voterId) {
+      throw new BadRequestException('You cannot vote for your own post');
+    }
+
+    const alreadyVotedTodayForSamePost =
+      await this.prisma.racingVote.findFirst({
         where: {
           voterId,
           postId: dto.postId,
@@ -165,63 +170,74 @@ export class RacingVoteService {
         },
       });
 
-      if (alreadyVotedTodayForSamePost) {
-        throw new BadRequestException(
-          'You already voted for this post today',
-        );
-      }
-
-      return this.prisma.$transaction(async (tx) => {
-        const vote = await tx.racingVote.create({
-          data: {
-            voterId,
-            postId: dto.postId,
-            point: this.DEFAULT_POINT,
-          },
-          include: {
-            voter: { select: { id: true, email: true } },
-            post: {
-              select: {
-                id: true,
-                userId: true,
-                point: true,
-              },
-            },
-          },
-        });
-
-        await tx.post.update({
-          where: { id: dto.postId },
-          data: {
-            point: {
-              increment: this.DEFAULT_POINT,
-            },
-          },
-        });
-
-        await tx.user.update({
-          where: { id: post.userId },
-          data: {
-            totalPoints: {
-              increment: this.DEFAULT_POINT,
-            },
-          },
-        });
-
-        const remainingVotes = this.DAILY_LIMIT - (todayVoteCount + 1);
-
-        return {
-          vote,
-          targetType: dto.targetType,
-          pointsAddedToPost: this.DEFAULT_POINT,
-          pointsAddedToPostOwner: this.DEFAULT_POINT,
-          remainingVotesToday: remainingVotes,
-        };
-      });
+    if (alreadyVotedTodayForSamePost) {
+      throw new BadRequestException(
+        'You already voted for this post today',
+      );
     }
 
-    throw new BadRequestException('Invalid target type');
+    return this.prisma.$transaction(async (tx) => {
+      const vote = await tx.racingVote.create({
+        data: {
+          voterId,
+          postId: dto.postId,
+          point: this.DEFAULT_POINT,
+        },
+        include: {
+          voter: { select: { id: true, email: true } },
+          post: {
+            select: {
+              id: true,
+              userId: true,
+              point: true,
+              racingVote: true,
+            },
+          },
+        },
+      });
+
+      const updatedPost = await tx.post.update({
+        where: { id: dto.postId },
+        data: {
+          point: {
+            increment: this.DEFAULT_POINT,
+          },
+          racingVote: {
+            increment: 1,
+          },
+        },
+        select: {
+          id: true,
+          point: true,
+          racingVote: true,
+        },
+      });
+
+      await tx.user.update({
+        where: { id: post.userId },
+        data: {
+          totalPoints: {
+            increment: this.DEFAULT_POINT,
+          },
+        },
+      });
+
+      const remainingVotes = this.DAILY_LIMIT - (todayVoteCount + 1);
+
+      return {
+        vote,
+        targetType: dto.targetType,
+        pointsAddedToPost: this.DEFAULT_POINT,
+        pointsAddedToPostOwner: this.DEFAULT_POINT,
+        postRacingVoteCount: updatedPost.racingVote,
+        postTotalPoint: updatedPost.point,
+        remainingVotesToday: remainingVotes,
+      };
+    });
   }
+
+  throw new BadRequestException('Invalid target type');
+}
 
   async myTodayVoteSummary(voterId: string) {
     const { startUtc, endUtc } = this.getDhakaDayRange();

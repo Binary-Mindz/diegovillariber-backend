@@ -8684,6 +8684,7 @@ export const PostScalarFieldEnum = {
   comment: 'comment',
   share: 'share',
   repost: 'repost',
+  racingVote: 'racingVote',
   contentBooster: 'contentBooster',
   point: 'point',
   photoEditingDeclaration: 'photoEditingDeclaration',
