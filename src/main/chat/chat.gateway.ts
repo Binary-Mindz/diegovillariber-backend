@@ -54,43 +54,49 @@ export class ChatGateway
     this.logger.log(`Chat WebSocket Gateway initialized (${server.adapter.name})`);
   }
 
-  async handleConnection(client: Socket) {
-    try {
-      const token = this.extractTokenFromSocket(client);
-      if (!token) return this.disconnectWithError(client, 'Missing token');
+ async handleConnection(client: Socket) {
+  try {
+    const token = this.extractTokenFromSocket(client);
+    if (!token) return this.disconnectWithError(client, 'Missing token');
 
-      const payload = this.jwtService.verify(token, {
-        secret: this.configService.getOrThrow('JWT_ACCESS_SECRET'),
-      });
+    const payload = this.jwtService.verify(token, {
+      secret: this.configService.getOrThrow<string>('JWT_ACCESS_SECRET'),
+    });
 
-      const userId = payload?.sub;
-      if (!userId) return this.disconnectWithError(client, 'Invalid token payload');
-
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId },
-        select: { id: true, email: true },
-      });
-
-      if (!user) return this.disconnectWithError(client, 'User not found');
-
-      client.data.userId = user.id;
-      client.data.user = user;
-
-      client.join(user.id);
-
-      this.logger.log(`User connected: ${user.id} (socket ${client.id})`);
-      client.emit('connection_success', {
-        message: 'Connected successfully',
-        user,
-      });
-
-    
-      this.server.emit('presence.online', { userId: user.id });
-    } catch (error: any) {
-      this.disconnectWithError(client, error?.message ?? 'Authentication failed');
+    const userId = payload?.sub;
+    if (!userId) {
+      return this.disconnectWithError(client, 'Invalid token payload');
     }
-  }
 
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true, email: true, role: true },
+    });
+
+    if (!user) {
+      return this.disconnectWithError(client, 'User not found');
+    }
+
+    client.data.userId = user.id;
+    client.data.user = user;
+    client.data.role = user.role;
+
+    client.join(user.id);
+
+    this.logger.log(
+      `User connected: ${user.id}, role=${user.role}, socket=${client.id}`,
+    );
+
+    client.emit('connection_success', {
+      message: 'Connected successfully',
+      user,
+    });
+
+    this.server.emit('presence.online', { userId: user.id });
+  } catch (error: any) {
+    this.disconnectWithError(client, error?.message ?? 'Authentication failed');
+  }
+}
   handleDisconnect(client: Socket) {
     const userId = client.data?.userId as string | undefined;
     if (userId) {
@@ -293,9 +299,17 @@ async adminBroadcast(
 ) {
   try {
     const adminId = client.data?.userId as string | undefined;
+    const role = client.data?.role as string | undefined;
 
     if (!adminId) {
-      client.emit('error', { message: 'Unauthenticated socket' });
+      client.emit('socket_error', { message: 'Unauthenticated socket' });
+      return;
+    }
+
+    if (role !== 'ADMIN') {
+      client.emit('broadcast_error', {
+        message: 'Only admin can send broadcast',
+      });
       return;
     }
 
@@ -310,7 +324,9 @@ async adminBroadcast(
       total: result.total,
     });
   } catch (error: any) {
-    client.emit('error', {
+    this.logger.error(`Broadcast failed: ${error?.message}`, error?.stack);
+
+    client.emit('broadcast_error', {
       message: error?.message ?? 'Broadcast failed',
     });
   }
