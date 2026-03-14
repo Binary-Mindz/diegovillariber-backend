@@ -32,6 +32,7 @@ export type PostAvgAggregateOutputType = {
   like: number | null
   comment: number | null
   share: number | null
+  repost: number | null
   point: number | null
   ratingCount: number | null
   ratingTotal: number | null
@@ -44,6 +45,7 @@ export type PostSumAggregateOutputType = {
   like: number | null
   comment: number | null
   share: number | null
+  repost: number | null
   point: number | null
   ratingCount: number | null
   ratingTotal: number | null
@@ -71,6 +73,7 @@ export type PostMinAggregateOutputType = {
   like: number | null
   comment: number | null
   share: number | null
+  repost: number | null
   contentBooster: boolean | null
   point: number | null
   photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
@@ -103,6 +106,7 @@ export type PostMaxAggregateOutputType = {
   like: number | null
   comment: number | null
   share: number | null
+  repost: number | null
   contentBooster: boolean | null
   point: number | null
   photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
@@ -135,6 +139,7 @@ export type PostCountAggregateOutputType = {
   like: number
   comment: number
   share: number
+  repost: number
   contentBooster: number
   point: number
   photoEditingDeclaration: number
@@ -157,6 +162,7 @@ export type PostAvgAggregateInputType = {
   like?: true
   comment?: true
   share?: true
+  repost?: true
   point?: true
   ratingCount?: true
   ratingTotal?: true
@@ -169,6 +175,7 @@ export type PostSumAggregateInputType = {
   like?: true
   comment?: true
   share?: true
+  repost?: true
   point?: true
   ratingCount?: true
   ratingTotal?: true
@@ -196,6 +203,7 @@ export type PostMinAggregateInputType = {
   like?: true
   comment?: true
   share?: true
+  repost?: true
   contentBooster?: true
   point?: true
   photoEditingDeclaration?: true
@@ -228,6 +236,7 @@ export type PostMaxAggregateInputType = {
   like?: true
   comment?: true
   share?: true
+  repost?: true
   contentBooster?: true
   point?: true
   photoEditingDeclaration?: true
@@ -260,6 +269,7 @@ export type PostCountAggregateInputType = {
   like?: true
   comment?: true
   share?: true
+  repost?: true
   contentBooster?: true
   point?: true
   photoEditingDeclaration?: true
@@ -382,6 +392,7 @@ export type PostGroupByOutputType = {
   like: number
   comment: number
   share: number
+  repost: number
   contentBooster: boolean
   point: number
   photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
@@ -440,6 +451,7 @@ export type PostWhereInput = {
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
+  repost?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
   photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
@@ -490,6 +502,7 @@ export type PostOrderByWithRelationInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
   photoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -543,6 +556,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
+  repost?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
   photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
@@ -593,6 +607,7 @@ export type PostOrderByWithAggregationInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
   photoEditingDeclaration?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -636,6 +651,7 @@ export type PostScalarWhereWithAggregatesInput = {
   like?: Prisma.IntWithAggregatesFilter<"Post"> | number
   comment?: Prisma.IntWithAggregatesFilter<"Post"> | number
   share?: Prisma.IntWithAggregatesFilter<"Post"> | number
+  repost?: Prisma.IntWithAggregatesFilter<"Post"> | number
   contentBooster?: Prisma.BoolWithAggregatesFilter<"Post"> | boolean
   point?: Prisma.IntWithAggregatesFilter<"Post"> | number
   photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableWithAggregatesFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
@@ -668,6 +684,7 @@ export type PostCreateInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -718,6 +735,7 @@ export type PostUncheckedCreateInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -762,6 +780,7 @@ export type PostUpdateInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -812,6 +831,7 @@ export type PostUncheckedUpdateInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -859,6 +879,7 @@ export type PostCreateManyInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -891,6 +912,7 @@ export type PostUpdateManyMutationInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -926,6 +948,7 @@ export type PostUncheckedUpdateManyInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -1000,6 +1023,7 @@ export type PostCountOrderByAggregateInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
   photoEditingDeclaration?: Prisma.SortOrder
@@ -1020,6 +1044,7 @@ export type PostAvgOrderByAggregateInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   point?: Prisma.SortOrder
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
@@ -1047,6 +1072,7 @@ export type PostMaxOrderByAggregateInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
   photoEditingDeclaration?: Prisma.SortOrder
@@ -1079,6 +1105,7 @@ export type PostMinOrderByAggregateInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   contentBooster?: Prisma.SortOrder
   point?: Prisma.SortOrder
   photoEditingDeclaration?: Prisma.SortOrder
@@ -1096,6 +1123,7 @@ export type PostSumOrderByAggregateInput = {
   like?: Prisma.SortOrder
   comment?: Prisma.SortOrder
   share?: Prisma.SortOrder
+  repost?: Prisma.SortOrder
   point?: Prisma.SortOrder
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
@@ -1518,6 +1546,7 @@ export type PostCreateWithoutCarInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1566,6 +1595,7 @@ export type PostUncheckedCreateWithoutCarInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1642,6 +1672,7 @@ export type PostScalarWhereInput = {
   like?: Prisma.IntFilter<"Post"> | number
   comment?: Prisma.IntFilter<"Post"> | number
   share?: Prisma.IntFilter<"Post"> | number
+  repost?: Prisma.IntFilter<"Post"> | number
   contentBooster?: Prisma.BoolFilter<"Post"> | boolean
   point?: Prisma.IntFilter<"Post"> | number
   photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
@@ -1674,6 +1705,7 @@ export type PostCreateWithoutCommentsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1723,6 +1755,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1782,6 +1815,7 @@ export type PostUpdateWithoutCommentsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -1831,6 +1865,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -1874,6 +1909,7 @@ export type PostCreateWithoutHashtagsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1923,6 +1959,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -1987,6 +2024,7 @@ export type PostCreateWithoutHidePostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2036,6 +2074,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2095,6 +2134,7 @@ export type PostUpdateWithoutHidePostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2144,6 +2184,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2187,6 +2228,7 @@ export type PostCreateWithoutLikesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2236,6 +2278,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2295,6 +2338,7 @@ export type PostUpdateWithoutLikesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2344,6 +2388,7 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2387,6 +2432,7 @@ export type PostCreateWithoutPostRatingsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2436,6 +2482,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2495,6 +2542,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2544,6 +2592,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2587,6 +2636,7 @@ export type PostCreateWithoutProfileInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2635,6 +2685,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2705,6 +2756,7 @@ export type PostCreateWithoutRacingVotesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2754,6 +2806,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2813,6 +2866,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2862,6 +2916,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -2905,6 +2960,7 @@ export type PostCreateWithoutRepostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -2954,6 +3010,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3013,6 +3070,7 @@ export type PostUpdateWithoutRepostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3062,6 +3120,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3105,6 +3164,7 @@ export type PostCreateWithoutSavePostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3154,6 +3214,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3213,6 +3274,7 @@ export type PostUpdateWithoutSavePostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3262,6 +3324,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3305,6 +3368,7 @@ export type PostCreateWithoutSpottingMatchesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3354,6 +3418,7 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3413,6 +3478,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3462,6 +3528,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3505,6 +3572,7 @@ export type PostCreateWithoutUserInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3553,6 +3621,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3607,6 +3676,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3656,6 +3726,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3736,6 +3807,7 @@ export type PostCreateWithoutUserPointsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3785,6 +3857,7 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3844,6 +3917,7 @@ export type PostUpdateWithoutUserPointsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3893,6 +3967,7 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -3936,6 +4011,7 @@ export type PostCreateWithoutWishListsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -3985,6 +4061,7 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -4044,6 +4121,7 @@ export type PostUpdateWithoutWishListsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4093,6 +4171,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4138,6 +4217,7 @@ export type PostCreateManyCarInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -4170,6 +4250,7 @@ export type PostUpdateWithoutCarInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4218,6 +4299,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4264,6 +4346,7 @@ export type PostUncheckedUpdateManyWithoutCarInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4296,6 +4379,7 @@ export type PostUpdateWithoutHashtagsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4345,6 +4429,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4391,6 +4476,7 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4425,6 +4511,7 @@ export type PostCreateManyProfileInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -4457,6 +4544,7 @@ export type PostUpdateWithoutProfileInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4505,6 +4593,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4551,6 +4640,7 @@ export type PostUncheckedUpdateManyWithoutProfileInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4585,6 +4675,7 @@ export type PostCreateManyUserInput = {
   like?: number
   comment?: number
   share?: number
+  repost?: number
   contentBooster?: boolean
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
@@ -4617,6 +4708,7 @@ export type PostUpdateWithoutUserInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4665,6 +4757,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4711,6 +4804,7 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4743,6 +4837,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4792,6 +4887,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -4838,6 +4934,7 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
   like?: Prisma.IntFieldUpdateOperationsInput | number
   comment?: Prisma.IntFieldUpdateOperationsInput | number
   share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
   contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
@@ -5003,6 +5100,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   like?: boolean
   comment?: boolean
   share?: boolean
+  repost?: boolean
   contentBooster?: boolean
   point?: boolean
   photoEditingDeclaration?: boolean
@@ -5054,6 +5152,7 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   like?: boolean
   comment?: boolean
   share?: boolean
+  repost?: boolean
   contentBooster?: boolean
   point?: boolean
   photoEditingDeclaration?: boolean
@@ -5092,6 +5191,7 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   like?: boolean
   comment?: boolean
   share?: boolean
+  repost?: boolean
   contentBooster?: boolean
   point?: boolean
   photoEditingDeclaration?: boolean
@@ -5130,6 +5230,7 @@ export type PostSelectScalar = {
   like?: boolean
   comment?: boolean
   share?: boolean
+  repost?: boolean
   contentBooster?: boolean
   point?: boolean
   photoEditingDeclaration?: boolean
@@ -5144,7 +5245,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "repost" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Post$profileArgs<ExtArgs>
@@ -5214,6 +5315,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     like: number
     comment: number
     share: number
+    repost: number
     contentBooster: boolean
     point: number
     photoEditingDeclaration: $Enums.PhotoEditingDeclaration | null
@@ -5684,6 +5786,7 @@ export interface PostFieldRefs {
   readonly like: Prisma.FieldRef<"Post", 'Int'>
   readonly comment: Prisma.FieldRef<"Post", 'Int'>
   readonly share: Prisma.FieldRef<"Post", 'Int'>
+  readonly repost: Prisma.FieldRef<"Post", 'Int'>
   readonly contentBooster: Prisma.FieldRef<"Post", 'Boolean'>
   readonly point: Prisma.FieldRef<"Post", 'Int'>
   readonly photoEditingDeclaration: Prisma.FieldRef<"Post", 'PhotoEditingDeclaration'>

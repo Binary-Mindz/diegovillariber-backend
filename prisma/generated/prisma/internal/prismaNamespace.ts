@@ -427,6 +427,7 @@ export const ModelName = {
   BattleSubmission: 'BattleSubmission',
   BattleVote: 'BattleVote',
   BattleComment: 'BattleComment',
+  Header: 'Header',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
   LabTime: 'LabTime',
@@ -495,7 +496,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3678,6 +3679,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.BattleCommentCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.BattleCommentCountAggregateOutputType> | number
+        }
+      }
+    }
+    Header: {
+      payload: Prisma.$HeaderPayload<ExtArgs>
+      fields: Prisma.HeaderFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.HeaderFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.HeaderFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        findFirst: {
+          args: Prisma.HeaderFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.HeaderFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        findMany: {
+          args: Prisma.HeaderFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>[]
+        }
+        create: {
+          args: Prisma.HeaderCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        createMany: {
+          args: Prisma.HeaderCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.HeaderCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>[]
+        }
+        delete: {
+          args: Prisma.HeaderDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        update: {
+          args: Prisma.HeaderUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        deleteMany: {
+          args: Prisma.HeaderDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.HeaderUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.HeaderUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>[]
+        }
+        upsert: {
+          args: Prisma.HeaderUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$HeaderPayload>
+        }
+        aggregate: {
+          args: Prisma.HeaderAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateHeader>
+        }
+        groupBy: {
+          args: Prisma.HeaderGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.HeaderGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.HeaderCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.HeaderCountAggregateOutputType> | number
         }
       }
     }
@@ -8326,6 +8401,19 @@ export const BattleCommentScalarFieldEnum = {
 export type BattleCommentScalarFieldEnum = (typeof BattleCommentScalarFieldEnum)[keyof typeof BattleCommentScalarFieldEnum]
 
 
+export const HeaderScalarFieldEnum = {
+  id: 'id',
+  selectHeader: 'selectHeader',
+  headerName: 'headerName',
+  brandName: 'brandName',
+  bannerImage: 'bannerImage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type HeaderScalarFieldEnum = (typeof HeaderScalarFieldEnum)[keyof typeof HeaderScalarFieldEnum]
+
+
 export const HidePostScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -8595,6 +8683,7 @@ export const PostScalarFieldEnum = {
   like: 'like',
   comment: 'comment',
   share: 'share',
+  repost: 'repost',
   contentBooster: 'contentBooster',
   point: 'point',
   photoEditingDeclaration: 'photoEditingDeclaration',
@@ -9895,6 +9984,20 @@ export type ListEnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'HeaderName'
+ */
+export type EnumHeaderNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HeaderName'>
+    
+
+
+/**
+ * Reference to a field of type 'HeaderName[]'
+ */
+export type ListEnumHeaderNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HeaderName[]'>
+    
+
+
+/**
  * Reference to a field of type 'SessionType'
  */
 export type EnumSessionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionType'>
@@ -10731,6 +10834,7 @@ export type GlobalOmitConfig = {
   battleSubmission?: Prisma.BattleSubmissionOmit
   battleVote?: Prisma.BattleVoteOmit
   battleComment?: Prisma.BattleCommentOmit
+  header?: Prisma.HeaderOmit
   hidePost?: Prisma.HidePostOmit
   interiorSafety?: Prisma.InteriorSafetyOmit
   labTime?: Prisma.LabTimeOmit

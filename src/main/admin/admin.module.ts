@@ -9,9 +9,10 @@ import { AdminReportModule } from './admin-report/admin-report.module';
 import { AdminTutorialModule } from './admin-tutorial/admin-tutorial.module';
 import { AdminSimRacingModule } from './admin-sim-racing/admin-sim-racing.module';
 import { AdminAdModule } from './admin-ad/admin-ad.module';
+import { AdminHeaderModule } from './admin-header/admin-header.module';
 
 @Module({
-  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule, AdminAdModule],
+  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule, AdminAdModule, AdminHeaderModule],
   controllers: [],
   providers: [],
   exports: [],

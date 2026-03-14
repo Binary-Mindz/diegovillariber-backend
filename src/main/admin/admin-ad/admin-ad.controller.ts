@@ -27,16 +27,17 @@ import { GetAdsQueryDto } from './dto/get-ad-query.dto';
 import { ChangeAdStatusDto } from './dto/change-ad-status.dto';
 import { AdminAdService } from './admin-ad.service';
 import { AdOverviewQueryDto } from './dto/ad-overview-query.dto';
+import { Role } from 'generated/prisma/enums';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
-@Roles('ADMIN')
+@Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
 @ApiTags('Ads Management')
 @Controller('admin-ads')
 export class AdminAdController {
   constructor(private readonly adService: AdminAdService) {}
 
-    @Get('overview')
+  @Get('overview')
   @ApiOperation({ summary: 'Get ads overview dashboard cards' })
   async getAdsOverview(
     @Query() query: AdOverviewQueryDto,

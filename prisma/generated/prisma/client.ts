@@ -253,6 +253,11 @@ export type BattleVote = Prisma.BattleVoteModel
  */
 export type BattleComment = Prisma.BattleCommentModel
 /**
+ * Model Header
+ * 
+ */
+export type Header = Prisma.HeaderModel
+/**
  * Model HidePost
  * 
  */

@@ -94,6 +94,7 @@ export const ModelName = {
   BattleSubmission: 'BattleSubmission',
   BattleVote: 'BattleVote',
   BattleComment: 'BattleComment',
+  Header: 'Header',
   HidePost: 'HidePost',
   InteriorSafety: 'InteriorSafety',
   LabTime: 'LabTime',
@@ -849,6 +850,19 @@ export const BattleCommentScalarFieldEnum = {
 export type BattleCommentScalarFieldEnum = (typeof BattleCommentScalarFieldEnum)[keyof typeof BattleCommentScalarFieldEnum]
 
 
+export const HeaderScalarFieldEnum = {
+  id: 'id',
+  selectHeader: 'selectHeader',
+  headerName: 'headerName',
+  brandName: 'brandName',
+  bannerImage: 'bannerImage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type HeaderScalarFieldEnum = (typeof HeaderScalarFieldEnum)[keyof typeof HeaderScalarFieldEnum]
+
+
 export const HidePostScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -1118,6 +1132,7 @@ export const PostScalarFieldEnum = {
   like: 'like',
   comment: 'comment',
   share: 'share',
+  repost: 'repost',
   contentBooster: 'contentBooster',
   point: 'point',
   photoEditingDeclaration: 'photoEditingDeclaration',
