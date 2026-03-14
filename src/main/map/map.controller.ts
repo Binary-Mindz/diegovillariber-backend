@@ -26,7 +26,7 @@ export class MapController {
     @Param('id') id: string,
   ) {
     return handleRequest(
-      () => this.mapService.getMapDetails(type, id),
+      () => this.mapService.getMapDetails(type.toLowerCase(), id),
       'Map details fetched successfully',
       HttpStatus.OK,
     );

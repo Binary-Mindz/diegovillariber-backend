@@ -33,6 +33,7 @@ export class MapQueryDto {
   @Max(500)
   radiusKm?: number = 50;
 
+  // Spots
   @ApiPropertyOptional({ example: true })
   @IsOptional()
   @Transform(toBoolean)
@@ -51,6 +52,7 @@ export class MapQueryDto {
   @IsBoolean()
   highRated?: boolean = false;
 
+  // Arena
   @ApiPropertyOptional({ example: true })
   @IsOptional()
   @Transform(toBoolean)
@@ -62,6 +64,68 @@ export class MapQueryDto {
   @Transform(toBoolean)
   @IsBoolean()
   showChallenges?: boolean = true;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showEvents?: boolean = true;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showRawShift?: true;
+
+  // Marketplace
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showMarketplaceCar?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showMarketplaceCarParts?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showMarketplacePhotography?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showMarketplaceSimRacing?: boolean = false;
+
+  // Pro accounts
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showProBusiness?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showProDriver?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showContentCreator?: boolean = false;
+
+  @ApiPropertyOptional({ example: false })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showSimRacing?: boolean = false;
 
   @ApiPropertyOptional({ example: false })
   @IsOptional()

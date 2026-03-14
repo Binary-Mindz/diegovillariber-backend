@@ -19,6 +19,7 @@ model User {
   likeCount         Int           @default(0)
   commentCount      Int           @default(0)
   shareCount        Int           @default(0)
+  totalVote         Int           @default(0)
   activeProfileId   String?       @db.Uuid
 
   isTwoFactorEnabled Boolean   @default(false)
