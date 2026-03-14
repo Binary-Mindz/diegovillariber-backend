@@ -21,17 +21,17 @@ import { handleRequest } from '@/common/helpers/handle.request';
 import { AdminUserManagementService } from './admin-user-management.service';
 import { PostModerationQueryDto } from './dto/post-mpderation.query.dto';
 import { GetUsersQueryDto } from './dto/get-user-query.dto';
+import { Role } from 'generated/prisma/enums';
 
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles('ADMIN')
 @ApiTags('Admin User Management')
 @Controller('admin-user-management')
 export class AdminUserManagementController {
   constructor(
     private readonly adminUserManagementService: AdminUserManagementService,
   ) { }
-
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
   @Get('overview')
   async getUsersWithStats(@Res({ passthrough: true }) res: Response) {
     const response = await handleRequest(
@@ -43,6 +43,8 @@ export class AdminUserManagementController {
     return response;
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   @Get('all-users')
   async getUsers(
     @Query() query: GetUsersQueryDto,
@@ -57,6 +59,8 @@ export class AdminUserManagementController {
     return response;
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   @Get('moderation')
   @ApiOperation({
     summary: 'List posts for moderation (All/Photo/Video + pagination)',
@@ -74,6 +78,8 @@ export class AdminUserManagementController {
     return response;
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete a post (post moderation action)' })
@@ -90,6 +96,8 @@ export class AdminUserManagementController {
     return response;
   }
   
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   @Delete('users/:id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete a user (admin only)' })
