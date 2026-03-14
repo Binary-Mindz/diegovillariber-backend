@@ -444,6 +444,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  PostRating: 'PostRating',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
@@ -494,7 +495,11 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
+<<<<<<< HEAD
     modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+=======
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4938,6 +4943,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PostRating: {
+      payload: Prisma.$PostRatingPayload<ExtArgs>
+      fields: Prisma.PostRatingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PostRatingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PostRatingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        findFirst: {
+          args: Prisma.PostRatingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PostRatingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        findMany: {
+          args: Prisma.PostRatingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>[]
+        }
+        create: {
+          args: Prisma.PostRatingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        createMany: {
+          args: Prisma.PostRatingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PostRatingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>[]
+        }
+        delete: {
+          args: Prisma.PostRatingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        update: {
+          args: Prisma.PostRatingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        deleteMany: {
+          args: Prisma.PostRatingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PostRatingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PostRatingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>[]
+        }
+        upsert: {
+          args: Prisma.PostRatingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostRatingPayload>
+        }
+        aggregate: {
+          args: Prisma.PostRatingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePostRating>
+        }
+        groupBy: {
+          args: Prisma.PostRatingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostRatingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PostRatingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostRatingCountAggregateOutputType> | number
+        }
+      }
+    }
     Prize: {
       payload: Prisma.$PrizePayload<ExtArgs>
       fields: Prisma.PrizeFieldRefs
@@ -8524,6 +8603,9 @@ export const PostScalarFieldEnum = {
   point: 'point',
   photoEditingDeclaration: 'photoEditingDeclaration',
   videoEditingDeclaration: 'videoEditingDeclaration',
+  ratingCount: 'ratingCount',
+  ratingTotal: 'ratingTotal',
+  ratingAverage: 'ratingAverage',
   visiualStyle: 'visiualStyle',
   contextActivity: 'contextActivity',
   subject: 'subject',
@@ -8532,6 +8614,18 @@ export const PostScalarFieldEnum = {
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostRatingScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  score: 'score',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostRatingScalarFieldEnum = (typeof PostRatingScalarFieldEnum)[keyof typeof PostRatingScalarFieldEnum]
 
 
 export const PrizeScalarFieldEnum = {
@@ -8975,6 +9069,10 @@ export const UserScalarFieldEnum = {
   commentCount: 'commentCount',
   shareCount: 'shareCount',
   activeProfileId: 'activeProfileId',
+  isTwoFactorEnabled: 'isTwoFactorEnabled',
+  twoFactorOtp: 'twoFactorOtp',
+  twoFactorOtpExpiresAt: 'twoFactorOtpExpiresAt',
+  twoFactorTempToken: 'twoFactorTempToken',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -10654,6 +10752,7 @@ export type GlobalOmitConfig = {
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit
   post?: Prisma.PostOmit
+  postRating?: Prisma.PostRatingOmit
   prize?: Prisma.PrizeOmit
   proDriverProfile?: Prisma.ProDriverProfileOmit
   productList?: Prisma.ProductListOmit

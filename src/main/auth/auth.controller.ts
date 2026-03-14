@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res, Delete } from '@nestjs/common';
+import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res, Delete, Patch } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -14,6 +14,9 @@ import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { Response } from 'express';
+import { VerifyLoginOtpDto } from './dto/verify-login-otp.dto';
+import { ResendLoginOtpDto } from './dto/resend-login-otp.dto';
+import { ToggleTwoFactorDto } from './dto/toggle-two-factor.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private auth: AuthService) {}
@@ -45,6 +48,32 @@ async login(
   res.status(response.statusCode); // now works
   return response;
 }
+
+ // NEW: verify login OTP
+  @Post('verify-login-otp')
+  @HttpCode(HttpStatus.OK)
+  async verifyLoginOtp(
+    @Body() dto: VerifyLoginOtpDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => {
+        return await this.auth.verifyLoginOtp(dto.tempToken, dto.otp);
+      },
+      'Login verified successfully',
+      HttpStatus.OK,
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  // NEW: resend login OTP
+  @Post('resend-login-otp')
+  @HttpCode(HttpStatus.OK)
+  async resendLoginOtp(@Body() dto: ResendLoginOtpDto) {
+    return this.auth.resendLoginOtp(dto.tempToken);
+  }
 
   @Post('refresh')
   refresh(@Body() dto: RefreshTokenDto) {
@@ -79,6 +108,17 @@ async login(
       dto.currentPassword,
       dto.newPassword,
     );
+  }
+
+    // NEW: toggle two factor
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Patch('two-factor')
+  toggleTwoFactor(
+    @GetUser('userId') userId: string,
+    @Body() dto: ToggleTwoFactorDto,
+  ) {
+    return this.auth.toggleTwoFactor(userId, dto.enabled);
   }
 
   @Get('user/:id')

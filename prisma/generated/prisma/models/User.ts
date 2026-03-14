@@ -64,6 +64,10 @@ export type UserMinAggregateOutputType = {
   commentCount: number | null
   shareCount: number | null
   activeProfileId: string | null
+  isTwoFactorEnabled: boolean | null
+  twoFactorOtp: string | null
+  twoFactorOtpExpiresAt: Date | null
+  twoFactorTempToken: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -90,6 +94,10 @@ export type UserMaxAggregateOutputType = {
   commentCount: number | null
   shareCount: number | null
   activeProfileId: string | null
+  isTwoFactorEnabled: boolean | null
+  twoFactorOtp: string | null
+  twoFactorOtpExpiresAt: Date | null
+  twoFactorTempToken: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -116,6 +124,10 @@ export type UserCountAggregateOutputType = {
   commentCount: number
   shareCount: number
   activeProfileId: number
+  isTwoFactorEnabled: number
+  twoFactorOtp: number
+  twoFactorOtpExpiresAt: number
+  twoFactorTempToken: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -160,6 +172,10 @@ export type UserMinAggregateInputType = {
   commentCount?: true
   shareCount?: true
   activeProfileId?: true
+  isTwoFactorEnabled?: true
+  twoFactorOtp?: true
+  twoFactorOtpExpiresAt?: true
+  twoFactorTempToken?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -186,6 +202,10 @@ export type UserMaxAggregateInputType = {
   commentCount?: true
   shareCount?: true
   activeProfileId?: true
+  isTwoFactorEnabled?: true
+  twoFactorOtp?: true
+  twoFactorOtpExpiresAt?: true
+  twoFactorTempToken?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -212,6 +232,10 @@ export type UserCountAggregateInputType = {
   commentCount?: true
   shareCount?: true
   activeProfileId?: true
+  isTwoFactorEnabled?: true
+  twoFactorOtp?: true
+  twoFactorOtpExpiresAt?: true
+  twoFactorTempToken?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -325,6 +349,10 @@ export type UserGroupByOutputType = {
   commentCount: number
   shareCount: number
   activeProfileId: string | null
+  isTwoFactorEnabled: boolean
+  twoFactorOtp: string | null
+  twoFactorOtpExpiresAt: Date | null
+  twoFactorTempToken: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -374,6 +402,10 @@ export type UserWhereInput = {
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
+  isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
+  twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorOtpExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  twoFactorTempToken?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.ProfileListRelationFilter
@@ -433,10 +465,14 @@ export type UserWhereInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
   racingVotesGiven?: Prisma.RacingVoteListRelationFilter
   racingVotesReceived?: Prisma.RacingVoteListRelationFilter
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockListRelationFilter
   blockedByUsers?: Prisma.UserBlockListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
+=======
+  postRatings?: Prisma.PostRatingListRelationFilter
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserOrderByWithRelationInput = {
@@ -461,6 +497,10 @@ export type UserOrderByWithRelationInput = {
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
+  isTwoFactorEnabled?: Prisma.SortOrder
+  twoFactorOtp?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorOtpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorTempToken?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByRelationAggregateInput
@@ -520,10 +560,14 @@ export type UserOrderByWithRelationInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantOrderByRelationAggregateInput
   racingVotesGiven?: Prisma.RacingVoteOrderByRelationAggregateInput
   racingVotesReceived?: Prisma.RacingVoteOrderByRelationAggregateInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockOrderByRelationAggregateInput
   blockedByUsers?: Prisma.UserBlockOrderByRelationAggregateInput
   spottingRequests?: Prisma.SpottingRequestOrderByRelationAggregateInput
   spottingMatches?: Prisma.SpottingMatchOrderByRelationAggregateInput
+=======
+  postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -551,6 +595,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
+  isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
+  twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorOtpExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  twoFactorTempToken?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.ProfileListRelationFilter
@@ -610,10 +658,14 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
   racingVotesGiven?: Prisma.RacingVoteListRelationFilter
   racingVotesReceived?: Prisma.RacingVoteListRelationFilter
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockListRelationFilter
   blockedByUsers?: Prisma.UserBlockListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
+=======
+  postRatings?: Prisma.PostRatingListRelationFilter
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -638,6 +690,10 @@ export type UserOrderByWithAggregationInput = {
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
+  isTwoFactorEnabled?: Prisma.SortOrder
+  twoFactorOtp?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorOtpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  twoFactorTempToken?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -672,6 +728,10 @@ export type UserScalarWhereWithAggregatesInput = {
   commentCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   shareCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableWithAggregatesFilter<"User"> | string | null
+  isTwoFactorEnabled?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  twoFactorOtp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  twoFactorOtpExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  twoFactorTempToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -698,6 +758,10 @@ export type UserCreateInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -757,10 +821,14 @@ export type UserCreateInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateInput = {
@@ -785,6 +853,10 @@ export type UserUncheckedCreateInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -844,10 +916,14 @@ export type UserUncheckedCreateInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpdateInput = {
@@ -872,6 +948,10 @@ export type UserUpdateInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -931,10 +1011,14 @@ export type UserUpdateInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateInput = {
@@ -959,6 +1043,10 @@ export type UserUncheckedUpdateInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -1018,10 +1106,14 @@ export type UserUncheckedUpdateInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateManyInput = {
@@ -1046,6 +1138,10 @@ export type UserCreateManyInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1072,6 +1168,10 @@ export type UserUpdateManyMutationInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1098,6 +1198,10 @@ export type UserUncheckedUpdateManyInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1144,6 +1248,10 @@ export type UserCountOrderByAggregateInput = {
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
+  isTwoFactorEnabled?: Prisma.SortOrder
+  twoFactorOtp?: Prisma.SortOrder
+  twoFactorOtpExpiresAt?: Prisma.SortOrder
+  twoFactorTempToken?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1178,6 +1286,10 @@ export type UserMaxOrderByAggregateInput = {
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
+  isTwoFactorEnabled?: Prisma.SortOrder
+  twoFactorOtp?: Prisma.SortOrder
+  twoFactorOtpExpiresAt?: Prisma.SortOrder
+  twoFactorTempToken?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1204,6 +1316,10 @@ export type UserMinOrderByAggregateInput = {
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
+  isTwoFactorEnabled?: Prisma.SortOrder
+  twoFactorOtp?: Prisma.SortOrder
+  twoFactorOtpExpiresAt?: Prisma.SortOrder
+  twoFactorTempToken?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1734,6 +1850,20 @@ export type UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
+export type UserCreateNestedOneWithoutPostRatingsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostRatingsInput, Prisma.UserUncheckedCreateWithoutPostRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPostRatingsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostRatingsInput, Prisma.UserUncheckedCreateWithoutPostRatingsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostRatingsInput
+  upsert?: Prisma.UserUpsertWithoutPostRatingsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostRatingsInput, Prisma.UserUpdateWithoutPostRatingsInput>, Prisma.UserUncheckedUpdateWithoutPostRatingsInput>
+}
+
 export type UserCreateNestedOneWithoutPrizesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPrizesInput, Prisma.UserUncheckedCreateWithoutPrizesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPrizesInput
@@ -2136,6 +2266,10 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2194,10 +2328,14 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2222,6 +2360,10 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2280,10 +2422,14 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2324,6 +2470,10 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -2382,10 +2532,14 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2410,6 +2564,10 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2468,10 +2626,14 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2496,6 +2658,10 @@ export type UserCreateWithoutChallengesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2554,10 +2720,14 @@ export type UserCreateWithoutChallengesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2582,6 +2752,10 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -2640,10 +2814,14 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2684,6 +2862,10 @@ export type UserUpdateWithoutChallengesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -2742,10 +2924,14 @@ export type UserUpdateWithoutChallengesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -2770,6 +2956,10 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -2828,10 +3018,14 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -2856,6 +3050,10 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -2914,10 +3112,14 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -2942,6 +3144,10 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3000,10 +3206,14 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -3044,6 +3254,10 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3102,10 +3316,14 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -3130,6 +3348,10 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3188,10 +3410,14 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -3216,6 +3442,10 @@ export type UserCreateWithoutChallengeReactionsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3274,10 +3504,14 @@ export type UserCreateWithoutChallengeReactionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -3302,6 +3536,10 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3360,10 +3598,14 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3404,6 +3646,10 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3462,10 +3708,14 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3490,6 +3740,10 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3548,10 +3802,14 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3576,6 +3834,10 @@ export type UserCreateWithoutChallengeVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3634,10 +3896,14 @@ export type UserCreateWithoutChallengeVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -3662,6 +3928,10 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -3720,10 +3990,14 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -3764,6 +4038,10 @@ export type UserUpdateWithoutChallengeVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -3822,10 +4100,14 @@ export type UserUpdateWithoutChallengeVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -3850,6 +4132,10 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -3908,10 +4194,14 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -3936,6 +4226,10 @@ export type UserCreateWithoutChallengeCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -3994,10 +4288,14 @@ export type UserCreateWithoutChallengeCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -4022,6 +4320,10 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4080,10 +4382,14 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -4124,6 +4430,10 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4182,10 +4492,14 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -4210,6 +4524,10 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4268,10 +4586,14 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4296,6 +4618,10 @@ export type UserCreateWithoutCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4354,10 +4680,14 @@ export type UserCreateWithoutCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4382,6 +4712,10 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4440,10 +4774,14 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4484,6 +4822,10 @@ export type UserUpdateWithoutCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4542,10 +4884,14 @@ export type UserUpdateWithoutCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4570,6 +4916,10 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4628,10 +4978,14 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -4656,6 +5010,10 @@ export type UserCreateWithoutConversationParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -4714,10 +5072,14 @@ export type UserCreateWithoutConversationParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -4742,6 +5104,10 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -4800,10 +5166,14 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -4844,6 +5214,10 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -4902,10 +5276,14 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -4930,6 +5308,10 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -4988,10 +5370,14 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -5016,6 +5402,10 @@ export type UserCreateWithoutEventsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5074,10 +5464,14 @@ export type UserCreateWithoutEventsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -5102,6 +5496,10 @@ export type UserUncheckedCreateWithoutEventsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5160,10 +5558,14 @@ export type UserUncheckedCreateWithoutEventsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -5204,6 +5606,10 @@ export type UserUpdateWithoutEventsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5262,10 +5668,14 @@ export type UserUpdateWithoutEventsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5290,6 +5700,10 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5348,10 +5762,14 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5376,6 +5794,10 @@ export type UserCreateWithoutFollowingInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5434,10 +5856,14 @@ export type UserCreateWithoutFollowingInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5462,6 +5888,10 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5520,10 +5950,14 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5553,6 +5987,10 @@ export type UserCreateWithoutFollowersInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -5611,10 +6049,14 @@ export type UserCreateWithoutFollowersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -5639,6 +6081,10 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -5697,10 +6143,14 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -5741,6 +6191,10 @@ export type UserUpdateWithoutFollowingInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5799,10 +6253,14 @@ export type UserUpdateWithoutFollowingInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -5827,6 +6285,10 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -5885,10 +6347,14 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -5924,6 +6390,10 @@ export type UserUpdateWithoutFollowersInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -5982,10 +6452,14 @@ export type UserUpdateWithoutFollowersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -6010,6 +6484,10 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6068,10 +6546,14 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6096,6 +6578,10 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6154,10 +6640,14 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6182,6 +6672,10 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6240,10 +6734,14 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -6273,6 +6771,10 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6331,10 +6833,14 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -6359,6 +6865,10 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6417,10 +6927,14 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -6461,6 +6975,10 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6519,10 +7037,14 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6547,6 +7069,10 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6605,10 +7131,14 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -6644,6 +7174,10 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -6702,10 +7236,14 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -6730,6 +7268,10 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -6788,10 +7330,14 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -6816,6 +7362,10 @@ export type UserCreateWithoutBattleParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -6874,10 +7424,14 @@ export type UserCreateWithoutBattleParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -6902,6 +7456,10 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -6960,10 +7518,14 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -7004,6 +7566,10 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7062,10 +7628,14 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -7090,6 +7660,10 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7148,10 +7722,14 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -7176,6 +7754,10 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7234,10 +7816,14 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -7262,6 +7848,10 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7320,10 +7910,14 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -7353,6 +7947,10 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7411,10 +8009,14 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -7439,6 +8041,10 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -7497,10 +8103,14 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -7541,6 +8151,10 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7599,10 +8213,14 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -7627,6 +8245,10 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7685,10 +8307,14 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -7724,6 +8350,10 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -7782,10 +8412,14 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -7810,6 +8444,10 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -7868,10 +8506,14 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -7896,6 +8538,10 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -7954,10 +8600,14 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -7982,6 +8632,10 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8040,10 +8694,14 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -8084,6 +8742,10 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8142,10 +8804,14 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -8170,6 +8836,10 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8228,10 +8898,14 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -8256,6 +8930,10 @@ export type UserCreateWithoutBattleVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -8314,10 +8992,14 @@ export type UserCreateWithoutBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -8342,6 +9024,10 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8400,10 +9086,14 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -8444,6 +9134,10 @@ export type UserUpdateWithoutBattleVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8502,10 +9196,14 @@ export type UserUpdateWithoutBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -8530,6 +9228,10 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8588,10 +9290,14 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -8616,6 +9322,10 @@ export type UserCreateWithoutBattleCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -8674,10 +9384,14 @@ export type UserCreateWithoutBattleCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -8702,6 +9416,10 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -8760,10 +9478,14 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -8804,6 +9526,10 @@ export type UserUpdateWithoutBattleCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -8862,10 +9588,14 @@ export type UserUpdateWithoutBattleCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -8890,6 +9620,10 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -8948,10 +9682,14 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -8976,6 +9714,10 @@ export type UserCreateWithoutHidePostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9034,10 +9776,14 @@ export type UserCreateWithoutHidePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -9062,6 +9808,10 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9120,10 +9870,14 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -9164,6 +9918,10 @@ export type UserUpdateWithoutHidePostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9222,10 +9980,14 @@ export type UserUpdateWithoutHidePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -9250,6 +10012,10 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9308,10 +10074,14 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -9336,6 +10106,10 @@ export type UserCreateWithoutLikesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9394,10 +10168,14 @@ export type UserCreateWithoutLikesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -9422,6 +10200,10 @@ export type UserUncheckedCreateWithoutLikesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9480,10 +10262,14 @@ export type UserUncheckedCreateWithoutLikesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -9524,6 +10310,10 @@ export type UserUpdateWithoutLikesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9582,10 +10372,14 @@ export type UserUpdateWithoutLikesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -9610,6 +10404,10 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -9668,10 +10466,14 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -9696,6 +10498,10 @@ export type UserCreateWithoutLivesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -9754,10 +10560,14 @@ export type UserCreateWithoutLivesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -9782,6 +10592,10 @@ export type UserUncheckedCreateWithoutLivesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -9840,10 +10654,14 @@ export type UserUncheckedCreateWithoutLivesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -9884,6 +10702,10 @@ export type UserUpdateWithoutLivesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -9942,10 +10764,14 @@ export type UserUpdateWithoutLivesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -9970,6 +10796,10 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -10028,10 +10858,14 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -10056,6 +10890,10 @@ export type UserCreateWithoutLiveParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10114,10 +10952,14 @@ export type UserCreateWithoutLiveParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -10142,6 +10984,10 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10200,10 +11046,14 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -10244,6 +11094,10 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -10302,10 +11156,14 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -10330,6 +11188,10 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -10388,10 +11250,14 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -10416,6 +11282,10 @@ export type UserCreateWithoutLiveRewardsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10474,10 +11344,14 @@ export type UserCreateWithoutLiveRewardsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -10502,6 +11376,10 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10560,10 +11438,14 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -10593,6 +11475,10 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -10651,10 +11537,14 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -10679,6 +11569,10 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -10737,10 +11631,14 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -10781,6 +11679,10 @@ export type UserUpdateWithoutLiveRewardsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -10839,10 +11741,14 @@ export type UserUpdateWithoutLiveRewardsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -10867,6 +11773,10 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -10925,10 +11835,14 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -10964,6 +11878,10 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -11022,10 +11940,14 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -11050,6 +11972,10 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -11108,10 +12034,14 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -11136,6 +12066,10 @@ export type UserCreateWithoutMessagesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -11194,10 +12128,14 @@ export type UserCreateWithoutMessagesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -11222,6 +12160,10 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -11280,10 +12222,14 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -11324,6 +12270,10 @@ export type UserUpdateWithoutMessagesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -11382,10 +12332,14 @@ export type UserUpdateWithoutMessagesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -11410,6 +12364,10 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -11468,10 +12426,14 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -11496,6 +12458,10 @@ export type UserCreateWithoutMessageReceiptsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -11554,10 +12520,14 @@ export type UserCreateWithoutMessageReceiptsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -11582,6 +12552,10 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -11640,10 +12614,14 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -11684,6 +12662,10 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -11742,10 +12724,14 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -11770,6 +12756,10 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -11828,10 +12818,14 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -11856,6 +12850,10 @@ export type UserCreateWithoutNotificationsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -11914,10 +12912,14 @@ export type UserCreateWithoutNotificationsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -11942,6 +12944,10 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -12000,10 +13006,14 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -12033,6 +13043,10 @@ export type UserCreateWithoutNotificationsActorInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -12091,10 +13105,14 @@ export type UserCreateWithoutNotificationsActorInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -12119,6 +13137,10 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -12177,10 +13199,14 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -12221,6 +13247,10 @@ export type UserUpdateWithoutNotificationsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -12279,10 +13309,14 @@ export type UserUpdateWithoutNotificationsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -12307,6 +13341,10 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -12365,10 +13403,14 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -12404,6 +13446,10 @@ export type UserUpdateWithoutNotificationsActorInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -12462,10 +13508,14 @@ export type UserUpdateWithoutNotificationsActorInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -12490,6 +13540,10 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -12548,10 +13602,14 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -12576,6 +13634,10 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -12634,10 +13696,14 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -12662,6 +13728,10 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -12720,10 +13790,14 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -12764,6 +13838,10 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -12822,10 +13900,14 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -12850,6 +13932,10 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -12908,10 +13994,14 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutDeviceTokensInput = {
@@ -12936,6 +14026,10 @@ export type UserCreateWithoutDeviceTokensInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -12994,10 +14088,14 @@ export type UserCreateWithoutDeviceTokensInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutDeviceTokensInput = {
@@ -13022,6 +14120,10 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -13080,10 +14182,14 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutDeviceTokensInput = {
@@ -13124,6 +14230,10 @@ export type UserUpdateWithoutDeviceTokensInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -13182,10 +14292,14 @@ export type UserUpdateWithoutDeviceTokensInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutDeviceTokensInput = {
@@ -13210,6 +14324,10 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -13268,10 +14386,14 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -13296,6 +14418,10 @@ export type UserCreateWithoutOfficialPartnersInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -13354,10 +14480,14 @@ export type UserCreateWithoutOfficialPartnersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -13382,6 +14512,10 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -13440,10 +14574,14 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -13484,6 +14622,10 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -13542,10 +14684,14 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -13570,6 +14716,10 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -13628,10 +14778,14 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -13656,6 +14810,10 @@ export type UserCreateWithoutPaymentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -13714,10 +14872,14 @@ export type UserCreateWithoutPaymentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -13742,6 +14904,10 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -13800,10 +14966,14 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -13844,6 +15014,10 @@ export type UserUpdateWithoutPaymentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -13902,10 +15076,14 @@ export type UserUpdateWithoutPaymentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -13930,6 +15108,10 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -13988,10 +15170,14 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -14016,6 +15202,10 @@ export type UserCreateWithoutPostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -14074,10 +15264,14 @@ export type UserCreateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -14102,6 +15296,10 @@ export type UserUncheckedCreateWithoutPostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -14160,10 +15358,14 @@ export type UserUncheckedCreateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -14193,6 +15395,10 @@ export type UserCreateWithoutTaggedInPostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -14251,10 +15457,14 @@ export type UserCreateWithoutTaggedInPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -14279,6 +15489,10 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -14337,10 +15551,14 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -14381,6 +15599,10 @@ export type UserUpdateWithoutPostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -14439,10 +15661,14 @@ export type UserUpdateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -14467,6 +15693,10 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -14525,10 +15755,14 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -14572,8 +15806,376 @@ export type UserScalarWhereInput = {
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
+  isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
+  twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
+  twoFactorOtpExpiresAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  twoFactorTempToken?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+}
+
+export type UserCreateWithoutPostRatingsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+}
+
+export type UserUncheckedCreateWithoutPostRatingsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+}
+
+export type UserCreateOrConnectWithoutPostRatingsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostRatingsInput, Prisma.UserUncheckedCreateWithoutPostRatingsInput>
+}
+
+export type UserUpsertWithoutPostRatingsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPostRatingsInput, Prisma.UserUncheckedUpdateWithoutPostRatingsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostRatingsInput, Prisma.UserUncheckedCreateWithoutPostRatingsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPostRatingsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPostRatingsInput, Prisma.UserUncheckedUpdateWithoutPostRatingsInput>
+}
+
+export type UserUpdateWithoutPostRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPostRatingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
 }
 
 export type UserCreateWithoutPrizesInput = {
@@ -14598,6 +16200,10 @@ export type UserCreateWithoutPrizesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -14656,10 +16262,14 @@ export type UserCreateWithoutPrizesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -14684,6 +16294,10 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -14742,10 +16356,14 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -14786,6 +16404,10 @@ export type UserUpdateWithoutPrizesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -14844,10 +16466,14 @@ export type UserUpdateWithoutPrizesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -14872,6 +16498,10 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -14930,10 +16560,14 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -14958,6 +16592,10 @@ export type UserCreateWithoutProductListsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -15016,10 +16654,14 @@ export type UserCreateWithoutProductListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -15044,6 +16686,10 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -15102,10 +16748,14 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -15146,6 +16796,10 @@ export type UserUpdateWithoutProductListsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -15204,10 +16858,14 @@ export type UserUpdateWithoutProductListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -15232,6 +16890,10 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -15290,10 +16952,14 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -15318,6 +16984,10 @@ export type UserCreateWithoutProfileInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
@@ -15376,10 +17046,14 @@ export type UserCreateWithoutProfileInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -15404,6 +17078,10 @@ export type UserUncheckedCreateWithoutProfileInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
@@ -15462,10 +17140,14 @@ export type UserUncheckedCreateWithoutProfileInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -15506,6 +17188,10 @@ export type UserUpdateWithoutProfileInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
@@ -15564,10 +17250,14 @@ export type UserUpdateWithoutProfileInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -15592,6 +17282,10 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
@@ -15650,10 +17344,14 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRacingVotesGivenInput = {
@@ -15678,6 +17376,10 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -15736,10 +17438,14 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
@@ -15764,6 +17470,10 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -15822,10 +17532,14 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRacingVotesGivenInput = {
@@ -15855,6 +17569,10 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -15913,10 +17631,14 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
@@ -15941,6 +17663,10 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -15999,10 +17725,14 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRacingVotesReceivedInput = {
@@ -16043,6 +17773,10 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -16101,10 +17835,14 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
@@ -16129,6 +17867,10 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -16187,10 +17929,14 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutRacingVotesReceivedInput = {
@@ -16226,6 +17972,10 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -16284,10 +18034,14 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
@@ -16312,6 +18066,10 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -16370,10 +18128,14 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -16398,6 +18160,10 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -16456,10 +18222,14 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -16484,6 +18254,10 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -16542,10 +18316,14 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -16575,6 +18353,10 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -16633,10 +18415,14 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -16661,6 +18447,10 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -16719,10 +18509,14 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -16763,6 +18557,10 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -16821,10 +18619,14 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -16849,6 +18651,10 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -16907,10 +18713,14 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -16946,6 +18756,10 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -17004,10 +18818,14 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -17032,6 +18850,10 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -17090,10 +18912,14 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -17118,6 +18944,10 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -17176,10 +19006,14 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -17204,6 +19038,10 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -17262,10 +19100,14 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -17306,6 +19148,10 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -17364,10 +19210,14 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -17392,6 +19242,10 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -17450,10 +19304,14 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -17478,6 +19336,10 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -17536,10 +19398,14 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -17564,6 +19430,10 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -17622,10 +19492,14 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -17666,6 +19540,10 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -17724,10 +19602,14 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -17752,6 +19634,10 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -17810,10 +19696,14 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -17838,6 +19728,10 @@ export type UserCreateWithoutRawShiftVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -17896,10 +19790,14 @@ export type UserCreateWithoutRawShiftVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -17924,6 +19822,10 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -17982,10 +19884,14 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -18026,6 +19932,10 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -18084,10 +19994,14 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -18112,6 +20026,10 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -18170,10 +20088,14 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -18198,6 +20120,10 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -18256,10 +20182,14 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -18284,6 +20214,10 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -18342,10 +20276,14 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -18386,6 +20324,10 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -18444,10 +20386,14 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -18472,6 +20418,10 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -18530,10 +20480,14 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -18558,6 +20512,10 @@ export type UserCreateWithoutReportsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -18616,10 +20574,14 @@ export type UserCreateWithoutReportsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -18644,6 +20606,10 @@ export type UserUncheckedCreateWithoutReportsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -18702,10 +20668,14 @@ export type UserUncheckedCreateWithoutReportsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -18746,6 +20716,10 @@ export type UserUpdateWithoutReportsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -18804,10 +20778,14 @@ export type UserUpdateWithoutReportsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -18832,6 +20810,10 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -18890,10 +20872,14 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -18918,6 +20904,10 @@ export type UserCreateWithoutRepostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -18976,10 +20966,14 @@ export type UserCreateWithoutRepostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -19004,6 +20998,10 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -19062,10 +21060,14 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -19106,6 +21108,10 @@ export type UserUpdateWithoutRepostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -19164,10 +21170,14 @@ export type UserUpdateWithoutRepostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -19192,6 +21202,10 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -19250,10 +21264,14 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -19278,6 +21296,10 @@ export type UserCreateWithoutSavePostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -19336,10 +21358,14 @@ export type UserCreateWithoutSavePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -19364,6 +21390,10 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -19422,10 +21452,14 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -19466,6 +21500,10 @@ export type UserUpdateWithoutSavePostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -19524,10 +21562,14 @@ export type UserUpdateWithoutSavePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -19552,6 +21594,10 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -19610,10 +21656,14 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -19638,6 +21688,10 @@ export type UserCreateWithoutSharesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -19696,10 +21750,14 @@ export type UserCreateWithoutSharesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -19724,6 +21782,10 @@ export type UserUncheckedCreateWithoutSharesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -19782,10 +21844,14 @@ export type UserUncheckedCreateWithoutSharesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -19826,6 +21892,10 @@ export type UserUpdateWithoutSharesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -19884,10 +21954,14 @@ export type UserUpdateWithoutSharesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -19912,6 +21986,10 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -19970,10 +22048,14 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSplitScreenMatchRequestsInput = {
@@ -19998,6 +22080,10 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -20056,10 +22142,14 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -20084,6 +22174,10 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -20142,10 +22236,14 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -20186,6 +22284,10 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -20244,10 +22346,14 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -20272,6 +22378,10 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -20330,10 +22440,14 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -20358,6 +22472,10 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -20416,10 +22534,14 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -20444,6 +22566,10 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -20502,10 +22628,14 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -20535,6 +22665,10 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -20593,10 +22727,14 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -20621,6 +22759,10 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -20679,10 +22821,14 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -20723,6 +22869,10 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -20781,10 +22931,14 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -20809,6 +22963,10 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -20867,10 +23025,14 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -20906,6 +23068,10 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -20964,10 +23130,14 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -20992,6 +23162,10 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -21050,10 +23224,14 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -21078,6 +23256,10 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -21136,10 +23318,14 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -21164,6 +23350,10 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -21222,10 +23412,14 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -21266,6 +23460,10 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -21324,10 +23522,14 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -21352,6 +23554,10 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -21410,10 +23616,14 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutSplitScreenBattleVotesInput = {
@@ -21438,6 +23648,10 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -21496,10 +23710,14 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
@@ -21524,6 +23742,10 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -21582,10 +23804,14 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleVotesInput = {
@@ -21626,6 +23852,10 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -21684,10 +23914,14 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
@@ -21712,6 +23946,10 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -21770,6 +24008,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
@@ -23214,6 +25453,9 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -23238,6 +25480,10 @@ export type UserCreateWithoutUserPointsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -23296,10 +25542,14 @@ export type UserCreateWithoutUserPointsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -23324,6 +25574,10 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -23382,10 +25636,14 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -23426,6 +25684,10 @@ export type UserUpdateWithoutUserPointsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -23484,10 +25746,14 @@ export type UserUpdateWithoutUserPointsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -23512,6 +25778,10 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -23570,10 +25840,14 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -23598,6 +25872,10 @@ export type UserCreateWithoutWishListsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
@@ -23656,10 +25934,14 @@ export type UserCreateWithoutWishListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -23684,6 +25966,10 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   commentCount?: number
   shareCount?: number
   activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
@@ -23742,10 +26028,14 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -23786,6 +26076,10 @@ export type UserUpdateWithoutWishListsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -23844,10 +26138,14 @@ export type UserUpdateWithoutWishListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -23872,6 +26170,10 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -23930,10 +26232,14 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -23958,6 +26264,10 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
@@ -24016,10 +26326,14 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -24044,6 +26358,10 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
@@ -24102,10 +26420,14 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
   racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
   racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+<<<<<<< HEAD
   blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+=======
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -24130,6 +26452,10 @@ export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -24195,10 +26521,14 @@ export type UserCountOutputType = {
   splitScreenBattleParticipants: number
   racingVotesGiven: number
   racingVotesReceived: number
+<<<<<<< HEAD
   blockedUsers: number
   blockedByUsers: number
   spottingRequests: number
   spottingMatches: number
+=======
+  postRatings: number
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -24257,10 +26587,14 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   splitScreenBattleParticipants?: boolean | UserCountOutputTypeCountSplitScreenBattleParticipantsArgs
   racingVotesGiven?: boolean | UserCountOutputTypeCountRacingVotesGivenArgs
   racingVotesReceived?: boolean | UserCountOutputTypeCountRacingVotesReceivedArgs
+<<<<<<< HEAD
   blockedUsers?: boolean | UserCountOutputTypeCountBlockedUsersArgs
   blockedByUsers?: boolean | UserCountOutputTypeCountBlockedByUsersArgs
   spottingRequests?: boolean | UserCountOutputTypeCountSpottingRequestsArgs
   spottingMatches?: boolean | UserCountOutputTypeCountSpottingMatchesArgs
+=======
+  postRatings?: boolean | UserCountOutputTypeCountPostRatingsArgs
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 /**
@@ -24661,6 +26995,7 @@ export type UserCountOutputTypeCountRacingVotesReceivedArgs<ExtArgs extends runt
 /**
  * UserCountOutputType without action
  */
+<<<<<<< HEAD
 export type UserCountOutputTypeCountBlockedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.UserBlockWhereInput
 }
@@ -24684,6 +27019,10 @@ export type UserCountOutputTypeCountSpottingRequestsArgs<ExtArgs extends runtime
  */
 export type UserCountOutputTypeCountSpottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SpottingMatchWhereInput
+=======
+export type UserCountOutputTypeCountPostRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostRatingWhereInput
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 
@@ -24709,6 +27048,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   commentCount?: boolean
   shareCount?: boolean
   activeProfileId?: boolean
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: boolean
+  twoFactorOtpExpiresAt?: boolean
+  twoFactorTempToken?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
@@ -24768,10 +27111,14 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   splitScreenBattleParticipants?: boolean | Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>
   racingVotesGiven?: boolean | Prisma.User$racingVotesGivenArgs<ExtArgs>
   racingVotesReceived?: boolean | Prisma.User$racingVotesReceivedArgs<ExtArgs>
+<<<<<<< HEAD
   blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
   blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
   spottingRequests?: boolean | Prisma.User$spottingRequestsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.User$spottingMatchesArgs<ExtArgs>
+=======
+  postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -24797,6 +27144,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   commentCount?: boolean
   shareCount?: boolean
   activeProfileId?: boolean
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: boolean
+  twoFactorOtpExpiresAt?: boolean
+  twoFactorTempToken?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -24823,6 +27174,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   commentCount?: boolean
   shareCount?: boolean
   activeProfileId?: boolean
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: boolean
+  twoFactorOtpExpiresAt?: boolean
+  twoFactorTempToken?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -24849,11 +27204,15 @@ export type UserSelectScalar = {
   commentCount?: boolean
   shareCount?: boolean
   activeProfileId?: boolean
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: boolean
+  twoFactorOtpExpiresAt?: boolean
+  twoFactorTempToken?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "accountStatus" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "activeProfileId" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "accountStatus" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "activeProfileId" | "isTwoFactorEnabled" | "twoFactorOtp" | "twoFactorOtpExpiresAt" | "twoFactorTempToken" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
@@ -24912,10 +27271,14 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   splitScreenBattleParticipants?: boolean | Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>
   racingVotesGiven?: boolean | Prisma.User$racingVotesGivenArgs<ExtArgs>
   racingVotesReceived?: boolean | Prisma.User$racingVotesReceivedArgs<ExtArgs>
+<<<<<<< HEAD
   blockedUsers?: boolean | Prisma.User$blockedUsersArgs<ExtArgs>
   blockedByUsers?: boolean | Prisma.User$blockedByUsersArgs<ExtArgs>
   spottingRequests?: boolean | Prisma.User$spottingRequestsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.User$spottingMatchesArgs<ExtArgs>
+=======
+  postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -24981,10 +27344,14 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     splitScreenBattleParticipants: Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>[]
     racingVotesGiven: Prisma.$RacingVotePayload<ExtArgs>[]
     racingVotesReceived: Prisma.$RacingVotePayload<ExtArgs>[]
+<<<<<<< HEAD
     blockedUsers: Prisma.$UserBlockPayload<ExtArgs>[]
     blockedByUsers: Prisma.$UserBlockPayload<ExtArgs>[]
     spottingRequests: Prisma.$SpottingRequestPayload<ExtArgs>[]
     spottingMatches: Prisma.$SpottingMatchPayload<ExtArgs>[]
+=======
+    postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -25008,6 +27375,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     commentCount: number
     shareCount: number
     activeProfileId: string | null
+    isTwoFactorEnabled: boolean
+    twoFactorOtp: string | null
+    twoFactorOtpExpiresAt: Date | null
+    twoFactorTempToken: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -25461,10 +27832,14 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   splitScreenBattleParticipants<T extends Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$splitScreenBattleParticipantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattleParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   racingVotesGiven<T extends Prisma.User$racingVotesGivenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$racingVotesGivenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   racingVotesReceived<T extends Prisma.User$racingVotesReceivedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$racingVotesReceivedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+<<<<<<< HEAD
   blockedUsers<T extends Prisma.User$blockedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   blockedByUsers<T extends Prisma.User$blockedByUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blockedByUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserBlockPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   spottingRequests<T extends Prisma.User$spottingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$spottingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   spottingMatches<T extends Prisma.User$spottingMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$spottingMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+  postRatings<T extends Prisma.User$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -25515,6 +27890,10 @@ export interface UserFieldRefs {
   readonly commentCount: Prisma.FieldRef<"User", 'Int'>
   readonly shareCount: Prisma.FieldRef<"User", 'Int'>
   readonly activeProfileId: Prisma.FieldRef<"User", 'String'>
+  readonly isTwoFactorEnabled: Prisma.FieldRef<"User", 'Boolean'>
+  readonly twoFactorOtp: Prisma.FieldRef<"User", 'String'>
+  readonly twoFactorOtpExpiresAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly twoFactorTempToken: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -27263,6 +29642,7 @@ export type User$racingVotesReceivedArgs<ExtArgs extends runtime.Types.Extension
 }
 
 /**
+<<<<<<< HEAD
  * User.blockedUsers
  */
 export type User$blockedUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -27356,6 +29736,29 @@ export type User$spottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.SpottingMatchScalarFieldEnum | Prisma.SpottingMatchScalarFieldEnum[]
+=======
+ * User.postRatings
+ */
+export type User$postRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostRating
+   */
+  select?: Prisma.PostRatingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostRating
+   */
+  omit?: Prisma.PostRatingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostRatingInclude<ExtArgs> | null
+  where?: Prisma.PostRatingWhereInput
+  orderBy?: Prisma.PostRatingOrderByWithRelationInput | Prisma.PostRatingOrderByWithRelationInput[]
+  cursor?: Prisma.PostRatingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostRatingScalarFieldEnum | Prisma.PostRatingScalarFieldEnum[]
+>>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 /**

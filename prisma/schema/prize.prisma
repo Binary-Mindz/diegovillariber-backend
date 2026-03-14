@@ -4,7 +4,7 @@ model Prize {
   prizeName   String
   // Admin who created it
   createdById String @db.Uuid
-  createdBy   User   @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  createdBy   User   @relation(fields: [createdById], references: [id], onDelete: Cascade)
 
   @@map("Prize")
 }

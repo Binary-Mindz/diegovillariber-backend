@@ -111,6 +111,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  PostRating: 'PostRating',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
@@ -1121,6 +1122,9 @@ export const PostScalarFieldEnum = {
   point: 'point',
   photoEditingDeclaration: 'photoEditingDeclaration',
   videoEditingDeclaration: 'videoEditingDeclaration',
+  ratingCount: 'ratingCount',
+  ratingTotal: 'ratingTotal',
+  ratingAverage: 'ratingAverage',
   visiualStyle: 'visiualStyle',
   contextActivity: 'contextActivity',
   subject: 'subject',
@@ -1129,6 +1133,18 @@ export const PostScalarFieldEnum = {
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostRatingScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  postId: 'postId',
+  score: 'score',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostRatingScalarFieldEnum = (typeof PostRatingScalarFieldEnum)[keyof typeof PostRatingScalarFieldEnum]
 
 
 export const PrizeScalarFieldEnum = {
@@ -1572,6 +1588,10 @@ export const UserScalarFieldEnum = {
   commentCount: 'commentCount',
   shareCount: 'shareCount',
   activeProfileId: 'activeProfileId',
+  isTwoFactorEnabled: 'isTwoFactorEnabled',
+  twoFactorOtp: 'twoFactorOtp',
+  twoFactorOtpExpiresAt: 'twoFactorOtpExpiresAt',
+  twoFactorTempToken: 'twoFactorTempToken',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
