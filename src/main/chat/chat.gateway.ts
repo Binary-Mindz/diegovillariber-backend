@@ -60,7 +60,7 @@ export class ChatGateway
       if (!token) return this.disconnectWithError(client, 'Missing token');
 
       const payload = this.jwtService.verify(token, {
-        secret: this.configService.getOrThrow('JWT_SECRET'),
+        secret: this.configService.getOrThrow('JWT_ACCESS_SECRET'),
       });
 
       const userId = payload?.sub;
@@ -101,19 +101,6 @@ export class ChatGateway
       this.logger.log(`Unauthenticated socket disconnected (${client.id})`);
     }
   }
-
-  // private extractTokenFromSocket(client: Socket): string | null {
-  //   try {
-  //     return (
-  //       (client.handshake.auth?.token as string) ||
-  //       (client.handshake.query?.token as string) ||
-  //       (client.handshake.headers?.authorization as string)?.split(' ')[1] ||
-  //       null
-  //     );
-  //   } catch {
-  //     return null;
-  //   }
-  // }
 
   private extractTokenFromSocket(client: Socket): string | null {
   const authToken = client.handshake.auth?.token;
