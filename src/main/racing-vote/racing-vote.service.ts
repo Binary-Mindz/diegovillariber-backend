@@ -45,7 +45,7 @@ export class RacingVoteService {
     return { startUtc, endUtc };
   }
 
- async createVote(voterId: string, dto: CreateRacingVoteDto) {
+async createVote(voterId: string, dto: CreateRacingVoteDto) {
   const { startUtc, endUtc } = this.getDhakaDayRange();
 
   const todayVoteCount = await this.prisma.racingVote.count({
@@ -75,7 +75,12 @@ export class RacingVoteService {
 
     const targetUser = await this.prisma.user.findUnique({
       where: { id: dto.targetUserId },
-      select: { id: true, totalPoints: true },
+      select: {
+        id: true,
+        email: true,
+        totalPoints: true,
+        totalVote: true,
+      },
     });
 
     if (!targetUser) {
@@ -108,19 +113,37 @@ export class RacingVoteService {
           point: this.DEFAULT_POINT,
         },
         include: {
-          voter: { select: { id: true, email: true } },
+          voter: {
+            select: {
+              id: true,
+              email: true,
+            },
+          },
           targetUser: {
-            select: { id: true, email: true, totalPoints: true },
+            select: {
+              id: true,
+              email: true,
+              totalPoints: true,
+              totalVote: true,
+            },
           },
         },
       });
 
-      await tx.user.update({
+      const updatedUser = await tx.user.update({
         where: { id: dto.targetUserId },
         data: {
           totalPoints: {
             increment: this.DEFAULT_POINT,
           },
+          totalVote: {
+            increment: 1,
+          },
+        },
+        select: {
+          id: true,
+          totalPoints: true,
+          totalVote: true,
         },
       });
 
@@ -130,6 +153,8 @@ export class RacingVoteService {
         vote,
         targetType: dto.targetType,
         pointsAdded: this.DEFAULT_POINT,
+        userTotalVote: updatedUser.totalVote,
+        userTotalPoints: updatedUser.totalPoints,
         remainingVotesToday: remainingVotes,
       };
     });
@@ -184,7 +209,12 @@ export class RacingVoteService {
           point: this.DEFAULT_POINT,
         },
         include: {
-          voter: { select: { id: true, email: true } },
+          voter: {
+            select: {
+              id: true,
+              email: true,
+            },
+          },
           post: {
             select: {
               id: true,
@@ -239,6 +269,7 @@ export class RacingVoteService {
   throw new BadRequestException('Invalid target type');
 }
 
+
   async myTodayVoteSummary(voterId: string) {
     const { startUtc, endUtc } = this.getDhakaDayRange();
 
@@ -279,50 +310,31 @@ export class RacingVoteService {
     };
   }
 
-  async topVotedUsers(query: { limit?: string }) {
+async topVotedUsers(query: { limit?: string }) {
   const limit = Number(query?.limit || 10);
-
-  const grouped = await this.prisma.racingVote.groupBy({
-    by: ['targetUserId'],
-    where: {
-      targetUserId: {
-        not: null,
-      },
-    },
-    _count: {
-      targetUserId: true,
-    },
-    _sum: {
-      point: true,
-    },
-    orderBy: {
-      _count: {
-        targetUserId: 'desc',
-      },
-    },
-    take: limit,
-  });
-
-  const userIds = grouped
-    .map((item) => item.targetUserId)
-    .filter((id): id is string => !!id);
 
   const users = await this.prisma.user.findMany({
     where: {
-      id: {
-        in: userIds,
+      totalVote: {
+        gt: 0,
       },
     },
+    orderBy: [
+      { totalVote: 'desc' },
+      { totalPoints: 'desc' },
+    ],
+    take: limit,
     select: {
       id: true,
       email: true,
       phone: true,
       totalPoints: true,
+      totalVote: true,
       accountStatus: true,
       profile: {
         select: {
           id: true,
-          profileName:true,
+          profileName: true,
           imageUrl: true,
         },
         take: 1,
@@ -330,22 +342,17 @@ export class RacingVoteService {
     },
   });
 
-  const userMap = new Map(users.map((user) => [user.id, user]));
-
-  const leaderboard = grouped.map((item, index) => {
-    const user = userMap.get(item.targetUserId!);
-
-    return {
-      rank: index + 1,
-      user: user ?? null,
-      totalVotes: item._count.targetUserId,
-      totalVotePoints: item._sum.point ?? 0,
-    };
-  });
+  const leaderboard = users.map((user, index) => ({
+    rank: index + 1,
+    user,
+    totalVotes: user.totalVote,
+    totalVotePoints: user.totalPoints,
+  }));
 
   return {
     total: leaderboard.length,
     leaderboard,
   };
 }
+
 }

@@ -579,6 +579,7 @@ async toggleTwoFactor(userId: string, enabled: boolean) {
         totalPoints: true,
         balance: true,
         likeCount: true,
+        totalVote:true,
         commentCount: true,
         shareCount: true,
         createdAt: true,

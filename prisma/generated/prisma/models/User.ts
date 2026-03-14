@@ -32,6 +32,7 @@ export type UserAvgAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  totalVote: number | null
 }
 
 export type UserSumAggregateOutputType = {
@@ -40,6 +41,7 @@ export type UserSumAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  totalVote: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -63,6 +65,7 @@ export type UserMinAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  totalVote: number | null
   activeProfileId: string | null
   isTwoFactorEnabled: boolean | null
   twoFactorOtp: string | null
@@ -93,6 +96,7 @@ export type UserMaxAggregateOutputType = {
   likeCount: number | null
   commentCount: number | null
   shareCount: number | null
+  totalVote: number | null
   activeProfileId: string | null
   isTwoFactorEnabled: boolean | null
   twoFactorOtp: string | null
@@ -123,6 +127,7 @@ export type UserCountAggregateOutputType = {
   likeCount: number
   commentCount: number
   shareCount: number
+  totalVote: number
   activeProfileId: number
   isTwoFactorEnabled: number
   twoFactorOtp: number
@@ -140,6 +145,7 @@ export type UserAvgAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  totalVote?: true
 }
 
 export type UserSumAggregateInputType = {
@@ -148,6 +154,7 @@ export type UserSumAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  totalVote?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -171,6 +178,7 @@ export type UserMinAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  totalVote?: true
   activeProfileId?: true
   isTwoFactorEnabled?: true
   twoFactorOtp?: true
@@ -201,6 +209,7 @@ export type UserMaxAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  totalVote?: true
   activeProfileId?: true
   isTwoFactorEnabled?: true
   twoFactorOtp?: true
@@ -231,6 +240,7 @@ export type UserCountAggregateInputType = {
   likeCount?: true
   commentCount?: true
   shareCount?: true
+  totalVote?: true
   activeProfileId?: true
   isTwoFactorEnabled?: true
   twoFactorOtp?: true
@@ -348,6 +358,7 @@ export type UserGroupByOutputType = {
   likeCount: number
   commentCount: number
   shareCount: number
+  totalVote: number
   activeProfileId: string | null
   isTwoFactorEnabled: boolean
   twoFactorOtp: string | null
@@ -401,6 +412,7 @@ export type UserWhereInput = {
   likeCount?: Prisma.IntFilter<"User"> | number
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
+  totalVote?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
   isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
   twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
@@ -493,6 +505,7 @@ export type UserOrderByWithRelationInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   isTwoFactorEnabled?: Prisma.SortOrder
   twoFactorOtp?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -588,6 +601,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   likeCount?: Prisma.IntFilter<"User"> | number
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
+  totalVote?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
   isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
   twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
@@ -680,6 +694,7 @@ export type UserOrderByWithAggregationInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrderInput | Prisma.SortOrder
   isTwoFactorEnabled?: Prisma.SortOrder
   twoFactorOtp?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -718,6 +733,7 @@ export type UserScalarWhereWithAggregatesInput = {
   likeCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   commentCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   shareCount?: Prisma.IntWithAggregatesFilter<"User"> | number
+  totalVote?: Prisma.IntWithAggregatesFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableWithAggregatesFilter<"User"> | string | null
   isTwoFactorEnabled?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   twoFactorOtp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -748,6 +764,7 @@ export type UserCreateInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -840,6 +857,7 @@ export type UserUncheckedCreateInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -932,6 +950,7 @@ export type UserUpdateInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1024,6 +1043,7 @@ export type UserUncheckedUpdateInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1116,6 +1136,7 @@ export type UserCreateManyInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -1146,6 +1167,7 @@ export type UserUpdateManyMutationInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1176,6 +1198,7 @@ export type UserUncheckedUpdateManyInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1226,6 +1249,7 @@ export type UserCountOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
   isTwoFactorEnabled?: Prisma.SortOrder
   twoFactorOtp?: Prisma.SortOrder
@@ -1241,6 +1265,7 @@ export type UserAvgOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -1264,6 +1289,7 @@ export type UserMaxOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
   isTwoFactorEnabled?: Prisma.SortOrder
   twoFactorOtp?: Prisma.SortOrder
@@ -1294,6 +1320,7 @@ export type UserMinOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
   activeProfileId?: Prisma.SortOrder
   isTwoFactorEnabled?: Prisma.SortOrder
   twoFactorOtp?: Prisma.SortOrder
@@ -1309,6 +1336,7 @@ export type UserSumOrderByAggregateInput = {
   likeCount?: Prisma.SortOrder
   commentCount?: Prisma.SortOrder
   shareCount?: Prisma.SortOrder
+  totalVote?: Prisma.SortOrder
 }
 
 export type UserCreateNestedOneWithoutAmbassadorProgramsInput = {
@@ -2244,6 +2272,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -2335,6 +2364,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -2442,6 +2472,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2533,6 +2564,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2624,6 +2656,7 @@ export type UserCreateWithoutChallengesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -2715,6 +2748,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -2822,6 +2856,7 @@ export type UserUpdateWithoutChallengesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2913,6 +2948,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3004,6 +3040,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3095,6 +3132,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3202,6 +3240,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3293,6 +3332,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3384,6 +3424,7 @@ export type UserCreateWithoutChallengeReactionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3475,6 +3516,7 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3582,6 +3624,7 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3673,6 +3716,7 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3764,6 +3808,7 @@ export type UserCreateWithoutChallengeVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3855,6 +3900,7 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -3962,6 +4008,7 @@ export type UserUpdateWithoutChallengeVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4053,6 +4100,7 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4144,6 +4192,7 @@ export type UserCreateWithoutChallengeCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -4235,6 +4284,7 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -4342,6 +4392,7 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4433,6 +4484,7 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4524,6 +4576,7 @@ export type UserCreateWithoutCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -4615,6 +4668,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -4722,6 +4776,7 @@ export type UserUpdateWithoutCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4813,6 +4868,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4904,6 +4960,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -4995,6 +5052,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5102,6 +5160,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5193,6 +5252,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5284,6 +5344,7 @@ export type UserCreateWithoutEventsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5375,6 +5436,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5482,6 +5544,7 @@ export type UserUpdateWithoutEventsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5573,6 +5636,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5664,6 +5728,7 @@ export type UserCreateWithoutFollowingInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5755,6 +5820,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5851,6 +5917,7 @@ export type UserCreateWithoutFollowersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -5942,6 +6009,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -6049,6 +6117,7 @@ export type UserUpdateWithoutFollowingInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6140,6 +6209,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6242,6 +6312,7 @@ export type UserUpdateWithoutFollowersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6333,6 +6404,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6424,6 +6496,7 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -6515,6 +6588,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -6611,6 +6685,7 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -6702,6 +6777,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -6809,6 +6885,7 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6900,6 +6977,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7002,6 +7080,7 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7093,6 +7172,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7184,6 +7264,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7275,6 +7356,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7382,6 +7464,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7473,6 +7556,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7564,6 +7648,7 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7655,6 +7740,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7751,6 +7837,7 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7842,6 +7929,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -7949,6 +8037,7 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8040,6 +8129,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8142,6 +8232,7 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8233,6 +8324,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8324,6 +8416,7 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -8415,6 +8508,7 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -8522,6 +8616,7 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8613,6 +8708,7 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8704,6 +8800,7 @@ export type UserCreateWithoutBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -8795,6 +8892,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -8902,6 +9000,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8993,6 +9092,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9084,6 +9184,7 @@ export type UserCreateWithoutBattleCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -9175,6 +9276,7 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -9282,6 +9384,7 @@ export type UserUpdateWithoutBattleCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9373,6 +9476,7 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9464,6 +9568,7 @@ export type UserCreateWithoutHidePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -9555,6 +9660,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -9662,6 +9768,7 @@ export type UserUpdateWithoutHidePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9753,6 +9860,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9844,6 +9952,7 @@ export type UserCreateWithoutLikesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -9935,6 +10044,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -10042,6 +10152,7 @@ export type UserUpdateWithoutLikesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10133,6 +10244,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10224,6 +10336,7 @@ export type UserCreateWithoutLivesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -10315,6 +10428,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -10422,6 +10536,7 @@ export type UserUpdateWithoutLivesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10513,6 +10628,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10604,6 +10720,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -10695,6 +10812,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -10802,6 +10920,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10893,6 +11012,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10984,6 +11104,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11075,6 +11196,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11171,6 +11293,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11262,6 +11385,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11369,6 +11493,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11460,6 +11585,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11562,6 +11688,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11653,6 +11780,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11744,6 +11872,7 @@ export type UserCreateWithoutMessagesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11835,6 +11964,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -11942,6 +12072,7 @@ export type UserUpdateWithoutMessagesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12033,6 +12164,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12124,6 +12256,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12215,6 +12348,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12322,6 +12456,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12413,6 +12548,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12504,6 +12640,7 @@ export type UserCreateWithoutNotificationsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12595,6 +12732,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12691,6 +12829,7 @@ export type UserCreateWithoutNotificationsActorInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12782,6 +12921,7 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -12889,6 +13029,7 @@ export type UserUpdateWithoutNotificationsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12980,6 +13121,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13082,6 +13224,7 @@ export type UserUpdateWithoutNotificationsActorInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13173,6 +13316,7 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13264,6 +13408,7 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -13355,6 +13500,7 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -13462,6 +13608,7 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13553,6 +13700,7 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13644,6 +13792,7 @@ export type UserCreateWithoutDeviceTokensInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -13735,6 +13884,7 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -13842,6 +13992,7 @@ export type UserUpdateWithoutDeviceTokensInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13933,6 +14084,7 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14024,6 +14176,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14115,6 +14268,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14222,6 +14376,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14313,6 +14468,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14404,6 +14560,7 @@ export type UserCreateWithoutPaymentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14495,6 +14652,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14602,6 +14760,7 @@ export type UserUpdateWithoutPaymentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14693,6 +14852,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14784,6 +14944,7 @@ export type UserCreateWithoutPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14875,6 +15036,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -14971,6 +15133,7 @@ export type UserCreateWithoutTaggedInPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15062,6 +15225,7 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15169,6 +15333,7 @@ export type UserUpdateWithoutPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15260,6 +15425,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15370,6 +15536,7 @@ export type UserScalarWhereInput = {
   likeCount?: Prisma.IntFilter<"User"> | number
   commentCount?: Prisma.IntFilter<"User"> | number
   shareCount?: Prisma.IntFilter<"User"> | number
+  totalVote?: Prisma.IntFilter<"User"> | number
   activeProfileId?: Prisma.UuidNullableFilter<"User"> | string | null
   isTwoFactorEnabled?: Prisma.BoolFilter<"User"> | boolean
   twoFactorOtp?: Prisma.StringNullableFilter<"User"> | string | null
@@ -15400,6 +15567,7 @@ export type UserCreateWithoutPostRatingsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15491,6 +15659,7 @@ export type UserUncheckedCreateWithoutPostRatingsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15598,6 +15767,7 @@ export type UserUpdateWithoutPostRatingsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15689,6 +15859,7 @@ export type UserUncheckedUpdateWithoutPostRatingsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15780,6 +15951,7 @@ export type UserCreateWithoutPrizesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15871,6 +16043,7 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -15978,6 +16151,7 @@ export type UserUpdateWithoutPrizesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16069,6 +16243,7 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16160,6 +16335,7 @@ export type UserCreateWithoutProductListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -16251,6 +16427,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -16358,6 +16535,7 @@ export type UserUpdateWithoutProductListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16449,6 +16627,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16540,6 +16719,7 @@ export type UserCreateWithoutProfileInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -16631,6 +16811,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -16738,6 +16919,7 @@ export type UserUpdateWithoutProfileInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16829,6 +17011,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16920,6 +17103,7 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17011,6 +17195,7 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17107,6 +17292,7 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17198,6 +17384,7 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17305,6 +17492,7 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17396,6 +17584,7 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17498,6 +17687,7 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17589,6 +17779,7 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17680,6 +17871,7 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17771,6 +17963,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17867,6 +18060,7 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -17958,6 +18152,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -18065,6 +18260,7 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18156,6 +18352,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18258,6 +18455,7 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18349,6 +18547,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18440,6 +18639,7 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -18531,6 +18731,7 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -18638,6 +18839,7 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18729,6 +18931,7 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18820,6 +19023,7 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -18911,6 +19115,7 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -19018,6 +19223,7 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19109,6 +19315,7 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19200,6 +19407,7 @@ export type UserCreateWithoutRawShiftVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -19291,6 +19499,7 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -19398,6 +19607,7 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19489,6 +19699,7 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19580,6 +19791,7 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -19671,6 +19883,7 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -19778,6 +19991,7 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19869,6 +20083,7 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19960,6 +20175,7 @@ export type UserCreateWithoutReportsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20051,6 +20267,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20158,6 +20375,7 @@ export type UserUpdateWithoutReportsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20249,6 +20467,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20340,6 +20559,7 @@ export type UserCreateWithoutRepostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20431,6 +20651,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20538,6 +20759,7 @@ export type UserUpdateWithoutRepostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20629,6 +20851,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20720,6 +20943,7 @@ export type UserCreateWithoutSavePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20811,6 +21035,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -20918,6 +21143,7 @@ export type UserUpdateWithoutSavePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21009,6 +21235,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21100,6 +21327,7 @@ export type UserCreateWithoutSharesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -21191,6 +21419,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -21298,6 +21527,7 @@ export type UserUpdateWithoutSharesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21389,6 +21619,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21480,6 +21711,7 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -21571,6 +21803,7 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -21678,6 +21911,7 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21769,6 +22003,7 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21860,6 +22095,7 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -21951,6 +22187,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -22047,6 +22284,7 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -22138,6 +22376,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -22245,6 +22484,7 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22336,6 +22576,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22438,6 +22679,7 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22529,6 +22771,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22620,6 +22863,7 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -22711,6 +22955,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -22818,6 +23063,7 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22909,6 +23155,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23000,6 +23247,7 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23091,6 +23339,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23198,6 +23447,7 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23289,6 +23539,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23380,6 +23631,7 @@ export type UserCreateWithoutSpottingMatchesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23471,6 +23723,7 @@ export type UserUncheckedCreateWithoutSpottingMatchesInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23578,6 +23831,7 @@ export type UserUpdateWithoutSpottingMatchesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23669,6 +23923,7 @@ export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23760,6 +24015,7 @@ export type UserCreateWithoutSpottingRequestsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23851,6 +24107,7 @@ export type UserUncheckedCreateWithoutSpottingRequestsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -23958,6 +24215,7 @@ export type UserUpdateWithoutSpottingRequestsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24049,6 +24307,7 @@ export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24140,6 +24399,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -24231,6 +24491,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -24327,6 +24588,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -24418,6 +24680,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -24525,6 +24788,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24616,6 +24880,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24718,6 +24983,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24809,6 +25075,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24900,6 +25167,7 @@ export type UserCreateWithoutUserPointsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -24991,6 +25259,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -25098,6 +25367,7 @@ export type UserUpdateWithoutUserPointsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25189,6 +25459,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25280,6 +25551,7 @@ export type UserCreateWithoutWishListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -25371,6 +25643,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   likeCount?: number
   commentCount?: number
   shareCount?: number
+  totalVote?: number
   activeProfileId?: string | null
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: string | null
@@ -25478,6 +25751,7 @@ export type UserUpdateWithoutWishListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25569,6 +25843,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25660,6 +25935,7 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25751,6 +26027,7 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25842,6 +26119,7 @@ export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
   likeCount?: Prisma.IntFieldUpdateOperationsInput | number
   commentCount?: Prisma.IntFieldUpdateOperationsInput | number
   shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
   activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
   twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -26434,6 +26712,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  totalVote?: boolean
   activeProfileId?: boolean
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: boolean
@@ -26527,6 +26806,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  totalVote?: boolean
   activeProfileId?: boolean
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: boolean
@@ -26557,6 +26837,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  totalVote?: boolean
   activeProfileId?: boolean
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: boolean
@@ -26587,6 +26868,7 @@ export type UserSelectScalar = {
   likeCount?: boolean
   commentCount?: boolean
   shareCount?: boolean
+  totalVote?: boolean
   activeProfileId?: boolean
   isTwoFactorEnabled?: boolean
   twoFactorOtp?: boolean
@@ -26596,7 +26878,7 @@ export type UserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "accountStatus" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "activeProfileId" | "isTwoFactorEnabled" | "twoFactorOtp" | "twoFactorOtpExpiresAt" | "twoFactorTempToken" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "password" | "role" | "activeRole" | "otp" | "expiresIn" | "isEmailVerified" | "accountStatus" | "emailOtp" | "emailOtpExpiresAt" | "resetOtp" | "resetOtpExpiresAt" | "refreshTokenHash" | "totalPoints" | "balance" | "likeCount" | "commentCount" | "shareCount" | "totalVote" | "activeProfileId" | "isTwoFactorEnabled" | "twoFactorOtp" | "twoFactorOtpExpiresAt" | "twoFactorTempToken" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
@@ -26752,6 +27034,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     likeCount: number
     commentCount: number
     shareCount: number
+    totalVote: number
     activeProfileId: string | null
     isTwoFactorEnabled: boolean
     twoFactorOtp: string | null
@@ -27264,6 +27547,7 @@ export interface UserFieldRefs {
   readonly likeCount: Prisma.FieldRef<"User", 'Int'>
   readonly commentCount: Prisma.FieldRef<"User", 'Int'>
   readonly shareCount: Prisma.FieldRef<"User", 'Int'>
+  readonly totalVote: Prisma.FieldRef<"User", 'Int'>
   readonly activeProfileId: Prisma.FieldRef<"User", 'String'>
   readonly isTwoFactorEnabled: Prisma.FieldRef<"User", 'Boolean'>
   readonly twoFactorOtp: Prisma.FieldRef<"User", 'String'>

@@ -101,7 +101,7 @@ export class AdminEventManagementController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
   @Get('engagement-overview')
   @ApiOperation({ summary: 'Get engagement overview analytics' })
   @ApiQuery({ name: 'page', required: false, example: 1 })

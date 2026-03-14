@@ -1603,6 +1603,7 @@ export const UserScalarFieldEnum = {
   likeCount: 'likeCount',
   commentCount: 'commentCount',
   shareCount: 'shareCount',
+  totalVote: 'totalVote',
   activeProfileId: 'activeProfileId',
   isTwoFactorEnabled: 'isTwoFactorEnabled',
   twoFactorOtp: 'twoFactorOtp',
