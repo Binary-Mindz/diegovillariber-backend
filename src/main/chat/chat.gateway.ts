@@ -102,18 +102,34 @@ export class ChatGateway
     }
   }
 
+  // private extractTokenFromSocket(client: Socket): string | null {
+  //   try {
+  //     return (
+  //       (client.handshake.auth?.token as string) ||
+  //       (client.handshake.query?.token as string) ||
+  //       (client.handshake.headers?.authorization as string)?.split(' ')[1] ||
+  //       null
+  //     );
+  //   } catch {
+  //     return null;
+  //   }
+  // }
+
   private extractTokenFromSocket(client: Socket): string | null {
-    try {
-      return (
-        (client.handshake.auth?.token as string) ||
-        (client.handshake.query?.token as string) ||
-        (client.handshake.headers?.authorization as string)?.split(' ')[1] ||
-        null
-      );
-    } catch {
-      return null;
-    }
+  const authToken = client.handshake.auth?.token;
+
+  if (authToken) return authToken;
+
+  const queryToken = client.handshake.query?.token as string;
+  if (queryToken) return queryToken;
+
+  const header = client.handshake.headers?.authorization;
+  if (header?.startsWith("Bearer ")) {
+    return header.split(" ")[1];
   }
+
+  return null;
+}
 
   private disconnectWithError(client: Socket, message: string) {
     this.logger.warn(`Disconnecting client: ${message}`);
