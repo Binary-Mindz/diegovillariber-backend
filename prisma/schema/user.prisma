@@ -120,7 +120,6 @@ model User {
 
   racingVotesGiven    RacingVote[] @relation("RacingVoteVoter")
   racingVotesReceived RacingVote[] @relation("RacingVoteReceiver")
-<<<<<<< HEAD
 
   blockedUsers   UserBlock[] @relation("UserBlocksInitiated")
   blockedByUsers UserBlock[] @relation("UserBlocksReceived")
@@ -128,7 +127,6 @@ model User {
   spottingRequests SpottingRequest[]
 
   spottingMatches SpottingMatch[]
-=======
+
   postRatings PostRating[]
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
