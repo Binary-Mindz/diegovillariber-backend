@@ -1,0 +1,17 @@
+model Header {
+  id          String  @id @default(uuid())
+   
+  selectHeader  HeaderName @default(CHALLEGE)
+  headerName   String        @unique
+  brandName    String?
+  bannerImage  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum HeaderName {
+  CHALLEGE
+  RAW_SHIFT
+  MOTOR_SPORT_RANKING
+}

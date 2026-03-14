@@ -5,9 +5,10 @@ import { CommentModule } from './comment/comment.module';
 import { SaveModule } from './save/save.module';
 import { HideModule } from './hide/hide.module';
 import { PostRatingModule } from './post-rating/post-rating.module';
+import { RepostModule } from './repost/repost.module';
 
 @Module({
-  imports: [PostModule, LikeModule, CommentModule, SaveModule, HideModule, PostRatingModule],
+  imports: [PostModule, LikeModule, CommentModule, SaveModule, HideModule, PostRatingModule, RepostModule],
   controllers: [],
   providers: [],
   exports: [],

@@ -1048,6 +1048,23 @@ export type EnumInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
 }
 
+export type EnumHeaderNameFilter<$PrismaModel = never> = {
+  equals?: $Enums.HeaderName | Prisma.EnumHeaderNameFieldRefInput<$PrismaModel>
+  in?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel> | $Enums.HeaderName
+}
+
+export type EnumHeaderNameWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HeaderName | Prisma.EnumHeaderNameFieldRefInput<$PrismaModel>
+  in?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHeaderNameWithAggregatesFilter<$PrismaModel> | $Enums.HeaderName
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
+}
+
 export type EnumSessionTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
   in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
@@ -3037,6 +3054,23 @@ export type NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel = never>
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumInvitationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumHeaderNameFilter<$PrismaModel = never> = {
+  equals?: $Enums.HeaderName | Prisma.EnumHeaderNameFieldRefInput<$PrismaModel>
+  in?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel> | $Enums.HeaderName
+}
+
+export type NestedEnumHeaderNameWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.HeaderName | Prisma.EnumHeaderNameFieldRefInput<$PrismaModel>
+  in?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  notIn?: $Enums.HeaderName[] | Prisma.ListEnumHeaderNameFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumHeaderNameWithAggregatesFilter<$PrismaModel> | $Enums.HeaderName
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
 }
 
 export type NestedEnumSessionTypeFilter<$PrismaModel = never> = {

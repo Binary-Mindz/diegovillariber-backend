@@ -266,6 +266,15 @@ export const BattleCategory = {
 export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory]
 
 
+export const HeaderName = {
+  CHALLEGE: 'CHALLEGE',
+  RAW_SHIFT: 'RAW_SHIFT',
+  MOTOR_SPORT_RANKING: 'MOTOR_SPORT_RANKING'
+} as const
+
+export type HeaderName = (typeof HeaderName)[keyof typeof HeaderName]
+
+
 export const PhotoEditingDeclaration = {
   NO_EDITING: 'NO_EDITING',
   EDITED_WITH_ADOBE_LIGHTROOM: 'EDITED_WITH_ADOBE_LIGHTROOM',
