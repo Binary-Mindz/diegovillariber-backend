@@ -465,11 +465,8 @@ export type PostWhereInput = {
   userPoints?: Prisma.UserPointListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchListRelationFilter
-=======
   postRatings?: Prisma.PostRatingListRelationFilter
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchListRelationFilter
 }
 
 export type PostOrderByWithRelationInput = {
@@ -518,11 +515,8 @@ export type PostOrderByWithRelationInput = {
   userPoints?: Prisma.UserPointOrderByRelationAggregateInput
   likes?: Prisma.LikeOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchOrderByRelationAggregateInput
-=======
   postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchOrderByRelationAggregateInput
 }
 
 export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -574,11 +568,8 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   userPoints?: Prisma.UserPointListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchListRelationFilter
-=======
   postRatings?: Prisma.PostRatingListRelationFilter
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchListRelationFilter
 }, "id">
 
 export type PostOrderByWithAggregationInput = {
@@ -702,11 +693,8 @@ export type PostCreateInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateInput = {
@@ -752,11 +740,8 @@ export type PostUncheckedCreateInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostUpdateInput = {
@@ -802,11 +787,8 @@ export type PostUpdateInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateInput = {
@@ -852,11 +834,8 @@ export type PostUncheckedUpdateInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyInput = {
@@ -1562,12 +1541,9 @@ export type PostCreateWithoutCarInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutCarInput = {
@@ -1611,8 +1587,8 @@ export type PostUncheckedCreateWithoutCarInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
@@ -1670,6 +1646,9 @@ export type PostScalarWhereInput = {
   point?: Prisma.IntFilter<"Post"> | number
   photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableFilter<"Post"> | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFilter<"Post"> | number
+  ratingTotal?: Prisma.IntFilter<"Post"> | number
+  ratingAverage?: Prisma.DecimalFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -1699,6 +1678,9 @@ export type PostCreateWithoutCommentsInput = {
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1716,6 +1698,7 @@ export type PostCreateWithoutCommentsInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
@@ -1744,6 +1727,9 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1758,10 +1744,8 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutCommentsInput = {
@@ -1822,11 +1806,8 @@ export type PostUpdateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutCommentsInput = {
@@ -1871,11 +1852,8 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutHashtagsInput = {
@@ -1920,11 +1898,8 @@ export type PostCreateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHashtagsInput = {
@@ -1969,11 +1944,8 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHashtagsInput = {
@@ -1997,46 +1969,6 @@ export type PostUpdateManyWithWhereWithoutHashtagsInput = {
   data: Prisma.XOR<Prisma.PostUpdateManyMutationInput, Prisma.PostUncheckedUpdateManyWithoutHashtagsInput>
 }
 
-<<<<<<< HEAD
-=======
-export type PostScalarWhereInput = {
-  AND?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
-  OR?: Prisma.PostScalarWhereInput[]
-  NOT?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
-  id?: Prisma.UuidFilter<"Post"> | string
-  userId?: Prisma.UuidFilter<"Post"> | string
-  profileId?: Prisma.UuidNullableFilter<"Post"> | string | null
-  profileType?: Prisma.EnumTypeNullableFilter<"Post"> | $Enums.Type | null
-  postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
-  caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
-  postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
-  locationName?: Prisma.StringNullableFilter<"Post"> | string | null
-  locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
-  latitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: Prisma.DecimalNullableFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: Prisma.StringNullableFilter<"Post"> | string | null
-  locationVisibility?: Prisma.StringNullableFilter<"Post"> | string | null
-  vehicleCategory?: Prisma.EnumVehicleCategoryFilter<"Post"> | $Enums.VehicleCategory
-  mediaType?: Prisma.EnumMediaTypeFilter<"Post"> | $Enums.MediaType
-  like?: Prisma.IntFilter<"Post"> | number
-  comment?: Prisma.IntFilter<"Post"> | number
-  share?: Prisma.IntFilter<"Post"> | number
-  contentBooster?: Prisma.BoolFilter<"Post"> | boolean
-  point?: Prisma.IntFilter<"Post"> | number
-  photoEditingDeclaration?: Prisma.EnumPhotoEditingDeclarationNullableFilter<"Post"> | $Enums.PhotoEditingDeclaration | null
-  videoEditingDeclaration?: Prisma.EnumVideoEditingDeclarationNullableFilter<"Post"> | $Enums.VideoEditingDeclaration | null
-  ratingCount?: Prisma.IntFilter<"Post"> | number
-  ratingTotal?: Prisma.IntFilter<"Post"> | number
-  ratingAverage?: Prisma.DecimalFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
-  contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
-  subject?: Prisma.EnumSubjectNullableListFilter<"Post">
-  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
-}
-
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 export type PostCreateWithoutHidePostsInput = {
   id?: string
   profileType?: $Enums.Type | null
@@ -2079,11 +2011,8 @@ export type PostCreateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHidePostsInput = {
@@ -2128,11 +2057,8 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHidePostsInput = {
@@ -2193,11 +2119,8 @@ export type PostUpdateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHidePostsInput = {
@@ -2242,11 +2165,8 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutLikesInput = {
@@ -2291,11 +2211,8 @@ export type PostCreateWithoutLikesInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutLikesInput = {
@@ -2340,11 +2257,8 @@ export type PostUncheckedCreateWithoutLikesInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutLikesInput = {
@@ -2405,11 +2319,8 @@ export type PostUpdateWithoutLikesInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutLikesInput = {
@@ -2454,10 +2365,8 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutPostRatingsInput = {
@@ -2492,6 +2401,7 @@ export type PostCreateWithoutPostRatingsInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPostsInput
   profile?: Prisma.ProfileCreateNestedOneWithoutPostsInput
+  car?: Prisma.CarCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
@@ -2502,12 +2412,14 @@ export type PostCreateWithoutPostRatingsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutPostRatingsInput = {
   id?: string
   userId: string
   profileId?: string | null
+  carId?: string | null
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
@@ -2546,6 +2458,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutPostRatingsInput = {
@@ -2596,6 +2509,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
   profile?: Prisma.ProfileUpdateOneWithoutPostsNestedInput
+  car?: Prisma.CarUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
@@ -2606,12 +2520,14 @@ export type PostUpdateWithoutPostRatingsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutPostRatingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2650,7 +2566,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutProfileInput = {
@@ -2695,11 +2611,8 @@ export type PostCreateWithoutProfileInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutProfileInput = {
@@ -2744,11 +2657,8 @@ export type PostUncheckedCreateWithoutProfileInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutProfileInput = {
@@ -2819,11 +2729,8 @@ export type PostCreateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRacingVotesInput = {
@@ -2868,11 +2775,8 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRacingVotesInput = {
@@ -2933,11 +2837,8 @@ export type PostUpdateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRacingVotesInput = {
@@ -2982,11 +2883,8 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutRepostsInput = {
@@ -3031,11 +2929,8 @@ export type PostCreateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRepostsInput = {
@@ -3080,11 +2975,8 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRepostsInput = {
@@ -3145,11 +3037,8 @@ export type PostUpdateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRepostsInput = {
@@ -3194,11 +3083,8 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutSavePostsInput = {
@@ -3243,11 +3129,8 @@ export type PostCreateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutSavePostsInput = {
@@ -3292,11 +3175,8 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutSavePostsInput = {
@@ -3357,11 +3237,8 @@ export type PostUpdateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutSavePostsInput = {
@@ -3406,11 +3283,8 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutSpottingMatchesInput = {
@@ -3543,6 +3417,9 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3561,6 +3438,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
@@ -3588,6 +3466,9 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3603,6 +3484,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutUserInput = {
@@ -3627,6 +3509,9 @@ export type PostCreateWithoutUserInput = {
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3644,6 +3529,7 @@ export type PostCreateWithoutUserInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
@@ -3671,6 +3557,9 @@ export type PostUncheckedCreateWithoutUserInput = {
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3686,6 +3575,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
@@ -3741,11 +3631,8 @@ export type PostCreateWithoutTaggedUsersInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutTaggedUsersInput = {
@@ -3790,11 +3677,8 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutTaggedUsersInput = {
@@ -3876,11 +3760,8 @@ export type PostCreateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserPointsInput = {
@@ -3925,11 +3806,8 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserPointsInput = {
@@ -3990,11 +3868,8 @@ export type PostUpdateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserPointsInput = {
@@ -4039,11 +3914,8 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutWishListsInput = {
@@ -4088,11 +3960,8 @@ export type PostCreateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutWishListsInput = {
@@ -4137,11 +4006,8 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-=======
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutWishListsInput = {
@@ -4202,11 +4068,8 @@ export type PostUpdateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutWishListsInput = {
@@ -4251,7 +4114,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
@@ -4279,6 +4142,9 @@ export type PostCreateManyCarInput = {
   point?: number
   photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4308,6 +4174,9 @@ export type PostUpdateWithoutCarInput = {
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4325,6 +4194,7 @@ export type PostUpdateWithoutCarInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
@@ -4352,6 +4222,9 @@ export type PostUncheckedUpdateWithoutCarInput = {
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4367,6 +4240,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
@@ -4394,14 +4268,14 @@ export type PostUncheckedUpdateManyWithoutCarInput = {
   point?: Prisma.IntFieldUpdateOperationsInput | number
   photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
   videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-=======
-  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
 }
 
 export type PostUpdateWithoutHashtagsInput = {
@@ -4446,11 +4320,8 @@ export type PostUpdateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHashtagsInput = {
@@ -4495,11 +4366,8 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutHashtagsInput = {
@@ -4613,11 +4481,8 @@ export type PostUpdateWithoutProfileInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutProfileInput = {
@@ -4662,11 +4527,8 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutProfileInput = {
@@ -4779,11 +4641,8 @@ export type PostUpdateWithoutUserInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserInput = {
@@ -4828,11 +4687,8 @@ export type PostUncheckedUpdateWithoutUserInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutUserInput = {
@@ -4911,11 +4767,8 @@ export type PostUpdateWithoutTaggedUsersInput = {
   userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutTaggedUsersInput = {
@@ -4960,11 +4813,8 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-<<<<<<< HEAD
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-=======
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
@@ -5018,11 +4868,8 @@ export type PostCountOutputType = {
   userPoints: number
   likes: number
   comments: number
-<<<<<<< HEAD
-  spottingMatches: number
-=======
   postRatings: number
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches: number
 }
 
 export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5036,11 +4883,8 @@ export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   userPoints?: boolean | PostCountOutputTypeCountUserPointsArgs
   likes?: boolean | PostCountOutputTypeCountLikesArgs
   comments?: boolean | PostCountOutputTypeCountCommentsArgs
-<<<<<<< HEAD
-  spottingMatches?: boolean | PostCountOutputTypeCountSpottingMatchesArgs
-=======
   postRatings?: boolean | PostCountOutputTypeCountPostRatingsArgs
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: boolean | PostCountOutputTypeCountSpottingMatchesArgs
 }
 
 /**
@@ -5126,13 +4970,15 @@ export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.E
 /**
  * PostCountOutputType without action
  */
-<<<<<<< HEAD
-export type PostCountOutputTypeCountSpottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SpottingMatchWhereInput
-=======
 export type PostCountOutputTypeCountPostRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PostRatingWhereInput
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+}
+
+/**
+ * PostCountOutputType without action
+ */
+export type PostCountOutputTypeCountSpottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SpottingMatchWhereInput
 }
 
 
@@ -5182,11 +5028,8 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userPoints?: boolean | Prisma.Post$userPointsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
-<<<<<<< HEAD
-  spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
-=======
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
@@ -5301,11 +5144,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-<<<<<<< HEAD
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
-=======
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Post$profileArgs<ExtArgs>
@@ -5320,11 +5159,8 @@ export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userPoints?: boolean | Prisma.Post$userPointsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
-<<<<<<< HEAD
-  spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
-=======
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PostIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5354,11 +5190,8 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userPoints: Prisma.$UserPointPayload<ExtArgs>[]
     likes: Prisma.$LikePayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
-<<<<<<< HEAD
-    spottingMatches: Prisma.$SpottingMatchPayload<ExtArgs>[]
-=======
     postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+    spottingMatches: Prisma.$SpottingMatchPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -5800,11 +5633,8 @@ export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Typ
   userPoints<T extends Prisma.Post$userPointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$userPointsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   likes<T extends Prisma.Post$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Post$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-<<<<<<< HEAD
-  spottingMatches<T extends Prisma.Post$spottingMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$spottingMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-=======
   postRatings<T extends Prisma.Post$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+  spottingMatches<T extends Prisma.Post$spottingMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$spottingMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6540,29 +6370,6 @@ export type Post$commentsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
-<<<<<<< HEAD
- * Post.spottingMatches
- */
-export type Post$spottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the SpottingMatch
-   */
-  select?: Prisma.SpottingMatchSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the SpottingMatch
-   */
-  omit?: Prisma.SpottingMatchOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.SpottingMatchInclude<ExtArgs> | null
-  where?: Prisma.SpottingMatchWhereInput
-  orderBy?: Prisma.SpottingMatchOrderByWithRelationInput | Prisma.SpottingMatchOrderByWithRelationInput[]
-  cursor?: Prisma.SpottingMatchWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.SpottingMatchScalarFieldEnum | Prisma.SpottingMatchScalarFieldEnum[]
-=======
  * Post.postRatings
  */
 export type Post$postRatingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -6584,7 +6391,30 @@ export type Post$postRatingsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.PostRatingScalarFieldEnum | Prisma.PostRatingScalarFieldEnum[]
->>>>>>> 96c14d4 (added two step verification and rating post api delete issue fix)
+}
+
+/**
+ * Post.spottingMatches
+ */
+export type Post$spottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SpottingMatch
+   */
+  select?: Prisma.SpottingMatchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SpottingMatch
+   */
+  omit?: Prisma.SpottingMatchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SpottingMatchInclude<ExtArgs> | null
+  where?: Prisma.SpottingMatchWhereInput
+  orderBy?: Prisma.SpottingMatchOrderByWithRelationInput | Prisma.SpottingMatchOrderByWithRelationInput[]
+  cursor?: Prisma.SpottingMatchWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SpottingMatchScalarFieldEnum | Prisma.SpottingMatchScalarFieldEnum[]
 }
 
 /**

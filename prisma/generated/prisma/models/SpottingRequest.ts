@@ -707,14 +707,6 @@ export type SpottingRequestUpdateOneRequiredWithoutMatchesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SpottingRequestUpdateToOneWithWhereWithoutMatchesInput, Prisma.SpottingRequestUpdateWithoutMatchesInput>, Prisma.SpottingRequestUncheckedUpdateWithoutMatchesInput>
 }
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
 export type EnumSpottingRequestStatusFieldUpdateOperationsInput = {
   set?: $Enums.SpottingRequestStatus
 }
