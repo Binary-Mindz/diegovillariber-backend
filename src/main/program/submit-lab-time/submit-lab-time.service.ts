@@ -7,6 +7,7 @@ import { Type } from 'generated/prisma/enums';
 import { CompareSubmitLabTimeDto } from './dto/compare-submit-lab-time.dto';
 import { CompareHistoryDto } from './dto/compare-history.dto';
 import { SubmitLabTimeLeaderboardDto } from './dto/submit-lab-time-leaderboard.dto';
+import { ListSimRacingUsersDto } from './dto/list-sim-racing-users.dto';
 
 @Injectable()
 export class SubmitLabTimeService {
@@ -288,5 +289,93 @@ export class SubmitLabTimeService {
   //     items,
   //   };
   // }
+
+   async getSimRacingUsers(currentUserId: string, query: ListSimRacingUsersDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
+  const q = query.q?.trim();
+
+  const where: any = {
+    activeType: Type.SIM_RACING_DRIVER,
+    suspend: false,
+    userId: {
+      not: currentUserId,
+    },
+    simRacing: {
+      isNot: null,
+    },
+    ...(q
+      ? {
+          OR: [
+            {
+              profileName: {
+                contains: q,
+                mode: 'insensitive',
+              },
+            },
+            {
+              user: {
+                email: {
+                  contains: q,
+                  mode: 'insensitive',
+                },
+              },
+            },
+          ],
+        }
+      : {}),
+  };
+
+  const [items, total] = await this.prisma.$transaction([
+    this.prisma.profile.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: [{ profileName: 'asc' }],
+      select: {
+        id: true,
+        profileName: true,
+        imageUrl: true,
+        activeType: true,
+        preference: true,
+        user: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+        simRacing: {
+          select: {
+            id: true,
+            profileType: true,
+            hardwareSetup: true,
+            displayAndPcSetup: true,
+            drivingAssistant: true,
+            racing: true,
+            setupDescription: true,
+          },
+        },
+      },
+    }),
+    this.prisma.profile.count({ where }),
+  ]);
+
+  return {
+    page,
+    limit,
+    total,
+    items: items.map((item) => ({
+      userId: item.user.id,
+      email: item.user.email,
+      profileId: item.id,
+      profileName: item.profileName,
+      imageUrl: item.imageUrl,
+      activeType: item.activeType,
+      preference: item.preference,
+      simRacing: item.simRacing,
+    })),
+  };
+}
 
 }

@@ -22,6 +22,7 @@ import { CreateSubmitLabTimeDto } from './dto/create-submit-lab-time.dto';
 import { UpdateSubmitLabTimeDto } from './dto/update-submit-lab-time.dto';
 import { SubmitLabTimeQueryDto } from './dto/submit-lab-time-query.dto';
 import { CompareSubmitLabTimeDto } from './dto/compare-submit-lab-time.dto';
+import { ListSimRacingUsersDto } from './dto/list-sim-racing-users.dto';
 
 @ApiTags('SubmitLabTime')
 @Controller('submit-lab-times')
@@ -53,6 +54,21 @@ export class SubmitLabTimeController {
   @ApiOperation({ summary: 'Compare best lap time (You vs Other user) by platform+circuit+class' })
   compareBest(@GetUser('userId') userId: string, @Query() dto: CompareSubmitLabTimeDto) {
     return handleRequest(async () => this.service.compareBest(userId, dto), 'Compare result');
+  }
+
+    @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('sim-racing-users')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get users with SIM_RACING_DRIVER profile' })
+  getSimRacingUsers(
+    @GetUser('userId') userId: string,
+    @Query() query: ListSimRacingUsersDto,
+  ) {
+    return handleRequest(
+      async () => this.service.getSimRacingUsers(userId, query),
+      'SIM racing users fetched successfully',
+    );
   }
 
   // @ApiBearerAuth()
