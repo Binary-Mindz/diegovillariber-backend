@@ -133,7 +133,7 @@ export class AdminEventManagementController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
   @Get('economy-overview')
   @ApiOperation({ summary: 'Get economy overview analytics' })
   async getEconomyOverview(@Res({ passthrough: true }) res: Response) {
