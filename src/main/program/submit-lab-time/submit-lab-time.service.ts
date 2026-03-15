@@ -160,18 +160,34 @@ export class SubmitLabTimeService {
     return { deleted: true };
   }
 
-    async compareBest(userId: string, dto: CompareSubmitLabTimeDto) {
-    if (dto.otherUserId === userId) throw new BadRequestException('Cannot compare with yourself');
+  async compareBest(userId: string, dto: CompareSubmitLabTimeDto) {
+  if (dto.otherUserId === userId) {
+    throw new BadRequestException('Cannot compare with yourself');
+  }
 
-    const me = await this.getActiveSimProfileOrThrow(userId);
-    const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
+  const me = await this.getActiveSimProfileOrThrow(userId);
+  const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
 
-    const whereCommon: any = {
-      simPlatform: dto.simPlatform,
-      circuit: dto.circuit,
-      carClass: dto.carClass,
-    };
+  const candidates = [
+    {
+      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+      ...(dto.circuit ? { circuit: dto.circuit } : {}),
+      ...(dto.carClass ? { carClass: dto.carClass } : {}),
+    },
+    {
+      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+      ...(dto.circuit ? { circuit: dto.circuit } : {}),
+    },
+    {
+      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+    },
+    {},
+  ].filter((item, index, arr) => {
+    const key = JSON.stringify(item);
+    return arr.findIndex((x) => JSON.stringify(x) === key) === index;
+  });
 
+  for (const whereCommon of candidates) {
     const [myBest, otherBest] = await this.prisma.$transaction([
       this.prisma.submitLabTime.findFirst({
         where: { profileId: me.id, ...whereCommon },
@@ -183,18 +199,31 @@ export class SubmitLabTimeService {
       }),
     ]);
 
-    if (!myBest) throw new NotFoundException('You have no lap for this filter');
-    if (!otherBest) throw new NotFoundException('Other user has no lap for this filter');
-
-    const gapMs = otherBest.lapTimeMs - myBest.lapTimeMs;
-
-    return {
-      filter: whereCommon,
-      me: { profileId: me.id, profileName: me.profileName ?? null, best: myBest },
-      other: { profileId: other.id, profileName: other.profileName ?? null, best: otherBest },
-      gapMs, // + => other slower, - => other faster
-    };
+    if (myBest && otherBest) {
+      return {
+        filter: whereCommon,
+        fallbackUsed: JSON.stringify(whereCommon) !== JSON.stringify({
+          ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+          ...(dto.circuit ? { circuit: dto.circuit } : {}),
+          ...(dto.carClass ? { carClass: dto.carClass } : {}),
+        }),
+        me: {
+          profileId: me.id,
+          profileName: me.profileName ?? null,
+          best: myBest,
+        },
+        other: {
+          profileId: other.id,
+          profileName: other.profileName ?? null,
+          best: otherBest,
+        },
+        gapMs: otherBest.lapTimeMs - myBest.lapTimeMs,
+      };
+    }
   }
+
+  throw new NotFoundException('No comparable lap found for both users');
+}
 
   // -------------------------
   // 2) Compare history (trend)
