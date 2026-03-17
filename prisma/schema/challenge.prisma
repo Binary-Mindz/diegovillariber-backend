@@ -9,7 +9,8 @@ enum ChallengeCategory {
   DAILY
   SPOTTER
   COMMUNITY
-  BRAND
+  SPONSORED
+  GEOGRAPHY
 }
 
 enum Preference {

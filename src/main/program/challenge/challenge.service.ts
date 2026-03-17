@@ -29,7 +29,8 @@ export class ChallengeService {
     creator: {
       select: {
         id: true,
-        email: true
+        email: true,
+        profile: true,
       },
     },
     challengeParticipants: {
@@ -155,7 +156,20 @@ async listChallenges(query: ChallengeQueryDto) {
       take: limit,
       orderBy: [{ startDate: 'asc' }, { createdAt: 'desc' }],
       include: {
-        creator: true,
+        creator: {
+          select:{
+            id:true,
+            email:true,
+            accountStatus:true,
+            profile:{
+              select:{
+                profileName:true,
+                imageUrl:true,
+                activeType:true
+              }
+            }
+          }
+        },
         _count: {
           select: {
             challengeParticipants: true,
@@ -379,7 +393,20 @@ async listAdminCreatedChallenges(query: ChallengeQueryDto) {
       take: limit,
       orderBy,
       include: {
-        creator: true,
+         creator: {
+          select:{
+            id:true,
+            email:true,
+            accountStatus:true,
+            profile:{
+              select:{
+                profileName:true,
+                imageUrl:true,
+                activeType:true
+              }
+            }
+          }
+        },
         _count: {
           select: {
             challengeParticipants: true,
