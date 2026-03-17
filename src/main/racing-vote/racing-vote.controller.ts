@@ -8,6 +8,8 @@ import {
   Res,
   UseGuards,
   Query,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { Response } from 'express';
 import {
@@ -50,6 +52,28 @@ export class RacingVoteController {
     res.status(response.statusCode);
     return response;
   }
+
+   @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Delete my racing vote',
+  })
+  async deleteVote(
+    @GetUser('userId') userId: string,
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.deleteVote(userId, id),
+      'Racing vote deleted successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
 
 @Get('top-users')
 @HttpCode(HttpStatus.OK)

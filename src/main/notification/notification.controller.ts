@@ -81,6 +81,17 @@ export class NotificationController {
     }, 'Notification archived successfully');
   }
 
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete notification' })
+  async deleteNotification(
+    @GetUser('userId') userId: string,
+    @Param('id') id: string,
+  ) {
+    return handleRequest(async () => {
+      return this.service.deleteNotification(userId, id);
+    }, 'Notification deleted successfully');
+  }
+
   @Patch('read-all')
   @ApiOperation({ summary: 'Mark all notifications as read' })
   async markAllAsRead(@GetUser('userId') userId: string,) {

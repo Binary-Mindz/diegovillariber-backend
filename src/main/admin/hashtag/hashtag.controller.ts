@@ -10,6 +10,7 @@ import {
   HttpCode,
   HttpStatus,
   Res,
+  Delete,
 } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -63,6 +64,23 @@ export class HashtagController {
     const response = await handleRequest(
       async () => this.hashtagService.updateHashtag(id, dto),
       'Hashtag updated successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Delete(':id')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({ summary: 'Delete hashtag (Admin)' })
+  async deleteHashtag(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => this.hashtagService.deleteHashtag(id),
+      'Hashtag deleted successfully',
     );
 
     res.status(response.statusCode);
