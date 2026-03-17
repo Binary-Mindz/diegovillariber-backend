@@ -53,7 +53,7 @@ export class MapService {
     userLng: number,
     rowLat?: Prisma.Decimal | null,
     rowLng?: Prisma.Decimal | null,
-    radiusKm = 50,
+    radiusKm = 6371,
   ) {
     if (rowLat == null || rowLng == null) return false;
 
@@ -85,7 +85,7 @@ export class MapService {
     const {
       lat,
       lng,
-      radiusKm = 50,
+      radiusKm = 6371,
       showSpotter = true,
       showOwner = true,
       highRated = false,

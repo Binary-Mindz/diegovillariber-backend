@@ -25,13 +25,13 @@ export class MapQueryDto {
   @IsNumber()
   lng?: number;
 
-  @ApiPropertyOptional({ example: 50, default: 50 })
+  @ApiPropertyOptional({ example: 6371, default: 6371 })
   @IsOptional()
   @Type(() => Number)
   @IsNumber()
   @Min(1)
-  @Max(500)
-  radiusKm?: number = 50;
+  @Max(10000)
+  radiusKm?: number = 6371;
 
   // Spots
   @ApiPropertyOptional({ example: true })
