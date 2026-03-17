@@ -145,7 +145,7 @@ export class ChatService {
     }
 
     const isAdmin =
-      admin.role?.includes('ROLE_ADMIN' as any)
+      admin.role?.includes('ADMIN' as any)
 
     if (!isAdmin) {
       throw new ForbiddenException('Only admin can send broadcast');
