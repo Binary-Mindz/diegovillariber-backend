@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -267,6 +268,87 @@ async createVote(voterId: string, dto: CreateRacingVoteDto) {
   }
 
   throw new BadRequestException('Invalid target type');
+}
+
+async deleteVote(voterId: string, voteId: string) {
+  const vote = await this.prisma.racingVote.findUnique({
+    where: { id: voteId },
+    include: {
+      post: {
+        select: {
+          id: true,
+          userId: true,
+          point: true,
+          racingVote: true,
+        },
+      },
+      targetUser: {
+        select: {
+          id: true,
+          totalPoints: true,
+          totalVote: true,
+        },
+      },
+    },
+  });
+
+  if (!vote) {
+    throw new NotFoundException('Racing vote not found');
+  }
+
+  if (vote.voterId !== voterId) {
+    throw new ForbiddenException('You can only delete your own vote');
+  }
+
+  return this.prisma.$transaction(async (tx) => {
+    if (vote.targetUserId) {
+      await tx.user.update({
+        where: { id: vote.targetUserId },
+        data: {
+          totalPoints: {
+            decrement: vote.point,
+          },
+          totalVote: {
+            decrement: 1,
+          },
+        },
+      });
+    }
+
+    if (vote.postId && vote.post) {
+      await tx.post.update({
+        where: { id: vote.postId },
+        data: {
+          point: {
+            decrement: vote.point,
+          },
+          racingVote: {
+            decrement: 1,
+          },
+        },
+      });
+
+      await tx.user.update({
+        where: { id: vote.post.userId },
+        data: {
+          totalPoints: {
+            decrement: vote.point,
+          },
+        },
+      });
+    }
+
+    await tx.racingVote.delete({
+      where: { id: voteId },
+    });
+
+    return {
+      deleted: true,
+      voteId,
+      targetType: vote.targetUserId ? 'USER' : 'POST',
+      revertedPoint: vote.point,
+    };
+  });
 }
 
 

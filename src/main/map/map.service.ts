@@ -155,7 +155,6 @@ export class MapService {
       challenges,
       battles,
       events,
-      rawShifts,
       businessProfiles,
       proDrivers,
       contentCreators,
@@ -222,6 +221,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
+                  profile:{
+                    select:{
+                      activeType:true,
+                      profileName:true,
+                      imageUrl:true
+                    }
+                  }
                 },
               },
             },
@@ -251,6 +257,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
+                  profile:{
+                    select:{
+                      activeType:true,
+                      profileName:true,
+                      imageUrl:true
+                    }
+                  }
                 },
               },
             },
@@ -278,6 +291,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
+                  profile:{
+                    select:{
+                      activeType: true,
+                      profileName: true,
+                      imageUrl: true
+                    }
+                  }
                 },
               },
             },
@@ -302,6 +322,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
+                  profile:{
+                    select:{
+                      profileName:true,
+                      activeType:true,
+                      imageUrl:true
+                    }
+                  }
                 },
               },
             },

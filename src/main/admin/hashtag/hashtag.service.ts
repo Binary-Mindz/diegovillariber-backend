@@ -47,6 +47,25 @@ export class HashtagService {
     });
   }
 
+    async deleteHashtag(id: string) {
+    const hashtag = await this.prisma.hashtag.findUnique({
+      where: { id },
+    });
+
+    if (!hashtag) {
+      throw new NotFoundException('Hashtag not found');
+    }
+
+    await this.prisma.hashtag.delete({
+      where: { id },
+    });
+
+    return {
+      id,
+      deleted: true,
+    };
+  }
+
   // ============ USER ============
 
   async getHashtags(query: HashtagQueryDto) {
