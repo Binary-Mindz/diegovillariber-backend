@@ -70,7 +70,8 @@ export const ChallengeCategory = {
   DAILY: 'DAILY',
   SPOTTER: 'SPOTTER',
   COMMUNITY: 'COMMUNITY',
-  BRAND: 'BRAND'
+  SPONSORED: 'SPONSORED',
+  GEOGRAPHY: 'GEOGRAPHY'
 } as const
 
 export type ChallengeCategory = (typeof ChallengeCategory)[keyof typeof ChallengeCategory]
@@ -269,7 +270,9 @@ export type BattleCategory = (typeof BattleCategory)[keyof typeof BattleCategory
 export const HeaderName = {
   CHALLEGE: 'CHALLEGE',
   RAW_SHIFT: 'RAW_SHIFT',
-  MOTOR_SPORT_RANKING: 'MOTOR_SPORT_RANKING'
+  MOTOR_SPORT_RANKING: 'MOTOR_SPORT_RANKING',
+  MARKETPLACE: 'MARKETPLACE',
+  HEAD_TO_HEAD: 'HEAD_TO_HEAD'
 } as const
 
 export type HeaderName = (typeof HeaderName)[keyof typeof HeaderName]
