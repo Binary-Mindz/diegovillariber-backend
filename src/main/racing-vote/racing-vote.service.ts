@@ -6,6 +6,8 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateRacingVoteDto, RacingVoteTargetType } from './dto/create-racing-vote.dto';
+import { Prisma } from 'generated/prisma/client';
+import { RacingVoteHistoryDto } from './dto/racing-vote-history.dto';
 
 @Injectable()
 export class RacingVoteService {
@@ -268,6 +270,95 @@ async createVote(voterId: string, dto: CreateRacingVoteDto) {
   }
 
   throw new BadRequestException('Invalid target type');
+}
+
+async myVoteHistory(voterId: string, query: RacingVoteHistoryDto) {
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 10;
+  const skip = (page - 1) * limit;
+
+  const where: Prisma.RacingVoteWhereInput = {
+    voterId,
+    ...(query.targetType === RacingVoteTargetType.USER && {
+      targetUserId: { not: null },
+    }),
+    ...(query.targetType === RacingVoteTargetType.POST && {
+      postId: { not: null },
+    }),
+  };
+
+  const [votes, total] = await Promise.all([
+    this.prisma.racingVote.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        targetUser: {
+          select: {
+            id: true,
+            email: true,
+            totalPoints: true,
+            totalVote: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
+              take: 1,
+            },
+          },
+        },
+        post: {
+          select: {
+            id: true,
+            userId: true,
+            point: true,
+            racingVote: true,
+            caption: true,
+            mediaUrl: true,
+            user: {
+              select: {
+                id: true,
+                email: true,
+                profile: {
+                  select: {
+                    id: true,
+                    profileName: true,
+                    imageUrl: true,
+                  },
+                  take: 1,
+                },
+              },
+            },
+          },
+        },
+      },
+    }),
+    this.prisma.racingVote.count({ where }),
+  ]);
+
+  const history = votes.map((vote) => ({
+    id: vote.id,
+    point: vote.point,
+    createdAt: vote.createdAt,
+    targetType: vote.targetUserId ? RacingVoteTargetType.USER : RacingVoteTargetType.POST,
+    targetUser: vote.targetUser ?? null,
+    post: vote.post ?? null,
+  }));
+
+  return {
+    data: history,
+    meta: {
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
 }
 
 async deleteVote(voterId: string, voteId: string) {
