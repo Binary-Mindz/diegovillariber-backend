@@ -25,6 +25,7 @@ import { handleRequest } from '@/common/helpers/handle.request';
 import { RacingVoteService } from './racing-vote.service';
 import { CreateRacingVoteDto } from './dto/create-racing-vote.dto';
 import { RacingVoteLeaderboardDto } from './dto/racing-vote-leaderboard.dto';
+import { RacingVoteHistoryDto } from './dto/racing-vote-history.dto';
 
 @ApiTags('RacingVote')
 @Controller('racing-votes')
@@ -52,6 +53,27 @@ export class RacingVoteController {
     res.status(response.statusCode);
     return response;
   }
+
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get('history')
+@HttpCode(HttpStatus.OK)
+@ApiOperation({
+  summary: 'Get my racing vote history',
+})
+async myVoteHistory(
+  @GetUser('userId') userId: string,
+  @Query() query: RacingVoteHistoryDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    () => this.service.myVoteHistory(userId, query),
+    'Racing vote history fetched successfully',
+  );
+
+  res.status(response.statusCode);
+  return response;
+}
 
    @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
