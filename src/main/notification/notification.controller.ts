@@ -37,6 +37,14 @@ export class NotificationController {
     }, 'Device token registered successfully');
   }
 
+  @Delete('all')
+  @ApiOperation({ summary: 'Delete all my notifications' })
+  async deleteAllNotifications(@GetUser('userId') userId: string) {
+  return handleRequest(async () => {
+    return this.service.deleteAllNotifications(userId);
+  }, 'All notifications deleted successfully');
+  }
+
   @Delete('device-token')
   @ApiOperation({ summary: 'Deactivate device token' })
   async removeDeviceToken(

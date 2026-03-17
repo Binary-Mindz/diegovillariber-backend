@@ -25,13 +25,13 @@ import { CreateHeaderDto } from './dto/create-header.dto';
 import { UpdateHeaderDto } from './dto/update-header.dto';
 
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles('ADMIN')
 @ApiTags('Admin Header')
 @Controller('admin-headers')
 export class AdminHeaderController {
   constructor(private readonly adminHeaderService: AdminHeaderService) {}
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @Post()
   @ApiOperation({ summary: 'Create header' })
   async createHeader(
@@ -77,6 +77,8 @@ export class AdminHeaderController {
     return response;
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @Patch(':id')
   @ApiOperation({ summary: 'Update header' })
   async updateHeader(
@@ -93,7 +95,8 @@ export class AdminHeaderController {
     res.status(response.statusCode);
     return response;
   }
-
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
   @Delete(':id')
   @ApiOperation({ summary: 'Delete header' })
   async deleteHeader(
