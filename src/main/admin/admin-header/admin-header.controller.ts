@@ -95,6 +95,7 @@ export class AdminHeaderController {
     res.status(response.statusCode);
     return response;
   }
+  
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Delete(':id')
