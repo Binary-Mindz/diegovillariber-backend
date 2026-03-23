@@ -55,6 +55,20 @@ export class RawShiftController {
     );
   }
 
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get(':id/comments')
+@ApiOperation({ summary: 'Get comments for a RawShift battle or specific entry' })
+async getComments(
+  @Param('id') battleId: string,
+  @Query('entryId') entryId?: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getComments(battleId, entryId);
+  }, 'Comments fetched successfully');
+}
+
+
  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
@@ -163,6 +177,18 @@ export class RawShiftController {
       return this.service.createComment(battleId, userId, dto);
     }, 'Comment added successfully');
   }
+
+  @ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get('comments/:commentId')
+@ApiOperation({ summary: 'Get single comment by ID' })
+async getSingleComment(
+  @Param('commentId') commentId: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getSingleComment(commentId);
+  }, 'Comment fetched successfully');
+}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

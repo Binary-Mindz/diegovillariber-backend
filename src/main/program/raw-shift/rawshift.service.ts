@@ -347,6 +347,68 @@ async submitEntry(
     });
   }
 
+  async getComments(battleId: string, entryId?: string) {
+  const battle = await this.prisma.rawShiftBattle.findUnique({
+    where: { id: battleId },
+  });
+
+  if (!battle) {
+    throw new NotFoundException('RawShift battle not found');
+  }
+
+  const whereCondition: any = {
+    battleId,
+  };
+
+  if (entryId) {
+    whereCondition.entryId = entryId;
+  }
+
+  return this.prisma.rawShiftComment.findMany({
+    where: whereCondition,
+    orderBy: { createdAt: 'desc' },
+    include: {
+      user: {
+        select: {
+         id: true,
+         profile:{
+          select:{
+            profileName: true,
+            imageUrl: true
+          }
+         }
+        },
+      },
+    },
+  });
+}
+
+async getSingleComment(commentId: string) {
+  const comment = await this.prisma.rawShiftComment.findUnique({
+    where: { id: commentId },
+    include: {
+      user: {
+        select: {
+          id: true,
+          profile:{
+            select:{
+              profileName:true,
+              imageUrl: true
+            }
+          }
+        },
+      },
+      entry: true, // optional (if you want entry info)
+    },
+  });
+
+  if (!comment) {
+    throw new NotFoundException('Comment not found');
+  }
+
+  return comment;
+}
+
   async completeBattle(battleId: string, userId: string) {
     return this.prisma.$transaction(async (tx) => {
       const battle = await tx.rawShiftBattle.findUnique({ where: { id: battleId } });
