@@ -246,6 +246,18 @@ async list(
     res.status(response.statusCode);
     return response;
   }
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get(':id/comments')
+@ApiOperation({ summary: 'Get comments for a HeadToHead battle or submission' })
+async getComments(
+  @Param('id') battleId: string,
+  @Query('submissionId') submissionId?: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getComments(battleId, submissionId);
+  }, 'Comments fetched successfully');
+}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -266,6 +278,18 @@ async list(
     res.status(response.statusCode);
     return response;
   }
+
+  @ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get('comments/:commentId')
+@ApiOperation({ summary: 'Get single comment by ID' })
+async getSingleComment(
+  @Param('commentId') commentId: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getSingleComment(commentId);
+  }, 'Comment fetched successfully');
+}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
