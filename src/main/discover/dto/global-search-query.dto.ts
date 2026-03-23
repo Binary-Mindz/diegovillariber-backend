@@ -22,10 +22,11 @@ export class GlobalSearchDto {
     example: 'lamborghini',
     description: 'Global search keyword',
   })
-  @IsString()
-  @Transform(({ value }) => value?.trim())
-  @MinLength(1)
-  keyword: string;
+  @IsOptional()
+@IsString()
+@Transform(({ value }) => value?.trim())
+@MinLength(1)
+keyword?: string;
 
   @ApiPropertyOptional({
     enum: GlobalSearchType,
