@@ -98,6 +98,34 @@ export class ChallengeController {
   }
 
   @ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get(':id/comments')
+@ApiOperation({ summary: 'Get comments for a challenge submission (with replies)' })
+async getComments(
+  @Param('id') challengeId: string,
+  @Query('submissionId') submissionId: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getComments(challengeId, submissionId);
+  }, 'Comments fetched successfully');
+}
+
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
+@Get('comments/:commentId')
+@ApiOperation({ summary: 'Get single comment (with replies)' })
+async getSingleComment(
+  @Param('commentId') commentId: string,
+) {
+  return handleRequest(async () => {
+    return this.service.getSingleComment(commentId);
+  }, 'Comment fetched successfully');
+}
+
+
+
+
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)

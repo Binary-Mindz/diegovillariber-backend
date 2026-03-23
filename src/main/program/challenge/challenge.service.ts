@@ -624,6 +624,7 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     const now = new Date();
+    console.log("now time is: ", now)
    if (
   challenge.status !== ChallengeStatus.UPCOMING &&
   challenge.status !== ChallengeStatus.ACTIVE
@@ -784,6 +785,87 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
       return comment;
     });
   }
+
+  async getComments(challengeId: string, submissionId: string) {
+  const challenge = await this.prisma.challenge.findUnique({
+    where: { id: challengeId },
+  });
+
+  if (!challenge) {
+    throw new NotFoundException('Challenge not found');
+  }
+
+  const comments = await this.prisma.challengeComment.findMany({
+    where: {
+      submissionId,
+    },
+    orderBy: { createdAt: 'asc' },
+    include: {
+      user: {
+        select: {
+          id: true, // FIXED ✅
+          // add profile if needed
+        },
+      },
+    },
+  });
+
+ 
+  const map = new Map();
+  const roots:any = [];
+
+  comments.forEach((c) => {
+    map.set(c.id, { ...c, replies: [] });
+  });
+
+  comments.forEach((c) => {
+    if (c.parentId) {
+      const parent = map.get(c.parentId);
+      if (parent) {
+        parent.replies.push(map.get(c.id));
+      }
+    } else {
+      roots.push(map.get(c.id));
+    }
+  });
+
+  return roots;
+}
+
+async getSingleComment(commentId: string) {
+  const comment = await this.prisma.challengeComment.findUnique({
+    where: { id: commentId },
+    include: {
+      user: {
+        select: {
+          id: true,
+        },
+      },
+    },
+  });
+
+  if (!comment) {
+    throw new NotFoundException('Comment not found');
+  }
+
+  // get replies
+  const replies = await this.prisma.challengeComment.findMany({
+    where: { parentId: commentId },
+    include: {
+      user: {
+        select: {
+          id: true,
+        },
+      },
+    },
+    orderBy: { createdAt: 'asc' },
+  });
+
+  return {
+    ...comment,
+    replies,
+  };
+}
 
   async completeChallenge(challengeId: string, userId: string) {
   const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });

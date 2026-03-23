@@ -475,6 +475,75 @@ async listBattles(query: HeadToHeadQueryDto) {
     });
   }
 
+  async getComments(battleId: string, submissionId?: string) {
+  const battle = await this.prisma.headToHeadBattle.findUnique({
+    where: { id: battleId },
+  });
+
+  if (!battle) {
+    throw new NotFoundException('Battle not found');
+  }
+
+  const where: any = {
+    battleId,
+  };
+
+  if (submissionId) {
+    where.submissionId = submissionId;
+  }
+
+  return this.prisma.battleComment.findMany({
+    where,
+    orderBy: { createdAt: 'desc' },
+    include: {
+      user: {
+        select: {
+          id: true, // ✅ correct (NOT userId)
+          email: true, // optional
+        },
+      },
+      submission: {
+        select: {
+          id: true,
+          mediaUrl: true,
+        },
+      },
+    },
+  });
+}
+
+async getSingleComment(commentId: string) {
+  const comment = await this.prisma.battleComment.findUnique({
+    where: { id: commentId },
+    include: {
+      user: {
+        select: {
+          id: true,
+          email: true,
+        },
+      },
+      submission: {
+        select: {
+          id: true,
+          mediaUrl: true,
+        },
+      },
+      battle: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+    },
+  });
+
+  if (!comment) {
+    throw new NotFoundException('Comment not found');
+  }
+
+  return comment;
+}
+
   async completeBattle(battleId: string, userId: string) {
     const battle = await this.prisma.headToHeadBattle.findUnique({ where: { id: battleId } });
     if (!battle) throw new NotFoundException('Battle not found');
