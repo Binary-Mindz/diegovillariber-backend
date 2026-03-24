@@ -23,7 +23,7 @@ import { assertPayloadMatchesType } from './utils/profile-type.validator';
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
-    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType' | 'preference'
+    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType' | 'preference' | 'locationStatus'
   >
 >;
 
@@ -154,7 +154,8 @@ export class ProfileService {
         imageUrl: dto.imageUrl ?? undefined,
         instagramHandler: dto.instagramHandler ?? undefined,
         accountType: dto.accountType as any,
-        preference: dto.preference as any
+        preference: dto.preference as any,
+        locationStatus: dto?.locationStatus ?? undefined,
       },
       include: this.profileInclude(),
     });

@@ -1,5 +1,5 @@
 import { ApiPropertyOptional, PickType, PartialType } from '@nestjs/swagger';
-import { IsEnum, IsOptional } from 'class-validator';
+import { IsBoolean, IsEnum, IsOptional } from 'class-validator';
 
 import { CreateProfileDto } from './create.profile.dto';
 import { AccountType, Preference } from 'generated/prisma/enums';
@@ -23,4 +23,9 @@ export class UpdateProfileBaseDto extends PartialType(
   @IsOptional()
   @IsEnum(Preference)
   preference?: Preference;
+
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @IsBoolean()
+  locationStatus?: boolean;
 }

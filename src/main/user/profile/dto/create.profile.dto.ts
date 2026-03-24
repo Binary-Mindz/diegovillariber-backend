@@ -320,6 +320,11 @@ export class CreateProfileDto {
   @IsEnum(ProfileType)
   profileType!: ProfileType;
 
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @IsBoolean()
+  locationStatus?: boolean;
+
   /* -------- type-specific payload -------- */
 
   @ApiPropertyOptional()

@@ -9,7 +9,7 @@ export class DiscoverService {
   constructor(private readonly prisma: PrismaService) {}
 
   async globalSearch(dto: GlobalSearchDto) {
-    const keyword = dto.keyword.trim();
+    const keyword = dto.keyword?.trim() ?? '';
     const type = dto.type ?? GlobalSearchType.ALL;
     const page = dto.page ?? 1;
     const limit = dto.limit ?? 10;
