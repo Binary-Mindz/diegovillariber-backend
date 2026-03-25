@@ -480,6 +480,7 @@ export class MotorsportRankingService {
       orderBy: [
         { ratingAverage: 'desc' },
         { ratingCount: 'desc' },
+        { ratingTotal: 'desc' },
       ],
       skip,
       take: limit,
@@ -509,6 +510,7 @@ export class MotorsportRankingService {
     mediaUrl: post.mediaUrl,
     ratingAverage: post.ratingAverage,
     ratingCount: post.ratingCount,
+    ratingTotal: post.ratingTotal,
 
     user: {
       id: post.user.id,
