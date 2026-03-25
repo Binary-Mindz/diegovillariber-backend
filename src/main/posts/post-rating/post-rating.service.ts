@@ -6,6 +6,7 @@ import {
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreatePostRatingDto } from './dto/create-post-rating.dto';
 
+
 @Injectable()
 export class PostRatingService {
   constructor(private readonly prisma: PrismaService) {}

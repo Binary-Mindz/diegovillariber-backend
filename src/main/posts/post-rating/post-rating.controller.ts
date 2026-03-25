@@ -7,6 +7,7 @@ import {
   Body,
   UseGuards,
   Res,
+  Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,

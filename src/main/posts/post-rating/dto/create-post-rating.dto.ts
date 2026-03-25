@@ -3,13 +3,13 @@ import { IsInt, Max, Min } from 'class-validator';
 
 export class CreatePostRatingDto {
   @ApiProperty({
-    example: 55,
-    description: 'Rating score for the post, from 0 to 100',
+    example: 5,
+    description: 'Rating score for the post, from 0 to 10',
     minimum: 0,
-    maximum: 100,
+    maximum: 10,
   })
   @IsInt()
   @Min(0)
-  @Max(100)
+  @Max(10)
   score: number;
 }

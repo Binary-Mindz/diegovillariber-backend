@@ -10,6 +10,8 @@ import {
   MotorsportRankingType,
   RankingDuration,
 } from './dto/motorsport-ranking-query.dto';
+import { TopRatedPostDto } from './dto/top-rated-post.dto';
+
 
 type RankingUserMap = {
   userId: string;
@@ -103,6 +105,12 @@ export class MotorsportRankingService {
         likeCount: true,
         commentCount: true,
         shareCount: true,
+        profile: {
+          select: {
+            profileName: true,
+            imageUrl: true,
+          },
+        },
       },
     });
 
@@ -111,12 +119,13 @@ export class MotorsportRankingService {
     const items = paginatedRows.map((row, index) => {
       const user = userMap.get(row.userId);
 
+
       return {
         rank: skip + index + 1,
         userId: row.userId,
-        name: user?.email ?? 'Unknown User',
-        username: null,
-        avatar: null,
+        email: user?.email ?? 'Unknown User',
+        userName: user?.profile?.[0]?.profileName ?? user?.email,
+        avatar: user?.profile?.[0]?.imageUrl ?? null,
         totalVotes:
           type === MotorsportRankingType.PRESTIGE ? undefined : row.totalVotes || 0,
         prestigePoints:
@@ -459,4 +468,66 @@ export class MotorsportRankingService {
       prestige,
     };
   }
+
+  async getTopRatedPosts(dto: TopRatedPostDto) {
+  const page = dto.page ?? 1;
+  const limit = dto.limit ?? 10;
+
+  const skip = (page - 1) * limit;
+
+  const [posts, total] = await Promise.all([
+    this.prisma.post.findMany({
+      orderBy: [
+        { ratingAverage: 'desc' },
+        { ratingCount: 'desc' },
+      ],
+      skip,
+      take: limit,
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
+      },
+    }),
+
+    this.prisma.post.count(),
+  ]);
+
+  const items = posts.map((post, index) => ({
+    rank: skip + index + 1,
+    postId: post.id,
+    caption: post.caption,
+    mediaUrl: post.mediaUrl,
+    ratingAverage: post.ratingAverage,
+    ratingCount: post.ratingCount,
+
+    user: {
+      id: post.user.id,
+      name:
+        post.user.profile?.[0]?.profileName ??
+        post.user.email,
+      avatar: post.user.profile?.[0]?.imageUrl ?? null,
+    },
+  }));
+
+  return {
+    items,
+    meta: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
+}
+
 }

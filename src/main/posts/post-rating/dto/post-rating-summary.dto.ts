@@ -7,19 +7,19 @@ export class PostRatingSummaryDto {
   postId: string;
 
   @ApiProperty({
-    example: 12,
+    example: 7,
     description: 'Total number of ratings on this post',
   })
   ratingCount: number;
 
   @ApiProperty({
-    example: 55.67,
+    example: 5,
     description: 'Average rating of this post',
   })
   ratingAverage: number;
 
   @ApiProperty({
-    example: 55,
+    example: 5,
     nullable: true,
     description: 'Current logged in user rating for this post',
   })
