@@ -12,8 +12,10 @@ import { MailService } from '../../common/mail/mail.service';
 import type { SignOptions } from 'jsonwebtoken';
 import { SignUpDto } from './dto/signup.dto';
 import { generateOtp, otpExpiry } from '@/common/utils/otp';
-import { AccountType, IsActive, Role, Type } from 'generated/prisma/enums';
+import { AccountType, IsActive, Preference, Role, Type } from 'generated/prisma/enums';
 import { randomUUID } from 'crypto';
+import { GoogleAuthDto } from './dto/google-auth.dto';
+import { getFirebaseAuth } from '@/common/firebase/firebase-admin';
 @Injectable()
 export class AuthService {
   constructor(
@@ -66,6 +68,132 @@ export class AuthService {
       },
     );
   }
+
+  private async createProfileByType(
+  tx: any,
+  userId: string,
+  dto: {
+    username?: string;
+    profileType?: Type;
+    preference?: Preference | null;
+    bio?: string | null;
+    imageUrl?: string | null;
+    instagramHandler?: string | null;
+    accountType?: AccountType;
+    locationStatus?: boolean;
+    creator?: {
+      creatorCategory?: string;
+      youtubeChanel?: string;
+      portfolioWebsite?: string;
+    };
+    business?: {
+      businessCategory?: string;
+      businessName?: string;
+      location?: string;
+    };
+    proDriver?: {
+      racingDiscipline?: string;
+      location?: string;
+    };
+  },
+) {
+  if (!dto.profileType) {
+    throw new BadRequestException('profileType is required');
+  }
+
+  const profile = await tx.profile.create({
+    data: {
+      userId,
+      profileName: dto.username ?? null,
+      activeType: dto.profileType,
+      preference: dto.preference ?? null,
+      bio: dto.bio ?? null,
+      imageUrl: dto.imageUrl ?? null,
+      instagramHandler: dto.instagramHandler ?? null,
+      accountType: dto.accountType ?? AccountType.PUBLIC,
+      isActive: IsActive.ACTIVE,
+      suspend: false,
+      locationStatus: dto.locationStatus ?? false,
+    },
+    select: { id: true },
+  });
+
+  await tx.user.update({
+    where: { id: userId },
+    data: {
+      activeProfileId: profile.id,
+    },
+  });
+
+  switch (dto.profileType) {
+    case Type.SPOTTER:
+      await tx.spotterProfile.create({
+        data: { profileId: profile.id },
+      });
+      break;
+
+    case Type.OWNER:
+      await tx.ownerProfile.create({
+        data: { profileId: profile.id },
+      });
+      break;
+
+    case Type.CONTENT_CREATOR:
+      await tx.contentCreatorProfile.create({
+        data: {
+          profileId: profile.id,
+          creatorCategory: dto.creator?.creatorCategory ?? undefined,
+          youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
+          portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
+        },
+      });
+      break;
+
+    case Type.PRO_BUSSINESS:
+      if (!dto.business?.businessName || !dto.business?.location) {
+        throw new BadRequestException(
+          'businessName and location are required for BUSINESS profile',
+        );
+      }
+
+      await tx.businessProfile.create({
+        data: {
+          profileId: profile.id,
+          businessCategory: dto.business.businessCategory ?? undefined,
+          businessName: dto.business.businessName,
+          location: dto.business.location,
+        },
+      });
+      break;
+
+    case Type.PRO_DRIVER:
+      if (!dto.proDriver?.location) {
+        throw new BadRequestException(
+          'location is required for PRO_DRIVER profile',
+        );
+      }
+
+      await tx.proDriverProfile.create({
+        data: {
+          profileId: profile.id,
+          racingDiscipline: dto.proDriver.racingDiscipline ?? undefined,
+          location: dto.proDriver.location,
+        },
+      });
+      break;
+
+    case Type.SIM_RACING_DRIVER:
+      await tx.simRacingProfile.create({
+        data: { profileId: profile.id },
+      });
+      break;
+
+    default:
+      throw new BadRequestException('Invalid profileType');
+  }
+
+  return profile;
+}
 
   async signup(dto: SignUpDto) {
     const existing = await this.prisma.user.findUnique({
@@ -328,6 +456,182 @@ export class AuthService {
       id: user.id,
       email: user.email,
       role: selectedRole,
+    },
+    tokens: {
+      accessToken,
+      refreshToken,
+    },
+  };
+}
+
+async googleAuth(dto: GoogleAuthDto) {
+  const firebaseAuth = getFirebaseAuth();
+  const decoded = await firebaseAuth.verifyIdToken(dto.idToken);
+
+  const email = decoded.email;
+  if (!email) {
+    throw new BadRequestException('Google account email not found');
+  }
+
+  const googleName = decoded.name ?? null;
+  const googlePicture = decoded.picture ?? null;
+  const emailVerified = decoded.email_verified ?? true;
+
+  let isNewUser = false;
+
+  let user = await this.prisma.user.findUnique({
+    where: { email },
+    include: {
+      profile: true,
+      ambassadorPrograms: true,
+      officialPartners: true,
+    },
+  });
+
+  if (!user) {
+    if (!dto.profileType) {
+      throw new BadRequestException('profileType is required for new Google signup');
+    }
+
+    const randomPassword = await this.hash(randomUUID());
+
+    user = await this.prisma.$transaction(async (tx) => {
+      const createdUser = await tx.user.create({
+        data: {
+          email,
+          password: randomPassword,
+          isEmailVerified: emailVerified,
+        },
+      });
+
+      await this.createProfileByType(tx, createdUser.id, {
+        username: dto.username ?? googleName ?? email.split('@')[0],
+        profileType: dto.profileType,
+        preference: dto.preference ?? null,
+        bio: dto.bio ?? null,
+        imageUrl: dto.imageUrl ?? googlePicture,
+        instagramHandler: dto.instagramHandler ?? null,
+        accountType: dto.accountType ?? AccountType.PUBLIC,
+        locationStatus: dto.locationStatus ?? false,
+        creator: dto.creator,
+        business: dto.business,
+        proDriver: dto.proDriver,
+      });
+
+      return tx.user.findUniqueOrThrow({
+        where: { id: createdUser.id },
+        include: {
+          profile: true,
+          ambassadorPrograms: true,
+          officialPartners: true,
+        },
+      });
+    });
+
+    isNewUser = true;
+  } else {
+    if (!user.isEmailVerified) {
+      user = await this.prisma.user.update({
+        where: { id: user.id },
+        data: {
+          isEmailVerified: true,
+          emailOtp: null,
+          emailOtpExpiresAt: null,
+        },
+        include: {
+          profile: true,
+          ambassadorPrograms: true,
+          officialPartners: true,
+        },
+      });
+    }
+
+    if (!user.profile || user.profile.length === 0) {
+      if (!dto.profileType) {
+        throw new BadRequestException(
+          'profileType is required because this user has no profile yet',
+        );
+      }
+
+      await this.prisma.$transaction(async (tx) => {
+        await this.createProfileByType(tx, user!.id, {
+          username: dto.username ?? googleName ?? email.split('@')[0],
+          profileType: dto.profileType,
+          preference: dto.preference ?? null,
+          bio: dto.bio ?? null,
+          imageUrl: dto.imageUrl ?? googlePicture,
+          instagramHandler: dto.instagramHandler ?? null,
+          accountType: dto.accountType ?? AccountType.PUBLIC,
+          locationStatus: dto.locationStatus ?? false,
+          creator: dto.creator,
+          business: dto.business,
+          proDriver: dto.proDriver,
+        });
+      });
+
+      user = await this.prisma.user.findUniqueOrThrow({
+        where: { id: user.id },
+        include: {
+          profile: true,
+          ambassadorPrograms: true,
+          officialPartners: true,
+        },
+      });
+    }
+  }
+
+  let selectedRole = user.role;
+
+  if (dto.loginAs === 'AMBASSADOR') {
+    if (
+      !user.ambassadorPrograms ||
+      user.ambassadorPrograms.status !== 'APPROVED'
+    ) {
+      throw new ForbiddenException('Ambassador not approved');
+    }
+    selectedRole = 'AMBASSADOR';
+  }
+
+  if (dto.loginAs === 'OFFICIAL_PARTNER') {
+    if (
+      !user.officialPartners ||
+      user.officialPartners.requestStatus !== 'APPROVED'
+    ) {
+      throw new ForbiddenException('Official Partner not approved');
+    }
+    selectedRole = 'OFFICIAL_PARTNER';
+  }
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: { activeRole: selectedRole },
+  });
+
+  const accessToken = this.signAccessToken({
+    id: user.id,
+    role: selectedRole,
+    email: user.email,
+  });
+
+  const refreshToken = this.signRefreshToken({
+    id: user.id,
+    role: selectedRole,
+    email: user.email,
+  });
+
+  await this.prisma.user.update({
+    where: { id: user.id },
+    data: { refreshTokenHash: await this.hash(refreshToken) },
+  });
+
+  return {
+    message: 'Google authentication successful',
+    isNewUser,
+    user: {
+      id: user.id,
+      email: user.email,
+      role: selectedRole,
+      activeProfileId: user.activeProfileId,
     },
     tokens: {
       accessToken,
