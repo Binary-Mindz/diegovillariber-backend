@@ -17,6 +17,7 @@ import { Response } from 'express';
 import { VerifyLoginOtpDto } from './dto/verify-login-otp.dto';
 import { ResendLoginOtpDto } from './dto/resend-login-otp.dto';
 import { ToggleTwoFactorDto } from './dto/toggle-two-factor.dto';
+import { GoogleAuthDto } from './dto/google-auth.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private auth: AuthService) {}
@@ -46,6 +47,22 @@ async login(
   );
 
   res.status(response.statusCode); // now works
+  return response;
+}
+
+@Post('google')
+@HttpCode(HttpStatus.OK)
+async googleAuth(
+  @Body() dto: GoogleAuthDto,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    async () => await this.auth.googleAuth(dto),
+    'Google authentication successful',
+    HttpStatus.OK,
+  );
+
+  res.status(response.statusCode);
   return response;
 }
 
