@@ -28,8 +28,7 @@ export class HashtagService {
     return this.prisma.hashtag.create({
       data: {
         tag,
-        description: dto.description,
-        createdBy: 'ADMIN',
+        description: dto.description
       },
     });
   }

@@ -99,8 +99,10 @@ export class ProfileShareService {
       where: { shareSlug: slug },
       select: {
         id: true,
+        userId: true,
         profileName: true,
         bio: true,
+        shareSlug:true,
         imageUrl: true,
         instagramHandler: true,
         accountType: true,
@@ -117,7 +119,18 @@ export class ProfileShareService {
       throw new ForbiddenException('This profile is not publicly accessible');
     }
 
-    return profile;
+    return {
+    userId: profile.userId,
+    profileId: profile.id,
+    slug: profile.shareSlug,
+    profileName: profile.profileName,
+    bio: profile.bio,
+    imageUrl: profile.imageUrl,
+    instagramHandler: profile.instagramHandler,
+    accountType: profile.accountType,
+    suspend: profile.suspend,
+    isActive: profile.isActive,
+  };
   }
 
   async increaseShareCount(profileId: string) {
