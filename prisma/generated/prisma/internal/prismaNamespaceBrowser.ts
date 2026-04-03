@@ -1221,7 +1221,10 @@ export const ProfileScalarFieldEnum = {
   preference: 'preference',
   isActive: 'isActive',
   suspend: 'suspend',
-  locationStatus: 'locationStatus'
+  locationStatus: 'locationStatus',
+  shareSlug: 'shareSlug',
+  shareQrPath: 'shareQrPath',
+  shareCount: 'shareCount'
 } as const
 
 export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
