@@ -15,6 +15,10 @@ model Profile {
   suspend        Boolean  @default(false)
   locationStatus Boolean  @default(false)
 
+  shareSlug      String?   @unique
+  shareQrPath    String?
+  shareCount     Int       @default(0)
+
   spotter   SpotterProfile?
   owner     OwnerProfile?
   creator   ContentCreatorProfile?

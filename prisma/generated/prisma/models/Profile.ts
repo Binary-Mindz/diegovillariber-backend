@@ -20,8 +20,18 @@ export type ProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$Profile
 
 export type AggregateProfile = {
   _count: ProfileCountAggregateOutputType | null
+  _avg: ProfileAvgAggregateOutputType | null
+  _sum: ProfileSumAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
+}
+
+export type ProfileAvgAggregateOutputType = {
+  shareCount: number | null
+}
+
+export type ProfileSumAggregateOutputType = {
+  shareCount: number | null
 }
 
 export type ProfileMinAggregateOutputType = {
@@ -37,6 +47,9 @@ export type ProfileMinAggregateOutputType = {
   isActive: $Enums.IsActive | null
   suspend: boolean | null
   locationStatus: boolean | null
+  shareSlug: string | null
+  shareQrPath: string | null
+  shareCount: number | null
 }
 
 export type ProfileMaxAggregateOutputType = {
@@ -52,6 +65,9 @@ export type ProfileMaxAggregateOutputType = {
   isActive: $Enums.IsActive | null
   suspend: boolean | null
   locationStatus: boolean | null
+  shareSlug: string | null
+  shareQrPath: string | null
+  shareCount: number | null
 }
 
 export type ProfileCountAggregateOutputType = {
@@ -67,9 +83,20 @@ export type ProfileCountAggregateOutputType = {
   isActive: number
   suspend: number
   locationStatus: number
+  shareSlug: number
+  shareQrPath: number
+  shareCount: number
   _all: number
 }
 
+
+export type ProfileAvgAggregateInputType = {
+  shareCount?: true
+}
+
+export type ProfileSumAggregateInputType = {
+  shareCount?: true
+}
 
 export type ProfileMinAggregateInputType = {
   id?: true
@@ -84,6 +111,9 @@ export type ProfileMinAggregateInputType = {
   isActive?: true
   suspend?: true
   locationStatus?: true
+  shareSlug?: true
+  shareQrPath?: true
+  shareCount?: true
 }
 
 export type ProfileMaxAggregateInputType = {
@@ -99,6 +129,9 @@ export type ProfileMaxAggregateInputType = {
   isActive?: true
   suspend?: true
   locationStatus?: true
+  shareSlug?: true
+  shareQrPath?: true
+  shareCount?: true
 }
 
 export type ProfileCountAggregateInputType = {
@@ -114,6 +147,9 @@ export type ProfileCountAggregateInputType = {
   isActive?: true
   suspend?: true
   locationStatus?: true
+  shareSlug?: true
+  shareQrPath?: true
+  shareCount?: true
   _all?: true
 }
 
@@ -155,6 +191,18 @@ export type ProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: ProfileAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: ProfileSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: ProfileMinAggregateInputType
@@ -185,6 +233,8 @@ export type ProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: ProfileCountAggregateInputType | true
+  _avg?: ProfileAvgAggregateInputType
+  _sum?: ProfileSumAggregateInputType
   _min?: ProfileMinAggregateInputType
   _max?: ProfileMaxAggregateInputType
 }
@@ -202,7 +252,12 @@ export type ProfileGroupByOutputType = {
   isActive: $Enums.IsActive
   suspend: boolean
   locationStatus: boolean
+  shareSlug: string | null
+  shareQrPath: string | null
+  shareCount: number
   _count: ProfileCountAggregateOutputType | null
+  _avg: ProfileAvgAggregateOutputType | null
+  _sum: ProfileSumAggregateOutputType | null
   _min: ProfileMinAggregateOutputType | null
   _max: ProfileMaxAggregateOutputType | null
 }
@@ -238,6 +293,9 @@ export type ProfileWhereInput = {
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
   locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
+  shareSlug?: Prisma.StringNullableFilter<"Profile"> | string | null
+  shareQrPath?: Prisma.StringNullableFilter<"Profile"> | string | null
+  shareCount?: Prisma.IntFilter<"Profile"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   spotter?: Prisma.XOR<Prisma.SpotterProfileNullableScalarRelationFilter, Prisma.SpotterProfileWhereInput> | null
   owner?: Prisma.XOR<Prisma.OwnerProfileNullableScalarRelationFilter, Prisma.OwnerProfileWhereInput> | null
@@ -274,6 +332,9 @@ export type ProfileOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   locationStatus?: Prisma.SortOrder
+  shareSlug?: Prisma.SortOrderInput | Prisma.SortOrder
+  shareQrPath?: Prisma.SortOrderInput | Prisma.SortOrder
+  shareCount?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   spotter?: Prisma.SpotterProfileOrderByWithRelationInput
   owner?: Prisma.OwnerProfileOrderByWithRelationInput
@@ -300,6 +361,7 @@ export type ProfileOrderByWithRelationInput = {
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   userId?: string
+  shareSlug?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
@@ -313,6 +375,8 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
   locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
+  shareQrPath?: Prisma.StringNullableFilter<"Profile"> | string | null
+  shareCount?: Prisma.IntFilter<"Profile"> | number
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   spotter?: Prisma.XOR<Prisma.SpotterProfileNullableScalarRelationFilter, Prisma.SpotterProfileWhereInput> | null
   owner?: Prisma.XOR<Prisma.OwnerProfileNullableScalarRelationFilter, Prisma.OwnerProfileWhereInput> | null
@@ -334,7 +398,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantListRelationFilter
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
-}, "id" | "userId">
+}, "id" | "userId" | "shareSlug">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -349,9 +413,14 @@ export type ProfileOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   locationStatus?: Prisma.SortOrder
+  shareSlug?: Prisma.SortOrderInput | Prisma.SortOrder
+  shareQrPath?: Prisma.SortOrderInput | Prisma.SortOrder
+  shareCount?: Prisma.SortOrder
   _count?: Prisma.ProfileCountOrderByAggregateInput
+  _avg?: Prisma.ProfileAvgOrderByAggregateInput
   _max?: Prisma.ProfileMaxOrderByAggregateInput
   _min?: Prisma.ProfileMinOrderByAggregateInput
+  _sum?: Prisma.ProfileSumOrderByAggregateInput
 }
 
 export type ProfileScalarWhereWithAggregatesInput = {
@@ -370,6 +439,9 @@ export type ProfileScalarWhereWithAggregatesInput = {
   isActive?: Prisma.EnumIsActiveWithAggregatesFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
   locationStatus?: Prisma.BoolWithAggregatesFilter<"Profile"> | boolean
+  shareSlug?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  shareQrPath?: Prisma.StringNullableWithAggregatesFilter<"Profile"> | string | null
+  shareCount?: Prisma.IntWithAggregatesFilter<"Profile"> | number
 }
 
 export type ProfileCreateInput = {
@@ -384,6 +456,9 @@ export type ProfileCreateInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -420,6 +495,9 @@ export type ProfileUncheckedCreateInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -454,6 +532,9 @@ export type ProfileUpdateInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -490,6 +571,9 @@ export type ProfileUncheckedUpdateInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -525,6 +609,9 @@ export type ProfileCreateManyInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
 }
 
 export type ProfileUpdateManyMutationInput = {
@@ -539,6 +626,9 @@ export type ProfileUpdateManyMutationInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ProfileUncheckedUpdateManyInput = {
@@ -554,6 +644,9 @@ export type ProfileUncheckedUpdateManyInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ProfileScalarRelationFilter = {
@@ -579,6 +672,13 @@ export type ProfileCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   locationStatus?: Prisma.SortOrder
+  shareSlug?: Prisma.SortOrder
+  shareQrPath?: Prisma.SortOrder
+  shareCount?: Prisma.SortOrder
+}
+
+export type ProfileAvgOrderByAggregateInput = {
+  shareCount?: Prisma.SortOrder
 }
 
 export type ProfileMaxOrderByAggregateInput = {
@@ -594,6 +694,9 @@ export type ProfileMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   locationStatus?: Prisma.SortOrder
+  shareSlug?: Prisma.SortOrder
+  shareQrPath?: Prisma.SortOrder
+  shareCount?: Prisma.SortOrder
 }
 
 export type ProfileMinOrderByAggregateInput = {
@@ -609,6 +712,13 @@ export type ProfileMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   suspend?: Prisma.SortOrder
   locationStatus?: Prisma.SortOrder
+  shareSlug?: Prisma.SortOrder
+  shareQrPath?: Prisma.SortOrder
+  shareCount?: Prisma.SortOrder
+}
+
+export type ProfileSumOrderByAggregateInput = {
+  shareCount?: Prisma.SortOrder
 }
 
 export type ProfileListRelationFilter = {
@@ -971,6 +1081,9 @@ export type ProfileCreateWithoutBikesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1006,6 +1119,9 @@ export type ProfileUncheckedCreateWithoutBikesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1055,6 +1171,9 @@ export type ProfileUpdateWithoutBikesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1090,6 +1209,9 @@ export type ProfileUncheckedUpdateWithoutBikesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1123,6 +1245,9 @@ export type ProfileCreateWithoutBusinessInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1158,6 +1283,9 @@ export type ProfileUncheckedCreateWithoutBusinessInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1207,6 +1335,9 @@ export type ProfileUpdateWithoutBusinessInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1242,6 +1373,9 @@ export type ProfileUncheckedUpdateWithoutBusinessInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1275,6 +1409,9 @@ export type ProfileCreateWithoutCarsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1310,6 +1447,9 @@ export type ProfileUncheckedCreateWithoutCarsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1359,6 +1499,9 @@ export type ProfileUpdateWithoutCarsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1394,6 +1537,9 @@ export type ProfileUncheckedUpdateWithoutCarsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1427,6 +1573,9 @@ export type ProfileCreateWithoutCreatorInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1462,6 +1611,9 @@ export type ProfileUncheckedCreateWithoutCreatorInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1511,6 +1663,9 @@ export type ProfileUpdateWithoutCreatorInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1546,6 +1701,9 @@ export type ProfileUncheckedUpdateWithoutCreatorInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1579,6 +1737,9 @@ export type ProfileCreateWithoutGaragesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1614,6 +1775,9 @@ export type ProfileUncheckedCreateWithoutGaragesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1663,6 +1827,9 @@ export type ProfileUpdateWithoutGaragesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1698,6 +1865,9 @@ export type ProfileUncheckedUpdateWithoutGaragesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1731,6 +1901,9 @@ export type ProfileCreateWithoutLabTimesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1766,6 +1939,9 @@ export type ProfileUncheckedCreateWithoutLabTimesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1815,6 +1991,9 @@ export type ProfileUpdateWithoutLabTimesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -1850,6 +2029,9 @@ export type ProfileUncheckedUpdateWithoutLabTimesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -1883,6 +2065,9 @@ export type ProfileCreateWithoutLegalNoticesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -1918,6 +2103,9 @@ export type ProfileUncheckedCreateWithoutLegalNoticesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -1967,6 +2155,9 @@ export type ProfileUpdateWithoutLegalNoticesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2002,6 +2193,9 @@ export type ProfileUncheckedUpdateWithoutLegalNoticesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2035,6 +2229,9 @@ export type ProfileCreateWithoutOwnerInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -2070,6 +2267,9 @@ export type ProfileUncheckedCreateWithoutOwnerInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2119,6 +2319,9 @@ export type ProfileUpdateWithoutOwnerInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -2154,6 +2357,9 @@ export type ProfileUncheckedUpdateWithoutOwnerInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2187,6 +2393,9 @@ export type ProfileCreateWithoutPostsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2222,6 +2431,9 @@ export type ProfileUncheckedCreateWithoutPostsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2271,6 +2483,9 @@ export type ProfileUpdateWithoutPostsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2306,6 +2521,9 @@ export type ProfileUncheckedUpdateWithoutPostsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2339,6 +2557,9 @@ export type ProfileCreateWithoutProDriverInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2374,6 +2595,9 @@ export type ProfileUncheckedCreateWithoutProDriverInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2423,6 +2647,9 @@ export type ProfileUpdateWithoutProDriverInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2458,6 +2685,9 @@ export type ProfileUncheckedUpdateWithoutProDriverInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2491,6 +2721,9 @@ export type ProfileCreateWithoutSimRacingInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2526,6 +2759,9 @@ export type ProfileUncheckedCreateWithoutSimRacingInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2575,6 +2811,9 @@ export type ProfileUpdateWithoutSimRacingInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2610,6 +2849,9 @@ export type ProfileUncheckedUpdateWithoutSimRacingInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2643,6 +2885,9 @@ export type ProfileCreateWithoutSplitScreenMatchRequestsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2678,6 +2923,9 @@ export type ProfileUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2727,6 +2975,9 @@ export type ProfileUpdateWithoutSplitScreenMatchRequestsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2762,6 +3013,9 @@ export type ProfileUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -2795,6 +3049,9 @@ export type ProfileCreateWithoutSplitScreenBattlesLeftUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2830,6 +3087,9 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2868,6 +3128,9 @@ export type ProfileCreateWithoutSplitScreenBattlesRightUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -2903,6 +3166,9 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -2952,6 +3218,9 @@ export type ProfileUpdateWithoutSplitScreenBattlesLeftUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -2987,6 +3256,9 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3031,6 +3303,9 @@ export type ProfileUpdateWithoutSplitScreenBattlesRightUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -3066,6 +3341,9 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3099,6 +3377,9 @@ export type ProfileCreateWithoutSplitScreenBattleParticipantsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -3134,6 +3415,9 @@ export type ProfileUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3183,6 +3467,9 @@ export type ProfileUpdateWithoutSplitScreenBattleParticipantsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -3218,6 +3505,9 @@ export type ProfileUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3251,6 +3541,9 @@ export type ProfileCreateWithoutSpotterInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -3286,6 +3579,9 @@ export type ProfileUncheckedCreateWithoutSpotterInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
   business?: Prisma.BusinessProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3335,6 +3631,9 @@ export type ProfileUpdateWithoutSpotterInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -3370,6 +3669,9 @@ export type ProfileUncheckedUpdateWithoutSpotterInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
   business?: Prisma.BusinessProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3403,6 +3705,9 @@ export type ProfileCreateWithoutSpottingRequestsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -3438,6 +3743,9 @@ export type ProfileUncheckedCreateWithoutSpottingRequestsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3487,6 +3795,9 @@ export type ProfileUpdateWithoutSpottingRequestsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -3522,6 +3833,9 @@ export type ProfileUncheckedUpdateWithoutSpottingRequestsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3555,6 +3869,9 @@ export type ProfileCreateWithoutSubmitLabTimesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -3590,6 +3907,9 @@ export type ProfileUncheckedCreateWithoutSubmitLabTimesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3639,6 +3959,9 @@ export type ProfileUpdateWithoutSubmitLabTimesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -3674,6 +3997,9 @@ export type ProfileUncheckedUpdateWithoutSubmitLabTimesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3707,6 +4033,9 @@ export type ProfileCreateWithoutUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileCreateNestedOneWithoutProfileInput
@@ -3741,6 +4070,9 @@ export type ProfileUncheckedCreateWithoutUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3805,6 +4137,9 @@ export type ProfileScalarWhereInput = {
   isActive?: Prisma.EnumIsActiveFilter<"Profile"> | $Enums.IsActive
   suspend?: Prisma.BoolFilter<"Profile"> | boolean
   locationStatus?: Prisma.BoolFilter<"Profile"> | boolean
+  shareSlug?: Prisma.StringNullableFilter<"Profile"> | string | null
+  shareQrPath?: Prisma.StringNullableFilter<"Profile"> | string | null
+  shareCount?: Prisma.IntFilter<"Profile"> | number
 }
 
 export type ProfileCreateWithoutVirtualGaragesInput = {
@@ -3819,6 +4154,9 @@ export type ProfileCreateWithoutVirtualGaragesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -3854,6 +4192,9 @@ export type ProfileUncheckedCreateWithoutVirtualGaragesInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -3903,6 +4244,9 @@ export type ProfileUpdateWithoutVirtualGaragesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -3938,6 +4282,9 @@ export type ProfileUncheckedUpdateWithoutVirtualGaragesInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -3971,6 +4318,9 @@ export type ProfileCreateWithoutVirtualSimRacingEventsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   user: Prisma.UserCreateNestedOneWithoutProfileInput
   spotter?: Prisma.SpotterProfileCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileCreateNestedOneWithoutProfileInput
@@ -4006,6 +4356,9 @@ export type ProfileUncheckedCreateWithoutVirtualSimRacingEventsInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
   spotter?: Prisma.SpotterProfileUncheckedCreateNestedOneWithoutProfileInput
   owner?: Prisma.OwnerProfileUncheckedCreateNestedOneWithoutProfileInput
   creator?: Prisma.ContentCreatorProfileUncheckedCreateNestedOneWithoutProfileInput
@@ -4055,6 +4408,9 @@ export type ProfileUpdateWithoutVirtualSimRacingEventsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   user?: Prisma.UserUpdateOneRequiredWithoutProfileNestedInput
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
@@ -4090,6 +4446,9 @@ export type ProfileUncheckedUpdateWithoutVirtualSimRacingEventsInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -4123,6 +4482,9 @@ export type ProfileCreateManyUserInput = {
   isActive?: $Enums.IsActive
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: string | null
+  shareQrPath?: string | null
+  shareCount?: number
 }
 
 export type ProfileUpdateWithoutUserInput = {
@@ -4137,6 +4499,9 @@ export type ProfileUpdateWithoutUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUpdateOneWithoutProfileNestedInput
@@ -4171,6 +4536,9 @@ export type ProfileUncheckedUpdateWithoutUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
   spotter?: Prisma.SpotterProfileUncheckedUpdateOneWithoutProfileNestedInput
   owner?: Prisma.OwnerProfileUncheckedUpdateOneWithoutProfileNestedInput
   creator?: Prisma.ContentCreatorProfileUncheckedUpdateOneWithoutProfileNestedInput
@@ -4205,6 +4573,9 @@ export type ProfileUncheckedUpdateManyWithoutUserInput = {
   isActive?: Prisma.EnumIsActiveFieldUpdateOperationsInput | $Enums.IsActive
   suspend?: Prisma.BoolFieldUpdateOperationsInput | boolean
   locationStatus?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  shareSlug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareQrPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -4368,6 +4739,9 @@ export type ProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   isActive?: boolean
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: boolean
+  shareQrPath?: boolean
+  shareCount?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
   owner?: boolean | Prisma.Profile$ownerArgs<ExtArgs>
@@ -4405,6 +4779,9 @@ export type ProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: boolean
+  shareQrPath?: boolean
+  shareCount?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -4421,6 +4798,9 @@ export type ProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: boolean
+  shareQrPath?: boolean
+  shareCount?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["profile"]>
 
@@ -4437,9 +4817,12 @@ export type ProfileSelectScalar = {
   isActive?: boolean
   suspend?: boolean
   locationStatus?: boolean
+  shareSlug?: boolean
+  shareQrPath?: boolean
+  shareCount?: boolean
 }
 
-export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "activeType" | "profileName" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend" | "locationStatus", ExtArgs["result"]["profile"]>
+export type ProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "activeType" | "profileName" | "bio" | "imageUrl" | "instagramHandler" | "accountType" | "preference" | "isActive" | "suspend" | "locationStatus" | "shareSlug" | "shareQrPath" | "shareCount", ExtArgs["result"]["profile"]>
 export type ProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   spotter?: boolean | Prisma.Profile$spotterArgs<ExtArgs>
@@ -4509,6 +4892,9 @@ export type $ProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     isActive: $Enums.IsActive
     suspend: boolean
     locationStatus: boolean
+    shareSlug: string | null
+    shareQrPath: string | null
+    shareCount: number
   }, ExtArgs["result"]["profile"]>
   composites: {}
 }
@@ -4965,6 +5351,9 @@ export interface ProfileFieldRefs {
   readonly isActive: Prisma.FieldRef<"Profile", 'IsActive'>
   readonly suspend: Prisma.FieldRef<"Profile", 'Boolean'>
   readonly locationStatus: Prisma.FieldRef<"Profile", 'Boolean'>
+  readonly shareSlug: Prisma.FieldRef<"Profile", 'String'>
+  readonly shareQrPath: Prisma.FieldRef<"Profile", 'String'>
+  readonly shareCount: Prisma.FieldRef<"Profile", 'Int'>
 }
     
 
