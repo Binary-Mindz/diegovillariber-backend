@@ -37,7 +37,7 @@ export class HashtagController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create hashtag (Admin)' })
+  @ApiOperation({ summary: 'Create hashtag' })
   async createHashtag(
     @Body() dto: CreateHashtagDto,
     @Res({ passthrough: true }) res: Response,
@@ -55,7 +55,7 @@ export class HashtagController {
   @Patch(':id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Update hashtag (Admin)' })
+  @ApiOperation({ summary: 'Update hashtag' })
   async updateHashtag(
     @Param('id') id: string,
     @Body() dto: UpdateHashtagDto,
@@ -73,7 +73,7 @@ export class HashtagController {
   @Delete(':id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Delete hashtag (Admin)' })
+  @ApiOperation({ summary: 'Delete hashtag ' })
   async deleteHashtag(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
@@ -88,7 +88,7 @@ export class HashtagController {
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get active hashtags (User)' })
+  @ApiOperation({ summary: 'Get active hashtags' })
   async getHashtags(
     @Query() query: HashtagQueryDto,
     @Res({ passthrough: true }) res: Response,
