@@ -1354,6 +1354,13 @@ export type EnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
 }
 
+export type EnumPostAssetTypeNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostAssetType | Prisma.EnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel> | $Enums.PostAssetType | null
+}
+
 export type EnumVehicleCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
@@ -1384,6 +1391,16 @@ export type DecimalFilter<$PrismaModel = never> = {
   gt?: runtime.Decimal | runtime.DecimalJsLike | number | string | Prisma.DecimalFieldRefInput<$PrismaModel>
   gte?: runtime.Decimal | runtime.DecimalJsLike | number | string | Prisma.DecimalFieldRefInput<$PrismaModel>
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type EnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostAssetType | Prisma.EnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.PostAssetType | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
 }
 
 export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
@@ -3335,6 +3352,13 @@ export type NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = 
   _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
 }
 
+export type NestedEnumPostAssetTypeNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostAssetType | Prisma.EnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel> | $Enums.PostAssetType | null
+}
+
 export type NestedEnumVehicleCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
@@ -3365,6 +3389,16 @@ export type NestedDecimalFilter<$PrismaModel = never> = {
   gt?: runtime.Decimal | runtime.DecimalJsLike | number | string | Prisma.DecimalFieldRefInput<$PrismaModel>
   gte?: runtime.Decimal | runtime.DecimalJsLike | number | string | Prisma.DecimalFieldRefInput<$PrismaModel>
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
+export type NestedEnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostAssetType | Prisma.EnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  in?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.PostAssetType[] | Prisma.ListEnumPostAssetTypeFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel> | $Enums.PostAssetType | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
 }
 
 export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {

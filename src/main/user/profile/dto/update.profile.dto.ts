@@ -19,7 +19,7 @@ export class UpdateProfileBaseDto extends PartialType(
   @IsEnum(AccountType)
   accountType?: AccountType;
 
-  @ApiPropertyOptional({ enum: Preference, example: 'Car' })
+  @ApiPropertyOptional({ enum: Preference, example: Preference.CAR })
   @IsOptional()
   @IsEnum(Preference)
   preference?: Preference;

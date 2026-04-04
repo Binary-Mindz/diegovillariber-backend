@@ -43,5 +43,6 @@
             "linux": "Default Shell",
             "osx": "Default Shell"
         }
-    }
+    },
+    "prisma-smart-formatter.typescript.defaultFormatter": "esbenp.prettier-vscode"
 }

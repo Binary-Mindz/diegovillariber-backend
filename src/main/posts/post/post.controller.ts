@@ -53,35 +53,35 @@ export class PostController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('feed')
-async getFeed(
-  @GetUser('id') userId: string,
-  @Query() query: FeedQueryDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.postsService.getFeed(userId, query),
-    'Feed fetched successfully',
-  );
+  async getFeed(
+    @GetUser('userId') userId: string,
+    @Query() query: FeedQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.postsService.getFeed(userId, query),
+      'Feed fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
- @Get(':postId')
-async getSinglePost(
-  @GetUser('id') userId: string,
-  @Param('postId') postId: string,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.postsService.getSinglePost(userId, postId),
-    'Post fetched successfully',
-  );
+  @Get(':postId')
+  async getSinglePost(
+    @GetUser('userId') userId: string,
+    @Param('postId') postId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.postsService.getSinglePost(userId, postId),
+      'Post fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
