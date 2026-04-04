@@ -300,6 +300,14 @@ export const VideoEditingDeclaration = {
 export type VideoEditingDeclaration = (typeof VideoEditingDeclaration)[keyof typeof VideoEditingDeclaration]
 
 
+export const PostAssetType = {
+  CAR: 'CAR',
+  BIKE: 'BIKE'
+} as const
+
+export type PostAssetType = (typeof PostAssetType)[keyof typeof PostAssetType]
+
+
 export const VisiualStyle = {
   Action: 'Action',
   Aerial: 'Aerial',

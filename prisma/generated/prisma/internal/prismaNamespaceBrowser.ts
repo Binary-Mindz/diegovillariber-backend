@@ -1116,6 +1116,8 @@ export const PostScalarFieldEnum = {
   userId: 'userId',
   profileId: 'profileId',
   carId: 'carId',
+  bikeId: 'bikeId',
+  assetType: 'assetType',
   profileType: 'profileType',
   postType: 'postType',
   caption: 'caption',

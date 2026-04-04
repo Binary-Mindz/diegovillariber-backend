@@ -24,35 +24,32 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   private async getExcludedUserIds(userId: string): Promise<string[]> {
-  const blocks = await this.prisma.userBlock.findMany({
-    where: {
-      OR: [
-        { blockerId: userId },
-        { blockedUserId: userId },
-      ],
-    },
-    select: {
-      blockerId: true,
-      blockedUserId: true,
-    },
-  });
+    const blocks = await this.prisma.userBlock.findMany({
+      where: {
+        OR: [{ blockerId: userId }, { blockedUserId: userId }],
+      },
+      select: {
+        blockerId: true,
+        blockedUserId: true,
+      },
+    });
 
-  const excludedUserIds = new Set<string>();
+    const excludedUserIds = new Set<string>();
 
-  for (const block of blocks) {
-    if (block.blockerId !== userId) {
-      excludedUserIds.add(block.blockerId);
+    for (const block of blocks) {
+      if (block.blockerId !== userId) {
+        excludedUserIds.add(block.blockerId);
+      }
+      if (block.blockedUserId !== userId) {
+        excludedUserIds.add(block.blockedUserId);
+      }
     }
-    if (block.blockedUserId !== userId) {
-      excludedUserIds.add(block.blockedUserId);
-    }
+
+    return [...excludedUserIds];
   }
-
-  return [...excludedUserIds];
-}
 
   async createPost(userId: string, dto: CreatePostDto) {
     const wantBoost = dto.contentBooster === true;
@@ -89,57 +86,60 @@ export class PostService {
       if (!activeProfile.activeType) {
         throw new BadRequestException('Active profile type not set');
       }
-    const mediaType = dto.mediaType ?? MediaType.IMAGE;
-    if (mediaType === MediaType.IMAGE) {
-      if (dto.videoEditingDeclaration) {
-        throw new BadRequestException('videoEditingDeclaration is only allowed for VIDEO posts.');
+      const mediaType = dto.mediaType ?? MediaType.IMAGE;
+      if (mediaType === MediaType.IMAGE) {
+        if (dto.videoEditingDeclaration) {
+          throw new BadRequestException(
+            'videoEditingDeclaration is only allowed for VIDEO posts.',
+          );
+        }
+      } else if (mediaType === MediaType.VIDEO) {
+        if (dto.photoEditingDeclaration) {
+          throw new BadRequestException(
+            'photoEditingDeclaration is only allowed for IMAGE posts.',
+          );
+        }
       }
-    } else if (mediaType === MediaType.VIDEO) {
-      if (dto.photoEditingDeclaration) {
-        throw new BadRequestException('photoEditingDeclaration is only allowed for IMAGE posts.');
-      }
-    }
-  
 
       const taggedUserIds = dto.taggedUserIds
         ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId) // চাইলে নিজেকে tag বন্ধ
         : [];
 
-     if (taggedUserIds.length) {
-  const found = await tx.user.findMany({
-    where: { id: { in: taggedUserIds } },
-    select: { id: true },
-  });
+      if (taggedUserIds.length) {
+        const found = await tx.user.findMany({
+          where: { id: { in: taggedUserIds } },
+          select: { id: true },
+        });
 
-  if (found.length !== taggedUserIds.length) {
-    throw new BadRequestException('One or more tagged users are invalid');
-  }
+        if (found.length !== taggedUserIds.length) {
+          throw new BadRequestException('One or more tagged users are invalid');
+        }
 
-  const blockedRelations = await tx.userBlock.findMany({
-    where: {
-      OR: taggedUserIds.flatMap((targetUserId) => [
-        {
-          blockerId: userId,
-          blockedUserId: targetUserId,
-        },
-        {
-          blockerId: targetUserId,
-          blockedUserId: userId,
-        },
-      ]),
-    },
-    select: {
-      blockerId: true,
-      blockedUserId: true,
-    },
-  });
+        const blockedRelations = await tx.userBlock.findMany({
+          where: {
+            OR: taggedUserIds.flatMap((targetUserId) => [
+              {
+                blockerId: userId,
+                blockedUserId: targetUserId,
+              },
+              {
+                blockerId: targetUserId,
+                blockedUserId: userId,
+              },
+            ]),
+          },
+          select: {
+            blockerId: true,
+            blockedUserId: true,
+          },
+        });
 
-  if (blockedRelations.length > 0) {
-    throw new BadRequestException(
-      'You cannot tag users who are blocked or who blocked you',
-    );
-  }
-}
+        if (blockedRelations.length > 0) {
+          throw new BadRequestException(
+            'You cannot tag users who are blocked or who blocked you',
+          );
+        }
+      }
 
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
         throw new BadRequestException(
@@ -157,7 +157,9 @@ export class PostService {
         });
 
         if (found.length !== hashtagIds.length) {
-          throw new BadRequestException('One or more hashtags are invalid or inactive.');
+          throw new BadRequestException(
+            'One or more hashtags are invalid or inactive.',
+          );
         }
       }
 
@@ -170,6 +172,7 @@ export class PostService {
           profileType: activeProfile.activeType,
 
           postType: dto.postType ?? undefined,
+          assetType: dto.assetType ?? undefined,
           caption: dto.caption ?? null,
           mediaUrl: dto.mediaUrl ?? null,
           mediaType,
@@ -240,8 +243,7 @@ export class PostService {
       };
     });
   }
-
-async getFeed(userId: string, query: FeedQueryDto) {
+  async getFeed(userId: string, query: FeedQueryDto) {
   const page = query.page ?? 1;
   const limit = query.limit ?? 10;
   const skip = (page - 1) * limit;
@@ -257,10 +259,56 @@ async getFeed(userId: string, query: FeedQueryDto) {
   const contextActivity = parseCsvEnum<any>(query.contextActivity);
   const subject = parseCsvEnum<any>(query.subject);
 
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: { activeProfileId: true },
+  });
+
+  if (!user) {
+    throw new NotFoundException('User not found');
+  }
+
+  if (!user.activeProfileId) {
+    throw new BadRequestException('No active profile selected');
+  }
+
+  const activeProfile = await this.prisma.profile.findFirst({
+    where: {
+      id: user.activeProfileId,
+      userId,
+      isActive: 'ACTIVE',
+      suspend: false,
+    },
+    select: {
+      id: true,
+      preference: true,
+    },
+  });
+
+  if (!activeProfile) {
+    throw new BadRequestException('Active profile not found');
+  }
+
+  let preferenceFilter: Prisma.PostWhereInput = {};
+
+  if (activeProfile.preference === 'CAR') {
+    preferenceFilter = {
+      assetType: 'CAR',
+    };
+  } else if (activeProfile.preference === 'BIKE') {
+    preferenceFilter = {
+      assetType: 'BIKE',
+    };
+  } else if (activeProfile.preference === 'BOTH' || !activeProfile.preference) {
+    preferenceFilter = {};
+  }
+
   const where: Prisma.PostWhereInput = {
     userId: {
       notIn: excludedUserIds,
     },
+
+    ...preferenceFilter,
 
     ...(query.postType ? { postType: query.postType } : {}),
     ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
@@ -296,7 +344,9 @@ async getFeed(userId: string, query: FeedQueryDto) {
       take: limit,
       include: {
         user: { select: { id: true } },
-        profile: { select: { id: true, imageUrl: true, activeType: true } },
+        profile: {
+          select: { id: true, imageUrl: true, activeType: true, preference: true },
+        },
         hashtags: true,
         taggedUsers: { select: { id: true } },
       },
@@ -317,44 +367,45 @@ async getFeed(userId: string, query: FeedQueryDto) {
       hasPrevPage: page > 1,
     },
   };
-}
- async getSinglePost(userId: string, postId: string) {
-  const post = await this.prisma.post.findUnique({
-    where: { id: postId },
-    include: {
-      user: { select: { id: true } },
-      profile: { select: { id: true, imageUrl: true, activeType: true } },
-      hashtags: true,
-      taggedUsers: { select: { id: true } },
-    },
-  });
-
-  if (!post) {
-    throw new NotFoundException('Post not found');
   }
 
-  const blockedRelation = await this.prisma.userBlock.findFirst({
-    where: {
-      OR: [
-        {
-          blockerId: userId,
-          blockedUserId: post.userId,
-        },
-        {
-          blockerId: post.userId,
-          blockedUserId: userId,
-        },
-      ],
-    },
-    select: { id: true },
-  });
+  async getSinglePost(userId: string, postId: string) {
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      include: {
+        user: { select: { id: true } },
+        profile: { select: { id: true, imageUrl: true, activeType: true } },
+        hashtags: true,
+        taggedUsers: { select: { id: true } },
+      },
+    });
 
-  if (blockedRelation) {
-    throw new NotFoundException('Post not found');
+    if (!post) {
+      throw new NotFoundException('Post not found');
+    }
+
+    const blockedRelation = await this.prisma.userBlock.findFirst({
+      where: {
+        OR: [
+          {
+            blockerId: userId,
+            blockedUserId: post.userId,
+          },
+          {
+            blockerId: post.userId,
+            blockedUserId: userId,
+          },
+        ],
+      },
+      select: { id: true },
+    });
+
+    if (blockedRelation) {
+      throw new NotFoundException('Post not found');
+    }
+
+    return post;
   }
-
-  return post;
-}
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
       throw new BadRequestException('contentBooster cannot be updated');
@@ -386,30 +437,35 @@ async getFeed(userId: string, query: FeedQueryDto) {
 
       const updateData: any = {
         ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
+        ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
         ...(dto.mediaUrl !== undefined
           ? { mediaUrl: dto.mediaUrl ?? null }
           : {}),
-          // media
-          ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? null } : {}),
-          ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType ?? undefined } : {}),
+        // media
+        ...(dto.mediaUrl !== undefined
+          ? { mediaUrl: dto.mediaUrl ?? null }
+          : {}),
+        ...(dto.mediaType !== undefined
+          ? { mediaType: dto.mediaType ?? undefined }
+          : {}),
 
-          // vehicleCategory
-          ...(dto.vehicleCategory !== undefined
+        // vehicleCategory
+        ...(dto.vehicleCategory !== undefined
           ? { vehicleCategory: dto.vehicleCategory ?? undefined }
           : {}),
 
-          // declarations (with simple consistency check)
-           ...(dto.photoEditingDeclaration !== undefined
-           ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
-           : {}),
-           ...(dto.videoEditingDeclaration !== undefined
-           ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
-           : {}),
-           ...(dto.postLocation !== undefined
-           ? { postLocation: dto.postLocation ?? null }
-           : {}),
-          ...(dto.locationVisibility !== undefined
+        // declarations (with simple consistency check)
+        ...(dto.photoEditingDeclaration !== undefined
+          ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
+          : {}),
+        ...(dto.videoEditingDeclaration !== undefined
+          ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
+          : {}),
+        ...(dto.postLocation !== undefined
+          ? { postLocation: dto.postLocation ?? null }
+          : {}),
+        ...(dto.locationVisibility !== undefined
           ? { locationVisibility: dto.locationVisibility ?? null }
           : {}),
 
@@ -450,7 +506,6 @@ async getFeed(userId: string, query: FeedQueryDto) {
     });
   }
 
-
   async deletePost(postId: string, userId: string) {
     return this.prisma.$transaction(async (tx) => {
       const post = await tx.post.findUnique({
@@ -470,4 +525,3 @@ async getFeed(userId: string, query: FeedQueryDto) {
     });
   }
 }
-

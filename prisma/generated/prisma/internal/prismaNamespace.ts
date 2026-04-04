@@ -8667,6 +8667,8 @@ export const PostScalarFieldEnum = {
   userId: 'userId',
   profileId: 'profileId',
   carId: 'carId',
+  bikeId: 'bikeId',
+  assetType: 'assetType',
   profileType: 'profileType',
   postType: 'postType',
   caption: 'caption',
@@ -10209,6 +10211,20 @@ export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'PaymentStatus[]'
  */
 export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PostAssetType'
+ */
+export type EnumPostAssetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostAssetType'>
+    
+
+
+/**
+ * Reference to a field of type 'PostAssetType[]'
+ */
+export type ListEnumPostAssetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostAssetType[]'>
     
 
 

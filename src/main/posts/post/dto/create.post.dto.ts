@@ -20,6 +20,7 @@ import {
   MediaType,
   PhotoEditingDeclaration,
   VideoEditingDeclaration,
+  PostAssetType,
 } from 'generated/prisma/enums';
 
 export class CreatePostDto {
@@ -27,6 +28,11 @@ export class CreatePostDto {
   @IsOptional()
   @IsEnum(PostType)
   postType?: PostType;
+
+  @ApiPropertyOptional({ enum: PostAssetType, example: PostAssetType.CAR })
+  @IsOptional()
+  @IsEnum(PostAssetType)
+  assetType?: PostAssetType;
 
   @ApiPropertyOptional({ example: 'caption...' })
   @IsOptional()
@@ -56,6 +62,7 @@ export class CreatePostDto {
   @IsString()
   @MaxLength(120)
   locationName?: string;
+
 
   @ApiPropertyOptional({ example: 'Panthapath, Dhaka 1205, Bangladesh' })
   @IsOptional()

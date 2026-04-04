@@ -132,7 +132,6 @@ export class ProfileShareService {
     isActive: profile.isActive,
   };
   }
-
   async increaseShareCount(profileId: string) {
     await this.prisma.user.updateMany({
       where: {

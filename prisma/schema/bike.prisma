@@ -36,6 +36,7 @@ model Bike {
   @@index([make, model])
   @@index([profileId, category])
   @@map("Bike")
+  posts Post[]
 }
 
 model AdvancedBikeData {

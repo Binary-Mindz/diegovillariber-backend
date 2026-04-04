@@ -9,6 +9,11 @@ model Post {
   carId String? @db.Uuid
   car   Car?    @relation(fields: [carId], references: [id], onDelete: SetNull)
 
+  bikeId String? @db.Uuid
+  bike   Bike?   @relation(fields: [bikeId], references: [id], onDelete: SetNull)
+
+  assetType PostAssetType? @default(CAR)
+
   profileType        Type?
   postType           PostType @default(Spotter_Post)
   caption            String?
@@ -33,9 +38,9 @@ model Post {
   photoEditingDeclaration PhotoEditingDeclaration?
   videoEditingDeclaration VideoEditingDeclaration?
 
-  ratingCount   Int      @default(0)
-  ratingTotal   Int      @default(0)
-  ratingAverage Decimal  @default(0) @db.Decimal(10, 2)
+  ratingCount   Int     @default(0)
+  ratingTotal   Int     @default(0)
+  ratingAverage Decimal @default(0) @db.Decimal(10, 2)
 
   taggedUsers User[] @relation("PostTaggedUsers")
 
@@ -52,8 +57,8 @@ model Post {
   wishLists       WishList[]
   userPoints      UserPoint[]
 
-  likes    Like[]
-  comments Comment[]
+  likes       Like[]
+  comments    Comment[]
   postRatings PostRating[]
 
   spottingMatches SpottingMatch[]
@@ -78,6 +83,11 @@ enum VideoEditingDeclaration {
   DAVINCI_RESOLVE
   AVID_MEDIA_COMPOSER
   FINAL_CUT_PRO
+}
+
+enum PostAssetType {
+  CAR
+  BIKE
 }
 
 enum VisiualStyle {

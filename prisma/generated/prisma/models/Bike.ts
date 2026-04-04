@@ -324,6 +324,7 @@ export type BikeWhereInput = {
   garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
   advancedBikeDatas?: Prisma.AdvancedBikeDataListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  posts?: Prisma.PostListRelationFilter
 }
 
 export type BikeOrderByWithRelationInput = {
@@ -349,6 +350,7 @@ export type BikeOrderByWithRelationInput = {
   garage?: Prisma.GarageOrderByWithRelationInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataOrderByRelationAggregateInput
   legalNotices?: Prisma.LegalNoticeOrderByRelationAggregateInput
+  posts?: Prisma.PostOrderByRelationAggregateInput
 }
 
 export type BikeWhereUniqueInput = Prisma.AtLeast<{
@@ -377,6 +379,7 @@ export type BikeWhereUniqueInput = Prisma.AtLeast<{
   garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
   advancedBikeDatas?: Prisma.AdvancedBikeDataListRelationFilter
   legalNotices?: Prisma.LegalNoticeListRelationFilter
+  posts?: Prisma.PostListRelationFilter
 }, "id">
 
 export type BikeOrderByWithAggregationInput = {
@@ -450,6 +453,7 @@ export type BikeCreateInput = {
   garage: Prisma.GarageCreateNestedOneWithoutBikesInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUncheckedCreateInput = {
@@ -473,6 +477,7 @@ export type BikeUncheckedCreateInput = {
   updatedAt?: Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUpdateInput = {
@@ -496,6 +501,7 @@ export type BikeUpdateInput = {
   garage?: Prisma.GarageUpdateOneRequiredWithoutBikesNestedInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateInput = {
@@ -519,6 +525,7 @@ export type BikeUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeCreateManyInput = {
@@ -761,6 +768,22 @@ export type BikeUpdateOneWithoutLegalNoticesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BikeUpdateToOneWithWhereWithoutLegalNoticesInput, Prisma.BikeUpdateWithoutLegalNoticesInput>, Prisma.BikeUncheckedUpdateWithoutLegalNoticesInput>
 }
 
+export type BikeCreateNestedOneWithoutPostsInput = {
+  create?: Prisma.XOR<Prisma.BikeCreateWithoutPostsInput, Prisma.BikeUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.BikeCreateOrConnectWithoutPostsInput
+  connect?: Prisma.BikeWhereUniqueInput
+}
+
+export type BikeUpdateOneWithoutPostsNestedInput = {
+  create?: Prisma.XOR<Prisma.BikeCreateWithoutPostsInput, Prisma.BikeUncheckedCreateWithoutPostsInput>
+  connectOrCreate?: Prisma.BikeCreateOrConnectWithoutPostsInput
+  upsert?: Prisma.BikeUpsertWithoutPostsInput
+  disconnect?: Prisma.BikeWhereInput | boolean
+  delete?: Prisma.BikeWhereInput | boolean
+  connect?: Prisma.BikeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BikeUpdateToOneWithWhereWithoutPostsInput, Prisma.BikeUpdateWithoutPostsInput>, Prisma.BikeUncheckedUpdateWithoutPostsInput>
+}
+
 export type BikeCreateNestedManyWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.BikeCreateWithoutProfileInput, Prisma.BikeUncheckedCreateWithoutProfileInput> | Prisma.BikeCreateWithoutProfileInput[] | Prisma.BikeUncheckedCreateWithoutProfileInput[]
   connectOrCreate?: Prisma.BikeCreateOrConnectWithoutProfileInput | Prisma.BikeCreateOrConnectWithoutProfileInput[]
@@ -823,6 +846,7 @@ export type BikeCreateWithoutAdvancedBikeDatasInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutBikesInput
   garage: Prisma.GarageCreateNestedOneWithoutBikesInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUncheckedCreateWithoutAdvancedBikeDatasInput = {
@@ -845,6 +869,7 @@ export type BikeUncheckedCreateWithoutAdvancedBikeDatasInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutBikeInput
 }
 
 export type BikeCreateOrConnectWithoutAdvancedBikeDatasInput = {
@@ -883,6 +908,7 @@ export type BikeUpdateWithoutAdvancedBikeDatasInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutBikesNestedInput
   garage?: Prisma.GarageUpdateOneRequiredWithoutBikesNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateWithoutAdvancedBikeDatasInput = {
@@ -905,6 +931,7 @@ export type BikeUncheckedUpdateWithoutAdvancedBikeDatasInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeCreateWithoutGarageInput = {
@@ -927,6 +954,7 @@ export type BikeCreateWithoutGarageInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutBikesInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUncheckedCreateWithoutGarageInput = {
@@ -949,6 +977,7 @@ export type BikeUncheckedCreateWithoutGarageInput = {
   updatedAt?: Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutBikeInput
 }
 
 export type BikeCreateOrConnectWithoutGarageInput = {
@@ -1021,6 +1050,7 @@ export type BikeCreateWithoutLegalNoticesInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutBikesInput
   garage: Prisma.GarageCreateNestedOneWithoutBikesInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUncheckedCreateWithoutLegalNoticesInput = {
@@ -1043,6 +1073,7 @@ export type BikeUncheckedCreateWithoutLegalNoticesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutBikeInput
 }
 
 export type BikeCreateOrConnectWithoutLegalNoticesInput = {
@@ -1081,6 +1112,7 @@ export type BikeUpdateWithoutLegalNoticesInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutBikesNestedInput
   garage?: Prisma.GarageUpdateOneRequiredWithoutBikesNestedInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1103,6 +1135,115 @@ export type BikeUncheckedUpdateWithoutLegalNoticesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutBikeNestedInput
+}
+
+export type BikeCreateWithoutPostsInput = {
+  id?: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BikeBodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrainBike
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategoryBike
+  listOnMarketplace?: boolean
+  price?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile: Prisma.ProfileCreateNestedOneWithoutBikesInput
+  garage: Prisma.GarageCreateNestedOneWithoutBikesInput
+  advancedBikeDatas?: Prisma.AdvancedBikeDataCreateNestedManyWithoutBikeInput
+  legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutBikeInput
+}
+
+export type BikeUncheckedCreateWithoutPostsInput = {
+  id?: string
+  profileId: string
+  garageId: string
+  image?: string | null
+  make?: string | null
+  model?: string | null
+  bodyType?: $Enums.BikeBodyType
+  transmission?: $Enums.Transmission
+  driveTrain?: $Enums.DriveTrainBike
+  country?: string | null
+  color?: string | null
+  displayName?: string | null
+  description?: string | null
+  category?: $Enums.DriveCategoryBike
+  listOnMarketplace?: boolean
+  price?: number | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedCreateNestedManyWithoutBikeInput
+  legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutBikeInput
+}
+
+export type BikeCreateOrConnectWithoutPostsInput = {
+  where: Prisma.BikeWhereUniqueInput
+  create: Prisma.XOR<Prisma.BikeCreateWithoutPostsInput, Prisma.BikeUncheckedCreateWithoutPostsInput>
+}
+
+export type BikeUpsertWithoutPostsInput = {
+  update: Prisma.XOR<Prisma.BikeUpdateWithoutPostsInput, Prisma.BikeUncheckedUpdateWithoutPostsInput>
+  create: Prisma.XOR<Prisma.BikeCreateWithoutPostsInput, Prisma.BikeUncheckedCreateWithoutPostsInput>
+  where?: Prisma.BikeWhereInput
+}
+
+export type BikeUpdateToOneWithWhereWithoutPostsInput = {
+  where?: Prisma.BikeWhereInput
+  data: Prisma.XOR<Prisma.BikeUpdateWithoutPostsInput, Prisma.BikeUncheckedUpdateWithoutPostsInput>
+}
+
+export type BikeUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutBikesNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutBikesNestedInput
+  advancedBikeDatas?: Prisma.AdvancedBikeDataUpdateManyWithoutBikeNestedInput
+  legalNotices?: Prisma.LegalNoticeUpdateManyWithoutBikeNestedInput
+}
+
+export type BikeUncheckedUpdateWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bodyType?: Prisma.EnumBikeBodyTypeFieldUpdateOperationsInput | $Enums.BikeBodyType
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  driveTrain?: Prisma.EnumDriveTrainBikeFieldUpdateOperationsInput | $Enums.DriveTrainBike
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumDriveCategoryBikeFieldUpdateOperationsInput | $Enums.DriveCategoryBike
+  listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedUpdateManyWithoutBikeNestedInput
+  legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeCreateWithoutProfileInput = {
@@ -1125,6 +1266,7 @@ export type BikeCreateWithoutProfileInput = {
   garage: Prisma.GarageCreateNestedOneWithoutBikesInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostCreateNestedManyWithoutBikeInput
 }
 
 export type BikeUncheckedCreateWithoutProfileInput = {
@@ -1147,6 +1289,7 @@ export type BikeUncheckedCreateWithoutProfileInput = {
   updatedAt?: Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedCreateNestedManyWithoutBikeInput
   legalNotices?: Prisma.LegalNoticeUncheckedCreateNestedManyWithoutBikeInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutBikeInput
 }
 
 export type BikeCreateOrConnectWithoutProfileInput = {
@@ -1215,6 +1358,7 @@ export type BikeUpdateWithoutGarageInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutBikesNestedInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateWithoutGarageInput = {
@@ -1237,6 +1381,7 @@ export type BikeUncheckedUpdateWithoutGarageInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateManyWithoutGarageInput = {
@@ -1299,6 +1444,7 @@ export type BikeUpdateWithoutProfileInput = {
   garage?: Prisma.GarageUpdateOneRequiredWithoutBikesNestedInput
   advancedBikeDatas?: Prisma.AdvancedBikeDataUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateWithoutProfileInput = {
@@ -1321,6 +1467,7 @@ export type BikeUncheckedUpdateWithoutProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   advancedBikeDatas?: Prisma.AdvancedBikeDataUncheckedUpdateManyWithoutBikeNestedInput
   legalNotices?: Prisma.LegalNoticeUncheckedUpdateManyWithoutBikeNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutBikeNestedInput
 }
 
 export type BikeUncheckedUpdateManyWithoutProfileInput = {
@@ -1351,11 +1498,13 @@ export type BikeUncheckedUpdateManyWithoutProfileInput = {
 export type BikeCountOutputType = {
   advancedBikeDatas: number
   legalNotices: number
+  posts: number
 }
 
 export type BikeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   advancedBikeDatas?: boolean | BikeCountOutputTypeCountAdvancedBikeDatasArgs
   legalNotices?: boolean | BikeCountOutputTypeCountLegalNoticesArgs
+  posts?: boolean | BikeCountOutputTypeCountPostsArgs
 }
 
 /**
@@ -1382,6 +1531,13 @@ export type BikeCountOutputTypeCountLegalNoticesArgs<ExtArgs extends runtime.Typ
   where?: Prisma.LegalNoticeWhereInput
 }
 
+/**
+ * BikeCountOutputType without action
+ */
+export type BikeCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostWhereInput
+}
+
 
 export type BikeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1406,6 +1562,7 @@ export type BikeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
   advancedBikeDatas?: boolean | Prisma.Bike$advancedBikeDatasArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Bike$legalNoticesArgs<ExtArgs>
+  posts?: boolean | Prisma.Bike$postsArgs<ExtArgs>
   _count?: boolean | Prisma.BikeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bike"]>
 
@@ -1482,6 +1639,7 @@ export type BikeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
   advancedBikeDatas?: boolean | Prisma.Bike$advancedBikeDatasArgs<ExtArgs>
   legalNotices?: boolean | Prisma.Bike$legalNoticesArgs<ExtArgs>
+  posts?: boolean | Prisma.Bike$postsArgs<ExtArgs>
   _count?: boolean | Prisma.BikeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BikeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1500,6 +1658,7 @@ export type $BikePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     garage: Prisma.$GaragePayload<ExtArgs>
     advancedBikeDatas: Prisma.$AdvancedBikeDataPayload<ExtArgs>[]
     legalNotices: Prisma.$LegalNoticePayload<ExtArgs>[]
+    posts: Prisma.$PostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1918,6 +2077,7 @@ export interface Prisma__BikeClient<T, Null = never, ExtArgs extends runtime.Typ
   garage<T extends Prisma.GarageDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GarageDefaultArgs<ExtArgs>>): Prisma.Prisma__GarageClient<runtime.Types.Result.GetResult<Prisma.$GaragePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   advancedBikeDatas<T extends Prisma.Bike$advancedBikeDatasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bike$advancedBikeDatasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AdvancedBikeDataPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   legalNotices<T extends Prisma.Bike$legalNoticesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bike$legalNoticesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LegalNoticePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  posts<T extends Prisma.Bike$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bike$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2406,6 +2566,30 @@ export type Bike$legalNoticesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.LegalNoticeScalarFieldEnum | Prisma.LegalNoticeScalarFieldEnum[]
+}
+
+/**
+ * Bike.posts
+ */
+export type Bike$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Post
+   */
+  select?: Prisma.PostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Post
+   */
+  omit?: Prisma.PostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostInclude<ExtArgs> | null
+  where?: Prisma.PostWhereInput
+  orderBy?: Prisma.PostOrderByWithRelationInput | Prisma.PostOrderByWithRelationInput[]
+  cursor?: Prisma.PostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
 }
 
 /**
