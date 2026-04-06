@@ -323,6 +323,11 @@ export type Payment = Prisma.PaymentModel
  */
 export type Post = Prisma.PostModel
 /**
+ * Model PostViewInsight
+ * 
+ */
+export type PostViewInsight = Prisma.PostViewInsightModel
+/**
  * Model PostRating
  * 
  */

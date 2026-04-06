@@ -130,4 +130,6 @@ model User {
   spottingMatches SpottingMatch[]
 
   postRatings PostRating[]
+
+  postViewInsights PostViewInsight[]
 }

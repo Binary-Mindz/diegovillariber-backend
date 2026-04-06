@@ -38,6 +38,7 @@ export type PostAvgAggregateOutputType = {
   ratingCount: number | null
   ratingTotal: number | null
   ratingAverage: runtime.Decimal | null
+  view: number | null
 }
 
 export type PostSumAggregateOutputType = {
@@ -52,6 +53,7 @@ export type PostSumAggregateOutputType = {
   ratingCount: number | null
   ratingTotal: number | null
   ratingAverage: runtime.Decimal | null
+  view: number | null
 }
 
 export type PostMinAggregateOutputType = {
@@ -86,6 +88,7 @@ export type PostMinAggregateOutputType = {
   ratingCount: number | null
   ratingTotal: number | null
   ratingAverage: runtime.Decimal | null
+  view: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -122,6 +125,7 @@ export type PostMaxAggregateOutputType = {
   ratingCount: number | null
   ratingTotal: number | null
   ratingAverage: runtime.Decimal | null
+  view: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -158,6 +162,7 @@ export type PostCountAggregateOutputType = {
   ratingCount: number
   ratingTotal: number
   ratingAverage: number
+  view: number
   visiualStyle: number
   contextActivity: number
   subject: number
@@ -179,6 +184,7 @@ export type PostAvgAggregateInputType = {
   ratingCount?: true
   ratingTotal?: true
   ratingAverage?: true
+  view?: true
 }
 
 export type PostSumAggregateInputType = {
@@ -193,6 +199,7 @@ export type PostSumAggregateInputType = {
   ratingCount?: true
   ratingTotal?: true
   ratingAverage?: true
+  view?: true
 }
 
 export type PostMinAggregateInputType = {
@@ -227,6 +234,7 @@ export type PostMinAggregateInputType = {
   ratingCount?: true
   ratingTotal?: true
   ratingAverage?: true
+  view?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -263,6 +271,7 @@ export type PostMaxAggregateInputType = {
   ratingCount?: true
   ratingTotal?: true
   ratingAverage?: true
+  view?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -299,6 +308,7 @@ export type PostCountAggregateInputType = {
   ratingCount?: true
   ratingTotal?: true
   ratingAverage?: true
+  view?: true
   visiualStyle?: true
   contextActivity?: true
   subject?: true
@@ -425,6 +435,7 @@ export type PostGroupByOutputType = {
   ratingCount: number
   ratingTotal: number
   ratingAverage: runtime.Decimal
+  view: number
   visiualStyle: $Enums.VisiualStyle[]
   contextActivity: $Enums.ContextActivity[]
   subject: $Enums.Subject[]
@@ -487,6 +498,7 @@ export type PostWhereInput = {
   ratingCount?: Prisma.IntFilter<"Post"> | number
   ratingTotal?: Prisma.IntFilter<"Post"> | number
   ratingAverage?: Prisma.DecimalFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFilter<"Post"> | number
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -508,6 +520,7 @@ export type PostWhereInput = {
   comments?: Prisma.CommentListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
+  postViewInsights?: Prisma.PostViewInsightListRelationFilter
 }
 
 export type PostOrderByWithRelationInput = {
@@ -542,6 +555,7 @@ export type PostOrderByWithRelationInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -563,6 +577,7 @@ export type PostOrderByWithRelationInput = {
   comments?: Prisma.CommentOrderByRelationAggregateInput
   postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
   spottingMatches?: Prisma.SpottingMatchOrderByRelationAggregateInput
+  postViewInsights?: Prisma.PostViewInsightOrderByRelationAggregateInput
 }
 
 export type PostWhereUniqueInput = Prisma.AtLeast<{
@@ -600,6 +615,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   ratingCount?: Prisma.IntFilter<"Post"> | number
   ratingTotal?: Prisma.IntFilter<"Post"> | number
   ratingAverage?: Prisma.DecimalFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFilter<"Post"> | number
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -621,6 +637,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   comments?: Prisma.CommentListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
+  postViewInsights?: Prisma.PostViewInsightListRelationFilter
 }, "id">
 
 export type PostOrderByWithAggregationInput = {
@@ -655,6 +672,7 @@ export type PostOrderByWithAggregationInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -702,6 +720,7 @@ export type PostScalarWhereWithAggregatesInput = {
   ratingCount?: Prisma.IntWithAggregatesFilter<"Post"> | number
   ratingTotal?: Prisma.IntWithAggregatesFilter<"Post"> | number
   ratingAverage?: Prisma.DecimalWithAggregatesFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntWithAggregatesFilter<"Post"> | number
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -737,6 +756,7 @@ export type PostCreateInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -758,6 +778,7 @@ export type PostCreateInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateInput = {
@@ -792,6 +813,7 @@ export type PostUncheckedCreateInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -809,6 +831,7 @@ export type PostUncheckedCreateInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostUpdateInput = {
@@ -839,6 +862,7 @@ export type PostUpdateInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -860,6 +884,7 @@ export type PostUpdateInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateInput = {
@@ -894,6 +919,7 @@ export type PostUncheckedUpdateInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -911,6 +937,7 @@ export type PostUncheckedUpdateInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyInput = {
@@ -945,6 +972,7 @@ export type PostCreateManyInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -980,6 +1008,7 @@ export type PostUpdateManyMutationInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1019,6 +1048,7 @@ export type PostUncheckedUpdateManyInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -1097,6 +1127,7 @@ export type PostCountOrderByAggregateInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
   visiualStyle?: Prisma.SortOrder
   contextActivity?: Prisma.SortOrder
   subject?: Prisma.SortOrder
@@ -1116,6 +1147,7 @@ export type PostAvgOrderByAggregateInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
 }
 
 export type PostMaxOrderByAggregateInput = {
@@ -1150,6 +1182,7 @@ export type PostMaxOrderByAggregateInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1186,6 +1219,7 @@ export type PostMinOrderByAggregateInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -1202,6 +1236,7 @@ export type PostSumOrderByAggregateInput = {
   ratingCount?: Prisma.SortOrder
   ratingTotal?: Prisma.SortOrder
   ratingAverage?: Prisma.SortOrder
+  view?: Prisma.SortOrder
 }
 
 export type PostNullableScalarRelationFilter = {
@@ -1422,6 +1457,20 @@ export type PostUpdatecontextActivityInput = {
 export type PostUpdatesubjectInput = {
   set?: $Enums.Subject[]
   push?: $Enums.Subject | $Enums.Subject[]
+}
+
+export type PostCreateNestedOneWithoutPostViewInsightsInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutPostViewInsightsInput, Prisma.PostUncheckedCreateWithoutPostViewInsightsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutPostViewInsightsInput
+  connect?: Prisma.PostWhereUniqueInput
+}
+
+export type PostUpdateOneRequiredWithoutPostViewInsightsNestedInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutPostViewInsightsInput, Prisma.PostUncheckedCreateWithoutPostViewInsightsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutPostViewInsightsInput
+  upsert?: Prisma.PostUpsertWithoutPostViewInsightsInput
+  connect?: Prisma.PostWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutPostViewInsightsInput, Prisma.PostUpdateWithoutPostViewInsightsInput>, Prisma.PostUncheckedUpdateWithoutPostViewInsightsInput>
 }
 
 export type PostCreateNestedOneWithoutPostRatingsInput = {
@@ -1676,6 +1725,7 @@ export type PostCreateWithoutBikeInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1696,6 +1746,7 @@ export type PostCreateWithoutBikeInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutBikeInput = {
@@ -1729,6 +1780,7 @@ export type PostUncheckedCreateWithoutBikeInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1746,6 +1798,7 @@ export type PostUncheckedCreateWithoutBikeInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutBikeInput = {
@@ -1809,6 +1862,7 @@ export type PostScalarWhereInput = {
   ratingCount?: Prisma.IntFilter<"Post"> | number
   ratingTotal?: Prisma.IntFilter<"Post"> | number
   ratingAverage?: Prisma.DecimalFilter<"Post"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFilter<"Post"> | number
   visiualStyle?: Prisma.EnumVisiualStyleNullableListFilter<"Post">
   contextActivity?: Prisma.EnumContextActivityNullableListFilter<"Post">
   subject?: Prisma.EnumSubjectNullableListFilter<"Post">
@@ -1844,6 +1898,7 @@ export type PostCreateWithoutCarInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1864,6 +1919,7 @@ export type PostCreateWithoutCarInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutCarInput = {
@@ -1897,6 +1953,7 @@ export type PostUncheckedCreateWithoutCarInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1914,6 +1971,7 @@ export type PostUncheckedCreateWithoutCarInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutCarInput = {
@@ -1970,6 +2028,7 @@ export type PostCreateWithoutCommentsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -1990,6 +2049,7 @@ export type PostCreateWithoutCommentsInput = {
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutCommentsInput = {
@@ -2024,6 +2084,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2040,6 +2101,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutCommentsInput = {
@@ -2086,6 +2148,7 @@ export type PostUpdateWithoutCommentsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2106,6 +2169,7 @@ export type PostUpdateWithoutCommentsInput = {
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutCommentsInput = {
@@ -2140,6 +2204,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2156,6 +2221,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutHashtagsInput = {
@@ -2186,6 +2252,7 @@ export type PostCreateWithoutHashtagsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2206,6 +2273,7 @@ export type PostCreateWithoutHashtagsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHashtagsInput = {
@@ -2240,6 +2308,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2256,6 +2325,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHashtagsInput = {
@@ -2307,6 +2377,7 @@ export type PostCreateWithoutHidePostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2327,6 +2398,7 @@ export type PostCreateWithoutHidePostsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutHidePostsInput = {
@@ -2361,6 +2433,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2377,6 +2450,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutHidePostsInput = {
@@ -2423,6 +2497,7 @@ export type PostUpdateWithoutHidePostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2443,6 +2518,7 @@ export type PostUpdateWithoutHidePostsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHidePostsInput = {
@@ -2477,6 +2553,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2493,6 +2570,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutLikesInput = {
@@ -2523,6 +2601,7 @@ export type PostCreateWithoutLikesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2543,6 +2622,7 @@ export type PostCreateWithoutLikesInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutLikesInput = {
@@ -2577,6 +2657,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2593,6 +2674,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutLikesInput = {
@@ -2639,6 +2721,7 @@ export type PostUpdateWithoutLikesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2659,6 +2742,7 @@ export type PostUpdateWithoutLikesInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutLikesInput = {
@@ -2693,6 +2777,7 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2706,6 +2791,231 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
   wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
+}
+
+export type PostCreateWithoutPostViewInsightsInput = {
+  id?: string
+  assetType?: $Enums.PostAssetType | null
+  profileType?: $Enums.Type | null
+  postType?: $Enums.PostType
+  caption?: string | null
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
+  like?: number
+  comment?: number
+  share?: number
+  repost?: number
+  racingVote?: number
+  contentBooster?: boolean
+  point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPostsInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutPostsInput
+  car?: Prisma.CarCreateNestedOneWithoutPostsInput
+  bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
+  taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
+  hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutPostInput
+  likes?: Prisma.LikeCreateNestedManyWithoutPostInput
+  comments?: Prisma.CommentCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+}
+
+export type PostUncheckedCreateWithoutPostViewInsightsInput = {
+  id?: string
+  userId: string
+  profileId?: string | null
+  carId?: string | null
+  bikeId?: string | null
+  assetType?: $Enums.PostAssetType | null
+  profileType?: $Enums.Type | null
+  postType?: $Enums.PostType
+  caption?: string | null
+  mediaUrl?: string | null
+  postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  locationVisibility?: string | null
+  vehicleCategory?: $Enums.VehicleCategory
+  mediaType?: $Enums.MediaType
+  like?: number
+  comment?: number
+  share?: number
+  repost?: number
+  racingVote?: number
+  contentBooster?: boolean
+  point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
+  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutPostInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+}
+
+export type PostCreateOrConnectWithoutPostViewInsightsInput = {
+  where: Prisma.PostWhereUniqueInput
+  create: Prisma.XOR<Prisma.PostCreateWithoutPostViewInsightsInput, Prisma.PostUncheckedCreateWithoutPostViewInsightsInput>
+}
+
+export type PostUpsertWithoutPostViewInsightsInput = {
+  update: Prisma.XOR<Prisma.PostUpdateWithoutPostViewInsightsInput, Prisma.PostUncheckedUpdateWithoutPostViewInsightsInput>
+  create: Prisma.XOR<Prisma.PostCreateWithoutPostViewInsightsInput, Prisma.PostUncheckedCreateWithoutPostViewInsightsInput>
+  where?: Prisma.PostWhereInput
+}
+
+export type PostUpdateToOneWithWhereWithoutPostViewInsightsInput = {
+  where?: Prisma.PostWhereInput
+  data: Prisma.XOR<Prisma.PostUpdateWithoutPostViewInsightsInput, Prisma.PostUncheckedUpdateWithoutPostViewInsightsInput>
+}
+
+export type PostUpdateWithoutPostViewInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
+  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  like?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.IntFieldUpdateOperationsInput | number
+  share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
+  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
+  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutPostsNestedInput
+  car?: Prisma.CarUpdateOneWithoutPostsNestedInput
+  bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
+  taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
+  hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutPostNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+}
+
+export type PostUncheckedUpdateWithoutPostViewInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
+  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  like?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.IntFieldUpdateOperationsInput | number
+  share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
+  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
+  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
+  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutPostNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
@@ -2739,6 +3049,7 @@ export type PostCreateWithoutPostRatingsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2759,6 +3070,7 @@ export type PostCreateWithoutPostRatingsInput = {
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutPostRatingsInput = {
@@ -2793,6 +3105,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2809,6 +3122,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutPostRatingsInput = {
@@ -2855,6 +3169,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2875,6 +3190,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutPostRatingsInput = {
@@ -2909,6 +3225,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -2925,6 +3242,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutProfileInput = {
@@ -2955,6 +3273,7 @@ export type PostCreateWithoutProfileInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -2975,6 +3294,7 @@ export type PostCreateWithoutProfileInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutProfileInput = {
@@ -3008,6 +3328,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3025,6 +3346,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutProfileInput = {
@@ -3081,6 +3403,7 @@ export type PostCreateWithoutRacingVotesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3101,6 +3424,7 @@ export type PostCreateWithoutRacingVotesInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRacingVotesInput = {
@@ -3135,6 +3459,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3151,6 +3476,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRacingVotesInput = {
@@ -3197,6 +3523,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3217,6 +3544,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRacingVotesInput = {
@@ -3251,6 +3579,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3267,6 +3596,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutRepostsInput = {
@@ -3297,6 +3627,7 @@ export type PostCreateWithoutRepostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3317,6 +3648,7 @@ export type PostCreateWithoutRepostsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutRepostsInput = {
@@ -3351,6 +3683,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3367,6 +3700,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutRepostsInput = {
@@ -3413,6 +3747,7 @@ export type PostUpdateWithoutRepostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3433,6 +3768,7 @@ export type PostUpdateWithoutRepostsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutRepostsInput = {
@@ -3467,6 +3803,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3483,6 +3820,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutSavePostsInput = {
@@ -3513,6 +3851,7 @@ export type PostCreateWithoutSavePostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3533,6 +3872,7 @@ export type PostCreateWithoutSavePostsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutSavePostsInput = {
@@ -3567,6 +3907,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3583,6 +3924,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutSavePostsInput = {
@@ -3629,6 +3971,7 @@ export type PostUpdateWithoutSavePostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3649,6 +3992,7 @@ export type PostUpdateWithoutSavePostsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutSavePostsInput = {
@@ -3683,6 +4027,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3699,6 +4044,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutSpottingMatchesInput = {
@@ -3729,6 +4075,7 @@ export type PostCreateWithoutSpottingMatchesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3749,6 +4096,7 @@ export type PostCreateWithoutSpottingMatchesInput = {
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutSpottingMatchesInput = {
@@ -3783,6 +4131,7 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3799,6 +4148,7 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutSpottingMatchesInput = {
@@ -3845,6 +4195,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3865,6 +4216,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
@@ -3899,6 +4251,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -3915,6 +4268,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutUserInput = {
@@ -3945,6 +4299,7 @@ export type PostCreateWithoutUserInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -3965,6 +4320,7 @@ export type PostCreateWithoutUserInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserInput = {
@@ -3998,6 +4354,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4015,6 +4372,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserInput = {
@@ -4055,6 +4413,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4075,6 +4434,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutTaggedUsersInput = {
@@ -4109,6 +4469,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4125,6 +4486,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutTaggedUsersInput = {
@@ -4192,6 +4554,7 @@ export type PostCreateWithoutUserPointsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4212,6 +4575,7 @@ export type PostCreateWithoutUserPointsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutUserPointsInput = {
@@ -4246,6 +4610,7 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4262,6 +4627,7 @@ export type PostUncheckedCreateWithoutUserPointsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutUserPointsInput = {
@@ -4308,6 +4674,7 @@ export type PostUpdateWithoutUserPointsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4328,6 +4695,7 @@ export type PostUpdateWithoutUserPointsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserPointsInput = {
@@ -4362,6 +4730,7 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4378,6 +4747,7 @@ export type PostUncheckedUpdateWithoutUserPointsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateWithoutWishListsInput = {
@@ -4408,6 +4778,7 @@ export type PostCreateWithoutWishListsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4428,6 +4799,7 @@ export type PostCreateWithoutWishListsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
 }
 
 export type PostUncheckedCreateWithoutWishListsInput = {
@@ -4462,6 +4834,7 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4478,6 +4851,7 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
 }
 
 export type PostCreateOrConnectWithoutWishListsInput = {
@@ -4524,6 +4898,7 @@ export type PostUpdateWithoutWishListsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4544,6 +4919,7 @@ export type PostUpdateWithoutWishListsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutWishListsInput = {
@@ -4578,6 +4954,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4594,6 +4971,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyBikeInput = {
@@ -4627,6 +5005,7 @@ export type PostCreateManyBikeInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4662,6 +5041,7 @@ export type PostUpdateWithoutBikeInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4682,6 +5062,7 @@ export type PostUpdateWithoutBikeInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutBikeInput = {
@@ -4715,6 +5096,7 @@ export type PostUncheckedUpdateWithoutBikeInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4732,6 +5114,7 @@ export type PostUncheckedUpdateWithoutBikeInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutBikeInput = {
@@ -4765,6 +5148,7 @@ export type PostUncheckedUpdateManyWithoutBikeInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4803,6 +5187,7 @@ export type PostCreateManyCarInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -4838,6 +5223,7 @@ export type PostUpdateWithoutCarInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4858,6 +5244,7 @@ export type PostUpdateWithoutCarInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutCarInput = {
@@ -4891,6 +5278,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4908,6 +5296,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutCarInput = {
@@ -4941,6 +5330,7 @@ export type PostUncheckedUpdateManyWithoutCarInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4976,6 +5366,7 @@ export type PostUpdateWithoutHashtagsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -4996,6 +5387,7 @@ export type PostUpdateWithoutHashtagsInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutHashtagsInput = {
@@ -5030,6 +5422,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5046,6 +5439,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutHashtagsInput = {
@@ -5080,6 +5474,7 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5118,6 +5513,7 @@ export type PostCreateManyProfileInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -5153,6 +5549,7 @@ export type PostUpdateWithoutProfileInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5173,6 +5570,7 @@ export type PostUpdateWithoutProfileInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutProfileInput = {
@@ -5206,6 +5604,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5223,6 +5622,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutProfileInput = {
@@ -5256,6 +5656,7 @@ export type PostUncheckedUpdateManyWithoutProfileInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5294,6 +5695,7 @@ export type PostCreateManyUserInput = {
   ratingCount?: number
   ratingTotal?: number
   ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
   visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
@@ -5329,6 +5731,7 @@ export type PostUpdateWithoutUserInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5349,6 +5752,7 @@ export type PostUpdateWithoutUserInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutUserInput = {
@@ -5382,6 +5786,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5399,6 +5804,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutUserInput = {
@@ -5432,6 +5838,7 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5467,6 +5874,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5487,6 +5895,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateWithoutTaggedUsersInput = {
@@ -5521,6 +5930,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5537,6 +5947,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
@@ -5571,6 +5982,7 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
   ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
   ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
   ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
   visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
   contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
   subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
@@ -5596,6 +6008,7 @@ export type PostCountOutputType = {
   comments: number
   postRatings: number
   spottingMatches: number
+  postViewInsights: number
 }
 
 export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5611,6 +6024,7 @@ export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   comments?: boolean | PostCountOutputTypeCountCommentsArgs
   postRatings?: boolean | PostCountOutputTypeCountPostRatingsArgs
   spottingMatches?: boolean | PostCountOutputTypeCountSpottingMatchesArgs
+  postViewInsights?: boolean | PostCountOutputTypeCountPostViewInsightsArgs
 }
 
 /**
@@ -5707,6 +6121,13 @@ export type PostCountOutputTypeCountSpottingMatchesArgs<ExtArgs extends runtime.
   where?: Prisma.SpottingMatchWhereInput
 }
 
+/**
+ * PostCountOutputType without action
+ */
+export type PostCountOutputTypeCountPostViewInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostViewInsightWhereInput
+}
+
 
 export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -5740,6 +6161,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   ratingCount?: boolean
   ratingTotal?: boolean
   ratingAverage?: boolean
+  view?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -5761,6 +6183,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
+  postViewInsights?: boolean | Prisma.Post$postViewInsightsArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["post"]>
 
@@ -5796,6 +6219,7 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   ratingCount?: boolean
   ratingTotal?: boolean
   ratingAverage?: boolean
+  view?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -5839,6 +6263,7 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   ratingCount?: boolean
   ratingTotal?: boolean
   ratingAverage?: boolean
+  view?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -5882,6 +6307,7 @@ export type PostSelectScalar = {
   ratingCount?: boolean
   ratingTotal?: boolean
   ratingAverage?: boolean
+  view?: boolean
   visiualStyle?: boolean
   contextActivity?: boolean
   subject?: boolean
@@ -5889,7 +6315,7 @@ export type PostSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "bikeId" | "assetType" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "repost" | "racingVote" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "bikeId" | "assetType" | "profileType" | "postType" | "caption" | "mediaUrl" | "postLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility" | "vehicleCategory" | "mediaType" | "like" | "comment" | "share" | "repost" | "racingVote" | "contentBooster" | "point" | "photoEditingDeclaration" | "videoEditingDeclaration" | "ratingCount" | "ratingTotal" | "ratingAverage" | "view" | "visiualStyle" | "contextActivity" | "subject" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.Post$profileArgs<ExtArgs>
@@ -5907,6 +6333,7 @@ export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.Post$spottingMatchesArgs<ExtArgs>
+  postViewInsights?: boolean | Prisma.Post$postViewInsightsArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PostIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -5941,6 +6368,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     comments: Prisma.$CommentPayload<ExtArgs>[]
     postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
     spottingMatches: Prisma.$SpottingMatchPayload<ExtArgs>[]
+    postViewInsights: Prisma.$PostViewInsightPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -5974,6 +6402,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     ratingCount: number
     ratingTotal: number
     ratingAverage: runtime.Decimal
+    view: number
     visiualStyle: $Enums.VisiualStyle[]
     contextActivity: $Enums.ContextActivity[]
     subject: $Enums.Subject[]
@@ -6389,6 +6818,7 @@ export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Typ
   comments<T extends Prisma.Post$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   postRatings<T extends Prisma.Post$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   spottingMatches<T extends Prisma.Post$spottingMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$spottingMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postViewInsights<T extends Prisma.Post$postViewInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$postViewInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostViewInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6449,6 +6879,7 @@ export interface PostFieldRefs {
   readonly ratingCount: Prisma.FieldRef<"Post", 'Int'>
   readonly ratingTotal: Prisma.FieldRef<"Post", 'Int'>
   readonly ratingAverage: Prisma.FieldRef<"Post", 'Decimal'>
+  readonly view: Prisma.FieldRef<"Post", 'Int'>
   readonly visiualStyle: Prisma.FieldRef<"Post", 'VisiualStyle[]'>
   readonly contextActivity: Prisma.FieldRef<"Post", 'ContextActivity[]'>
   readonly subject: Prisma.FieldRef<"Post", 'Subject[]'>
@@ -7192,6 +7623,30 @@ export type Post$spottingMatchesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.SpottingMatchScalarFieldEnum | Prisma.SpottingMatchScalarFieldEnum[]
+}
+
+/**
+ * Post.postViewInsights
+ */
+export type Post$postViewInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostViewInsight
+   */
+  select?: Prisma.PostViewInsightSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostViewInsight
+   */
+  omit?: Prisma.PostViewInsightOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostViewInsightInclude<ExtArgs> | null
+  where?: Prisma.PostViewInsightWhereInput
+  orderBy?: Prisma.PostViewInsightOrderByWithRelationInput | Prisma.PostViewInsightOrderByWithRelationInput[]
+  cursor?: Prisma.PostViewInsightWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostViewInsightScalarFieldEnum | Prisma.PostViewInsightScalarFieldEnum[]
 }
 
 /**

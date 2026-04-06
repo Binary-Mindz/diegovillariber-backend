@@ -26,6 +26,7 @@ import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
+import { PostInsightSourceDto } from './dto/post-insight-source.dto';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -66,17 +67,36 @@ export class PostController {
     res.status(response.statusCode);
     return response;
   }
+
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':postId')
   async getSinglePost(
     @GetUser('userId') userId: string,
     @Param('postId') postId: string,
+    @Query() query: PostInsightSourceDto,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
-      () => this.postsService.getSinglePost(userId, postId),
+      () => this.postsService.getSinglePost(userId, postId, query.source),
       'Post fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':postId/insights')
+  async getPostInsights(
+    @GetUser('userId') userId: string,
+    @Param('postId') postId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.postsService.getPostInsights(userId, postId),
+      'Post insights fetched successfully',
     );
 
     res.status(response.statusCode);

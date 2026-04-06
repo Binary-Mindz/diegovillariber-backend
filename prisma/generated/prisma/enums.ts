@@ -377,6 +377,27 @@ export const Subject = {
 export type Subject = (typeof Subject)[keyof typeof Subject]
 
 
+export const PostViewSource = {
+  FEED: 'FEED',
+  PROFILE: 'PROFILE',
+  SEARCH: 'SEARCH',
+  HASHTAG: 'HASHTAG',
+  DETAIL: 'DETAIL',
+  SHARE_LINK: 'SHARE_LINK'
+} as const
+
+export type PostViewSource = (typeof PostViewSource)[keyof typeof PostViewSource]
+
+
+export const ViewerRelationType = {
+  SELF: 'SELF',
+  FOLLOWER: 'FOLLOWER',
+  NON_FOLLOWER: 'NON_FOLLOWER'
+} as const
+
+export type ViewerRelationType = (typeof ViewerRelationType)[keyof typeof ViewerRelationType]
+
+
 export const RawShiftStatus = {
   ACTIVE: 'ACTIVE',
   UPCOMING: 'UPCOMING',

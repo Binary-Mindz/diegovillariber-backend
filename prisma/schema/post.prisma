@@ -41,6 +41,7 @@ model Post {
   ratingCount   Int     @default(0)
   ratingTotal   Int     @default(0)
   ratingAverage Decimal @default(0) @db.Decimal(10, 2)
+  view          Int     @default(0)
 
   taggedUsers User[] @relation("PostTaggedUsers")
 
@@ -61,12 +62,31 @@ model Post {
   comments    Comment[]
   postRatings PostRating[]
 
-  spottingMatches SpottingMatch[]
+  spottingMatches  SpottingMatch[]
+  postViewInsights PostViewInsight[]
 
   @@index([profileType])
   @@index([latitude, longitude])
   @@index([ratingAverage])
   @@index([createdAt])
+}
+
+model PostViewInsight {
+  id           String             @id @default(uuid()) @db.Uuid
+  postId       String             @db.Uuid
+  viewerId     String?            @db.Uuid
+  source       PostViewSource     @default(DETAIL)
+  relationType ViewerRelationType
+  viewedAt     DateTime           @default(now())
+
+  post   Post  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  viewer User? @relation(fields: [viewerId], references: [id], onDelete: SetNull)
+
+  @@index([postId])
+  @@index([postId, viewedAt])
+  @@index([postId, source])
+  @@index([postId, relationType])
+  @@map("post_view_insights")
 }
 
 enum PhotoEditingDeclaration {
@@ -148,4 +168,19 @@ enum Subject {
   Rear_Detail
   Side
   Wheel
+}
+
+enum PostViewSource {
+  FEED
+  PROFILE
+  SEARCH
+  HASHTAG
+  DETAIL
+  SHARE_LINK
+}
+
+enum ViewerRelationType {
+  SELF
+  FOLLOWER
+  NON_FOLLOWER
 }

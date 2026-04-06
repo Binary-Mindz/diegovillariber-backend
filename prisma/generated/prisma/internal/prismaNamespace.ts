@@ -445,6 +445,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  PostViewInsight: 'PostViewInsight',
   PostRating: 'PostRating',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
@@ -496,7 +497,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5014,6 +5015,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PostViewInsight: {
+      payload: Prisma.$PostViewInsightPayload<ExtArgs>
+      fields: Prisma.PostViewInsightFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PostViewInsightFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PostViewInsightFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        findFirst: {
+          args: Prisma.PostViewInsightFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PostViewInsightFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        findMany: {
+          args: Prisma.PostViewInsightFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>[]
+        }
+        create: {
+          args: Prisma.PostViewInsightCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        createMany: {
+          args: Prisma.PostViewInsightCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PostViewInsightCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>[]
+        }
+        delete: {
+          args: Prisma.PostViewInsightDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        update: {
+          args: Prisma.PostViewInsightUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        deleteMany: {
+          args: Prisma.PostViewInsightDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PostViewInsightUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PostViewInsightUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>[]
+        }
+        upsert: {
+          args: Prisma.PostViewInsightUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PostViewInsightPayload>
+        }
+        aggregate: {
+          args: Prisma.PostViewInsightAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePostViewInsight>
+        }
+        groupBy: {
+          args: Prisma.PostViewInsightGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostViewInsightGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PostViewInsightCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PostViewInsightCountAggregateOutputType> | number
+        }
+      }
+    }
     PostRating: {
       payload: Prisma.$PostRatingPayload<ExtArgs>
       fields: Prisma.PostRatingFieldRefs
@@ -8694,6 +8769,7 @@ export const PostScalarFieldEnum = {
   ratingCount: 'ratingCount',
   ratingTotal: 'ratingTotal',
   ratingAverage: 'ratingAverage',
+  view: 'view',
   visiualStyle: 'visiualStyle',
   contextActivity: 'contextActivity',
   subject: 'subject',
@@ -8702,6 +8778,18 @@ export const PostScalarFieldEnum = {
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostViewInsightScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  viewerId: 'viewerId',
+  source: 'source',
+  relationType: 'relationType',
+  viewedAt: 'viewedAt'
+} as const
+
+export type PostViewInsightScalarFieldEnum = (typeof PostViewInsightScalarFieldEnum)[keyof typeof PostViewInsightScalarFieldEnum]
 
 
 export const PostRatingScalarFieldEnum = {
@@ -10313,6 +10401,34 @@ export type EnumSubjectFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMo
 
 
 /**
+ * Reference to a field of type 'PostViewSource'
+ */
+export type EnumPostViewSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostViewSource'>
+    
+
+
+/**
+ * Reference to a field of type 'PostViewSource[]'
+ */
+export type ListEnumPostViewSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostViewSource[]'>
+    
+
+
+/**
+ * Reference to a field of type 'ViewerRelationType'
+ */
+export type EnumViewerRelationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ViewerRelationType'>
+    
+
+
+/**
+ * Reference to a field of type 'ViewerRelationType[]'
+ */
+export type ListEnumViewerRelationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ViewerRelationType[]'>
+    
+
+
+/**
  * Reference to a field of type 'ProductCategory'
  */
 export type EnumProductCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductCategory'>
@@ -10873,6 +10989,7 @@ export type GlobalOmitConfig = {
   ownerProfile?: Prisma.OwnerProfileOmit
   payment?: Prisma.PaymentOmit
   post?: Prisma.PostOmit
+  postViewInsight?: Prisma.PostViewInsightOmit
   postRating?: Prisma.PostRatingOmit
   prize?: Prisma.PrizeOmit
   proDriverProfile?: Prisma.ProDriverProfileOmit
