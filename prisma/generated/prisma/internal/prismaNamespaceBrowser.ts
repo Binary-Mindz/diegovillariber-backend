@@ -112,6 +112,7 @@ export const ModelName = {
   OwnerProfile: 'OwnerProfile',
   Payment: 'Payment',
   Post: 'Post',
+  PostViewInsight: 'PostViewInsight',
   PostRating: 'PostRating',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
@@ -1143,6 +1144,7 @@ export const PostScalarFieldEnum = {
   ratingCount: 'ratingCount',
   ratingTotal: 'ratingTotal',
   ratingAverage: 'ratingAverage',
+  view: 'view',
   visiualStyle: 'visiualStyle',
   contextActivity: 'contextActivity',
   subject: 'subject',
@@ -1151,6 +1153,18 @@ export const PostScalarFieldEnum = {
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const PostViewInsightScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  viewerId: 'viewerId',
+  source: 'source',
+  relationType: 'relationType',
+  viewedAt: 'viewedAt'
+} as const
+
+export type PostViewInsightScalarFieldEnum = (typeof PostViewInsightScalarFieldEnum)[keyof typeof PostViewInsightScalarFieldEnum]
 
 
 export const PostRatingScalarFieldEnum = {

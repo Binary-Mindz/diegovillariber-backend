@@ -1449,6 +1449,40 @@ export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
+export type EnumPostViewSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel> | $Enums.PostViewSource
+}
+
+export type EnumViewerRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel> | $Enums.ViewerRelationType
+}
+
+export type EnumPostViewSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel> | $Enums.PostViewSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+}
+
+export type EnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.ViewerRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+}
+
 export type EnumProductCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.ProductCategory | Prisma.EnumProductCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.ProductCategory[] | Prisma.ListEnumProductCategoryFieldRefInput<$PrismaModel>
@@ -3445,6 +3479,40 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedDecimalFilter<$PrismaModel>
   _min?: Prisma.NestedDecimalFilter<$PrismaModel>
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
+}
+
+export type NestedEnumPostViewSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel> | $Enums.PostViewSource
+}
+
+export type NestedEnumViewerRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel> | $Enums.ViewerRelationType
+}
+
+export type NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel> | $Enums.PostViewSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.ViewerRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumProductCategoryFilter<$PrismaModel = never> = {

@@ -482,6 +482,7 @@ export type UserWhereInput = {
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
+  postViewInsights?: Prisma.PostViewInsightListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -575,6 +576,7 @@ export type UserOrderByWithRelationInput = {
   spottingRequests?: Prisma.SpottingRequestOrderByRelationAggregateInput
   spottingMatches?: Prisma.SpottingMatchOrderByRelationAggregateInput
   postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
+  postViewInsights?: Prisma.PostViewInsightOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -671,6 +673,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   spottingMatches?: Prisma.SpottingMatchListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
+  postViewInsights?: Prisma.PostViewInsightListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -834,6 +837,7 @@ export type UserCreateInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -927,6 +931,7 @@ export type UserUncheckedCreateInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserUpdateInput = {
@@ -1020,6 +1025,7 @@ export type UserUpdateInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -1113,6 +1119,7 @@ export type UserUncheckedUpdateInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1857,6 +1864,22 @@ export type UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput = {
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
+export type UserCreateNestedOneWithoutPostViewInsightsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostViewInsightsInput, Prisma.UserUncheckedCreateWithoutPostViewInsightsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostViewInsightsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutPostViewInsightsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostViewInsightsInput, Prisma.UserUncheckedCreateWithoutPostViewInsightsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostViewInsightsInput
+  upsert?: Prisma.UserUpsertWithoutPostViewInsightsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostViewInsightsInput, Prisma.UserUpdateWithoutPostViewInsightsInput>, Prisma.UserUncheckedUpdateWithoutPostViewInsightsInput>
+}
+
 export type UserCreateNestedOneWithoutPostRatingsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPostRatingsInput, Prisma.UserUncheckedCreateWithoutPostRatingsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostRatingsInput
@@ -2341,6 +2364,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2433,6 +2457,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2541,6 +2566,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2633,6 +2659,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2725,6 +2752,7 @@ export type UserCreateWithoutChallengesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2817,6 +2845,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2925,6 +2954,7 @@ export type UserUpdateWithoutChallengesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -3017,6 +3047,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -3109,6 +3140,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -3201,6 +3233,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -3309,6 +3342,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -3401,6 +3435,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -3493,6 +3528,7 @@ export type UserCreateWithoutChallengeReactionsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -3585,6 +3621,7 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3693,6 +3730,7 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3785,6 +3823,7 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3877,6 +3916,7 @@ export type UserCreateWithoutChallengeVotesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -3969,6 +4009,7 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -4077,6 +4118,7 @@ export type UserUpdateWithoutChallengeVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -4169,6 +4211,7 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -4261,6 +4304,7 @@ export type UserCreateWithoutChallengeCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -4353,6 +4397,7 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -4461,6 +4506,7 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -4553,6 +4599,7 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4645,6 +4692,7 @@ export type UserCreateWithoutCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4737,6 +4785,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4845,6 +4894,7 @@ export type UserUpdateWithoutCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -4937,6 +4987,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -5029,6 +5080,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -5121,6 +5173,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -5229,6 +5282,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -5321,6 +5375,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -5413,6 +5468,7 @@ export type UserCreateWithoutEventsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -5505,6 +5561,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -5613,6 +5670,7 @@ export type UserUpdateWithoutEventsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5705,6 +5763,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5797,6 +5856,7 @@ export type UserCreateWithoutFollowingInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -5889,6 +5949,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -5986,6 +6047,7 @@ export type UserCreateWithoutFollowersInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -6078,6 +6140,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -6186,6 +6249,7 @@ export type UserUpdateWithoutFollowingInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -6278,6 +6342,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -6381,6 +6446,7 @@ export type UserUpdateWithoutFollowersInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -6473,6 +6539,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6565,6 +6632,7 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -6657,6 +6725,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -6754,6 +6823,7 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -6846,6 +6916,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -6954,6 +7025,7 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -7046,6 +7118,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -7149,6 +7222,7 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -7241,6 +7315,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -7333,6 +7408,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -7425,6 +7501,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -7533,6 +7610,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -7625,6 +7703,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -7717,6 +7796,7 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -7809,6 +7889,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -7906,6 +7987,7 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -7998,6 +8080,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -8106,6 +8189,7 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -8198,6 +8282,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -8301,6 +8386,7 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -8393,6 +8479,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -8485,6 +8572,7 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -8577,6 +8665,7 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -8685,6 +8774,7 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -8777,6 +8867,7 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -8869,6 +8960,7 @@ export type UserCreateWithoutBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -8961,6 +9053,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -9069,6 +9162,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -9161,6 +9255,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -9253,6 +9348,7 @@ export type UserCreateWithoutBattleCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -9345,6 +9441,7 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -9453,6 +9550,7 @@ export type UserUpdateWithoutBattleCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -9545,6 +9643,7 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -9637,6 +9736,7 @@ export type UserCreateWithoutHidePostsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -9729,6 +9829,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -9837,6 +9938,7 @@ export type UserUpdateWithoutHidePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -9929,6 +10031,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -10021,6 +10124,7 @@ export type UserCreateWithoutLikesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -10113,6 +10217,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -10221,6 +10326,7 @@ export type UserUpdateWithoutLikesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -10313,6 +10419,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -10405,6 +10512,7 @@ export type UserCreateWithoutLivesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -10497,6 +10605,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -10605,6 +10714,7 @@ export type UserUpdateWithoutLivesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -10697,6 +10807,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -10789,6 +10900,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -10881,6 +10993,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -10989,6 +11102,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -11081,6 +11195,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -11173,6 +11288,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -11265,6 +11381,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -11362,6 +11479,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -11454,6 +11572,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -11562,6 +11681,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -11654,6 +11774,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -11757,6 +11878,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -11849,6 +11971,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -11941,6 +12064,7 @@ export type UserCreateWithoutMessagesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -12033,6 +12157,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -12141,6 +12266,7 @@ export type UserUpdateWithoutMessagesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -12233,6 +12359,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -12325,6 +12452,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -12417,6 +12545,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -12525,6 +12654,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -12617,6 +12747,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -12709,6 +12840,7 @@ export type UserCreateWithoutNotificationsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -12801,6 +12933,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -12898,6 +13031,7 @@ export type UserCreateWithoutNotificationsActorInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -12990,6 +13124,7 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -13098,6 +13233,7 @@ export type UserUpdateWithoutNotificationsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -13190,6 +13326,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -13293,6 +13430,7 @@ export type UserUpdateWithoutNotificationsActorInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -13385,6 +13523,7 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -13477,6 +13616,7 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -13569,6 +13709,7 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -13677,6 +13818,7 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -13769,6 +13911,7 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutDeviceTokensInput = {
@@ -13861,6 +14004,7 @@ export type UserCreateWithoutDeviceTokensInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutDeviceTokensInput = {
@@ -13953,6 +14097,7 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutDeviceTokensInput = {
@@ -14061,6 +14206,7 @@ export type UserUpdateWithoutDeviceTokensInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeviceTokensInput = {
@@ -14153,6 +14299,7 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -14245,6 +14392,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -14337,6 +14485,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -14445,6 +14594,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -14537,6 +14687,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -14629,6 +14780,7 @@ export type UserCreateWithoutPaymentsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -14721,6 +14873,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -14829,6 +14982,7 @@ export type UserUpdateWithoutPaymentsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -14921,6 +15075,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -15013,6 +15168,7 @@ export type UserCreateWithoutPostsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -15105,6 +15261,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -15202,6 +15359,7 @@ export type UserCreateWithoutTaggedInPostsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -15294,6 +15452,7 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -15402,6 +15561,7 @@ export type UserUpdateWithoutPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -15494,6 +15654,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -15544,6 +15705,394 @@ export type UserScalarWhereInput = {
   twoFactorTempToken?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+}
+
+export type UserCreateWithoutPostViewInsightsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPostViewInsightsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPostViewInsightsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostViewInsightsInput, Prisma.UserUncheckedCreateWithoutPostViewInsightsInput>
+}
+
+export type UserUpsertWithoutPostViewInsightsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPostViewInsightsInput, Prisma.UserUncheckedUpdateWithoutPostViewInsightsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostViewInsightsInput, Prisma.UserUncheckedCreateWithoutPostViewInsightsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPostViewInsightsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPostViewInsightsInput, Prisma.UserUncheckedUpdateWithoutPostViewInsightsInput>
+}
+
+export type UserUpdateWithoutPostViewInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPostViewInsightsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostRatingsInput = {
@@ -15636,6 +16185,7 @@ export type UserCreateWithoutPostRatingsInput = {
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutPostRatingsInput = {
@@ -15728,6 +16278,7 @@ export type UserUncheckedCreateWithoutPostRatingsInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutPostRatingsInput = {
@@ -15836,6 +16387,7 @@ export type UserUpdateWithoutPostRatingsInput = {
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostRatingsInput = {
@@ -15928,6 +16480,7 @@ export type UserUncheckedUpdateWithoutPostRatingsInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutPrizesInput = {
@@ -16020,6 +16573,7 @@ export type UserCreateWithoutPrizesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -16112,6 +16666,7 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -16220,6 +16775,7 @@ export type UserUpdateWithoutPrizesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -16312,6 +16868,7 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -16404,6 +16961,7 @@ export type UserCreateWithoutProductListsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -16496,6 +17054,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -16604,6 +17163,7 @@ export type UserUpdateWithoutProductListsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -16696,6 +17256,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -16788,6 +17349,7 @@ export type UserCreateWithoutProfileInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -16880,6 +17442,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -16988,6 +17551,7 @@ export type UserUpdateWithoutProfileInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -17080,6 +17644,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRacingVotesGivenInput = {
@@ -17172,6 +17737,7 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
@@ -17264,6 +17830,7 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesGivenInput = {
@@ -17361,6 +17928,7 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
@@ -17453,6 +18021,7 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesReceivedInput = {
@@ -17561,6 +18130,7 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
@@ -17653,6 +18223,7 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutRacingVotesReceivedInput = {
@@ -17756,6 +18327,7 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
@@ -17848,6 +18420,7 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -17940,6 +18513,7 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -18032,6 +18606,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -18129,6 +18704,7 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -18221,6 +18797,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -18329,6 +18906,7 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -18421,6 +18999,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -18524,6 +19103,7 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -18616,6 +19196,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -18708,6 +19289,7 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -18800,6 +19382,7 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -18908,6 +19491,7 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -19000,6 +19584,7 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -19092,6 +19677,7 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -19184,6 +19770,7 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -19292,6 +19879,7 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -19384,6 +19972,7 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -19476,6 +20065,7 @@ export type UserCreateWithoutRawShiftVotesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -19568,6 +20158,7 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -19676,6 +20267,7 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -19768,6 +20360,7 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -19860,6 +20453,7 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -19952,6 +20546,7 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -20060,6 +20655,7 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -20152,6 +20748,7 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -20244,6 +20841,7 @@ export type UserCreateWithoutReportsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -20336,6 +20934,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -20444,6 +21043,7 @@ export type UserUpdateWithoutReportsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -20536,6 +21136,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -20628,6 +21229,7 @@ export type UserCreateWithoutRepostsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -20720,6 +21322,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -20828,6 +21431,7 @@ export type UserUpdateWithoutRepostsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -20920,6 +21524,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -21012,6 +21617,7 @@ export type UserCreateWithoutSavePostsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -21104,6 +21710,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -21212,6 +21819,7 @@ export type UserUpdateWithoutSavePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -21304,6 +21912,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -21396,6 +22005,7 @@ export type UserCreateWithoutSharesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -21488,6 +22098,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -21596,6 +22207,7 @@ export type UserUpdateWithoutSharesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -21688,6 +22300,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSplitScreenMatchRequestsInput = {
@@ -21780,6 +22393,7 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -21872,6 +22486,7 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -21980,6 +22595,7 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -22072,6 +22688,7 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -22164,6 +22781,7 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -22256,6 +22874,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -22353,6 +22972,7 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -22445,6 +23065,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -22553,6 +23174,7 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -22645,6 +23267,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -22748,6 +23371,7 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -22840,6 +23464,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -22932,6 +23557,7 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -23024,6 +23650,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -23132,6 +23759,7 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -23224,6 +23852,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleVotesInput = {
@@ -23316,6 +23945,7 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
@@ -23408,6 +24038,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleVotesInput = {
@@ -23516,6 +24147,7 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
@@ -23608,6 +24240,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSpottingMatchesInput = {
@@ -23700,6 +24333,7 @@ export type UserCreateWithoutSpottingMatchesInput = {
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSpottingMatchesInput = {
@@ -23792,6 +24426,7 @@ export type UserUncheckedCreateWithoutSpottingMatchesInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSpottingMatchesInput = {
@@ -23900,6 +24535,7 @@ export type UserUpdateWithoutSpottingMatchesInput = {
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
@@ -23992,6 +24628,7 @@ export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutSpottingRequestsInput = {
@@ -24084,6 +24721,7 @@ export type UserCreateWithoutSpottingRequestsInput = {
   blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutSpottingRequestsInput = {
@@ -24176,6 +24814,7 @@ export type UserUncheckedCreateWithoutSpottingRequestsInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutSpottingRequestsInput = {
@@ -24284,6 +24923,7 @@ export type UserUpdateWithoutSpottingRequestsInput = {
   blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
@@ -24376,6 +25016,7 @@ export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutBlockedUsersInput = {
@@ -24468,6 +25109,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBlockedUsersInput = {
@@ -24560,6 +25202,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBlockedUsersInput = {
@@ -24657,6 +25300,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutBlockedByUsersInput = {
@@ -24749,6 +25393,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutBlockedByUsersInput = {
@@ -24857,6 +25502,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedUsersInput = {
@@ -24949,6 +25595,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpsertWithoutBlockedByUsersInput = {
@@ -25052,6 +25699,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
@@ -25144,6 +25792,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -25236,6 +25885,7 @@ export type UserCreateWithoutUserPointsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -25328,6 +25978,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -25436,6 +26087,7 @@ export type UserUpdateWithoutUserPointsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -25528,6 +26180,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -25620,6 +26273,7 @@ export type UserCreateWithoutWishListsInput = {
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -25712,6 +26366,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -25820,6 +26475,7 @@ export type UserUpdateWithoutWishListsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -25912,6 +26568,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -26004,6 +26661,7 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -26096,6 +26754,7 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -26195,6 +26854,7 @@ export type UserCountOutputType = {
   spottingRequests: number
   spottingMatches: number
   postRatings: number
+  postViewInsights: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -26258,6 +26918,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   spottingRequests?: boolean | UserCountOutputTypeCountSpottingRequestsArgs
   spottingMatches?: boolean | UserCountOutputTypeCountSpottingMatchesArgs
   postRatings?: boolean | UserCountOutputTypeCountPostRatingsArgs
+  postViewInsights?: boolean | UserCountOutputTypeCountPostViewInsightsArgs
 }
 
 /**
@@ -26690,6 +27351,13 @@ export type UserCountOutputTypeCountPostRatingsArgs<ExtArgs extends runtime.Type
   where?: Prisma.PostRatingWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPostViewInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostViewInsightWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -26782,6 +27450,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   spottingRequests?: boolean | Prisma.User$spottingRequestsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.User$spottingMatchesArgs<ExtArgs>
   postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
+  postViewInsights?: boolean | Prisma.User$postViewInsightsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -26942,6 +27611,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   spottingRequests?: boolean | Prisma.User$spottingRequestsArgs<ExtArgs>
   spottingMatches?: boolean | Prisma.User$spottingMatchesArgs<ExtArgs>
   postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
+  postViewInsights?: boolean | Prisma.User$postViewInsightsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -27012,6 +27682,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     spottingRequests: Prisma.$SpottingRequestPayload<ExtArgs>[]
     spottingMatches: Prisma.$SpottingMatchPayload<ExtArgs>[]
     postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
+    postViewInsights: Prisma.$PostViewInsightPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -27498,6 +28169,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   spottingRequests<T extends Prisma.User$spottingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$spottingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   spottingMatches<T extends Prisma.User$spottingMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$spottingMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   postRatings<T extends Prisma.User$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postViewInsights<T extends Prisma.User$postViewInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postViewInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostViewInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -29418,6 +30090,30 @@ export type User$postRatingsArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.PostRatingScalarFieldEnum | Prisma.PostRatingScalarFieldEnum[]
+}
+
+/**
+ * User.postViewInsights
+ */
+export type User$postViewInsightsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostViewInsight
+   */
+  select?: Prisma.PostViewInsightSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostViewInsight
+   */
+  omit?: Prisma.PostViewInsightOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostViewInsightInclude<ExtArgs> | null
+  where?: Prisma.PostViewInsightWhereInput
+  orderBy?: Prisma.PostViewInsightOrderByWithRelationInput | Prisma.PostViewInsightOrderByWithRelationInput[]
+  cursor?: Prisma.PostViewInsightWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostViewInsightScalarFieldEnum | Prisma.PostViewInsightScalarFieldEnum[]
 }
 
 /**
