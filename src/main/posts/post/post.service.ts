@@ -76,6 +76,15 @@ export class PostService {
     return [...excludedUserIds];
   }
 
+  private async getHiddenPostIds(userId: string): Promise<string[]> {
+    const hiddenPosts = await this.prisma.hidePost.findMany({
+      where: { userId },
+      select: { postId: true },
+    });
+
+    return hiddenPosts.map((item) => item.postId);
+  }
+
   private async validatePostAccess(userId: string, postId: string) {
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
@@ -381,6 +390,7 @@ export class PostService {
       };
     });
   }
+
   async getFeed(userId: string, query: FeedQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
@@ -392,6 +402,7 @@ export class PostService {
     }
 
     const excludedUserIds = await this.getExcludedUserIds(userId);
+    const hiddenPostIds = await this.getHiddenPostIds(userId);
 
     const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
     const contextActivity = parseCsvEnum<any>(query.contextActivity);
@@ -447,6 +458,9 @@ export class PostService {
     const where: Prisma.PostWhereInput = {
       userId: {
         notIn: excludedUserIds,
+      },
+      id: {
+        notIn: hiddenPostIds,
       },
 
       ...preferenceFilter,
@@ -526,127 +540,125 @@ export class PostService {
   }
 
   async getPostInsights(userId: string, postId: string) {
-  const post = await this.prisma.post.findUnique({
-    where: { id: postId },
-    select: {
-      id: true,
-      userId: true,
-      view: true,
-      like: true,
-      comment: true,
-      share: true,
-      repost: true,
-      createdAt: true,
-    },
-  });
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      select: {
+        id: true,
+        userId: true,
+        view: true,
+        like: true,
+        comment: true,
+        share: true,
+        repost: true,
+        createdAt: true,
+      },
+    });
 
-  if (!post) {
-    throw new NotFoundException('Post not found');
-  }
+    if (!post) {
+      throw new NotFoundException('Post not found');
+    }
 
-  if (post.userId !== userId) {
-    throw new ForbiddenException(
-      'You are not allowed to view this post insight',
+    if (post.userId !== userId) {
+      throw new ForbiddenException(
+        'You are not allowed to view this post insight',
+      );
+    }
+
+    const [sourceStats, relationStats] = await this.prisma.$transaction([
+      this.prisma.postViewInsight.groupBy({
+        by: ['source'],
+        where: { postId },
+        _count: {
+          source: true,
+        },
+        orderBy: {
+          source: 'asc',
+        },
+      }),
+      this.prisma.postViewInsight.groupBy({
+        by: ['relationType'],
+        where: { postId },
+        _count: {
+          relationType: true,
+        },
+        orderBy: {
+          relationType: 'asc',
+        },
+      }),
+    ]);
+
+    const totalViews = post.view;
+    const totalInteractions =
+      post.like + post.comment + post.share + post.repost;
+
+    const followerViews = this.getGroupedCount(
+      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)
+        ?._count,
+      'relationType',
     );
-  }
 
-  const [sourceStats, relationStats] = await this.prisma.$transaction([
-    this.prisma.postViewInsight.groupBy({
-      by: ['source'],
-      where: { postId },
-      _count: {
-        source: true,
-      },
-      orderBy: {
-        source: 'asc',
-      },
-    }),
-    this.prisma.postViewInsight.groupBy({
-      by: ['relationType'],
-      where: { postId },
-      _count: {
-        relationType: true,
-      },
-      orderBy: {
-        relationType: 'asc',
-      },
-    }),
-  ]);
+    const nonFollowerViews = this.getGroupedCount(
+      relationStats.find(
+        (x) => x.relationType === ViewerRelationType.NON_FOLLOWER,
+      )?._count,
+      'relationType',
+    );
 
-  const totalViews = post.view;
-  const totalInteractions =
-    post.like + post.comment + post.share + post.repost;
+    const selfViews = this.getGroupedCount(
+      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)
+        ?._count,
+      'relationType',
+    );
 
-  const followerViews = this.getGroupedCount(
-    relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)
-      ?._count,
-    'relationType',
-  );
+    const topSourcesOfViews = sourceStats.map((item) => {
+      const count = this.getGroupedCount(item._count, 'source');
 
-  const nonFollowerViews = this.getGroupedCount(
-    relationStats.find(
-      (x) => x.relationType === ViewerRelationType.NON_FOLLOWER,
-    )?._count,
-    'relationType',
-  );
+      return {
+        source: item.source,
+        count,
+        percentage:
+          totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
+      };
+    });
 
-  const selfViews = this.getGroupedCount(
-    relationStats.find((x) => x.relationType === ViewerRelationType.SELF)
-      ?._count,
-    'relationType',
-  );
+    const audience = {
+      followers: followerViews,
+      nonFollowers: nonFollowerViews,
+      self: selfViews,
+    };
 
-  const topSourcesOfViews = sourceStats.map((item) => {
-    const count = this.getGroupedCount(item._count, 'source');
-
-    return {
-      source: item.source,
-      count,
-      percentage:
+    const followerVsNonFollower = {
+      followersPercentage:
         totalViews > 0
-          ? Number(((count / totalViews) * 100).toFixed(2))
+          ? Number(((followerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      nonFollowersPercentage:
+        totalViews > 0
+          ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      selfPercentage:
+        totalViews > 0
+          ? Number(((selfViews / totalViews) * 100).toFixed(2))
           : 0,
     };
-  });
 
-  const audience = {
-    followers: followerViews,
-    nonFollowers: nonFollowerViews,
-    self: selfViews,
-  };
-
-  const followerVsNonFollower = {
-    followersPercentage:
-      totalViews > 0
-        ? Number(((followerViews / totalViews) * 100).toFixed(2))
-        : 0,
-    nonFollowersPercentage:
-      totalViews > 0
-        ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2))
-        : 0,
-    selfPercentage:
-      totalViews > 0
-        ? Number(((selfViews / totalViews) * 100).toFixed(2))
-        : 0,
-  };
-
-  return {
-    overview: {
-      views: totalViews,
-      interactions: totalInteractions,
-      profileActivity: totalInteractions,
-    },
-    engagement: {
-      likes: post.like,
-      comments: post.comment,
-      shares: post.share,
-      reposts: post.repost,
-    },
-    audience,
-    followerVsNonFollower,
-    topSourcesOfViews,
-  };
-}
+    return {
+      overview: {
+        views: totalViews,
+        interactions: totalInteractions,
+        profileActivity: totalInteractions,
+      },
+      engagement: {
+        likes: post.like,
+        comments: post.comment,
+        shares: post.share,
+        reposts: post.repost,
+      },
+      audience,
+      followerVsNonFollower,
+      topSourcesOfViews,
+    };
+  }
 
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
