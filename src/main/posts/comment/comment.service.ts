@@ -64,12 +64,13 @@ export class CommentService {
       await tx.userPoint.create({
         data: {
           userId: post.userId,
-          postId: postId,
-          commentId: comment.id,
+          sourceType: 'COMMENT',
+          sourceId: comment.id,
+          earnBy: 'COMMENT_POST',
           points: COMMENT_REWARD_POINTS,
+          note: 'Point earned from comment',
         },
       });
-
       await tx.user.update({
         where: { id: post.userId },
         data: {
@@ -179,7 +180,7 @@ export class CommentService {
                 replies: {
                   orderBy: { createdAt: 'asc' },
                   include: {
-                    user: { select: { id: true} },
+                    user: { select: { id: true } },
                   },
                 },
               }

@@ -1,34 +1,40 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { UserPointSourceType } from 'generated/prisma/enums';
+
 
 @Injectable()
 export class UserPointService {
   constructor(private readonly prisma: PrismaService) {}
 
- async getMyPointSummary(userId: string) {
-  if (!userId) {
-    throw new BadRequestException('User id is missing from request');
+  async getMyPointSummary(userId: string) {
+    if (!userId) {
+      throw new BadRequestException('User id is missing from request');
+    }
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        totalPoints: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return {
+      userId: user.id,
+      totalPoints: user.totalPoints,
+    };
   }
-
-  const user = await this.prisma.user.findUnique({
-    where: { id: userId },
-    select: {
-      id: true,
-      totalPoints: true,
-    },
-  });
-
-  if (!user) {
-    throw new NotFoundException('User not found');
-  }
-
-  return {
-    userId: user.id,
-    totalPoints: user.totalPoints,
-  };
-}
 
   async getMyPointHistory(userId: string, page = 1, limit = 10) {
+    if (!userId) {
+      throw new BadRequestException('User id is missing from request');
+    }
+
     if (page < 1) {
       throw new BadRequestException('page must be greater than or equal to 1');
     }
@@ -37,8 +43,16 @@ export class UserPointService {
       throw new BadRequestException('limit must be between 1 and 50');
     }
 
-    const skip = (page - 1) * limit;
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { id: true },
+    });
 
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const skip = (page - 1) * limit;
     const where = { userId };
 
     const [items, total] = await this.prisma.$transaction([
@@ -47,65 +61,32 @@ export class UserPointService {
         skip,
         take: limit,
         orderBy: {
-          id: 'desc',
+          createdAt: 'desc',
         },
-        include: {
-          post: {
-            select: {
-              id: true,
-              caption: true,
-              mediaUrl: true,
-              mediaType: true,
-              createdAt: true,
-            },
-          },
-          like: {
-            select: {
-              id: true,
-              postId: true,
-            },
-          },
-          comment: {
-            select: {
-              id: true,
-              postId: true,
-              content: true,
-            },
-          },
-          follow: {
-            select: {
-              id: true,
-              followerId: true,
-              followingId: true,
-            },
-          },
+        select: {
+          id: true,
+          userId: true,
+          sourceType: true,
+          sourceId: true,
+          earnBy: true,
+          points: true,
+          note: true,
+          createdAt: true,
         },
       }),
       this.prisma.userPoint.count({ where }),
     ]);
 
-    const mapped = items.map((item) => {
-      let sourceType: 'POST' | 'LIKE' | 'COMMENT' | 'FOLLOW' | 'MANUAL' = 'MANUAL';
-
-      if (item.postId) sourceType = 'POST';
-      else if (item.likeId) sourceType = 'LIKE';
-      else if (item.commentId) sourceType = 'COMMENT';
-      else if (item.followId) sourceType = 'FOLLOW';
-
-      return {
-        id: item.id,
-        points: item.points,
-        sourceType,
-        postId: item.postId,
-        likeId: item.likeId,
-        commentId: item.commentId,
-        followId: item.followId,
-        post: item.post,
-        like: item.like,
-        comment: item.comment,
-        follow: item.follow,
-      };
-    });
+    const mapped = items.map((item) => ({
+      id: item.id,
+      userId: item.userId,
+      points: item.points,
+      sourceType: item.sourceType as UserPointSourceType,
+      sourceId: item.sourceId,
+      earnBy: item.earnBy,
+      note: item.note,
+      createdAt: item.createdAt,
+    }));
 
     return {
       data: mapped,
@@ -113,7 +94,7 @@ export class UserPointService {
         page,
         limit,
         total,
-        totalPages: Math.ceil(total / limit)
+        totalPages: Math.ceil(total / limit),
       },
     };
   }

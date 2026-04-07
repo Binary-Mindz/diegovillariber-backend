@@ -1,20 +1,30 @@
+enum UserPointSourceType {
+  POST
+  LIKE
+  COMMENT
+  FOLLOW
+  MANUAL
+  EVENT
+  BATTLE
+  OTHER
+}
+
 model UserPoint {
-  id String @id @default(uuid()) @db.Uuid
+  id         String              @id @default(uuid()) @db.Uuid
 
-  userId String @db.Uuid
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String              @db.Uuid
+  user       User                @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  postId String? @db.Uuid
-  post   Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  sourceType UserPointSourceType
+  sourceId   String?             @db.Uuid
 
-  likeId String? @db.Uuid
-  like   Like?   @relation(fields: [likeId], references: [id], onDelete: Cascade)
+  earnBy     String
+  points     Int
+  note       String?
+  createdAt  DateTime            @default(now())
 
-  commentId String?  @db.Uuid
-  comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
-
-  followId String? @db.Uuid
-  follow   Follow? @relation(fields: [followId], references: [id], onDelete: Cascade)
-
-  points Int
+  @@index([userId, createdAt])
+  @@index([earnBy])
+  @@index([sourceType, sourceId])
+  @@map("user_points")
 }

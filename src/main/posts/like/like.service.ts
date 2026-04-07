@@ -5,7 +5,11 @@ import {
 } from '@nestjs/common';
 import { CreateLikeDto, LikesQueryDto } from './dto/create.like.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { PostType, NotificationType, NotificationEntityType } from 'generated/prisma/enums';
+import {
+  PostType,
+  NotificationType,
+  NotificationEntityType,
+} from 'generated/prisma/enums';
 import { NotificationService } from '@/main/notification/notification.service';
 
 @Injectable()
@@ -62,10 +66,12 @@ export class LikeService {
 
       await tx.userPoint.create({
         data: {
-          userId: post.userId,
-          postId,
-          likeId: like.id,
-          points: LIKE_REWARD_POINTS,
+          userId,
+          sourceType: 'LIKE',
+          sourceId: like.id,
+          earnBy: 'LIKE_POST',
+          points: 1,
+          note: 'Point earned from like',
         },
       });
 
@@ -137,9 +143,11 @@ export class LikeService {
       await tx.userPoint.create({
         data: {
           userId: post.userId,
-          postId,
-          likeId: null,
+          sourceType: 'LIKE',
+          sourceId: like.id,
+          earnBy: 'UNLIKE_POST',
           points: -LIKE_REWARD_POINTS,
+          note: 'Point deducted for removing like',
         },
       });
 

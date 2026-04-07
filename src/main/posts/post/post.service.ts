@@ -364,12 +364,26 @@ export class PostService {
       }
 
       await tx.userPoint.create({
-        data: { userId, postId: post.id, points: POST_REWARD_POINTS },
+        data: {
+          userId,
+          sourceType: 'POST',
+          sourceId: post.id,
+          earnBy: 'CREATE_POST',
+          points: POST_REWARD_POINTS,
+          note: 'Point earned for creating post',
+        },
       });
 
       if (wantBoost) {
         await tx.userPoint.create({
-          data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
+          data: {
+            userId,
+            sourceType: 'POST',
+            sourceId: post.id,
+            earnBy: 'BOOST_POST',
+            points: -BOOST_COST_POINTS,
+            note: 'Point deducted for boosting post',
+          },
         });
       }
 
