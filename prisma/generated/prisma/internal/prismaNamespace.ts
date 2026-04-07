@@ -447,6 +447,7 @@ export const ModelName = {
   Post: 'Post',
   PostViewInsight: 'PostViewInsight',
   PostRating: 'PostRating',
+  PrestigeRule: 'PrestigeRule',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
@@ -497,7 +498,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5163,6 +5164,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PrestigeRule: {
+      payload: Prisma.$PrestigeRulePayload<ExtArgs>
+      fields: Prisma.PrestigeRuleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PrestigeRuleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PrestigeRuleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        findFirst: {
+          args: Prisma.PrestigeRuleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PrestigeRuleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        findMany: {
+          args: Prisma.PrestigeRuleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>[]
+        }
+        create: {
+          args: Prisma.PrestigeRuleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        createMany: {
+          args: Prisma.PrestigeRuleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PrestigeRuleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>[]
+        }
+        delete: {
+          args: Prisma.PrestigeRuleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        update: {
+          args: Prisma.PrestigeRuleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        deleteMany: {
+          args: Prisma.PrestigeRuleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PrestigeRuleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PrestigeRuleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>[]
+        }
+        upsert: {
+          args: Prisma.PrestigeRuleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PrestigeRulePayload>
+        }
+        aggregate: {
+          args: Prisma.PrestigeRuleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrestigeRule>
+        }
+        groupBy: {
+          args: Prisma.PrestigeRuleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrestigeRuleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PrestigeRuleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PrestigeRuleCountAggregateOutputType> | number
+        }
+      }
+    }
     Prize: {
       payload: Prisma.$PrizePayload<ExtArgs>
       fields: Prisma.PrizeFieldRefs
@@ -8804,6 +8879,21 @@ export const PostRatingScalarFieldEnum = {
 export type PostRatingScalarFieldEnum = (typeof PostRatingScalarFieldEnum)[keyof typeof PostRatingScalarFieldEnum]
 
 
+export const PrestigeRuleScalarFieldEnum = {
+  id: 'id',
+  earnBy: 'earnBy',
+  point: 'point',
+  dailyCap: 'dailyCap',
+  weeklyCap: 'weeklyCap',
+  cooldownSeconds: 'cooldownSeconds',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrestigeRuleScalarFieldEnum = (typeof PrestigeRuleScalarFieldEnum)[keyof typeof PrestigeRuleScalarFieldEnum]
+
+
 export const PrizeScalarFieldEnum = {
   id: 'id',
   prizeName: 'prizeName',
@@ -9274,11 +9364,12 @@ export type UserBlockScalarFieldEnum = (typeof UserBlockScalarFieldEnum)[keyof t
 export const UserPointScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  postId: 'postId',
-  likeId: 'likeId',
-  commentId: 'commentId',
-  followId: 'followId',
-  points: 'points'
+  sourceType: 'sourceType',
+  sourceId: 'sourceId',
+  earnBy: 'earnBy',
+  points: 'points',
+  note: 'note',
+  createdAt: 'createdAt'
 } as const
 
 export type UserPointScalarFieldEnum = (typeof UserPointScalarFieldEnum)[keyof typeof UserPointScalarFieldEnum]
@@ -10429,6 +10520,20 @@ export type ListEnumViewerRelationTypeFieldRefInput<$PrismaModel> = FieldRefInpu
 
 
 /**
+ * Reference to a field of type 'PrestigeRuleStatus'
+ */
+export type EnumPrestigeRuleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrestigeRuleStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'PrestigeRuleStatus[]'
+ */
+export type ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrestigeRuleStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'ProductCategory'
  */
 export type EnumProductCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductCategory'>
@@ -10821,6 +10926,20 @@ export type ListEnumAccountStatusFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'UserPointSourceType'
+ */
+export type EnumUserPointSourceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserPointSourceType'>
+    
+
+
+/**
+ * Reference to a field of type 'UserPointSourceType[]'
+ */
+export type ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserPointSourceType[]'>
+    
+
+
+/**
  * Reference to a field of type 'Visibility'
  */
 export type EnumVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Visibility'>
@@ -10991,6 +11110,7 @@ export type GlobalOmitConfig = {
   post?: Prisma.PostOmit
   postViewInsight?: Prisma.PostViewInsightOmit
   postRating?: Prisma.PostRatingOmit
+  prestigeRule?: Prisma.PrestigeRuleOmit
   prize?: Prisma.PrizeOmit
   proDriverProfile?: Prisma.ProDriverProfileOmit
   productList?: Prisma.ProductListOmit

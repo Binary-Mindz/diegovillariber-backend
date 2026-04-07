@@ -114,6 +114,7 @@ export const ModelName = {
   Post: 'Post',
   PostViewInsight: 'PostViewInsight',
   PostRating: 'PostRating',
+  PrestigeRule: 'PrestigeRule',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
   ProductList: 'ProductList',
@@ -1179,6 +1180,21 @@ export const PostRatingScalarFieldEnum = {
 export type PostRatingScalarFieldEnum = (typeof PostRatingScalarFieldEnum)[keyof typeof PostRatingScalarFieldEnum]
 
 
+export const PrestigeRuleScalarFieldEnum = {
+  id: 'id',
+  earnBy: 'earnBy',
+  point: 'point',
+  dailyCap: 'dailyCap',
+  weeklyCap: 'weeklyCap',
+  cooldownSeconds: 'cooldownSeconds',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrestigeRuleScalarFieldEnum = (typeof PrestigeRuleScalarFieldEnum)[keyof typeof PrestigeRuleScalarFieldEnum]
+
+
 export const PrizeScalarFieldEnum = {
   id: 'id',
   prizeName: 'prizeName',
@@ -1649,11 +1665,12 @@ export type UserBlockScalarFieldEnum = (typeof UserBlockScalarFieldEnum)[keyof t
 export const UserPointScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  postId: 'postId',
-  likeId: 'likeId',
-  commentId: 'commentId',
-  followId: 'followId',
-  points: 'points'
+  sourceType: 'sourceType',
+  sourceId: 'sourceId',
+  earnBy: 'earnBy',
+  points: 'points',
+  note: 'note',
+  createdAt: 'createdAt'
 } as const
 
 export type UserPointScalarFieldEnum = (typeof UserPointScalarFieldEnum)[keyof typeof UserPointScalarFieldEnum]

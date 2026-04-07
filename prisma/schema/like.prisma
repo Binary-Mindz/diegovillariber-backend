@@ -9,7 +9,6 @@ model Like {
   postType PostType
 
   createdAt  DateTime    @default(now())
-  userPoints UserPoint[]
 
   @@unique([userId, postId, postType])
 }
