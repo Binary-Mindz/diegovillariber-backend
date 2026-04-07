@@ -133,11 +133,4 @@ export class MapQueryDto {
   @IsBoolean()
   regionOnly?: boolean = false;
 
-  @ApiPropertyOptional({ example: 100, default: 100 })
-  @IsOptional()
-  @Type(() => Number)
-  @IsNumber()
-  @Min(1)
-  @Max(300)
-  limit?: number = 100;
 }

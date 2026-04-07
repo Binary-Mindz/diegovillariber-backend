@@ -82,36 +82,35 @@ export class MapService {
   }
 
   async getMapMarkers(query: MapQueryDto) {
-    const {
-      lat,
-      lng,
-      radiusKm = 6371,
-      showSpotter = true,
-      showOwner = true,
-      highRated = false,
-      showBattles = true,
-      showChallenges = true,
-      showEvents = true,
-      showRawShift = true,
-      showMarketplaceCar = false,
-      showMarketplaceCarParts = false,
-      showMarketplacePhotography = false,
-      showMarketplaceSimRacing = false,
-      showProBusiness = false,
-      showProDriver = false,
-      showContentCreator = false,
-      showSimRacing = false,
-      regionOnly = false,
-      limit = 100,
-    } = query;
+  const {
+    lat,
+    lng,
+    radiusKm = 6371,
+    showSpotter = true,
+    showOwner = true,
+    highRated = false,
+    showBattles = true,
+    showChallenges = true,
+    showEvents = true,
+    showRawShift = true,
+    showMarketplaceCar = false,
+    showMarketplaceCarParts = false,
+    showMarketplacePhotography = false,
+    showMarketplaceSimRacing = false,
+    showProBusiness = false,
+    showProDriver = false,
+    showContentCreator = false,
+    showSimRacing = false,
+    regionOnly = false,
+  } = query;
 
-    const hasRegion = regionOnly && lat != null && lng != null;
-    const bounds =
-      hasRegion && lat != null && lng != null
-        ? this.getBounds(lat, lng, radiusKm)
-        : null;
+  const hasRegion = regionOnly && lat != null && lng != null;
+  const bounds =
+    hasRegion && lat != null && lng != null
+      ? this.getBounds(lat, lng, radiusKm)
+      : null;
 
-    const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
+  const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
 
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
@@ -164,7 +163,6 @@ export class MapService {
         ? Promise.resolve<any[]>([])
         : this.prisma.post.findMany({
             where: postWhere,
-            take: limit,
             orderBy: highRated
               ? [{ ratingAverage: 'desc' }, { createdAt: 'desc' }]
               : [{ createdAt: 'desc' }],
@@ -200,7 +198,6 @@ export class MapService {
       showChallenges
         ? this.prisma.challenge.findMany({
             where: challengeWhere,
-            take: limit,
             orderBy: [{ startDate: 'asc' }],
             select: {
               id: true,
@@ -237,7 +234,6 @@ export class MapService {
       showBattles
         ? this.prisma.headToHeadBattle.findMany({
             where: battleWhere,
-            take: limit,
             orderBy: [{ startDate: 'asc' }],
             select: {
               id: true,
@@ -273,7 +269,6 @@ export class MapService {
       showEvents
         ? this.prisma.event.findMany({
             where: eventWhere,
-            take: limit,
             orderBy: [{ startDate: 'asc' }],
             select: {
               id: true,
@@ -307,7 +302,6 @@ export class MapService {
       showRawShift
         ? this.prisma.rawShiftBattle.findMany({
             where: rawShiftWhere,
-            take: limit,
             orderBy: [{ startDate: 'asc' }],
             select: {
               id: true,
@@ -337,7 +331,6 @@ export class MapService {
 
       showProBusiness || showMarketplaceCar || showMarketplaceCarParts || showMarketplacePhotography
         ? this.prisma.businessProfile.findMany({
-            take: limit,
             select: {
               id: true,
               businessName: true,
@@ -356,7 +349,6 @@ export class MapService {
 
       showProDriver
         ? this.prisma.proDriverProfile.findMany({
-            take: limit,
             select: {
               id: true,
               location: true,
@@ -374,7 +366,6 @@ export class MapService {
 
       showContentCreator
         ? this.prisma.contentCreatorProfile.findMany({
-            take: limit,
             select: {
               id: true,
               creatorCategory: true,
@@ -393,7 +384,6 @@ export class MapService {
 
       showSimRacing || showMarketplaceSimRacing
         ? this.prisma.simRacingProfile.findMany({
-            take: limit,
             select: {
               id: true,
               hardwareSetup: true,
