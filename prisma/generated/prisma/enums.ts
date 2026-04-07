@@ -398,6 +398,14 @@ export const ViewerRelationType = {
 export type ViewerRelationType = (typeof ViewerRelationType)[keyof typeof ViewerRelationType]
 
 
+export const PrestigeRuleStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type PrestigeRuleStatus = (typeof PrestigeRuleStatus)[keyof typeof PrestigeRuleStatus]
+
+
 export const RawShiftStatus = {
   ACTIVE: 'ACTIVE',
   UPCOMING: 'UPCOMING',
@@ -1204,3 +1212,17 @@ export const TutorialStatus = {
 } as const
 
 export type TutorialStatus = (typeof TutorialStatus)[keyof typeof TutorialStatus]
+
+
+export const UserPointSourceType = {
+  POST: 'POST',
+  LIKE: 'LIKE',
+  COMMENT: 'COMMENT',
+  FOLLOW: 'FOLLOW',
+  MANUAL: 'MANUAL',
+  EVENT: 'EVENT',
+  BATTLE: 'BATTLE',
+  OTHER: 'OTHER'
+} as const
+
+export type UserPointSourceType = (typeof UserPointSourceType)[keyof typeof UserPointSourceType]

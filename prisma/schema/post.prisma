@@ -56,7 +56,6 @@ model Post {
   savePosts       SavePost[]
   hidePosts       HidePost[]
   wishLists       WishList[]
-  userPoints      UserPoint[]
 
   likes       Like[]
   comments    Comment[]

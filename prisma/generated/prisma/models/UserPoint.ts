@@ -37,31 +37,34 @@ export type UserPointSumAggregateOutputType = {
 export type UserPointMinAggregateOutputType = {
   id: string | null
   userId: string | null
-  postId: string | null
-  likeId: string | null
-  commentId: string | null
-  followId: string | null
+  sourceType: $Enums.UserPointSourceType | null
+  sourceId: string | null
+  earnBy: string | null
   points: number | null
+  note: string | null
+  createdAt: Date | null
 }
 
 export type UserPointMaxAggregateOutputType = {
   id: string | null
   userId: string | null
-  postId: string | null
-  likeId: string | null
-  commentId: string | null
-  followId: string | null
+  sourceType: $Enums.UserPointSourceType | null
+  sourceId: string | null
+  earnBy: string | null
   points: number | null
+  note: string | null
+  createdAt: Date | null
 }
 
 export type UserPointCountAggregateOutputType = {
   id: number
   userId: number
-  postId: number
-  likeId: number
-  commentId: number
-  followId: number
+  sourceType: number
+  sourceId: number
+  earnBy: number
   points: number
+  note: number
+  createdAt: number
   _all: number
 }
 
@@ -77,31 +80,34 @@ export type UserPointSumAggregateInputType = {
 export type UserPointMinAggregateInputType = {
   id?: true
   userId?: true
-  postId?: true
-  likeId?: true
-  commentId?: true
-  followId?: true
+  sourceType?: true
+  sourceId?: true
+  earnBy?: true
   points?: true
+  note?: true
+  createdAt?: true
 }
 
 export type UserPointMaxAggregateInputType = {
   id?: true
   userId?: true
-  postId?: true
-  likeId?: true
-  commentId?: true
-  followId?: true
+  sourceType?: true
+  sourceId?: true
+  earnBy?: true
   points?: true
+  note?: true
+  createdAt?: true
 }
 
 export type UserPointCountAggregateInputType = {
   id?: true
   userId?: true
-  postId?: true
-  likeId?: true
-  commentId?: true
-  followId?: true
+  sourceType?: true
+  sourceId?: true
+  earnBy?: true
   points?: true
+  note?: true
+  createdAt?: true
   _all?: true
 }
 
@@ -194,11 +200,12 @@ export type UserPointGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type UserPointGroupByOutputType = {
   id: string
   userId: string
-  postId: string | null
-  likeId: string | null
-  commentId: string | null
-  followId: string | null
+  sourceType: $Enums.UserPointSourceType
+  sourceId: string | null
+  earnBy: string
   points: number
+  note: string | null
+  createdAt: Date
   _count: UserPointCountAggregateOutputType | null
   _avg: UserPointAvgAggregateOutputType | null
   _sum: UserPointSumAggregateOutputType | null
@@ -227,31 +234,25 @@ export type UserPointWhereInput = {
   NOT?: Prisma.UserPointWhereInput | Prisma.UserPointWhereInput[]
   id?: Prisma.UuidFilter<"UserPoint"> | string
   userId?: Prisma.UuidFilter<"UserPoint"> | string
-  postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFilter<"UserPoint"> | $Enums.UserPointSourceType
+  sourceId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  earnBy?: Prisma.StringFilter<"UserPoint"> | string
   points?: Prisma.IntFilter<"UserPoint"> | number
+  note?: Prisma.StringNullableFilter<"UserPoint"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"UserPoint"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
-  like?: Prisma.XOR<Prisma.LikeNullableScalarRelationFilter, Prisma.LikeWhereInput> | null
-  comment?: Prisma.XOR<Prisma.CommentNullableScalarRelationFilter, Prisma.CommentWhereInput> | null
-  follow?: Prisma.XOR<Prisma.FollowNullableScalarRelationFilter, Prisma.FollowWhereInput> | null
 }
 
 export type UserPointOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrderInput | Prisma.SortOrder
-  likeId?: Prisma.SortOrderInput | Prisma.SortOrder
-  commentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  followId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceType?: Prisma.SortOrder
+  sourceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  earnBy?: Prisma.SortOrder
   points?: Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  post?: Prisma.PostOrderByWithRelationInput
-  like?: Prisma.LikeOrderByWithRelationInput
-  comment?: Prisma.CommentOrderByWithRelationInput
-  follow?: Prisma.FollowOrderByWithRelationInput
 }
 
 export type UserPointWhereUniqueInput = Prisma.AtLeast<{
@@ -260,26 +261,24 @@ export type UserPointWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.UserPointWhereInput[]
   NOT?: Prisma.UserPointWhereInput | Prisma.UserPointWhereInput[]
   userId?: Prisma.UuidFilter<"UserPoint"> | string
-  postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFilter<"UserPoint"> | $Enums.UserPointSourceType
+  sourceId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  earnBy?: Prisma.StringFilter<"UserPoint"> | string
   points?: Prisma.IntFilter<"UserPoint"> | number
+  note?: Prisma.StringNullableFilter<"UserPoint"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"UserPoint"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  post?: Prisma.XOR<Prisma.PostNullableScalarRelationFilter, Prisma.PostWhereInput> | null
-  like?: Prisma.XOR<Prisma.LikeNullableScalarRelationFilter, Prisma.LikeWhereInput> | null
-  comment?: Prisma.XOR<Prisma.CommentNullableScalarRelationFilter, Prisma.CommentWhereInput> | null
-  follow?: Prisma.XOR<Prisma.FollowNullableScalarRelationFilter, Prisma.FollowWhereInput> | null
 }, "id">
 
 export type UserPointOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrderInput | Prisma.SortOrder
-  likeId?: Prisma.SortOrderInput | Prisma.SortOrder
-  commentId?: Prisma.SortOrderInput | Prisma.SortOrder
-  followId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceType?: Prisma.SortOrder
+  sourceId?: Prisma.SortOrderInput | Prisma.SortOrder
+  earnBy?: Prisma.SortOrder
   points?: Prisma.SortOrder
+  note?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
   _count?: Prisma.UserPointCountOrderByAggregateInput
   _avg?: Prisma.UserPointAvgOrderByAggregateInput
   _max?: Prisma.UserPointMaxOrderByAggregateInput
@@ -293,76 +292,88 @@ export type UserPointScalarWhereWithAggregatesInput = {
   NOT?: Prisma.UserPointScalarWhereWithAggregatesInput | Prisma.UserPointScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"UserPoint"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"UserPoint"> | string
-  postId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
-  likeId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
-  commentId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
-  followId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeWithAggregatesFilter<"UserPoint"> | $Enums.UserPointSourceType
+  sourceId?: Prisma.UuidNullableWithAggregatesFilter<"UserPoint"> | string | null
+  earnBy?: Prisma.StringWithAggregatesFilter<"UserPoint"> | string
   points?: Prisma.IntWithAggregatesFilter<"UserPoint"> | number
+  note?: Prisma.StringNullableWithAggregatesFilter<"UserPoint"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"UserPoint"> | Date | string
 }
 
 export type UserPointCreateInput = {
   id?: string
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
+  note?: string | null
+  createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutUserPointsInput
-  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
-  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
 }
 
 export type UserPointUncheckedCreateInput = {
   id?: string
   userId: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
+  note?: string | null
+  createdAt?: Date | string
 }
 
 export type UserPointUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
-  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
-  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
 }
 
 export type UserPointUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserPointCreateManyInput = {
   id?: string
   userId: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
+  note?: string | null
+  createdAt?: Date | string
 }
 
 export type UserPointUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserPointUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserPointListRelationFilter = {
@@ -378,11 +389,12 @@ export type UserPointOrderByRelationAggregateInput = {
 export type UserPointCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrder
-  likeId?: Prisma.SortOrder
-  commentId?: Prisma.SortOrder
-  followId?: Prisma.SortOrder
+  sourceType?: Prisma.SortOrder
+  sourceId?: Prisma.SortOrder
+  earnBy?: Prisma.SortOrder
   points?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserPointAvgOrderByAggregateInput = {
@@ -392,193 +404,27 @@ export type UserPointAvgOrderByAggregateInput = {
 export type UserPointMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrder
-  likeId?: Prisma.SortOrder
-  commentId?: Prisma.SortOrder
-  followId?: Prisma.SortOrder
+  sourceType?: Prisma.SortOrder
+  sourceId?: Prisma.SortOrder
+  earnBy?: Prisma.SortOrder
   points?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserPointMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  postId?: Prisma.SortOrder
-  likeId?: Prisma.SortOrder
-  commentId?: Prisma.SortOrder
-  followId?: Prisma.SortOrder
+  sourceType?: Prisma.SortOrder
+  sourceId?: Prisma.SortOrder
+  earnBy?: Prisma.SortOrder
   points?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
 }
 
 export type UserPointSumOrderByAggregateInput = {
   points?: Prisma.SortOrder
-}
-
-export type UserPointCreateNestedManyWithoutCommentInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput> | Prisma.UserPointCreateWithoutCommentInput[] | Prisma.UserPointUncheckedCreateWithoutCommentInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutCommentInput | Prisma.UserPointCreateOrConnectWithoutCommentInput[]
-  createMany?: Prisma.UserPointCreateManyCommentInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUncheckedCreateNestedManyWithoutCommentInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput> | Prisma.UserPointCreateWithoutCommentInput[] | Prisma.UserPointUncheckedCreateWithoutCommentInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutCommentInput | Prisma.UserPointCreateOrConnectWithoutCommentInput[]
-  createMany?: Prisma.UserPointCreateManyCommentInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUpdateManyWithoutCommentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput> | Prisma.UserPointCreateWithoutCommentInput[] | Prisma.UserPointUncheckedCreateWithoutCommentInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutCommentInput | Prisma.UserPointCreateOrConnectWithoutCommentInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutCommentInput | Prisma.UserPointUpsertWithWhereUniqueWithoutCommentInput[]
-  createMany?: Prisma.UserPointCreateManyCommentInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput | Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutCommentInput | Prisma.UserPointUpdateManyWithWhereWithoutCommentInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointUncheckedUpdateManyWithoutCommentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput> | Prisma.UserPointCreateWithoutCommentInput[] | Prisma.UserPointUncheckedCreateWithoutCommentInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutCommentInput | Prisma.UserPointCreateOrConnectWithoutCommentInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutCommentInput | Prisma.UserPointUpsertWithWhereUniqueWithoutCommentInput[]
-  createMany?: Prisma.UserPointCreateManyCommentInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput | Prisma.UserPointUpdateWithWhereUniqueWithoutCommentInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutCommentInput | Prisma.UserPointUpdateManyWithWhereWithoutCommentInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointCreateNestedManyWithoutFollowInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
-  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUncheckedCreateNestedManyWithoutFollowInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
-  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUpdateManyWithoutFollowNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput[]
-  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutFollowInput | Prisma.UserPointUpdateManyWithWhereWithoutFollowInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointUncheckedUpdateManyWithoutFollowNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput> | Prisma.UserPointCreateWithoutFollowInput[] | Prisma.UserPointUncheckedCreateWithoutFollowInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutFollowInput | Prisma.UserPointCreateOrConnectWithoutFollowInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpsertWithWhereUniqueWithoutFollowInput[]
-  createMany?: Prisma.UserPointCreateManyFollowInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput | Prisma.UserPointUpdateWithWhereUniqueWithoutFollowInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutFollowInput | Prisma.UserPointUpdateManyWithWhereWithoutFollowInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointCreateNestedManyWithoutLikeInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput> | Prisma.UserPointCreateWithoutLikeInput[] | Prisma.UserPointUncheckedCreateWithoutLikeInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutLikeInput | Prisma.UserPointCreateOrConnectWithoutLikeInput[]
-  createMany?: Prisma.UserPointCreateManyLikeInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUncheckedCreateNestedManyWithoutLikeInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput> | Prisma.UserPointCreateWithoutLikeInput[] | Prisma.UserPointUncheckedCreateWithoutLikeInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutLikeInput | Prisma.UserPointCreateOrConnectWithoutLikeInput[]
-  createMany?: Prisma.UserPointCreateManyLikeInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUpdateManyWithoutLikeNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput> | Prisma.UserPointCreateWithoutLikeInput[] | Prisma.UserPointUncheckedCreateWithoutLikeInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutLikeInput | Prisma.UserPointCreateOrConnectWithoutLikeInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutLikeInput | Prisma.UserPointUpsertWithWhereUniqueWithoutLikeInput[]
-  createMany?: Prisma.UserPointCreateManyLikeInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutLikeInput | Prisma.UserPointUpdateWithWhereUniqueWithoutLikeInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutLikeInput | Prisma.UserPointUpdateManyWithWhereWithoutLikeInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointUncheckedUpdateManyWithoutLikeNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput> | Prisma.UserPointCreateWithoutLikeInput[] | Prisma.UserPointUncheckedCreateWithoutLikeInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutLikeInput | Prisma.UserPointCreateOrConnectWithoutLikeInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutLikeInput | Prisma.UserPointUpsertWithWhereUniqueWithoutLikeInput[]
-  createMany?: Prisma.UserPointCreateManyLikeInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutLikeInput | Prisma.UserPointUpdateWithWhereUniqueWithoutLikeInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutLikeInput | Prisma.UserPointUpdateManyWithWhereWithoutLikeInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointCreateNestedManyWithoutPostInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput> | Prisma.UserPointCreateWithoutPostInput[] | Prisma.UserPointUncheckedCreateWithoutPostInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutPostInput | Prisma.UserPointCreateOrConnectWithoutPostInput[]
-  createMany?: Prisma.UserPointCreateManyPostInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUncheckedCreateNestedManyWithoutPostInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput> | Prisma.UserPointCreateWithoutPostInput[] | Prisma.UserPointUncheckedCreateWithoutPostInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutPostInput | Prisma.UserPointCreateOrConnectWithoutPostInput[]
-  createMany?: Prisma.UserPointCreateManyPostInputEnvelope
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-}
-
-export type UserPointUpdateManyWithoutPostNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput> | Prisma.UserPointCreateWithoutPostInput[] | Prisma.UserPointUncheckedCreateWithoutPostInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutPostInput | Prisma.UserPointCreateOrConnectWithoutPostInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutPostInput | Prisma.UserPointUpsertWithWhereUniqueWithoutPostInput[]
-  createMany?: Prisma.UserPointCreateManyPostInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutPostInput | Prisma.UserPointUpdateWithWhereUniqueWithoutPostInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutPostInput | Prisma.UserPointUpdateManyWithWhereWithoutPostInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-}
-
-export type UserPointUncheckedUpdateManyWithoutPostNestedInput = {
-  create?: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput> | Prisma.UserPointCreateWithoutPostInput[] | Prisma.UserPointUncheckedCreateWithoutPostInput[]
-  connectOrCreate?: Prisma.UserPointCreateOrConnectWithoutPostInput | Prisma.UserPointCreateOrConnectWithoutPostInput[]
-  upsert?: Prisma.UserPointUpsertWithWhereUniqueWithoutPostInput | Prisma.UserPointUpsertWithWhereUniqueWithoutPostInput[]
-  createMany?: Prisma.UserPointCreateManyPostInputEnvelope
-  set?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  disconnect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  delete?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  connect?: Prisma.UserPointWhereUniqueInput | Prisma.UserPointWhereUniqueInput[]
-  update?: Prisma.UserPointUpdateWithWhereUniqueWithoutPostInput | Prisma.UserPointUpdateWithWhereUniqueWithoutPostInput[]
-  updateMany?: Prisma.UserPointUpdateManyWithWhereWithoutPostInput | Prisma.UserPointUpdateManyWithWhereWithoutPostInput[]
-  deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
 }
 
 export type UserPointCreateNestedManyWithoutUserInput = {
@@ -623,211 +469,28 @@ export type UserPointUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
 }
 
-export type UserPointCreateWithoutCommentInput = {
-  id?: string
-  points: number
-  user: Prisma.UserCreateNestedOneWithoutUserPointsInput
-  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
-  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
-}
-
-export type UserPointUncheckedCreateWithoutCommentInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  likeId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointCreateOrConnectWithoutCommentInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput>
-}
-
-export type UserPointCreateManyCommentInputEnvelope = {
-  data: Prisma.UserPointCreateManyCommentInput | Prisma.UserPointCreateManyCommentInput[]
-  skipDuplicates?: boolean
-}
-
-export type UserPointUpsertWithWhereUniqueWithoutCommentInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserPointUpdateWithoutCommentInput, Prisma.UserPointUncheckedUpdateWithoutCommentInput>
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutCommentInput, Prisma.UserPointUncheckedCreateWithoutCommentInput>
-}
-
-export type UserPointUpdateWithWhereUniqueWithoutCommentInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserPointUpdateWithoutCommentInput, Prisma.UserPointUncheckedUpdateWithoutCommentInput>
-}
-
-export type UserPointUpdateManyWithWhereWithoutCommentInput = {
-  where: Prisma.UserPointScalarWhereInput
-  data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutCommentInput>
-}
-
-export type UserPointScalarWhereInput = {
-  AND?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-  OR?: Prisma.UserPointScalarWhereInput[]
-  NOT?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
-  id?: Prisma.UuidFilter<"UserPoint"> | string
-  userId?: Prisma.UuidFilter<"UserPoint"> | string
-  postId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  likeId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  commentId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  followId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
-  points?: Prisma.IntFilter<"UserPoint"> | number
-}
-
-export type UserPointCreateWithoutFollowInput = {
-  id?: string
-  points: number
-  user: Prisma.UserCreateNestedOneWithoutUserPointsInput
-  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
-  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-}
-
-export type UserPointUncheckedCreateWithoutFollowInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  points: number
-}
-
-export type UserPointCreateOrConnectWithoutFollowInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput>
-}
-
-export type UserPointCreateManyFollowInputEnvelope = {
-  data: Prisma.UserPointCreateManyFollowInput | Prisma.UserPointCreateManyFollowInput[]
-  skipDuplicates?: boolean
-}
-
-export type UserPointUpsertWithWhereUniqueWithoutFollowInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserPointUpdateWithoutFollowInput, Prisma.UserPointUncheckedUpdateWithoutFollowInput>
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutFollowInput, Prisma.UserPointUncheckedCreateWithoutFollowInput>
-}
-
-export type UserPointUpdateWithWhereUniqueWithoutFollowInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserPointUpdateWithoutFollowInput, Prisma.UserPointUncheckedUpdateWithoutFollowInput>
-}
-
-export type UserPointUpdateManyWithWhereWithoutFollowInput = {
-  where: Prisma.UserPointScalarWhereInput
-  data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutFollowInput>
-}
-
-export type UserPointCreateWithoutLikeInput = {
-  id?: string
-  points: number
-  user: Prisma.UserCreateNestedOneWithoutUserPointsInput
-  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
-  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
-}
-
-export type UserPointUncheckedCreateWithoutLikeInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  commentId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointCreateOrConnectWithoutLikeInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput>
-}
-
-export type UserPointCreateManyLikeInputEnvelope = {
-  data: Prisma.UserPointCreateManyLikeInput | Prisma.UserPointCreateManyLikeInput[]
-  skipDuplicates?: boolean
-}
-
-export type UserPointUpsertWithWhereUniqueWithoutLikeInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserPointUpdateWithoutLikeInput, Prisma.UserPointUncheckedUpdateWithoutLikeInput>
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutLikeInput, Prisma.UserPointUncheckedCreateWithoutLikeInput>
-}
-
-export type UserPointUpdateWithWhereUniqueWithoutLikeInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserPointUpdateWithoutLikeInput, Prisma.UserPointUncheckedUpdateWithoutLikeInput>
-}
-
-export type UserPointUpdateManyWithWhereWithoutLikeInput = {
-  where: Prisma.UserPointScalarWhereInput
-  data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutLikeInput>
-}
-
-export type UserPointCreateWithoutPostInput = {
-  id?: string
-  points: number
-  user: Prisma.UserCreateNestedOneWithoutUserPointsInput
-  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
-}
-
-export type UserPointUncheckedCreateWithoutPostInput = {
-  id?: string
-  userId: string
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointCreateOrConnectWithoutPostInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput>
-}
-
-export type UserPointCreateManyPostInputEnvelope = {
-  data: Prisma.UserPointCreateManyPostInput | Prisma.UserPointCreateManyPostInput[]
-  skipDuplicates?: boolean
-}
-
-export type UserPointUpsertWithWhereUniqueWithoutPostInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserPointUpdateWithoutPostInput, Prisma.UserPointUncheckedUpdateWithoutPostInput>
-  create: Prisma.XOR<Prisma.UserPointCreateWithoutPostInput, Prisma.UserPointUncheckedCreateWithoutPostInput>
-}
-
-export type UserPointUpdateWithWhereUniqueWithoutPostInput = {
-  where: Prisma.UserPointWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserPointUpdateWithoutPostInput, Prisma.UserPointUncheckedUpdateWithoutPostInput>
-}
-
-export type UserPointUpdateManyWithWhereWithoutPostInput = {
-  where: Prisma.UserPointScalarWhereInput
-  data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutPostInput>
+export type EnumUserPointSourceTypeFieldUpdateOperationsInput = {
+  set?: $Enums.UserPointSourceType
 }
 
 export type UserPointCreateWithoutUserInput = {
   id?: string
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
-  post?: Prisma.PostCreateNestedOneWithoutUserPointsInput
-  like?: Prisma.LikeCreateNestedOneWithoutUserPointsInput
-  comment?: Prisma.CommentCreateNestedOneWithoutUserPointsInput
-  follow?: Prisma.FollowCreateNestedOneWithoutUserPointsInput
+  note?: string | null
+  createdAt?: Date | string
 }
 
 export type UserPointUncheckedCreateWithoutUserInput = {
   id?: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
+  note?: string | null
+  createdAt?: Date | string
 }
 
 export type UserPointCreateOrConnectWithoutUserInput = {
@@ -856,184 +519,58 @@ export type UserPointUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.UserPointUpdateManyMutationInput, Prisma.UserPointUncheckedUpdateManyWithoutUserInput>
 }
 
-export type UserPointCreateManyCommentInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  likeId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointUpdateWithoutCommentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
-  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
-  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
-}
-
-export type UserPointUncheckedUpdateWithoutCommentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointUncheckedUpdateManyWithoutCommentInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointCreateManyFollowInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  points: number
-}
-
-export type UserPointUpdateWithoutFollowInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
-  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
-  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-}
-
-export type UserPointUncheckedUpdateWithoutFollowInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointUncheckedUpdateManyWithoutFollowInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointCreateManyLikeInput = {
-  id?: string
-  userId: string
-  postId?: string | null
-  commentId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointUpdateWithoutLikeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
-  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
-  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
-}
-
-export type UserPointUncheckedUpdateWithoutLikeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointUncheckedUpdateManyWithoutLikeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointCreateManyPostInput = {
-  id?: string
-  userId: string
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
-  points: number
-}
-
-export type UserPointUpdateWithoutPostInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-  user?: Prisma.UserUpdateOneRequiredWithoutUserPointsNestedInput
-  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
-}
-
-export type UserPointUncheckedUpdateWithoutPostInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type UserPointUncheckedUpdateManyWithoutPostInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  points?: Prisma.IntFieldUpdateOperationsInput | number
+export type UserPointScalarWhereInput = {
+  AND?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
+  OR?: Prisma.UserPointScalarWhereInput[]
+  NOT?: Prisma.UserPointScalarWhereInput | Prisma.UserPointScalarWhereInput[]
+  id?: Prisma.UuidFilter<"UserPoint"> | string
+  userId?: Prisma.UuidFilter<"UserPoint"> | string
+  sourceType?: Prisma.EnumUserPointSourceTypeFilter<"UserPoint"> | $Enums.UserPointSourceType
+  sourceId?: Prisma.UuidNullableFilter<"UserPoint"> | string | null
+  earnBy?: Prisma.StringFilter<"UserPoint"> | string
+  points?: Prisma.IntFilter<"UserPoint"> | number
+  note?: Prisma.StringNullableFilter<"UserPoint"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"UserPoint"> | Date | string
 }
 
 export type UserPointCreateManyUserInput = {
   id?: string
-  postId?: string | null
-  likeId?: string | null
-  commentId?: string | null
-  followId?: string | null
+  sourceType: $Enums.UserPointSourceType
+  sourceId?: string | null
+  earnBy: string
   points: number
+  note?: string | null
+  createdAt?: Date | string
 }
 
 export type UserPointUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
-  post?: Prisma.PostUpdateOneWithoutUserPointsNestedInput
-  like?: Prisma.LikeUpdateOneWithoutUserPointsNestedInput
-  comment?: Prisma.CommentUpdateOneWithoutUserPointsNestedInput
-  follow?: Prisma.FollowUpdateOneWithoutUserPointsNestedInput
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserPointUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserPointUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  postId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  likeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  commentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  followId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceType?: Prisma.EnumUserPointSourceTypeFieldUpdateOperationsInput | $Enums.UserPointSourceType
+  sourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  earnBy?: Prisma.StringFieldUpdateOperationsInput | string
   points?: Prisma.IntFieldUpdateOperationsInput | number
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1041,98 +578,75 @@ export type UserPointUncheckedUpdateManyWithoutUserInput = {
 export type UserPointSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
-  postId?: boolean
-  likeId?: boolean
-  commentId?: boolean
-  followId?: boolean
+  sourceType?: boolean
+  sourceId?: boolean
+  earnBy?: boolean
   points?: boolean
+  note?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
-  postId?: boolean
-  likeId?: boolean
-  commentId?: boolean
-  followId?: boolean
+  sourceType?: boolean
+  sourceId?: boolean
+  earnBy?: boolean
   points?: boolean
+  note?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
-  postId?: boolean
-  likeId?: boolean
-  commentId?: boolean
-  followId?: boolean
+  sourceType?: boolean
+  sourceId?: boolean
+  earnBy?: boolean
   points?: boolean
+  note?: boolean
+  createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }, ExtArgs["result"]["userPoint"]>
 
 export type UserPointSelectScalar = {
   id?: boolean
   userId?: boolean
-  postId?: boolean
-  likeId?: boolean
-  commentId?: boolean
-  followId?: boolean
+  sourceType?: boolean
+  sourceId?: boolean
+  earnBy?: boolean
   points?: boolean
+  note?: boolean
+  createdAt?: boolean
 }
 
-export type UserPointOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "postId" | "likeId" | "commentId" | "followId" | "points", ExtArgs["result"]["userPoint"]>
+export type UserPointOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "sourceType" | "sourceId" | "earnBy" | "points" | "note" | "createdAt", ExtArgs["result"]["userPoint"]>
 export type UserPointInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }
 export type UserPointIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }
 export type UserPointIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  post?: boolean | Prisma.UserPoint$postArgs<ExtArgs>
-  like?: boolean | Prisma.UserPoint$likeArgs<ExtArgs>
-  comment?: boolean | Prisma.UserPoint$commentArgs<ExtArgs>
-  follow?: boolean | Prisma.UserPoint$followArgs<ExtArgs>
 }
 
 export type $UserPointPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "UserPoint"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    post: Prisma.$PostPayload<ExtArgs> | null
-    like: Prisma.$LikePayload<ExtArgs> | null
-    comment: Prisma.$CommentPayload<ExtArgs> | null
-    follow: Prisma.$FollowPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
-    postId: string | null
-    likeId: string | null
-    commentId: string | null
-    followId: string | null
+    sourceType: $Enums.UserPointSourceType
+    sourceId: string | null
+    earnBy: string
     points: number
+    note: string | null
+    createdAt: Date
   }, ExtArgs["result"]["userPoint"]>
   composites: {}
 }
@@ -1528,10 +1042,6 @@ readonly fields: UserPointFieldRefs;
 export interface Prisma__UserPointClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  post<T extends Prisma.UserPoint$postArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$postArgs<ExtArgs>>): Prisma.Prisma__PostClient<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  like<T extends Prisma.UserPoint$likeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$likeArgs<ExtArgs>>): Prisma.Prisma__LikeClient<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  comment<T extends Prisma.UserPoint$commentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$commentArgs<ExtArgs>>): Prisma.Prisma__CommentClient<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  follow<T extends Prisma.UserPoint$followArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserPoint$followArgs<ExtArgs>>): Prisma.Prisma__FollowClient<runtime.Types.Result.GetResult<Prisma.$FollowPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1563,11 +1073,12 @@ export interface Prisma__UserPointClient<T, Null = never, ExtArgs extends runtim
 export interface UserPointFieldRefs {
   readonly id: Prisma.FieldRef<"UserPoint", 'String'>
   readonly userId: Prisma.FieldRef<"UserPoint", 'String'>
-  readonly postId: Prisma.FieldRef<"UserPoint", 'String'>
-  readonly likeId: Prisma.FieldRef<"UserPoint", 'String'>
-  readonly commentId: Prisma.FieldRef<"UserPoint", 'String'>
-  readonly followId: Prisma.FieldRef<"UserPoint", 'String'>
+  readonly sourceType: Prisma.FieldRef<"UserPoint", 'UserPointSourceType'>
+  readonly sourceId: Prisma.FieldRef<"UserPoint", 'String'>
+  readonly earnBy: Prisma.FieldRef<"UserPoint", 'String'>
   readonly points: Prisma.FieldRef<"UserPoint", 'Int'>
+  readonly note: Prisma.FieldRef<"UserPoint", 'String'>
+  readonly createdAt: Prisma.FieldRef<"UserPoint", 'DateTime'>
 }
     
 
@@ -1961,82 +1472,6 @@ export type UserPointDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many UserPoints to delete.
    */
   limit?: number
-}
-
-/**
- * UserPoint.post
- */
-export type UserPoint$postArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Post
-   */
-  select?: Prisma.PostSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Post
-   */
-  omit?: Prisma.PostOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PostInclude<ExtArgs> | null
-  where?: Prisma.PostWhereInput
-}
-
-/**
- * UserPoint.like
- */
-export type UserPoint$likeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Like
-   */
-  select?: Prisma.LikeSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Like
-   */
-  omit?: Prisma.LikeOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.LikeInclude<ExtArgs> | null
-  where?: Prisma.LikeWhereInput
-}
-
-/**
- * UserPoint.comment
- */
-export type UserPoint$commentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Comment
-   */
-  select?: Prisma.CommentSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Comment
-   */
-  omit?: Prisma.CommentOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CommentInclude<ExtArgs> | null
-  where?: Prisma.CommentWhereInput
-}
-
-/**
- * UserPoint.follow
- */
-export type UserPoint$followArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Follow
-   */
-  select?: Prisma.FollowSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Follow
-   */
-  omit?: Prisma.FollowOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.FollowInclude<ExtArgs> | null
-  where?: Prisma.FollowWhereInput
 }
 
 /**
