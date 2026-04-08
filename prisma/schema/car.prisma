@@ -22,6 +22,8 @@ model Car {
   advancedCarDatas  AdvancedCarData[]
   legalNotices      LegalNotice[]
 
+  marketplaceProduct ProductList?
+
   splitScreenMatchRequests SplitScreenMatchRequest[]
 
   splitScreenBattlesLeftUser SplitScreenBattle[] @relation("SplitScreenLeftCar")
