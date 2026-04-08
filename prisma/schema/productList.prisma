@@ -4,6 +4,9 @@ model ProductList {
   ownerId String @db.Uuid
   owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
 
+  carId String? @unique @db.Uuid
+  car   Car?    @relation(fields: [carId], references: [id], onDelete: Cascade)
+
   // form fields
   title           String
   productImage    String?

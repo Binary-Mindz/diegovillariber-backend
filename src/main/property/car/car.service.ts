@@ -2,6 +2,7 @@ import {
   Injectable,
   NotFoundException,
   ForbiddenException,
+  BadRequestException,
 } from '@nestjs/common';
 
 import { PrismaService } from '@/common/prisma/prisma.service';
@@ -15,6 +16,7 @@ import { UpdateTuningAeroDto } from './dto/update-tuning-aero.dto';
 import { UpdateInteriorSafetyDto } from './dto/update-interior-safety.dto';
 import { UpdateUsageNotesDto } from './dto/update-usage-notes.dto';
 import { UpdateWheelsTiresDto } from './dto/update-wheels-tires.dto';
+import { ProductCategory } from 'generated/prisma/enums';
 
 @Injectable()
 export class CarService {
@@ -67,70 +69,145 @@ export class CarService {
     return created.id;
   }
 
-  async create(userId: string, dto: CreateCarDto) {
-    const activeProfileId = await this.getActiveProfileIdOrThrow(userId);
+  // async create(userId: string, dto: CreateCarDto) {
+  //   const activeProfileId = await this.getActiveProfileIdOrThrow(userId);
 
-    // Garage must belong to active profile
-    const garage = await this.prisma.garage.findFirst({
-      where: {
-        id: dto.garageId,
-        profileId: activeProfileId,
+  //   // Garage must belong to active profile
+  //   const garage = await this.prisma.garage.findFirst({
+  //     where: {
+  //       id: dto.garageId,
+  //       profileId: activeProfileId,
+  //     },
+  //     select: { id: true },
+  //   });
+
+  //   if (!garage) {
+  //     throw new ForbiddenException('Not your garage (active profile mismatch)');
+  //   }
+
+  //   // create car + create advancedCarData row
+  //   return this.prisma.car.create({
+  //     data: {
+  //       profileId: activeProfileId,
+  //       garageId: dto.garageId,
+
+  //       image: dto.image,
+  //       make: dto.make,
+  //       model: dto.model,
+  //       bodyType: dto.bodyType,
+  //       transmission: dto.transmission,
+  //       driveTrain: dto.driveTrain,
+  //       country: dto.country,
+  //       color: dto.color,
+  //       displayName: dto.displayName,
+  //       description: dto.description,
+  //       category: dto.category,
+  //       listOnMarketplace: dto.listOnMarketplace ?? false,
+  //       price: dto.price,
+
+  //       advancedCarDatas: { create: {} },
+  //     },
+  //   });
+  // }
+
+  async create(userId: string, dto: CreateCarDto) {
+    const garage = await this.prisma.garage.findUnique({
+      where: { id: dto.garageId },
+      include: {
+        profile: true,
       },
-      select: { id: true },
     });
 
     if (!garage) {
-      throw new ForbiddenException('Not your garage (active profile mismatch)');
+      throw new NotFoundException('Garage not found');
     }
 
-    // create car + create advancedCarData row
-    return this.prisma.car.create({
-      data: {
-        profileId: activeProfileId,
-        garageId: dto.garageId,
+    if (dto.listOnMarketplace === true && dto.price == null) {
+      throw new BadRequestException(
+        'Price is required when listOnMarketplace is true',
+      );
+    }
 
-        image: dto.image,
-        make: dto.make,
-        model: dto.model,
-        bodyType: dto.bodyType,
-        transmission: dto.transmission,
-        driveTrain: dto.driveTrain,
-        country: dto.country,
-        color: dto.color,
-        displayName: dto.displayName,
-        description: dto.description,
-        category: dto.category,
-        listOnMarketplace: dto.listOnMarketplace ?? false,
-        price: dto.price,
+    const result = await this.prisma.$transaction(async (tx) => {
+      const car = await tx.car.create({
+        data: {
+          profileId: garage.profileId,
+          garageId: dto.garageId,
+          image: dto.image ?? null,
+          make: dto.make ?? null,
+          model: dto.model ?? null,
+          bodyType: dto.bodyType,
+          transmission: dto.transmission,
+          driveTrain: dto.driveTrain,
+          country: dto.country ?? null,
+          color: dto.color ?? null,
+          displayName: dto.displayName ?? null,
+          description: dto.description ?? null,
+          category: dto.category,
+          listOnMarketplace: dto.listOnMarketplace ?? false,
+          price: dto.price ?? null,
+        },
+      });
 
-        advancedCarDatas: { create: {} },
-      },
+      if (car.listOnMarketplace && car.price != null) {
+        await tx.productList.create({
+          data: {
+            ownerId: userId,
+            title:
+              car.displayName ||
+              `${car.make ?? ''} ${car.model ?? ''}`.trim() ||
+              'Car Listing',
+            productImage: car.image ?? null,
+            description: car.description ?? null,
+            category: ProductCategory.CAR,
+            tags: [
+              ...(car.make ? [car.make] : []),
+              ...(car.model ? [car.model] : []),
+              ...(car.color ? [car.color] : []),
+            ],
+            carBrand: car.make ?? null,
+            carModel: car.model ?? null,
+            price: car.price,
+            quantity: 1,
+            showWhatsappNo: false,
+            highlightProduct: false,
+          },
+        });
+      }
+
+      return car;
     });
+
+    return {
+      statusCode: 201,
+      message: 'Car created successfully',
+      data: result,
+    };
   }
 
-async getCars(page?: number, limit?: number) {
-  const currentPage = page ?? 1;
-  const currentLimit = limit ?? 10;
-  const skip = (currentPage - 1) * currentLimit;
+  async getCars(page?: number, limit?: number) {
+    const currentPage = page ?? 1;
+    const currentLimit = limit ?? 10;
+    const skip = (currentPage - 1) * currentLimit;
 
-  const [cars, total] = await Promise.all([
-    this.prisma.car.findMany({
-      skip,
-      take: currentLimit,
-    }),
-    this.prisma.car.count(),
-  ]);
+    const [cars, total] = await Promise.all([
+      this.prisma.car.findMany({
+        skip,
+        take: currentLimit,
+      }),
+      this.prisma.car.count(),
+    ]);
 
-  return {
-    data: cars,
-    meta: {
-      page: currentPage,
-      limit: currentLimit,
-      total,
-      totalPages: Math.ceil(total / currentLimit),
-    },
-  };
-}
+    return {
+      data: cars,
+      meta: {
+        page: currentPage,
+        limit: currentLimit,
+        total,
+        totalPages: Math.ceil(total / currentLimit),
+      },
+    };
+  }
   async update(userId: string, carId: string, dto: UpdateCarDto) {
     await this.validateOwnership(userId, carId);
     return this.prisma.car.update({
@@ -168,7 +245,11 @@ async getCars(page?: number, limit?: number) {
 
   // ✅ Advanced Sections (PATCH = upsert)
 
-  async updateEnginePower(userId: string, carId: string, dto: UpdateEnginePowerDto) {
+  async updateEnginePower(
+    userId: string,
+    carId: string,
+    dto: UpdateEnginePowerDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -179,7 +260,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateDrivetrain(userId: string, carId: string, dto: UpdateDrivetrainDto) {
+  async updateDrivetrain(
+    userId: string,
+    carId: string,
+    dto: UpdateDrivetrainDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -190,7 +275,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateChassisBrakes(userId: string, carId: string, dto: UpdateChassisBrakesDto) {
+  async updateChassisBrakes(
+    userId: string,
+    carId: string,
+    dto: UpdateChassisBrakesDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -201,7 +290,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateTuningAero(userId: string, carId: string, dto: UpdateTuningAeroDto) {
+  async updateTuningAero(
+    userId: string,
+    carId: string,
+    dto: UpdateTuningAeroDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -212,7 +305,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateInteriorSafety(userId: string, carId: string, dto: UpdateInteriorSafetyDto) {
+  async updateInteriorSafety(
+    userId: string,
+    carId: string,
+    dto: UpdateInteriorSafetyDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -223,7 +320,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateUsageNotes(userId: string, carId: string, dto: UpdateUsageNotesDto) {
+  async updateUsageNotes(
+    userId: string,
+    carId: string,
+    dto: UpdateUsageNotesDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -234,7 +335,11 @@ async getCars(page?: number, limit?: number) {
     });
   }
 
-  async updateWheelsTires(userId: string, carId: string, dto: UpdateWheelsTiresDto) {
+  async updateWheelsTires(
+    userId: string,
+    carId: string,
+    dto: UpdateWheelsTiresDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -247,7 +352,11 @@ async getCars(page?: number, limit?: number) {
 
   // ✅ Missing POST APIs support (create-only)
   // (যদি তোমার UI step-wise create করতে চায়)
-  async createEnginePower(userId: string, carId: string, dto: UpdateEnginePowerDto) {
+  async createEnginePower(
+    userId: string,
+    carId: string,
+    dto: UpdateEnginePowerDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -256,14 +365,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Engine & Power already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Engine & Power already exists. Use PATCH to update.',
+      );
 
     return this.prisma.enginePower.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createDrivetrain(userId: string, carId: string, dto: UpdateDrivetrainDto) {
+  async createDrivetrain(
+    userId: string,
+    carId: string,
+    dto: UpdateDrivetrainDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -271,14 +387,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Drivetrain already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Drivetrain already exists. Use PATCH to update.',
+      );
 
     return this.prisma.drivetrain.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createChassisBrakes(userId: string, carId: string, dto: UpdateChassisBrakesDto) {
+  async createChassisBrakes(
+    userId: string,
+    carId: string,
+    dto: UpdateChassisBrakesDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -286,14 +409,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Chassis & Brakes already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Chassis & Brakes already exists. Use PATCH to update.',
+      );
 
     return this.prisma.chassisBrakes.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createTuningAero(userId: string, carId: string, dto: UpdateTuningAeroDto) {
+  async createTuningAero(
+    userId: string,
+    carId: string,
+    dto: UpdateTuningAeroDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -301,14 +431,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Tuning & Aero already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Tuning & Aero already exists. Use PATCH to update.',
+      );
 
     return this.prisma.tuningAero.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createInteriorSafety(userId: string, carId: string, dto: UpdateInteriorSafetyDto) {
+  async createInteriorSafety(
+    userId: string,
+    carId: string,
+    dto: UpdateInteriorSafetyDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -316,14 +453,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Interior & Safety already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Interior & Safety already exists. Use PATCH to update.',
+      );
 
     return this.prisma.interiorSafety.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createUsageNotes(userId: string, carId: string, dto: UpdateUsageNotesDto) {
+  async createUsageNotes(
+    userId: string,
+    carId: string,
+    dto: UpdateUsageNotesDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -331,14 +475,21 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Usage Notes already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Usage Notes already exists. Use PATCH to update.',
+      );
 
     return this.prisma.usageNotes.create({
       data: { ...dto, advancedCarDataId: advancedId },
     });
   }
 
-  async createWheelsTires(userId: string, carId: string, dto: UpdateWheelsTiresDto) {
+  async createWheelsTires(
+    userId: string,
+    carId: string,
+    dto: UpdateWheelsTiresDto,
+  ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
 
@@ -346,7 +497,10 @@ async getCars(page?: number, limit?: number) {
       where: { advancedCarDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Wheels & Tires already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Wheels & Tires already exists. Use PATCH to update.',
+      );
 
     return this.prisma.wheelsTires.create({
       data: { ...dto, advancedCarDataId: advancedId },
