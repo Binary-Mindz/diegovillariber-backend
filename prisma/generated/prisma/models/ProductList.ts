@@ -43,6 +43,7 @@ export type ProductListSumAggregateOutputType = {
 export type ProductListMinAggregateOutputType = {
   id: string | null
   ownerId: string | null
+  carId: string | null
   title: string | null
   productImage: string | null
   location: string | null
@@ -65,6 +66,7 @@ export type ProductListMinAggregateOutputType = {
 export type ProductListMaxAggregateOutputType = {
   id: string | null
   ownerId: string | null
+  carId: string | null
   title: string | null
   productImage: string | null
   location: string | null
@@ -87,6 +89,7 @@ export type ProductListMaxAggregateOutputType = {
 export type ProductListCountAggregateOutputType = {
   id: number
   ownerId: number
+  carId: number
   title: number
   productImage: number
   location: number
@@ -126,6 +129,7 @@ export type ProductListSumAggregateInputType = {
 export type ProductListMinAggregateInputType = {
   id?: true
   ownerId?: true
+  carId?: true
   title?: true
   productImage?: true
   location?: true
@@ -148,6 +152,7 @@ export type ProductListMinAggregateInputType = {
 export type ProductListMaxAggregateInputType = {
   id?: true
   ownerId?: true
+  carId?: true
   title?: true
   productImage?: true
   location?: true
@@ -170,6 +175,7 @@ export type ProductListMaxAggregateInputType = {
 export type ProductListCountAggregateInputType = {
   id?: true
   ownerId?: true
+  carId?: true
   title?: true
   productImage?: true
   location?: true
@@ -280,6 +286,7 @@ export type ProductListGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type ProductListGroupByOutputType = {
   id: string
   ownerId: string
+  carId: string | null
   title: string
   productImage: string | null
   location: string | null
@@ -326,6 +333,7 @@ export type ProductListWhereInput = {
   NOT?: Prisma.ProductListWhereInput | Prisma.ProductListWhereInput[]
   id?: Prisma.UuidFilter<"ProductList"> | string
   ownerId?: Prisma.UuidFilter<"ProductList"> | string
+  carId?: Prisma.UuidNullableFilter<"ProductList"> | string | null
   title?: Prisma.StringFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableFilter<"ProductList"> | string | null
@@ -345,11 +353,13 @@ export type ProductListWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null
 }
 
 export type ProductListOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -369,10 +379,12 @@ export type ProductListOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   owner?: Prisma.UserOrderByWithRelationInput
+  car?: Prisma.CarOrderByWithRelationInput
 }
 
 export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  carId?: string
   AND?: Prisma.ProductListWhereInput | Prisma.ProductListWhereInput[]
   OR?: Prisma.ProductListWhereInput[]
   NOT?: Prisma.ProductListWhereInput | Prisma.ProductListWhereInput[]
@@ -396,11 +408,13 @@ export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProductList"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id">
+  car?: Prisma.XOR<Prisma.CarNullableScalarRelationFilter, Prisma.CarWhereInput> | null
+}, "id" | "carId">
 
 export type ProductListOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
+  carId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -432,6 +446,7 @@ export type ProductListScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProductListScalarWhereWithAggregatesInput | Prisma.ProductListScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"ProductList"> | string
   ownerId?: Prisma.UuidWithAggregatesFilter<"ProductList"> | string
+  carId?: Prisma.UuidNullableWithAggregatesFilter<"ProductList"> | string | null
   title?: Prisma.StringWithAggregatesFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
@@ -473,11 +488,13 @@ export type ProductListCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutProductListsInput
+  car?: Prisma.CarCreateNestedOneWithoutMarketplaceProductInput
 }
 
 export type ProductListUncheckedCreateInput = {
   id?: string
   ownerId: string
+  carId?: string | null
   title: string
   productImage?: string | null
   location?: string | null
@@ -519,11 +536,13 @@ export type ProductListUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutProductListsNestedInput
+  car?: Prisma.CarUpdateOneWithoutMarketplaceProductNestedInput
 }
 
 export type ProductListUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -547,6 +566,7 @@ export type ProductListUncheckedUpdateInput = {
 export type ProductListCreateManyInput = {
   id?: string
   ownerId: string
+  carId?: string | null
   title: string
   productImage?: string | null
   location?: string | null
@@ -592,6 +612,7 @@ export type ProductListUpdateManyMutationInput = {
 export type ProductListUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -612,9 +633,15 @@ export type ProductListUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type ProductListNullableScalarRelationFilter = {
+  is?: Prisma.ProductListWhereInput | null
+  isNot?: Prisma.ProductListWhereInput | null
+}
+
 export type ProductListCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -645,6 +672,7 @@ export type ProductListAvgOrderByAggregateInput = {
 export type ProductListMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -667,6 +695,7 @@ export type ProductListMaxOrderByAggregateInput = {
 export type ProductListMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   ownerId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
   productImage?: Prisma.SortOrder
   location?: Prisma.SortOrder
@@ -701,6 +730,38 @@ export type ProductListListRelationFilter = {
 
 export type ProductListOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type ProductListCreateNestedOneWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutCarInput
+  connect?: Prisma.ProductListWhereUniqueInput
+}
+
+export type ProductListUncheckedCreateNestedOneWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutCarInput
+  connect?: Prisma.ProductListWhereUniqueInput
+}
+
+export type ProductListUpdateOneWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutCarInput
+  upsert?: Prisma.ProductListUpsertWithoutCarInput
+  disconnect?: Prisma.ProductListWhereInput | boolean
+  delete?: Prisma.ProductListWhereInput | boolean
+  connect?: Prisma.ProductListWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductListUpdateToOneWithWhereWithoutCarInput, Prisma.ProductListUpdateWithoutCarInput>, Prisma.ProductListUncheckedUpdateWithoutCarInput>
+}
+
+export type ProductListUncheckedUpdateOneWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+  connectOrCreate?: Prisma.ProductListCreateOrConnectWithoutCarInput
+  upsert?: Prisma.ProductListUpsertWithoutCarInput
+  disconnect?: Prisma.ProductListWhereInput | boolean
+  delete?: Prisma.ProductListWhereInput | boolean
+  connect?: Prisma.ProductListWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductListUpdateToOneWithWhereWithoutCarInput, Prisma.ProductListUpdateWithoutCarInput>, Prisma.ProductListUncheckedUpdateWithoutCarInput>
 }
 
 export type ProductListCreatetagsInput = {
@@ -758,8 +819,32 @@ export type ProductListUncheckedUpdateManyWithoutOwnerNestedInput = {
   deleteMany?: Prisma.ProductListScalarWhereInput | Prisma.ProductListScalarWhereInput[]
 }
 
-export type ProductListCreateWithoutOwnerInput = {
+export type ProductListCreateWithoutCarInput = {
   id?: string
+  title: string
+  productImage?: string | null
+  location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  description?: string | null
+  category?: $Enums.ProductCategory
+  tags?: Prisma.ProductListCreatetagsInput | string[]
+  carBrand?: string | null
+  carModel?: string | null
+  price: number
+  quantity: number
+  showWhatsappNo?: boolean
+  highlightProduct?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutProductListsInput
+}
+
+export type ProductListUncheckedCreateWithoutCarInput = {
+  id?: string
+  ownerId: string
   title: string
   productImage?: string | null
   location?: string | null
@@ -780,8 +865,94 @@ export type ProductListCreateWithoutOwnerInput = {
   updatedAt?: Date | string
 }
 
+export type ProductListCreateOrConnectWithoutCarInput = {
+  where: Prisma.ProductListWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+}
+
+export type ProductListUpsertWithoutCarInput = {
+  update: Prisma.XOR<Prisma.ProductListUpdateWithoutCarInput, Prisma.ProductListUncheckedUpdateWithoutCarInput>
+  create: Prisma.XOR<Prisma.ProductListCreateWithoutCarInput, Prisma.ProductListUncheckedCreateWithoutCarInput>
+  where?: Prisma.ProductListWhereInput
+}
+
+export type ProductListUpdateToOneWithWhereWithoutCarInput = {
+  where?: Prisma.ProductListWhereInput
+  data: Prisma.XOR<Prisma.ProductListUpdateWithoutCarInput, Prisma.ProductListUncheckedUpdateWithoutCarInput>
+}
+
+export type ProductListUpdateWithoutCarInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  tags?: Prisma.ProductListUpdatetagsInput | string[]
+  carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutProductListsNestedInput
+}
+
+export type ProductListUncheckedUpdateWithoutCarInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  category?: Prisma.EnumProductCategoryFieldUpdateOperationsInput | $Enums.ProductCategory
+  tags?: Prisma.ProductListUpdatetagsInput | string[]
+  carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ProductListCreateWithoutOwnerInput = {
+  id?: string
+  title: string
+  productImage?: string | null
+  location?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  description?: string | null
+  category?: $Enums.ProductCategory
+  tags?: Prisma.ProductListCreatetagsInput | string[]
+  carBrand?: string | null
+  carModel?: string | null
+  price: number
+  quantity: number
+  showWhatsappNo?: boolean
+  highlightProduct?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  car?: Prisma.CarCreateNestedOneWithoutMarketplaceProductInput
+}
+
 export type ProductListUncheckedCreateWithoutOwnerInput = {
   id?: string
+  carId?: string | null
   title: string
   productImage?: string | null
   location?: string | null
@@ -834,6 +1005,7 @@ export type ProductListScalarWhereInput = {
   NOT?: Prisma.ProductListScalarWhereInput | Prisma.ProductListScalarWhereInput[]
   id?: Prisma.UuidFilter<"ProductList"> | string
   ownerId?: Prisma.UuidFilter<"ProductList"> | string
+  carId?: Prisma.UuidNullableFilter<"ProductList"> | string | null
   title?: Prisma.StringFilter<"ProductList"> | string
   productImage?: Prisma.StringNullableFilter<"ProductList"> | string | null
   location?: Prisma.StringNullableFilter<"ProductList"> | string | null
@@ -856,6 +1028,7 @@ export type ProductListScalarWhereInput = {
 
 export type ProductListCreateManyOwnerInput = {
   id?: string
+  carId?: string | null
   title: string
   productImage?: string | null
   location?: string | null
@@ -896,10 +1069,12 @@ export type ProductListUpdateWithoutOwnerInput = {
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  car?: Prisma.CarUpdateOneWithoutMarketplaceProductNestedInput
 }
 
 export type ProductListUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -922,6 +1097,7 @@ export type ProductListUncheckedUpdateWithoutOwnerInput = {
 
 export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   productImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -947,6 +1123,7 @@ export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
 export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   ownerId?: boolean
+  carId?: boolean
   title?: boolean
   productImage?: boolean
   location?: boolean
@@ -966,11 +1143,13 @@ export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }, ExtArgs["result"]["productList"]>
 
 export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   ownerId?: boolean
+  carId?: boolean
   title?: boolean
   productImage?: boolean
   location?: boolean
@@ -990,11 +1169,13 @@ export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }, ExtArgs["result"]["productList"]>
 
 export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   ownerId?: boolean
+  carId?: boolean
   title?: boolean
   productImage?: boolean
   location?: boolean
@@ -1014,11 +1195,13 @@ export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   createdAt?: boolean
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }, ExtArgs["result"]["productList"]>
 
 export type ProductListSelectScalar = {
   id?: boolean
   ownerId?: boolean
+  carId?: boolean
   title?: boolean
   productImage?: boolean
   location?: boolean
@@ -1039,25 +1222,30 @@ export type ProductListSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "title" | "productImage" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
+export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "carId" | "title" | "productImage" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
 export type ProductListInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }
 export type ProductListIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }
 export type ProductListIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
 }
 
 export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ProductList"
   objects: {
     owner: Prisma.$UserPayload<ExtArgs>
+    car: Prisma.$CarPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     ownerId: string
+    carId: string | null
     title: string
     productImage: string | null
     location: string | null
@@ -1471,6 +1659,7 @@ readonly fields: ProductListFieldRefs;
 export interface Prisma__ProductListClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   owner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  car<T extends Prisma.ProductList$carArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductList$carArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1502,6 +1691,7 @@ export interface Prisma__ProductListClient<T, Null = never, ExtArgs extends runt
 export interface ProductListFieldRefs {
   readonly id: Prisma.FieldRef<"ProductList", 'String'>
   readonly ownerId: Prisma.FieldRef<"ProductList", 'String'>
+  readonly carId: Prisma.FieldRef<"ProductList", 'String'>
   readonly title: Prisma.FieldRef<"ProductList", 'String'>
   readonly productImage: Prisma.FieldRef<"ProductList", 'String'>
   readonly location: Prisma.FieldRef<"ProductList", 'String'>
@@ -1913,6 +2103,25 @@ export type ProductListDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Limit how many ProductLists to delete.
    */
   limit?: number
+}
+
+/**
+ * ProductList.car
+ */
+export type ProductList$carArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Car
+   */
+  select?: Prisma.CarSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Car
+   */
+  omit?: Prisma.CarOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarInclude<ExtArgs> | null
+  where?: Prisma.CarWhereInput
 }
 
 /**
