@@ -1218,6 +1218,7 @@ export type ProDriverProfileScalarFieldEnum = (typeof ProDriverProfileScalarFiel
 export const ProductListScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
+  carId: 'carId',
   title: 'title',
   productImage: 'productImage',
   location: 'location',

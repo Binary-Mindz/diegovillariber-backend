@@ -80,6 +80,9 @@ importers:
       nanoid:
         specifier: ^5.1.7
         version: 5.1.7
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
       nodemailer:
         specifier: ^7.0.12
         version: 7.0.12
