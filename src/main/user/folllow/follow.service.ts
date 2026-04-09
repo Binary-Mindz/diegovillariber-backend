@@ -67,7 +67,7 @@ export class FollowService {
       // 3) point log (optional but recommended)
       await tx.userPoint.create({
         data: {
-          userId: follow.id,
+          userId: dto.followingId,
           sourceType: 'FOLLOW',
           sourceId: follow.id,
           earnBy: 'FOLLOW_USER',
