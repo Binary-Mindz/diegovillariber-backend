@@ -30,7 +30,9 @@ export class PostRatingController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Create or update my rating on a post' })
+  @ApiOperation({
+    summary: 'Rate a post once (one user can rate one post only once)',
+  })
   @ApiParam({
     name: 'postId',
     example: '0c550a0d-0a8f-4df8-bf58-36c6a6f5a671',

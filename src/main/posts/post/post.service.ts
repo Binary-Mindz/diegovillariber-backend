@@ -8,7 +8,12 @@ import {
 import { CreatePostDto } from './dto/create.post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
-import { MediaType, Prisma } from 'generated/prisma/client';
+import {
+  MediaType,
+  PostViewSource,
+  Prisma,
+  ViewerRelationType,
+} from 'generated/prisma/client';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -25,6 +30,26 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 @Injectable()
 export class PostService {
   constructor(private readonly prisma: PrismaService) {}
+
+  private readonly VIEW_DEDUP_MINUTES = 30;
+
+  private getGroupedCount(
+    count:
+      | true
+      | {
+          source?: number;
+          relationType?: number;
+          _all?: number;
+        }
+      | undefined,
+    key: 'source' | 'relationType' | '_all',
+  ): number {
+    if (!count || count === true) {
+      return 0;
+    }
+
+    return count[key] ?? 0;
+  }
 
   private async getExcludedUserIds(userId: string): Promise<string[]> {
     const blocks = await this.prisma.userBlock.findMany({
@@ -49,6 +74,128 @@ export class PostService {
     }
 
     return [...excludedUserIds];
+  }
+
+  private async getHiddenPostIds(userId: string): Promise<string[]> {
+    const hiddenPosts = await this.prisma.hidePost.findMany({
+      where: { userId },
+      select: { postId: true },
+    });
+
+    return hiddenPosts.map((item) => item.postId);
+  }
+
+  private async validatePostAccess(userId: string, postId: string) {
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      include: {
+        user: { select: { id: true } },
+        profile: { select: { id: true, imageUrl: true, activeType: true } },
+        hashtags: true,
+        taggedUsers: { select: { id: true } },
+      },
+    });
+
+    if (!post) {
+      throw new NotFoundException('Post not found');
+    }
+
+    const blockedRelation = await this.prisma.userBlock.findFirst({
+      where: {
+        OR: [
+          {
+            blockerId: userId,
+            blockedUserId: post.userId,
+          },
+          {
+            blockerId: post.userId,
+            blockedUserId: userId,
+          },
+        ],
+      },
+      select: { id: true },
+    });
+
+    if (blockedRelation) {
+      throw new NotFoundException('Post not found');
+    }
+
+    return post;
+  }
+
+  private async getViewerRelationType(
+    ownerId: string,
+    viewerId: string,
+  ): Promise<ViewerRelationType> {
+    if (ownerId === viewerId) {
+      return ViewerRelationType.SELF;
+    }
+
+    // NOTE:
+    // এখানে আমি ধরে নিচ্ছি follow model/table এর নাম Follow
+    // এবং fields: followerId, followingId
+    // তোমার project এ নাম আলাদা হলে শুধু এই query change করলেই হবে
+    const follow = await this.prisma.follow.findFirst({
+      where: {
+        followerId: viewerId,
+        followingId: ownerId,
+      },
+      select: { id: true },
+    });
+
+    return follow
+      ? ViewerRelationType.FOLLOWER
+      : ViewerRelationType.NON_FOLLOWER;
+  }
+
+  private async trackPostViewIfNeeded(
+    viewerId: string,
+    postId: string,
+    ownerId: string,
+    source?: PostViewSource,
+  ) {
+    const relationType = await this.getViewerRelationType(ownerId, viewerId);
+
+    const recentThreshold = new Date(
+      Date.now() - this.VIEW_DEDUP_MINUTES * 60 * 1000,
+    );
+
+    const existingRecentView = await this.prisma.postViewInsight.findFirst({
+      where: {
+        postId,
+        viewerId,
+        source: source ?? PostViewSource.DETAIL,
+        viewedAt: {
+          gte: recentThreshold,
+        },
+      },
+      select: { id: true },
+    });
+
+    if (existingRecentView) {
+      return { counted: false };
+    }
+
+    await this.prisma.$transaction([
+      this.prisma.postViewInsight.create({
+        data: {
+          postId,
+          viewerId,
+          source: source ?? PostViewSource.DETAIL,
+          relationType,
+        },
+      }),
+      this.prisma.post.update({
+        where: { id: postId },
+        data: {
+          view: {
+            increment: 1,
+          },
+        },
+      }),
+    ]);
+
+    return { counted: true };
   }
 
   async createPost(userId: string, dto: CreatePostDto) {
@@ -217,12 +364,26 @@ export class PostService {
       }
 
       await tx.userPoint.create({
-        data: { userId, postId: post.id, points: POST_REWARD_POINTS },
+        data: {
+          userId,
+          sourceType: 'POST',
+          sourceId: post.id,
+          earnBy: 'CREATE_POST',
+          points: POST_REWARD_POINTS,
+          note: 'Point earned for creating post',
+        },
       });
 
       if (wantBoost) {
         await tx.userPoint.create({
-          data: { userId, postId: post.id, points: -BOOST_COST_POINTS },
+          data: {
+            userId,
+            sourceType: 'POST',
+            sourceId: post.id,
+            earnBy: 'BOOST_POST',
+            points: -BOOST_COST_POINTS,
+            note: 'Point deducted for boosting post',
+          },
         });
       }
 
@@ -243,140 +404,167 @@ export class PostService {
       };
     });
   }
+
   async getFeed(userId: string, query: FeedQueryDto) {
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 10;
-  const skip = (page - 1) * limit;
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 10;
+    const skip = (page - 1) * limit;
 
-  if (page < 1) throw new BadRequestException('page must be >= 1');
-  if (limit < 1 || limit > 50) {
-    throw new BadRequestException('limit must be between 1 and 50');
-  }
+    if (page < 1) throw new BadRequestException('page must be >= 1');
+    if (limit < 1 || limit > 50) {
+      throw new BadRequestException('limit must be between 1 and 50');
+    }
 
-  const excludedUserIds = await this.getExcludedUserIds(userId);
+    const excludedUserIds = await this.getExcludedUserIds(userId);
+    const hiddenPostIds = await this.getHiddenPostIds(userId);
 
-  const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
-  const contextActivity = parseCsvEnum<any>(query.contextActivity);
-  const subject = parseCsvEnum<any>(query.subject);
+    const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
+    const contextActivity = parseCsvEnum<any>(query.contextActivity);
+    const subject = parseCsvEnum<any>(query.subject);
 
-  const user = await this.prisma.user.findUnique({
-    where: { id: userId },
-    select: { activeProfileId: true },
-  });
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      select: { activeProfileId: true },
+    });
 
-  if (!user) {
-    throw new NotFoundException('User not found');
-  }
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
 
-  if (!user.activeProfileId) {
-    throw new BadRequestException('No active profile selected');
-  }
+    if (!user.activeProfileId) {
+      throw new BadRequestException('No active profile selected');
+    }
 
-  const activeProfile = await this.prisma.profile.findFirst({
-    where: {
-      id: user.activeProfileId,
-      userId,
-      isActive: 'ACTIVE',
-      suspend: false,
-    },
-    select: {
-      id: true,
-      preference: true,
-    },
-  });
-
-  if (!activeProfile) {
-    throw new BadRequestException('Active profile not found');
-  }
-
-  let preferenceFilter: Prisma.PostWhereInput = {};
-
-  if (activeProfile.preference === 'CAR') {
-    preferenceFilter = {
-      assetType: 'CAR',
-    };
-  } else if (activeProfile.preference === 'BIKE') {
-    preferenceFilter = {
-      assetType: 'BIKE',
-    };
-  } else if (activeProfile.preference === 'BOTH' || !activeProfile.preference) {
-    preferenceFilter = {};
-  }
-
-  const where: Prisma.PostWhereInput = {
-    userId: {
-      notIn: excludedUserIds,
-    },
-
-    ...preferenceFilter,
-
-    ...(query.postType ? { postType: query.postType } : {}),
-    ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
-    ...(query.location
-      ? { postLocation: { contains: query.location, mode: 'insensitive' } }
-      : {}),
-    ...(query.search
-      ? {
-          OR: [
-            { caption: { contains: query.search, mode: 'insensitive' } },
-            { postLocation: { contains: query.search, mode: 'insensitive' } },
-          ],
-        }
-      : {}),
-
-    ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
-    ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
-    ...(subject ? { subject: { hasSome: subject } } : {}),
-  };
-
-  const orderBy: Prisma.PostOrderByWithRelationInput[] =
-    query.sort === 'topLiked'
-      ? [{ like: 'desc' }, { createdAt: 'desc' }]
-      : query.sort === 'boosted'
-      ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-      : [{ createdAt: 'desc' }];
-
-  const [data, total] = await this.prisma.$transaction([
-    this.prisma.post.findMany({
-      where,
-      orderBy,
-      skip,
-      take: limit,
-      include: {
-        user: { select: { id: true } },
-        profile: {
-          select: { id: true, imageUrl: true, activeType: true, preference: true },
-        },
-        hashtags: true,
-        taggedUsers: { select: { id: true } },
+    const activeProfile = await this.prisma.profile.findFirst({
+      where: {
+        id: user.activeProfileId,
+        userId,
+        isActive: 'ACTIVE',
+        suspend: false,
       },
-    }),
-    this.prisma.post.count({ where }),
-  ]);
+      select: {
+        id: true,
+        preference: true,
+      },
+    });
 
-  const totalPages = Math.ceil(total / limit);
+    if (!activeProfile) {
+      throw new BadRequestException('Active profile not found');
+    }
 
-  return {
-    data,
-    meta: {
-      page,
-      limit,
-      total,
-      totalPages,
-      hasNextPage: page < totalPages,
-      hasPrevPage: page > 1,
-    },
-  };
+    let preferenceFilter: Prisma.PostWhereInput = {};
+
+    if (activeProfile.preference === 'CAR') {
+      preferenceFilter = {
+        assetType: 'CAR',
+      };
+    } else if (activeProfile.preference === 'BIKE') {
+      preferenceFilter = {
+        assetType: 'BIKE',
+      };
+    } else if (
+      activeProfile.preference === 'BOTH' ||
+      !activeProfile.preference
+    ) {
+      preferenceFilter = {};
+    }
+
+    const where: Prisma.PostWhereInput = {
+      userId: {
+        notIn: excludedUserIds,
+      },
+      id: {
+        notIn: hiddenPostIds,
+      },
+
+      ...preferenceFilter,
+
+      ...(query.postType ? { postType: query.postType } : {}),
+      ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
+      ...(query.location
+        ? { postLocation: { contains: query.location, mode: 'insensitive' } }
+        : {}),
+      ...(query.search
+        ? {
+            OR: [
+              { caption: { contains: query.search, mode: 'insensitive' } },
+              { postLocation: { contains: query.search, mode: 'insensitive' } },
+            ],
+          }
+        : {}),
+
+      ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
+      ...(contextActivity
+        ? { contextActivity: { hasSome: contextActivity } }
+        : {}),
+      ...(subject ? { subject: { hasSome: subject } } : {}),
+    };
+
+    const orderBy: Prisma.PostOrderByWithRelationInput[] =
+      query.sort === 'topLiked'
+        ? [{ like: 'desc' }, { createdAt: 'desc' }]
+        : query.sort === 'boosted'
+          ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
+          : [{ createdAt: 'desc' }];
+
+    const [data, total] = await this.prisma.$transaction([
+      this.prisma.post.findMany({
+        where,
+        orderBy,
+        skip,
+        take: limit,
+        include: {
+          user: { select: { id: true } },
+          profile: {
+            select: {
+              id: true,
+              imageUrl: true,
+              activeType: true,
+              preference: true,
+            },
+          },
+          hashtags: true,
+          taggedUsers: { select: { id: true } },
+        },
+      }),
+      this.prisma.post.count({ where }),
+    ]);
+
+    const totalPages = Math.ceil(total / limit);
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
+      },
+    };
   }
 
-  async getSinglePost(userId: string, postId: string) {
+  async getSinglePost(userId: string, postId: string, source?: PostViewSource) {
+    const post = await this.validatePostAccess(userId, postId);
+
+    await this.trackPostViewIfNeeded(userId, postId, post.userId, source);
+
+    return post;
+  }
+
+  async getPostInsights(userId: string, postId: string) {
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
-      include: {
-        user: { select: { id: true } },
-        profile: { select: { id: true, imageUrl: true, activeType: true } },
-        hashtags: true,
-        taggedUsers: { select: { id: true } },
+      select: {
+        id: true,
+        userId: true,
+        view: true,
+        like: true,
+        comment: true,
+        share: true,
+        repost: true,
+        createdAt: true,
       },
     });
 
@@ -384,28 +572,108 @@ export class PostService {
       throw new NotFoundException('Post not found');
     }
 
-    const blockedRelation = await this.prisma.userBlock.findFirst({
-      where: {
-        OR: [
-          {
-            blockerId: userId,
-            blockedUserId: post.userId,
-          },
-          {
-            blockerId: post.userId,
-            blockedUserId: userId,
-          },
-        ],
-      },
-      select: { id: true },
-    });
-
-    if (blockedRelation) {
-      throw new NotFoundException('Post not found');
+    if (post.userId !== userId) {
+      throw new ForbiddenException(
+        'You are not allowed to view this post insight',
+      );
     }
 
-    return post;
+    const [sourceStats, relationStats] = await this.prisma.$transaction([
+      this.prisma.postViewInsight.groupBy({
+        by: ['source'],
+        where: { postId },
+        _count: {
+          source: true,
+        },
+        orderBy: {
+          source: 'asc',
+        },
+      }),
+      this.prisma.postViewInsight.groupBy({
+        by: ['relationType'],
+        where: { postId },
+        _count: {
+          relationType: true,
+        },
+        orderBy: {
+          relationType: 'asc',
+        },
+      }),
+    ]);
+
+    const totalViews = post.view;
+    const totalInteractions =
+      post.like + post.comment + post.share + post.repost;
+
+    const followerViews = this.getGroupedCount(
+      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)
+        ?._count,
+      'relationType',
+    );
+
+    const nonFollowerViews = this.getGroupedCount(
+      relationStats.find(
+        (x) => x.relationType === ViewerRelationType.NON_FOLLOWER,
+      )?._count,
+      'relationType',
+    );
+
+    const selfViews = this.getGroupedCount(
+      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)
+        ?._count,
+      'relationType',
+    );
+
+    const topSourcesOfViews = sourceStats.map((item) => {
+      const count = this.getGroupedCount(item._count, 'source');
+
+      return {
+        source: item.source,
+        count,
+        percentage:
+          totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
+      };
+    });
+
+    const audience = {
+      followers: followerViews,
+      nonFollowers: nonFollowerViews,
+      self: selfViews,
+    };
+
+    const followerVsNonFollower = {
+      followersPercentage:
+        totalViews > 0
+          ? Number(((followerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      nonFollowersPercentage:
+        totalViews > 0
+          ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      selfPercentage:
+        totalViews > 0
+          ? Number(((selfViews / totalViews) * 100).toFixed(2))
+          : 0,
+    };
+
+    return {
+      overview: {
+        views: totalViews,
+        interactions: totalInteractions,
+        profileActivity: totalInteractions,
+      },
+      engagement: {
+        likes: post.like,
+        comments: post.comment,
+        shares: post.share,
+        reposts: post.repost,
+      },
+      audience,
+      followerVsNonFollower,
+      topSourcesOfViews,
+    };
   }
+
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
     if (dto.contentBooster !== undefined) {
       throw new BadRequestException('contentBooster cannot be updated');

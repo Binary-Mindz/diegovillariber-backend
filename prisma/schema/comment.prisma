@@ -14,5 +14,4 @@ model Comment {
 
   createdAt DateTime @default(now())
 
-  userPoints UserPoint[]
 }

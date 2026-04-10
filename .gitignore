@@ -36,6 +36,7 @@ lerna-debug.log*
 .env.production.local
 .env.docker
 .env
+.env.*
 
 # temp directory
 .temp

@@ -43,22 +43,22 @@ import { Role } from 'generated/prisma/enums';
 export class HeadToHeadController {
   constructor(private readonly service: HeadToHeadService) {}
 
- @Get()
-@ApiOperation({
-  summary: 'List HeadToHead battles (tabs: All/Active/Upcoming/Finished)',
-})
-async list(
-  @Query() query: HeadToHeadQueryDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.service.listBattles(query),
-    'HeadToHead battles fetched successfully',
-  );
+  @Get()
+  @ApiOperation({
+    summary: 'List HeadToHead battles (tabs: All/Active/Upcoming/Finished)',
+  })
+  async list(
+    @Query() query: HeadToHeadQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.listBattles(query),
+      'HeadToHead battles fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get HeadToHead battle details' })
@@ -78,7 +78,10 @@ async list(
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiOperation({ summary: 'Create HeadToHead battle access: ADMIN, OFFICIAL_PARTNER, AMBASSADOR' })
+  @ApiOperation({
+    summary:
+      'Create HeadToHead battle access: ADMIN, OFFICIAL_PARTNER, AMBASSADOR',
+  })
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Post()
   @HttpCode(HttpStatus.CREATED)
@@ -88,7 +91,7 @@ async list(
     @Body() dto: CreateHeadToHeadBattleDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    console.log("userId", userId)
+    console.log('userId', userId);
     const response = await handleRequest(
       () => this.service.createBattle(userId, dto),
       'HeadToHead battle created successfully',
@@ -103,7 +106,10 @@ async list(
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR '})
+  @ApiOperation({
+    summary:
+      'Update HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR ',
+  })
   async update(
     @Param('id') id: string,
     @GetUser('userId') userId: string,
@@ -124,7 +130,10 @@ async list(
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER, Role.AMBASSADOR)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR' })
+  @ApiOperation({
+    summary:
+      'Delete HeadToHead battle (creator only) ADMIN, OFFICIAL_PARTNER, AMBASSADOR',
+  })
   async remove(
     @Param('id') id: string,
     @GetUser('userId') userId: string,
@@ -166,7 +175,8 @@ async list(
   @Post(':id/invite')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary: 'Invite a user to HeadToHead battle (creator only or inviter = creator)',
+    summary:
+      'Invite a user to HeadToHead battle (creator only or inviter = creator)',
   })
   async invite(
     @Param('id') battleId: string,
@@ -208,7 +218,8 @@ async list(
   @Post(':id/submit')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary: 'Submit HeadToHead media (Upsert: 1 submission per user per battle)',
+    summary:
+      'Submit HeadToHead media (Upsert: 1 submission per user per battle)',
   })
   async submit(
     @Param('id') battleId: string,
@@ -246,24 +257,28 @@ async list(
     res.status(response.statusCode);
     return response;
   }
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get(':id/comments')
-@ApiOperation({ summary: 'Get comments for a HeadToHead battle or submission' })
-async getComments(
-  @Param('id') battleId: string,
-  @Query('submissionId') submissionId?: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getComments(battleId, submissionId);
-  }, 'Comments fetched successfully');
-}
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/comments')
+  @ApiOperation({
+    summary: 'Get comments for a HeadToHead battle or submission',
+  })
+  async getComments(
+    @Param('id') battleId: string,
+    @Query('submissionId') submissionId?: string,
+  ) {
+    return handleRequest(async () => {
+      return this.service.getComments(battleId, submissionId);
+    }, 'Comments fetched successfully');
+  }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/comments')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Comment on HeadToHead battle or a specific submission' })
+  @ApiOperation({
+    summary: 'Comment on HeadToHead battle or a specific submission',
+  })
   async comment(
     @Param('id') battleId: string,
     @GetUser('userId') userId: string,
@@ -280,23 +295,22 @@ async getComments(
   }
 
   @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get('comments/:commentId')
-@ApiOperation({ summary: 'Get single comment by ID' })
-async getSingleComment(
-  @Param('commentId') commentId: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getSingleComment(commentId);
-  }, 'Comment fetched successfully');
-}
+  @UseGuards(JwtAuthGuard)
+  @Get('comments/:commentId')
+  @ApiOperation({ summary: 'Get single comment by ID' })
+  async getSingleComment(@Param('commentId') commentId: string) {
+    return handleRequest(async () => {
+      return this.service.getSingleComment(commentId);
+    }, 'Comment fetched successfully');
+  }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/complete')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Complete HeadToHead battle (creator only). Picks winner by highest votes.',
+    summary:
+      'Complete HeadToHead battle (creator only). Picks winner by highest votes.',
   })
   async complete(
     @Param('id') battleId: string,

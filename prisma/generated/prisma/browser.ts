@@ -323,10 +323,20 @@ export type Payment = Prisma.PaymentModel
  */
 export type Post = Prisma.PostModel
 /**
+ * Model PostViewInsight
+ * 
+ */
+export type PostViewInsight = Prisma.PostViewInsightModel
+/**
  * Model PostRating
  * 
  */
 export type PostRating = Prisma.PostRatingModel
+/**
+ * Model PrestigeRule
+ * 
+ */
+export type PrestigeRule = Prisma.PrestigeRuleModel
 /**
  * Model Prize
  * 

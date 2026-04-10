@@ -377,6 +377,35 @@ export const Subject = {
 export type Subject = (typeof Subject)[keyof typeof Subject]
 
 
+export const PostViewSource = {
+  FEED: 'FEED',
+  PROFILE: 'PROFILE',
+  SEARCH: 'SEARCH',
+  HASHTAG: 'HASHTAG',
+  DETAIL: 'DETAIL',
+  SHARE_LINK: 'SHARE_LINK'
+} as const
+
+export type PostViewSource = (typeof PostViewSource)[keyof typeof PostViewSource]
+
+
+export const ViewerRelationType = {
+  SELF: 'SELF',
+  FOLLOWER: 'FOLLOWER',
+  NON_FOLLOWER: 'NON_FOLLOWER'
+} as const
+
+export type ViewerRelationType = (typeof ViewerRelationType)[keyof typeof ViewerRelationType]
+
+
+export const PrestigeRuleStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+} as const
+
+export type PrestigeRuleStatus = (typeof PrestigeRuleStatus)[keyof typeof PrestigeRuleStatus]
+
+
 export const RawShiftStatus = {
   ACTIVE: 'ACTIVE',
   UPCOMING: 'UPCOMING',
@@ -1183,3 +1212,17 @@ export const TutorialStatus = {
 } as const
 
 export type TutorialStatus = (typeof TutorialStatus)[keyof typeof TutorialStatus]
+
+
+export const UserPointSourceType = {
+  POST: 'POST',
+  LIKE: 'LIKE',
+  COMMENT: 'COMMENT',
+  FOLLOW: 'FOLLOW',
+  MANUAL: 'MANUAL',
+  EVENT: 'EVENT',
+  BATTLE: 'BATTLE',
+  OTHER: 'OTHER'
+} as const
+
+export type UserPointSourceType = (typeof UserPointSourceType)[keyof typeof UserPointSourceType]

@@ -1,0 +1,21 @@
+enum PrestigeRuleStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model PrestigeRule {
+  id              String             @id @default(uuid()) @db.Uuid
+  earnBy          String             @unique
+  point           Int
+  dailyCap        Int                @default(0)
+  weeklyCap       Int                @default(0)
+  cooldownSeconds Int                @default(0)
+  status          PrestigeRuleStatus @default(ACTIVE)
+
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  @@index([status])
+  @@index([earnBy])
+  @@map("prestige_rules")
+}

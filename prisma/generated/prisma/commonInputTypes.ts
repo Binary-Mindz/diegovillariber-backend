@@ -1449,6 +1449,57 @@ export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
+export type EnumPostViewSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel> | $Enums.PostViewSource
+}
+
+export type EnumViewerRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel> | $Enums.ViewerRelationType
+}
+
+export type EnumPostViewSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel> | $Enums.PostViewSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+}
+
+export type EnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.ViewerRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+}
+
+export type EnumPrestigeRuleStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PrestigeRuleStatus | Prisma.EnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel> | $Enums.PrestigeRuleStatus
+}
+
+export type EnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PrestigeRuleStatus | Prisma.EnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel> | $Enums.PrestigeRuleStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+}
+
 export type EnumProductCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.ProductCategory | Prisma.EnumProductCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.ProductCategory[] | Prisma.ListEnumProductCategoryFieldRefInput<$PrismaModel>
@@ -1984,6 +2035,23 @@ export type EnumAccountStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
+}
+
+export type EnumUserPointSourceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.UserPointSourceType | Prisma.EnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel> | $Enums.UserPointSourceType
+}
+
+export type EnumUserPointSourceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UserPointSourceType | Prisma.EnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUserPointSourceTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserPointSourceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel>
 }
 
 export type FloatFilter<$PrismaModel = never> = {
@@ -3447,6 +3515,57 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
 }
 
+export type NestedEnumPostViewSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel> | $Enums.PostViewSource
+}
+
+export type NestedEnumViewerRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel> | $Enums.ViewerRelationType
+}
+
+export type NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostViewSource | Prisma.EnumPostViewSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostViewSource[] | Prisma.ListEnumPostViewSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostViewSourceWithAggregatesFilter<$PrismaModel> | $Enums.PostViewSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostViewSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ViewerRelationType | Prisma.EnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ViewerRelationType[] | Prisma.ListEnumViewerRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.ViewerRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumPrestigeRuleStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PrestigeRuleStatus | Prisma.EnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel> | $Enums.PrestigeRuleStatus
+}
+
+export type NestedEnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PrestigeRuleStatus | Prisma.EnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel> | $Enums.PrestigeRuleStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+}
+
 export type NestedEnumProductCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.ProductCategory | Prisma.EnumProductCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.ProductCategory[] | Prisma.ListEnumProductCategoryFieldRefInput<$PrismaModel>
@@ -3971,6 +4090,23 @@ export type NestedEnumAccountStatusWithAggregatesFilter<$PrismaModel = never> = 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAccountStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumUserPointSourceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.UserPointSourceType | Prisma.EnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel> | $Enums.UserPointSourceType
+}
+
+export type NestedEnumUserPointSourceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.UserPointSourceType | Prisma.EnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.UserPointSourceType[] | Prisma.ListEnumUserPointSourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumUserPointSourceTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserPointSourceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumUserPointSourceTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumVisibilityFilter<$PrismaModel = never> = {

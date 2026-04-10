@@ -67,10 +67,12 @@ export class FollowService {
       // 3) point log (optional but recommended)
       await tx.userPoint.create({
         data: {
-          userId: dto.followingId, // যাকে follow করা হয়েছে সে points পাবে
-          followId: follow.id,
-          points: FOLLOW_POINTS,
-          // battleId না দিলে error হলে battleId কে optional করতে হবে (উপরে বলা)
+          userId: dto.followingId,
+          sourceType: 'FOLLOW',
+          sourceId: follow.id,
+          earnBy: 'FOLLOW_USER',
+          points: 2,
+          note: 'Point earned from follow',
         },
       });
 
@@ -125,7 +127,7 @@ export class FollowService {
             email: true,
             profile: {
               select: {
-                profileName:true,
+                profileName: true,
                 imageUrl: true,
                 bio: true,
               },
@@ -240,7 +242,7 @@ export class FollowService {
         email: true,
         profile: {
           select: {
-            profileName:true,
+            profileName: true,
             imageUrl: true,
             bio: true,
           },

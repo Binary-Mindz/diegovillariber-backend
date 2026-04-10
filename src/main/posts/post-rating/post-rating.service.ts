@@ -5,8 +5,6 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreatePostRatingDto } from './dto/create-post-rating.dto';
-
-
 @Injectable()
 export class PostRatingService {
   constructor(private readonly prisma: PrismaService) {}
@@ -35,69 +33,22 @@ export class PostRatingService {
           postId,
         },
       },
+      select: {
+        id: true,
+        score: true,
+      },
     });
+
+    if (existingRating) {
+      throw new BadRequestException(
+        'You have already rated this post. One user can rate a post only once.',
+      );
+    }
 
     const score = dto.score;
 
     const result = await this.prisma.$transaction(async (tx) => {
-      let savedRating;
-
-      if (existingRating) {
-        const diff = score - existingRating.score;
-
-        savedRating = await tx.postRating.update({
-          where: {
-            userId_postId: {
-              userId,
-              postId,
-            },
-          },
-          data: {
-            score,
-          },
-        });
-
-        const updatedPost = await tx.post.update({
-          where: { id: postId },
-          data: {
-            ratingTotal: {
-              increment: diff,
-            },
-          },
-          select: {
-            id: true,
-            ratingCount: true,
-            ratingTotal: true,
-            ratingAverage: true,
-          },
-        });
-
-        const average =
-          updatedPost.ratingCount > 0
-            ? updatedPost.ratingTotal / updatedPost.ratingCount
-            : 0;
-
-        const finalPost = await tx.post.update({
-          where: { id: postId },
-          data: {
-            ratingAverage: average,
-          },
-          select: {
-            id: true,
-            ratingCount: true,
-            ratingTotal: true,
-            ratingAverage: true,
-          },
-        });
-
-        return {
-          action: 'updated',
-          rating: savedRating,
-          post: finalPost,
-        };
-      }
-
-      savedRating = await tx.postRating.create({
+      const savedRating = await tx.postRating.create({
         data: {
           userId,
           postId,
@@ -119,7 +70,6 @@ export class PostRatingService {
           id: true,
           ratingCount: true,
           ratingTotal: true,
-          ratingAverage: true,
         },
       });
 
@@ -142,7 +92,6 @@ export class PostRatingService {
       });
 
       return {
-        action: 'created',
         rating: savedRating,
         post: finalPost,
       };
@@ -150,13 +99,12 @@ export class PostRatingService {
 
     return {
       postId,
-      action: result.action,
+      action: 'created',
       myRating: result.rating.score,
       ratingCount: result.post.ratingCount,
       ratingAverage: Number(result.post.ratingAverage),
     };
   }
-
   async getPostRatingSummary(postId: string, currentUserId?: string) {
     const post = await this.prisma.post.findUnique({
       where: { id: postId },
