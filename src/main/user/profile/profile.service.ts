@@ -243,7 +243,7 @@ export class ProfileService {
             create: {
               profileId,
               racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ?? VehicleCategory.CITY,
+                (dto.proDriver.racingDiscipline as any) ?? VehicleCategory.MOTOCROSS,
               location: dto.proDriver.location,
 
             },
