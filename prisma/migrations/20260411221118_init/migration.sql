@@ -1,8 +1,23 @@
 -- CreateEnum
+CREATE TYPE "AdStatus" AS ENUM ('ACTIVE', 'PAUSE');
+
+-- CreateEnum
+CREATE TYPE "BannerWidth" AS ENUM ('FULL_WIDTH', 'CONTAINED', 'NARROW', 'CUSTOM');
+
+-- CreateEnum
+CREATE TYPE "BannerHeight" AS ENUM ('AUTO_HEIGHT', 'SMALL', 'MEDIUM', 'LARGE', 'EXTRA_LARGE');
+
+-- CreateEnum
+CREATE TYPE "Placement" AS ENUM ('ALL', 'IOS', 'ANDROID', 'WEB');
+
+-- CreateEnum
+CREATE TYPE "LinkType" AS ENUM ('EXTERNAL_LINK', 'POST_LINK');
+
+-- CreateEnum
 CREATE TYPE "ChallengeType" AS ENUM ('PHOTO', 'VIDEO', 'LAP_TIME', 'EXPLORATION');
 
 -- CreateEnum
-CREATE TYPE "ChallengeCategory" AS ENUM ('DAILY', 'SPOTTER', 'COMMUNITY', 'BRAND');
+CREATE TYPE "ChallengeCategory" AS ENUM ('DAILY', 'SPOTTER', 'COMMUNITY', 'SPONSORED', 'GEOGRAPHY');
 
 -- CreateEnum
 CREATE TYPE "Preference" AS ENUM ('CAR', 'BIKE', 'BOTH');
@@ -41,7 +56,7 @@ CREATE TYPE "AutoInviteScope" AS ENUM ('SAME_CITY', 'SAME_COUNTRY_500KM', 'WORLD
 CREATE TYPE "CameraRequirement" AS ENUM ('ANY', 'MOBILE_ONLY', 'DSLR_MIRRORLESS_ONLY', 'PROFESSIONAL_ONLY');
 
 -- CreateEnum
-CREATE TYPE "BattleStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'RUNNING', 'COMPLETED', 'CANCELLED');
+CREATE TYPE "BattleStatus" AS ENUM ('ACTIVE', 'UPCOMING', 'FINISHED');
 
 -- CreateEnum
 CREATE TYPE "InvitationStatus" AS ENUM ('PENDING', 'ACCEPTED', 'DECLINED', 'EXPIRED');
@@ -56,10 +71,16 @@ CREATE TYPE "SubmissionStatus" AS ENUM ('PENDING', 'SUBMITTED', 'APPROVED', 'REJ
 CREATE TYPE "BattleCategory" AS ENUM ('STYLE_BATTLE', 'STANCE_BATTLE', 'RACING_BATTLE', 'CLASSIC_BATTLE', 'JDM_BATTLE', 'EURO_BATTLE', 'MUSCLE_BATTLE', 'OFF_ROAD_BATTLE');
 
 -- CreateEnum
+CREATE TYPE "HeaderName" AS ENUM ('CHALLEGE', 'RAW_SHIFT', 'MOTOR_SPORT_RANKING', 'MARKETPLACE', 'HEAD_TO_HEAD');
+
+-- CreateEnum
 CREATE TYPE "PhotoEditingDeclaration" AS ENUM ('NO_EDITING', 'EDITED_WITH_ADOBE_LIGHTROOM', 'EDITED_WITH_ADOBE_PHOTOSHOP', 'EDITED_WITH_SNAPSEED', 'EDITED_WITH_VSCO', 'EDITED_WITH_OTHER_SOFTWARE');
 
 -- CreateEnum
 CREATE TYPE "VideoEditingDeclaration" AS ENUM ('ADOBE_PREMIER_PRO', 'DAVINCI_RESOLVE', 'AVID_MEDIA_COMPOSER', 'FINAL_CUT_PRO');
+
+-- CreateEnum
+CREATE TYPE "PostAssetType" AS ENUM ('CAR', 'BIKE');
 
 -- CreateEnum
 CREATE TYPE "VisiualStyle" AS ENUM ('Action', 'Aerial', 'Artistic', 'Drift', 'Black_And_White', 'Cinematic', 'Close_Up', 'Motion_Blur', 'Day', 'Detail_Shot', 'Golden_Hour', 'Long_Exposure', 'Macro', 'Night_Shot', 'Panoramic', 'Panning', 'Raw', 'Rollin_Shot', 'Wet_Conditions', 'Wide_Angle', 'Abandoned', 'AI_Generated');
@@ -71,7 +92,16 @@ CREATE TYPE "ContextActivity" AS ENUM ('Car_Meet', 'Celebration', 'Drag_Race', '
 CREATE TYPE "Subject" AS ENUM ('Brake_Details', 'Cockpit', 'Driver_Portrait', 'Engine_Bay', 'Exterior', 'Front_Detail', 'Interior', 'Logos', 'Rear_Detail', 'Side', 'Wheel');
 
 -- CreateEnum
-CREATE TYPE "RawShiftStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'RUNNING', 'COMPLETED', 'CANCELLED');
+CREATE TYPE "PostViewSource" AS ENUM ('FEED', 'PROFILE', 'SEARCH', 'HASHTAG', 'DETAIL', 'SHARE_LINK');
+
+-- CreateEnum
+CREATE TYPE "ViewerRelationType" AS ENUM ('SELF', 'FOLLOWER', 'NON_FOLLOWER');
+
+-- CreateEnum
+CREATE TYPE "PrestigeRuleStatus" AS ENUM ('ACTIVE', 'INACTIVE');
+
+-- CreateEnum
+CREATE TYPE "RawShiftStatus" AS ENUM ('ACTIVE', 'UPCOMING', 'FINISHED');
 
 -- CreateEnum
 CREATE TYPE "RawShiftEntryStatus" AS ENUM ('SUBMITTED', 'APPROVED', 'REJECTED');
@@ -125,7 +155,7 @@ CREATE TYPE "ContentCategory" AS ENUM ('PHOTOGRAPHY', 'VLOG', 'ANALYSIS');
 CREATE TYPE "RacingType" AS ENUM ('GT_Racing', 'Rally', 'MotoGP', 'Formula_Racing', 'Drift', 'Karting', 'Endurance_Racing');
 
 -- CreateEnum
-CREATE TYPE "VehicleCategory" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'ELECTRIC');
+CREATE TYPE "VehicleCategory" AS ENUM ('TRACKDAY_AMATEUR', 'GT_TOURING', 'ENDURANCE', 'FORMULA', 'RALLY_HILL_CLIMB', 'DRIFT', 'DRAG', 'KARTING', 'SUPER_BIKE', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'RAID');
 
 -- CreateEnum
 CREATE TYPE "BusinessCategory" AS ENUM ('Detailling_Care', 'Parts_Performance', 'Ecu_Dyno_Tuning', 'Wrap_Vinyl', 'Motorsport_Service', 'Event_Promoter', 'Media_Podcast', 'Dealership', 'Body_Coachbuilder', 'Auto_Recycling', 'Inspection_Technical');
@@ -242,6 +272,9 @@ CREATE TYPE "NotificationChannel" AS ENUM ('IN_APP', 'PUSH', 'EMAIL');
 CREATE TYPE "NotificationStatus" AS ENUM ('UNREAD', 'READ', 'ARCHIVED');
 
 -- CreateEnum
+CREATE TYPE "ProgramType" AS ENUM ('CHALLENGE', 'RAW_SHIFT', 'SPLIT_SCREEN', 'HEAD_TO_HEAD');
+
+-- CreateEnum
 CREATE TYPE "SplitScreenArenaStatus" AS ENUM ('ACTIVE', 'INACTIVE');
 
 -- CreateEnum
@@ -270,6 +303,68 @@ CREATE TYPE "SplitScreenVoteType" AS ENUM ('LEFT', 'RIGHT');
 
 -- CreateEnum
 CREATE TYPE "SplitScreenParticipantResult" AS ENUM ('WIN', 'LOSS', 'DRAW');
+
+-- CreateEnum
+CREATE TYPE "SpottingRequestStatus" AS ENUM ('ACTIVE', 'PAUSED', 'MATCHED', 'EXPIRED', 'CANCELLED');
+
+-- CreateEnum
+CREATE TYPE "TutorialStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'ARCHIVED');
+
+-- CreateEnum
+CREATE TYPE "UserPointSourceType" AS ENUM ('POST', 'LIKE', 'COMMENT', 'FOLLOW', 'MANUAL', 'EVENT', 'BATTLE', 'OTHER');
+
+-- CreateTable
+CREATE TABLE "Ad" (
+    "id" UUID NOT NULL,
+    "title" TEXT NOT NULL,
+    "link" "LinkType" NOT NULL DEFAULT 'EXTERNAL_LINK',
+    "linkUrl" TEXT NOT NULL,
+    "bannerUrl" TEXT,
+    "localRatio" INTEGER,
+    "nationRatio" INTEGER,
+    "worldWide" TEXT,
+    "targetUrl" TEXT,
+    "altText" TEXT,
+    "startDate" TIMESTAMP(3) NOT NULL,
+    "endDate" TIMESTAMP(3) NOT NULL,
+    "vehicleType" "Preference" NOT NULL DEFAULT 'CAR',
+    "placement" "Placement" NOT NULL DEFAULT 'ALL',
+    "minimumPoint" INTEGER,
+    "maximumPoint" INTEGER,
+    "cap" INTEGER,
+    "dailyBudget" TEXT,
+    "totalBudget" TEXT,
+    "countryCode" TEXT,
+    "languages" TEXT,
+    "tags" TEXT,
+    "spotter" BOOLEAN NOT NULL DEFAULT false,
+    "proDriver" BOOLEAN NOT NULL DEFAULT false,
+    "owner" BOOLEAN NOT NULL DEFAULT false,
+    "proBussiness" BOOLEAN NOT NULL DEFAULT false,
+    "contentCreator" BOOLEAN NOT NULL DEFAULT false,
+    "simRacingDriver" BOOLEAN NOT NULL DEFAULT false,
+    "enableAdGlobally" BOOLEAN NOT NULL DEFAULT false,
+    "showAd" INTEGER,
+    "maxAdPerPage" INTEGER,
+    "rotationIntervel" INTEGER,
+    "bannerWidth" "BannerWidth" NOT NULL DEFAULT 'FULL_WIDTH',
+    "bannerHeight" "BannerHeight" NOT NULL DEFAULT 'AUTO_HEIGHT',
+    "prioritize" BOOLEAN NOT NULL DEFAULT false,
+    "autoPause" BOOLEAN NOT NULL DEFAULT false,
+    "minimumCTR" INTEGER,
+    "enableBannerAnimation" BOOLEAN NOT NULL DEFAULT false,
+    "autoRotationEnabled" BOOLEAN NOT NULL DEFAULT false,
+    "previewMode" BOOLEAN NOT NULL DEFAULT false,
+    "showFeed" BOOLEAN NOT NULL DEFAULT false,
+    "showProfile" BOOLEAN NOT NULL DEFAULT false,
+    "showMarketPlace" BOOLEAN NOT NULL DEFAULT false,
+    "showEvent" BOOLEAN NOT NULL DEFAULT false,
+    "showChallenges" BOOLEAN NOT NULL DEFAULT false,
+    "showBattle" BOOLEAN NOT NULL DEFAULT false,
+    "adStatus" "AdStatus" NOT NULL DEFAULT 'PAUSE',
+
+    CONSTRAINT "Ad_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "AdvancedCarData" (
@@ -468,6 +563,7 @@ CREATE TABLE "Challenge" (
     "status" "ChallengeStatus" DEFAULT 'UPCOMING',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+    "programType" "ProgramType" NOT NULL DEFAULT 'CHALLENGE',
 
     CONSTRAINT "Challenge_pkey" PRIMARY KEY ("id")
 );
@@ -711,6 +807,10 @@ CREATE TABLE "Event" (
     "eventTitle" TEXT NOT NULL,
     "description" TEXT,
     "location" TEXT,
+    "locationAddress" TEXT,
+    "latitude" DECIMAL(9,6),
+    "longitude" DECIMAL(9,6),
+    "placeId" TEXT,
     "websiteLink" TEXT,
     "price" INTEGER NOT NULL,
     "eventType" "EventType" NOT NULL DEFAULT 'Race',
@@ -825,9 +925,10 @@ CREATE TABLE "HeadToHeadBattle" (
     "placeId" VARCHAR(120),
     "startDate" TIMESTAMPTZ(6) NOT NULL,
     "endDate" TIMESTAMPTZ(6) NOT NULL,
-    "status" "BattleStatus" NOT NULL DEFAULT 'DRAFT',
+    "status" "BattleStatus" NOT NULL DEFAULT 'UPCOMING',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+    "programType" "ProgramType" NOT NULL DEFAULT 'HEAD_TO_HEAD',
 
     CONSTRAINT "HeadToHeadBattle_pkey" PRIMARY KEY ("id")
 );
@@ -894,6 +995,19 @@ CREATE TABLE "BattleComment" (
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "BattleComment_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Header" (
+    "id" TEXT NOT NULL,
+    "selectHeader" "HeaderName" NOT NULL DEFAULT 'CHALLEGE',
+    "headerName" TEXT NOT NULL,
+    "brandName" TEXT,
+    "bannerImage" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Header_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1149,6 +1263,9 @@ CREATE TABLE "Post" (
     "id" UUID NOT NULL,
     "userId" UUID NOT NULL,
     "profileId" UUID,
+    "carId" UUID,
+    "bikeId" UUID,
+    "assetType" "PostAssetType" DEFAULT 'CAR',
     "profileType" "Type",
     "postType" "PostType" NOT NULL DEFAULT 'Spotter_Post',
     "caption" TEXT,
@@ -1160,15 +1277,21 @@ CREATE TABLE "Post" (
     "longitude" DECIMAL(9,6),
     "placeId" TEXT,
     "locationVisibility" TEXT,
-    "vehicleCategory" "VehicleCategory" NOT NULL DEFAULT 'CLASSIC',
+    "vehicleCategory" "VehicleCategory" NOT NULL DEFAULT 'MOTOCROSS',
     "mediaType" "MediaType" NOT NULL DEFAULT 'IMAGE',
     "like" INTEGER NOT NULL DEFAULT 0,
     "comment" INTEGER NOT NULL DEFAULT 0,
     "share" INTEGER NOT NULL DEFAULT 0,
+    "repost" INTEGER NOT NULL DEFAULT 0,
+    "racingVote" INTEGER NOT NULL DEFAULT 0,
     "contentBooster" BOOLEAN NOT NULL DEFAULT false,
     "point" INTEGER NOT NULL DEFAULT 5,
     "photoEditingDeclaration" "PhotoEditingDeclaration",
     "videoEditingDeclaration" "VideoEditingDeclaration",
+    "ratingCount" INTEGER NOT NULL DEFAULT 0,
+    "ratingTotal" INTEGER NOT NULL DEFAULT 0,
+    "ratingAverage" DECIMAL(10,2) NOT NULL DEFAULT 0,
+    "view" INTEGER NOT NULL DEFAULT 0,
     "visiualStyle" "VisiualStyle"[] DEFAULT ARRAY[]::"VisiualStyle"[],
     "contextActivity" "ContextActivity"[] DEFAULT ARRAY[]::"ContextActivity"[],
     "subject" "Subject"[] DEFAULT ARRAY[]::"Subject"[],
@@ -1176,6 +1299,45 @@ CREATE TABLE "Post" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "post_view_insights" (
+    "id" UUID NOT NULL,
+    "postId" UUID NOT NULL,
+    "viewerId" UUID,
+    "source" "PostViewSource" NOT NULL DEFAULT 'DETAIL',
+    "relationType" "ViewerRelationType" NOT NULL,
+    "viewedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "post_view_insights_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PostRating" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "postId" UUID NOT NULL,
+    "score" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "PostRating_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "prestige_rules" (
+    "id" UUID NOT NULL,
+    "earnBy" TEXT NOT NULL,
+    "point" INTEGER NOT NULL,
+    "dailyCap" INTEGER NOT NULL DEFAULT 0,
+    "weeklyCap" INTEGER NOT NULL DEFAULT 0,
+    "cooldownSeconds" INTEGER NOT NULL DEFAULT 0,
+    "status" "PrestigeRuleStatus" NOT NULL DEFAULT 'ACTIVE',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "prestige_rules_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1192,7 +1354,7 @@ CREATE TABLE "ProDriverProfile" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
     "profileType" "Type" NOT NULL DEFAULT 'PRO_DRIVER',
-    "racingDiscipline" "VehicleCategory" NOT NULL DEFAULT 'CITY',
+    "racingDiscipline" "VehicleCategory" NOT NULL DEFAULT 'TRACKDAY_AMATEUR',
     "location" TEXT NOT NULL,
 
     CONSTRAINT "ProDriverProfile_pkey" PRIMARY KEY ("id")
@@ -1202,9 +1364,14 @@ CREATE TABLE "ProDriverProfile" (
 CREATE TABLE "ProductList" (
     "id" UUID NOT NULL,
     "ownerId" UUID NOT NULL,
+    "carId" UUID,
     "title" TEXT NOT NULL,
     "productImage" TEXT,
     "location" TEXT,
+    "locationAddress" TEXT,
+    "latitude" DECIMAL(9,6),
+    "longitude" DECIMAL(9,6),
+    "placeId" TEXT,
     "description" TEXT,
     "category" "ProductCategory" NOT NULL DEFAULT 'CAR',
     "tags" TEXT[] DEFAULT ARRAY[]::TEXT[],
@@ -1234,6 +1401,9 @@ CREATE TABLE "Profile" (
     "isActive" "IsActive" NOT NULL DEFAULT 'ACTIVE',
     "suspend" BOOLEAN NOT NULL DEFAULT false,
     "locationStatus" BOOLEAN NOT NULL DEFAULT false,
+    "shareSlug" TEXT,
+    "shareQrPath" TEXT,
+    "shareCount" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
@@ -1254,8 +1424,9 @@ CREATE TABLE "Racing" (
 -- CreateTable
 CREATE TABLE "RacingVote" (
     "id" UUID NOT NULL,
-    "userId" UUID NOT NULL,
-    "postId" UUID NOT NULL,
+    "voterId" UUID NOT NULL,
+    "targetUserId" UUID,
+    "postId" UUID,
     "point" INTEGER NOT NULL DEFAULT 5,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -1276,9 +1447,10 @@ CREATE TABLE "RawShiftBattle" (
     "location" VARCHAR(150),
     "startDate" TIMESTAMPTZ(6) NOT NULL,
     "endDate" TIMESTAMPTZ(6) NOT NULL,
-    "status" "RawShiftStatus" NOT NULL DEFAULT 'DRAFT',
+    "status" "RawShiftStatus" NOT NULL DEFAULT 'UPCOMING',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
+    "programType" "ProgramType" NOT NULL DEFAULT 'RAW_SHIFT',
 
     CONSTRAINT "RawShiftBattle_pkey" PRIMARY KEY ("id")
 );
@@ -1421,6 +1593,7 @@ CREATE TABLE "SplitScreenMatchRequest" (
     "matchedAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "programType" "ProgramType" NOT NULL DEFAULT 'SPLIT_SCREEN',
 
     CONSTRAINT "SplitScreenMatchRequest_pkey" PRIMARY KEY ("id")
 );
@@ -1496,6 +1669,39 @@ CREATE TABLE "SpotterProfile" (
 );
 
 -- CreateTable
+CREATE TABLE "SpottingMatch" (
+    "id" UUID NOT NULL,
+    "spottingRequestId" UUID NOT NULL,
+    "postId" UUID NOT NULL,
+    "spottedUserId" UUID NOT NULL,
+    "distanceKm" DOUBLE PRECISION,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "SpottingMatch_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "SpottingRequest" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "profileId" UUID,
+    "carId" UUID,
+    "title" VARCHAR(150),
+    "brand" VARCHAR(100),
+    "model" VARCHAR(100),
+    "latitude" DECIMAL(9,6) NOT NULL,
+    "longitude" DECIMAL(9,6) NOT NULL,
+    "radiusKm" INTEGER NOT NULL DEFAULT 50,
+    "status" "SpottingRequestStatus" NOT NULL DEFAULT 'ACTIVE',
+    "expiresAt" TIMESTAMP(3),
+    "lastMatchedAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "SpottingRequest_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "SubmitLabTime" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -1527,6 +1733,22 @@ CREATE TABLE "TuningAero" (
     "aeroDynamics" TEXT,
 
     CONSTRAINT "TuningAero_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Tutorial" (
+    "id" UUID NOT NULL,
+    "sectionCode" VARCHAR(100) NOT NULL,
+    "title" VARCHAR(255) NOT NULL,
+    "description" TEXT,
+    "videoUrl" TEXT NOT NULL,
+    "order" INTEGER NOT NULL DEFAULT 1,
+    "learnVersion" INTEGER NOT NULL DEFAULT 1,
+    "status" "TutorialStatus" NOT NULL DEFAULT 'PUBLISHED',
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Tutorial_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1563,7 +1785,12 @@ CREATE TABLE "User" (
     "likeCount" INTEGER NOT NULL DEFAULT 0,
     "commentCount" INTEGER NOT NULL DEFAULT 0,
     "shareCount" INTEGER NOT NULL DEFAULT 0,
+    "totalVote" INTEGER NOT NULL DEFAULT 0,
     "activeProfileId" UUID,
+    "isTwoFactorEnabled" BOOLEAN NOT NULL DEFAULT false,
+    "twoFactorOtp" TEXT,
+    "twoFactorOtpExpiresAt" TIMESTAMP(3),
+    "twoFactorTempToken" VARCHAR(500),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -1571,16 +1798,28 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "UserPoint" (
+CREATE TABLE "UserBlock" (
+    "id" UUID NOT NULL,
+    "blockerId" UUID NOT NULL,
+    "blockedUserId" UUID NOT NULL,
+    "reason" VARCHAR(255),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "UserBlock_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "user_points" (
     "id" UUID NOT NULL,
     "userId" UUID NOT NULL,
-    "postId" UUID,
-    "likeId" UUID,
-    "commentId" UUID,
-    "followId" UUID,
+    "sourceType" "UserPointSourceType" NOT NULL,
+    "sourceId" UUID,
+    "earnBy" TEXT NOT NULL,
     "points" INTEGER NOT NULL,
+    "note" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "UserPoint_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "user_points_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -1716,6 +1955,15 @@ CREATE INDEX "Challenge_creatorId_idx" ON "Challenge"("creatorId");
 CREATE INDEX "Challenge_status_idx" ON "Challenge"("status");
 
 -- CreateIndex
+CREATE INDEX "Challenge_latitude_longitude_idx" ON "Challenge"("latitude", "longitude");
+
+-- CreateIndex
+CREATE INDEX "Challenge_participationScope_idx" ON "Challenge"("participationScope");
+
+-- CreateIndex
+CREATE INDEX "Challenge_startDate_endDate_idx" ON "Challenge"("startDate", "endDate");
+
+-- CreateIndex
 CREATE INDEX "ChallengeParticipant_challengeId_status_idx" ON "ChallengeParticipant"("challengeId", "status");
 
 -- CreateIndex
@@ -1818,10 +2066,16 @@ CREATE UNIQUE INDEX "Hashtag_tag_key" ON "Hashtag"("tag");
 CREATE INDEX "HeadToHeadBattle_creatorId_idx" ON "HeadToHeadBattle"("creatorId");
 
 -- CreateIndex
-CREATE INDEX "HeadToHeadBattle_status_idx" ON "HeadToHeadBattle"("status");
+CREATE INDEX "HeadToHeadBattle_accessType_idx" ON "HeadToHeadBattle"("accessType");
 
 -- CreateIndex
-CREATE INDEX "HeadToHeadBattle_accessType_idx" ON "HeadToHeadBattle"("accessType");
+CREATE INDEX "HeadToHeadBattle_latitude_longitude_idx" ON "HeadToHeadBattle"("latitude", "longitude");
+
+-- CreateIndex
+CREATE INDEX "HeadToHeadBattle_status_participationScope_idx" ON "HeadToHeadBattle"("status", "participationScope");
+
+-- CreateIndex
+CREATE INDEX "HeadToHeadBattle_startDate_endDate_idx" ON "HeadToHeadBattle"("startDate", "endDate");
 
 -- CreateIndex
 CREATE INDEX "BattleParticipant_userId_idx" ON "BattleParticipant"("userId");
@@ -1864,6 +2118,9 @@ CREATE INDEX "BattleComment_submissionId_idx" ON "BattleComment"("submissionId")
 
 -- CreateIndex
 CREATE INDEX "BattleComment_userId_idx" ON "BattleComment"("userId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Header_headerName_key" ON "Header"("headerName");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "HidePost_userId_postId_key" ON "HidePost"("userId", "postId");
@@ -1935,16 +2192,67 @@ CREATE UNIQUE INDEX "OfficialPartner_userId_key" ON "OfficialPartner"("userId");
 CREATE UNIQUE INDEX "OwnerProfile_profileId_key" ON "OwnerProfile"("profileId");
 
 -- CreateIndex
+CREATE INDEX "Post_profileType_idx" ON "Post"("profileType");
+
+-- CreateIndex
+CREATE INDEX "Post_latitude_longitude_idx" ON "Post"("latitude", "longitude");
+
+-- CreateIndex
+CREATE INDEX "Post_ratingAverage_idx" ON "Post"("ratingAverage");
+
+-- CreateIndex
+CREATE INDEX "Post_createdAt_idx" ON "Post"("createdAt");
+
+-- CreateIndex
+CREATE INDEX "post_view_insights_postId_idx" ON "post_view_insights"("postId");
+
+-- CreateIndex
+CREATE INDEX "post_view_insights_postId_viewedAt_idx" ON "post_view_insights"("postId", "viewedAt");
+
+-- CreateIndex
+CREATE INDEX "post_view_insights_postId_source_idx" ON "post_view_insights"("postId", "source");
+
+-- CreateIndex
+CREATE INDEX "post_view_insights_postId_relationType_idx" ON "post_view_insights"("postId", "relationType");
+
+-- CreateIndex
+CREATE INDEX "PostRating_postId_idx" ON "PostRating"("postId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PostRating_userId_postId_key" ON "PostRating"("userId", "postId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "prestige_rules_earnBy_key" ON "prestige_rules"("earnBy");
+
+-- CreateIndex
+CREATE INDEX "prestige_rules_status_idx" ON "prestige_rules"("status");
+
+-- CreateIndex
+CREATE INDEX "prestige_rules_earnBy_idx" ON "prestige_rules"("earnBy");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "ProDriverProfile_profileId_key" ON "ProDriverProfile"("profileId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ProductList_carId_key" ON "ProductList"("carId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Profile_userId_key" ON "Profile"("userId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Profile_shareSlug_key" ON "Profile"("shareSlug");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Racing_simRacingId_key" ON "Racing"("simRacingId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "RacingVote_userId_postId_key" ON "RacingVote"("userId", "postId");
+CREATE INDEX "RacingVote_voterId_createdAt_idx" ON "RacingVote"("voterId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "RacingVote_targetUserId_idx" ON "RacingVote"("targetUserId");
+
+-- CreateIndex
+CREATE INDEX "RacingVote_postId_idx" ON "RacingVote"("postId");
 
 -- CreateIndex
 CREATE INDEX "RawShiftBattle_creatorId_idx" ON "RawShiftBattle"("creatorId");
@@ -2064,6 +2372,24 @@ CREATE UNIQUE INDEX "SplitScreenBattleVote_battleId_voterId_key" ON "SplitScreen
 CREATE UNIQUE INDEX "SpotterProfile_profileId_key" ON "SpotterProfile"("profileId");
 
 -- CreateIndex
+CREATE INDEX "SpottingMatch_spottingRequestId_idx" ON "SpottingMatch"("spottingRequestId");
+
+-- CreateIndex
+CREATE INDEX "SpottingMatch_postId_idx" ON "SpottingMatch"("postId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "SpottingMatch_spottingRequestId_postId_key" ON "SpottingMatch"("spottingRequestId", "postId");
+
+-- CreateIndex
+CREATE INDEX "SpottingRequest_userId_idx" ON "SpottingRequest"("userId");
+
+-- CreateIndex
+CREATE INDEX "SpottingRequest_status_idx" ON "SpottingRequest"("status");
+
+-- CreateIndex
+CREATE INDEX "SpottingRequest_brand_model_idx" ON "SpottingRequest"("brand", "model");
+
+-- CreateIndex
 CREATE INDEX "SubmitLabTime_profileId_idx" ON "SubmitLabTime"("profileId");
 
 -- CreateIndex
@@ -2088,10 +2414,31 @@ CREATE INDEX "SubmitLabTime_profileId_circuit_idx" ON "SubmitLabTime"("profileId
 CREATE UNIQUE INDEX "TuningAero_advancedCarDataId_key" ON "TuningAero"("advancedCarDataId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Tutorial_sectionCode_learnVersion_order_key" ON "Tutorial"("sectionCode", "learnVersion", "order");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "UsageNotes_advancedCarDataId_key" ON "UsageNotes"("advancedCarDataId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE INDEX "UserBlock_blockerId_idx" ON "UserBlock"("blockerId");
+
+-- CreateIndex
+CREATE INDEX "UserBlock_blockedUserId_idx" ON "UserBlock"("blockedUserId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "UserBlock_blockerId_blockedUserId_key" ON "UserBlock"("blockerId", "blockedUserId");
+
+-- CreateIndex
+CREATE INDEX "user_points_userId_createdAt_idx" ON "user_points"("userId", "createdAt");
+
+-- CreateIndex
+CREATE INDEX "user_points_earnBy_idx" ON "user_points"("earnBy");
+
+-- CreateIndex
+CREATE INDEX "user_points_sourceType_sourceId_idx" ON "user_points"("sourceType", "sourceId");
 
 -- CreateIndex
 CREATE INDEX "VirtualGarage_profileId_idx" ON "VirtualGarage"("profileId");
@@ -2154,13 +2501,13 @@ ALTER TABLE "BikeElectronics" ADD CONSTRAINT "BikeElectronics_advancedBikeDataId
 ALTER TABLE "BikeUsageAndNotes" ADD CONSTRAINT "BikeUsageAndNotes_advancedBikeDataId_fkey" FOREIGN KEY ("advancedBikeDataId") REFERENCES "AdvancedBikeData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "BusinessProfile" ADD CONSTRAINT "BusinessProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "BusinessProfile" ADD CONSTRAINT "BusinessProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Car" ADD CONSTRAINT "Car_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Car" ADD CONSTRAINT "Car_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Car" ADD CONSTRAINT "Car_garageId_fkey" FOREIGN KEY ("garageId") REFERENCES "Garage"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Car" ADD CONSTRAINT "Car_garageId_fkey" FOREIGN KEY ("garageId") REFERENCES "Garage"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Challenge" ADD CONSTRAINT "Challenge_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2220,7 +2567,7 @@ ALTER TABLE "ChallengeWinner" ADD CONSTRAINT "ChallengeWinner_submissionId_fkey"
 ALTER TABLE "ChassisBrakes" ADD CONSTRAINT "ChassisBrakes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Comment" ADD CONSTRAINT "Comment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2229,7 +2576,7 @@ ALTER TABLE "Comment" ADD CONSTRAINT "Comment_postId_fkey" FOREIGN KEY ("postId"
 ALTER TABLE "Comment" ADD CONSTRAINT "Comment_parentId_fkey" FOREIGN KEY ("parentId") REFERENCES "Comment"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ContentCreatorProfile" ADD CONSTRAINT "ContentCreatorProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ContentCreatorProfile" ADD CONSTRAINT "ContentCreatorProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Conversation" ADD CONSTRAINT "Conversation_lastMessageId_fkey" FOREIGN KEY ("lastMessageId") REFERENCES "Message"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -2253,7 +2600,7 @@ ALTER TABLE "DrivingAssistant" ADD CONSTRAINT "DrivingAssistant_simRacingId_fkey
 ALTER TABLE "EnginePower" ADD CONSTRAINT "EnginePower_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Event" ADD CONSTRAINT "Event_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Event" ADD CONSTRAINT "Event_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Follow" ADD CONSTRAINT "Follow_followerId_fkey" FOREIGN KEY ("followerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2262,7 +2609,7 @@ ALTER TABLE "Follow" ADD CONSTRAINT "Follow_followerId_fkey" FOREIGN KEY ("follo
 ALTER TABLE "Follow" ADD CONSTRAINT "Follow_followingId_fkey" FOREIGN KEY ("followingId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Garage" ADD CONSTRAINT "Garage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Garage" ADD CONSTRAINT "Garage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "HardwareSetup" ADD CONSTRAINT "HardwareSetup_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2313,10 +2660,10 @@ ALTER TABLE "BattleComment" ADD CONSTRAINT "BattleComment_userId_fkey" FOREIGN K
 ALTER TABLE "BattleComment" ADD CONSTRAINT "BattleComment_submissionId_fkey" FOREIGN KEY ("submissionId") REFERENCES "BattleSubmission"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "HidePost" ADD CONSTRAINT "HidePost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "InteriorSafety" ADD CONSTRAINT "InteriorSafety_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2334,7 +2681,7 @@ ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_carId_fkey" FOREIGN KEY ("
 ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_bikeId_fkey" FOREIGN KEY ("bikeId") REFERENCES "Bike"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Like" ADD CONSTRAINT "Like_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Like" ADD CONSTRAINT "Like_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2343,13 +2690,13 @@ ALTER TABLE "Like" ADD CONSTRAINT "Like_postId_fkey" FOREIGN KEY ("postId") REFE
 ALTER TABLE "Live" ADD CONSTRAINT "Live_hostId_fkey" FOREIGN KEY ("hostId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "LiveParticipant" ADD CONSTRAINT "LiveParticipant_liveId_fkey" FOREIGN KEY ("liveId") REFERENCES "Live"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LiveParticipant" ADD CONSTRAINT "LiveParticipant_liveId_fkey" FOREIGN KEY ("liveId") REFERENCES "Live"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "LiveParticipant" ADD CONSTRAINT "LiveParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LiveParticipant" ADD CONSTRAINT "LiveParticipant_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "LiveReward" ADD CONSTRAINT "LiveReward_liveId_fkey" FOREIGN KEY ("liveId") REFERENCES "Live"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "LiveReward" ADD CONSTRAINT "LiveReward_liveId_fkey" FOREIGN KEY ("liveId") REFERENCES "Live"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "LiveReward" ADD CONSTRAINT "LiveReward_hostId_fkey" FOREIGN KEY ("hostId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -2385,25 +2732,46 @@ ALTER TABLE "DeviceToken" ADD CONSTRAINT "DeviceToken_userId_fkey" FOREIGN KEY (
 ALTER TABLE "OfficialPartner" ADD CONSTRAINT "OfficialPartner_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "OwnerProfile" ADD CONSTRAINT "OwnerProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "OwnerProfile" ADD CONSTRAINT "OwnerProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Payment" ADD CONSTRAINT "Payment_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Prize" ADD CONSTRAINT "Prize_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "ProDriverProfile" ADD CONSTRAINT "ProDriverProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_bikeId_fkey" FOREIGN KEY ("bikeId") REFERENCES "Bike"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "post_view_insights" ADD CONSTRAINT "post_view_insights_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "post_view_insights" ADD CONSTRAINT "post_view_insights_viewerId_fkey" FOREIGN KEY ("viewerId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PostRating" ADD CONSTRAINT "PostRating_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PostRating" ADD CONSTRAINT "PostRating_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Prize" ADD CONSTRAINT "Prize_createdById_fkey" FOREIGN KEY ("createdById") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ProDriverProfile" ADD CONSTRAINT "ProDriverProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ProductList" ADD CONSTRAINT "ProductList_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "ProductList" ADD CONSTRAINT "ProductList_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2412,10 +2780,13 @@ ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "Racing" ADD CONSTRAINT "Racing_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_voterId_fkey" FOREIGN KEY ("voterId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_targetUserId_fkey" FOREIGN KEY ("targetUserId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RacingVote" ADD CONSTRAINT "RacingVote_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "RawShiftBattle" ADD CONSTRAINT "RawShiftBattle_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2454,16 +2825,16 @@ ALTER TABLE "RawShiftComment" ADD CONSTRAINT "RawShiftComment_userId_fkey" FOREI
 ALTER TABLE "Report" ADD CONSTRAINT "Report_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Repost" ADD CONSTRAINT "Repost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Repost" ADD CONSTRAINT "Repost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Repost" ADD CONSTRAINT "Repost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Repost" ADD CONSTRAINT "Repost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SavePost" ADD CONSTRAINT "SavePost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "SavePost" ADD CONSTRAINT "SavePost_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SavePost" ADD CONSTRAINT "SavePost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "SavePost" ADD CONSTRAINT "SavePost_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "SetupDescriptionPhoto" ADD CONSTRAINT "SetupDescriptionPhoto_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2472,7 +2843,7 @@ ALTER TABLE "SetupDescriptionPhoto" ADD CONSTRAINT "SetupDescriptionPhoto_simRac
 ALTER TABLE "Share" ADD CONSTRAINT "Share_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SimRacingProfile" ADD CONSTRAINT "SimRacingProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "SimRacingProfile" ADD CONSTRAINT "SimRacingProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "SplitScreenMatchRequest" ADD CONSTRAINT "SplitScreenMatchRequest_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2529,7 +2900,25 @@ ALTER TABLE "SplitScreenBattleVote" ADD CONSTRAINT "SplitScreenBattleVote_battle
 ALTER TABLE "SplitScreenBattleVote" ADD CONSTRAINT "SplitScreenBattleVote_voterId_fkey" FOREIGN KEY ("voterId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "SpotterProfile" ADD CONSTRAINT "SpotterProfile_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingMatch" ADD CONSTRAINT "SpottingMatch_spottingRequestId_fkey" FOREIGN KEY ("spottingRequestId") REFERENCES "SpottingRequest"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingMatch" ADD CONSTRAINT "SpottingMatch_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingMatch" ADD CONSTRAINT "SpottingMatch_spottedUserId_fkey" FOREIGN KEY ("spottedUserId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingRequest" ADD CONSTRAINT "SpottingRequest_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingRequest" ADD CONSTRAINT "SpottingRequest_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "SpottingRequest" ADD CONSTRAINT "SpottingRequest_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "SubmitLabTime" ADD CONSTRAINT "SubmitLabTime_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -2541,34 +2930,28 @@ ALTER TABLE "TuningAero" ADD CONSTRAINT "TuningAero_advancedCarDataId_fkey" FORE
 ALTER TABLE "UsageNotes" ADD CONSTRAINT "UsageNotes_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "UserBlock" ADD CONSTRAINT "UserBlock_blockerId_fkey" FOREIGN KEY ("blockerId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "UserBlock" ADD CONSTRAINT "UserBlock_blockedUserId_fkey" FOREIGN KEY ("blockedUserId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_likeId_fkey" FOREIGN KEY ("likeId") REFERENCES "Like"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "user_points" ADD CONSTRAINT "user_points_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_commentId_fkey" FOREIGN KEY ("commentId") REFERENCES "Comment"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "VirtualGarage" ADD CONSTRAINT "VirtualGarage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "UserPoint" ADD CONSTRAINT "UserPoint_followId_fkey" FOREIGN KEY ("followId") REFERENCES "Follow"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "VirtualGarage" ADD CONSTRAINT "VirtualGarage_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "VirtualSimRacingEvent" ADD CONSTRAINT "VirtualSimRacingEvent_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "VirtualSimRacingEvent" ADD CONSTRAINT "VirtualSimRacingEvent_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "WheelsTires" ADD CONSTRAINT "WheelsTires_advancedCarDataId_fkey" FOREIGN KEY ("advancedCarDataId") REFERENCES "AdvancedCarData"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WishList" ADD CONSTRAINT "WishList_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WishList" ADD CONSTRAINT "WishList_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WishList" ADD CONSTRAINT "WishList_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "WishList" ADD CONSTRAINT "WishList_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_PostHashtags" ADD CONSTRAINT "_PostHashtags_A_fkey" FOREIGN KEY ("A") REFERENCES "Hashtag"("id") ON DELETE CASCADE ON UPDATE CASCADE;
