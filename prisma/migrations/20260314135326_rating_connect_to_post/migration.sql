@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "Post" ADD COLUMN     "ratingAverage" DECIMAL(10,2) NOT NULL DEFAULT 0,
-ADD COLUMN     "ratingCount" INTEGER NOT NULL DEFAULT 0,
-ADD COLUMN     "ratingTotal" INTEGER NOT NULL DEFAULT 0;
