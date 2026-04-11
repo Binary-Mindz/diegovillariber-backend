@@ -586,24 +586,19 @@ export type RacingType = (typeof RacingType)[keyof typeof RacingType]
 
 
 export const VehicleCategory = {
-  CITY: 'CITY',
-  HOT_HATCH: 'HOT_HATCH',
-  SEDAN: 'SEDAN',
-  SPORT: 'SPORT',
-  SUV: 'SUV',
-  SUPERCAR: 'SUPERCAR',
-  TRACK: 'TRACK',
-  CLASSIC: 'CLASSIC',
-  NAKED: 'NAKED',
-  ADVENTURE: 'ADVENTURE',
-  TOURING: 'TOURING',
-  CUSTOM: 'CUSTOM',
-  SCOOTER: 'SCOOTER',
-  OFF_ROAD: 'OFF_ROAD',
+  TRACKDAY_AMATEUR: 'TRACKDAY_AMATEUR',
+  GT_TOURING: 'GT_TOURING',
+  ENDURANCE: 'ENDURANCE',
+  FORMULA: 'FORMULA',
+  RALLY_HILL_CLIMB: 'RALLY_HILL_CLIMB',
+  DRIFT: 'DRIFT',
+  DRAG: 'DRAG',
+  KARTING: 'KARTING',
+  SUPER_BIKE: 'SUPER_BIKE',
   MOTOCROSS: 'MOTOCROSS',
   ENDURO: 'ENDURO',
   TRIAL: 'TRIAL',
-  ELECTRIC: 'ELECTRIC'
+  RAID: 'RAID'
 } as const
 
 export type VehicleCategory = (typeof VehicleCategory)[keyof typeof VehicleCategory]

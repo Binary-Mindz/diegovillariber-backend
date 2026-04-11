@@ -93,7 +93,7 @@ export class CreatePostDto {
   @IsString()
   locationVisibility?: string;
 
-  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.CLASSIC })
+  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.MOTOCROSS })
   @IsOptional()
   @IsEnum(VehicleCategory)
   vehicleCategory?: VehicleCategory;
