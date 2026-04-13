@@ -1,3 +1,8 @@
+enum LabVehicleType {
+  CAR
+  BIKE
+}
+
 model LabTime {
   id String @id @default(uuid()) @db.Uuid
 
@@ -5,12 +10,18 @@ model LabTime {
   profileId String  @db.Uuid
   profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
-  // Track Info
-  trackName   String  @db.VarChar(255)
-  trackLayout String? @db.VarChar(255)
+  // Track info
+  trackName   String   @db.VarChar(255)
+  trackLayout String?  @db.VarChar(255)
+  latitude    Decimal? @db.Decimal(10, 7)
+  longitude   Decimal? @db.Decimal(10, 7)
 
-  // Car Info
-  carName String @db.VarChar(255)
+  // Vehicle selection
+  garageId    String         @db.Uuid
+  garage      Garage         @relation(fields: [garageId], references: [id], onDelete: Restrict)
+  vehicleType LabVehicleType
+  vehicleId   String         @db.Uuid
+  vehicleName String?        @db.VarChar(255)
 
   // Lap Data
   lapTimeMs Int
@@ -55,10 +66,12 @@ model LabTime {
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
 
-  // Indexing (IMPORTANT for leaderboard + filtering)
   @@index([profileId])
+  @@index([garageId])
+  @@index([vehicleType, vehicleId])
   @@index([trackName])
-  @@index([trackName, lapTimeMs]) // leaderboard sorting per track
+  @@index([trackName, lapTimeMs])
+  @@index([trackName, trackLayout, lapTimeMs])
   @@index([dateSet])
   @@index([sessionType])
   @@index([weather])

@@ -5,17 +5,28 @@ import {
   IsInt,
   IsOptional,
   IsString,
+  IsUUID,
   Max,
   MaxLength,
   Min,
 } from 'class-validator';
-import { DriveStyle, DriveTrain, SessionType, TireCompound, TrackCondition, Transmission, Weather } from 'generated/prisma/enums';
+import {
+  DriveStyle,
+  DriveTrain,
+  SessionType,
+  TireCompound,
+  TrackCondition,
+  Transmission,
+  Weather,
+} from 'generated/prisma/enums';
+import { LabVehicleType } from '../enum/lab-vehicle-type.enum';
+
 
 export class CreateLabTimeDto {
-  @ApiProperty({ example: 'Nürburgring Nordschleife' })
+  @ApiProperty({ example: 'Nürburgring' })
   @IsString()
   @MaxLength(255)
-  trackName: string;
+  trackName!: string;
 
   @ApiPropertyOptional({ example: 'GP Circuit' })
   @IsOptional()
@@ -23,19 +34,26 @@ export class CreateLabTimeDto {
   @MaxLength(255)
   trackLayout?: string;
 
-  @ApiProperty({ example: 'Porsche 911 GT3 RS' })
-  @IsString()
-  @MaxLength(255)
-  carName: string;
+  @ApiProperty({ example: 'a0f7aab2-676e-4f18-bf8c-9f0f7c70f101' })
+  @IsUUID()
+  garageId!: string;
+
+  @ApiProperty({ enum: LabVehicleType, example: LabVehicleType.CAR })
+  @IsEnum(LabVehicleType)
+  vehicleType!: LabVehicleType;
+
+  @ApiProperty({ example: 'b5c6c2f2-52e8-4c96-a7f9-26cbb2bbf001' })
+  @IsUUID()
+  vehicleId!: string;
 
   @ApiProperty({ example: 118243, description: 'Lap time in milliseconds' })
   @IsInt()
   @Min(1)
-  lapTimeMs: number;
+  lapTimeMs!: number;
 
   @ApiProperty({ example: '2025-12-15T00:00:00.000Z' })
   @IsString()
-  dateSet: string;
+  dateSet!: string;
 
   @ApiPropertyOptional({ example: 'https://youtube.com/watch?v=xxxx' })
   @IsOptional()
@@ -51,28 +69,28 @@ export class CreateLabTimeDto {
 
   @ApiProperty({ enum: Transmission, example: Transmission.MANUAL })
   @IsEnum(Transmission)
-  transmission: Transmission;
+  transmission!: Transmission;
 
   @ApiProperty({ enum: DriveTrain, example: DriveTrain.RWD })
   @IsEnum(DriveTrain)
-  drivetrain: DriveTrain;
+  drivetrain!: DriveTrain;
 
-  @ApiProperty({ example: 'Morning', description: 'Free text for now (you used String in schema)' })
+  @ApiProperty({ example: 'Morning' })
   @IsString()
   @MaxLength(50)
-  timeOfDay: string;
+  timeOfDay!: string;
 
   @ApiProperty({ enum: SessionType, example: SessionType.TRACK_DAY })
   @IsEnum(SessionType)
-  sessionType: SessionType;
+  sessionType!: SessionType;
 
   @ApiProperty({ enum: Weather, example: Weather.Sunny })
   @IsEnum(Weather)
-  weather: Weather;
+  weather!: Weather;
 
   @ApiProperty({ enum: TrackCondition, example: TrackCondition.Dry })
   @IsEnum(TrackCondition)
-  trackCondition: TrackCondition;
+  trackCondition!: TrackCondition;
 
   @ApiPropertyOptional({ example: 22 })
   @IsOptional()
@@ -84,7 +102,7 @@ export class CreateLabTimeDto {
   @IsInt()
   trackTemp?: number;
 
-  @ApiPropertyOptional({ example: 60, description: 'Humidity %' })
+  @ApiPropertyOptional({ example: 60 })
   @IsOptional()
   @IsInt()
   @Min(0)
@@ -94,18 +112,18 @@ export class CreateLabTimeDto {
   @ApiProperty({ example: 'Michelin' })
   @IsString()
   @MaxLength(100)
-  tireBrand: string;
+  tireBrand!: string;
 
   @ApiProperty({ example: 'Pilot Sport Cup 2' })
   @IsString()
   @MaxLength(100)
-  tireModel: string;
+  tireModel!: string;
 
   @ApiProperty({ enum: TireCompound, example: TireCompound.SOFT })
   @IsEnum(TireCompound)
-  tireCompund: TireCompound;
+  tireCompund!: TireCompound;
 
-  @ApiPropertyOptional({ example: 20, description: 'Tire wear %' })
+  @ApiPropertyOptional({ example: 20 })
   @IsOptional()
   @IsInt()
   @Min(0)
@@ -136,15 +154,15 @@ export class CreateLabTimeDto {
 
   @ApiProperty({ enum: DriveStyle, example: DriveStyle.Moderate_Balanced_Approach })
   @IsEnum(DriveStyle)
-  drivingStyle: DriveStyle;
+  drivingStyle!: DriveStyle;
 
-  @ApiPropertyOptional({ example: 40, description: 'Fuel load % or liters (your choice)' })
+  @ApiPropertyOptional({ example: 40 })
   @IsOptional()
   @IsInt()
   @Min(0)
   fuelLoad?: number;
 
-  @ApiPropertyOptional({ example: 75, description: 'Driver weight in kg' })
+  @ApiPropertyOptional({ example: 75 })
   @IsOptional()
   @IsInt()
   @Min(0)
@@ -152,5 +170,5 @@ export class CreateLabTimeDto {
 
   @ApiProperty({ example: 'Felt stable. Best lap on soft push lap.' })
   @IsString()
-  additionalNotes: string;
+  additionalNotes!: string;
 }
