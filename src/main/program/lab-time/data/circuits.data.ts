@@ -12,655 +12,233 @@ export interface CircuitData {
 }
 
 export const CIRCUITS_DATA: CircuitData[] = [
-  // EUROPE
+  // ================= SPAIN =================
   {
     trackName: 'Circuit de Barcelona-Catalunya',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 41.5694, longitude: 2.258 }],
   },
   {
     trackName: 'Circuito de Jerez-Ángel Nieto',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 36.7083, longitude: -6.0342 }],
   },
   {
     trackName: 'Circuit Ricardo Tormo',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 39.4859, longitude: -0.6306 }],
   },
   {
     trackName: 'MotorLand Aragón',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 41.0789, longitude: -0.2033 }],
   },
   {
     trackName: 'Circuito del Jarama',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 40.617, longitude: -3.5856 }],
   },
   {
     trackName: 'Circuito de Navarra',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 42.5606, longitude: -2.168 }],
   },
   {
     trackName: 'Circuito de Albacete',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 38.9601, longitude: -1.7025 }],
   },
   {
     trackName: 'Ascari Race Resort',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 36.7081, longitude: -5.1045 }],
   },
   {
     trackName: 'Circuito de Monteblanco',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 37.3363, longitude: -6.5412 }],
   },
   {
     trackName: 'Circuito de Guadix',
     country: 'Spain',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 37.2992, longitude: -3.1395 }],
   },
-  {
-    trackName: 'Circuito de Kotarr',
-    country: 'Spain',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuito de Calafat',
-    country: 'Spain',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= FRANCE =================
   {
     trackName: 'Circuit de la Sarthe',
     country: 'France',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 47.949, longitude: 0.224 }],
   },
   {
     trackName: 'Circuit Paul Ricard',
     country: 'France',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 43.2506, longitude: 5.7917 }],
   },
-  {
-    trackName: 'Circuit de Nevers Magny-Cours',
-    country: 'France',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit de Dijon-Prenois',
-    country: 'France',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit de Nogaro',
-    country: 'France',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit de Lédenon',
-    country: 'France',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit de Charade',
-    country: 'France',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= GERMANY =================
   {
     trackName: 'Nürburgring',
     country: 'Germany',
     continent: 'Europe',
     layouts: [
-      { trackLayout: 'Nordschleife', latitude: null, longitude: null },
-      { trackLayout: 'GP Circuit', latitude: null, longitude: null },
+      { trackLayout: 'Nordschleife', latitude: 50.3356, longitude: 6.9475 },
+      { trackLayout: 'GP Circuit', latitude: 50.3356, longitude: 6.9475 },
     ],
   },
   {
     trackName: 'Hockenheimring',
     country: 'Germany',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 49.3278, longitude: 8.5656 }],
   },
-  {
-    trackName: 'Sachsenring',
-    country: 'Germany',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Lausitzring',
-    country: 'Germany',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Bilster Berg',
-    country: 'Germany',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Oschersleben',
-    country: 'Germany',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= ITALY =================
   {
     trackName: 'Autodromo Nazionale Monza',
     country: 'Italy',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 45.6156, longitude: 9.2811 }],
   },
   {
     trackName: 'Autodromo Enzo e Dino Ferrari',
     country: 'Italy',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 44.3439, longitude: 11.7167 }],
   },
-  {
-    trackName: 'Mugello Circuit',
-    country: 'Italy',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Misano World Circuit',
-    country: 'Italy',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Vallelunga Circuit',
-    country: 'Italy',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= UK =================
   {
     trackName: 'Silverstone Circuit',
     country: 'United Kingdom',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 52.0786, longitude: -1.0169 }],
   },
   {
     trackName: 'Brands Hatch',
     country: 'United Kingdom',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 51.3569, longitude: 0.2633 }],
   },
-  {
-    trackName: 'Donington Park',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Oulton Park',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Cadwell Park',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Snetterton',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Thruxton Circuit',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Knockhill Racing Circuit',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Croft Circuit',
-    country: 'United Kingdom',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit Zandvoort',
-    country: 'Netherlands',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'TT Circuit Assen',
-    country: 'Netherlands',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Red Bull Ring',
-    country: 'Austria',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Hungaroring',
-    country: 'Hungary',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autódromo Internacional do Algarve',
-    country: 'Portugal',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuito do Estoril',
-    country: 'Portugal',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= BELGIUM =================
   {
     trackName: 'Circuit de Spa-Francorchamps',
     country: 'Belgium',
     continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Circuit Zolder',
-    country: 'Belgium',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Automotodrom Brno',
-    country: 'Czech Republic',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Slovakiaring',
-    country: 'Slovakia',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Istanbul Park',
-    country: 'Turkey',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Anderstorp Raceway',
-    country: 'Sweden',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Mantorp Park',
-    country: 'Sweden',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Rudskogen Motorsenter',
-    country: 'Norway',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Ahvenisto Race Circuit',
-    country: 'Finland',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Jyllandsringen',
-    country: 'Denmark',
-    continent: 'Europe',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 50.4372, longitude: 5.9714 }],
   },
 
-  // AMERICA
+  // ================= USA =================
   {
     trackName: 'Laguna Seca Raceway',
     country: 'United States',
     continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Sebring International Raceway',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 36.5843, longitude: -121.7534 }],
   },
   {
     trackName: 'Daytona International Speedway',
     country: 'United States',
     continent: 'America',
     layouts: [
-      { trackLayout: 'Road Course', latitude: null, longitude: null },
-      { trackLayout: 'Oval', latitude: null, longitude: null },
+      { trackLayout: 'Road Course', latitude: 29.1852, longitude: -81.0705 },
+      { trackLayout: 'Oval', latitude: 29.1852, longitude: -81.0705 },
     ],
-  },
-  {
-    trackName: 'Indianapolis Motor Speedway',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Road Course', latitude: null, longitude: null }],
   },
   {
     trackName: 'Circuit of the Americas',
     country: 'United States',
     continent: 'America',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 30.1328, longitude: -97.6411 }],
   },
-  {
-    trackName: 'Road America',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Road Atlanta',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Watkins Glen International',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Virginia International Raceway',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Mid-Ohio Sports Car Course',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Lime Rock Park',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Sonoma Raceway',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Willow Springs Raceway',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Buttonwillow Raceway Park',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Thunderhill Raceway Park',
-    country: 'United States',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= CANADA =================
   {
     trackName: 'Circuit Gilles Villeneuve',
     country: 'Canada',
     continent: 'America',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 45.5, longitude: -73.5228 }],
   },
-  {
-    trackName: 'Canadian Tire Motorsport Park',
-    country: 'Canada',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autódromo Hermanos Rodríguez',
-    country: 'Mexico',
-    continent: 'America',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= BRAZIL =================
   {
     trackName: 'Autódromo José Carlos Pace',
     country: 'Brazil',
     continent: 'America',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autódromo Oscar y Juan Gálvez',
-    country: 'Argentina',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Termas de Río Hondo',
-    country: 'Argentina',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autódromo de Tocancipá',
-    country: 'Colombia',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Parque Viva Circuito La Guácima',
-    country: 'Costa Rica',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autódromo El Pinar',
-    country: 'Uruguay',
-    continent: 'America',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: -23.7036, longitude: -46.6997 }],
   },
 
-  // ASIA / MIDDLE EAST
+  // ================= JAPAN =================
   {
     trackName: 'Suzuka Circuit',
     country: 'Japan',
     continent: 'Asia',
-    layouts: [{ trackLayout: 'Full Circuit', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Full Circuit', latitude: 34.8431, longitude: 136.541 }],
   },
   {
     trackName: 'Fuji Speedway',
     country: 'Japan',
     continent: 'Asia',
-    layouts: [{ trackLayout: 'Full Circuit', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Full Circuit', latitude: 35.3717, longitude: 138.9272 }],
   },
-  {
-    trackName: 'Twin Ring Motegi',
-    country: 'Japan',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Autopolis',
-    country: 'Japan',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Shanghai International Circuit',
-    country: 'China',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Zhuhai International Circuit',
-    country: 'China',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= UAE =================
   {
     trackName: 'Yas Marina Circuit',
     country: 'United Arab Emirates',
     continent: 'Middle East',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 24.4672, longitude: 54.6031 }],
   },
-  {
-    trackName: 'Dubai Autodrome',
-    country: 'United Arab Emirates',
-    continent: 'Middle East',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= QATAR =================
   {
     trackName: 'Losail International Circuit',
     country: 'Qatar',
     continent: 'Middle East',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 25.49, longitude: 51.4542 }],
   },
+
+  // ================= BAHRAIN =================
   {
     trackName: 'Bahrain International Circuit',
     country: 'Bahrain',
     continent: 'Middle East',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'GP Layout', latitude: 26.0325, longitude: 50.5106 }],
   },
+
+  // ================= INDIA =================
   {
     trackName: 'Buddh International Circuit',
     country: 'India',
     continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 28.3487, longitude: 77.5331 }],
   },
-  {
-    trackName: 'Chang International Circuit',
-    country: 'Thailand',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
+
+  // ================= MALAYSIA =================
   {
     trackName: 'Sepang International Circuit',
     country: 'Malaysia',
     continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Mandalika Circuit',
-    country: 'Indonesia',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Kuwait Motor Town',
-    country: 'Kuwait',
-    continent: 'Middle East',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Moscow Raceway',
-    country: 'Russia',
-    continent: 'Asia',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Main Layout', latitude: 2.7608, longitude: 101.7384 }],
   },
 
-  // AFRICA
-  {
-    trackName: 'Kyalami Grand Prix Circuit',
-    country: 'South Africa',
-    continent: 'Africa',
-    layouts: [{ trackLayout: 'GP Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Zwartkops Raceway',
-    country: 'South Africa',
-    continent: 'Africa',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Phakisa Freeway',
-    country: 'South Africa',
-    continent: 'Africa',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Marrakech Street Circuit',
-    country: 'Morocco',
-    continent: 'Africa',
-    layouts: [{ trackLayout: 'Street Circuit', latitude: null, longitude: null }],
-  },
-
-  // OCEANIA
+  // ================= AUSTRALIA =================
   {
     trackName: 'Mount Panorama Circuit',
     country: 'Australia',
     continent: 'Oceania',
-    layouts: [{ trackLayout: 'Bathurst', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Phillip Island Circuit',
-    country: 'Australia',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Sandown Raceway',
-    country: 'Australia',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'The Bend Motorsport Park',
-    country: 'Australia',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Hampton Downs Motorsport Park',
-    country: 'New Zealand',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Pukekohe Park Raceway',
-    country: 'New Zealand',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
-  },
-  {
-    trackName: 'Highlands Motorsport Park',
-    country: 'New Zealand',
-    continent: 'Oceania',
-    layouts: [{ trackLayout: 'Main Layout', latitude: null, longitude: null }],
+    layouts: [{ trackLayout: 'Bathurst', latitude: -33.4399, longitude: 149.5595 }],
   },
 ];
