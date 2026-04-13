@@ -9,6 +9,7 @@ model Garage {
 
   cars  Car[]
   bikes Bike[]
+  labTimes LabTime[]
 
   @@index([profileId])
 }

@@ -1065,6 +1065,13 @@ export type EnumHeaderNameWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
 }
 
+export type EnumLabVehicleTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.LabVehicleType | Prisma.EnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel> | $Enums.LabVehicleType
+}
+
 export type EnumSessionTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
   in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
@@ -1098,6 +1105,16 @@ export type EnumDriveStyleFilter<$PrismaModel = never> = {
   in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
   notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel> | $Enums.DriveStyle
+}
+
+export type EnumLabVehicleTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LabVehicleType | Prisma.EnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLabVehicleTypeWithAggregatesFilter<$PrismaModel> | $Enums.LabVehicleType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel>
 }
 
 export type EnumSessionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -3158,6 +3175,13 @@ export type NestedEnumHeaderNameWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumHeaderNameFilter<$PrismaModel>
 }
 
+export type NestedEnumLabVehicleTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.LabVehicleType | Prisma.EnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel> | $Enums.LabVehicleType
+}
+
 export type NestedEnumSessionTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.SessionType | Prisma.EnumSessionTypeFieldRefInput<$PrismaModel>
   in?: $Enums.SessionType[] | Prisma.ListEnumSessionTypeFieldRefInput<$PrismaModel>
@@ -3191,6 +3215,16 @@ export type NestedEnumDriveStyleFilter<$PrismaModel = never> = {
   in?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
   notIn?: $Enums.DriveStyle[] | Prisma.ListEnumDriveStyleFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumDriveStyleFilter<$PrismaModel> | $Enums.DriveStyle
+}
+
+export type NestedEnumLabVehicleTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LabVehicleType | Prisma.EnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LabVehicleType[] | Prisma.ListEnumLabVehicleTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLabVehicleTypeWithAggregatesFilter<$PrismaModel> | $Enums.LabVehicleType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLabVehicleTypeFilter<$PrismaModel>
 }
 
 export type NestedEnumSessionTypeWithAggregatesFilter<$PrismaModel = never> = {

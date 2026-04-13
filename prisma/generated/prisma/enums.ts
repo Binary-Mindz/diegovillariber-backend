@@ -278,6 +278,14 @@ export const HeaderName = {
 export type HeaderName = (typeof HeaderName)[keyof typeof HeaderName]
 
 
+export const LabVehicleType = {
+  CAR: 'CAR',
+  BIKE: 'BIKE'
+} as const
+
+export type LabVehicleType = (typeof LabVehicleType)[keyof typeof LabVehicleType]
+
+
 export const PhotoEditingDeclaration = {
   NO_EDITING: 'NO_EDITING',
   EDITED_WITH_ADOBE_LIGHTROOM: 'EDITED_WITH_ADOBE_LIGHTROOM',

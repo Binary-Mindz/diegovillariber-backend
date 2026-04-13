@@ -2,6 +2,8 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type as TransformType } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 import { Type } from 'generated/prisma/enums';
+import { LabVehicleType } from '../enum/lab-vehicle-type.enum';
+
 
 export class LabTimeQueryDto {
   @ApiPropertyOptional({ example: 1 })
@@ -27,7 +29,12 @@ export class LabTimeQueryDto {
   @ApiPropertyOptional({ example: 'Porsche' })
   @IsOptional()
   @IsString()
-  carName?: string;
+  vehicleName?: string;
+
+  @ApiPropertyOptional({ enum: LabVehicleType, example: LabVehicleType.CAR })
+  @IsOptional()
+  @IsEnum(LabVehicleType)
+  vehicleType?: LabVehicleType;
 
   @ApiPropertyOptional({
     enum: Type,

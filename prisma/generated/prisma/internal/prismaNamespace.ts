@@ -8589,7 +8589,12 @@ export const LabTimeScalarFieldEnum = {
   profileId: 'profileId',
   trackName: 'trackName',
   trackLayout: 'trackLayout',
-  carName: 'carName',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  garageId: 'garageId',
+  vehicleType: 'vehicleType',
+  vehicleId: 'vehicleId',
+  vehicleName: 'vehicleName',
   lapTimeMs: 'lapTimeMs',
   dateSet: 'dateSet',
   videoUrl: 'videoUrl',
@@ -10181,6 +10186,20 @@ export type EnumHeaderNameFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'HeaderName[]'
  */
 export type ListEnumHeaderNameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'HeaderName[]'>
+    
+
+
+/**
+ * Reference to a field of type 'LabVehicleType'
+ */
+export type EnumLabVehicleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LabVehicleType'>
+    
+
+
+/**
+ * Reference to a field of type 'LabVehicleType[]'
+ */
+export type ListEnumLabVehicleTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LabVehicleType[]'>
     
 
 

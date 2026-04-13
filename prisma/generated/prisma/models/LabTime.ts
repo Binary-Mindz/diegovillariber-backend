@@ -27,6 +27,8 @@ export type AggregateLabTime = {
 }
 
 export type LabTimeAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   lapTimeMs: number | null
   airTemp: number | null
   trackTemp: number | null
@@ -39,6 +41,8 @@ export type LabTimeAvgAggregateOutputType = {
 }
 
 export type LabTimeSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   lapTimeMs: number | null
   airTemp: number | null
   trackTemp: number | null
@@ -55,7 +59,12 @@ export type LabTimeMinAggregateOutputType = {
   profileId: string | null
   trackName: string | null
   trackLayout: string | null
-  carName: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  garageId: string | null
+  vehicleType: $Enums.LabVehicleType | null
+  vehicleId: string | null
+  vehicleName: string | null
   lapTimeMs: number | null
   dateSet: Date | null
   videoUrl: string | null
@@ -89,7 +98,12 @@ export type LabTimeMaxAggregateOutputType = {
   profileId: string | null
   trackName: string | null
   trackLayout: string | null
-  carName: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  garageId: string | null
+  vehicleType: $Enums.LabVehicleType | null
+  vehicleId: string | null
+  vehicleName: string | null
   lapTimeMs: number | null
   dateSet: Date | null
   videoUrl: string | null
@@ -123,7 +137,12 @@ export type LabTimeCountAggregateOutputType = {
   profileId: number
   trackName: number
   trackLayout: number
-  carName: number
+  latitude: number
+  longitude: number
+  garageId: number
+  vehicleType: number
+  vehicleId: number
+  vehicleName: number
   lapTimeMs: number
   dateSet: number
   videoUrl: number
@@ -156,6 +175,8 @@ export type LabTimeCountAggregateOutputType = {
 
 
 export type LabTimeAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
   lapTimeMs?: true
   airTemp?: true
   trackTemp?: true
@@ -168,6 +189,8 @@ export type LabTimeAvgAggregateInputType = {
 }
 
 export type LabTimeSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
   lapTimeMs?: true
   airTemp?: true
   trackTemp?: true
@@ -184,7 +207,12 @@ export type LabTimeMinAggregateInputType = {
   profileId?: true
   trackName?: true
   trackLayout?: true
-  carName?: true
+  latitude?: true
+  longitude?: true
+  garageId?: true
+  vehicleType?: true
+  vehicleId?: true
+  vehicleName?: true
   lapTimeMs?: true
   dateSet?: true
   videoUrl?: true
@@ -218,7 +246,12 @@ export type LabTimeMaxAggregateInputType = {
   profileId?: true
   trackName?: true
   trackLayout?: true
-  carName?: true
+  latitude?: true
+  longitude?: true
+  garageId?: true
+  vehicleType?: true
+  vehicleId?: true
+  vehicleName?: true
   lapTimeMs?: true
   dateSet?: true
   videoUrl?: true
@@ -252,7 +285,12 @@ export type LabTimeCountAggregateInputType = {
   profileId?: true
   trackName?: true
   trackLayout?: true
-  carName?: true
+  latitude?: true
+  longitude?: true
+  garageId?: true
+  vehicleType?: true
+  vehicleId?: true
+  vehicleName?: true
   lapTimeMs?: true
   dateSet?: true
   videoUrl?: true
@@ -374,7 +412,12 @@ export type LabTimeGroupByOutputType = {
   profileId: string
   trackName: string
   trackLayout: string | null
-  carName: string
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  garageId: string
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName: string | null
   lapTimeMs: number
   dateSet: Date
   videoUrl: string | null
@@ -432,7 +475,12 @@ export type LabTimeWhereInput = {
   profileId?: Prisma.UuidFilter<"LabTime"> | string
   trackName?: Prisma.StringFilter<"LabTime"> | string
   trackLayout?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  carName?: Prisma.StringFilter<"LabTime"> | string
+  latitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFilter<"LabTime"> | $Enums.LabVehicleType
+  vehicleId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleName?: Prisma.StringNullableFilter<"LabTime"> | string | null
   lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
@@ -461,6 +509,7 @@ export type LabTimeWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
 }
 
 export type LabTimeOrderByWithRelationInput = {
@@ -468,7 +517,12 @@ export type LabTimeOrderByWithRelationInput = {
   profileId?: Prisma.SortOrder
   trackName?: Prisma.SortOrder
   trackLayout?: Prisma.SortOrderInput | Prisma.SortOrder
-  carName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  garageId?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
+  vehicleId?: Prisma.SortOrder
+  vehicleName?: Prisma.SortOrderInput | Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   dateSet?: Prisma.SortOrder
   videoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -497,6 +551,7 @@ export type LabTimeOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
+  garage?: Prisma.GarageOrderByWithRelationInput
 }
 
 export type LabTimeWhereUniqueInput = Prisma.AtLeast<{
@@ -507,7 +562,12 @@ export type LabTimeWhereUniqueInput = Prisma.AtLeast<{
   profileId?: Prisma.UuidFilter<"LabTime"> | string
   trackName?: Prisma.StringFilter<"LabTime"> | string
   trackLayout?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  carName?: Prisma.StringFilter<"LabTime"> | string
+  latitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFilter<"LabTime"> | $Enums.LabVehicleType
+  vehicleId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleName?: Prisma.StringNullableFilter<"LabTime"> | string | null
   lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
@@ -536,6 +596,7 @@ export type LabTimeWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
+  garage?: Prisma.XOR<Prisma.GarageScalarRelationFilter, Prisma.GarageWhereInput>
 }, "id">
 
 export type LabTimeOrderByWithAggregationInput = {
@@ -543,7 +604,12 @@ export type LabTimeOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrder
   trackName?: Prisma.SortOrder
   trackLayout?: Prisma.SortOrderInput | Prisma.SortOrder
-  carName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  garageId?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
+  vehicleId?: Prisma.SortOrder
+  vehicleName?: Prisma.SortOrderInput | Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   dateSet?: Prisma.SortOrder
   videoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -586,7 +652,12 @@ export type LabTimeScalarWhereWithAggregatesInput = {
   profileId?: Prisma.UuidWithAggregatesFilter<"LabTime"> | string
   trackName?: Prisma.StringWithAggregatesFilter<"LabTime"> | string
   trackLayout?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
-  carName?: Prisma.StringWithAggregatesFilter<"LabTime"> | string
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.UuidWithAggregatesFilter<"LabTime"> | string
+  vehicleType?: Prisma.EnumLabVehicleTypeWithAggregatesFilter<"LabTime"> | $Enums.LabVehicleType
+  vehicleId?: Prisma.UuidWithAggregatesFilter<"LabTime"> | string
+  vehicleName?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
   lapTimeMs?: Prisma.IntWithAggregatesFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeWithAggregatesFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
@@ -620,7 +691,11 @@ export type LabTimeCreateInput = {
   id?: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -649,6 +724,7 @@ export type LabTimeCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile: Prisma.ProfileCreateNestedOneWithoutLabTimesInput
+  garage: Prisma.GarageCreateNestedOneWithoutLabTimesInput
 }
 
 export type LabTimeUncheckedCreateInput = {
@@ -656,7 +732,12 @@ export type LabTimeUncheckedCreateInput = {
   profileId: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId: string
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -690,7 +771,11 @@ export type LabTimeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -719,6 +804,7 @@ export type LabTimeUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneRequiredWithoutLabTimesNestedInput
+  garage?: Prisma.GarageUpdateOneRequiredWithoutLabTimesNestedInput
 }
 
 export type LabTimeUncheckedUpdateInput = {
@@ -726,7 +812,12 @@ export type LabTimeUncheckedUpdateInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -761,7 +852,12 @@ export type LabTimeCreateManyInput = {
   profileId: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId: string
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -795,7 +891,11 @@ export type LabTimeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -830,7 +930,12 @@ export type LabTimeUncheckedUpdateManyInput = {
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -860,12 +965,27 @@ export type LabTimeUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type LabTimeListRelationFilter = {
+  every?: Prisma.LabTimeWhereInput
+  some?: Prisma.LabTimeWhereInput
+  none?: Prisma.LabTimeWhereInput
+}
+
+export type LabTimeOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type LabTimeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   profileId?: Prisma.SortOrder
   trackName?: Prisma.SortOrder
   trackLayout?: Prisma.SortOrder
-  carName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  garageId?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
+  vehicleId?: Prisma.SortOrder
+  vehicleName?: Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   dateSet?: Prisma.SortOrder
   videoUrl?: Prisma.SortOrder
@@ -896,6 +1016,8 @@ export type LabTimeCountOrderByAggregateInput = {
 }
 
 export type LabTimeAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   airTemp?: Prisma.SortOrder
   trackTemp?: Prisma.SortOrder
@@ -912,7 +1034,12 @@ export type LabTimeMaxOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   trackName?: Prisma.SortOrder
   trackLayout?: Prisma.SortOrder
-  carName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  garageId?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
+  vehicleId?: Prisma.SortOrder
+  vehicleName?: Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   dateSet?: Prisma.SortOrder
   videoUrl?: Prisma.SortOrder
@@ -946,7 +1073,12 @@ export type LabTimeMinOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   trackName?: Prisma.SortOrder
   trackLayout?: Prisma.SortOrder
-  carName?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  garageId?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
+  vehicleId?: Prisma.SortOrder
+  vehicleName?: Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   dateSet?: Prisma.SortOrder
   videoUrl?: Prisma.SortOrder
@@ -976,6 +1108,8 @@ export type LabTimeMinOrderByAggregateInput = {
 }
 
 export type LabTimeSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   lapTimeMs?: Prisma.SortOrder
   airTemp?: Prisma.SortOrder
   trackTemp?: Prisma.SortOrder
@@ -987,18 +1121,54 @@ export type LabTimeSumOrderByAggregateInput = {
   driverWeight?: Prisma.SortOrder
 }
 
-export type LabTimeListRelationFilter = {
-  every?: Prisma.LabTimeWhereInput
-  some?: Prisma.LabTimeWhereInput
-  none?: Prisma.LabTimeWhereInput
+export type LabTimeCreateNestedManyWithoutGarageInput = {
+  create?: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput> | Prisma.LabTimeCreateWithoutGarageInput[] | Prisma.LabTimeUncheckedCreateWithoutGarageInput[]
+  connectOrCreate?: Prisma.LabTimeCreateOrConnectWithoutGarageInput | Prisma.LabTimeCreateOrConnectWithoutGarageInput[]
+  createMany?: Prisma.LabTimeCreateManyGarageInputEnvelope
+  connect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
 }
 
-export type LabTimeOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type LabTimeUncheckedCreateNestedManyWithoutGarageInput = {
+  create?: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput> | Prisma.LabTimeCreateWithoutGarageInput[] | Prisma.LabTimeUncheckedCreateWithoutGarageInput[]
+  connectOrCreate?: Prisma.LabTimeCreateOrConnectWithoutGarageInput | Prisma.LabTimeCreateOrConnectWithoutGarageInput[]
+  createMany?: Prisma.LabTimeCreateManyGarageInputEnvelope
+  connect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+}
+
+export type LabTimeUpdateManyWithoutGarageNestedInput = {
+  create?: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput> | Prisma.LabTimeCreateWithoutGarageInput[] | Prisma.LabTimeUncheckedCreateWithoutGarageInput[]
+  connectOrCreate?: Prisma.LabTimeCreateOrConnectWithoutGarageInput | Prisma.LabTimeCreateOrConnectWithoutGarageInput[]
+  upsert?: Prisma.LabTimeUpsertWithWhereUniqueWithoutGarageInput | Prisma.LabTimeUpsertWithWhereUniqueWithoutGarageInput[]
+  createMany?: Prisma.LabTimeCreateManyGarageInputEnvelope
+  set?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  disconnect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  delete?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  connect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  update?: Prisma.LabTimeUpdateWithWhereUniqueWithoutGarageInput | Prisma.LabTimeUpdateWithWhereUniqueWithoutGarageInput[]
+  updateMany?: Prisma.LabTimeUpdateManyWithWhereWithoutGarageInput | Prisma.LabTimeUpdateManyWithWhereWithoutGarageInput[]
+  deleteMany?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
+}
+
+export type LabTimeUncheckedUpdateManyWithoutGarageNestedInput = {
+  create?: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput> | Prisma.LabTimeCreateWithoutGarageInput[] | Prisma.LabTimeUncheckedCreateWithoutGarageInput[]
+  connectOrCreate?: Prisma.LabTimeCreateOrConnectWithoutGarageInput | Prisma.LabTimeCreateOrConnectWithoutGarageInput[]
+  upsert?: Prisma.LabTimeUpsertWithWhereUniqueWithoutGarageInput | Prisma.LabTimeUpsertWithWhereUniqueWithoutGarageInput[]
+  createMany?: Prisma.LabTimeCreateManyGarageInputEnvelope
+  set?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  disconnect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  delete?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  connect?: Prisma.LabTimeWhereUniqueInput | Prisma.LabTimeWhereUniqueInput[]
+  update?: Prisma.LabTimeUpdateWithWhereUniqueWithoutGarageInput | Prisma.LabTimeUpdateWithWhereUniqueWithoutGarageInput[]
+  updateMany?: Prisma.LabTimeUpdateManyWithWhereWithoutGarageInput | Prisma.LabTimeUpdateManyWithWhereWithoutGarageInput[]
+  deleteMany?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
 }
 
 export type LabTimeCreatetelemetryMediaInput = {
   set: string[]
+}
+
+export type EnumLabVehicleTypeFieldUpdateOperationsInput = {
+  set?: $Enums.LabVehicleType
 }
 
 export type LabTimeUpdatetelemetryMediaInput = {
@@ -1068,11 +1238,55 @@ export type LabTimeUncheckedUpdateManyWithoutProfileNestedInput = {
   deleteMany?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
 }
 
-export type LabTimeCreateWithoutProfileInput = {
+export type LabTimeCreateWithoutGarageInput = {
   id?: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
+  lapTimeMs: number
+  dateSet: Date | string
+  videoUrl?: string | null
+  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  transmission?: $Enums.Transmission
+  drivetrain?: $Enums.DriveTrain
+  timeOfDay: string
+  sessionType?: $Enums.SessionType
+  weather?: $Enums.Weather
+  trackCondition?: $Enums.TrackCondition
+  airTemp?: number | null
+  trackTemp?: number | null
+  humidity?: number | null
+  tireBrand: string
+  tireModel: string
+  tireCompund?: $Enums.TireCompound
+  tireWear?: number | null
+  frontTireSize?: number | null
+  frontPressure?: string | null
+  rearTireSize?: number | null
+  rearPressure?: string | null
+  drivingStyle?: $Enums.DriveStyle
+  fuelLoad?: number | null
+  driverWeight?: number | null
+  additionalNotes: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile: Prisma.ProfileCreateNestedOneWithoutLabTimesInput
+}
+
+export type LabTimeUncheckedCreateWithoutGarageInput = {
+  id?: string
+  profileId: string
+  trackName: string
+  trackLayout?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -1102,11 +1316,124 @@ export type LabTimeCreateWithoutProfileInput = {
   updatedAt?: Date | string
 }
 
+export type LabTimeCreateOrConnectWithoutGarageInput = {
+  where: Prisma.LabTimeWhereUniqueInput
+  create: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput>
+}
+
+export type LabTimeCreateManyGarageInputEnvelope = {
+  data: Prisma.LabTimeCreateManyGarageInput | Prisma.LabTimeCreateManyGarageInput[]
+  skipDuplicates?: boolean
+}
+
+export type LabTimeUpsertWithWhereUniqueWithoutGarageInput = {
+  where: Prisma.LabTimeWhereUniqueInput
+  update: Prisma.XOR<Prisma.LabTimeUpdateWithoutGarageInput, Prisma.LabTimeUncheckedUpdateWithoutGarageInput>
+  create: Prisma.XOR<Prisma.LabTimeCreateWithoutGarageInput, Prisma.LabTimeUncheckedCreateWithoutGarageInput>
+}
+
+export type LabTimeUpdateWithWhereUniqueWithoutGarageInput = {
+  where: Prisma.LabTimeWhereUniqueInput
+  data: Prisma.XOR<Prisma.LabTimeUpdateWithoutGarageInput, Prisma.LabTimeUncheckedUpdateWithoutGarageInput>
+}
+
+export type LabTimeUpdateManyWithWhereWithoutGarageInput = {
+  where: Prisma.LabTimeScalarWhereInput
+  data: Prisma.XOR<Prisma.LabTimeUpdateManyMutationInput, Prisma.LabTimeUncheckedUpdateManyWithoutGarageInput>
+}
+
+export type LabTimeScalarWhereInput = {
+  AND?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
+  OR?: Prisma.LabTimeScalarWhereInput[]
+  NOT?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
+  id?: Prisma.UuidFilter<"LabTime"> | string
+  profileId?: Prisma.UuidFilter<"LabTime"> | string
+  trackName?: Prisma.StringFilter<"LabTime"> | string
+  trackLayout?: Prisma.StringNullableFilter<"LabTime"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"LabTime"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFilter<"LabTime"> | $Enums.LabVehicleType
+  vehicleId?: Prisma.UuidFilter<"LabTime"> | string
+  vehicleName?: Prisma.StringNullableFilter<"LabTime"> | string | null
+  lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
+  dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
+  videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
+  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
+  transmission?: Prisma.EnumTransmissionFilter<"LabTime"> | $Enums.Transmission
+  drivetrain?: Prisma.EnumDriveTrainFilter<"LabTime"> | $Enums.DriveTrain
+  timeOfDay?: Prisma.StringFilter<"LabTime"> | string
+  sessionType?: Prisma.EnumSessionTypeFilter<"LabTime"> | $Enums.SessionType
+  weather?: Prisma.EnumWeatherFilter<"LabTime"> | $Enums.Weather
+  trackCondition?: Prisma.EnumTrackConditionFilter<"LabTime"> | $Enums.TrackCondition
+  airTemp?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  trackTemp?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  humidity?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  tireBrand?: Prisma.StringFilter<"LabTime"> | string
+  tireModel?: Prisma.StringFilter<"LabTime"> | string
+  tireCompund?: Prisma.EnumTireCompoundFilter<"LabTime"> | $Enums.TireCompound
+  tireWear?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  frontTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  frontPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
+  rearTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  rearPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
+  drivingStyle?: Prisma.EnumDriveStyleFilter<"LabTime"> | $Enums.DriveStyle
+  fuelLoad?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  driverWeight?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  additionalNotes?: Prisma.StringFilter<"LabTime"> | string
+  createdAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
+}
+
+export type LabTimeCreateWithoutProfileInput = {
+  id?: string
+  trackName: string
+  trackLayout?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
+  lapTimeMs: number
+  dateSet: Date | string
+  videoUrl?: string | null
+  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  transmission?: $Enums.Transmission
+  drivetrain?: $Enums.DriveTrain
+  timeOfDay: string
+  sessionType?: $Enums.SessionType
+  weather?: $Enums.Weather
+  trackCondition?: $Enums.TrackCondition
+  airTemp?: number | null
+  trackTemp?: number | null
+  humidity?: number | null
+  tireBrand: string
+  tireModel: string
+  tireCompund?: $Enums.TireCompound
+  tireWear?: number | null
+  frontTireSize?: number | null
+  frontPressure?: string | null
+  rearTireSize?: number | null
+  rearPressure?: string | null
+  drivingStyle?: $Enums.DriveStyle
+  fuelLoad?: number | null
+  driverWeight?: number | null
+  additionalNotes: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  garage: Prisma.GarageCreateNestedOneWithoutLabTimesInput
+}
+
 export type LabTimeUncheckedCreateWithoutProfileInput = {
   id?: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId: string
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -1162,49 +1489,172 @@ export type LabTimeUpdateManyWithWhereWithoutProfileInput = {
   data: Prisma.XOR<Prisma.LabTimeUpdateManyMutationInput, Prisma.LabTimeUncheckedUpdateManyWithoutProfileInput>
 }
 
-export type LabTimeScalarWhereInput = {
-  AND?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
-  OR?: Prisma.LabTimeScalarWhereInput[]
-  NOT?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
-  id?: Prisma.UuidFilter<"LabTime"> | string
-  profileId?: Prisma.UuidFilter<"LabTime"> | string
-  trackName?: Prisma.StringFilter<"LabTime"> | string
-  trackLayout?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  carName?: Prisma.StringFilter<"LabTime"> | string
-  lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
-  dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
-  videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
-  transmission?: Prisma.EnumTransmissionFilter<"LabTime"> | $Enums.Transmission
-  drivetrain?: Prisma.EnumDriveTrainFilter<"LabTime"> | $Enums.DriveTrain
-  timeOfDay?: Prisma.StringFilter<"LabTime"> | string
-  sessionType?: Prisma.EnumSessionTypeFilter<"LabTime"> | $Enums.SessionType
-  weather?: Prisma.EnumWeatherFilter<"LabTime"> | $Enums.Weather
-  trackCondition?: Prisma.EnumTrackConditionFilter<"LabTime"> | $Enums.TrackCondition
-  airTemp?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  trackTemp?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  humidity?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  tireBrand?: Prisma.StringFilter<"LabTime"> | string
-  tireModel?: Prisma.StringFilter<"LabTime"> | string
-  tireCompund?: Prisma.EnumTireCompoundFilter<"LabTime"> | $Enums.TireCompound
-  tireWear?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  frontTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  frontPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  rearTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  rearPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  drivingStyle?: Prisma.EnumDriveStyleFilter<"LabTime"> | $Enums.DriveStyle
-  fuelLoad?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  driverWeight?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  additionalNotes?: Prisma.StringFilter<"LabTime"> | string
-  createdAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"LabTime"> | Date | string
+export type LabTimeCreateManyGarageInput = {
+  id?: string
+  profileId: string
+  trackName: string
+  trackLayout?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
+  lapTimeMs: number
+  dateSet: Date | string
+  videoUrl?: string | null
+  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  transmission?: $Enums.Transmission
+  drivetrain?: $Enums.DriveTrain
+  timeOfDay: string
+  sessionType?: $Enums.SessionType
+  weather?: $Enums.Weather
+  trackCondition?: $Enums.TrackCondition
+  airTemp?: number | null
+  trackTemp?: number | null
+  humidity?: number | null
+  tireBrand: string
+  tireModel: string
+  tireCompund?: $Enums.TireCompound
+  tireWear?: number | null
+  frontTireSize?: number | null
+  frontPressure?: string | null
+  rearTireSize?: number | null
+  rearPressure?: string | null
+  drivingStyle?: $Enums.DriveStyle
+  fuelLoad?: number | null
+  driverWeight?: number | null
+  additionalNotes: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type LabTimeUpdateWithoutGarageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  trackName?: Prisma.StringFieldUpdateOperationsInput | string
+  trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
+  dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionType?: Prisma.EnumSessionTypeFieldUpdateOperationsInput | $Enums.SessionType
+  weather?: Prisma.EnumWeatherFieldUpdateOperationsInput | $Enums.Weather
+  trackCondition?: Prisma.EnumTrackConditionFieldUpdateOperationsInput | $Enums.TrackCondition
+  airTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trackTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  humidity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tireBrand?: Prisma.StringFieldUpdateOperationsInput | string
+  tireModel?: Prisma.StringFieldUpdateOperationsInput | string
+  tireCompund?: Prisma.EnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound
+  tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drivingStyle?: Prisma.EnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle
+  fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  driverWeight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalNotes?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutLabTimesNestedInput
+}
+
+export type LabTimeUncheckedUpdateWithoutGarageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  trackName?: Prisma.StringFieldUpdateOperationsInput | string
+  trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
+  dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionType?: Prisma.EnumSessionTypeFieldUpdateOperationsInput | $Enums.SessionType
+  weather?: Prisma.EnumWeatherFieldUpdateOperationsInput | $Enums.Weather
+  trackCondition?: Prisma.EnumTrackConditionFieldUpdateOperationsInput | $Enums.TrackCondition
+  airTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trackTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  humidity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tireBrand?: Prisma.StringFieldUpdateOperationsInput | string
+  tireModel?: Prisma.StringFieldUpdateOperationsInput | string
+  tireCompund?: Prisma.EnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound
+  tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drivingStyle?: Prisma.EnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle
+  fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  driverWeight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalNotes?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type LabTimeUncheckedUpdateManyWithoutGarageInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  trackName?: Prisma.StringFieldUpdateOperationsInput | string
+  trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
+  dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
+  drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
+  timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
+  sessionType?: Prisma.EnumSessionTypeFieldUpdateOperationsInput | $Enums.SessionType
+  weather?: Prisma.EnumWeatherFieldUpdateOperationsInput | $Enums.Weather
+  trackCondition?: Prisma.EnumTrackConditionFieldUpdateOperationsInput | $Enums.TrackCondition
+  airTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trackTemp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  humidity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tireBrand?: Prisma.StringFieldUpdateOperationsInput | string
+  tireModel?: Prisma.StringFieldUpdateOperationsInput | string
+  tireCompund?: Prisma.EnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound
+  tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  drivingStyle?: Prisma.EnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle
+  fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  driverWeight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalNotes?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LabTimeCreateManyProfileInput = {
   id?: string
   trackName: string
   trackLayout?: string | null
-  carName: string
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId: string
+  vehicleType: $Enums.LabVehicleType
+  vehicleId: string
+  vehicleName?: string | null
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
@@ -1238,7 +1688,11 @@ export type LabTimeUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1266,13 +1720,19 @@ export type LabTimeUpdateWithoutProfileInput = {
   additionalNotes?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  garage?: Prisma.GarageUpdateOneRequiredWithoutLabTimesNestedInput
 }
 
 export type LabTimeUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1306,7 +1766,12 @@ export type LabTimeUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   trackName?: Prisma.StringFieldUpdateOperationsInput | string
   trackLayout?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  garageId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleType?: Prisma.EnumLabVehicleTypeFieldUpdateOperationsInput | $Enums.LabVehicleType
+  vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  vehicleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1343,7 +1808,12 @@ export type LabTimeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   profileId?: boolean
   trackName?: boolean
   trackLayout?: boolean
-  carName?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  garageId?: boolean
+  vehicleType?: boolean
+  vehicleId?: boolean
+  vehicleName?: boolean
   lapTimeMs?: boolean
   dateSet?: boolean
   videoUrl?: boolean
@@ -1372,6 +1842,7 @@ export type LabTimeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["labTime"]>
 
 export type LabTimeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1379,7 +1850,12 @@ export type LabTimeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   trackName?: boolean
   trackLayout?: boolean
-  carName?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  garageId?: boolean
+  vehicleType?: boolean
+  vehicleId?: boolean
+  vehicleName?: boolean
   lapTimeMs?: boolean
   dateSet?: boolean
   videoUrl?: boolean
@@ -1408,6 +1884,7 @@ export type LabTimeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["labTime"]>
 
 export type LabTimeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1415,7 +1892,12 @@ export type LabTimeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   profileId?: boolean
   trackName?: boolean
   trackLayout?: boolean
-  carName?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  garageId?: boolean
+  vehicleType?: boolean
+  vehicleId?: boolean
+  vehicleName?: boolean
   lapTimeMs?: boolean
   dateSet?: boolean
   videoUrl?: boolean
@@ -1444,6 +1926,7 @@ export type LabTimeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["labTime"]>
 
 export type LabTimeSelectScalar = {
@@ -1451,7 +1934,12 @@ export type LabTimeSelectScalar = {
   profileId?: boolean
   trackName?: boolean
   trackLayout?: boolean
-  carName?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  garageId?: boolean
+  vehicleType?: boolean
+  vehicleId?: boolean
+  vehicleName?: boolean
   lapTimeMs?: boolean
   dateSet?: boolean
   videoUrl?: boolean
@@ -1481,28 +1969,37 @@ export type LabTimeSelectScalar = {
   updatedAt?: boolean
 }
 
-export type LabTimeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "trackName" | "trackLayout" | "carName" | "lapTimeMs" | "dateSet" | "videoUrl" | "telemetryMedia" | "transmission" | "drivetrain" | "timeOfDay" | "sessionType" | "weather" | "trackCondition" | "airTemp" | "trackTemp" | "humidity" | "tireBrand" | "tireModel" | "tireCompund" | "tireWear" | "frontTireSize" | "frontPressure" | "rearTireSize" | "rearPressure" | "drivingStyle" | "fuelLoad" | "driverWeight" | "additionalNotes" | "createdAt" | "updatedAt", ExtArgs["result"]["labTime"]>
+export type LabTimeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "trackName" | "trackLayout" | "latitude" | "longitude" | "garageId" | "vehicleType" | "vehicleId" | "vehicleName" | "lapTimeMs" | "dateSet" | "videoUrl" | "telemetryMedia" | "transmission" | "drivetrain" | "timeOfDay" | "sessionType" | "weather" | "trackCondition" | "airTemp" | "trackTemp" | "humidity" | "tireBrand" | "tireModel" | "tireCompund" | "tireWear" | "frontTireSize" | "frontPressure" | "rearTireSize" | "rearPressure" | "drivingStyle" | "fuelLoad" | "driverWeight" | "additionalNotes" | "createdAt" | "updatedAt", ExtArgs["result"]["labTime"]>
 export type LabTimeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }
 export type LabTimeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }
 export type LabTimeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
+  garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
 }
 
 export type $LabTimePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "LabTime"
   objects: {
     profile: Prisma.$ProfilePayload<ExtArgs>
+    garage: Prisma.$GaragePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     profileId: string
     trackName: string
     trackLayout: string | null
-    carName: string
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    garageId: string
+    vehicleType: $Enums.LabVehicleType
+    vehicleId: string
+    vehicleName: string | null
     lapTimeMs: number
     dateSet: Date
     videoUrl: string | null
@@ -1925,6 +2422,7 @@ readonly fields: LabTimeFieldRefs;
 export interface Prisma__LabTimeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   profile<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  garage<T extends Prisma.GarageDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GarageDefaultArgs<ExtArgs>>): Prisma.Prisma__GarageClient<runtime.Types.Result.GetResult<Prisma.$GaragePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1958,7 +2456,12 @@ export interface LabTimeFieldRefs {
   readonly profileId: Prisma.FieldRef<"LabTime", 'String'>
   readonly trackName: Prisma.FieldRef<"LabTime", 'String'>
   readonly trackLayout: Prisma.FieldRef<"LabTime", 'String'>
-  readonly carName: Prisma.FieldRef<"LabTime", 'String'>
+  readonly latitude: Prisma.FieldRef<"LabTime", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"LabTime", 'Decimal'>
+  readonly garageId: Prisma.FieldRef<"LabTime", 'String'>
+  readonly vehicleType: Prisma.FieldRef<"LabTime", 'LabVehicleType'>
+  readonly vehicleId: Prisma.FieldRef<"LabTime", 'String'>
+  readonly vehicleName: Prisma.FieldRef<"LabTime", 'String'>
   readonly lapTimeMs: Prisma.FieldRef<"LabTime", 'Int'>
   readonly dateSet: Prisma.FieldRef<"LabTime", 'DateTime'>
   readonly videoUrl: Prisma.FieldRef<"LabTime", 'String'>

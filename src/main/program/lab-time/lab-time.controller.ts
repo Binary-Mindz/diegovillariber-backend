@@ -29,6 +29,27 @@ export class LabTimeController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Get('circuits')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get circuits for dropdown' })
+  getCircuits() {
+    return handleRequest(async () => this.service.getCircuits(), 'Circuits fetched');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('circuits/:trackName/layouts')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get layouts by track name' })
+  getCircuitLayouts(@Param('trackName') trackName: string) {
+    return handleRequest(
+      async () => this.service.getCircuitLayouts(trackName),
+      'Circuit layouts fetched',
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create lap time (OWNER / PRO_DRIVER / CONTENT_CREATOR only)' })

@@ -185,6 +185,7 @@ export type GarageWhereInput = {
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   cars?: Prisma.CarListRelationFilter
   bikes?: Prisma.BikeListRelationFilter
+  labTimes?: Prisma.LabTimeListRelationFilter
 }
 
 export type GarageOrderByWithRelationInput = {
@@ -196,6 +197,7 @@ export type GarageOrderByWithRelationInput = {
   profile?: Prisma.ProfileOrderByWithRelationInput
   cars?: Prisma.CarOrderByRelationAggregateInput
   bikes?: Prisma.BikeOrderByRelationAggregateInput
+  labTimes?: Prisma.LabTimeOrderByRelationAggregateInput
 }
 
 export type GarageWhereUniqueInput = Prisma.AtLeast<{
@@ -210,6 +212,7 @@ export type GarageWhereUniqueInput = Prisma.AtLeast<{
   profile?: Prisma.XOR<Prisma.ProfileScalarRelationFilter, Prisma.ProfileWhereInput>
   cars?: Prisma.CarListRelationFilter
   bikes?: Prisma.BikeListRelationFilter
+  labTimes?: Prisma.LabTimeListRelationFilter
 }, "id">
 
 export type GarageOrderByWithAggregationInput = {
@@ -242,6 +245,7 @@ export type GarageCreateInput = {
   profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
   cars?: Prisma.CarCreateNestedManyWithoutGarageInput
   bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateInput = {
@@ -252,6 +256,7 @@ export type GarageUncheckedCreateInput = {
   location?: string | null
   cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
   bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUpdateInput = {
@@ -262,6 +267,7 @@ export type GarageUpdateInput = {
   profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
   cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
   bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateInput = {
@@ -272,6 +278,7 @@ export type GarageUncheckedUpdateInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
   bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageCreateManyInput = {
@@ -364,6 +371,20 @@ export type GarageUpdateOneRequiredWithoutCarsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.GarageUpdateToOneWithWhereWithoutCarsInput, Prisma.GarageUpdateWithoutCarsInput>, Prisma.GarageUncheckedUpdateWithoutCarsInput>
 }
 
+export type GarageCreateNestedOneWithoutLabTimesInput = {
+  create?: Prisma.XOR<Prisma.GarageCreateWithoutLabTimesInput, Prisma.GarageUncheckedCreateWithoutLabTimesInput>
+  connectOrCreate?: Prisma.GarageCreateOrConnectWithoutLabTimesInput
+  connect?: Prisma.GarageWhereUniqueInput
+}
+
+export type GarageUpdateOneRequiredWithoutLabTimesNestedInput = {
+  create?: Prisma.XOR<Prisma.GarageCreateWithoutLabTimesInput, Prisma.GarageUncheckedCreateWithoutLabTimesInput>
+  connectOrCreate?: Prisma.GarageCreateOrConnectWithoutLabTimesInput
+  upsert?: Prisma.GarageUpsertWithoutLabTimesInput
+  connect?: Prisma.GarageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.GarageUpdateToOneWithWhereWithoutLabTimesInput, Prisma.GarageUpdateWithoutLabTimesInput>, Prisma.GarageUncheckedUpdateWithoutLabTimesInput>
+}
+
 export type GarageCreateNestedManyWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.GarageCreateWithoutProfileInput, Prisma.GarageUncheckedCreateWithoutProfileInput> | Prisma.GarageCreateWithoutProfileInput[] | Prisma.GarageUncheckedCreateWithoutProfileInput[]
   connectOrCreate?: Prisma.GarageCreateOrConnectWithoutProfileInput | Prisma.GarageCreateOrConnectWithoutProfileInput[]
@@ -413,6 +434,7 @@ export type GarageCreateWithoutBikesInput = {
   location?: string | null
   profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
   cars?: Prisma.CarCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateWithoutBikesInput = {
@@ -422,6 +444,7 @@ export type GarageUncheckedCreateWithoutBikesInput = {
   description?: string | null
   location?: string | null
   cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageCreateOrConnectWithoutBikesInput = {
@@ -447,6 +470,7 @@ export type GarageUpdateWithoutBikesInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
   cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateWithoutBikesInput = {
@@ -456,6 +480,7 @@ export type GarageUncheckedUpdateWithoutBikesInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageCreateWithoutCarsInput = {
@@ -465,6 +490,7 @@ export type GarageCreateWithoutCarsInput = {
   location?: string | null
   profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
   bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateWithoutCarsInput = {
@@ -474,6 +500,7 @@ export type GarageUncheckedCreateWithoutCarsInput = {
   description?: string | null
   location?: string | null
   bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageCreateOrConnectWithoutCarsInput = {
@@ -499,6 +526,7 @@ export type GarageUpdateWithoutCarsInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
   bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateWithoutCarsInput = {
@@ -507,6 +535,63 @@ export type GarageUncheckedUpdateWithoutCarsInput = {
   garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutGarageNestedInput
+}
+
+export type GarageCreateWithoutLabTimesInput = {
+  id?: string
+  garageName?: string | null
+  description?: string | null
+  location?: string | null
+  profile: Prisma.ProfileCreateNestedOneWithoutGaragesInput
+  cars?: Prisma.CarCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
+}
+
+export type GarageUncheckedCreateWithoutLabTimesInput = {
+  id?: string
+  profileId: string
+  garageName?: string | null
+  description?: string | null
+  location?: string | null
+  cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
+  bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
+}
+
+export type GarageCreateOrConnectWithoutLabTimesInput = {
+  where: Prisma.GarageWhereUniqueInput
+  create: Prisma.XOR<Prisma.GarageCreateWithoutLabTimesInput, Prisma.GarageUncheckedCreateWithoutLabTimesInput>
+}
+
+export type GarageUpsertWithoutLabTimesInput = {
+  update: Prisma.XOR<Prisma.GarageUpdateWithoutLabTimesInput, Prisma.GarageUncheckedUpdateWithoutLabTimesInput>
+  create: Prisma.XOR<Prisma.GarageCreateWithoutLabTimesInput, Prisma.GarageUncheckedCreateWithoutLabTimesInput>
+  where?: Prisma.GarageWhereInput
+}
+
+export type GarageUpdateToOneWithWhereWithoutLabTimesInput = {
+  where?: Prisma.GarageWhereInput
+  data: Prisma.XOR<Prisma.GarageUpdateWithoutLabTimesInput, Prisma.GarageUncheckedUpdateWithoutLabTimesInput>
+}
+
+export type GarageUpdateWithoutLabTimesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profile?: Prisma.ProfileUpdateOneRequiredWithoutGaragesNestedInput
+  cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
+  bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
+}
+
+export type GarageUncheckedUpdateWithoutLabTimesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.StringFieldUpdateOperationsInput | string
+  garageName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
   bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
@@ -517,6 +602,7 @@ export type GarageCreateWithoutProfileInput = {
   location?: string | null
   cars?: Prisma.CarCreateNestedManyWithoutGarageInput
   bikes?: Prisma.BikeCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeCreateNestedManyWithoutGarageInput
 }
 
 export type GarageUncheckedCreateWithoutProfileInput = {
@@ -526,6 +612,7 @@ export type GarageUncheckedCreateWithoutProfileInput = {
   location?: string | null
   cars?: Prisma.CarUncheckedCreateNestedManyWithoutGarageInput
   bikes?: Prisma.BikeUncheckedCreateNestedManyWithoutGarageInput
+  labTimes?: Prisma.LabTimeUncheckedCreateNestedManyWithoutGarageInput
 }
 
 export type GarageCreateOrConnectWithoutProfileInput = {
@@ -579,6 +666,7 @@ export type GarageUpdateWithoutProfileInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUpdateManyWithoutGarageNestedInput
   bikes?: Prisma.BikeUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateWithoutProfileInput = {
@@ -588,6 +676,7 @@ export type GarageUncheckedUpdateWithoutProfileInput = {
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cars?: Prisma.CarUncheckedUpdateManyWithoutGarageNestedInput
   bikes?: Prisma.BikeUncheckedUpdateManyWithoutGarageNestedInput
+  labTimes?: Prisma.LabTimeUncheckedUpdateManyWithoutGarageNestedInput
 }
 
 export type GarageUncheckedUpdateManyWithoutProfileInput = {
@@ -605,11 +694,13 @@ export type GarageUncheckedUpdateManyWithoutProfileInput = {
 export type GarageCountOutputType = {
   cars: number
   bikes: number
+  labTimes: number
 }
 
 export type GarageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cars?: boolean | GarageCountOutputTypeCountCarsArgs
   bikes?: boolean | GarageCountOutputTypeCountBikesArgs
+  labTimes?: boolean | GarageCountOutputTypeCountLabTimesArgs
 }
 
 /**
@@ -636,6 +727,13 @@ export type GarageCountOutputTypeCountBikesArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.BikeWhereInput
 }
 
+/**
+ * GarageCountOutputType without action
+ */
+export type GarageCountOutputTypeCountLabTimesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LabTimeWhereInput
+}
+
 
 export type GarageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -646,6 +744,7 @@ export type GarageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   cars?: boolean | Prisma.Garage$carsArgs<ExtArgs>
   bikes?: boolean | Prisma.Garage$bikesArgs<ExtArgs>
+  labTimes?: boolean | Prisma.Garage$labTimesArgs<ExtArgs>
   _count?: boolean | Prisma.GarageCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["garage"]>
 
@@ -680,6 +779,7 @@ export type GarageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   cars?: boolean | Prisma.Garage$carsArgs<ExtArgs>
   bikes?: boolean | Prisma.Garage$bikesArgs<ExtArgs>
+  labTimes?: boolean | Prisma.Garage$labTimesArgs<ExtArgs>
   _count?: boolean | Prisma.GarageCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type GarageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -695,6 +795,7 @@ export type $GaragePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     profile: Prisma.$ProfilePayload<ExtArgs>
     cars: Prisma.$CarPayload<ExtArgs>[]
     bikes: Prisma.$BikePayload<ExtArgs>[]
+    labTimes: Prisma.$LabTimePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1099,6 +1200,7 @@ export interface Prisma__GarageClient<T, Null = never, ExtArgs extends runtime.T
   profile<T extends Prisma.ProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   cars<T extends Prisma.Garage$carsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Garage$carsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   bikes<T extends Prisma.Garage$bikesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Garage$bikesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  labTimes<T extends Prisma.Garage$labTimesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Garage$labTimesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LabTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1574,6 +1676,30 @@ export type Garage$bikesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.BikeScalarFieldEnum | Prisma.BikeScalarFieldEnum[]
+}
+
+/**
+ * Garage.labTimes
+ */
+export type Garage$labTimesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the LabTime
+   */
+  select?: Prisma.LabTimeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the LabTime
+   */
+  omit?: Prisma.LabTimeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.LabTimeInclude<ExtArgs> | null
+  where?: Prisma.LabTimeWhereInput
+  orderBy?: Prisma.LabTimeOrderByWithRelationInput | Prisma.LabTimeOrderByWithRelationInput[]
+  cursor?: Prisma.LabTimeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LabTimeScalarFieldEnum | Prisma.LabTimeScalarFieldEnum[]
 }
 
 /**
