@@ -9,6 +9,7 @@ import {
   Max,
   MaxLength,
   Min,
+  IsNumber,
 } from 'class-validator';
 import {
   DriveStyle,
@@ -21,7 +22,6 @@ import {
 } from 'generated/prisma/enums';
 import { LabVehicleType } from '../enum/lab-vehicle-type.enum';
 
-
 export class CreateLabTimeDto {
   @ApiProperty({ example: 'Nürburgring' })
   @IsString()
@@ -33,6 +33,24 @@ export class CreateLabTimeDto {
   @IsString()
   @MaxLength(255)
   trackLayout?: string;
+
+  // ✅ NEW (latitude)
+  @ApiPropertyOptional({
+    example: 50.3356,
+    description: 'Track latitude',
+  })
+  @IsOptional()
+  @IsNumber()
+  latitude?: number;
+
+  // ✅ NEW (longitude)
+  @ApiPropertyOptional({
+    example: 6.9475,
+    description: 'Track longitude',
+  })
+  @IsOptional()
+  @IsNumber()
+  longitude?: number;
 
   @ApiProperty({ example: 'a0f7aab2-676e-4f18-bf8c-9f0f7c70f101' })
   @IsUUID()
