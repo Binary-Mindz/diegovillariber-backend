@@ -45,4 +45,6 @@ model Profile {
   splitScreenBattlesRightUser SplitScreenBattle[] @relation("SplitScreenRightProfile")
 
   spottingRequests SpottingRequest[]
+
+  profileBadges ProfileBadge[]
 }

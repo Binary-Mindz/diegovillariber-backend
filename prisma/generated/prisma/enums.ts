@@ -56,6 +56,38 @@ export const LinkType = {
 export type LinkType = (typeof LinkType)[keyof typeof LinkType]
 
 
+export const BadgeStatus = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  DELETED: 'DELETED'
+} as const
+
+export type BadgeStatus = (typeof BadgeStatus)[keyof typeof BadgeStatus]
+
+
+export const BadgeRarity = {
+  COMMON: 'COMMON',
+  RARE: 'RARE',
+  EPIC: 'EPIC',
+  LEGENDARY: 'LEGENDARY'
+} as const
+
+export type BadgeRarity = (typeof BadgeRarity)[keyof typeof BadgeRarity]
+
+
+export const BadgeTargetType = {
+  ANY: 'ANY',
+  SPOTTER: 'SPOTTER',
+  OWNER: 'OWNER',
+  CONTENT_CREATOR: 'CONTENT_CREATOR',
+  PRO_BUSSINESS: 'PRO_BUSSINESS',
+  PRO_DRIVER: 'PRO_DRIVER',
+  SIM_RACING_DRIVER: 'SIM_RACING_DRIVER'
+} as const
+
+export type BadgeTargetType = (typeof BadgeTargetType)[keyof typeof BadgeTargetType]
+
+
 export const ChallengeType = {
   PHOTO: 'PHOTO',
   VIDEO: 'VIDEO',

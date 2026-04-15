@@ -11,6 +11,8 @@
 export type * from './models/Ad'
 export type * from './models/AdvancedCarData'
 export type * from './models/AmbassadorProgram'
+export type * from './models/Badge'
+export type * from './models/ProfileBadge'
 export type * from './models/Bike'
 export type * from './models/AdvancedBikeData'
 export type * from './models/EngineAndPerformance'
