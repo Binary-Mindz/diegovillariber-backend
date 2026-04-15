@@ -312,6 +312,10 @@ export type ProDriverProfileNullableScalarRelationFilter = {
   isNot?: Prisma.ProDriverProfileWhereInput | null
 }
 
+export type EnumVehicleCategoryFieldUpdateOperationsInput = {
+  set?: $Enums.VehicleCategory
+}
+
 export type ProDriverProfileCreateNestedOneWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.ProDriverProfileCreateWithoutProfileInput, Prisma.ProDriverProfileUncheckedCreateWithoutProfileInput>
   connectOrCreate?: Prisma.ProDriverProfileCreateOrConnectWithoutProfileInput

@@ -644,6 +644,32 @@ export const VehicleCategory = {
 export type VehicleCategory = (typeof VehicleCategory)[keyof typeof VehicleCategory]
 
 
+export const PostVehicleCategory = {
+  CITY: 'CITY',
+  HOT_HATCH: 'HOT_HATCH',
+  SEDAN: 'SEDAN',
+  SPORT: 'SPORT',
+  SUV: 'SUV',
+  SUPERCAR: 'SUPERCAR',
+  TRACK: 'TRACK',
+  CLASSIC: 'CLASSIC',
+  SPORT_BIKE: 'SPORT_BIKE',
+  NAKED: 'NAKED',
+  ADVENTURE: 'ADVENTURE',
+  TOURING: 'TOURING',
+  CUSTOM: 'CUSTOM',
+  SCOOTER: 'SCOOTER',
+  OFF_ROAD: 'OFF_ROAD',
+  MOTOCROSS: 'MOTOCROSS',
+  ENDURO: 'ENDURO',
+  TRIAL: 'TRIAL',
+  CLASSIC_VINTAGE: 'CLASSIC_VINTAGE',
+  ELECTRIC: 'ELECTRIC'
+} as const
+
+export type PostVehicleCategory = (typeof PostVehicleCategory)[keyof typeof PostVehicleCategory]
+
+
 export const BusinessCategory = {
   Detailling_Care: 'Detailling_Care',
   Parts_Performance: 'Parts_Performance',

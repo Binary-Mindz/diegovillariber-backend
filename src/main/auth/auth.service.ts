@@ -488,9 +488,12 @@ async googleAuth(dto: GoogleAuthDto) {
     },
   });
 
+  // NEW USER => SIGNUP
   if (!user) {
     if (!dto.profileType) {
-      throw new BadRequestException('profileType is required for new Google signup');
+      throw new BadRequestException(
+        'profileType is required for new Google signup',
+      );
     }
 
     const randomPassword = await this.hash(randomUUID());
@@ -530,6 +533,7 @@ async googleAuth(dto: GoogleAuthDto) {
 
     isNewUser = true;
   } else {
+    // EXISTING USER => SIGNIN
     if (!user.isEmailVerified) {
       user = await this.prisma.user.update({
         where: { id: user.id },
@@ -602,9 +606,14 @@ async googleAuth(dto: GoogleAuthDto) {
     selectedRole = 'OFFICIAL_PARTNER';
   }
 
-  await this.prisma.user.update({
+  const updatedUser = await this.prisma.user.update({
     where: { id: user.id },
     data: { activeRole: selectedRole },
+    select: {
+      id: true,
+      email: true,
+      activeProfileId: true,
+    },
   });
 
   const accessToken = this.signAccessToken({
@@ -625,13 +634,15 @@ async googleAuth(dto: GoogleAuthDto) {
   });
 
   return {
-    message: 'Google authentication successful',
+    message: isNewUser
+      ? 'Google signup successful'
+      : 'Google signin successful',
     isNewUser,
     user: {
-      id: user.id,
-      email: user.email,
+      id: updatedUser.id,
+      email: updatedUser.email,
       role: selectedRole,
-      activeProfileId: user.activeProfileId,
+      activeProfileId: updatedUser.activeProfileId,
     },
     tokens: {
       accessToken,

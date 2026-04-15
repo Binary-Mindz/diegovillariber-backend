@@ -135,6 +135,32 @@ enum VehicleCategory {
   RAID
 }
 
+enum PostVehicleCategory {
+  // Cars
+  CITY
+  HOT_HATCH
+  SEDAN
+  SPORT
+  SUV
+  SUPERCAR
+  TRACK
+  CLASSIC
+
+  // Motorcycles
+  SPORT_BIKE
+  NAKED
+  ADVENTURE
+  TOURING
+  CUSTOM
+  SCOOTER
+  OFF_ROAD
+  MOTOCROSS
+  ENDURO
+  TRIAL
+  CLASSIC_VINTAGE
+  ELECTRIC
+}
+
 enum BusinessCategory {
   Detailling_Care
   Parts_Performance
