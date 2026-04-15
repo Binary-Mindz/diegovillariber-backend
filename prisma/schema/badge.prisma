@@ -1,0 +1,59 @@
+enum BadgeStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+}
+
+enum BadgeRarity {
+  COMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum BadgeTargetType {
+  ANY
+  SPOTTER
+  OWNER
+  CONTENT_CREATOR
+  PRO_BUSSINESS
+  PRO_DRIVER
+  SIM_RACING_DRIVER
+}
+
+model Badge {
+  id          String            @id @default(uuid()) @db.Uuid
+  name        String            @unique
+  slug        String            @unique
+  description String?
+  icon        String?
+  rarity      BadgeRarity       @default(COMMON)
+  status      BadgeStatus       @default(ACTIVE)
+  targetTypes BadgeTargetType[]
+  sortOrder   Int               @default(0)
+  isHidden    Boolean           @default(false)
+
+  awards      ProfileBadge[]
+
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([status, sortOrder])
+  @@map("badges")
+}
+
+model ProfileBadge {
+  id         String   @id @default(uuid()) @db.Uuid
+  profileId  String   @db.Uuid
+  badgeId    String   @db.Uuid
+  awardedAt  DateTime @default(now())
+  note       String?
+
+  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  badge      Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, badgeId])
+  @@index([profileId])
+  @@index([badgeId])
+  @@map("profile_badges")
+}

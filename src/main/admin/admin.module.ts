@@ -11,9 +11,10 @@ import { AdminSimRacingModule } from './admin-sim-racing/admin-sim-racing.module
 import { AdminAdModule } from './admin-ad/admin-ad.module';
 import { AdminHeaderModule } from './admin-header/admin-header.module';
 import { AdminPrestigeModule } from './admin-prestige/admin-prestige.module';
+import { AdminBadgeModule } from './admin-badge/admin-badge.module';
 
 @Module({
-  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, AdminPrestigeModule ,HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule, AdminAdModule, AdminHeaderModule],
+  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, AdminPrestigeModule , AdminBadgeModule , HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule, AdminAdModule, AdminHeaderModule],
   controllers: [],
   providers: [],
   exports: [],

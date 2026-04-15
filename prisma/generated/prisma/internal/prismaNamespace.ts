@@ -387,6 +387,8 @@ export const ModelName = {
   Ad: 'Ad',
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
+  Badge: 'Badge',
+  ProfileBadge: 'ProfileBadge',
   Bike: 'Bike',
   AdvancedBikeData: 'AdvancedBikeData',
   EngineAndPerformance: 'EngineAndPerformance',
@@ -498,7 +500,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "badge" | "profileBadge" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -721,6 +723,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AmbassadorProgramCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AmbassadorProgramCountAggregateOutputType> | number
+        }
+      }
+    }
+    Badge: {
+      payload: Prisma.$BadgePayload<ExtArgs>
+      fields: Prisma.BadgeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BadgeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BadgeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        findFirst: {
+          args: Prisma.BadgeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BadgeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        findMany: {
+          args: Prisma.BadgeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>[]
+        }
+        create: {
+          args: Prisma.BadgeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        createMany: {
+          args: Prisma.BadgeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BadgeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>[]
+        }
+        delete: {
+          args: Prisma.BadgeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        update: {
+          args: Prisma.BadgeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        deleteMany: {
+          args: Prisma.BadgeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BadgeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BadgeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>[]
+        }
+        upsert: {
+          args: Prisma.BadgeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BadgePayload>
+        }
+        aggregate: {
+          args: Prisma.BadgeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBadge>
+        }
+        groupBy: {
+          args: Prisma.BadgeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BadgeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BadgeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BadgeCountAggregateOutputType> | number
+        }
+      }
+    }
+    ProfileBadge: {
+      payload: Prisma.$ProfileBadgePayload<ExtArgs>
+      fields: Prisma.ProfileBadgeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProfileBadgeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProfileBadgeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        findFirst: {
+          args: Prisma.ProfileBadgeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProfileBadgeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        findMany: {
+          args: Prisma.ProfileBadgeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>[]
+        }
+        create: {
+          args: Prisma.ProfileBadgeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        createMany: {
+          args: Prisma.ProfileBadgeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProfileBadgeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>[]
+        }
+        delete: {
+          args: Prisma.ProfileBadgeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        update: {
+          args: Prisma.ProfileBadgeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        deleteMany: {
+          args: Prisma.ProfileBadgeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProfileBadgeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProfileBadgeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>[]
+        }
+        upsert: {
+          args: Prisma.ProfileBadgeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProfileBadgePayload>
+        }
+        aggregate: {
+          args: Prisma.ProfileBadgeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProfileBadge>
+        }
+        groupBy: {
+          args: Prisma.ProfileBadgeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProfileBadgeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProfileBadgeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProfileBadgeCountAggregateOutputType> | number
         }
       }
     }
@@ -7951,6 +8101,35 @@ export const AmbassadorProgramScalarFieldEnum = {
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
 
 
+export const BadgeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  icon: 'icon',
+  rarity: 'rarity',
+  status: 'status',
+  targetTypes: 'targetTypes',
+  sortOrder: 'sortOrder',
+  isHidden: 'isHidden',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BadgeScalarFieldEnum = (typeof BadgeScalarFieldEnum)[keyof typeof BadgeScalarFieldEnum]
+
+
+export const ProfileBadgeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  badgeId: 'badgeId',
+  awardedAt: 'awardedAt',
+  note: 'note'
+} as const
+
+export type ProfileBadgeScalarFieldEnum = (typeof ProfileBadgeScalarFieldEnum)[keyof typeof ProfileBadgeScalarFieldEnum]
+
+
 export const BikeScalarFieldEnum = {
   id: 'id',
   profileId: 'profileId',
@@ -9644,6 +9823,48 @@ export type ListEnumAmbassadorStatusFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
+ * Reference to a field of type 'BadgeRarity'
+ */
+export type EnumBadgeRarityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeRarity'>
+    
+
+
+/**
+ * Reference to a field of type 'BadgeRarity[]'
+ */
+export type ListEnumBadgeRarityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeRarity[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BadgeStatus'
+ */
+export type EnumBadgeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'BadgeStatus[]'
+ */
+export type ListEnumBadgeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BadgeTargetType[]'
+ */
+export type ListEnumBadgeTargetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeTargetType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'BadgeTargetType'
+ */
+export type EnumBadgeTargetTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BadgeTargetType'>
+    
+
+
+/**
  * Reference to a field of type 'BikeBodyType'
  */
 export type EnumBikeBodyTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BikeBodyType'>
@@ -11070,6 +11291,8 @@ export type GlobalOmitConfig = {
   ad?: Prisma.AdOmit
   advancedCarData?: Prisma.AdvancedCarDataOmit
   ambassadorProgram?: Prisma.AmbassadorProgramOmit
+  badge?: Prisma.BadgeOmit
+  profileBadge?: Prisma.ProfileBadgeOmit
   bike?: Prisma.BikeOmit
   advancedBikeData?: Prisma.AdvancedBikeDataOmit
   engineAndPerformance?: Prisma.EngineAndPerformanceOmit

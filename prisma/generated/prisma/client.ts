@@ -53,6 +53,16 @@ export type AdvancedCarData = Prisma.AdvancedCarDataModel
  */
 export type AmbassadorProgram = Prisma.AmbassadorProgramModel
 /**
+ * Model Badge
+ * 
+ */
+export type Badge = Prisma.BadgeModel
+/**
+ * Model ProfileBadge
+ * 
+ */
+export type ProfileBadge = Prisma.ProfileBadgeModel
+/**
  * Model Bike
  * 
  */

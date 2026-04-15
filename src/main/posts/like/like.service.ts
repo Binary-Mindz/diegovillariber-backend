@@ -22,7 +22,6 @@ export class LikeService {
   async createLike(userId: string, dto: CreateLikeDto) {
     const { postId, postType } = dto;
     const LIKE_REWARD_POINTS = 1;
-    console.log("tried to seed")
 
     const result = await this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({

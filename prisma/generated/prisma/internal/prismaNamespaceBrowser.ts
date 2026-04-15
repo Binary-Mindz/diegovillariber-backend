@@ -54,6 +54,8 @@ export const ModelName = {
   Ad: 'Ad',
   AdvancedCarData: 'AdvancedCarData',
   AmbassadorProgram: 'AmbassadorProgram',
+  Badge: 'Badge',
+  ProfileBadge: 'ProfileBadge',
   Bike: 'Bike',
   AdvancedBikeData: 'AdvancedBikeData',
   EngineAndPerformance: 'EngineAndPerformance',
@@ -250,6 +252,35 @@ export const AmbassadorProgramScalarFieldEnum = {
 } as const
 
 export type AmbassadorProgramScalarFieldEnum = (typeof AmbassadorProgramScalarFieldEnum)[keyof typeof AmbassadorProgramScalarFieldEnum]
+
+
+export const BadgeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  icon: 'icon',
+  rarity: 'rarity',
+  status: 'status',
+  targetTypes: 'targetTypes',
+  sortOrder: 'sortOrder',
+  isHidden: 'isHidden',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BadgeScalarFieldEnum = (typeof BadgeScalarFieldEnum)[keyof typeof BadgeScalarFieldEnum]
+
+
+export const ProfileBadgeScalarFieldEnum = {
+  id: 'id',
+  profileId: 'profileId',
+  badgeId: 'badgeId',
+  awardedAt: 'awardedAt',
+  note: 'note'
+} as const
+
+export type ProfileBadgeScalarFieldEnum = (typeof ProfileBadgeScalarFieldEnum)[keyof typeof ProfileBadgeScalarFieldEnum]
 
 
 export const BikeScalarFieldEnum = {
