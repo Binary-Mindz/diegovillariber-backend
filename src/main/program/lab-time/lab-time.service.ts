@@ -400,6 +400,119 @@ async compare(userId: string, query: CompareLabTimeDto) {
   };
 }
 
+async followingLabTimes(userId: string, query: LabTimeQueryDto) {
+  await this.getActiveProfileOrThrow(userId);
+
+  const page = query.page ?? 1;
+  const limit = query.limit ?? 20;
+  const skip = (page - 1) * limit;
+
+  const followedUsers = await this.prisma.follow.findMany({
+    where: {
+      followerId: userId,
+    },
+    select: {
+      followingId: true,
+    },
+  });
+
+  const followedUserIds = followedUsers.map((item) => item.followingId);
+
+  if (followedUserIds.length === 0) {
+    return {
+      page,
+      limit,
+      total: 0,
+      isLeaderboard: !!query.trackName,
+      items: [],
+    };
+  }
+
+  const where: Prisma.LabTimeWhereInput = {
+    profile: {
+      userId: {
+        in: followedUserIds,
+      },
+    },
+    ...(query.trackName
+      ? {
+          trackName: {
+            contains: query.trackName,
+            mode: 'insensitive',
+          },
+        }
+      : {}),
+    ...(query.vehicleType
+      ? {
+          vehicleType: query.vehicleType,
+        }
+      : {}),
+    ...(query.vehicleName
+      ? {
+          vehicleName: {
+            contains: query.vehicleName,
+            mode: 'insensitive',
+          },
+        }
+      : {}),
+  };
+
+  const isLeaderboard = !!query.trackName;
+
+  const [items, total] = await this.prisma.$transaction([
+    this.prisma.labTime.findMany({
+      where,
+      orderBy: isLeaderboard
+        ? [
+            { lapTimeMs: 'asc' }, // fastest first
+            { dateSet: 'asc' },
+            { createdAt: 'asc' },
+          ]
+        : [
+            { dateSet: 'desc' },
+            { createdAt: 'desc' },
+          ],
+      skip,
+      take: limit,
+      select: {
+        id: true,
+        trackName: true,
+        lapTimeMs: true,
+        dateSet: true,
+        vehicleName: true,
+        vehicleType: true,
+        profile: {
+          select: {
+            profileName: true,
+            imageUrl: true,
+            userId: true,
+          },
+        },
+      },
+    }),
+    this.prisma.labTime.count({ where }),
+  ]);
+
+  const formattedItems = items.map((item, index) => ({
+    id: item.id,
+    ...(isLeaderboard ? { rank: skip + index + 1 } : {}),
+    profileName: item.profile?.profileName ?? null,
+    profileImageUrl: item.profile?.imageUrl ?? null,
+    trackName: item.trackName,
+    vehicleModel: item.vehicleName ?? null,
+    lapTimeMs: item.lapTimeMs,
+    dateSet: item.dateSet,
+  }));
+
+  return {
+    page,
+    limit,
+    total,
+    isLeaderboard,
+    items: formattedItems,
+  };
+}
+
   async list(userId: string, query: LabTimeQueryDto) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
