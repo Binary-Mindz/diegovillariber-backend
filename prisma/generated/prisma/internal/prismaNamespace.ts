@@ -10649,16 +10649,16 @@ export type ListEnumPostAssetTypeFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
- * Reference to a field of type 'VehicleCategory'
+ * Reference to a field of type 'PostVehicleCategory'
  */
-export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory'>
+export type EnumPostVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostVehicleCategory'>
     
 
 
 /**
- * Reference to a field of type 'VehicleCategory[]'
+ * Reference to a field of type 'PostVehicleCategory[]'
  */
-export type ListEnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory[]'>
+export type ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostVehicleCategory[]'>
     
 
 
@@ -10771,6 +10771,20 @@ export type EnumPrestigeRuleStatusFieldRefInput<$PrismaModel> = FieldRefInputTyp
  * Reference to a field of type 'PrestigeRuleStatus[]'
  */
 export type ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrestigeRuleStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleCategory'
+ */
+export type EnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'VehicleCategory[]'
+ */
+export type ListEnumVehicleCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VehicleCategory[]'>
     
 
 

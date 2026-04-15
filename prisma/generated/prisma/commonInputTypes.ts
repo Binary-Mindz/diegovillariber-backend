@@ -1412,11 +1412,11 @@ export type EnumPostAssetTypeNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel> | $Enums.PostAssetType | null
 }
 
-export type EnumVehicleCategoryFilter<$PrismaModel = never> = {
-  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
+export type EnumPostVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostVehicleCategory | Prisma.EnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel> | $Enums.PostVehicleCategory
 }
 
 export type EnumPhotoEditingDeclarationNullableFilter<$PrismaModel = never> = {
@@ -1454,14 +1454,14 @@ export type EnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel = never> 
   _max?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
 }
 
-export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
+export type EnumPostVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostVehicleCategory | Prisma.EnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PostVehicleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel>
 }
 
 export type EnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -1549,6 +1549,23 @@ export type EnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+}
+
+export type EnumVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
+}
+
+export type EnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
 }
 
 export type EnumProductCategoryFilter<$PrismaModel = never> = {
@@ -3529,11 +3546,11 @@ export type NestedEnumPostAssetTypeNullableFilter<$PrismaModel = never> = {
   not?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel> | $Enums.PostAssetType | null
 }
 
-export type NestedEnumVehicleCategoryFilter<$PrismaModel = never> = {
-  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
+export type NestedEnumPostVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostVehicleCategory | Prisma.EnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel> | $Enums.PostVehicleCategory
 }
 
 export type NestedEnumPhotoEditingDeclarationNullableFilter<$PrismaModel = never> = {
@@ -3571,14 +3588,14 @@ export type NestedEnumPostAssetTypeNullableWithAggregatesFilter<$PrismaModel = n
   _max?: Prisma.NestedEnumPostAssetTypeNullableFilter<$PrismaModel>
 }
 
-export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
-  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
+export type NestedEnumPostVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostVehicleCategory | Prisma.EnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostVehicleCategory[] | Prisma.ListEnumPostVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PostVehicleCategory
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostVehicleCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumPhotoEditingDeclarationNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -3666,6 +3683,23 @@ export type NestedEnumPrestigeRuleStatusWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPrestigeRuleStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumVehicleCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel> | $Enums.VehicleCategory
+}
+
+export type NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VehicleCategory | Prisma.EnumVehicleCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VehicleCategory[] | Prisma.ListEnumVehicleCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVehicleCategoryWithAggregatesFilter<$PrismaModel> | $Enums.VehicleCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVehicleCategoryFilter<$PrismaModel>
 }
 
 export type NestedEnumProductCategoryFilter<$PrismaModel = never> = {

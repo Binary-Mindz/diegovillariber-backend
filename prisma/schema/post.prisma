@@ -26,7 +26,7 @@ model Post {
   placeId            String?
   locationVisibility String?
 
-  vehicleCategory         VehicleCategory          @default(MOTOCROSS)
+  vehicleCategory         PostVehicleCategory          @default(CITY)
   mediaType               MediaType                @default(IMAGE)
   like                    Int                      @default(0)
   comment                 Int                      @default(0)

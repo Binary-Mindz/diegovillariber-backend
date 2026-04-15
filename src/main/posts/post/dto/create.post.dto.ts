@@ -16,11 +16,11 @@ import {
   VisiualStyle,
   ContextActivity,
   Subject,
-  VehicleCategory,
   MediaType,
   PhotoEditingDeclaration,
   VideoEditingDeclaration,
   PostAssetType,
+  PostVehicleCategory,
 } from 'generated/prisma/enums';
 
 export class CreatePostDto {
@@ -93,10 +93,10 @@ export class CreatePostDto {
   @IsString()
   locationVisibility?: string;
 
-  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.MOTOCROSS })
+  @ApiPropertyOptional({ enum: PostVehicleCategory, example: PostVehicleCategory.CITY })
   @IsOptional()
-  @IsEnum(VehicleCategory)
-  vehicleCategory?: VehicleCategory;
+  @IsEnum(PostVehicleCategory)
+  vehicleCategory?: PostVehicleCategory;
 
   @ApiPropertyOptional({
     example: false,
