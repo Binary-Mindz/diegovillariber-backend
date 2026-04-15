@@ -100,6 +100,21 @@ export class LabTimeController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Get('following')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get lab times from users I follow' })
+  followingLabTimes(
+    @GetUser('userId') userId: string,
+    @Query() query: LabTimeQueryDto,
+  ) {
+    return handleRequest(
+      async () => this.service.followingLabTimes(userId, query),
+      'Following users lap times fetched',
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'List of ranking lab time.' })
