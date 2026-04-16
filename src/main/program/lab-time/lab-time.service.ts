@@ -602,37 +602,46 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
     };
   }
 
-  async get(userId: string, labTimeId: string) {
-    const profile = await this.getActiveProfileOrThrow(userId);
+async get(userId: string, labTimeId: string) {
+  const user = await this.prisma.user.findUnique({
+    where: { id: userId },
+    select: { activeProfileId: true },
+  });
 
-    const lap = await this.prisma.labTime.findFirst({
-      where: { id: labTimeId, profileId: profile.id },
-      include: {
-        garage: {
-          select: {
-            id: true,
-            garageName: true,
-            location: true,
-            description: true,
-          },
-        },
-      },
-    });
-
-    if (!lap) {
-      throw new NotFoundException('Lap time not found');
-    }
-
-    return {
-      ...lap,
-      vehicle: await this.getVehicleDetails(
-        lap.profileId,
-        lap.vehicleType as LabVehicleType,
-        lap.vehicleId,
-      ),
-    };
+  if (!user?.activeProfileId) {
+    throw new NotFoundException('Active profile not found');
   }
 
+  const lap = await this.prisma.labTime.findFirst({
+    where: {
+      id: labTimeId,
+      profileId: user.activeProfileId, // ✅ strict binding
+    },
+    include: {
+      garage: {
+        select: {
+          id: true,
+          garageName: true,
+          location: true,
+          description: true,
+        },
+      },
+    },
+  });
+
+  if (!lap) {
+    throw new NotFoundException('Lap time not found');
+  }
+
+  return {
+    ...lap,
+    vehicle: await this.getVehicleDetails(
+      lap.profileId,
+      lap.vehicleType as LabVehicleType,
+      lap.vehicleId,
+    ),
+  };
+}
   async update(userId: string, labTimeId: string, dto: UpdateLabTimeDto) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
