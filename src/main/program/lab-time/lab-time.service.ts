@@ -602,21 +602,9 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
     };
   }
 
-async get(userId: string, labTimeId: string) {
-  const user = await this.prisma.user.findUnique({
-    where: { id: userId },
-    select: { activeProfileId: true },
-  });
-
-  if (!user?.activeProfileId) {
-    throw new NotFoundException('Active profile not found');
-  }
-
-  const lap = await this.prisma.labTime.findFirst({
-    where: {
-      id: labTimeId,
-      profileId: user.activeProfileId, // ✅ strict binding
-    },
+async get(labTimeId: string) {
+  const lap = await this.prisma.labTime.findUnique({
+    where: { id: labTimeId },
     include: {
       garage: {
         select: {
