@@ -130,11 +130,8 @@ export class LabTimeController {
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get lap time by id' })
-  get(@GetUser('userId') userId: string, @Param('id') id: string) {
-    return handleRequest(
-      async () => this.service.get(userId, id),
-      'Lap time fetched',
-    );
+  get(@Param('id') id: string) {
+    return handleRequest(async () => this.service.get(id), 'Lap time fetched');
   }
 
   @ApiBearerAuth()
