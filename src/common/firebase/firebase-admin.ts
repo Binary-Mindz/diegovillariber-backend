@@ -2,9 +2,7 @@ import * as admin from 'firebase-admin';
 
 let firebaseApp: admin.app.App | null = null;
 
-export function getFirebaseAdminApp(): admin.app.App {
-  if (firebaseApp) return firebaseApp;
-
+function parseServiceAccount(): admin.ServiceAccount {
   const serviceAccountRaw = process.env.FIREBASE_SERVICE_ACCOUNT;
 
   if (!serviceAccountRaw) {
@@ -32,6 +30,21 @@ export function getFirebaseAdminApp(): admin.app.App {
     serviceAccount.privateKey = serviceAccount.privateKey.replace(/\\n/g, '\n');
   }
 
+  return serviceAccount;
+}
+
+export function getFirebaseAdminApp(): admin.app.App {
+  if (firebaseApp) {
+    return firebaseApp;
+  }
+
+  if (admin.apps.length > 0) {
+    firebaseApp = admin.app();
+    return firebaseApp;
+  }
+
+  const serviceAccount = parseServiceAccount();
+
   firebaseApp = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
@@ -41,4 +54,8 @@ export function getFirebaseAdminApp(): admin.app.App {
 
 export function getFirebaseAuth() {
   return getFirebaseAdminApp().auth();
+}
+
+export function getFirebaseMessaging() {
+  return getFirebaseAdminApp().messaging();
 }

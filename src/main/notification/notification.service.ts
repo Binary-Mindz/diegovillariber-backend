@@ -8,9 +8,9 @@ import { NotificationQueryDto } from './dto/notification-query.dto';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationPreferenceDto } from './dto/update-notification-preference.dto';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { FirebaseService } from '../firebase/firebase.service';
 import { NotificationChannel, NotificationStatus, NotificationType, Prisma } from 'generated/prisma/client';
 import { handlePrismaError } from '@/common/utils/error.handler';
+import { FirebaseService } from '@/common/firebase/firebase.service';
 
 @Injectable()
 export class NotificationService {

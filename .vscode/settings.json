@@ -1,5 +1,5 @@
 {
-    "files.autoSave": "off", // Automatically saves files after a delay
+    "files.autoSave": "afterDelay", // Automatically saves files after a delay
     "editor.minimap.enabled": false, // Disables the minimap
     "editor.wordWrap": "off", // Enables word wrapping
     "files.exclude": {
@@ -8,7 +8,7 @@
         "**/node_modules": true
     },
     "editor.tabSize": 2, // Sets tab size to 2 spaces
-    "editor.formatOnSave": false, // Automatically formats code on save{
+    "editor.formatOnSave": true, // Automatically formats code on save{
     "terminal.integrated.profiles.windows": {
         "cmd": {
             "path": "C:\\Windows\\System32\\cmd.exe"

@@ -12,13 +12,13 @@ import { ChatModule } from './main/chat/chat.module';
 import { FileModule } from './main/files/file.module';
 import { PropertyModule } from './main/property/property.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { FirebaseModule } from './main/firebase/firebase.module';
 import { MotorsportRankingModule } from './main/motorsport/motorsport-ranking.module';
 import { NotificationModule } from './main/notification/notification.module';
 import { RacingVoteModule } from './main/racing-vote/racing-vote.module';
 import { SpottingRequestModule } from './main/sportting-request/sportting-request.module';
 import { DiscoverModule } from './main/discover/discover.module';
 import { MapModule } from './main/map/map.module';
+import { FirebaseModule } from './common/firebase/firebase.module';
 
 @Module({
   imports: [
