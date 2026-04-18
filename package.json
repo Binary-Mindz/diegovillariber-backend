@@ -22,7 +22,10 @@
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:deploy": "npx prisma migrate deploy",
-    "seed": "ts-node -r tsconfig-paths/register src/common/seed/seed",
+    "seed": "npm run build && node dist/src/common/seed/seed.js",
+    "seed:prod": "node dist/src/common/seed/seed.js",
+
+    "seed:dev": "ts-node -r tsconfig-paths/register src/common/seed/seed.ts",
     "lint:fix": "eslint . --ext .ts,.js,.jsx,.tsx --fix",
     "format:fix": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
     "ci:check": "npm run format && npm run lint && npm run build && npm run start:prod",
