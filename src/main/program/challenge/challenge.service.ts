@@ -192,85 +192,6 @@ async listChallenges(query: ChallengeQueryDto) {
   };
 }
 
-// async listAdminCreatedChallenges(query: ChallengeQueryDto) {
-//   const page = query.page ?? 1;
-//   const limit = query.limit ?? 20;
-//   const skip = (page - 1) * limit;
-//   const now = new Date();
-
-//   const where: any = {
-//     creator: {
-//       role: 'ADMIN',
-//     },
-//   };
-
-//   const tab = query.tab ?? ChallengeTab.ACTIVE;
-
-//   if (tab === ChallengeTab.ACTIVE) {
-//     where.AND = [
-//       ...(where.AND ?? []),
-//       { startDate: { lte: now } },
-//       { endDate: { gte: now } },
-//       { status: { not: ChallengeStatus.FINISHED } },
-//     ];
-//   } else if (tab === ChallengeTab.UPCOMING) {
-//     where.AND = [
-//       ...(where.AND ?? []),
-//       { startDate: { gt: now } },
-//       { status: { not: ChallengeStatus.FINISHED } },
-//     ];
-//   } else if (tab === ChallengeTab.FINISHED) {
-//     where.OR = [
-//       { status: ChallengeStatus.FINISHED },
-//       { endDate: { lt: now } },
-//     ];
-//   }
-
-//   if (query.category) where.category = query.category;
-//   if (query.type) where.type = query.type;
-//   if (query.preference) where.preference = query.preference;
-//   if (query.participationScope) where.participationScope = query.participationScope;
-
-//   if (query.search) {
-//     where.OR = [
-//       ...(where.OR ?? []),
-//       { title: { contains: query.search, mode: 'insensitive' } },
-//       { description: { contains: query.search, mode: 'insensitive' } },
-//       { locationName: { contains: query.search, mode: 'insensitive' } },
-//       { challengePrize: { contains: query.search, mode: 'insensitive' } },
-//     ];
-//   }
-
-//   const [items, total] = await this.prisma.$transaction([
-//     this.prisma.challenge.findMany({
-//       where,
-//       skip,
-//       take: limit,
-//       orderBy: [{ createdAt: 'desc' }],
-//       include: {
-//         creator: true,
-//         _count: {
-//           select: {
-//             challengeParticipants: true,
-//             challengeSubmissions: true,
-//           },
-//         },
-//       },
-//     }),
-//     this.prisma.challenge.count({ where }),
-//   ]);
-
-//   return {
-//     items,  
-//     meta: {
-//       total,
-//       page,
-//       limit,
-//       totalPages: Math.ceil(total / limit),
-//     },
-//   };
-// }
-
 async listAdminCreatedChallenges(query: ChallengeQueryDto) {
   const page = query.page ?? 1;
   const limit = query.limit ?? 20;
@@ -442,12 +363,10 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
   try {
     const creator = await this.prisma.user.findFirst({
       where: {
-        OR: [
-          { id: userId }
-        ],
+        OR: [{ id: userId }],
       },
       select: {
-        id: true
+        id: true,
       },
     });
 
@@ -495,6 +414,7 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
           dto.requireTrueShotVerification ?? false,
         rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
         maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
+        maxParticipants: dto.maxParticipants,
         status: ChallengeStatus.UPCOMING,
       },
       include: { creator: true },
@@ -522,52 +442,53 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
   }
 }
 
-  async updateChallenge(id: string, userId: string, dto: UpdateChallengeDto) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id } });
-    if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can update this challenge');
+async updateChallenge(id: string, userId: string, dto: UpdateChallengeDto) {
+  const challenge = await this.prisma.challenge.findUnique({ where: { id } });
+  if (!challenge) throw new NotFoundException('Challenge not found');
+  if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can update this challenge');
 
-    if (dto.startDate || dto.endDate) {
-      const start = dto.startDate ? new Date(dto.startDate) : new Date(challenge.startDate);
-      const end = dto.endDate ? new Date(dto.endDate) : new Date(challenge.endDate);
-      this.validateDates(start, end);
-    }
-
-    this.validateScope(dto);
-
-    return this.prisma.challenge.update({
-      where: { id },
-      data: {
-        ...(dto.title !== undefined ? { title: dto.title } : {}),
-        ...(dto.description !== undefined ? { description: dto.description } : {}),
-        ...(dto.type !== undefined ? { type: dto.type } : {}),
-        ...(dto.category !== undefined ? { category: dto.category } : {}),
-        ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
-        ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
-
-        ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
-        ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
-        ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
-        ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
-        ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
-
-        ...(dto.startDate !== undefined ? { startDate: new Date(dto.startDate) } : {}),
-        ...(dto.endDate !== undefined ? { endDate: new Date(dto.endDate) } : {}),
-        ...(dto.challengePrize !== undefined ? { challengePrize: dto.challengePrize } : {}),
-
-        ...(dto.enableDeviceRestriction !== undefined ? { enableDeviceRestriction: dto.enableDeviceRestriction } : {}),
-        ...(dto.quickPreset !== undefined ? { quickPreset: dto.quickPreset } : {}),
-        ...(dto.deviceType !== undefined ? { deviceType: dto.deviceType } : {}),
-        ...(dto.brand !== undefined ? { brand: dto.brand } : {}),
-        ...(dto.requireTrueShotVerification !== undefined
-          ? { requireTrueShotVerification: dto.requireTrueShotVerification }
-          : {}),
-        ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
-        ...(dto.maxEntriesPerUser !== undefined ? { maxEntriesPerUser: dto.maxEntriesPerUser } : {}),
-      },
-      include: { creator: true },
-    });
+  if (dto.startDate || dto.endDate) {
+    const start = dto.startDate ? new Date(dto.startDate) : new Date(challenge.startDate);
+    const end = dto.endDate ? new Date(dto.endDate) : new Date(challenge.endDate);
+    this.validateDates(start, end);
   }
+
+  this.validateScope(dto);
+
+  return this.prisma.challenge.update({
+    where: { id },
+    data: {
+      ...(dto.title !== undefined ? { title: dto.title } : {}),
+      ...(dto.description !== undefined ? { description: dto.description } : {}),
+      ...(dto.type !== undefined ? { type: dto.type } : {}),
+      ...(dto.category !== undefined ? { category: dto.category } : {}),
+      ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
+      ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
+
+      ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
+      ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
+      ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
+      ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
+      ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
+
+      ...(dto.startDate !== undefined ? { startDate: new Date(dto.startDate) } : {}),
+      ...(dto.endDate !== undefined ? { endDate: new Date(dto.endDate) } : {}),
+      ...(dto.challengePrize !== undefined ? { challengePrize: dto.challengePrize } : {}),
+
+      ...(dto.enableDeviceRestriction !== undefined ? { enableDeviceRestriction: dto.enableDeviceRestriction } : {}),
+      ...(dto.quickPreset !== undefined ? { quickPreset: dto.quickPreset } : {}),
+      ...(dto.deviceType !== undefined ? { deviceType: dto.deviceType } : {}),
+      ...(dto.brand !== undefined ? { brand: dto.brand } : {}),
+      ...(dto.requireTrueShotVerification !== undefined
+        ? { requireTrueShotVerification: dto.requireTrueShotVerification }
+        : {}),
+      ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
+      ...(dto.maxEntriesPerUser !== undefined ? { maxEntriesPerUser: dto.maxEntriesPerUser } : {}),
+      ...(dto.maxParticipants !== undefined ? { maxParticipants: dto.maxParticipants } : {}),
+    },
+    include: { creator: true },
+  });
+}
 
   async deleteChallenge(id: string, userId: string) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id } });
@@ -578,29 +499,40 @@ async createChallenge(userId: string, dto: CreateChallengeDto) {
     return { id, deleted: true };
   }
 
-  async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
-    if (!challenge) throw new NotFoundException('Challenge not found');
-    if (
-       challenge.status !== ChallengeStatus.UPCOMING &&
-       challenge.status !== ChallengeStatus.ACTIVE
-       ) {
-  throw new BadRequestException('Challenge is not open to join');
-         }
-    try {
-      return await this.prisma.challengeParticipant.create({
-        data: {
-          challengeId,
-          userId,
-          status: ParticipantStatus.JOINED,
-        },
-      });
-    } catch {
-      return this.prisma.challengeParticipant.findUnique({
-        where: { challengeId_userId: { challengeId, userId } },
-      });
+async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto) {
+  const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+  if (!challenge) throw new NotFoundException('Challenge not found');
+  if (
+    challenge.status !== ChallengeStatus.UPCOMING &&
+    challenge.status !== ChallengeStatus.ACTIVE
+  ) {
+    throw new BadRequestException('Challenge is not open to join');
+  }
+
+  if (challenge.maxParticipants) {
+    const totalParticipants = await this.prisma.challengeParticipant.count({
+      where: { challengeId },
+    });
+
+    if (totalParticipants >= challenge.maxParticipants) {
+      throw new BadRequestException('Challenge participant limit reached');
     }
   }
+
+  try {
+    return await this.prisma.challengeParticipant.create({
+      data: {
+        challengeId,
+        userId,
+        status: ParticipantStatus.JOINED,
+      },
+    });
+  } catch {
+    return this.prisma.challengeParticipant.findUnique({
+      where: { challengeId_userId: { challengeId, userId } },
+    });
+  }
+}
 
   async listSubmissions(challengeId: string) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });

@@ -103,6 +103,7 @@ model Challenge {
   requireTrueShotVerification Boolean                @default(false)
   rejectEditedPhotos          Boolean                @default(false)
   maxEntriesPerUser           Int                    @default(1)
+  maxParticipants             Int?
   status                      ChallengeStatus?       @default(UPCOMING)
   createdAt                   DateTime               @default(now()) @db.Timestamptz(6)
   updatedAt                   DateTime               @updatedAt @db.Timestamptz(6)

@@ -23,7 +23,7 @@ import {
 export class CreateChallengeDto {
   @ApiProperty({ example: 'Sunset Car Shot Challenge' })
   @IsString()
-  title: string;
+  title!: string;
 
   @ApiPropertyOptional({ example: 'Take the best sunset photo of your car.' })
   @IsOptional()
@@ -32,15 +32,15 @@ export class CreateChallengeDto {
 
   @ApiProperty({ enum: ChallengeType, example: ChallengeType.PHOTO })
   @IsEnum(ChallengeType)
-  type: ChallengeType;
+  type!: ChallengeType;
 
   @ApiProperty({ enum: ChallengeCategory, example: ChallengeCategory.COMMUNITY })
   @IsEnum(ChallengeCategory)
-  category: ChallengeCategory;
+  category!: ChallengeCategory;
 
   @ApiProperty({ enum: Preference, example: Preference.CAR })
   @IsEnum(Preference)
-  preference: Preference;
+  preference!: Preference;
 
   @ApiPropertyOptional({ example: 'https://cdn.app/cover.jpg' })
   @IsOptional()
@@ -76,15 +76,15 @@ export class CreateChallengeDto {
 
   @ApiProperty({ example: '2026-03-01T00:00:00.000Z' })
   @IsDateString()
-  startDate: string;
+  startDate!: string;
 
   @ApiProperty({ example: '2026-03-10T23:59:59.000Z' })
   @IsDateString()
-  endDate: string;
+  endDate!: string;
 
   @ApiProperty({ example: 'Champion Badge + 500 Points' })
   @IsString()
-  challengePrize: string;
+  challengePrize!: string;
 
   @ApiPropertyOptional({ example: false })
   @IsOptional()
@@ -122,4 +122,11 @@ export class CreateChallengeDto {
   @Min(1)
   @Max(50)
   maxEntriesPerUser?: number;
+
+  @ApiPropertyOptional({ example: 100 })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(100000)
+  maxParticipants?: number;
 }
