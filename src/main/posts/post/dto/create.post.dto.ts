@@ -40,10 +40,15 @@ export class CreatePostDto {
   @MaxLength(2200)
   caption?: string;
 
-  @ApiPropertyOptional({ example: 'https://cdn.com/img.jpg' })
+  @ApiPropertyOptional({
+    isArray: true,
+    example: ['https://cdn.com/img1.jpg', 'https://cdn.com/img2.jpg'],
+  })
   @IsOptional()
-  @IsString()
-  mediaUrl?: string;
+  @IsArray()
+  @ArrayMaxSize(20)
+  @IsString({ each: true })
+  mediaUrl?: string[];
 
   @ApiPropertyOptional({ enum: MediaType, example: MediaType.IMAGE })
   @IsOptional()
@@ -63,7 +68,6 @@ export class CreatePostDto {
   @MaxLength(120)
   locationName?: string;
 
-
   @ApiPropertyOptional({ example: 'Panthapath, Dhaka 1205, Bangladesh' })
   @IsOptional()
   @IsString()
@@ -73,13 +77,19 @@ export class CreatePostDto {
   @ApiPropertyOptional({ example: 23.7516 })
   @IsOptional()
   @Type(() => Number)
-  @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'latitude must be a number' })
+  @IsNumber(
+    { allowNaN: false, allowInfinity: false },
+    { message: 'latitude must be a number' },
+  )
   latitude?: number;
 
   @ApiPropertyOptional({ example: 90.3927 })
   @IsOptional()
   @Type(() => Number)
-  @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'longitude must be a number' })
+  @IsNumber(
+    { allowNaN: false, allowInfinity: false },
+    { message: 'longitude must be a number' },
+  )
   longitude?: number;
 
   @ApiPropertyOptional({ example: 'ChIJ....' })
@@ -93,7 +103,10 @@ export class CreatePostDto {
   @IsString()
   locationVisibility?: string;
 
-  @ApiPropertyOptional({ enum: PostVehicleCategory, example: PostVehicleCategory.CITY })
+  @ApiPropertyOptional({
+    enum: PostVehicleCategory,
+    example: PostVehicleCategory.CITY,
+  })
   @IsOptional()
   @IsEnum(PostVehicleCategory)
   vehicleCategory?: PostVehicleCategory;
@@ -107,18 +120,22 @@ export class CreatePostDto {
   @IsBoolean()
   contentBooster?: boolean;
 
-  
-  @ApiPropertyOptional({ enum: PhotoEditingDeclaration, example: PhotoEditingDeclaration.NO_EDITING })
+  @ApiPropertyOptional({
+    enum: PhotoEditingDeclaration,
+    example: PhotoEditingDeclaration.NO_EDITING,
+  })
   @IsOptional()
   @IsEnum(PhotoEditingDeclaration)
   photoEditingDeclaration?: PhotoEditingDeclaration;
 
-  @ApiPropertyOptional({ enum: VideoEditingDeclaration, example: VideoEditingDeclaration.DAVINCI_RESOLVE })
+  @ApiPropertyOptional({
+    enum: VideoEditingDeclaration,
+    example: VideoEditingDeclaration.DAVINCI_RESOLVE,
+  })
   @IsOptional()
   @IsEnum(VideoEditingDeclaration)
   videoEditingDeclaration?: VideoEditingDeclaration;
 
- 
   @ApiPropertyOptional({
     isArray: true,
     enum: VisiualStyle,
@@ -163,7 +180,7 @@ export class CreatePostDto {
   @IsUUID('4', { each: true })
   hashtagIds?: string[];
 
-   @ApiPropertyOptional({
+  @ApiPropertyOptional({
     isArray: true,
     example: [
       '4d9c8f3b-1b2a-4d2f-9c41-6f8a4a2b3c10',

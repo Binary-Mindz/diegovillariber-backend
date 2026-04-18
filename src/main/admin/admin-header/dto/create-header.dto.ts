@@ -10,14 +10,14 @@ export class CreateHeaderDto {
     description: 'Header type',
   })
   @IsEnum(HeaderName)
-  selectHeader: HeaderName;
+  selectHeader!: HeaderName;
 
   @ApiProperty({
     example: 'Challenge Main Banner',
     description: 'Unique header name',
   })
   @IsString()
-  headerName: string;
+  headerName!: string;
 
   @ApiPropertyOptional({
     example: 'Ferrari',

@@ -1,8 +1,8 @@
 model Header {
   id          String  @id @default(uuid())
    
-  selectHeader  HeaderName @default(CHALLEGE)
-  headerName   String        @unique
+  selectHeader  HeaderName @unique @default(CHALLEGE)
+  headerName   String  
   brandName    String?
   bannerImage  String?
 

@@ -66,7 +66,6 @@ export type PostMinAggregateOutputType = {
   profileType: $Enums.Type | null
   postType: $Enums.PostType | null
   caption: string | null
-  mediaUrl: string | null
   postLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -103,7 +102,6 @@ export type PostMaxAggregateOutputType = {
   profileType: $Enums.Type | null
   postType: $Enums.PostType | null
   caption: string | null
-  mediaUrl: string | null
   postLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -212,7 +210,6 @@ export type PostMinAggregateInputType = {
   profileType?: true
   postType?: true
   caption?: true
-  mediaUrl?: true
   postLocation?: true
   locationName?: true
   locationAddress?: true
@@ -249,7 +246,6 @@ export type PostMaxAggregateInputType = {
   profileType?: true
   postType?: true
   caption?: true
-  mediaUrl?: true
   postLocation?: true
   locationName?: true
   locationAddress?: true
@@ -413,7 +409,7 @@ export type PostGroupByOutputType = {
   profileType: $Enums.Type | null
   postType: $Enums.PostType
   caption: string | null
-  mediaUrl: string | null
+  mediaUrl: string[]
   postLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -476,7 +472,7 @@ export type PostWhereInput = {
   profileType?: Prisma.EnumTypeNullableFilter<"Post"> | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  mediaUrl?: Prisma.StringNullableListFilter<"Post">
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
   locationName?: Prisma.StringNullableFilter<"Post"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
@@ -532,7 +528,7 @@ export type PostOrderByWithRelationInput = {
   profileType?: Prisma.SortOrderInput | Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   locationName?: Prisma.SortOrderInput | Prisma.SortOrder
   locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -591,7 +587,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   profileType?: Prisma.EnumTypeNullableFilter<"Post"> | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  mediaUrl?: Prisma.StringNullableListFilter<"Post">
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
   locationName?: Prisma.StringNullableFilter<"Post"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
@@ -647,7 +643,7 @@ export type PostOrderByWithAggregationInput = {
   profileType?: Prisma.SortOrderInput | Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrderInput | Prisma.SortOrder
-  mediaUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   locationName?: Prisma.SortOrderInput | Prisma.SortOrder
   locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -695,7 +691,7 @@ export type PostScalarWhereWithAggregatesInput = {
   profileType?: Prisma.EnumTypeNullableWithAggregatesFilter<"Post"> | $Enums.Type | null
   postType?: Prisma.EnumPostTypeWithAggregatesFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  mediaUrl?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  mediaUrl?: Prisma.StringNullableListFilter<"Post">
   postLocation?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   locationName?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   locationAddress?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
@@ -731,7 +727,7 @@ export type PostCreateInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -787,7 +783,7 @@ export type PostUncheckedCreateInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -835,7 +831,7 @@ export type PostUpdateInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -891,7 +887,7 @@ export type PostUncheckedUpdateInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -943,7 +939,7 @@ export type PostCreateManyInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -979,7 +975,7 @@ export type PostUpdateManyMutationInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1019,7 +1015,7 @@ export type PostUncheckedUpdateManyInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1153,7 +1149,6 @@ export type PostMaxOrderByAggregateInput = {
   profileType?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrder
-  mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
   locationAddress?: Prisma.SortOrder
@@ -1190,7 +1185,6 @@ export type PostMinOrderByAggregateInput = {
   profileType?: Prisma.SortOrder
   postType?: Prisma.SortOrder
   caption?: Prisma.SortOrder
-  mediaUrl?: Prisma.SortOrder
   postLocation?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
   locationAddress?: Prisma.SortOrder
@@ -1401,6 +1395,10 @@ export type PostUpdateOneRequiredWithoutLikesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutLikesInput, Prisma.PostUpdateWithoutLikesInput>, Prisma.PostUncheckedUpdateWithoutLikesInput>
 }
 
+export type PostCreatemediaUrlInput = {
+  set: string[]
+}
+
 export type PostCreatevisiualStyleInput = {
   set: $Enums.VisiualStyle[]
 }
@@ -1415,6 +1413,11 @@ export type PostCreatesubjectInput = {
 
 export type NullableEnumPostAssetTypeFieldUpdateOperationsInput = {
   set?: $Enums.PostAssetType | null
+}
+
+export type PostUpdatemediaUrlInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type EnumPostVehicleCategoryFieldUpdateOperationsInput = {
@@ -1680,7 +1683,7 @@ export type PostCreateWithoutBikeInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1734,7 +1737,7 @@ export type PostUncheckedCreateWithoutBikeInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1815,7 +1818,7 @@ export type PostScalarWhereInput = {
   profileType?: Prisma.EnumTypeNullableFilter<"Post"> | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFilter<"Post"> | $Enums.PostType
   caption?: Prisma.StringNullableFilter<"Post"> | string | null
-  mediaUrl?: Prisma.StringNullableFilter<"Post"> | string | null
+  mediaUrl?: Prisma.StringNullableListFilter<"Post">
   postLocation?: Prisma.StringNullableFilter<"Post"> | string | null
   locationName?: Prisma.StringNullableFilter<"Post"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Post"> | string | null
@@ -1851,7 +1854,7 @@ export type PostCreateWithoutCarInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1905,7 +1908,7 @@ export type PostUncheckedCreateWithoutCarInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1979,7 +1982,7 @@ export type PostCreateWithoutCommentsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2034,7 +2037,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2097,7 +2100,7 @@ export type PostUpdateWithoutCommentsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2152,7 +2155,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2199,7 +2202,7 @@ export type PostCreateWithoutHashtagsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2254,7 +2257,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2322,7 +2325,7 @@ export type PostCreateWithoutHidePostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2377,7 +2380,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2440,7 +2443,7 @@ export type PostUpdateWithoutHidePostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2495,7 +2498,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2542,7 +2545,7 @@ export type PostCreateWithoutLikesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2597,7 +2600,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2660,7 +2663,7 @@ export type PostUpdateWithoutLikesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2715,7 +2718,7 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2762,7 +2765,7 @@ export type PostCreateWithoutPostViewInsightsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2817,7 +2820,7 @@ export type PostUncheckedCreateWithoutPostViewInsightsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2880,7 +2883,7 @@ export type PostUpdateWithoutPostViewInsightsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2935,7 +2938,7 @@ export type PostUncheckedUpdateWithoutPostViewInsightsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2982,7 +2985,7 @@ export type PostCreateWithoutPostRatingsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3037,7 +3040,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3100,7 +3103,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3155,7 +3158,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3202,7 +3205,7 @@ export type PostCreateWithoutProfileInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3256,7 +3259,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3330,7 +3333,7 @@ export type PostCreateWithoutRacingVotesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3385,7 +3388,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3448,7 +3451,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3503,7 +3506,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3550,7 +3553,7 @@ export type PostCreateWithoutRepostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3605,7 +3608,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3668,7 +3671,7 @@ export type PostUpdateWithoutRepostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3723,7 +3726,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3770,7 +3773,7 @@ export type PostCreateWithoutSavePostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3825,7 +3828,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3888,7 +3891,7 @@ export type PostUpdateWithoutSavePostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3943,7 +3946,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3990,7 +3993,7 @@ export type PostCreateWithoutSpottingMatchesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4045,7 +4048,7 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4108,7 +4111,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4163,7 +4166,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4210,7 +4213,7 @@ export type PostCreateWithoutUserInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4264,7 +4267,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4322,7 +4325,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4377,7 +4380,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4461,7 +4464,7 @@ export type PostCreateWithoutWishListsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4516,7 +4519,7 @@ export type PostUncheckedCreateWithoutWishListsInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4579,7 +4582,7 @@ export type PostUpdateWithoutWishListsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4634,7 +4637,7 @@ export type PostUncheckedUpdateWithoutWishListsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4684,7 +4687,7 @@ export type PostCreateManyBikeInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4720,7 +4723,7 @@ export type PostUpdateWithoutBikeInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4774,7 +4777,7 @@ export type PostUncheckedUpdateWithoutBikeInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4825,7 +4828,7 @@ export type PostUncheckedUpdateManyWithoutBikeInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4864,7 +4867,7 @@ export type PostCreateManyCarInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -4900,7 +4903,7 @@ export type PostUpdateWithoutCarInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4954,7 +4957,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5005,7 +5008,7 @@ export type PostUncheckedUpdateManyWithoutCarInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5041,7 +5044,7 @@ export type PostUpdateWithoutHashtagsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5096,7 +5099,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5147,7 +5150,7 @@ export type PostUncheckedUpdateManyWithoutHashtagsInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5186,7 +5189,7 @@ export type PostCreateManyProfileInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -5222,7 +5225,7 @@ export type PostUpdateWithoutProfileInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5276,7 +5279,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5327,7 +5330,7 @@ export type PostUncheckedUpdateManyWithoutProfileInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5366,7 +5369,7 @@ export type PostCreateManyUserInput = {
   profileType?: $Enums.Type | null
   postType?: $Enums.PostType
   caption?: string | null
-  mediaUrl?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
   postLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -5402,7 +5405,7 @@ export type PostUpdateWithoutUserInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5456,7 +5459,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5507,7 +5510,7 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5543,7 +5546,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5598,7 +5601,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5649,7 +5652,7 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
   profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
   postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
   caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
   postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6057,7 +6060,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     profileType: $Enums.Type | null
     postType: $Enums.PostType
     caption: string | null
-    mediaUrl: string | null
+    mediaUrl: string[]
     postLocation: string | null
     locationName: string | null
     locationAddress: string | null
@@ -6533,7 +6536,7 @@ export interface PostFieldRefs {
   readonly profileType: Prisma.FieldRef<"Post", 'Type'>
   readonly postType: Prisma.FieldRef<"Post", 'PostType'>
   readonly caption: Prisma.FieldRef<"Post", 'String'>
-  readonly mediaUrl: Prisma.FieldRef<"Post", 'String'>
+  readonly mediaUrl: Prisma.FieldRef<"Post", 'String[]'>
   readonly postLocation: Prisma.FieldRef<"Post", 'String'>
   readonly locationName: Prisma.FieldRef<"Post", 'String'>
   readonly locationAddress: Prisma.FieldRef<"Post", 'String'>

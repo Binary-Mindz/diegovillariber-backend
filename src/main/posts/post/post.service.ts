@@ -321,7 +321,7 @@ export class PostService {
           postType: dto.postType ?? undefined,
           assetType: dto.assetType ?? undefined,
           caption: dto.caption ?? null,
-          mediaUrl: dto.mediaUrl ?? null,
+          mediaUrl: dto.mediaUrl ?? [],
           mediaType,
           postLocation: dto.postLocation ?? null,
           locationName: dto.locationName ?? null,
@@ -707,13 +707,7 @@ export class PostService {
         ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
         ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
-        ...(dto.mediaUrl !== undefined
-          ? { mediaUrl: dto.mediaUrl ?? null }
-          : {}),
-        // media
-        ...(dto.mediaUrl !== undefined
-          ? { mediaUrl: dto.mediaUrl ?? null }
-          : {}),
+        ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
         ...(dto.mediaType !== undefined
           ? { mediaType: dto.mediaType ?? undefined }
           : {}),

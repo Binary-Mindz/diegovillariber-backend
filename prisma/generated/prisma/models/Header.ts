@@ -212,16 +212,16 @@ export type HeaderOrderByWithRelationInput = {
 
 export type HeaderWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  headerName?: string
+  selectHeader?: $Enums.HeaderName
   AND?: Prisma.HeaderWhereInput | Prisma.HeaderWhereInput[]
   OR?: Prisma.HeaderWhereInput[]
   NOT?: Prisma.HeaderWhereInput | Prisma.HeaderWhereInput[]
-  selectHeader?: Prisma.EnumHeaderNameFilter<"Header"> | $Enums.HeaderName
+  headerName?: Prisma.StringFilter<"Header"> | string
   brandName?: Prisma.StringNullableFilter<"Header"> | string | null
   bannerImage?: Prisma.StringNullableFilter<"Header"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Header"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Header"> | Date | string
-}, "id" | "headerName">
+}, "id" | "selectHeader">
 
 export type HeaderOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

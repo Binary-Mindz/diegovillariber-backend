@@ -321,13 +321,7 @@ export class DiscoverService {
         skip,
         take: limit,
         orderBy: [{ usageCount: 'desc' }, { updatedAt: 'desc' }],
-        select: {
-          id: true,
-          tag: true,
-          description: true,
-          usageCount: true,
-          createdAt: true,
-          updatedAt: true,
+        include: {
           _count: {
             select: {
               posts: true,
@@ -336,7 +330,7 @@ export class DiscoverService {
           posts: {
             where: {
               mediaUrl: {
-                not: null,
+                isEmpty: false,
               },
             },
             orderBy: {
@@ -361,7 +355,7 @@ export class DiscoverService {
       description: hashtag.description,
       usageCount: hashtag.usageCount,
       postsCount: hashtag._count.posts,
-      previewMediaUrl: hashtag.posts[0]?.mediaUrl ?? null,
+      previewMediaUrl: hashtag.posts[0]?.mediaUrl?.[0] ?? null,
       previewMediaType: hashtag.posts[0]?.mediaType ?? null,
       previewPostId: hashtag.posts[0]?.id ?? null,
       createdAt: hashtag.createdAt,

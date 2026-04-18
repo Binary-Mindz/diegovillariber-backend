@@ -17,7 +17,7 @@ model Post {
   profileType        Type?
   postType           PostType @default(Spotter_Post)
   caption            String?
-  mediaUrl           String?
+  mediaUrl           String[] @default([])
   postLocation       String?
   locationName       String?
   locationAddress    String?

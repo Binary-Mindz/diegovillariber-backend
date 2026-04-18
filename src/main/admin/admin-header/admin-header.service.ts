@@ -1,5 +1,4 @@
 import {
-  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -12,18 +11,16 @@ export class AdminHeaderService {
   constructor(private readonly prisma: PrismaService) {}
 
   async createHeader(dto: CreateHeaderDto) {
-    const existingHeader = await this.prisma.header.findUnique({
+    const header = await this.prisma.header.upsert({
       where: {
-        headerName: dto.headerName,
+        selectHeader: dto.selectHeader,
       },
-    });
-
-    if (existingHeader) {
-      throw new ConflictException('Header name already exists');
-    }
-
-    const header = await this.prisma.header.create({
-      data: {
+      update: {
+        headerName: dto.headerName,
+        brandName: dto.brandName,
+        bannerImage: dto.bannerImage,
+      },
+      create: {
         selectHeader: dto.selectHeader,
         headerName: dto.headerName,
         brandName: dto.brandName,
@@ -63,18 +60,6 @@ export class AdminHeaderService {
 
     if (!existingHeader) {
       throw new NotFoundException('Header not found');
-    }
-
-    if (dto.headerName && dto.headerName !== existingHeader.headerName) {
-      const duplicateHeader = await this.prisma.header.findUnique({
-        where: {
-          headerName: dto.headerName,
-        },
-      });
-
-      if (duplicateHeader) {
-        throw new ConflictException('Header name already exists');
-      }
     }
 
     const updatedHeader = await this.prisma.header.update({
