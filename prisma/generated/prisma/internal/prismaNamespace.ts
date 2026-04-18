@@ -8292,6 +8292,7 @@ export const ChallengeScalarFieldEnum = {
   requireTrueShotVerification: 'requireTrueShotVerification',
   rejectEditedPhotos: 'rejectEditedPhotos',
   maxEntriesPerUser: 'maxEntriesPerUser',
+  maxParticipants: 'maxParticipants',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',

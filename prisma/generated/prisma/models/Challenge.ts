@@ -31,6 +31,7 @@ export type ChallengeAvgAggregateOutputType = {
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
   maxEntriesPerUser: number | null
+  maxParticipants: number | null
 }
 
 export type ChallengeSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type ChallengeSumAggregateOutputType = {
   latitude: runtime.Decimal | null
   longitude: runtime.Decimal | null
   maxEntriesPerUser: number | null
+  maxParticipants: number | null
 }
 
 export type ChallengeMinAggregateOutputType = {
@@ -64,6 +66,7 @@ export type ChallengeMinAggregateOutputType = {
   requireTrueShotVerification: boolean | null
   rejectEditedPhotos: boolean | null
   maxEntriesPerUser: number | null
+  maxParticipants: number | null
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -94,6 +97,7 @@ export type ChallengeMaxAggregateOutputType = {
   requireTrueShotVerification: boolean | null
   rejectEditedPhotos: boolean | null
   maxEntriesPerUser: number | null
+  maxParticipants: number | null
   status: $Enums.ChallengeStatus | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -124,6 +128,7 @@ export type ChallengeCountAggregateOutputType = {
   requireTrueShotVerification: number
   rejectEditedPhotos: number
   maxEntriesPerUser: number
+  maxParticipants: number
   status: number
   createdAt: number
   updatedAt: number
@@ -137,6 +142,7 @@ export type ChallengeAvgAggregateInputType = {
   latitude?: true
   longitude?: true
   maxEntriesPerUser?: true
+  maxParticipants?: true
 }
 
 export type ChallengeSumAggregateInputType = {
@@ -144,6 +150,7 @@ export type ChallengeSumAggregateInputType = {
   latitude?: true
   longitude?: true
   maxEntriesPerUser?: true
+  maxParticipants?: true
 }
 
 export type ChallengeMinAggregateInputType = {
@@ -170,6 +177,7 @@ export type ChallengeMinAggregateInputType = {
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
   maxEntriesPerUser?: true
+  maxParticipants?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -200,6 +208,7 @@ export type ChallengeMaxAggregateInputType = {
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
   maxEntriesPerUser?: true
+  maxParticipants?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -230,6 +239,7 @@ export type ChallengeCountAggregateInputType = {
   requireTrueShotVerification?: true
   rejectEditedPhotos?: true
   maxEntriesPerUser?: true
+  maxParticipants?: true
   status?: true
   createdAt?: true
   updatedAt?: true
@@ -347,6 +357,7 @@ export type ChallengeGroupByOutputType = {
   requireTrueShotVerification: boolean
   rejectEditedPhotos: boolean
   maxEntriesPerUser: number
+  maxParticipants: number | null
   status: $Enums.ChallengeStatus | null
   createdAt: Date
   updatedAt: Date
@@ -400,6 +411,7 @@ export type ChallengeWhereInput = {
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
   maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
+  maxParticipants?: Prisma.IntNullableFilter<"Challenge"> | number | null
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
@@ -435,6 +447,7 @@ export type ChallengeOrderByWithRelationInput = {
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -473,6 +486,7 @@ export type ChallengeWhereUniqueInput = Prisma.AtLeast<{
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
   maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
+  maxParticipants?: Prisma.IntNullableFilter<"Challenge"> | number | null
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
@@ -508,6 +522,7 @@ export type ChallengeOrderByWithAggregationInput = {
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -546,6 +561,7 @@ export type ChallengeScalarWhereWithAggregatesInput = {
   requireTrueShotVerification?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolWithAggregatesFilter<"Challenge"> | boolean
   maxEntriesPerUser?: Prisma.IntWithAggregatesFilter<"Challenge"> | number
+  maxParticipants?: Prisma.IntNullableWithAggregatesFilter<"Challenge"> | number | null
   status?: Prisma.EnumChallengeStatusNullableWithAggregatesFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Challenge"> | Date | string
@@ -575,6 +591,7 @@ export type ChallengeCreateInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -610,6 +627,7 @@ export type ChallengeUncheckedCreateInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -643,6 +661,7 @@ export type ChallengeUpdateInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -678,6 +697,7 @@ export type ChallengeUncheckedUpdateInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -712,6 +732,7 @@ export type ChallengeCreateManyInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -741,6 +762,7 @@ export type ChallengeUpdateManyMutationInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -771,6 +793,7 @@ export type ChallengeUncheckedUpdateManyInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -801,6 +824,7 @@ export type ChallengeCountOrderByAggregateInput = {
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -812,6 +836,7 @@ export type ChallengeAvgOrderByAggregateInput = {
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrder
 }
 
 export type ChallengeMaxOrderByAggregateInput = {
@@ -838,6 +863,7 @@ export type ChallengeMaxOrderByAggregateInput = {
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -868,6 +894,7 @@ export type ChallengeMinOrderByAggregateInput = {
   requireTrueShotVerification?: Prisma.SortOrder
   rejectEditedPhotos?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -879,6 +906,7 @@ export type ChallengeSumOrderByAggregateInput = {
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   maxEntriesPerUser?: Prisma.SortOrder
+  maxParticipants?: Prisma.SortOrder
 }
 
 export type ChallengeScalarRelationFilter = {
@@ -1057,6 +1085,7 @@ export type ChallengeCreateWithoutChallengeParticipantsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1091,6 +1120,7 @@ export type ChallengeUncheckedCreateWithoutChallengeParticipantsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1139,6 +1169,7 @@ export type ChallengeUpdateWithoutChallengeParticipantsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1173,6 +1204,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeParticipantsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1205,6 +1237,7 @@ export type ChallengeCreateWithoutChallengeSubmissionsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1239,6 +1272,7 @@ export type ChallengeUncheckedCreateWithoutChallengeSubmissionsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1287,6 +1321,7 @@ export type ChallengeUpdateWithoutChallengeSubmissionsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1321,6 +1356,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeSubmissionsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1353,6 +1389,7 @@ export type ChallengeCreateWithoutChallengeResultsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1387,6 +1424,7 @@ export type ChallengeUncheckedCreateWithoutChallengeResultsInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1435,6 +1473,7 @@ export type ChallengeUpdateWithoutChallengeResultsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1469,6 +1508,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeResultsInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1501,6 +1541,7 @@ export type ChallengeCreateWithoutChallengeWinnersInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1535,6 +1576,7 @@ export type ChallengeUncheckedCreateWithoutChallengeWinnersInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1583,6 +1625,7 @@ export type ChallengeUpdateWithoutChallengeWinnersInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1617,6 +1660,7 @@ export type ChallengeUncheckedUpdateWithoutChallengeWinnersInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1649,6 +1693,7 @@ export type ChallengeCreateWithoutCreatorInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1682,6 +1727,7 @@ export type ChallengeUncheckedCreateWithoutCreatorInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1745,6 +1791,7 @@ export type ChallengeScalarWhereInput = {
   requireTrueShotVerification?: Prisma.BoolFilter<"Challenge"> | boolean
   rejectEditedPhotos?: Prisma.BoolFilter<"Challenge"> | boolean
   maxEntriesPerUser?: Prisma.IntFilter<"Challenge"> | number
+  maxParticipants?: Prisma.IntNullableFilter<"Challenge"> | number | null
   status?: Prisma.EnumChallengeStatusNullableFilter<"Challenge"> | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Challenge"> | Date | string
@@ -1774,6 +1821,7 @@ export type ChallengeCreateManyCreatorInput = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: number
+  maxParticipants?: number | null
   status?: $Enums.ChallengeStatus | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1803,6 +1851,7 @@ export type ChallengeUpdateWithoutCreatorInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1836,6 +1885,7 @@ export type ChallengeUncheckedUpdateWithoutCreatorInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1869,6 +1919,7 @@ export type ChallengeUncheckedUpdateManyWithoutCreatorInput = {
   requireTrueShotVerification?: Prisma.BoolFieldUpdateOperationsInput | boolean
   rejectEditedPhotos?: Prisma.BoolFieldUpdateOperationsInput | boolean
   maxEntriesPerUser?: Prisma.IntFieldUpdateOperationsInput | number
+  maxParticipants?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   status?: Prisma.NullableEnumChallengeStatusFieldUpdateOperationsInput | $Enums.ChallengeStatus | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1957,6 +2008,7 @@ export type ChallengeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: boolean
+  maxParticipants?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1993,6 +2045,7 @@ export type ChallengeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: boolean
+  maxParticipants?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2024,6 +2077,7 @@ export type ChallengeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: boolean
+  maxParticipants?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -2055,13 +2109,14 @@ export type ChallengeSelectScalar = {
   requireTrueShotVerification?: boolean
   rejectEditedPhotos?: boolean
   maxEntriesPerUser?: boolean
+  maxParticipants?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   programType?: boolean
 }
 
-export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "challengePrize" | "enableDeviceRestriction" | "quickPreset" | "deviceType" | "brand" | "requireTrueShotVerification" | "rejectEditedPhotos" | "maxEntriesPerUser" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["challenge"]>
+export type ChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "title" | "description" | "type" | "category" | "preference" | "coverImage" | "participationScope" | "radiusKm" | "locationName" | "latitude" | "longitude" | "startDate" | "endDate" | "challengePrize" | "enableDeviceRestriction" | "quickPreset" | "deviceType" | "brand" | "requireTrueShotVerification" | "rejectEditedPhotos" | "maxEntriesPerUser" | "maxParticipants" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["challenge"]>
 export type ChallengeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   challengeSubmissions?: boolean | Prisma.Challenge$challengeSubmissionsArgs<ExtArgs>
@@ -2110,6 +2165,7 @@ export type $ChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     requireTrueShotVerification: boolean
     rejectEditedPhotos: boolean
     maxEntriesPerUser: number
+    maxParticipants: number | null
     status: $Enums.ChallengeStatus | null
     createdAt: Date
     updatedAt: Date
@@ -2565,6 +2621,7 @@ export interface ChallengeFieldRefs {
   readonly requireTrueShotVerification: Prisma.FieldRef<"Challenge", 'Boolean'>
   readonly rejectEditedPhotos: Prisma.FieldRef<"Challenge", 'Boolean'>
   readonly maxEntriesPerUser: Prisma.FieldRef<"Challenge", 'Int'>
+  readonly maxParticipants: Prisma.FieldRef<"Challenge", 'Int'>
   readonly status: Prisma.FieldRef<"Challenge", 'ChallengeStatus'>
   readonly createdAt: Prisma.FieldRef<"Challenge", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Challenge", 'DateTime'>
