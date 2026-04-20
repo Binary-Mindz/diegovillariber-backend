@@ -9,6 +9,8 @@ import {
   RawShiftStatus,
   Type,
 } from 'generated/prisma/client';
+import { CIRCUITS_DATA } from '../program/lab-time/data/circuits.data';
+import { findCircuitLayout } from '../program/lab-time/utils/circuit.util';
 
 @Injectable()
 export class MapService {
@@ -51,8 +53,8 @@ export class MapService {
   private withinRadius(
     userLat: number,
     userLng: number,
-    rowLat?: Prisma.Decimal | null,
-    rowLng?: Prisma.Decimal | null,
+    rowLat?: Prisma.Decimal | number | null,
+    rowLng?: Prisma.Decimal | number | null,
     radiusKm = 6371,
   ) {
     if (rowLat == null || rowLng == null) return false;
@@ -82,35 +84,36 @@ export class MapService {
   }
 
   async getMapMarkers(query: MapQueryDto) {
-  const {
-    lat,
-    lng,
-    radiusKm = 6371,
-    showSpotter = true,
-    showOwner = true,
-    highRated = false,
-    showBattles = true,
-    showChallenges = true,
-    showEvents = true,
-    showRawShift = true,
-    showMarketplaceCar = false,
-    showMarketplaceCarParts = false,
-    showMarketplacePhotography = false,
-    showMarketplaceSimRacing = false,
-    showProBusiness = false,
-    showProDriver = false,
-    showContentCreator = false,
-    showSimRacing = false,
-    regionOnly = false,
-  } = query;
+    const {
+      lat,
+      lng,
+      radiusKm = 6371,
+      showSpotter = true,
+      showOwner = true,
+      highRated = false,
+      showBattles = true,
+      showChallenges = true,
+      showEvents = true,
+      showRawShift = true,
+      showCircuits = true,
+      showMarketplaceCar = false,
+      showMarketplaceCarParts = false,
+      showMarketplacePhotography = false,
+      showMarketplaceSimRacing = false,
+      showProBusiness = false,
+      showProDriver = false,
+      showContentCreator = false,
+      showSimRacing = false,
+      regionOnly = false,
+    } = query;
 
-  const hasRegion = regionOnly && lat != null && lng != null;
-  const bounds =
-    hasRegion && lat != null && lng != null
-      ? this.getBounds(lat, lng, radiusKm)
-      : null;
+    const hasRegion = regionOnly && lat != null && lng != null;
+    const bounds =
+      hasRegion && lat != null && lng != null
+        ? this.getBounds(lat, lng, radiusKm)
+        : null;
 
-  const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
+    const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
 
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
@@ -149,16 +152,7 @@ export class MapService {
       status: { in: [RawShiftStatus.ACTIVE, RawShiftStatus.UPCOMING] },
     };
 
-    const [
-      posts,
-      challenges,
-      battles,
-      events,
-      businessProfiles,
-      proDrivers,
-      contentCreators,
-      simRacingProfiles,
-    ] = await Promise.all([
+    const [posts, challenges, battles, events] = await Promise.all([
       profileTypes.length === 0
         ? Promise.resolve<any[]>([])
         : this.prisma.post.findMany({
@@ -218,13 +212,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
-                  profile:{
-                    select:{
-                      activeType:true,
-                      profileName:true,
-                      imageUrl:true
-                    }
-                  }
+                  profile: {
+                    select: {
+                      activeType: true,
+                      profileName: true,
+                      imageUrl: true,
+                    },
+                  },
                 },
               },
             },
@@ -253,13 +247,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
-                  profile:{
-                    select:{
-                      activeType:true,
-                      profileName:true,
-                      imageUrl:true
-                    }
-                  }
+                  profile: {
+                    select: {
+                      activeType: true,
+                      profileName: true,
+                      imageUrl: true,
+                    },
+                  },
                 },
               },
             },
@@ -286,113 +280,13 @@ export class MapService {
                 select: {
                   id: true,
                   email: true,
-                  profile:{
-                    select:{
+                  profile: {
+                    select: {
                       activeType: true,
                       profileName: true,
-                      imageUrl: true
-                    }
-                  }
-                },
-              },
-            },
-          })
-        : Promise.resolve<any[]>([]),
-
-      showRawShift
-        ? this.prisma.rawShiftBattle.findMany({
-            where: rawShiftWhere,
-            orderBy: [{ startDate: 'asc' }],
-            select: {
-              id: true,
-              title: true,
-              coverImage: true,
-              bannerImage: true,
-              location: true,
-              status: true,
-              startDate: true,
-              endDate: true,
-              creator: {
-                select: {
-                  id: true,
-                  email: true,
-                  profile:{
-                    select:{
-                      profileName:true,
-                      activeType:true,
-                      imageUrl:true
-                    }
-                  }
-                },
-              },
-            },
-          })
-        : Promise.resolve<any[]>([]),
-
-      showProBusiness || showMarketplaceCar || showMarketplaceCarParts || showMarketplacePhotography
-        ? this.prisma.businessProfile.findMany({
-            select: {
-              id: true,
-              businessName: true,
-              location: true,
-              businessCategory: true,
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true
-                },
-              },
-            },
-          })
-        : Promise.resolve<any[]>([]),
-
-      showProDriver
-        ? this.prisma.proDriverProfile.findMany({
-            select: {
-              id: true,
-              location: true,
-              racingDiscipline: true,
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true
-                },
-              },
-            },
-          })
-        : Promise.resolve<any[]>([]),
-
-      showContentCreator
-        ? this.prisma.contentCreatorProfile.findMany({
-            select: {
-              id: true,
-              creatorCategory: true,
-              portfolioWebsite: true,
-              youtubeChanel: true,
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true
-                },
-              },
-            },
-          })
-        : Promise.resolve<any[]>([]),
-
-      showSimRacing || showMarketplaceSimRacing
-        ? this.prisma.simRacingProfile.findMany({
-            select: {
-              id: true,
-              hardwareSetup: true,
-              racing: true,
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true
+                      imageUrl: true,
+                    },
+                  },
                 },
               },
             },
@@ -400,23 +294,12 @@ export class MapService {
         : Promise.resolve<any[]>([]),
     ]);
 
-    const filterRegion = <T extends { latitude?: any; longitude?: any }>(items: T[]) => {
+    const filterRegion = <T extends { latitude?: any; longitude?: any }>(
+      items: T[],
+    ) => {
       if (!hasRegion || lat == null || lng == null) return items;
       return items.filter((item) =>
         this.withinRadius(lat, lng, item.latitude, item.longitude, radiusKm),
-      );
-    };
-
-    const filterProfileRegion = <T extends { profile: { latitude?: any; longitude?: any } }>(items: T[]) => {
-      if (!hasRegion || lat == null || lng == null) return items;
-      return items.filter((item) =>
-        this.withinRadius(
-          lat,
-          lng,
-          item.profile?.latitude,
-          item.profile?.longitude,
-          radiusKm,
-        ),
       );
     };
 
@@ -425,10 +308,40 @@ export class MapService {
     const filteredBattles = filterRegion(battles);
     const filteredEvents = filterRegion(events);
 
-    const filteredBusiness = filterProfileRegion(businessProfiles);
-    const filteredProDrivers = filterProfileRegion(proDrivers);
-    const filteredCreators = filterProfileRegion(contentCreators);
-    const filteredSimRacing = filterProfileRegion(simRacingProfiles);
+    const circuitMarkers = showCircuits
+      ? CIRCUITS_DATA.flatMap((circuit) =>
+          (circuit.layouts ?? [])
+            .filter(
+              (layout) =>
+                layout.latitude !== null &&
+                layout.latitude !== undefined &&
+                layout.longitude !== null &&
+                layout.longitude !== undefined,
+            )
+            .map((layout) => ({
+              id: `${circuit.trackName}__${layout.trackLayout}`,
+              mapType: 'CIRCUIT',
+              title: layout.trackLayout
+                ? `${circuit.trackName} - ${layout.trackLayout}`
+                : circuit.trackName,
+              image: null,
+              latitude: Number(layout.latitude),
+              longitude: Number(layout.longitude),
+              locationName: circuit.country ?? null,
+              trackName: circuit.trackName,
+              trackLayout: layout.trackLayout,
+              country: circuit.country ?? null,
+              continent: circuit.continent ?? null,
+            })),
+        )
+      : [];
+
+    const filteredCircuits =
+      hasRegion && lat != null && lng != null
+        ? circuitMarkers.filter((item) =>
+            this.withinRadius(lat, lng, item.latitude, item.longitude, radiusKm),
+          )
+        : circuitMarkers;
 
     const markers = [
       ...filteredPosts.map((item) => ({
@@ -494,54 +407,7 @@ export class MapService {
         owner: item.owner,
       })),
 
-      ...filteredBusiness.map((item) => ({
-        id: item.id,
-        mapType: 'BUSINESS',
-        title: item.businessName ?? item.profile?.profileName ?? 'Business',
-        image: item.profile?.imageUrl,
-        latitude: Number(item.profile.latitude),
-        longitude: Number(item.profile.longitude),
-        locationName: item.location,
-        businessCategory: item.businessCategory,
-        profile: item.profile,
-      })),
-
-      ...filteredProDrivers.map((item) => ({
-        id: item.id,
-        mapType: 'PRO_DRIVER',
-        title: item.profile?.profileName ?? 'Pro Driver',
-        image: item.profile?.imageUrl,
-        latitude: Number(item.profile.latitude),
-        longitude: Number(item.profile.longitude),
-        locationName: item.location,
-        racingDiscipline: item.racingDiscipline,
-        profile: item.profile,
-      })),
-
-      ...filteredCreators.map((item) => ({
-        id: item.id,
-        mapType: 'CONTENT_CREATOR',
-        title: item.profile?.profileName ?? 'Content Creator',
-        image: item.profile?.imageUrl,
-        latitude: Number(item.profile.latitude),
-        longitude: Number(item.profile.longitude),
-        locationName: null,
-        creatorCategory: item.creatorCategory,
-        profile: item.profile,
-      })),
-
-      ...filteredSimRacing.map((item) => ({
-        id: item.id,
-        mapType: 'SIM_RACING',
-        title: item.profile?.profileName ?? 'Sim Racing',
-        image: item.profile?.imageUrl,
-        latitude: Number(item.profile.latitude),
-        longitude: Number(item.profile.longitude),
-        locationName: null,
-        profile: item.profile,
-        hardwareSetup: item.hardwareSetup,
-        racing: item.racing,
-      })),
+      ...filteredCircuits,
     ];
 
     return {
@@ -662,40 +528,29 @@ export class MapService {
       });
     }
 
-    if (type === 'business') {
-      return this.prisma.businessProfile.findUnique({
-        where: { id },
-        include: {
-          profile: true,
-        },
-      });
-    }
+    if (type === 'circuit') {
+      const [trackName, trackLayout] = decodeURIComponent(id).split('__');
 
-    if (type === 'pro_driver') {
-      return this.prisma.proDriverProfile.findUnique({
-        where: { id },
-        include: {
-          profile: true,
-        },
-      });
-    }
+      const layout = findCircuitLayout(trackName, trackLayout);
 
-    if (type === 'content_creator') {
-      return this.prisma.contentCreatorProfile.findUnique({
-        where: { id },
-        include: {
-          profile: true,
-        },
-      });
-    }
+      if (!layout) {
+        return null;
+      }
 
-    if (type === 'sim_racing') {
-      return this.prisma.simRacingProfile.findUnique({
-        where: { id },
-        include: {
-          profile: true,
-        },
-      });
+      const circuit = CIRCUITS_DATA.find(
+        (item) => item.trackName.trim().toLowerCase() === trackName.trim().toLowerCase(),
+      );
+
+      return {
+        id,
+        type: 'CIRCUIT',
+        trackName,
+        trackLayout: layout.trackLayout,
+        latitude: layout.latitude,
+        longitude: layout.longitude,
+        country: circuit?.country ?? null,
+        continent: circuit?.continent ?? null,
+      };
     }
 
     return null;

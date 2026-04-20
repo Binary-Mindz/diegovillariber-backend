@@ -75,7 +75,14 @@ export class MapQueryDto {
   @IsOptional()
   @Transform(toBoolean)
   @IsBoolean()
-  showRawShift?: true;
+  showRawShift?: boolean = true;
+
+  // Circuits
+  @ApiPropertyOptional({ example: true })
+  @IsOptional()
+  @Transform(toBoolean)
+  @IsBoolean()
+  showCircuits?: boolean = true;
 
   // Marketplace
   @ApiPropertyOptional({ example: false })
@@ -132,5 +139,4 @@ export class MapQueryDto {
   @Transform(toBoolean)
   @IsBoolean()
   regionOnly?: boolean = false;
-
 }
