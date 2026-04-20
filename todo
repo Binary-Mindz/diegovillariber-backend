@@ -1,0 +1,4 @@
+for seed
+
+docker exec -it diego_app_prod sh -c 'cd /app && npm run seed:prod'
+
