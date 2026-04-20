@@ -14,6 +14,15 @@ CREATE TYPE "Placement" AS ENUM ('ALL', 'IOS', 'ANDROID', 'WEB');
 CREATE TYPE "LinkType" AS ENUM ('EXTERNAL_LINK', 'POST_LINK');
 
 -- CreateEnum
+CREATE TYPE "BadgeStatus" AS ENUM ('ACTIVE', 'INACTIVE', 'DELETED');
+
+-- CreateEnum
+CREATE TYPE "BadgeRarity" AS ENUM ('COMMON', 'RARE', 'EPIC', 'LEGENDARY');
+
+-- CreateEnum
+CREATE TYPE "BadgeTargetType" AS ENUM ('ANY', 'SPOTTER', 'OWNER', 'CONTENT_CREATOR', 'PRO_BUSSINESS', 'PRO_DRIVER', 'SIM_RACING_DRIVER');
+
+-- CreateEnum
 CREATE TYPE "ChallengeType" AS ENUM ('PHOTO', 'VIDEO', 'LAP_TIME', 'EXPLORATION');
 
 -- CreateEnum
@@ -72,6 +81,9 @@ CREATE TYPE "BattleCategory" AS ENUM ('STYLE_BATTLE', 'STANCE_BATTLE', 'RACING_B
 
 -- CreateEnum
 CREATE TYPE "HeaderName" AS ENUM ('CHALLEGE', 'RAW_SHIFT', 'MOTOR_SPORT_RANKING', 'MARKETPLACE', 'HEAD_TO_HEAD');
+
+-- CreateEnum
+CREATE TYPE "LabVehicleType" AS ENUM ('CAR', 'BIKE');
 
 -- CreateEnum
 CREATE TYPE "PhotoEditingDeclaration" AS ENUM ('NO_EDITING', 'EDITED_WITH_ADOBE_LIGHTROOM', 'EDITED_WITH_ADOBE_PHOTOSHOP', 'EDITED_WITH_SNAPSEED', 'EDITED_WITH_VSCO', 'EDITED_WITH_OTHER_SOFTWARE');
@@ -156,6 +168,9 @@ CREATE TYPE "RacingType" AS ENUM ('GT_Racing', 'Rally', 'MotoGP', 'Formula_Racin
 
 -- CreateEnum
 CREATE TYPE "VehicleCategory" AS ENUM ('TRACKDAY_AMATEUR', 'GT_TOURING', 'ENDURANCE', 'FORMULA', 'RALLY_HILL_CLIMB', 'DRIFT', 'DRAG', 'KARTING', 'SUPER_BIKE', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'RAID');
+
+-- CreateEnum
+CREATE TYPE "PostVehicleCategory" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC', 'SPORT_BIKE', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'CLASSIC_VINTAGE', 'ELECTRIC');
 
 -- CreateEnum
 CREATE TYPE "BusinessCategory" AS ENUM ('Detailling_Care', 'Parts_Performance', 'Ecu_Dyno_Tuning', 'Wrap_Vinyl', 'Motorsport_Service', 'Event_Promoter', 'Media_Podcast', 'Dealership', 'Body_Coachbuilder', 'Auto_Recycling', 'Inspection_Technical');
@@ -398,6 +413,35 @@ CREATE TABLE "AmbassadorProgram" (
 );
 
 -- CreateTable
+CREATE TABLE "badges" (
+    "id" UUID NOT NULL,
+    "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "description" TEXT,
+    "icon" TEXT,
+    "rarity" "BadgeRarity" NOT NULL DEFAULT 'COMMON',
+    "status" "BadgeStatus" NOT NULL DEFAULT 'ACTIVE',
+    "targetTypes" "BadgeTargetType"[],
+    "sortOrder" INTEGER NOT NULL DEFAULT 0,
+    "isHidden" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "badges_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "profile_badges" (
+    "id" UUID NOT NULL,
+    "profileId" UUID NOT NULL,
+    "badgeId" UUID NOT NULL,
+    "awardedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "note" TEXT,
+
+    CONSTRAINT "profile_badges_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Bike" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
@@ -560,6 +604,7 @@ CREATE TABLE "Challenge" (
     "requireTrueShotVerification" BOOLEAN NOT NULL DEFAULT false,
     "rejectEditedPhotos" BOOLEAN NOT NULL DEFAULT false,
     "maxEntriesPerUser" INTEGER NOT NULL DEFAULT 1,
+    "maxParticipants" INTEGER,
     "status" "ChallengeStatus" DEFAULT 'UPCOMING',
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
@@ -1036,7 +1081,12 @@ CREATE TABLE "LabTime" (
     "profileId" UUID NOT NULL,
     "trackName" VARCHAR(255) NOT NULL,
     "trackLayout" VARCHAR(255),
-    "carName" VARCHAR(255) NOT NULL,
+    "latitude" DECIMAL(10,7),
+    "longitude" DECIMAL(10,7),
+    "garageId" UUID NOT NULL,
+    "vehicleType" "LabVehicleType" NOT NULL,
+    "vehicleId" UUID NOT NULL,
+    "vehicleName" VARCHAR(255),
     "lapTimeMs" INTEGER NOT NULL,
     "dateSet" TIMESTAMPTZ(6) NOT NULL,
     "videoUrl" VARCHAR(500),
@@ -1269,7 +1319,7 @@ CREATE TABLE "Post" (
     "profileType" "Type",
     "postType" "PostType" NOT NULL DEFAULT 'Spotter_Post',
     "caption" TEXT,
-    "mediaUrl" TEXT,
+    "mediaUrl" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "postLocation" TEXT,
     "locationName" TEXT,
     "locationAddress" TEXT,
@@ -1277,7 +1327,7 @@ CREATE TABLE "Post" (
     "longitude" DECIMAL(9,6),
     "placeId" TEXT,
     "locationVisibility" TEXT,
-    "vehicleCategory" "VehicleCategory" NOT NULL DEFAULT 'MOTOCROSS',
+    "vehicleCategory" "PostVehicleCategory" NOT NULL DEFAULT 'CITY',
     "mediaType" "MediaType" NOT NULL DEFAULT 'IMAGE',
     "like" INTEGER NOT NULL DEFAULT 0,
     "comment" INTEGER NOT NULL DEFAULT 0,
@@ -1910,6 +1960,24 @@ CREATE TABLE "_PostTaggedUsers" (
 CREATE UNIQUE INDEX "AmbassadorProgram_userId_key" ON "AmbassadorProgram"("userId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "badges_name_key" ON "badges"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "badges_slug_key" ON "badges"("slug");
+
+-- CreateIndex
+CREATE INDEX "badges_status_sortOrder_idx" ON "badges"("status", "sortOrder");
+
+-- CreateIndex
+CREATE INDEX "profile_badges_profileId_idx" ON "profile_badges"("profileId");
+
+-- CreateIndex
+CREATE INDEX "profile_badges_badgeId_idx" ON "profile_badges"("badgeId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "profile_badges_profileId_badgeId_key" ON "profile_badges"("profileId", "badgeId");
+
+-- CreateIndex
 CREATE INDEX "Bike_profileId_idx" ON "Bike"("profileId");
 
 -- CreateIndex
@@ -2120,7 +2188,7 @@ CREATE INDEX "BattleComment_submissionId_idx" ON "BattleComment"("submissionId")
 CREATE INDEX "BattleComment_userId_idx" ON "BattleComment"("userId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Header_headerName_key" ON "Header"("headerName");
+CREATE UNIQUE INDEX "Header_selectHeader_key" ON "Header"("selectHeader");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "HidePost_userId_postId_key" ON "HidePost"("userId", "postId");
@@ -2132,10 +2200,19 @@ CREATE UNIQUE INDEX "InteriorSafety_advancedCarDataId_key" ON "InteriorSafety"("
 CREATE INDEX "LabTime_profileId_idx" ON "LabTime"("profileId");
 
 -- CreateIndex
+CREATE INDEX "LabTime_garageId_idx" ON "LabTime"("garageId");
+
+-- CreateIndex
+CREATE INDEX "LabTime_vehicleType_vehicleId_idx" ON "LabTime"("vehicleType", "vehicleId");
+
+-- CreateIndex
 CREATE INDEX "LabTime_trackName_idx" ON "LabTime"("trackName");
 
 -- CreateIndex
 CREATE INDEX "LabTime_trackName_lapTimeMs_idx" ON "LabTime"("trackName", "lapTimeMs");
+
+-- CreateIndex
+CREATE INDEX "LabTime_trackName_trackLayout_lapTimeMs_idx" ON "LabTime"("trackName", "trackLayout", "lapTimeMs");
 
 -- CreateIndex
 CREATE INDEX "LabTime_dateSet_idx" ON "LabTime"("dateSet");
@@ -2474,6 +2551,12 @@ ALTER TABLE "AdvancedCarData" ADD CONSTRAINT "AdvancedCarData_carId_fkey" FOREIG
 ALTER TABLE "AmbassadorProgram" ADD CONSTRAINT "AmbassadorProgram_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "profile_badges" ADD CONSTRAINT "profile_badges_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "profile_badges" ADD CONSTRAINT "profile_badges_badgeId_fkey" FOREIGN KEY ("badgeId") REFERENCES "badges"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Bike" ADD CONSTRAINT "Bike_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -2670,6 +2753,9 @@ ALTER TABLE "InteriorSafety" ADD CONSTRAINT "InteriorSafety_advancedCarDataId_fk
 
 -- AddForeignKey
 ALTER TABLE "LabTime" ADD CONSTRAINT "LabTime_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "LabTime" ADD CONSTRAINT "LabTime_garageId_fkey" FOREIGN KEY ("garageId") REFERENCES "Garage"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "LegalNotice" ADD CONSTRAINT "LegalNotice_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
