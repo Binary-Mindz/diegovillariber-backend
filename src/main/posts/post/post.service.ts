@@ -674,99 +674,241 @@ export class PostService {
     };
   }
 
-  async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
-    if (dto.contentBooster == undefined) {
-      throw new BadRequestException('contentBooster cannot be updated');
+ async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
+  if (dto.contentBooster == undefined) {
+    throw new BadRequestException('contentBooster cannot be updated');
+  }
+
+  const hasLat = typeof dto.latitude === 'number';
+  const hasLng = typeof dto.longitude === 'number';
+
+  if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+    throw new BadRequestException(
+      'Both latitude and longitude must be provided together.',
+    );
+  }
+
+  return this.prisma.$transaction(async (tx) => {
+    const existing = await tx.post.findUnique({
+      where: { id: postId },
+      include: {
+        hashtags: {
+          select: { id: true },
+        },
+        taggedUsers: {
+          select: { id: true },
+        },
+      },
+    });
+
+    if (!existing) {
+      throw new NotFoundException('Post not found');
     }
 
-    const hasLat = typeof dto.latitude === 'number';
-    const hasLng = typeof dto.longitude === 'number';
+    if (existing.userId !== userId) {
+      throw new ForbiddenException('You are not allowed to update this post');
+    }
 
-    if ((hasLat && !hasLng) || (!hasLat && hasLng)) {
+    const nextHashtagIds =
+      dto.hashtagIds !== undefined
+        ? Array.from(new Set(dto.hashtagIds))
+        : undefined;
+
+    const nextTaggedUserIds =
+      dto.taggedUserIds !== undefined
+        ? Array.from(new Set(dto.taggedUserIds)).filter((id) => id !== userId)
+        : undefined;
+
+    const finalMediaType = dto.mediaType ?? existing.mediaType;
+
+    const finalPhotoEditingDeclaration =
+      dto.photoEditingDeclaration == undefined
+        ? dto.photoEditingDeclaration
+        : existing.photoEditingDeclaration;
+
+    const finalVideoEditingDeclaration =
+      dto.videoEditingDeclaration == undefined
+        ? dto.videoEditingDeclaration
+        : existing.videoEditingDeclaration;
+
+    if (
+      finalMediaType === MediaType.IMAGE &&
+      finalVideoEditingDeclaration
+    ) {
       throw new BadRequestException(
-        'Both latitude and longitude must be provided together.',
+        'videoEditingDeclaration is only allowed for VIDEO posts.',
       );
     }
 
-    return this.prisma.$transaction(async (tx) => {
-      const existing = await tx.post.findUnique({
-        where: { id: postId },
+    if (
+      finalMediaType === MediaType.VIDEO &&
+      finalPhotoEditingDeclaration
+    ) {
+      throw new BadRequestException(
+        'photoEditingDeclaration is only allowed for IMAGE posts.',
+      );
+    }
+
+    if (nextHashtagIds !== undefined && nextHashtagIds.length > 0) {
+      const foundHashtags = await tx.hashtag.findMany({
+        where: {
+          id: { in: nextHashtagIds },
+          isActive: true,
+        },
+        select: { id: true },
+      });
+
+      if (foundHashtags.length !== nextHashtagIds.length) {
+        throw new BadRequestException(
+          'One or more hashtags are invalid or inactive.',
+        );
+      }
+    }
+
+    if (nextTaggedUserIds !== undefined && nextTaggedUserIds.length > 0) {
+      const foundUsers = await tx.user.findMany({
+        where: { id: { in: nextTaggedUserIds } },
+        select: { id: true },
+      });
+
+      if (foundUsers.length !== nextTaggedUserIds.length) {
+        throw new BadRequestException('One or more tagged users are invalid');
+      }
+
+      const blockedRelations = await tx.userBlock.findMany({
+        where: {
+          OR: nextTaggedUserIds.flatMap((targetUserId) => [
+            {
+              blockerId: userId,
+              blockedUserId: targetUserId,
+            },
+            {
+              blockerId: targetUserId,
+              blockedUserId: userId,
+            },
+          ]),
+        },
         select: {
-          id: true,
-          userId: true,
+          blockerId: true,
+          blockedUserId: true,
         },
       });
 
-      if (!existing) throw new NotFoundException('Post not found');
-
-      if (existing.userId !== userId) {
-        throw new ForbiddenException('You are not allowed to update this post');
+      if (blockedRelations.length > 0) {
+        throw new BadRequestException(
+          'You cannot tag users who are blocked or who blocked you',
+        );
       }
+    }
 
-      const updateData: any = {
-        ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
-        ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
-        ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
-        ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
-        ...(dto.mediaType !== undefined
-          ? { mediaType: dto.mediaType ?? undefined }
-          : {}),
+    const oldHashtagIds = existing.hashtags.map((item) => item.id);
 
-        // vehicleCategory
-        ...(dto.vehicleCategory !== undefined
-          ? { vehicleCategory: dto.vehicleCategory ?? undefined }
-          : {}),
+    const updateData: Prisma.PostUpdateInput = {
+      ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
+      ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
+      ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
+      ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
+      ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
+      ...(dto.vehicleCategory !== undefined
+        ? { vehicleCategory: dto.vehicleCategory ?? null }
+        : {}),
+      ...(dto.photoEditingDeclaration !== undefined
+        ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
+        : {}),
+      ...(dto.videoEditingDeclaration !== undefined
+        ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
+        : {}),
+      ...(dto.postLocation !== undefined
+        ? { postLocation: dto.postLocation ?? null }
+        : {}),
+      ...(dto.locationVisibility !== undefined
+        ? { locationVisibility: dto.locationVisibility ?? null }
+        : {}),
+      ...(dto.locationName !== undefined
+        ? { locationName: dto.locationName ?? null }
+        : {}),
+      ...(dto.locationAddress !== undefined
+        ? { locationAddress: dto.locationAddress ?? null }
+        : {}),
+      ...(dto.latitude !== undefined ? { latitude: dto.latitude ?? null } : {}),
+      ...(dto.longitude !== undefined
+        ? { longitude: dto.longitude ?? null }
+        : {}),
+      ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
+      ...(dto.visiualStyle !== undefined
+        ? { visiualStyle: dto.visiualStyle ?? [] }
+        : {}),
+      ...(dto.contextActivity !== undefined
+        ? { contextActivity: dto.contextActivity ?? [] }
+        : {}),
+      ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
+      ...(nextHashtagIds !== undefined
+        ? {
+            hashtags: {
+              set: nextHashtagIds.map((id) => ({ id })),
+            },
+          }
+        : {}),
+      ...(nextTaggedUserIds !== undefined
+        ? {
+            taggedUsers: {
+              set: nextTaggedUserIds.map((id) => ({ id })),
+            },
+          }
+        : {}),
+    };
 
-        // declarations (with simple consistency check)
-        ...(dto.photoEditingDeclaration !== undefined
-          ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.videoEditingDeclaration !== undefined
-          ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.postLocation !== undefined
-          ? { postLocation: dto.postLocation ?? null }
-          : {}),
-        ...(dto.locationVisibility !== undefined
-          ? { locationVisibility: dto.locationVisibility ?? null }
-          : {}),
+    if (Object.keys(updateData).length === 0) {
+      throw new BadRequestException('No valid fields provided to update');
+    }
 
-        ...(dto.locationName !== undefined
-          ? { locationName: dto.locationName ?? null }
-          : {}),
-        ...(dto.locationAddress !== undefined
-          ? { locationAddress: dto.locationAddress ?? null }
-          : {}),
-        ...(dto.latitude !== undefined
-          ? { latitude: dto.latitude ?? null }
-          : {}),
-        ...(dto.longitude !== undefined
-          ? { longitude: dto.longitude ?? null }
-          : {}),
-        ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
-
-        // enums
-        ...(dto.visiualStyle !== undefined
-          ? { visiualStyle: dto.visiualStyle ?? [] }
-          : {}),
-        ...(dto.contextActivity !== undefined
-          ? { contextActivity: dto.contextActivity ?? [] }
-          : {}),
-        ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
-      };
-
-      if (Object.keys(updateData).length === 0) {
-        throw new BadRequestException('No valid fields provided to update');
-      }
-
-      const updated = await tx.post.update({
-        where: { id: postId },
-        data: updateData,
-      });
-
-      return updated;
+    const updated = await tx.post.update({
+      where: { id: postId },
+      data: updateData,
+      include: {
+        hashtags: true,
+        taggedUsers: { select: { id: true } },
+        profile: { select: { id: true, imageUrl: true, activeType: true } },
+      },
     });
-  }
+
+    if (nextHashtagIds !== undefined) {
+      const removedHashtagIds = oldHashtagIds.filter(
+        (id) => !nextHashtagIds.includes(id),
+      );
+
+      const addedHashtagIds = nextHashtagIds.filter(
+        (id) => !oldHashtagIds.includes(id),
+      );
+
+      if (removedHashtagIds.length > 0) {
+        for (const hashtagId of removedHashtagIds) {
+          await tx.hashtag.update({
+            where: { id: hashtagId },
+            data: {
+              usageCount: {
+                decrement: 1,
+              },
+            },
+          });
+        }
+      }
+
+      if (addedHashtagIds.length > 0) {
+        await tx.hashtag.updateMany({
+          where: { id: { in: addedHashtagIds } },
+          data: {
+            usageCount: {
+              increment: 1,
+            },
+          },
+        });
+      }
+    }
+
+    return updated;
+  });
+}
 
   async deletePost(postId: string, userId: string) {
     return this.prisma.$transaction(async (tx) => {
