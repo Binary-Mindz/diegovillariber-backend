@@ -675,7 +675,7 @@ export class PostService {
   }
 
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
-    if (dto.contentBooster !== undefined) {
+    if (dto.contentBooster == undefined) {
       throw new BadRequestException('contentBooster cannot be updated');
     }
 
