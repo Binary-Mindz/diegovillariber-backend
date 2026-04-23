@@ -3,16 +3,26 @@ import {
   BadRequestException,
   ForbiddenException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
-import { SpottingRequestStatus } from 'generated/prisma/enums';
+import {
+  NotificationChannel,
+  NotificationEntityType,
+  NotificationType,
+  SpottingRequestStatus,
+} from 'generated/prisma/enums';
 import { NearbyPostsDto } from './dto/nearby-post.dto';
-
+import { NotificationService } from '../notification/notification.service';
 
 @Injectable()
 export class SpottingRequestService {
-  constructor(private readonly prisma: PrismaService) {}
+  private readonly logger = new Logger(SpottingRequestService.name);
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationService: NotificationService,
+  ) {}
 
   private toRadians(value: number): number {
     return (value * Math.PI) / 180;
@@ -48,10 +58,7 @@ export class SpottingRequestService {
   private async getBlockedUserIds(currentUserId: string): Promise<string[]> {
     const blocks = await this.prisma.userBlock.findMany({
       where: {
-        OR: [
-          { blockerId: currentUserId },
-          { blockedUserId: currentUserId },
-        ],
+        OR: [{ blockerId: currentUserId }, { blockedUserId: currentUserId }],
       },
       select: {
         blockerId: true,
@@ -69,11 +76,60 @@ export class SpottingRequestService {
     return [...ids];
   }
 
+  private async sendSpottingMatchNotification(params: {
+    requestId: string;
+    requestOwnerId: string;
+    actorUserId: string;
+    postId: string;
+    matchedBrand?: string | null;
+    matchedModel?: string | null;
+    distanceKm: number;
+  }) {
+    const {
+      requestId,
+      requestOwnerId,
+      actorUserId,
+      postId,
+      matchedBrand,
+      matchedModel,
+      distanceKm,
+    } = params;
+
+    const carText = [matchedBrand, matchedModel].filter(Boolean).join(' ');
+
+    try {
+      await this.notificationService.sendNotification({
+        userId: requestOwnerId,
+        actorUserId,
+        type: NotificationType.SPOTTING_MATCH, // চাইলে SPOTTING type add করতে পারো
+        channel: NotificationChannel.IN_APP,
+        title: 'New spotting match found',
+        message: carText
+          ? `A new post matched your spotting request for ${carText} within ${distanceKm.toFixed(1)} km.`
+          : `A new post matched your spotting request within ${distanceKm.toFixed(1)} km.`,
+        deepLink: `/spotting-requests/${requestId}/matches`,
+        entityType: NotificationEntityType.SPOTTING_REQUEST,
+        entityId: requestId,
+        meta: {
+          spottingRequestId: requestId,
+          postId,
+          distanceKm: Number(distanceKm.toFixed(2)),
+          brand: matchedBrand ?? null,
+          model: matchedModel ?? null,
+        },
+        groupKey: `spotting-match:${requestId}`,
+      });
+    } catch (error) {
+      this.logger.error(
+        `Failed to send spotting match notification for request ${requestId}`,
+        error instanceof Error ? error.stack : String(error),
+      );
+    }
+  }
+
   async createSpottingRequest(userId: string, dto: CreateSpottingRequestDto) {
     if (!dto.carId && !dto.brand && !dto.model) {
-      throw new BadRequestException(
-        'Either carId or brand/model is required',
-      );
+      throw new BadRequestException('Either carId or brand/model is required');
     }
 
     if (dto.profileId) {
@@ -126,7 +182,9 @@ export class SpottingRequestService {
     });
 
     if (existing) {
-      throw new BadRequestException('An active spotting request already exists');
+      throw new BadRequestException(
+        'An active spotting request already exists',
+      );
     }
 
     const expiresAt = new Date();
@@ -361,10 +419,7 @@ export class SpottingRequestService {
     const activeRequests = await this.prisma.spottingRequest.findMany({
       where: {
         status: SpottingRequestStatus.ACTIVE,
-        OR: [
-          { expiresAt: null },
-          { expiresAt: { gt: new Date() } },
-        ],
+        OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
       },
     });
 
@@ -445,6 +500,16 @@ export class SpottingRequestService {
           },
         }),
       ]);
+
+      await this.sendSpottingMatchNotification({
+        requestId: request.id,
+        requestOwnerId: request.userId,
+        actorUserId: post.userId,
+        postId: post.id,
+        matchedBrand: postBrand,
+        matchedModel: postModel,
+        distanceKm,
+      });
 
       matched++;
     }

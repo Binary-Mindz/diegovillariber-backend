@@ -498,6 +498,7 @@ enum NotificationType {
 
   SYSTEM
   ADMIN
+  SPOTTING_MATCH
 }
 
 enum NotificationEntityType {
@@ -515,6 +516,7 @@ enum NotificationEntityType {
   PRIZE
   PAYMENT
   EVENT
+  SPOTTING_REQUEST
 
   OTHER
 }

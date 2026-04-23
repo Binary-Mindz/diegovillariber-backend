@@ -1105,7 +1105,8 @@ export const NotificationType = {
   LAPTIME_BEATEN: 'LAPTIME_BEATEN',
   LAPTIME_COMPARE: 'LAPTIME_COMPARE',
   SYSTEM: 'SYSTEM',
-  ADMIN: 'ADMIN'
+  ADMIN: 'ADMIN',
+  SPOTTING_MATCH: 'SPOTTING_MATCH'
 } as const
 
 export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
@@ -1123,6 +1124,7 @@ export const NotificationEntityType = {
   PRIZE: 'PRIZE',
   PAYMENT: 'PAYMENT',
   EVENT: 'EVENT',
+  SPOTTING_REQUEST: 'SPOTTING_REQUEST',
   OTHER: 'OTHER'
 } as const
 
