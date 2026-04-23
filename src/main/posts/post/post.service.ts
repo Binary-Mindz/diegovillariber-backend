@@ -90,7 +90,7 @@ export class PostService {
       where: { id: postId },
       include: {
         user: { select: { id: true } },
-        profile: { select: { id: true, imageUrl: true, activeType: true } },
+        profile: { select: { id: true, imageUrl: true, profileName: true, activeType: true } },
         hashtags: true,
         taggedUsers: { select: { id: true } },
       },
@@ -518,6 +518,7 @@ export class PostService {
           profile: {
             select: {
               id: true,
+              profileName:true,
               imageUrl: true,
               activeType: true,
               preference: true,
