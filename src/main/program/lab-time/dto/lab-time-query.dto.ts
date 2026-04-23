@@ -1,39 +1,40 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Type as TransformType } from 'class-transformer';
-import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, Min } from 'class-validator';
+import { Type } from 'class-transformer';
 import { LabVehicleType } from '../enum/lab-vehicle-type.enum';
 
 export class LabTimeQueryDto {
-  @ApiPropertyOptional({ example: 1 })
-  @IsOptional()
-  @TransformType(() => Number)
-  @IsInt()
-  @Min(1)
-  page?: number;
-
-  @ApiPropertyOptional({ example: 20 })
-  @IsOptional()
-  @TransformType(() => Number)
-  @IsInt()
-  @Min(1)
-  @Max(50)
-  limit?: number;
-
-  @ApiPropertyOptional({
-    example: 'Nürburgring',
-    description: 'Leaderboard filter by track name',
-  })
+  @ApiPropertyOptional()
   @IsOptional()
   @IsString()
   trackName?: string;
 
-  @ApiPropertyOptional({ example: 'Porsche' })
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  trackLayout?: string;
+
+  @ApiPropertyOptional({ enum: LabVehicleType })
+  @IsOptional()
+  @IsEnum(LabVehicleType)
+  vehicleType?: LabVehicleType;
+
+  @ApiPropertyOptional()
   @IsOptional()
   @IsString()
   vehicleName?: string;
 
-  @ApiPropertyOptional({ enum: LabVehicleType, example: LabVehicleType.CAR })
+  @ApiPropertyOptional({ default: 1 })
   @IsOptional()
-  @IsEnum(LabVehicleType)
-  vehicleType?: LabVehicleType;
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  page?: number = 1;
+
+  @ApiPropertyOptional({ default: 20 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  limit?: number = 20;
 }

@@ -176,344 +176,6 @@ export class LabTimeService {
   }
 
   async myLabTimes(userId: string, query: LabTimeQueryDto) {
-  const profile = await this.getActiveProfileOrThrow(userId);
-
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 20;
-  const skip = (page - 1) * limit;
-
-  const where: Prisma.LabTimeWhereInput = {
-    profileId: profile.id,
-    ...(query.trackName
-      ? {
-          trackName: {
-            contains: query.trackName,
-            mode: 'insensitive',
-          },
-        }
-      : {}),
-    ...(query.vehicleType
-      ? {
-          vehicleType: query.vehicleType,
-        }
-      : {}),
-    ...(query.vehicleName
-      ? {
-          vehicleName: {
-            contains: query.vehicleName,
-            mode: 'insensitive',
-          },
-        }
-      : {}),
-  };
-
-  const [items, total] = await this.prisma.$transaction([
-    this.prisma.labTime.findMany({
-      where,
-      orderBy: [
-        { dateSet: 'desc' },
-        { createdAt: 'desc' },
-      ],
-      skip,
-      take: limit,
-      select: {
-        id: true,
-        trackName: true,
-        lapTimeMs: true,
-        dateSet: true,
-        vehicleName: true,
-        profile: {
-          select: {
-            profileName: true,
-            imageUrl: true,
-          },
-        },
-      },
-    }),
-    this.prisma.labTime.count({ where }),
-  ]);
-
-  const formattedItems = items.map((item) => ({
-    id: item.id,
-    profileName: item.profile?.profileName ?? null,
-    profileImageUrl: item.profile?.imageUrl ?? null,
-    trackName: item.trackName,
-    vehicleModel: item.vehicleName ?? null,
-    lapTimeMs: item.lapTimeMs,
-    dateSet: item.dateSet,
-  }));
-
-  return {
-    page,
-    limit,
-    total,
-    items: formattedItems,
-  };
-}
-
-async compare(userId: string, query: CompareLabTimeDto) {
-  const profile = await this.getActiveProfileOrThrow(userId);
-
-  const [rankingLap, myLap] = await Promise.all([
-    this.prisma.labTime.findFirst({
-      where: { id: query.rankingLabTimeId },
-      include: {
-        profile: {
-          select: {
-            id: true,
-            profileName: true,
-            imageUrl: true,
-            activeType: true,
-          },
-        },
-        garage: {
-          select: {
-            id: true,
-            garageName: true,
-            location: true,
-            description: true,
-          },
-        },
-      },
-    }),
-    this.prisma.labTime.findFirst({
-      where: {
-        id: query.myLabTimeId,
-        profileId: profile.id,
-      },
-      include: {
-        profile: {
-          select: {
-            id: true,
-            profileName: true,
-            imageUrl: true,
-            activeType: true,
-          },
-        },
-        garage: {
-          select: {
-            id: true,
-            garageName: true,
-            location: true,
-            description: true,
-          },
-        },
-      },
-    }),
-  ]);
-
-  if (!rankingLap) {
-    throw new NotFoundException('Ranking lap time not found');
-  }
-
-  if (!myLap) {
-    throw new NotFoundException('My lap time not found');
-  }
-
-  if (
-    rankingLap.trackName.trim().toLowerCase() !==
-    myLap.trackName.trim().toLowerCase()
-  ) {
-    throw new BadRequestException(
-      'Comparison requires both lap times to be on the same track',
-    );
-  }
-
-  const [rankingLapVehicle, myLapVehicle] = await Promise.all([
-    this.getVehicleDetails(
-      rankingLap.profileId,
-      rankingLap.vehicleType as LabVehicleType,
-      rankingLap.vehicleId,
-    ),
-    this.getVehicleDetails(
-      myLap.profileId,
-      myLap.vehicleType as LabVehicleType,
-      myLap.vehicleId,
-    ),
-  ]);
-
-  const sameLayout =
-    (rankingLap.trackLayout ?? '').trim().toLowerCase() ===
-    (myLap.trackLayout ?? '').trim().toLowerCase();
-
-  const timeDifferenceMs = Math.abs(rankingLap.lapTimeMs - myLap.lapTimeMs);
-  const fasterLapId =
-    rankingLap.lapTimeMs < myLap.lapTimeMs
-      ? rankingLap.id
-      : myLap.lapTimeMs < rankingLap.lapTimeMs
-        ? myLap.id
-        : null;
-
-  const fasterSide =
-    rankingLap.lapTimeMs < myLap.lapTimeMs
-      ? 'ranking'
-      : myLap.lapTimeMs < rankingLap.lapTimeMs
-        ? 'mine'
-        : 'tie';
-
-  const [rankingPosition, myPosition] = await Promise.all([
-    this.prisma.labTime.count({
-      where: {
-        trackName: rankingLap.trackName,
-        OR: [
-          { lapTimeMs: { lt: rankingLap.lapTimeMs } },
-          {
-            lapTimeMs: rankingLap.lapTimeMs,
-            createdAt: { lt: rankingLap.createdAt },
-          },
-        ],
-      },
-    }),
-    this.prisma.labTime.count({
-      where: {
-        trackName: myLap.trackName,
-        OR: [
-          { lapTimeMs: { lt: myLap.lapTimeMs } },
-          {
-            lapTimeMs: myLap.lapTimeMs,
-            createdAt: { lt: myLap.createdAt },
-          },
-        ],
-      },
-    }),
-  ]);
-
-  return {
-    comparison: {
-      sameTrack: true,
-      sameLayout,
-      trackName: myLap.trackName,
-      rankingLapPosition: rankingPosition + 1,
-      myLapPosition: myPosition + 1,
-      fasterSide,
-      fasterLapId,
-      timeDifferenceMs,
-    },
-    rankingLap: {
-      ...rankingLap,
-      vehicle: rankingLapVehicle,
-    },
-    myLap: {
-      ...myLap,
-      vehicle: myLapVehicle,
-    },
-  };
-}
-
-async followingLabTimes(userId: string, query: LabTimeQueryDto) {
-  await this.getActiveProfileOrThrow(userId);
-
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 20;
-  const skip = (page - 1) * limit;
-
-  const followedUsers = await this.prisma.follow.findMany({
-    where: {
-      followerId: userId,
-    },
-    select: {
-      followingId: true,
-    },
-  });
-
-  const followedUserIds = followedUsers.map((item) => item.followingId);
-
-  if (followedUserIds.length === 0) {
-    return {
-      page,
-      limit,
-      total: 0,
-      isLeaderboard: !!query.trackName,
-      items: [],
-    };
-  }
-
-  const where: Prisma.LabTimeWhereInput = {
-    profile: {
-      userId: {
-        in: followedUserIds,
-      },
-    },
-    ...(query.trackName
-      ? {
-          trackName: {
-            contains: query.trackName,
-            mode: 'insensitive',
-          },
-        }
-      : {}),
-    ...(query.vehicleType
-      ? {
-          vehicleType: query.vehicleType,
-        }
-      : {}),
-    ...(query.vehicleName
-      ? {
-          vehicleName: {
-            contains: query.vehicleName,
-            mode: 'insensitive',
-          },
-        }
-      : {}),
-  };
-
-  const isLeaderboard = !!query.trackName;
-
-  const [items, total] = await this.prisma.$transaction([
-    this.prisma.labTime.findMany({
-      where,
-      orderBy: isLeaderboard
-        ? [
-            { lapTimeMs: 'asc' }, // fastest first
-            { dateSet: 'asc' },
-            { createdAt: 'asc' },
-          ]
-        : [
-            { dateSet: 'desc' },
-            { createdAt: 'desc' },
-          ],
-      skip,
-      take: limit,
-      select: {
-        id: true,
-        trackName: true,
-        lapTimeMs: true,
-        dateSet: true,
-        vehicleName: true,
-        vehicleType: true,
-        profile: {
-          select: {
-            profileName: true,
-            imageUrl: true,
-            userId: true,
-          },
-        },
-      },
-    }),
-    this.prisma.labTime.count({ where }),
-  ]);
-
-  const formattedItems = items.map((item, index) => ({
-    id: item.id,
-    ...(isLeaderboard ? { rank: skip + index + 1 } : {}),
-    profileName: item.profile?.profileName ?? null,
-    profileImageUrl: item.profile?.imageUrl ?? null,
-    trackName: item.trackName,
-    vehicleModel: item.vehicleName ?? null,
-    lapTimeMs: item.lapTimeMs,
-    dateSet: item.dateSet,
-  }));
-
-  return {
-    page,
-    limit,
-    total,
-    isLeaderboard,
-    items: formattedItems,
-  };
-}
-
-  async list(userId: string, query: LabTimeQueryDto) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
     const page = query.page ?? 1;
@@ -521,10 +183,276 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
     const skip = (page - 1) * limit;
 
     const where: Prisma.LabTimeWhereInput = {
+      profileId: profile.id,
       ...(query.trackName
         ? {
             trackName: {
               contains: query.trackName,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+      ...(query.trackLayout
+        ? {
+            trackLayout: {
+              contains: query.trackLayout,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+      ...(query.vehicleType
+        ? {
+            vehicleType: query.vehicleType,
+          }
+        : {}),
+      ...(query.vehicleName
+        ? {
+            vehicleName: {
+              contains: query.vehicleName,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+    };
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.labTime.findMany({
+        where,
+        orderBy: [{ dateSet: 'desc' }, { createdAt: 'desc' }],
+        skip,
+        take: limit,
+        select: {
+          id: true,
+          trackName: true,
+          trackLayout: true,
+          lapTimeMs: true,
+          dateSet: true,
+          vehicleName: true,
+          profile: {
+            select: {
+              profileName: true,
+              imageUrl: true,
+            },
+          },
+        },
+      }),
+      this.prisma.labTime.count({ where }),
+    ]);
+
+    const formattedItems = items.map((item) => ({
+      id: item.id,
+      profileName: item.profile?.profileName ?? null,
+      profileImageUrl: item.profile?.imageUrl ?? null,
+      trackName: item.trackName,
+      trackLayout: item.trackLayout ?? null,
+      vehicleModel: item.vehicleName ?? null,
+      lapTimeMs: item.lapTimeMs,
+      dateSet: item.dateSet,
+    }));
+
+    return {
+      page,
+      limit,
+      total,
+      items: formattedItems,
+    };
+  }
+
+  async compare(userId: string, query: CompareLabTimeDto) {
+    const profile = await this.getActiveProfileOrThrow(userId);
+
+    const [rankingLap, myLap] = await Promise.all([
+      this.prisma.labTime.findFirst({
+        where: { id: query.rankingLabTimeId },
+        include: {
+          profile: {
+            select: {
+              id: true,
+              profileName: true,
+              imageUrl: true,
+              activeType: true,
+            },
+          },
+          garage: {
+            select: {
+              id: true,
+              garageName: true,
+              location: true,
+              description: true,
+            },
+          },
+        },
+      }),
+      this.prisma.labTime.findFirst({
+        where: {
+          id: query.myLabTimeId,
+          profileId: profile.id,
+        },
+        include: {
+          profile: {
+            select: {
+              id: true,
+              profileName: true,
+              imageUrl: true,
+              activeType: true,
+            },
+          },
+          garage: {
+            select: {
+              id: true,
+              garageName: true,
+              location: true,
+              description: true,
+            },
+          },
+        },
+      }),
+    ]);
+
+    if (!rankingLap) {
+      throw new NotFoundException('Ranking lap time not found');
+    }
+
+    if (!myLap) {
+      throw new NotFoundException('My lap time not found');
+    }
+
+    if (
+      rankingLap.trackName.trim().toLowerCase() !==
+      myLap.trackName.trim().toLowerCase()
+    ) {
+      throw new BadRequestException(
+        'Comparison requires both lap times to be on the same track',
+      );
+    }
+
+    const [rankingLapVehicle, myLapVehicle] = await Promise.all([
+      this.getVehicleDetails(
+        rankingLap.profileId,
+        rankingLap.vehicleType as LabVehicleType,
+        rankingLap.vehicleId,
+      ),
+      this.getVehicleDetails(
+        myLap.profileId,
+        myLap.vehicleType as LabVehicleType,
+        myLap.vehicleId,
+      ),
+    ]);
+
+    const sameLayout =
+      (rankingLap.trackLayout ?? '').trim().toLowerCase() ===
+      (myLap.trackLayout ?? '').trim().toLowerCase();
+
+    const timeDifferenceMs = Math.abs(rankingLap.lapTimeMs - myLap.lapTimeMs);
+    const fasterLapId =
+      rankingLap.lapTimeMs < myLap.lapTimeMs
+        ? rankingLap.id
+        : myLap.lapTimeMs < rankingLap.lapTimeMs
+          ? myLap.id
+          : null;
+
+    const fasterSide =
+      rankingLap.lapTimeMs < myLap.lapTimeMs
+        ? 'ranking'
+        : myLap.lapTimeMs < rankingLap.lapTimeMs
+          ? 'mine'
+          : 'tie';
+
+    const [rankingPosition, myPosition] = await Promise.all([
+      this.prisma.labTime.count({
+        where: {
+          trackName: rankingLap.trackName,
+          OR: [
+            { lapTimeMs: { lt: rankingLap.lapTimeMs } },
+            {
+              lapTimeMs: rankingLap.lapTimeMs,
+              createdAt: { lt: rankingLap.createdAt },
+            },
+          ],
+        },
+      }),
+      this.prisma.labTime.count({
+        where: {
+          trackName: myLap.trackName,
+          OR: [
+            { lapTimeMs: { lt: myLap.lapTimeMs } },
+            {
+              lapTimeMs: myLap.lapTimeMs,
+              createdAt: { lt: myLap.createdAt },
+            },
+          ],
+        },
+      }),
+    ]);
+
+    return {
+      comparison: {
+        sameTrack: true,
+        sameLayout,
+        trackName: myLap.trackName,
+        rankingLapPosition: rankingPosition + 1,
+        myLapPosition: myPosition + 1,
+        fasterSide,
+        fasterLapId,
+        timeDifferenceMs,
+      },
+      rankingLap: {
+        ...rankingLap,
+        vehicle: rankingLapVehicle,
+      },
+      myLap: {
+        ...myLap,
+        vehicle: myLapVehicle,
+      },
+    };
+  }
+
+  async followingLabTimes(userId: string, query: LabTimeQueryDto) {
+    await this.getActiveProfileOrThrow(userId);
+
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 20;
+    const skip = (page - 1) * limit;
+
+    const followedUsers = await this.prisma.follow.findMany({
+      where: {
+        followerId: userId,
+      },
+      select: {
+        followingId: true,
+      },
+    });
+
+    const followedUserIds = followedUsers.map((item) => item.followingId);
+
+    if (followedUserIds.length === 0) {
+      return {
+        page,
+        limit,
+        total: 0,
+        isLeaderboard: !!query.trackName,
+        items: [],
+      };
+    }
+
+    const where: Prisma.LabTimeWhereInput = {
+      profile: {
+        userId: {
+          in: followedUserIds,
+        },
+      },
+      ...(query.trackName
+        ? {
+            trackName: {
+              contains: query.trackName,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+      ...(query.trackLayout
+        ? {
+            trackLayout: {
+              contains: query.trackLayout,
               mode: 'insensitive',
             },
           }
@@ -550,29 +478,23 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
       this.prisma.labTime.findMany({
         where,
         orderBy: isLeaderboard
-          ? [
-              { lapTimeMs: 'desc' }, // fastest first
-              { dateSet: 'asc' },
-              { createdAt: 'asc' },
-            ]
-          : [
-              { dateSet: 'desc' }, // normal listing
-              { createdAt: 'desc' },
-            ],
+          ? [{ lapTimeMs: 'asc' }, { dateSet: 'asc' }, { createdAt: 'asc' }]
+          : [{ dateSet: 'desc' }, { createdAt: 'desc' }],
         skip,
         take: limit,
         select: {
           id: true,
           trackName: true,
+          trackLayout: true,
           lapTimeMs: true,
           dateSet: true,
           vehicleName: true,
           vehicleType: true,
-
           profile: {
             select: {
               profileName: true,
               imageUrl: true,
+              userId: true,
             },
           },
         },
@@ -581,13 +503,12 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
     ]);
 
     const formattedItems = items.map((item, index) => ({
-      id: item.id, // ✅ add this line
-
+      id: item.id,
       ...(isLeaderboard ? { rank: skip + index + 1 } : {}),
-
       profileName: item.profile?.profileName ?? null,
       profileImageUrl: item.profile?.imageUrl ?? null,
       trackName: item.trackName,
+      trackLayout: item.trackLayout ?? null,
       vehicleModel: item.vehicleName ?? null,
       lapTimeMs: item.lapTimeMs,
       dateSet: item.dateSet,
@@ -602,34 +523,123 @@ async followingLabTimes(userId: string, query: LabTimeQueryDto) {
     };
   }
 
-async get(labTimeId: string) {
-  const lap = await this.prisma.labTime.findUnique({
-    where: { id: labTimeId },
-    include: {
-      garage: {
+  async list(userId: string, query: LabTimeQueryDto) {
+    await this.getActiveProfileOrThrow(userId);
+
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 20;
+    const skip = (page - 1) * limit;
+
+    const where: Prisma.LabTimeWhereInput = {
+      ...(query.trackName
+        ? {
+            trackName: {
+              contains: query.trackName,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+      ...(query.trackLayout
+        ? {
+            trackLayout: {
+              contains: query.trackLayout,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+      ...(query.vehicleType
+        ? {
+            vehicleType: query.vehicleType,
+          }
+        : {}),
+      ...(query.vehicleName
+        ? {
+            vehicleName: {
+              contains: query.vehicleName,
+              mode: 'insensitive',
+            },
+          }
+        : {}),
+    };
+
+    const isLeaderboard = !!query.trackName || !!query.trackLayout;
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.labTime.findMany({
+        where,
+        orderBy: isLeaderboard
+          ? [{ lapTimeMs: 'asc' }, { dateSet: 'asc' }, { createdAt: 'asc' }]
+          : [{ dateSet: 'desc' }, { createdAt: 'desc' }],
+        skip,
+        take: limit,
         select: {
           id: true,
-          garageName: true,
-          location: true,
-          description: true,
+          trackName: true,
+          trackLayout: true,
+          lapTimeMs: true,
+          dateSet: true,
+          vehicleName: true,
+          vehicleType: true,
+          profile: {
+            select: {
+              profileName: true,
+              imageUrl: true,
+            },
+          },
         },
-      },
-    },
-  });
+      }),
+      this.prisma.labTime.count({ where }),
+    ]);
 
-  if (!lap) {
-    throw new NotFoundException('Lap time not found');
+    const formattedItems = items.map((item, index) => ({
+      id: item.id,
+      ...(isLeaderboard ? { rank: skip + index + 1 } : {}),
+      profileName: item.profile?.profileName ?? null,
+      profileImageUrl: item.profile?.imageUrl ?? null,
+      trackName: item.trackName,
+      trackLayout: item.trackLayout ?? null,
+      vehicleModel: item.vehicleName ?? null,
+      lapTimeMs: item.lapTimeMs,
+      dateSet: item.dateSet,
+    }));
+
+    return {
+      page,
+      limit,
+      total,
+      isLeaderboard,
+      items: formattedItems,
+    };
   }
 
-  return {
-    ...lap,
-    vehicle: await this.getVehicleDetails(
-      lap.profileId,
-      lap.vehicleType as LabVehicleType,
-      lap.vehicleId,
-    ),
-  };
-}
+  async get(labTimeId: string) {
+    const lap = await this.prisma.labTime.findUnique({
+      where: { id: labTimeId },
+      include: {
+        garage: {
+          select: {
+            id: true,
+            garageName: true,
+            location: true,
+            description: true,
+          },
+        },
+      },
+    });
+
+    if (!lap) {
+      throw new NotFoundException('Lap time not found');
+    }
+
+    return {
+      ...lap,
+      vehicle: await this.getVehicleDetails(
+        lap.profileId,
+        lap.vehicleType as LabVehicleType,
+        lap.vehicleId,
+      ),
+    };
+  }
   async update(userId: string, labTimeId: string, dto: UpdateLabTimeDto) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
