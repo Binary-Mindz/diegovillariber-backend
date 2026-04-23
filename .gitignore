@@ -58,3 +58,6 @@ firebase-service-account.json
 secrets/
 firebase-service-account.json
 config.bat
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
