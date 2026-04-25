@@ -5,7 +5,7 @@ import { SubmissionStatus } from 'generated/prisma/enums';
 export class SubmitHeadToHeadDto {
   @ApiProperty({ example: 'https://cdn.app.com/uploads/photo_or_video.mp4' })
   @IsString()
-  mediaUrl: string;
+  mediaUrl!: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.app.com/uploads/thumb.jpg' })
   @IsOptional()

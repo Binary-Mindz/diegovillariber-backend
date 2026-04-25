@@ -15,7 +15,7 @@ export class CreateAmbassadorProgramDto {
   })
   @IsString()
   @Length(2, 120)
-  motorspotName: string;
+  motorspotName!: string;
 
   @ApiProperty({
     example: 'Rana Miah',
@@ -23,20 +23,20 @@ export class CreateAmbassadorProgramDto {
   })
   @IsString()
   @Length(2, 120)
-  contactName: string;
+  contactName!: string;
 
   @ApiProperty({
     example: 'rana.miah@example.com',
   })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({
     example: 'Bangladesh',
   })
   @IsString()
   @Length(2, 80)
-  country: string;
+  country!: string;
 
   @ApiPropertyOptional({
     example: 'https://www.instagram.com/dhakasupercars',
@@ -65,7 +65,7 @@ export class CreateAmbassadorProgramDto {
   })
   @IsInt()
   @Min(0)
-  totalFollower: number;
+  totalFollower!: number;
 
   @ApiPropertyOptional({
     example: 'Nissan GTR R35',
@@ -80,7 +80,7 @@ export class CreateAmbassadorProgramDto {
   })
   @IsString()
   @Length(10, 2000)
-  whyDoYouWant: string;
+  whyDoYouWant!: string;
 
   @ApiPropertyOptional({
     example:

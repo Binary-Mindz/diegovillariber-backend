@@ -5,11 +5,11 @@ import { CarClass, Circuit, Platform, TelemetrySource } from 'generated/prisma/e
 export class CreateSubmitLabTimeDto {
   @ApiProperty({ enum: Platform, example: Platform.iRacing })
   @IsEnum(Platform)
-  simPlatform: Platform;
+  simPlatform!: Platform;
 
   @ApiProperty({ enum: Circuit, example: Circuit.Spa_Francorchamps })
   @IsEnum(Circuit)
-  circuit: Circuit;
+  circuit!: Circuit;
 
   @ApiPropertyOptional({ example: 'BMW M4 GT3' })
   @IsOptional()
@@ -19,16 +19,16 @@ export class CreateSubmitLabTimeDto {
 
   @ApiProperty({ enum: CarClass, example: CarClass.GT3 })
   @IsEnum(CarClass)
-  carClass: CarClass;
+  carClass!: CarClass;
 
   @ApiProperty({ example: 118243, description: 'Lap time in milliseconds' })
   @IsInt()
   @Min(1)
-  lapTimeMs: number;
+  lapTimeMs!: number;
 
   @ApiProperty({ example: '2026-03-01T18:00:00.000Z' })
   @IsDateString()
-  sessionDate: string;
+  sessionDate!: string;
 
   @ApiPropertyOptional({ example: 'https://youtube.com/watch?v=xxxx' })
   @IsOptional()
@@ -38,7 +38,7 @@ export class CreateSubmitLabTimeDto {
 
   @ApiProperty({ enum: TelemetrySource, example: TelemetrySource.iRacing_MoTec })
   @IsEnum(TelemetrySource)
-  telemetrySource: TelemetrySource;
+  telemetrySource!: TelemetrySource;
 
   @ApiPropertyOptional({ example: 'raw telemetry json / link / base64...' })
   @IsOptional()

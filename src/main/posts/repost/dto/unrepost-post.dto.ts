@@ -7,5 +7,5 @@ export class UnrepostPostDto {
     description: 'Post ID to remove repost',
   })
   @IsUUID()
-  postId: string;
+  postId!: string;
 }

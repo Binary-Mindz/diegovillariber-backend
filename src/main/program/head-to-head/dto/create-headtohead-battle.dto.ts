@@ -24,7 +24,7 @@ import {
 export class CreateHeadToHeadBattleDto {
   @ApiProperty({ example: 'STANCE Battle - BMW vs Audi' })
   @IsString()
-  title: string;
+  title!: string;
 
   @ApiPropertyOptional({ enum: Preference, example: Preference.CAR })
   @IsOptional()
@@ -53,11 +53,11 @@ export class CreateHeadToHeadBattleDto {
 
   @ApiProperty({ example: 'Free Car Wash Coupon', description: 'required in schema' })
   @IsString()
-  winPrize: string;
+  winPrize!: string;
 
   @ApiProperty({ example: 'IMAGE', description: 'required in schema. Example: IMAGE / VIDEO / BOTH' })
   @IsString()
-  uploadImageOrVideo: string;
+  uploadImageOrVideo!: string;
 
   // Requirements
   @ApiPropertyOptional({ enum: CameraRequirement, example: CameraRequirement.ANY })
@@ -127,10 +127,10 @@ export class CreateHeadToHeadBattleDto {
   @ApiProperty({ example: '2026-03-01T00:00:00.000Z' })
   @Type(() => Date)
   @IsDate()
-  startDate: Date;
+  startDate!: Date;
 
   @ApiProperty({ example: '2026-03-08T00:00:00.000Z' })
   @Type(() => Date)
   @IsDate()
-  endDate: Date;
+  endDate!: Date;
 }

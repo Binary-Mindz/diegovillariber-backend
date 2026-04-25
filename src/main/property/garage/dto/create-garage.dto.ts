@@ -8,7 +8,7 @@ export class CreateGarageDto {
   })
   @IsString()
   @MaxLength(100)
-  garageName: string;
+  garageName!: string;
 
   @ApiPropertyOptional({
     example: 'High performance tuning and engine rebuild specialist.',

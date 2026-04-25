@@ -6,28 +6,28 @@ export class CreateVirtualSimEventDto {
   @ApiProperty({ example: 'Sunday GT3 League Race' })
   @IsString()
   @MaxLength(150)
-  eventTitle: string;
+  eventTitle!: string;
 
   @ApiProperty({ enum: Platform, example: Platform.iRacing })
   @IsEnum(Platform)
-  simPlatform: Platform;
+  simPlatform!: Platform;
 
   @ApiProperty({ example: 'Spa Francorchamps' })
   @IsString()
   @MaxLength(150)
-  circuit: string;
+  circuit!: string;
 
   @ApiProperty({ enum: EventType, example: EventType.Race })
   @IsEnum(EventType)
-  eventType: EventType;
+  eventType!: EventType;
 
   @ApiProperty({ example: '2026-03-01T18:00:00.000Z' })
   @IsDateString()
-  dateAndTime: string;
+  dateAndTime!: string;
 
   @ApiProperty({ example: 60, description: 'Duration in minutes' })
   @Min(1)
-  duration: number;
+  duration!: number;
 
   @ApiPropertyOptional({ example: 24 })
   @IsOptional()
@@ -37,7 +37,7 @@ export class CreateVirtualSimEventDto {
 
   @ApiProperty({ enum: Visibility, example: Visibility.Public })
   @IsEnum(Visibility)
-  visibility: Visibility;
+  visibility!: Visibility;
 
   @ApiPropertyOptional({ example: 'Onyx GT3 Server' })
   @IsOptional()

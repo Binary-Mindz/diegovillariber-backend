@@ -7,5 +7,5 @@ import { Type } from 'generated/prisma/enums';
 export class SwitchProfileTypeDto {
    @ApiPropertyOptional({ enum: Type, example: Type.SPOTTER })
   @IsEnum(Type)
-  type: Type;
+  type!: Type;
 }

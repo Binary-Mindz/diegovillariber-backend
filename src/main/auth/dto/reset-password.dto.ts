@@ -7,14 +7,14 @@ export class ResetPasswordDto {
     description: 'Registered user email',
   })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({
     example: '654321',
     description: 'Password reset OTP',
   })
   @IsNotEmpty()
-  otp: string;
+  otp!: string;
 
   @ApiProperty({
     example: 'newSecret123',
@@ -22,5 +22,5 @@ export class ResetPasswordDto {
     description: 'New password (min 6 characters)',
   })
   @MinLength(6)
-  newPassword: string;
+  newPassword!: string;
 }

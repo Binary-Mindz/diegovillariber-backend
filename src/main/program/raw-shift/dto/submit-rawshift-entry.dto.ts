@@ -7,7 +7,7 @@ export class SubmitRawShiftEntryDto {
     description: 'RAW/Unedited upload URL',
   })
   @IsString()
-  rawMediaUrl: string;
+  rawMediaUrl!: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.app.com/raw/thumb-123.jpg' })
   @IsOptional()
@@ -19,7 +19,7 @@ export class SubmitRawShiftEntryDto {
     description: 'Final edited image upload URL',
   })
   @IsString()
-  editedMediaUrl: string;
+  editedMediaUrl!: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.app.com/edited/thumb-123.jpg' })
   @IsOptional()

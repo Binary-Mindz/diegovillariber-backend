@@ -7,5 +7,5 @@ export class RepostPostDto {
     description: 'Post ID to repost',
   })
   @IsUUID()
-  postId: string;
+  postId!: string;
 }

@@ -9,7 +9,7 @@ export enum RacingVoteTargetType {
 export class CreateRacingVoteDto {
   @ApiProperty({ enum: RacingVoteTargetType, example: RacingVoteTargetType.USER })
   @IsEnum(RacingVoteTargetType)
-  targetType: RacingVoteTargetType;
+  targetType!: RacingVoteTargetType;
 
   @ApiProperty({ required: false, example: '2b4f6c9a-9c9a-4c8b-b7c0-1cc0a1111111' })
   @ValidateIf((o) => o.targetType === RacingVoteTargetType.USER)

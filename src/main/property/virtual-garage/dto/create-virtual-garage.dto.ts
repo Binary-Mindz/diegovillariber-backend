@@ -5,26 +5,26 @@ import { CarClass, Platform, Transmission } from 'generated/prisma/enums';
 export class CreateVirtualGarageDto {
   @ApiProperty({ enum: Platform, example: Platform.iRacing })
   @IsEnum(Platform)
-  simPlatform: Platform;
+  simPlatform!: Platform;
 
   @ApiProperty({ example: 'BMW' })
   @IsString()
   @MaxLength(80)
-  carMake: string;
+  carMake!: string;
 
   @ApiProperty({ example: 'M4 GT3' })
   @IsString()
   @MaxLength(120)
-  carModel: string;
+  carModel!: string;
 
   @ApiProperty({ example: '2024' })
   @IsString()
   @MaxLength(10)
-  makeYear: string;
+  makeYear!: string;
 
   @ApiProperty({ enum: CarClass, example: CarClass.GT3 })
   @IsEnum(CarClass)
-  carClass: CarClass;
+  carClass!: CarClass;
 
   @ApiPropertyOptional({ example: 'https://cdn.com/livery.png' })
   @IsOptional()
@@ -46,7 +46,7 @@ export class CreateVirtualGarageDto {
 
   @ApiProperty({ enum: Transmission, example: Transmission.MANUAL })
   @IsEnum(Transmission)
-  transmission: Transmission;
+  transmission!: Transmission;
 
   @ApiPropertyOptional({ example: 'Setup: aggressive / TC off' })
   @IsOptional()

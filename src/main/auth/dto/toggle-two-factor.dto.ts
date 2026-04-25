@@ -7,5 +7,5 @@ export class ToggleTwoFactorDto {
     description: 'Set true to enable 2FA, false to disable 2FA',
   })
   @IsBoolean()
-  enabled: boolean;
+  enabled!: boolean;
 }

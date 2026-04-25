@@ -17,7 +17,7 @@ export class CreateTutorialDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
-  sectionCode: string;
+  sectionCode!: string;
 
   @ApiProperty({
     example: 'How to create a feed post',
@@ -26,7 +26,7 @@ export class CreateTutorialDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(255)
-  title: string;
+  title!: string;
 
   @ApiPropertyOptional({
     example: 'This tutorial explains how users can create a new feed post.',
@@ -43,7 +43,7 @@ export class CreateTutorialDto {
   @IsString()
   @IsNotEmpty()
   @IsUrl()
-  videoUrl: string;
+  videoUrl!: string;
 
   @ApiProperty({
     example: 1,
@@ -51,7 +51,7 @@ export class CreateTutorialDto {
   })
   @IsInt()
   @Min(1)
-  order: number;
+  order!: number;
 
   @ApiProperty({
     example: 10,
@@ -59,5 +59,5 @@ export class CreateTutorialDto {
   })
   @IsInt()
   @Min(1)
-  learnVersion: number;
+  learnVersion!: number;
 }

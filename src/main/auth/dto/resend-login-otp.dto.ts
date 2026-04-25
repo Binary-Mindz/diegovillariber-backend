@@ -8,5 +8,5 @@ export class ResendLoginOtpDto {
   })
   @IsString()
   @IsNotEmpty()
-  tempToken: string;
+  tempToken!: string;
 }

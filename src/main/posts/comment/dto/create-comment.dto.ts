@@ -14,7 +14,7 @@ export class CreateCommentDto {
     example: '7e3525f6-a27b-41db-bdaa-e80bd4877af4',
   })
   @IsUUID()
-  postId: string;
+  postId!: string;
 
   @ApiProperty({
     description: 'Type of the post',
@@ -22,7 +22,7 @@ export class CreateCommentDto {
     example: PostType.Spotter_Post,
   })
   @IsEnum(PostType)
-  postType: PostType;
+  postType!: PostType;
 
   @ApiProperty({
     description: 'Comment text',
@@ -30,7 +30,7 @@ export class CreateCommentDto {
   })
   @IsString()
   @MinLength(1)
-  content: string;
+  content!: string;
 
   @ApiPropertyOptional({
     description: 'Parent comment ID (only required for reply)',

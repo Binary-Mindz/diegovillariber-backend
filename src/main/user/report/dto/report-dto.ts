@@ -6,11 +6,11 @@ import { ReportType } from 'generated/prisma/enums';
 export class ReportDto {
   @IsEnum(ReportType)
   @ApiProperty({ example: 'POST', enum: ReportType })
-  targetType: ReportType;
+  targetType!: ReportType;
 
   @IsUUID()
   @ApiProperty({ example: 'uuid-of-post-or-comment' })
-  targetId: string;
+  targetId!: string;
 
   @IsOptional()
   @IsString()

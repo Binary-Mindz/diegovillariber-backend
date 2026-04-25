@@ -4,7 +4,7 @@ import { IsOptional, IsString } from 'class-validator';
 export class RegisterDeviceTokenDto {
   @ApiProperty()
   @IsString()
-  token: string;
+  token!: string;
 
   @ApiPropertyOptional({ example: 'android' })
   @IsOptional()

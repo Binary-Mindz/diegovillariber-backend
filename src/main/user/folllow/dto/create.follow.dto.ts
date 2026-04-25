@@ -8,7 +8,7 @@ export class CreateFollowDto {
     example: '550e8400-e29b-41d4-a716-446655440000',
   })
   @IsUUID()
-  followingId: string;
+  followingId!: string;
 }
 
 export class UnfollowDto {
@@ -17,7 +17,7 @@ export class UnfollowDto {
     example: '550e8400-e29b-41d4-a716-446655440000',
   })
   @IsUUID()
-  followingId: string;
+  followingId!: string;
 }
 
 export class FollowersQueryDto {

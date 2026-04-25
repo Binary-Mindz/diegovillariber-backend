@@ -26,7 +26,7 @@ export class CreateAdDto {
     description: 'Advertisement title',
   })
   @IsString()
-  title: string;
+  title!: string;
 
   @ApiProperty({
     enum: LinkType,
@@ -34,14 +34,14 @@ export class CreateAdDto {
     description: 'Type of ad link',
   })
   @IsEnum(LinkType)
-  link: LinkType;
+  link!: LinkType;
 
   @ApiProperty({
     example: 'https://example.com/landing-page',
     description: 'Primary link URL',
   })
   @IsString()
-  linkUrl: string;
+  linkUrl!: string;
 
   @ApiPropertyOptional({
     example: 'https://cdn.example.com/banner.jpg',
@@ -98,14 +98,14 @@ export class CreateAdDto {
     description: 'Ad start date',
   })
   @IsDateString()
-  startDate: string;
+  startDate!: string;
 
   @ApiProperty({
     example: '2026-04-15T23:59:59.000Z',
     description: 'Ad end date',
   })
   @IsDateString()
-  endDate: string;
+  endDate!: string;
 
   @ApiPropertyOptional({
     enum: Preference,

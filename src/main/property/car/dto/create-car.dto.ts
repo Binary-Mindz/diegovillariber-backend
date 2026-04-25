@@ -8,7 +8,7 @@ export class CreateCarDto {
     description: 'Garage ID where the car will be added (must belong to active profile)',
   })
   @IsUUID()
-  garageId: string;
+  garageId!: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.app/car.jpg', description: 'Car image URL' })
   @IsOptional()

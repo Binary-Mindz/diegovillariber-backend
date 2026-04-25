@@ -6,7 +6,7 @@ import { RawShiftStatus } from 'generated/prisma/enums';
 export class CreateRawShiftBattleDto {
   @ApiProperty({ example: 'MINI COOPER Edit', description: 'Battle title' })
   @IsString()
-  title: string;
+  title!: string;
 
   @ApiPropertyOptional({
     example: 'Best MINI Cooper edit challenge',
@@ -41,7 +41,7 @@ export class CreateRawShiftBattleDto {
     description: 'RawShift rule/info (required in schema)',
   })
   @IsString()
-  rawShiftPrice: string;
+  rawShiftPrice!: string;
 
   @ApiPropertyOptional({
     example: 'Los Angeles',
@@ -56,12 +56,12 @@ export class CreateRawShiftBattleDto {
     description: 'Start date-time (UTC recommended)',
   })
   @IsDateString()
-  startDate: string;
+  startDate!: string;
 
   @ApiProperty({
     example: '2026-03-08T10:00:00.000Z',
     description: 'End date-time',
   })
   @IsDateString()
-  endDate: string;
+  endDate!: string;
 }

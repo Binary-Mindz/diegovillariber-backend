@@ -8,5 +8,5 @@ export class VoteSplitScreenBattleDto {
     example: SplitScreenVoteType.RIGHT,
   })
   @IsEnum(SplitScreenVoteType)
-  vote: SplitScreenVoteType;
+  vote!: SplitScreenVoteType;
 }

@@ -4,7 +4,7 @@ import { IsOptional, IsString, IsUUID, MaxLength } from 'class-validator';
 export class SendMessageDto {
   @ApiProperty({ example: '3c1c6c8d-5e6e-4dd8-8e23-9b2f2a50a123' })
   @IsUUID()
-  receiverId: string;
+  receiverId!: string;
 
   @ApiPropertyOptional({ example: 'Hello! কেমন আছো?' })
   @IsOptional()

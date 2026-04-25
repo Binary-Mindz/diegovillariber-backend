@@ -9,49 +9,49 @@ export class CreateSplitScreenMatchDto {
     description: 'Selected profile id',
   })
   @IsUUID()
-  profileId: string;
+  profileId!: string;
 
   @ApiProperty({
     example: 'b6c9d69a-df89-456d-b8e2-45d6c9c6a9f2',
     description: 'Selected car id from profile cars',
   })
   @IsUUID()
-  carId: string;
+  carId!: string;
 
   @ApiProperty({
     enum: SplitScreenBattleCategory,
     example: SplitScreenBattleCategory.STYLES,
   })
   @IsEnum(SplitScreenBattleCategory)
-  battleCategory: SplitScreenBattleCategory;
+  battleCategory!: SplitScreenBattleCategory;
 
   @ApiProperty({
     enum: SplitScreenMatchmakingMode,
     example: SplitScreenMatchmakingMode.ANYONE,
   })
   @IsEnum(SplitScreenMatchmakingMode)
-  matchmakingMode: SplitScreenMatchmakingMode;
+  matchmakingMode!: SplitScreenMatchmakingMode;
 
   @ApiProperty({
     enum: SplitScreenPreferenceMode,
     example: SplitScreenPreferenceMode.ANY_CAR_BRAND,
   })
   @IsEnum(SplitScreenPreferenceMode)
-  preferenceMode: SplitScreenPreferenceMode;
+  preferenceMode!: SplitScreenPreferenceMode;
 
   @ApiProperty({
     enum: SplitScreenLeagueCode,
     example: SplitScreenLeagueCode.WORLD,
   })
   @IsEnum(SplitScreenLeagueCode)
-  league: SplitScreenLeagueCode;
+  league!: SplitScreenLeagueCode;
 
   @ApiProperty({
     enum: SplitScreenDivision,
     example: SplitScreenDivision.D1,
   })
   @IsEnum(SplitScreenDivision)
-  division: SplitScreenDivision;
+  division!: SplitScreenDivision;
 
   @ApiPropertyOptional({
     example: 'BMW',

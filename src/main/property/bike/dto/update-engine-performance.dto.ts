@@ -5,7 +5,7 @@ export class UpdateEnginePerformanceDto {
   @ApiProperty({ example: 'Inline-4' })
   @IsString()
   @MaxLength(100)
-  engineType: string;
+  engineType!: string;
 
   @ApiPropertyOptional({ example: 998 })
   @IsOptional()
