@@ -16,12 +16,12 @@ export class CreateLikeDto {
   })
   @IsUUID()
   @IsNotEmpty()
-  postId: string;
+  postId!: string;
 
   @ApiProperty({ enum: PostType, description: 'Post type' })
   @IsEnum(PostType)
   @IsNotEmpty()
-  postType: PostType;
+  postType!: PostType;
 }
 
 export class UnlikeDto {
@@ -31,12 +31,12 @@ export class UnlikeDto {
   })
   @IsUUID()
   @IsNotEmpty()
-  postId: string;
+  postId!: string;
 
   @ApiProperty({ enum: PostType, description: 'Post type' })
   @IsEnum(PostType)
   @IsNotEmpty()
-  postType: PostType;
+  postType!: PostType;
 }
 
 export class LikesQueryDto {

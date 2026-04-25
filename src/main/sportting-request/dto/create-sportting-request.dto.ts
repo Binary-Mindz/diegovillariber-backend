@@ -39,11 +39,11 @@ export class CreateSpottingRequestDto {
 
   @ApiProperty({ example: 23.8103 })
   @IsNumber()
-  latitude: number;
+  latitude!: number;
 
   @ApiProperty({ example: 90.4125 })
   @IsNumber()
-  longitude: number;
+  longitude!: number;
 
   @ApiProperty({ example: 50, required: false, default: 50 })
   @IsOptional()

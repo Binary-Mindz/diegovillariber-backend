@@ -7,5 +7,5 @@ export class ForgotPasswordDto {
     description: 'Email to receive password reset OTP',
   })
   @IsEmail()
-  email: string;
+  email!: string;
 }

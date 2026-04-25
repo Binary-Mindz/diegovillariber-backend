@@ -6,11 +6,11 @@ import { MediaType } from 'generated/prisma/enums';
 export class SubmissionMediaItemDto {
   @ApiProperty({ enum: MediaType, example: MediaType.IMAGE })
   @IsEnum(MediaType)
-  type: MediaType;
+  type!: MediaType;
 
   @ApiProperty({ example: 'https://cdn.app/media.jpg' })
   @IsString()
-  url: string;
+  url!: string;
 
   @ApiPropertyOptional({ example: 7 })
   @IsOptional()
@@ -52,5 +52,5 @@ export class SubmitChallengeDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => SubmissionMediaItemDto)
-  media: SubmissionMediaItemDto[];
+  media!: SubmissionMediaItemDto[];
 }

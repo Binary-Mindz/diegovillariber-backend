@@ -7,7 +7,7 @@ export class CreateNotificationDto {
   @ApiPropertyOptional()
   @IsOptional()
   @IsUUID()
-  userId: string;
+  userId!: string;
 
   @ApiPropertyOptional()
   @IsOptional()
@@ -16,7 +16,7 @@ export class CreateNotificationDto {
 
   @ApiPropertyOptional({ enum: NotificationType })
   @IsEnum(NotificationType)
-  type: NotificationType;
+  type!: NotificationType;
 
   @ApiPropertyOptional({ enum: NotificationChannel })
   @IsOptional()

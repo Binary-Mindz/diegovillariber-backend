@@ -11,5 +11,5 @@ export class CreatePostRatingDto {
   @IsInt()
   @Min(0)
   @Max(10)
-  score: number;
+  score!: number;
 }

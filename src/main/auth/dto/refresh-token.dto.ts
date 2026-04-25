@@ -8,7 +8,7 @@ export class RefreshTokenDto {
   })
   @IsString()
   @IsNotEmpty()
-  userId: string;
+  userId!: string;
 
   @ApiProperty({
     example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
@@ -16,5 +16,5 @@ export class RefreshTokenDto {
   })
   @IsString()
   @IsNotEmpty()
-  refreshToken: string;
+  refreshToken!: string;
 }

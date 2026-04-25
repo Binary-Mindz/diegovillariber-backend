@@ -5,27 +5,27 @@ import { Preference, Type } from 'generated/prisma/enums';
 export class SignUpDto {
   @ApiProperty({ example: 'John deo' })
   @IsString()
-  username: string;
+  username!: string;
 
   @ApiProperty({ example: 'ranarasul21@gmail.com' })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({ example: 'secret123', minLength: 6 })
   @MinLength(6)
-  password: string;
+  password!: string;
 
   @ApiProperty({
     enum: Preference,
     example: Preference.CAR,
   })
   @IsEnum(Preference)
-  preference: Preference;
+  preference!: Preference;
 
   @ApiProperty({
     enum: Type,
     example: Type.SPOTTER,
   })
   @IsEnum(Type)
-  profileType: Type;
+  profileType!: Type;
 }

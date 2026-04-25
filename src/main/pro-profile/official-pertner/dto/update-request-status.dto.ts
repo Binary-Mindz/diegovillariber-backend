@@ -10,7 +10,7 @@ export class UpdateOfficialPartnerStatusDto {
     description: 'Admin decision on the partner request',
   })
   @IsEnum(OfficialPartnerRequestStatus)
-  requestStatus: OfficialPartnerRequestStatus;
+  requestStatus!: OfficialPartnerRequestStatus;
 
   @ApiPropertyOptional({
     example: 'Approved after verification of company documents',

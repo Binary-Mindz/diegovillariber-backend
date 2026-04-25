@@ -8,7 +8,7 @@ export class VerifyLoginOtpDto {
   })
   @IsString()
   @IsNotEmpty()
-  tempToken: string;
+  tempToken!: string;
 
   @ApiProperty({
     example: '123456',
@@ -16,5 +16,5 @@ export class VerifyLoginOtpDto {
   })
   @IsString()
   @Length(6, 6)
-  otp: string;
+  otp!: string;
 }

@@ -19,7 +19,7 @@ import {
 export class CreateBikeDto {
   @ApiProperty({ example: 'garage-uuid' })
   @IsUUID()
-  garageId: string;
+  garageId!: string;
 
   @ApiPropertyOptional({ example: 'https://cdn.com/bike.jpg' })
   @IsOptional()

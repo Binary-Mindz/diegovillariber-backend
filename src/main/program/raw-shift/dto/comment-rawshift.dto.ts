@@ -12,5 +12,5 @@ export class CreateRawShiftCommentDto {
 
   @ApiProperty({ example: 'Nice edit! 🔥', description: 'Comment message' })
   @IsString()
-  message: string;
+  message!: string;
 }

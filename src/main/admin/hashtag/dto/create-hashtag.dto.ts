@@ -4,7 +4,7 @@ import { IsString, IsOptional } from 'class-validator';
 export class CreateHashtagDto {
   @ApiProperty({ example: 'carmeet' })
   @IsString()
-  tag: string;
+  tag!: string;
 
   @ApiProperty({ required: false })
   @IsOptional()

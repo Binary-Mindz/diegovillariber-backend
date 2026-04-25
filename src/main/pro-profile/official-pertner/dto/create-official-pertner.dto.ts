@@ -8,7 +8,7 @@ export class CreateOfficialPartnerDto {
   })
   @IsString()
   @Length(2, 120)
-  brandName: string;
+  brandName!: string;
 
   @ApiProperty({
     example: 'Rana Miah',
@@ -16,14 +16,14 @@ export class CreateOfficialPartnerDto {
   })
   @IsString()
   @Length(2, 120)
-  contactName: string;
+  contactName!: string;
 
   @ApiProperty({
     example: 'contact@speedxauto.com',
     description: 'Official contact email address',
   })
   @IsEmail()
-  contactEmail: string;
+  contactEmail!: string;
 
   @ApiPropertyOptional({
     example: 'https://cdn.example.com/logos/speedx.png',

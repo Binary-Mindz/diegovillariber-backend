@@ -19,7 +19,7 @@ export class CreateProductDto {
     description: 'Product title',
   })
   @IsString()
-  title: string;
+  title!: string;
 
   @ApiPropertyOptional({
     example: 'https://cdn.example.com/products/brake-pad.jpg',
@@ -117,7 +117,7 @@ export class CreateProductDto {
   })
   @IsInt()
   @Min(0)
-  price: number;
+  price!: number;
 
   @ApiProperty({
     example: 12,
@@ -125,7 +125,7 @@ export class CreateProductDto {
   })
   @IsInt()
   @Min(0)
-  quantity: number;
+  quantity!: number;
 
   @ApiPropertyOptional({
     example: true,

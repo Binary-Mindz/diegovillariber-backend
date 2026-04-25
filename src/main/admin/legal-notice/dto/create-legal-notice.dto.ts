@@ -10,7 +10,7 @@ export class CreateLegalNoticeDto {
 
   @ApiProperty({ enum: LegalNoticeTarget, example: LegalNoticeTarget.CAR })
   @IsEnum(LegalNoticeTarget)
-  targetType: LegalNoticeTarget;
+  targetType!: LegalNoticeTarget;
 
   @ApiPropertyOptional({ example: 'car-uuid' })
   @IsOptional()
@@ -25,11 +25,11 @@ export class CreateLegalNoticeDto {
   @ApiProperty({ example: 'Dhaka, Bangladesh' })
   @IsString()
   @MaxLength(255)
-  location: string;
+  location!: string;
 
   @ApiProperty({ example: '2026-02-21T10:30:00.000Z' })
   @IsDateString()
-  date: string;
+  date!: string;
 
   @ApiPropertyOptional({ example: 'Speed limit violation...' })
   @IsOptional()

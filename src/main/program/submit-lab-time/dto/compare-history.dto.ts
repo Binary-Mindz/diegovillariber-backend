@@ -6,19 +6,19 @@ import { Type } from 'class-transformer';
 export class CompareHistoryDto {
   @ApiProperty({ example: 'other-user-uuid' })
   @IsUUID()
-  otherUserId: string;
+  otherUserId!: string;
 
   @ApiProperty({ enum: Platform, example: Platform.iRacing })
   @IsEnum(Platform)
-  simPlatform: Platform;
+  simPlatform!: Platform;
 
   @ApiProperty({ enum: Circuit, example: Circuit.Spa_Francorchamps })
   @IsEnum(Circuit)
-  circuit: Circuit;
+  circuit!: Circuit;
 
   @ApiProperty({ enum: CarClass, example: CarClass.DRIFT })
   @IsEnum(CarClass)
-  carClass: CarClass;
+  carClass!: CarClass;
 
   @ApiPropertyOptional({ example: 20, description: 'How many recent laps to return (max 100)' })
   @IsOptional()

@@ -16,13 +16,13 @@ export class CreatePrestigeDto {
   })
   @IsString()
   @IsNotEmpty()
-  earnBy: string;
+  earnBy!: string;
 
   @ApiProperty({ example: 5 })
   @Type(() => Number)
   @IsInt()
   @Min(1)
-  point: number;
+  point!: number;
 
   @ApiPropertyOptional({
     example: 0,

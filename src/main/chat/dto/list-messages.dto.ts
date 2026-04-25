@@ -5,7 +5,7 @@ import { IsInt, IsOptional, IsUUID, Max, Min } from 'class-validator';
 export class ListMessagesDto {
   @ApiProperty({ example: '9a6efcf0-9b3b-4b37-8d9b-39d5d3c70f22' })
   @IsUUID()
-  conversationId: string;
+  conversationId!: string;
 
   @ApiPropertyOptional({ example: 30, default: 30 })
   @IsOptional()

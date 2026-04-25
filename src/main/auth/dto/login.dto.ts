@@ -8,14 +8,14 @@ export class LoginDto {
     description: 'User email',
   })
   @IsEmail()
-  email: string;
+  email!: string;
 
   @ApiProperty({
     example: 'secret123',
     description: 'User password',
   })
   @IsNotEmpty()
-  password: string;
+  password!: string;
 
   @IsOptional()
   @IsEnum(Role)

@@ -4,5 +4,5 @@ import { IsUUID } from 'class-validator';
 export class HidePostDto {
   @ApiProperty({ example: 'uuid-of-post' })
   @IsUUID()
-  postId: string;
+  postId!: string;
 }

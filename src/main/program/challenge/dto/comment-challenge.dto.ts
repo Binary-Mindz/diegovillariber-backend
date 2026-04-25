@@ -4,7 +4,7 @@ import { IsOptional, IsString } from 'class-validator';
 export class CreateChallengeCommentDto {
   @ApiProperty({ example: 'Awesome shot!' })
   @IsString()
-  text: string;
+  text!: string;
 
   @ApiPropertyOptional({ example: 'uuid-of-submission', description: 'If comment is for a submission' })
   @IsOptional()

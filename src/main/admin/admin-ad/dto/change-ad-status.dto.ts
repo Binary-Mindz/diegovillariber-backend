@@ -9,5 +9,5 @@ export class ChangeAdStatusDto {
     description: 'New ad status',
   })
   @IsEnum(AdStatus)
-  adStatus: AdStatus;
+  adStatus!: AdStatus;
 }
