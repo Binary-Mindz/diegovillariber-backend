@@ -1,6 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
-  IsArray,
+  Allow,
   IsEnum,
   IsInt,
   IsOptional,
@@ -34,21 +35,15 @@ export class CreateLabTimeDto {
   @MaxLength(255)
   trackLayout?: string;
 
-  // ✅ NEW (latitude)
-  @ApiPropertyOptional({
-    example: 50.3356,
-    description: 'Track latitude',
-  })
+  @ApiPropertyOptional({ example: 50.3356 })
   @IsOptional()
+  @Type(() => Number)
   @IsNumber()
   latitude?: number;
 
-  // ✅ NEW (longitude)
-  @ApiPropertyOptional({
-    example: 6.9475,
-    description: 'Track longitude',
-  })
+  @ApiPropertyOptional({ example: 6.9475 })
   @IsOptional()
+  @Type(() => Number)
   @IsNumber()
   longitude?: number;
 
@@ -64,7 +59,8 @@ export class CreateLabTimeDto {
   @IsUUID()
   vehicleId!: string;
 
-  @ApiProperty({ example: 118243, description: 'Lap time in milliseconds' })
+  @ApiProperty({ example: 118243 })
+  @Type(() => Number)
   @IsInt()
   @Min(1)
   lapTimeMs!: number;
@@ -79,11 +75,14 @@ export class CreateLabTimeDto {
   @MaxLength(500)
   videoUrl?: string;
 
-  @ApiPropertyOptional({ example: ['https://cdn.com/telemetry1.json'] })
+  @ApiPropertyOptional({
+    type: 'string',
+    format: 'binary',
+    description: 'Telemetry CSV file',
+  })
   @IsOptional()
-  @IsArray()
-  @IsString({ each: true })
-  telemetryMedia?: string[];
+  @Allow()
+  telemetryFile?: any;
 
   @ApiProperty({ enum: Transmission, example: Transmission.MANUAL })
   @IsEnum(Transmission)
@@ -112,16 +111,19 @@ export class CreateLabTimeDto {
 
   @ApiPropertyOptional({ example: 22 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   airTemp?: number;
 
   @ApiPropertyOptional({ example: 35 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   trackTemp?: number;
 
   @ApiPropertyOptional({ example: 60 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(0)
   @Max(100)
@@ -143,6 +145,7 @@ export class CreateLabTimeDto {
 
   @ApiPropertyOptional({ example: 20 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(0)
   @Max(100)
@@ -150,6 +153,7 @@ export class CreateLabTimeDto {
 
   @ApiPropertyOptional({ example: 265 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   frontTireSize?: number;
 
@@ -161,6 +165,7 @@ export class CreateLabTimeDto {
 
   @ApiPropertyOptional({ example: 305 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   rearTireSize?: number;
 
@@ -170,18 +175,23 @@ export class CreateLabTimeDto {
   @MaxLength(20)
   rearPressure?: string;
 
-  @ApiProperty({ enum: DriveStyle, example: DriveStyle.Moderate_Balanced_Approach })
+  @ApiProperty({
+    enum: DriveStyle,
+    example: DriveStyle.Moderate_Balanced_Approach,
+  })
   @IsEnum(DriveStyle)
   drivingStyle!: DriveStyle;
 
   @ApiPropertyOptional({ example: 40 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(0)
   fuelLoad?: number;
 
   @ApiPropertyOptional({ example: 75 })
   @IsOptional()
+  @Type(() => Number)
   @IsInt()
   @Min(0)
   driverWeight?: number;

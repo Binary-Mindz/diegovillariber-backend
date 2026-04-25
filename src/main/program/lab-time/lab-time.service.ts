@@ -17,7 +17,7 @@ import {
 } from './utils/circuit.util';
 import { LabVehicleType } from './enum/lab-vehicle-type.enum';
 import { CompareLabTimeDto } from './dto/compare-lab-time.dto';
-
+import Papa from 'papaparse';
 @Injectable()
 export class LabTimeService {
   constructor(private readonly prisma: PrismaService) {}
@@ -54,6 +54,58 @@ export class LabTimeService {
     return profile;
   }
 
+  private parseTelemetryCsvFile(
+    file?: Express.Multer.File,
+  ): Prisma.InputJsonValue {
+    if (!file) return [];
+
+    const csvText = file.buffer.toString('utf-8');
+
+    const lines = csvText
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    const headerIndex = lines.findIndex((line) =>
+      line.toLowerCase().startsWith('record,time,latitude,longitude'),
+    );
+
+    if (headerIndex === -1) {
+      throw new BadRequestException(
+        'Invalid telemetry CSV file: telemetry header not found',
+      );
+    }
+
+    const telemetryCsv = lines.slice(headerIndex).join('\n');
+
+    const parsed = Papa.parse<Record<string, string>>(telemetryCsv, {
+      header: true,
+      skipEmptyLines: true,
+      transformHeader: (header: string) => header.trim(),
+      transform: (value: string) => value.trim(),
+    });
+
+    if (parsed.errors.length > 0) {
+      throw new BadRequestException(
+        `Invalid telemetry CSV file: ${parsed.errors[0].message}`,
+      );
+    }
+
+    return parsed.data.map((row) => ({
+      record: Number(row['Record']),
+      time: row['Time'],
+      latitude: Number(row['Latitude']),
+      longitude: Number(row['Longitude']),
+      altitudeM: Number(row['Altitude (m)']),
+      speedMS: Number(row['Speed (m/s)']),
+      gForceX: Number(row['GForceX (g)']),
+      gForceY: Number(row['GForceY (g)']),
+      gForceZ: Number(row['GForceZ (g)']),
+      lap: Number(row['Lap']),
+      heading: Number(row['Heading']),
+    })) as Prisma.InputJsonValue;
+  }
+
   getCircuits() {
     return CIRCUITS_DATA;
   }
@@ -68,7 +120,11 @@ export class LabTimeService {
     return circuit;
   }
 
-  async create(userId: string, dto: CreateLabTimeDto) {
+  async create(
+    userId: string,
+    dto: CreateLabTimeDto,
+    telemetryFile?: Express.Multer.File,
+  ) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
     const date = new Date(dto.dateSet);
@@ -129,8 +185,7 @@ export class LabTimeService {
         dateSet: date,
 
         videoUrl: dto.videoUrl ?? null,
-        telemetryMedia: dto.telemetryMedia ?? [],
-
+        telemetryMedia: this.parseTelemetryCsvFile(telemetryFile),
         transmission: dto.transmission,
         drivetrain: dto.drivetrain,
         timeOfDay: dto.timeOfDay,
@@ -385,17 +440,41 @@ export class LabTimeService {
       }),
     ]);
 
+    const telemetryLimit = query.telemetryLimit ?? 5;
+
+    const rankingTelemetryStats = this.getTelemetryStats(
+      rankingLap.telemetryMedia,
+    );
+
+    const myTelemetryStats = this.getTelemetryStats(myLap.telemetryMedia);
+
     return {
       comparison: {
-        sameTrack: true,
-        sameLayout,
-        trackName: myLap.trackName,
-        rankingLapPosition: rankingPosition + 1,
-        myLapPosition: myPosition + 1,
-        fasterSide,
-        fasterLapId,
-        timeDifferenceMs,
+          sameTrack: true,
+    sameLayout,
+    trackName: myLap.trackName,
+    rankingLapPosition: rankingPosition + 1,
+    myLapPosition: myPosition + 1,
+    fasterSide,
+    fasterLapId,
+    timeDifferenceMs,
+    telemetry: {
+      ranking: rankingTelemetryStats,
+      mine: myTelemetryStats,
+      difference: {
+        maxSpeedMS:
+          rankingTelemetryStats.maxSpeedMS !== null &&
+          myTelemetryStats.maxSpeedMS !== null
+            ? myTelemetryStats.maxSpeedMS - rankingTelemetryStats.maxSpeedMS
+            : null,
+        avgSpeedMS:
+          rankingTelemetryStats.avgSpeedMS !== null &&
+          myTelemetryStats.avgSpeedMS !== null
+            ? myTelemetryStats.avgSpeedMS - rankingTelemetryStats.avgSpeedMS
+            : null,
       },
+    },
+  },
       rankingLap: {
         ...rankingLap,
         vehicle: rankingLapVehicle,
@@ -526,6 +605,7 @@ export class LabTimeService {
   async list(userId: string, query: LabTimeQueryDto) {
     await this.getActiveProfileOrThrow(userId);
 
+    const telemetryLimit = query.telemetryLimit ?? 10;
     const page = query.page ?? 1;
     const limit = query.limit ?? 20;
     const skip = (page - 1) * limit;
@@ -580,6 +660,7 @@ export class LabTimeService {
           dateSet: true,
           vehicleName: true,
           vehicleType: true,
+          telemetryMedia: true,
           profile: {
             select: {
               profileName: true,
@@ -601,6 +682,9 @@ export class LabTimeService {
       vehicleModel: item.vehicleName ?? null,
       lapTimeMs: item.lapTimeMs,
       dateSet: item.dateSet,
+      telemetryMedia: Array.isArray(item.telemetryMedia)
+        ? item.telemetryMedia.slice(0, telemetryLimit)
+        : [],
     }));
 
     return {
@@ -640,7 +724,12 @@ export class LabTimeService {
       ),
     };
   }
-  async update(userId: string, labTimeId: string, dto: UpdateLabTimeDto) {
+  async update(
+    userId: string,
+    labTimeId: string,
+    dto: UpdateLabTimeDto,
+    telemetryFile?: Express.Multer.File,
+  ) {
     const profile = await this.getActiveProfileOrThrow(userId);
 
     const existing = await this.prisma.labTime.findFirst({
@@ -748,8 +837,8 @@ export class LabTimeService {
           })()
         : {}),
       ...(dto.videoUrl !== undefined ? { videoUrl: dto.videoUrl ?? null } : {}),
-      ...(dto.telemetryMedia !== undefined
-        ? { telemetryMedia: dto.telemetryMedia ?? [] }
+      ...(telemetryFile
+        ? { telemetryMedia: this.parseTelemetryCsvFile(telemetryFile) }
         : {}),
       ...(dto.transmission !== undefined
         ? { transmission: dto.transmission }
@@ -976,5 +1065,51 @@ export class LabTimeService {
     }
 
     return null;
+  }
+
+  private getTelemetryPreview(
+    telemetryMedia: Prisma.JsonValue | null,
+    limit = 50,
+  ) {
+    if (!Array.isArray(telemetryMedia)) return [];
+
+    return telemetryMedia.slice(0, limit);
+  }
+
+  private getTelemetryStats(telemetryMedia: Prisma.JsonValue | null) {
+    if (!Array.isArray(telemetryMedia)) {
+      return {
+        totalRecords: 0,
+        maxSpeedMS: null,
+        avgSpeedMS: null,
+        maxGForceX: null,
+        maxGForceY: null,
+        maxGForceZ: null,
+      };
+    }
+
+    const rows = telemetryMedia as any[];
+
+    const numbers = (key: string) =>
+      rows
+        .map((row) => Number(row?.[key]))
+        .filter((value) => Number.isFinite(value));
+
+    const avg = (values: number[]) =>
+      values.length ? values.reduce((a, b) => a + b, 0) / values.length : null;
+
+    const speed = numbers('speedMS');
+    const gForceX = numbers('gForceX');
+    const gForceY = numbers('gForceY');
+    const gForceZ = numbers('gForceZ');
+
+    return {
+      totalRecords: rows.length,
+      maxSpeedMS: speed.length ? Math.max(...speed) : null,
+      avgSpeedMS: avg(speed),
+      maxGForceX: gForceX.length ? Math.max(...gForceX) : null,
+      maxGForceY: gForceY.length ? Math.max(...gForceY) : null,
+      maxGForceZ: gForceZ.length ? Math.max(...gForceZ) : null,
+    };
   }
 }

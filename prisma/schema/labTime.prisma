@@ -29,7 +29,7 @@ model LabTime {
 
   // Media
   videoUrl       String?  @db.VarChar(500)
-  telemetryMedia String[] @default([])
+  telemetryMedia Json @default("[]")
 
   // Setup
   transmission   Transmission   @default(MANUAL)

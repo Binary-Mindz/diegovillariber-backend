@@ -9,9 +9,16 @@ import {
   Patch,
   Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiConsumes,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -22,6 +29,7 @@ import { CreateLabTimeDto } from './dto/create-lab-time.dto';
 import { UpdateLabTimeDto } from './dto/update-lab-time.dto';
 import { LabTimeQueryDto } from './dto/lab-time-query.dto';
 import { CompareLabTimeDto } from './dto/compare-lab-time.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @ApiTags('LabTime')
 @Controller('lab-times')
@@ -52,16 +60,36 @@ export class LabTimeController {
     );
   }
 
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @Post()
+  // @HttpCode(HttpStatus.CREATED)
+  // @ApiOperation({
+  //   summary: 'Create lap time (OWNER / PRO_DRIVER / CONTENT_CREATOR only)',
+  // })
+  // create(@GetUser('userId') userId: string, @Body() dto: CreateLabTimeDto) {
+  //   return handleRequest(
+  //     async () => this.service.create(userId, dto),
+  //     'Lap time created',
+  //   );
+  // }
+
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
+  @UseInterceptors(FileInterceptor('telemetryFile'))
+  @ApiConsumes('multipart/form-data')
   @ApiOperation({
-    summary: 'Create lap time (OWNER / PRO_DRIVER / CONTENT_CREATOR only)',
+    summary: 'Create lap time with optional telemetry CSV file',
   })
-  create(@GetUser('userId') userId: string, @Body() dto: CreateLabTimeDto) {
+  create(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateLabTimeDto,
+    @UploadedFile() telemetryFile?: Express.Multer.File,
+  ) {
     return handleRequest(
-      async () => this.service.create(userId, dto),
+      async () => this.service.create(userId, dto, telemetryFile),
       'Lap time created',
     );
   }
@@ -134,18 +162,37 @@ export class LabTimeController {
     return handleRequest(async () => this.service.get(id), 'Lap time fetched');
   }
 
+  // @ApiBearerAuth()
+  // @UseGuards(JwtAuthGuard)
+  // @Patch(':id')
+  // @HttpCode(HttpStatus.OK)
+  // @ApiOperation({ summary: 'Update lap time (Owner only)' })
+  // update(
+  //   @GetUser('userId') userId: string,
+  //   @Param('id') id: string,
+  //   @Body() dto: UpdateLabTimeDto,
+  // ) {
+  //   return handleRequest(
+  //     async () => this.service.update(userId, id, dto),
+  //     'Lap time updated',
+  //   );
+  // }
+
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update lap time (Owner only)' })
+  @UseInterceptors(FileInterceptor('telemetryFile'))
+  @ApiConsumes('multipart/form-data')
+  @ApiOperation({ summary: 'Update lap time with optional telemetry CSV file' })
   update(
     @GetUser('userId') userId: string,
     @Param('id') id: string,
     @Body() dto: UpdateLabTimeDto,
+    @UploadedFile() telemetryFile?: Express.Multer.File,
   ) {
     return handleRequest(
-      async () => this.service.update(userId, id, dto),
+      async () => this.service.update(userId, id, dto, telemetryFile),
       'Lap time updated',
     );
   }

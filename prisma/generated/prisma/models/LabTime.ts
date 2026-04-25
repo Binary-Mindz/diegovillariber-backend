@@ -421,7 +421,7 @@ export type LabTimeGroupByOutputType = {
   lapTimeMs: number
   dateSet: Date
   videoUrl: string | null
-  telemetryMedia: string[]
+  telemetryMedia: runtime.JsonValue
   transmission: $Enums.Transmission
   drivetrain: $Enums.DriveTrain
   timeOfDay: string
@@ -484,7 +484,7 @@ export type LabTimeWhereInput = {
   lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
+  telemetryMedia?: Prisma.JsonFilter<"LabTime">
   transmission?: Prisma.EnumTransmissionFilter<"LabTime"> | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFilter<"LabTime"> | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFilter<"LabTime"> | string
@@ -571,7 +571,7 @@ export type LabTimeWhereUniqueInput = Prisma.AtLeast<{
   lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
+  telemetryMedia?: Prisma.JsonFilter<"LabTime">
   transmission?: Prisma.EnumTransmissionFilter<"LabTime"> | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFilter<"LabTime"> | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFilter<"LabTime"> | string
@@ -661,7 +661,7 @@ export type LabTimeScalarWhereWithAggregatesInput = {
   lapTimeMs?: Prisma.IntWithAggregatesFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeWithAggregatesFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
-  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
+  telemetryMedia?: Prisma.JsonWithAggregatesFilter<"LabTime">
   transmission?: Prisma.EnumTransmissionWithAggregatesFilter<"LabTime"> | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainWithAggregatesFilter<"LabTime"> | $Enums.DriveTrain
   timeOfDay?: Prisma.StringWithAggregatesFilter<"LabTime"> | string
@@ -699,7 +699,7 @@ export type LabTimeCreateInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -741,7 +741,7 @@ export type LabTimeUncheckedCreateInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -779,7 +779,7 @@ export type LabTimeUpdateInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -821,7 +821,7 @@ export type LabTimeUncheckedUpdateInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -861,7 +861,7 @@ export type LabTimeCreateManyInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -899,7 +899,7 @@ export type LabTimeUpdateManyMutationInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -939,7 +939,7 @@ export type LabTimeUncheckedUpdateManyInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1163,17 +1163,8 @@ export type LabTimeUncheckedUpdateManyWithoutGarageNestedInput = {
   deleteMany?: Prisma.LabTimeScalarWhereInput | Prisma.LabTimeScalarWhereInput[]
 }
 
-export type LabTimeCreatetelemetryMediaInput = {
-  set: string[]
-}
-
 export type EnumLabVehicleTypeFieldUpdateOperationsInput = {
   set?: $Enums.LabVehicleType
-}
-
-export type LabTimeUpdatetelemetryMediaInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type EnumSessionTypeFieldUpdateOperationsInput = {
@@ -1250,7 +1241,7 @@ export type LabTimeCreateWithoutGarageInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1290,7 +1281,7 @@ export type LabTimeUncheckedCreateWithoutGarageInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1359,7 +1350,7 @@ export type LabTimeScalarWhereInput = {
   lapTimeMs?: Prisma.IntFilter<"LabTime"> | number
   dateSet?: Prisma.DateTimeFilter<"LabTime"> | Date | string
   videoUrl?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  telemetryMedia?: Prisma.StringNullableListFilter<"LabTime">
+  telemetryMedia?: Prisma.JsonFilter<"LabTime">
   transmission?: Prisma.EnumTransmissionFilter<"LabTime"> | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFilter<"LabTime"> | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFilter<"LabTime"> | string
@@ -1397,7 +1388,7 @@ export type LabTimeCreateWithoutProfileInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1437,7 +1428,7 @@ export type LabTimeUncheckedCreateWithoutProfileInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1502,7 +1493,7 @@ export type LabTimeCreateManyGarageInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1540,7 +1531,7 @@ export type LabTimeUpdateWithoutGarageInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1580,7 +1571,7 @@ export type LabTimeUncheckedUpdateWithoutGarageInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1619,7 +1610,7 @@ export type LabTimeUncheckedUpdateManyWithoutGarageInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1658,7 +1649,7 @@ export type LabTimeCreateManyProfileInput = {
   lapTimeMs: number
   dateSet: Date | string
   videoUrl?: string | null
-  telemetryMedia?: Prisma.LabTimeCreatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: $Enums.Transmission
   drivetrain?: $Enums.DriveTrain
   timeOfDay: string
@@ -1696,7 +1687,7 @@ export type LabTimeUpdateWithoutProfileInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1736,7 +1727,7 @@ export type LabTimeUncheckedUpdateWithoutProfileInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1775,7 +1766,7 @@ export type LabTimeUncheckedUpdateManyWithoutProfileInput = {
   lapTimeMs?: Prisma.IntFieldUpdateOperationsInput | number
   dateSet?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   videoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  telemetryMedia?: Prisma.LabTimeUpdatetelemetryMediaInput | string[]
+  telemetryMedia?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   transmission?: Prisma.EnumTransmissionFieldUpdateOperationsInput | $Enums.Transmission
   drivetrain?: Prisma.EnumDriveTrainFieldUpdateOperationsInput | $Enums.DriveTrain
   timeOfDay?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2003,7 +1994,7 @@ export type $LabTimePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     lapTimeMs: number
     dateSet: Date
     videoUrl: string | null
-    telemetryMedia: string[]
+    telemetryMedia: runtime.JsonValue
     transmission: $Enums.Transmission
     drivetrain: $Enums.DriveTrain
     timeOfDay: string
@@ -2465,7 +2456,7 @@ export interface LabTimeFieldRefs {
   readonly lapTimeMs: Prisma.FieldRef<"LabTime", 'Int'>
   readonly dateSet: Prisma.FieldRef<"LabTime", 'DateTime'>
   readonly videoUrl: Prisma.FieldRef<"LabTime", 'String'>
-  readonly telemetryMedia: Prisma.FieldRef<"LabTime", 'String[]'>
+  readonly telemetryMedia: Prisma.FieldRef<"LabTime", 'Json'>
   readonly transmission: Prisma.FieldRef<"LabTime", 'Transmission'>
   readonly drivetrain: Prisma.FieldRef<"LabTime", 'DriveTrain'>
   readonly timeOfDay: Prisma.FieldRef<"LabTime", 'String'>

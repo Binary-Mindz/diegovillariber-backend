@@ -1,5 +1,6 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsUUID } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsInt, IsOptional, IsUUID, Min } from 'class-validator';
 
 export class CompareLabTimeDto {
   @ApiProperty({
@@ -15,4 +16,11 @@ export class CompareLabTimeDto {
   })
   @IsUUID()
   myLabTimeId!: string;
+
+  @ApiPropertyOptional({ example: 5 })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  telemetryLimit?: number = 5;
 }

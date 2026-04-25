@@ -14,6 +14,13 @@ export class LabTimeQueryDto {
   @IsString()
   trackLayout?: string;
 
+@ApiPropertyOptional({ example: 10 })
+@IsOptional()
+@Type(() => Number)
+@IsInt()
+@Min(1)
+telemetryLimit?: number = 10;
+
   @ApiPropertyOptional({ enum: LabVehicleType })
   @IsOptional()
   @IsEnum(LabVehicleType)
