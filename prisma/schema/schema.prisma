@@ -159,6 +159,7 @@ enum PostVehicleCategory {
   TRIAL
   CLASSIC_VINTAGE
   ELECTRIC
+  MINI_MOTO_GP_PITBIKE
 }
 
 enum BusinessCategory {

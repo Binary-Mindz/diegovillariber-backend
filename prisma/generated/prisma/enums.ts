@@ -664,7 +664,8 @@ export const PostVehicleCategory = {
   ENDURO: 'ENDURO',
   TRIAL: 'TRIAL',
   CLASSIC_VINTAGE: 'CLASSIC_VINTAGE',
-  ELECTRIC: 'ELECTRIC'
+  ELECTRIC: 'ELECTRIC',
+  MINI_MOTO_GP_PITBIKE: 'MINI_MOTO_GP_PITBIKE'
 } as const
 
 export type PostVehicleCategory = (typeof PostVehicleCategory)[keyof typeof PostVehicleCategory]

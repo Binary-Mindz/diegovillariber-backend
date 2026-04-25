@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
-import { IsBoolean, IsNumber, IsOptional, Max, Min } from 'class-validator';
+import { IsBoolean, IsEnum, IsNumber, IsOptional, Max, Min } from 'class-validator';
 
 const toBoolean = ({ value }: { value: any }) => {
   if (value === true || value === 'true' || value === 1 || value === '1') {
@@ -12,7 +12,24 @@ const toBoolean = ({ value }: { value: any }) => {
   return undefined;
 };
 
+export enum MapTimeRange {
+  LAST_24_HOURS = '24h',
+  LAST_7_DAYS = '7d',
+  LAST_30_DAYS = '30d',
+  LAST_6_MONTHS = '6m',
+  LAST_1_YEAR = '1y',
+}
+
 export class MapQueryDto {
+  @ApiPropertyOptional({
+    enum: MapTimeRange,
+    example: MapTimeRange.LAST_7_DAYS,
+    description: 'Filter markers by created date',
+  })
+  @IsOptional()
+  @IsEnum(MapTimeRange)
+  timeRange?: MapTimeRange;
+
   @ApiPropertyOptional({ example: 23.8103 })
   @IsOptional()
   @Type(() => Number)

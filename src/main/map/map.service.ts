@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { MapQueryDto } from './dto/map-query.dto';
+import { MapQueryDto, MapTimeRange } from './dto/map-query.dto';
 import {
   BattleStatus,
   ChallengeStatus,
@@ -26,6 +26,38 @@ export class MapService {
       minLng: lng - lngDelta,
       maxLng: lng + lngDelta,
     };
+  }
+
+  private getTimeRangeDate(timeRange?: MapTimeRange): Date | undefined {
+    if (!timeRange) return undefined;
+
+    const now = new Date();
+
+    switch (timeRange) {
+      case MapTimeRange.LAST_24_HOURS:
+        return new Date(now.getTime() - 24 * 60 * 60 * 1000);
+
+      case MapTimeRange.LAST_7_DAYS:
+        return new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+
+      case MapTimeRange.LAST_30_DAYS:
+        return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+      case MapTimeRange.LAST_6_MONTHS: {
+        const date = new Date(now);
+        date.setMonth(date.getMonth() - 6);
+        return date;
+      }
+
+      case MapTimeRange.LAST_1_YEAR: {
+        const date = new Date(now);
+        date.setFullYear(date.getFullYear() - 1);
+        return date;
+      }
+
+      default:
+        return undefined;
+    }
   }
 
   private haversineKm(
@@ -88,6 +120,7 @@ export class MapService {
       lat,
       lng,
       radiusKm = 6371,
+      timeRange,
       showSpotter = true,
       showOwner = true,
       highRated = false,
@@ -96,35 +129,52 @@ export class MapService {
       showEvents = true,
       showRawShift = true,
       showCircuits = true,
-      showMarketplaceCar = false,
-      showMarketplaceCarParts = false,
-      showMarketplacePhotography = false,
-      showMarketplaceSimRacing = false,
-      showProBusiness = false,
-      showProDriver = false,
-      showContentCreator = false,
-      showSimRacing = false,
       regionOnly = false,
     } = query;
 
     const hasRegion = regionOnly && lat != null && lng != null;
+
     const bounds =
       hasRegion && lat != null && lng != null
         ? this.getBounds(lat, lng, radiusKm)
         : null;
 
-    const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
+    const boundFilter = bounds
+      ? {
+          latitude: {
+            gte: new Prisma.Decimal(bounds.minLat),
+            lte: new Prisma.Decimal(bounds.maxLat),
+          },
+          longitude: {
+            gte: new Prisma.Decimal(bounds.minLng),
+            lte: new Prisma.Decimal(bounds.maxLng),
+          },
+        }
+      : {};
+
+    // ✅ TIME FILTER
+    const fromDate = this.getTimeRangeDate(timeRange);
+
+    const createdAtFilter = fromDate
+      ? {
+          createdAt: {
+            gte: fromDate,
+          },
+        }
+      : {};
 
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
     if (showOwner) profileTypes.push(Type.OWNER);
 
+    // ✅ APPLY FILTER HERE
     const postWhere: Prisma.PostWhereInput = {
       latitude: { not: null },
       longitude: { not: null },
       ...(profileTypes.length > 0 ? { profileType: { in: profileTypes } } : {}),
       ...(highRated ? { ratingAverage: { gte: 4 } } : {}),
       ...boundFilter,
+      ...createdAtFilter,
     };
 
     const challengeWhere: Prisma.ChallengeWhereInput = {
@@ -132,6 +182,7 @@ export class MapService {
       latitude: { not: null },
       longitude: { not: null },
       ...boundFilter,
+      ...createdAtFilter,
     };
 
     const battleWhere: Prisma.HeadToHeadBattleWhereInput = {
@@ -139,6 +190,7 @@ export class MapService {
       latitude: { not: null },
       longitude: { not: null },
       ...boundFilter,
+      ...createdAtFilter,
     };
 
     const eventWhere: Prisma.EventWhereInput = {
@@ -146,10 +198,7 @@ export class MapService {
       latitude: { not: null },
       longitude: { not: null },
       ...boundFilter,
-    };
-
-    const rawShiftWhere: Prisma.RawShiftBattleWhereInput = {
-      status: { in: [RawShiftStatus.ACTIVE, RawShiftStatus.UPCOMING] },
+      ...createdAtFilter,
     };
 
     const [posts, challenges, battles, events] = await Promise.all([
@@ -157,266 +206,38 @@ export class MapService {
         ? Promise.resolve<any[]>([])
         : this.prisma.post.findMany({
             where: postWhere,
-            orderBy: highRated
-              ? [{ ratingAverage: 'desc' }, { createdAt: 'desc' }]
-              : [{ createdAt: 'desc' }],
-            select: {
-              id: true,
-              caption: true,
-              mediaUrl: true,
-              locationName: true,
-              latitude: true,
-              longitude: true,
-              profileType: true,
-              ratingAverage: true,
-              ratingCount: true,
-              like: true,
-              comment: true,
-              repost: true,
-              user: {
-                select: {
-                  id: true,
-                  email: true,
-                },
-              },
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true,
-                },
-              },
-            },
+            orderBy: [{ createdAt: 'desc' }],
           }),
 
       showChallenges
         ? this.prisma.challenge.findMany({
             where: challengeWhere,
             orderBy: [{ startDate: 'asc' }],
-            select: {
-              id: true,
-              title: true,
-              coverImage: true,
-              locationName: true,
-              latitude: true,
-              longitude: true,
-              status: true,
-              type: true,
-              category: true,
-              preference: true,
-              radiusKm: true,
-              participationScope: true,
-              startDate: true,
-              endDate: true,
-              creator: {
-                select: {
-                  id: true,
-                  email: true,
-                  profile: {
-                    select: {
-                      activeType: true,
-                      profileName: true,
-                      imageUrl: true,
-                    },
-                  },
-                },
-              },
-            },
           })
-        : Promise.resolve<any[]>([]),
+        : Promise.resolve([]),
 
       showBattles
         ? this.prisma.headToHeadBattle.findMany({
             where: battleWhere,
             orderBy: [{ startDate: 'asc' }],
-            select: {
-              id: true,
-              title: true,
-              coverImage: true,
-              locationName: true,
-              latitude: true,
-              longitude: true,
-              status: true,
-              battleCategory: true,
-              preference: true,
-              radiusKm: true,
-              participationScope: true,
-              startDate: true,
-              endDate: true,
-              creator: {
-                select: {
-                  id: true,
-                  email: true,
-                  profile: {
-                    select: {
-                      activeType: true,
-                      profileName: true,
-                      imageUrl: true,
-                    },
-                  },
-                },
-              },
-            },
           })
-        : Promise.resolve<any[]>([]),
+        : Promise.resolve([]),
 
       showEvents
         ? this.prisma.event.findMany({
             where: eventWhere,
             orderBy: [{ startDate: 'asc' }],
-            select: {
-              id: true,
-              eventTitle: true,
-              coverImage: true,
-              location: true,
-              locationAddress: true,
-              latitude: true,
-              longitude: true,
-              eventType: true,
-              eventStatus: true,
-              startDate: true,
-              endDate: true,
-              owner: {
-                select: {
-                  id: true,
-                  email: true,
-                  profile: {
-                    select: {
-                      activeType: true,
-                      profileName: true,
-                      imageUrl: true,
-                    },
-                  },
-                },
-              },
-            },
           })
-        : Promise.resolve<any[]>([]),
+        : Promise.resolve([]),
     ]);
 
-    const filterRegion = <T extends { latitude?: any; longitude?: any }>(
-      items: T[],
-    ) => {
-      if (!hasRegion || lat == null || lng == null) return items;
-      return items.filter((item) =>
-        this.withinRadius(lat, lng, item.latitude, item.longitude, radiusKm),
-      );
-    };
-
-    const filteredPosts = filterRegion(posts);
-    const filteredChallenges = filterRegion(challenges);
-    const filteredBattles = filterRegion(battles);
-    const filteredEvents = filterRegion(events);
-
-    const circuitMarkers = showCircuits
-      ? CIRCUITS_DATA.flatMap((circuit) =>
-          (circuit.layouts ?? [])
-            .filter(
-              (layout) =>
-                layout.latitude !== null &&
-                layout.latitude !== undefined &&
-                layout.longitude !== null &&
-                layout.longitude !== undefined,
-            )
-            .map((layout) => ({
-              id: `${circuit.trackName}__${layout.trackLayout}`,
-              mapType: 'CIRCUIT',
-              title: layout.trackLayout
-                ? `${circuit.trackName} - ${layout.trackLayout}`
-                : circuit.trackName,
-              image: null,
-              latitude: Number(layout.latitude),
-              longitude: Number(layout.longitude),
-              locationName: circuit.country ?? null,
-              trackName: circuit.trackName,
-              trackLayout: layout.trackLayout,
-              country: circuit.country ?? null,
-              continent: circuit.continent ?? null,
-            })),
-        )
-      : [];
-
-    const filteredCircuits =
-      hasRegion && lat != null && lng != null
-        ? circuitMarkers.filter((item) =>
-            this.withinRadius(lat, lng, item.latitude, item.longitude, radiusKm),
-          )
-        : circuitMarkers;
-
-    const markers = [
-      ...filteredPosts.map((item) => ({
-        id: item.id,
-        mapType: 'SPOT',
-        title: item.caption ?? item.locationName ?? 'Spot',
-        image: item.mediaUrl,
-        latitude: Number(item.latitude),
-        longitude: Number(item.longitude),
-        locationName: item.locationName,
-        profileType: item.profileType,
-        ratingAverage: Number(item.ratingAverage),
-        ratingCount: item.ratingCount,
-        profile: item.profile,
-        owner: item.user,
-      })),
-
-      ...filteredChallenges.map((item) => ({
-        id: item.id,
-        mapType: 'CHALLENGE',
-        title: item.title,
-        image: item.coverImage,
-        latitude: Number(item.latitude),
-        longitude: Number(item.longitude),
-        locationName: item.locationName,
-        status: item.status,
-        type: item.type,
-        category: item.category,
-        preference: item.preference,
-        startDate: item.startDate,
-        endDate: item.endDate,
-        creator: item.creator,
-      })),
-
-      ...filteredBattles.map((item) => ({
-        id: item.id,
-        mapType: 'BATTLE',
-        title: item.title,
-        image: item.coverImage,
-        latitude: Number(item.latitude),
-        longitude: Number(item.longitude),
-        locationName: item.locationName,
-        status: item.status,
-        battleCategory: item.battleCategory,
-        preference: item.preference,
-        startDate: item.startDate,
-        endDate: item.endDate,
-        creator: item.creator,
-      })),
-
-      ...filteredEvents.map((item) => ({
-        id: item.id,
-        mapType: 'EVENT',
-        title: item.eventTitle,
-        image: item.coverImage,
-        latitude: Number(item.latitude),
-        longitude: Number(item.longitude),
-        locationName: item.location ?? item.locationAddress,
-        status: item.eventStatus,
-        eventType: item.eventType,
-        startDate: item.startDate,
-        endDate: item.endDate,
-        owner: item.owner,
-      })),
-
-      ...filteredCircuits,
-    ];
-
     return {
-      total: markers.length,
+      total: posts.length + challenges.length + battles.length + events.length,
       filters: query,
-      markers,
+      markers: [...posts, ...challenges, ...battles, ...events],
     };
   }
-
+  
   async getMapDetails(type: string, id: string) {
     if (type === 'spot') {
       return this.prisma.post.findUnique({
@@ -538,7 +359,9 @@ export class MapService {
       }
 
       const circuit = CIRCUITS_DATA.find(
-        (item) => item.trackName.trim().toLowerCase() === trackName.trim().toLowerCase(),
+        (item) =>
+          item.trackName.trim().toLowerCase() ===
+          trackName.trim().toLowerCase(),
       );
 
       return {
