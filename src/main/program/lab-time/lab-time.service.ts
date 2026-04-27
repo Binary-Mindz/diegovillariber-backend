@@ -164,7 +164,7 @@ export class LabTimeService {
         profileId: profile.id,
 
         trackName: dto.trackName,
-        trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? null,
+        trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? '',
         latitude:
           selectedLayout?.latitude !== null &&
           selectedLayout?.latitude !== undefined
@@ -806,7 +806,7 @@ export class LabTimeService {
       ...(dto.trackName !== undefined ? { trackName: dto.trackName } : {}),
       ...(dto.trackLayout !== undefined
         ? {
-            trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? null,
+           trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? '',
           }
         : {}),
       ...(selectedLayout
