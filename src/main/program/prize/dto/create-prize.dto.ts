@@ -5,5 +5,5 @@ export class CreatePrizeDto {
   @ApiProperty({ example: 'Gold Trophy', description: 'Prize name' })
   @IsString()
   @MinLength(2)
-  prizeName: string;
+  prizeName!: string;
 }

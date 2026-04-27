@@ -5,13 +5,13 @@ import { Type } from 'class-transformer';
 export class CreateWishlistDto {
   @ApiProperty()
   @IsUUID()
-  postId!: string;
+  productId!: string;
 }
 
 export class RemoveWishlistDto {
   @ApiProperty()
   @IsUUID()
-  postId!: string;
+  productId!: string;
 }
 
 export class WishlistQueryDto {

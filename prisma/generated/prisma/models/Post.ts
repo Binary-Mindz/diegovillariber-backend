@@ -510,7 +510,6 @@ export type PostWhereInput = {
   racingVotes?: Prisma.RacingVoteListRelationFilter
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
-  wishLists?: Prisma.WishListListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
@@ -566,7 +565,6 @@ export type PostOrderByWithRelationInput = {
   racingVotes?: Prisma.RacingVoteOrderByRelationAggregateInput
   savePosts?: Prisma.SavePostOrderByRelationAggregateInput
   hidePosts?: Prisma.HidePostOrderByRelationAggregateInput
-  wishLists?: Prisma.WishListOrderByRelationAggregateInput
   likes?: Prisma.LikeOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
   postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
@@ -625,7 +623,6 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   racingVotes?: Prisma.RacingVoteListRelationFilter
   savePosts?: Prisma.SavePostListRelationFilter
   hidePosts?: Prisma.HidePostListRelationFilter
-  wishLists?: Prisma.WishListListRelationFilter
   likes?: Prisma.LikeListRelationFilter
   comments?: Prisma.CommentListRelationFilter
   postRatings?: Prisma.PostRatingListRelationFilter
@@ -765,7 +762,6 @@ export type PostCreateInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -817,7 +813,6 @@ export type PostUncheckedCreateInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -869,7 +864,6 @@ export type PostUpdateInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -921,7 +915,6 @@ export type PostUncheckedUpdateInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -1663,20 +1656,6 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersNestedInput = {
   deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
 }
 
-export type PostCreateNestedOneWithoutWishListsInput = {
-  create?: Prisma.XOR<Prisma.PostCreateWithoutWishListsInput, Prisma.PostUncheckedCreateWithoutWishListsInput>
-  connectOrCreate?: Prisma.PostCreateOrConnectWithoutWishListsInput
-  connect?: Prisma.PostWhereUniqueInput
-}
-
-export type PostUpdateOneRequiredWithoutWishListsNestedInput = {
-  create?: Prisma.XOR<Prisma.PostCreateWithoutWishListsInput, Prisma.PostUncheckedCreateWithoutWishListsInput>
-  connectOrCreate?: Prisma.PostCreateOrConnectWithoutWishListsInput
-  upsert?: Prisma.PostUpsertWithoutWishListsInput
-  connect?: Prisma.PostWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutWishListsInput, Prisma.PostUpdateWithoutWishListsInput>, Prisma.PostUncheckedUpdateWithoutWishListsInput>
-}
-
 export type PostCreateWithoutBikeInput = {
   id?: string
   assetType?: $Enums.PostAssetType | null
@@ -1720,7 +1699,6 @@ export type PostCreateWithoutBikeInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -1771,7 +1749,6 @@ export type PostUncheckedCreateWithoutBikeInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -1891,7 +1868,6 @@ export type PostCreateWithoutCarInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -1942,7 +1918,6 @@ export type PostUncheckedCreateWithoutCarInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -2020,7 +1995,6 @@ export type PostCreateWithoutCommentsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
@@ -2071,7 +2045,6 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
@@ -2138,7 +2111,6 @@ export type PostUpdateWithoutCommentsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
@@ -2189,7 +2161,6 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
@@ -2239,7 +2210,6 @@ export type PostCreateWithoutHashtagsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -2290,7 +2260,6 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -2362,7 +2331,6 @@ export type PostCreateWithoutHidePostsInput = {
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -2413,7 +2381,6 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -2480,7 +2447,6 @@ export type PostUpdateWithoutHidePostsInput = {
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -2531,7 +2497,6 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -2583,7 +2548,6 @@ export type PostCreateWithoutLikesInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
@@ -2634,7 +2598,6 @@ export type PostUncheckedCreateWithoutLikesInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
@@ -2701,7 +2664,6 @@ export type PostUpdateWithoutLikesInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
@@ -2752,7 +2714,6 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
@@ -2803,7 +2764,6 @@ export type PostCreateWithoutPostViewInsightsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -2854,7 +2814,6 @@ export type PostUncheckedCreateWithoutPostViewInsightsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -2921,7 +2880,6 @@ export type PostUpdateWithoutPostViewInsightsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -2972,7 +2930,6 @@ export type PostUncheckedUpdateWithoutPostViewInsightsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -3023,7 +2980,6 @@ export type PostCreateWithoutPostRatingsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
@@ -3074,7 +3030,6 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
@@ -3141,7 +3096,6 @@ export type PostUpdateWithoutPostRatingsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
@@ -3192,7 +3146,6 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
@@ -3242,7 +3195,6 @@ export type PostCreateWithoutProfileInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -3293,7 +3245,6 @@ export type PostUncheckedCreateWithoutProfileInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -3370,7 +3321,6 @@ export type PostCreateWithoutRacingVotesInput = {
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -3421,7 +3371,6 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -3488,7 +3437,6 @@ export type PostUpdateWithoutRacingVotesInput = {
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -3539,7 +3487,6 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -3590,7 +3537,6 @@ export type PostCreateWithoutRepostsInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -3641,7 +3587,6 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -3708,7 +3653,6 @@ export type PostUpdateWithoutRepostsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -3759,7 +3703,6 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -3810,7 +3753,6 @@ export type PostCreateWithoutSavePostsInput = {
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -3861,7 +3803,6 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -3928,7 +3869,6 @@ export type PostUpdateWithoutSavePostsInput = {
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -3979,7 +3919,6 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -4031,7 +3970,6 @@ export type PostCreateWithoutSpottingMatchesInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -4082,7 +4020,6 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -4149,7 +4086,6 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -4200,7 +4136,6 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -4250,7 +4185,6 @@ export type PostCreateWithoutUserInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -4301,7 +4235,6 @@ export type PostUncheckedCreateWithoutUserInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -4362,7 +4295,6 @@ export type PostCreateWithoutTaggedUsersInput = {
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
@@ -4413,7 +4345,6 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
   hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutPostInput
   likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
@@ -4456,226 +4387,6 @@ export type PostUpdateWithWhereUniqueWithoutTaggedUsersInput = {
 export type PostUpdateManyWithWhereWithoutTaggedUsersInput = {
   where: Prisma.PostScalarWhereInput
   data: Prisma.XOR<Prisma.PostUpdateManyMutationInput, Prisma.PostUncheckedUpdateManyWithoutTaggedUsersInput>
-}
-
-export type PostCreateWithoutWishListsInput = {
-  id?: string
-  assetType?: $Enums.PostAssetType | null
-  profileType?: $Enums.Type | null
-  postType?: $Enums.PostType
-  caption?: string | null
-  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
-  postLocation?: string | null
-  locationName?: string | null
-  locationAddress?: string | null
-  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: string | null
-  locationVisibility?: string | null
-  vehicleCategory?: $Enums.PostVehicleCategory
-  mediaType?: $Enums.MediaType
-  like?: number
-  comment?: number
-  share?: number
-  repost?: number
-  racingVote?: number
-  contentBooster?: boolean
-  point?: number
-  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
-  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
-  ratingCount?: number
-  ratingTotal?: number
-  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  view?: number
-  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutPostsInput
-  profile?: Prisma.ProfileCreateNestedOneWithoutPostsInput
-  car?: Prisma.CarCreateNestedOneWithoutPostsInput
-  bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
-  taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
-  hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
-  reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
-  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
-  savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
-  hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
-  likes?: Prisma.LikeCreateNestedManyWithoutPostInput
-  comments?: Prisma.CommentCreateNestedManyWithoutPostInput
-  postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
-  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
-  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
-}
-
-export type PostUncheckedCreateWithoutWishListsInput = {
-  id?: string
-  userId: string
-  profileId?: string | null
-  carId?: string | null
-  bikeId?: string | null
-  assetType?: $Enums.PostAssetType | null
-  profileType?: $Enums.Type | null
-  postType?: $Enums.PostType
-  caption?: string | null
-  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
-  postLocation?: string | null
-  locationName?: string | null
-  locationAddress?: string | null
-  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: string | null
-  locationVisibility?: string | null
-  vehicleCategory?: $Enums.PostVehicleCategory
-  mediaType?: $Enums.MediaType
-  like?: number
-  comment?: number
-  share?: number
-  repost?: number
-  racingVote?: number
-  contentBooster?: boolean
-  point?: number
-  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
-  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
-  ratingCount?: number
-  ratingTotal?: number
-  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  view?: number
-  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
-  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
-  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
-  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
-  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
-  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
-  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
-  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
-  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
-  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
-  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
-}
-
-export type PostCreateOrConnectWithoutWishListsInput = {
-  where: Prisma.PostWhereUniqueInput
-  create: Prisma.XOR<Prisma.PostCreateWithoutWishListsInput, Prisma.PostUncheckedCreateWithoutWishListsInput>
-}
-
-export type PostUpsertWithoutWishListsInput = {
-  update: Prisma.XOR<Prisma.PostUpdateWithoutWishListsInput, Prisma.PostUncheckedUpdateWithoutWishListsInput>
-  create: Prisma.XOR<Prisma.PostCreateWithoutWishListsInput, Prisma.PostUncheckedCreateWithoutWishListsInput>
-  where?: Prisma.PostWhereInput
-}
-
-export type PostUpdateToOneWithWhereWithoutWishListsInput = {
-  where?: Prisma.PostWhereInput
-  data: Prisma.XOR<Prisma.PostUpdateWithoutWishListsInput, Prisma.PostUncheckedUpdateWithoutWishListsInput>
-}
-
-export type PostUpdateWithoutWishListsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
-  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
-  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
-  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleCategory?: Prisma.EnumPostVehicleCategoryFieldUpdateOperationsInput | $Enums.PostVehicleCategory
-  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  like?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.IntFieldUpdateOperationsInput | number
-  share?: Prisma.IntFieldUpdateOperationsInput | number
-  repost?: Prisma.IntFieldUpdateOperationsInput | number
-  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
-  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  point?: Prisma.IntFieldUpdateOperationsInput | number
-  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
-  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
-  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
-  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  view?: Prisma.IntFieldUpdateOperationsInput | number
-  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
-  profile?: Prisma.ProfileUpdateOneWithoutPostsNestedInput
-  car?: Prisma.CarUpdateOneWithoutPostsNestedInput
-  bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
-  taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
-  hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
-  reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
-  racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
-  savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
-  hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
-  comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
-  postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
-  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
-  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
-}
-
-export type PostUncheckedUpdateWithoutWishListsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
-  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
-  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
-  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
-  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vehicleCategory?: Prisma.EnumPostVehicleCategoryFieldUpdateOperationsInput | $Enums.PostVehicleCategory
-  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
-  like?: Prisma.IntFieldUpdateOperationsInput | number
-  comment?: Prisma.IntFieldUpdateOperationsInput | number
-  share?: Prisma.IntFieldUpdateOperationsInput | number
-  repost?: Prisma.IntFieldUpdateOperationsInput | number
-  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
-  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  point?: Prisma.IntFieldUpdateOperationsInput | number
-  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
-  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
-  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
-  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  view?: Prisma.IntFieldUpdateOperationsInput | number
-  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
-  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
-  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
-  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
-  reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
-  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
-  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
-  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
-  comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
-  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
-  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
-  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
 
 export type PostCreateManyBikeInput = {
@@ -4760,7 +4471,6 @@ export type PostUpdateWithoutBikeInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -4811,7 +4521,6 @@ export type PostUncheckedUpdateWithoutBikeInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -4940,7 +4649,6 @@ export type PostUpdateWithoutCarInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -4991,7 +4699,6 @@ export type PostUncheckedUpdateWithoutCarInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -5081,7 +4788,6 @@ export type PostUpdateWithoutHashtagsInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -5132,7 +4838,6 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -5262,7 +4967,6 @@ export type PostUpdateWithoutProfileInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -5313,7 +5017,6 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -5442,7 +5145,6 @@ export type PostUpdateWithoutUserInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -5493,7 +5195,6 @@ export type PostUncheckedUpdateWithoutUserInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -5583,7 +5284,6 @@ export type PostUpdateWithoutTaggedUsersInput = {
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
@@ -5634,7 +5334,6 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
-  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
@@ -5694,7 +5393,6 @@ export type PostCountOutputType = {
   racingVotes: number
   savePosts: number
   hidePosts: number
-  wishLists: number
   likes: number
   comments: number
   postRatings: number
@@ -5709,7 +5407,6 @@ export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   racingVotes?: boolean | PostCountOutputTypeCountRacingVotesArgs
   savePosts?: boolean | PostCountOutputTypeCountSavePostsArgs
   hidePosts?: boolean | PostCountOutputTypeCountHidePostsArgs
-  wishLists?: boolean | PostCountOutputTypeCountWishListsArgs
   likes?: boolean | PostCountOutputTypeCountLikesArgs
   comments?: boolean | PostCountOutputTypeCountCommentsArgs
   postRatings?: boolean | PostCountOutputTypeCountPostRatingsArgs
@@ -5767,13 +5464,6 @@ export type PostCountOutputTypeCountSavePostsArgs<ExtArgs extends runtime.Types.
  */
 export type PostCountOutputTypeCountHidePostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.HidePostWhereInput
-}
-
-/**
- * PostCountOutputType without action
- */
-export type PostCountOutputTypeCountWishListsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.WishListWhereInput
 }
 
 /**
@@ -5860,7 +5550,6 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   racingVotes?: boolean | Prisma.Post$racingVotesArgs<ExtArgs>
   savePosts?: boolean | Prisma.Post$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.Post$hidePostsArgs<ExtArgs>
-  wishLists?: boolean | Prisma.Post$wishListsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
@@ -6009,7 +5698,6 @@ export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   racingVotes?: boolean | Prisma.Post$racingVotesArgs<ExtArgs>
   savePosts?: boolean | Prisma.Post$savePostsArgs<ExtArgs>
   hidePosts?: boolean | Prisma.Post$hidePostsArgs<ExtArgs>
-  wishLists?: boolean | Prisma.Post$wishListsArgs<ExtArgs>
   likes?: boolean | Prisma.Post$likesArgs<ExtArgs>
   comments?: boolean | Prisma.Post$commentsArgs<ExtArgs>
   postRatings?: boolean | Prisma.Post$postRatingsArgs<ExtArgs>
@@ -6043,7 +5731,6 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     racingVotes: Prisma.$RacingVotePayload<ExtArgs>[]
     savePosts: Prisma.$SavePostPayload<ExtArgs>[]
     hidePosts: Prisma.$HidePostPayload<ExtArgs>[]
-    wishLists: Prisma.$WishListPayload<ExtArgs>[]
     likes: Prisma.$LikePayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
     postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
@@ -6492,7 +6179,6 @@ export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Typ
   racingVotes<T extends Prisma.Post$racingVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$racingVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   savePosts<T extends Prisma.Post$savePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$savePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hidePosts<T extends Prisma.Post$hidePostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$hidePostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HidePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  wishLists<T extends Prisma.Post$wishListsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$wishListsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WishListPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   likes<T extends Prisma.Post$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Post$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   postRatings<T extends Prisma.Post$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7158,30 +6844,6 @@ export type Post$hidePostsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.HidePostScalarFieldEnum | Prisma.HidePostScalarFieldEnum[]
-}
-
-/**
- * Post.wishLists
- */
-export type Post$wishListsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the WishList
-   */
-  select?: Prisma.WishListSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the WishList
-   */
-  omit?: Prisma.WishListOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.WishListInclude<ExtArgs> | null
-  where?: Prisma.WishListWhereInput
-  orderBy?: Prisma.WishListOrderByWithRelationInput | Prisma.WishListOrderByWithRelationInput[]
-  cursor?: Prisma.WishListWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.WishListScalarFieldEnum | Prisma.WishListScalarFieldEnum[]
 }
 
 /**

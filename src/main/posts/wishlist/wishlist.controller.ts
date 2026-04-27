@@ -36,8 +36,11 @@ export class WishlistController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Add post to wishlist' })
-  @ApiResponse({ status: 201, description: 'Post added to wishlist successfully' })
+  @ApiOperation({ summary: 'Add product to wishlist' })
+  @ApiResponse({
+    status: 201,
+    description: 'Product added to wishlist successfully',
+  })
   async addToWishlist(
     @GetUser('userId') userId: string,
     @Body() dto: CreateWishlistDto,
@@ -46,7 +49,7 @@ export class WishlistController {
       async () => {
         return this.wishlistService.addToWishlist(userId, dto);
       },
-      'Post added to wishlist successfully',
+      'Product added to wishlist successfully',
       HttpStatus.CREATED,
     );
   }
@@ -55,8 +58,11 @@ export class WishlistController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Remove post from wishlist' })
-  @ApiResponse({ status: 200, description: 'Post removed from wishlist successfully' })
+  @ApiOperation({ summary: 'Remove product from wishlist' })
+  @ApiResponse({
+    status: 200,
+    description: 'Product removed from wishlist successfully',
+  })
   async removeFromWishlist(
     @GetUser('userId') userId: string,
     @Body() dto: RemoveWishlistDto,
@@ -65,7 +71,7 @@ export class WishlistController {
       async () => {
         return this.wishlistService.removeFromWishlist(userId, dto);
       },
-      'Post removed from wishlist successfully',
+      'Product removed from wishlist successfully',
       HttpStatus.OK,
     );
   }
@@ -73,7 +79,7 @@ export class WishlistController {
   @Get('me')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Get my wishlist posts' })
+  @ApiOperation({ summary: 'Get my wishlist products' })
   async getMyWishlist(
     @GetUser('userId') userId: string,
     @Query() query: WishlistQueryDto,
@@ -86,14 +92,17 @@ export class WishlistController {
     };
   }
 
-  @Get('post/:postId')
-  @ApiOperation({ summary: 'Get all wishlist users for a post' })
-  @ApiParam({ name: 'postId', description: 'Post UUID' })
-  async getPostWishlists(
-    @Param('postId') postId: string,
+  @Get('product/:productId')
+  @ApiOperation({ summary: 'Get all wishlist users for a product' })
+  @ApiParam({ name: 'productId', description: 'Product UUID' })
+  async getProductWishlists(
+    @Param('productId') productId: string,
     @Query() query: WishlistQueryDto,
   ) {
-    const result = await this.wishlistService.getPostWishlists(postId, query);
+    const result = await this.wishlistService.getProductWishlists(
+      productId,
+      query,
+    );
 
     return {
       success: true,
@@ -101,16 +110,16 @@ export class WishlistController {
     };
   }
 
-  @Get('check/:postId')
+  @Get('check/:productId')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Check if logged-in user wishlisted a post' })
-  @ApiParam({ name: 'postId', description: 'Post UUID' })
+  @ApiOperation({ summary: 'Check if logged-in user wishlisted a product' })
+  @ApiParam({ name: 'productId', description: 'Product UUID' })
   async checkWishlist(
     @GetUser('userId') userId: string,
-    @Param('postId') postId: string,
+    @Param('productId') productId: string,
   ) {
-    const result = await this.wishlistService.checkWishlist(userId, postId);
+    const result = await this.wishlistService.checkWishlist(userId, productId);
 
     return {
       success: true,

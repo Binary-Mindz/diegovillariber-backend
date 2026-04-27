@@ -55,7 +55,6 @@ model Post {
   racingVotes     RacingVote[]
   savePosts       SavePost[]
   hidePosts       HidePost[]
-  wishLists       WishList[]
 
   likes       Like[]
   comments    Comment[]

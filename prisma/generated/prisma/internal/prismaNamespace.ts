@@ -9622,7 +9622,7 @@ export type WheelsTiresScalarFieldEnum = (typeof WheelsTiresScalarFieldEnum)[key
 export const WishListScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  postId: 'postId',
+  productId: 'productId',
   createdAt: 'createdAt'
 } as const
 

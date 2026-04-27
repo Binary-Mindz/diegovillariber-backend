@@ -3,47 +3,48 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { PrismaService } from '../../../common/prisma/prisma.service';
 import {
   CreateWishlistDto,
   RemoveWishlistDto,
   WishlistQueryDto,
 } from './dto/create-wishlist.dto';
-import { PrismaService } from '../../../common/prisma/prisma.service';
+import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
 export class WishlistService {
   constructor(private readonly prisma: PrismaService) {}
 
   async addToWishlist(userId: string, dto: CreateWishlistDto) {
-    const post = await this.prisma.post.findUnique({
-      where: { id: dto.postId },
+    const product = await this.prisma.productList.findUnique({
+      where: { id: dto.productId },
       select: { id: true },
     });
 
-    if (!post) {
-      throw new NotFoundException('Post not found');
+    if (!product) {
+      throw new NotFoundException('Product not found');
     }
 
     const exists = await this.prisma.wishList.findUnique({
       where: {
-        userId_postId: {
+        userId_productId: {
           userId,
-          postId: dto.postId,
+          productId: dto.productId,
         },
       },
     });
 
     if (exists) {
-      throw new ConflictException('Post already added to wishlist');
+      throw new ConflictException('Product already added to wishlist');
     }
 
     return this.prisma.wishList.create({
       data: {
         userId,
-        postId: dto.postId,
+        productId: dto.productId,
       },
       include: {
-        post: true,
+        product: true,
       },
     });
   }
@@ -51,9 +52,9 @@ export class WishlistService {
   async removeFromWishlist(userId: string, dto: RemoveWishlistDto) {
     const wishlist = await this.prisma.wishList.findUnique({
       where: {
-        userId_postId: {
+        userId_productId: {
           userId,
-          postId: dto.postId,
+          productId: dto.productId,
         },
       },
     });
@@ -64,16 +65,16 @@ export class WishlistService {
 
     await this.prisma.wishList.delete({
       where: {
-        userId_postId: {
+        userId_productId: {
           userId,
-          postId: dto.postId,
+          productId: dto.productId,
         },
       },
     });
 
     return {
       removed: true,
-      postId: dto.postId,
+      productId: dto.productId,
     };
   }
 
@@ -82,15 +83,37 @@ export class WishlistService {
     const limit = query.limit ?? 20;
     const skip = (page - 1) * limit;
 
-    const where = {
+    const where: Prisma.WishListWhereInput = {
       userId,
       ...(query.search
         ? {
-            post: {
-              caption: {
-                contains: query.search,
-                mode: 'insensitive' as const,
-              },
+            product: {
+              OR: [
+                {
+                  title: {
+                    contains: query.search,
+                    mode: 'insensitive',
+                  },
+                },
+                {
+                  description: {
+                    contains: query.search,
+                    mode: 'insensitive',
+                  },
+                },
+                {
+                  carBrand: {
+                    contains: query.search,
+                    mode: 'insensitive',
+                  },
+                },
+                {
+                  carModel: {
+                    contains: query.search,
+                    mode: 'insensitive',
+                  },
+                },
+              ],
             },
           }
         : {}),
@@ -105,23 +128,15 @@ export class WishlistService {
           createdAt: 'desc',
         },
         include: {
-          post: {
+          product: {
             include: {
-              user: {
+              owner: {
                 select: {
                   id: true,
                   email: true,
                 },
               },
-              profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true,
-                },
-              },
               car: true,
-              bike: true,
             },
           },
         },
@@ -129,23 +144,32 @@ export class WishlistService {
       this.prisma.wishList.count({ where }),
     ]);
 
+    const formattedItems = items.map((item) => ({
+      id: item.id,
+      createdAt: item.createdAt,
+      product: {
+        ...item.product,
+        isWishListed: true,
+      },
+    }));
+
     return {
       page,
       limit,
       total,
       totalPages: Math.ceil(total / limit),
-      items,
+      items: formattedItems,
     };
   }
 
-  async getPostWishlists(postId: string, query: WishlistQueryDto) {
-    const post = await this.prisma.post.findUnique({
-      where: { id: postId },
+  async getProductWishlists(productId: string, query: WishlistQueryDto) {
+    const product = await this.prisma.productList.findUnique({
+      where: { id: productId },
       select: { id: true },
     });
 
-    if (!post) {
-      throw new NotFoundException('Post not found');
+    if (!product) {
+      throw new NotFoundException('Product not found');
     }
 
     const page = query.page ?? 1;
@@ -154,7 +178,7 @@ export class WishlistService {
 
     const [items, total] = await this.prisma.$transaction([
       this.prisma.wishList.findMany({
-        where: { postId },
+        where: { productId },
         skip,
         take: limit,
         orderBy: {
@@ -170,7 +194,7 @@ export class WishlistService {
         },
       }),
       this.prisma.wishList.count({
-        where: { postId },
+        where: { productId },
       }),
     ]);
 
@@ -183,12 +207,12 @@ export class WishlistService {
     };
   }
 
-  async checkWishlist(userId: string, postId: string) {
+  async checkWishlist(userId: string, productId: string) {
     const wishlist = await this.prisma.wishList.findUnique({
       where: {
-        userId_postId: {
+        userId_productId: {
           userId,
-          postId,
+          productId,
         },
       },
       select: {
@@ -198,7 +222,7 @@ export class WishlistService {
     });
 
     return {
-      isWishlisted: !!wishlist,
+      isWishListed: !!wishlist,
       wishlistId: wishlist?.id ?? null,
       createdAt: wishlist?.createdAt ?? null,
     };
