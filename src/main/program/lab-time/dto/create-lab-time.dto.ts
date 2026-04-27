@@ -208,5 +208,5 @@ export class CreateLabTimeDto {
   @ApiProperty({ example: 'Felt stable. Best lap on soft push lap.' })
   @IsOptional()
   @IsString()
-  additionalNotes!: string;
+  additionalNotes?: string;
 }
