@@ -89,23 +89,28 @@ export class CreateLabTimeDto {
   transmission!: Transmission;
 
   @ApiProperty({ enum: DriveTrain, example: DriveTrain.RWD })
+  @IsOptional()
   @IsEnum(DriveTrain)
   drivetrain!: DriveTrain;
 
   @ApiProperty({ example: 'Morning' })
+  @IsOptional()
   @IsString()
   @MaxLength(50)
   timeOfDay!: string;
 
   @ApiProperty({ enum: SessionType, example: SessionType.TRACK_DAY })
+  @IsOptional()
   @IsEnum(SessionType)
   sessionType!: SessionType;
 
   @ApiProperty({ enum: Weather, example: Weather.Sunny })
+  @IsOptional()
   @IsEnum(Weather)
   weather!: Weather;
 
   @ApiProperty({ enum: TrackCondition, example: TrackCondition.Dry })
+  @IsOptional()
   @IsEnum(TrackCondition)
   trackCondition!: TrackCondition;
 
@@ -130,16 +135,19 @@ export class CreateLabTimeDto {
   humidity?: number;
 
   @ApiProperty({ example: 'Michelin' })
+  @IsOptional()
   @IsString()
   @MaxLength(100)
   tireBrand!: string;
 
   @ApiProperty({ example: 'Pilot Sport Cup 2' })
+  @IsOptional()
   @IsString()
   @MaxLength(100)
   tireModel!: string;
 
   @ApiProperty({ enum: TireCompound, example: TireCompound.SOFT })
+  @IsOptional()
   @IsEnum(TireCompound)
   tireCompund!: TireCompound;
 
@@ -179,6 +187,7 @@ export class CreateLabTimeDto {
     enum: DriveStyle,
     example: DriveStyle.Moderate_Balanced_Approach,
   })
+  @IsOptional()
   @IsEnum(DriveStyle)
   drivingStyle!: DriveStyle;
 
@@ -197,6 +206,7 @@ export class CreateLabTimeDto {
   driverWeight?: number;
 
   @ApiProperty({ example: 'Felt stable. Best lap on soft push lap.' })
+  @IsOptional()
   @IsString()
   additionalNotes!: string;
 }

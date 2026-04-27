@@ -12,7 +12,7 @@ model LabTime {
 
   // Track info
   trackName   String   @db.VarChar(255)
-  trackLayout String?  @db.VarChar(255)
+  trackLayout String  @db.VarChar(255)
   latitude    Decimal? @db.Decimal(10, 7)
   longitude   Decimal? @db.Decimal(10, 7)
 
@@ -25,19 +25,19 @@ model LabTime {
 
   // Lap Data
   lapTimeMs Int
-  dateSet   DateTime @db.Timestamptz(6)
+  dateSet   DateTime? @db.Timestamptz(6)
 
   // Media
   videoUrl       String?  @db.VarChar(500)
-  telemetryMedia Json @default("[]")
+  telemetryMedia Json? @default("[]")
 
   // Setup
-  transmission   Transmission   @default(MANUAL)
-  drivetrain     DriveTrain     @default(RWD)
-  timeOfDay      String
-  sessionType    SessionType    @default(TRACK_DAY)
-  weather        Weather        @default(Sunny)
-  trackCondition TrackCondition @default(Dry)
+  transmission   Transmission?   @default(MANUAL)
+  drivetrain     DriveTrain?     @default(RWD)
+  timeOfDay      String?
+  sessionType    SessionType?    @default(TRACK_DAY)
+  weather        Weather?        @default(Sunny)
+  trackCondition TrackCondition? @default(Dry)
 
   // Environment
   airTemp   Int?
@@ -45,9 +45,9 @@ model LabTime {
   humidity  Int?
 
   // Tires
-  tireBrand     String
-  tireModel     String
-  tireCompund   TireCompound @default(SOFT)
+  tireBrand     String?
+  tireModel     String?
+  tireCompund   TireCompound? @default(SOFT)
   tireWear      Int?
   frontTireSize Int?
   frontPressure String?
@@ -55,12 +55,12 @@ model LabTime {
   rearPressure  String?
 
   // Driver / Style
-  drivingStyle DriveStyle @default(Moderate_Balanced_Approach)
+  drivingStyle DriveStyle? @default(Moderate_Balanced_Approach)
   fuelLoad     Int?
   driverWeight Int?
 
   // Notes
-  additionalNotes String @db.Text
+  additionalNotes String? @db.Text
 
   // System Fields
   createdAt DateTime @default(now()) @db.Timestamptz(6)

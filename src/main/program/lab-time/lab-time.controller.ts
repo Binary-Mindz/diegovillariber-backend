@@ -60,20 +60,6 @@ export class LabTimeController {
     );
   }
 
-  // @ApiBearerAuth()
-  // @UseGuards(JwtAuthGuard)
-  // @Post()
-  // @HttpCode(HttpStatus.CREATED)
-  // @ApiOperation({
-  //   summary: 'Create lap time (OWNER / PRO_DRIVER / CONTENT_CREATOR only)',
-  // })
-  // create(@GetUser('userId') userId: string, @Body() dto: CreateLabTimeDto) {
-  //   return handleRequest(
-  //     async () => this.service.create(userId, dto),
-  //     'Lap time created',
-  //   );
-  // }
-
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post()
@@ -161,22 +147,6 @@ export class LabTimeController {
   get(@Param('id') id: string) {
     return handleRequest(async () => this.service.get(id), 'Lap time fetched');
   }
-
-  // @ApiBearerAuth()
-  // @UseGuards(JwtAuthGuard)
-  // @Patch(':id')
-  // @HttpCode(HttpStatus.OK)
-  // @ApiOperation({ summary: 'Update lap time (Owner only)' })
-  // update(
-  //   @GetUser('userId') userId: string,
-  //   @Param('id') id: string,
-  //   @Body() dto: UpdateLabTimeDto,
-  // ) {
-  //   return handleRequest(
-  //     async () => this.service.update(userId, id, dto),
-  //     'Lap time updated',
-  //   );
-  // }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

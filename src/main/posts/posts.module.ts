@@ -6,9 +6,10 @@ import { SaveModule } from './save/save.module';
 import { HideModule } from './hide/hide.module';
 import { PostRatingModule } from './post-rating/post-rating.module';
 import { RepostModule } from './repost/repost.module';
+import { WishlistModule } from './wishlist/wishlist.module';
 
 @Module({
-  imports: [PostModule, LikeModule, CommentModule, SaveModule, HideModule, PostRatingModule, RepostModule],
+  imports: [PostModule, LikeModule, CommentModule, SaveModule, HideModule, PostRatingModule, RepostModule, WishlistModule],
   controllers: [],
   providers: [],
   exports: [],

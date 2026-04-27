@@ -708,6 +708,12 @@ export class LabTimeService {
             description: true,
           },
         },
+        profile:{
+          select:{
+            profileName:true,
+            imageUrl:true
+          }
+        }
       },
     });
 
@@ -717,6 +723,8 @@ export class LabTimeService {
 
     return {
       ...lap,
+      profileName: lap.profile?.profileName ?? null,   // ✅ ADD
+      profileImageUrl: lap.profile?.imageUrl ?? null,
       vehicle: await this.getVehicleDetails(
         lap.profileId,
         lap.vehicleType as LabVehicleType,
@@ -724,6 +732,7 @@ export class LabTimeService {
       ),
     };
   }
+
   async update(
     userId: string,
     labTimeId: string,
