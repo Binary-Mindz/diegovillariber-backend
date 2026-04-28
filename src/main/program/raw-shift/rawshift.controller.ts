@@ -12,7 +12,12 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -34,7 +39,10 @@ export class RawShiftController {
   constructor(private readonly service: RawShiftService) {}
 
   @Get()
-  @ApiOperation({ summary: 'List RawShift battles (tabs: All/Active/Finished) with pagination' })
+  @ApiOperation({
+    summary:
+      'List RawShift battles (tabs: All/Active/Finished) with pagination',
+  })
   @ApiResponse({ status: 200 })
   async list(@Query() query: RawShiftQueryDto) {
     return handleRequest(
@@ -44,7 +52,7 @@ export class RawShiftController {
     );
   }
 
- @Get(':id')
+  @Get(':id')
   @ApiOperation({ summary: 'Get RawShift battle details' })
   @ApiResponse({ status: 200 })
   async details(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
@@ -55,27 +63,33 @@ export class RawShiftController {
     );
   }
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get(':id/comments')
-@ApiOperation({ summary: 'Get comments for a RawShift battle or specific entry' })
-async getComments(
-  @Param('id') battleId: string,
-  @Query('entryId') entryId?: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getComments(battleId, entryId);
-  }, 'Comments fetched successfully');
-}
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/comments')
+  @ApiOperation({
+    summary: 'Get comments for a RawShift battle or specific entry',
+  })
+  async getComments(
+    @Param('id') battleId: string,
+    @Query('entryId') entryId?: string,
+  ) {
+    return handleRequest(async () => {
+      return this.service.getComments(battleId, entryId);
+    }, 'Comments fetched successfully');
+  }
 
-
- @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create RawShift battle (Admin/Partner/Ambassador)' })
-  async create(@GetUser('userId') userId: string, @Body() dto: CreateRawShiftBattleDto) {
+  @ApiOperation({
+    summary: 'Create RawShift battle (Admin/Partner/Ambassador)',
+  })
+  async create(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateRawShiftBattleDto,
+  ) {
     return handleRequest(
       async () => this.service.createBattle(userId, dto),
       'RawShift battle created successfully',
@@ -83,13 +97,14 @@ async getComments(
     );
   }
 
-  
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update RawShift battle (Admin any / others creator only)' })
+  @ApiOperation({
+    summary: 'Update RawShift battle (Admin any / others creator only)',
+  })
   async update(
     @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
     @GetUser('userId') userId: string,
@@ -102,14 +117,14 @@ async getComments(
     );
   }
 
-
-
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN', 'OFFICIAL_PARTNER', 'AMBASSADOR')
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Delete RawShift battle (Admin any / others creator only)' })
+  @ApiOperation({
+    summary: 'Delete RawShift battle (Admin any / others creator only)',
+  })
   async remove(
     @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
     @GetUser('userId') userId: string,
@@ -120,7 +135,6 @@ async getComments(
       HttpStatus.OK,
     );
   }
-
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -137,7 +151,10 @@ async getComments(
   @UseGuards(JwtAuthGuard)
   @Post(':id/submit')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Submit RawShift entry (RAW + Edited). Upsert (1 entry per user per battle)' })
+  @ApiOperation({
+    summary:
+      'Submit RawShift entry (RAW + Edited). Upsert (1 entry per user per battle)',
+  })
   async submitEntry(
     @Param('id') battleId: string,
     @GetUser('userId') userId: string,
@@ -165,6 +182,16 @@ async getComments(
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Get('my-voted-entries')
+  @ApiOperation({ summary: 'Get entries I already voted' })
+  async myVotedEntries(@GetUser('userId') userId: string) {
+    return handleRequest(async () => {
+      return this.service.myVotedEntries(userId);
+    }, 'My voted entries fetched successfully');
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post(':id/comments')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Comment on RawShift battle or a specific entry' })
@@ -179,23 +206,27 @@ async getComments(
   }
 
   @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get('comments/:commentId')
-@ApiOperation({ summary: 'Get single comment by ID' })
-async getSingleComment(
-  @Param('commentId') commentId: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getSingleComment(commentId);
-  }, 'Comment fetched successfully');
-}
+  @UseGuards(JwtAuthGuard)
+  @Get('comments/:commentId')
+  @ApiOperation({ summary: 'Get single comment by ID' })
+  async getSingleComment(@Param('commentId') commentId: string) {
+    return handleRequest(async () => {
+      return this.service.getSingleComment(commentId);
+    }, 'Comment fetched successfully');
+  }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post(':id/complete')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Complete RawShift battle (creator only). Picks winner by highest score.' })
-  async complete(@Param('id') battleId: string, @GetUser('userId') userId: string) {
+  @ApiOperation({
+    summary:
+      'Complete RawShift battle (creator only). Picks winner by highest score.',
+  })
+  async complete(
+    @Param('id') battleId: string,
+    @GetUser('userId') userId: string,
+  ) {
     return handleRequest(async () => {
       return this.service.completeBattle(battleId, userId);
     }, 'RawShift battle completed successfully');
