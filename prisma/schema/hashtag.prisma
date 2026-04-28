@@ -5,7 +5,10 @@ model Hashtag {
 
   isActive   Boolean          @default(true)
   isFeatured Boolean          @default(false)
-  createdBy  HashtagCreatedBy @default(ADMIN)
+  createdBy  HashtagCreatedBy @default(USER)
+
+  createdByUserId String? @db.Uuid
+  createdByUser   User?   @relation("UserCreatedHashtags", fields: [createdByUserId], references: [id], onDelete: SetNull)
 
   usageCount Int @default(0)
 

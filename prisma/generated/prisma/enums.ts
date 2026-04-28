@@ -978,6 +978,7 @@ export type AmbassadorStatus = (typeof AmbassadorStatus)[keyof typeof Ambassador
 
 export const HashtagCreatedBy = {
   ADMIN: 'ADMIN',
+  USER: 'USER',
   SYSTEM: 'SYSTEM'
 } as const
 

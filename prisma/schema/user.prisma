@@ -132,4 +132,6 @@ model User {
   postRatings PostRating[]
 
   postViewInsights PostViewInsight[]
+
+  hashtags Hashtag[] @relation("UserCreatedHashtags")
 }

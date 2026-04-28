@@ -27,6 +27,7 @@ import { CreateHashtagDto } from './dto/create-hashtag.dto';
 import { UpdateHashtagDto } from './dto/update-hashtag.dto';
 import { HashtagQueryDto } from './dto/hashtag-query.dto';
 import { HashtagService } from './hashtag.service';
+import { GetUser } from '../../../common/decorator/get-user.decorator';
 
 @ApiTags('Hashtags')
 @Controller('hashtags')
@@ -40,10 +41,11 @@ export class HashtagController {
   @ApiOperation({ summary: 'Create hashtag' })
   async createHashtag(
     @Body() dto: CreateHashtagDto,
+    @GetUser('userId') userId: string,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
-      async () => this.hashtagService.createHashtag(dto),
+      async () => this.hashtagService.createHashtag(dto, userId),
       'Hashtag created successfully',
       HttpStatus.CREATED,
     );
@@ -59,10 +61,11 @@ export class HashtagController {
   async updateHashtag(
     @Param('id') id: string,
     @Body() dto: UpdateHashtagDto,
+    @GetUser('userId') userId: string,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
-      async () => this.hashtagService.updateHashtag(id, dto),
+      async () => this.hashtagService.updateHashtag(id, dto, userId),
       'Hashtag updated successfully',
     );
 
@@ -75,17 +78,18 @@ export class HashtagController {
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete hashtag ' })
   async deleteHashtag(
-    @Param('id') id: string,
-    @Res({ passthrough: true }) res: Response,
-  ) {
-    const response = await handleRequest(
-      async () => this.hashtagService.deleteHashtag(id),
-      'Hashtag deleted successfully',
-    );
+  @Param('id') id: string,
+  @GetUser('userId') userId: string,
+  @Res({ passthrough: true }) res: Response,
+) {
+  const response = await handleRequest(
+    async () => this.hashtagService.deleteHashtag(id, userId),
+    'Hashtag deleted successfully',
+  );
 
-    res.status(response.statusCode);
-    return response;
-  }
+  res.status(response.statusCode);
+  return response;
+}
 
   @Get()
   @ApiOperation({ summary: 'Get active hashtags' })

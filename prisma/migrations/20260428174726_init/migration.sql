@@ -170,7 +170,7 @@ CREATE TYPE "RacingType" AS ENUM ('GT_Racing', 'Rally', 'MotoGP', 'Formula_Racin
 CREATE TYPE "VehicleCategory" AS ENUM ('TRACKDAY_AMATEUR', 'GT_TOURING', 'ENDURANCE', 'FORMULA', 'RALLY_HILL_CLIMB', 'DRIFT', 'DRAG', 'KARTING', 'SUPER_BIKE', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'RAID');
 
 -- CreateEnum
-CREATE TYPE "PostVehicleCategory" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC', 'SPORT_BIKE', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'CLASSIC_VINTAGE', 'ELECTRIC');
+CREATE TYPE "PostVehicleCategory" AS ENUM ('CITY', 'HOT_HATCH', 'SEDAN', 'SPORT', 'SUV', 'SUPERCAR', 'TRACK', 'CLASSIC', 'SPORT_BIKE', 'NAKED', 'ADVENTURE', 'TOURING', 'CUSTOM', 'SCOOTER', 'OFF_ROAD', 'MOTOCROSS', 'ENDURO', 'TRIAL', 'CLASSIC_VINTAGE', 'ELECTRIC', 'MINI_MOTO_GP_PITBIKE');
 
 -- CreateEnum
 CREATE TYPE "BusinessCategory" AS ENUM ('Detailling_Care', 'Parts_Performance', 'Ecu_Dyno_Tuning', 'Wrap_Vinyl', 'Motorsport_Service', 'Event_Promoter', 'Media_Podcast', 'Dealership', 'Body_Coachbuilder', 'Auto_Recycling', 'Inspection_Technical');
@@ -245,7 +245,7 @@ CREATE TYPE "OfficialPartnerRequestStatus" AS ENUM ('PENDING', 'APPROVED', 'REJE
 CREATE TYPE "AmbassadorStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED');
 
 -- CreateEnum
-CREATE TYPE "HashtagCreatedBy" AS ENUM ('ADMIN', 'SYSTEM');
+CREATE TYPE "HashtagCreatedBy" AS ENUM ('ADMIN', 'USER', 'SYSTEM');
 
 -- CreateEnum
 CREATE TYPE "ReceiptStatus" AS ENUM ('SENT', 'DELIVERED', 'READ');
@@ -275,10 +275,10 @@ CREATE TYPE "WheelModel" AS ENUM ('FANATEC', 'LOGITECH', 'THRUSTMASTER', 'HEUSIN
 CREATE TYPE "WheelBase" AS ENUM ('DESK_MOUNT', 'WHEEL_STAND', 'COCKPIT', 'FULL_MOTION', 'RIG', 'DIY_RIG');
 
 -- CreateEnum
-CREATE TYPE "NotificationType" AS ENUM ('LIKE', 'COMMENT', 'FOLLOW', 'MENTION', 'TAGGED', 'SHARE', 'BATTLE_INVITE', 'BATTLE_RESULT', 'CHALLENGE_INVITE', 'CHALLENGE_RESULT', 'LAPTIME_BEATEN', 'LAPTIME_COMPARE', 'SYSTEM', 'ADMIN');
+CREATE TYPE "NotificationType" AS ENUM ('LIKE', 'COMMENT', 'FOLLOW', 'MENTION', 'TAGGED', 'SHARE', 'BATTLE_INVITE', 'BATTLE_RESULT', 'CHALLENGE_INVITE', 'CHALLENGE_RESULT', 'LAPTIME_BEATEN', 'LAPTIME_COMPARE', 'SYSTEM', 'ADMIN', 'SPOTTING_MATCH');
 
 -- CreateEnum
-CREATE TYPE "NotificationEntityType" AS ENUM ('POST', 'COMMENT', 'USER', 'PROFILE', 'BATTLE', 'CHALLENGE', 'SUBMIT_LAB_TIME', 'LAB_TIME', 'PRIZE', 'PAYMENT', 'EVENT', 'OTHER');
+CREATE TYPE "NotificationEntityType" AS ENUM ('POST', 'COMMENT', 'USER', 'PROFILE', 'BATTLE', 'CHALLENGE', 'SUBMIT_LAB_TIME', 'LAB_TIME', 'PRIZE', 'PAYMENT', 'EVENT', 'SPOTTING_REQUEST', 'OTHER');
 
 -- CreateEnum
 CREATE TYPE "NotificationChannel" AS ENUM ('IN_APP', 'PUSH', 'EMAIL');
@@ -934,7 +934,8 @@ CREATE TABLE "Hashtag" (
     "description" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "isFeatured" BOOLEAN NOT NULL DEFAULT false,
-    "createdBy" "HashtagCreatedBy" NOT NULL DEFAULT 'ADMIN',
+    "createdBy" "HashtagCreatedBy" NOT NULL DEFAULT 'USER',
+    "createdByUserId" UUID,
     "usageCount" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -1080,7 +1081,7 @@ CREATE TABLE "LabTime" (
     "id" UUID NOT NULL,
     "profileId" UUID NOT NULL,
     "trackName" VARCHAR(255) NOT NULL,
-    "trackLayout" VARCHAR(255),
+    "trackLayout" VARCHAR(255) NOT NULL,
     "latitude" DECIMAL(10,7),
     "longitude" DECIMAL(10,7),
     "garageId" UUID NOT NULL,
@@ -1088,30 +1089,30 @@ CREATE TABLE "LabTime" (
     "vehicleId" UUID NOT NULL,
     "vehicleName" VARCHAR(255),
     "lapTimeMs" INTEGER NOT NULL,
-    "dateSet" TIMESTAMPTZ(6) NOT NULL,
+    "dateSet" TIMESTAMPTZ(6),
     "videoUrl" VARCHAR(500),
-    "telemetryMedia" TEXT[] DEFAULT ARRAY[]::TEXT[],
-    "transmission" "Transmission" NOT NULL DEFAULT 'MANUAL',
-    "drivetrain" "DriveTrain" NOT NULL DEFAULT 'RWD',
-    "timeOfDay" TEXT NOT NULL,
-    "sessionType" "SessionType" NOT NULL DEFAULT 'TRACK_DAY',
-    "weather" "Weather" NOT NULL DEFAULT 'Sunny',
-    "trackCondition" "TrackCondition" NOT NULL DEFAULT 'Dry',
+    "telemetryMedia" JSONB DEFAULT '[]',
+    "transmission" "Transmission" DEFAULT 'MANUAL',
+    "drivetrain" "DriveTrain" DEFAULT 'RWD',
+    "timeOfDay" TEXT,
+    "sessionType" "SessionType" DEFAULT 'TRACK_DAY',
+    "weather" "Weather" DEFAULT 'Sunny',
+    "trackCondition" "TrackCondition" DEFAULT 'Dry',
     "airTemp" INTEGER,
     "trackTemp" INTEGER,
     "humidity" INTEGER,
-    "tireBrand" TEXT NOT NULL,
-    "tireModel" TEXT NOT NULL,
-    "tireCompund" "TireCompound" NOT NULL DEFAULT 'SOFT',
+    "tireBrand" TEXT,
+    "tireModel" TEXT,
+    "tireCompund" "TireCompound" DEFAULT 'SOFT',
     "tireWear" INTEGER,
     "frontTireSize" INTEGER,
     "frontPressure" TEXT,
     "rearTireSize" INTEGER,
     "rearPressure" TEXT,
-    "drivingStyle" "DriveStyle" NOT NULL DEFAULT 'Moderate_Balanced_Approach',
+    "drivingStyle" "DriveStyle" DEFAULT 'Moderate_Balanced_Approach',
     "fuelLoad" INTEGER,
     "driverWeight" INTEGER,
-    "additionalNotes" TEXT NOT NULL,
+    "additionalNotes" TEXT,
     "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMPTZ(6) NOT NULL,
 
@@ -1934,7 +1935,7 @@ CREATE TABLE "WheelsTires" (
 CREATE TABLE "WishList" (
     "id" UUID NOT NULL,
     "userId" UUID NOT NULL,
-    "postId" UUID NOT NULL,
+    "productId" UUID NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "WishList_pkey" PRIMARY KEY ("id")
@@ -2536,7 +2537,7 @@ CREATE INDEX "VirtualSimRacingEvent_dateAndTime_idx" ON "VirtualSimRacingEvent"(
 CREATE UNIQUE INDEX "WheelsTires_advancedCarDataId_key" ON "WheelsTires"("advancedCarDataId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "WishList_userId_postId_key" ON "WishList"("userId", "postId");
+CREATE UNIQUE INDEX "WishList_userId_productId_key" ON "WishList"("userId", "productId");
 
 -- CreateIndex
 CREATE INDEX "_PostHashtags_B_index" ON "_PostHashtags"("B");
@@ -2696,6 +2697,9 @@ ALTER TABLE "Garage" ADD CONSTRAINT "Garage_profileId_fkey" FOREIGN KEY ("profil
 
 -- AddForeignKey
 ALTER TABLE "HardwareSetup" ADD CONSTRAINT "HardwareSetup_simRacingId_fkey" FOREIGN KEY ("simRacingId") REFERENCES "SimRacingProfile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Hashtag" ADD CONSTRAINT "Hashtag_createdByUserId_fkey" FOREIGN KEY ("createdByUserId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "HeadToHeadBattle" ADD CONSTRAINT "HeadToHeadBattle_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -3037,7 +3041,7 @@ ALTER TABLE "WheelsTires" ADD CONSTRAINT "WheelsTires_advancedCarDataId_fkey" FO
 ALTER TABLE "WishList" ADD CONSTRAINT "WishList_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "WishList" ADD CONSTRAINT "WishList_postId_fkey" FOREIGN KEY ("postId") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "WishList" ADD CONSTRAINT "WishList_productId_fkey" FOREIGN KEY ("productId") REFERENCES "ProductList"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_PostHashtags" ADD CONSTRAINT "_PostHashtags_A_fkey" FOREIGN KEY ("A") REFERENCES "Hashtag"("id") ON DELETE CASCADE ON UPDATE CASCADE;

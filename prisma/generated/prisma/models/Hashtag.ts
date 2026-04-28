@@ -41,6 +41,7 @@ export type HashtagMinAggregateOutputType = {
   isActive: boolean | null
   isFeatured: boolean | null
   createdBy: $Enums.HashtagCreatedBy | null
+  createdByUserId: string | null
   usageCount: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -53,6 +54,7 @@ export type HashtagMaxAggregateOutputType = {
   isActive: boolean | null
   isFeatured: boolean | null
   createdBy: $Enums.HashtagCreatedBy | null
+  createdByUserId: string | null
   usageCount: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -65,6 +67,7 @@ export type HashtagCountAggregateOutputType = {
   isActive: number
   isFeatured: number
   createdBy: number
+  createdByUserId: number
   usageCount: number
   createdAt: number
   updatedAt: number
@@ -87,6 +90,7 @@ export type HashtagMinAggregateInputType = {
   isActive?: true
   isFeatured?: true
   createdBy?: true
+  createdByUserId?: true
   usageCount?: true
   createdAt?: true
   updatedAt?: true
@@ -99,6 +103,7 @@ export type HashtagMaxAggregateInputType = {
   isActive?: true
   isFeatured?: true
   createdBy?: true
+  createdByUserId?: true
   usageCount?: true
   createdAt?: true
   updatedAt?: true
@@ -111,6 +116,7 @@ export type HashtagCountAggregateInputType = {
   isActive?: true
   isFeatured?: true
   createdBy?: true
+  createdByUserId?: true
   usageCount?: true
   createdAt?: true
   updatedAt?: true
@@ -210,6 +216,7 @@ export type HashtagGroupByOutputType = {
   isActive: boolean
   isFeatured: boolean
   createdBy: $Enums.HashtagCreatedBy
+  createdByUserId: string | null
   usageCount: number
   createdAt: Date
   updatedAt: Date
@@ -245,9 +252,11 @@ export type HashtagWhereInput = {
   isActive?: Prisma.BoolFilter<"Hashtag"> | boolean
   isFeatured?: Prisma.BoolFilter<"Hashtag"> | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFilter<"Hashtag"> | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.UuidNullableFilter<"Hashtag"> | string | null
   usageCount?: Prisma.IntFilter<"Hashtag"> | number
   createdAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
+  createdByUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   posts?: Prisma.PostListRelationFilter
 }
 
@@ -258,9 +267,11 @@ export type HashtagOrderByWithRelationInput = {
   isActive?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  createdByUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   usageCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  createdByUser?: Prisma.UserOrderByWithRelationInput
   posts?: Prisma.PostOrderByRelationAggregateInput
 }
 
@@ -274,9 +285,11 @@ export type HashtagWhereUniqueInput = Prisma.AtLeast<{
   isActive?: Prisma.BoolFilter<"Hashtag"> | boolean
   isFeatured?: Prisma.BoolFilter<"Hashtag"> | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFilter<"Hashtag"> | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.UuidNullableFilter<"Hashtag"> | string | null
   usageCount?: Prisma.IntFilter<"Hashtag"> | number
   createdAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
+  createdByUser?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
   posts?: Prisma.PostListRelationFilter
 }, "id" | "tag">
 
@@ -287,6 +300,7 @@ export type HashtagOrderByWithAggregationInput = {
   isActive?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  createdByUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   usageCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -307,6 +321,7 @@ export type HashtagScalarWhereWithAggregatesInput = {
   isActive?: Prisma.BoolWithAggregatesFilter<"Hashtag"> | boolean
   isFeatured?: Prisma.BoolWithAggregatesFilter<"Hashtag"> | boolean
   createdBy?: Prisma.EnumHashtagCreatedByWithAggregatesFilter<"Hashtag"> | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.UuidNullableWithAggregatesFilter<"Hashtag"> | string | null
   usageCount?: Prisma.IntWithAggregatesFilter<"Hashtag"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Hashtag"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Hashtag"> | Date | string
@@ -322,6 +337,7 @@ export type HashtagCreateInput = {
   usageCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  createdByUser?: Prisma.UserCreateNestedOneWithoutHashtagsInput
   posts?: Prisma.PostCreateNestedManyWithoutHashtagsInput
 }
 
@@ -332,6 +348,7 @@ export type HashtagUncheckedCreateInput = {
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: $Enums.HashtagCreatedBy
+  createdByUserId?: string | null
   usageCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -348,6 +365,7 @@ export type HashtagUpdateInput = {
   usageCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdByUser?: Prisma.UserUpdateOneWithoutHashtagsNestedInput
   posts?: Prisma.PostUpdateManyWithoutHashtagsNestedInput
 }
 
@@ -358,6 +376,7 @@ export type HashtagUncheckedUpdateInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usageCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -371,6 +390,7 @@ export type HashtagCreateManyInput = {
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: $Enums.HashtagCreatedBy
+  createdByUserId?: string | null
   usageCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -395,6 +415,7 @@ export type HashtagUncheckedUpdateManyInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usageCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -407,6 +428,7 @@ export type HashtagCountOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  createdByUserId?: Prisma.SortOrder
   usageCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -423,6 +445,7 @@ export type HashtagMaxOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  createdByUserId?: Prisma.SortOrder
   usageCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -435,6 +458,7 @@ export type HashtagMinOrderByAggregateInput = {
   isActive?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
+  createdByUserId?: Prisma.SortOrder
   usageCount?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -496,6 +520,48 @@ export type HashtagUncheckedUpdateManyWithoutPostsNestedInput = {
   deleteMany?: Prisma.HashtagScalarWhereInput | Prisma.HashtagScalarWhereInput[]
 }
 
+export type HashtagCreateNestedManyWithoutCreatedByUserInput = {
+  create?: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput> | Prisma.HashtagCreateWithoutCreatedByUserInput[] | Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput[]
+  connectOrCreate?: Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput | Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput[]
+  createMany?: Prisma.HashtagCreateManyCreatedByUserInputEnvelope
+  connect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+}
+
+export type HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput = {
+  create?: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput> | Prisma.HashtagCreateWithoutCreatedByUserInput[] | Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput[]
+  connectOrCreate?: Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput | Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput[]
+  createMany?: Prisma.HashtagCreateManyCreatedByUserInputEnvelope
+  connect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+}
+
+export type HashtagUpdateManyWithoutCreatedByUserNestedInput = {
+  create?: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput> | Prisma.HashtagCreateWithoutCreatedByUserInput[] | Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput[]
+  connectOrCreate?: Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput | Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput[]
+  upsert?: Prisma.HashtagUpsertWithWhereUniqueWithoutCreatedByUserInput | Prisma.HashtagUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+  createMany?: Prisma.HashtagCreateManyCreatedByUserInputEnvelope
+  set?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  disconnect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  delete?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  connect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  update?: Prisma.HashtagUpdateWithWhereUniqueWithoutCreatedByUserInput | Prisma.HashtagUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+  updateMany?: Prisma.HashtagUpdateManyWithWhereWithoutCreatedByUserInput | Prisma.HashtagUpdateManyWithWhereWithoutCreatedByUserInput[]
+  deleteMany?: Prisma.HashtagScalarWhereInput | Prisma.HashtagScalarWhereInput[]
+}
+
+export type HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput = {
+  create?: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput> | Prisma.HashtagCreateWithoutCreatedByUserInput[] | Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput[]
+  connectOrCreate?: Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput | Prisma.HashtagCreateOrConnectWithoutCreatedByUserInput[]
+  upsert?: Prisma.HashtagUpsertWithWhereUniqueWithoutCreatedByUserInput | Prisma.HashtagUpsertWithWhereUniqueWithoutCreatedByUserInput[]
+  createMany?: Prisma.HashtagCreateManyCreatedByUserInputEnvelope
+  set?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  disconnect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  delete?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  connect?: Prisma.HashtagWhereUniqueInput | Prisma.HashtagWhereUniqueInput[]
+  update?: Prisma.HashtagUpdateWithWhereUniqueWithoutCreatedByUserInput | Prisma.HashtagUpdateWithWhereUniqueWithoutCreatedByUserInput[]
+  updateMany?: Prisma.HashtagUpdateManyWithWhereWithoutCreatedByUserInput | Prisma.HashtagUpdateManyWithWhereWithoutCreatedByUserInput[]
+  deleteMany?: Prisma.HashtagScalarWhereInput | Prisma.HashtagScalarWhereInput[]
+}
+
 export type HashtagCreateWithoutPostsInput = {
   id?: string
   tag: string
@@ -506,6 +572,7 @@ export type HashtagCreateWithoutPostsInput = {
   usageCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
+  createdByUser?: Prisma.UserCreateNestedOneWithoutHashtagsInput
 }
 
 export type HashtagUncheckedCreateWithoutPostsInput = {
@@ -515,6 +582,7 @@ export type HashtagUncheckedCreateWithoutPostsInput = {
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: $Enums.HashtagCreatedBy
+  createdByUserId?: string | null
   usageCount?: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -551,9 +619,62 @@ export type HashtagScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Hashtag"> | boolean
   isFeatured?: Prisma.BoolFilter<"Hashtag"> | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFilter<"Hashtag"> | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.UuidNullableFilter<"Hashtag"> | string | null
   usageCount?: Prisma.IntFilter<"Hashtag"> | number
   createdAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Hashtag"> | Date | string
+}
+
+export type HashtagCreateWithoutCreatedByUserInput = {
+  id?: string
+  tag: string
+  description?: string | null
+  isActive?: boolean
+  isFeatured?: boolean
+  createdBy?: $Enums.HashtagCreatedBy
+  usageCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  posts?: Prisma.PostCreateNestedManyWithoutHashtagsInput
+}
+
+export type HashtagUncheckedCreateWithoutCreatedByUserInput = {
+  id?: string
+  tag: string
+  description?: string | null
+  isActive?: boolean
+  isFeatured?: boolean
+  createdBy?: $Enums.HashtagCreatedBy
+  usageCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutHashtagsInput
+}
+
+export type HashtagCreateOrConnectWithoutCreatedByUserInput = {
+  where: Prisma.HashtagWhereUniqueInput
+  create: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput>
+}
+
+export type HashtagCreateManyCreatedByUserInputEnvelope = {
+  data: Prisma.HashtagCreateManyCreatedByUserInput | Prisma.HashtagCreateManyCreatedByUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type HashtagUpsertWithWhereUniqueWithoutCreatedByUserInput = {
+  where: Prisma.HashtagWhereUniqueInput
+  update: Prisma.XOR<Prisma.HashtagUpdateWithoutCreatedByUserInput, Prisma.HashtagUncheckedUpdateWithoutCreatedByUserInput>
+  create: Prisma.XOR<Prisma.HashtagCreateWithoutCreatedByUserInput, Prisma.HashtagUncheckedCreateWithoutCreatedByUserInput>
+}
+
+export type HashtagUpdateWithWhereUniqueWithoutCreatedByUserInput = {
+  where: Prisma.HashtagWhereUniqueInput
+  data: Prisma.XOR<Prisma.HashtagUpdateWithoutCreatedByUserInput, Prisma.HashtagUncheckedUpdateWithoutCreatedByUserInput>
+}
+
+export type HashtagUpdateManyWithWhereWithoutCreatedByUserInput = {
+  where: Prisma.HashtagScalarWhereInput
+  data: Prisma.XOR<Prisma.HashtagUpdateManyMutationInput, Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserInput>
 }
 
 export type HashtagUpdateWithoutPostsInput = {
@@ -566,6 +687,7 @@ export type HashtagUpdateWithoutPostsInput = {
   usageCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdByUser?: Prisma.UserUpdateOneWithoutHashtagsNestedInput
 }
 
 export type HashtagUncheckedUpdateWithoutPostsInput = {
@@ -575,12 +697,64 @@ export type HashtagUncheckedUpdateWithoutPostsInput = {
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usageCount?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type HashtagUncheckedUpdateManyWithoutPostsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tag?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  createdByUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usageCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type HashtagCreateManyCreatedByUserInput = {
+  id?: string
+  tag: string
+  description?: string | null
+  isActive?: boolean
+  isFeatured?: boolean
+  createdBy?: $Enums.HashtagCreatedBy
+  usageCount?: number
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type HashtagUpdateWithoutCreatedByUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tag?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  usageCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  posts?: Prisma.PostUpdateManyWithoutHashtagsNestedInput
+}
+
+export type HashtagUncheckedUpdateWithoutCreatedByUserInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tag?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdBy?: Prisma.EnumHashtagCreatedByFieldUpdateOperationsInput | $Enums.HashtagCreatedBy
+  usageCount?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  posts?: Prisma.PostUncheckedUpdateManyWithoutHashtagsNestedInput
+}
+
+export type HashtagUncheckedUpdateManyWithoutCreatedByUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tag?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -630,9 +804,11 @@ export type HashtagSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: boolean
+  createdByUserId?: boolean
   usageCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
   posts?: boolean | Prisma.Hashtag$postsArgs<ExtArgs>
   _count?: boolean | Prisma.HashtagCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["hashtag"]>
@@ -644,9 +820,11 @@ export type HashtagSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: boolean
+  createdByUserId?: boolean
   usageCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
 }, ExtArgs["result"]["hashtag"]>
 
 export type HashtagSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -656,9 +834,11 @@ export type HashtagSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: boolean
+  createdByUserId?: boolean
   usageCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
 }, ExtArgs["result"]["hashtag"]>
 
 export type HashtagSelectScalar = {
@@ -668,22 +848,29 @@ export type HashtagSelectScalar = {
   isActive?: boolean
   isFeatured?: boolean
   createdBy?: boolean
+  createdByUserId?: boolean
   usageCount?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type HashtagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tag" | "description" | "isActive" | "isFeatured" | "createdBy" | "usageCount" | "createdAt" | "updatedAt", ExtArgs["result"]["hashtag"]>
+export type HashtagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tag" | "description" | "isActive" | "isFeatured" | "createdBy" | "createdByUserId" | "usageCount" | "createdAt" | "updatedAt", ExtArgs["result"]["hashtag"]>
 export type HashtagInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
   posts?: boolean | Prisma.Hashtag$postsArgs<ExtArgs>
   _count?: boolean | Prisma.HashtagCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type HashtagIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type HashtagIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type HashtagIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
+}
+export type HashtagIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  createdByUser?: boolean | Prisma.Hashtag$createdByUserArgs<ExtArgs>
+}
 
 export type $HashtagPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Hashtag"
   objects: {
+    createdByUser: Prisma.$UserPayload<ExtArgs> | null
     posts: Prisma.$PostPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -693,6 +880,7 @@ export type $HashtagPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     isActive: boolean
     isFeatured: boolean
     createdBy: $Enums.HashtagCreatedBy
+    createdByUserId: string | null
     usageCount: number
     createdAt: Date
     updatedAt: Date
@@ -1090,6 +1278,7 @@ readonly fields: HashtagFieldRefs;
  */
 export interface Prisma__HashtagClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  createdByUser<T extends Prisma.Hashtag$createdByUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Hashtag$createdByUserArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   posts<T extends Prisma.Hashtag$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Hashtag$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1126,6 +1315,7 @@ export interface HashtagFieldRefs {
   readonly isActive: Prisma.FieldRef<"Hashtag", 'Boolean'>
   readonly isFeatured: Prisma.FieldRef<"Hashtag", 'Boolean'>
   readonly createdBy: Prisma.FieldRef<"Hashtag", 'HashtagCreatedBy'>
+  readonly createdByUserId: Prisma.FieldRef<"Hashtag", 'String'>
   readonly usageCount: Prisma.FieldRef<"Hashtag", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Hashtag", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Hashtag", 'DateTime'>
@@ -1378,6 +1568,10 @@ export type HashtagCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.HashtagCreateManyInput | Prisma.HashtagCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HashtagIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1448,6 +1642,10 @@ export type HashtagUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Hashtags to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HashtagIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1514,6 +1712,25 @@ export type HashtagDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Hashtags to delete.
    */
   limit?: number
+}
+
+/**
+ * Hashtag.createdByUser
+ */
+export type Hashtag$createdByUserArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
 }
 
 /**

@@ -776,6 +776,7 @@ export const HashtagScalarFieldEnum = {
   isActive: 'isActive',
   isFeatured: 'isFeatured',
   createdBy: 'createdBy',
+  createdByUserId: 'createdByUserId',
   usageCount: 'usageCount',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

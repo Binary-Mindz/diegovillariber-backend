@@ -7,15 +7,18 @@ import {
 import { CreateHashtagDto } from './dto/create-hashtag.dto';
 import { UpdateHashtagDto } from './dto/update-hashtag.dto';
 import { HashtagQueryDto } from './dto/hashtag-query.dto';
+import { HashtagCreatedBy } from '../../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class HashtagService {
   constructor(private prisma: PrismaService) {}
 
-  // ============ ADMIN ============
+  async createHashtag(dto: CreateHashtagDto, userId: string) {
+    const tag = dto.tag.toLowerCase().trim().replace(/^#/, '');
 
-  async createHashtag(dto: CreateHashtagDto) {
-    const tag = dto.tag.toLowerCase().trim();
+    if (!tag) {
+      throw new BadRequestException('Hashtag is required');
+    }
 
     const exists = await this.prisma.hashtag.findUnique({
       where: { tag },
@@ -28,17 +31,24 @@ export class HashtagService {
     return this.prisma.hashtag.create({
       data: {
         tag,
-        description: dto.description
+        description: dto.description,
+         createdBy: HashtagCreatedBy.USER,
+        createdByUserId: userId,
+        isActive: true,
       },
     });
   }
 
-  async updateHashtag(id: string, dto: UpdateHashtagDto) {
+  async updateHashtag(id: string, dto: UpdateHashtagDto, userId: string) {
     const hashtag = await this.prisma.hashtag.findUnique({
       where: { id },
     });
 
     if (!hashtag) throw new NotFoundException('Hashtag not found');
+
+    if (hashtag.createdByUserId !== userId) {
+      throw new BadRequestException('You can update only your own hashtag');
+    }
 
     return this.prisma.hashtag.update({
       where: { id },
@@ -46,13 +56,17 @@ export class HashtagService {
     });
   }
 
-    async deleteHashtag(id: string) {
+  async deleteHashtag(id: string, userId: string) {
     const hashtag = await this.prisma.hashtag.findUnique({
       where: { id },
     });
 
     if (!hashtag) {
       throw new NotFoundException('Hashtag not found');
+    }
+
+    if (hashtag.createdByUserId !== userId) {
+      throw new BadRequestException('You can delete only your own hashtag');
     }
 
     await this.prisma.hashtag.delete({
