@@ -52,6 +52,17 @@ export class RawShiftController {
     );
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('my-voted-entries')
+  @ApiOperation({ summary: 'Get entries I already voted' })
+  async myVotedEntries(@GetUser('userId') userId: string) {
+    console.log('hitted');
+    return handleRequest(async () => {
+      return this.service.myVotedEntries(userId);
+    }, 'My voted entries fetched successfully');
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get RawShift battle details' })
   @ApiResponse({ status: 200 })
@@ -178,16 +189,6 @@ export class RawShiftController {
     return handleRequest(async () => {
       return this.service.voteEntry(entryId, userId, dto);
     }, 'Vote submitted successfully');
-  }
-
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @Get('my-voted-entries')
-  @ApiOperation({ summary: 'Get entries I already voted' })
-  async myVotedEntries(@GetUser('userId') userId: string) {
-    return handleRequest(async () => {
-      return this.service.myVotedEntries(userId);
-    }, 'My voted entries fetched successfully');
   }
 
   @ApiBearerAuth()
