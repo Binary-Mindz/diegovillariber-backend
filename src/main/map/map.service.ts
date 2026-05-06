@@ -14,7 +14,7 @@ import { findCircuitLayout } from '../program/lab-time/utils/circuit.util';
 
 @Injectable()
 export class MapService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   private getBounds(lat: number, lng: number, radiusKm: number) {
     const latDelta = radiusKm / 111;
@@ -75,9 +75,9 @@ export class MapService {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLng / 2) *
-        Math.sin(dLng / 2);
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
 
     return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
@@ -121,14 +121,20 @@ export class MapService {
       lng,
       radiusKm = 6371,
       timeRange,
+
       showSpotter = true,
       showOwner = true,
       highRated = false,
+
       showBattles = true,
       showChallenges = true,
       showEvents = true,
-      showRawShift = true,
-      showCircuits = true,
+
+      showMarketplaceCar = false,
+      showMarketplaceCarParts = false,
+      showMarketplacePhotography = false,
+      showMarketplaceSimRacing = false,
+
       regionOnly = false,
     } = query;
 
@@ -139,35 +145,29 @@ export class MapService {
         ? this.getBounds(lat, lng, radiusKm)
         : null;
 
-    const boundFilter = bounds
-      ? {
-          latitude: {
-            gte: new Prisma.Decimal(bounds.minLat),
-            lte: new Prisma.Decimal(bounds.maxLat),
-          },
-          longitude: {
-            gte: new Prisma.Decimal(bounds.minLng),
-            lte: new Prisma.Decimal(bounds.maxLng),
-          },
-        }
-      : {};
+    const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
 
-    // ✅ TIME FILTER
     const fromDate = this.getTimeRangeDate(timeRange);
 
     const createdAtFilter = fromDate
       ? {
-          createdAt: {
-            gte: fromDate,
-          },
-        }
+        createdAt: {
+          gte: fromDate,
+        },
+      }
       : {};
 
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
     if (showOwner) profileTypes.push(Type.OWNER);
 
-    // ✅ APPLY FILTER HERE
+    const marketplaceCategories: any[] = [];
+
+    if (showMarketplaceCar) marketplaceCategories.push('CAR');
+    if (showMarketplaceCarParts) marketplaceCategories.push('CAR_PARTS');
+    if (showMarketplacePhotography) marketplaceCategories.push('PHOTOGRAPHY');
+    if (showMarketplaceSimRacing) marketplaceCategories.push('SIM_RACING');
+
     const postWhere: Prisma.PostWhereInput = {
       latitude: { not: null },
       longitude: { not: null },
@@ -201,43 +201,101 @@ export class MapService {
       ...createdAtFilter,
     };
 
-    const [posts, challenges, battles, events] = await Promise.all([
-      profileTypes.length === 0
-        ? Promise.resolve<any[]>([])
-        : this.prisma.post.findMany({
+    const marketplaceWhere: Prisma.ProductListWhereInput = {
+      latitude: { not: null },
+      longitude: { not: null },
+      ...(marketplaceCategories.length > 0
+        ? { category: { in: marketplaceCategories } }
+        : {}),
+      ...boundFilter,
+      ...createdAtFilter,
+    };
+
+    const [posts, challenges, battles, events, marketplaceProducts] =
+      await Promise.all([
+        profileTypes.length === 0
+          ? Promise.resolve<any[]>([])
+          : this.prisma.post.findMany({
             where: postWhere,
             orderBy: [{ createdAt: 'desc' }],
           }),
 
-      showChallenges
-        ? this.prisma.challenge.findMany({
+        showChallenges
+          ? this.prisma.challenge.findMany({
             where: challengeWhere,
             orderBy: [{ startDate: 'asc' }],
           })
-        : Promise.resolve([]),
+          : Promise.resolve([]),
 
-      showBattles
-        ? this.prisma.headToHeadBattle.findMany({
+        showBattles
+          ? this.prisma.headToHeadBattle.findMany({
             where: battleWhere,
             orderBy: [{ startDate: 'asc' }],
           })
-        : Promise.resolve([]),
+          : Promise.resolve([]),
 
-      showEvents
-        ? this.prisma.event.findMany({
+        showEvents
+          ? this.prisma.event.findMany({
             where: eventWhere,
             orderBy: [{ startDate: 'asc' }],
           })
-        : Promise.resolve([]),
-    ]);
+          : Promise.resolve([]),
+
+        marketplaceCategories.length > 0
+          ? this.prisma.productList.findMany({
+            where: marketplaceWhere,
+            orderBy: [{ createdAt: 'desc' }],
+            include: {
+              owner: {
+                select: {
+                  id: true,
+                  email: true,
+                  profile: {
+                    select: {
+                      profileName: true,
+                      imageUrl: true,
+                    },
+                  },
+                },
+              },
+              car: {
+                select: {
+                  id: true,
+                  make: true,
+                  model: true,
+                  image: true,
+                  displayName: true,
+                },
+              },
+            },
+          })
+          : Promise.resolve([]),
+      ]);
+
+    const marketplaceMarkers = marketplaceProducts.map((product) => ({
+      ...product,
+      markerType: 'MARKETPLACE',
+      type: 'marketplace',
+    }));
 
     return {
-      total: posts.length + challenges.length + battles.length + events.length,
+      total:
+        posts.length +
+        challenges.length +
+        battles.length +
+        events.length +
+        marketplaceMarkers.length,
       filters: query,
-      markers: [...posts, ...challenges, ...battles, ...events],
+      markers: [
+        ...posts,
+        ...challenges,
+        ...battles,
+        ...events,
+        ...marketplaceMarkers,
+      ],
     };
   }
-  
+
   async getMapDetails(type: string, id: string) {
     if (type === 'spot') {
       return this.prisma.post.findUnique({
