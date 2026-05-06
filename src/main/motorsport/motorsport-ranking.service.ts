@@ -44,33 +44,50 @@ export class MotorsportRankingService {
     }
   }
 
-  private getDateFilter(duration?: RankingDuration) {
-    const now = new Date();
+ private getDateFilter(duration?: RankingDuration) {
+  const now = new Date();
 
-    switch (duration) {
-      case RankingDuration.TODAY: {
-        const start = new Date(now);
-        start.setHours(0, 0, 0, 0);
-        return { gte: start };
-      }
+  switch (duration) {
+    case RankingDuration.TODAY: {
+      const start = new Date(now);
+      start.setHours(0, 0, 0, 0);
 
-      case RankingDuration.WEEK: {
-        const start = new Date(now);
-        start.setDate(start.getDate() - 7);
-        return { gte: start };
-      }
+      const end = new Date(now);
+      end.setHours(23, 59, 59, 999);
 
-      case RankingDuration.MONTH: {
-        const start = new Date(now);
-        start.setDate(start.getDate() - 30);
-        return { gte: start };
-      }
-
-      case RankingDuration.ALL:
-      default:
-        return undefined;
+      return {
+        gte: start,
+        lte: end,
+      };
     }
+
+    case RankingDuration.WEEK: {
+      const start = new Date(now);
+      start.setDate(start.getDate() - 7);
+      start.setHours(0, 0, 0, 0);
+
+      return {
+        gte: start,
+        lte: now,
+      };
+    }
+
+    case RankingDuration.MONTH: {
+      const start = new Date(now);
+      start.setDate(start.getDate() - 30);
+      start.setHours(0, 0, 0, 0);
+
+      return {
+        gte: start,
+        lte: now,
+      };
+    }
+
+    case RankingDuration.ALL:
+    default:
+      return undefined;
   }
+}
 
   private buildPagination(page = 1, limit = 10) {
     const safePage = Number(page) || 1;
@@ -234,55 +251,62 @@ export class MotorsportRankingService {
   }
 
   async getSplitScreenRankings(query: MotorsportRankingQueryDto) {
-    const page = query.page || 1;
-    const limit = query.limit || 10;
-    const createdAtFilter = this.getDateFilter(query.duration);
+  const page = query.page || 1;
+  const limit = query.limit || 10;
+  const createdAtFilter = this.getDateFilter(query.duration);
 
-    const participants = await this.prisma.splitScreenBattleParticipant.findMany({
-      where: {
-        battle: {
-          status: {
-            in: [
-              SplitScreenBattleStatus.LIVE,
-              SplitScreenBattleStatus.COMPLETED,
-            ],
-          },
-          ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+  const participants = await this.prisma.splitScreenBattleParticipant.findMany({
+    where: {
+      votes: {
+        gt: 0,
+      },
+      battle: {
+        status: {
+          in: [
+            SplitScreenBattleStatus.LIVE,
+            SplitScreenBattleStatus.COMPLETED,
+          ],
         },
+        ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
       },
-      select: {
-        userId: true,
-        votes: true,
-      },
-    });
+    },
+    select: {
+      userId: true,
+      votes: true,
+    },
+  });
 
-    const userVoteMap = new Map<string, number>();
+  const userVoteMap = new Map<string, number>();
 
-    for (const participant of participants) {
-      const current = userVoteMap.get(participant.userId) || 0;
-      userVoteMap.set(participant.userId, current + (participant.votes || 0));
-    }
-
-    const rankingRows = Array.from(userVoteMap.entries())
-      .map(([userId, totalVotes]) => ({
-        userId,
-        totalVotes,
-      }))
-      .sort((a, b) => b.totalVotes - a.totalVotes);
-
-    const hydrated = await this.hydrateUsers(
-      rankingRows,
-      MotorsportRankingType.SPLIT_SCREEN,
-      page,
-      limit,
-    );
-
-    return {
-      rankingType: MotorsportRankingType.SPLIT_SCREEN,
-      title: 'Top Split Screen Winner',
-      ...hydrated,
-    };
+  for (const participant of participants) {
+    const current = userVoteMap.get(participant.userId) || 0;
+    userVoteMap.set(participant.userId, current + (participant.votes || 0));
   }
+
+  const rankingRows = Array.from(userVoteMap.entries())
+    .map(([userId, totalVotes]) => ({
+      userId,
+      totalVotes,
+    }))
+    .filter((row) => row.totalVotes > 0)
+    .sort((a, b) => b.totalVotes - a.totalVotes);
+
+  const hydrated = await this.hydrateUsers(
+    rankingRows,
+    MotorsportRankingType.SPLIT_SCREEN,
+    page,
+    limit,
+  );
+
+  return {
+    rankingType: MotorsportRankingType.SPLIT_SCREEN,
+    title: 'Top Split Screen Winner',
+    duration: query.duration || RankingDuration.ALL,
+    filterNote:
+      'Split screen duration is filtered by battle createdAt because votes are stored as total counter.',
+    ...hydrated,
+  };
+}
 
   async getRawShiftRankings(query: MotorsportRankingQueryDto) {
     const page = query.page || 1;
@@ -372,66 +396,48 @@ export class MotorsportRankingService {
   }
 
   async getPrestigeRankings(query: MotorsportRankingQueryDto) {
-    const page = query.page || 1;
-    const limit = query.limit || 10;
+  const page = query.page || 1;
+  const limit = query.limit || 10;
+  const createdAtFilter = this.getDateFilter(query.duration);
 
-    const users = await this.prisma.user.findMany({
-      select: {
-        id: true,
-        email: true,
-        totalPoints: true,
-      },
-    });
+  const userPointRows = await this.prisma.userPoint.findMany({
+    where: {
+      ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+    },
+    select: {
+      userId: true,
+      points: true,
+    },
+  });
 
-    const userIds = users.map((u) => u.id);
+  const pointMap = new Map<string, number>();
 
-    let userPointRows: { userId: string; points: number }[] = [];
-
-    try {
-      userPointRows = await this.prisma.userPoint.findMany({
-        where: {
-          userId: {
-            in: userIds,
-          },
-        },
-        select: {
-          userId: true,
-          points: true,
-        },
-      });
-    } catch {
-      userPointRows = [];
-    }
-
-    const pointMap = new Map<string, number>();
-
-    for (const row of userPointRows) {
-      const current = pointMap.get(row.userId) || 0;
-      pointMap.set(row.userId, current + (row.points || 0));
-    }
-
-    const rankingRows = users
-      .map((user) => ({
-        userId: user.id,
-        prestigePoints: pointMap.has(user.id)
-          ? pointMap.get(user.id) || 0
-          : user.totalPoints || 0,
-      }))
-      .sort((a, b) => b.prestigePoints - a.prestigePoints);
-
-    const hydrated = await this.hydrateUsers(
-      rankingRows,
-      MotorsportRankingType.PRESTIGE,
-      page,
-      limit,
-    );
-
-    return {
-      rankingType: MotorsportRankingType.PRESTIGE,
-      title: 'Top Prestige Point',
-      ...hydrated,
-    };
+  for (const row of userPointRows) {
+    const current = pointMap.get(row.userId) || 0;
+    pointMap.set(row.userId, current + (row.points || 0));
   }
+
+  const rankingRows = Array.from(pointMap.entries())
+    .map(([userId, prestigePoints]) => ({
+      userId,
+      prestigePoints,
+    }))
+    .sort((a, b) => b.prestigePoints - a.prestigePoints);
+
+  const hydrated = await this.hydrateUsers(
+    rankingRows,
+    MotorsportRankingType.PRESTIGE,
+    page,
+    limit,
+  );
+
+  return {
+    rankingType: MotorsportRankingType.PRESTIGE,
+    title: 'Top Prestige Point',
+    duration: query.duration || RankingDuration.ALL,
+    ...hydrated,
+  };
+}
 
   async getRankingSummary(query: MotorsportRankingQueryDto) {
     const [head2head, splitScreen, rawshift, prestige] = await Promise.all([
