@@ -1161,6 +1161,35 @@ export const ProgramType = {
 export type ProgramType = (typeof ProgramType)[keyof typeof ProgramType]
 
 
+export const CarWhereFound = {
+  DEALER: 'DEALER',
+  PRIVATE_SELLER: 'PRIVATE_SELLER',
+  AUCTION: 'AUCTION',
+  ONLINE_MARKETPLACE: 'ONLINE_MARKETPLACE',
+  IMPORTED: 'IMPORTED',
+  GIFT: 'GIFT',
+  OTHER: 'OTHER'
+} as const
+
+export type CarWhereFound = (typeof CarWhereFound)[keyof typeof CarWhereFound]
+
+
+export const CarMilestoneType = {
+  PURCHASE: 'PURCHASE',
+  SERVICE: 'SERVICE',
+  REPAIR: 'REPAIR',
+  MODIFICATION: 'MODIFICATION',
+  ACCIDENT: 'ACCIDENT',
+  TRIP: 'TRIP',
+  TRACK_DAY: 'TRACK_DAY',
+  INSURANCE: 'INSURANCE',
+  DOCUMENT: 'DOCUMENT',
+  OTHER: 'OTHER'
+} as const
+
+export type CarMilestoneType = (typeof CarMilestoneType)[keyof typeof CarMilestoneType]
+
+
 export const SplitScreenArenaStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'

@@ -399,6 +399,8 @@ export const ModelName = {
   BikeUsageAndNotes: 'BikeUsageAndNotes',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
+  CarStory: 'CarStory',
+  CarMilestone: 'CarMilestone',
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
   ChallengeSubmission: 'ChallengeSubmission',
@@ -500,7 +502,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "badge" | "profileBadge" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "badge" | "profileBadge" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "carStory" | "carMilestone" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1611,6 +1613,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CarCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CarCountAggregateOutputType> | number
+        }
+      }
+    }
+    CarStory: {
+      payload: Prisma.$CarStoryPayload<ExtArgs>
+      fields: Prisma.CarStoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CarStoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CarStoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        findFirst: {
+          args: Prisma.CarStoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CarStoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        findMany: {
+          args: Prisma.CarStoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>[]
+        }
+        create: {
+          args: Prisma.CarStoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        createMany: {
+          args: Prisma.CarStoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CarStoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>[]
+        }
+        delete: {
+          args: Prisma.CarStoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        update: {
+          args: Prisma.CarStoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.CarStoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CarStoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CarStoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.CarStoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarStoryPayload>
+        }
+        aggregate: {
+          args: Prisma.CarStoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCarStory>
+        }
+        groupBy: {
+          args: Prisma.CarStoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarStoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CarStoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarStoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    CarMilestone: {
+      payload: Prisma.$CarMilestonePayload<ExtArgs>
+      fields: Prisma.CarMilestoneFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CarMilestoneFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CarMilestoneFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        findFirst: {
+          args: Prisma.CarMilestoneFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CarMilestoneFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        findMany: {
+          args: Prisma.CarMilestoneFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>[]
+        }
+        create: {
+          args: Prisma.CarMilestoneCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        createMany: {
+          args: Prisma.CarMilestoneCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CarMilestoneCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>[]
+        }
+        delete: {
+          args: Prisma.CarMilestoneDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        update: {
+          args: Prisma.CarMilestoneUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        deleteMany: {
+          args: Prisma.CarMilestoneDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CarMilestoneUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CarMilestoneUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>[]
+        }
+        upsert: {
+          args: Prisma.CarMilestoneUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CarMilestonePayload>
+        }
+        aggregate: {
+          args: Prisma.CarMilestoneAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCarMilestone>
+        }
+        groupBy: {
+          args: Prisma.CarMilestoneGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarMilestoneGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CarMilestoneCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CarMilestoneCountAggregateOutputType> | number
         }
       }
     }
@@ -8268,6 +8418,46 @@ export const CarScalarFieldEnum = {
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
 
 
+export const CarStoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  carName: 'carName',
+  firstDayPhotoUrl: 'firstDayPhotoUrl',
+  currentPhotoUrl: 'currentPhotoUrl',
+  purchaseDate: 'purchaseDate',
+  whereFound: 'whereFound',
+  price: 'price',
+  purchaseMileage: 'purchaseMileage',
+  currentMileage: 'currentMileage',
+  isDreamCar: 'isDreamCar',
+  purchaseStory: 'purchaseStory',
+  futurePlans: 'futurePlans',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarStoryScalarFieldEnum = (typeof CarStoryScalarFieldEnum)[keyof typeof CarStoryScalarFieldEnum]
+
+
+export const CarMilestoneScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  carStoryId: 'carStoryId',
+  title: 'title',
+  type: 'type',
+  date: 'date',
+  description: 'description',
+  cost: 'cost',
+  photoUrl: 'photoUrl',
+  mileageAtTime: 'mileageAtTime',
+  shopOrMechanic: 'shopOrMechanic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarMilestoneScalarFieldEnum = (typeof CarMilestoneScalarFieldEnum)[keyof typeof CarMilestoneScalarFieldEnum]
+
+
 export const ChallengeScalarFieldEnum = {
   id: 'id',
   creatorId: 'creatorId',
@@ -9993,6 +10183,48 @@ export type ListEnumDriveCategoryFieldRefInput<$PrismaModel> = FieldRefInputType
 
 
 /**
+ * Reference to a field of type 'CarWhereFound'
+ */
+export type EnumCarWhereFoundFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarWhereFound'>
+    
+
+
+/**
+ * Reference to a field of type 'CarWhereFound[]'
+ */
+export type ListEnumCarWhereFoundFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarWhereFound[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CarMilestoneType'
+ */
+export type EnumCarMilestoneTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarMilestoneType'>
+    
+
+
+/**
+ * Reference to a field of type 'CarMilestoneType[]'
+ */
+export type ListEnumCarMilestoneTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CarMilestoneType[]'>
+    
+
+
+/**
  * Reference to a field of type 'ChallengeType'
  */
 export type EnumChallengeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChallengeType'>
@@ -10031,20 +10263,6 @@ export type EnumParticipationScopeFieldRefInput<$PrismaModel> = FieldRefInputTyp
  * Reference to a field of type 'ParticipationScope[]'
  */
 export type ListEnumParticipationScopeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ParticipationScope[]'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -11319,6 +11537,8 @@ export type GlobalOmitConfig = {
   bikeUsageAndNotes?: Prisma.BikeUsageAndNotesOmit
   businessProfile?: Prisma.BusinessProfileOmit
   car?: Prisma.CarOmit
+  carStory?: Prisma.CarStoryOmit
+  carMilestone?: Prisma.CarMilestoneOmit
   challenge?: Prisma.ChallengeOmit
   challengeParticipant?: Prisma.ChallengeParticipantOmit
   challengeSubmission?: Prisma.ChallengeSubmissionOmit

@@ -134,4 +134,8 @@ model User {
   postViewInsights PostViewInsight[]
 
   hashtags Hashtag[] @relation("UserCreatedHashtags")
+
+  carStories CarStory[]
+
+  carMilestones CarMilestone[]
 }

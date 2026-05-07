@@ -113,6 +113,16 @@ export type BusinessProfile = Prisma.BusinessProfileModel
  */
 export type Car = Prisma.CarModel
 /**
+ * Model CarStory
+ * 
+ */
+export type CarStory = Prisma.CarStoryModel
+/**
+ * Model CarMilestone
+ * 
+ */
+export type CarMilestone = Prisma.CarMilestoneModel
+/**
  * Model Challenge
  * 
  */

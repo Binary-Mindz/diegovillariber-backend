@@ -484,6 +484,8 @@ export type UserWhereInput = {
   postRatings?: Prisma.PostRatingListRelationFilter
   postViewInsights?: Prisma.PostViewInsightListRelationFilter
   hashtags?: Prisma.HashtagListRelationFilter
+  carStories?: Prisma.CarStoryListRelationFilter
+  carMilestones?: Prisma.CarMilestoneListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -579,6 +581,8 @@ export type UserOrderByWithRelationInput = {
   postRatings?: Prisma.PostRatingOrderByRelationAggregateInput
   postViewInsights?: Prisma.PostViewInsightOrderByRelationAggregateInput
   hashtags?: Prisma.HashtagOrderByRelationAggregateInput
+  carStories?: Prisma.CarStoryOrderByRelationAggregateInput
+  carMilestones?: Prisma.CarMilestoneOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -677,6 +681,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   postRatings?: Prisma.PostRatingListRelationFilter
   postViewInsights?: Prisma.PostViewInsightListRelationFilter
   hashtags?: Prisma.HashtagListRelationFilter
+  carStories?: Prisma.CarStoryListRelationFilter
+  carMilestones?: Prisma.CarMilestoneListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -842,6 +848,8 @@ export type UserCreateInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -937,6 +945,8 @@ export type UserUncheckedCreateInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -1032,6 +1042,8 @@ export type UserUpdateInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -1127,6 +1139,8 @@ export type UserUncheckedUpdateInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -1365,6 +1379,34 @@ export type UserUpdateOneRequiredWithoutAmbassadorProgramsNestedInput = {
   upsert?: Prisma.UserUpsertWithoutAmbassadorProgramsInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAmbassadorProgramsInput, Prisma.UserUpdateWithoutAmbassadorProgramsInput>, Prisma.UserUncheckedUpdateWithoutAmbassadorProgramsInput>
+}
+
+export type UserCreateNestedOneWithoutCarStoriesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCarStoriesInput, Prisma.UserUncheckedCreateWithoutCarStoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCarStoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCarStoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCarStoriesInput, Prisma.UserUncheckedCreateWithoutCarStoriesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCarStoriesInput
+  upsert?: Prisma.UserUpsertWithoutCarStoriesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCarStoriesInput, Prisma.UserUpdateWithoutCarStoriesInput>, Prisma.UserUncheckedUpdateWithoutCarStoriesInput>
+}
+
+export type UserCreateNestedOneWithoutCarMilestonesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCarMilestonesInput, Prisma.UserUncheckedCreateWithoutCarMilestonesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCarMilestonesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCarMilestonesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCarMilestonesInput, Prisma.UserUncheckedCreateWithoutCarMilestonesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCarMilestonesInput
+  upsert?: Prisma.UserUpsertWithoutCarMilestonesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCarMilestonesInput, Prisma.UserUpdateWithoutCarMilestonesInput>, Prisma.UserUncheckedUpdateWithoutCarMilestonesInput>
 }
 
 export type UserCreateNestedOneWithoutChallengesInput = {
@@ -2389,6 +2431,8 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
@@ -2483,6 +2527,8 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAmbassadorProgramsInput = {
@@ -2593,6 +2639,8 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
@@ -2687,6 +2735,808 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCarStoriesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCarStoriesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCarStoriesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCarStoriesInput, Prisma.UserUncheckedCreateWithoutCarStoriesInput>
+}
+
+export type UserUpsertWithoutCarStoriesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCarStoriesInput, Prisma.UserUncheckedUpdateWithoutCarStoriesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCarStoriesInput, Prisma.UserUncheckedCreateWithoutCarStoriesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCarStoriesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCarStoriesInput, Prisma.UserUncheckedUpdateWithoutCarStoriesInput>
+}
+
+export type UserUpdateWithoutCarStoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCarStoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCarMilestonesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCarMilestonesInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCarMilestonesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCarMilestonesInput, Prisma.UserUncheckedCreateWithoutCarMilestonesInput>
+}
+
+export type UserUpsertWithoutCarMilestonesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCarMilestonesInput, Prisma.UserUncheckedUpdateWithoutCarMilestonesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCarMilestonesInput, Prisma.UserUncheckedCreateWithoutCarMilestonesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCarMilestonesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCarMilestonesInput, Prisma.UserUncheckedUpdateWithoutCarMilestonesInput>
+}
+
+export type UserUpdateWithoutCarMilestonesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCarMilestonesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengesInput = {
@@ -2781,6 +3631,8 @@ export type UserCreateWithoutChallengesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengesInput = {
@@ -2875,6 +3727,8 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengesInput = {
@@ -2985,6 +3839,8 @@ export type UserUpdateWithoutChallengesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengesInput = {
@@ -3079,6 +3935,8 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeParticipantsInput = {
@@ -3173,6 +4031,8 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
@@ -3267,6 +4127,8 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeParticipantsInput = {
@@ -3377,6 +4239,8 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
@@ -3471,6 +4335,8 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeReactionsInput = {
@@ -3565,6 +4431,8 @@ export type UserCreateWithoutChallengeReactionsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeReactionsInput = {
@@ -3659,6 +4527,8 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeReactionsInput = {
@@ -3769,6 +4639,8 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
@@ -3863,6 +4735,8 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeVotesInput = {
@@ -3957,6 +4831,8 @@ export type UserCreateWithoutChallengeVotesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeVotesInput = {
@@ -4051,6 +4927,8 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeVotesInput = {
@@ -4161,6 +5039,8 @@ export type UserUpdateWithoutChallengeVotesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeVotesInput = {
@@ -4255,6 +5135,8 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutChallengeCommentsInput = {
@@ -4349,6 +5231,8 @@ export type UserCreateWithoutChallengeCommentsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutChallengeCommentsInput = {
@@ -4443,6 +5327,8 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutChallengeCommentsInput = {
@@ -4553,6 +5439,8 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
@@ -4647,6 +5535,8 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -4741,6 +5631,8 @@ export type UserCreateWithoutCommentsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -4835,6 +5727,8 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -4945,6 +5839,8 @@ export type UserUpdateWithoutCommentsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -5039,6 +5935,8 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutConversationParticipantsInput = {
@@ -5133,6 +6031,8 @@ export type UserCreateWithoutConversationParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutConversationParticipantsInput = {
@@ -5227,6 +6127,8 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutConversationParticipantsInput = {
@@ -5337,6 +6239,8 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
@@ -5431,6 +6335,8 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEventsInput = {
@@ -5525,6 +6431,8 @@ export type UserCreateWithoutEventsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -5619,6 +6527,8 @@ export type UserUncheckedCreateWithoutEventsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEventsInput = {
@@ -5729,6 +6639,8 @@ export type UserUpdateWithoutEventsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -5823,6 +6735,8 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFollowingInput = {
@@ -5917,6 +6831,8 @@ export type UserCreateWithoutFollowingInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowingInput = {
@@ -6011,6 +6927,8 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowingInput = {
@@ -6110,6 +7028,8 @@ export type UserCreateWithoutFollowersInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFollowersInput = {
@@ -6204,6 +7124,8 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFollowersInput = {
@@ -6314,6 +7236,8 @@ export type UserUpdateWithoutFollowingInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowingInput = {
@@ -6408,6 +7332,8 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutFollowersInput = {
@@ -6513,6 +7439,8 @@ export type UserUpdateWithoutFollowersInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowersInput = {
@@ -6607,6 +7535,8 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHashtagsInput = {
@@ -6701,6 +7631,8 @@ export type UserCreateWithoutHashtagsInput = {
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHashtagsInput = {
@@ -6795,6 +7727,8 @@ export type UserUncheckedCreateWithoutHashtagsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHashtagsInput = {
@@ -6905,6 +7839,8 @@ export type UserUpdateWithoutHashtagsInput = {
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHashtagsInput = {
@@ -6999,6 +7935,8 @@ export type UserUncheckedUpdateWithoutHashtagsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -7093,6 +8031,8 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
@@ -7187,6 +8127,8 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesCreatedInput = {
@@ -7286,6 +8228,8 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
@@ -7380,6 +8324,8 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHeadToHeadBattlesWonInput = {
@@ -7490,6 +8436,8 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
@@ -7584,6 +8532,8 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutHeadToHeadBattlesWonInput = {
@@ -7689,6 +8639,8 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
@@ -7783,6 +8735,8 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleParticipantsInput = {
@@ -7877,6 +8831,8 @@ export type UserCreateWithoutBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleParticipantsInput = {
@@ -7971,6 +8927,8 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleParticipantsInput = {
@@ -8081,6 +9039,8 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
@@ -8175,6 +9135,8 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleInvitationsInviterInput = {
@@ -8269,6 +9231,8 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
@@ -8363,6 +9327,8 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInviterInput = {
@@ -8462,6 +9428,8 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
@@ -8556,6 +9524,8 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleInvitationsInvitteInput = {
@@ -8666,6 +9636,8 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
@@ -8760,6 +9732,8 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBattleInvitationsInvitteInput = {
@@ -8865,6 +9839,8 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
@@ -8959,6 +9935,8 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleSubmissionsInput = {
@@ -9053,6 +10031,8 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
@@ -9147,6 +10127,8 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleSubmissionsInput = {
@@ -9257,6 +10239,8 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
@@ -9351,6 +10335,8 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleVotesInput = {
@@ -9445,6 +10431,8 @@ export type UserCreateWithoutBattleVotesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleVotesInput = {
@@ -9539,6 +10527,8 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleVotesInput = {
@@ -9649,6 +10639,8 @@ export type UserUpdateWithoutBattleVotesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleVotesInput = {
@@ -9743,6 +10735,8 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBattleCommentsInput = {
@@ -9837,6 +10831,8 @@ export type UserCreateWithoutBattleCommentsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBattleCommentsInput = {
@@ -9931,6 +10927,8 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBattleCommentsInput = {
@@ -10041,6 +11039,8 @@ export type UserUpdateWithoutBattleCommentsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBattleCommentsInput = {
@@ -10135,6 +11135,8 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutHidePostsInput = {
@@ -10229,6 +11231,8 @@ export type UserCreateWithoutHidePostsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutHidePostsInput = {
@@ -10323,6 +11327,8 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutHidePostsInput = {
@@ -10433,6 +11439,8 @@ export type UserUpdateWithoutHidePostsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHidePostsInput = {
@@ -10527,6 +11535,8 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLikesInput = {
@@ -10621,6 +11631,8 @@ export type UserCreateWithoutLikesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLikesInput = {
@@ -10715,6 +11727,8 @@ export type UserUncheckedCreateWithoutLikesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLikesInput = {
@@ -10825,6 +11839,8 @@ export type UserUpdateWithoutLikesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLikesInput = {
@@ -10919,6 +11935,8 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLivesInput = {
@@ -11013,6 +12031,8 @@ export type UserCreateWithoutLivesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLivesInput = {
@@ -11107,6 +12127,8 @@ export type UserUncheckedCreateWithoutLivesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLivesInput = {
@@ -11217,6 +12239,8 @@ export type UserUpdateWithoutLivesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLivesInput = {
@@ -11311,6 +12335,8 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveParticipantsInput = {
@@ -11405,6 +12431,8 @@ export type UserCreateWithoutLiveParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveParticipantsInput = {
@@ -11499,6 +12527,8 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveParticipantsInput = {
@@ -11609,6 +12639,8 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
@@ -11703,6 +12735,8 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLiveRewardsInput = {
@@ -11797,6 +12831,8 @@ export type UserCreateWithoutLiveRewardsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsInput = {
@@ -11891,6 +12927,8 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsInput = {
@@ -11990,6 +13028,8 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
@@ -12084,6 +13124,8 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLiveRewardsGivenInput = {
@@ -12194,6 +13236,8 @@ export type UserUpdateWithoutLiveRewardsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsInput = {
@@ -12288,6 +13332,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutLiveRewardsGivenInput = {
@@ -12393,6 +13439,8 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
@@ -12487,6 +13535,8 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessagesInput = {
@@ -12581,6 +13631,8 @@ export type UserCreateWithoutMessagesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessagesInput = {
@@ -12675,6 +13727,8 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessagesInput = {
@@ -12785,6 +13839,8 @@ export type UserUpdateWithoutMessagesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessagesInput = {
@@ -12879,6 +13935,8 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutMessageReceiptsInput = {
@@ -12973,6 +14031,8 @@ export type UserCreateWithoutMessageReceiptsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutMessageReceiptsInput = {
@@ -13067,6 +14127,8 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutMessageReceiptsInput = {
@@ -13177,6 +14239,8 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
@@ -13271,6 +14335,8 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -13365,6 +14431,8 @@ export type UserCreateWithoutNotificationsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -13459,6 +14527,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -13558,6 +14628,8 @@ export type UserCreateWithoutNotificationsActorInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsActorInput = {
@@ -13652,6 +14724,8 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsActorInput = {
@@ -13762,6 +14836,8 @@ export type UserUpdateWithoutNotificationsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -13856,6 +14932,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutNotificationsActorInput = {
@@ -13961,6 +15039,8 @@ export type UserUpdateWithoutNotificationsActorInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsActorInput = {
@@ -14055,6 +15135,8 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationPreferencesInput = {
@@ -14149,6 +15231,8 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
@@ -14243,6 +15327,8 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationPreferencesInput = {
@@ -14353,6 +15439,8 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
@@ -14447,6 +15535,8 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDeviceTokensInput = {
@@ -14541,6 +15631,8 @@ export type UserCreateWithoutDeviceTokensInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDeviceTokensInput = {
@@ -14635,6 +15727,8 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDeviceTokensInput = {
@@ -14745,6 +15839,8 @@ export type UserUpdateWithoutDeviceTokensInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDeviceTokensInput = {
@@ -14839,6 +15935,8 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOfficialPartnersInput = {
@@ -14933,6 +16031,8 @@ export type UserCreateWithoutOfficialPartnersInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOfficialPartnersInput = {
@@ -15027,6 +16127,8 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOfficialPartnersInput = {
@@ -15137,6 +16239,8 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
@@ -15231,6 +16335,8 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPaymentsInput = {
@@ -15325,6 +16431,8 @@ export type UserCreateWithoutPaymentsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPaymentsInput = {
@@ -15419,6 +16527,8 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPaymentsInput = {
@@ -15529,6 +16639,8 @@ export type UserUpdateWithoutPaymentsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPaymentsInput = {
@@ -15623,6 +16735,8 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -15717,6 +16831,8 @@ export type UserCreateWithoutPostsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -15811,6 +16927,8 @@ export type UserUncheckedCreateWithoutPostsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -15910,6 +17028,8 @@ export type UserCreateWithoutTaggedInPostsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTaggedInPostsInput = {
@@ -16004,6 +17124,8 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTaggedInPostsInput = {
@@ -16114,6 +17236,8 @@ export type UserUpdateWithoutPostsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -16208,6 +17332,8 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutTaggedInPostsInput = {
@@ -16352,6 +17478,8 @@ export type UserCreateWithoutPostViewInsightsInput = {
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostViewInsightsInput = {
@@ -16446,6 +17574,8 @@ export type UserUncheckedCreateWithoutPostViewInsightsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostViewInsightsInput = {
@@ -16556,6 +17686,8 @@ export type UserUpdateWithoutPostViewInsightsInput = {
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostViewInsightsInput = {
@@ -16650,6 +17782,8 @@ export type UserUncheckedUpdateWithoutPostViewInsightsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostRatingsInput = {
@@ -16744,6 +17878,8 @@ export type UserCreateWithoutPostRatingsInput = {
   spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostRatingsInput = {
@@ -16838,6 +17974,8 @@ export type UserUncheckedCreateWithoutPostRatingsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostRatingsInput = {
@@ -16948,6 +18086,8 @@ export type UserUpdateWithoutPostRatingsInput = {
   spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostRatingsInput = {
@@ -17042,6 +18182,8 @@ export type UserUncheckedUpdateWithoutPostRatingsInput = {
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPrizesInput = {
@@ -17136,6 +18278,8 @@ export type UserCreateWithoutPrizesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrizesInput = {
@@ -17230,6 +18374,8 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrizesInput = {
@@ -17340,6 +18486,8 @@ export type UserUpdateWithoutPrizesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrizesInput = {
@@ -17434,6 +18582,8 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProductListsInput = {
@@ -17528,6 +18678,8 @@ export type UserCreateWithoutProductListsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProductListsInput = {
@@ -17622,6 +18774,8 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProductListsInput = {
@@ -17732,6 +18886,8 @@ export type UserUpdateWithoutProductListsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProductListsInput = {
@@ -17826,6 +18982,8 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -17920,6 +19078,8 @@ export type UserCreateWithoutProfileInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -18014,6 +19174,8 @@ export type UserUncheckedCreateWithoutProfileInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -18124,6 +19286,8 @@ export type UserUpdateWithoutProfileInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -18218,6 +19382,8 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRacingVotesGivenInput = {
@@ -18312,6 +19478,8 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
@@ -18406,6 +19574,8 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesGivenInput = {
@@ -18505,6 +19675,8 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
@@ -18599,6 +19771,8 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRacingVotesReceivedInput = {
@@ -18709,6 +19883,8 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
@@ -18803,6 +19979,8 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRacingVotesReceivedInput = {
@@ -18908,6 +20086,8 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
@@ -19002,6 +20182,8 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftBattlesCreatedInput = {
@@ -19096,6 +20278,8 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
@@ -19190,6 +20374,8 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesCreatedInput = {
@@ -19289,6 +20475,8 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
@@ -19383,6 +20571,8 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftBattlesWonInput = {
@@ -19493,6 +20683,8 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
@@ -19587,6 +20779,8 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutRawShiftBattlesWonInput = {
@@ -19692,6 +20886,8 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
@@ -19786,6 +20982,8 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftParticipantsInput = {
@@ -19880,6 +21078,8 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
@@ -19974,6 +21174,8 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftParticipantsInput = {
@@ -20084,6 +21286,8 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
@@ -20178,6 +21382,8 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftEntriesInput = {
@@ -20272,6 +21478,8 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
@@ -20366,6 +21574,8 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftEntriesInput = {
@@ -20476,6 +21686,8 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
@@ -20570,6 +21782,8 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftVotesInput = {
@@ -20664,6 +21878,8 @@ export type UserCreateWithoutRawShiftVotesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftVotesInput = {
@@ -20758,6 +21974,8 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftVotesInput = {
@@ -20868,6 +22086,8 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
@@ -20962,6 +22182,8 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRawShiftCommentsInput = {
@@ -21056,6 +22278,8 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
@@ -21150,6 +22374,8 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRawShiftCommentsInput = {
@@ -21260,6 +22486,8 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
@@ -21354,6 +22582,8 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReportsInput = {
@@ -21448,6 +22678,8 @@ export type UserCreateWithoutReportsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReportsInput = {
@@ -21542,6 +22774,8 @@ export type UserUncheckedCreateWithoutReportsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReportsInput = {
@@ -21652,6 +22886,8 @@ export type UserUpdateWithoutReportsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReportsInput = {
@@ -21746,6 +22982,8 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRepostsInput = {
@@ -21840,6 +23078,8 @@ export type UserCreateWithoutRepostsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRepostsInput = {
@@ -21934,6 +23174,8 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRepostsInput = {
@@ -22044,6 +23286,8 @@ export type UserUpdateWithoutRepostsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRepostsInput = {
@@ -22138,6 +23382,8 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavePostsInput = {
@@ -22232,6 +23478,8 @@ export type UserCreateWithoutSavePostsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavePostsInput = {
@@ -22326,6 +23574,8 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavePostsInput = {
@@ -22436,6 +23686,8 @@ export type UserUpdateWithoutSavePostsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavePostsInput = {
@@ -22530,6 +23782,8 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSharesInput = {
@@ -22624,6 +23878,8 @@ export type UserCreateWithoutSharesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSharesInput = {
@@ -22718,6 +23974,8 @@ export type UserUncheckedCreateWithoutSharesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSharesInput = {
@@ -22828,6 +24086,8 @@ export type UserUpdateWithoutSharesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSharesInput = {
@@ -22922,6 +24182,8 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenMatchRequestsInput = {
@@ -23016,6 +24278,8 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -23110,6 +24374,8 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -23220,6 +24486,8 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -23314,6 +24582,8 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -23408,6 +24678,8 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -23502,6 +24774,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -23601,6 +24875,8 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -23695,6 +24971,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -23805,6 +25083,8 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -23899,6 +25179,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -24004,6 +25286,8 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -24098,6 +25382,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -24192,6 +25478,8 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -24286,6 +25574,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -24396,6 +25686,8 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -24490,6 +25782,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSplitScreenBattleVotesInput = {
@@ -24584,6 +25878,8 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
@@ -24678,6 +25974,8 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSplitScreenBattleVotesInput = {
@@ -24788,6 +26086,8 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
@@ -24882,6 +26182,8 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSpottingMatchesInput = {
@@ -24976,6 +26278,8 @@ export type UserCreateWithoutSpottingMatchesInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSpottingMatchesInput = {
@@ -25070,6 +26374,8 @@ export type UserUncheckedCreateWithoutSpottingMatchesInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSpottingMatchesInput = {
@@ -25180,6 +26486,8 @@ export type UserUpdateWithoutSpottingMatchesInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
@@ -25274,6 +26582,8 @@ export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSpottingRequestsInput = {
@@ -25368,6 +26678,8 @@ export type UserCreateWithoutSpottingRequestsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSpottingRequestsInput = {
@@ -25462,6 +26774,8 @@ export type UserUncheckedCreateWithoutSpottingRequestsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSpottingRequestsInput = {
@@ -25572,6 +26886,8 @@ export type UserUpdateWithoutSpottingRequestsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
@@ -25666,6 +26982,8 @@ export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBlockedUsersInput = {
@@ -25760,6 +27078,8 @@ export type UserCreateWithoutBlockedUsersInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedUsersInput = {
@@ -25854,6 +27174,8 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedUsersInput = {
@@ -25953,6 +27275,8 @@ export type UserCreateWithoutBlockedByUsersInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBlockedByUsersInput = {
@@ -26047,6 +27371,8 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBlockedByUsersInput = {
@@ -26157,6 +27483,8 @@ export type UserUpdateWithoutBlockedUsersInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedUsersInput = {
@@ -26251,6 +27579,8 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpsertWithoutBlockedByUsersInput = {
@@ -26356,6 +27686,8 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
@@ -26450,6 +27782,8 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserPointsInput = {
@@ -26544,6 +27878,8 @@ export type UserCreateWithoutUserPointsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserPointsInput = {
@@ -26638,6 +27974,8 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserPointsInput = {
@@ -26748,6 +28086,8 @@ export type UserUpdateWithoutUserPointsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserPointsInput = {
@@ -26842,6 +28182,8 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutWishListsInput = {
@@ -26936,6 +28278,8 @@ export type UserCreateWithoutWishListsInput = {
   postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutWishListsInput = {
@@ -27030,6 +28374,8 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
   postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutWishListsInput = {
@@ -27140,6 +28486,8 @@ export type UserUpdateWithoutWishListsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWishListsInput = {
@@ -27234,6 +28582,8 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUpdateWithoutTaggedInPostsInput = {
@@ -27328,6 +28678,8 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
@@ -27422,6 +28774,8 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaggedInPostsInput = {
@@ -27523,6 +28877,8 @@ export type UserCountOutputType = {
   postRatings: number
   postViewInsights: number
   hashtags: number
+  carStories: number
+  carMilestones: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -27588,6 +28944,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   postRatings?: boolean | UserCountOutputTypeCountPostRatingsArgs
   postViewInsights?: boolean | UserCountOutputTypeCountPostViewInsightsArgs
   hashtags?: boolean | UserCountOutputTypeCountHashtagsArgs
+  carStories?: boolean | UserCountOutputTypeCountCarStoriesArgs
+  carMilestones?: boolean | UserCountOutputTypeCountCarMilestonesArgs
 }
 
 /**
@@ -28034,6 +29392,20 @@ export type UserCountOutputTypeCountHashtagsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.HashtagWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCarStoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarStoryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCarMilestonesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarMilestoneWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -28128,6 +29500,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
   postViewInsights?: boolean | Prisma.User$postViewInsightsArgs<ExtArgs>
   hashtags?: boolean | Prisma.User$hashtagsArgs<ExtArgs>
+  carStories?: boolean | Prisma.User$carStoriesArgs<ExtArgs>
+  carMilestones?: boolean | Prisma.User$carMilestonesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -28290,6 +29664,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   postRatings?: boolean | Prisma.User$postRatingsArgs<ExtArgs>
   postViewInsights?: boolean | Prisma.User$postViewInsightsArgs<ExtArgs>
   hashtags?: boolean | Prisma.User$hashtagsArgs<ExtArgs>
+  carStories?: boolean | Prisma.User$carStoriesArgs<ExtArgs>
+  carMilestones?: boolean | Prisma.User$carMilestonesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -28362,6 +29738,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     postRatings: Prisma.$PostRatingPayload<ExtArgs>[]
     postViewInsights: Prisma.$PostViewInsightPayload<ExtArgs>[]
     hashtags: Prisma.$HashtagPayload<ExtArgs>[]
+    carStories: Prisma.$CarStoryPayload<ExtArgs>[]
+    carMilestones: Prisma.$CarMilestonePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -28850,6 +30228,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   postRatings<T extends Prisma.User$postRatingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postRatingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostRatingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   postViewInsights<T extends Prisma.User$postViewInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postViewInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostViewInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hashtags<T extends Prisma.User$hashtagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$hashtagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HashtagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  carStories<T extends Prisma.User$carStoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$carStoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarStoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  carMilestones<T extends Prisma.User$carMilestonesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$carMilestonesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarMilestonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -30818,6 +32198,54 @@ export type User$hashtagsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.HashtagScalarFieldEnum | Prisma.HashtagScalarFieldEnum[]
+}
+
+/**
+ * User.carStories
+ */
+export type User$carStoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarStory
+   */
+  select?: Prisma.CarStorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CarStory
+   */
+  omit?: Prisma.CarStoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarStoryInclude<ExtArgs> | null
+  where?: Prisma.CarStoryWhereInput
+  orderBy?: Prisma.CarStoryOrderByWithRelationInput | Prisma.CarStoryOrderByWithRelationInput[]
+  cursor?: Prisma.CarStoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarStoryScalarFieldEnum | Prisma.CarStoryScalarFieldEnum[]
+}
+
+/**
+ * User.carMilestones
+ */
+export type User$carMilestonesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CarMilestone
+   */
+  select?: Prisma.CarMilestoneSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CarMilestone
+   */
+  omit?: Prisma.CarMilestoneOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarMilestoneInclude<ExtArgs> | null
+  where?: Prisma.CarMilestoneWhereInput
+  orderBy?: Prisma.CarMilestoneOrderByWithRelationInput | Prisma.CarMilestoneOrderByWithRelationInput[]
+  cursor?: Prisma.CarMilestoneWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarMilestoneScalarFieldEnum | Prisma.CarMilestoneScalarFieldEnum[]
 }
 
 /**

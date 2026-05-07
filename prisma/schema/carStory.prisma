@@ -1,0 +1,60 @@
+model CarStory {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  carName String
+  firstDayPhotoUrl String?
+  currentPhotoUrl  String?
+
+  purchaseDate DateTime?
+  whereFound CarWhereFound?
+  price Decimal? @db.Decimal(12, 2)
+
+  purchaseMileage Int?
+  currentMileage  Int?
+
+  isDreamCar Boolean @default(false)
+
+  purchaseStory String? @db.Text
+  futurePlans   String? @db.Text
+
+  milestones CarMilestone[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model CarMilestone {
+  id String @id @default(uuid()) @db.Uuid
+
+  userId String @db.Uuid
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  carStoryId String @db.Uuid
+  carStory   CarStory @relation(fields: [carStoryId], references: [id], onDelete: Cascade)
+
+  title String
+  type  CarMilestoneType
+
+  date DateTime?
+  description String? @db.Text
+
+  cost Decimal? @db.Decimal(12, 2)
+  photoUrl String?
+
+  mileageAtTime Int?
+  shopOrMechanic String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([carStoryId])
+  @@index([type])
+  @@index([date])
+}

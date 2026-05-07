@@ -290,6 +290,12 @@ CREATE TYPE "NotificationStatus" AS ENUM ('UNREAD', 'READ', 'ARCHIVED');
 CREATE TYPE "ProgramType" AS ENUM ('CHALLENGE', 'RAW_SHIFT', 'SPLIT_SCREEN', 'HEAD_TO_HEAD');
 
 -- CreateEnum
+CREATE TYPE "CarWhereFound" AS ENUM ('DEALER', 'PRIVATE_SELLER', 'AUCTION', 'ONLINE_MARKETPLACE', 'IMPORTED', 'GIFT', 'OTHER');
+
+-- CreateEnum
+CREATE TYPE "CarMilestoneType" AS ENUM ('PURCHASE', 'SERVICE', 'REPAIR', 'MODIFICATION', 'ACCIDENT', 'TRIP', 'TRACK_DAY', 'INSURANCE', 'DOCUMENT', 'OTHER');
+
+-- CreateEnum
 CREATE TYPE "SplitScreenArenaStatus" AS ENUM ('ACTIVE', 'INACTIVE');
 
 -- CreateEnum
@@ -577,6 +583,46 @@ CREATE TABLE "Car" (
     "price" INTEGER,
 
     CONSTRAINT "Car_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "CarStory" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "carName" TEXT NOT NULL,
+    "firstDayPhotoUrl" TEXT,
+    "currentPhotoUrl" TEXT,
+    "purchaseDate" TIMESTAMP(3),
+    "whereFound" "CarWhereFound",
+    "price" DECIMAL(12,2),
+    "purchaseMileage" INTEGER,
+    "currentMileage" INTEGER,
+    "isDreamCar" BOOLEAN NOT NULL DEFAULT false,
+    "purchaseStory" TEXT,
+    "futurePlans" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "CarStory_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "CarMilestone" (
+    "id" UUID NOT NULL,
+    "userId" UUID NOT NULL,
+    "carStoryId" UUID NOT NULL,
+    "title" TEXT NOT NULL,
+    "type" "CarMilestoneType" NOT NULL,
+    "date" TIMESTAMP(3),
+    "description" TEXT,
+    "cost" DECIMAL(12,2),
+    "photoUrl" TEXT,
+    "mileageAtTime" INTEGER,
+    "shopOrMechanic" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "CarMilestone_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -2018,6 +2064,24 @@ CREATE UNIQUE INDEX "BikeUsageAndNotes_advancedBikeDataId_key" ON "BikeUsageAndN
 CREATE UNIQUE INDEX "BusinessProfile_profileId_key" ON "BusinessProfile"("profileId");
 
 -- CreateIndex
+CREATE INDEX "CarStory_userId_idx" ON "CarStory"("userId");
+
+-- CreateIndex
+CREATE INDEX "CarStory_createdAt_idx" ON "CarStory"("createdAt");
+
+-- CreateIndex
+CREATE INDEX "CarMilestone_userId_idx" ON "CarMilestone"("userId");
+
+-- CreateIndex
+CREATE INDEX "CarMilestone_carStoryId_idx" ON "CarMilestone"("carStoryId");
+
+-- CreateIndex
+CREATE INDEX "CarMilestone_type_idx" ON "CarMilestone"("type");
+
+-- CreateIndex
+CREATE INDEX "CarMilestone_date_idx" ON "CarMilestone"("date");
+
+-- CreateIndex
 CREATE INDEX "Challenge_creatorId_idx" ON "Challenge"("creatorId");
 
 -- CreateIndex
@@ -2592,6 +2656,15 @@ ALTER TABLE "Car" ADD CONSTRAINT "Car_profileId_fkey" FOREIGN KEY ("profileId") 
 
 -- AddForeignKey
 ALTER TABLE "Car" ADD CONSTRAINT "Car_garageId_fkey" FOREIGN KEY ("garageId") REFERENCES "Garage"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "CarStory" ADD CONSTRAINT "CarStory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "CarMilestone" ADD CONSTRAINT "CarMilestone_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "CarMilestone" ADD CONSTRAINT "CarMilestone_carStoryId_fkey" FOREIGN KEY ("carStoryId") REFERENCES "CarStory"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Challenge" ADD CONSTRAINT "Challenge_creatorId_fkey" FOREIGN KEY ("creatorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

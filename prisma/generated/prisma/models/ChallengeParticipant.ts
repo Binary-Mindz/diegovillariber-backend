@@ -562,10 +562,6 @@ export type EnumParticipantStatusFieldUpdateOperationsInput = {
   set?: $Enums.ParticipantStatus
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type ChallengeParticipantCreateNestedOneWithoutSubmissionsInput = {
   create?: Prisma.XOR<Prisma.ChallengeParticipantCreateWithoutSubmissionsInput, Prisma.ChallengeParticipantUncheckedCreateWithoutSubmissionsInput>
   connectOrCreate?: Prisma.ChallengeParticipantCreateOrConnectWithoutSubmissionsInput

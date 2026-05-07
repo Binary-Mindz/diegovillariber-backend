@@ -66,6 +66,8 @@ export const ModelName = {
   BikeUsageAndNotes: 'BikeUsageAndNotes',
   BusinessProfile: 'BusinessProfile',
   Car: 'Car',
+  CarStory: 'CarStory',
+  CarMilestone: 'CarMilestone',
   Challenge: 'Challenge',
   ChallengeParticipant: 'ChallengeParticipant',
   ChallengeSubmission: 'ChallengeSubmission',
@@ -419,6 +421,46 @@ export const CarScalarFieldEnum = {
 } as const
 
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
+
+
+export const CarStoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  carName: 'carName',
+  firstDayPhotoUrl: 'firstDayPhotoUrl',
+  currentPhotoUrl: 'currentPhotoUrl',
+  purchaseDate: 'purchaseDate',
+  whereFound: 'whereFound',
+  price: 'price',
+  purchaseMileage: 'purchaseMileage',
+  currentMileage: 'currentMileage',
+  isDreamCar: 'isDreamCar',
+  purchaseStory: 'purchaseStory',
+  futurePlans: 'futurePlans',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarStoryScalarFieldEnum = (typeof CarStoryScalarFieldEnum)[keyof typeof CarStoryScalarFieldEnum]
+
+
+export const CarMilestoneScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  carStoryId: 'carStoryId',
+  title: 'title',
+  type: 'type',
+  date: 'date',
+  description: 'description',
+  cost: 'cost',
+  photoUrl: 'photoUrl',
+  mileageAtTime: 'mileageAtTime',
+  shopOrMechanic: 'shopOrMechanic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CarMilestoneScalarFieldEnum = (typeof CarMilestoneScalarFieldEnum)[keyof typeof CarMilestoneScalarFieldEnum]
 
 
 export const ChallengeScalarFieldEnum = {

@@ -5,7 +5,7 @@ import { ReportDto } from './dto/report-dto';
 
 @Injectable()
 export class ReportService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async createReport(userId: string, dto: ReportDto) {
     const existing = await this.prisma.report.findUnique({
