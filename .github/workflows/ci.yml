@@ -1,38 +1,40 @@
 name: CI Pipeline
 
 on:
-    push:
-        branches: [main, dev]
-    pull_request:
-        branches: [main, dev]
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-            - name: Enable Corepack (pnpm)
-              run: corepack enable
+      - name: Enable Corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.24.0 --activate
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '24'
-                  cache: 'pnpm'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'pnpm'
 
-            - name: Install dependencies
-              env:
-                DATABASE_URL: 'postgresql://postgres:postgres@db:5432/app'
-              run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        env:
+          DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/app'
+        run: pnpm install --frozen-lockfile
 
-            - name: Build application
-              run: pnpm build
+      - name: Build application
+        run: pnpm build
 
-            - name: Upload build artifacts
-              uses: actions/upload-artifact@v4
-              with:
-                  name: dist
-                  path: dist/
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
