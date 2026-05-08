@@ -315,7 +315,7 @@ export type CarWhereInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   posts?: Prisma.PostListRelationFilter
-  carStories?: Prisma.CarStoryListRelationFilter
+  story?: Prisma.XOR<Prisma.CarStoryNullableScalarRelationFilter, Prisma.CarStoryWhereInput> | null
 }
 
 export type CarOrderByWithRelationInput = {
@@ -346,7 +346,7 @@ export type CarOrderByWithRelationInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleOrderByRelationAggregateInput
   spottingRequests?: Prisma.SpottingRequestOrderByRelationAggregateInput
   posts?: Prisma.PostOrderByRelationAggregateInput
-  carStories?: Prisma.CarStoryOrderByRelationAggregateInput
+  story?: Prisma.CarStoryOrderByWithRelationInput
 }
 
 export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -380,7 +380,7 @@ export type CarWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   posts?: Prisma.PostListRelationFilter
-  carStories?: Prisma.CarStoryListRelationFilter
+  story?: Prisma.XOR<Prisma.CarStoryNullableScalarRelationFilter, Prisma.CarStoryWhereInput> | null
 }, "id">
 
 export type CarOrderByWithAggregationInput = {
@@ -455,7 +455,7 @@ export type CarCreateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateInput = {
@@ -484,7 +484,7 @@ export type CarUncheckedCreateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarUpdateInput = {
@@ -513,7 +513,7 @@ export type CarUpdateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateInput = {
@@ -542,7 +542,7 @@ export type CarUncheckedUpdateInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateManyInput = {
@@ -711,18 +711,18 @@ export type EnumDriveCategoryFieldUpdateOperationsInput = {
   set?: $Enums.DriveCategory
 }
 
-export type CarCreateNestedOneWithoutCarStoriesInput = {
-  create?: Prisma.XOR<Prisma.CarCreateWithoutCarStoriesInput, Prisma.CarUncheckedCreateWithoutCarStoriesInput>
-  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCarStoriesInput
+export type CarCreateNestedOneWithoutStoryInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutStoryInput, Prisma.CarUncheckedCreateWithoutStoryInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutStoryInput
   connect?: Prisma.CarWhereUniqueInput
 }
 
-export type CarUpdateOneRequiredWithoutCarStoriesNestedInput = {
-  create?: Prisma.XOR<Prisma.CarCreateWithoutCarStoriesInput, Prisma.CarUncheckedCreateWithoutCarStoriesInput>
-  connectOrCreate?: Prisma.CarCreateOrConnectWithoutCarStoriesInput
-  upsert?: Prisma.CarUpsertWithoutCarStoriesInput
+export type CarUpdateOneRequiredWithoutStoryNestedInput = {
+  create?: Prisma.XOR<Prisma.CarCreateWithoutStoryInput, Prisma.CarUncheckedCreateWithoutStoryInput>
+  connectOrCreate?: Prisma.CarCreateOrConnectWithoutStoryInput
+  upsert?: Prisma.CarUpsertWithoutStoryInput
   connect?: Prisma.CarWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutCarStoriesInput, Prisma.CarUpdateWithoutCarStoriesInput>, Prisma.CarUncheckedUpdateWithoutCarStoriesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CarUpdateToOneWithWhereWithoutStoryInput, Prisma.CarUpdateWithoutStoryInput>, Prisma.CarUncheckedUpdateWithoutStoryInput>
 }
 
 export type CarCreateNestedManyWithoutGarageInput = {
@@ -954,7 +954,7 @@ export type CarCreateWithoutAdvancedCarDatasInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutAdvancedCarDatasInput = {
@@ -982,7 +982,7 @@ export type CarUncheckedCreateWithoutAdvancedCarDatasInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutAdvancedCarDatasInput = {
@@ -1026,7 +1026,7 @@ export type CarUpdateWithoutAdvancedCarDatasInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutAdvancedCarDatasInput = {
@@ -1054,10 +1054,10 @@ export type CarUncheckedUpdateWithoutAdvancedCarDatasInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
-export type CarCreateWithoutCarStoriesInput = {
+export type CarCreateWithoutStoryInput = {
   id?: string
   image?: string | null
   make?: string | null
@@ -1085,7 +1085,7 @@ export type CarCreateWithoutCarStoriesInput = {
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
 }
 
-export type CarUncheckedCreateWithoutCarStoriesInput = {
+export type CarUncheckedCreateWithoutStoryInput = {
   id?: string
   profileId: string
   garageId: string
@@ -1113,23 +1113,23 @@ export type CarUncheckedCreateWithoutCarStoriesInput = {
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
 }
 
-export type CarCreateOrConnectWithoutCarStoriesInput = {
+export type CarCreateOrConnectWithoutStoryInput = {
   where: Prisma.CarWhereUniqueInput
-  create: Prisma.XOR<Prisma.CarCreateWithoutCarStoriesInput, Prisma.CarUncheckedCreateWithoutCarStoriesInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutStoryInput, Prisma.CarUncheckedCreateWithoutStoryInput>
 }
 
-export type CarUpsertWithoutCarStoriesInput = {
-  update: Prisma.XOR<Prisma.CarUpdateWithoutCarStoriesInput, Prisma.CarUncheckedUpdateWithoutCarStoriesInput>
-  create: Prisma.XOR<Prisma.CarCreateWithoutCarStoriesInput, Prisma.CarUncheckedCreateWithoutCarStoriesInput>
+export type CarUpsertWithoutStoryInput = {
+  update: Prisma.XOR<Prisma.CarUpdateWithoutStoryInput, Prisma.CarUncheckedUpdateWithoutStoryInput>
+  create: Prisma.XOR<Prisma.CarCreateWithoutStoryInput, Prisma.CarUncheckedCreateWithoutStoryInput>
   where?: Prisma.CarWhereInput
 }
 
-export type CarUpdateToOneWithWhereWithoutCarStoriesInput = {
+export type CarUpdateToOneWithWhereWithoutStoryInput = {
   where?: Prisma.CarWhereInput
-  data: Prisma.XOR<Prisma.CarUpdateWithoutCarStoriesInput, Prisma.CarUncheckedUpdateWithoutCarStoriesInput>
+  data: Prisma.XOR<Prisma.CarUpdateWithoutStoryInput, Prisma.CarUncheckedUpdateWithoutStoryInput>
 }
 
-export type CarUpdateWithoutCarStoriesInput = {
+export type CarUpdateWithoutStoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   make?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1157,7 +1157,7 @@ export type CarUpdateWithoutCarStoriesInput = {
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
 }
 
-export type CarUncheckedUpdateWithoutCarStoriesInput = {
+export type CarUncheckedUpdateWithoutStoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.StringFieldUpdateOperationsInput | string
   garageId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1210,7 +1210,7 @@ export type CarCreateWithoutGarageInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutGarageInput = {
@@ -1238,7 +1238,7 @@ export type CarUncheckedCreateWithoutGarageInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutGarageInput = {
@@ -1314,7 +1314,7 @@ export type CarCreateWithoutLegalNoticesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutLegalNoticesInput = {
@@ -1342,7 +1342,7 @@ export type CarUncheckedCreateWithoutLegalNoticesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutLegalNoticesInput = {
@@ -1386,7 +1386,7 @@ export type CarUpdateWithoutLegalNoticesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutLegalNoticesInput = {
@@ -1414,7 +1414,7 @@ export type CarUncheckedUpdateWithoutLegalNoticesInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutPostsInput = {
@@ -1442,7 +1442,7 @@ export type CarCreateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutPostsInput = {
@@ -1470,7 +1470,7 @@ export type CarUncheckedCreateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutPostsInput = {
@@ -1514,7 +1514,7 @@ export type CarUpdateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutPostsInput = {
@@ -1542,7 +1542,7 @@ export type CarUncheckedUpdateWithoutPostsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutMarketplaceProductInput = {
@@ -1570,7 +1570,7 @@ export type CarCreateWithoutMarketplaceProductInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutMarketplaceProductInput = {
@@ -1598,7 +1598,7 @@ export type CarUncheckedCreateWithoutMarketplaceProductInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutMarketplaceProductInput = {
@@ -1642,7 +1642,7 @@ export type CarUpdateWithoutMarketplaceProductInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutMarketplaceProductInput = {
@@ -1670,7 +1670,7 @@ export type CarUncheckedUpdateWithoutMarketplaceProductInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutProfileInput = {
@@ -1698,7 +1698,7 @@ export type CarCreateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutProfileInput = {
@@ -1726,7 +1726,7 @@ export type CarUncheckedCreateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutProfileInput = {
@@ -1780,7 +1780,7 @@ export type CarCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
@@ -1808,7 +1808,7 @@ export type CarUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutSplitScreenMatchRequestsInput = {
@@ -1852,7 +1852,7 @@ export type CarUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
@@ -1880,7 +1880,7 @@ export type CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -1908,7 +1908,7 @@ export type CarCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
@@ -1936,7 +1936,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutSplitScreenBattlesLeftUserInput = {
@@ -1969,7 +1969,7 @@ export type CarCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
@@ -1997,7 +1997,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutSplitScreenBattlesRightUserInput = {
@@ -2041,7 +2041,7 @@ export type CarUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
@@ -2069,7 +2069,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarUpsertWithoutSplitScreenBattlesRightUserInput = {
@@ -2108,7 +2108,7 @@ export type CarUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
@@ -2136,7 +2136,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -2164,7 +2164,7 @@ export type CarCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
@@ -2192,7 +2192,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutSplitScreenBattleParticipantsInput = {
@@ -2236,7 +2236,7 @@ export type CarUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
@@ -2264,7 +2264,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateWithoutSpottingRequestsInput = {
@@ -2292,7 +2292,7 @@ export type CarCreateWithoutSpottingRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutCarInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightCarInput
   posts?: Prisma.PostCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryCreateNestedOneWithoutCarInput
 }
 
 export type CarUncheckedCreateWithoutSpottingRequestsInput = {
@@ -2320,7 +2320,7 @@ export type CarUncheckedCreateWithoutSpottingRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutCarInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightCarInput
   posts?: Prisma.PostUncheckedCreateNestedManyWithoutCarInput
-  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutCarInput
+  story?: Prisma.CarStoryUncheckedCreateNestedOneWithoutCarInput
 }
 
 export type CarCreateOrConnectWithoutSpottingRequestsInput = {
@@ -2364,7 +2364,7 @@ export type CarUpdateWithoutSpottingRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutCarNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutSpottingRequestsInput = {
@@ -2392,7 +2392,7 @@ export type CarUncheckedUpdateWithoutSpottingRequestsInput = {
   splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutCarNestedInput
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarCreateManyGarageInput = {
@@ -2438,7 +2438,7 @@ export type CarUpdateWithoutGarageInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutGarageInput = {
@@ -2466,7 +2466,7 @@ export type CarUncheckedUpdateWithoutGarageInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutGarageInput = {
@@ -2530,7 +2530,7 @@ export type CarUpdateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateWithoutProfileInput = {
@@ -2558,7 +2558,7 @@ export type CarUncheckedUpdateWithoutProfileInput = {
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightCarNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutCarNestedInput
   posts?: Prisma.PostUncheckedUpdateManyWithoutCarNestedInput
-  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutCarNestedInput
+  story?: Prisma.CarStoryUncheckedUpdateOneWithoutCarNestedInput
 }
 
 export type CarUncheckedUpdateManyWithoutProfileInput = {
@@ -2593,7 +2593,6 @@ export type CarCountOutputType = {
   splitScreenBattlesRightUser: number
   spottingRequests: number
   posts: number
-  carStories: number
 }
 
 export type CarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2605,7 +2604,6 @@ export type CarCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.In
   splitScreenBattlesRightUser?: boolean | CarCountOutputTypeCountSplitScreenBattlesRightUserArgs
   spottingRequests?: boolean | CarCountOutputTypeCountSpottingRequestsArgs
   posts?: boolean | CarCountOutputTypeCountPostsArgs
-  carStories?: boolean | CarCountOutputTypeCountCarStoriesArgs
 }
 
 /**
@@ -2674,13 +2672,6 @@ export type CarCountOutputTypeCountPostsArgs<ExtArgs extends runtime.Types.Exten
   where?: Prisma.PostWhereInput
 }
 
-/**
- * CarCountOutputType without action
- */
-export type CarCountOutputTypeCountCarStoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CarStoryWhereInput
-}
-
 
 export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2710,7 +2701,7 @@ export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   splitScreenBattlesRightUser?: boolean | Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>
   spottingRequests?: boolean | Prisma.Car$spottingRequestsArgs<ExtArgs>
   posts?: boolean | Prisma.Car$postsArgs<ExtArgs>
-  carStories?: boolean | Prisma.Car$carStoriesArgs<ExtArgs>
+  story?: boolean | Prisma.Car$storyArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["car"]>
 
@@ -2788,7 +2779,7 @@ export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   splitScreenBattlesRightUser?: boolean | Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>
   spottingRequests?: boolean | Prisma.Car$spottingRequestsArgs<ExtArgs>
   posts?: boolean | Prisma.Car$postsArgs<ExtArgs>
-  carStories?: boolean | Prisma.Car$carStoriesArgs<ExtArgs>
+  story?: boolean | Prisma.Car$storyArgs<ExtArgs>
   _count?: boolean | Prisma.CarCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CarIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2814,7 +2805,7 @@ export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     splitScreenBattlesRightUser: Prisma.$SplitScreenBattlePayload<ExtArgs>[]
     spottingRequests: Prisma.$SpottingRequestPayload<ExtArgs>[]
     posts: Prisma.$PostPayload<ExtArgs>[]
-    carStories: Prisma.$CarStoryPayload<ExtArgs>[]
+    story: Prisma.$CarStoryPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3238,7 +3229,7 @@ export interface Prisma__CarClient<T, Null = never, ExtArgs extends runtime.Type
   splitScreenBattlesRightUser<T extends Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$splitScreenBattlesRightUserArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SplitScreenBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   spottingRequests<T extends Prisma.Car$spottingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$spottingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpottingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   posts<T extends Prisma.Car$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  carStories<T extends Prisma.Car$carStoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$carStoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarStoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  story<T extends Prisma.Car$storyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Car$storyArgs<ExtArgs>>): Prisma.Prisma__CarStoryClient<runtime.Types.Result.GetResult<Prisma.$CarStoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3891,9 +3882,9 @@ export type Car$postsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 }
 
 /**
- * Car.carStories
+ * Car.story
  */
-export type Car$carStoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Car$storyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the CarStory
    */
@@ -3907,11 +3898,6 @@ export type Car$carStoriesArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   include?: Prisma.CarStoryInclude<ExtArgs> | null
   where?: Prisma.CarStoryWhereInput
-  orderBy?: Prisma.CarStoryOrderByWithRelationInput | Prisma.CarStoryOrderByWithRelationInput[]
-  cursor?: Prisma.CarStoryWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CarStoryScalarFieldEnum | Prisma.CarStoryScalarFieldEnum[]
 }
 
 /**

@@ -589,6 +589,7 @@ CREATE TABLE "Car" (
 CREATE TABLE "CarStory" (
     "id" UUID NOT NULL,
     "userId" UUID NOT NULL,
+    "carId" UUID NOT NULL,
     "carName" TEXT NOT NULL,
     "firstDayPhotoUrl" TEXT,
     "currentPhotoUrl" TEXT,
@@ -2064,6 +2065,9 @@ CREATE UNIQUE INDEX "BikeUsageAndNotes_advancedBikeDataId_key" ON "BikeUsageAndN
 CREATE UNIQUE INDEX "BusinessProfile_profileId_key" ON "BusinessProfile"("profileId");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "CarStory_carId_key" ON "CarStory"("carId");
+
+-- CreateIndex
 CREATE INDEX "CarStory_userId_idx" ON "CarStory"("userId");
 
 -- CreateIndex
@@ -2659,6 +2663,9 @@ ALTER TABLE "Car" ADD CONSTRAINT "Car_garageId_fkey" FOREIGN KEY ("garageId") RE
 
 -- AddForeignKey
 ALTER TABLE "CarStory" ADD CONSTRAINT "CarStory_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "CarStory" ADD CONSTRAINT "CarStory_carId_fkey" FOREIGN KEY ("carId") REFERENCES "Car"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "CarMilestone" ADD CONSTRAINT "CarMilestone_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

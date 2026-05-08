@@ -36,5 +36,5 @@ model Car {
 
   posts Post[]
 
-  carStories CarStory[]
+  story CarStory?
 }
