@@ -660,6 +660,7 @@ export class LabTimeService {
           dateSet: true,
           vehicleName: true,
           vehicleType: true,
+          videoUrl: true,
           telemetryMedia: true,
           profile: {
             select: {
