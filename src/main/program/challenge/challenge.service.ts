@@ -542,7 +542,35 @@ async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto)
       where: { challengeId },
       include: {
         media: true,
-        participant: { include: { user: true } },
+        participant: {
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              phone: true,
+              role: true,
+              activeRole: true,
+              totalPoints: true,
+              balance: true,
+              likeCount: true,
+              commentCount: true,
+              shareCount: true,
+              totalVote: true,
+              activeProfileId: true,
+              profile: {
+                select: {
+                  id: true,
+                  profileName: true,
+                  imageUrl: true,
+                  bio: true,
+                  activeType: true,
+                },
+              },
+            },
+          },
+        },
+      },
         votes: true,
         reactions: true,
         comments: { include: { replies: true } },

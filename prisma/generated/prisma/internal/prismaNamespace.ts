@@ -8421,6 +8421,7 @@ export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarSca
 export const CarStoryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  carId: 'carId',
   carName: 'carName',
   firstDayPhotoUrl: 'firstDayPhotoUrl',
   currentPhotoUrl: 'currentPhotoUrl',

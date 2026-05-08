@@ -35,4 +35,6 @@ model Car {
   spottingRequests SpottingRequest[]
 
   posts Post[]
+
+  carStories CarStory[]
 }

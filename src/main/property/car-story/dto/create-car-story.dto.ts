@@ -8,13 +8,21 @@ import {
   IsOptional,
   IsString,
   IsUrl,
+  IsUUID,
   Min,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { CarWhereFound } from 'generated/prisma/enums';;
-
+import { CarWhereFound } from 'generated/prisma/enums';
 
 export class CreateCarStoryDto {
+  @ApiProperty({
+    example: '2f4a8f15-3c10-4d1a-9821-111111111111',
+    description: 'Car id for this story',
+  })
+  @IsUUID()
+  @IsNotEmpty()
+  carId!: string;
+
   @ApiProperty({ example: 'Ford Mustang' })
   @IsString()
   @IsNotEmpty()
@@ -65,16 +73,12 @@ export class CreateCarStoryDto {
   @IsBoolean()
   isDreamCar?: boolean;
 
-  @ApiPropertyOptional({
-    example: 'This was my dream car!',
-  })
+  @ApiPropertyOptional({ example: 'This was my dream car!' })
   @IsOptional()
   @IsString()
   purchaseStory?: string;
 
-  @ApiPropertyOptional({
-    example: 'I want to upgrade the exhaust and wheels.',
-  })
+  @ApiPropertyOptional({ example: 'I want to upgrade the exhaust and wheels.' })
   @IsOptional()
   @IsString()
   futurePlans?: string;

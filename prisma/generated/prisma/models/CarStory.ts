@@ -41,6 +41,7 @@ export type CarStorySumAggregateOutputType = {
 export type CarStoryMinAggregateOutputType = {
   id: string | null
   userId: string | null
+  carId: string | null
   carName: string | null
   firstDayPhotoUrl: string | null
   currentPhotoUrl: string | null
@@ -59,6 +60,7 @@ export type CarStoryMinAggregateOutputType = {
 export type CarStoryMaxAggregateOutputType = {
   id: string | null
   userId: string | null
+  carId: string | null
   carName: string | null
   firstDayPhotoUrl: string | null
   currentPhotoUrl: string | null
@@ -77,6 +79,7 @@ export type CarStoryMaxAggregateOutputType = {
 export type CarStoryCountAggregateOutputType = {
   id: number
   userId: number
+  carId: number
   carName: number
   firstDayPhotoUrl: number
   currentPhotoUrl: number
@@ -109,6 +112,7 @@ export type CarStorySumAggregateInputType = {
 export type CarStoryMinAggregateInputType = {
   id?: true
   userId?: true
+  carId?: true
   carName?: true
   firstDayPhotoUrl?: true
   currentPhotoUrl?: true
@@ -127,6 +131,7 @@ export type CarStoryMinAggregateInputType = {
 export type CarStoryMaxAggregateInputType = {
   id?: true
   userId?: true
+  carId?: true
   carName?: true
   firstDayPhotoUrl?: true
   currentPhotoUrl?: true
@@ -145,6 +150,7 @@ export type CarStoryMaxAggregateInputType = {
 export type CarStoryCountAggregateInputType = {
   id?: true
   userId?: true
+  carId?: true
   carName?: true
   firstDayPhotoUrl?: true
   currentPhotoUrl?: true
@@ -250,6 +256,7 @@ export type CarStoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type CarStoryGroupByOutputType = {
   id: string
   userId: string
+  carId: string
   carName: string
   firstDayPhotoUrl: string | null
   currentPhotoUrl: string | null
@@ -291,6 +298,7 @@ export type CarStoryWhereInput = {
   NOT?: Prisma.CarStoryWhereInput | Prisma.CarStoryWhereInput[]
   id?: Prisma.UuidFilter<"CarStory"> | string
   userId?: Prisma.UuidFilter<"CarStory"> | string
+  carId?: Prisma.UuidFilter<"CarStory"> | string
   carName?: Prisma.StringFilter<"CarStory"> | string
   firstDayPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
   currentPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
@@ -305,12 +313,14 @@ export type CarStoryWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
   milestones?: Prisma.CarMilestoneListRelationFilter
 }
 
 export type CarStoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   carName?: Prisma.SortOrder
   firstDayPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   currentPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -325,11 +335,13 @@ export type CarStoryOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  car?: Prisma.CarOrderByWithRelationInput
   milestones?: Prisma.CarMilestoneOrderByRelationAggregateInput
 }
 
 export type CarStoryWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  carId?: string
   AND?: Prisma.CarStoryWhereInput | Prisma.CarStoryWhereInput[]
   OR?: Prisma.CarStoryWhereInput[]
   NOT?: Prisma.CarStoryWhereInput | Prisma.CarStoryWhereInput[]
@@ -348,12 +360,14 @@ export type CarStoryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  car?: Prisma.XOR<Prisma.CarScalarRelationFilter, Prisma.CarWhereInput>
   milestones?: Prisma.CarMilestoneListRelationFilter
-}, "id">
+}, "id" | "carId">
 
 export type CarStoryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   carName?: Prisma.SortOrder
   firstDayPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   currentPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -380,6 +394,7 @@ export type CarStoryScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CarStoryScalarWhereWithAggregatesInput | Prisma.CarStoryScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"CarStory"> | string
   userId?: Prisma.UuidWithAggregatesFilter<"CarStory"> | string
+  carId?: Prisma.UuidWithAggregatesFilter<"CarStory"> | string
   carName?: Prisma.StringWithAggregatesFilter<"CarStory"> | string
   firstDayPhotoUrl?: Prisma.StringNullableWithAggregatesFilter<"CarStory"> | string | null
   currentPhotoUrl?: Prisma.StringNullableWithAggregatesFilter<"CarStory"> | string | null
@@ -411,12 +426,14 @@ export type CarStoryCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCarStoriesInput
+  car: Prisma.CarCreateNestedOneWithoutCarStoriesInput
   milestones?: Prisma.CarMilestoneCreateNestedManyWithoutCarStoryInput
 }
 
 export type CarStoryUncheckedCreateInput = {
   id?: string
   userId: string
+  carId: string
   carName: string
   firstDayPhotoUrl?: string | null
   currentPhotoUrl?: string | null
@@ -449,12 +466,14 @@ export type CarStoryUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCarStoriesNestedInput
+  car?: Prisma.CarUpdateOneRequiredWithoutCarStoriesNestedInput
   milestones?: Prisma.CarMilestoneUpdateManyWithoutCarStoryNestedInput
 }
 
 export type CarStoryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.StringFieldUpdateOperationsInput | string
   carName?: Prisma.StringFieldUpdateOperationsInput | string
   firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -474,6 +493,7 @@ export type CarStoryUncheckedUpdateInput = {
 export type CarStoryCreateManyInput = {
   id?: string
   userId: string
+  carId: string
   carName: string
   firstDayPhotoUrl?: string | null
   currentPhotoUrl?: string | null
@@ -509,6 +529,7 @@ export type CarStoryUpdateManyMutationInput = {
 export type CarStoryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.StringFieldUpdateOperationsInput | string
   carName?: Prisma.StringFieldUpdateOperationsInput | string
   firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -524,9 +545,20 @@ export type CarStoryUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type CarStoryListRelationFilter = {
+  every?: Prisma.CarStoryWhereInput
+  some?: Prisma.CarStoryWhereInput
+  none?: Prisma.CarStoryWhereInput
+}
+
+export type CarStoryOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type CarStoryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   carName?: Prisma.SortOrder
   firstDayPhotoUrl?: Prisma.SortOrder
   currentPhotoUrl?: Prisma.SortOrder
@@ -551,6 +583,7 @@ export type CarStoryAvgOrderByAggregateInput = {
 export type CarStoryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   carName?: Prisma.SortOrder
   firstDayPhotoUrl?: Prisma.SortOrder
   currentPhotoUrl?: Prisma.SortOrder
@@ -569,6 +602,7 @@ export type CarStoryMaxOrderByAggregateInput = {
 export type CarStoryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  carId?: Prisma.SortOrder
   carName?: Prisma.SortOrder
   firstDayPhotoUrl?: Prisma.SortOrder
   currentPhotoUrl?: Prisma.SortOrder
@@ -595,14 +629,46 @@ export type CarStoryScalarRelationFilter = {
   isNot?: Prisma.CarStoryWhereInput
 }
 
-export type CarStoryListRelationFilter = {
-  every?: Prisma.CarStoryWhereInput
-  some?: Prisma.CarStoryWhereInput
-  none?: Prisma.CarStoryWhereInput
+export type CarStoryCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput> | Prisma.CarStoryCreateWithoutCarInput[] | Prisma.CarStoryUncheckedCreateWithoutCarInput[]
+  connectOrCreate?: Prisma.CarStoryCreateOrConnectWithoutCarInput | Prisma.CarStoryCreateOrConnectWithoutCarInput[]
+  createMany?: Prisma.CarStoryCreateManyCarInputEnvelope
+  connect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
 }
 
-export type CarStoryOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type CarStoryUncheckedCreateNestedManyWithoutCarInput = {
+  create?: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput> | Prisma.CarStoryCreateWithoutCarInput[] | Prisma.CarStoryUncheckedCreateWithoutCarInput[]
+  connectOrCreate?: Prisma.CarStoryCreateOrConnectWithoutCarInput | Prisma.CarStoryCreateOrConnectWithoutCarInput[]
+  createMany?: Prisma.CarStoryCreateManyCarInputEnvelope
+  connect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+}
+
+export type CarStoryUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput> | Prisma.CarStoryCreateWithoutCarInput[] | Prisma.CarStoryUncheckedCreateWithoutCarInput[]
+  connectOrCreate?: Prisma.CarStoryCreateOrConnectWithoutCarInput | Prisma.CarStoryCreateOrConnectWithoutCarInput[]
+  upsert?: Prisma.CarStoryUpsertWithWhereUniqueWithoutCarInput | Prisma.CarStoryUpsertWithWhereUniqueWithoutCarInput[]
+  createMany?: Prisma.CarStoryCreateManyCarInputEnvelope
+  set?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  disconnect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  delete?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  connect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  update?: Prisma.CarStoryUpdateWithWhereUniqueWithoutCarInput | Prisma.CarStoryUpdateWithWhereUniqueWithoutCarInput[]
+  updateMany?: Prisma.CarStoryUpdateManyWithWhereWithoutCarInput | Prisma.CarStoryUpdateManyWithWhereWithoutCarInput[]
+  deleteMany?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
+}
+
+export type CarStoryUncheckedUpdateManyWithoutCarNestedInput = {
+  create?: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput> | Prisma.CarStoryCreateWithoutCarInput[] | Prisma.CarStoryUncheckedCreateWithoutCarInput[]
+  connectOrCreate?: Prisma.CarStoryCreateOrConnectWithoutCarInput | Prisma.CarStoryCreateOrConnectWithoutCarInput[]
+  upsert?: Prisma.CarStoryUpsertWithWhereUniqueWithoutCarInput | Prisma.CarStoryUpsertWithWhereUniqueWithoutCarInput[]
+  createMany?: Prisma.CarStoryCreateManyCarInputEnvelope
+  set?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  disconnect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  delete?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  connect?: Prisma.CarStoryWhereUniqueInput | Prisma.CarStoryWhereUniqueInput[]
+  update?: Prisma.CarStoryUpdateWithWhereUniqueWithoutCarInput | Prisma.CarStoryUpdateWithWhereUniqueWithoutCarInput[]
+  updateMany?: Prisma.CarStoryUpdateManyWithWhereWithoutCarInput | Prisma.CarStoryUpdateManyWithWhereWithoutCarInput[]
+  deleteMany?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
 }
 
 export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -677,6 +743,92 @@ export type CarStoryUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
 }
 
+export type CarStoryCreateWithoutCarInput = {
+  id?: string
+  carName: string
+  firstDayPhotoUrl?: string | null
+  currentPhotoUrl?: string | null
+  purchaseDate?: Date | string | null
+  whereFound?: $Enums.CarWhereFound | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: number | null
+  currentMileage?: number | null
+  isDreamCar?: boolean
+  purchaseStory?: string | null
+  futurePlans?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCarStoriesInput
+  milestones?: Prisma.CarMilestoneCreateNestedManyWithoutCarStoryInput
+}
+
+export type CarStoryUncheckedCreateWithoutCarInput = {
+  id?: string
+  userId: string
+  carName: string
+  firstDayPhotoUrl?: string | null
+  currentPhotoUrl?: string | null
+  purchaseDate?: Date | string | null
+  whereFound?: $Enums.CarWhereFound | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: number | null
+  currentMileage?: number | null
+  isDreamCar?: boolean
+  purchaseStory?: string | null
+  futurePlans?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  milestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutCarStoryInput
+}
+
+export type CarStoryCreateOrConnectWithoutCarInput = {
+  where: Prisma.CarStoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput>
+}
+
+export type CarStoryCreateManyCarInputEnvelope = {
+  data: Prisma.CarStoryCreateManyCarInput | Prisma.CarStoryCreateManyCarInput[]
+  skipDuplicates?: boolean
+}
+
+export type CarStoryUpsertWithWhereUniqueWithoutCarInput = {
+  where: Prisma.CarStoryWhereUniqueInput
+  update: Prisma.XOR<Prisma.CarStoryUpdateWithoutCarInput, Prisma.CarStoryUncheckedUpdateWithoutCarInput>
+  create: Prisma.XOR<Prisma.CarStoryCreateWithoutCarInput, Prisma.CarStoryUncheckedCreateWithoutCarInput>
+}
+
+export type CarStoryUpdateWithWhereUniqueWithoutCarInput = {
+  where: Prisma.CarStoryWhereUniqueInput
+  data: Prisma.XOR<Prisma.CarStoryUpdateWithoutCarInput, Prisma.CarStoryUncheckedUpdateWithoutCarInput>
+}
+
+export type CarStoryUpdateManyWithWhereWithoutCarInput = {
+  where: Prisma.CarStoryScalarWhereInput
+  data: Prisma.XOR<Prisma.CarStoryUpdateManyMutationInput, Prisma.CarStoryUncheckedUpdateManyWithoutCarInput>
+}
+
+export type CarStoryScalarWhereInput = {
+  AND?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
+  OR?: Prisma.CarStoryScalarWhereInput[]
+  NOT?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
+  id?: Prisma.UuidFilter<"CarStory"> | string
+  userId?: Prisma.UuidFilter<"CarStory"> | string
+  carId?: Prisma.UuidFilter<"CarStory"> | string
+  carName?: Prisma.StringFilter<"CarStory"> | string
+  firstDayPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
+  currentPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
+  purchaseDate?: Prisma.DateTimeNullableFilter<"CarStory"> | Date | string | null
+  whereFound?: Prisma.EnumCarWhereFoundNullableFilter<"CarStory"> | $Enums.CarWhereFound | null
+  price?: Prisma.DecimalNullableFilter<"CarStory"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: Prisma.IntNullableFilter<"CarStory"> | number | null
+  currentMileage?: Prisma.IntNullableFilter<"CarStory"> | number | null
+  isDreamCar?: Prisma.BoolFilter<"CarStory"> | boolean
+  purchaseStory?: Prisma.StringNullableFilter<"CarStory"> | string | null
+  futurePlans?: Prisma.StringNullableFilter<"CarStory"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
+}
+
 export type CarStoryCreateWithoutMilestonesInput = {
   id?: string
   carName: string
@@ -693,11 +845,13 @@ export type CarStoryCreateWithoutMilestonesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCarStoriesInput
+  car: Prisma.CarCreateNestedOneWithoutCarStoriesInput
 }
 
 export type CarStoryUncheckedCreateWithoutMilestonesInput = {
   id?: string
   userId: string
+  carId: string
   carName: string
   firstDayPhotoUrl?: string | null
   currentPhotoUrl?: string | null
@@ -745,11 +899,13 @@ export type CarStoryUpdateWithoutMilestonesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCarStoriesNestedInput
+  car?: Prisma.CarUpdateOneRequiredWithoutCarStoriesNestedInput
 }
 
 export type CarStoryUncheckedUpdateWithoutMilestonesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.StringFieldUpdateOperationsInput | string
   carName?: Prisma.StringFieldUpdateOperationsInput | string
   firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -780,11 +936,13 @@ export type CarStoryCreateWithoutUserInput = {
   futurePlans?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  car: Prisma.CarCreateNestedOneWithoutCarStoriesInput
   milestones?: Prisma.CarMilestoneCreateNestedManyWithoutCarStoryInput
 }
 
 export type CarStoryUncheckedCreateWithoutUserInput = {
   id?: string
+  carId: string
   carName: string
   firstDayPhotoUrl?: string | null
   currentPhotoUrl?: string | null
@@ -827,29 +985,83 @@ export type CarStoryUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.CarStoryUpdateManyMutationInput, Prisma.CarStoryUncheckedUpdateManyWithoutUserInput>
 }
 
-export type CarStoryScalarWhereInput = {
-  AND?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
-  OR?: Prisma.CarStoryScalarWhereInput[]
-  NOT?: Prisma.CarStoryScalarWhereInput | Prisma.CarStoryScalarWhereInput[]
-  id?: Prisma.UuidFilter<"CarStory"> | string
-  userId?: Prisma.UuidFilter<"CarStory"> | string
-  carName?: Prisma.StringFilter<"CarStory"> | string
-  firstDayPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
-  currentPhotoUrl?: Prisma.StringNullableFilter<"CarStory"> | string | null
-  purchaseDate?: Prisma.DateTimeNullableFilter<"CarStory"> | Date | string | null
-  whereFound?: Prisma.EnumCarWhereFoundNullableFilter<"CarStory"> | $Enums.CarWhereFound | null
-  price?: Prisma.DecimalNullableFilter<"CarStory"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  purchaseMileage?: Prisma.IntNullableFilter<"CarStory"> | number | null
-  currentMileage?: Prisma.IntNullableFilter<"CarStory"> | number | null
-  isDreamCar?: Prisma.BoolFilter<"CarStory"> | boolean
-  purchaseStory?: Prisma.StringNullableFilter<"CarStory"> | string | null
-  futurePlans?: Prisma.StringNullableFilter<"CarStory"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"CarStory"> | Date | string
+export type CarStoryCreateManyCarInput = {
+  id?: string
+  userId: string
+  carName: string
+  firstDayPhotoUrl?: string | null
+  currentPhotoUrl?: string | null
+  purchaseDate?: Date | string | null
+  whereFound?: $Enums.CarWhereFound | null
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: number | null
+  currentMileage?: number | null
+  isDreamCar?: boolean
+  purchaseStory?: string | null
+  futurePlans?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type CarStoryUpdateWithoutCarInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  purchaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  whereFound?: Prisma.NullableEnumCarWhereFoundFieldUpdateOperationsInput | $Enums.CarWhereFound | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isDreamCar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  purchaseStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  futurePlans?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCarStoriesNestedInput
+  milestones?: Prisma.CarMilestoneUpdateManyWithoutCarStoryNestedInput
+}
+
+export type CarStoryUncheckedUpdateWithoutCarInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  purchaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  whereFound?: Prisma.NullableEnumCarWhereFoundFieldUpdateOperationsInput | $Enums.CarWhereFound | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isDreamCar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  purchaseStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  futurePlans?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  milestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutCarStoryNestedInput
+}
+
+export type CarStoryUncheckedUpdateManyWithoutCarInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  carName?: Prisma.StringFieldUpdateOperationsInput | string
+  firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  purchaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  whereFound?: Prisma.NullableEnumCarWhereFoundFieldUpdateOperationsInput | $Enums.CarWhereFound | null
+  price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  purchaseMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currentMileage?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isDreamCar?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  purchaseStory?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  futurePlans?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type CarStoryCreateManyUserInput = {
   id?: string
+  carId: string
   carName: string
   firstDayPhotoUrl?: string | null
   currentPhotoUrl?: string | null
@@ -880,11 +1092,13 @@ export type CarStoryUpdateWithoutUserInput = {
   futurePlans?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  car?: Prisma.CarUpdateOneRequiredWithoutCarStoriesNestedInput
   milestones?: Prisma.CarMilestoneUpdateManyWithoutCarStoryNestedInput
 }
 
 export type CarStoryUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.StringFieldUpdateOperationsInput | string
   carName?: Prisma.StringFieldUpdateOperationsInput | string
   firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -903,6 +1117,7 @@ export type CarStoryUncheckedUpdateWithoutUserInput = {
 
 export type CarStoryUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  carId?: Prisma.StringFieldUpdateOperationsInput | string
   carName?: Prisma.StringFieldUpdateOperationsInput | string
   firstDayPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   currentPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -952,6 +1167,7 @@ export type CarStoryCountOutputTypeCountMilestonesArgs<ExtArgs extends runtime.T
 export type CarStorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  carId?: boolean
   carName?: boolean
   firstDayPhotoUrl?: boolean
   currentPhotoUrl?: boolean
@@ -966,6 +1182,7 @@ export type CarStorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   milestones?: boolean | Prisma.CarStory$milestonesArgs<ExtArgs>
   _count?: boolean | Prisma.CarStoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carStory"]>
@@ -973,6 +1190,7 @@ export type CarStorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type CarStorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  carId?: boolean
   carName?: boolean
   firstDayPhotoUrl?: boolean
   currentPhotoUrl?: boolean
@@ -987,11 +1205,13 @@ export type CarStorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carStory"]>
 
 export type CarStorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
+  carId?: boolean
   carName?: boolean
   firstDayPhotoUrl?: boolean
   currentPhotoUrl?: boolean
@@ -1006,11 +1226,13 @@ export type CarStorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carStory"]>
 
 export type CarStorySelectScalar = {
   id?: boolean
   userId?: boolean
+  carId?: boolean
   carName?: boolean
   firstDayPhotoUrl?: boolean
   currentPhotoUrl?: boolean
@@ -1026,28 +1248,33 @@ export type CarStorySelectScalar = {
   updatedAt?: boolean
 }
 
-export type CarStoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "carName" | "firstDayPhotoUrl" | "currentPhotoUrl" | "purchaseDate" | "whereFound" | "price" | "purchaseMileage" | "currentMileage" | "isDreamCar" | "purchaseStory" | "futurePlans" | "createdAt" | "updatedAt", ExtArgs["result"]["carStory"]>
+export type CarStoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "carId" | "carName" | "firstDayPhotoUrl" | "currentPhotoUrl" | "purchaseDate" | "whereFound" | "price" | "purchaseMileage" | "currentMileage" | "isDreamCar" | "purchaseStory" | "futurePlans" | "createdAt" | "updatedAt", ExtArgs["result"]["carStory"]>
 export type CarStoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
   milestones?: boolean | Prisma.CarStory$milestonesArgs<ExtArgs>
   _count?: boolean | Prisma.CarStoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CarStoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
 }
 export type CarStoryIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  car?: boolean | Prisma.CarDefaultArgs<ExtArgs>
 }
 
 export type $CarStoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CarStory"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    car: Prisma.$CarPayload<ExtArgs>
     milestones: Prisma.$CarMilestonePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     userId: string
+    carId: string
     carName: string
     firstDayPhotoUrl: string | null
     currentPhotoUrl: string | null
@@ -1456,6 +1683,7 @@ readonly fields: CarStoryFieldRefs;
 export interface Prisma__CarStoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  car<T extends Prisma.CarDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CarDefaultArgs<ExtArgs>>): Prisma.Prisma__CarClient<runtime.Types.Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   milestones<T extends Prisma.CarStory$milestonesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CarStory$milestonesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarMilestonePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1488,6 +1716,7 @@ export interface Prisma__CarStoryClient<T, Null = never, ExtArgs extends runtime
 export interface CarStoryFieldRefs {
   readonly id: Prisma.FieldRef<"CarStory", 'String'>
   readonly userId: Prisma.FieldRef<"CarStory", 'String'>
+  readonly carId: Prisma.FieldRef<"CarStory", 'String'>
   readonly carName: Prisma.FieldRef<"CarStory", 'String'>
   readonly firstDayPhotoUrl: Prisma.FieldRef<"CarStory", 'String'>
   readonly currentPhotoUrl: Prisma.FieldRef<"CarStory", 'String'>

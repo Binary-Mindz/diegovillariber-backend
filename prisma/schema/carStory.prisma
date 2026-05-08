@@ -3,6 +3,10 @@ model CarStory {
 
   userId String @db.Uuid
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  carId String @unique @db.Uuid
+  car   Car    @relation(fields: [carId], references: [id], onDelete: Cascade)
+
 
   carName String
   firstDayPhotoUrl String?

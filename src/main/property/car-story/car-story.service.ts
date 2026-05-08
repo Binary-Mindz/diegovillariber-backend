@@ -12,12 +12,42 @@ import { UpdateCarMilestoneDto } from './dto/update-car-milestone.dto';
 
 @Injectable()
 export class CarStoryService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async createStory(userId: string, dto: CreateCarStoryDto) {
+    const car = await this.prisma.car.findUnique({
+      where: { id: dto.carId },
+      select: {
+        id: true,
+        profile: {
+          select: {
+            userId: true,
+          },
+        },
+        story: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+
+    if (!car) {
+      throw new NotFoundException('Car not found');
+    }
+
+    if (car.profile.userId !== userId) {
+      throw new ForbiddenException('You are not allowed to create story for this car');
+    }
+
+    if (car.story) {
+      throw new BadRequestException('Story already exists for this car');
+    }
+
     return this.prisma.carStory.create({
       data: {
         userId,
+        carId: dto.carId,
         carName: dto.carName,
         firstDayPhotoUrl: dto.firstDayPhotoUrl ?? null,
         currentPhotoUrl: dto.currentPhotoUrl ?? null,
@@ -30,6 +60,10 @@ export class CarStoryService {
         purchaseStory: dto.purchaseStory ?? null,
         futurePlans: dto.futurePlans ?? null,
       },
+      include: {
+        car: true,
+        milestones: true,
+      },
     });
   }
 
@@ -37,6 +71,7 @@ export class CarStoryService {
     return this.prisma.carStory.findMany({
       where: { userId },
       include: {
+        car: true,
         milestones: {
           orderBy: {
             date: 'desc',
@@ -53,6 +88,7 @@ export class CarStoryService {
     const story = await this.prisma.carStory.findUnique({
       where: { id: storyId },
       include: {
+        car: true,
         milestones: {
           orderBy: {
             date: 'desc',
