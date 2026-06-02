@@ -660,6 +660,7 @@ export class LabTimeService {
           dateSet: true,
           vehicleName: true,
           vehicleType: true,
+          videoUrl: true,
           telemetryMedia: true,
           profile: {
             select: {
@@ -678,6 +679,7 @@ export class LabTimeService {
       profileName: item.profile?.profileName ?? null,
       profileImageUrl: item.profile?.imageUrl ?? null,
       trackName: item.trackName,
+      videoUrl: item.videoUrl,
       trackLayout: item.trackLayout ?? null,
       vehicleModel: item.vehicleName ?? null,
       lapTimeMs: item.lapTimeMs,
