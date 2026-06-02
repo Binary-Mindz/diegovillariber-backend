@@ -9,24 +9,23 @@ import {
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { ApiBody, ApiConsumes, ApiParam } from '@nestjs/swagger';
 import { UploadFilesDto } from './dto/upload.file.dto';
-import { CloudinaryService } from './cloudinary/cloudinary.service';
-
+import { CloudflareR2Service } from './cloudflare/cloudflare-r2.service';
 
 @Controller('files')
 export class FileController {
   constructor(
-    private readonly cloudinaryService: CloudinaryService,
-  ) {}
+    private readonly cloudflareR2Service: CloudflareR2Service,
+  ) { }
 
-  // ---------------------- CLOUDINARY UPLOAD ----------------------
-  @Post('cloudinary/upload')
+  // ---------------------- R2 UPLOAD (MAINTAINED ENDPOINT) ----------------------
+  @Post('/upload')
   @UseInterceptors(FilesInterceptor('files', 5))
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: UploadFilesDto })
   async uploadToCloudinary(@UploadedFiles() files: Express.Multer.File[]) {
     return Promise.all(
       files.map((file) =>
-        this.cloudinaryService.uploadFileBuffer(
+        this.cloudflareR2Service.uploadFileBuffer(
           file.buffer,
           file.originalname,
           file.mimetype,
@@ -35,8 +34,8 @@ export class FileController {
     );
   }
 
-  // ---------------------- CLOUDINARY DELETE ----------------------
-  @Delete('cloudinary/:id')
+  // ---------------------- R2 DELETE (MAINTAINED ENDPOINT) ----------------------
+  @Delete('/:id')
   @ApiParam({
     name: 'id',
     type: String,
@@ -44,6 +43,6 @@ export class FileController {
     example: '21805e86-b8f1-40db-9a9f-5d7eb20af97d',
   })
   async deleteFile(@Param('id') id: string) {
-    return this.cloudinaryService.deleteResource(id);
+    return this.cloudflareR2Service.deleteResource(id);
   }
 }

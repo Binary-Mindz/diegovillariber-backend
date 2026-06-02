@@ -2,18 +2,18 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { FileController } from './file.controller';
 import { FileService } from './file.service';
-import { CloudinaryService } from './cloudinary/cloudinary.service';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { CloudflareR2Service } from './cloudflare/cloudflare-r2.service';
 
 @Module({
   imports: [ConfigModule],
   controllers: [FileController],
   providers: [
     FileService,
-    CloudinaryService, 
+    CloudflareR2Service,
     PrismaService,
   ],
-  exports: [FileService, CloudinaryService], 
+  exports: [FileService, CloudflareR2Service],
 })
-export class FileModule {}
+export class FileModule { }
 
