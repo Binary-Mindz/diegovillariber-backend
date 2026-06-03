@@ -3,6 +3,7 @@ import {
   IsBoolean,
   IsEnum,
   IsInt,
+  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
@@ -92,4 +93,39 @@ export class CreateBikeDto {
   @IsInt()
   @Min(0)
   price?: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Dhaka, Bangladesh' })
+  bikeLocation?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Hatirjheel' })
+  locationName?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Hatirjheel Circular Rd, Dhaka' })
+  locationAddress?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiPropertyOptional({ example: 23.7658 })
+  latitude?: number;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiPropertyOptional({ example: 90.4181 })
+  longitude?: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'ChIJv8v26_u4VTcR071_rGv_m-8' })
+  placeId?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'PUBLIC' })
+  locationVisibility?: string;
 }

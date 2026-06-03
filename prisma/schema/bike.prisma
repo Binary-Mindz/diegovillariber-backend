@@ -23,6 +23,14 @@ model Bike {
   listOnMarketplace Boolean           @default(false)
   price             Int?
 
+  bikeLocation       String?
+  locationName       String?
+  locationAddress    String?
+  latitude           Decimal?          @db.Decimal(9, 6)
+  longitude          Decimal?          @db.Decimal(9, 6)
+  placeId            String?
+  locationVisibility String?
+
   advancedBikeDatas AdvancedBikeData[]
   legalNotices      LegalNotice[]
 

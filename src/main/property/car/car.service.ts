@@ -69,47 +69,6 @@ export class CarService {
     return created.id;
   }
 
-  // async create(userId: string, dto: CreateCarDto) {
-  //   const activeProfileId = await this.getActiveProfileIdOrThrow(userId);
-
-  //   // Garage must belong to active profile
-  //   const garage = await this.prisma.garage.findFirst({
-  //     where: {
-  //       id: dto.garageId,
-  //       profileId: activeProfileId,
-  //     },
-  //     select: { id: true },
-  //   });
-
-  //   if (!garage) {
-  //     throw new ForbiddenException('Not your garage (active profile mismatch)');
-  //   }
-
-  //   // create car + create advancedCarData row
-  //   return this.prisma.car.create({
-  //     data: {
-  //       profileId: activeProfileId,
-  //       garageId: dto.garageId,
-
-  //       image: dto.image,
-  //       make: dto.make,
-  //       model: dto.model,
-  //       bodyType: dto.bodyType,
-  //       transmission: dto.transmission,
-  //       driveTrain: dto.driveTrain,
-  //       country: dto.country,
-  //       color: dto.color,
-  //       displayName: dto.displayName,
-  //       description: dto.description,
-  //       category: dto.category,
-  //       listOnMarketplace: dto.listOnMarketplace ?? false,
-  //       price: dto.price,
-
-  //       advancedCarDatas: { create: {} },
-  //     },
-  //   });
-  // }
-
   async create(userId: string, dto: CreateCarDto) {
     const garage = await this.prisma.garage.findUnique({
       where: { id: dto.garageId },
@@ -146,6 +105,15 @@ export class CarService {
           category: dto.category,
           listOnMarketplace: dto.listOnMarketplace ?? false,
           price: dto.price ?? null,
+
+          // 📍 Mapping Location Fields
+          carLocation: dto.carLocation ?? null,
+          locationName: dto.locationName ?? null,
+          locationAddress: dto.locationAddress ?? null,
+          latitude: dto.latitude != null ? dto.latitude : null,
+          longitude: dto.longitude != null ? dto.longitude : null,
+          placeId: dto.placeId ?? null,
+          locationVisibility: dto.locationVisibility ?? null,
         },
       });
 

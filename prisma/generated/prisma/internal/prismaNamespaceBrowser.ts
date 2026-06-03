@@ -302,6 +302,13 @@ export const BikeScalarFieldEnum = {
   category: 'category',
   listOnMarketplace: 'listOnMarketplace',
   price: 'price',
+  bikeLocation: 'bikeLocation',
+  locationName: 'locationName',
+  locationAddress: 'locationAddress',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
+  locationVisibility: 'locationVisibility',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -417,7 +424,14 @@ export const CarScalarFieldEnum = {
   description: 'description',
   category: 'category',
   listOnMarketplace: 'listOnMarketplace',
-  price: 'price'
+  price: 'price',
+  carLocation: 'carLocation',
+  locationName: 'locationName',
+  locationAddress: 'locationAddress',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  placeId: 'placeId',
+  locationVisibility: 'locationVisibility'
 } as const
 
 export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]

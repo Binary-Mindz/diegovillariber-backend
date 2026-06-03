@@ -19,6 +19,16 @@ model Car {
   category          DriveCategory     @default(DAILY_DRIVE)
   listOnMarketplace Boolean           @default(false)
   price             Int?
+
+  // 📍 New Location Fields (Synced with Post Model Structure)
+  carLocation        String?
+  locationName       String?
+  locationAddress    String?
+  latitude           Decimal?          @db.Decimal(9, 6)
+  longitude          Decimal?          @db.Decimal(9, 6)
+  placeId            String?
+  locationVisibility String?
+  
   advancedCarDatas  AdvancedCarData[]
   legalNotices      LegalNotice[]
 

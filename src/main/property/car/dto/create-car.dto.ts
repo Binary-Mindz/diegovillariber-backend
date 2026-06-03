@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsInt, IsOptional, IsString, IsUUID, Min } from 'class-validator';
+import { IsBoolean, IsEnum, IsInt, IsNumber, IsOptional, IsString, IsUUID, Min } from 'class-validator';
 import { BodyType, DriveCategory, DriveTrain, Transmission } from 'generated/prisma/enums';
 
 export class CreateCarDto {
@@ -75,4 +75,41 @@ export class CreateCarDto {
   @IsInt()
   @Min(0)
   price?: number;
+
+  // 📍 New Location Fields for Swagger and Validator
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Dhaka, Bangladesh' })
+  carLocation?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Gulshan Circle 2' })
+  locationName?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'Road 45, Gulshan, Dhaka 1212' })
+  locationAddress?: string;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiPropertyOptional({ example: 23.7925 })
+  latitude?: number;
+
+  @IsOptional()
+  @IsNumber()
+  @ApiPropertyOptional({ example: 90.4155 })
+  longitude?: number;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'ChIJv8v26_u4VTcR071_rGv_m-8' })
+  placeId?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiPropertyOptional({ example: 'PUBLIC' })
+  locationVisibility?: string;
+
 }

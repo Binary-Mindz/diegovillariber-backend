@@ -13,7 +13,7 @@ import { UpdateBikeUsageNotesDto } from './dto/update-usage-notes.dto';
 
 @Injectable()
 export class BikeService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   private async getActiveProfileIdOrThrow(userId: string) {
     const user = await this.prisma.user.findUnique({
@@ -93,6 +93,15 @@ export class BikeService {
         category: dto.category,
         listOnMarketplace: dto.listOnMarketplace ?? false,
         price: dto.price,
+
+        // 📍 Mapping Location Fields safely
+        bikeLocation: dto.bikeLocation ?? null,
+        locationName: dto.locationName ?? null,
+        locationAddress: dto.locationAddress ?? null,
+        latitude: dto.latitude != null ? dto.latitude : null,
+        longitude: dto.longitude != null ? dto.longitude : null,
+        placeId: dto.placeId ?? null,
+        locationVisibility: dto.locationVisibility ?? null,
 
         // create advanced row
         advancedBikeDatas: { create: {} },
