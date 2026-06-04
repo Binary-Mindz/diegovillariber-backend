@@ -4,6 +4,7 @@ model Report {
   user        User       @relation(fields: [userId], references: [id])
   targetType  ReportType
   targetId    String     @db.Uuid
+  reason      ReportReason
   description String?
 
   createdAt DateTime @default(now())

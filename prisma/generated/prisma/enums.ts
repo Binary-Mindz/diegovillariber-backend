@@ -892,6 +892,20 @@ export const ReportType = {
 export type ReportType = (typeof ReportType)[keyof typeof ReportType]
 
 
+export const ReportReason = {
+  NOT_LIKED: 'NOT_LIKED',
+  COPYRIGHT: 'COPYRIGHT',
+  FALSE_INFORMATION: 'FALSE_INFORMATION',
+  SCAM_FRAUD_SPAM: 'SCAM_FRAUD_SPAM',
+  VIOLENCE_HATE_EXPLOITATION: 'VIOLENCE_HATE_EXPLOITATION',
+  NUDITY_SEXUAL_ACTIVITY: 'NUDITY_SEXUAL_ACTIVITY',
+  SUICIDE_OR_EATING_DISORDERS: 'SUICIDE_OR_EATING_DISORDERS',
+  RESTRICTED_ITEMS: 'RESTRICTED_ITEMS'
+} as const
+
+export type ReportReason = (typeof ReportReason)[keyof typeof ReportReason]
+
+
 export const ProductCategory = {
   CAR_PARTS: 'CAR_PARTS',
   CAR: 'CAR',

@@ -328,6 +328,16 @@ enum ReportType {
   POST
   PROFILE
 }
+enum ReportReason {
+  NOT_LIKED                    
+  COPYRIGHT                    
+  FALSE_INFORMATION            
+  SCAM_FRAUD_SPAM              
+  VIOLENCE_HATE_EXPLOITATION   
+  NUDITY_SEXUAL_ACTIVITY       
+  SUICIDE_OR_EATING_DISORDERS  
+  RESTRICTED_ITEMS       
+}
 
 enum ProductCategory {
   CAR_PARTS

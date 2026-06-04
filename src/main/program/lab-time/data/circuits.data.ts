@@ -491,7 +491,7 @@ export const CIRCUITS_DATA: CircuitData[] = [
         longitude: 6.9475,
       },
       {
-        trackLayout: 'Nordschleife',
+        trackLayout: 'Nordschleife BTG',
         latitude: 50.334,
         longitude: 6.9396,
       },
