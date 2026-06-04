@@ -405,7 +405,7 @@ export class PostService {
     });
   }
 
-  async getFeed(userId: string, query: FeedQueryDto) {
+async getFeed(userId: string, query: FeedQueryDto) {
     const page = query.page ?? 1;
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
@@ -417,6 +417,21 @@ export class PostService {
 
     const excludedUserIds = await this.getExcludedUserIds(userId);
     const hiddenPostIds = await this.getHiddenPostIds(userId);
+
+    // ─── 🛠️ কপিরাইট রিপোর্টেড পোস্ট আইডিগুলো ডাটাবেজ থেকে তুলে আনা ───
+    const copyrightReports = await this.prisma.report.findMany({
+      where: {
+        targetType: 'POST',
+        reason: 'COPYRIGHT',
+      },
+      select: { targetId: true },
+    });
+    
+    // শুধু আইডিগুলোর একটি ফ্ল্যাট অ্যারে তৈরি
+    const copyrightPostIds = copyrightReports.map((r) => r.targetId);
+
+    // ইউজার হাইড করা পোস্ট এবং কপিরাইট পোস্ট দুইটাই একসাথে মার্জ করা হলো
+    const finalHiddenPostIds = [...new Set([...hiddenPostIds, ...copyrightPostIds])];
 
     const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
     const contextActivity = parseCsvEnum<any>(query.contextActivity);
@@ -474,7 +489,7 @@ export class PostService {
         notIn: excludedUserIds,
       },
       id: {
-        notIn: hiddenPostIds,
+        notIn: finalHiddenPostIds, // 👈 কপিরাইট ও হাইড করা পোস্ট এখানে ফিল্টার আউট হচ্ছে
       },
 
       ...preferenceFilter,
@@ -518,7 +533,7 @@ export class PostService {
           profile: {
             select: {
               id: true,
-              profileName:true,
+              profileName: true,
               imageUrl: true,
               activeType: true,
               preference: true,
@@ -545,6 +560,7 @@ export class PostService {
       },
     };
   }
+  
 
   async getSinglePost(userId: string, postId: string, source?: PostViewSource) {
     const post = await this.validatePostAccess(userId, postId);
