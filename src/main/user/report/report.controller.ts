@@ -1,4 +1,4 @@
-import { Controller, Post, Delete, Get, Body, Param, UseGuards } from '@nestjs/common';
+import { Controller, Post, Delete, Get, Body, Param, UseGuards, Patch } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiOperation } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { ReportService } from './report.service';
@@ -23,6 +23,15 @@ export class ReportController {
     return handleRequest(
       async () => this.reportService.createReport(userId, dto),
       'Report created successfully',
+    );
+  }
+
+  @ApiOperation({ summary: 'Admin: Restore copyright hidden post back to feed' })
+  @Patch(':targetId/restore-feed')
+  async restorePostToFeed(@Param('targetId') targetId: string) {
+    return handleRequest(
+      async () => this.reportService.resolveCopyrightPost(targetId),
+      'Post has been successfully restored to the feed',
     );
   }
 
