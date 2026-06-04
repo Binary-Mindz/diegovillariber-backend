@@ -26,15 +26,6 @@ export class ReportController {
     );
   }
 
-  @ApiOperation({ summary: 'Admin: Restore copyright hidden post back to feed' })
-  @Patch(':targetId/restore-feed')
-  async restorePostToFeed(@Param('targetId') targetId: string) {
-    return handleRequest(
-      async () => this.reportService.resolveCopyrightPost(targetId),
-      'Post has been successfully restored to the feed',
-    );
-  }
-
   @ApiOperation({ summary: 'Remove a report' })
   @Delete(':targetType/:targetId')
   async removeReport(
