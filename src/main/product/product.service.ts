@@ -88,12 +88,14 @@ export class ProductService {
     };
   }
 
-  async getFeed(query: ProductFeedQueryDto) {
+async getFeed(query: ProductFeedQueryDto) {
     const page = Math.max(Number(query.page ?? 1), 1);
     const limit = Math.min(Math.max(Number(query.limit ?? 10), 1), 100);
     const skip = (page - 1) * limit;
 
-    const where: Prisma.ProductListWhereInput = {};
+   const where: Prisma.ProductListWhereInput = {
+      price: { gt: 0 },
+    };
 
     if (query.search?.trim()) {
       const q = query.search.trim();
@@ -109,17 +111,11 @@ export class ProductService {
     if (query.category) where.category = query.category;
 
     if (query.carBrand?.trim()) {
-      where.carBrand = {
-        contains: query.carBrand.trim(),
-        mode: 'insensitive',
-      };
+      where.carBrand = { contains: query.carBrand.trim(), mode: 'insensitive' };
     }
 
     if (query.carModel?.trim()) {
-      where.carModel = {
-        contains: query.carModel.trim(),
-        mode: 'insensitive',
-      };
+      where.carModel = { contains: query.carModel.trim(), mode: 'insensitive' };
     }
 
     const [items, total] = await this.prisma.$transaction([
@@ -134,11 +130,7 @@ export class ProductService {
               id: true,
               email: true,
               profile: {
-                select: {
-                  id: true,
-                  imageUrl: true,
-                  profileName: true,
-                },
+                select: { id: true, imageUrl: true, profileName: true },
                 take: 1,
               },
             },
@@ -180,12 +172,7 @@ export class ProductService {
       statusCode: 200,
       data: {
         items: data,
-        meta: {
-          total,
-          page,
-          limit,
-          totalPages: Math.ceil(total / limit),
-        },
+        meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
       },
     };
   }

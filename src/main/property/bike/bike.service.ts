@@ -10,6 +10,7 @@ import { UpdateSuspensionDto } from './dto/update-suspension.dto';
 import { UpdateWheelTiresDto } from './dto/update-wheel-tires.dto';
 import { UpdateElectronicsDto } from './dto/update-electronics.dto';
 import { UpdateBikeUsageNotesDto } from './dto/update-usage-notes.dto';
+import { ProductCategory } from '../../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class BikeService {
@@ -65,47 +66,60 @@ export class BikeService {
   async create(userId: string, dto: CreateBikeDto) {
     const activeProfileId = await this.getActiveProfileIdOrThrow(userId);
 
-    // Garage must belong to active profile
     const garage = await this.prisma.garage.findFirst({
       where: { id: dto.garageId, profileId: activeProfileId },
-      select: { id: true },
     });
 
-    if (!garage) {
-      throw new ForbiddenException('Not your garage (active profile mismatch)');
-    }
+    if (!garage) throw new ForbiddenException('Not your garage');
 
-    return this.prisma.bike.create({
-      data: {
-        profileId: activeProfileId,
-        garageId: dto.garageId,
+    return this.prisma.$transaction(async (tx) => {
+      const bike = await tx.bike.create({
+        data: {
+          profileId: activeProfileId,
+          garageId: dto.garageId,
+          image: dto.image,
+          make: dto.make,
+          model: dto.model,
+          bodyType: dto.bodyType,
+          transmission: dto.transmission,
+          driveTrain: dto.driveTrain,
+          country: dto.country,
+          color: dto.color,
+          displayName: dto.displayName,
+          description: dto.description,
+          category: dto.category,
+          listOnMarketplace: dto.listOnMarketplace ?? false,
+          price: dto.price,
+          bikeLocation: dto.bikeLocation ?? null,
+          locationName: dto.locationName ?? null,
+          locationAddress: dto.locationAddress ?? null,
+          latitude: dto.latitude != null ? dto.latitude : null,
+          longitude: dto.longitude != null ? dto.longitude : null,
+          placeId: dto.placeId ?? null,
+          locationVisibility: dto.locationVisibility ?? null,
+          advancedBikeDatas: { create: {} },
+        },
+      });
 
-        image: dto.image,
-        make: dto.make,
-        model: dto.model,
-        bodyType: dto.bodyType,
-        transmission: dto.transmission,
-        driveTrain: dto.driveTrain,
-        country: dto.country,
-        color: dto.color,
-        displayName: dto.displayName,
-        description: dto.description,
-        category: dto.category,
-        listOnMarketplace: dto.listOnMarketplace ?? false,
-        price: dto.price,
-
-        // 📍 Mapping Location Fields safely
-        bikeLocation: dto.bikeLocation ?? null,
-        locationName: dto.locationName ?? null,
-        locationAddress: dto.locationAddress ?? null,
-        latitude: dto.latitude != null ? dto.latitude : null,
-        longitude: dto.longitude != null ? dto.longitude : null,
-        placeId: dto.placeId ?? null,
-        locationVisibility: dto.locationVisibility ?? null,
-
-        // create advanced row
-        advancedBikeDatas: { create: {} },
-      },
+      if (bike.listOnMarketplace && bike.price != null) {
+        await tx.productList.create({
+          data: {
+            ownerId: userId,
+            title: bike.displayName || `${bike.make ?? ''} ${bike.model ?? ''}`.trim(),
+            productImage: bike.image,
+            category: ProductCategory.BIKE,
+            price: bike.price,
+            carBrand: bike.make,
+            carModel: bike.model,
+            location: bike.bikeLocation,
+            locationAddress: bike.locationAddress,
+            latitude: bike.latitude,
+            longitude: bike.longitude,
+            quantity: 1,
+          }
+        });
+      }
+      return bike;
     });
   }
 
@@ -113,12 +127,51 @@ export class BikeService {
     return this.prisma.bike.findMany({});
   }
 
-  async update(userId: string, bikeId: string, dto: UpdateBikeDto) {
+ async update(userId: string, bikeId: string, dto: UpdateBikeDto) {
     await this.validateOwnership(userId, bikeId);
 
-    return this.prisma.bike.update({
-      where: { id: bikeId },
-      data: dto,
+    return this.prisma.$transaction(async (tx) => {
+      const updatedBike = await tx.bike.update({
+        where: { id: bikeId },
+        data: dto,
+      });
+
+      if (updatedBike.listOnMarketplace === false || updatedBike.price == null) {
+        await tx.productList.deleteMany({
+          where: { ownerId: userId}
+        });
+      } else {
+        const productData = {
+          title: updatedBike.displayName || `${updatedBike.make ?? ''} ${updatedBike.model ?? ''}`.trim(),
+          productImage: updatedBike.image,
+          price: updatedBike.price,
+          location: updatedBike.bikeLocation,
+          locationAddress: updatedBike.locationAddress,
+          latitude: updatedBike.latitude,
+          longitude: updatedBike.longitude,
+        };
+
+        const existingListing = await tx.productList.findFirst({
+          where: { ownerId: userId }
+        });
+
+        if (existingListing) {
+          await tx.productList.update({ where: { id: existingListing.id }, data: productData });
+        } else {
+          await tx.productList.create({
+            data: {
+              ...productData,
+              ownerId: userId,
+              category: ProductCategory.BIKE,
+              carBrand: updatedBike.make,
+              carModel: updatedBike.model,
+              quantity: 1,
+            }
+          });
+        }
+      }
+
+      return updatedBike;
     });
   }
 
@@ -148,8 +201,6 @@ export class BikeService {
     if (!bike) throw new NotFoundException('Bike not found');
     return bike;
   }
-
-  // ✅ Advanced Sections (PATCH = upsert)
 
   async updateEnginePerformance(userId: string, bikeId: string, dto: UpdateEnginePerformanceDto) {
     await this.validateOwnership(userId, bikeId);
@@ -216,8 +267,6 @@ export class BikeService {
       create: { ...dto, advancedBikeDataId: advancedId },
     });
   }
-
-  // ✅ Missing POST APIs support (create-only)
 
   async createEnginePerformance(userId: string, bikeId: string, dto: UpdateEnginePerformanceDto) {
     await this.validateOwnership(userId, bikeId);
