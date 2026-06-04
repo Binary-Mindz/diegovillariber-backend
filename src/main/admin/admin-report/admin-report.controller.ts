@@ -3,6 +3,8 @@ import {
   Delete,
   Get,
   Param,
+  ParseUUIDPipe,
+  Patch,
   Query,
   Res,
   UseGuards,
@@ -39,6 +41,23 @@ export class AdminReportController {
     const response = await handleRequest(
       () => this.adminReportService.getReports(query),
       'Reports fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  
+  @Patch(':targetId/restore-feed')
+  @ApiOperation({ summary: 'Admin: Restore copyright hidden post back to feed' })
+  @ApiParam({ name: 'targetId', type: String, example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111' })
+  async restorePostToFeed(
+    @Param('targetId', ParseUUIDPipe) targetId: string, 
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.adminReportService.resolveCopyrightPost(targetId),
+      'Post has been successfully restored to the feed',
     );
 
     res.status(response.statusCode);
