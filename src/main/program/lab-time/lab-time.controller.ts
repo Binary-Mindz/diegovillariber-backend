@@ -149,6 +149,8 @@ export class LabTimeController {
     return handleRequest(async () => this.service.get(id), 'Lap time fetched');
   }
 
+   @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':id/download-telemetry')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Download telemetry data as CSV' })
