@@ -30,7 +30,7 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   private readonly VIEW_DEDUP_MINUTES = 30;
 
@@ -38,10 +38,10 @@ export class PostService {
     count:
       | true
       | {
-        source?: number;
-        relationType?: number;
-        _all?: number;
-      }
+          source?: number;
+          relationType?: number;
+          _all?: number;
+        }
       | undefined,
     key: 'source' | 'relationType' | '_all',
   ): number {
@@ -99,6 +99,11 @@ export class PostService {
         profile: { select: { id: true, imageUrl: true, profileName: true, activeType: true } },
         hashtags: true,
         taggedUsers: { select: { id: true } },
+        taggedProfiles: {
+          include: {
+            profile: { select: { id: true, profileName: true, imageUrl: true } },
+          },
+        },
       },
     });
 
@@ -117,21 +122,15 @@ export class PostService {
       });
 
       if (hasCopyrightReport) {
-        throw new NotFoundException('Post not found'); // ডাটা হাইড করার জন্য ৪MD NotFound থ্রো করাই বেস্ট প্র্যাকটিস
+        throw new NotFoundException('Post not found');
       }
     }
 
     const blockedRelation = await this.prisma.userBlock.findFirst({
       where: {
         OR: [
-          {
-            blockerId: userId,
-            blockedUserId: post.userId,
-          },
-          {
-            blockerId: post.userId,
-            blockedUserId: userId,
-          },
+          { blockerId: userId, blockedUserId: post.userId },
+          { blockerId: post.userId, blockedUserId: userId },
         ],
       },
       select: { id: true },
@@ -182,9 +181,7 @@ export class PostService {
         postId,
         viewerId,
         source: source ?? PostViewSource.DETAIL,
-        viewedAt: {
-          gte: recentThreshold,
-        },
+        viewedAt: { gte: recentThreshold },
       },
       select: { id: true },
     });
@@ -204,11 +201,7 @@ export class PostService {
       }),
       this.prisma.post.update({
         where: { id: postId },
-        data: {
-          view: {
-            increment: 1,
-          },
-        },
+        data: { view: { increment: 1 } },
       }),
     ]);
 
@@ -269,6 +262,9 @@ export class PostService {
         ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId)
         : [];
 
+      // 👈 [NEW ADDITION] ট্যাগড ইউজারদের একটিভ ও ভ্যালিড প্রোফাইল আইডি খুঁজে বের করা
+      let taggedProfiles: { id: string }[] = [];
+
       if (taggedUserIds.length) {
         const found = await tx.user.findMany({
           where: { id: { in: taggedUserIds } },
@@ -282,20 +278,11 @@ export class PostService {
         const blockedRelations = await tx.userBlock.findMany({
           where: {
             OR: taggedUserIds.flatMap((targetUserId) => [
-              {
-                blockerId: userId,
-                blockedUserId: targetUserId,
-              },
-              {
-                blockerId: targetUserId,
-                blockedUserId: userId,
-              },
+              { blockerId: userId, blockedUserId: targetUserId },
+              { blockerId: targetUserId, blockedUserId: userId },
             ]),
           },
-          select: {
-            blockerId: true,
-            blockedUserId: true,
-          },
+          select: { blockerId: true, blockedUserId: true },
         });
 
         if (blockedRelations.length > 0) {
@@ -303,6 +290,16 @@ export class PostService {
             'You cannot tag users who are blocked or who blocked you',
           );
         }
+
+        // ট্যাগড প্রোফাইলগুলো নিয়ে আসা
+        taggedProfiles = await tx.profile.findMany({
+          where: {
+            userId: { in: taggedUserIds },
+            isActive: 'ACTIVE',
+            suspend: false,
+          },
+          select: { id: true },
+        });
       }
 
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
@@ -313,10 +310,7 @@ export class PostService {
 
       if (hashtagIds.length > 0) {
         const found = await tx.hashtag.findMany({
-          where: {
-            id: { in: hashtagIds },
-            isActive: true,
-          },
+          where: { id: { in: hashtagIds }, isActive: true },
           select: { id: true },
         });
 
@@ -365,6 +359,16 @@ export class PostService {
           profile: { select: { id: true, imageUrl: true, activeType: true } },
         },
       });
+
+      if (taggedProfiles.length) {
+        await tx.taggedProfilePost.createMany({
+          data: taggedProfiles.map((p) => ({
+            postId: post.id,
+            profileId: p.id,
+          })),
+          skipDuplicates: true,
+        });
+      }
 
       if (hashtagIds.length) {
         await tx.hashtag.updateMany({
@@ -463,41 +467,59 @@ export class PostService {
         isActive: 'ACTIVE',
         suspend: false,
       },
-      select: {
-        id: true,
-        preference: true,
-      },
+      select: { id: true, preference: true },
     });
 
     if (!activeProfile) {
       throw new BadRequestException('Active profile not found');
     }
 
+    const followingUsers = await this.prisma.follow.findMany({
+      where: { followerId: userId },
+      select: { followingId: true },
+    });
+    const followingIds = followingUsers.map((item) => item.followingId);
+
+    const followingProfiles = await this.prisma.profile.findMany({
+      where: {
+        userId: { in: followingIds },
+        isActive: 'ACTIVE',
+        suspend: false,
+      },
+      select: { id: true },
+    });
+    const followingProfileIds = followingProfiles.map((item) => item.id);
+
     let preferenceFilter: Prisma.PostWhereInput = {};
 
     if (activeProfile.preference === 'CAR') {
-      preferenceFilter = {
-        assetType: 'CAR',
-      };
+      preferenceFilter = { assetType: 'CAR' };
     } else if (activeProfile.preference === 'BIKE') {
-      preferenceFilter = {
-        assetType: 'BIKE',
-      };
-    } else if (
-      activeProfile.preference === 'BOTH' ||
-      !activeProfile.preference
-    ) {
+      preferenceFilter = { assetType: 'BIKE' };
+    } else if (activeProfile.preference === 'BOTH' || !activeProfile.preference) {
       preferenceFilter = {};
     }
 
     const where: Prisma.PostWhereInput = {
-      userId: {
-        notIn: excludedUserIds,
-      },
-      id: {
-        notIn: finalHiddenPostIds,
-      },
-      ...preferenceFilter,
+      userId: { notIn: excludedUserIds },
+      id: { notIn: finalHiddenPostIds },
+      AND: [
+        preferenceFilter,
+        {
+          OR: [
+            {
+              taggedProfiles: {
+                some: {
+                  profileId: { in: followingProfileIds },
+                },
+              },
+            },
+            {
+              userId: { notIn: excludedUserIds } 
+            }
+          ]
+        }
+      ],
       ...(query.postType ? { postType: query.postType } : {}),
       ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
       ...(query.location
@@ -505,16 +527,14 @@ export class PostService {
         : {}),
       ...(query.search
         ? {
-          OR: [
-            { caption: { contains: query.search, mode: 'insensitive' } },
-            { postLocation: { contains: query.search, mode: 'insensitive' } },
-          ],
-        }
+            OR: [
+              { caption: { contains: query.search, mode: 'insensitive' } },
+              { postLocation: { contains: query.search, mode: 'insensitive' } },
+            ],
+          }
         : {}),
       ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
-      ...(contextActivity
-        ? { contextActivity: { hasSome: contextActivity } }
-        : {}),
+      ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
       ...(subject ? { subject: { hasSome: subject } } : {}),
     };
 
@@ -544,6 +564,13 @@ export class PostService {
           },
           hashtags: true,
           taggedUsers: { select: { id: true } },
+          taggedProfiles: {
+            include: {
+              profile: {
+                select: { id: true, profileName: true, imageUrl: true },
+              },
+            },
+          },
         },
       }),
       this.prisma.post.count({ where }),
@@ -614,45 +641,32 @@ export class PostService {
       this.prisma.postViewInsight.groupBy({
         by: ['source'],
         where: { postId },
-        _count: {
-          source: true,
-        },
-        orderBy: {
-          source: 'asc',
-        },
+        _count: { source: true },
+        orderBy: { source: 'asc' },
       }),
       this.prisma.postViewInsight.groupBy({
         by: ['relationType'],
         where: { postId },
-        _count: {
-          relationType: true,
-        },
-        orderBy: {
-          relationType: 'asc',
-        },
+        _count: { relationType: true },
+        orderBy: { relationType: 'asc' },
       }),
     ]);
 
     const totalViews = post.view;
-    const totalInteractions =
-      post.like + post.comment + post.share + post.repost;
+    const totalInteractions = post.like + post.comment + post.share + post.repost;
 
     const followerViews = this.getGroupedCount(
-      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)
-        ?._count,
+      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)?._count,
       'relationType',
     );
 
     const nonFollowerViews = this.getGroupedCount(
-      relationStats.find(
-        (x) => x.relationType === ViewerRelationType.NON_FOLLOWER,
-      )?._count,
+      relationStats.find((x) => x.relationType === ViewerRelationType.NON_FOLLOWER)?._count,
       'relationType',
     );
 
     const selfViews = this.getGroupedCount(
-      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)
-        ?._count,
+      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)?._count,
       'relationType',
     );
 
@@ -662,8 +676,7 @@ export class PostService {
       return {
         source: item.source,
         count,
-        percentage:
-          totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
+        percentage: totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
       };
     });
 
@@ -674,18 +687,9 @@ export class PostService {
     };
 
     const followerVsNonFollower = {
-      followersPercentage:
-        totalViews > 0
-          ? Number(((followerViews / totalViews) * 100).toFixed(2))
-          : 0,
-      nonFollowersPercentage:
-        totalViews > 0
-          ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2))
-          : 0,
-      selfPercentage:
-        totalViews > 0
-          ? Number(((selfViews / totalViews) * 100).toFixed(2))
-          : 0,
+      followersPercentage: totalViews > 0 ? Number(((followerViews / totalViews) * 100).toFixed(2)) : 0,
+      nonFollowersPercentage: totalViews > 0 ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2)) : 0,
+      selfPercentage: totalViews > 0 ? Number(((selfViews / totalViews) * 100).toFixed(2)) : 0,
     };
 
     return {
@@ -724,12 +728,8 @@ export class PostService {
       const existing = await tx.post.findUnique({
         where: { id: postId },
         include: {
-          hashtags: {
-            select: { id: true },
-          },
-          taggedUsers: {
-            select: { id: true },
-          },
+          hashtags: { select: { id: true } },
+          taggedUsers: { select: { id: true } },
         },
       });
 
@@ -742,9 +742,7 @@ export class PostService {
       }
 
       const nextHashtagIds =
-        dto.hashtagIds !== undefined
-          ? Array.from(new Set(dto.hashtagIds))
-          : undefined;
+        dto.hashtagIds !== undefined ? Array.from(new Set(dto.hashtagIds)) : undefined;
 
       const nextTaggedUserIds =
         dto.taggedUserIds !== undefined
@@ -763,19 +761,13 @@ export class PostService {
           ? dto.videoEditingDeclaration
           : existing.videoEditingDeclaration;
 
-      if (
-        finalMediaType === MediaType.IMAGE &&
-        finalVideoEditingDeclaration
-      ) {
+      if (finalMediaType === MediaType.IMAGE && finalVideoEditingDeclaration) {
         throw new BadRequestException(
           'videoEditingDeclaration is only allowed for VIDEO posts.',
         );
       }
 
-      if (
-        finalMediaType === MediaType.VIDEO &&
-        finalPhotoEditingDeclaration
-      ) {
+      if (finalMediaType === MediaType.VIDEO && finalPhotoEditingDeclaration) {
         throw new BadRequestException(
           'photoEditingDeclaration is only allowed for IMAGE posts.',
         );
@@ -783,10 +775,7 @@ export class PostService {
 
       if (nextHashtagIds !== undefined && nextHashtagIds.length > 0) {
         const foundHashtags = await tx.hashtag.findMany({
-          where: {
-            id: { in: nextHashtagIds },
-            isActive: true,
-          },
+          where: { id: { in: nextHashtagIds }, isActive: true },
           select: { id: true },
         });
 
@@ -796,6 +785,8 @@ export class PostService {
           );
         }
       }
+
+      let taggedProfiles: { id: string }[] = [];
 
       if (nextTaggedUserIds !== undefined && nextTaggedUserIds.length > 0) {
         const foundUsers = await tx.user.findMany({
@@ -810,20 +801,11 @@ export class PostService {
         const blockedRelations = await tx.userBlock.findMany({
           where: {
             OR: nextTaggedUserIds.flatMap((targetUserId) => [
-              {
-                blockerId: userId,
-                blockedUserId: targetUserId,
-              },
-              {
-                blockerId: targetUserId,
-                blockedUserId: userId,
-              },
+              { blockerId: userId, blockedUserId: targetUserId },
+              { blockerId: targetUserId, blockedUserId: userId },
             ]),
           },
-          select: {
-            blockerId: true,
-            blockedUserId: true,
-          },
+          select: { blockerId: true, blockedUserId: true },
         });
 
         if (blockedRelations.length > 0) {
@@ -831,6 +813,15 @@ export class PostService {
             'You cannot tag users who are blocked or who blocked you',
           );
         }
+
+        taggedProfiles = await tx.profile.findMany({
+          where: {
+            userId: { in: nextTaggedUserIds },
+            isActive: 'ACTIVE',
+            suspend: false,
+          },
+          select: { id: true },
+        });
       }
 
       const oldHashtagIds = existing.hashtags.map((item) => item.id);
@@ -841,52 +832,24 @@ export class PostService {
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
         ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
         ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
-        ...(dto.vehicleCategory !== undefined
-          ? { vehicleCategory: dto.vehicleCategory ?? null }
-          : {}),
-        ...(dto.photoEditingDeclaration !== undefined
-          ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.videoEditingDeclaration !== undefined
-          ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.postLocation !== undefined
-          ? { postLocation: dto.postLocation ?? null }
-          : {}),
-        ...(dto.locationVisibility !== undefined
-          ? { locationVisibility: dto.locationVisibility ?? null }
-          : {}),
-        ...(dto.locationName !== undefined
-          ? { locationName: dto.locationName ?? null }
-          : {}),
-        ...(dto.locationAddress !== undefined
-          ? { locationAddress: dto.locationAddress ?? null }
-          : {}),
+        ...(dto.vehicleCategory !== undefined ? { vehicleCategory: dto.vehicleCategory ?? null } : {}),
+        ...(dto.photoEditingDeclaration !== undefined ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null } : {}),
+        ...(dto.videoEditingDeclaration !== undefined ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null } : {}),
+        ...(dto.postLocation !== undefined ? { postLocation: dto.postLocation ?? null } : {}),
+        ...(dto.locationVisibility !== undefined ? { locationVisibility: dto.locationVisibility ?? null } : {}),
+        ...(dto.locationName !== undefined ? { locationName: dto.locationName ?? null } : {}),
+        ...(dto.locationAddress !== undefined ? { locationAddress: dto.locationAddress ?? null } : {}),
         ...(dto.latitude !== undefined ? { latitude: dto.latitude ?? null } : {}),
-        ...(dto.longitude !== undefined
-          ? { longitude: dto.longitude ?? null }
-          : {}),
+        ...(dto.longitude !== undefined ? { longitude: dto.longitude ?? null } : {}),
         ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
-        ...(dto.visiualStyle !== undefined
-          ? { visiualStyle: dto.visiualStyle ?? [] }
-          : {}),
-        ...(dto.contextActivity !== undefined
-          ? { contextActivity: dto.contextActivity ?? [] }
-          : {}),
+        ...(dto.visiualStyle !== undefined ? { visiualStyle: dto.visiualStyle ?? [] } : {}),
+        ...(dto.contextActivity !== undefined ? { contextActivity: dto.contextActivity ?? [] } : {}),
         ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
         ...(nextHashtagIds !== undefined
-          ? {
-            hashtags: {
-              set: nextHashtagIds.map((id) => ({ id })),
-            },
-          }
+          ? { hashtags: { set: nextHashtagIds.map((id) => ({ id })) } }
           : {}),
         ...(nextTaggedUserIds !== undefined
-          ? {
-            taggedUsers: {
-              set: nextTaggedUserIds.map((id) => ({ id })),
-            },
-          }
+          ? { taggedUsers: { set: nextTaggedUserIds.map((id) => ({ id })) } }
           : {}),
       };
 
@@ -901,27 +864,37 @@ export class PostService {
           hashtags: true,
           taggedUsers: { select: { id: true } },
           profile: { select: { id: true, imageUrl: true, activeType: true } },
+          taggedProfiles: {
+            include: {
+              profile: { select: { id: true, profileName: true, imageUrl: true } },
+            },
+          },
         },
       });
 
-      if (nextHashtagIds !== undefined) {
-        const removedHashtagIds = oldHashtagIds.filter(
-          (id) => !nextHashtagIds.includes(id),
-        );
+      if (nextTaggedUserIds !== undefined) {
+        await tx.taggedProfilePost.deleteMany({ where: { postId } });
 
-        const addedHashtagIds = nextHashtagIds.filter(
-          (id) => !oldHashtagIds.includes(id),
-        );
+        if (taggedProfiles.length) {
+          await tx.taggedProfilePost.createMany({
+            data: taggedProfiles.map((p) => ({
+              postId,
+              profileId: p.id,
+            })),
+            skipDuplicates: true,
+          });
+        }
+      }
+
+      if (nextHashtagIds !== undefined) {
+        const removedHashtagIds = oldHashtagIds.filter((id) => !nextHashtagIds.includes(id));
+        const addedHashtagIds = nextHashtagIds.filter((id) => !oldHashtagIds.includes(id));
 
         if (removedHashtagIds.length > 0) {
           for (const hashtagId of removedHashtagIds) {
             await tx.hashtag.update({
               where: { id: hashtagId },
-              data: {
-                usageCount: {
-                  decrement: 1,
-                },
-              },
+              data: { usageCount: { decrement: 1 } },
             });
           }
         }
@@ -929,16 +902,48 @@ export class PostService {
         if (addedHashtagIds.length > 0) {
           await tx.hashtag.updateMany({
             where: { id: { in: addedHashtagIds } },
-            data: {
-              usageCount: {
-                increment: 1,
-              },
-            },
+            data: { usageCount: { increment: 1 } },
           });
         }
       }
 
       return updated;
+    });
+  }
+
+  async getProfilePosts(profileId: string) {
+    return await this.prisma.post.findMany({
+      where: {
+        OR: [
+          { profileId },
+          {
+            taggedProfiles: {
+              some: { profileId },
+            },
+          },
+        ],
+      },
+      orderBy: { createdAt: 'desc' },
+      include: {
+        user: { select: { id: true } },
+        profile: {
+          select: {
+            id: true,
+            profileName: true,
+            imageUrl: true,
+            activeType: true,
+          },
+        },
+        hashtags: true,
+        taggedUsers: { select: { id: true } },
+        taggedProfiles: {
+          include: {
+            profile: {
+              select: { id: true, profileName: true, imageUrl: true },
+            },
+          },
+        },
+      },
     });
   }
 

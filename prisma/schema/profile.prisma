@@ -32,6 +32,7 @@ model Profile {
   virtualSimRacingEvents VirtualSimRacingEvent[]
   legalNotices           LegalNotice[]
   posts                  Post[]
+  taggedPosts                    TaggedProfilePost[]
   labTimes               LabTime[]
   submitLabTimes         SubmitLabTime[]
   bikes                  Bike[]
