@@ -483,6 +483,11 @@ export type SpottingRequest = Prisma.SpottingRequestModel
  */
 export type SubmitLabTime = Prisma.SubmitLabTimeModel
 /**
+ * Model TaggedProfilePost
+ * 
+ */
+export type TaggedProfilePost = Prisma.TaggedProfilePostModel
+/**
  * Model TuningAero
  * 
  */

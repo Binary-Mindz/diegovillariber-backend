@@ -477,6 +477,7 @@ export const ModelName = {
   SpottingMatch: 'SpottingMatch',
   SpottingRequest: 'SpottingRequest',
   SubmitLabTime: 'SubmitLabTime',
+  TaggedProfilePost: 'TaggedProfilePost',
   TuningAero: 'TuningAero',
   Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
@@ -502,7 +503,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "badge" | "profileBadge" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "carStory" | "carMilestone" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
+    modelProps: "ad" | "advancedCarData" | "ambassadorProgram" | "badge" | "profileBadge" | "bike" | "advancedBikeData" | "engineAndPerformance" | "bikeDriveTrains" | "suspension" | "bikeWheelTires" | "bikeElectronics" | "bikeUsageAndNotes" | "businessProfile" | "car" | "carStory" | "carMilestone" | "challenge" | "challengeParticipant" | "challengeSubmission" | "challengeSubmissionMedia" | "challengeReaction" | "challengeVote" | "challengeComment" | "challengeResult" | "challengeWinner" | "chassisBrakes" | "comment" | "contentCreatorProfile" | "conversation" | "conversationParticipant" | "displayAndPcSetup" | "drivetrain" | "drivingAssistant" | "enginePower" | "event" | "fileInstance" | "follow" | "garage" | "hardwareSetup" | "hashtag" | "headToHeadBattle" | "battleParticipant" | "battleInvitation" | "battleSubmission" | "battleVote" | "battleComment" | "header" | "hidePost" | "interiorSafety" | "labTime" | "legalNotice" | "like" | "live" | "liveParticipant" | "liveReward" | "message" | "messageReceipt" | "notification" | "notificationPreference" | "deviceToken" | "officialPartner" | "ownerProfile" | "payment" | "post" | "postViewInsight" | "postRating" | "prestigeRule" | "prize" | "proDriverProfile" | "productList" | "profile" | "racing" | "racingVote" | "rawShiftBattle" | "rawShiftParticipant" | "rawShiftEntry" | "rawShiftVote" | "rawShiftComment" | "report" | "repost" | "savePost" | "setupDescriptionPhoto" | "share" | "simRacingProfile" | "splitScreenMatchRequest" | "splitScreenBattle" | "splitScreenBattleParticipant" | "splitScreenBattleVote" | "spotterProfile" | "spottingMatch" | "spottingRequest" | "submitLabTime" | "taggedProfilePost" | "tuningAero" | "tutorial" | "usageNotes" | "user" | "userBlock" | "userPoint" | "virtualGarage" | "virtualSimRacingEvent" | "wheelsTires" | "wishList"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -7388,6 +7389,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    TaggedProfilePost: {
+      payload: Prisma.$TaggedProfilePostPayload<ExtArgs>
+      fields: Prisma.TaggedProfilePostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TaggedProfilePostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TaggedProfilePostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        findFirst: {
+          args: Prisma.TaggedProfilePostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TaggedProfilePostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        findMany: {
+          args: Prisma.TaggedProfilePostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>[]
+        }
+        create: {
+          args: Prisma.TaggedProfilePostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        createMany: {
+          args: Prisma.TaggedProfilePostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TaggedProfilePostCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>[]
+        }
+        delete: {
+          args: Prisma.TaggedProfilePostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        update: {
+          args: Prisma.TaggedProfilePostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        deleteMany: {
+          args: Prisma.TaggedProfilePostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TaggedProfilePostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TaggedProfilePostUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>[]
+        }
+        upsert: {
+          args: Prisma.TaggedProfilePostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TaggedProfilePostPayload>
+        }
+        aggregate: {
+          args: Prisma.TaggedProfilePostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTaggedProfilePost>
+        }
+        groupBy: {
+          args: Prisma.TaggedProfilePostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaggedProfilePostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TaggedProfilePostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TaggedProfilePostCountAggregateOutputType> | number
+        }
+      }
+    }
     TuningAero: {
       payload: Prisma.$TuningAeroPayload<ExtArgs>
       fields: Prisma.TuningAeroFieldRefs
@@ -9671,6 +9746,16 @@ export const SubmitLabTimeScalarFieldEnum = {
 export type SubmitLabTimeScalarFieldEnum = (typeof SubmitLabTimeScalarFieldEnum)[keyof typeof SubmitLabTimeScalarFieldEnum]
 
 
+export const TaggedProfilePostScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  profileId: 'profileId',
+  createdAt: 'createdAt'
+} as const
+
+export type TaggedProfilePostScalarFieldEnum = (typeof TaggedProfilePostScalarFieldEnum)[keyof typeof TaggedProfilePostScalarFieldEnum]
+
+
 export const TuningAeroScalarFieldEnum = {
   id: 'id',
   advancedCarDataId: 'advancedCarDataId',
@@ -11645,6 +11730,7 @@ export type GlobalOmitConfig = {
   spottingMatch?: Prisma.SpottingMatchOmit
   spottingRequest?: Prisma.SpottingRequestOmit
   submitLabTime?: Prisma.SubmitLabTimeOmit
+  taggedProfilePost?: Prisma.TaggedProfilePostOmit
   tuningAero?: Prisma.TuningAeroOmit
   tutorial?: Prisma.TutorialOmit
   usageNotes?: Prisma.UsageNotesOmit

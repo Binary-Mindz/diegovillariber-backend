@@ -1,0 +1,12 @@
+model TaggedProfilePost {
+  id        String   @id @default(uuid()) @db.Uuid
+  postId    String   @db.Uuid
+  profileId String   @db.Uuid
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([postId, profileId])
+  @@index([profileId])
+  @@index([postId])
+}

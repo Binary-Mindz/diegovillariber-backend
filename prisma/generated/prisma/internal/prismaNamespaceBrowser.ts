@@ -144,6 +144,7 @@ export const ModelName = {
   SpottingMatch: 'SpottingMatch',
   SpottingRequest: 'SpottingRequest',
   SubmitLabTime: 'SubmitLabTime',
+  TaggedProfilePost: 'TaggedProfilePost',
   TuningAero: 'TuningAero',
   Tutorial: 'Tutorial',
   UsageNotes: 'UsageNotes',
@@ -1674,6 +1675,16 @@ export const SubmitLabTimeScalarFieldEnum = {
 } as const
 
 export type SubmitLabTimeScalarFieldEnum = (typeof SubmitLabTimeScalarFieldEnum)[keyof typeof SubmitLabTimeScalarFieldEnum]
+
+
+export const TaggedProfilePostScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  profileId: 'profileId',
+  createdAt: 'createdAt'
+} as const
+
+export type TaggedProfilePostScalarFieldEnum = (typeof TaggedProfilePostScalarFieldEnum)[keyof typeof TaggedProfilePostScalarFieldEnum]
 
 
 export const TuningAeroScalarFieldEnum = {
