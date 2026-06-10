@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "LabTime" ALTER COLUMN "frontTireSize" SET DATA TYPE TEXT,
+ALTER COLUMN "rearTireSize" SET DATA TYPE TEXT;

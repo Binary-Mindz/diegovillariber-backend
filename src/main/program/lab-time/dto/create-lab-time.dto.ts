@@ -159,11 +159,10 @@ export class CreateLabTimeDto {
   @Max(100)
   tireWear?: number;
 
-  @ApiPropertyOptional({ example: 265 })
+  @ApiPropertyOptional({ example: '265/35R21', type: String })
   @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  frontTireSize?: number;
+  @IsString()
+  frontTireSize?: string;
 
   @ApiPropertyOptional({ example: '32psi' })
   @IsOptional()
@@ -171,11 +170,10 @@ export class CreateLabTimeDto {
   @MaxLength(20)
   frontPressure?: string;
 
-  @ApiPropertyOptional({ example: 305 })
+  @ApiPropertyOptional({ example: '265/35R21', type: String })
   @IsOptional()
-  @Type(() => Number)
-  @IsInt()
-  rearTireSize?: number;
+  @IsString()
+  rearTireSize?: string;
 
   @ApiPropertyOptional({ example: '32psi' })
   @IsOptional()
