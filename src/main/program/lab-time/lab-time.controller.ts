@@ -9,6 +9,7 @@ import {
   Patch,
   Post,
   Query,
+  Res,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -19,11 +20,11 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
+import { Response } from 'express';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { handleRequest } from '@/common/helpers/handle.request';
-
 import { LabTimeService } from './lab-time.service';
 import { CreateLabTimeDto } from './dto/create-lab-time.dto';
 import { UpdateLabTimeDto } from './dto/update-lab-time.dto';
@@ -146,6 +147,23 @@ export class LabTimeController {
   @ApiOperation({ summary: 'Get lap time by id' })
   get(@Param('id') id: string) {
     return handleRequest(async () => this.service.get(id), 'Lap time fetched');
+  }
+
+  @Get(':id/download-telemetry')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Download telemetry data as CSV' })
+  async downloadTelemetry(
+    @Param('id') id: string,
+    @Res() res: Response,
+  ) {
+    const csvData = await this.service.getTelemetryCsv(id);
+  
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader(
+      'Content-Disposition',
+      `attachment; filename="telemetry-${id}.csv"`,
+    );
+    return res.status(HttpStatus.OK).send(csvData);
   }
 
   @ApiBearerAuth()
