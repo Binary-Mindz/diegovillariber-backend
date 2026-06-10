@@ -735,6 +735,39 @@ export class LabTimeService {
     };
   }
 
+  async getTelemetryCsv(labTimeId: string): Promise<string> {
+    const lap = await this.prisma.labTime.findUnique({
+      where: { id: labTimeId },
+      select: { telemetryMedia: true },
+    });
+
+    if (!lap) {
+      throw new NotFoundException('Lap time not found');
+    }
+
+    const telemetry = lap.telemetryMedia as any[];
+    if (!telemetry || !Array.isArray(telemetry) || telemetry.length === 0) {
+      throw new BadRequestException('No telemetry data available for this lap');
+    }
+
+    const headers = Object.keys(telemetry[0]);
+    const csvRows = [headers.join(',')]; 
+
+    for (const row of telemetry) {
+      const values = headers.map(header => {
+        const val = row[header];
+     
+        if (typeof val === 'string' && val.includes(',')) {
+          return `"${val}"`;
+        }
+        return val !== undefined && val !== null ? val : '';
+      });
+      csvRows.push(values.join(','));
+    }
+
+    return csvRows.join('\n');
+  }
+
   async update(
     userId: string,
     labTimeId: string,

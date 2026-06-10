@@ -49,9 +49,9 @@ model LabTime {
   tireModel     String?
   tireCompund   TireCompound? @default(SOFT)
   tireWear      Int?
-  frontTireSize Int?
+  frontTireSize String?
   frontPressure String?
-  rearTireSize  Int?
+  rearTireSize  String?
   rearPressure  String?
 
   // Driver / Style

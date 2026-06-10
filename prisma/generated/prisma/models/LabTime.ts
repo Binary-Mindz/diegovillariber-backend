@@ -34,8 +34,6 @@ export type LabTimeAvgAggregateOutputType = {
   trackTemp: number | null
   humidity: number | null
   tireWear: number | null
-  frontTireSize: number | null
-  rearTireSize: number | null
   fuelLoad: number | null
   driverWeight: number | null
 }
@@ -48,8 +46,6 @@ export type LabTimeSumAggregateOutputType = {
   trackTemp: number | null
   humidity: number | null
   tireWear: number | null
-  frontTireSize: number | null
-  rearTireSize: number | null
   fuelLoad: number | null
   driverWeight: number | null
 }
@@ -81,9 +77,9 @@ export type LabTimeMinAggregateOutputType = {
   tireModel: string | null
   tireCompund: $Enums.TireCompound | null
   tireWear: number | null
-  frontTireSize: number | null
+  frontTireSize: string | null
   frontPressure: string | null
-  rearTireSize: number | null
+  rearTireSize: string | null
   rearPressure: string | null
   drivingStyle: $Enums.DriveStyle | null
   fuelLoad: number | null
@@ -120,9 +116,9 @@ export type LabTimeMaxAggregateOutputType = {
   tireModel: string | null
   tireCompund: $Enums.TireCompound | null
   tireWear: number | null
-  frontTireSize: number | null
+  frontTireSize: string | null
   frontPressure: string | null
-  rearTireSize: number | null
+  rearTireSize: string | null
   rearPressure: string | null
   drivingStyle: $Enums.DriveStyle | null
   fuelLoad: number | null
@@ -182,8 +178,6 @@ export type LabTimeAvgAggregateInputType = {
   trackTemp?: true
   humidity?: true
   tireWear?: true
-  frontTireSize?: true
-  rearTireSize?: true
   fuelLoad?: true
   driverWeight?: true
 }
@@ -196,8 +190,6 @@ export type LabTimeSumAggregateInputType = {
   trackTemp?: true
   humidity?: true
   tireWear?: true
-  frontTireSize?: true
-  rearTireSize?: true
   fuelLoad?: true
   driverWeight?: true
 }
@@ -435,9 +427,9 @@ export type LabTimeGroupByOutputType = {
   tireModel: string | null
   tireCompund: $Enums.TireCompound | null
   tireWear: number | null
-  frontTireSize: number | null
+  frontTireSize: string | null
   frontPressure: string | null
-  rearTireSize: number | null
+  rearTireSize: string | null
   rearPressure: string | null
   drivingStyle: $Enums.DriveStyle | null
   fuelLoad: number | null
@@ -498,9 +490,9 @@ export type LabTimeWhereInput = {
   tireModel?: Prisma.StringNullableFilter<"LabTime"> | string | null
   tireCompund?: Prisma.EnumTireCompoundNullableFilter<"LabTime"> | $Enums.TireCompound | null
   tireWear?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  frontTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  frontTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   frontPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  rearTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  rearTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   rearPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
   drivingStyle?: Prisma.EnumDriveStyleNullableFilter<"LabTime"> | $Enums.DriveStyle | null
   fuelLoad?: Prisma.IntNullableFilter<"LabTime"> | number | null
@@ -585,9 +577,9 @@ export type LabTimeWhereUniqueInput = Prisma.AtLeast<{
   tireModel?: Prisma.StringNullableFilter<"LabTime"> | string | null
   tireCompund?: Prisma.EnumTireCompoundNullableFilter<"LabTime"> | $Enums.TireCompound | null
   tireWear?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  frontTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  frontTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   frontPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  rearTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  rearTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   rearPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
   drivingStyle?: Prisma.EnumDriveStyleNullableFilter<"LabTime"> | $Enums.DriveStyle | null
   fuelLoad?: Prisma.IntNullableFilter<"LabTime"> | number | null
@@ -675,9 +667,9 @@ export type LabTimeScalarWhereWithAggregatesInput = {
   tireModel?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
   tireCompund?: Prisma.EnumTireCompoundNullableWithAggregatesFilter<"LabTime"> | $Enums.TireCompound | null
   tireWear?: Prisma.IntNullableWithAggregatesFilter<"LabTime"> | number | null
-  frontTireSize?: Prisma.IntNullableWithAggregatesFilter<"LabTime"> | number | null
+  frontTireSize?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
   frontPressure?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
-  rearTireSize?: Prisma.IntNullableWithAggregatesFilter<"LabTime"> | number | null
+  rearTireSize?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
   rearPressure?: Prisma.StringNullableWithAggregatesFilter<"LabTime"> | string | null
   drivingStyle?: Prisma.EnumDriveStyleNullableWithAggregatesFilter<"LabTime"> | $Enums.DriveStyle | null
   fuelLoad?: Prisma.IntNullableWithAggregatesFilter<"LabTime"> | number | null
@@ -713,9 +705,9 @@ export type LabTimeCreateInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -755,9 +747,9 @@ export type LabTimeUncheckedCreateInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -793,9 +785,9 @@ export type LabTimeUpdateInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -835,9 +827,9 @@ export type LabTimeUncheckedUpdateInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -875,9 +867,9 @@ export type LabTimeCreateManyInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -913,9 +905,9 @@ export type LabTimeUpdateManyMutationInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -953,9 +945,9 @@ export type LabTimeUncheckedUpdateManyInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1023,8 +1015,6 @@ export type LabTimeAvgOrderByAggregateInput = {
   trackTemp?: Prisma.SortOrder
   humidity?: Prisma.SortOrder
   tireWear?: Prisma.SortOrder
-  frontTireSize?: Prisma.SortOrder
-  rearTireSize?: Prisma.SortOrder
   fuelLoad?: Prisma.SortOrder
   driverWeight?: Prisma.SortOrder
 }
@@ -1115,8 +1105,6 @@ export type LabTimeSumOrderByAggregateInput = {
   trackTemp?: Prisma.SortOrder
   humidity?: Prisma.SortOrder
   tireWear?: Prisma.SortOrder
-  frontTireSize?: Prisma.SortOrder
-  rearTireSize?: Prisma.SortOrder
   fuelLoad?: Prisma.SortOrder
   driverWeight?: Prisma.SortOrder
 }
@@ -1263,9 +1251,9 @@ export type LabTimeCreateWithoutGarageInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1303,9 +1291,9 @@ export type LabTimeUncheckedCreateWithoutGarageInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1372,9 +1360,9 @@ export type LabTimeScalarWhereInput = {
   tireModel?: Prisma.StringNullableFilter<"LabTime"> | string | null
   tireCompund?: Prisma.EnumTireCompoundNullableFilter<"LabTime"> | $Enums.TireCompound | null
   tireWear?: Prisma.IntNullableFilter<"LabTime"> | number | null
-  frontTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  frontTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   frontPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
-  rearTireSize?: Prisma.IntNullableFilter<"LabTime"> | number | null
+  rearTireSize?: Prisma.StringNullableFilter<"LabTime"> | string | null
   rearPressure?: Prisma.StringNullableFilter<"LabTime"> | string | null
   drivingStyle?: Prisma.EnumDriveStyleNullableFilter<"LabTime"> | $Enums.DriveStyle | null
   fuelLoad?: Prisma.IntNullableFilter<"LabTime"> | number | null
@@ -1410,9 +1398,9 @@ export type LabTimeCreateWithoutProfileInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1450,9 +1438,9 @@ export type LabTimeUncheckedCreateWithoutProfileInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1515,9 +1503,9 @@ export type LabTimeCreateManyGarageInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1553,9 +1541,9 @@ export type LabTimeUpdateWithoutGarageInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1593,9 +1581,9 @@ export type LabTimeUncheckedUpdateWithoutGarageInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1632,9 +1620,9 @@ export type LabTimeUncheckedUpdateManyWithoutGarageInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1671,9 +1659,9 @@ export type LabTimeCreateManyProfileInput = {
   tireModel?: string | null
   tireCompund?: $Enums.TireCompound | null
   tireWear?: number | null
-  frontTireSize?: number | null
+  frontTireSize?: string | null
   frontPressure?: string | null
-  rearTireSize?: number | null
+  rearTireSize?: string | null
   rearPressure?: string | null
   drivingStyle?: $Enums.DriveStyle | null
   fuelLoad?: number | null
@@ -1709,9 +1697,9 @@ export type LabTimeUpdateWithoutProfileInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1749,9 +1737,9 @@ export type LabTimeUncheckedUpdateWithoutProfileInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1788,9 +1776,9 @@ export type LabTimeUncheckedUpdateManyWithoutProfileInput = {
   tireModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tireCompund?: Prisma.NullableEnumTireCompoundFieldUpdateOperationsInput | $Enums.TireCompound | null
   tireWear?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  frontTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  frontTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   frontPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rearTireSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rearTireSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rearPressure?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   drivingStyle?: Prisma.NullableEnumDriveStyleFieldUpdateOperationsInput | $Enums.DriveStyle | null
   fuelLoad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2016,9 +2004,9 @@ export type $LabTimePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     tireModel: string | null
     tireCompund: $Enums.TireCompound | null
     tireWear: number | null
-    frontTireSize: number | null
+    frontTireSize: string | null
     frontPressure: string | null
-    rearTireSize: number | null
+    rearTireSize: string | null
     rearPressure: string | null
     drivingStyle: $Enums.DriveStyle | null
     fuelLoad: number | null
@@ -2478,9 +2466,9 @@ export interface LabTimeFieldRefs {
   readonly tireModel: Prisma.FieldRef<"LabTime", 'String'>
   readonly tireCompund: Prisma.FieldRef<"LabTime", 'TireCompound'>
   readonly tireWear: Prisma.FieldRef<"LabTime", 'Int'>
-  readonly frontTireSize: Prisma.FieldRef<"LabTime", 'Int'>
+  readonly frontTireSize: Prisma.FieldRef<"LabTime", 'String'>
   readonly frontPressure: Prisma.FieldRef<"LabTime", 'String'>
-  readonly rearTireSize: Prisma.FieldRef<"LabTime", 'Int'>
+  readonly rearTireSize: Prisma.FieldRef<"LabTime", 'String'>
   readonly rearPressure: Prisma.FieldRef<"LabTime", 'String'>
   readonly drivingStyle: Prisma.FieldRef<"LabTime", 'DriveStyle'>
   readonly fuelLoad: Prisma.FieldRef<"LabTime", 'Int'>
