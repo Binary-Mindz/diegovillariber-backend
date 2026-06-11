@@ -6,7 +6,7 @@ import {
   ChallengeStatus,
   EventStatus,
   Prisma,
-  RawShiftStatus,
+  ProductCategory,
   Type,
 } from 'generated/prisma/client';
 import { CIRCUITS_DATA } from '../program/lab-time/data/circuits.data';
@@ -30,31 +30,25 @@ export class MapService {
 
   private getTimeRangeDate(timeRange?: MapTimeRange): Date | undefined {
     if (!timeRange) return undefined;
-
     const now = new Date();
 
     switch (timeRange) {
       case MapTimeRange.LAST_24_HOURS:
         return new Date(now.getTime() - 24 * 60 * 60 * 1000);
-
       case MapTimeRange.LAST_7_DAYS:
         return new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-
       case MapTimeRange.LAST_30_DAYS:
         return new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-
       case MapTimeRange.LAST_6_MONTHS: {
         const date = new Date(now);
         date.setMonth(date.getMonth() - 6);
         return date;
       }
-
       case MapTimeRange.LAST_1_YEAR: {
         const date = new Date(now);
         date.setFullYear(date.getFullYear() - 1);
         return date;
       }
-
       default:
         return undefined;
     }
@@ -80,21 +74,6 @@ export class MapService {
       Math.sin(dLng / 2);
 
     return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }
-
-  private withinRadius(
-    userLat: number,
-    userLng: number,
-    rowLat?: Prisma.Decimal | number | null,
-    rowLng?: Prisma.Decimal | number | null,
-    radiusKm = 6371,
-  ) {
-    if (rowLat == null || rowLng == null) return false;
-
-    const lat = Number(rowLat);
-    const lng = Number(rowLng);
-
-    return this.haversineKm(userLat, userLng, lat, lng) <= radiusKm;
   }
 
   private buildDecimalBounds(bounds: {
@@ -129,6 +108,7 @@ export class MapService {
       showBattles = true,
       showChallenges = true,
       showEvents = true,
+      showCircuits = true,
 
       showMarketplaceCar = false,
       showMarketplaceCarParts = false,
@@ -139,14 +119,8 @@ export class MapService {
     } = query;
 
     const hasRegion = regionOnly && lat != null && lng != null;
-
-    const bounds =
-      hasRegion && lat != null && lng != null
-        ? this.getBounds(lat, lng, radiusKm)
-        : null;
-
+    const bounds = hasRegion && lat != null && lng != null ? this.getBounds(lat, lng, radiusKm) : null;
     const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
-
     const fromDate = this.getTimeRangeDate(timeRange);
 
     const createdAtFilter = fromDate
@@ -157,17 +131,19 @@ export class MapService {
       }
       : {};
 
+    // Profile Types Filtering
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
     if (showOwner) profileTypes.push(Type.OWNER);
 
-    const marketplaceCategories: any[] = [];
+    // Marketplace Enums Mapping Fixed
+    const marketplaceCategories: ProductCategory[] = [];
+    if (showMarketplaceCar) marketplaceCategories.push(ProductCategory.CAR);
+    if (showMarketplaceCarParts) marketplaceCategories.push(ProductCategory.CAR_PARTS);
+    if (showMarketplacePhotography) marketplaceCategories.push(ProductCategory.PHOTOGRAPHY);
+    if (showMarketplaceSimRacing) marketplaceCategories.push(ProductCategory.SIM_RACING);
 
-    if (showMarketplaceCar) marketplaceCategories.push('CAR');
-    if (showMarketplaceCarParts) marketplaceCategories.push('CAR_PARTS');
-    if (showMarketplacePhotography) marketplaceCategories.push('PHOTOGRAPHY');
-    if (showMarketplaceSimRacing) marketplaceCategories.push('SIM_RACING');
-
+    // Dynamic Queries Optimization
     const postWhere: Prisma.PostWhereInput = {
       latitude: { not: null },
       longitude: { not: null },
@@ -204,100 +180,132 @@ export class MapService {
     const marketplaceWhere: Prisma.ProductListWhereInput = {
       latitude: { not: null },
       longitude: { not: null },
-      ...(marketplaceCategories.length > 0
-        ? { category: { in: marketplaceCategories } }
-        : {}),
+      ...(marketplaceCategories.length > 0 ? { category: { in: marketplaceCategories } } : {}),
       ...boundFilter,
       ...createdAtFilter,
     };
 
-    const [posts, challenges, battles, events, marketplaceProducts] =
-      await Promise.all([
-        profileTypes.length === 0
-          ? Promise.resolve<any[]>([])
-          : this.prisma.post.findMany({
-            where: postWhere,
-            orderBy: [{ createdAt: 'desc' }],
-          }),
+    // Parallel Execution
+    const [posts, challenges, battles, events, marketplaceProducts] = await Promise.all([
+      profileTypes.length === 0
+        ? Promise.resolve<any[]>([])
+        : this.prisma.post.findMany({
+          where: postWhere,
+          orderBy: [{ createdAt: 'desc' }],
+        }),
 
-        showChallenges
-          ? this.prisma.challenge.findMany({
-            where: challengeWhere,
-            orderBy: [{ startDate: 'asc' }],
-          })
-          : Promise.resolve([]),
+      showChallenges
+        ? this.prisma.challenge.findMany({
+          where: challengeWhere,
+          orderBy: [{ startDate: 'asc' }],
+        })
+        : Promise.resolve<any[]>([]),
 
-        showBattles
-          ? this.prisma.headToHeadBattle.findMany({
-            where: battleWhere,
-            orderBy: [{ startDate: 'asc' }],
-          })
-          : Promise.resolve([]),
+      showBattles
+        ? this.prisma.headToHeadBattle.findMany({
+          where: battleWhere,
+          orderBy: [{ startDate: 'asc' }],
+        })
+        : Promise.resolve<any[]>([]),
 
-        showEvents
-          ? this.prisma.event.findMany({
-            where: eventWhere,
-            orderBy: [{ startDate: 'asc' }],
-          })
-          : Promise.resolve([]),
+      showEvents
+        ? this.prisma.event.findMany({
+          where: eventWhere,
+          orderBy: [{ startDate: 'asc' }],
+        })
+        : Promise.resolve<any[]>([]),
 
-        marketplaceCategories.length > 0
-          ? this.prisma.productList.findMany({
-            where: marketplaceWhere,
-            orderBy: [{ createdAt: 'desc' }],
-            include: {
-              owner: {
-                select: {
-                  id: true,
-                  email: true,
-                  profile: {
-                    select: {
-                      profileName: true,
-                      imageUrl: true,
-                    },
-                  },
-                },
-              },
-              car: {
-                select: {
-                  id: true,
-                  make: true,
-                  model: true,
-                  image: true,
-                  displayName: true,
-                },
+      marketplaceCategories.length > 0
+        ? this.prisma.productList.findMany({
+          where: marketplaceWhere,
+          orderBy: [{ createdAt: 'desc' }],
+          include: {
+            owner: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
               },
             },
-          })
-          : Promise.resolve([]),
-      ]);
+            car: {
+              select: { id: true, make: true, model: true, image: true, displayName: true },
+            },
+          },
+        })
+        : Promise.resolve<any[]>([]),
+    ]);
 
+    // Format Data Markers cleanly for Frontend Consumption
+    const postMarkers = posts.map((p) => ({ ...p, markerType: 'SPOT', type: 'spot' }));
+    const challengeMarkers = challenges.map((c) => ({ ...c, markerType: 'CHALLENGE', type: 'challenge' }));
+    const battleMarkers = battles.map((b) => ({ ...b, markerType: 'BATTLE', type: 'battle' }));
+    const eventMarkers = events.map((e) => ({ ...e, markerType: 'EVENT', type: 'event' }));
     const marketplaceMarkers = marketplaceProducts.map((product) => ({
       ...product,
       markerType: 'MARKETPLACE',
       type: 'marketplace',
     }));
 
+    // Static Circuit Processing (If Enabled)
+    // Static Circuit Processing (If Enabled) - FIXED TYPE ERROR
+    let circuitMarkers: any[] = [];
+    if (showCircuits) {
+      CIRCUITS_DATA.forEach((circuit) => {
+        if (circuit.layouts && Array.isArray(circuit.layouts)) {
+          circuit.layouts.forEach((layout) => {
+            let isIncluded = true;
+            if (hasRegion && lat != null && lng != null) {
+              // Convert to explicit number to avoid number | null TypeScript error
+              const currentLayoutLat = layout.latitude != null ? Number(layout.latitude) : null;
+              const currentLayoutLng = layout.longitude != null ? Number(layout.longitude) : null;
+
+              if (currentLayoutLat !== null && currentLayoutLng !== null) {
+                const distance = this.haversineKm(lat, lng, currentLayoutLat, currentLayoutLng);
+                if (distance > radiusKm) isIncluded = false;
+              } else {
+                // If coordinates are missing, exclude if filtered by region
+                isIncluded = false;
+              }
+            }
+            if (isIncluded) {
+              const uniqueId = encodeURIComponent(`${circuit.trackName}__${layout.trackLayout}`);
+              circuitMarkers.push({
+                id: uniqueId,
+                trackName: circuit.trackName,
+                trackLayout: layout.trackLayout,
+                latitude: layout.latitude,
+                longitude: layout.longitude,
+                country: circuit.country,
+                continent: circuit.continent,
+                markerType: 'CIRCUIT',
+                type: 'circuit',
+              });
+            }
+          });
+        }
+      });
+    }
+
+    const allMarkers = [
+      ...postMarkers,
+      ...challengeMarkers,
+      ...battleMarkers,
+      ...eventMarkers,
+      ...marketplaceMarkers,
+      ...circuitMarkers,
+    ];
+
     return {
-      total:
-        posts.length +
-        challenges.length +
-        battles.length +
-        events.length +
-        marketplaceMarkers.length,
+      total: allMarkers.length,
       filters: query,
-      markers: [
-        ...posts,
-        ...challenges,
-        ...battles,
-        ...events,
-        ...marketplaceMarkers,
-      ],
+      markers: allMarkers,
     };
   }
 
   async getMapDetails(type: string, id: string) {
-    if (type === 'spot') {
+    const normalisedType = type.toLowerCase();
+
+    if (normalisedType === 'spot') {
       return this.prisma.post.findUnique({
         where: { id },
         select: {
@@ -314,112 +322,74 @@ export class MapService {
           ratingAverage: true,
           ratingCount: true,
           profileType: true,
-          user: {
-            select: {
-              id: true,
-              email: true,
-            },
-          },
-          profile: {
-            select: {
-              id: true,
-              profileName: true,
-              imageUrl: true,
-            },
-          },
+          user: { select: { id: true, email: true } },
+          profile: { select: { id: true, profileName: true, imageUrl: true } },
         },
       });
     }
 
-    if (type === 'challenge') {
+    if (normalisedType === 'challenge') {
       return this.prisma.challenge.findUnique({
         where: { id },
         include: {
-          creator: {
-            select: {
-              id: true,
-              email: true,
-            },
-          },
-          _count: {
-            select: {
-              challengeParticipants: true,
-              challengeSubmissions: true,
-            },
-          },
+          creator: { select: { id: true, email: true } },
+          _count: { select: { challengeParticipants: true, challengeSubmissions: true } },
         },
       });
     }
 
-    if (type === 'battle') {
+    if (normalisedType === 'battle') {
       return this.prisma.headToHeadBattle.findUnique({
         where: { id },
         include: {
-          creator: {
-            select: {
-              id: true,
-              email: true,
-            },
-          },
-          _count: {
-            select: {
-              participants: true,
-              submissions: true,
-              battleVotes: true,
-            },
-          },
+          creator: { select: { id: true, email: true } },
+          _count: { select: { participants: true, submissions: true, battleVotes: true } },
         },
       });
     }
 
-    if (type === 'event') {
+    if (normalisedType === 'event') {
       return this.prisma.event.findUnique({
+        where: { id },
+        include: {
+          owner: { select: { id: true, email: true } },
+        },
+      });
+    }
+
+    if (normalisedType === 'marketplace') {
+      return this.prisma.productList.findUnique({
         where: { id },
         include: {
           owner: {
             select: {
               id: true,
               email: true,
+              profile: { select: { profileName: true, imageUrl: true } },
             },
           },
+          car: true,
         },
       });
     }
 
-    if (type === 'raw_shift') {
+    if (normalisedType === 'raw_shift') {
       return this.prisma.rawShiftBattle.findUnique({
         where: { id },
         include: {
-          creator: {
-            select: {
-              id: true,
-              email: true,
-            },
-          },
-          _count: {
-            select: {
-              participants: true,
-              entries: true,
-              comments: true,
-            },
-          },
+          creator: { select: { id: true, email: true } },
+          _count: { select: { participants: true, entries: true, comments: true } },
         },
       });
     }
 
-    if (type === 'circuit') {
+    if (normalisedType === 'circuit') {
       const [trackName, trackLayout] = decodeURIComponent(id).split('__');
-
       const layout = findCircuitLayout(trackName, trackLayout);
-
-      if (!layout) {
-        return null;
-      }
+      if (!layout) return null;
 
       const circuit = CIRCUITS_DATA.find(
-        (item) =>
-          item.trackName.trim().toLowerCase() ===
-          trackName.trim().toLowerCase(),
+        (item) => item.trackName.trim().toLowerCase() === trackName.trim().toLowerCase(),
       );
 
       return {
