@@ -28,10 +28,14 @@ export type AggregateRawShiftBattle = {
 
 export type RawShiftBattleAvgAggregateOutputType = {
   participantLimit: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type RawShiftBattleSumAggregateOutputType = {
   participantLimit: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type RawShiftBattleMinAggregateOutputType = {
@@ -45,6 +49,8 @@ export type RawShiftBattleMinAggregateOutputType = {
   participantLimit: number | null
   rawShiftPrice: string | null
   location: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
   status: $Enums.RawShiftStatus | null
@@ -64,6 +70,8 @@ export type RawShiftBattleMaxAggregateOutputType = {
   participantLimit: number | null
   rawShiftPrice: string | null
   location: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   startDate: Date | null
   endDate: Date | null
   status: $Enums.RawShiftStatus | null
@@ -83,6 +91,8 @@ export type RawShiftBattleCountAggregateOutputType = {
   participantLimit: number
   rawShiftPrice: number
   location: number
+  latitude: number
+  longitude: number
   startDate: number
   endDate: number
   status: number
@@ -95,10 +105,14 @@ export type RawShiftBattleCountAggregateOutputType = {
 
 export type RawShiftBattleAvgAggregateInputType = {
   participantLimit?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type RawShiftBattleSumAggregateInputType = {
   participantLimit?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type RawShiftBattleMinAggregateInputType = {
@@ -112,6 +126,8 @@ export type RawShiftBattleMinAggregateInputType = {
   participantLimit?: true
   rawShiftPrice?: true
   location?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
   status?: true
@@ -131,6 +147,8 @@ export type RawShiftBattleMaxAggregateInputType = {
   participantLimit?: true
   rawShiftPrice?: true
   location?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
   status?: true
@@ -150,6 +168,8 @@ export type RawShiftBattleCountAggregateInputType = {
   participantLimit?: true
   rawShiftPrice?: true
   location?: true
+  latitude?: true
+  longitude?: true
   startDate?: true
   endDate?: true
   status?: true
@@ -256,6 +276,8 @@ export type RawShiftBattleGroupByOutputType = {
   participantLimit: number | null
   rawShiftPrice: string
   location: string | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
   startDate: Date
   endDate: Date
   status: $Enums.RawShiftStatus
@@ -298,6 +320,8 @@ export type RawShiftBattleWhereInput = {
   participantLimit?: Prisma.IntNullableFilter<"RawShiftBattle"> | number | null
   rawShiftPrice?: Prisma.StringFilter<"RawShiftBattle"> | string
   location?: Prisma.StringNullableFilter<"RawShiftBattle"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
@@ -322,6 +346,8 @@ export type RawShiftBattleOrderByWithRelationInput = {
   participantLimit?: Prisma.SortOrderInput | Prisma.SortOrder
   rawShiftPrice?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -349,6 +375,8 @@ export type RawShiftBattleWhereUniqueInput = Prisma.AtLeast<{
   participantLimit?: Prisma.IntNullableFilter<"RawShiftBattle"> | number | null
   rawShiftPrice?: Prisma.StringFilter<"RawShiftBattle"> | string
   location?: Prisma.StringNullableFilter<"RawShiftBattle"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
@@ -373,6 +401,8 @@ export type RawShiftBattleOrderByWithAggregationInput = {
   participantLimit?: Prisma.SortOrderInput | Prisma.SortOrder
   rawShiftPrice?: Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -400,6 +430,8 @@ export type RawShiftBattleScalarWhereWithAggregatesInput = {
   participantLimit?: Prisma.IntNullableWithAggregatesFilter<"RawShiftBattle"> | number | null
   rawShiftPrice?: Prisma.StringWithAggregatesFilter<"RawShiftBattle"> | string
   location?: Prisma.StringNullableWithAggregatesFilter<"RawShiftBattle"> | string | null
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeWithAggregatesFilter<"RawShiftBattle"> | Date | string
   endDate?: Prisma.DateTimeWithAggregatesFilter<"RawShiftBattle"> | Date | string
   status?: Prisma.EnumRawShiftStatusWithAggregatesFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
@@ -417,6 +449,8 @@ export type RawShiftBattleCreateInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -441,6 +475,8 @@ export type RawShiftBattleUncheckedCreateInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -461,6 +497,8 @@ export type RawShiftBattleUpdateInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -485,6 +523,8 @@ export type RawShiftBattleUncheckedUpdateInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -507,6 +547,8 @@ export type RawShiftBattleCreateManyInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -524,6 +566,8 @@ export type RawShiftBattleUpdateManyMutationInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -543,6 +587,8 @@ export type RawShiftBattleUncheckedUpdateManyInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -562,6 +608,8 @@ export type RawShiftBattleCountOrderByAggregateInput = {
   participantLimit?: Prisma.SortOrder
   rawShiftPrice?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -572,6 +620,8 @@ export type RawShiftBattleCountOrderByAggregateInput = {
 
 export type RawShiftBattleAvgOrderByAggregateInput = {
   participantLimit?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type RawShiftBattleMaxOrderByAggregateInput = {
@@ -585,6 +635,8 @@ export type RawShiftBattleMaxOrderByAggregateInput = {
   participantLimit?: Prisma.SortOrder
   rawShiftPrice?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -604,6 +656,8 @@ export type RawShiftBattleMinOrderByAggregateInput = {
   participantLimit?: Prisma.SortOrder
   rawShiftPrice?: Prisma.SortOrder
   location?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   startDate?: Prisma.SortOrder
   endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -614,6 +668,8 @@ export type RawShiftBattleMinOrderByAggregateInput = {
 
 export type RawShiftBattleSumOrderByAggregateInput = {
   participantLimit?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type RawShiftBattleScalarRelationFilter = {
@@ -777,6 +833,8 @@ export type RawShiftBattleCreateWithoutParticipantsInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -800,6 +858,8 @@ export type RawShiftBattleUncheckedCreateWithoutParticipantsInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -835,6 +895,8 @@ export type RawShiftBattleUpdateWithoutParticipantsInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -858,6 +920,8 @@ export type RawShiftBattleUncheckedUpdateWithoutParticipantsInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -877,6 +941,8 @@ export type RawShiftBattleCreateWithoutEntriesInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -900,6 +966,8 @@ export type RawShiftBattleUncheckedCreateWithoutEntriesInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -935,6 +1003,8 @@ export type RawShiftBattleUpdateWithoutEntriesInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -958,6 +1028,8 @@ export type RawShiftBattleUncheckedUpdateWithoutEntriesInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -977,6 +1049,8 @@ export type RawShiftBattleCreateWithoutCommentsInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1000,6 +1074,8 @@ export type RawShiftBattleUncheckedCreateWithoutCommentsInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1035,6 +1111,8 @@ export type RawShiftBattleUpdateWithoutCommentsInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1058,6 +1136,8 @@ export type RawShiftBattleUncheckedUpdateWithoutCommentsInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1077,6 +1157,8 @@ export type RawShiftBattleCreateWithoutCreatorInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1099,6 +1181,8 @@ export type RawShiftBattleUncheckedCreateWithoutCreatorInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1129,6 +1213,8 @@ export type RawShiftBattleCreateWithoutWinnerUserInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1151,6 +1237,8 @@ export type RawShiftBattleUncheckedCreateWithoutWinnerUserInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1202,6 +1290,8 @@ export type RawShiftBattleScalarWhereInput = {
   participantLimit?: Prisma.IntNullableFilter<"RawShiftBattle"> | number | null
   rawShiftPrice?: Prisma.StringFilter<"RawShiftBattle"> | string
   location?: Prisma.StringNullableFilter<"RawShiftBattle"> | string | null
+  latitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"RawShiftBattle"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   endDate?: Prisma.DateTimeFilter<"RawShiftBattle"> | Date | string
   status?: Prisma.EnumRawShiftStatusFilter<"RawShiftBattle"> | $Enums.RawShiftStatus
@@ -1236,6 +1326,8 @@ export type RawShiftBattleCreateManyCreatorInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1254,6 +1346,8 @@ export type RawShiftBattleCreateManyWinnerUserInput = {
   participantLimit?: number | null
   rawShiftPrice: string
   location?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate: Date | string
   endDate: Date | string
   status?: $Enums.RawShiftStatus
@@ -1271,6 +1365,8 @@ export type RawShiftBattleUpdateWithoutCreatorInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1293,6 +1389,8 @@ export type RawShiftBattleUncheckedUpdateWithoutCreatorInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1314,6 +1412,8 @@ export type RawShiftBattleUncheckedUpdateManyWithoutCreatorInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1331,6 +1431,8 @@ export type RawShiftBattleUpdateWithoutWinnerUserInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1353,6 +1455,8 @@ export type RawShiftBattleUncheckedUpdateWithoutWinnerUserInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1374,6 +1478,8 @@ export type RawShiftBattleUncheckedUpdateManyWithoutWinnerUserInput = {
   participantLimit?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rawShiftPrice?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.EnumRawShiftStatusFieldUpdateOperationsInput | $Enums.RawShiftStatus
@@ -1442,6 +1548,8 @@ export type RawShiftBattleSelect<ExtArgs extends runtime.Types.Extensions.Intern
   participantLimit?: boolean
   rawShiftPrice?: boolean
   location?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
   status?: boolean
@@ -1467,6 +1575,8 @@ export type RawShiftBattleSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   participantLimit?: boolean
   rawShiftPrice?: boolean
   location?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
   status?: boolean
@@ -1488,6 +1598,8 @@ export type RawShiftBattleSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   participantLimit?: boolean
   rawShiftPrice?: boolean
   location?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
   status?: boolean
@@ -1509,6 +1621,8 @@ export type RawShiftBattleSelectScalar = {
   participantLimit?: boolean
   rawShiftPrice?: boolean
   location?: boolean
+  latitude?: boolean
+  longitude?: boolean
   startDate?: boolean
   endDate?: boolean
   status?: boolean
@@ -1517,7 +1631,7 @@ export type RawShiftBattleSelectScalar = {
   programType?: boolean
 }
 
-export type RawShiftBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "coverImage" | "bannerImage" | "participantLimit" | "rawShiftPrice" | "location" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["rawShiftBattle"]>
+export type RawShiftBattleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "creatorId" | "winnerUserId" | "title" | "description" | "coverImage" | "bannerImage" | "participantLimit" | "rawShiftPrice" | "location" | "latitude" | "longitude" | "startDate" | "endDate" | "status" | "createdAt" | "updatedAt" | "programType", ExtArgs["result"]["rawShiftBattle"]>
 export type RawShiftBattleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   winnerUser?: boolean | Prisma.RawShiftBattle$winnerUserArgs<ExtArgs>
@@ -1555,6 +1669,8 @@ export type $RawShiftBattlePayload<ExtArgs extends runtime.Types.Extensions.Inte
     participantLimit: number | null
     rawShiftPrice: string
     location: string | null
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
     startDate: Date
     endDate: Date
     status: $Enums.RawShiftStatus
@@ -1999,6 +2115,8 @@ export interface RawShiftBattleFieldRefs {
   readonly participantLimit: Prisma.FieldRef<"RawShiftBattle", 'Int'>
   readonly rawShiftPrice: Prisma.FieldRef<"RawShiftBattle", 'String'>
   readonly location: Prisma.FieldRef<"RawShiftBattle", 'String'>
+  readonly latitude: Prisma.FieldRef<"RawShiftBattle", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"RawShiftBattle", 'Decimal'>
   readonly startDate: Prisma.FieldRef<"RawShiftBattle", 'DateTime'>
   readonly endDate: Prisma.FieldRef<"RawShiftBattle", 'DateTime'>
   readonly status: Prisma.FieldRef<"RawShiftBattle", 'RawShiftStatus'>

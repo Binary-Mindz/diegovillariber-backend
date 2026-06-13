@@ -7,6 +7,7 @@ import {
   EventStatus,
   Prisma,
   ProductCategory,
+  RawShiftStatus,
   Type,
 } from 'generated/prisma/client';
 import { CIRCUITS_DATA } from '../program/lab-time/data/circuits.data';
@@ -109,6 +110,7 @@ export class MapService {
       showChallenges = true,
       showEvents = true,
       showCircuits = true,
+      showRawShift = true,
 
       showMarketplaceCar = false,
       showMarketplaceCarParts = false,
@@ -142,6 +144,14 @@ export class MapService {
     if (showMarketplaceCarParts) marketplaceCategories.push(ProductCategory.CAR_PARTS);
     if (showMarketplacePhotography) marketplaceCategories.push(ProductCategory.PHOTOGRAPHY);
     if (showMarketplaceSimRacing) marketplaceCategories.push(ProductCategory.SIM_RACING);
+
+    const rawShiftWhere: Prisma.RawShiftBattleWhereInput = {
+      status: { in: [RawShiftStatus.ACTIVE, RawShiftStatus.UPCOMING] },
+      latitude: { not: null },
+      longitude: { not: null },
+      ...boundFilter,
+      ...createdAtFilter,
+    };
 
     // Dynamic Queries Optimization
     const postWhere: Prisma.PostWhereInput = {
@@ -186,7 +196,7 @@ export class MapService {
     };
 
     // Parallel Execution
-    const [posts, challenges, battles, events, marketplaceProducts] = await Promise.all([
+    const [posts, challenges, battles, events, marketplaceProducts, rawShifts] = await Promise.all([
       profileTypes.length === 0
         ? Promise.resolve<any[]>([])
         : this.prisma.post.findMany({
@@ -233,7 +243,12 @@ export class MapService {
           },
         })
         : Promise.resolve<any[]>([]),
+
+      showRawShift
+        ? this.prisma.rawShiftBattle.findMany({ where: rawShiftWhere, orderBy: { startDate: 'asc' } })
+        : Promise.resolve([]),
     ]);
+
 
     // Format Data Markers cleanly for Frontend Consumption
     const postMarkers = posts.map((p) => ({ ...p, markerType: 'SPOT', type: 'spot' }));
@@ -245,8 +260,8 @@ export class MapService {
       markerType: 'MARKETPLACE',
       type: 'marketplace',
     }));
+    const rawShiftMarkers = rawShifts.map((r) => ({ ...r, markerType: 'RAW_SHIFT', type: 'raw_shift' }));
 
-    // Static Circuit Processing (If Enabled)
     // Static Circuit Processing (If Enabled) - FIXED TYPE ERROR
     let circuitMarkers: any[] = [];
     if (showCircuits) {
@@ -293,6 +308,7 @@ export class MapService {
       ...eventMarkers,
       ...marketplaceMarkers,
       ...circuitMarkers,
+      ...rawShiftMarkers,
     ];
 
     return {

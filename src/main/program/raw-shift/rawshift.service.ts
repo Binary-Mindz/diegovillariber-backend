@@ -22,7 +22,7 @@ import { handlePrismaError } from '@/common/utils/error.handler';
 
 @Injectable()
 export class RawShiftService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   private readonly OPEN_RAWSHIFT_STATUSES = new Set<RawShiftStatus>([
     RawShiftStatus.ACTIVE,
@@ -159,6 +159,8 @@ export class RawShiftService {
           participantLimit: dto.participantLimit ?? null,
           rawShiftPrice: dto.rawShiftPrice,
           location: dto.location ?? null,
+          latitude: dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null,
+          longitude: dto.longitude != null ? new Prisma.Decimal(dto.longitude) : null,
           startDate,
           endDate,
         },
@@ -215,6 +217,8 @@ export class RawShiftService {
           ? { rawShiftPrice: dto.rawShiftPrice }
           : {}), // ✅ FIXED BUG
         ...(dto.location !== undefined ? { location: dto.location } : {}),
+        ...(dto.latitude !== undefined ? { latitude: dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null } : {}),
+        ...(dto.longitude !== undefined ? { longitude: dto.longitude != null ? new Prisma.Decimal(dto.longitude) : null } : {}),
         ...(dto.startDate !== undefined ? { startDate } : {}),
         ...(dto.endDate !== undefined ? { endDate } : {}),
       },

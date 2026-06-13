@@ -37,6 +37,9 @@ model RawShiftBattle {
   rawShiftPrice    String
   location         String? @db.VarChar(150)
 
+  latitude         Decimal? @db.Decimal(10, 7)
+  longitude        Decimal? @db.Decimal(10, 7)
+
   startDate DateTime @db.Timestamptz(6)
   endDate   DateTime @db.Timestamptz(6)
 
