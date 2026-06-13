@@ -1,6 +1,6 @@
 // src/main/program/raw-shift/dto/create-rawshift-battle.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsDateString, IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
+import { IsDateString, IsEnum, IsInt, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 import { RawShiftStatus } from 'generated/prisma/enums';
 
 export class CreateRawShiftBattleDto {
@@ -50,6 +50,16 @@ export class CreateRawShiftBattleDto {
   @IsOptional()
   @IsString()
   location?: string;
+
+  @ApiPropertyOptional({ example: 23.8103 })
+  @IsOptional()
+  @IsNumber()
+  latitude?: number;
+
+  @ApiPropertyOptional({ example: 90.4125 })
+  @IsOptional()
+  @IsNumber()
+  longitude?: number;
 
   @ApiProperty({
     example: '2026-03-01T10:00:00.000Z',

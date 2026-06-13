@@ -1395,6 +1395,8 @@ export const RawShiftBattleScalarFieldEnum = {
   participantLimit: 'participantLimit',
   rawShiftPrice: 'rawShiftPrice',
   location: 'location',
+  latitude: 'latitude',
+  longitude: 'longitude',
   startDate: 'startDate',
   endDate: 'endDate',
   status: 'status',
