@@ -19,7 +19,6 @@ import { SpottingRequestModule } from './main/sportting-request/sportting-reques
 import { DiscoverModule } from './main/discover/discover.module';
 import { MapModule } from './main/map/map.module';
 import { FirebaseModule } from './common/firebase/firebase.module';
-
 import * as path from 'path';
 import { HeaderResolver, I18nModule } from 'nestjs-i18n';
 
@@ -31,7 +30,7 @@ import { HeaderResolver, I18nModule } from 'nestjs-i18n';
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
-        path: path.join(__dirname, '/i18n/'),
+        path: path.resolve(process.cwd(), 'i18n'),
         watch: true,
       },
       resolvers: [
@@ -60,4 +59,4 @@ import { HeaderResolver, I18nModule } from 'nestjs-i18n';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
