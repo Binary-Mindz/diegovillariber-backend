@@ -20,10 +20,24 @@ import { DiscoverModule } from './main/discover/discover.module';
 import { MapModule } from './main/map/map.module';
 import { FirebaseModule } from './common/firebase/firebase.module';
 
+import * as path from 'path';
+import { HeaderResolver, I18nModule } from 'nestjs-i18n';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ScheduleModule.forRoot(),
+
+    I18nModule.forRoot({
+      fallbackLanguage: 'en',
+      loaderOptions: {
+        path: path.join(__dirname, '/i18n/'),
+        watch: true,
+      },
+      resolvers: [
+        new HeaderResolver(['accept-language']),
+      ],
+    }),
     PrismaModule,
     DiscoverModule,
     AuthModule,

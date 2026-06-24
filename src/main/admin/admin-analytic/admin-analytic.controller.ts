@@ -23,7 +23,7 @@ import { GetMostEngagedPostsQueryDto } from './dto/get-most-engaged-posts-query.
 @ApiTags('Admin Analytic')
 @Controller('admin-analytic')
 export class AdminAnalyticController {
-  constructor(private readonly adminAnalyticService: AdminAnalyticService) {}
+  constructor(private readonly adminAnalyticService: AdminAnalyticService) { }
 
   @Get('advanced-stats')
   async getAdvancedStats(@Res({ passthrough: true }) res: Response) {
@@ -47,21 +47,19 @@ export class AdminAnalyticController {
     return response;
   }
 
- @Get('top-content-creators')
-async getTopCreators(
-  @Query() query: TopContentCreatorQueryDto,
-  @Res() res: Response,
-) {
-  const response = await this.adminAnalyticService.getTopContentCreators(query);
+  @Get('top-content-creators')
+  async getTopCreators(
+    @Query() query: TopContentCreatorQueryDto,
+    @Res() res: Response,
+  ) {
+    const response = await this.adminAnalyticService.getTopContentCreators(query);
 
-  return res.status(response.statusCode).json(response);
-}
+    return res.status(response.statusCode).json(response);
+  }
 
-@Get('most-engaged-posts')
+  @Get('most-engaged-posts')
   @ApiOperation({ summary: 'Get most engaged posts ranked by likes and comments' })
   async getMostEngagedPosts(@Query() query: GetMostEngagedPostsQueryDto) {
     return this.adminAnalyticService.getMostEngagedPosts(query);
   }
-
-
 }
