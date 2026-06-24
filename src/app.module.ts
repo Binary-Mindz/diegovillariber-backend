@@ -40,7 +40,7 @@ const getI18nPath = () => {
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
-        path: getI18nPath(), // এখানে ডাইনামিক পাথটি কল করা হলো
+        path: getI18nPath(),
         watch: true,
       },
       resolvers: [
