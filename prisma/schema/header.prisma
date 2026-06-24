@@ -16,4 +16,6 @@ enum HeaderName {
   MOTOR_SPORT_RANKING
   MARKETPLACE
   HEAD_TO_HEAD
+  MAP
+  EVENT
 }
