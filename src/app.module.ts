@@ -22,6 +22,7 @@ import { FirebaseModule } from './common/firebase/firebase.module';
 import * as path from 'path';
 import { HeaderResolver, I18nModule } from 'nestjs-i18n';
 import * as fs from 'fs';
+import { TranslationService } from './common/services/translation.service';
 
 const getI18nPath = () => {
   const rootPath = path.join(process.cwd(), 'i18n');
@@ -47,7 +48,7 @@ const getI18nPath = () => {
         new HeaderResolver(['accept-language']),
       ],
     }),
-    PrismaModule,
+    PrismaModule, // নিশ্চিত করুন এই মডিউলের ভেতর PrismaService এক্সপোর্ট করা আছে
     DiscoverModule,
     AuthModule,
     UserModule,
@@ -67,6 +68,7 @@ const getI18nPath = () => {
     AdminModule
   ],
   controllers: [],
-  providers: [],
+  providers: [TranslationService],
+  exports: [TranslationService], // অন্য লেয়ার বা ইন্টারসেপ্টর থেকে অ্যাক্সেস পাওয়ার জন্য এক্সপোর্ট করা হলো
 })
 export class AppModule { }

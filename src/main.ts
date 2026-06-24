@@ -1,11 +1,14 @@
 import 'reflect-metadata';
-
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import 'dotenv/config';
-import { TranslationInterceptor } from './common/interceptors/translation.interceptor';
+
+// আপনার তৈরি করা ডাইনামিক ইন্টারসেপ্টর এবং সার্ভিসগুলোর সঠিক পাথ দিন
+import { DynamicTranslationInterceptor } from './common/interceptors/dynamic-translation.interceptor';
+import { PrismaService } from './common/prisma/prisma.service'; 
+import { TranslationService } from './common/services/translation.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,7 +21,10 @@ async function bootstrap() {
     }),
   );
 
-  app.useGlobalInterceptors(new TranslationInterceptor());
+  // 🛠️ ডিপেন্ডেন্সি ইনজেকশন হ্যান্ডেল করে গ্লোবাল ইন্টারসেপ্টর সেটআপ
+  const prismaService = app.get(PrismaService);
+  const translationService = app.get(TranslationService);
+  app.useGlobalInterceptors(new DynamicTranslationInterceptor(prismaService, translationService));
 
   // CORS configuration
   app.enableCors({
@@ -46,7 +52,7 @@ async function bootstrap() {
       name: 'Accept-Language',
       in: 'header',
       required: false,
-      description: 'Language code (e.g., en, bn, es)',
+      description: 'Language code (e.g., en, es)',
       schema: { type: 'string', default: 'en' },
     })
     .build();

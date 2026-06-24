@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.958.0",
+    "@google-cloud/translate": "^9.4.2",
     "@nestjs/cache-manager": "^3.1.0",
     "@nestjs/common": "^11.1.9",
     "@nestjs/config": "^4.0.2",
@@ -46,6 +47,7 @@
     "@nestjs/websockets": "^11.1.13",
     "@prisma/adapter-pg": "^7.0.1",
     "@prisma/client-runtime-utils": "^7.0.1",
+    "@vitalets/google-translate-api": "^9.2.1",
     "bcrypt": "^6.0.0",
     "cache-manager": "^7.2.8",
     "class-transformer": "^0.5.1",
