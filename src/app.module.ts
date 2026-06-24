@@ -24,13 +24,13 @@ import { HeaderResolver, I18nModule } from 'nestjs-i18n';
 import * as fs from 'fs';
 
 const getI18nPath = () => {
+  const rootPath = path.join(process.cwd(), 'i18n');
+  if (fs.existsSync(rootPath)) return rootPath;
+
   const devPath = path.join(process.cwd(), 'src', 'i18n');
   if (fs.existsSync(devPath)) return devPath;
 
-  const prodPath = path.join(process.cwd(), 'dist', 'src', 'i18n');
-  if (fs.existsSync(prodPath)) return prodPath;
-
-  return path.join(process.cwd(), 'i18n');
+  return rootPath;
 };
 
 @Module({
