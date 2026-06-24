@@ -20,28 +20,35 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new TranslationInterceptor());
 
-   // CORS configuration
-    app.enableCors({
-        origin: [
-            "http://localhost:3000",
-            "http://localhost:3001",
-            "http://localhost:3002",
-            "http://localhost:3003",
-            "http://localhost:3004",
-            "http://localhost:5173",
-            "http://localhost:5174",
-            "http://localhost:5175",
-            "http://localhost:5176",
-            "http://localhost:5177",
-            "https://admin.motorspot.app",
-        ],
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        credentials: true,
-    });
+  // CORS configuration
+  app.enableCors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://localhost:3002",
+      "http://localhost:3003",
+      "http://localhost:3004",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175",
+      "http://localhost:5176",
+      "http://localhost:5177",
+      "https://admin.motorspot.app",
+    ],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Diegovillariber Backend Server')
     .addBearerAuth()
+    .addGlobalParameters({
+      name: 'Accept-Language',
+      in: 'header',
+      required: false,
+      description: 'Language code (e.g., en, bn, es)',
+      schema: { type: 'string', default: 'en' },
+    })
     .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
