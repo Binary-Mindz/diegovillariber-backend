@@ -304,7 +304,9 @@ export const HeaderName = {
   RAW_SHIFT: 'RAW_SHIFT',
   MOTOR_SPORT_RANKING: 'MOTOR_SPORT_RANKING',
   MARKETPLACE: 'MARKETPLACE',
-  HEAD_TO_HEAD: 'HEAD_TO_HEAD'
+  HEAD_TO_HEAD: 'HEAD_TO_HEAD',
+  MAP: 'MAP',
+  EVENT: 'EVENT'
 } as const
 
 export type HeaderName = (typeof HeaderName)[keyof typeof HeaderName]
