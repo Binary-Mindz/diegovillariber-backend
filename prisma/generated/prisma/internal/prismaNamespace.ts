@@ -9400,6 +9400,7 @@ export const ProductListScalarFieldEnum = {
   quantity: 'quantity',
   showWhatsappNo: 'showWhatsappNo',
   highlightProduct: 'highlightProduct',
+  isSold: 'isSold',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

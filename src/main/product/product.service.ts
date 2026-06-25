@@ -1,3 +1,4 @@
+// src/products/product.service.ts
 import {
   BadRequestException,
   ForbiddenException,
@@ -15,7 +16,7 @@ import { ProductFeedQueryDto } from './dto/product-feed-query.dto';
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async createProduct(ownerId: string, dto: CreateProductDto) {
     const product = await this.prisma.productList.create({
@@ -37,6 +38,7 @@ export class ProductService {
         quantity: dto.quantity,
         showWhatsappNo: dto.showWhatsappNo ?? false,
         highlightProduct: dto.highlightProduct ?? false,
+        isSold: dto.isSold ?? false,
       },
       include: {
         owner: {
@@ -76,6 +78,7 @@ export class ProductService {
         quantity: product.quantity,
         showWhatsappNo: product.showWhatsappNo,
         highlightProduct: product.highlightProduct,
+        isSold: product.isSold,
         createdAt: product.createdAt,
         owner: {
           id: product.owner?.id ?? null,
@@ -88,12 +91,12 @@ export class ProductService {
     };
   }
 
-async getFeed(query: ProductFeedQueryDto) {
+  async getFeed(query: ProductFeedQueryDto) {
     const page = Math.max(Number(query.page ?? 1), 1);
     const limit = Math.min(Math.max(Number(query.limit ?? 10), 1), 100);
     const skip = (page - 1) * limit;
 
-   const where: Prisma.ProductListWhereInput = {
+    const where: Prisma.ProductListWhereInput = {
       price: { gt: 0 },
     };
 
@@ -158,6 +161,7 @@ async getFeed(query: ProductFeedQueryDto) {
       quantity: product.quantity,
       showWhatsappNo: product.showWhatsappNo,
       highlightProduct: product.highlightProduct,
+      isSold: product.isSold,
       createdAt: product.createdAt,
       owner: {
         id: product.owner?.id ?? null,
@@ -174,6 +178,57 @@ async getFeed(query: ProductFeedQueryDto) {
         items: data,
         meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
       },
+    };
+  }
+
+  async getHighlightedProducts() {
+    const items = await this.prisma.productList.findMany({
+      where: { highlightProduct: true },
+      orderBy: { createdAt: 'desc' },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: { id: true, imageUrl: true, profileName: true },
+              take: 1,
+            },
+          },
+        },
+      },
+    });
+
+    return {
+      statusCode: 200,
+      data: items.map((product) => ({
+        id: product.id,
+        title: product.title,
+        productImage: product.productImage,
+        description: product.description,
+        location: product.location,
+        locationAddress: product.locationAddress,
+        latitude: product.latitude,
+        longitude: product.longitude,
+        placeId: product.placeId,
+        category: product.category,
+        tags: product.tags,
+        carBrand: product.carBrand,
+        carModel: product.carModel,
+        price: product.price,
+        quantity: product.quantity,
+        showWhatsappNo: product.showWhatsappNo,
+        highlightProduct: product.highlightProduct,
+        isSold: product.isSold,
+        createdAt: product.createdAt,
+        owner: {
+          id: product.owner?.id ?? null,
+          email: product.owner?.email ?? null,
+          profileId: product.owner?.profile?.[0]?.id ?? null,
+          profileName: product.owner?.profile?.[0]?.profileName ?? null,
+          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+      })),
     };
   }
 
@@ -219,6 +274,7 @@ async getFeed(query: ProductFeedQueryDto) {
         quantity: product.quantity,
         showWhatsappNo: product.showWhatsappNo,
         highlightProduct: product.highlightProduct,
+        isSold: product.isSold,
         createdAt: product.createdAt,
         owner: {
           id: product.owner?.id ?? null,
@@ -276,6 +332,7 @@ async getFeed(query: ProductFeedQueryDto) {
         quantity: product.quantity,
         showWhatsappNo: product.showWhatsappNo,
         highlightProduct: product.highlightProduct,
+        isSold: product.isSold,
         createdAt: product.createdAt,
         updatedAt: product.updatedAt,
         owner: {
@@ -328,6 +385,7 @@ async getFeed(query: ProductFeedQueryDto) {
         price: dto.price ?? undefined,
         quantity: dto.quantity ?? undefined,
         showWhatsappNo: dto.showWhatsappNo ?? undefined,
+        isSold: dto.isSold ?? undefined, // Owner can now update isSold state (true/false)
       },
       include: {
         owner: {
@@ -367,6 +425,7 @@ async getFeed(query: ProductFeedQueryDto) {
         quantity: product.quantity,
         showWhatsappNo: product.showWhatsappNo,
         highlightProduct: product.highlightProduct,
+        isSold: product.isSold,
         updatedAt: product.updatedAt,
         owner: {
           id: product.owner?.id ?? null,
@@ -488,6 +547,7 @@ async getFeed(query: ProductFeedQueryDto) {
         id: updated.id,
         title: updated.title,
         highlightProduct: updated.highlightProduct,
+        isSold: updated.isSold,
         updatedAt: updated.updatedAt,
         owner: {
           id: updated.owner?.id ?? null,

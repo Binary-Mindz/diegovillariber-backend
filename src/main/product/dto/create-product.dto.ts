@@ -1,3 +1,4 @@
+// src/products/dto/create-product.dto.ts
 import {
   IsArray,
   IsBoolean,
@@ -37,44 +38,44 @@ export class CreateProductDto {
   @IsString()
   description?: string;
 
-   @ApiPropertyOptional({
-    example: 'Dhaka,Bangldesh',
-    description: 'dhaka, Bangldesh',
+  @ApiPropertyOptional({
+    example: 'Dhaka, Bangladesh',
+    description: 'Location name',
   })
   @IsOptional()
   @IsString()
   location?: string;
 
-    @ApiPropertyOptional({ example: 'Purbachal, Dhaka, Bangladesh' })
-    @IsOptional()
-    @IsString()
-    locationAddress?: string;
-  
-    @ApiPropertyOptional({
-      example: 23.8103,
-      description: 'Latitude of the event location',
-    })
-    @IsOptional()
-    @Type(() => Number)
-    @IsLatitude()
-    latitude?: number;
-  
-    @ApiPropertyOptional({
-      example: 90.4125,
-      description: 'Longitude of the event location',
-    })
-    @IsOptional()
-    @Type(() => Number)
-    @IsLongitude()
-    longitude?: number;
-  
-    @ApiPropertyOptional({
-      example: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
-      description: 'Google place id or map place id',
-    })
-    @IsOptional()
-    @IsString()
-    placeId?: string;
+  @ApiPropertyOptional({ example: 'Purbachal, Dhaka, Bangladesh' })
+  @IsOptional()
+  @IsString()
+  locationAddress?: string;
+
+  @ApiPropertyOptional({
+    example: 23.8103,
+    description: 'Latitude of the event location',
+  })
+  @IsOptional()
+  @Type(() => Number)
+  @IsLatitude()
+  latitude?: number;
+
+  @ApiPropertyOptional({
+    example: 90.4125,
+    description: 'Longitude of the event location',
+  })
+  @IsOptional()
+  @Type(() => Number)
+  @IsLongitude()
+  longitude?: number;
+
+  @ApiPropertyOptional({
+    example: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+    description: 'Google place id or map place id',
+  })
+  @IsOptional()
+  @IsString()
+  placeId?: string;
 
   @ApiPropertyOptional({
     enum: ProductCategory,
@@ -142,4 +143,12 @@ export class CreateProductDto {
   @IsOptional()
   @IsBoolean()
   highlightProduct?: boolean;
+
+  @ApiPropertyOptional({
+    example: false,
+    description: 'Mark product as sold (default false)',
+  })
+  @IsOptional()
+  @IsBoolean()
+  isSold?: boolean;
 }

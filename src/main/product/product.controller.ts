@@ -1,3 +1,4 @@
+// src/products/product.controller.ts
 import {
   Body,
   Controller,
@@ -70,6 +71,19 @@ export class ProductController {
     return response;
   }
 
+  @Get('highlighted')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get all highlighted products' })
+  async getHighlightedProducts(@Res({ passthrough: true }) res: Response) {
+    const response = await handleRequest(
+      () => this.productsService.getHighlightedProducts(),
+      'Highlighted products fetched successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')
@@ -109,7 +123,7 @@ export class ProductController {
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update product (only owner can update)' })
+  @ApiOperation({ summary: 'Update product (only owner can update, including isSold status)' })
   async updateProduct(
     @Param('id') id: string,
     @GetUser('userId') userId: string,
