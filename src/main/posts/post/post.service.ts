@@ -262,7 +262,6 @@ export class PostService {
         ? Array.from(new Set(dto.taggedUserIds)).filter((x) => x !== userId)
         : [];
 
-      // 👈 [NEW ADDITION] ট্যাগড ইউজারদের একটিভ ও ভ্যালিড প্রোফাইল আইডি খুঁজে বের করা
       let taggedProfiles: { id: string }[] = [];
 
       if (taggedUserIds.length) {
@@ -291,7 +290,6 @@ export class PostService {
           );
         }
 
-        // ট্যাগড প্রোফাইলগুলো নিয়ে আসা
         taggedProfiles = await tx.profile.findMany({
           where: {
             userId: { in: taggedUserIds },
@@ -300,6 +298,10 @@ export class PostService {
           },
           select: { id: true },
         });
+
+        if (taggedProfiles.length !== taggedUserIds.length) {
+          throw new BadRequestException('One or more tagged users have inactive or suspended profiles');
+        }
       }
 
       if (wantBoost && user.totalPoints < BOOST_COST_POINTS) {
@@ -496,8 +498,6 @@ export class PostService {
       preferenceFilter = { assetType: 'CAR' };
     } else if (activeProfile.preference === 'BIKE') {
       preferenceFilter = { assetType: 'BIKE' };
-    } else if (activeProfile.preference === 'BOTH' || !activeProfile.preference) {
-      preferenceFilter = {};
     }
 
     const where: Prisma.PostWhereInput = {
@@ -711,7 +711,7 @@ export class PostService {
   }
 
   async updatePost(postId: string, userId: string, dto: UpdatePostDto) {
-    if (dto.contentBooster == undefined) {
+    if (dto.contentBooster !== undefined) {
       throw new BadRequestException('contentBooster cannot be updated');
     }
 
@@ -752,14 +752,14 @@ export class PostService {
       const finalMediaType = dto.mediaType ?? existing.mediaType;
 
       const finalPhotoEditingDeclaration =
-        dto.photoEditingDeclaration == undefined
-          ? dto.photoEditingDeclaration
-          : existing.photoEditingDeclaration;
+        dto.photoEditingDeclaration === undefined
+          ? existing.photoEditingDeclaration
+          : dto.photoEditingDeclaration;
 
       const finalVideoEditingDeclaration =
-        dto.videoEditingDeclaration == undefined
-          ? dto.videoEditingDeclaration
-          : existing.videoEditingDeclaration;
+        dto.videoEditingDeclaration === undefined
+          ? existing.videoEditingDeclaration
+          : dto.videoEditingDeclaration;
 
       if (finalMediaType === MediaType.IMAGE && finalVideoEditingDeclaration) {
         throw new BadRequestException(
@@ -822,6 +822,11 @@ export class PostService {
           },
           select: { id: true },
         });
+
+        // 🎯 ফিক্স: আপডেট করার সময়ও ইনঅ্যাক্টিভ প্রোফাইল ভ্যালিডেশন নিশ্চিত করা হলো
+        if (taggedProfiles.length !== nextTaggedUserIds.length) {
+          throw new BadRequestException('One or more tagged users have inactive or suspended profiles');
+        }
       }
 
       const oldHashtagIds = existing.hashtags.map((item) => item.id);
@@ -853,7 +858,7 @@ export class PostService {
           : {}),
       };
 
-      if (Object.keys(updateData).length === 0) {
+      if (Object.keys(updateData).length === 0 && nextHashtagIds === undefined && nextTaggedUserIds === undefined) {
         throw new BadRequestException('No valid fields provided to update');
       }
 
@@ -911,6 +916,7 @@ export class PostService {
     });
   }
 
+  // 🎯 ট্যাগড পোস্ট এবং নিজের পোস্ট একই সাথে এই মেথডে নিখুঁতভাবে হ্যান্ডেল হচ্ছে!
   async getProfilePosts(profileId: string) {
     return await this.prisma.post.findMany({
       where: {
