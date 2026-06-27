@@ -15,6 +15,7 @@ import {
   ViewerRelationType,
   ReportType,
 } from 'generated/prisma/client';
+import { NotificationService } from '../../notification/notification.service';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -30,7 +31,10 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 
 @Injectable()
 export class PostService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationService: NotificationService
+  ) { }
 
   private readonly VIEW_DEDUP_MINUTES = 30;
 
@@ -38,10 +42,10 @@ export class PostService {
     count:
       | true
       | {
-          source?: number;
-          relationType?: number;
-          _all?: number;
-        }
+        source?: number;
+        relationType?: number;
+        _all?: number;
+      }
       | undefined,
     key: 'source' | 'relationType' | '_all',
   ): number {
@@ -223,10 +227,10 @@ export class PostService {
       ? Array.from(new Set(dto.hashtagIds))
       : [];
 
-    return this.prisma.$transaction(async (tx) => {
+    const result = await this.prisma.$transaction(async (tx) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
-        select: { id: true, totalPoints: true, activeProfileId: true },
+        select: { id: true, totalPoints: true, activeProfileId: true }, // <--- 'name: true' রিমুভ করা হয়েছে
       });
       if (!user) throw new NotFoundException('User not found');
 
@@ -417,8 +421,41 @@ export class PostService {
         boostCharged: wantBoost ? BOOST_COST_POINTS : 0,
         totalDelta: delta,
         userTotalPoints: updatedUser.totalPoints,
+        taggedUserIds,
       };
     });
+
+    // নোটিফিকেশন পাঠানোর কল (নিরাপদ ব্যাকগ্রাউন্ড প্রসেস)
+    if (result.taggedUserIds && result.taggedUserIds.length > 0) {
+      this.sendNotificationToTaggedUsers(userId, result.taggedUserIds, result.post.id)
+        .catch(err => console.error('Failed to send tag notifications:', err));
+    }
+
+    return {
+      post: result.post,
+      earnedPoints: result.earnedPoints,
+      boostCharged: result.boostCharged,
+      totalDelta: result.totalDelta,
+      userTotalPoints: result.userTotalPoints,
+    };
+  }
+
+  private async sendNotificationToTaggedUsers(actorUserId: string, taggedUserIds: string[], postId: string) {
+    const promises = taggedUserIds.map((targetUserId) => {
+      return this.notificationService.sendNotification({
+        userId: targetUserId,
+        actorUserId: actorUserId,
+        type: 'TAGGED' as any,
+        channel: undefined,
+        title: 'New Tagged Post',
+        message: 'Someone tagged you in a post.',
+        entityType: 'POST' as any,
+        entityId: postId,
+        deepLink: `/posts/${postId}`,
+      });
+    });
+
+    await Promise.allSettled(promises);
   }
 
   async getFeed(userId: string, query: FeedQueryDto) {
@@ -515,7 +552,7 @@ export class PostService {
               },
             },
             {
-              userId: { notIn: excludedUserIds } 
+              userId: { notIn: excludedUserIds }
             }
           ]
         }
@@ -527,11 +564,11 @@ export class PostService {
         : {}),
       ...(query.search
         ? {
-            OR: [
-              { caption: { contains: query.search, mode: 'insensitive' } },
-              { postLocation: { contains: query.search, mode: 'insensitive' } },
-            ],
-          }
+          OR: [
+            { caption: { contains: query.search, mode: 'insensitive' } },
+            { postLocation: { contains: query.search, mode: 'insensitive' } },
+          ],
+        }
         : {}),
       ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
       ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
