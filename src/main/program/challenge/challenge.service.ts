@@ -944,8 +944,10 @@ export class ChallengeService {
         },
       });
     }
+
     const where: Prisma.ChallengeWhereInput =
       andConditions.length > 0 ? { AND: andConditions } : {};
+
     const [totalChallenges, brandGroups] = await this.prisma.$transaction([
       this.prisma.challenge.count({ where }),
       this.prisma.challenge.groupBy({
@@ -971,7 +973,8 @@ export class ChallengeService {
     }
 
     const brands = brandGroups.map((group) => {
-      const count = group._count.brand;
+      // ✅ টাইপস্ক্রিপ্ট এরর এড়াতে টাইপ-সেফ চেকিং ও টাইপ কাস্টিং (As Any) অথবা অপশনাল চেইনিং ব্যবহার করা হলো
+      const count = (group._count as any)?.brand ?? 0;
       const percentage = parseFloat(((count / totalChallenges) * 100).toFixed(2));
 
       return {
@@ -986,6 +989,4 @@ export class ChallengeService {
       brands,
     };
   }
-
-
 }
