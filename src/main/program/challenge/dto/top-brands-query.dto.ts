@@ -1,5 +1,6 @@
-import { IsOptional, IsEnum, IsInt, Min } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
+import { IsEnum, IsInt, IsOptional, Min } from 'class-validator';
 
 export enum TimeRangeFilter {
   TODAY = 'today',
@@ -15,14 +16,32 @@ export enum DeviceCategoryFilter {
 }
 
 export class TopBrandsQueryDto {
+  @ApiPropertyOptional({
+    enum: TimeRangeFilter,
+    example: TimeRangeFilter.ALLTIME,
+    default: TimeRangeFilter.ALLTIME,
+    description: 'Filter brands by time range.',
+  })
   @IsOptional()
   @IsEnum(TimeRangeFilter)
   timeRange?: TimeRangeFilter = TimeRangeFilter.ALLTIME;
 
+  @ApiPropertyOptional({
+    enum: DeviceCategoryFilter,
+    example: DeviceCategoryFilter.ALL,
+    default: DeviceCategoryFilter.ALL,
+    description: 'Filter by device category.',
+  })
   @IsOptional()
   @IsEnum(DeviceCategoryFilter)
   deviceCategory?: DeviceCategoryFilter = DeviceCategoryFilter.ALL;
 
+  @ApiPropertyOptional({
+    example: 10,
+    default: 10,
+    minimum: 1,
+    description: 'Maximum number of brands to return.',
+  })
   @IsOptional()
   @Type(() => Number)
   @IsInt()
