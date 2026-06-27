@@ -916,7 +916,7 @@ export class ChallengeService {
   async getTopBrands(query: TopBrandsQueryDto) {
     const limit = query.limit ?? 10;
     const andConditions: Prisma.ChallengeWhereInput[] = [];
-
+    console.log("query is: ", query)
     const now = new Date();
     if (query.timeRange === TimeRangeFilter.TODAY) {
       const startOfDay = new Date(now.setHours(0, 0, 0, 0));
@@ -989,4 +989,5 @@ export class ChallengeService {
       brands,
     };
   }
+
 }
