@@ -16,34 +16,42 @@ export class RacingVoteService {
 
   constructor(private readonly prisma: PrismaService) { }
 
-  private getDhakaDayRange(date = new Date()) {
-    // Asia/Dhaka = UTC+6, no DST
-    const offsetMs = 6 * 60 * 60 * 1000;
+  /**
+   * Asia/Dhaka (UTC+6) টাইমজোন অনুযায়ী আজকের দিনের শুরু এবং শেষ সময় বের করার নিখুঁত লজিক
+   */
+  private getDhakaDayRange() {
+    const now = new Date();
+    
+    // বর্তমান UTC সময়কে ঢাকা সময়ে রূপান্তর করে বছর, মাস ও দিন বের করা
+    const dhakaString = now.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' });
+    const dhakaDateStr = new Date(dhakaString);
 
-    const local = new Date(date.getTime() + offsetMs);
-
+    // ঢাকার আজকের দিনের শুরু (00:00:00.000)
     const startLocal = new Date(
-      local.getFullYear(),
-      local.getMonth(),
-      local.getDate(),
+      dhakaDateStr.getFullYear(),
+      dhakaDateStr.getMonth(),
+      dhakaDateStr.getDate(),
       0,
       0,
       0,
       0,
     );
 
+    // ঢাকার আজকের দিনের শেষ (23:59:59.999)
     const endLocal = new Date(
-      local.getFullYear(),
-      local.getMonth(),
-      local.getDate(),
+      dhakaDateStr.getFullYear(),
+      dhakaDateStr.getMonth(),
+      dhakaDateStr.getDate(),
       23,
       59,
       59,
       999,
     );
 
-    const startUtc = new Date(startLocal.getTime() - offsetMs);
-    const endUtc = new Date(endLocal.getTime() - offsetMs);
+    // ঢাকা যেহেতু UTC+6, তাই UTC তে কনভার্ট করতে ৬ ঘণ্টা (২১৬০০০০০ মি.সে.) বিয়োগ করতে হবে
+    const dhakaOffsetMs = 6 * 60 * 60 * 1000;
+    const startUtc = new Date(startLocal.getTime() - dhakaOffsetMs);
+    const endUtc = new Date(endLocal.getTime() - dhakaOffsetMs);
 
     return { startUtc, endUtc };
   }
@@ -51,6 +59,7 @@ export class RacingVoteService {
   async createVote(voterId: string, dto: CreateRacingVoteDto) {
     const { startUtc, endUtc } = this.getDhakaDayRange();
 
+    // ১. দৈনিক মোট ৫টি ভোটের লিমিট চেক (ইউজার + পোস্ট মিলিয়ে)
     const todayVoteCount = await this.prisma.racingVote.count({
       where: {
         voterId,
@@ -67,6 +76,9 @@ export class RacingVoteService {
       );
     }
 
+    // ==========================================
+    // TARGET TYPE: USER 
+    // ==========================================
     if (dto.targetType === RacingVoteTargetType.USER) {
       if (!dto.targetUserId) {
         throw new BadRequestException('targetUserId is required');
@@ -90,13 +102,13 @@ export class RacingVoteService {
         throw new NotFoundException('Target user not found');
       }
 
-      const alreadyVotedForSameUser =
-        await this.prisma.racingVote.findFirst({
-          where: {
-            voterId,
-            targetUserId: dto.targetUserId,
-          },
-        });
+      // লাইফটাইম চেক: এই ইউজারকে আগে কখনো ভোট দিয়েছে কিনা
+      const alreadyVotedForSameUser = await this.prisma.racingVote.findFirst({
+        where: {
+          voterId,
+          targetUserId: dto.targetUserId,
+        },
+      });
 
       if (alreadyVotedForSameUser) {
         throw new BadRequestException(
@@ -112,38 +124,18 @@ export class RacingVoteService {
             point: this.DEFAULT_POINT,
           },
           include: {
-            voter: {
-              select: {
-                id: true,
-                email: true,
-              },
-            },
-            targetUser: {
-              select: {
-                id: true,
-                email: true,
-                totalPoints: true,
-                totalVote: true,
-              },
-            },
+            voter: { select: { id: true, email: true } },
+            targetUser: { select: { id: true, email: true, totalPoints: true, totalVote: true } },
           },
         });
 
         const updatedUser = await tx.user.update({
           where: { id: dto.targetUserId },
           data: {
-            totalPoints: {
-              increment: this.DEFAULT_POINT,
-            },
-            totalVote: {
-              increment: 1,
-            },
+            totalPoints: { increment: this.DEFAULT_POINT },
+            totalVote: { increment: 1 },
           },
-          select: {
-            id: true,
-            totalPoints: true,
-            totalVote: true,
-          },
+          select: { id: true, totalPoints: true, totalVote: true },
         });
 
         const remainingVotes = this.DAILY_LIMIT - (todayVoteCount + 1);
@@ -159,6 +151,9 @@ export class RacingVoteService {
       });
     }
 
+    // ==========================================
+    // TARGET TYPE: POST (পরিবর্তিত অংশ)
+    // ==========================================
     if (dto.targetType === RacingVoteTargetType.POST) {
       if (!dto.postId) {
         throw new BadRequestException('postId is required');
@@ -182,21 +177,17 @@ export class RacingVoteService {
         throw new BadRequestException('You cannot vote for your own post');
       }
 
-      const alreadyVotedTodayForSamePost =
-        await this.prisma.racingVote.findFirst({
-          where: {
-            voterId,
-            postId: dto.postId,
-            createdAt: {
-              gte: startUtc,
-              lte: endUtc,
-            },
-          },
-        });
+      // পরিবর্তন: টাইম ফিল্টারিং (createdAt) বাদ দিয়ে লাইফটাইম চেক করা হয়েছে
+      const alreadyVotedForSamePost = await this.prisma.racingVote.findFirst({
+        where: {
+          voterId,
+          postId: dto.postId,
+        },
+      });
 
-      if (alreadyVotedTodayForSamePost) {
+      if (alreadyVotedForSamePost) {
         throw new BadRequestException(
-          'You already voted for this post today',
+          'You have already voted for this post. You cannot vote for the same post again.',
         );
       }
 
@@ -208,46 +199,24 @@ export class RacingVoteService {
             point: this.DEFAULT_POINT,
           },
           include: {
-            voter: {
-              select: {
-                id: true,
-                email: true,
-              },
-            },
-            post: {
-              select: {
-                id: true,
-                userId: true,
-                point: true,
-                racingVote: true,
-              },
-            },
+            voter: { select: { id: true, email: true } },
+            post: { select: { id: true, userId: true, point: true, racingVote: true } },
           },
         });
 
         const updatedPost = await tx.post.update({
           where: { id: dto.postId },
           data: {
-            point: {
-              increment: this.DEFAULT_POINT,
-            },
-            racingVote: {
-              increment: 1,
-            },
+            point: { increment: this.DEFAULT_POINT },
+            racingVote: { increment: 1 },
           },
-          select: {
-            id: true,
-            point: true,
-            racingVote: true,
-          },
+          select: { id: true, point: true, racingVote: true },
         });
 
         await tx.user.update({
           where: { id: post.userId },
           data: {
-            totalPoints: {
-              increment: this.DEFAULT_POINT,
-            },
+            totalPoints: { increment: this.DEFAULT_POINT },
           },
         });
 
@@ -288,9 +257,7 @@ export class RacingVoteService {
         where,
         skip,
         take: limit,
-        orderBy: {
-          createdAt: 'desc',
-        },
+        orderBy: { createdAt: 'desc' },
         include: {
           targetUser: {
             select: {
@@ -299,11 +266,7 @@ export class RacingVoteService {
               totalPoints: true,
               totalVote: true,
               profile: {
-                select: {
-                  id: true,
-                  profileName: true,
-                  imageUrl: true,
-                },
+                select: { id: true, profileName: true, imageUrl: true },
                 take: 1,
               },
             },
@@ -321,11 +284,7 @@ export class RacingVoteService {
                   id: true,
                   email: true,
                   profile: {
-                    select: {
-                      id: true,
-                      profileName: true,
-                      imageUrl: true,
-                    },
+                    select: { id: true, profileName: true, imageUrl: true },
                     take: 1,
                   },
                 },
@@ -361,21 +320,8 @@ export class RacingVoteService {
     const vote = await this.prisma.racingVote.findUnique({
       where: { id: voteId },
       include: {
-        post: {
-          select: {
-            id: true,
-            userId: true,
-            point: true,
-            racingVote: true,
-          },
-        },
-        targetUser: {
-          select: {
-            id: true,
-            totalPoints: true,
-            totalVote: true,
-          },
-        },
+        post: { select: { id: true, userId: true, point: true, racingVote: true } },
+        targetUser: { select: { id: true, totalPoints: true, totalVote: true } },
       },
     });
 
@@ -392,12 +338,8 @@ export class RacingVoteService {
         await tx.user.update({
           where: { id: vote.targetUserId },
           data: {
-            totalPoints: {
-              decrement: vote.point,
-            },
-            totalVote: {
-              decrement: 1,
-            },
+            totalPoints: { decrement: vote.point },
+            totalVote: { decrement: 1 },
           },
         });
       }
@@ -406,21 +348,15 @@ export class RacingVoteService {
         await tx.post.update({
           where: { id: vote.postId },
           data: {
-            point: {
-              decrement: vote.point,
-            },
-            racingVote: {
-              decrement: 1,
-            },
+            point: { decrement: vote.point },
+            racingVote: { decrement: 1 },
           },
         });
 
         await tx.user.update({
           where: { id: vote.post.userId },
           data: {
-            totalPoints: {
-              decrement: vote.point,
-            },
+            totalPoints: { decrement: vote.point },
           },
         });
       }
@@ -438,7 +374,6 @@ export class RacingVoteService {
     });
   }
 
-
   async myTodayVoteSummary(voterId: string) {
     const { startUtc, endUtc } = this.getDhakaDayRange();
 
@@ -451,25 +386,10 @@ export class RacingVoteService {
         },
       },
       include: {
-        targetUser: {
-          select: {
-            id: true,
-            email: true,
-          },
-        },
-        post: {
-          select: {
-            id: true,
-            userId: true,
-            point: true,
-            caption: true,
-            mediaUrl: true,
-          },
-        },
+        targetUser: { select: { id: true, email: true } },
+        post: { select: { id: true, userId: true, point: true, caption: true, mediaUrl: true } },
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: { createdAt: 'desc' },
     });
 
     return {
@@ -483,11 +403,7 @@ export class RacingVoteService {
     const limit = Number(query?.limit || 10);
 
     const users = await this.prisma.user.findMany({
-      where: {
-        totalVote: {
-          gt: 0,
-        },
-      },
+      where: { totalVote: { gt: 0 } },
       orderBy: [
         { totalVote: 'desc' },
         { totalPoints: 'desc' },
@@ -501,11 +417,7 @@ export class RacingVoteService {
         totalVote: true,
         accountStatus: true,
         profile: {
-          select: {
-            id: true,
-            profileName: true,
-            imageUrl: true,
-          },
+          select: { id: true, profileName: true, imageUrl: true },
           take: 1,
         },
       },
@@ -523,5 +435,4 @@ export class RacingVoteService {
       leaderboard,
     };
   }
-
 }
