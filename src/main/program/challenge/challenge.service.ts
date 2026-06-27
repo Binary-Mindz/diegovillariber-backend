@@ -16,9 +16,11 @@ import {
   ParticipantStatus,
   ReactionType,
   SubmissionStatus,
+  DeviceType,
 } from 'generated/prisma/enums';
 import { profile } from 'console';
 import { Prisma } from 'generated/prisma/client';
+import { DeviceCategoryFilter, TimeRangeFilter, TopBrandsQueryDto } from './dto/top-brands-query.dto';
 
 @Injectable()
 export class ChallengeService {
@@ -910,4 +912,80 @@ export class ChallengeService {
       });
     });
   }
+
+  async getTopBrands(query: TopBrandsQueryDto) {
+    const limit = query.limit ?? 10;
+    const andConditions: Prisma.ChallengeWhereInput[] = [];
+
+    const now = new Date();
+    if (query.timeRange === TimeRangeFilter.TODAY) {
+      const startOfDay = new Date(now.setHours(0, 0, 0, 0));
+      andConditions.push({ createdAt: { gte: startOfDay } });
+    } else if (query.timeRange === TimeRangeFilter.WEEK) {
+      const startOfWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      andConditions.push({ createdAt: { gte: startOfWeek } });
+    } else if (query.timeRange === TimeRangeFilter.MONTH) {
+      const startOfMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+      andConditions.push({ createdAt: { gte: startOfMonth } });
+    }
+
+    if (query.deviceCategory === DeviceCategoryFilter.MOBILE) {
+      andConditions.push({ deviceType: DeviceType.MOBILE });
+    } else if (query.deviceCategory === DeviceCategoryFilter.CAMERA) {
+      andConditions.push({
+        deviceType: {
+          in: [
+            DeviceType.DSLR,
+            DeviceType.MIRRORLESS,
+            DeviceType.ACTION_CAMERA,
+            DeviceType.DRONE,
+            DeviceType.OTHER,
+          ],
+        },
+      });
+    }
+    const where: Prisma.ChallengeWhereInput =
+      andConditions.length > 0 ? { AND: andConditions } : {};
+    const [totalChallenges, brandGroups] = await this.prisma.$transaction([
+      this.prisma.challenge.count({ where }),
+      this.prisma.challenge.groupBy({
+        by: ['brand'],
+        where,
+        _count: {
+          brand: true,
+        },
+        orderBy: {
+          _count: {
+            brand: 'desc',
+          },
+        },
+        take: limit,
+      }),
+    ]);
+
+    if (totalChallenges === 0) {
+      return {
+        totalChallenges: 0,
+        brands: [],
+      };
+    }
+
+    const brands = brandGroups.map((group) => {
+      const count = group._count.brand;
+      const percentage = parseFloat(((count / totalChallenges) * 100).toFixed(2));
+
+      return {
+        brand: group.brand,
+        count,
+        percentage,
+      };
+    });
+
+    return {
+      totalChallenges,
+      brands,
+    };
+  }
+
+
 }
