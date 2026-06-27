@@ -33,11 +33,12 @@ import { VoteChallengeDto } from './dto/vote-challenge.dto';
 import { ReactChallengeDto } from './dto/react-challenge.dto';
 import { CreateChallengeCommentDto } from './dto/comment-challenge.dto';
 import { JoinChallengeDto } from './dto/join-challenge.dto';
+import { TopBrandsQueryDto } from './dto/top-brands-query.dto';
 
 @ApiTags('Challenge')
 @Controller('challenges')
 export class ChallengeController {
-  constructor(private readonly service: ChallengeService) {}
+  constructor(private readonly service: ChallengeService) { }
 
   @Get()
   @HttpCode(HttpStatus.OK)
@@ -77,6 +78,25 @@ export class ChallengeController {
     return response;
   }
 
+  @Get('top-devices')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Get top brands in challenges with advanced time & device filters' })
+  async getTopBrands(
+    @Query() query: TopBrandsQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => {
+        return await this.service.getTopBrands(query);
+      },
+      'Top brands analytics fetched successfully',
+      HttpStatus.OK,
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get challenge details' })
@@ -98,29 +118,29 @@ export class ChallengeController {
   }
 
   @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get(':id/comments')
-@ApiOperation({ summary: 'Get comments for a challenge submission (with replies)' })
-async getComments(
-  @Param('id') challengeId: string,
-  @Query('submissionId') submissionId: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getComments(challengeId, submissionId);
-  }, 'Comments fetched successfully');
-}
+  @UseGuards(JwtAuthGuard)
+  @Get(':id/comments')
+  @ApiOperation({ summary: 'Get comments for a challenge submission (with replies)' })
+  async getComments(
+    @Param('id') challengeId: string,
+    @Query('submissionId') submissionId: string,
+  ) {
+    return handleRequest(async () => {
+      return this.service.getComments(challengeId, submissionId);
+    }, 'Comments fetched successfully');
+  }
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get('comments/:commentId')
-@ApiOperation({ summary: 'Get single comment (with replies)' })
-async getSingleComment(
-  @Param('commentId') commentId: string,
-) {
-  return handleRequest(async () => {
-    return this.service.getSingleComment(commentId);
-  }, 'Comment fetched successfully');
-}
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('comments/:commentId')
+  @ApiOperation({ summary: 'Get single comment (with replies)' })
+  async getSingleComment(
+    @Param('commentId') commentId: string,
+  ) {
+    return handleRequest(async () => {
+      return this.service.getSingleComment(commentId);
+    }, 'Comment fetched successfully');
+  }
 
 
 
