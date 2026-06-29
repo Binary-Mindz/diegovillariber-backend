@@ -15,6 +15,19 @@ import {
 } from 'generated/prisma/enums';
 import { NearbyPostsDto } from './dto/nearby-post.dto';
 import { NotificationService } from '../notification/notification.service';
+import { Prisma } from '../../../prisma/generated/prisma/client';
+
+export type PostWithUserAndProfile = Prisma.PostGetPayload<{
+  include: {
+    user: {
+      include: {
+        profile: true;
+      };
+    };
+  };
+}>;
+
+
 
 @Injectable()
 export class SpottingRequestService {
@@ -22,7 +35,7 @@ export class SpottingRequestService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly notificationService: NotificationService,
-  ) {}
+  ) { }
 
   private toRadians(value: number): number {
     return (value * Math.PI) / 180;
@@ -42,9 +55,9 @@ export class SpottingRequestService {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.toRadians(lat1)) *
-        Math.cos(this.toRadians(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
+      Math.cos(this.toRadians(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return earthRadiusKm * c;
@@ -334,21 +347,18 @@ export class SpottingRequestService {
         userId: {
           notIn: blockedUserIds,
         },
-        profile: {
-          suspend: false,
+        user: {
+          profile: {
+            some: {
+              suspend: false,
+            },
+          },
         },
       },
       include: {
         user: {
-          select: {
-            id: true,
-            profile: {
-              select: {
-                id: true,
-                profileName: true,
-                imageUrl: true,
-              },
-            },
+          include: {
+            profile: true,
           },
         },
       },
@@ -357,32 +367,42 @@ export class SpottingRequestService {
       },
     });
 
+    // ২. টাইপ কাস্টিং এর ঝামেলা এড়াতে পোস্টগুলোকে ম্যাপ করা
     const items = posts
-      .map((post) => {
+      .map((rawPost) => {
+        // টাইপ সেফটি নিশ্চিত করতে রানটাইম অবজেক্টকে কাস্টম টাইপে রূপান্তর
+        const post = rawPost as any;
+
         const lat = Number(post.latitude);
         const lng = Number(post.longitude);
 
         const distanceKm = this.getDistanceKm(
-          dto.latitude,
-          dto.longitude,
+          Number(dto.latitude),
+          Number(dto.longitude),
           lat,
           lng,
         );
 
+        // প্রোফাইল অ্যারে হ্যান্ডেল করা
+        const profileArray = post.user?.profile;
+        const matchedProfile = Array.isArray(profileArray) ? profileArray[0] : profileArray;
+
         return {
           postId: post.id,
           userId: post.userId,
-          profileName: post.user?.profile?.[0]?.profileName ?? 'Unknown',
-          profileImage: post.user?.profile?.[0]?.imageUrl ?? null,
+          profileName: matchedProfile?.profileName ?? 'Unknown',
+          profileImage: matchedProfile?.imageUrl ?? null,
           mediaUrl: post.mediaUrl,
           caption: post.caption,
           distanceKm: Number(distanceKm.toFixed(1)),
           createdAt: post.createdAt,
         };
       })
+      // রেডিয়াস ফিল্টার (ইউজারের দেওয়া রেডিয়াস অথবা ডিফল্ট ৫০ কিমি)
       .filter((item) => item.distanceKm <= (dto.radiusKm ?? 50))
       .sort((a, b) => a.distanceKm - b.distanceKm);
 
+    // ৩. পেজিনেশন হিসাব
     const page = dto.page ?? 1;
     const limit = dto.limit ?? 10;
     const start = (page - 1) * limit;
@@ -429,19 +449,14 @@ export class SpottingRequestService {
     const postModel = this.normalizeText(post.car?.model ?? null);
 
     for (const request of activeRequests) {
+      // Nijer post-e nije match hobe na
       if (request.userId === post.userId) continue;
 
       const blocked = await this.prisma.userBlock.findFirst({
         where: {
           OR: [
-            {
-              blockerId: request.userId,
-              blockedUserId: post.userId,
-            },
-            {
-              blockerId: post.userId,
-              blockedUserId: request.userId,
-            },
+            { blockerId: request.userId, blockedUserId: post.userId },
+            { blockerId: post.userId, blockedUserId: request.userId },
           ],
         },
         select: { id: true },
@@ -455,13 +470,8 @@ export class SpottingRequestService {
       let brandMatched = true;
       let modelMatched = true;
 
-      if (requestBrand) {
-        brandMatched = requestBrand === postBrand;
-      }
-
-      if (requestModel) {
-        modelMatched = requestModel === postModel;
-      }
+      if (requestBrand) brandMatched = requestBrand === postBrand;
+      if (requestModel) modelMatched = requestModel === postModel;
 
       if (!brandMatched || !modelMatched) continue;
 
@@ -484,30 +494,31 @@ export class SpottingRequestService {
 
       if (alreadyExists) continue;
 
-      await this.prisma.$transaction([
-        this.prisma.spottingMatch.create({
+      // Match creation and Notification trigger
+      await this.prisma.$transaction(async (tx) => {
+        await tx.spottingMatch.create({
           data: {
             spottingRequestId: request.id,
             postId: post.id,
             spottedUserId: post.userId,
             distanceKm: Number(distanceKm.toFixed(2)),
           },
-        }),
-        this.prisma.spottingRequest.update({
-          where: { id: request.id },
-          data: {
-            lastMatchedAt: new Date(),
-          },
-        }),
-      ]);
+        });
 
+        await tx.spottingRequest.update({
+          where: { id: request.id },
+          data: { lastMatchedAt: new Date() },
+        });
+      });
+
+      // Notification sending explicitly ensured after successful DB transaction
       await this.sendSpottingMatchNotification({
         requestId: request.id,
         requestOwnerId: request.userId,
         actorUserId: post.userId,
         postId: post.id,
-        matchedBrand: postBrand,
-        matchedModel: postModel,
+        matchedBrand: post.car?.make,
+        matchedModel: post.car?.model,
         distanceKm,
       });
 

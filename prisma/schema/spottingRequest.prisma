@@ -8,7 +8,6 @@ model SpottingRequest {
 
   brand String? @db.VarChar(100)
   model String? @db.VarChar(100)
-
   latitude  Decimal @db.Decimal(9, 6)
   longitude Decimal @db.Decimal(9, 6)
   radiusKm  Int     @default(50)
