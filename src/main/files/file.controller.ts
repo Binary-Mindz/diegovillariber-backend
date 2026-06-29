@@ -22,7 +22,7 @@ export class FileController {
   @UseInterceptors(FilesInterceptor('files', 5))
   @ApiConsumes('multipart/form-data')
   @ApiBody({ type: UploadFilesDto })
-  async uploadToCloudinary(@UploadedFiles() files: Express.Multer.File[]) {
+  async uploadToR2(@UploadedFiles() files: Express.Multer.File[]) {
     return Promise.all(
       files.map((file) =>
         this.cloudflareR2Service.uploadFileBuffer(
