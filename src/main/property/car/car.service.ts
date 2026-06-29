@@ -37,18 +37,11 @@ export class CarService {
   private async validateOwnership(userId: string, carId: string) {
     const car = await this.prisma.car.findUnique({
       where: { id: carId },
-      include: {
-        profile: true,
-        advancedCarDatas: true,
-      },
+      include: { profile: true },
     });
 
     if (!car) throw new NotFoundException('Car not found');
-
-    // owner check
-    if (car.profile.userId !== userId) {
-      throw new ForbiddenException('Not your car');
-    }
+    if (car.profile.userId !== userId) throw new ForbiddenException('Not your car');
 
     return car;
   }
@@ -67,6 +60,31 @@ export class CarService {
     });
 
     return created.id;
+  }
+
+  async manageSection(
+    userId: string,
+    carId: string,
+    section: 'enginePower' | 'drivetrain' | 'chassisBrakes' | 'tuningAero' | 'interiorSafety' | 'usageNotes' | 'wheelsTires',
+    dto: any,
+    action: 'create' | 'update'
+  ) {
+    await this.validateOwnership(userId, carId);
+    const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
+    const client = this.prisma[section] as any;
+
+    if (action === 'create') {
+      const exists = await client.findUnique({ where: { advancedCarDataId: advancedId }, select: { id: true } });
+      if (exists) throw new ForbiddenException(`${section} profile already exists. Use PATCH to update.`);
+
+      return client.create({ data: { ...dto, advancedCarDataId: advancedId } });
+    }
+
+    return client.upsert({
+      where: { advancedCarDataId: advancedId },
+      update: dto,
+      create: { ...dto, advancedCarDataId: advancedId },
+    });
   }
 
   async create(userId: string, dto: CreateCarDto) {
@@ -102,8 +120,8 @@ export class CarService {
           carLocation: dto.carLocation ?? null,
           locationName: dto.locationName ?? null,
           locationAddress: dto.locationAddress ?? null,
-          latitude: dto.latitude != null ? dto.latitude : null,
-          longitude: dto.longitude != null ? dto.longitude : null,
+          latitude: dto.latitude ?? null,
+          longitude: dto.longitude ?? null,
           placeId: dto.placeId ?? null,
           locationVisibility: dto.locationVisibility ?? null,
         },
@@ -117,10 +135,7 @@ export class CarService {
             productImage: car.image ?? null,
             description: car.description ?? null,
             category: ProductCategory.CAR,
-            tags: [
-              ...(car.make ? [car.make] : []),
-              ...(car.model ? [car.model] : []),
-            ],
+            tags: [...(car.make ? [car.make] : []), ...(car.model ? [car.model] : [])],
             carBrand: car.make ?? null,
             carModel: car.model ?? null,
             price: car.price,
@@ -133,7 +148,6 @@ export class CarService {
           },
         });
       }
-
       return car;
     });
 
@@ -146,10 +160,7 @@ export class CarService {
     const skip = (currentPage - 1) * currentLimit;
 
     const [cars, total] = await Promise.all([
-      this.prisma.car.findMany({
-        skip,
-        take: currentLimit,
-      }),
+      this.prisma.car.findMany({ skip, take: currentLimit }),
       this.prisma.car.count(),
     ]);
 
@@ -178,11 +189,10 @@ export class CarService {
           where: {
             ownerId: userId,
             carBrand: updatedCar.make,
-            carModel: updatedCar.model
+            carModel: updatedCar.model,
           },
         });
-      }
-      else {
+      } else {
         const productData = {
           title: updatedCar.displayName || `${updatedCar.make ?? ''} ${updatedCar.model ?? ''}`.trim(),
           productImage: updatedCar.image,
@@ -194,7 +204,7 @@ export class CarService {
         };
 
         const existingListing = await tx.productList.findFirst({
-          where: { ownerId: userId, carBrand: updatedCar.make, carModel: updatedCar.model }
+          where: { ownerId: userId, carBrand: updatedCar.make, carModel: updatedCar.model },
         });
 
         if (existingListing) {
@@ -208,18 +218,29 @@ export class CarService {
               carBrand: updatedCar.make,
               carModel: updatedCar.model,
               quantity: 1,
-            }
+            },
           });
         }
       }
-
       return updatedCar;
     });
   }
-
   async delete(userId: string, carId: string) {
-    await this.validateOwnership(userId, carId);
-    return this.prisma.car.delete({ where: { id: carId } });
+    const car = await this.validateOwnership(userId, carId);
+
+    return this.prisma.$transaction(async (tx) => {
+      await tx.productList.deleteMany({
+        where: {
+          ownerId: userId,
+          carBrand: car.make,
+          carModel: car.model,
+        },
+      });
+
+      return tx.car.delete({
+        where: { id: carId },
+      });
+    });
   }
 
   async get(carId: string) {
