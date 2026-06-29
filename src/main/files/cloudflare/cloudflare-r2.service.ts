@@ -47,9 +47,8 @@ export class CloudflareR2Service {
     }
   }
 
-  // ভিডিও কম্প্রেস এবং রেজোলিউশন ডাউনস্কেল (Production-Optimized)
+
   private async compressVideo(fileBuffer: Buffer, originalName: string): Promise<{ buffer: Buffer; ext: string; mimetype: string }> {
-    // প্রজেক্ট রুট বা ডিস্ট ফোল্ডারে নিরাপদ টেম্প ডিরেক্টরি তৈরি
     const tempDir = path.join(process.cwd(), 'temp-uploads');
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir, { recursive: true });
@@ -59,43 +58,64 @@ export class CloudflareR2Service {
     const inputPath = path.join(tempDir, `in_${Date.now()}_${sanitizedName}`);
     const outputPath = path.join(tempDir, `out_${Date.now()}.mp4`);
 
-    // অরিজিনাল বাফার ফাইলে রাইট করা
+    // বাফার ফাইলে রাইট করা
     await writeFileAsync(inputPath, fileBuffer);
 
     return new Promise((resolve, reject) => {
-      ffmpeg(inputPath)
-        .size('1280x720') // রেজোলিউশন কমিয়ে 720p (HD) করা
-        .videoCodec('libx264') // স্ট্যান্ডার্ড ও হাইলি কম্প্রেসড কোডেক
-        .audioCodec('aac')
-        .outputOptions([
-          '-crf 28', // সাইজ ও কোয়ালিটির পারফেক্ট ব্যালেন্স
-          '-preset fast'
-        ])
-        .output(outputPath)
-        .on('end', async () => {
-          try {
-            const compressedBuffer = fs.readFileSync(outputPath);
-            
-            // ক্লিনআপ: প্রসেস শেষ হলে ফাইল রিমুভ করা
-            if (fs.existsSync(inputPath)) await unlinkAsync(inputPath);
-            if (fs.existsSync(outputPath)) await unlinkAsync(outputPath);
+      // প্রথমে ভিডিওর মেটাডাটা (Resolution) রিড করা
+      ffmpeg.ffprobe(inputPath, async (err, metadata) => {
+        if (err) {
+          if (fs.existsSync(inputPath)) await unlinkAsync(inputPath).catch(() => { });
+          return reject(new InternalServerErrorException(`Failed to probe video metadata: ${err.message}`));
+        }
 
-            resolve({
-              buffer: compressedBuffer,
-              ext: 'mp4',
-              mimetype: 'video/mp4'
-            });
-          } catch (err) {
-            reject(err);
-          }
-        })
-        .on('error', async (err: Error) => {
-          // ক্লিনআপ: এরর খেলেও যাতে টেম্প ফাইল ডিলিট হয়
-          if (fs.existsSync(inputPath)) await unlinkAsync(inputPath).catch(() => {});
-          if (fs.existsSync(outputPath)) await unlinkAsync(outputPath).catch(() => {});
-          reject(new InternalServerErrorException(`Video compression failed: ${err.message}`));
-        })
-        .run();
+        // ভিডিও স্ট্রিম খুঁজে বের করা
+        const videoStream = metadata.streams.find(stream => stream.codec_type === 'video');
+        const originalWidth = videoStream?.width || 0;
+
+        // এফএফএমপেগ কমান্ড ইনিশিয়েট করা
+        const ffmpegCommand = ffmpeg(inputPath)
+          .videoCodec('libx264')
+          .audioCodec('aac')
+          .outputOptions([
+            '-crf 28', // সাইজ অপ্টিমাইজেশন
+            '-preset fast'
+          ]);
+
+        // কন্ডিশন: ভিডিওর উইডথ ১২৮০ এর বেশি হলেই কেবল ৭২০পি-তে ডাউনস্কেল হবে
+        // যদি ৭২০পি বা তার কম হয়, তবে অরিজিনাল রেজোলিউশনই থাকবে (কোয়ালিটি ঠিক রাখার জন্য)
+        if (originalWidth > 1280) {
+          ffmpegCommand.size('1280x720');
+        } else {
+          // রেজোলিউশন পরিবর্তন না করে কেবল সাইজ কম্প্রেস করবে
+          ffmpegCommand.size('?x' + (videoStream?.height || 720));
+        }
+
+        ffmpegCommand
+          .output(outputPath)
+          .on('end', async () => {
+            try {
+              const compressedBuffer = fs.readFileSync(outputPath);
+
+              if (fs.existsSync(inputPath)) await unlinkAsync(inputPath);
+              if (fs.existsSync(outputPath)) await unlinkAsync(outputPath);
+
+              resolve({
+                buffer: compressedBuffer,
+                ext: 'mp4',
+                mimetype: 'video/mp4'
+              });
+            } catch (cleanupError) {
+              reject(cleanupError);
+            }
+          })
+          .on('error', async (ffmpegErr: Error) => {
+            if (fs.existsSync(inputPath)) await unlinkAsync(inputPath).catch(() => { });
+            if (fs.existsSync(outputPath)) await unlinkAsync(outputPath).catch(() => { });
+            reject(new InternalServerErrorException(`Video compression failed: ${ffmpegErr.message}`));
+          })
+          .run();
+      });
     });
   }
 
@@ -113,7 +133,6 @@ export class CloudflareR2Service {
     let finalMimeType = mimetype;
     const fileCategory = this.resolveFileCategory(mimetype);
 
-    // ফাইল ক্যাটাগরি অনুযায়ী প্রসেসিং করা
     if (fileCategory === 'image') {
       finalBuffer = await this.compressImage(fileBuffer);
       ext = 'jpeg';
@@ -124,15 +143,12 @@ export class CloudflareR2Service {
       ext = videoResult.ext;
       finalMimeType = videoResult.mimetype;
     }
-
-    // ফাইলের নাম ক্লিন করা (স্পেস ও স্পেশাল ক্যারেক্টার রিমুভ)
     const cleanOriginalName = originalName.replace(/\.[^/.]+$/, '').replace(/[^a-zA-Z0-9]/g, '_');
     const baseName = `${Date.now()}-${cleanOriginalName}`;
-    
+
     const folder = fileCategory === 'image' ? 'images' : fileCategory === 'video' ? 'videos' : 'docs';
     const key = `${folder}/${baseName}.${ext}`;
 
-    // Cloudflare R2 তে আপলোড
     try {
       await this.s3Client.send(
         new PutObjectCommand({
@@ -148,7 +164,6 @@ export class CloudflareR2Service {
 
     const secureUrl = `${this.publicUrl}/${key}`;
 
-    // ডাটাবেজে রেকর্ড সেভ করা
     return await this.prisma.fileInstance.create({
       data: {
         filename: `${baseName}.${ext}`,
