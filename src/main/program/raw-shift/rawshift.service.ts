@@ -106,6 +106,17 @@ export class RawShiftService {
     const battle = await this.prisma.rawShiftBattle.findUnique({
       where: { id },
       include: {
+        creator: {
+          select: {
+            id: true,
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
         _count: {
           select: { participants: true, entries: true, comments: true },
         },

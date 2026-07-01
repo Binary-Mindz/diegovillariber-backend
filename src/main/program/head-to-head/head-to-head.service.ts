@@ -612,8 +612,14 @@ export class HeadToHeadService {
       include: {
         user: {
           select: {
-            id: true, // ✅ correct (NOT userId)
-            email: true, // optional
+            id: true, 
+            email: true, 
+            profile: {
+              select: {
+                profileName: true,  
+                imageUrl:true,
+              },
+            },
           },
         },
         submission: {
