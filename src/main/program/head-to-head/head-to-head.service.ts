@@ -194,15 +194,26 @@ export class HeadToHeadService {
             },
           },
         },
-        winnerUser: { select: { id: true, email: true } },
+        winnerUser: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
+          },
+        },
         participants: {
           orderBy: { joinedAt: 'asc' },
-          include: { user: { select: { id: true, email: true } } },
+          include: { user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } } },
         },
         submissions: {
           orderBy: { createdAt: 'asc' },
           include: {
-            user: { select: { id: true, email: true } },
+            user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } },
             votes: true,
             comments: {
               include: { user: { select: { id: true, email: true } } },
@@ -213,13 +224,13 @@ export class HeadToHeadService {
         invitations: {
           orderBy: { sentAt: 'desc' },
           include: {
-            inviter: { select: { id: true, email: true } },
-            invitee: { select: { id: true, email: true } },
+            inviter: { select: { id: true, email: true , profile: { select: { profileName: true, imageUrl: true } } } },
+            invitee: { select: { id: true, email: true , profile: { select: { profileName: true, imageUrl: true } } } },
           },
         },
         battleComments: {
           orderBy: { createdAt: 'desc' },
-          include: { user: { select: { id: true, email: true } } },
+          include: { user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } } },
           take: 50,
         },
         _count: {
