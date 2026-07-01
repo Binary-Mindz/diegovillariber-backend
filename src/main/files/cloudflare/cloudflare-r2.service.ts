@@ -3,15 +3,10 @@ import { BadRequestException, Injectable, InternalServerErrorException } from '@
 import { FileType } from 'generated/prisma/enums';
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
 import sharp from 'sharp';
-import ffmpeg from 'fluent-ffmpeg';
-import * as ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
-import * as ffprobeInstaller from '@ffprobe-installer/ffprobe'; 
+import ffmpeg from 'fluent-ffmpeg'; 
 import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
-
-ffmpeg.setFfmpegPath(ffmpegInstaller.path);
-ffmpeg.setFfprobePath(ffprobeInstaller.path); 
 
 const writeFileAsync = promisify(fs.writeFile);
 const unlinkAsync = promisify(fs.unlink);

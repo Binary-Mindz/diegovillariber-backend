@@ -29,6 +29,9 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV DATABASE_URL=postgresql://postgres:postgres@db:5432/app
 
+RUN apk add --no-cache ffmpeg
+
+
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/pnpm-workspace.yaml ./
