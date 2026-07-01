@@ -778,12 +778,16 @@ export class ChallengeService {
         user: {
           select: {
             id: true, // FIXED ✅
-            // add profile if needed
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
           },
         },
       },
     });
-
 
     const map = new Map();
     const roots: any = [];
