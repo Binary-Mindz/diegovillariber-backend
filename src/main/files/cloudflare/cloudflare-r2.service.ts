@@ -37,12 +37,11 @@ export class CloudflareR2Service {
     });
   }
 
-  // ইমেজ কম্প্রেস এবং রিসাইজ (Production-Optimized)
   private async compressImage(buffer: Buffer): Promise<Buffer> {
     try {
       return await sharp(buffer)
-        .resize({ width: 1280, withoutEnlargement: true }) // রেজোলিউশন কমানো (max width 1280px)
-        .jpeg({ quality: 80, progressive: true, mozjpeg: true }) // ৮১% কোয়ালিটি + বেস্ট কম্প্রেশন অ্যালগরিদম
+        .resize({ width: 1280, withoutEnlargement: true })
+        .jpeg({ quality: 80, progressive: true, mozjpeg: true }) 
         .toBuffer();
     } catch (error) {
       throw new InternalServerErrorException(`Image optimization failed: ${error.message}`);
