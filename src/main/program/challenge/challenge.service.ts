@@ -32,7 +32,12 @@ export class ChallengeService {
         select: {
           id: true,
           email: true,
-          profile: true,
+          profile: {
+            select: {
+              profileName: true,
+              imageUrl: true
+            }
+          },
         },
       },
       challengeParticipants: {
