@@ -782,7 +782,7 @@ export class ChallengeService {
       include: {
         user: {
           select: {
-            id: true, // FIXED ✅
+            id: true,
             profile: {
               select: {
                 profileName: true,
@@ -822,6 +822,12 @@ export class ChallengeService {
         user: {
           select: {
             id: true,
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
+            },
           },
         },
       },
