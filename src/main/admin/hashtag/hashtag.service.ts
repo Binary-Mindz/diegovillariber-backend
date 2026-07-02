@@ -11,28 +11,42 @@ import { HashtagCreatedBy } from '../../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class HashtagService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async createHashtag(dto: CreateHashtagDto, userId: string) {
-    const tag = dto.tag.toLowerCase().trim().replace(/^#/, '');
+    const normalizedTag = dto.tag?.toLowerCase().trim().replace(/^#/, '');
 
-    if (!tag) {
-      throw new BadRequestException('Hashtag is required');
+    if (!normalizedTag || normalizedTag.includes(' ')) {
+      throw new BadRequestException(
+        'Invalid hashtag format. Hashtag cannot be empty or contain spaces.'
+      );
     }
 
-    const exists = await this.prisma.hashtag.findUnique({
-      where: { tag: tag },
+    const existingHashtag = await this.prisma.hashtag.findUnique({
+      where: { tag: normalizedTag },
+      select: { id: true, isActive: true }
     });
 
-    if (exists) {
-      throw new BadRequestException('Hashtag already exists');
+    if (existingHashtag) {
+      if (!existingHashtag.isActive) {
+        return this.prisma.hashtag.update({
+          where: { id: existingHashtag.id },
+          data: {
+            isActive: true,
+            description: dto.description || undefined,
+            createdByUserId: userId
+          },
+        });
+      }
+
+      throw new BadRequestException(`Hashtag '#${normalizedTag}' already exists and is active.`);
     }
 
     return this.prisma.hashtag.create({
       data: {
-        tag,
+        tag: normalizedTag,
         description: dto.description,
-         createdBy: HashtagCreatedBy.USER,
+        createdBy: HashtagCreatedBy.USER,
         createdByUserId: userId,
         isActive: true,
       },
