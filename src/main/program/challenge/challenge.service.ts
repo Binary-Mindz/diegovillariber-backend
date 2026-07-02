@@ -603,7 +603,6 @@ export class ChallengeService {
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     const now = new Date();
-    console.log("now time is: ", now)
     if (
       challenge.status !== ChallengeStatus.UPCOMING &&
       challenge.status !== ChallengeStatus.ACTIVE
@@ -625,13 +624,30 @@ export class ChallengeService {
 
     if (!dto.media?.length) throw new BadRequestException('At least one media item is required');
 
+    const hashtagIds = dto.hashtagIds ? Array.from(new Set(dto.hashtagIds)) : [];
+
     return this.prisma.$transaction(async (tx) => {
+      let hashtagStrings: string[] = [];
+
+      if (hashtagIds.length > 0) {
+        const foundHashtags = await tx.hashtag.findMany({
+          where: { id: { in: hashtagIds }, isActive: true },
+          select: { id: true, tag: true },
+        });
+
+        if (foundHashtags.length !== hashtagIds.length) {
+          throw new BadRequestException('One or more hashtags are invalid or inactive.');
+        }
+
+        hashtagStrings = foundHashtags.map(h => h.tag);
+      }
+
       const submission = await tx.challengeSubmission.create({
         data: {
           challengeId,
           participantId: participant.id,
           caption: dto.caption,
-          hashtags: dto.hashtags ?? [],
+          hashtags: hashtagStrings,
           status: SubmissionStatus.PENDING,
           media: {
             create: dto.media.map((m) => ({
@@ -646,6 +662,13 @@ export class ChallengeService {
         },
         include: { media: true },
       });
+
+      if (hashtagIds.length > 0) {
+        await tx.hashtag.updateMany({
+          where: { id: { in: hashtagIds } },
+          data: { usageCount: { increment: 1 } },
+        });
+      }
 
       await tx.challengeParticipant.update({
         where: { id: participant.id },
