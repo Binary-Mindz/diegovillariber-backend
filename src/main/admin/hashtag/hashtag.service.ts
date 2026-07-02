@@ -21,7 +21,7 @@ export class HashtagService {
     }
 
     const exists = await this.prisma.hashtag.findUnique({
-      where: { tag },
+      where: { tag: tag },
     });
 
     if (exists) {
