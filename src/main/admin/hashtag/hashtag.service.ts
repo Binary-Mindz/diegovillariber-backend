@@ -17,40 +17,32 @@ export class HashtagService {
     const normalizedTag = dto.tag?.toLowerCase().trim().replace(/^#/, '');
 
     if (!normalizedTag || normalizedTag.includes(' ')) {
-      throw new BadRequestException(
-        'Invalid hashtag format. Hashtag cannot be empty or contain spaces.'
-      );
+      throw new BadRequestException('Invalid hashtag format.');
     }
 
-    const existingHashtag = await this.prisma.hashtag.findUnique({
-      where: { tag: normalizedTag },
-      select: { id: true, isActive: true }
-    });
-
-    if (existingHashtag) {
-      if (!existingHashtag.isActive) {
-        return this.prisma.hashtag.update({
-          where: { id: existingHashtag.id },
-          data: {
-            isActive: true,
-            description: dto.description || undefined,
-            createdByUserId: userId
-          },
-        });
+    try {
+      return await this.prisma.hashtag.create({
+        data: {
+          tag: normalizedTag,
+          description: dto.description,
+          createdBy: HashtagCreatedBy.USER,
+          createdByUserId: userId,
+          isActive: true,
+        },
+      });
+    } catch (error: any) {
+      if (error.code === 'P2002') {
+        const existing = await this.prisma.hashtag.findUnique({ where: { tag: normalizedTag } });
+        if (existing && !existing.isActive) {
+          return this.prisma.hashtag.update({
+            where: { id: existing.id },
+            data: { isActive: true },
+          });
+        }
+        throw new BadRequestException(`Hashtag '#${normalizedTag}' already exists.`);
       }
-
-      throw new BadRequestException(`Hashtag '#${normalizedTag}' already exists and is active.`);
+      throw error;
     }
-
-    return this.prisma.hashtag.create({
-      data: {
-        tag: normalizedTag,
-        description: dto.description,
-        createdBy: HashtagCreatedBy.USER,
-        createdByUserId: userId,
-        isActive: true,
-      },
-    });
   }
 
   async updateHashtag(id: string, dto: UpdateHashtagDto, userId: string) {
@@ -58,16 +50,49 @@ export class HashtagService {
       where: { id },
     });
 
-    if (!hashtag) throw new NotFoundException('Hashtag not found');
+    if (!hashtag) {
+      throw new NotFoundException('Hashtag not found');
+    }
 
     if (hashtag.createdByUserId !== userId) {
       throw new BadRequestException('You can update only your own hashtag');
     }
 
-    return this.prisma.hashtag.update({
-      where: { id },
-      data: dto,
-    });
+    const updateData: any = { ...dto };
+    const inputTag = (dto as any).tag;
+
+    if (inputTag) {
+      const normalizedTag = inputTag.toLowerCase().trim().replace(/^#/, '');
+
+      if (!normalizedTag || normalizedTag.includes(' ')) {
+        throw new BadRequestException('Invalid hashtag format. Spaces are not allowed.');
+      }
+
+      const tagConflict = await this.prisma.hashtag.findFirst({
+        where: {
+          tag: normalizedTag,
+          id: { not: id },
+        },
+      });
+
+      if (tagConflict) {
+        throw new BadRequestException(`The hashtag '#${normalizedTag}' is already taken by another record.`);
+      }
+
+      updateData.tag = normalizedTag;
+    }
+
+    try {
+      return await this.prisma.hashtag.update({
+        where: { id },
+        data: updateData,
+      });
+    } catch (error: any) {
+      if (error.code === 'P2002') {
+        throw new BadRequestException('Hashtag text must be unique.');
+      }
+      throw error;
+    }
   }
 
   async deleteHashtag(id: string, userId: string) {
