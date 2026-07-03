@@ -18,39 +18,49 @@ const prisma = new PrismaClient({
 });
 
 async function seedAdmin() {
-  const email = process.env.ADMIN_EMAIL || 'admin@example.com';
-  const password = process.env.ADMIN_PASSWORD || 'Admin@123';
+  const admins = [
+    {
+      email: process.env.ADMIN_EMAIL || 'admin@example.com',
+      password: process.env.ADMIN_PASSWORD || 'Admin@123',
+    },
+    {
+      email: 'hello@motorspot.app',
+      password: 'Awakegroup001',
+    },
+  ];
 
-  const existingAdmin = await prisma.user.findUnique({
-    where: { email },
-    select: { id: true, password: true },
-  });
+  for (const admin of admins) {
+    const existingAdmin = await prisma.user.findUnique({
+      where: { email: admin.email },
+      select: { password: true },
+    });
 
-  let hash = existingAdmin?.password;
+    let hash = existingAdmin?.password;
 
-  if (!hash) {
-    hash = await bcrypt.hash(password, 10);
+    if (!hash) {
+      hash = await bcrypt.hash(admin.password, 10);
+    }
+
+    await prisma.user.upsert({
+      where: { email: admin.email },
+      update: {
+        role: Role.ADMIN,
+        activeRole: Role.ADMIN,
+        accountStatus: AccountStatus.ACTIVE,
+        isEmailVerified: true,
+      },
+      create: {
+        email: admin.email,
+        password: hash,
+        role: Role.ADMIN,
+        activeRole: Role.ADMIN,
+        accountStatus: AccountStatus.ACTIVE,
+        isEmailVerified: true,
+      },
+    });
+
+    console.log(`✅ Admin seeded: ${admin.email}`);
   }
-
-  await prisma.user.upsert({
-    where: { email },
-    update: {
-      role: Role.ADMIN,
-      activeRole: Role.ADMIN,
-      accountStatus: AccountStatus.ACTIVE,
-      isEmailVerified: true,
-    },
-    create: {
-      email,
-      password: hash,
-      role: Role.ADMIN,
-      activeRole: Role.ADMIN,
-      accountStatus: AccountStatus.ACTIVE,
-      isEmailVerified: true,
-    },
-  });
-
-  console.log(`✅ Admin seeded: ${email}`);
 }
 
 async function seedBadges() {
