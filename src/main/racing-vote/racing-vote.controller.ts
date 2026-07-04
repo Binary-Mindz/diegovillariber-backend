@@ -30,7 +30,7 @@ import { RacingVoteHistoryDto } from './dto/racing-vote-history.dto';
 @ApiTags('RacingVote')
 @Controller('racing-votes')
 export class RacingVoteController {
-  constructor(private readonly service: RacingVoteService) {}
+  constructor(private readonly service: RacingVoteService) { }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -54,28 +54,28 @@ export class RacingVoteController {
     return response;
   }
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Get('history')
-@HttpCode(HttpStatus.OK)
-@ApiOperation({
-  summary: 'Get my racing vote history',
-})
-async myVoteHistory(
-  @GetUser('userId') userId: string,
-  @Query() query: RacingVoteHistoryDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.service.myVoteHistory(userId, query),
-    'Racing vote history fetched successfully',
-  );
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('history')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Get my racing vote history',
+  })
+  async myVoteHistory(
+    @GetUser('userId') userId: string,
+    @Query() query: RacingVoteHistoryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.myVoteHistory(userId, query),
+      'Racing vote history fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
-   @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
@@ -97,23 +97,23 @@ async myVoteHistory(
   }
 
 
-@Get('top-users')
-@HttpCode(HttpStatus.OK)
-@ApiOperation({
-  summary: 'Get top voted users leaderboard',
-})
-async topUsers(
-  @Query() query: RacingVoteLeaderboardDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.service.topVotedUsers(query),
-    'Top voted users fetched successfully',
-  );
+  @Get('top-users')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({
+    summary: 'Get top voted users leaderboard',
+  })
+  async topUsers(
+    @Query() query: RacingVoteLeaderboardDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.service.topVotedUsers(query),
+      'Top voted users fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

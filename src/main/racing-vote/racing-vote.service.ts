@@ -21,7 +21,7 @@ export class RacingVoteService {
    */
   private getDhakaDayRange() {
     const now = new Date();
-    
+
     // বর্তমান UTC সময়কে ঢাকা সময়ে রূপান্তর করে বছর, মাস ও দিন বের করা
     const dhakaString = now.toLocaleString('en-US', { timeZone: 'Asia/Dhaka' });
     const dhakaDateStr = new Date(dhakaString);
@@ -252,12 +252,28 @@ export class RacingVoteService {
       }),
     };
 
+    let orderBy: Prisma.RacingVoteOrderByWithRelationInput = { createdAt: 'desc' };
+
+    if (query.targetType === RacingVoteTargetType.POST) {
+      orderBy = {
+        post: {
+          racingVote: 'desc'
+        }
+      };
+    } else if (query.targetType === RacingVoteTargetType.USER) {
+      orderBy = {
+        targetUser: {
+          totalPoints: 'desc'
+        }
+      };
+    }
+
     const [votes, total] = await Promise.all([
       this.prisma.racingVote.findMany({
         where,
         skip,
         take: limit,
-        orderBy: { createdAt: 'desc' },
+        orderBy, 
         include: {
           targetUser: {
             select: {
