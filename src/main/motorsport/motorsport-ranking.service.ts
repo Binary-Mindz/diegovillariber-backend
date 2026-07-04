@@ -21,7 +21,7 @@ type RankingUserMap = {
 
 @Injectable()
 export class MotorsportRankingService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async getRankings(query: MotorsportRankingQueryDto) {
     const type = query.type || MotorsportRankingType.HEAD2HEAD;
@@ -44,50 +44,50 @@ export class MotorsportRankingService {
     }
   }
 
- private getDateFilter(duration?: RankingDuration) {
-  const now = new Date();
+  private getDateFilter(duration?: RankingDuration) {
+    const now = new Date();
 
-  switch (duration) {
-    case RankingDuration.TODAY: {
-      const start = new Date(now);
-      start.setHours(0, 0, 0, 0);
+    switch (duration) {
+      case RankingDuration.TODAY: {
+        const start = new Date(now);
+        start.setHours(0, 0, 0, 0);
 
-      const end = new Date(now);
-      end.setHours(23, 59, 59, 999);
+        const end = new Date(now);
+        end.setHours(23, 59, 59, 999);
 
-      return {
-        gte: start,
-        lte: end,
-      };
+        return {
+          gte: start,
+          lte: end,
+        };
+      }
+
+      case RankingDuration.WEEK: {
+        const start = new Date(now);
+        start.setDate(start.getDate() - 7);
+        start.setHours(0, 0, 0, 0);
+
+        return {
+          gte: start,
+          lte: now,
+        };
+      }
+
+      case RankingDuration.MONTH: {
+        const start = new Date(now);
+        start.setDate(start.getDate() - 30);
+        start.setHours(0, 0, 0, 0);
+
+        return {
+          gte: start,
+          lte: now,
+        };
+      }
+
+      case RankingDuration.ALL:
+      default:
+        return undefined;
     }
-
-    case RankingDuration.WEEK: {
-      const start = new Date(now);
-      start.setDate(start.getDate() - 7);
-      start.setHours(0, 0, 0, 0);
-
-      return {
-        gte: start,
-        lte: now,
-      };
-    }
-
-    case RankingDuration.MONTH: {
-      const start = new Date(now);
-      start.setDate(start.getDate() - 30);
-      start.setHours(0, 0, 0, 0);
-
-      return {
-        gte: start,
-        lte: now,
-      };
-    }
-
-    case RankingDuration.ALL:
-    default:
-      return undefined;
   }
-}
 
   private buildPagination(page = 1, limit = 10) {
     const safePage = Number(page) || 1;
@@ -251,62 +251,62 @@ export class MotorsportRankingService {
   }
 
   async getSplitScreenRankings(query: MotorsportRankingQueryDto) {
-  const page = query.page || 1;
-  const limit = query.limit || 10;
-  const createdAtFilter = this.getDateFilter(query.duration);
+    const page = query.page || 1;
+    const limit = query.limit || 10;
+    const createdAtFilter = this.getDateFilter(query.duration);
 
-  const participants = await this.prisma.splitScreenBattleParticipant.findMany({
-    where: {
-      votes: {
-        gt: 0,
-      },
-      battle: {
-        status: {
-          in: [
-            SplitScreenBattleStatus.LIVE,
-            SplitScreenBattleStatus.COMPLETED,
-          ],
+    const participants = await this.prisma.splitScreenBattleParticipant.findMany({
+      where: {
+        votes: {
+          gt: 0,
         },
-        ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+        battle: {
+          status: {
+            in: [
+              SplitScreenBattleStatus.LIVE,
+              SplitScreenBattleStatus.COMPLETED,
+            ],
+          },
+          ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+        },
       },
-    },
-    select: {
-      userId: true,
-      votes: true,
-    },
-  });
+      select: {
+        userId: true,
+        votes: true,
+      },
+    });
 
-  const userVoteMap = new Map<string, number>();
+    const userVoteMap = new Map<string, number>();
 
-  for (const participant of participants) {
-    const current = userVoteMap.get(participant.userId) || 0;
-    userVoteMap.set(participant.userId, current + (participant.votes || 0));
+    for (const participant of participants) {
+      const current = userVoteMap.get(participant.userId) || 0;
+      userVoteMap.set(participant.userId, current + (participant.votes || 0));
+    }
+
+    const rankingRows = Array.from(userVoteMap.entries())
+      .map(([userId, totalVotes]) => ({
+        userId,
+        totalVotes,
+      }))
+      .filter((row) => row.totalVotes > 0)
+      .sort((a, b) => b.totalVotes - a.totalVotes);
+
+    const hydrated = await this.hydrateUsers(
+      rankingRows,
+      MotorsportRankingType.SPLIT_SCREEN,
+      page,
+      limit,
+    );
+
+    return {
+      rankingType: MotorsportRankingType.SPLIT_SCREEN,
+      title: 'Top Split Screen Winner',
+      duration: query.duration || RankingDuration.ALL,
+      filterNote:
+        'Split screen duration is filtered by battle createdAt because votes are stored as total counter.',
+      ...hydrated,
+    };
   }
-
-  const rankingRows = Array.from(userVoteMap.entries())
-    .map(([userId, totalVotes]) => ({
-      userId,
-      totalVotes,
-    }))
-    .filter((row) => row.totalVotes > 0)
-    .sort((a, b) => b.totalVotes - a.totalVotes);
-
-  const hydrated = await this.hydrateUsers(
-    rankingRows,
-    MotorsportRankingType.SPLIT_SCREEN,
-    page,
-    limit,
-  );
-
-  return {
-    rankingType: MotorsportRankingType.SPLIT_SCREEN,
-    title: 'Top Split Screen Winner',
-    duration: query.duration || RankingDuration.ALL,
-    filterNote:
-      'Split screen duration is filtered by battle createdAt because votes are stored as total counter.',
-    ...hydrated,
-  };
-}
 
   async getRawShiftRankings(query: MotorsportRankingQueryDto) {
     const page = query.page || 1;
@@ -396,48 +396,48 @@ export class MotorsportRankingService {
   }
 
   async getPrestigeRankings(query: MotorsportRankingQueryDto) {
-  const page = query.page || 1;
-  const limit = query.limit || 10;
-  const createdAtFilter = this.getDateFilter(query.duration);
+    const page = query.page || 1;
+    const limit = query.limit || 10;
+    const createdAtFilter = this.getDateFilter(query.duration);
 
-  const userPointRows = await this.prisma.userPoint.findMany({
-    where: {
-      ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
-    },
-    select: {
-      userId: true,
-      points: true,
-    },
-  });
+    const userPointRows = await this.prisma.userPoint.findMany({
+      where: {
+        ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+      },
+      select: {
+        userId: true,
+        points: true,
+      },
+    });
 
-  const pointMap = new Map<string, number>();
+    const pointMap = new Map<string, number>();
 
-  for (const row of userPointRows) {
-    const current = pointMap.get(row.userId) || 0;
-    pointMap.set(row.userId, current + (row.points || 0));
+    for (const row of userPointRows) {
+      const current = pointMap.get(row.userId) || 0;
+      pointMap.set(row.userId, current + (row.points || 0));
+    }
+
+    const rankingRows = Array.from(pointMap.entries())
+      .map(([userId, prestigePoints]) => ({
+        userId,
+        prestigePoints,
+      }))
+      .sort((a, b) => b.prestigePoints - a.prestigePoints);
+
+    const hydrated = await this.hydrateUsers(
+      rankingRows,
+      MotorsportRankingType.PRESTIGE,
+      page,
+      limit,
+    );
+
+    return {
+      rankingType: MotorsportRankingType.PRESTIGE,
+      title: 'Top Prestige Point',
+      duration: query.duration || RankingDuration.ALL,
+      ...hydrated,
+    };
   }
-
-  const rankingRows = Array.from(pointMap.entries())
-    .map(([userId, prestigePoints]) => ({
-      userId,
-      prestigePoints,
-    }))
-    .sort((a, b) => b.prestigePoints - a.prestigePoints);
-
-  const hydrated = await this.hydrateUsers(
-    rankingRows,
-    MotorsportRankingType.PRESTIGE,
-    page,
-    limit,
-  );
-
-  return {
-    rankingType: MotorsportRankingType.PRESTIGE,
-    title: 'Top Prestige Point',
-    duration: query.duration || RankingDuration.ALL,
-    ...hydrated,
-  };
-}
 
   async getRankingSummary(query: MotorsportRankingQueryDto) {
     const [head2head, splitScreen, rawshift, prestige] = await Promise.all([
@@ -476,66 +476,72 @@ export class MotorsportRankingService {
   }
 
   async getTopRatedPosts(dto: TopRatedPostDto) {
-  const page = dto.page ?? 1;
-  const limit = dto.limit ?? 10;
+    const page = dto.page ?? 1;
+    const limit = dto.limit ?? 10;
+    const skip = (page - 1) * limit;
 
-  const skip = (page - 1) * limit;
+    const createdAtFilter = this.getDateFilter(dto.duration);
 
-  const [posts, total] = await Promise.all([
-    this.prisma.post.findMany({
-      orderBy: [
-        { ratingAverage: 'desc' },
-        { ratingCount: 'desc' },
-        { ratingTotal: 'desc' },
-      ],
-      skip,
-      take: limit,
-      include: {
-        user: {
-          select: {
-            id: true,
-            email: true,
-            profile: {
-              select: {
-                profileName: true,
-                imageUrl: true,
+
+    const whereClause = createdAtFilter ? { createdAt: createdAtFilter } : {};
+
+    const [posts, total] = await Promise.all([
+      this.prisma.post.findMany({
+        where: whereClause, 
+        orderBy: [
+          { ratingAverage: 'desc' },
+          { ratingCount: 'desc' },
+          { ratingTotal: 'desc' },
+        ],
+        skip,
+        take: limit,
+        include: {
+          user: {
+            select: {
+              id: true,
+              email: true,
+              profile: {
+                select: {
+                  profileName: true,
+                  imageUrl: true,
+                },
               },
             },
           },
         },
+      }),
+
+      this.prisma.post.count({
+        where: whereClause,
+      }),
+    ]);
+
+    const items = posts.map((post, index) => ({
+      rank: skip + index + 1,
+      postId: post.id,
+      caption: post.caption,
+      mediaUrl: post.mediaUrl,
+      ratingAverage: post.ratingAverage,
+      ratingCount: post.ratingCount,
+      ratingTotal: post.ratingTotal,
+
+      user: {
+        id: post.user.id,
+        name: post.user.profile?.[0]?.profileName ?? post.user.email,
+        avatar: post.user.profile?.[0]?.imageUrl ?? null,
       },
-    }),
+    }));
 
-    this.prisma.post.count(),
-  ]);
-
-  const items = posts.map((post, index) => ({
-    rank: skip + index + 1,
-    postId: post.id,
-    caption: post.caption,
-    mediaUrl: post.mediaUrl,
-    ratingAverage: post.ratingAverage,
-    ratingCount: post.ratingCount,
-    ratingTotal: post.ratingTotal,
-
-    user: {
-      id: post.user.id,
-      name:
-        post.user.profile?.[0]?.profileName ??
-        post.user.email,
-      avatar: post.user.profile?.[0]?.imageUrl ?? null,
-    },
-  }));
-
-  return {
-    items,
-    meta: {
-      total,
-      page,
-      limit,
-      totalPages: Math.ceil(total / limit),
-    },
-  };
-}
+    return {
+      duration: dto.duration ?? RankingDuration.ALL,
+      items,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
 
 }
