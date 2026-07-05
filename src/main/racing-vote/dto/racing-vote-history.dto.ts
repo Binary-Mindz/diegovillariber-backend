@@ -3,6 +3,14 @@ import { Type } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, Max, Min } from 'class-validator';
 import { RacingVoteTargetType } from './create-racing-vote.dto';
 
+export enum TimeFrameFilter {
+  ALL = 'ALL',
+  DAY = 'DAY',
+  WEEK = 'WEEK',
+  MONTH = 'MONTH',
+  YEAR = 'YEAR',
+}
+
 export class RacingVoteHistoryDto {
   @ApiPropertyOptional({
     enum: RacingVoteTargetType,
@@ -11,6 +19,15 @@ export class RacingVoteHistoryDto {
   @IsOptional()
   @IsEnum(RacingVoteTargetType)
   targetType?: RacingVoteTargetType;
+
+  @ApiPropertyOptional({
+    enum: TimeFrameFilter,
+    example: TimeFrameFilter.ALL,
+    default: TimeFrameFilter.ALL,
+  })
+  @IsOptional()
+  @IsEnum(TimeFrameFilter)
+  timeFrame?: TimeFrameFilter = TimeFrameFilter.ALL;
 
   @ApiPropertyOptional({
     example: 1,
