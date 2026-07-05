@@ -242,8 +242,31 @@ export class RacingVoteService {
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
+    // সময় ফিল্টারিং লজিক
+    let startDate: Date | null = null;
+    const now = new Date();
+
+    if (query.timeFrame && query.timeFrame !== TimeFrameFilter.ALL) {
+      startDate = new Date();
+      if (query.timeFrame === TimeFrameFilter.DAY) {
+        startDate.setDate(now.getDate() - 1);
+      } else if (query.timeFrame === TimeFrameFilter.WEEK) {
+        startDate.setDate(now.getDate() - 7);
+      } else if (query.timeFrame === TimeFrameFilter.MONTH) {
+        startDate.setMonth(now.getMonth() - 1);
+      } else if (query.timeFrame === TimeFrameFilter.YEAR) {
+        startDate.setFullYear(now.getFullYear() - 1);
+      }
+    }
+
+    // Prisma Where Condition
     const where: Prisma.RacingVoteWhereInput = {
       voterId,
+      ...(startDate && {
+        createdAt: {
+          gte: startDate,
+        },
+      }),
       ...(query.targetType === RacingVoteTargetType.USER && {
         targetUserId: { not: null },
       }),
@@ -273,7 +296,7 @@ export class RacingVoteService {
         where,
         skip,
         take: limit,
-        orderBy, 
+        orderBy,
         include: {
           targetUser: {
             select: {
