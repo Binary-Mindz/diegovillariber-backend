@@ -199,6 +199,7 @@ export type ReportWhereInput = {
   description?: Prisma.StringNullableFilter<"Report"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Report"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  challenges?: Prisma.ChallengeListRelationFilter
 }
 
 export type ReportOrderByWithRelationInput = {
@@ -210,6 +211,7 @@ export type ReportOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  challenges?: Prisma.ChallengeOrderByRelationAggregateInput
 }
 
 export type ReportWhereUniqueInput = Prisma.AtLeast<{
@@ -225,6 +227,7 @@ export type ReportWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Report"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Report"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  challenges?: Prisma.ChallengeListRelationFilter
 }, "id" | "userId_targetId_targetType">
 
 export type ReportOrderByWithAggregationInput = {
@@ -261,6 +264,7 @@ export type ReportCreateInput = {
   description?: string | null
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutReportsInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutReportsInput
 }
 
 export type ReportUncheckedCreateInput = {
@@ -271,6 +275,7 @@ export type ReportUncheckedCreateInput = {
   reason: $Enums.ReportReason
   description?: string | null
   createdAt?: Date | string
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutReportsInput
 }
 
 export type ReportUpdateInput = {
@@ -281,6 +286,7 @@ export type ReportUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutReportsNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutReportsNestedInput
 }
 
 export type ReportUncheckedUpdateInput = {
@@ -291,6 +297,7 @@ export type ReportUncheckedUpdateInput = {
   reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutReportsNestedInput
 }
 
 export type ReportCreateManyInput = {
@@ -320,6 +327,16 @@ export type ReportUncheckedUpdateManyInput = {
   reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ReportListRelationFilter = {
+  every?: Prisma.ReportWhereInput
+  some?: Prisma.ReportWhereInput
+  none?: Prisma.ReportWhereInput
+}
+
+export type ReportOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type ReportUserIdTargetIdTargetTypeCompoundUniqueInput = {
@@ -358,14 +375,42 @@ export type ReportMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
 }
 
-export type ReportListRelationFilter = {
-  every?: Prisma.ReportWhereInput
-  some?: Prisma.ReportWhereInput
-  none?: Prisma.ReportWhereInput
+export type ReportCreateNestedManyWithoutChallengesInput = {
+  create?: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput> | Prisma.ReportCreateWithoutChallengesInput[] | Prisma.ReportUncheckedCreateWithoutChallengesInput[]
+  connectOrCreate?: Prisma.ReportCreateOrConnectWithoutChallengesInput | Prisma.ReportCreateOrConnectWithoutChallengesInput[]
+  connect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
 }
 
-export type ReportOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type ReportUncheckedCreateNestedManyWithoutChallengesInput = {
+  create?: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput> | Prisma.ReportCreateWithoutChallengesInput[] | Prisma.ReportUncheckedCreateWithoutChallengesInput[]
+  connectOrCreate?: Prisma.ReportCreateOrConnectWithoutChallengesInput | Prisma.ReportCreateOrConnectWithoutChallengesInput[]
+  connect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+}
+
+export type ReportUpdateManyWithoutChallengesNestedInput = {
+  create?: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput> | Prisma.ReportCreateWithoutChallengesInput[] | Prisma.ReportUncheckedCreateWithoutChallengesInput[]
+  connectOrCreate?: Prisma.ReportCreateOrConnectWithoutChallengesInput | Prisma.ReportCreateOrConnectWithoutChallengesInput[]
+  upsert?: Prisma.ReportUpsertWithWhereUniqueWithoutChallengesInput | Prisma.ReportUpsertWithWhereUniqueWithoutChallengesInput[]
+  set?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  disconnect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  delete?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  connect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  update?: Prisma.ReportUpdateWithWhereUniqueWithoutChallengesInput | Prisma.ReportUpdateWithWhereUniqueWithoutChallengesInput[]
+  updateMany?: Prisma.ReportUpdateManyWithWhereWithoutChallengesInput | Prisma.ReportUpdateManyWithWhereWithoutChallengesInput[]
+  deleteMany?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
+}
+
+export type ReportUncheckedUpdateManyWithoutChallengesNestedInput = {
+  create?: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput> | Prisma.ReportCreateWithoutChallengesInput[] | Prisma.ReportUncheckedCreateWithoutChallengesInput[]
+  connectOrCreate?: Prisma.ReportCreateOrConnectWithoutChallengesInput | Prisma.ReportCreateOrConnectWithoutChallengesInput[]
+  upsert?: Prisma.ReportUpsertWithWhereUniqueWithoutChallengesInput | Prisma.ReportUpsertWithWhereUniqueWithoutChallengesInput[]
+  set?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  disconnect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  delete?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  connect?: Prisma.ReportWhereUniqueInput | Prisma.ReportWhereUniqueInput[]
+  update?: Prisma.ReportUpdateWithWhereUniqueWithoutChallengesInput | Prisma.ReportUpdateWithWhereUniqueWithoutChallengesInput[]
+  updateMany?: Prisma.ReportUpdateManyWithWhereWithoutChallengesInput | Prisma.ReportUpdateManyWithWhereWithoutChallengesInput[]
+  deleteMany?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
 }
 
 export type EnumReportTypeFieldUpdateOperationsInput = {
@@ -418,6 +463,60 @@ export type ReportUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
 }
 
+export type ReportCreateWithoutChallengesInput = {
+  id?: string
+  targetType: $Enums.ReportType
+  targetId: string
+  reason: $Enums.ReportReason
+  description?: string | null
+  createdAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutReportsInput
+}
+
+export type ReportUncheckedCreateWithoutChallengesInput = {
+  id?: string
+  userId: string
+  targetType: $Enums.ReportType
+  targetId: string
+  reason: $Enums.ReportReason
+  description?: string | null
+  createdAt?: Date | string
+}
+
+export type ReportCreateOrConnectWithoutChallengesInput = {
+  where: Prisma.ReportWhereUniqueInput
+  create: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput>
+}
+
+export type ReportUpsertWithWhereUniqueWithoutChallengesInput = {
+  where: Prisma.ReportWhereUniqueInput
+  update: Prisma.XOR<Prisma.ReportUpdateWithoutChallengesInput, Prisma.ReportUncheckedUpdateWithoutChallengesInput>
+  create: Prisma.XOR<Prisma.ReportCreateWithoutChallengesInput, Prisma.ReportUncheckedCreateWithoutChallengesInput>
+}
+
+export type ReportUpdateWithWhereUniqueWithoutChallengesInput = {
+  where: Prisma.ReportWhereUniqueInput
+  data: Prisma.XOR<Prisma.ReportUpdateWithoutChallengesInput, Prisma.ReportUncheckedUpdateWithoutChallengesInput>
+}
+
+export type ReportUpdateManyWithWhereWithoutChallengesInput = {
+  where: Prisma.ReportScalarWhereInput
+  data: Prisma.XOR<Prisma.ReportUpdateManyMutationInput, Prisma.ReportUncheckedUpdateManyWithoutChallengesInput>
+}
+
+export type ReportScalarWhereInput = {
+  AND?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
+  OR?: Prisma.ReportScalarWhereInput[]
+  NOT?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
+  id?: Prisma.UuidFilter<"Report"> | string
+  userId?: Prisma.UuidFilter<"Report"> | string
+  targetType?: Prisma.EnumReportTypeFilter<"Report"> | $Enums.ReportType
+  targetId?: Prisma.UuidFilter<"Report"> | string
+  reason?: Prisma.EnumReportReasonFilter<"Report"> | $Enums.ReportReason
+  description?: Prisma.StringNullableFilter<"Report"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Report"> | Date | string
+}
+
 export type ReportCreateWithoutUserInput = {
   id?: string
   targetType: $Enums.ReportType
@@ -425,6 +524,7 @@ export type ReportCreateWithoutUserInput = {
   reason: $Enums.ReportReason
   description?: string | null
   createdAt?: Date | string
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutReportsInput
 }
 
 export type ReportUncheckedCreateWithoutUserInput = {
@@ -434,6 +534,7 @@ export type ReportUncheckedCreateWithoutUserInput = {
   reason: $Enums.ReportReason
   description?: string | null
   createdAt?: Date | string
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutReportsInput
 }
 
 export type ReportCreateOrConnectWithoutUserInput = {
@@ -462,17 +563,34 @@ export type ReportUpdateManyWithWhereWithoutUserInput = {
   data: Prisma.XOR<Prisma.ReportUpdateManyMutationInput, Prisma.ReportUncheckedUpdateManyWithoutUserInput>
 }
 
-export type ReportScalarWhereInput = {
-  AND?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
-  OR?: Prisma.ReportScalarWhereInput[]
-  NOT?: Prisma.ReportScalarWhereInput | Prisma.ReportScalarWhereInput[]
-  id?: Prisma.UuidFilter<"Report"> | string
-  userId?: Prisma.UuidFilter<"Report"> | string
-  targetType?: Prisma.EnumReportTypeFilter<"Report"> | $Enums.ReportType
-  targetId?: Prisma.UuidFilter<"Report"> | string
-  reason?: Prisma.EnumReportReasonFilter<"Report"> | $Enums.ReportReason
-  description?: Prisma.StringNullableFilter<"Report"> | string | null
-  createdAt?: Prisma.DateTimeFilter<"Report"> | Date | string
+export type ReportUpdateWithoutChallengesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumReportTypeFieldUpdateOperationsInput | $Enums.ReportType
+  targetId?: Prisma.StringFieldUpdateOperationsInput | string
+  reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutReportsNestedInput
+}
+
+export type ReportUncheckedUpdateWithoutChallengesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumReportTypeFieldUpdateOperationsInput | $Enums.ReportType
+  targetId?: Prisma.StringFieldUpdateOperationsInput | string
+  reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ReportUncheckedUpdateManyWithoutChallengesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  targetType?: Prisma.EnumReportTypeFieldUpdateOperationsInput | $Enums.ReportType
+  targetId?: Prisma.StringFieldUpdateOperationsInput | string
+  reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ReportCreateManyUserInput = {
@@ -491,6 +609,7 @@ export type ReportUpdateWithoutUserInput = {
   reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challenges?: Prisma.ChallengeUpdateManyWithoutReportsNestedInput
 }
 
 export type ReportUncheckedUpdateWithoutUserInput = {
@@ -500,6 +619,7 @@ export type ReportUncheckedUpdateWithoutUserInput = {
   reason?: Prisma.EnumReportReasonFieldUpdateOperationsInput | $Enums.ReportReason
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutReportsNestedInput
 }
 
 export type ReportUncheckedUpdateManyWithoutUserInput = {
@@ -512,6 +632,35 @@ export type ReportUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type ReportCountOutputType
+ */
+
+export type ReportCountOutputType = {
+  challenges: number
+}
+
+export type ReportCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  challenges?: boolean | ReportCountOutputTypeCountChallengesArgs
+}
+
+/**
+ * ReportCountOutputType without action
+ */
+export type ReportCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ReportCountOutputType
+   */
+  select?: Prisma.ReportCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ReportCountOutputType without action
+ */
+export type ReportCountOutputTypeCountChallengesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ChallengeWhereInput
+}
+
 
 export type ReportSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -522,6 +671,8 @@ export type ReportSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   description?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  challenges?: boolean | Prisma.Report$challengesArgs<ExtArgs>
+  _count?: boolean | Prisma.ReportCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["report"]>
 
 export type ReportSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -559,6 +710,8 @@ export type ReportSelectScalar = {
 export type ReportOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "targetType" | "targetId" | "reason" | "description" | "createdAt", ExtArgs["result"]["report"]>
 export type ReportInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  challenges?: boolean | Prisma.Report$challengesArgs<ExtArgs>
+  _count?: boolean | Prisma.ReportCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ReportIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -571,6 +724,7 @@ export type $ReportPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name: "Report"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    challenges: Prisma.$ChallengePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -975,6 +1129,7 @@ readonly fields: ReportFieldRefs;
 export interface Prisma__ReportClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  challenges<T extends Prisma.Report$challengesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Report$challengesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ChallengePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1404,6 +1559,30 @@ export type ReportDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many Reports to delete.
    */
   limit?: number
+}
+
+/**
+ * Report.challenges
+ */
+export type Report$challengesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Challenge
+   */
+  select?: Prisma.ChallengeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Challenge
+   */
+  omit?: Prisma.ChallengeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ChallengeInclude<ExtArgs> | null
+  where?: Prisma.ChallengeWhereInput
+  orderBy?: Prisma.ChallengeOrderByWithRelationInput | Prisma.ChallengeOrderByWithRelationInput[]
+  cursor?: Prisma.ChallengeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ChallengeScalarFieldEnum | Prisma.ChallengeScalarFieldEnum[]
 }
 
 /**

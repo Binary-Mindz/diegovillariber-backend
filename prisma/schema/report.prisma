@@ -10,4 +10,5 @@ model Report {
   createdAt DateTime @default(now())
 
   @@unique([userId, targetId, targetType])
+  challenges Challenge[]
 }

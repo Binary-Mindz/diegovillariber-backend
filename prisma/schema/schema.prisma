@@ -327,6 +327,7 @@ enum EventType {
 enum ReportType {
   POST
   PROFILE
+  CHALLENGE
 }
 enum ReportReason {
   NOT_LIKED                    

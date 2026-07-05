@@ -888,7 +888,8 @@ export type EventType = (typeof EventType)[keyof typeof EventType]
 
 export const ReportType = {
   POST: 'POST',
-  PROFILE: 'PROFILE'
+  PROFILE: 'PROFILE',
+  CHALLENGE: 'CHALLENGE'
 } as const
 
 export type ReportType = (typeof ReportType)[keyof typeof ReportType]

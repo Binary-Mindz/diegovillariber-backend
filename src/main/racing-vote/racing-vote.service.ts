@@ -7,7 +7,7 @@ import {
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateRacingVoteDto, RacingVoteTargetType } from './dto/create-racing-vote.dto';
 import { Prisma } from 'generated/prisma/client';
-import { RacingVoteHistoryDto } from './dto/racing-vote-history.dto';
+import { RacingVoteHistoryDto, TimeFrameFilter } from './dto/racing-vote-history.dto';
 
 @Injectable()
 export class RacingVoteService {
