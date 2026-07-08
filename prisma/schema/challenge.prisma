@@ -84,7 +84,6 @@ model Challenge {
   type       ChallengeType
   category   ChallengeCategory
   preference Preference
-
   coverImage String?
 
   participationScope ParticipationScope @default(GLOBAL)
@@ -111,8 +110,8 @@ model Challenge {
   challengeParticipants       ChallengeParticipant[]
   challengeResults            ChallengeResult[]
   challengeWinners            ChallengeWinner[]
-  reports               Report[]
-  programType  ProgramType @default(CHALLENGE)
+  reports                     Report[]
+  programType                 ProgramType            @default(CHALLENGE)
 
   @@index([creatorId])
   @@index([status])
@@ -185,7 +184,6 @@ model ChallengeSubmission {
   reactions        ChallengeReaction[]
   comments         ChallengeComment[]
   challengeWinners ChallengeWinner[]
-  
 
   @@index([challengeId, createdAt])
   @@index([participantId])

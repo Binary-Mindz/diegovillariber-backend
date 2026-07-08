@@ -1,10 +1,11 @@
+import { PrismaService } from '@/common/prisma/prisma.service';
 import { Injectable } from '@nestjs/common';
+import { Prisma } from '../../../prisma/generated/prisma/client';
+import { GetTrendingHashtagsDto } from './dto/get-trending-hashtag.dto';
 import {
   GlobalSearchDto,
   GlobalSearchType,
 } from './dto/global-search-query.dto';
-import { PrismaService } from '@/common/prisma/prisma.service';
-import { GetTrendingHashtagsDto } from './dto/get-trending-hashtag.dto';
 
 @Injectable()
 export class DiscoverService {
@@ -25,6 +26,8 @@ export class DiscoverService {
       type === GlobalSearchType.ALL || type === GlobalSearchType.POST;
     const shouldSearchEvents =
       type === GlobalSearchType.ALL || type === GlobalSearchType.EVENT;
+    const shouldSearchChallenges =
+      type === GlobalSearchType.ALL || type === GlobalSearchType.CHALLENGE;
 
     const userWhere =
       keyword.length > 0
@@ -136,7 +139,25 @@ export class DiscoverService {
         }
         : {};
 
-    const [users, usersCount, posts, postsCount, events, eventsCount] =
+    // Have to match the hashtag elements of the challenge
+    const challengeWhere: Prisma.ChallengeResultWhereInput = keyword.length > 0 ? {
+      OR: [
+        {
+          challenge: {
+
+            challengeSubmissions: {
+              some: {
+                hashtags: {
+                  has: keyword,
+                },
+              },
+            },
+          },
+        }
+      ],
+    } : {}
+
+    const [users, usersCount, posts, postsCount, events, eventsCount, challenges, challengesCount] =
       await Promise.all([
         shouldSearchUsers
           ? this.prisma.user.findMany({
@@ -279,6 +300,47 @@ export class DiscoverService {
             where: eventWhere,
           })
           : Promise.resolve(0),
+
+        shouldSearchChallenges
+          ? this.prisma.challengeResult.findMany({
+            where: challengeWhere,
+            skip,
+            take: limit,
+            include: {
+              challenge: {
+                include: {
+                  challengeSubmissions: {
+                    include: {
+                      challenge: {
+                        include: {
+                          creator: {
+                            select: {
+                              id: true,
+                              email: true,
+                              profile: {
+                                select: {
+                                  id: true,
+                                  profileName: true,
+                                  imageUrl: true,
+                                },
+                              },
+                            },
+                          }
+                        }
+                      }
+                    },
+                  },
+                },
+              },
+            },
+          })
+          : Promise.resolve([]),
+
+        shouldSearchChallenges
+          ? this.prisma.challengeResult.count({
+            where: challengeWhere,
+          })
+          : Promise.resolve(0),
       ]);
 
     return {
@@ -299,6 +361,10 @@ export class DiscoverService {
       events: {
         total: eventsCount,
         items: events,
+      },
+      challenges: {
+        total: challengesCount,
+        items: challenges,
       },
     };
   }

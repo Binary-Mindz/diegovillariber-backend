@@ -1,13 +1,11 @@
-import 'reflect-metadata';
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import 'dotenv/config';
-
-// আপনার তৈরি করা ডাইনামিক ইন্টারসেপ্টর এবং সার্ভিসগুলোর সঠিক পাথ দিন
+import 'reflect-metadata';
+import { AppModule } from './app.module';
 import { DynamicTranslationInterceptor } from './common/interceptors/dynamic-translation.interceptor';
-import { PrismaService } from './common/prisma/prisma.service'; 
+import { PrismaService } from './common/prisma/prisma.service';
 import { TranslationService } from './common/services/translation.service';
 
 async function bootstrap() {
@@ -21,7 +19,6 @@ async function bootstrap() {
     }),
   );
 
-  // 🛠️ ডিপেন্ডেন্সি ইনজেকশন হ্যান্ডেল করে গ্লোবাল ইন্টারসেপ্টর সেটআপ
   const prismaService = app.get(PrismaService);
   const translationService = app.get(TranslationService);
   app.useGlobalInterceptors(new DynamicTranslationInterceptor(prismaService, translationService));
@@ -66,7 +63,9 @@ async function bootstrap() {
 
   const port = process.env.PORT! || 5000;
   console.log(`Server Running on port: ${port}`);
-  await app.listen(process.env.PORT ?? port);
+  await app.listen(process.env.PORT ?? port, () => {
+    console.log(`Server Running on port: ${port}`);
+  });
 }
 
 bootstrap();
