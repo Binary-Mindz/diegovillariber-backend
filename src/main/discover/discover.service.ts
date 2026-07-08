@@ -144,7 +144,7 @@ export class DiscoverService {
       challengeSubmissions: {
         some: {
           hashtags: {
-            has: `#${normalizedKeyword}`,
+            has: `${normalizedKeyword}`,
           }
         }
       },
