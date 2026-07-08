@@ -58,6 +58,7 @@ async function bootstrap() {
   SwaggerModule.setup('docs', app, documentFactory, {
     swaggerOptions: {
       persistAuthorization: true,
+      filter: true,
     },
   });
 
