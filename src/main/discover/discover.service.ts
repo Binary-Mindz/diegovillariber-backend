@@ -140,21 +140,14 @@ export class DiscoverService {
         : {};
 
     // Have to match the hashtag elements of the challenge
-    const challengeWhere: Prisma.ChallengeResultWhereInput = keyword.length > 0 ? {
-      OR: [
-        {
-          challenge: {
-
-            challengeSubmissions: {
-              some: {
-                hashtags: {
-                  has: keyword,
-                },
-              },
-            },
-          },
+    const challengeWhere: Prisma.ChallengeWhereInput = keyword.length > 0 ? {
+      challengeSubmissions: {
+        some: {
+          hashtags: {
+            has: `#${normalizedKeyword}`,
+          }
         }
-      ],
+      },
     } : {}
 
     const [users, usersCount, posts, postsCount, events, eventsCount, challenges, challengesCount] =
@@ -302,42 +295,18 @@ export class DiscoverService {
           : Promise.resolve(0),
 
         shouldSearchChallenges
-          ? this.prisma.challengeResult.findMany({
+          ? this.prisma.challenge.findMany({
             where: challengeWhere,
             skip,
             take: limit,
             include: {
-              challenge: {
-                include: {
-                  challengeSubmissions: {
-                    include: {
-                      challenge: {
-                        include: {
-                          creator: {
-                            select: {
-                              id: true,
-                              email: true,
-                              profile: {
-                                select: {
-                                  id: true,
-                                  profileName: true,
-                                  imageUrl: true,
-                                },
-                              },
-                            },
-                          }
-                        }
-                      }
-                    },
-                  },
-                },
-              },
+              challengeSubmissions: true
             },
           })
           : Promise.resolve([]),
 
         shouldSearchChallenges
-          ? this.prisma.challengeResult.count({
+          ? this.prisma.challenge.count({
             where: challengeWhere,
           })
           : Promise.resolve(0),
