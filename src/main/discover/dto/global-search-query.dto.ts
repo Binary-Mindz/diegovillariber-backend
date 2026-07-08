@@ -15,6 +15,7 @@ export enum GlobalSearchType {
   USER = 'USER',
   POST = 'POST',
   EVENT = 'EVENT',
+  CHALLENGE = 'CHALLENGE',
 }
 
 export class GlobalSearchDto {
@@ -23,10 +24,10 @@ export class GlobalSearchDto {
     description: 'Global search keyword',
   })
   @IsOptional()
-@IsString()
-@Transform(({ value }) => value?.trim())
-@MinLength(1)
-keyword?: string;
+  @IsString()
+  @Transform(({ value }) => value?.trim())
+  @MinLength(1)
+  keyword?: string;
 
   @ApiPropertyOptional({
     enum: GlobalSearchType,
