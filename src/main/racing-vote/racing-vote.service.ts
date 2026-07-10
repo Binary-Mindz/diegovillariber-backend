@@ -1,12 +1,12 @@
+import { PrismaService } from '@/common/prisma/prisma.service';
 import {
   BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma/prisma.service';
-import { CreateRacingVoteDto, RacingVoteTargetType } from './dto/create-racing-vote.dto';
 import { Prisma } from 'generated/prisma/client';
+import { CreateRacingVoteDto, RacingVoteTargetType } from './dto/create-racing-vote.dto';
 import { RacingVoteHistoryDto, TimeFrameFilter } from './dto/racing-vote-history.dto';
 
 @Injectable()
@@ -77,7 +77,7 @@ export class RacingVoteService {
     }
 
     // ==========================================
-    // TARGET TYPE: USER 
+    // TARGET TYPE: USER
     // ==========================================
     if (dto.targetType === RacingVoteTargetType.USER) {
       if (!dto.targetUserId) {
@@ -242,12 +242,12 @@ export class RacingVoteService {
     const limit = query.limit ?? 10;
     const skip = (page - 1) * limit;
 
-    // সময় ফিল্টারিং লজিক
     let startDate: Date | null = null;
     const now = new Date();
 
     if (query.timeFrame && query.timeFrame !== TimeFrameFilter.ALL) {
       startDate = new Date();
+
       if (query.timeFrame === TimeFrameFilter.DAY) {
         startDate.setDate(now.getDate() - 1);
       } else if (query.timeFrame === TimeFrameFilter.WEEK) {
@@ -259,7 +259,6 @@ export class RacingVoteService {
       }
     }
 
-    // Prisma Where Condition
     const where: Prisma.RacingVoteWhereInput = {
       voterId,
       ...(startDate && {
@@ -268,48 +267,25 @@ export class RacingVoteService {
         },
       }),
       ...(query.targetType === RacingVoteTargetType.USER && {
-        targetUserId: { not: null },
+        targetUserId: {
+          not: null,
+        },
       }),
       ...(query.targetType === RacingVoteTargetType.POST && {
-        postId: { not: null },
+        postId: {
+          not: null,
+        },
       }),
     };
 
-    let orderBy: Prisma.RacingVoteOrderByWithRelationInput = { createdAt: 'desc' };
-
+    // Aggregate POST votes by post owner's userId
     if (query.targetType === RacingVoteTargetType.POST) {
-      orderBy = {
-        post: {
-          racingVote: 'desc'
-        }
-      };
-    } else if (query.targetType === RacingVoteTargetType.USER) {
-      orderBy = {
-        targetUser: {
-          totalPoints: 'desc'
-        }
-      };
-    }
-
-    const [votes, total] = await Promise.all([
-      this.prisma.racingVote.findMany({
+      const votes = await this.prisma.racingVote.findMany({
         where,
-        skip,
-        take: limit,
-        orderBy,
+        orderBy: {
+          createdAt: 'desc',
+        },
         include: {
-          targetUser: {
-            select: {
-              id: true,
-              email: true,
-              totalPoints: true,
-              totalVote: true,
-              profile: {
-                select: { id: true, profileName: true, imageUrl: true },
-                take: 1,
-              },
-            },
-          },
           post: {
             select: {
               id: true,
@@ -323,7 +299,11 @@ export class RacingVoteService {
                   id: true,
                   email: true,
                   profile: {
-                    select: { id: true, profileName: true, imageUrl: true },
+                    select: {
+                      id: true,
+                      profileName: true,
+                      imageUrl: true,
+                    },
                     take: 1,
                   },
                 },
@@ -331,17 +311,118 @@ export class RacingVoteService {
             },
           },
         },
+      });
+
+      const grouped = new Map<
+        string,
+        {
+          user: any;
+          totalPoints: number;
+          totalVotes: number;
+          posts: {
+            id: string;
+            caption: string | null;
+            mediaUrl: string[];
+            point: number;
+            racingVote: number;
+          }[];
+        }
+      >();
+
+      for (const vote of votes) {
+        if (!vote.post) continue;
+
+        const ownerId = vote.post.userId;
+
+        if (!grouped.has(ownerId)) {
+          grouped.set(ownerId, {
+            user: vote.post.user,
+            totalPoints: 0,
+            totalVotes: 0,
+            posts: [],
+          });
+        }
+
+        const item = grouped.get(ownerId)!;
+
+        item.totalPoints += vote.point;
+        item.totalVotes += 1;
+
+        const alreadyExists = item.posts.some(
+          (p) => p.id === vote.post!.id,
+        );
+
+        if (!alreadyExists) {
+          item.posts.push({
+            id: vote.post.id,
+            caption: vote.post.caption,
+            mediaUrl: vote.post.mediaUrl,
+            point: vote.post.point,
+            racingVote: vote.post.racingVote,
+          });
+        }
+      }
+
+      const data = Array.from(grouped.values())
+        .sort((a, b) => b.totalPoints - a.totalPoints);
+
+      const paginated = data.slice(skip, skip + limit);
+
+      return {
+        data: paginated,
+        meta: {
+          page,
+          limit,
+          total: data.length,
+          totalPages: Math.ceil(data.length / limit),
+        },
+      };
+    }
+
+    /**
+     * Existing USER logic
+     */
+    const [votes, total] = await Promise.all([
+      this.prisma.racingVote.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: {
+          targetUser: {
+            totalPoints: 'desc',
+          },
+        },
+        include: {
+          targetUser: {
+            select: {
+              id: true,
+              email: true,
+              totalPoints: true,
+              totalVote: true,
+              profile: {
+                select: {
+                  id: true,
+                  profileName: true,
+                  imageUrl: true,
+                },
+                take: 1,
+              },
+            },
+          },
+        },
       }),
-      this.prisma.racingVote.count({ where }),
+
+      this.prisma.racingVote.count({
+        where,
+      }),
     ]);
 
     const history = votes.map((vote) => ({
       id: vote.id,
       point: vote.point,
       createdAt: vote.createdAt,
-      targetType: vote.targetUserId ? RacingVoteTargetType.USER : RacingVoteTargetType.POST,
-      targetUser: vote.targetUser ?? null,
-      post: vote.post ?? null,
+      targetType: RacingVoteTargetType.USER,
+      targetUser: vote.targetUser,
     }));
 
     return {
