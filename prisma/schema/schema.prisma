@@ -127,7 +127,6 @@ enum VehicleCategory {
   DRAG
   KARTING
 
-
   SUPER_BIKE
   MOTOCROSS
   ENDURO
@@ -145,6 +144,7 @@ enum PostVehicleCategory {
   SUPERCAR
   TRACK
   CLASSIC
+  VAN
 
   // Motorcycles
   SPORT_BIKE
@@ -185,6 +185,7 @@ enum BodyType {
   SUPERCAR
   TRACK
   CLASSIC
+  VAN
 }
 
 enum BikeBodyType {
@@ -200,6 +201,7 @@ enum BikeBodyType {
   TRIAL
   CLASSIC
   ELECTRIC
+  MINI_MOTO_GP_PITBIKE
 }
 
 enum Transmission {
@@ -329,15 +331,16 @@ enum ReportType {
   PROFILE
   CHALLENGE
 }
+
 enum ReportReason {
-  NOT_LIKED                    
-  COPYRIGHT                    
-  FALSE_INFORMATION            
-  SCAM_FRAUD_SPAM              
-  VIOLENCE_HATE_EXPLOITATION   
-  NUDITY_SEXUAL_ACTIVITY       
-  SUICIDE_OR_EATING_DISORDERS  
-  RESTRICTED_ITEMS       
+  NOT_LIKED
+  COPYRIGHT
+  FALSE_INFORMATION
+  SCAM_FRAUD_SPAM
+  VIOLENCE_HATE_EXPLOITATION
+  NUDITY_SEXUAL_ACTIVITY
+  SUICIDE_OR_EATING_DISORDERS
+  RESTRICTED_ITEMS
 }
 
 enum ProductCategory {
@@ -545,12 +548,14 @@ enum NotificationStatus {
   READ
   ARCHIVED
 }
+
 enum ProgramType {
   CHALLENGE
   RAW_SHIFT
   SPLIT_SCREEN
   HEAD_TO_HEAD
 }
+
 enum CarWhereFound {
   DEALER
   PRIVATE_SELLER

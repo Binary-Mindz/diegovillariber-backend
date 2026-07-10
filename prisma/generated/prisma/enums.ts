@@ -674,6 +674,7 @@ export const PostVehicleCategory = {
   SUPERCAR: 'SUPERCAR',
   TRACK: 'TRACK',
   CLASSIC: 'CLASSIC',
+  VAN: 'VAN',
   SPORT_BIKE: 'SPORT_BIKE',
   NAKED: 'NAKED',
   ADVENTURE: 'ADVENTURE',
@@ -717,7 +718,8 @@ export const BodyType = {
   SUV: 'SUV',
   SUPERCAR: 'SUPERCAR',
   TRACK: 'TRACK',
-  CLASSIC: 'CLASSIC'
+  CLASSIC: 'CLASSIC',
+  VAN: 'VAN'
 } as const
 
 export type BodyType = (typeof BodyType)[keyof typeof BodyType]
@@ -735,7 +737,8 @@ export const BikeBodyType = {
   ENDURO: 'ENDURO',
   TRIAL: 'TRIAL',
   CLASSIC: 'CLASSIC',
-  ELECTRIC: 'ELECTRIC'
+  ELECTRIC: 'ELECTRIC',
+  MINI_MOTO_GP_PITBIKE: 'MINI_MOTO_GP_PITBIKE'
 } as const
 
 export type BikeBodyType = (typeof BikeBodyType)[keyof typeof BikeBodyType]
