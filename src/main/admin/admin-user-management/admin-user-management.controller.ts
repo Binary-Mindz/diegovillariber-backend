@@ -1,4 +1,9 @@
+import { Roles } from '@/common/decorator/roles.tdecorator';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { handleRequest } from '@/common/helpers/handle.request';
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -6,22 +11,18 @@ import {
   HttpStatus,
   Param,
   ParseUUIDPipe,
+  Post,
   Query,
-  UseGuards,
   Res,
+  UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-
-import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
-import { RolesGuard } from '@/common/guards/roles.guard';
-import { Roles } from '@/common/decorator/roles.tdecorator';
-import { handleRequest } from '@/common/helpers/handle.request';
-
-import { AdminUserManagementService } from './admin-user-management.service';
-import { PostModerationQueryDto } from './dto/post-mpderation.query.dto';
-import { GetUsersQueryDto } from './dto/get-user-query.dto';
+import { Response } from 'express';
 import { Role } from 'generated/prisma/enums';
+import { AdminUserManagementService } from './admin-user-management.service';
+import { GetUsersQueryDto } from './dto/get-user-query.dto';
+import { PostModerationQueryDto } from './dto/post-mpderation.query.dto';
+import { ProvideTokenDto } from './dto/provide-token.dto';
 
 @ApiBearerAuth()
 @ApiTags('Admin User Management')
@@ -29,7 +30,24 @@ import { Role } from 'generated/prisma/enums';
 export class AdminUserManagementController {
   constructor(
     private readonly adminUserManagementService: AdminUserManagementService,
-  ) { }
+  ) {}
+
+  @Post('provide-token')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
+  async provideToken(
+    @Res({ passthrough: true }) res: Response,
+    @Body() dto: ProvideTokenDto,
+  ) {
+    const response = await handleRequest(
+      () => this.adminUserManagementService.provideToken(dto),
+      'Token provided successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
   @Get('overview')
@@ -95,7 +113,7 @@ export class AdminUserManagementController {
     res.status(response.statusCode);
     return response;
   }
-  
+
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   @Delete('users/:id')
