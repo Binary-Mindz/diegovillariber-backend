@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
 import {
   BattleStatus,
   RawShiftStatus,
@@ -481,67 +481,81 @@ export class MotorsportRankingService {
     const skip = (page - 1) * limit;
 
     const createdAtFilter = this.getDateFilter(dto.duration);
+    const whereClause = createdAtFilter
+      ? { createdAt: createdAtFilter }
+      : {};
 
+    const grouped = await this.prisma.post.groupBy({
+      by: ['userId'],
+      where: whereClause,
+      _sum: {
+        ratingTotal: true,
+        ratingCount: true,
+      },
+      _avg: {
+        ratingAverage: true,
+      },
+      orderBy: {
+        _sum: {
+          ratingTotal: 'desc',
+        },
+      },
+      skip,
+      take: limit,
+    });
 
-    const whereClause = createdAtFilter ? { createdAt: createdAtFilter } : {};
+    const userIds = grouped.map((g) => g.userId);
 
-    const [posts, total] = await Promise.all([
-      this.prisma.post.findMany({
-        where: whereClause, 
-        orderBy: [
-          { ratingAverage: 'desc' },
-          { ratingCount: 'desc' },
-          { ratingTotal: 'desc' },
-        ],
-        skip,
-        take: limit,
-        include: {
-          user: {
-            select: {
-              id: true,
-              email: true,
-              profile: {
-                select: {
-                  profileName: true,
-                  imageUrl: true,
-                },
-              },
-            },
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: {
+          in: userIds,
+        },
+      },
+      select: {
+        id: true,
+        email: true,
+        profile: {
+          select: {
+            profileName: true,
+            imageUrl: true,
           },
         },
-      }),
-
-      this.prisma.post.count({
-        where: whereClause,
-      }),
-    ]);
-
-    const items = posts.map((post, index) => ({
-      rank: skip + index + 1,
-      postId: post.id,
-      caption: post.caption,
-      mediaUrl: post.mediaUrl,
-      ratingAverage: post.ratingAverage,
-      ratingCount: post.ratingCount,
-      ratingTotal: post.ratingTotal,
-
-      user: {
-        id: post.user.id,
-        name: post.user.profile?.[0]?.profileName ?? post.user.email,
-        avatar: post.user.profile?.[0]?.imageUrl ?? null,
       },
-    }));
+    });
+
+    const userMap = new Map(
+      users.map((u) => [u.id, u]),
+    );
+
+    const items = grouped.map((item, index) => {
+      const user = userMap.get(item.userId);
+
+      return {
+        rank: skip + index + 1,
+        userId: item.userId,
+        name: user?.profile?.[0]?.profileName ?? user?.email,
+        avatar: user?.profile?.[0]?.imageUrl ?? null,
+        ratingAverage: item._avg.ratingAverage ?? 0,
+        ratingCount: item._sum.ratingCount ?? 0,
+        ratingTotal: item._sum.ratingTotal ?? 0,
+      };
+    });
+
+    const totalUsers = await this.prisma.post.groupBy({
+      by: ['userId'],
+      where: whereClause,
+    });
 
     return {
       duration: dto.duration ?? RankingDuration.ALL,
       items,
       meta: {
-        total,
+        total: totalUsers.length,
         page,
         limit,
-        totalPages: Math.ceil(total / limit),
+        totalPages: Math.ceil(totalUsers.length / limit),
       },
     };
   }
-
 }
