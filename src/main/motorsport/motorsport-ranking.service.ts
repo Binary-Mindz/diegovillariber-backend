@@ -481,6 +481,7 @@ export class MotorsportRankingService {
     const skip = (page - 1) * limit;
 
     const createdAtFilter = this.getDateFilter(dto.duration);
+
     const whereClause = createdAtFilter
       ? { createdAt: createdAtFilter }
       : {};
@@ -495,13 +496,9 @@ export class MotorsportRankingService {
       _avg: {
         ratingAverage: true,
       },
-      orderBy: {
-        _sum: {
-          ratingTotal: 'desc',
-        },
+      _count: {
+        _all: true,
       },
-      skip,
-      take: limit,
     });
 
     const userIds = grouped.map((g) => g.userId);
@@ -524,37 +521,51 @@ export class MotorsportRankingService {
       },
     });
 
-    const userMap = new Map(
-      users.map((u) => [u.id, u]),
-    );
+    const userMap = new Map(users.map((user) => [user.id, user]));
 
-    const items = grouped.map((item, index) => {
-      const user = userMap.get(item.userId);
+    const rankedItems = grouped
+      .map((item) => {
+        const user = userMap.get(item.userId);
 
-      return {
-        rank: skip + index + 1,
-        userId: item.userId,
-        name: user?.profile?.[0]?.profileName ?? user?.email,
-        avatar: user?.profile?.[0]?.imageUrl ?? null,
-        ratingAverage: item._avg.ratingAverage ?? 0,
-        ratingCount: item._sum.ratingCount ?? 0,
-        ratingTotal: item._sum.ratingTotal ?? 0,
-      };
-    });
+        return {
+          userId: item.userId,
+          name:
+            user?.profile?.[0]?.profileName ??
+            user?.email ??
+            'Unknown User',
+          avatar: user?.profile?.[0]?.imageUrl ?? null,
+          postCount: item._count._all,
+          ratingAverage: Number(item._avg.ratingAverage ?? 0),
+          ratingCount: item._sum.ratingCount ?? 0,
+          ratingTotal: item._sum.ratingTotal ?? 0,
+        };
+      })
+      .sort((a, b) => {
+        if (b.ratingAverage !== a.ratingAverage) {
+          return b.ratingAverage - a.ratingAverage;
+        }
 
-    const totalUsers = await this.prisma.post.groupBy({
-      by: ['userId'],
-      where: whereClause,
-    });
+        if (b.ratingCount !== a.ratingCount) {
+          return b.ratingCount - a.ratingCount;
+        }
+
+        return b.ratingTotal - a.ratingTotal;
+      })
+      .map((item, index) => ({
+        rank: index + 1,
+        ...item,
+      }));
+
+    const items = rankedItems.slice(skip, skip + limit);
 
     return {
       duration: dto.duration ?? RankingDuration.ALL,
       items,
       meta: {
-        total: totalUsers.length,
+        total: rankedItems.length,
         page,
         limit,
-        totalPages: Math.ceil(totalUsers.length / limit),
+        totalPages: Math.ceil(rankedItems.length / limit),
       },
     };
   }
