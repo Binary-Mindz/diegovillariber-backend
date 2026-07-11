@@ -121,11 +121,32 @@ export class AdminUserManagementService {
   async getUsers(query: GetUsersQueryDto) {
     const hasPagination = query.page !== undefined || query.limit !== undefined;
 
-    const where = {
+    const where: Prisma.UserWhereInput = {
       role: {
         not: Role.ADMIN,
       },
     };
+
+    if (query.search) {
+      where.OR = [
+        {
+          email: {
+            contains: query.search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          profile: {
+            some: {
+              profileName: {
+                contains: query.search,
+                mode: 'insensitive',
+              },
+            },
+          },
+        },
+      ];
+    }
 
     if (!hasPagination) {
       const users = await this.prisma.user.findMany({
