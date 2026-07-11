@@ -1,3 +1,4 @@
+import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -18,6 +19,7 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { User } from 'generated/prisma/client';
 import { Role } from 'generated/prisma/enums';
 import { AdminUserManagementService } from './admin-user-management.service';
 import { GetUsersQueryDto } from './dto/get-user-query.dto';
@@ -38,9 +40,10 @@ export class AdminUserManagementController {
   async provideToken(
     @Res({ passthrough: true }) res: Response,
     @Body() dto: ProvideTokenDto,
+    @GetUser() user: User,
   ) {
     const response = await handleRequest(
-      () => this.adminUserManagementService.provideToken(dto),
+      () => this.adminUserManagementService.provideToken(dto, user.id),
       'Token provided successfully',
     );
 

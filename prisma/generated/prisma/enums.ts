@@ -1348,6 +1348,8 @@ export type TutorialStatus = (typeof TutorialStatus)[keyof typeof TutorialStatus
 
 
 export const UserPointSourceType = {
+  ADMIN: 'ADMIN',
+  PRODUCT: 'PRODUCT',
   POST: 'POST',
   LIKE: 'LIKE',
   COMMENT: 'COMMENT',

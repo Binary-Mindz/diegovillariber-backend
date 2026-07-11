@@ -1,94 +1,114 @@
 // src/products/product.service.ts
+import { PrismaService } from '@/common/prisma/prisma.service';
 import {
   BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-
-import { PrismaService } from '@/common/prisma/prisma.service';
 import { Prisma } from 'generated/prisma/client';
 import { ProductCategory, Role } from 'generated/prisma/enums';
-
 import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductFeedQueryDto } from './dto/product-feed-query.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createProduct(ownerId: string, dto: CreateProductDto) {
-    const product = await this.prisma.productList.create({
-      data: {
-        ownerId,
-        title: dto.title,
-        productImage: dto.productImage ?? null,
-        description: dto.description ?? null,
-        location: dto.location ?? null,
-        locationAddress: dto.locationAddress ?? null,
-        latitude: dto.latitude ?? null,
-        longitude: dto.longitude ?? null,
-        placeId: dto.placeId ?? null,
-        category: dto.category ?? ProductCategory.CAR,
-        tags: dto.tags ?? [],
-        carBrand: dto.carBrand ?? null,
-        carModel: dto.carModel ?? null,
-        price: dto.price,
-        quantity: dto.quantity,
-        showWhatsappNo: dto.showWhatsappNo ?? false,
-        highlightProduct: dto.highlightProduct ?? false,
-        isSold: dto.isSold ?? false,
-      },
-      include: {
-        owner: {
-          select: {
-            id: true,
-            email: true,
-            profile: {
-              select: {
-                id: true,
-                imageUrl: true,
-                profileName: true,
+    await this.prisma.$transaction(async (tx) => {
+      const product = await tx.productList.create({
+        data: {
+          ownerId,
+          title: dto.title,
+          productImage: dto.productImage ?? null,
+          description: dto.description ?? null,
+          location: dto.location ?? null,
+          locationAddress: dto.locationAddress ?? null,
+          latitude: dto.latitude ?? null,
+          longitude: dto.longitude ?? null,
+          placeId: dto.placeId ?? null,
+          category: dto.category ?? ProductCategory.CAR,
+          tags: dto.tags ?? [],
+          carBrand: dto.carBrand ?? null,
+          carModel: dto.carModel ?? null,
+          price: dto.price,
+          quantity: dto.quantity,
+          showWhatsappNo: dto.showWhatsappNo ?? false,
+          highlightProduct: dto.highlightProduct ?? false,
+          isSold: dto.isSold ?? false,
+        },
+        include: {
+          owner: {
+            select: {
+              id: true,
+              email: true,
+              profile: {
+                select: {
+                  id: true,
+                  imageUrl: true,
+                  profileName: true,
+                },
+                take: 1,
               },
-              take: 1,
             },
           },
         },
-      },
-    });
+      });
 
-    return {
-      statusCode: 201,
-      data: {
-        id: product.id,
-        title: product.title,
-        productImage: product.productImage,
-        description: product.description,
-        location: product.location,
-        locationAddress: product.locationAddress,
-        latitude: product.latitude,
-        longitude: product.longitude,
-        placeId: product.placeId,
-        category: product.category,
-        tags: product.tags,
-        carBrand: product.carBrand,
-        carModel: product.carModel,
-        price: product.price,
-        quantity: product.quantity,
-        showWhatsappNo: product.showWhatsappNo,
-        highlightProduct: product.highlightProduct,
-        isSold: product.isSold,
-        createdAt: product.createdAt,
-        owner: {
-          id: product.owner?.id ?? null,
-          email: product.owner?.email ?? null,
-          profileId: product.owner?.profile?.[0]?.id ?? null,
-          profileName: product.owner?.profile?.[0]?.profileName ?? null,
-          imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+      if (dto.highlightProduct) {
+        await tx.user.update({
+          where: { id: ownerId },
+          data: {
+            totalPoints: { decrement: 300 },
+          },
+        });
+
+        await tx.userPoint.create({
+          data: {
+            userId: ownerId,
+            sourceType: 'PRODUCT',
+            sourceId: product.id,
+            earnBy: 'HIGHLIGHT_PRODUCT',
+            points: -300,
+            note: 'Point deducted for highlighting product',
+          },
+        });
+      }
+
+      return {
+        statusCode: 201,
+        data: {
+          id: product.id,
+          title: product.title,
+          productImage: product.productImage,
+          description: product.description,
+          location: product.location,
+          locationAddress: product.locationAddress,
+          latitude: product.latitude,
+          longitude: product.longitude,
+          placeId: product.placeId,
+          category: product.category,
+          tags: product.tags,
+          carBrand: product.carBrand,
+          carModel: product.carModel,
+          price: product.price,
+          quantity: product.quantity,
+          showWhatsappNo: product.showWhatsappNo,
+          highlightProduct: product.highlightProduct,
+          isSold: product.isSold,
+          createdAt: product.createdAt,
+          owner: {
+            id: product.owner?.id ?? null,
+            email: product.owner?.email ?? null,
+            profileId: product.owner?.profile?.[0]?.id ?? null,
+            profileName: product.owner?.profile?.[0]?.profileName ?? null,
+            imageUrl: product.owner?.profile?.[0]?.imageUrl ?? null,
+          },
         },
-      },
-    };
+      };
+    });
   }
 
   async getFeed(query: ProductFeedQueryDto) {
@@ -467,7 +487,9 @@ export class ProductService {
     const isAdmin = user.role === Role.ADMIN;
 
     if (!isOwner && !isAdmin) {
-      throw new ForbiddenException('Only owner or admin can delete this product');
+      throw new ForbiddenException(
+        'Only owner or admin can delete this product',
+      );
     }
 
     await this.prisma.productList.delete({

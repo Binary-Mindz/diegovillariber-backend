@@ -81,7 +81,7 @@ export class AdminUserManagementService {
     };
   }
 
-  async provideToken(dto: ProvideTokenDto) {
+  async provideToken(dto: ProvideTokenDto, userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: dto.userId },
     });
@@ -90,16 +90,31 @@ export class AdminUserManagementService {
       throw new NotFoundException('User not found');
     }
 
-    return this.prisma.user.update({
-      where: { id: user.id },
-      data: {
-        totalPoints: {
-          increment: dto.points,
+    await this.prisma.$transaction(async (tx) => {
+      const userPoints = await tx.user.update({
+        where: { id: user.id },
+        data: {
+          totalPoints: {
+            increment: dto.points,
+          },
         },
-      },
-      select: {
-        totalPoints: true,
-      },
+        select: {
+          totalPoints: true,
+        },
+      });
+
+      await tx.userPoint.create({
+        data: {
+          userId: user.id,
+          sourceType: 'ADMIN',
+          sourceId: userId,
+          points: dto.points,
+          earnBy: 'ADMIN_PROVIDED_TOKEN',
+          note: 'Admin provided token',
+        },
+      });
+
+      return userPoints;
     });
   }
 
