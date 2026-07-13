@@ -1,30 +1,43 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
-
-import { ChallengeQueryDto, ChallengeTab } from './dto/challenge-query.dto';
-import { CreateChallengeDto } from './dto/create-challenge.dto';
-import { UpdateChallengeDto } from './dto/update-challenge.dto';
-import { JoinChallengeDto } from './dto/join-challenge.dto';
-import { SubmitChallengeDto } from './dto/submit-challenge.dto';
-import { VoteChallengeDto } from './dto/vote-challenge.dto';
-import { ReactChallengeDto } from './dto/react-challenge.dto';
-import { CreateChallengeCommentDto } from './dto/comment-challenge.dto';
-
+import { NotificationService } from '@/main/notification/notification.service';
+import { InjectQueue } from '@nestjs/bullmq';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { Queue } from 'bullmq';
+import { Prisma } from 'generated/prisma/client';
 import {
   ChallengeStatus,
-  ParticipationScope,
+  DeviceType,
   ParticipantStatus,
+  ParticipationScope,
   ReactionType,
   SubmissionStatus,
-  DeviceType,
 } from 'generated/prisma/enums';
-import { profile } from 'console';
-import { Prisma } from 'generated/prisma/client';
-import { DeviceCategoryFilter, TimeRangeFilter, TopBrandsQueryDto } from './dto/top-brands-query.dto';
+import { ChallengeQueryDto, ChallengeTab } from './dto/challenge-query.dto';
+import { CreateChallengeCommentDto } from './dto/comment-challenge.dto';
+import { CreateChallengeDto } from './dto/create-challenge.dto';
+import { JoinChallengeDto } from './dto/join-challenge.dto';
+import { ReactChallengeDto } from './dto/react-challenge.dto';
+import { SubmitChallengeDto } from './dto/submit-challenge.dto';
+import {
+  DeviceCategoryFilter,
+  TimeRangeFilter,
+  TopBrandsQueryDto,
+} from './dto/top-brands-query.dto';
+import { UpdateChallengeDto } from './dto/update-challenge.dto';
+import { VoteChallengeDto } from './dto/vote-challenge.dto';
 
 @Injectable()
 export class ChallengeService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly notificationService: NotificationService,
+    @InjectQueue('notification') private readonly notificationQueue: Queue,
+  ) {}
 
   private challengeIncludes() {
     return {
@@ -35,8 +48,8 @@ export class ChallengeService {
           profile: {
             select: {
               profileName: true,
-              imageUrl: true
-            }
+              imageUrl: true,
+            },
           },
         },
       },
@@ -49,9 +62,9 @@ export class ChallengeService {
               profile: {
                 select: {
                   profileName: true,
-                  imageUrl: true
-                }
-              }
+                  imageUrl: true,
+                },
+              },
             },
           },
         },
@@ -75,9 +88,9 @@ export class ChallengeService {
                   profile: {
                     select: {
                       profileName: true,
-                      imageUrl: true
-                    }
-                  }
+                      imageUrl: true,
+                    },
+                  },
                 },
               },
             },
@@ -95,16 +108,19 @@ export class ChallengeService {
     };
   }
 
-
   private validateDates(start: Date, end: Date) {
-    if (end <= start) throw new BadRequestException('endDate must be greater than startDate');
+    if (end <= start)
+      throw new BadRequestException('endDate must be greater than startDate');
   }
 
   private validateScope(dto: Partial<CreateChallengeDto | UpdateChallengeDto>) {
     if (dto.participationScope === ParticipationScope.RADIUS) {
-      if (!dto.radiusKm || dto.radiusKm <= 0) throw new BadRequestException('radiusKm is required for RADIUS scope');
+      if (!dto.radiusKm || dto.radiusKm <= 0)
+        throw new BadRequestException('radiusKm is required for RADIUS scope');
       if (dto.latitude === undefined || dto.longitude === undefined)
-        throw new BadRequestException('latitude & longitude are required for RADIUS scope');
+        throw new BadRequestException(
+          'latitude & longitude are required for RADIUS scope',
+        );
     }
   }
 
@@ -132,7 +148,8 @@ export class ChallengeService {
     if (query.participationScope)
       andConditions.push({ participationScope: query.participationScope });
     if (query.deviceType) andConditions.push({ deviceType: query.deviceType });
-    if (query.quickPreset) andConditions.push({ quickPreset: query.quickPreset });
+    if (query.quickPreset)
+      andConditions.push({ quickPreset: query.quickPreset });
     if (query.brand) andConditions.push({ brand: query.brand });
 
     if (query.enableDeviceRestriction !== undefined) {
@@ -165,8 +182,9 @@ export class ChallengeService {
       });
     }
 
-    const where: Prisma.ChallengeWhereInput =
-      andConditions.length ? { AND: andConditions } : {};
+    const where: Prisma.ChallengeWhereInput = andConditions.length
+      ? { AND: andConditions }
+      : {};
 
     const [items, total] = await this.prisma.$transaction([
       this.prisma.challenge.findMany({
@@ -184,10 +202,10 @@ export class ChallengeService {
                 select: {
                   profileName: true,
                   imageUrl: true,
-                  activeType: true
-                }
-              }
-            }
+                  activeType: true,
+                },
+              },
+            },
           },
           _count: {
             select: {
@@ -241,10 +259,7 @@ export class ChallengeService {
       );
     } else if (tab === ChallengeTab.FINISHED) {
       andConditions.push({
-        OR: [
-          { status: ChallengeStatus.FINISHED },
-          { endDate: { lt: now } },
-        ],
+        OR: [{ status: ChallengeStatus.FINISHED }, { endDate: { lt: now } }],
       });
     }
 
@@ -342,10 +357,10 @@ export class ChallengeService {
                 select: {
                   profileName: true,
                   imageUrl: true,
-                  activeType: true
-                }
-              }
-            }
+                  activeType: true,
+                },
+              },
+            },
           },
           _count: {
             select: {
@@ -364,7 +379,7 @@ export class ChallengeService {
         total,
         page,
         limit,
-        totalPages: Math.ceil(total / limit)
+        totalPages: Math.ceil(total / limit),
       },
     };
   }
@@ -403,7 +418,7 @@ export class ChallengeService {
       this.validateDates(startDate, endDate);
       this.validateScope(dto);
 
-      return await this.prisma.challenge.create({
+      const challenge = await this.prisma.challenge.create({
         data: {
           creatorId: creator.id,
           title: dto.title,
@@ -429,8 +444,7 @@ export class ChallengeService {
           deviceType: dto.deviceType,
           brand: dto.brand,
 
-          requireTrueShotVerification:
-            dto.requireTrueShotVerification ?? false,
+          requireTrueShotVerification: dto.requireTrueShotVerification ?? false,
           rejectEditedPhotos: dto.rejectEditedPhotos ?? false,
           maxEntriesPerUser: dto.maxEntriesPerUser ?? 1,
           maxParticipants: dto.maxParticipants,
@@ -438,6 +452,20 @@ export class ChallengeService {
         },
         include: { creator: true },
       });
+
+      await this.notificationQueue.add(
+        'new-challenge',
+        {
+          challengeId: challenge.id,
+          title: challenge.title,
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true,
+        },
+      );
+
+      return challenge;
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === 'P2003') {
@@ -464,11 +492,16 @@ export class ChallengeService {
   async updateChallenge(id: string, userId: string, dto: UpdateChallengeDto) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id } });
     if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can update this challenge');
+    if (challenge.creatorId !== userId)
+      throw new ForbiddenException('Only creator can update this challenge');
 
     if (dto.startDate || dto.endDate) {
-      const start = dto.startDate ? new Date(dto.startDate) : new Date(challenge.startDate);
-      const end = dto.endDate ? new Date(dto.endDate) : new Date(challenge.endDate);
+      const start = dto.startDate
+        ? new Date(dto.startDate)
+        : new Date(challenge.startDate);
+      const end = dto.endDate
+        ? new Date(dto.endDate)
+        : new Date(challenge.endDate);
       this.validateDates(start, end);
     }
 
@@ -478,32 +511,58 @@ export class ChallengeService {
       where: { id },
       data: {
         ...(dto.title !== undefined ? { title: dto.title } : {}),
-        ...(dto.description !== undefined ? { description: dto.description } : {}),
+        ...(dto.description !== undefined
+          ? { description: dto.description }
+          : {}),
         ...(dto.type !== undefined ? { type: dto.type } : {}),
         ...(dto.category !== undefined ? { category: dto.category } : {}),
         ...(dto.preference !== undefined ? { preference: dto.preference } : {}),
         ...(dto.coverImage !== undefined ? { coverImage: dto.coverImage } : {}),
 
-        ...(dto.participationScope !== undefined ? { participationScope: dto.participationScope } : {}),
+        ...(dto.participationScope !== undefined
+          ? { participationScope: dto.participationScope }
+          : {}),
         ...(dto.radiusKm !== undefined ? { radiusKm: dto.radiusKm } : {}),
-        ...(dto.locationName !== undefined ? { locationName: dto.locationName } : {}),
-        ...(dto.latitude !== undefined ? { latitude: dto.latitude as any } : {}),
-        ...(dto.longitude !== undefined ? { longitude: dto.longitude as any } : {}),
+        ...(dto.locationName !== undefined
+          ? { locationName: dto.locationName }
+          : {}),
+        ...(dto.latitude !== undefined
+          ? { latitude: dto.latitude as any }
+          : {}),
+        ...(dto.longitude !== undefined
+          ? { longitude: dto.longitude as any }
+          : {}),
 
-        ...(dto.startDate !== undefined ? { startDate: new Date(dto.startDate) } : {}),
-        ...(dto.endDate !== undefined ? { endDate: new Date(dto.endDate) } : {}),
-        ...(dto.challengePrize !== undefined ? { challengePrize: dto.challengePrize } : {}),
+        ...(dto.startDate !== undefined
+          ? { startDate: new Date(dto.startDate) }
+          : {}),
+        ...(dto.endDate !== undefined
+          ? { endDate: new Date(dto.endDate) }
+          : {}),
+        ...(dto.challengePrize !== undefined
+          ? { challengePrize: dto.challengePrize }
+          : {}),
 
-        ...(dto.enableDeviceRestriction !== undefined ? { enableDeviceRestriction: dto.enableDeviceRestriction } : {}),
-        ...(dto.quickPreset !== undefined ? { quickPreset: dto.quickPreset } : {}),
+        ...(dto.enableDeviceRestriction !== undefined
+          ? { enableDeviceRestriction: dto.enableDeviceRestriction }
+          : {}),
+        ...(dto.quickPreset !== undefined
+          ? { quickPreset: dto.quickPreset }
+          : {}),
         ...(dto.deviceType !== undefined ? { deviceType: dto.deviceType } : {}),
         ...(dto.brand !== undefined ? { brand: dto.brand } : {}),
         ...(dto.requireTrueShotVerification !== undefined
           ? { requireTrueShotVerification: dto.requireTrueShotVerification }
           : {}),
-        ...(dto.rejectEditedPhotos !== undefined ? { rejectEditedPhotos: dto.rejectEditedPhotos } : {}),
-        ...(dto.maxEntriesPerUser !== undefined ? { maxEntriesPerUser: dto.maxEntriesPerUser } : {}),
-        ...(dto.maxParticipants !== undefined ? { maxParticipants: dto.maxParticipants } : {}),
+        ...(dto.rejectEditedPhotos !== undefined
+          ? { rejectEditedPhotos: dto.rejectEditedPhotos }
+          : {}),
+        ...(dto.maxEntriesPerUser !== undefined
+          ? { maxEntriesPerUser: dto.maxEntriesPerUser }
+          : {}),
+        ...(dto.maxParticipants !== undefined
+          ? { maxParticipants: dto.maxParticipants }
+          : {}),
       },
       include: { creator: true },
     });
@@ -512,14 +571,21 @@ export class ChallengeService {
   async deleteChallenge(id: string, userId: string) {
     const challenge = await this.prisma.challenge.findUnique({ where: { id } });
     if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can delete this challenge');
+    if (challenge.creatorId !== userId)
+      throw new ForbiddenException('Only creator can delete this challenge');
 
     await this.prisma.challenge.delete({ where: { id } });
     return { id, deleted: true };
   }
 
-  async joinChallenge(challengeId: string, userId: string, _dto: JoinChallengeDto) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+  async joinChallenge(
+    challengeId: string,
+    userId: string,
+    _dto: JoinChallengeDto,
+  ) {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+    });
     if (!challenge) throw new NotFoundException('Challenge not found');
     if (
       challenge.status !== ChallengeStatus.UPCOMING &&
@@ -554,7 +620,9 @@ export class ChallengeService {
   }
 
   async listSubmissions(challengeId: string) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+    });
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     return this.prisma.challengeSubmission.findMany({
@@ -599,7 +667,9 @@ export class ChallengeService {
   }
 
   async submit(challengeId: string, userId: string, dto: SubmitChallengeDto) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+    });
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     const now = new Date();
@@ -609,22 +679,29 @@ export class ChallengeService {
     ) {
       throw new BadRequestException('Challenge is not accepting submissions');
     }
-    if (now < challenge.startDate) throw new BadRequestException('Challenge not started yet');
-    if (now > challenge.endDate) throw new BadRequestException('Challenge already ended');
+    if (now < challenge.startDate)
+      throw new BadRequestException('Challenge not started yet');
+    if (now > challenge.endDate)
+      throw new BadRequestException('Challenge already ended');
 
     const participant = await this.prisma.challengeParticipant.findUnique({
       where: { challengeId_userId: { challengeId, userId } },
     });
-    if (!participant) throw new ForbiddenException('You must join the challenge first');
+    if (!participant)
+      throw new ForbiddenException('You must join the challenge first');
 
     const count = await this.prisma.challengeSubmission.count({
       where: { challengeId, participantId: participant.id },
     });
-    if (count >= challenge.maxEntriesPerUser) throw new BadRequestException('Max entries reached for this challenge');
+    if (count >= challenge.maxEntriesPerUser)
+      throw new BadRequestException('Max entries reached for this challenge');
 
-    if (!dto.media?.length) throw new BadRequestException('At least one media item is required');
+    if (!dto.media?.length)
+      throw new BadRequestException('At least one media item is required');
 
-    const hashtagIds = dto.hashtagIds ? Array.from(new Set(dto.hashtagIds)) : [];
+    const hashtagIds = dto.hashtagIds
+      ? Array.from(new Set(dto.hashtagIds))
+      : [];
 
     return this.prisma.$transaction(async (tx) => {
       let hashtagStrings: string[] = [];
@@ -636,10 +713,12 @@ export class ChallengeService {
         });
 
         if (foundHashtags.length !== hashtagIds.length) {
-          throw new BadRequestException('One or more hashtags are invalid or inactive.');
+          throw new BadRequestException(
+            'One or more hashtags are invalid or inactive.',
+          );
         }
 
-        hashtagStrings = foundHashtags.map(h => h.tag);
+        hashtagStrings = foundHashtags.map((h) => h.tag);
       }
 
       const submission = await tx.challengeSubmission.create({
@@ -698,8 +777,13 @@ export class ChallengeService {
     }
 
     const now = new Date();
-    if (now < submission.challenge.startDate || now > submission.challenge.endDate) {
-      throw new BadRequestException('Voting is allowed only during active challenge time');
+    if (
+      now < submission.challenge.startDate ||
+      now > submission.challenge.endDate
+    ) {
+      throw new BadRequestException(
+        'Voting is allowed only during active challenge time',
+      );
     }
 
     const weight = dto.weight ?? 1;
@@ -732,7 +816,9 @@ export class ChallengeService {
   async react(submissionId: string, userId: string, dto: ReactChallengeDto) {
     const type = dto.type ?? ReactionType.LIKE;
 
-    const submission = await this.prisma.challengeSubmission.findUnique({ where: { id: submissionId } });
+    const submission = await this.prisma.challengeSubmission.findUnique({
+      where: { id: submissionId },
+    });
     if (!submission) throw new NotFoundException('Submission not found');
 
     return this.prisma.$transaction(async (tx) => {
@@ -744,7 +830,9 @@ export class ChallengeService {
       if (existing) {
         await tx.challengeReaction.delete({ where: { id: existing.id } });
       } else {
-        await tx.challengeReaction.create({ data: { submissionId, userId, type } });
+        await tx.challengeReaction.create({
+          data: { submissionId, userId, type },
+        });
       }
 
       const likeCount = await tx.challengeReaction.count({
@@ -760,13 +848,24 @@ export class ChallengeService {
     });
   }
 
-  async createComment(challengeId: string, userId: string, dto: CreateChallengeCommentDto) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+  async createComment(
+    challengeId: string,
+    userId: string,
+    dto: CreateChallengeCommentDto,
+  ) {
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+    });
     if (!challenge) throw new NotFoundException('Challenge not found');
 
     if (dto.submissionId) {
-      const sub = await this.prisma.challengeSubmission.findUnique({ where: { id: dto.submissionId } });
-      if (!sub || sub.challengeId !== challengeId) throw new BadRequestException('Invalid submissionId for this challenge');
+      const sub = await this.prisma.challengeSubmission.findUnique({
+        where: { id: dto.submissionId },
+      });
+      if (!sub || sub.challengeId !== challengeId)
+        throw new BadRequestException(
+          'Invalid submissionId for this challenge',
+        );
     }
 
     return this.prisma.$transaction(async (tx) => {
@@ -780,8 +879,13 @@ export class ChallengeService {
       });
 
       if (dto.submissionId) {
-        const commentCount = await tx.challengeComment.count({ where: { submissionId: dto.submissionId } });
-        await tx.challengeSubmission.update({ where: { id: dto.submissionId }, data: { commentCount } });
+        const commentCount = await tx.challengeComment.count({
+          where: { submissionId: dto.submissionId },
+        });
+        await tx.challengeSubmission.update({
+          where: { id: dto.submissionId },
+          data: { commentCount },
+        });
       }
 
       return comment;
@@ -880,9 +984,12 @@ export class ChallengeService {
   }
 
   async completeChallenge(challengeId: string, userId: string) {
-    const challenge = await this.prisma.challenge.findUnique({ where: { id: challengeId } });
+    const challenge = await this.prisma.challenge.findUnique({
+      where: { id: challengeId },
+    });
     if (!challenge) throw new NotFoundException('Challenge not found');
-    if (challenge.creatorId !== userId) throw new ForbiddenException('Only creator can complete this challenge');
+    if (challenge.creatorId !== userId)
+      throw new ForbiddenException('Only creator can complete this challenge');
 
     if (challenge.status === ChallengeStatus.FINISHED) {
       return this.prisma.challengeResult.findUnique({
@@ -895,11 +1002,17 @@ export class ChallengeService {
       // Gather submissions with their votes/score
       const submissions = await tx.challengeSubmission.findMany({
         where: { challengeId },
-        orderBy: [{ score: 'desc' }, { voteCount: 'desc' }, { createdAt: 'asc' }],
+        orderBy: [
+          { score: 'desc' },
+          { voteCount: 'desc' },
+          { createdAt: 'asc' },
+        ],
         include: { participant: true },
       });
 
-      const totalParticipants = await tx.challengeParticipant.count({ where: { challengeId } });
+      const totalParticipants = await tx.challengeParticipant.count({
+        where: { challengeId },
+      });
       const totalSubmissions = submissions.length;
 
       const result = await tx.challengeResult.upsert({
@@ -954,7 +1067,7 @@ export class ChallengeService {
   async getTopBrands(query: TopBrandsQueryDto) {
     const limit = query.limit ?? 10;
     const andConditions: Prisma.ChallengeWhereInput[] = [];
-    console.log("query is: ", query)
+    console.log('query is: ', query);
     const now = new Date();
     if (query.timeRange === TimeRangeFilter.TODAY) {
       const startOfDay = new Date(now.setHours(0, 0, 0, 0));
@@ -1013,7 +1126,9 @@ export class ChallengeService {
     const brands = brandGroups.map((group) => {
       // ✅ টাইপস্ক্রিপ্ট এরর এড়াতে টাইপ-সেফ চেকিং ও টাইপ কাস্টিং (As Any) অথবা অপশনাল চেইনিং ব্যবহার করা হলো
       const count = (group._count as any)?.brand ?? 0;
-      const percentage = parseFloat(((count / totalChallenges) * 100).toFixed(2));
+      const percentage = parseFloat(
+        ((count / totalChallenges) * 100).toFixed(2),
+      );
 
       return {
         brand: group.brand,
@@ -1027,5 +1142,4 @@ export class ChallengeService {
       brands,
     };
   }
-
 }
