@@ -1,5 +1,17 @@
 packages:
   - .
+allowBuilds:
+  '@ffmpeg-installer/darwin-arm64': false
+  '@ffprobe-installer/darwin-arm64': false
+  '@firebase/util': false
+  '@nestjs/core': false
+  '@prisma/engines': false
+  '@scarf/scarf': false
+  bcrypt: false
+  msgpackr-extract: false
+  prisma: false
+  protobufjs: false
+  unrs-resolver: false
 ignoredBuiltDependencies:
   - '@ffmpeg-installer/darwin-arm64'
   - '@ffprobe-installer/darwin-arm64'
