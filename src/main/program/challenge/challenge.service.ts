@@ -453,17 +453,17 @@ export class ChallengeService {
         include: { creator: true },
       });
 
-      // await this.notificationQueue.add(
-      //   'new-challenge',
-      //   {
-      //     challengeId: challenge.id,
-      //     title: challenge.title,
-      //   },
-      //   {
-      //     removeOnComplete: true,
-      //     removeOnFail: true,
-      //   },
-      // );
+      await this.notificationQueue.add(
+        'new-challenge',
+        {
+          challengeId: challenge.id,
+          title: challenge.title,
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true,
+        },
+      );
 
       return challenge;
     } catch (error) {
