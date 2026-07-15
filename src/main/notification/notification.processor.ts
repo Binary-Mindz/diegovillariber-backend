@@ -21,7 +21,8 @@ export class NotificationProcessor extends WorkerHost {
     switch (job.name) {
       case 'new-challenge':
         return this.handleNewChallenge(job.data);
-
+      case 'challenge-completed':
+        return this.handleChallengeCompleted(job.data);
       default:
         return;
     }
@@ -75,6 +76,34 @@ export class NotificationProcessor extends WorkerHost {
       }
 
       lastId = users[users.length - 1].id;
+    }
+  }
+
+  private async handleChallengeCompleted(data: {
+    challengeId: string;
+    title: string;
+    winnerIds: string[];
+  }) {
+    if (!data.winnerIds || !Array.isArray(data.winnerIds)) return;
+
+    for (const winnerId of data.winnerIds) {
+      try {
+        await this.notificationService.sendNotification({
+          userId: winnerId,
+          type: NotificationType.CHALLENGE_RESULT,
+          channel: NotificationChannel.IN_APP,
+          title: 'Congratulations!',
+          message: `You are a winner in the challenge "${data.title}"!`,
+          deepLink: `/challenges/${data.challengeId}`,
+          entityType: NotificationEntityType.CHALLENGE,
+          entityId: data.challengeId,
+          meta: {
+            challengeId: data.challengeId,
+          },
+        });
+      } catch (error) {
+        console.error(`Failed to notify challenge winner ${winnerId}`, error);
+      }
     }
   }
 }

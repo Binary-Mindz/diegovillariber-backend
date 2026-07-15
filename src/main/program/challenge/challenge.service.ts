@@ -998,7 +998,7 @@ export class ChallengeService {
       });
     }
 
-    return this.prisma.$transaction(async (tx) => {
+    const transactionResult = await this.prisma.$transaction(async (tx) => {
       // Gather submissions with their votes/score
       const submissions = await tx.challengeSubmission.findMany({
         where: { challengeId },
@@ -1059,9 +1059,35 @@ export class ChallengeService {
 
       return tx.challengeResult.findUnique({
         where: { challengeId },
-        include: { winners: true },
+        include: {
+          winners: {
+            include: { participant: true },
+          },
+        },
       });
     });
+
+    const winnerIds =
+      transactionResult?.winners
+        .map((w) => w.participant?.userId)
+        .filter((id) => !!id) || [];
+
+    if (winnerIds.length > 0) {
+      await this.notificationQueue.add(
+        'challenge-completed',
+        {
+          challengeId: challenge.id,
+          title: challenge.title,
+          winnerIds,
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true,
+        },
+      );
+    }
+
+    return transactionResult;
   }
 
   async getTopBrands(query: TopBrandsQueryDto) {
