@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { MapQueryDto, MapTimeRange } from './dto/map-query.dto';
+import { Injectable } from '@nestjs/common';
 import {
   BattleStatus,
   ChallengeStatus,
@@ -12,10 +11,11 @@ import {
 } from 'generated/prisma/client';
 import { CIRCUITS_DATA } from '../program/lab-time/data/circuits.data';
 import { findCircuitLayout } from '../program/lab-time/utils/circuit.util';
+import { MapQueryDto, MapTimeRange } from './dto/map-query.dto';
 
 @Injectable()
 export class MapService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   private getBounds(lat: number, lng: number, radiusKm: number) {
     const latDelta = radiusKm / 111;
@@ -70,9 +70,9 @@ export class MapService {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(toRad(lat1)) *
-      Math.cos(toRad(lat2)) *
-      Math.sin(dLng / 2) *
-      Math.sin(dLng / 2);
+        Math.cos(toRad(lat2)) *
+        Math.sin(dLng / 2) *
+        Math.sin(dLng / 2);
 
     return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   }
@@ -104,6 +104,7 @@ export class MapService {
 
       showSpotter = true,
       showOwner = true,
+      showProDriver = true,
       highRated = false,
 
       showBattles = true,
@@ -121,29 +122,36 @@ export class MapService {
     } = query;
 
     const hasRegion = regionOnly && lat != null && lng != null;
-    const bounds = hasRegion && lat != null && lng != null ? this.getBounds(lat, lng, radiusKm) : null;
+    const bounds =
+      hasRegion && lat != null && lng != null
+        ? this.getBounds(lat, lng, radiusKm)
+        : null;
     const boundFilter = bounds ? this.buildDecimalBounds(bounds) : {};
     const fromDate = this.getTimeRangeDate(timeRange);
 
     const createdAtFilter = fromDate
       ? {
-        createdAt: {
-          gte: fromDate,
-        },
-      }
+          createdAt: {
+            gte: fromDate,
+          },
+        }
       : {};
 
     // Profile Types Filtering
     const profileTypes: Type[] = [];
     if (showSpotter) profileTypes.push(Type.SPOTTER);
     if (showOwner) profileTypes.push(Type.OWNER);
+    if (showProDriver) profileTypes.push(Type.PRO_DRIVER);
 
     // Marketplace Enums Mapping Fixed
     const marketplaceCategories: ProductCategory[] = [];
     if (showMarketplaceCar) marketplaceCategories.push(ProductCategory.CAR);
-    if (showMarketplaceCarParts) marketplaceCategories.push(ProductCategory.CAR_PARTS);
-    if (showMarketplacePhotography) marketplaceCategories.push(ProductCategory.PHOTOGRAPHY);
-    if (showMarketplaceSimRacing) marketplaceCategories.push(ProductCategory.SIM_RACING);
+    if (showMarketplaceCarParts)
+      marketplaceCategories.push(ProductCategory.CAR_PARTS);
+    if (showMarketplacePhotography)
+      marketplaceCategories.push(ProductCategory.PHOTOGRAPHY);
+    if (showMarketplaceSimRacing)
+      marketplaceCategories.push(ProductCategory.SIM_RACING);
 
     const rawShiftWhere: Prisma.RawShiftBattleWhereInput = {
       status: { in: [RawShiftStatus.ACTIVE, RawShiftStatus.UPCOMING] },
@@ -190,77 +198,108 @@ export class MapService {
     const marketplaceWhere: Prisma.ProductListWhereInput = {
       latitude: { not: null },
       longitude: { not: null },
-      ...(marketplaceCategories.length > 0 ? { category: { in: marketplaceCategories } } : {}),
+      ...(marketplaceCategories.length > 0
+        ? { category: { in: marketplaceCategories } }
+        : {}),
       ...boundFilter,
       ...createdAtFilter,
     };
 
     // Parallel Execution
-    const [posts, challenges, battles, events, marketplaceProducts, rawShifts] = await Promise.all([
-      profileTypes.length === 0
-        ? Promise.resolve<any[]>([])
-        : this.prisma.post.findMany({
-          where: postWhere,
-          orderBy: [{ createdAt: 'desc' }],
-        }),
+    const [posts, challenges, battles, events, marketplaceProducts, rawShifts] =
+      await Promise.all([
+        profileTypes.length === 0
+          ? Promise.resolve<any[]>([])
+          : this.prisma.post.findMany({
+              where: postWhere,
+              orderBy: [{ createdAt: 'desc' }],
+            }),
 
-      showChallenges
-        ? this.prisma.challenge.findMany({
-          where: challengeWhere,
-          orderBy: [{ startDate: 'asc' }],
-        })
-        : Promise.resolve<any[]>([]),
+        showChallenges
+          ? this.prisma.challenge.findMany({
+              where: challengeWhere,
+              orderBy: [{ startDate: 'asc' }],
+            })
+          : Promise.resolve<any[]>([]),
 
-      showBattles
-        ? this.prisma.headToHeadBattle.findMany({
-          where: battleWhere,
-          orderBy: [{ startDate: 'asc' }],
-        })
-        : Promise.resolve<any[]>([]),
+        showBattles
+          ? this.prisma.headToHeadBattle.findMany({
+              where: battleWhere,
+              orderBy: [{ startDate: 'asc' }],
+            })
+          : Promise.resolve<any[]>([]),
 
-      showEvents
-        ? this.prisma.event.findMany({
-          where: eventWhere,
-          orderBy: [{ startDate: 'asc' }],
-        })
-        : Promise.resolve<any[]>([]),
+        showEvents
+          ? this.prisma.event.findMany({
+              where: eventWhere,
+              orderBy: [{ startDate: 'asc' }],
+            })
+          : Promise.resolve<any[]>([]),
 
-      marketplaceCategories.length > 0
-        ? this.prisma.productList.findMany({
-          where: marketplaceWhere,
-          orderBy: [{ createdAt: 'desc' }],
-          include: {
-            owner: {
-              select: {
-                id: true,
-                email: true,
-                profile: { select: { profileName: true, imageUrl: true } },
+        marketplaceCategories.length > 0
+          ? this.prisma.productList.findMany({
+              where: marketplaceWhere,
+              orderBy: [{ createdAt: 'desc' }],
+              include: {
+                owner: {
+                  select: {
+                    id: true,
+                    email: true,
+                    profile: { select: { profileName: true, imageUrl: true } },
+                  },
+                },
+                car: {
+                  select: {
+                    id: true,
+                    make: true,
+                    model: true,
+                    image: true,
+                    displayName: true,
+                  },
+                },
               },
-            },
-            car: {
-              select: { id: true, make: true, model: true, image: true, displayName: true },
-            },
-          },
-        })
-        : Promise.resolve<any[]>([]),
+            })
+          : Promise.resolve<any[]>([]),
 
-      showRawShift
-        ? this.prisma.rawShiftBattle.findMany({ where: rawShiftWhere, orderBy: { startDate: 'asc' } })
-        : Promise.resolve([]),
-    ]);
-
+        showRawShift
+          ? this.prisma.rawShiftBattle.findMany({
+              where: rawShiftWhere,
+              orderBy: { startDate: 'asc' },
+            })
+          : Promise.resolve([]),
+      ]);
 
     // Format Data Markers cleanly for Frontend Consumption
-    const postMarkers = posts.map((p) => ({ ...p, markerType: 'SPOT', type: 'spot' }));
-    const challengeMarkers = challenges.map((c) => ({ ...c, markerType: 'CHALLENGE', type: 'challenge' }));
-    const battleMarkers = battles.map((b) => ({ ...b, markerType: 'BATTLE', type: 'battle' }));
-    const eventMarkers = events.map((e) => ({ ...e, markerType: 'EVENT', type: 'event' }));
+    const postMarkers = posts.map((p) => ({
+      ...p,
+      markerType: 'SPOT',
+      type: 'spot',
+    }));
+    const challengeMarkers = challenges.map((c) => ({
+      ...c,
+      markerType: 'CHALLENGE',
+      type: 'challenge',
+    }));
+    const battleMarkers = battles.map((b) => ({
+      ...b,
+      markerType: 'BATTLE',
+      type: 'battle',
+    }));
+    const eventMarkers = events.map((e) => ({
+      ...e,
+      markerType: 'EVENT',
+      type: 'event',
+    }));
     const marketplaceMarkers = marketplaceProducts.map((product) => ({
       ...product,
       markerType: 'MARKETPLACE',
       type: 'marketplace',
     }));
-    const rawShiftMarkers = rawShifts.map((r) => ({ ...r, markerType: 'RAW_SHIFT', type: 'raw_shift' }));
+    const rawShiftMarkers = rawShifts.map((r) => ({
+      ...r,
+      markerType: 'RAW_SHIFT',
+      type: 'raw_shift',
+    }));
 
     // Static Circuit Processing (If Enabled) - FIXED TYPE ERROR
     let circuitMarkers: any[] = [];
@@ -271,11 +310,18 @@ export class MapService {
             let isIncluded = true;
             if (hasRegion && lat != null && lng != null) {
               // Convert to explicit number to avoid number | null TypeScript error
-              const currentLayoutLat = layout.latitude != null ? Number(layout.latitude) : null;
-              const currentLayoutLng = layout.longitude != null ? Number(layout.longitude) : null;
+              const currentLayoutLat =
+                layout.latitude != null ? Number(layout.latitude) : null;
+              const currentLayoutLng =
+                layout.longitude != null ? Number(layout.longitude) : null;
 
               if (currentLayoutLat !== null && currentLayoutLng !== null) {
-                const distance = this.haversineKm(lat, lng, currentLayoutLat, currentLayoutLng);
+                const distance = this.haversineKm(
+                  lat,
+                  lng,
+                  currentLayoutLat,
+                  currentLayoutLng,
+                );
                 if (distance > radiusKm) isIncluded = false;
               } else {
                 // If coordinates are missing, exclude if filtered by region
@@ -283,7 +329,9 @@ export class MapService {
               }
             }
             if (isIncluded) {
-              const uniqueId = encodeURIComponent(`${circuit.trackName}__${layout.trackLayout}`);
+              const uniqueId = encodeURIComponent(
+                `${circuit.trackName}__${layout.trackLayout}`,
+              );
               circuitMarkers.push({
                 id: uniqueId,
                 trackName: circuit.trackName,
@@ -349,7 +397,9 @@ export class MapService {
         where: { id },
         include: {
           creator: { select: { id: true, email: true } },
-          _count: { select: { challengeParticipants: true, challengeSubmissions: true } },
+          _count: {
+            select: { challengeParticipants: true, challengeSubmissions: true },
+          },
         },
       });
     }
@@ -359,7 +409,13 @@ export class MapService {
         where: { id },
         include: {
           creator: { select: { id: true, email: true } },
-          _count: { select: { participants: true, submissions: true, battleVotes: true } },
+          _count: {
+            select: {
+              participants: true,
+              submissions: true,
+              battleVotes: true,
+            },
+          },
         },
       });
     }
@@ -394,7 +450,9 @@ export class MapService {
         where: { id },
         include: {
           creator: { select: { id: true, email: true } },
-          _count: { select: { participants: true, entries: true, comments: true } },
+          _count: {
+            select: { participants: true, entries: true, comments: true },
+          },
         },
       });
     }
@@ -405,7 +463,9 @@ export class MapService {
       if (!layout) return null;
 
       const circuit = CIRCUITS_DATA.find(
-        (item) => item.trackName.trim().toLowerCase() === trackName.trim().toLowerCase(),
+        (item) =>
+          item.trackName.trim().toLowerCase() ===
+          trackName.trim().toLowerCase(),
       );
 
       return {
