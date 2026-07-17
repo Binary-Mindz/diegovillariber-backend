@@ -1,28 +1,32 @@
+import { PrismaService } from '@/common/prisma/prisma.service';
+import { handlePrismaError } from '@/common/utils/error.handler';
+import { InjectQueue } from '@nestjs/bullmq';
 import {
   BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { RawShiftQueryDto, RawShiftTab } from './dto/rawshift-query.dto';
-import { CreateRawShiftBattleDto } from './dto/create-rawshift-battle.dto';
-import { UpdateRawShiftBattleDto } from './dto/update-rawshift-battle.dto';
-import { SubmitRawShiftEntryDto } from './dto/submit-rawshift-entry.dto';
-import { VoteRawShiftDto } from './dto/vote-rawshift.dto';
-import { CreateRawShiftCommentDto } from './dto/comment-rawshift.dto';
-import { PrismaService } from '@/common/prisma/prisma.service';
+import { Queue } from 'bullmq';
+import { Prisma } from 'generated/prisma/client';
 import {
   RawShiftEntryStatus,
   RawShiftStatus,
   Role,
 } from 'generated/prisma/enums';
-import { Prisma } from 'generated/prisma/client';
-
-import { handlePrismaError } from '@/common/utils/error.handler';
+import { CreateRawShiftCommentDto } from './dto/comment-rawshift.dto';
+import { CreateRawShiftBattleDto } from './dto/create-rawshift-battle.dto';
+import { RawShiftQueryDto, RawShiftTab } from './dto/rawshift-query.dto';
+import { SubmitRawShiftEntryDto } from './dto/submit-rawshift-entry.dto';
+import { UpdateRawShiftBattleDto } from './dto/update-rawshift-battle.dto';
+import { VoteRawShiftDto } from './dto/vote-rawshift.dto';
 
 @Injectable()
 export class RawShiftService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    @InjectQueue('notification') private readonly notificationQueue: Queue,
+  ) {}
 
   private readonly OPEN_RAWSHIFT_STATUSES = new Set<RawShiftStatus>([
     RawShiftStatus.ACTIVE,
@@ -170,8 +174,10 @@ export class RawShiftService {
           participantLimit: dto.participantLimit ?? null,
           rawShiftPrice: dto.rawShiftPrice,
           location: dto.location ?? null,
-          latitude: dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null,
-          longitude: dto.longitude != null ? new Prisma.Decimal(dto.longitude) : null,
+          latitude:
+            dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null,
+          longitude:
+            dto.longitude != null ? new Prisma.Decimal(dto.longitude) : null,
           startDate,
           endDate,
         },
@@ -228,8 +234,20 @@ export class RawShiftService {
           ? { rawShiftPrice: dto.rawShiftPrice }
           : {}), // ✅ FIXED BUG
         ...(dto.location !== undefined ? { location: dto.location } : {}),
-        ...(dto.latitude !== undefined ? { latitude: dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null } : {}),
-        ...(dto.longitude !== undefined ? { longitude: dto.longitude != null ? new Prisma.Decimal(dto.longitude) : null } : {}),
+        ...(dto.latitude !== undefined
+          ? {
+              latitude:
+                dto.latitude != null ? new Prisma.Decimal(dto.latitude) : null,
+            }
+          : {}),
+        ...(dto.longitude !== undefined
+          ? {
+              longitude:
+                dto.longitude != null
+                  ? new Prisma.Decimal(dto.longitude)
+                  : null,
+            }
+          : {}),
         ...(dto.startDate !== undefined ? { startDate } : {}),
         ...(dto.endDate !== undefined ? { endDate } : {}),
       },
@@ -542,6 +560,19 @@ export class RawShiftService {
       });
 
       const winner = eligible[0];
+
+      await this.notificationQueue.add(
+        'raw-shift-completed',
+        {
+          battleId,
+          title: battle.title,
+          winnerId: winner.userId,
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true,
+        },
+      );
 
       return tx.rawShiftBattle.update({
         where: { id: battleId },

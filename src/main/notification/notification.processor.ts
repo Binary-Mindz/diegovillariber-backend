@@ -25,6 +25,12 @@ export class NotificationProcessor extends WorkerHost {
         return this.handleChallengeCompleted(job.data);
       case 'challenge-activated':
         return this.handleChallengeActivated(job.data);
+      case 'raw-shift-completed':
+        return this.handleRawShiftCompleted(job.data);
+      case 'head-to-head-activated':
+        return this.handleHeadToHeadActivated(job.data);
+      case 'head-to-head-completed':
+        return this.handleHeadToHeadCompleted(job.data);
       default:
         return;
     }
@@ -157,6 +163,109 @@ export class NotificationProcessor extends WorkerHost {
       } catch (error) {
         console.error(`Failed to notify challenge winner ${winnerId}`, error);
       }
+    }
+  }
+
+  private async handleRawShiftCompleted(data: {
+    battleId: string;
+    title: string;
+    winnerId: string;
+  }) {
+    if (!data.winnerId) return;
+
+    try {
+      await this.notificationService.sendNotification({
+        userId: data.winnerId,
+        type: NotificationType.BATTLE_RESULT,
+        channel: NotificationChannel.IN_APP,
+        title: 'Raw Shift Victory!',
+        message: `Congratulations! You won the raw shift battle "${data.title}"!`,
+        deepLink: `/raw-shifts/${data.battleId}`,
+        entityType: NotificationEntityType.BATTLE,
+        entityId: data.battleId,
+        meta: {
+          battleId: data.battleId,
+        },
+      });
+    } catch (error) {
+      console.error(`Failed to notify raw shift winner ${data.winnerId}`, error);
+    }
+  }
+
+  private async handleHeadToHeadActivated(data: {
+    battleId: string;
+    title: string;
+  }) {
+    const batchSize = 200;
+    let lastId: string | undefined;
+
+    while (true) {
+      const users = await this.prisma.user.findMany({
+        where: {
+          accountStatus: 'ACTIVE',
+        },
+        select: { id: true },
+        orderBy: { id: 'asc' },
+        ...(lastId
+          ? {
+              cursor: { id: lastId },
+              skip: 1,
+            }
+          : {}),
+        take: batchSize,
+      });
+
+      if (users.length === 0) {
+        break;
+      }
+
+      for (const user of users) {
+        try {
+          await this.notificationService.sendNotification({
+            userId: user.id,
+            type: NotificationType.BATTLE_INVITE, // Or a suitable type for 'battle activated'
+            channel: NotificationChannel.PUSH,
+            title: 'Head-to-Head Battle Activated!',
+            message: `The head-to-head battle "${data.title}" is now active. Join now!`,
+            deepLink: `/head-to-head/${data.battleId}`,
+            entityType: NotificationEntityType.BATTLE,
+            entityId: data.battleId,
+            meta: {
+              battleId: data.battleId,
+            },
+          });
+        } catch (error) {
+          console.error(`Failed to notify user ${user.id}`, error);
+        }
+      }
+
+      lastId = users[users.length - 1].id;
+    }
+  }
+
+  private async handleHeadToHeadCompleted(data: {
+    battleId: string;
+    title: string;
+    winnerId: string;
+  }) {
+    if (!data.winnerId) return;
+
+    try {
+      await this.notificationService.sendNotification({
+        userId: data.winnerId,
+        type: NotificationType.BATTLE_RESULT,
+        channel: NotificationChannel.IN_APP,
+        title: 'Head-to-Head Victory!',
+        message: `Congratulations! You won the head-to-head battle "${data.title}"!`,
+        deepLink: `/head-to-head/${data.battleId}`,
+        entityType: NotificationEntityType.BATTLE,
+        entityId: data.battleId,
+        meta: {
+          battleId: data.battleId,
+        },
+      });
+    } catch (error) {
+      console.error(`Failed to notify head-to-head winner ${data.winnerId}`, error);
     }
   }
 }

@@ -1,20 +1,15 @@
 // src/head-to-head/head-to-head.service.ts
+import { PrismaService } from '@/common/prisma/prisma.service';
+import { handlePrismaError } from '@/common/utils/error.handler';
+import { InjectQueue } from '@nestjs/bullmq';
 import {
   BadRequestException,
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-
-import { HeadToHeadQueryDto, HeadToHeadTab } from './dto/headtohead-query.dto';
-import { CreateHeadToHeadBattleDto } from './dto/create-headtohead-battle.dto';
-import { UpdateHeadToHeadBattleDto } from './dto/update-headtohead-battle.dto';
-import { InviteHeadToHeadDto } from './dto/invite-headtohead.dto';
-import { RespondInvitationDto } from './dto/respond-invitation.dto';
-import { SubmitHeadToHeadDto } from './dto/submit-headtohead.dto';
-import { VoteHeadToHeadDto } from './dto/vote-headtohead.dto';
-import { CreateHeadToHeadCommentDto } from './dto/comment-headtohead.dto';
-import { PrismaService } from '@/common/prisma/prisma.service';
+import { Queue } from 'bullmq';
+import { Prisma } from 'generated/prisma/client';
 import {
   BattleAccessType,
   BattleCategory,
@@ -26,13 +21,21 @@ import {
   Preference,
   SubmissionStatus,
 } from 'generated/prisma/enums';
-import { Prisma } from 'generated/prisma/client';
-import { NODATA } from 'node:dns';
-import { handlePrismaError } from '@/common/utils/error.handler';
+import { CreateHeadToHeadCommentDto } from './dto/comment-headtohead.dto';
+import { CreateHeadToHeadBattleDto } from './dto/create-headtohead-battle.dto';
+import { HeadToHeadQueryDto, HeadToHeadTab } from './dto/headtohead-query.dto';
+import { InviteHeadToHeadDto } from './dto/invite-headtohead.dto';
+import { RespondInvitationDto } from './dto/respond-invitation.dto';
+import { SubmitHeadToHeadDto } from './dto/submit-headtohead.dto';
+import { UpdateHeadToHeadBattleDto } from './dto/update-headtohead-battle.dto';
+import { VoteHeadToHeadDto } from './dto/vote-headtohead.dto';
 
 @Injectable()
 export class HeadToHeadService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    @InjectQueue('notification') private readonly notificationQueue: Queue,
+  ) {}
 
   private now() {
     return new Date();
@@ -208,12 +211,26 @@ export class HeadToHeadService {
         },
         participants: {
           orderBy: { joinedAt: 'asc' },
-          include: { user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } } },
+          include: {
+            user: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
+              },
+            },
+          },
         },
         submissions: {
           orderBy: { createdAt: 'asc' },
           include: {
-            user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } },
+            user: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
+              },
+            },
             votes: true,
             comments: {
               include: { user: { select: { id: true, email: true } } },
@@ -224,13 +241,33 @@ export class HeadToHeadService {
         invitations: {
           orderBy: { sentAt: 'desc' },
           include: {
-            inviter: { select: { id: true, email: true , profile: { select: { profileName: true, imageUrl: true } } } },
-            invitee: { select: { id: true, email: true , profile: { select: { profileName: true, imageUrl: true } } } },
+            inviter: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
+              },
+            },
+            invitee: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
+              },
+            },
           },
         },
         battleComments: {
           orderBy: { createdAt: 'desc' },
-          include: { user: { select: { id: true, email: true, profile: { select: { profileName: true, imageUrl: true } } } } },
+          include: {
+            user: {
+              select: {
+                id: true,
+                email: true,
+                profile: { select: { profileName: true, imageUrl: true } },
+              },
+            },
+          },
           take: 50,
         },
         _count: {
@@ -623,12 +660,12 @@ export class HeadToHeadService {
       include: {
         user: {
           select: {
-            id: true, 
-            email: true, 
+            id: true,
+            email: true,
             profile: {
               select: {
-                profileName: true,  
-                imageUrl:true,
+                profileName: true,
+                imageUrl: true,
               },
             },
           },
@@ -706,6 +743,19 @@ export class HeadToHeadService {
           winnerUserId: winner.userId,
         },
       });
+
+      await this.notificationQueue.add(
+        'head-to-head-completed',
+        {
+          battleId,
+          title: updated.title,
+          winnerId: winner.userId,
+        },
+        {
+          removeOnComplete: true,
+          removeOnFail: true,
+        },
+      );
 
       return {
         battle: updated,
