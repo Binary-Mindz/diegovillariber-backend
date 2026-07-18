@@ -1,21 +1,9 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsInt, IsOptional, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
+import { IsEnum, IsInt, IsOptional, Max, Min } from 'class-validator';
 import { Preference } from 'generated/prisma/enums';
-
-export enum MotorsportRankingType {
-  HEAD2HEAD = 'HEAD2HEAD',
-  SPLIT_SCREEN = 'SPLIT_SCREEN',
-  RAWSHIFT = 'RAWSHIFT',
-  PRESTIGE = 'PRESTIGE',
-}
-
-export enum RankingDuration {
-  ALL = 'ALL',
-  TODAY = 'TODAY',
-  WEEK = 'WEEK',
-  MONTH = 'MONTH',
-}
+import { RankingDuration } from '../enums/ranking-duration.enum';
+import { MotorsportRankingType } from '../enums/ranking-types.enums';
 
 export class MotorsportRankingQueryDto {
   @ApiPropertyOptional({

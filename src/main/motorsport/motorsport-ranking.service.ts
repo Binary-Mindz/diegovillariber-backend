@@ -5,13 +5,10 @@ import {
   RawShiftStatus,
   SplitScreenBattleStatus,
 } from 'generated/prisma/enums';
-import {
-  MotorsportRankingQueryDto,
-  MotorsportRankingType,
-  RankingDuration,
-} from './dto/motorsport-ranking-query.dto';
+import { MotorsportRankingQueryDto } from './dto/motorsport-ranking-query.dto';
 import { TopRatedPostDto } from './dto/top-rated-post.dto';
-
+import { RankingDuration } from './enums/ranking-duration.enum';
+import { MotorsportRankingType } from './enums/ranking-types.enums';
 
 type RankingUserMap = {
   userId: string;
@@ -21,7 +18,7 @@ type RankingUserMap = {
 
 @Injectable()
 export class MotorsportRankingService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async getRankings(query: MotorsportRankingQueryDto) {
     const type = query.type || MotorsportRankingType.HEAD2HEAD;
@@ -83,6 +80,17 @@ export class MotorsportRankingService {
         };
       }
 
+      case RankingDuration.YEAR: {
+        const start = new Date(now);
+        start.setDate(start.getDate() - 365);
+        start.setHours(0, 0, 0, 0);
+
+        return {
+          gte: start,
+          lte: now,
+        };
+      }
+
       case RankingDuration.ALL:
       default:
         return undefined;
@@ -136,7 +144,6 @@ export class MotorsportRankingService {
     const items = paginatedRows.map((row, index) => {
       const user = userMap.get(row.userId);
 
-
       return {
         rank: skip + index + 1,
         userId: row.userId,
@@ -144,7 +151,9 @@ export class MotorsportRankingService {
         userName: user?.profile?.[0]?.profileName ?? user?.email,
         avatar: user?.profile?.[0]?.imageUrl ?? null,
         totalVotes:
-          type === MotorsportRankingType.PRESTIGE ? undefined : row.totalVotes || 0,
+          type === MotorsportRankingType.PRESTIGE
+            ? undefined
+            : row.totalVotes || 0,
         prestigePoints:
           type === MotorsportRankingType.PRESTIGE
             ? row.prestigePoints || 0
@@ -255,26 +264,27 @@ export class MotorsportRankingService {
     const limit = query.limit || 10;
     const createdAtFilter = this.getDateFilter(query.duration);
 
-    const participants = await this.prisma.splitScreenBattleParticipant.findMany({
-      where: {
-        votes: {
-          gt: 0,
-        },
-        battle: {
-          status: {
-            in: [
-              SplitScreenBattleStatus.LIVE,
-              SplitScreenBattleStatus.COMPLETED,
-            ],
+    const participants =
+      await this.prisma.splitScreenBattleParticipant.findMany({
+        where: {
+          votes: {
+            gt: 0,
           },
-          ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+          battle: {
+            status: {
+              in: [
+                SplitScreenBattleStatus.LIVE,
+                SplitScreenBattleStatus.COMPLETED,
+              ],
+            },
+            ...(createdAtFilter ? { createdAt: createdAtFilter } : {}),
+          },
         },
-      },
-      select: {
-        userId: true,
-        votes: true,
-      },
-    });
+        select: {
+          userId: true,
+          votes: true,
+        },
+      });
 
     const userVoteMap = new Map<string, number>();
 
@@ -482,9 +492,7 @@ export class MotorsportRankingService {
 
     const createdAtFilter = this.getDateFilter(dto.duration);
 
-    const whereClause = createdAtFilter
-      ? { createdAt: createdAtFilter }
-      : {};
+    const whereClause = createdAtFilter ? { createdAt: createdAtFilter } : {};
 
     const grouped = await this.prisma.post.groupBy({
       by: ['userId'],
@@ -530,9 +538,7 @@ export class MotorsportRankingService {
         return {
           userId: item.userId,
           name:
-            user?.profile?.[0]?.profileName ??
-            user?.email ??
-            'Unknown User',
+            user?.profile?.[0]?.profileName ?? user?.email ?? 'Unknown User',
           avatar: user?.profile?.[0]?.imageUrl ?? null,
           postCount: item._count._all,
           ratingAverage: Number(item._avg.ratingAverage ?? 0),
