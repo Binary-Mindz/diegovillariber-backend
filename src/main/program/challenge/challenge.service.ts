@@ -191,7 +191,8 @@ export class ChallengeService {
         where,
         skip,
         take: limit,
-        orderBy: [{ startDate: 'asc' }, { createdAt: 'desc' }],
+        // orderBy: [{ startDate: 'asc' }, { createdAt: 'desc' }],
+        orderBy: [{ createdAt: 'desc' }],
         include: {
           creator: {
             select: {
