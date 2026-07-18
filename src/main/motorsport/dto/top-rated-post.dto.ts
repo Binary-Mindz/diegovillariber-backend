@@ -1,16 +1,9 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsEnum, IsInt, IsOptional, Min } from 'class-validator';
-
-export enum RankingDuration {
-  ALL = 'ALL',
-  TODAY = 'TODAY',
-  WEEK = 'WEEK',
-  MONTH = 'MONTH',
-}
+import { RankingDuration } from '../enums/ranking-duration.enum';
 
 export class TopRatedPostDto {
-
   @ApiPropertyOptional({ example: 1, description: 'Page number' })
   @IsOptional()
   @Type(() => Number)

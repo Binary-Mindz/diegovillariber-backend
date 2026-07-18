@@ -1,0 +1,6 @@
+export enum MotorsportRankingType {
+  HEAD2HEAD = 'HEAD2HEAD',
+  SPLIT_SCREEN = 'SPLIT_SCREEN',
+  RAWSHIFT = 'RAWSHIFT',
+  PRESTIGE = 'PRESTIGE',
+}
