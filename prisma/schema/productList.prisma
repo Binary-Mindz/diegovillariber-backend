@@ -24,13 +24,14 @@ model ProductList {
   carModel String?
 
   price    Int
+  currency Currency @default(EUR)
   quantity Int
 
   wishLists WishList[]
 
   showWhatsappNo   Boolean  @default(false) // "Show my WhatsApp No"
   highlightProduct Boolean  @default(false)
-  isSold            Boolean  @default(false)
+  isSold           Boolean  @default(false)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }

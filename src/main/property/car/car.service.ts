@@ -1,26 +1,26 @@
 import {
+  BadRequestException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
-  ForbiddenException,
-  BadRequestException,
 } from '@nestjs/common';
 
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 
-import { UpdateEnginePowerDto } from './dto/update-engine-power.dto';
-import { UpdateDrivetrainDto } from './dto/update-drivetrain.dto';
+import { ProductCategory } from 'generated/prisma/enums';
 import { UpdateChassisBrakesDto } from './dto/update-chassis-break.dto';
-import { UpdateTuningAeroDto } from './dto/update-tuning-aero.dto';
+import { UpdateDrivetrainDto } from './dto/update-drivetrain.dto';
+import { UpdateEnginePowerDto } from './dto/update-engine-power.dto';
 import { UpdateInteriorSafetyDto } from './dto/update-interior-safety.dto';
+import { UpdateTuningAeroDto } from './dto/update-tuning-aero.dto';
 import { UpdateUsageNotesDto } from './dto/update-usage-notes.dto';
 import { UpdateWheelsTiresDto } from './dto/update-wheels-tires.dto';
-import { ProductCategory } from 'generated/prisma/enums';
 
 @Injectable()
 export class CarService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   private async getActiveProfileIdOrThrow(userId: string) {
     const user = await this.prisma.user.findUnique({
@@ -41,7 +41,8 @@ export class CarService {
     });
 
     if (!car) throw new NotFoundException('Car not found');
-    if (car.profile.userId !== userId) throw new ForbiddenException('Not your car');
+    if (car.profile.userId !== userId)
+      throw new ForbiddenException('Not your car');
 
     return car;
   }
@@ -65,17 +66,30 @@ export class CarService {
   async manageSection(
     userId: string,
     carId: string,
-    section: 'enginePower' | 'drivetrain' | 'chassisBrakes' | 'tuningAero' | 'interiorSafety' | 'usageNotes' | 'wheelsTires',
+    section:
+      | 'enginePower'
+      | 'drivetrain'
+      | 'chassisBrakes'
+      | 'tuningAero'
+      | 'interiorSafety'
+      | 'usageNotes'
+      | 'wheelsTires',
     dto: any,
-    action: 'create' | 'update'
+    action: 'create' | 'update',
   ) {
     await this.validateOwnership(userId, carId);
     const advancedId = await this.getOrCreateAdvancedCarDataId(carId);
     const client = this.prisma[section] as any;
 
     if (action === 'create') {
-      const exists = await client.findUnique({ where: { advancedCarDataId: advancedId }, select: { id: true } });
-      if (exists) throw new ForbiddenException(`${section} profile already exists. Use PATCH to update.`);
+      const exists = await client.findUnique({
+        where: { advancedCarDataId: advancedId },
+        select: { id: true },
+      });
+      if (exists)
+        throw new ForbiddenException(
+          `${section} profile already exists. Use PATCH to update.`,
+        );
 
       return client.create({ data: { ...dto, advancedCarDataId: advancedId } });
     }
@@ -96,7 +110,9 @@ export class CarService {
     if (!garage) throw new NotFoundException('Garage not found');
 
     if (dto.listOnMarketplace === true && dto.price == null) {
-      throw new BadRequestException('Price is required when listOnMarketplace is true');
+      throw new BadRequestException(
+        'Price is required when listOnMarketplace is true',
+      );
     }
 
     const result = await this.prisma.$transaction(async (tx) => {
@@ -117,6 +133,7 @@ export class CarService {
           category: dto.category,
           listOnMarketplace: dto.listOnMarketplace ?? false,
           price: dto.price ?? null,
+          currency: dto.currency,
           carLocation: dto.carLocation ?? null,
           locationName: dto.locationName ?? null,
           locationAddress: dto.locationAddress ?? null,
@@ -131,14 +148,21 @@ export class CarService {
         await tx.productList.create({
           data: {
             ownerId: userId,
-            title: car.displayName || `${car.make ?? ''} ${car.model ?? ''}`.trim() || 'Car Listing',
+            title:
+              car.displayName ||
+              `${car.make ?? ''} ${car.model ?? ''}`.trim() ||
+              'Car Listing',
             productImage: car.image ?? null,
             description: car.description ?? null,
             category: ProductCategory.CAR,
-            tags: [...(car.make ? [car.make] : []), ...(car.model ? [car.model] : [])],
+            tags: [
+              ...(car.make ? [car.make] : []),
+              ...(car.model ? [car.model] : []),
+            ],
             carBrand: car.make ?? null,
             carModel: car.model ?? null,
             price: car.price,
+            currency: car.currency,
             quantity: 1,
             location: car.carLocation,
             locationAddress: car.locationAddress,
@@ -151,7 +175,11 @@ export class CarService {
       return car;
     });
 
-    return { statusCode: 201, message: 'Car created successfully', data: result };
+    return {
+      statusCode: 201,
+      message: 'Car created successfully',
+      data: result,
+    };
   }
 
   async getCars(page?: number, limit?: number) {
@@ -194,9 +222,12 @@ export class CarService {
         });
       } else {
         const productData = {
-          title: updatedCar.displayName || `${updatedCar.make ?? ''} ${updatedCar.model ?? ''}`.trim(),
+          title:
+            updatedCar.displayName ||
+            `${updatedCar.make ?? ''} ${updatedCar.model ?? ''}`.trim(),
           productImage: updatedCar.image,
           price: updatedCar.price,
+          currency: updatedCar.currency,
           location: updatedCar.carLocation,
           locationAddress: updatedCar.locationAddress,
           latitude: updatedCar.latitude,
@@ -204,11 +235,18 @@ export class CarService {
         };
 
         const existingListing = await tx.productList.findFirst({
-          where: { ownerId: userId, carBrand: updatedCar.make, carModel: updatedCar.model },
+          where: {
+            ownerId: userId,
+            carBrand: updatedCar.make,
+            carModel: updatedCar.model,
+          },
         });
 
         if (existingListing) {
-          await tx.productList.update({ where: { id: existingListing.id }, data: productData });
+          await tx.productList.update({
+            where: { id: existingListing.id },
+            data: productData,
+          });
         } else {
           await tx.productList.create({
             data: {

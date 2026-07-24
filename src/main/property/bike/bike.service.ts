@@ -1,20 +1,24 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import {
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 
 import { CreateBikeDto } from './dto/create-bike.dto';
 import { UpdateBikeDto } from './dto/update-bike.dto';
 
-import { UpdateEnginePerformanceDto } from './dto/update-engine-performance.dto';
-import { UpdateBikeDrivetrainDto } from './dto/update-bike-drivetrain.dto';
-import { UpdateSuspensionDto } from './dto/update-suspension.dto';
-import { UpdateWheelTiresDto } from './dto/update-wheel-tires.dto';
-import { UpdateElectronicsDto } from './dto/update-electronics.dto';
-import { UpdateBikeUsageNotesDto } from './dto/update-usage-notes.dto';
 import { ProductCategory } from '../../../../prisma/generated/prisma/enums';
+import { UpdateBikeDrivetrainDto } from './dto/update-bike-drivetrain.dto';
+import { UpdateElectronicsDto } from './dto/update-electronics.dto';
+import { UpdateEnginePerformanceDto } from './dto/update-engine-performance.dto';
+import { UpdateSuspensionDto } from './dto/update-suspension.dto';
+import { UpdateBikeUsageNotesDto } from './dto/update-usage-notes.dto';
+import { UpdateWheelTiresDto } from './dto/update-wheel-tires.dto';
 
 @Injectable()
 export class BikeService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   private async getActiveProfileIdOrThrow(userId: string) {
     const user = await this.prisma.user.findUnique({
@@ -90,6 +94,7 @@ export class BikeService {
           category: dto.category,
           listOnMarketplace: dto.listOnMarketplace ?? false,
           price: dto.price,
+          currency: dto.currency,
           bikeLocation: dto.bikeLocation ?? null,
           locationName: dto.locationName ?? null,
           locationAddress: dto.locationAddress ?? null,
@@ -105,10 +110,13 @@ export class BikeService {
         await tx.productList.create({
           data: {
             ownerId: userId,
-            title: bike.displayName || `${bike.make ?? ''} ${bike.model ?? ''}`.trim(),
+            title:
+              bike.displayName ||
+              `${bike.make ?? ''} ${bike.model ?? ''}`.trim(),
             productImage: bike.image,
             category: ProductCategory.BIKE,
             price: bike.price,
+            currency: bike.currency,
             carBrand: bike.make,
             carModel: bike.model,
             location: bike.bikeLocation,
@@ -116,7 +124,7 @@ export class BikeService {
             latitude: bike.latitude,
             longitude: bike.longitude,
             quantity: 1,
-          }
+          },
         });
       }
       return bike;
@@ -127,7 +135,7 @@ export class BikeService {
     return this.prisma.bike.findMany({});
   }
 
- async update(userId: string, bikeId: string, dto: UpdateBikeDto) {
+  async update(userId: string, bikeId: string, dto: UpdateBikeDto) {
     await this.validateOwnership(userId, bikeId);
 
     return this.prisma.$transaction(async (tx) => {
@@ -136,15 +144,21 @@ export class BikeService {
         data: dto,
       });
 
-      if (updatedBike.listOnMarketplace === false || updatedBike.price == null) {
+      if (
+        updatedBike.listOnMarketplace === false ||
+        updatedBike.price == null
+      ) {
         await tx.productList.deleteMany({
-          where: { ownerId: userId}
+          where: { ownerId: userId },
         });
       } else {
         const productData = {
-          title: updatedBike.displayName || `${updatedBike.make ?? ''} ${updatedBike.model ?? ''}`.trim(),
+          title:
+            updatedBike.displayName ||
+            `${updatedBike.make ?? ''} ${updatedBike.model ?? ''}`.trim(),
           productImage: updatedBike.image,
           price: updatedBike.price,
+          currency: updatedBike.currency,
           location: updatedBike.bikeLocation,
           locationAddress: updatedBike.locationAddress,
           latitude: updatedBike.latitude,
@@ -152,11 +166,14 @@ export class BikeService {
         };
 
         const existingListing = await tx.productList.findFirst({
-          where: { ownerId: userId }
+          where: { ownerId: userId },
         });
 
         if (existingListing) {
-          await tx.productList.update({ where: { id: existingListing.id }, data: productData });
+          await tx.productList.update({
+            where: { id: existingListing.id },
+            data: productData,
+          });
         } else {
           await tx.productList.create({
             data: {
@@ -166,7 +183,7 @@ export class BikeService {
               carBrand: updatedBike.make,
               carModel: updatedBike.model,
               quantity: 1,
-            }
+            },
           });
         }
       }
@@ -202,7 +219,11 @@ export class BikeService {
     return bike;
   }
 
-  async updateEnginePerformance(userId: string, bikeId: string, dto: UpdateEnginePerformanceDto) {
+  async updateEnginePerformance(
+    userId: string,
+    bikeId: string,
+    dto: UpdateEnginePerformanceDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -213,7 +234,11 @@ export class BikeService {
     });
   }
 
-  async updateDrivetrain(userId: string, bikeId: string, dto: UpdateBikeDrivetrainDto) {
+  async updateDrivetrain(
+    userId: string,
+    bikeId: string,
+    dto: UpdateBikeDrivetrainDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -224,7 +249,11 @@ export class BikeService {
     });
   }
 
-  async updateSuspension(userId: string, bikeId: string, dto: UpdateSuspensionDto) {
+  async updateSuspension(
+    userId: string,
+    bikeId: string,
+    dto: UpdateSuspensionDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -235,7 +264,11 @@ export class BikeService {
     });
   }
 
-  async updateWheelTires(userId: string, bikeId: string, dto: UpdateWheelTiresDto) {
+  async updateWheelTires(
+    userId: string,
+    bikeId: string,
+    dto: UpdateWheelTiresDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -246,7 +279,11 @@ export class BikeService {
     });
   }
 
-  async updateElectronics(userId: string, bikeId: string, dto: UpdateElectronicsDto) {
+  async updateElectronics(
+    userId: string,
+    bikeId: string,
+    dto: UpdateElectronicsDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -257,7 +294,11 @@ export class BikeService {
     });
   }
 
-  async updateUsageNotes(userId: string, bikeId: string, dto: UpdateBikeUsageNotesDto) {
+  async updateUsageNotes(
+    userId: string,
+    bikeId: string,
+    dto: UpdateBikeUsageNotesDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -268,7 +309,11 @@ export class BikeService {
     });
   }
 
-  async createEnginePerformance(userId: string, bikeId: string, dto: UpdateEnginePerformanceDto) {
+  async createEnginePerformance(
+    userId: string,
+    bikeId: string,
+    dto: UpdateEnginePerformanceDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -276,14 +321,21 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Engine & Performance already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Engine & Performance already exists. Use PATCH to update.',
+      );
 
     return this.prisma.engineAndPerformance.create({
       data: { ...dto, advancedBikeDataId: advancedId },
     });
   }
 
-  async createDrivetrain(userId: string, bikeId: string, dto: UpdateBikeDrivetrainDto) {
+  async createDrivetrain(
+    userId: string,
+    bikeId: string,
+    dto: UpdateBikeDrivetrainDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -291,14 +343,21 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Drivetrain already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Drivetrain already exists. Use PATCH to update.',
+      );
 
     return this.prisma.bikeDriveTrains.create({
       data: { ...dto, advancedBikeDataId: advancedId },
     });
   }
 
-  async createSuspension(userId: string, bikeId: string, dto: UpdateSuspensionDto) {
+  async createSuspension(
+    userId: string,
+    bikeId: string,
+    dto: UpdateSuspensionDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -306,14 +365,21 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Suspension already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Suspension already exists. Use PATCH to update.',
+      );
 
     return this.prisma.suspension.create({
       data: { ...dto, advancedBikeDataId: advancedId },
     });
   }
 
-  async createWheelTires(userId: string, bikeId: string, dto: UpdateWheelTiresDto) {
+  async createWheelTires(
+    userId: string,
+    bikeId: string,
+    dto: UpdateWheelTiresDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -321,14 +387,21 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Wheels & Tires already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Wheels & Tires already exists. Use PATCH to update.',
+      );
 
     return this.prisma.bikeWheelTires.create({
       data: { ...dto, advancedBikeDataId: advancedId },
     });
   }
 
-  async createElectronics(userId: string, bikeId: string, dto: UpdateElectronicsDto) {
+  async createElectronics(
+    userId: string,
+    bikeId: string,
+    dto: UpdateElectronicsDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -336,14 +409,21 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Electronics already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Electronics already exists. Use PATCH to update.',
+      );
 
     return this.prisma.bikeElectronics.create({
       data: { ...dto, advancedBikeDataId: advancedId },
     });
   }
 
-  async createUsageNotes(userId: string, bikeId: string, dto: UpdateBikeUsageNotesDto) {
+  async createUsageNotes(
+    userId: string,
+    bikeId: string,
+    dto: UpdateBikeUsageNotesDto,
+  ) {
     await this.validateOwnership(userId, bikeId);
     const advancedId = await this.getOrCreateAdvancedBikeDataId(bikeId);
 
@@ -351,7 +431,10 @@ export class BikeService {
       where: { advancedBikeDataId: advancedId },
       select: { id: true },
     });
-    if (exists) throw new ForbiddenException('Usage Notes already exists. Use PATCH to update.');
+    if (exists)
+      throw new ForbiddenException(
+        'Usage Notes already exists. Use PATCH to update.',
+      );
 
     return this.prisma.bikeUsageAndNotes.create({
       data: { ...dto, advancedBikeDataId: advancedId },

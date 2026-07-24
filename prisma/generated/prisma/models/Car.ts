@@ -55,6 +55,7 @@ export type CarMinAggregateOutputType = {
   category: $Enums.DriveCategory | null
   listOnMarketplace: boolean | null
   price: number | null
+  currency: $Enums.Currency | null
   carLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -81,6 +82,7 @@ export type CarMaxAggregateOutputType = {
   category: $Enums.DriveCategory | null
   listOnMarketplace: boolean | null
   price: number | null
+  currency: $Enums.Currency | null
   carLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -107,6 +109,7 @@ export type CarCountAggregateOutputType = {
   category: number
   listOnMarketplace: number
   price: number
+  currency: number
   carLocation: number
   locationName: number
   locationAddress: number
@@ -147,6 +150,7 @@ export type CarMinAggregateInputType = {
   category?: true
   listOnMarketplace?: true
   price?: true
+  currency?: true
   carLocation?: true
   locationName?: true
   locationAddress?: true
@@ -173,6 +177,7 @@ export type CarMaxAggregateInputType = {
   category?: true
   listOnMarketplace?: true
   price?: true
+  currency?: true
   carLocation?: true
   locationName?: true
   locationAddress?: true
@@ -199,6 +204,7 @@ export type CarCountAggregateInputType = {
   category?: true
   listOnMarketplace?: true
   price?: true
+  currency?: true
   carLocation?: true
   locationName?: true
   locationAddress?: true
@@ -312,6 +318,7 @@ export type CarGroupByOutputType = {
   category: $Enums.DriveCategory
   listOnMarketplace: boolean
   price: number | null
+  currency: $Enums.Currency
   carLocation: string | null
   locationName: string | null
   locationAddress: string | null
@@ -361,6 +368,7 @@ export type CarWhereInput = {
   category?: Prisma.EnumDriveCategoryFilter<"Car"> | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFilter<"Car"> | boolean
   price?: Prisma.IntNullableFilter<"Car"> | number | null
+  currency?: Prisma.EnumCurrencyFilter<"Car"> | $Enums.Currency
   carLocation?: Prisma.StringNullableFilter<"Car"> | string | null
   locationName?: Prisma.StringNullableFilter<"Car"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Car"> | string | null
@@ -399,6 +407,7 @@ export type CarOrderByWithRelationInput = {
   category?: Prisma.SortOrder
   listOnMarketplace?: Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrder
   carLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   locationName?: Prisma.SortOrderInput | Prisma.SortOrder
   locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -440,6 +449,7 @@ export type CarWhereUniqueInput = Prisma.AtLeast<{
   category?: Prisma.EnumDriveCategoryFilter<"Car"> | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFilter<"Car"> | boolean
   price?: Prisma.IntNullableFilter<"Car"> | number | null
+  currency?: Prisma.EnumCurrencyFilter<"Car"> | $Enums.Currency
   carLocation?: Prisma.StringNullableFilter<"Car"> | string | null
   locationName?: Prisma.StringNullableFilter<"Car"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Car"> | string | null
@@ -478,6 +488,7 @@ export type CarOrderByWithAggregationInput = {
   category?: Prisma.SortOrder
   listOnMarketplace?: Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
+  currency?: Prisma.SortOrder
   carLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   locationName?: Prisma.SortOrderInput | Prisma.SortOrder
   locationAddress?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -512,6 +523,7 @@ export type CarScalarWhereWithAggregatesInput = {
   category?: Prisma.EnumDriveCategoryWithAggregatesFilter<"Car"> | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolWithAggregatesFilter<"Car"> | boolean
   price?: Prisma.IntNullableWithAggregatesFilter<"Car"> | number | null
+  currency?: Prisma.EnumCurrencyWithAggregatesFilter<"Car"> | $Enums.Currency
   carLocation?: Prisma.StringNullableWithAggregatesFilter<"Car"> | string | null
   locationName?: Prisma.StringNullableWithAggregatesFilter<"Car"> | string | null
   locationAddress?: Prisma.StringNullableWithAggregatesFilter<"Car"> | string | null
@@ -536,6 +548,7 @@ export type CarCreateInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -574,6 +587,7 @@ export type CarUncheckedCreateInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -608,6 +622,7 @@ export type CarUpdateInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -646,6 +661,7 @@ export type CarUncheckedUpdateInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -682,6 +698,7 @@ export type CarCreateManyInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -706,6 +723,7 @@ export type CarUpdateManyMutationInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -732,6 +750,7 @@ export type CarUncheckedUpdateManyInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -763,6 +782,7 @@ export type CarCountOrderByAggregateInput = {
   category?: Prisma.SortOrder
   listOnMarketplace?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   carLocation?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
   locationAddress?: Prisma.SortOrder
@@ -795,6 +815,7 @@ export type CarMaxOrderByAggregateInput = {
   category?: Prisma.SortOrder
   listOnMarketplace?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   carLocation?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
   locationAddress?: Prisma.SortOrder
@@ -821,6 +842,7 @@ export type CarMinOrderByAggregateInput = {
   category?: Prisma.SortOrder
   listOnMarketplace?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   carLocation?: Prisma.SortOrder
   locationName?: Prisma.SortOrder
   locationAddress?: Prisma.SortOrder
@@ -1110,6 +1132,7 @@ export type CarCreateWithoutAdvancedCarDatasInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1147,6 +1170,7 @@ export type CarUncheckedCreateWithoutAdvancedCarDatasInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1196,6 +1220,7 @@ export type CarUpdateWithoutAdvancedCarDatasInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1233,6 +1258,7 @@ export type CarUncheckedUpdateWithoutAdvancedCarDatasInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1266,6 +1292,7 @@ export type CarCreateWithoutStoryInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1303,6 +1330,7 @@ export type CarUncheckedCreateWithoutStoryInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1352,6 +1380,7 @@ export type CarUpdateWithoutStoryInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1389,6 +1418,7 @@ export type CarUncheckedUpdateWithoutStoryInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1422,6 +1452,7 @@ export type CarCreateWithoutGarageInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1458,6 +1489,7 @@ export type CarUncheckedCreateWithoutGarageInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1523,6 +1555,7 @@ export type CarScalarWhereInput = {
   category?: Prisma.EnumDriveCategoryFilter<"Car"> | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFilter<"Car"> | boolean
   price?: Prisma.IntNullableFilter<"Car"> | number | null
+  currency?: Prisma.EnumCurrencyFilter<"Car"> | $Enums.Currency
   carLocation?: Prisma.StringNullableFilter<"Car"> | string | null
   locationName?: Prisma.StringNullableFilter<"Car"> | string | null
   locationAddress?: Prisma.StringNullableFilter<"Car"> | string | null
@@ -1547,6 +1580,7 @@ export type CarCreateWithoutLegalNoticesInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1584,6 +1618,7 @@ export type CarUncheckedCreateWithoutLegalNoticesInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1633,6 +1668,7 @@ export type CarUpdateWithoutLegalNoticesInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1670,6 +1706,7 @@ export type CarUncheckedUpdateWithoutLegalNoticesInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1703,6 +1740,7 @@ export type CarCreateWithoutPostsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1740,6 +1778,7 @@ export type CarUncheckedCreateWithoutPostsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1789,6 +1828,7 @@ export type CarUpdateWithoutPostsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1826,6 +1866,7 @@ export type CarUncheckedUpdateWithoutPostsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1859,6 +1900,7 @@ export type CarCreateWithoutMarketplaceProductInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1896,6 +1938,7 @@ export type CarUncheckedCreateWithoutMarketplaceProductInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -1945,6 +1988,7 @@ export type CarUpdateWithoutMarketplaceProductInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1982,6 +2026,7 @@ export type CarUncheckedUpdateWithoutMarketplaceProductInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2015,6 +2060,7 @@ export type CarCreateWithoutProfileInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2051,6 +2097,7 @@ export type CarUncheckedCreateWithoutProfileInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2111,6 +2158,7 @@ export type CarCreateWithoutSplitScreenMatchRequestsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2148,6 +2196,7 @@ export type CarUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2197,6 +2246,7 @@ export type CarUpdateWithoutSplitScreenMatchRequestsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2234,6 +2284,7 @@ export type CarUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2267,6 +2318,7 @@ export type CarCreateWithoutSplitScreenBattlesLeftUserInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2304,6 +2356,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2342,6 +2395,7 @@ export type CarCreateWithoutSplitScreenBattlesRightUserInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2379,6 +2433,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2428,6 +2483,7 @@ export type CarUpdateWithoutSplitScreenBattlesLeftUserInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2465,6 +2521,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2509,6 +2566,7 @@ export type CarUpdateWithoutSplitScreenBattlesRightUserInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2546,6 +2604,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2579,6 +2638,7 @@ export type CarCreateWithoutSplitScreenBattleParticipantsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2616,6 +2676,7 @@ export type CarUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2665,6 +2726,7 @@ export type CarUpdateWithoutSplitScreenBattleParticipantsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2702,6 +2764,7 @@ export type CarUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2735,6 +2798,7 @@ export type CarCreateWithoutSpottingRequestsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2772,6 +2836,7 @@ export type CarUncheckedCreateWithoutSpottingRequestsInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2821,6 +2886,7 @@ export type CarUpdateWithoutSpottingRequestsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2858,6 +2924,7 @@ export type CarUncheckedUpdateWithoutSpottingRequestsInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2892,6 +2959,7 @@ export type CarCreateManyGarageInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -2916,6 +2984,7 @@ export type CarUpdateWithoutGarageInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2952,6 +3021,7 @@ export type CarUncheckedUpdateWithoutGarageInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2987,6 +3057,7 @@ export type CarUncheckedUpdateManyWithoutGarageInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3012,6 +3083,7 @@ export type CarCreateManyProfileInput = {
   category?: $Enums.DriveCategory
   listOnMarketplace?: boolean
   price?: number | null
+  currency?: $Enums.Currency
   carLocation?: string | null
   locationName?: string | null
   locationAddress?: string | null
@@ -3036,6 +3108,7 @@ export type CarUpdateWithoutProfileInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3072,6 +3145,7 @@ export type CarUncheckedUpdateWithoutProfileInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3107,6 +3181,7 @@ export type CarUncheckedUpdateManyWithoutProfileInput = {
   category?: Prisma.EnumDriveCategoryFieldUpdateOperationsInput | $Enums.DriveCategory
   listOnMarketplace?: Prisma.BoolFieldUpdateOperationsInput | boolean
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   carLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3227,6 +3302,7 @@ export type CarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   category?: boolean
   listOnMarketplace?: boolean
   price?: boolean
+  currency?: boolean
   carLocation?: boolean
   locationName?: boolean
   locationAddress?: boolean
@@ -3266,6 +3342,7 @@ export type CarSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   category?: boolean
   listOnMarketplace?: boolean
   price?: boolean
+  currency?: boolean
   carLocation?: boolean
   locationName?: boolean
   locationAddress?: boolean
@@ -3294,6 +3371,7 @@ export type CarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   category?: boolean
   listOnMarketplace?: boolean
   price?: boolean
+  currency?: boolean
   carLocation?: boolean
   locationName?: boolean
   locationAddress?: boolean
@@ -3322,6 +3400,7 @@ export type CarSelectScalar = {
   category?: boolean
   listOnMarketplace?: boolean
   price?: boolean
+  currency?: boolean
   carLocation?: boolean
   locationName?: boolean
   locationAddress?: boolean
@@ -3331,7 +3410,7 @@ export type CarSelectScalar = {
   locationVisibility?: boolean
 }
 
-export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "garageId" | "image" | "make" | "model" | "bodyType" | "transmission" | "driveTrain" | "country" | "color" | "displayName" | "description" | "category" | "listOnMarketplace" | "price" | "carLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility", ExtArgs["result"]["car"]>
+export type CarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "profileId" | "garageId" | "image" | "make" | "model" | "bodyType" | "transmission" | "driveTrain" | "country" | "color" | "displayName" | "description" | "category" | "listOnMarketplace" | "price" | "currency" | "carLocation" | "locationName" | "locationAddress" | "latitude" | "longitude" | "placeId" | "locationVisibility", ExtArgs["result"]["car"]>
 export type CarInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.ProfileDefaultArgs<ExtArgs>
   garage?: boolean | Prisma.GarageDefaultArgs<ExtArgs>
@@ -3389,6 +3468,7 @@ export type $CarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     category: $Enums.DriveCategory
     listOnMarketplace: boolean
     price: number | null
+    currency: $Enums.Currency
     carLocation: string | null
     locationName: string | null
     locationAddress: string | null
@@ -3847,6 +3927,7 @@ export interface CarFieldRefs {
   readonly category: Prisma.FieldRef<"Car", 'DriveCategory'>
   readonly listOnMarketplace: Prisma.FieldRef<"Car", 'Boolean'>
   readonly price: Prisma.FieldRef<"Car", 'Int'>
+  readonly currency: Prisma.FieldRef<"Car", 'Currency'>
   readonly carLocation: Prisma.FieldRef<"Car", 'String'>
   readonly locationName: Prisma.FieldRef<"Car", 'String'>
   readonly locationAddress: Prisma.FieldRef<"Car", 'String'>

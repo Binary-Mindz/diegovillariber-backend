@@ -9,28 +9,29 @@ model Car {
   image             String?
   make              String?
   model             String?
-  bodyType          BodyType          @default(CLASSIC)
-  transmission      Transmission      @default(MANUAL)
-  driveTrain        DriveTrain        @default(RWD)
+  bodyType          BodyType      @default(CLASSIC)
+  transmission      Transmission  @default(MANUAL)
+  driveTrain        DriveTrain    @default(RWD)
   country           String?
   color             String?
   displayName       String?
   description       String?
-  category          DriveCategory     @default(DAILY_DRIVE)
-  listOnMarketplace Boolean           @default(false)
+  category          DriveCategory @default(DAILY_DRIVE)
+  listOnMarketplace Boolean       @default(false)
   price             Int?
+  currency          Currency      @default(EUR)
 
   // 📍 New Location Fields (Synced with Post Model Structure)
   carLocation        String?
   locationName       String?
   locationAddress    String?
-  latitude           Decimal?          @db.Decimal(9, 6)
-  longitude          Decimal?          @db.Decimal(9, 6)
+  latitude           Decimal? @db.Decimal(9, 6)
+  longitude          Decimal? @db.Decimal(9, 6)
   placeId            String?
   locationVisibility String?
-  
-  advancedCarDatas  AdvancedCarData[]
-  legalNotices      LegalNotice[]
+
+  advancedCarDatas AdvancedCarData[]
+  legalNotices     LegalNotice[]
 
   marketplaceProduct ProductList?
 

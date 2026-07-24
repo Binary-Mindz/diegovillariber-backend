@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional, PartialType } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import {
   IsBoolean,
   IsEnum,
@@ -12,6 +12,7 @@ import {
 } from 'class-validator';
 import {
   BikeBodyType,
+  Currency,
   DriveCategoryBike,
   DriveTrainBike,
   Transmission,
@@ -78,7 +79,10 @@ export class CreateBikeDto {
   @IsString()
   description?: string;
 
-  @ApiProperty({ enum: DriveCategoryBike, example: DriveCategoryBike.DAILY_RIDER })
+  @ApiProperty({
+    enum: DriveCategoryBike,
+    example: DriveCategoryBike.DAILY_RIDER,
+  })
   @IsOptional()
   @IsEnum(DriveCategoryBike)
   category?: DriveCategoryBike; // schema has default(DAILY_RIDER)
@@ -93,6 +97,11 @@ export class CreateBikeDto {
   @IsInt()
   @Min(0)
   price?: number;
+
+  @ApiPropertyOptional({ enum: Currency, example: Currency.USD })
+  @IsOptional()
+  @IsEnum(Currency)
+  currency?: Currency;
 
   @IsOptional()
   @IsString()

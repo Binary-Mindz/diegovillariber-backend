@@ -22,12 +22,13 @@ model Bike {
   category          DriveCategoryBike @default(DAILY_RIDER)
   listOnMarketplace Boolean           @default(false)
   price             Int?
+  currency          Currency          @default(EUR)
 
   bikeLocation       String?
   locationName       String?
   locationAddress    String?
-  latitude           Decimal?          @db.Decimal(9, 6)
-  longitude          Decimal?          @db.Decimal(9, 6)
+  latitude           Decimal? @db.Decimal(9, 6)
+  longitude          Decimal? @db.Decimal(9, 6)
   placeId            String?
   locationVisibility String?
 
@@ -36,6 +37,7 @@ model Bike {
 
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  posts     Post[]
 
   @@index([profileId])
   @@index([garageId])
@@ -44,7 +46,6 @@ model Bike {
   @@index([make, model])
   @@index([profileId, category])
   @@map("Bike")
-  posts Post[]
 }
 
 model AdvancedBikeData {

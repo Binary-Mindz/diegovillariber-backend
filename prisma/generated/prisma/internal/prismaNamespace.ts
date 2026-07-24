@@ -8372,6 +8372,7 @@ export const BikeScalarFieldEnum = {
   category: 'category',
   listOnMarketplace: 'listOnMarketplace',
   price: 'price',
+  currency: 'currency',
   bikeLocation: 'bikeLocation',
   locationName: 'locationName',
   locationAddress: 'locationAddress',
@@ -8495,6 +8496,7 @@ export const CarScalarFieldEnum = {
   category: 'category',
   listOnMarketplace: 'listOnMarketplace',
   price: 'price',
+  currency: 'currency',
   carLocation: 'carLocation',
   locationName: 'locationName',
   locationAddress: 'locationAddress',
@@ -9397,6 +9399,7 @@ export const ProductListScalarFieldEnum = {
   carBrand: 'carBrand',
   carModel: 'carModel',
   price: 'price',
+  currency: 'currency',
   quantity: 'quantity',
   showWhatsappNo: 'showWhatsappNo',
   highlightProduct: 'highlightProduct',
@@ -10213,6 +10216,20 @@ export type EnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType
  * Reference to a field of type 'DriveCategoryBike[]'
  */
 export type ListEnumDriveCategoryBikeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DriveCategoryBike[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Currency'
+ */
+export type EnumCurrencyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Currency'>
+    
+
+
+/**
+ * Reference to a field of type 'Currency[]'
+ */
+export type ListEnumCurrencyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Currency[]'>
     
 
 

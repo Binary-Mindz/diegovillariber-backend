@@ -578,3 +578,9 @@ enum CarMilestoneType {
   DOCUMENT
   OTHER
 }
+
+enum Currency {
+  USD
+  EUR
+  GBP
+}

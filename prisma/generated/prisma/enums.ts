@@ -1229,6 +1229,15 @@ export const CarMilestoneType = {
 export type CarMilestoneType = (typeof CarMilestoneType)[keyof typeof CarMilestoneType]
 
 
+export const Currency = {
+  USD: 'USD',
+  EUR: 'EUR',
+  GBP: 'GBP'
+} as const
+
+export type Currency = (typeof Currency)[keyof typeof Currency]
+
+
 export const SplitScreenArenaStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'

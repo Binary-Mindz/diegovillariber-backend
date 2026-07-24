@@ -1,16 +1,35 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsInt, IsNumber, IsOptional, IsString, IsUUID, Min } from 'class-validator';
-import { BodyType, DriveCategory, DriveTrain, Transmission } from 'generated/prisma/enums';
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsUUID,
+  Min,
+} from 'class-validator';
+import {
+  BodyType,
+  Currency,
+  DriveCategory,
+  DriveTrain,
+  Transmission,
+} from 'generated/prisma/enums';
 
 export class CreateCarDto {
   @ApiProperty({
     example: '9a6c8e11-9f0e-4e6e-9c4b-cc99d54c0b10',
-    description: 'Garage ID where the car will be added (must belong to active profile)',
+    description:
+      'Garage ID where the car will be added (must belong to active profile)',
   })
   @IsUUID()
   garageId!: string;
 
-  @ApiPropertyOptional({ example: 'https://cdn.app/car.jpg', description: 'Car image URL' })
+  @ApiPropertyOptional({
+    example: 'https://cdn.app/car.jpg',
+    description: 'Car image URL',
+  })
   @IsOptional()
   @IsString()
   image?: string;
@@ -20,7 +39,10 @@ export class CreateCarDto {
   @IsString()
   make?: string;
 
-  @ApiPropertyOptional({ example: 'M4 Competition', description: 'Car model name' })
+  @ApiPropertyOptional({
+    example: 'M4 Competition',
+    description: 'Car model name',
+  })
   @IsOptional()
   @IsString()
   model?: string;
@@ -50,7 +72,10 @@ export class CreateCarDto {
   @IsString()
   color?: string;
 
-  @ApiPropertyOptional({ example: 'Track Beast', description: 'Custom display name' })
+  @ApiPropertyOptional({
+    example: 'Track Beast',
+    description: 'Custom display name',
+  })
   @IsOptional()
   @IsString()
   displayName?: string;
@@ -60,7 +85,10 @@ export class CreateCarDto {
   @IsString()
   description?: string;
 
-  @ApiPropertyOptional({ enum: DriveCategory, example: DriveCategory.DAILY_DRIVE })
+  @ApiPropertyOptional({
+    enum: DriveCategory,
+    example: DriveCategory.DAILY_DRIVE,
+  })
   @IsOptional()
   @IsEnum(DriveCategory)
   category?: DriveCategory;
@@ -75,6 +103,11 @@ export class CreateCarDto {
   @IsInt()
   @Min(0)
   price?: number;
+
+  @ApiPropertyOptional({ enum: Currency, example: Currency.USD })
+  @IsOptional()
+  @IsEnum(Currency)
+  currency?: Currency;
 
   // 📍 New Location Fields for Swagger and Validator
   @IsOptional()
@@ -111,5 +144,4 @@ export class CreateCarDto {
   @IsString()
   @ApiPropertyOptional({ example: 'PUBLIC' })
   locationVisibility?: string;
-
 }

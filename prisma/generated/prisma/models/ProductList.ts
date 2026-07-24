@@ -56,6 +56,7 @@ export type ProductListMinAggregateOutputType = {
   carBrand: string | null
   carModel: string | null
   price: number | null
+  currency: $Enums.Currency | null
   quantity: number | null
   showWhatsappNo: boolean | null
   highlightProduct: boolean | null
@@ -80,6 +81,7 @@ export type ProductListMaxAggregateOutputType = {
   carBrand: string | null
   carModel: string | null
   price: number | null
+  currency: $Enums.Currency | null
   quantity: number | null
   showWhatsappNo: boolean | null
   highlightProduct: boolean | null
@@ -105,6 +107,7 @@ export type ProductListCountAggregateOutputType = {
   carBrand: number
   carModel: number
   price: number
+  currency: number
   quantity: number
   showWhatsappNo: number
   highlightProduct: number
@@ -145,6 +148,7 @@ export type ProductListMinAggregateInputType = {
   carBrand?: true
   carModel?: true
   price?: true
+  currency?: true
   quantity?: true
   showWhatsappNo?: true
   highlightProduct?: true
@@ -169,6 +173,7 @@ export type ProductListMaxAggregateInputType = {
   carBrand?: true
   carModel?: true
   price?: true
+  currency?: true
   quantity?: true
   showWhatsappNo?: true
   highlightProduct?: true
@@ -194,6 +199,7 @@ export type ProductListCountAggregateInputType = {
   carBrand?: true
   carModel?: true
   price?: true
+  currency?: true
   quantity?: true
   showWhatsappNo?: true
   highlightProduct?: true
@@ -306,6 +312,7 @@ export type ProductListGroupByOutputType = {
   carBrand: string | null
   carModel: string | null
   price: number
+  currency: $Enums.Currency
   quantity: number
   showWhatsappNo: boolean
   highlightProduct: boolean
@@ -354,6 +361,7 @@ export type ProductListWhereInput = {
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
   price?: Prisma.IntFilter<"ProductList"> | number
+  currency?: Prisma.EnumCurrencyFilter<"ProductList"> | $Enums.Currency
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
   highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
@@ -382,6 +390,7 @@ export type ProductListOrderByWithRelationInput = {
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
   highlightProduct?: Prisma.SortOrder
@@ -413,6 +422,7 @@ export type ProductListWhereUniqueInput = Prisma.AtLeast<{
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
   price?: Prisma.IntFilter<"ProductList"> | number
+  currency?: Prisma.EnumCurrencyFilter<"ProductList"> | $Enums.Currency
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
   highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
@@ -441,6 +451,7 @@ export type ProductListOrderByWithAggregationInput = {
   carBrand?: Prisma.SortOrderInput | Prisma.SortOrder
   carModel?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
   highlightProduct?: Prisma.SortOrder
@@ -474,6 +485,7 @@ export type ProductListScalarWhereWithAggregatesInput = {
   carBrand?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableWithAggregatesFilter<"ProductList"> | string | null
   price?: Prisma.IntWithAggregatesFilter<"ProductList"> | number
+  currency?: Prisma.EnumCurrencyWithAggregatesFilter<"ProductList"> | $Enums.Currency
   quantity?: Prisma.IntWithAggregatesFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolWithAggregatesFilter<"ProductList"> | boolean
   highlightProduct?: Prisma.BoolWithAggregatesFilter<"ProductList"> | boolean
@@ -497,6 +509,7 @@ export type ProductListCreateInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -525,6 +538,7 @@ export type ProductListUncheckedCreateInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -549,6 +563,7 @@ export type ProductListUpdateInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -577,6 +592,7 @@ export type ProductListUncheckedUpdateInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -603,6 +619,7 @@ export type ProductListCreateManyInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -626,6 +643,7 @@ export type ProductListUpdateManyMutationInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -651,6 +669,7 @@ export type ProductListUncheckedUpdateManyInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -681,6 +700,7 @@ export type ProductListCountOrderByAggregateInput = {
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
   highlightProduct?: Prisma.SortOrder
@@ -712,6 +732,7 @@ export type ProductListMaxOrderByAggregateInput = {
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
   highlightProduct?: Prisma.SortOrder
@@ -736,6 +757,7 @@ export type ProductListMinOrderByAggregateInput = {
   carBrand?: Prisma.SortOrder
   carModel?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  currency?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   showWhatsappNo?: Prisma.SortOrder
   highlightProduct?: Prisma.SortOrder
@@ -882,6 +904,7 @@ export type ProductListCreateWithoutCarInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -908,6 +931,7 @@ export type ProductListUncheckedCreateWithoutCarInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -948,6 +972,7 @@ export type ProductListUpdateWithoutCarInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -974,6 +999,7 @@ export type ProductListUncheckedUpdateWithoutCarInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -998,6 +1024,7 @@ export type ProductListCreateWithoutOwnerInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1024,6 +1051,7 @@ export type ProductListUncheckedCreateWithoutOwnerInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1079,6 +1107,7 @@ export type ProductListScalarWhereInput = {
   carBrand?: Prisma.StringNullableFilter<"ProductList"> | string | null
   carModel?: Prisma.StringNullableFilter<"ProductList"> | string | null
   price?: Prisma.IntFilter<"ProductList"> | number
+  currency?: Prisma.EnumCurrencyFilter<"ProductList"> | $Enums.Currency
   quantity?: Prisma.IntFilter<"ProductList"> | number
   showWhatsappNo?: Prisma.BoolFilter<"ProductList"> | boolean
   highlightProduct?: Prisma.BoolFilter<"ProductList"> | boolean
@@ -1102,6 +1131,7 @@ export type ProductListCreateWithoutWishListsInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1129,6 +1159,7 @@ export type ProductListUncheckedCreateWithoutWishListsInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1168,6 +1199,7 @@ export type ProductListUpdateWithoutWishListsInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1195,6 +1227,7 @@ export type ProductListUncheckedUpdateWithoutWishListsInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1219,6 +1252,7 @@ export type ProductListCreateManyOwnerInput = {
   carBrand?: string | null
   carModel?: string | null
   price: number
+  currency?: $Enums.Currency
   quantity: number
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1242,6 +1276,7 @@ export type ProductListUpdateWithoutOwnerInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1268,6 +1303,7 @@ export type ProductListUncheckedUpdateWithoutOwnerInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1293,6 +1329,7 @@ export type ProductListUncheckedUpdateManyWithoutOwnerInput = {
   carBrand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
+  currency?: Prisma.EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   showWhatsappNo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   highlightProduct?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1349,6 +1386,7 @@ export type ProductListSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   carBrand?: boolean
   carModel?: boolean
   price?: boolean
+  currency?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1378,6 +1416,7 @@ export type ProductListSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   carBrand?: boolean
   carModel?: boolean
   price?: boolean
+  currency?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1405,6 +1444,7 @@ export type ProductListSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   carBrand?: boolean
   carModel?: boolean
   price?: boolean
+  currency?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1432,6 +1472,7 @@ export type ProductListSelectScalar = {
   carBrand?: boolean
   carModel?: boolean
   price?: boolean
+  currency?: boolean
   quantity?: boolean
   showWhatsappNo?: boolean
   highlightProduct?: boolean
@@ -1440,7 +1481,7 @@ export type ProductListSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "carId" | "title" | "productImage" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "quantity" | "showWhatsappNo" | "highlightProduct" | "isSold" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
+export type ProductListOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "carId" | "title" | "productImage" | "location" | "locationAddress" | "latitude" | "longitude" | "placeId" | "description" | "category" | "tags" | "carBrand" | "carModel" | "price" | "currency" | "quantity" | "showWhatsappNo" | "highlightProduct" | "isSold" | "createdAt" | "updatedAt", ExtArgs["result"]["productList"]>
 export type ProductListInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   car?: boolean | Prisma.ProductList$carArgs<ExtArgs>
@@ -1480,6 +1521,7 @@ export type $ProductListPayload<ExtArgs extends runtime.Types.Extensions.Interna
     carBrand: string | null
     carModel: string | null
     price: number
+    currency: $Enums.Currency
     quantity: number
     showWhatsappNo: boolean
     highlightProduct: boolean
@@ -1928,6 +1970,7 @@ export interface ProductListFieldRefs {
   readonly carBrand: Prisma.FieldRef<"ProductList", 'String'>
   readonly carModel: Prisma.FieldRef<"ProductList", 'String'>
   readonly price: Prisma.FieldRef<"ProductList", 'Int'>
+  readonly currency: Prisma.FieldRef<"ProductList", 'Currency'>
   readonly quantity: Prisma.FieldRef<"ProductList", 'Int'>
   readonly showWhatsappNo: Prisma.FieldRef<"ProductList", 'Boolean'>
   readonly highlightProduct: Prisma.FieldRef<"ProductList", 'Boolean'>
