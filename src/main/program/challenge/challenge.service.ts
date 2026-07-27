@@ -663,7 +663,7 @@ export class ChallengeService {
         reactions: true,
         comments: { include: { replies: true } },
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { voteCount: 'desc' },
     });
   }
 

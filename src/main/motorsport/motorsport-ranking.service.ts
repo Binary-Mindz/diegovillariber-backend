@@ -547,13 +547,13 @@ export class MotorsportRankingService {
         };
       })
       .sort((a, b) => {
-        if (b.ratingAverage !== a.ratingAverage) {
-          return b.ratingAverage - a.ratingAverage;
-        }
+        // if (b.ratingAverage !== a.ratingAverage) {
+        //   return b.ratingAverage - a.ratingAverage;
+        // }
 
-        if (b.ratingCount !== a.ratingCount) {
-          return b.ratingCount - a.ratingCount;
-        }
+        // if (b.ratingCount !== a.ratingCount) {
+        //   return b.ratingCount - a.ratingCount;
+        // }
 
         return b.ratingTotal - a.ratingTotal;
       })
