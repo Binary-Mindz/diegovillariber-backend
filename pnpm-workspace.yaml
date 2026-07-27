@@ -2,7 +2,9 @@ packages:
   - .
 allowBuilds:
   '@ffmpeg-installer/darwin-arm64': false
+  '@ffmpeg-installer/linux-x64': false
   '@ffprobe-installer/darwin-arm64': false
+  '@ffprobe-installer/linux-x64': false
   '@firebase/util': false
   '@nestjs/core': false
   '@prisma/engines': false
