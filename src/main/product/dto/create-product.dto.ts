@@ -1,4 +1,6 @@
 // src/products/dto/create-product.dto.ts
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsArray,
   IsBoolean,
@@ -10,9 +12,7 @@ import {
   IsString,
   Min,
 } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { ProductCategory } from 'generated/prisma/enums';
-import { Type } from 'class-transformer';
+import { Currency, ProductCategory } from 'generated/prisma/enums';
 
 export class CreateProductDto {
   @ApiProperty({
@@ -119,6 +119,11 @@ export class CreateProductDto {
   @IsInt()
   @Min(0)
   price!: number;
+
+  @ApiPropertyOptional({ enum: Currency, example: Currency.USD })
+  @IsOptional()
+  @IsEnum(Currency)
+  currency?: Currency;
 
   @ApiProperty({
     example: 12,
