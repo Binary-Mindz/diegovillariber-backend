@@ -1,5 +1,5 @@
-import { InjectQueue } from '@nestjs/bullmq';
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { InjectQueue } from '@nestjs/bullmq';
 import {
   BadRequestException,
   ForbiddenException,
