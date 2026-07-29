@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsEnum,
   IsInt,
   IsNumber,
   IsOptional,
@@ -9,8 +10,18 @@ import {
   Min,
   ValidateIf,
 } from 'class-validator';
+import { PostAssetType } from 'generated/prisma/enums';
 
 export class CreateSpottingRequestDto {
+  @ApiProperty({
+    example: PostAssetType.CAR,
+    required: false,
+    enum: PostAssetType,
+  })
+  @IsOptional()
+  @IsEnum(PostAssetType)
+  vehicleType?: PostAssetType;
+
   @ApiProperty({ example: 'Lamborghini', required: false })
   @IsOptional()
   @IsString()
@@ -45,7 +56,7 @@ export class CreateSpottingRequestDto {
   @IsNumber()
   longitude!: number;
 
-  @ApiProperty({ example: 50, required: false, default: 50 })
+  @ApiProperty({ example: 100, required: false, default: 100 })
   @IsOptional()
   @IsInt()
   @Min(1)

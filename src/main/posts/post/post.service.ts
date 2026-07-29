@@ -5,17 +5,18 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreatePostDto } from './dto/create.post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
-import { FeedQueryDto } from './dto/feed-query.dto';
 import {
   MediaType,
   PostViewSource,
   Prisma,
-  ViewerRelationType,
   ReportType,
+  ViewerRelationType,
 } from 'generated/prisma/client';
 import { NotificationService } from '../../notification/notification.service';
+import { SpottingRequestService } from '../../sportting-request/sportting-request.service';
+import { CreatePostDto } from './dto/create.post.dto';
+import { FeedQueryDto } from './dto/feed-query.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -33,8 +34,9 @@ function parseCsvEnum<T extends string>(value?: string): T[] | undefined {
 export class PostService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly notificationService: NotificationService
-  ) { }
+    private readonly notificationService: NotificationService,
+    private readonly spottingRequestService: SpottingRequestService,
+  ) {}
 
   private readonly VIEW_DEDUP_MINUTES = 30;
 
@@ -42,10 +44,10 @@ export class PostService {
     count:
       | true
       | {
-        source?: number;
-        relationType?: number;
-        _all?: number;
-      }
+          source?: number;
+          relationType?: number;
+          _all?: number;
+        }
       | undefined,
     key: 'source' | 'relationType' | '_all',
   ): number {
@@ -91,7 +93,8 @@ export class PostService {
   }
 
   private async validatePostAccess(userId: string, postId: string) {
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    const uuidRegex =
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(postId)) {
       throw new NotFoundException('Post not found');
     }
@@ -100,12 +103,21 @@ export class PostService {
       where: { id: postId },
       include: {
         user: { select: { id: true } },
-        profile: { select: { id: true, imageUrl: true, profileName: true, activeType: true } },
+        profile: {
+          select: {
+            id: true,
+            imageUrl: true,
+            profileName: true,
+            activeType: true,
+          },
+        },
         hashtags: true,
         taggedUsers: { select: { id: true } },
         taggedProfiles: {
           include: {
-            profile: { select: { id: true, profileName: true, imageUrl: true } },
+            profile: {
+              select: { id: true, profileName: true, imageUrl: true },
+            },
           },
         },
       },
@@ -304,7 +316,9 @@ export class PostService {
         });
 
         if (taggedProfiles.length !== taggedUserIds.length) {
-          throw new BadRequestException('One or more tagged users have inactive or suspended profiles');
+          throw new BadRequestException(
+            'One or more tagged users have inactive or suspended profiles',
+          );
         }
       }
 
@@ -427,9 +441,18 @@ export class PostService {
 
     // নোটিফিকেশন পাঠানোর কল (নিরাপদ ব্যাকগ্রাউন্ড প্রসেস)
     if (result.taggedUserIds && result.taggedUserIds.length > 0) {
-      this.sendNotificationToTaggedUsers(userId, result.taggedUserIds, result.post.id)
-        .catch(err => console.error('Failed to send tag notifications:', err));
+      this.sendNotificationToTaggedUsers(
+        userId,
+        result.taggedUserIds,
+        result.post.id,
+      ).catch((err) => console.error('Failed to send tag notifications:', err));
     }
+
+    this.spottingRequestService
+      .processPostForSpottingMatches(result.post.id)
+      .catch((error) => {
+        console.error('Failed to process spotting matches for post', error);
+      });
 
     return {
       post: result.post,
@@ -440,7 +463,11 @@ export class PostService {
     };
   }
 
-  private async sendNotificationToTaggedUsers(actorUserId: string, taggedUserIds: string[], postId: string) {
+  private async sendNotificationToTaggedUsers(
+    actorUserId: string,
+    taggedUserIds: string[],
+    postId: string,
+  ) {
     const promises = taggedUserIds.map((targetUserId) => {
       return this.notificationService.sendNotification({
         userId: targetUserId,
@@ -480,7 +507,9 @@ export class PostService {
     });
 
     const copyrightPostIds = copyrightReports.map((r) => r.targetId);
-    const finalHiddenPostIds = [...new Set([...hiddenPostIds, ...copyrightPostIds])];
+    const finalHiddenPostIds = [
+      ...new Set([...hiddenPostIds, ...copyrightPostIds]),
+    ];
 
     const visiualStyle = parseCsvEnum<any>(query.visiualStyle);
     const contextActivity = parseCsvEnum<any>(query.contextActivity);
@@ -552,10 +581,10 @@ export class PostService {
               },
             },
             {
-              userId: { notIn: excludedUserIds }
-            }
-          ]
-        }
+              userId: { notIn: excludedUserIds },
+            },
+          ],
+        },
       ],
       ...(query.postType ? { postType: query.postType } : {}),
       ...(query.boostedOnly === 'true' ? { contentBooster: true } : {}),
@@ -564,14 +593,16 @@ export class PostService {
         : {}),
       ...(query.search
         ? {
-          OR: [
-            { caption: { contains: query.search, mode: 'insensitive' } },
-            { postLocation: { contains: query.search, mode: 'insensitive' } },
-          ],
-        }
+            OR: [
+              { caption: { contains: query.search, mode: 'insensitive' } },
+              { postLocation: { contains: query.search, mode: 'insensitive' } },
+            ],
+          }
         : {}),
       ...(visiualStyle ? { visiualStyle: { hasSome: visiualStyle } } : {}),
-      ...(contextActivity ? { contextActivity: { hasSome: contextActivity } } : {}),
+      ...(contextActivity
+        ? { contextActivity: { hasSome: contextActivity } }
+        : {}),
       ...(subject ? { subject: { hasSome: subject } } : {}),
     };
 
@@ -671,7 +702,9 @@ export class PostService {
     });
 
     if (hasCopyrightReport) {
-      throw new ForbiddenException('Insights are disabled for this post due to a pending copyright issue.');
+      throw new ForbiddenException(
+        'Insights are disabled for this post due to a pending copyright issue.',
+      );
     }
 
     const [sourceStats, relationStats] = await this.prisma.$transaction([
@@ -690,20 +723,25 @@ export class PostService {
     ]);
 
     const totalViews = post.view;
-    const totalInteractions = post.like + post.comment + post.share + post.repost;
+    const totalInteractions =
+      post.like + post.comment + post.share + post.repost;
 
     const followerViews = this.getGroupedCount(
-      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)?._count,
+      relationStats.find((x) => x.relationType === ViewerRelationType.FOLLOWER)
+        ?._count,
       'relationType',
     );
 
     const nonFollowerViews = this.getGroupedCount(
-      relationStats.find((x) => x.relationType === ViewerRelationType.NON_FOLLOWER)?._count,
+      relationStats.find(
+        (x) => x.relationType === ViewerRelationType.NON_FOLLOWER,
+      )?._count,
       'relationType',
     );
 
     const selfViews = this.getGroupedCount(
-      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)?._count,
+      relationStats.find((x) => x.relationType === ViewerRelationType.SELF)
+        ?._count,
       'relationType',
     );
 
@@ -713,7 +751,8 @@ export class PostService {
       return {
         source: item.source,
         count,
-        percentage: totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
+        percentage:
+          totalViews > 0 ? Number(((count / totalViews) * 100).toFixed(2)) : 0,
       };
     });
 
@@ -724,9 +763,18 @@ export class PostService {
     };
 
     const followerVsNonFollower = {
-      followersPercentage: totalViews > 0 ? Number(((followerViews / totalViews) * 100).toFixed(2)) : 0,
-      nonFollowersPercentage: totalViews > 0 ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2)) : 0,
-      selfPercentage: totalViews > 0 ? Number(((selfViews / totalViews) * 100).toFixed(2)) : 0,
+      followersPercentage:
+        totalViews > 0
+          ? Number(((followerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      nonFollowersPercentage:
+        totalViews > 0
+          ? Number(((nonFollowerViews / totalViews) * 100).toFixed(2))
+          : 0,
+      selfPercentage:
+        totalViews > 0
+          ? Number(((selfViews / totalViews) * 100).toFixed(2))
+          : 0,
     };
 
     return {
@@ -779,7 +827,9 @@ export class PostService {
       }
 
       const nextHashtagIds =
-        dto.hashtagIds !== undefined ? Array.from(new Set(dto.hashtagIds)) : undefined;
+        dto.hashtagIds !== undefined
+          ? Array.from(new Set(dto.hashtagIds))
+          : undefined;
 
       const nextTaggedUserIds =
         dto.taggedUserIds !== undefined
@@ -862,7 +912,9 @@ export class PostService {
 
         // 🎯 ফিক্স: আপডেট করার সময়ও ইনঅ্যাক্টিভ প্রোফাইল ভ্যালিডেশন নিশ্চিত করা হলো
         if (taggedProfiles.length !== nextTaggedUserIds.length) {
-          throw new BadRequestException('One or more tagged users have inactive or suspended profiles');
+          throw new BadRequestException(
+            'One or more tagged users have inactive or suspended profiles',
+          );
         }
       }
 
@@ -874,18 +926,40 @@ export class PostService {
         ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
         ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
         ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
-        ...(dto.vehicleCategory !== undefined ? { vehicleCategory: dto.vehicleCategory ?? null } : {}),
-        ...(dto.photoEditingDeclaration !== undefined ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null } : {}),
-        ...(dto.videoEditingDeclaration !== undefined ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null } : {}),
-        ...(dto.postLocation !== undefined ? { postLocation: dto.postLocation ?? null } : {}),
-        ...(dto.locationVisibility !== undefined ? { locationVisibility: dto.locationVisibility ?? null } : {}),
-        ...(dto.locationName !== undefined ? { locationName: dto.locationName ?? null } : {}),
-        ...(dto.locationAddress !== undefined ? { locationAddress: dto.locationAddress ?? null } : {}),
-        ...(dto.latitude !== undefined ? { latitude: dto.latitude ?? null } : {}),
-        ...(dto.longitude !== undefined ? { longitude: dto.longitude ?? null } : {}),
+        ...(dto.vehicleCategory !== undefined
+          ? { vehicleCategory: dto.vehicleCategory ?? null }
+          : {}),
+        ...(dto.photoEditingDeclaration !== undefined
+          ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
+          : {}),
+        ...(dto.videoEditingDeclaration !== undefined
+          ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
+          : {}),
+        ...(dto.postLocation !== undefined
+          ? { postLocation: dto.postLocation ?? null }
+          : {}),
+        ...(dto.locationVisibility !== undefined
+          ? { locationVisibility: dto.locationVisibility ?? null }
+          : {}),
+        ...(dto.locationName !== undefined
+          ? { locationName: dto.locationName ?? null }
+          : {}),
+        ...(dto.locationAddress !== undefined
+          ? { locationAddress: dto.locationAddress ?? null }
+          : {}),
+        ...(dto.latitude !== undefined
+          ? { latitude: dto.latitude ?? null }
+          : {}),
+        ...(dto.longitude !== undefined
+          ? { longitude: dto.longitude ?? null }
+          : {}),
         ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
-        ...(dto.visiualStyle !== undefined ? { visiualStyle: dto.visiualStyle ?? [] } : {}),
-        ...(dto.contextActivity !== undefined ? { contextActivity: dto.contextActivity ?? [] } : {}),
+        ...(dto.visiualStyle !== undefined
+          ? { visiualStyle: dto.visiualStyle ?? [] }
+          : {}),
+        ...(dto.contextActivity !== undefined
+          ? { contextActivity: dto.contextActivity ?? [] }
+          : {}),
         ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
         ...(nextHashtagIds !== undefined
           ? { hashtags: { set: nextHashtagIds.map((id) => ({ id })) } }
@@ -895,7 +969,11 @@ export class PostService {
           : {}),
       };
 
-      if (Object.keys(updateData).length === 0 && nextHashtagIds === undefined && nextTaggedUserIds === undefined) {
+      if (
+        Object.keys(updateData).length === 0 &&
+        nextHashtagIds === undefined &&
+        nextTaggedUserIds === undefined
+      ) {
         throw new BadRequestException('No valid fields provided to update');
       }
 
@@ -908,7 +986,9 @@ export class PostService {
           profile: { select: { id: true, imageUrl: true, activeType: true } },
           taggedProfiles: {
             include: {
-              profile: { select: { id: true, profileName: true, imageUrl: true } },
+              profile: {
+                select: { id: true, profileName: true, imageUrl: true },
+              },
             },
           },
         },
@@ -929,8 +1009,12 @@ export class PostService {
       }
 
       if (nextHashtagIds !== undefined) {
-        const removedHashtagIds = oldHashtagIds.filter((id) => !nextHashtagIds.includes(id));
-        const addedHashtagIds = nextHashtagIds.filter((id) => !oldHashtagIds.includes(id));
+        const removedHashtagIds = oldHashtagIds.filter(
+          (id) => !nextHashtagIds.includes(id),
+        );
+        const addedHashtagIds = nextHashtagIds.filter(
+          (id) => !oldHashtagIds.includes(id),
+        );
 
         if (removedHashtagIds.length > 0) {
           for (const hashtagId of removedHashtagIds) {

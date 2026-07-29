@@ -44,6 +44,7 @@ export type SpottingRequestMinAggregateOutputType = {
   profileId: string | null
   carId: string | null
   title: string | null
+  vehicleType: $Enums.PostAssetType | null
   brand: string | null
   model: string | null
   latitude: runtime.Decimal | null
@@ -62,6 +63,7 @@ export type SpottingRequestMaxAggregateOutputType = {
   profileId: string | null
   carId: string | null
   title: string | null
+  vehicleType: $Enums.PostAssetType | null
   brand: string | null
   model: string | null
   latitude: runtime.Decimal | null
@@ -80,8 +82,10 @@ export type SpottingRequestCountAggregateOutputType = {
   profileId: number
   carId: number
   title: number
+  vehicleType: number
   brand: number
   model: number
+  hashtags: number
   latitude: number
   longitude: number
   radiusKm: number
@@ -112,6 +116,7 @@ export type SpottingRequestMinAggregateInputType = {
   profileId?: true
   carId?: true
   title?: true
+  vehicleType?: true
   brand?: true
   model?: true
   latitude?: true
@@ -130,6 +135,7 @@ export type SpottingRequestMaxAggregateInputType = {
   profileId?: true
   carId?: true
   title?: true
+  vehicleType?: true
   brand?: true
   model?: true
   latitude?: true
@@ -148,8 +154,10 @@ export type SpottingRequestCountAggregateInputType = {
   profileId?: true
   carId?: true
   title?: true
+  vehicleType?: true
   brand?: true
   model?: true
+  hashtags?: true
   latitude?: true
   longitude?: true
   radiusKm?: true
@@ -253,8 +261,10 @@ export type SpottingRequestGroupByOutputType = {
   profileId: string | null
   carId: string | null
   title: string | null
+  vehicleType: $Enums.PostAssetType | null
   brand: string | null
   model: string | null
+  hashtags: string[]
   latitude: runtime.Decimal
   longitude: runtime.Decimal
   radiusKm: number
@@ -294,8 +304,10 @@ export type SpottingRequestWhereInput = {
   profileId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   carId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   title?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  vehicleType?: Prisma.EnumPostAssetTypeNullableFilter<"SpottingRequest"> | $Enums.PostAssetType | null
   brand?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
   model?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  hashtags?: Prisma.StringNullableListFilter<"SpottingRequest">
   latitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFilter<"SpottingRequest"> | number
@@ -316,8 +328,10 @@ export type SpottingRequestOrderByWithRelationInput = {
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   carId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicleType?: Prisma.SortOrderInput | Prisma.SortOrder
   brand?: Prisma.SortOrderInput | Prisma.SortOrder
   model?: Prisma.SortOrderInput | Prisma.SortOrder
+  hashtags?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   radiusKm?: Prisma.SortOrder
@@ -341,8 +355,10 @@ export type SpottingRequestWhereUniqueInput = Prisma.AtLeast<{
   profileId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   carId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   title?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  vehicleType?: Prisma.EnumPostAssetTypeNullableFilter<"SpottingRequest"> | $Enums.PostAssetType | null
   brand?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
   model?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  hashtags?: Prisma.StringNullableListFilter<"SpottingRequest">
   latitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFilter<"SpottingRequest"> | number
@@ -363,8 +379,10 @@ export type SpottingRequestOrderByWithAggregationInput = {
   profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   carId?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrderInput | Prisma.SortOrder
+  vehicleType?: Prisma.SortOrderInput | Prisma.SortOrder
   brand?: Prisma.SortOrderInput | Prisma.SortOrder
   model?: Prisma.SortOrderInput | Prisma.SortOrder
+  hashtags?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   radiusKm?: Prisma.SortOrder
@@ -389,8 +407,10 @@ export type SpottingRequestScalarWhereWithAggregatesInput = {
   profileId?: Prisma.UuidNullableWithAggregatesFilter<"SpottingRequest"> | string | null
   carId?: Prisma.UuidNullableWithAggregatesFilter<"SpottingRequest"> | string | null
   title?: Prisma.StringNullableWithAggregatesFilter<"SpottingRequest"> | string | null
+  vehicleType?: Prisma.EnumPostAssetTypeNullableWithAggregatesFilter<"SpottingRequest"> | $Enums.PostAssetType | null
   brand?: Prisma.StringNullableWithAggregatesFilter<"SpottingRequest"> | string | null
   model?: Prisma.StringNullableWithAggregatesFilter<"SpottingRequest"> | string | null
+  hashtags?: Prisma.StringNullableListFilter<"SpottingRequest">
   latitude?: Prisma.DecimalWithAggregatesFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalWithAggregatesFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntWithAggregatesFilter<"SpottingRequest"> | number
@@ -404,8 +424,10 @@ export type SpottingRequestScalarWhereWithAggregatesInput = {
 export type SpottingRequestCreateInput = {
   id?: string
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -426,8 +448,10 @@ export type SpottingRequestUncheckedCreateInput = {
   profileId?: string | null
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -442,8 +466,10 @@ export type SpottingRequestUncheckedCreateInput = {
 export type SpottingRequestUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -464,8 +490,10 @@ export type SpottingRequestUncheckedUpdateInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -483,8 +511,10 @@ export type SpottingRequestCreateManyInput = {
   profileId?: string | null
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -498,8 +528,10 @@ export type SpottingRequestCreateManyInput = {
 export type SpottingRequestUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -516,8 +548,10 @@ export type SpottingRequestUncheckedUpdateManyInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -549,8 +583,10 @@ export type SpottingRequestCountOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
   brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
+  hashtags?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   radiusKm?: Prisma.SortOrder
@@ -573,6 +609,7 @@ export type SpottingRequestMaxOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
   brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -591,6 +628,7 @@ export type SpottingRequestMinOrderByAggregateInput = {
   profileId?: Prisma.SortOrder
   carId?: Prisma.SortOrder
   title?: Prisma.SortOrder
+  vehicleType?: Prisma.SortOrder
   brand?: Prisma.SortOrder
   model?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
@@ -707,6 +745,15 @@ export type SpottingRequestUpdateOneRequiredWithoutMatchesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SpottingRequestUpdateToOneWithWhereWithoutMatchesInput, Prisma.SpottingRequestUpdateWithoutMatchesInput>, Prisma.SpottingRequestUncheckedUpdateWithoutMatchesInput>
 }
 
+export type SpottingRequestCreatehashtagsInput = {
+  set: string[]
+}
+
+export type SpottingRequestUpdatehashtagsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 export type EnumSpottingRequestStatusFieldUpdateOperationsInput = {
   set?: $Enums.SpottingRequestStatus
 }
@@ -756,8 +803,10 @@ export type SpottingRequestUncheckedUpdateManyWithoutUserNestedInput = {
 export type SpottingRequestCreateWithoutCarInput = {
   id?: string
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -776,8 +825,10 @@ export type SpottingRequestUncheckedCreateWithoutCarInput = {
   userId: string
   profileId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -824,8 +875,10 @@ export type SpottingRequestScalarWhereInput = {
   profileId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   carId?: Prisma.UuidNullableFilter<"SpottingRequest"> | string | null
   title?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  vehicleType?: Prisma.EnumPostAssetTypeNullableFilter<"SpottingRequest"> | $Enums.PostAssetType | null
   brand?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
   model?: Prisma.StringNullableFilter<"SpottingRequest"> | string | null
+  hashtags?: Prisma.StringNullableListFilter<"SpottingRequest">
   latitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFilter<"SpottingRequest"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFilter<"SpottingRequest"> | number
@@ -839,8 +892,10 @@ export type SpottingRequestScalarWhereInput = {
 export type SpottingRequestCreateWithoutProfileInput = {
   id?: string
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -859,8 +914,10 @@ export type SpottingRequestUncheckedCreateWithoutProfileInput = {
   userId: string
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -901,8 +958,10 @@ export type SpottingRequestUpdateManyWithWhereWithoutProfileInput = {
 export type SpottingRequestCreateWithoutMatchesInput = {
   id?: string
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -922,8 +981,10 @@ export type SpottingRequestUncheckedCreateWithoutMatchesInput = {
   profileId?: string | null
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -953,8 +1014,10 @@ export type SpottingRequestUpdateToOneWithWhereWithoutMatchesInput = {
 export type SpottingRequestUpdateWithoutMatchesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -974,8 +1037,10 @@ export type SpottingRequestUncheckedUpdateWithoutMatchesInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -989,8 +1054,10 @@ export type SpottingRequestUncheckedUpdateWithoutMatchesInput = {
 export type SpottingRequestCreateWithoutUserInput = {
   id?: string
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -1009,8 +1076,10 @@ export type SpottingRequestUncheckedCreateWithoutUserInput = {
   profileId?: string | null
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -1053,8 +1122,10 @@ export type SpottingRequestCreateManyCarInput = {
   userId: string
   profileId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -1068,8 +1139,10 @@ export type SpottingRequestCreateManyCarInput = {
 export type SpottingRequestUpdateWithoutCarInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1088,8 +1161,10 @@ export type SpottingRequestUncheckedUpdateWithoutCarInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1106,8 +1181,10 @@ export type SpottingRequestUncheckedUpdateManyWithoutCarInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1123,8 +1200,10 @@ export type SpottingRequestCreateManyProfileInput = {
   userId: string
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -1138,8 +1217,10 @@ export type SpottingRequestCreateManyProfileInput = {
 export type SpottingRequestUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1158,8 +1239,10 @@ export type SpottingRequestUncheckedUpdateWithoutProfileInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1176,8 +1259,10 @@ export type SpottingRequestUncheckedUpdateManyWithoutProfileInput = {
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1193,8 +1278,10 @@ export type SpottingRequestCreateManyUserInput = {
   profileId?: string | null
   carId?: string | null
   title?: string | null
+  vehicleType?: $Enums.PostAssetType | null
   brand?: string | null
   model?: string | null
+  hashtags?: Prisma.SpottingRequestCreatehashtagsInput | string[]
   latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: number
@@ -1208,8 +1295,10 @@ export type SpottingRequestCreateManyUserInput = {
 export type SpottingRequestUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1228,8 +1317,10 @@ export type SpottingRequestUncheckedUpdateWithoutUserInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1246,8 +1337,10 @@ export type SpottingRequestUncheckedUpdateManyWithoutUserInput = {
   profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
   brand?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hashtags?: Prisma.SpottingRequestUpdatehashtagsInput | string[]
   latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   radiusKm?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1295,8 +1388,10 @@ export type SpottingRequestSelect<ExtArgs extends runtime.Types.Extensions.Inter
   profileId?: boolean
   carId?: boolean
   title?: boolean
+  vehicleType?: boolean
   brand?: boolean
   model?: boolean
+  hashtags?: boolean
   latitude?: boolean
   longitude?: boolean
   radiusKm?: boolean
@@ -1318,8 +1413,10 @@ export type SpottingRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   profileId?: boolean
   carId?: boolean
   title?: boolean
+  vehicleType?: boolean
   brand?: boolean
   model?: boolean
+  hashtags?: boolean
   latitude?: boolean
   longitude?: boolean
   radiusKm?: boolean
@@ -1339,8 +1436,10 @@ export type SpottingRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   profileId?: boolean
   carId?: boolean
   title?: boolean
+  vehicleType?: boolean
   brand?: boolean
   model?: boolean
+  hashtags?: boolean
   latitude?: boolean
   longitude?: boolean
   radiusKm?: boolean
@@ -1360,8 +1459,10 @@ export type SpottingRequestSelectScalar = {
   profileId?: boolean
   carId?: boolean
   title?: boolean
+  vehicleType?: boolean
   brand?: boolean
   model?: boolean
+  hashtags?: boolean
   latitude?: boolean
   longitude?: boolean
   radiusKm?: boolean
@@ -1372,7 +1473,7 @@ export type SpottingRequestSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SpottingRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "title" | "brand" | "model" | "latitude" | "longitude" | "radiusKm" | "status" | "expiresAt" | "lastMatchedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["spottingRequest"]>
+export type SpottingRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "profileId" | "carId" | "title" | "vehicleType" | "brand" | "model" | "hashtags" | "latitude" | "longitude" | "radiusKm" | "status" | "expiresAt" | "lastMatchedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["spottingRequest"]>
 export type SpottingRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   profile?: boolean | Prisma.SpottingRequest$profileArgs<ExtArgs>
@@ -1405,8 +1506,10 @@ export type $SpottingRequestPayload<ExtArgs extends runtime.Types.Extensions.Int
     profileId: string | null
     carId: string | null
     title: string | null
+    vehicleType: $Enums.PostAssetType | null
     brand: string | null
     model: string | null
+    hashtags: string[]
     latitude: runtime.Decimal
     longitude: runtime.Decimal
     radiusKm: number
@@ -1847,8 +1950,10 @@ export interface SpottingRequestFieldRefs {
   readonly profileId: Prisma.FieldRef<"SpottingRequest", 'String'>
   readonly carId: Prisma.FieldRef<"SpottingRequest", 'String'>
   readonly title: Prisma.FieldRef<"SpottingRequest", 'String'>
+  readonly vehicleType: Prisma.FieldRef<"SpottingRequest", 'PostAssetType'>
   readonly brand: Prisma.FieldRef<"SpottingRequest", 'String'>
   readonly model: Prisma.FieldRef<"SpottingRequest", 'String'>
+  readonly hashtags: Prisma.FieldRef<"SpottingRequest", 'String[]'>
   readonly latitude: Prisma.FieldRef<"SpottingRequest", 'Decimal'>
   readonly longitude: Prisma.FieldRef<"SpottingRequest", 'Decimal'>
   readonly radiusKm: Prisma.FieldRef<"SpottingRequest", 'Int'>

@@ -6,16 +6,11 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
-import {
-  NotificationChannel,
-  NotificationEntityType,
-  NotificationType,
-  SpottingRequestStatus,
-} from 'generated/prisma/enums';
-import { NearbyPostsDto } from './dto/nearby-post.dto';
-import { NotificationService } from '../notification/notification.service';
+import { SpottingRequestStatus } from 'generated/prisma/enums';
 import { Prisma } from '../../../prisma/generated/prisma/client';
+import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
+import { NearbyPostsDto } from './dto/nearby-post.dto';
+import { SpottingMatcherService } from './spotting-matcher.service';
 
 export type PostWithUserAndProfile = Prisma.PostGetPayload<{
   include: {
@@ -27,15 +22,13 @@ export type PostWithUserAndProfile = Prisma.PostGetPayload<{
   };
 }>;
 
-
-
 @Injectable()
 export class SpottingRequestService {
   private readonly logger = new Logger(SpottingRequestService.name);
   constructor(
     private readonly prisma: PrismaService,
-    private readonly notificationService: NotificationService,
-  ) { }
+    private readonly spottingMatcherService: SpottingMatcherService,
+  ) {}
 
   private toRadians(value: number): number {
     return (value * Math.PI) / 180;
@@ -55,9 +48,9 @@ export class SpottingRequestService {
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(this.toRadians(lat1)) *
-      Math.cos(this.toRadians(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+        Math.cos(this.toRadians(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
 
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return earthRadiusKm * c;
@@ -87,57 +80,6 @@ export class SpottingRequestService {
     }
 
     return [...ids];
-  }
-
-  private async sendSpottingMatchNotification(params: {
-    requestId: string;
-    requestOwnerId: string;
-    actorUserId: string;
-    postId: string;
-    matchedBrand?: string | null;
-    matchedModel?: string | null;
-    distanceKm: number;
-  }) {
-    const {
-      requestId,
-      requestOwnerId,
-      actorUserId,
-      postId,
-      matchedBrand,
-      matchedModel,
-      distanceKm,
-    } = params;
-
-    const carText = [matchedBrand, matchedModel].filter(Boolean).join(' ');
-
-    try {
-      await this.notificationService.sendNotification({
-        userId: requestOwnerId,
-        actorUserId,
-        type: NotificationType.SPOTTING_MATCH, // চাইলে SPOTTING type add করতে পারো
-        channel: NotificationChannel.IN_APP,
-        title: 'New spotting match found',
-        message: carText
-          ? `A new post matched your spotting request for ${carText} within ${distanceKm.toFixed(1)} km.`
-          : `A new post matched your spotting request within ${distanceKm.toFixed(1)} km.`,
-        deepLink: `/spotting-requests/${requestId}/matches`,
-        entityType: NotificationEntityType.SPOTTING_REQUEST,
-        entityId: requestId,
-        meta: {
-          spottingRequestId: requestId,
-          postId,
-          distanceKm: Number(distanceKm.toFixed(2)),
-          brand: matchedBrand ?? null,
-          model: matchedModel ?? null,
-        },
-        groupKey: `spotting-match:${requestId}`,
-      });
-    } catch (error) {
-      this.logger.error(
-        `Failed to send spotting match notification for request ${requestId}`,
-        error instanceof Error ? error.stack : String(error),
-      );
-    }
   }
 
   async createSpottingRequest(userId: string, dto: CreateSpottingRequestDto) {
@@ -189,7 +131,7 @@ export class SpottingRequestService {
         model: dto.model ?? null,
         carId: dto.carId ?? null,
         status: SpottingRequestStatus.ACTIVE,
-        radiusKm: dto.radiusKm ?? 50,
+        radiusKm: dto.radiusKm ?? 100,
       },
       select: { id: true },
     });
@@ -203,19 +145,24 @@ export class SpottingRequestService {
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + 7);
 
-    return this.prisma.spottingRequest.create({
+    const createdRequest = await this.prisma.spottingRequest.create({
       data: {
         userId,
         profileId: dto.profileId,
         carId: dto.carId,
+        vehicleType: dto.vehicleType ?? null,
         brand: normalizedBrand,
         model: normalizedModel,
         latitude: dto.latitude,
         longitude: dto.longitude,
-        radiusKm: dto.radiusKm ?? 50,
+        radiusKm: dto.radiusKm ?? 100,
         expiresAt,
       },
     });
+
+    await this.spottingMatcherService.matchExistingPosts(createdRequest as any);
+
+    return createdRequest;
   }
 
   async getMySpottingRequests(userId: string) {
@@ -385,7 +332,9 @@ export class SpottingRequestService {
 
         // প্রোফাইল অ্যারে হ্যান্ডেল করা
         const profileArray = post.user?.profile;
-        const matchedProfile = Array.isArray(profileArray) ? profileArray[0] : profileArray;
+        const matchedProfile = Array.isArray(profileArray)
+          ? profileArray[0]
+          : profileArray;
 
         return {
           postId: post.id,
@@ -420,111 +369,6 @@ export class SpottingRequestService {
   }
 
   async processPostForSpottingMatches(postId: string) {
-    const post = await this.prisma.post.findUnique({
-      where: { id: postId },
-      include: {
-        user: true,
-        car: true,
-      },
-    });
-
-    if (!post) {
-      throw new NotFoundException('Post not found');
-    }
-
-    if (!post.latitude || !post.longitude) {
-      return { matched: 0 };
-    }
-
-    const activeRequests = await this.prisma.spottingRequest.findMany({
-      where: {
-        status: SpottingRequestStatus.ACTIVE,
-        OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
-      },
-    });
-
-    let matched = 0;
-
-    const postBrand = this.normalizeText(post.car?.make ?? null);
-    const postModel = this.normalizeText(post.car?.model ?? null);
-
-    for (const request of activeRequests) {
-      // Nijer post-e nije match hobe na
-      if (request.userId === post.userId) continue;
-
-      const blocked = await this.prisma.userBlock.findFirst({
-        where: {
-          OR: [
-            { blockerId: request.userId, blockedUserId: post.userId },
-            { blockerId: post.userId, blockedUserId: request.userId },
-          ],
-        },
-        select: { id: true },
-      });
-
-      if (blocked) continue;
-
-      const requestBrand = this.normalizeText(request.brand);
-      const requestModel = this.normalizeText(request.model);
-
-      let brandMatched = true;
-      let modelMatched = true;
-
-      if (requestBrand) brandMatched = requestBrand === postBrand;
-      if (requestModel) modelMatched = requestModel === postModel;
-
-      if (!brandMatched || !modelMatched) continue;
-
-      const distanceKm = this.getDistanceKm(
-        Number(request.latitude),
-        Number(request.longitude),
-        Number(post.latitude),
-        Number(post.longitude),
-      );
-
-      if (distanceKm > request.radiusKm) continue;
-
-      const alreadyExists = await this.prisma.spottingMatch.findFirst({
-        where: {
-          spottingRequestId: request.id,
-          postId: post.id,
-        },
-        select: { id: true },
-      });
-
-      if (alreadyExists) continue;
-
-      // Match creation and Notification trigger
-      await this.prisma.$transaction(async (tx) => {
-        await tx.spottingMatch.create({
-          data: {
-            spottingRequestId: request.id,
-            postId: post.id,
-            spottedUserId: post.userId,
-            distanceKm: Number(distanceKm.toFixed(2)),
-          },
-        });
-
-        await tx.spottingRequest.update({
-          where: { id: request.id },
-          data: { lastMatchedAt: new Date() },
-        });
-      });
-
-      // Notification sending explicitly ensured after successful DB transaction
-      await this.sendSpottingMatchNotification({
-        requestId: request.id,
-        requestOwnerId: request.userId,
-        actorUserId: post.userId,
-        postId: post.id,
-        matchedBrand: post.car?.make,
-        matchedModel: post.car?.model,
-        distanceKm,
-      });
-
-      matched++;
-    }
-
-    return { matched };
+    return this.spottingMatcherService.processNewPost(postId);
   }
 }

@@ -6,11 +6,13 @@ model SpottingRequest {
 
   title String? @db.VarChar(150)
 
-  brand String? @db.VarChar(100)
-  model String? @db.VarChar(100)
-  latitude  Decimal @db.Decimal(9, 6)
-  longitude Decimal @db.Decimal(9, 6)
-  radiusKm  Int     @default(50)
+  vehicleType PostAssetType?
+  brand       String?        @db.VarChar(100)
+  model       String?        @db.VarChar(100)
+  hashtags    String[]       @default([])
+  latitude    Decimal        @db.Decimal(9, 6)
+  longitude   Decimal        @db.Decimal(9, 6)
+  radiusKm    Int            @default(100)
 
   status        SpottingRequestStatus @default(ACTIVE)
   expiresAt     DateTime?
