@@ -223,7 +223,9 @@ export class SpottingMatcherService {
       return false;
     }
 
-    return candidateTexts.some((value) => this.containsAllTokens(value, requestTokens));
+    return candidateTexts.some((value) =>
+      this.containsAllTokens(value, requestTokens),
+    );
   }
 
   calculateDistance(
@@ -529,7 +531,7 @@ export class SpottingMatcherService {
           brand: matchedBrand ?? null,
           model: matchedModel ?? null,
         },
-        groupKey: `spotting-match:${requestId}`,
+        groupKey: `spotting-match:${requestId}:${postId}`,
       });
     } catch (error) {
       this.logger.error(

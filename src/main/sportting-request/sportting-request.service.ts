@@ -1,3 +1,4 @@
+import { InjectQueue } from '@nestjs/bullmq';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import {
   BadRequestException,
@@ -6,6 +7,7 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
+import { Queue } from 'bullmq';
 import { SpottingRequestStatus } from 'generated/prisma/enums';
 import { Prisma } from '../../../prisma/generated/prisma/client';
 import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
@@ -28,6 +30,7 @@ export class SpottingRequestService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly spottingMatcherService: SpottingMatcherService,
+    @InjectQueue('spotting-match') private readonly spottingMatchQueue: Queue,
   ) {}
 
   private toRadians(value: number): number {
@@ -160,7 +163,16 @@ export class SpottingRequestService {
       },
     });
 
-    await this.spottingMatcherService.matchExistingPosts(createdRequest as any);
+    await this.spottingMatchQueue.add(
+      'process-request',
+      { requestId: createdRequest.id },
+      {
+        attempts: 3,
+        backoff: { type: 'exponential', delay: 1000 },
+        removeOnComplete: true,
+        removeOnFail: false,
+      },
+    );
 
     return createdRequest;
   }
@@ -369,6 +381,17 @@ export class SpottingRequestService {
   }
 
   async processPostForSpottingMatches(postId: string) {
-    return this.spottingMatcherService.processNewPost(postId);
+    await this.spottingMatchQueue.add(
+      'process-post',
+      { postId },
+      {
+        attempts: 3,
+        backoff: { type: 'exponential', delay: 1000 },
+        removeOnComplete: true,
+        removeOnFail: false,
+      },
+    );
+
+    return { queued: true };
   }
 }

@@ -1,16 +1,21 @@
+import { FirebaseService } from '@/common/firebase/firebase.service';
+import { PrismaService } from '@/common/prisma/prisma.service';
+import { handlePrismaError } from '@/common/utils/error.handler';
 import {
   ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { RegisterDeviceTokenDto } from './dto/register-device-token.dto';
-import { NotificationQueryDto } from './dto/notification-query.dto';
+import {
+  NotificationChannel,
+  NotificationStatus,
+  NotificationType,
+  Prisma,
+} from 'generated/prisma/client';
 import { CreateNotificationDto } from './dto/create-notification.dto';
+import { NotificationQueryDto } from './dto/notification-query.dto';
+import { RegisterDeviceTokenDto } from './dto/register-device-token.dto';
 import { UpdateNotificationPreferenceDto } from './dto/update-notification-preference.dto';
-import { PrismaService } from '@/common/prisma/prisma.service';
-import { NotificationChannel, NotificationStatus, NotificationType, Prisma } from 'generated/prisma/client';
-import { handlePrismaError } from '@/common/utils/error.handler';
-import { FirebaseService } from '@/common/firebase/firebase.service';
 
 @Injectable()
 export class NotificationService {
@@ -20,29 +25,29 @@ export class NotificationService {
   ) {}
 
   async registerDeviceToken(userId: string, dto: RegisterDeviceTokenDto) {
-  const { token, platform } = dto;
+    const { token, platform } = dto;
 
-  return this.prisma.deviceToken.upsert({
-    where: {
-      token,
-    },
-    update: {
-      platform: platform ?? null,
-      isActive: true,
-      user: {
-        connect: { id: userId },
+    return this.prisma.deviceToken.upsert({
+      where: {
+        token,
       },
-    },
-    create: {
-      token,
-      platform: platform ?? null,
-      isActive: true,
-      user: {
-        connect: { id: userId },
+      update: {
+        platform: platform ?? null,
+        isActive: true,
+        user: {
+          connect: { id: userId },
+        },
       },
-    },
-  });
-}
+      create: {
+        token,
+        platform: platform ?? null,
+        isActive: true,
+        user: {
+          connect: { id: userId },
+        },
+      },
+    });
+  }
 
   async removeDeviceToken(userId: string, token: string) {
     const existing = await this.prisma.deviceToken.findUnique({
@@ -142,40 +147,40 @@ export class NotificationService {
   }
 
   async deleteNotification(userId: string, id: string) {
-  const existing = await this.prisma.notification.findUnique({
-    where: { id },
-  });
+    const existing = await this.prisma.notification.findUnique({
+      where: { id },
+    });
 
-  if (!existing) {
-    throw new NotFoundException('Notification not found');
+    if (!existing) {
+      throw new NotFoundException('Notification not found');
+    }
+
+    if (existing.userId !== userId) {
+      throw new ForbiddenException('Not your notification');
+    }
+
+    await this.prisma.notification.delete({
+      where: { id },
+    });
+
+    return {
+      id,
+      deleted: true,
+    };
   }
 
-  if (existing.userId !== userId) {
-    throw new ForbiddenException('Not your notification');
+  async deleteAllNotifications(userId: string) {
+    const result = await this.prisma.notification.deleteMany({
+      where: {
+        userId,
+      },
+    });
+
+    return {
+      deleted: true,
+      count: result.count,
+    };
   }
-
-  await this.prisma.notification.delete({
-    where: { id },
-  });
-
-  return {
-    id,
-    deleted: true,
-  };
-} 
-
-async deleteAllNotifications(userId: string) {
-  const result = await this.prisma.notification.deleteMany({
-    where: {
-      userId,
-    },
-  });
-
-  return {
-    deleted: true,
-    count: result.count,
-  };
-}
 
   async markAllAsRead(userId: string) {
     const res = await this.prisma.notification.updateMany({
@@ -193,19 +198,20 @@ async deleteAllNotifications(userId: string) {
   }
 
   async getMyPreference(userId: string) {
-    try{  
+    try {
       let pref = await this.prisma.notificationPreference.findUnique({
-      where: { userId },
-    });
-
-    if (!pref) {
-      pref = await this.prisma.notificationPreference.create({
-        data: { userId },
+        where: { userId },
       });
-    }
 
-    return pref;}catch(error){
-      handlePrismaError(error)
+      if (!pref) {
+        pref = await this.prisma.notificationPreference.create({
+          data: { userId },
+        });
+      }
+
+      return pref;
+    } catch (error) {
+      handlePrismaError(error);
     }
   }
 
@@ -218,9 +224,13 @@ async deleteAllNotifications(userId: string) {
     return this.prisma.notificationPreference.update({
       where: { userId },
       data: {
-        ...(dto.inAppEnabled !== undefined && { inAppEnabled: dto.inAppEnabled }),
+        ...(dto.inAppEnabled !== undefined && {
+          inAppEnabled: dto.inAppEnabled,
+        }),
         ...(dto.pushEnabled !== undefined && { pushEnabled: dto.pushEnabled }),
-        ...(dto.emailEnabled !== undefined && { emailEnabled: dto.emailEnabled }),
+        ...(dto.emailEnabled !== undefined && {
+          emailEnabled: dto.emailEnabled,
+        }),
         ...(dto.mutedTypes !== undefined && { mutedTypes: dto.mutedTypes }),
         ...(dto.quietStart !== undefined && { quietStart: dto.quietStart }),
         ...(dto.quietEnd !== undefined && { quietEnd: dto.quietEnd }),
@@ -266,6 +276,26 @@ async deleteAllNotifications(userId: string) {
         skipped: true,
         reason: 'Notification type muted by user',
       };
+    }
+
+    if (dto.groupKey) {
+      const existingNotification = await this.prisma.notification.findFirst({
+        where: {
+          userId: dto.userId,
+          groupKey: dto.groupKey,
+          type: dto.type,
+        },
+        select: { id: true },
+        orderBy: { createdAt: 'desc' },
+      });
+
+      if (existingNotification) {
+        return {
+          skipped: true,
+          reason: 'Duplicate notification for group key',
+          notification: existingNotification,
+        };
+      }
     }
 
     const shouldCreateInApp =
