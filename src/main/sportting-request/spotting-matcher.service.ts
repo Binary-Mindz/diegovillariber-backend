@@ -30,6 +30,7 @@ interface PostLike {
   latitude: number | Prisma.Decimal | null;
   longitude: number | Prisma.Decimal | null;
   assetType?: PostAssetType | null;
+  caption?: string | null;
   car?: { make?: string | null; model?: string | null } | null;
   bike?: { make?: string | null; model?: string | null } | null;
   hashtags?: Array<{ tag?: string | null }> | null;
@@ -60,6 +61,7 @@ export class SpottingMatcherService {
         latitude: true,
         longitude: true,
         assetType: true,
+        caption: true,
         car: { select: { make: true, model: true } },
         bike: { select: { make: true, model: true } },
         hashtags: { select: { tag: true } },
@@ -114,6 +116,7 @@ export class SpottingMatcherService {
         latitude: true,
         longitude: true,
         assetType: true,
+        caption: true,
         car: { select: { make: true, model: true } },
         bike: { select: { make: true, model: true } },
         hashtags: { select: { tag: true } },
@@ -203,27 +206,24 @@ export class SpottingMatcherService {
 
   private isSearchMatched(
     request: Pick<SpottingRequestLike, 'brand' | 'model'>,
-    post: Pick<PostLike, 'car' | 'bike' | 'hashtags'>,
+    post: Pick<PostLike, 'caption' | 'hashtags'>,
   ): boolean {
-    const requestTerms = this.getRequestTerms(request);
+    const requestTokens = this.getRequestTokens(request);
 
-    if (!requestTerms.length) {
+    if (!requestTokens.length) {
       return true;
     }
 
-    const postBrand = this.getPostBrand(post);
-    const postModel = this.getPostModel(post);
-    const postTags = new Set(
-      (post.hashtags ?? [])
-        .map((tag) => this.normalizeTag(tag.tag))
-        .filter((tag): tag is string => Boolean(tag)),
-    );
+    const candidateTexts = [
+      post.caption,
+      ...(post.hashtags ?? []).map((tag) => tag.tag),
+    ].filter((value): value is string => Boolean(value));
 
-    return requestTerms.some((term) => {
-      const brandMatch = this.isTextMatched(term, postBrand);
-      const modelMatch = this.isTextMatched(term, postModel);
-      return brandMatch || modelMatch || postTags.has(term);
-    });
+    if (!candidateTexts.length) {
+      return false;
+    }
+
+    return candidateTexts.some((value) => this.containsAllTokens(value, requestTokens));
   }
 
   calculateDistance(
@@ -256,25 +256,14 @@ export class SpottingMatcherService {
     return earthRadiusKm * c;
   }
 
-  private isTextMatched(
-    requestValue?: string | null,
-    postValue?: string | null,
-  ): boolean {
-    const normalizedRequest = this.normalizeText(requestValue);
-    const normalizedPost = this.normalizeText(postValue);
+  private containsAllTokens(value: string, tokens: string[]): boolean {
+    const normalizedValue = this.normalizeSearchValue(value);
 
-    if (!normalizedRequest) {
-      return true;
-    }
-
-    if (!normalizedPost) {
+    if (!normalizedValue) {
       return false;
     }
 
-    return (
-      normalizedRequest.includes(normalizedPost) ||
-      normalizedPost.includes(normalizedRequest)
-    );
+    return tokens.every((token) => normalizedValue.includes(token));
   }
 
   private getPostVehicleType(
@@ -311,27 +300,34 @@ export class SpottingMatcherService {
     return value.trim().toLowerCase();
   }
 
-  private normalizeTag(value?: string | null): string | null {
-    if (!value) {
+  private normalizeSearchValue(value?: string | null): string | null {
+    const normalized = this.normalizeText(value);
+
+    if (!normalized) {
       return null;
     }
 
-    return value.trim().toLowerCase().replace(/^#/, '');
+    return normalized.replace(/[^a-z0-9]+/g, '');
   }
 
-  private getRequestTerms(
+  private getRequestTokens(
     request: Pick<SpottingRequestLike, 'brand' | 'model'>,
   ): string[] {
-    const terms = new Set<string>();
+    const tokens = new Set<string>();
 
     for (const value of [request.brand, request.model]) {
-      const normalized = this.normalizeTag(value);
+      const normalized = this.normalizeSearchValue(value);
       if (normalized) {
-        terms.add(normalized);
+        for (const token of normalized.split(/(?=[A-Z])|(?=[0-9])/i)) {
+          const cleaned = token.trim().toLowerCase();
+          if (cleaned) {
+            tokens.add(cleaned);
+          }
+        }
       }
     }
 
-    return Array.from(terms);
+    return Array.from(tokens);
   }
 
   private isRequestEligible(request: SpottingRequestLike): boolean {
