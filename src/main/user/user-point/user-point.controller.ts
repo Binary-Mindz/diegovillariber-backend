@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  Query,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
+import { Controller, Get, Query, Res, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
@@ -20,21 +14,21 @@ import { UserPointService } from './user-point.service';
 export class UserPointController {
   constructor(private readonly userPointService: UserPointService) {}
 
- @Get('me/summary')
-@UseGuards(JwtAuthGuard)
-async getMySummary(
-  @GetUser('userId') userId: string,
-  @Res({ passthrough: true }) res: Response,
-) {
-  console.log(userId);
-  const response = await handleRequest(
-    () => this.userPointService.getMyPointSummary(userId),
-    'Point summary fetched successfully',
-  );
+  @Get('me/summary')
+  @UseGuards(JwtAuthGuard)
+  async getMySummary(
+    @GetUser('userId') userId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    console.log(userId);
+    const response = await handleRequest(
+      () => this.userPointService.getMyPointSummary(userId),
+      'Point summary fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get('me/history')
   async getMyHistory(

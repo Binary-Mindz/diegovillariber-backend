@@ -15,7 +15,6 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
-
 @WebSocketGateway({
   cors: {
     origin: [
@@ -51,52 +50,57 @@ export class ChatGateway
   ) {}
 
   afterInit(server: Server) {
-    this.logger.log(`Chat WebSocket Gateway initialized (${server.adapter.name})`);
-  }
-
- async handleConnection(client: Socket) {
-  try {
-    const token = this.extractTokenFromSocket(client);
-    if (!token) return this.disconnectWithError(client, 'Missing token');
-
-    const payload = this.jwtService.verify(token, {
-      secret: this.configService.getOrThrow<string>('JWT_ACCESS_SECRET'),
-    });
-
-    const userId = payload?.sub;
-    if (!userId) {
-      return this.disconnectWithError(client, 'Invalid token payload');
-    }
-
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-      select: { id: true, email: true, role: true },
-    });
-
-    if (!user) {
-      return this.disconnectWithError(client, 'User not found');
-    }
-
-    client.data.userId = user.id;
-    client.data.user = user;
-    client.data.role = user.role;
-
-    client.join(user.id);
-
     this.logger.log(
-      `User connected: ${user.id}, role=${user.role}, socket=${client.id}`,
+      `Chat WebSocket Gateway initialized (${server.adapter.name})`,
     );
-
-    client.emit('connection_success', {
-      message: 'Connected successfully',
-      user,
-    });
-
-    this.server.emit('presence.online', { userId: user.id });
-  } catch (error: any) {
-    this.disconnectWithError(client, error?.message ?? 'Authentication failed');
   }
-}
+
+  async handleConnection(client: Socket) {
+    try {
+      const token = this.extractTokenFromSocket(client);
+      if (!token) return this.disconnectWithError(client, 'Missing token');
+
+      const payload = this.jwtService.verify(token, {
+        secret: this.configService.getOrThrow<string>('JWT_ACCESS_SECRET'),
+      });
+
+      const userId = payload?.sub;
+      if (!userId) {
+        return this.disconnectWithError(client, 'Invalid token payload');
+      }
+
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { id: true, email: true, role: true },
+      });
+
+      if (!user) {
+        return this.disconnectWithError(client, 'User not found');
+      }
+
+      client.data.userId = user.id;
+      client.data.user = user;
+      client.data.role = user.role;
+
+      client.join(user.id);
+
+      this.logger.log(
+        `User connected: ${user.id}, role=${user.role}, socket=${client.id}`,
+      );
+
+      client.emit('connection_success', {
+        message: 'Connected successfully',
+        user,
+      });
+
+      this.server.emit('presence.online', { userId: user.id });
+    } catch (error: any) {
+      this.disconnectWithError(
+        client,
+        error?.message ?? 'Authentication failed',
+      );
+    }
+  }
   handleDisconnect(client: Socket) {
     const userId = client.data?.userId as string | undefined;
     if (userId) {
@@ -109,20 +113,20 @@ export class ChatGateway
   }
 
   private extractTokenFromSocket(client: Socket): string | null {
-  const authToken = client.handshake.auth?.token;
+    const authToken = client.handshake.auth?.token;
 
-  if (authToken) return authToken;
+    if (authToken) return authToken;
 
-  const queryToken = client.handshake.query?.token as string;
-  if (queryToken) return queryToken;
+    const queryToken = client.handshake.query?.token as string;
+    if (queryToken) return queryToken;
 
-  const header = client.handshake.headers?.authorization;
-  if (header?.startsWith("Bearer ")) {
-    return header.split(" ")[1];
+    const header = client.handshake.headers?.authorization;
+    if (header?.startsWith('Bearer ')) {
+      return header.split(' ')[1];
+    }
+
+    return null;
   }
-
-  return null;
-}
 
   private disconnectWithError(client: Socket, message: string) {
     this.logger.warn(`Disconnecting client: ${message}`);
@@ -130,15 +134,14 @@ export class ChatGateway
     client.disconnect(true);
   }
 
-
   @SubscribeMessage('sendMessage')
   async handleMessage(
     @MessageBody()
     data: {
       receiverId: string;
       content?: string;
-      fileUrl?: string;   
-      clientMsgId?: string; 
+      fileUrl?: string;
+      clientMsgId?: string;
     },
     @ConnectedSocket() client: Socket,
   ) {
@@ -165,10 +168,12 @@ export class ChatGateway
     this.server.to(receiverId).emit('receive_message', saved);
     this.server.to(senderId).emit('receive_message', saved);
 
-   
-    client.emit('message_sent', { success: true, messageId: saved.id, clientMsgId });
+    client.emit('message_sent', {
+      success: true,
+      messageId: saved.id,
+      clientMsgId,
+    });
   }
-
 
   @SubscribeMessage('get_user_history')
   async getUserChatHistory(
@@ -181,14 +186,18 @@ export class ChatGateway
     const limit = Math.min(Math.max(data.limit ?? 20, 1), 100);
     const offset = Math.max(data.offset ?? 0, 0);
 
-    const inbox = await this.chatService.listConversations(userId, limit, offset);
+    const inbox = await this.chatService.listConversations(
+      userId,
+      limit,
+      offset,
+    );
     client.emit('user_history', inbox);
   }
 
- 
   @SubscribeMessage('get_conversation')
   async getMessagesBetweenUsers(
-    @MessageBody() data: { userA?: string; userB: string; limit?: number; cursorId?: string },
+    @MessageBody()
+    data: { userA?: string; userB: string; limit?: number; cursorId?: string },
     @ConnectedSocket() client: Socket,
   ) {
     const userA = (client.data?.userId as string | undefined) ?? data.userA;
@@ -199,10 +208,18 @@ export class ChatGateway
       return;
     }
 
-    const convo = await this.chatService.getOrCreateOneToOneConversation(userA, userB);
+    const convo = await this.chatService.getOrCreateOneToOneConversation(
+      userA,
+      userB,
+    );
 
     const limit = Math.min(Math.max(data.limit ?? 30, 1), 100);
-    const messages = await this.chatService.listMessages(userA, convo.id, limit, data.cursorId);
+    const messages = await this.chatService.listMessages(
+      userA,
+      convo.id,
+      limit,
+      data.cursorId,
+    );
 
     client.emit('conversation', {
       conversationId: convo.id,
@@ -212,9 +229,10 @@ export class ChatGateway
     });
 
     await this.chatService.markDelivered(userA, convo.id);
-    this.server.to(userB).emit('receipt_delivered', { conversationId: convo.id, byUserId: userA });
+    this.server
+      .to(userB)
+      .emit('receipt_delivered', { conversationId: convo.id, byUserId: userA });
   }
-
 
   @SubscribeMessage('get_partners')
   async getChatPartners(
@@ -227,10 +245,13 @@ export class ChatGateway
     const limit = Math.min(Math.max(data.limit ?? 50, 1), 100);
     const offset = Math.max(data.offset ?? 0, 0);
 
-    const partners = await this.chatService.getChatPartnersWithUser(userId, limit, offset);
+    const partners = await this.chatService.getChatPartnersWithUser(
+      userId,
+      limit,
+      offset,
+    );
     client.emit('partners_list', partners);
   }
-
 
   @SubscribeMessage('delete_message')
   async removeMessage(
@@ -238,20 +259,28 @@ export class ChatGateway
     @ConnectedSocket() client: Socket,
   ) {
     const userId = client.data?.userId as string | undefined;
-    if (!userId) return client.emit('error', { message: 'Unauthenticated socket' });
+    if (!userId)
+      return client.emit('error', { message: 'Unauthenticated socket' });
 
     const { messageId } = data;
-    if (!messageId) return client.emit('error', { message: 'messageId required' });
+    if (!messageId)
+      return client.emit('error', { message: 'messageId required' });
 
     const deleted = await this.chatService.removeMessage(userId, messageId);
 
-    this.server.to(deleted.senderId).emit('message_deleted', { messageId, success: true });
-    const otherUserId = await this.chatService.getOtherParticipantId(deleted.conversationId, userId);
-    this.server.to(otherUserId).emit('message_deleted', { messageId, success: true });
+    this.server
+      .to(deleted.senderId)
+      .emit('message_deleted', { messageId, success: true });
+    const otherUserId = await this.chatService.getOtherParticipantId(
+      deleted.conversationId,
+      userId,
+    );
+    this.server
+      .to(otherUserId)
+      .emit('message_deleted', { messageId, success: true });
 
     client.emit('message_deleted', { messageId, success: true });
   }
-
 
   @SubscribeMessage('mark_read')
   async markRead(
@@ -259,11 +288,19 @@ export class ChatGateway
     @ConnectedSocket() client: Socket,
   ) {
     const userId = client.data?.userId as string | undefined;
-    if (!userId) return client.emit('error', { message: 'Unauthenticated socket' });
+    if (!userId)
+      return client.emit('error', { message: 'Unauthenticated socket' });
 
-    await this.chatService.markRead(userId, data.conversationId, data.messageId);
+    await this.chatService.markRead(
+      userId,
+      data.conversationId,
+      data.messageId,
+    );
 
-    const otherUserId = await this.chatService.getOtherParticipantId(data.conversationId, userId);
+    const otherUserId = await this.chatService.getOtherParticipantId(
+      data.conversationId,
+      userId,
+    );
     this.server.to(otherUserId).emit('receipt_read', {
       conversationId: data.conversationId,
       messageId: data.messageId,
@@ -288,49 +325,47 @@ export class ChatGateway
   }
 
   @SubscribeMessage('admin_broadcast')
-async adminBroadcast(
-  @MessageBody()
-  data: {
-    content?: string;
-    fileUrl?: string;
-    targetUserIds?: string[];
-  },
-  @ConnectedSocket() client: Socket,
-) {
-  try {
-    const adminId = client.data?.userId as string | undefined;
-    const role = client.data?.role as string | undefined;
+  async adminBroadcast(
+    @MessageBody()
+    data: {
+      content?: string;
+      fileUrl?: string;
+      targetUserIds?: string[];
+    },
+    @ConnectedSocket() client: Socket,
+  ) {
+    try {
+      const adminId = client.data?.userId as string | undefined;
+      const role = client.data?.role as string | undefined;
 
-    if (!adminId) {
-      client.emit('socket_error', { message: 'Unauthenticated socket' });
-      return;
-    }
+      if (!adminId) {
+        client.emit('socket_error', { message: 'Unauthenticated socket' });
+        return;
+      }
 
-    if (role !== 'ADMIN') {
-      client.emit('broadcast_error', {
-        message: 'Only admin can send broadcast',
+      if (role !== 'ADMIN') {
+        client.emit('broadcast_error', {
+          message: 'Only admin can send broadcast',
+        });
+        return;
+      }
+
+      const result = await this.chatService.sendBroadcastMessage(adminId, data);
+
+      for (const item of result.messages) {
+        this.server.to(item.receiverId).emit('receive_message', item.message);
+      }
+
+      client.emit('broadcast_sent', {
+        success: true,
+        total: result.total,
       });
-      return;
+    } catch (error: any) {
+      this.logger.error(`Broadcast failed: ${error?.message}`, error?.stack);
+
+      client.emit('broadcast_error', {
+        message: error?.message ?? 'Broadcast failed',
+      });
     }
-
-    const result = await this.chatService.sendBroadcastMessage(adminId, data);
-
-    for (const item of result.messages) {
-      this.server.to(item.receiverId).emit('receive_message', item.message);
-    }
-
-    client.emit('broadcast_sent', {
-      success: true,
-      total: result.total,
-    });
-  } catch (error: any) {
-    this.logger.error(`Broadcast failed: ${error?.message}`, error?.stack);
-
-    client.emit('broadcast_error', {
-      message: error?.message ?? 'Broadcast failed',
-    });
   }
-}
-
-
 }

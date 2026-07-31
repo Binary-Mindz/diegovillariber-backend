@@ -14,8 +14,13 @@ export class ChatService {
 
   private assertHttpsUrl(url: string) {
     let u: URL;
-    try { u = new URL(url); } catch { throw new BadRequestException('Invalid fileUrl'); }
-    if (u.protocol !== 'https:') throw new BadRequestException('Only https URLs are allowed');
+    try {
+      u = new URL(url);
+    } catch {
+      throw new BadRequestException('Invalid fileUrl');
+    }
+    if (u.protocol !== 'https:')
+      throw new BadRequestException('Only https URLs are allowed');
   }
 
   private async assertParticipant(conversationId: string, userId: string) {
@@ -60,7 +65,10 @@ export class ChatService {
     }
     if (hasFile) this.assertHttpsUrl(dto.fileUrl!);
 
-    const convo = await this.getOrCreateOneToOneConversation(senderId, dto.receiverId);
+    const convo = await this.getOrCreateOneToOneConversation(
+      senderId,
+      dto.receiverId,
+    );
 
     // idempotency
     if (dto.clientMsgId) {
@@ -98,7 +106,12 @@ export class ChatService {
       });
 
       await tx.conversationParticipant.update({
-        where: { conversationId_userId: { conversationId: convo.id, userId: dto.receiverId } },
+        where: {
+          conversationId_userId: {
+            conversationId: convo.id,
+            userId: dto.receiverId,
+          },
+        },
         data: { unreadCount: { increment: 1 } },
       });
 
@@ -113,7 +126,7 @@ export class ChatService {
     return msg;
   }
 
-    async sendBroadcastMessage(
+  async sendBroadcastMessage(
     adminId: string,
     dto: {
       content?: string;
@@ -144,8 +157,7 @@ export class ChatService {
       throw new NotFoundException('Admin user not found');
     }
 
-    const isAdmin =
-      admin.role?.includes('ADMIN' as any)
+    const isAdmin = admin.role?.includes('ADMIN' as any);
 
     if (!isAdmin) {
       throw new ForbiddenException('Only admin can send broadcast');
@@ -177,7 +189,10 @@ export class ChatService {
     }> = [];
 
     for (const user of users) {
-      const convo = await this.getOrCreateOneToOneConversation(adminId, user.id);
+      const convo = await this.getOrCreateOneToOneConversation(
+        adminId,
+        user.id,
+      );
 
       const created = await this.prisma.$transaction(async (tx) => {
         const msg = await tx.message.create({
@@ -252,7 +267,13 @@ export class ChatService {
             id: true,
             lastMessageAt: true,
             lastMessage: {
-              select: { id: true, content: true, fileUrl: true, senderId: true, createdAt: true },
+              select: {
+                id: true,
+                content: true,
+                fileUrl: true,
+                senderId: true,
+                createdAt: true,
+              },
             },
             participants: {
               select: {
@@ -275,7 +296,12 @@ export class ChatService {
     }));
   }
 
-  async listMessages(userId: string, conversationId: string, limit = 30, cursorId?: string) {
+  async listMessages(
+    userId: string,
+    conversationId: string,
+    limit = 30,
+    cursorId?: string,
+  ) {
     await this.assertParticipant(conversationId, userId);
 
     const cursor = cursorId ? { id: cursorId } : undefined;
@@ -292,7 +318,9 @@ export class ChatService {
         content: true,
         fileUrl: true,
         createdAt: true,
-        messageReceipts: { select: { userId: true, status: true, updatedAt: true } },
+        messageReceipts: {
+          select: { userId: true, status: true, updatedAt: true },
+        },
       },
     });
 
@@ -357,7 +385,8 @@ export class ChatService {
 
     // return only partners list
     return inbox.map((c) => {
-      const other = c.participants.find((p) => p.id !== userId) ?? c.participants[0];
+      const other =
+        c.participants.find((p) => p.id !== userId) ?? c.participants[0];
       return {
         conversationId: c.conversationId,
         partner: other,
@@ -374,7 +403,8 @@ export class ChatService {
       select: { id: true, senderId: true, conversationId: true },
     });
     if (!msg) throw new NotFoundException('Message not found');
-    if (msg.senderId !== userId) throw new ForbiddenException('Only sender can delete');
+    if (msg.senderId !== userId)
+      throw new ForbiddenException('Only sender can delete');
 
     const convo = await this.prisma.conversation.findUnique({
       where: { id: msg.conversationId },
@@ -393,10 +423,6 @@ export class ChatService {
       }
     });
 
-    return msg; 
+    return msg;
   }
-
-  
-
-
 }

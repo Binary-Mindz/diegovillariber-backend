@@ -9,26 +9,32 @@ export enum ModerationMediaFilter {
 }
 
 export class PostModerationQueryDto {
-  @ApiPropertyOptional({ enum: ModerationMediaFilter, default: ModerationMediaFilter.ALL })
+  @ApiPropertyOptional({
+    enum: ModerationMediaFilter,
+    default: ModerationMediaFilter.ALL,
+  })
   @IsOptional()
   @IsEnum(ModerationMediaFilter)
   media?: ModerationMediaFilter = ModerationMediaFilter.ALL;
 
-  @ApiPropertyOptional({ example: 'bestcar', description: 'search by caption/hashtag/email/name' })
+  @ApiPropertyOptional({
+    example: 'bestcar',
+    description: 'search by caption/hashtag/email/name',
+  })
   @IsOptional()
   @IsString()
   q?: string;
 
   @ApiPropertyOptional({ example: 1, default: 1 })
   @IsOptional()
-  @Type(() => Number)   
+  @Type(() => Number)
   @IsInt()
   @Min(1)
   page?: number = 1;
 
   @ApiPropertyOptional({ example: 10, default: 10 })
   @IsOptional()
-  @Type(() => Number)   
+  @Type(() => Number)
   @IsInt()
   @Min(1)
   @Max(50)

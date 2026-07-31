@@ -13,9 +13,7 @@ import { CloudflareR2Service } from './cloudflare/cloudflare-r2.service';
 
 @Controller('files')
 export class FileController {
-  constructor(
-    private readonly cloudflareR2Service: CloudflareR2Service,
-  ) { }
+  constructor(private readonly cloudflareR2Service: CloudflareR2Service) {}
 
   // ---------------------- R2 UPLOAD (MAINTAINED ENDPOINT) ----------------------
   @Post('/upload')

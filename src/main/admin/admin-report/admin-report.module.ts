@@ -4,9 +4,8 @@ import { AdminReportService } from './admin-report.service';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { NotificationModule } from '../../notification/notification.module';
 
-
 @Module({
-  imports:[NotificationModule],
+  imports: [NotificationModule],
   controllers: [AdminReportController],
   providers: [AdminReportService, PrismaService],
 })

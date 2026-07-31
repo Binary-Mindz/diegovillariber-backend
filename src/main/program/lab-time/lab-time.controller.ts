@@ -149,17 +149,14 @@ export class LabTimeController {
     return handleRequest(async () => this.service.get(id), 'Lap time fetched');
   }
 
-   @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id/download-telemetry')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Download telemetry data as CSV' })
-  async downloadTelemetry(
-    @Param('id') id: string,
-    @Res() res: Response,
-  ) {
+  async downloadTelemetry(@Param('id') id: string, @Res() res: Response) {
     const csvData = await this.service.getTelemetryCsv(id);
-  
+
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader(
       'Content-Disposition',

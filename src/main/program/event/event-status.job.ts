@@ -7,7 +7,7 @@ export class EventStatusJob {
   private readonly logger = new Logger(EventStatusJob.name);
 
   constructor(private readonly prisma: PrismaService) {}
-// check in every hour
+  // check in every hour
   @Cron(CronExpression.EVERY_HOUR)
   async syncEventStatuses() {
     const now = new Date();

@@ -38,11 +38,13 @@ import { TopBrandsQueryDto } from './dto/top-brands-query.dto';
 @ApiTags('Challenge')
 @Controller('challenges')
 export class ChallengeController {
-  constructor(private readonly service: ChallengeService) { }
+  constructor(private readonly service: ChallengeService) {}
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'List challenges (tabs: Active/Upcoming/Finished/Draft)' })
+  @ApiOperation({
+    summary: 'List challenges (tabs: Active/Upcoming/Finished/Draft)',
+  })
   async list(
     @Query() query: ChallengeQueryDto,
     @Res({ passthrough: true }) res: Response,
@@ -80,7 +82,9 @@ export class ChallengeController {
 
   @Get('top-devices')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Get top brands in challenges with advanced time & device filters' })
+  @ApiOperation({
+    summary: 'Get top brands in challenges with advanced time & device filters',
+  })
   async getTopBrands(
     @Query() query: TopBrandsQueryDto,
     @Res({ passthrough: true }) res: Response,
@@ -120,7 +124,9 @@ export class ChallengeController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':id/comments')
-  @ApiOperation({ summary: 'Get comments for a challenge submission (with replies)' })
+  @ApiOperation({
+    summary: 'Get comments for a challenge submission (with replies)',
+  })
   async getComments(
     @Param('id') challengeId: string,
     @Query('submissionId') submissionId: string,
@@ -134,16 +140,11 @@ export class ChallengeController {
   @UseGuards(JwtAuthGuard)
   @Get('comments/:commentId')
   @ApiOperation({ summary: 'Get single comment (with replies)' })
-  async getSingleComment(
-    @Param('commentId') commentId: string,
-  ) {
+  async getSingleComment(@Param('commentId') commentId: string) {
     return handleRequest(async () => {
       return this.service.getSingleComment(commentId);
     }, 'Comment fetched successfully');
   }
-
-
-
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -239,7 +240,9 @@ export class ChallengeController {
   @UseGuards(JwtAuthGuard)
   @Post(':id/submit')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Submit challenge media (respects maxEntriesPerUser)' })
+  @ApiOperation({
+    summary: 'Submit challenge media (respects maxEntriesPerUser)',
+  })
   async submit(
     @Param('id') challengeId: string,
     @GetUser('userId') userId: string,
@@ -281,7 +284,9 @@ export class ChallengeController {
   @UseGuards(JwtAuthGuard)
   @Post('submissions/:submissionId/vote')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Vote on a submission (one vote per user per submission)' })
+  @ApiOperation({
+    summary: 'Vote on a submission (one vote per user per submission)',
+  })
   async vote(
     @Param('submissionId') submissionId: string,
     @GetUser('userId') userId: string,
@@ -327,7 +332,9 @@ export class ChallengeController {
   @UseGuards(JwtAuthGuard)
   @Post(':id/comments')
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Comment on challenge or a submission (supports replies)' })
+  @ApiOperation({
+    summary: 'Comment on challenge or a submission (supports replies)',
+  })
   async comment(
     @Param('id') challengeId: string,
     @GetUser('userId') userId: string,
@@ -350,7 +357,9 @@ export class ChallengeController {
   @UseGuards(JwtAuthGuard)
   @Post(':id/complete')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Complete challenge (creator only). Creates result + winners.' })
+  @ApiOperation({
+    summary: 'Complete challenge (creator only). Creates result + winners.',
+  })
   async complete(
     @Param('id') challengeId: string,
     @GetUser('userId') userId: string,

@@ -26,7 +26,10 @@ export class SubmitRawShiftEntryDto {
   @IsString()
   editedThumbnailUrl?: string;
 
-  @ApiPropertyOptional({ example: 'My best edit 😄', description: 'Optional caption' })
+  @ApiPropertyOptional({
+    example: 'My best edit 😄',
+    description: 'Optional caption',
+  })
   @IsOptional()
   @IsString()
   caption?: string;

@@ -11,7 +11,7 @@ import { HashtagCreatedBy } from '../../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class HashtagService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async createHashtag(dto: CreateHashtagDto, userId: string) {
     const normalizedTag = dto.tag?.toLowerCase().trim().replace(/^#/, '');
@@ -32,14 +32,18 @@ export class HashtagService {
       });
     } catch (error: any) {
       if (error.code === 'P2002') {
-        const existing = await this.prisma.hashtag.findUnique({ where: { tag: normalizedTag } });
+        const existing = await this.prisma.hashtag.findUnique({
+          where: { tag: normalizedTag },
+        });
         if (existing && !existing.isActive) {
           return this.prisma.hashtag.update({
             where: { id: existing.id },
             data: { isActive: true },
           });
         }
-        throw new BadRequestException(`Hashtag '#${normalizedTag}' already exists.`);
+        throw new BadRequestException(
+          `Hashtag '#${normalizedTag}' already exists.`,
+        );
       }
       throw error;
     }
@@ -65,7 +69,9 @@ export class HashtagService {
       const normalizedTag = inputTag.toLowerCase().trim().replace(/^#/, '');
 
       if (!normalizedTag || normalizedTag.includes(' ')) {
-        throw new BadRequestException('Invalid hashtag format. Spaces are not allowed.');
+        throw new BadRequestException(
+          'Invalid hashtag format. Spaces are not allowed.',
+        );
       }
 
       const tagConflict = await this.prisma.hashtag.findFirst({
@@ -76,7 +82,9 @@ export class HashtagService {
       });
 
       if (tagConflict) {
-        throw new BadRequestException(`The hashtag '#${normalizedTag}' is already taken by another record.`);
+        throw new BadRequestException(
+          `The hashtag '#${normalizedTag}' is already taken by another record.`,
+        );
       }
 
       updateData.tag = normalizedTag;

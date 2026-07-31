@@ -129,7 +129,10 @@ export class AmbassadorProgramController {
   @Roles('ADMIN')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'List applications (admin)' })
-  @ApiResponse({ status: 200, description: 'Applications fetched successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Applications fetched successfully',
+  })
   async list(
     @Query() query: AmbassadorProgramQueryDto,
     @Res({ passthrough: true }) res: Response,

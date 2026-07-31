@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString, IsUUID } from 'class-validator';
-import { ReportReason, ReportType} from 'generated/prisma/enums';
+import { ReportReason, ReportType } from 'generated/prisma/enums';
 
 export class ReportDto {
   @IsEnum(ReportType)
@@ -11,7 +11,7 @@ export class ReportDto {
   @ApiProperty({ example: 'uuid-of-post-or-comment' })
   targetId!: string;
 
-  @IsEnum(ReportReason) 
+  @IsEnum(ReportReason)
   @ApiProperty({ example: 'FALSE_INFORMATION', enum: ReportReason })
   reason!: ReportReason;
 

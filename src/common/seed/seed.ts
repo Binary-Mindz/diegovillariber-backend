@@ -2,7 +2,14 @@ import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 
 import * as bcrypt from 'bcrypt';
-import { AccountStatus, BadgeRarity, BadgeStatus, BadgeTargetType, PrismaClient, Role } from 'generated/prisma/client';
+import {
+  AccountStatus,
+  BadgeRarity,
+  BadgeStatus,
+  BadgeTargetType,
+  PrismaClient,
+  Role,
+} from 'generated/prisma/client';
 
 const connectionString = process.env.DATABASE_URL;
 

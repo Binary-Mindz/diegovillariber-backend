@@ -12,13 +12,7 @@ import {
   Query,
   Res,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
-
-
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -45,25 +39,24 @@ export class GarageController {
       return this.garageService.getUserGarages(userId);
     }, 'Garages fetched');
   }
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles('ADMIN')
-@Get('admin/all')
-@ApiOperation({ summary: 'Get all garages with pagination (Admin only)' })
-async getAllGarages(
-  @Query() query: GetAllGaragesQueryDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    () => this.garageService.getAllGarages(query),
-    'Garages fetched successfully',
-  );
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('ADMIN')
+  @Get('admin/all')
+  @ApiOperation({ summary: 'Get all garages with pagination (Admin only)' })
+  async getAllGarages(
+    @Query() query: GetAllGaragesQueryDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.garageService.getAllGarages(query),
+      'Garages fetched successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
-  
   @Get(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get garage details' })
@@ -73,7 +66,6 @@ async getAllGarages(
     }, 'Garage fetched');
   }
 
-  
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
@@ -89,16 +81,12 @@ async getAllGarages(
     }, 'Garage updated');
   }
 
-
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete garage (Owner only)' })
-  delete(
-    @GetUser('userId') userId: string,
-    @Param('id') garageId: string,
-  ) {
+  delete(@GetUser('userId') userId: string, @Param('id') garageId: string) {
     return handleRequest(async () => {
       return this.garageService.deleteGarage(userId, garageId);
     }, 'Garage deleted');

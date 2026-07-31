@@ -112,12 +112,7 @@ export class CarStoryController {
   ) {
     return handleRequest(
       async () =>
-        this.carStoryService.updateMilestone(
-          userId,
-          storyId,
-          milestoneId,
-          dto,
-        ),
+        this.carStoryService.updateMilestone(userId, storyId, milestoneId, dto),
       'Milestone updated successfully',
     );
   }

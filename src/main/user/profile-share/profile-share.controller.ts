@@ -11,7 +11,10 @@ export class ProfileShareController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':profileId')
-  async getMyProfileShareQr(@GetUser('userId') userId: string, @Param('profileId') profileId: string) {
+  async getMyProfileShareQr(
+    @GetUser('userId') userId: string,
+    @Param('profileId') profileId: string,
+  ) {
     return this.profileShareService.getOrCreateShareData(userId, profileId);
   }
 

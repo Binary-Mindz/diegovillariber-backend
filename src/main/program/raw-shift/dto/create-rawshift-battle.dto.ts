@@ -1,6 +1,15 @@
 // src/main/program/raw-shift/dto/create-rawshift-battle.dto.ts
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsDateString, IsEnum, IsInt, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
+import {
+  IsDateString,
+  IsEnum,
+  IsInt,
+  IsNumber,
+  IsOptional,
+  IsString,
+  Max,
+  Min,
+} from 'class-validator';
 import { RawShiftStatus } from 'generated/prisma/enums';
 
 export class CreateRawShiftBattleDto {

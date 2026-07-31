@@ -4,11 +4,12 @@ import { AdminEventManagementervice } from './admin-event-service';
 import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
-  imports: [ 
+  imports: [
     CacheModule.register({
       isGlobal: false,
       ttl: 60,
-    }),],
+    }),
+  ],
   controllers: [AdminEventManagementController],
   providers: [AdminEventManagementervice],
   exports: [],

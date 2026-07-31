@@ -57,7 +57,10 @@ export class RepostController {
   }
 
   @ApiOperation({ summary: 'Get my reposted posts' })
-  @ApiResponse({ status: 200, description: 'Reposted posts fetched successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Reposted posts fetched successfully',
+  })
   @Get('me')
   async getMyReposts(@GetUser('userId') userId: string) {
     return handleRequest(
@@ -68,7 +71,10 @@ export class RepostController {
   }
 
   @ApiOperation({ summary: 'Check if post is reposted by me' })
-  @ApiResponse({ status: 200, description: 'Repost status fetched successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Repost status fetched successfully',
+  })
   @Get('check')
   async isPostReposted(
     @GetUser('userId') userId: string,

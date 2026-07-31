@@ -1,11 +1,19 @@
-import { Controller, Post, Delete, Get, Body, Param, UseGuards, Patch } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Delete,
+  Get,
+  Body,
+  Param,
+  UseGuards,
+  Patch,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags, ApiOperation } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { ReportService } from './report.service';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { ReportDto } from './dto/report-dto';
 import { handleRequest } from '@/common/helpers/handle.request';
-
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -34,8 +42,7 @@ export class ReportController {
     @Param('targetId') targetId: string,
   ) {
     return handleRequest(
-      async () =>
-        this.reportService.removeReport(userId, targetId, targetType),
+      async () => this.reportService.removeReport(userId, targetId, targetType),
       'Report removed successfully',
     );
   }

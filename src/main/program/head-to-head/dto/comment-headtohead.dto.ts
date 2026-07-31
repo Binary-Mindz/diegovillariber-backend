@@ -6,7 +6,10 @@ export class CreateHeadToHeadCommentDto {
   @IsString()
   message!: string;
 
-  @ApiPropertyOptional({ example: 'uuid-of-submission', description: 'If provided, comment is attached to that submission' })
+  @ApiPropertyOptional({
+    example: 'uuid-of-submission',
+    description: 'If provided, comment is attached to that submission',
+  })
   @IsOptional()
   @IsString()
   submissionId?: string;

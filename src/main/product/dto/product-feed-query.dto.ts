@@ -21,12 +21,18 @@ export class ProductFeedQueryDto {
   @IsEnum(ProductCategory)
   category?: ProductCategory;
 
-  @ApiPropertyOptional({ example: 'Toyota', description: 'Filter by car brand' })
+  @ApiPropertyOptional({
+    example: 'Toyota',
+    description: 'Filter by car brand',
+  })
   @IsOptional()
   @IsString()
   carBrand?: string;
 
-  @ApiPropertyOptional({ example: 'Corolla', description: 'Filter by car model' })
+  @ApiPropertyOptional({
+    example: 'Corolla',
+    description: 'Filter by car model',
+  })
   @IsOptional()
   @IsString()
   carModel?: string;

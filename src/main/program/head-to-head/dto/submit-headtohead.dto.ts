@@ -27,7 +27,10 @@ export class SubmitHeadToHeadDto {
   @IsBoolean()
   isEditedDetected?: boolean;
 
-  @ApiPropertyOptional({ enum: SubmissionStatus, example: SubmissionStatus.SUBMITTED })
+  @ApiPropertyOptional({
+    enum: SubmissionStatus,
+    example: SubmissionStatus.SUBMITTED,
+  })
   @IsOptional()
   @IsEnum(SubmissionStatus)
   status?: SubmissionStatus;

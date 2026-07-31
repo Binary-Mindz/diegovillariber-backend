@@ -2,7 +2,6 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString } from 'class-validator';
 import { OfficialPartnerRequestStatus } from 'generated/prisma/enums';
 
-
 export class UpdateOfficialPartnerStatusDto {
   @ApiProperty({
     enum: OfficialPartnerRequestStatus,

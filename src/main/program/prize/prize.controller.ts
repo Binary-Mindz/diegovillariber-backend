@@ -10,7 +10,12 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -21,7 +26,6 @@ import { CreatePrizeDto } from './dto/create-prize.dto';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { Role } from 'generated/prisma/enums';
 import { UpdatePrizeDto } from './dto/update.prize.dto';
-
 
 @ApiTags('Prize')
 @Controller('prizes')
@@ -50,7 +54,10 @@ export class PrizeController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Create prize (Admin only)' })
-  async create(@GetUser('userId') adminUserId: string, @Body() dto: CreatePrizeDto) {
+  async create(
+    @GetUser('userId') adminUserId: string,
+    @Body() dto: CreatePrizeDto,
+  ) {
     return handleRequest(async () => {
       return this.service.createPrize(adminUserId, dto);
     }, 'Prize created successfully');

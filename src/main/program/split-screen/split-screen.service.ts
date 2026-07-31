@@ -8,7 +8,16 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateSplitScreenMatchDto } from './dto/create-split-screen-match.dto';
 import { SplitScreenBattleQueryDto } from './dto/split-screen-battle-query.dto';
 import { LeagueRankingQueryDto } from './dto/league-ranking-query.dto';
-import { SplitScreenBattleCategory, SplitScreenBattleStatus, SplitScreenDivision, SplitScreenLeagueCode, SplitScreenMatchStatus, SplitScreenParticipantResult, SplitScreenPreferenceMode, SplitScreenVoteType } from 'generated/prisma/enums';
+import {
+  SplitScreenBattleCategory,
+  SplitScreenBattleStatus,
+  SplitScreenDivision,
+  SplitScreenLeagueCode,
+  SplitScreenMatchStatus,
+  SplitScreenParticipantResult,
+  SplitScreenPreferenceMode,
+  SplitScreenVoteType,
+} from 'generated/prisma/enums';
 import { VoteSplitScreenBattleDto } from './dto/vote-split-screen.dto';
 
 @Injectable()
@@ -136,14 +145,12 @@ export class SplitScreenService {
         return (
           !!requester.preferredBrand &&
           !!opponent.carMake &&
-          requester.preferredBrand.toLowerCase() === opponent.carMake.toLowerCase()
+          requester.preferredBrand.toLowerCase() ===
+            opponent.carMake.toLowerCase()
         );
 
       case SplitScreenPreferenceMode.SIMILAR_PRESTIGE:
-        if (
-          requester.prestigePoint == null ||
-          opponent.prestigePoint == null
-        ) {
+        if (requester.prestigePoint == null || opponent.prestigePoint == null) {
           return true;
         }
 
@@ -643,15 +650,15 @@ export class SplitScreenService {
       winnerSide === SplitScreenVoteType.LEFT
         ? SplitScreenParticipantResult.WIN
         : winnerSide === SplitScreenVoteType.RIGHT
-        ? SplitScreenParticipantResult.LOSS
-        : SplitScreenParticipantResult.DRAW;
+          ? SplitScreenParticipantResult.LOSS
+          : SplitScreenParticipantResult.DRAW;
 
     const rightResult =
       winnerSide === SplitScreenVoteType.RIGHT
         ? SplitScreenParticipantResult.WIN
         : winnerSide === SplitScreenVoteType.LEFT
-        ? SplitScreenParticipantResult.LOSS
-        : SplitScreenParticipantResult.DRAW;
+          ? SplitScreenParticipantResult.LOSS
+          : SplitScreenParticipantResult.DRAW;
 
     await this.prisma.$transaction([
       this.prisma.splitScreenBattle.update({

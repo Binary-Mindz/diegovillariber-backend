@@ -5,9 +5,12 @@ import { translate } from '@vitalets/google-translate-api';
 export class TranslationService {
   private readonly logger = new Logger(TranslationService.name);
 
-  async translateText(text: string, targetLang: string = 'es'): Promise<string> {
+  async translateText(
+    text: string,
+    targetLang: string = 'es',
+  ): Promise<string> {
     if (!text || text.trim() === '') return text;
-    
+
     try {
       // গুগল ট্রান্সলেট এপিআই কল (অটোমেটিক সোর্স ল্যাঙ্গুয়েজ ডিটেক্ট করবে)
       const res = await translate(text, { to: targetLang });

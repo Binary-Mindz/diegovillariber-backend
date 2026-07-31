@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateSubmitLabTimeDto } from './dto/create-submit-lab-time.dto';
 import { UpdateSubmitLabTimeDto } from './dto/update-submit-lab-time.dto';
@@ -19,17 +24,20 @@ export class SubmitLabTimeService {
       select: { activeProfileId: true },
     });
 
-    if (!user?.activeProfileId) throw new BadRequestException('Active profile not set');
+    if (!user?.activeProfileId)
+      throw new BadRequestException('Active profile not set');
 
     const profile = await this.prisma.profile.findUnique({
       where: { id: user.activeProfileId },
-      select: { id: true, activeType: true, profileName: true, imageUrl:true },
+      select: { id: true, activeType: true, profileName: true, imageUrl: true },
     });
 
     if (!profile) throw new NotFoundException('Profile not found');
 
     if (profile.activeType !== Type.SIM_RACING_DRIVER) {
-      throw new ForbiddenException('Only SIM_RACING_DRIVER can submit lap times');
+      throw new ForbiddenException(
+        'Only SIM_RACING_DRIVER can submit lap times',
+      );
     }
 
     return profile;
@@ -39,7 +47,8 @@ export class SubmitLabTimeService {
     const profile = await this.getActiveSimProfileOrThrow(userId);
 
     const date = new Date(dto.sessionDate);
-    if (Number.isNaN(date.getTime())) throw new BadRequestException('Invalid sessionDate');
+    if (Number.isNaN(date.getTime()))
+      throw new BadRequestException('Invalid sessionDate');
 
     return this.prisma.submitLabTime.create({
       data: {
@@ -82,7 +91,9 @@ export class SubmitLabTimeService {
       ...(query.simPlatform ? { simPlatform: query.simPlatform } : {}),
       ...(query.circuit ? { circuit: query.circuit } : {}),
       ...(query.carClass ? { carClass: query.carClass } : {}),
-      ...(query.q ? { carName: { contains: query.q, mode: 'insensitive' } } : {}),
+      ...(query.q
+        ? { carName: { contains: query.q, mode: 'insensitive' } }
+        : {}),
     };
 
     const [items, total] = await this.prisma.$transaction([
@@ -119,7 +130,9 @@ export class SubmitLabTimeService {
     if (!existing) throw new NotFoundException('SubmitLabTime not found');
 
     const payload: any = {
-      ...(dto.simPlatform !== undefined ? { simPlatform: dto.simPlatform } : {}),
+      ...(dto.simPlatform !== undefined
+        ? { simPlatform: dto.simPlatform }
+        : {}),
       ...(dto.circuit !== undefined ? { circuit: dto.circuit } : {}),
       ...(dto.carName !== undefined ? { carName: dto.carName ?? null } : {}),
       ...(dto.carClass !== undefined ? { carClass: dto.carClass } : {}),
@@ -127,14 +140,23 @@ export class SubmitLabTimeService {
       ...(dto.sessionDate !== undefined
         ? (() => {
             const d = new Date(dto.sessionDate);
-            if (Number.isNaN(d.getTime())) throw new BadRequestException('Invalid sessionDate');
+            if (Number.isNaN(d.getTime()))
+              throw new BadRequestException('Invalid sessionDate');
             return { sessionDate: d };
           })()
         : {}),
-      ...(dto.videoLink !== undefined ? { videoLink: dto.videoLink ?? null } : {}),
-      ...(dto.telemetrySource !== undefined ? { telemetrySource: dto.telemetrySource } : {}),
-      ...(dto.telemetryData !== undefined ? { telemetryData: dto.telemetryData ?? null } : {}),
-      ...(dto.tractionControl !== undefined ? { tractionControl: dto.tractionControl } : {}),
+      ...(dto.videoLink !== undefined
+        ? { videoLink: dto.videoLink ?? null }
+        : {}),
+      ...(dto.telemetrySource !== undefined
+        ? { telemetrySource: dto.telemetrySource }
+        : {}),
+      ...(dto.telemetryData !== undefined
+        ? { telemetryData: dto.telemetryData ?? null }
+        : {}),
+      ...(dto.tractionControl !== undefined
+        ? { tractionControl: dto.tractionControl }
+        : {}),
       ...(dto.abs !== undefined ? { abs: dto.abs } : {}),
       ...(dto.stability !== undefined ? { stability: dto.stability } : {}),
       ...(dto.autoClutch !== undefined ? { autoClutch: dto.autoClutch } : {}),
@@ -161,69 +183,71 @@ export class SubmitLabTimeService {
   }
 
   async compareBest(userId: string, dto: CompareSubmitLabTimeDto) {
-  if (dto.otherUserId === userId) {
-    throw new BadRequestException('Cannot compare with yourself');
-  }
-
-  const me = await this.getActiveSimProfileOrThrow(userId);
-  const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
-
-  const candidates = [
-    {
-      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
-      ...(dto.circuit ? { circuit: dto.circuit } : {}),
-      ...(dto.carClass ? { carClass: dto.carClass } : {}),
-    },
-    {
-      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
-      ...(dto.circuit ? { circuit: dto.circuit } : {}),
-    },
-    {
-      ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
-    },
-    {},
-  ].filter((item, index, arr) => {
-    const key = JSON.stringify(item);
-    return arr.findIndex((x) => JSON.stringify(x) === key) === index;
-  });
-
-  for (const whereCommon of candidates) {
-    const [myBest, otherBest] = await this.prisma.$transaction([
-      this.prisma.submitLabTime.findFirst({
-        where: { profileId: me.id, ...whereCommon },
-        orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
-      }),
-      this.prisma.submitLabTime.findFirst({
-        where: { profileId: other.id, ...whereCommon },
-        orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
-      }),
-    ]);
-
-    if (myBest && otherBest) {
-      return {
-        filter: whereCommon,
-        fallbackUsed: JSON.stringify(whereCommon) !== JSON.stringify({
-          ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
-          ...(dto.circuit ? { circuit: dto.circuit } : {}),
-          ...(dto.carClass ? { carClass: dto.carClass } : {}),
-        }),
-        me: {
-          profileId: me.id,
-          profileName: me.profileName ?? null,
-          best: myBest,
-        },
-        other: {
-          profileId: other.id,
-          profileName: other.profileName ?? null,
-          best: otherBest,
-        },
-        gapMs: otherBest.lapTimeMs - myBest.lapTimeMs,
-      };
+    if (dto.otherUserId === userId) {
+      throw new BadRequestException('Cannot compare with yourself');
     }
-  }
 
-  throw new NotFoundException('No comparable lap found for both users');
-}
+    const me = await this.getActiveSimProfileOrThrow(userId);
+    const other = await this.getActiveSimProfileOrThrow(dto.otherUserId);
+
+    const candidates = [
+      {
+        ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+        ...(dto.circuit ? { circuit: dto.circuit } : {}),
+        ...(dto.carClass ? { carClass: dto.carClass } : {}),
+      },
+      {
+        ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+        ...(dto.circuit ? { circuit: dto.circuit } : {}),
+      },
+      {
+        ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+      },
+      {},
+    ].filter((item, index, arr) => {
+      const key = JSON.stringify(item);
+      return arr.findIndex((x) => JSON.stringify(x) === key) === index;
+    });
+
+    for (const whereCommon of candidates) {
+      const [myBest, otherBest] = await this.prisma.$transaction([
+        this.prisma.submitLabTime.findFirst({
+          where: { profileId: me.id, ...whereCommon },
+          orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
+        }),
+        this.prisma.submitLabTime.findFirst({
+          where: { profileId: other.id, ...whereCommon },
+          orderBy: [{ lapTimeMs: 'asc' }, { sessionDate: 'desc' }],
+        }),
+      ]);
+
+      if (myBest && otherBest) {
+        return {
+          filter: whereCommon,
+          fallbackUsed:
+            JSON.stringify(whereCommon) !==
+            JSON.stringify({
+              ...(dto.simPlatform ? { simPlatform: dto.simPlatform } : {}),
+              ...(dto.circuit ? { circuit: dto.circuit } : {}),
+              ...(dto.carClass ? { carClass: dto.carClass } : {}),
+            }),
+          me: {
+            profileId: me.id,
+            profileName: me.profileName ?? null,
+            best: myBest,
+          },
+          other: {
+            profileId: other.id,
+            profileName: other.profileName ?? null,
+            best: otherBest,
+          },
+          gapMs: otherBest.lapTimeMs - myBest.lapTimeMs,
+        };
+      }
+    }
+
+    throw new NotFoundException('No comparable lap found for both users');
+  }
 
   // -------------------------
   // 2) Compare history (trend)
@@ -319,92 +343,91 @@ export class SubmitLabTimeService {
   //   };
   // }
 
-   async getSimRacingUsers(currentUserId: string, query: ListSimRacingUsersDto) {
-  const page = query.page ?? 1;
-  const limit = query.limit ?? 20;
-  const skip = (page - 1) * limit;
-  const q = query.q?.trim();
+  async getSimRacingUsers(currentUserId: string, query: ListSimRacingUsersDto) {
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 20;
+    const skip = (page - 1) * limit;
+    const q = query.q?.trim();
 
-  const where: any = {
-    activeType: Type.SIM_RACING_DRIVER,
-    suspend: false,
-    userId: {
-      not: currentUserId,
-    },
-    simRacing: {
-      isNot: null,
-    },
-    ...(q
-      ? {
-          OR: [
-            {
-              profileName: {
-                contains: q,
-                mode: 'insensitive',
-              },
-            },
-            {
-              user: {
-                email: {
+    const where: any = {
+      activeType: Type.SIM_RACING_DRIVER,
+      suspend: false,
+      userId: {
+        not: currentUserId,
+      },
+      simRacing: {
+        isNot: null,
+      },
+      ...(q
+        ? {
+            OR: [
+              {
+                profileName: {
                   contains: q,
                   mode: 'insensitive',
                 },
               },
+              {
+                user: {
+                  email: {
+                    contains: q,
+                    mode: 'insensitive',
+                  },
+                },
+              },
+            ],
+          }
+        : {}),
+    };
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.profile.findMany({
+        where,
+        skip,
+        take: limit,
+        orderBy: [{ profileName: 'asc' }],
+        select: {
+          id: true,
+          profileName: true,
+          imageUrl: true,
+          activeType: true,
+          preference: true,
+          user: {
+            select: {
+              id: true,
+              email: true,
             },
-          ],
-        }
-      : {}),
-  };
-
-  const [items, total] = await this.prisma.$transaction([
-    this.prisma.profile.findMany({
-      where,
-      skip,
-      take: limit,
-      orderBy: [{ profileName: 'asc' }],
-      select: {
-        id: true,
-        profileName: true,
-        imageUrl: true,
-        activeType: true,
-        preference: true,
-        user: {
-          select: {
-            id: true,
-            email: true,
+          },
+          simRacing: {
+            select: {
+              id: true,
+              profileType: true,
+              hardwareSetup: true,
+              displayAndPcSetup: true,
+              drivingAssistant: true,
+              racing: true,
+              setupDescription: true,
+            },
           },
         },
-        simRacing: {
-          select: {
-            id: true,
-            profileType: true,
-            hardwareSetup: true,
-            displayAndPcSetup: true,
-            drivingAssistant: true,
-            racing: true,
-            setupDescription: true,
-          },
-        },
-      },
-    }),
-    this.prisma.profile.count({ where }),
-  ]);
+      }),
+      this.prisma.profile.count({ where }),
+    ]);
 
-  return {
-    page,
-    limit,
-    total,
-    items: items.map((item) => ({
-      userId: item.user.id,
-      email: item.user.email,
-      profileId: item.id,
-      profileName: item.profileName,
-      imageUrl: item.imageUrl,
-      activeType: item.activeType,
-      preference: item.preference,
-      simRacing: item.simRacing,
-    })),
-  };
-}
-
+    return {
+      page,
+      limit,
+      total,
+      items: items.map((item) => ({
+        userId: item.user.id,
+        email: item.user.email,
+        profileId: item.id,
+        profileName: item.profileName,
+        imageUrl: item.imageUrl,
+        activeType: item.activeType,
+        preference: item.preference,
+        simRacing: item.simRacing,
+      })),
+    };
+  }
 }

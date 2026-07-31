@@ -34,7 +34,10 @@ export class CreateChallengeDto {
   @IsEnum(ChallengeType)
   type!: ChallengeType;
 
-  @ApiProperty({ enum: ChallengeCategory, example: ChallengeCategory.COMMUNITY })
+  @ApiProperty({
+    enum: ChallengeCategory,
+    example: ChallengeCategory.COMMUNITY,
+  })
   @IsEnum(ChallengeCategory)
   category!: ChallengeCategory;
 
@@ -47,12 +50,18 @@ export class CreateChallengeDto {
   @IsString()
   coverImage?: string;
 
-  @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
+  @ApiPropertyOptional({
+    enum: ParticipationScope,
+    example: ParticipationScope.GLOBAL,
+  })
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;
 
-  @ApiPropertyOptional({ example: 10, description: 'Required when participationScope=RADIUS' })
+  @ApiPropertyOptional({
+    example: 10,
+    description: 'Required when participationScope=RADIUS',
+  })
   @IsOptional()
   @IsInt()
   @Min(1)
@@ -91,7 +100,10 @@ export class CreateChallengeDto {
   @IsBoolean()
   enableDeviceRestriction?: boolean;
 
-  @ApiPropertyOptional({ enum: QuickPreset, example: QuickPreset.NONE_ALL_DEVICE })
+  @ApiPropertyOptional({
+    enum: QuickPreset,
+    example: QuickPreset.NONE_ALL_DEVICE,
+  })
   @IsOptional()
   @IsEnum(QuickPreset)
   quickPreset?: QuickPreset;

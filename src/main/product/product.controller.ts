@@ -123,7 +123,9 @@ export class ProductController {
   @UseGuards(JwtAuthGuard)
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update product (only owner can update, including isSold status)' })
+  @ApiOperation({
+    summary: 'Update product (only owner can update, including isSold status)',
+  })
   async updateProduct(
     @Param('id') id: string,
     @GetUser('userId') userId: string,

@@ -4,7 +4,7 @@ import { ReportController } from './report.controller';
 import { NotificationModule } from '../../notification/notification.module';
 
 @Module({
-  imports:[NotificationModule],
+  imports: [NotificationModule],
   controllers: [ReportController],
   providers: [ReportService],
   exports: [ReportService],

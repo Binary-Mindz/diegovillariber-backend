@@ -20,7 +20,10 @@ export class CompareHistoryDto {
   @IsEnum(CarClass)
   carClass!: CarClass;
 
-  @ApiPropertyOptional({ example: 20, description: 'How many recent laps to return (max 100)' })
+  @ApiPropertyOptional({
+    example: 20,
+    description: 'How many recent laps to return (max 100)',
+  })
   @IsOptional()
   @Type(() => Number)
   @IsInt()

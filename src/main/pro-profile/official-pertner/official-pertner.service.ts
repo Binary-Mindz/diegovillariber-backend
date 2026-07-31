@@ -9,16 +9,18 @@ import { CreateOfficialPartnerDto } from './dto/create-official-pertner.dto';
 import { UpdateOfficialPartnerDto } from './dto/update-official-pertner.dto';
 import { UpdateOfficialPartnerStatusDto } from './dto/update-request-status.dto';
 import { OfficialPartnerRequestStatus, Role } from 'generated/prisma/enums';
-import { OfficialPartnerQueryDto, OfficialPartnerTab } from './dto/official-partner.query.dto';
+import {
+  OfficialPartnerQueryDto,
+  OfficialPartnerTab,
+} from './dto/official-partner.query.dto';
 import { Prisma } from 'generated/prisma/client';
 import { QueryMode } from 'generated/prisma/internal/prismaNamespace';
 
-
 @Injectable()
 export class OfficialPartnerService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
-    async createRequest(userId: string, dto: CreateOfficialPartnerDto) {
+  async createRequest(userId: string, dto: CreateOfficialPartnerDto) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
       select: { role: true },
@@ -27,7 +29,9 @@ export class OfficialPartnerService {
     if (!user) throw new BadRequestException('User not found');
 
     if (user.role === Role.ADMIN) {
-      throw new ForbiddenException('Admin cannot create official partner request.');
+      throw new ForbiddenException(
+        'Admin cannot create official partner request.',
+      );
     }
 
     const existing = await this.prisma.officialPartner.findUnique({
@@ -35,7 +39,9 @@ export class OfficialPartnerService {
     });
 
     if (existing) {
-      throw new BadRequestException('You already have an official partner request.');
+      throw new BadRequestException(
+        'You already have an official partner request.',
+      );
     }
 
     return this.prisma.officialPartner.create({
@@ -62,7 +68,8 @@ export class OfficialPartnerService {
       include: { user: true }, // optional
     });
 
-    if (!request) throw new NotFoundException('Official partner request not found.');
+    if (!request)
+      throw new NotFoundException('Official partner request not found.');
     return request;
   }
 
@@ -71,11 +78,14 @@ export class OfficialPartnerService {
       where: { userId },
     });
 
-    if (!request) throw new NotFoundException('Official partner request not found.');
+    if (!request)
+      throw new NotFoundException('Official partner request not found.');
 
     // usually users can edit only while pending
     if (request.requestStatus !== 'PENDING') {
-      throw new ForbiddenException('You can update only while status is PENDING.');
+      throw new ForbiddenException(
+        'You can update only while status is PENDING.',
+      );
     }
 
     return this.prisma.officialPartner.update({
@@ -99,7 +109,8 @@ export class OfficialPartnerService {
       where: { userId },
     });
 
-    if (!request) throw new NotFoundException('Official partner request not found.');
+    if (!request)
+      throw new NotFoundException('Official partner request not found.');
 
     // if you want: prevent delete after approved
     // if (request.requestStatus === 'APPROVED') throw new ForbiddenException('Cannot delete an approved partner.');
@@ -167,13 +178,17 @@ export class OfficialPartnerService {
       },
     });
 
-    if (!request) throw new NotFoundException('Official partner request not found.');
+    if (!request)
+      throw new NotFoundException('Official partner request not found.');
     return request;
   }
 
   async updateStatus(id: string, dto: UpdateOfficialPartnerStatusDto) {
-    const request = await this.prisma.officialPartner.findUnique({ where: { id } });
-    if (!request) throw new NotFoundException('Official partner request not found.');
+    const request = await this.prisma.officialPartner.findUnique({
+      where: { id },
+    });
+    if (!request)
+      throw new NotFoundException('Official partner request not found.');
 
     // ✅ Transaction: update request + update user role
     const result = await this.prisma.$transaction(async (tx) => {
@@ -202,5 +217,4 @@ export class OfficialPartnerService {
 
     return result;
   }
-
 }

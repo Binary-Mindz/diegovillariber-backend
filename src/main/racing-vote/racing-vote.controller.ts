@@ -12,11 +12,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { Response } from 'express';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
@@ -30,7 +26,7 @@ import { RacingVoteHistoryDto } from './dto/racing-vote-history.dto';
 @ApiTags('RacingVote')
 @Controller('racing-votes')
 export class RacingVoteController {
-  constructor(private readonly service: RacingVoteService) { }
+  constructor(private readonly service: RacingVoteService) {}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -95,7 +91,6 @@ export class RacingVoteController {
     res.status(response.statusCode);
     return response;
   }
-
 
   @Get('top-users')
   @HttpCode(HttpStatus.OK)

@@ -20,12 +20,18 @@ export class HeadToHeadQueryDto {
   @IsEnum(HeadToHeadTab)
   tab?: HeadToHeadTab;
 
-  @ApiPropertyOptional({ enum: BattleAccessType, example: BattleAccessType.OPEN })
+  @ApiPropertyOptional({
+    enum: BattleAccessType,
+    example: BattleAccessType.OPEN,
+  })
   @IsOptional()
   @IsEnum(BattleAccessType)
   accessType?: BattleAccessType;
 
-  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
+  @ApiPropertyOptional({
+    enum: BattleCategory,
+    example: BattleCategory.STYLE_BATTLE,
+  })
   @IsOptional()
   @IsEnum(BattleCategory)
   battleCategory?: BattleCategory;
@@ -35,14 +41,18 @@ export class HeadToHeadQueryDto {
   @IsEnum(Preference)
   preference?: Preference;
 
-  @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
+  @ApiPropertyOptional({
+    enum: ParticipationScope,
+    example: ParticipationScope.GLOBAL,
+  })
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;
 
   @ApiPropertyOptional({
     example: 'bmw',
-    description: 'Search by battle title / description / location / brand / creator name / creator email',
+    description:
+      'Search by battle title / description / location / brand / creator name / creator email',
   })
   @IsOptional()
   @IsString()

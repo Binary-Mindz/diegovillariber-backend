@@ -18,7 +18,6 @@ import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
 import { SpottingRequestService } from './sportting-request.service';
 import { NearbyPostsDto } from './dto/nearby-post.dto';
 
-
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @ApiTags('Spotting Requests')

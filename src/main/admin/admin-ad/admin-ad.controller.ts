@@ -21,7 +21,6 @@ import { RolesGuard } from '@/common/guards/roles.guard';
 import { Roles } from '@/common/decorator/roles.tdecorator';
 import { handleRequest } from '@/common/helpers/handle.request';
 
-
 import { CreateAdDto } from './dto/create-ad.dto';
 import { GetAdsQueryDto } from './dto/get-ad-query.dto';
 import { ChangeAdStatusDto } from './dto/change-ad-status.dto';

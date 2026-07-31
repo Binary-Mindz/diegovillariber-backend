@@ -7,18 +7,10 @@ import { ChatService } from './chat.service';
 import { ChatController } from './chat.controller';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
-
 @Module({
-  imports: [
-    ConfigModule,
-    JwtModule.register({}),
-  ],
+  imports: [ConfigModule, JwtModule.register({})],
   controllers: [ChatController],
-  providers: [
-    PrismaService,
-    ChatService,
-    ChatGateway,
-  ],
+  providers: [PrismaService, ChatService, ChatGateway],
   exports: [ChatService],
 })
 export class ChatModule {}

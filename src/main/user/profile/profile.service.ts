@@ -23,7 +23,13 @@ import { assertPayloadMatchesType } from './utils/profile-type.validator';
 type UpdateProfileBaseDto = Partial<
   Pick<
     CreateProfileDto,
-    'profileName' | 'bio' | 'imageUrl' | 'instagramHandler' | 'accountType' | 'preference' | 'locationStatus'
+    | 'profileName'
+    | 'bio'
+    | 'imageUrl'
+    | 'instagramHandler'
+    | 'accountType'
+    | 'preference'
+    | 'locationStatus'
   >
 >;
 
@@ -46,7 +52,7 @@ type ProfileCreateWithRelations = Prisma.ProfileCreateInput & {
 
 @Injectable()
 export class ProfileService {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
   async createProfile(currentUserId: string, dto: CreateProfileDto) {
     assertPayloadMatchesType(dto);
 
@@ -79,7 +85,6 @@ export class ProfileService {
           where: { id: existing.id },
           data: baseData,
         });
-
 
         await this.ensureSubProfileForType(tx, existing.id, dto);
 
@@ -161,7 +166,11 @@ export class ProfileService {
     });
   }
 
-  async changeProfileType(profileId: string, currentUserId: string, dto: ChangeProfileTypeDto) {
+  async changeProfileType(
+    profileId: string,
+    currentUserId: string,
+    dto: ChangeProfileTypeDto,
+  ) {
     assertPayloadMatchesType(dto);
 
     return this.prisma.$transaction(async (tx) => {
@@ -170,7 +179,8 @@ export class ProfileService {
         include: { simRacing: true },
       });
       if (!profile) throw new NotFoundException('Profile not found');
-      if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+      if (profile.userId !== currentUserId)
+        throw new ForbiddenException('No access');
 
       switch (dto.profileType) {
         case ProfileType.SPOTTER:
@@ -193,14 +203,16 @@ export class ProfileService {
           await tx.contentCreatorProfile.upsert({
             where: { profileId },
             update: {
-              creatorCategory: (dto.creator?.creatorCategory as any) ?? undefined,
+              creatorCategory:
+                (dto.creator?.creatorCategory as any) ?? undefined,
               youtubeChanel: dto.creator?.youtubeChanel ?? undefined,
               portfolioWebsite: dto.creator?.portfolioWebsite ?? undefined,
             },
             create: {
               profileId,
               creatorCategory:
-                (dto.creator?.creatorCategory as any) ?? ContentCategory.PHOTOGRAPHY,
+                (dto.creator?.creatorCategory as any) ??
+                ContentCategory.PHOTOGRAPHY,
               youtubeChanel: dto.creator?.youtubeChanel ?? null,
               portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
             },
@@ -209,22 +221,25 @@ export class ProfileService {
 
         case ProfileType.PRO_BUSSINESS: {
           if (!dto.business?.businessName || !dto.business?.location) {
-            throw new BadRequestException('businessName and location are required for BUSINESS profile');
+            throw new BadRequestException(
+              'businessName and location are required for BUSINESS profile',
+            );
           }
           await tx.businessProfile.upsert({
             where: { profileId },
             update: {
-              businessCategory: (dto.business.businessCategory as any) ?? undefined,
+              businessCategory:
+                (dto.business.businessCategory as any) ?? undefined,
               businessName: dto.business.businessName,
               location: dto.business.location,
             },
             create: {
               profileId,
               businessCategory:
-                (dto.business.businessCategory as any) ?? BusinessCategory.Detailling_Care,
+                (dto.business.businessCategory as any) ??
+                BusinessCategory.Detailling_Care,
               businessName: dto.business.businessName,
               location: dto.business.location,
-
             },
           });
           break;
@@ -232,20 +247,23 @@ export class ProfileService {
 
         case ProfileType.PRO_DRIVER: {
           if (!dto.proDriver?.location) {
-            throw new BadRequestException('location is required for PRO_DRIVER profile');
+            throw new BadRequestException(
+              'location is required for PRO_DRIVER profile',
+            );
           }
           await tx.proDriverProfile.upsert({
             where: { profileId },
             update: {
-              racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
+              racingDiscipline:
+                (dto.proDriver.racingDiscipline as any) ?? undefined,
               location: dto.proDriver.location,
             },
             create: {
               profileId,
               racingDiscipline:
-                (dto.proDriver.racingDiscipline as any) ?? VehicleCategory.MOTOCROSS,
+                (dto.proDriver.racingDiscipline as any) ??
+                VehicleCategory.MOTOCROSS,
               location: dto.proDriver.location,
-
             },
           });
           break;
@@ -347,7 +365,6 @@ export class ProfileService {
     };
   }
 
-
   private async buildCreateNestedForType(dto: CreateProfileDto) {
     switch (dto.profileType) {
       case ProfileType.SPOTTER:
@@ -360,7 +377,8 @@ export class ProfileService {
         return {
           creator: {
             create: {
-              creatorCategory: dto.creator?.creatorCategory ?? ContentCategory.PHOTOGRAPHY,
+              creatorCategory:
+                dto.creator?.creatorCategory ?? ContentCategory.PHOTOGRAPHY,
               youtubeChanel: dto.creator?.youtubeChanel ?? null,
               portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
             },
@@ -369,12 +387,16 @@ export class ProfileService {
 
       case ProfileType.PRO_BUSSINESS: {
         if (!dto.business?.businessName || !dto.business?.location) {
-          throw new BadRequestException('businessName and location are required for BUSINESS profile');
+          throw new BadRequestException(
+            'businessName and location are required for BUSINESS profile',
+          );
         }
         return {
           business: {
             create: {
-              businessCategory: dto.business.businessCategory ?? BusinessCategory.Detailling_Care,
+              businessCategory:
+                dto.business.businessCategory ??
+                BusinessCategory.Detailling_Care,
               businessName: dto.business.businessName,
               location: dto.business.location,
             },
@@ -384,12 +406,15 @@ export class ProfileService {
 
       case ProfileType.PRO_DRIVER: {
         if (!dto.proDriver?.location) {
-          throw new BadRequestException('location is required for PRO_DRIVER profile');
+          throw new BadRequestException(
+            'location is required for PRO_DRIVER profile',
+          );
         }
         return {
           proDriver: {
             create: {
-              racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+              racingDiscipline:
+                (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
               location: dto.proDriver.location,
             },
           },
@@ -401,11 +426,19 @@ export class ProfileService {
         return {
           simRacing: {
             create: {
-              hardwareSetup: sim.hardwareSetup ? { create: { ...sim.hardwareSetup } } : undefined,
-              displayAndPcSetup: sim.displayAndPcSetup ? { create: { ...sim.displayAndPcSetup } } : undefined,
-              drivingAssistant: sim.drivingAssistant ? { create: { ...sim.drivingAssistant } } : undefined,
+              hardwareSetup: sim.hardwareSetup
+                ? { create: { ...sim.hardwareSetup } }
+                : undefined,
+              displayAndPcSetup: sim.displayAndPcSetup
+                ? { create: { ...sim.displayAndPcSetup } }
+                : undefined,
+              drivingAssistant: sim.drivingAssistant
+                ? { create: { ...sim.drivingAssistant } }
+                : undefined,
               racing: sim.racing ? { create: { ...sim.racing } } : undefined,
-              setupDescription: sim.setupDescription ? { create: { ...sim.setupDescription } } : undefined,
+              setupDescription: sim.setupDescription
+                ? { create: { ...sim.setupDescription } }
+                : undefined,
             },
           },
         };
@@ -416,7 +449,11 @@ export class ProfileService {
     }
   }
 
-  private async ensureSubProfileForType(tx: any, profileId: string, dto: CreateProfileDto) {
+  private async ensureSubProfileForType(
+    tx: any,
+    profileId: string,
+    dto: CreateProfileDto,
+  ) {
     switch (dto.profileType) {
       case ProfileType.SPOTTER:
         await tx.spotterProfile.upsert({
@@ -444,7 +481,9 @@ export class ProfileService {
           },
           create: {
             profileId,
-            creatorCategory: (dto.creator?.creatorCategory as any) ?? ContentCategory.PHOTOGRAPHY,
+            creatorCategory:
+              (dto.creator?.creatorCategory as any) ??
+              ContentCategory.PHOTOGRAPHY,
             youtubeChanel: dto.creator?.youtubeChanel ?? null,
             portfolioWebsite: dto.creator?.portfolioWebsite ?? null,
           },
@@ -453,18 +492,23 @@ export class ProfileService {
 
       case ProfileType.PRO_BUSSINESS: {
         if (!dto.business?.businessName || !dto.business?.location) {
-          throw new BadRequestException('businessName and location are required for BUSINESS profile');
+          throw new BadRequestException(
+            'businessName and location are required for BUSINESS profile',
+          );
         }
         await tx.businessProfile.upsert({
           where: { profileId },
           update: {
-            businessCategory: (dto.business.businessCategory as any) ?? undefined,
+            businessCategory:
+              (dto.business.businessCategory as any) ?? undefined,
             businessName: dto.business.businessName,
             location: dto.business.location,
           },
           create: {
             profileId,
-            businessCategory: (dto.business.businessCategory as any) ?? BusinessCategory.Detailling_Care,
+            businessCategory:
+              (dto.business.businessCategory as any) ??
+              BusinessCategory.Detailling_Care,
             businessName: dto.business.businessName,
             location: dto.business.location,
           },
@@ -474,17 +518,21 @@ export class ProfileService {
 
       case ProfileType.PRO_DRIVER: {
         if (!dto.proDriver?.location) {
-          throw new BadRequestException('location is required for PRO_DRIVER profile');
+          throw new BadRequestException(
+            'location is required for PRO_DRIVER profile',
+          );
         }
         await tx.proDriverProfile.upsert({
           where: { profileId },
           update: {
-            racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? undefined,
+            racingDiscipline:
+              (dto.proDriver.racingDiscipline as any) ?? undefined,
             location: dto.proDriver.location,
           },
           create: {
             profileId,
-            racingDiscipline: (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
+            racingDiscipline:
+              (dto.proDriver.racingDiscipline as any) ?? RacingType.GT_Racing,
             location: dto.proDriver.location,
           },
         });
@@ -547,7 +595,11 @@ export class ProfileService {
     }
   }
 
-  async deleteProfileType(profileId: string, currentUserId: string, profileType: ProfileType) {
+  async deleteProfileType(
+    profileId: string,
+    currentUserId: string,
+    profileType: ProfileType,
+  ) {
     return this.prisma.$transaction(async (tx) => {
       const profile = await tx.profile.findUnique({
         where: { id: profileId },
@@ -562,7 +614,8 @@ export class ProfileService {
       });
 
       if (!profile) throw new NotFoundException('Profile not found');
-      if (profile.userId !== currentUserId) throw new ForbiddenException('No access');
+      if (profile.userId !== currentUserId)
+        throw new ForbiddenException('No access');
 
       switch (profileType) {
         case ProfileType.SPOTTER:
@@ -592,7 +645,6 @@ export class ProfileService {
         default:
           throw new BadRequestException('Invalid profile type');
       }
-
 
       const after = await tx.profile.findUnique({
         where: { id: profileId },
@@ -715,7 +767,4 @@ export class ProfileService {
       },
     });
   }
-
-
-
 }

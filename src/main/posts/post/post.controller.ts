@@ -70,12 +70,18 @@ export class PostController {
     return response;
   }
 
-@ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get(':postId')
   async getSinglePost(
     @GetUser('userId') userId: string,
-    @Param('postId', new ParseUUIDPipe({ exceptionFactory: () => new NotFoundException('Post not found') })) postId: string, // 👈 ParseUUIDPipe যুক্ত করা হয়েছে
+    @Param(
+      'postId',
+      new ParseUUIDPipe({
+        exceptionFactory: () => new NotFoundException('Post not found'),
+      }),
+    )
+    postId: string, // 👈 ParseUUIDPipe যুক্ত করা হয়েছে
     @Query() query: PostInsightSourceDto,
     @Res({ passthrough: true }) res: Response,
   ) {

@@ -1,6 +1,11 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsNumberString, IsOptional } from 'class-validator';
-import { SplitScreenBattleCategory, SplitScreenBattleStatus, SplitScreenDivision, SplitScreenLeagueCode } from 'generated/prisma/enums';
+import {
+  SplitScreenBattleCategory,
+  SplitScreenBattleStatus,
+  SplitScreenDivision,
+  SplitScreenLeagueCode,
+} from 'generated/prisma/enums';
 
 export class SplitScreenBattleQueryDto {
   @ApiPropertyOptional({ example: '1' })

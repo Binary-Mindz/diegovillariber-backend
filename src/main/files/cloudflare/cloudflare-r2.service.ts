@@ -1,7 +1,15 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { FileType } from 'generated/prisma/enums';
-import { S3Client, PutObjectCommand, DeleteObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client,
+  PutObjectCommand,
+  DeleteObjectCommand,
+} from '@aws-sdk/client-s3';
 import sharp from 'sharp';
 import ffmpeg from 'fluent-ffmpeg';
 import * as fs from 'fs';
@@ -39,12 +47,16 @@ export class CloudflareR2Service {
         .jpeg({ quality: 80, progressive: true, mozjpeg: true })
         .toBuffer();
     } catch (error) {
-      throw new InternalServerErrorException(`Image optimization failed: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Image optimization failed: ${error.message}`,
+      );
     }
   }
 
-
-  private async compressVideo(fileBuffer: Buffer, originalName: string): Promise<{ buffer: Buffer; ext: string; mimetype: string }> {
+  private async compressVideo(
+    fileBuffer: Buffer,
+    originalName: string,
+  ): Promise<{ buffer: Buffer; ext: string; mimetype: string }> {
     const tempDir = path.join(process.cwd(), 'temp-uploads');
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir, { recursive: true });
@@ -61,11 +73,18 @@ export class CloudflareR2Service {
       // ভিডিওর মেটাডাটা (Resolution) রিড করা
       ffmpeg.ffprobe(inputPath, async (err, metadata) => {
         if (err) {
-          if (fs.existsSync(inputPath)) await unlinkAsync(inputPath).catch(() => { });
-          return reject(new InternalServerErrorException(`Failed to probe video metadata: ${err.message}`));
+          if (fs.existsSync(inputPath))
+            await unlinkAsync(inputPath).catch(() => {});
+          return reject(
+            new InternalServerErrorException(
+              `Failed to probe video metadata: ${err.message}`,
+            ),
+          );
         }
 
-        const videoStream = metadata.streams.find(stream => stream.codec_type === 'video');
+        const videoStream = metadata.streams.find(
+          (stream) => stream.codec_type === 'video',
+        );
         const originalWidth = videoStream?.width || 0;
         const originalHeight = videoStream?.height || 0;
 
@@ -73,7 +92,7 @@ export class CloudflareR2Service {
         const outputOptions = [
           '-crf 28', // সাইজ অপ্টিমাইজেশন (কোয়ালিটি ব্যালেন্স)
           '-preset fast',
-          '-pix_fmt yuv420p' // প্রায় সব ডিভাইসে প্লেব্যাক সাপোর্ট করার জন্য নিশ্চিত করা
+          '-pix_fmt yuv420p', // প্রায় সব ডিভাইসে প্লেব্যাক সাপোর্ট করার জন্য নিশ্চিত করা
         ];
 
         /**
@@ -107,16 +126,22 @@ export class CloudflareR2Service {
               resolve({
                 buffer: compressedBuffer,
                 ext: 'mp4',
-                mimetype: 'video/mp4'
+                mimetype: 'video/mp4',
               });
             } catch (cleanupError) {
               reject(cleanupError);
             }
           })
           .on('error', async (ffmpegErr: Error) => {
-            if (fs.existsSync(inputPath)) await unlinkAsync(inputPath).catch(() => { });
-            if (fs.existsSync(outputPath)) await unlinkAsync(outputPath).catch(() => { });
-            reject(new InternalServerErrorException(`Video compression failed: ${ffmpegErr.message}`));
+            if (fs.existsSync(inputPath))
+              await unlinkAsync(inputPath).catch(() => {});
+            if (fs.existsSync(outputPath))
+              await unlinkAsync(outputPath).catch(() => {});
+            reject(
+              new InternalServerErrorException(
+                `Video compression failed: ${ffmpegErr.message}`,
+              ),
+            );
           })
           .run();
       });
@@ -129,7 +154,9 @@ export class CloudflareR2Service {
     mimetype: string,
   ) {
     if (!fileBuffer || !originalName) {
-      throw new BadRequestException('File buffer and original name are required');
+      throw new BadRequestException(
+        'File buffer and original name are required',
+      );
     }
 
     let finalBuffer = fileBuffer;
@@ -147,10 +174,17 @@ export class CloudflareR2Service {
       ext = videoResult.ext;
       finalMimeType = videoResult.mimetype;
     }
-    const cleanOriginalName = originalName.replace(/\.[^/.]+$/, '').replace(/[^a-zA-Z0-9]/g, '_');
+    const cleanOriginalName = originalName
+      .replace(/\.[^/.]+$/, '')
+      .replace(/[^a-zA-Z0-9]/g, '_');
     const baseName = `${Date.now()}-${cleanOriginalName}`;
 
-    const folder = fileCategory === 'image' ? 'images' : fileCategory === 'video' ? 'videos' : 'docs';
+    const folder =
+      fileCategory === 'image'
+        ? 'images'
+        : fileCategory === 'video'
+          ? 'videos'
+          : 'docs';
     const key = `${folder}/${baseName}.${ext}`;
 
     try {
@@ -163,7 +197,9 @@ export class CloudflareR2Service {
         }),
       );
     } catch (error) {
-      throw new InternalServerErrorException(`Failed to upload file to Cloudflare R2: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Failed to upload file to Cloudflare R2: ${error.message}`,
+      );
     }
 
     const secureUrl = `${this.publicUrl}/${key}`;
@@ -203,7 +239,9 @@ export class CloudflareR2Service {
         }),
       );
     } catch (error) {
-      throw new InternalServerErrorException(`Failed to delete file from Cloudflare R2: ${error.message}`);
+      throw new InternalServerErrorException(
+        `Failed to delete file from Cloudflare R2: ${error.message}`,
+      );
     }
 
     await this.prisma.fileInstance.delete({ where: { id } });

@@ -188,7 +188,10 @@ export class NotificationProcessor extends WorkerHost {
         },
       });
     } catch (error) {
-      console.error(`Failed to notify raw shift winner ${data.winnerId}`, error);
+      console.error(
+        `Failed to notify raw shift winner ${data.winnerId}`,
+        error,
+      );
     }
   }
 
@@ -265,7 +268,10 @@ export class NotificationProcessor extends WorkerHost {
         },
       });
     } catch (error) {
-      console.error(`Failed to notify head-to-head winner ${data.winnerId}`, error);
+      console.error(
+        `Failed to notify head-to-head winner ${data.winnerId}`,
+        error,
+      );
     }
   }
 }

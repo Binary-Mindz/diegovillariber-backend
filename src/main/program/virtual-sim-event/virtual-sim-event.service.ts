@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { CreateVirtualSimEventDto } from './dto/create-virtual-sim-event.dto';
 import { UpdateVirtualSimEventDto } from './dto/update-virtual-sim-event.dto';
@@ -23,11 +28,12 @@ export class VirtualSimEventService {
       select: { id: true, activeType: true },
     });
 
-    if (!profile)
-      throw new NotFoundException('Profile not found');
+    if (!profile) throw new NotFoundException('Profile not found');
 
     if (profile.activeType !== Type.SIM_RACING_DRIVER)
-      throw new ForbiddenException('Only SIM_RACING_DRIVER can manage sim events');
+      throw new ForbiddenException(
+        'Only SIM_RACING_DRIVER can manage sim events',
+      );
 
     return profile;
   }
@@ -90,8 +96,7 @@ export class VirtualSimEventService {
       where: { id, profileId: profile.id },
     });
 
-    if (!event)
-      throw new NotFoundException('Event not found');
+    if (!event) throw new NotFoundException('Event not found');
 
     return event;
   }
@@ -104,8 +109,7 @@ export class VirtualSimEventService {
       select: { id: true },
     });
 
-    if (!existing)
-      throw new NotFoundException('Event not found');
+    if (!existing) throw new NotFoundException('Event not found');
 
     return this.prisma.virtualSimRacingEvent.update({
       where: { id },
@@ -119,7 +123,9 @@ export class VirtualSimEventService {
         ...(dto.maxGridSize !== undefined && { maxGridSize: dto.maxGridSize }),
         ...(dto.visibility && { visibility: dto.visibility }),
         ...(dto.serverName !== undefined && { serverName: dto.serverName }),
-        ...(dto.serverPassword !== undefined && { serverPassword: dto.serverPassword }),
+        ...(dto.serverPassword !== undefined && {
+          serverPassword: dto.serverPassword,
+        }),
         ...(dto.discordLink !== undefined && { discordLink: dto.discordLink }),
         ...(dto.notes !== undefined && { notes: dto.notes }),
       },
@@ -133,8 +139,7 @@ export class VirtualSimEventService {
       where: { id, profileId: profile.id },
     });
 
-    if (!existing)
-      throw new NotFoundException('Event not found');
+    if (!existing) throw new NotFoundException('Event not found');
 
     await this.prisma.virtualSimRacingEvent.delete({ where: { id } });
 

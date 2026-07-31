@@ -13,23 +13,27 @@ import { GetEventsQueryDto } from './dto/get-event-query.dto';
 export class EventService {
   constructor(private readonly prisma: PrismaService) {}
 
-private assertValidRange(start: Date, end: Date) {
-  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
-    throw new BadRequestException('Invalid startDate or endDate');
-  }
+  private assertValidRange(start: Date, end: Date) {
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+      throw new BadRequestException('Invalid startDate or endDate');
+    }
 
-  const now = new Date();
-  if (start <= now) {
-    throw new BadRequestException('Start date must be greater than current date/time');
-  }
+    const now = new Date();
+    if (start <= now) {
+      throw new BadRequestException(
+        'Start date must be greater than current date/time',
+      );
+    }
 
-  if (end <= now) {
-    throw new BadRequestException('End date must be greater than current date/time');
+    if (end <= now) {
+      throw new BadRequestException(
+        'End date must be greater than current date/time',
+      );
+    }
+    if (end <= start) {
+      throw new BadRequestException('End date must be after start date');
+    }
   }
-  if (end <= start) {
-    throw new BadRequestException('End date must be after start date');
-  }
-}
 
   async createEvent(userId: string, dto: CreateEventDto) {
     const start = new Date(dto.startDate);
@@ -42,7 +46,8 @@ private assertValidRange(start: Date, end: Date) {
       select: { id: true, activeProfileId: true },
     });
     if (!user) throw new NotFoundException('User not found');
-    if (!user.activeProfileId) throw new BadRequestException('No active profile selected');
+    if (!user.activeProfileId)
+      throw new BadRequestException('No active profile selected');
 
     // 2) active profile validate + type read
     const activeProfile = await this.prisma.profile.findFirst({
@@ -50,8 +55,10 @@ private assertValidRange(start: Date, end: Date) {
       select: { id: true, activeType: true },
     });
 
-    if (!activeProfile) throw new BadRequestException('Active profile not found for this user');
-    if (!activeProfile.activeType) throw new BadRequestException('Active profile type is not set');
+    if (!activeProfile)
+      throw new BadRequestException('Active profile not found for this user');
+    if (!activeProfile.activeType)
+      throw new BadRequestException('Active profile type is not set');
 
     return this.prisma.event.create({
       data: {
@@ -67,7 +74,7 @@ private assertValidRange(start: Date, end: Date) {
         placeId: dto.placeId ?? null,
         websiteLink: dto.websiteLink ?? null,
         price: dto.price,
-        eventType: dto.eventType,  
+        eventType: dto.eventType,
         startDate: start,
         endDate: end,
       },
@@ -75,7 +82,16 @@ private assertValidRange(start: Date, end: Date) {
   }
 
   async getEvents(query: GetEventsQueryDto) {
-    const { status, type, ownerId, search, from, to, page = 1, limit = 20 } = query;
+    const {
+      status,
+      type,
+      ownerId,
+      search,
+      from,
+      to,
+      page = 1,
+      limit = 20,
+    } = query;
 
     const where: any = {};
 
@@ -137,7 +153,9 @@ private assertValidRange(start: Date, end: Date) {
   }
 
   async updateEvent(userId: string, eventId: string, dto: UpdateEventDto) {
-    const event = await this.prisma.event.findUnique({ where: { id: eventId } });
+    const event = await this.prisma.event.findUnique({
+      where: { id: eventId },
+    });
     if (!event) throw new NotFoundException('Event not found');
 
     if (event.ownerId !== userId) {
@@ -145,7 +163,9 @@ private assertValidRange(start: Date, end: Date) {
     }
 
     // validate range if provided
-    const start = dto.startDate ? new Date(dto.startDate) : new Date(event.startDate);
+    const start = dto.startDate
+      ? new Date(dto.startDate)
+      : new Date(event.startDate);
     const end = dto.endDate ? new Date(dto.endDate) : new Date(event.endDate);
     if (dto.startDate || dto.endDate) this.assertValidRange(start, end);
 
@@ -154,13 +174,23 @@ private assertValidRange(start: Date, end: Date) {
       data: {
         coverImage: dto.coverImage,
         eventTitle: dto.eventTitle,
-        description: dto.description === undefined ? undefined : dto.description ?? null,
-        location: dto.location === undefined ? undefined : dto.location ?? null,
-        locationAddress: dto.locationAddress === undefined ? undefined : dto.locationAddress ?? null,
-        latitude: dto.locationAddress === undefined ? undefined : dto.latitude ?? null,
-        longitude: dto.longitude === undefined ? undefined : dto.longitude ?? null,
-        placeId : dto.placeId === undefined ? undefined : dto.placeId ?? null,  
-        websiteLink: dto.websiteLink === undefined ? undefined : dto.websiteLink ?? null,
+        description:
+          dto.description === undefined ? undefined : (dto.description ?? null),
+        location:
+          dto.location === undefined ? undefined : (dto.location ?? null),
+        locationAddress:
+          dto.locationAddress === undefined
+            ? undefined
+            : (dto.locationAddress ?? null),
+        latitude:
+          dto.locationAddress === undefined
+            ? undefined
+            : (dto.latitude ?? null),
+        longitude:
+          dto.longitude === undefined ? undefined : (dto.longitude ?? null),
+        placeId: dto.placeId === undefined ? undefined : (dto.placeId ?? null),
+        websiteLink:
+          dto.websiteLink === undefined ? undefined : (dto.websiteLink ?? null),
         price: dto.price,
         eventType: dto.eventType,
         startDate: dto.startDate ? new Date(dto.startDate) : undefined,

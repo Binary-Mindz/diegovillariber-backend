@@ -1,11 +1,17 @@
 import { BadRequestException } from '@nestjs/common';
-import { CIRCUITS_DATA, CircuitData, CircuitLayoutData } from '../data/circuits.data';
+import {
+  CIRCUITS_DATA,
+  CircuitData,
+  CircuitLayoutData,
+} from '../data/circuits.data';
 
 export function normalizeText(value?: string | null): string {
   return (value ?? '').trim().toLowerCase();
 }
 
-export function findCircuitByTrackName(trackName: string): CircuitData | undefined {
+export function findCircuitByTrackName(
+  trackName: string,
+): CircuitData | undefined {
   return CIRCUITS_DATA.find(
     (item) => normalizeText(item.trackName) === normalizeText(trackName),
   );

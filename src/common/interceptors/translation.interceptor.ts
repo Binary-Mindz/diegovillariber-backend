@@ -16,10 +16,15 @@ export class TranslationInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map((response) => {
         // মেসেজটি স্ট্রিং কি না তা নিশ্চিত করা এবং ট্রিম (Trim) করা
-        if (response && response.message && typeof response.message === 'string' && i18n) {
+        if (
+          response &&
+          response.message &&
+          typeof response.message === 'string' &&
+          i18n
+        ) {
           const cleanMessage = response.message.trim();
           const translatedMessage = i18n.t(`common.${cleanMessage}`);
-          
+
           if (translatedMessage && !translatedMessage.startsWith('common.')) {
             response.message = translatedMessage;
           }

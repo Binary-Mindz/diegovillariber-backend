@@ -15,7 +15,7 @@ export async function handleRequest<T>(
   } catch (err: any) {
     return {
       statusCode: err?.response?.statusCode || err?.status || 500,
-       success: false,
+      success: false,
       message: Array.isArray(err?.response?.message)
         ? err.response.message.join(', ')
         : err?.response?.message || err?.message || 'Something went wrong',

@@ -8,12 +8,7 @@ import { CloudflareR2Service } from './cloudflare/cloudflare-r2.service';
 @Module({
   imports: [ConfigModule],
   controllers: [FileController],
-  providers: [
-    FileService,
-    CloudflareR2Service,
-    PrismaService,
-  ],
+  providers: [FileService, CloudflareR2Service, PrismaService],
   exports: [FileService, CloudflareR2Service],
 })
-export class FileModule { }
-
+export class FileModule {}

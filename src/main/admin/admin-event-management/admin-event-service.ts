@@ -2,7 +2,14 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { GetAdminEventsQueryDto } from './dto/get-admin-events.query.dto';
 import { EngagementQueryDto } from './dto/engagemant-query.dto';
-import { BattleStatus, ChallengeStatus, EventStatus, OfficialPartnerRequestStatus, RawShiftStatus, SplitScreenBattleStatus } from 'generated/prisma/enums';
+import {
+  BattleStatus,
+  ChallengeStatus,
+  EventStatus,
+  OfficialPartnerRequestStatus,
+  RawShiftStatus,
+  SplitScreenBattleStatus,
+} from 'generated/prisma/enums';
 
 type Trend = {
   percentage: number; // e.g. 23.5
@@ -41,8 +48,10 @@ export class AdminEventManagementervice {
   }
 
   private trend(current: number, previous: number): Trend {
-    if (previous <= 0 && current > 0) return { percentage: 100, direction: 'UP' };
-    if (previous <= 0 && current <= 0) return { percentage: 0, direction: 'FLAT' };
+    if (previous <= 0 && current > 0)
+      return { percentage: 100, direction: 'UP' };
+    if (previous <= 0 && current <= 0)
+      return { percentage: 0, direction: 'FLAT' };
 
     const diff = current - previous;
     const pct = (diff / previous) * 100;
@@ -182,82 +191,88 @@ export class AdminEventManagementervice {
   }
 
   async getAllEvents(query: GetAdminEventsQueryDto) {
-  const { status, type, search, page = 1, limit = 20 } = query;
+    const { status, type, search, page = 1, limit = 20 } = query;
 
-  const safeLimit = Math.min(Math.max(limit, 1), 100);
-  const safePage = Math.max(page, 1);
-  const skip = (safePage - 1) * safeLimit;
+    const safeLimit = Math.min(Math.max(limit, 1), 100);
+    const safePage = Math.max(page, 1);
+    const skip = (safePage - 1) * safeLimit;
 
-  const where: any = {};
+    const where: any = {};
 
-  if (status) where.eventStatus = status;
-  if (type) where.eventType = type;
+    if (status) where.eventStatus = status;
+    if (type) where.eventType = type;
 
-  if (search?.trim()) {
-    const s = search.trim();
-    where.OR = [
-      { eventTitle: { contains: s, mode: 'insensitive' } },
-      { location: { contains: s, mode: 'insensitive' } },
-      { description: { contains: s, mode: 'insensitive' } },
-      { owner: { email: { contains: s, mode: 'insensitive' } } },
-      { owner: { profile: { some: { profileName: { contains: s, mode: 'insensitive' } } } } },
-    ];
-  }
-
-  const [items, total] = await this.prisma.$transaction([
-    this.prisma.event.findMany({
-      where,
-      skip,
-      take: safeLimit,
-      orderBy: { createdAt: 'desc' },
-      include: {
-        owner: {
-          select: {
-            id: true,
-            email: true,
+    if (search?.trim()) {
+      const s = search.trim();
+      where.OR = [
+        { eventTitle: { contains: s, mode: 'insensitive' } },
+        { location: { contains: s, mode: 'insensitive' } },
+        { description: { contains: s, mode: 'insensitive' } },
+        { owner: { email: { contains: s, mode: 'insensitive' } } },
+        {
+          owner: {
             profile: {
-              select: { id: true, profileName: true, imageUrl: true },
-              take: 1, 
+              some: { profileName: { contains: s, mode: 'insensitive' } },
             },
           },
         },
-      },
-    }),
-    this.prisma.event.count({ where }),
-  ]);
-  const rows = items.map((e) => {
-    const creatorName =
-      e.owner?.profile?.[0]?.profileName ?? e.owner?.email ?? 'Unknown';
+      ];
+    }
+
+    const [items, total] = await this.prisma.$transaction([
+      this.prisma.event.findMany({
+        where,
+        skip,
+        take: safeLimit,
+        orderBy: { createdAt: 'desc' },
+        include: {
+          owner: {
+            select: {
+              id: true,
+              email: true,
+              profile: {
+                select: { id: true, profileName: true, imageUrl: true },
+                take: 1,
+              },
+            },
+          },
+        },
+      }),
+      this.prisma.event.count({ where }),
+    ]);
+    const rows = items.map((e) => {
+      const creatorName =
+        e.owner?.profile?.[0]?.profileName ?? e.owner?.email ?? 'Unknown';
+
+      return {
+        id: e.id,
+        eventTitle: e.eventTitle,
+        eventType: e.eventType,
+        creator: {
+          id: e.owner?.id,
+          name: creatorName,
+          email: e.owner?.email ?? null,
+          imageUrl: e.owner?.profile?.[0]?.imageUrl ?? null,
+        },
+        createdAt: e.createdAt,
+        location: e.location ?? null,
+
+        attendees: null,
+
+        status: e.eventStatus,
+      };
+    });
 
     return {
-      id: e.id,
-      eventTitle: e.eventTitle,
-      eventType: e.eventType,
-      creator: {
-        id: e.owner?.id,
-        name: creatorName,
-        email: e.owner?.email ?? null,
-        imageUrl: e.owner?.profile?.[0]?.imageUrl ?? null,
+      items: rows,
+      meta: {
+        total,
+        page: safePage,
+        limit: safeLimit,
+        totalPages: Math.ceil(total / safeLimit),
       },
-      createdAt: e.createdAt, 
-      location: e.location ?? null,
-
-      attendees: null, 
-
-      status: e.eventStatus,
     };
-  });
-
-  return {
-    items: rows,
-    meta: {
-      total,
-      page: safePage,
-      limit: safeLimit,
-      totalPages: Math.ceil(total / safeLimit),
-    },
-  };
-}
+  }
 
   async getSingleEvent(id: string) {
     const event = await this.prisma.event.findUnique({
@@ -348,7 +363,6 @@ export class AdminEventManagementervice {
     };
   }
 
-
   async deleteAllCreatorEvents() {
     const result = await this.prisma.event.deleteMany({
       where: { profileType: 'CONTENT_CREATOR' },
@@ -360,53 +374,63 @@ export class AdminEventManagementervice {
     };
   }
   async exportEventsToCsv(): Promise<{ filename: string; csv: string }> {
-  const events = await this.prisma.event.findMany({
-    orderBy: { createdAt: 'desc' },
-    include: {
-      owner: {
-        select: {
-          id: true,
-          email: true,
-          profile: { select: { profileName: true }, take: 1 },
+    const events = await this.prisma.event.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: {
+        owner: {
+          select: {
+            id: true,
+            email: true,
+            profile: { select: { profileName: true }, take: 1 },
+          },
         },
       },
-    },
-  });
+    });
 
-  const header = ['Event','Type','Creator','Created Date','Location','Attendees','Status'];
-
-  const rows = events.map((e) => {
-    const creator =
-      e.owner?.profile?.[0]?.profileName ?? e.owner?.email ?? e.owner?.id ?? 'Unknown';
-
-    return [
-      e.eventTitle ?? '',
-      String(e.eventType ?? ''),
-      creator,
-      e.createdAt?.toISOString?.() ?? '',
-      e.location ?? '',
-      '', // attendees placeholder
-      String(e.eventStatus ?? ''),
+    const header = [
+      'Event',
+      'Type',
+      'Creator',
+      'Created Date',
+      'Location',
+      'Attendees',
+      'Status',
     ];
-  });
 
-  const escape = (v: string) => {
-    const s = v ?? '';
-    const mustWrap = /[",\n]/.test(s);
-    const safe = s.replace(/"/g, '""');
-    return mustWrap ? `"${safe}"` : safe;
-  };
+    const rows = events.map((e) => {
+      const creator =
+        e.owner?.profile?.[0]?.profileName ??
+        e.owner?.email ??
+        e.owner?.id ??
+        'Unknown';
 
-  const csv = [header, ...rows]
-    .map((line) => line.map((c) => escape(String(c))).join(','))
-    .join('\n');
+      return [
+        e.eventTitle ?? '',
+        String(e.eventType ?? ''),
+        creator,
+        e.createdAt?.toISOString?.() ?? '',
+        e.location ?? '',
+        '', // attendees placeholder
+        String(e.eventStatus ?? ''),
+      ];
+    });
 
-  const filename = `events-export-${new Date().toISOString().slice(0, 10)}.csv`;
-  return { filename, csv };
-}
+    const escape = (v: string) => {
+      const s = v ?? '';
+      const mustWrap = /[",\n]/.test(s);
+      const safe = s.replace(/"/g, '""');
+      return mustWrap ? `"${safe}"` : safe;
+    };
 
+    const csv = [header, ...rows]
+      .map((line) => line.map((c) => escape(String(c))).join(','))
+      .join('\n');
 
- private subtractDays(days: number): Date {
+    const filename = `events-export-${new Date().toISOString().slice(0, 10)}.csv`;
+    return { filename, csv };
+  }
+
+  private subtractDays(days: number): Date {
     return new Date(Date.now() - days * 24 * 60 * 60 * 1000);
   }
 
@@ -676,7 +700,9 @@ export class AdminEventManagementervice {
     );
 
     const activityShare =
-      totalActivity > 0 ? this.toPercent((topActivity / totalActivity) * 100) : 0;
+      totalActivity > 0
+        ? this.toPercent((topActivity / totalActivity) * 100)
+        : 0;
 
     const avgLifetimeValue =
       users.length > 0
@@ -711,7 +737,6 @@ export class AdminEventManagementervice {
       generatedAt: new Date(),
     };
   }
-
 
   async getEngagementOverview(query: EngagementQueryDto) {
     const page = Number(query.page || 1);
@@ -784,7 +809,9 @@ export class AdminEventManagementervice {
       totalHeadToHeadBattles + totalRawShiftBattles + totalSplitScreenBattles;
 
     const activeBattles =
-      activeHeadToHeadBattles + activeRawShiftBattles + activeSplitScreenBattles;
+      activeHeadToHeadBattles +
+      activeRawShiftBattles +
+      activeSplitScreenBattles;
 
     const completedBattles =
       finishedHeadToHeadBattles +
@@ -839,61 +866,73 @@ export class AdminEventManagementervice {
     }> = [];
 
     if (ids.length) {
-    const [likeGroups, commentGroups, shareGroups, racingVoteGroups] =
-  await this.prisma.$transaction([
-    this.prisma.like.groupBy({
-      by: ['postId'],
-      where: { postId: { in: ids } },
-      orderBy: { postId: 'asc' },
-      _count: { _all: true },
-    }),
-    this.prisma.comment.groupBy({
-      by: ['postId'],
-      where: { postId: { in: ids } },
-      orderBy: { postId: 'asc' },
-      _count: { _all: true },
-    }),
-    this.prisma.share.groupBy({
-      by: ['postId'],
-      where: { postId: { in: ids } },
-      orderBy: { postId: 'asc' },
-      _count: { _all: true },
-    }),
-    this.prisma.racingVote.groupBy({
-      by: ['postId'],
-      where: {
-        postId: {
-          in: ids,
-          not: null,
-        },
-      },
-      orderBy: { postId: 'asc' },
-      _count: { _all: true },
-    }),
-  ]);
+      const [likeGroups, commentGroups, shareGroups, racingVoteGroups] =
+        await this.prisma.$transaction([
+          this.prisma.like.groupBy({
+            by: ['postId'],
+            where: { postId: { in: ids } },
+            orderBy: { postId: 'asc' },
+            _count: { _all: true },
+          }),
+          this.prisma.comment.groupBy({
+            by: ['postId'],
+            where: { postId: { in: ids } },
+            orderBy: { postId: 'asc' },
+            _count: { _all: true },
+          }),
+          this.prisma.share.groupBy({
+            by: ['postId'],
+            where: { postId: { in: ids } },
+            orderBy: { postId: 'asc' },
+            _count: { _all: true },
+          }),
+          this.prisma.racingVote.groupBy({
+            by: ['postId'],
+            where: {
+              postId: {
+                in: ids,
+                not: null,
+              },
+            },
+            orderBy: { postId: 'asc' },
+            _count: { _all: true },
+          }),
+        ]);
 
-const likeMap = new Map<string, number>();
-const commentMap = new Map<string, number>();
-const shareMap = new Map<string, number>();
-const voteMap = new Map<string, number>();
+      const likeMap = new Map<string, number>();
+      const commentMap = new Map<string, number>();
+      const shareMap = new Map<string, number>();
+      const voteMap = new Map<string, number>();
 
-likeGroups.forEach((item) => {
-  likeMap.set(item.postId, typeof item._count === 'object' ? (item._count._all ?? 0) : 0);
-});
+      likeGroups.forEach((item) => {
+        likeMap.set(
+          item.postId,
+          typeof item._count === 'object' ? (item._count._all ?? 0) : 0,
+        );
+      });
 
-commentGroups.forEach((item) => {
-  commentMap.set(item.postId, typeof item._count === 'object' ? (item._count._all ?? 0) : 0);
-});
+      commentGroups.forEach((item) => {
+        commentMap.set(
+          item.postId,
+          typeof item._count === 'object' ? (item._count._all ?? 0) : 0,
+        );
+      });
 
-shareGroups.forEach((item) => {
- shareMap.set(item.postId, typeof item._count === 'object' ? (item._count._all ?? 0) : 0);
-});
+      shareGroups.forEach((item) => {
+        shareMap.set(
+          item.postId,
+          typeof item._count === 'object' ? (item._count._all ?? 0) : 0,
+        );
+      });
 
-racingVoteGroups.forEach((item) => {
-  if (item.postId) {
-  voteMap.set(item.postId, typeof item._count === 'object' ? (item._count._all ?? 0) : 0);
-  }
-});
+      racingVoteGroups.forEach((item) => {
+        if (item.postId) {
+          voteMap.set(
+            item.postId,
+            typeof item._count === 'object' ? (item._count._all ?? 0) : 0,
+          );
+        }
+      });
 
       rankedPosts = ids.map((postId) => {
         const likeCount = likeMap.get(postId) ?? 0;
@@ -1068,351 +1107,350 @@ racingVoteGroups.forEach((item) => {
   }
 
   async getBrandMetricsOverview() {
-  const now = new Date();
-  const last1Day = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
-  const last30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+    const now = new Date();
+    const last1Day = new Date(now.getTime() - 1 * 24 * 60 * 60 * 1000);
+    const last30Days = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
-  const [
-    totalUsers,
-    dau,
-    mau,
-    verifiedUsers,
-    approvedAmbassadors,
-    totalAmbassadors,
-    contentCreators,
-    ambassadorCountries,
-    totalPosts,
-    totalLikes,
-    totalComments,
-    topAmbassadors,
-  ] = await this.prisma.$transaction([
-    this.prisma.user.count(),
+    const [
+      totalUsers,
+      dau,
+      mau,
+      verifiedUsers,
+      approvedAmbassadors,
+      totalAmbassadors,
+      contentCreators,
+      ambassadorCountries,
+      totalPosts,
+      totalLikes,
+      totalComments,
+      topAmbassadors,
+    ] = await this.prisma.$transaction([
+      this.prisma.user.count(),
 
-    this.prisma.user.count({
-      where: {
-        updatedAt: {
-          gte: last1Day,
+      this.prisma.user.count({
+        where: {
+          updatedAt: {
+            gte: last1Day,
+          },
         },
-      },
-    }),
+      }),
 
-    this.prisma.user.count({
-      where: {
-        updatedAt: {
-          gte: last30Days,
+      this.prisma.user.count({
+        where: {
+          updatedAt: {
+            gte: last30Days,
+          },
         },
-      },
-    }),
+      }),
 
-    this.prisma.user.count({
-      where: {
-        isEmailVerified: true,
-      },
-    }),
-
-    this.prisma.ambassadorProgram.count({
-      where: {
-        status: 'APPROVED' as any,
-      },
-    }),
-
-    this.prisma.ambassadorProgram.count(),
-
-    this.prisma.profile.count({
-      where: {
-        creator: {
-          isNot: null,
+      this.prisma.user.count({
+        where: {
+          isEmailVerified: true,
         },
-      },
-    }),
+      }),
 
-    this.prisma.ambassadorProgram.findMany({
-      where: {
-        country: {
-          not: '',
+      this.prisma.ambassadorProgram.count({
+        where: {
+          status: 'APPROVED' as any,
         },
-      },
-      select: {
-        country: true,
-      },
-      distinct: ['country'],
-    }),
+      }),
 
-    this.prisma.post.count(),
+      this.prisma.ambassadorProgram.count(),
 
-    this.prisma.like.count(),
-
-    this.prisma.comment.count(),
-
-    this.prisma.ambassadorProgram.findMany({
-      where: {
-        status: 'APPROVED' as any,
-      },
-      take: 5,
-      orderBy: {
-        user: {
-          totalPoints: 'desc',
+      this.prisma.profile.count({
+        where: {
+          creator: {
+            isNot: null,
+          },
         },
-      },
-      select: {
-        id: true,
-        motorspotName: true,
-        country: true,
-        user: {
-          select: {
-            id: true,
-            totalPoints: true,
-            email: true,
-            profile: {
-              select: {
-                id: true,
-                profileName: true,
-                imageUrl: true,
-                activeType: true,
+      }),
+
+      this.prisma.ambassadorProgram.findMany({
+        where: {
+          country: {
+            not: '',
+          },
+        },
+        select: {
+          country: true,
+        },
+        distinct: ['country'],
+      }),
+
+      this.prisma.post.count(),
+
+      this.prisma.like.count(),
+
+      this.prisma.comment.count(),
+
+      this.prisma.ambassadorProgram.findMany({
+        where: {
+          status: 'APPROVED' as any,
+        },
+        take: 5,
+        orderBy: {
+          user: {
+            totalPoints: 'desc',
+          },
+        },
+        select: {
+          id: true,
+          motorspotName: true,
+          country: true,
+          user: {
+            select: {
+              id: true,
+              totalPoints: true,
+              email: true,
+              profile: {
+                select: {
+                  id: true,
+                  profileName: true,
+                  imageUrl: true,
+                  activeType: true,
+                },
+                take: 1,
               },
-              take: 1,
             },
           },
         },
+      }),
+    ]);
+
+    const stickiness = mau > 0 ? Number(((dau / mau) * 100).toFixed(2)) : 0;
+
+    const monthlyImpressions =
+      totalUsers > 0 ? Number(((mau / totalUsers) * 100).toFixed(2)) : 0;
+
+    const ambassadorRate =
+      totalUsers > 0
+        ? Number(((approvedAmbassadors / totalUsers) * 100).toFixed(2))
+        : 0;
+
+    const engagementRate =
+      totalPosts > 0
+        ? Number((((totalLikes + totalComments) / totalPosts) * 100).toFixed(2))
+        : 0;
+
+    const avgPostLikes =
+      totalPosts > 0 ? Number((totalLikes / totalPosts).toFixed(2)) : 0;
+
+    const avgPostComments =
+      totalPosts > 0 ? Number((totalComments / totalPosts).toFixed(2)) : 0;
+
+    /**
+     * Top device:
+     * তোমার দেওয়া schema snippet দিয়ে real device brand breakdown বের করা যাচ্ছে না,
+     * কারণ User/Profile/Ambassador এর সাথে device brand relation নাই।
+     * তাই fallback response দিলাম।
+     *
+     * যদি DeviceToken বা submission EXIF brand relation থাকে,
+     * এখানে count query বসিয়ে দিবে।
+     */
+    const topDevice = [
+      {
+        label: 'Apple',
+        value: 0,
       },
-    }),
-  ]);
-
-  const stickiness = mau > 0 ? Number(((dau / mau) * 100).toFixed(2)) : 0;
-
-  const monthlyImpressions =
-    totalUsers > 0 ? Number(((mau / totalUsers) * 100).toFixed(2)) : 0;
-
-  const ambassadorRate =
-    totalUsers > 0
-      ? Number(((approvedAmbassadors / totalUsers) * 100).toFixed(2))
-      : 0;
-
-  const engagementRate =
-    totalPosts > 0
-      ? Number((((totalLikes + totalComments) / totalPosts) * 100).toFixed(2))
-      : 0;
-
-  const avgPostLikes =
-    totalPosts > 0 ? Number((totalLikes / totalPosts).toFixed(2)) : 0;
-
-  const avgPostComments =
-    totalPosts > 0 ? Number((totalComments / totalPosts).toFixed(2)) : 0;
-
-  /**
-   * Top device:
-   * তোমার দেওয়া schema snippet দিয়ে real device brand breakdown বের করা যাচ্ছে না,
-   * কারণ User/Profile/Ambassador এর সাথে device brand relation নাই।
-   * তাই fallback response দিলাম।
-   *
-   * যদি DeviceToken বা submission EXIF brand relation থাকে,
-   * এখানে count query বসিয়ে দিবে।
-   */
-  const topDevice = [
-    {
-      label: 'Apple',
-      value: 0,
-    },
-    {
-      label: 'Samsung',
-      value: 0,
-    },
-    {
-      label: 'Sony Camera',
-      value: 0,
-    },
-  ];
-
-  return {
-    section: 'Brand Partnership Value Proposition',
-    description:
-      'Key metrics that demonstrate platform value to motorsport brands',
-
-    audienceReach: {
-      totalReach: {
-        label: 'Total Reach',
-        value: totalUsers,
-        description: 'Registered automotive enthusiasts',
+      {
+        label: 'Samsung',
+        value: 0,
       },
-      monthlyImpressions: {
-        label: 'Monthly Impressions',
-        value: monthlyImpressions,
-        unit: '%',
-        description: 'Average monthly content views',
+      {
+        label: 'Sony Camera',
+        value: 0,
       },
-      globalPresence: {
-        label: 'Global Presence',
-        value: ambassadorCountries.length,
-        suffix: 'countries',
-        description: 'International audience',
+    ];
+
+    return {
+      section: 'Brand Partnership Value Proposition',
+      description:
+        'Key metrics that demonstrate platform value to motorsport brands',
+
+      audienceReach: {
+        totalReach: {
+          label: 'Total Reach',
+          value: totalUsers,
+          description: 'Registered automotive enthusiasts',
+        },
+        monthlyImpressions: {
+          label: 'Monthly Impressions',
+          value: monthlyImpressions,
+          unit: '%',
+          description: 'Average monthly content views',
+        },
+        globalPresence: {
+          label: 'Global Presence',
+          value: ambassadorCountries.length,
+          suffix: 'countries',
+          description: 'International audience',
+        },
+        stickiness: {
+          label: 'Stickiness (DAU/MAU)',
+          value: stickiness,
+          description: 'Industry 20%+ excellent',
+          unit: '%',
+        },
       },
-      stickiness: {
-        label: 'Stickiness (DAU/MAU)',
-        value: stickiness,
-        description: 'Industry 20%+ excellent',
-        unit: '%',
+
+      qualityMetrics: {
+        verifiedUser: {
+          label: 'Verified User',
+          value: verifiedUsers,
+        },
+        ambassador: {
+          label: 'Ambassador',
+          value: ambassadorRate,
+          unit: '%',
+        },
+        contentCreator: {
+          label: 'Content Creator',
+          value: contentCreators,
+        },
       },
-    },
 
-    qualityMetrics: {
-      verifiedUser: {
-        label: 'Verified User',
-        value: verifiedUsers,
+      topDevice,
+
+      topInfluencers: topAmbassadors.map((item, index) => ({
+        rank: index + 1,
+        ambassadorId: item.id,
+        userId: item.user.id,
+        name:
+          item.user.profile?.[0]?.profileName ||
+          item.motorspotName ||
+          item.user.email,
+        avatar: item.user.profile?.[0]?.imageUrl || null,
+        role: item.user.profile?.[0]?.activeType || 'AMBASSADOR',
+        country: item.country,
+        prestigePoint: item.user.totalPoints,
+      })),
+
+      engagementQuality: {
+        engagementRate: {
+          label: 'Engagement Rate',
+          value: engagementRate,
+          unit: '%',
+        },
+        avgPostLikes: {
+          label: 'Avg Post Likes',
+          value: avgPostLikes,
+        },
+        avgPostComments: {
+          label: 'Avg Post Comments',
+          value: avgPostComments,
+        },
+        dauMauRatio: {
+          label: 'DAU/MAU Ratio',
+          value: stickiness,
+          unit: '%',
+        },
       },
-      ambassador: {
-        label: 'Ambassador',
-        value: ambassadorRate,
-        unit: '%',
+
+      meta: {
+        totalAmbassadors,
+        approvedAmbassadors,
+        generatedAt: now,
       },
-      contentCreator: {
-        label: 'Content Creator',
-        value: contentCreators,
-      },
-    },
+    };
+  }
 
-    topDevice,
-
-    topInfluencers: topAmbassadors.map((item, index) => ({
-      rank: index + 1,
-      ambassadorId: item.id,
-      userId: item.user.id,
-      name:
-        item.user.profile?.[0]?.profileName ||
-        item.motorspotName ||
-        item.user.email,
-      avatar: item.user.profile?.[0]?.imageUrl || null,
-      role: item.user.profile?.[0]?.activeType || 'AMBASSADOR',
-      country: item.country,
-      prestigePoint: item.user.totalPoints,
-    })),
-
-    engagementQuality: {
-      engagementRate: {
-        label: 'Engagement Rate',
-        value: engagementRate,
-        unit: '%',
-      },
-      avgPostLikes: {
-        label: 'Avg Post Likes',
-        value: avgPostLikes,
-      },
-      avgPostComments: {
-        label: 'Avg Post Comments',
-        value: avgPostComments,
-      },
-      dauMauRatio: {
-        label: 'DAU/MAU Ratio',
-        value: stickiness,
-        unit: '%',
-      },
-    },
-
-    meta: {
-      totalAmbassadors,
-      approvedAmbassadors,
-      generatedAt: now,
-    },
-  };
-}
-
-async getEconomyOverview() {
-  const [
-    totalUsers,
-    userPointAggregate,
-    userPointTransactions,
-    paymentsCount,
-    liveRewardCount,
-    totalEvents,
-    upcomingEvents,
-    socialCommunication,
-    approvedBrandPartners,
-  ] = await this.prisma.$transaction([
-    this.prisma.user.count(),
-
-    this.prisma.user.aggregate({
-      _sum: {
-        totalPoints: true,
-      },
-    }),
-
-    this.prisma.userPoint.count(),
-
-    this.prisma.payment.count(),
-
-    this.prisma.liveReward.count(),
-
-    this.prisma.event.count(),
-
-    this.prisma.event.count({
-      where: {
-        eventStatus: EventStatus.UPCOMING,
-      },
-    }),
-
-    this.prisma.follow.count(),
-
-    this.prisma.officialPartner.count({
-      where: {
-        requestStatus: OfficialPartnerRequestStatus.APPROVED,
-      },
-    }),
-  ]);
-
-  const totalPrestige = userPointAggregate._sum.totalPoints ?? 0;
-
-  const avgPerUser =
-    totalUsers > 0 ? Number((totalPrestige / totalUsers).toFixed(2)) : 0;
-
-  const transactions =
-    userPointTransactions + paymentsCount + liveRewardCount;
-
-  return {
-    section: 'Prestige Economy',
-
-    prestigeEconomy: {
-      totalPrestige: {
-        label: 'Total Prestige',
-        value: totalPrestige,
-        description: 'Total points in circulation',
-      },
-      avgPerUser: {
-        label: 'Avg per User',
-        value: avgPerUser,
-        description: 'Average prestige points',
-      },
-      transactions: {
-        label: 'Transactions',
-        value: transactions,
-        description: 'Total prestige events',
-      },
-    },
-
-    platformActivity: {
-      totalEvents: {
-        label: 'Total Events',
-        value: totalEvents,
-        description: `Upcoming ${upcomingEvents}`,
-      },
-      socialCommunication: {
-        label: 'Social Communication',
-        value: socialCommunication,
-        description: 'Total Follow',
-      },
-      brandPartners: {
-        label: 'Brand Partners',
-        value: approvedBrandPartners,
-        description: 'Official Partners',
-      },
-    },
-
-    meta: {
+  async getEconomyOverview() {
+    const [
       totalUsers,
+      userPointAggregate,
       userPointTransactions,
       paymentsCount,
       liveRewardCount,
-      generatedAt: new Date(),
-    },
-  };
-}
+      totalEvents,
+      upcomingEvents,
+      socialCommunication,
+      approvedBrandPartners,
+    ] = await this.prisma.$transaction([
+      this.prisma.user.count(),
 
+      this.prisma.user.aggregate({
+        _sum: {
+          totalPoints: true,
+        },
+      }),
+
+      this.prisma.userPoint.count(),
+
+      this.prisma.payment.count(),
+
+      this.prisma.liveReward.count(),
+
+      this.prisma.event.count(),
+
+      this.prisma.event.count({
+        where: {
+          eventStatus: EventStatus.UPCOMING,
+        },
+      }),
+
+      this.prisma.follow.count(),
+
+      this.prisma.officialPartner.count({
+        where: {
+          requestStatus: OfficialPartnerRequestStatus.APPROVED,
+        },
+      }),
+    ]);
+
+    const totalPrestige = userPointAggregate._sum.totalPoints ?? 0;
+
+    const avgPerUser =
+      totalUsers > 0 ? Number((totalPrestige / totalUsers).toFixed(2)) : 0;
+
+    const transactions =
+      userPointTransactions + paymentsCount + liveRewardCount;
+
+    return {
+      section: 'Prestige Economy',
+
+      prestigeEconomy: {
+        totalPrestige: {
+          label: 'Total Prestige',
+          value: totalPrestige,
+          description: 'Total points in circulation',
+        },
+        avgPerUser: {
+          label: 'Avg per User',
+          value: avgPerUser,
+          description: 'Average prestige points',
+        },
+        transactions: {
+          label: 'Transactions',
+          value: transactions,
+          description: 'Total prestige events',
+        },
+      },
+
+      platformActivity: {
+        totalEvents: {
+          label: 'Total Events',
+          value: totalEvents,
+          description: `Upcoming ${upcomingEvents}`,
+        },
+        socialCommunication: {
+          label: 'Social Communication',
+          value: socialCommunication,
+          description: 'Total Follow',
+        },
+        brandPartners: {
+          label: 'Brand Partners',
+          value: approvedBrandPartners,
+          description: 'Official Partners',
+        },
+      },
+
+      meta: {
+        totalUsers,
+        userPointTransactions,
+        paymentsCount,
+        liveRewardCount,
+        generatedAt: new Date(),
+      },
+    };
+  }
 }

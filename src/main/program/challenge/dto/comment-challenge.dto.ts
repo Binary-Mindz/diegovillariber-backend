@@ -6,12 +6,18 @@ export class CreateChallengeCommentDto {
   @IsString()
   text!: string;
 
-  @ApiPropertyOptional({ example: 'uuid-of-submission', description: 'If comment is for a submission' })
+  @ApiPropertyOptional({
+    example: 'uuid-of-submission',
+    description: 'If comment is for a submission',
+  })
   @IsOptional()
   @IsString()
   submissionId?: string;
 
-  @ApiPropertyOptional({ example: 'uuid-of-parent-comment', description: 'If reply' })
+  @ApiPropertyOptional({
+    example: 'uuid-of-parent-comment',
+    description: 'If reply',
+  })
   @IsOptional()
   @IsString()
   parentId?: string;

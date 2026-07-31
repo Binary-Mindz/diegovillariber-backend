@@ -4,7 +4,7 @@ import { LikeService } from './like.service';
 import { NotificationModule } from '@/main/notification/notification.module';
 
 @Module({
-  imports:[NotificationModule],
+  imports: [NotificationModule],
   controllers: [LikeController],
   providers: [LikeService],
   exports: [LikeService],

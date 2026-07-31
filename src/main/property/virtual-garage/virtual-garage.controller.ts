@@ -31,9 +31,17 @@ export class VirtualGarageController {
   @UseGuards(JwtAuthGuard)
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @ApiOperation({ summary: 'Create virtual garage car (SIM_RACING_DRIVER only)' })
-  create(@GetUser('userId') userId: string, @Body() dto: CreateVirtualGarageDto) {
-    return handleRequest(async () => this.service.create(userId, dto), 'Virtual garage created');
+  @ApiOperation({
+    summary: 'Create virtual garage car (SIM_RACING_DRIVER only)',
+  })
+  create(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateVirtualGarageDto,
+  ) {
+    return handleRequest(
+      async () => this.service.create(userId, dto),
+      'Virtual garage created',
+    );
   }
 
   @ApiBearerAuth()
@@ -41,8 +49,14 @@ export class VirtualGarageController {
   @Get()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'List my virtual garage (Active profile only)' })
-  list(@GetUser('userId') userId: string, @Query() query: VirtualGarageQueryDto) {
-    return handleRequest(async () => this.service.list(userId, query), 'Virtual garage fetched');
+  list(
+    @GetUser('userId') userId: string,
+    @Query() query: VirtualGarageQueryDto,
+  ) {
+    return handleRequest(
+      async () => this.service.list(userId, query),
+      'Virtual garage fetched',
+    );
   }
 
   @ApiBearerAuth()
@@ -51,7 +65,10 @@ export class VirtualGarageController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get my virtual garage car by id' })
   get(@GetUser('userId') userId: string, @Param('id') id: string) {
-    return handleRequest(async () => this.service.get(userId, id), 'Virtual garage car fetched');
+    return handleRequest(
+      async () => this.service.get(userId, id),
+      'Virtual garage car fetched',
+    );
   }
 
   @ApiBearerAuth()
@@ -59,8 +76,15 @@ export class VirtualGarageController {
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update virtual garage car (Owner only)' })
-  update(@GetUser('userId') userId: string, @Param('id') id: string, @Body() dto: UpdateVirtualGarageDto) {
-    return handleRequest(async () => this.service.update(userId, id, dto), 'Virtual garage updated');
+  update(
+    @GetUser('userId') userId: string,
+    @Param('id') id: string,
+    @Body() dto: UpdateVirtualGarageDto,
+  ) {
+    return handleRequest(
+      async () => this.service.update(userId, id, dto),
+      'Virtual garage updated',
+    );
   }
 
   @ApiBearerAuth()
@@ -69,6 +93,9 @@ export class VirtualGarageController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete virtual garage car (Owner only)' })
   delete(@GetUser('userId') userId: string, @Param('id') id: string) {
-    return handleRequest(async () => this.service.delete(userId, id), 'Virtual garage deleted');
+    return handleRequest(
+      async () => this.service.delete(userId, id),
+      'Virtual garage deleted',
+    );
   }
 }

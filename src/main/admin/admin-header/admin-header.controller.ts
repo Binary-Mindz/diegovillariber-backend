@@ -13,11 +13,7 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { AdminHeaderService } from './admin-header.service';
@@ -95,7 +91,7 @@ export class AdminHeaderController {
     res.status(response.statusCode);
     return response;
   }
-  
+
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Delete(':id')

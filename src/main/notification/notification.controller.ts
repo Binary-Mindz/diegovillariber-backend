@@ -40,15 +40,15 @@ export class NotificationController {
   @Delete('all')
   @ApiOperation({ summary: 'Delete all my notifications' })
   async deleteAllNotifications(@GetUser('userId') userId: string) {
-  return handleRequest(async () => {
-    return this.service.deleteAllNotifications(userId);
-  }, 'All notifications deleted successfully');
+    return handleRequest(async () => {
+      return this.service.deleteAllNotifications(userId);
+    }, 'All notifications deleted successfully');
   }
 
   @Delete('device-token')
   @ApiOperation({ summary: 'Deactivate device token' })
   async removeDeviceToken(
-   @GetUser('userId') userId: string,
+    @GetUser('userId') userId: string,
     @Body('token') token: string,
   ) {
     return handleRequest(async () => {
@@ -59,7 +59,7 @@ export class NotificationController {
   @Get()
   @ApiOperation({ summary: 'Get my notifications' })
   async getMyNotifications(
-   @GetUser('userId') userId: string,
+    @GetUser('userId') userId: string,
     @Query() query: NotificationQueryDto,
   ) {
     return handleRequest(async () => {
@@ -69,10 +69,7 @@ export class NotificationController {
 
   @Patch(':id/read')
   @ApiOperation({ summary: 'Mark notification as read' })
-  async markAsRead(
-   @GetUser('userId') userId: string,
-    @Param('id') id: string,
-  ) {
+  async markAsRead(@GetUser('userId') userId: string, @Param('id') id: string) {
     return handleRequest(async () => {
       return this.service.markAsRead(userId, id);
     }, 'Notification marked as read');
@@ -80,10 +77,7 @@ export class NotificationController {
 
   @Patch(':id/archive')
   @ApiOperation({ summary: 'Archive notification' })
-  async archive(
-   @GetUser('userId') userId: string,
-    @Param('id') id: string,
-  ) {
+  async archive(@GetUser('userId') userId: string, @Param('id') id: string) {
     return handleRequest(async () => {
       return this.service.archive(userId, id);
     }, 'Notification archived successfully');
@@ -102,7 +96,7 @@ export class NotificationController {
 
   @Patch('read-all')
   @ApiOperation({ summary: 'Mark all notifications as read' })
-  async markAllAsRead(@GetUser('userId') userId: string,) {
+  async markAllAsRead(@GetUser('userId') userId: string) {
     return handleRequest(async () => {
       return this.service.markAllAsRead(userId);
     }, 'All notifications marked as read');
@@ -110,7 +104,7 @@ export class NotificationController {
 
   @Get('preferences/me')
   @ApiOperation({ summary: 'Get my notification preferences' })
-  async getMyPreference(@GetUser('userId') userId: string,) {
+  async getMyPreference(@GetUser('userId') userId: string) {
     return handleRequest(async () => {
       return this.service.getMyPreference(userId);
     }, 'Notification preference retrieved successfully');
@@ -119,7 +113,7 @@ export class NotificationController {
   @Patch('preferences/me')
   @ApiOperation({ summary: 'Update my notification preferences' })
   async updateMyPreference(
-   @GetUser('userId') userId: string,
+    @GetUser('userId') userId: string,
     @Body() dto: UpdateNotificationPreferenceDto,
   ) {
     return handleRequest(async () => {
@@ -137,7 +131,7 @@ export class NotificationController {
 
   @Post('test/me')
   @ApiOperation({ summary: 'Send test notification to myself' })
-  async sendTest(@GetUser('userId') userId: string,) {
+  async sendTest(@GetUser('userId') userId: string) {
     return handleRequest(async () => {
       return this.service.sendNotification({
         userId,

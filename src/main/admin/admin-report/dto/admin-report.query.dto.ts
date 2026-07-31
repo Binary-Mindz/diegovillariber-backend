@@ -12,7 +12,6 @@ import {
 } from 'class-validator';
 import { ReportType } from 'generated/prisma/enums';
 
-
 export class AdminReportQueryDto {
   @ApiPropertyOptional({ enum: ReportType, example: ReportType.POST })
   @IsOptional()

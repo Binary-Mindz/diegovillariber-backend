@@ -86,7 +86,9 @@ export class OfficialPartnerController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Update my official partner request (only if PENDING)' })
+  @ApiOperation({
+    summary: 'Update my official partner request (only if PENDING)',
+  })
   @ApiResponse({ status: 200, description: 'Request updated successfully' })
   async updateMyRequest(
     @GetUser('userId') userId: string,

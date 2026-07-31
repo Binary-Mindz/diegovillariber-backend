@@ -9,7 +9,16 @@ import { RepostModule } from './repost/repost.module';
 import { WishlistModule } from './wishlist/wishlist.module';
 
 @Module({
-  imports: [PostModule, LikeModule, CommentModule, SaveModule, HideModule, PostRatingModule, RepostModule, WishlistModule],
+  imports: [
+    PostModule,
+    LikeModule,
+    CommentModule,
+    SaveModule,
+    HideModule,
+    PostRatingModule,
+    RepostModule,
+    WishlistModule,
+  ],
   controllers: [],
   providers: [],
   exports: [],

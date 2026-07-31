@@ -24,7 +24,10 @@ export class SubmitLabTimeLeaderboardDto {
   @Max(200)
   limit?: number;
 
-  @ApiPropertyOptional({ example: 'other-user rank also show করতে চাইলে', description: 'optional' })
+  @ApiPropertyOptional({
+    example: 'other-user rank also show করতে চাইলে',
+    description: 'optional',
+  })
   @IsOptional()
   @Type(() => String)
   otherUserId?: string;

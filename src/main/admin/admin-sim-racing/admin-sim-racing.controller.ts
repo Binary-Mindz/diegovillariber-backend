@@ -1,10 +1,10 @@
-import { Roles } from "@/common/decorator/roles.tdecorator";
-import { JwtAuthGuard } from "@/common/guards/jwt-auth.guard";
-import { RolesGuard } from "@/common/guards/roles.guard";
-import { Controller, Get, Res, UseGuards } from "@nestjs/common";
-import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
-import { AdminSimRacingService } from "./admin-sim-racing.service";
-import { handleRequest } from "@/common/helpers/handle.request";
+import { Roles } from '@/common/decorator/roles.tdecorator';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { RolesGuard } from '@/common/guards/roles.guard';
+import { Controller, Get, Res, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AdminSimRacingService } from './admin-sim-racing.service';
+import { handleRequest } from '@/common/helpers/handle.request';
 import { Response } from 'express';
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, RolesGuard)
@@ -12,7 +12,7 @@ import { Response } from 'express';
 @ApiTags('Admin Sim Racing')
 @Controller('admin-sim-racing')
 export class AdminSimRacingController {
-   constructor(private readonly adminEventService: AdminSimRacingService) {}
+  constructor(private readonly adminEventService: AdminSimRacingService) {}
 
   @Get('sim-racing-statistics')
   @ApiOperation({ summary: 'Get sim racing statistics overview' })

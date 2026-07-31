@@ -89,7 +89,10 @@ export class ChallengeCronService {
         );
       }
     } catch (error) {
-      this.logger.error('Failed to sync challenge statuses', error?.stack || error);
+      this.logger.error(
+        'Failed to sync challenge statuses',
+        error?.stack || error,
+      );
     }
   }
 }

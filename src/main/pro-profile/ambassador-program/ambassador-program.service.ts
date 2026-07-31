@@ -5,7 +5,6 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
-
 import { CreateAmbassadorProgramDto } from './dto/create-ambassador-program.dto';
 import { UpdateAmbassadorProgramDto } from './dto/update-ambassador-program.dto';
 import { AmbassadorProgramQueryDto } from './dto/ambassador-program-query.dto';
@@ -17,7 +16,7 @@ import { QueryMode } from 'generated/prisma/internal/prismaNamespace';
 
 @Injectable()
 export class AmbassadorProgramService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   /** USER */
 
@@ -27,7 +26,9 @@ export class AmbassadorProgramService {
     });
 
     if (existing) {
-      throw new BadRequestException('You already submitted an ambassador application.');
+      throw new BadRequestException(
+        'You already submitted an ambassador application.',
+      );
     }
 
     return this.prisma.ambassadorProgram.create({
@@ -73,7 +74,9 @@ export class AmbassadorProgramService {
     if (!app) throw new NotFoundException('Ambassador application not found.');
 
     if (app.status !== AmbassadorStatus.PENDING) {
-      throw new ForbiddenException('You can update only while status is PENDING.');
+      throw new ForbiddenException(
+        'You can update only while status is PENDING.',
+      );
     }
 
     return this.prisma.ambassadorProgram.update({
@@ -214,6 +217,4 @@ export class AmbassadorProgramService {
 
     return { id, deleted: true };
   }
-
-
 }

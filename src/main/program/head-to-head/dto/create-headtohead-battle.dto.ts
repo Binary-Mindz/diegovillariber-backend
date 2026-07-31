@@ -41,26 +41,41 @@ export class CreateHeadToHeadBattleDto {
   @IsString()
   coverImage?: string;
 
-  @ApiPropertyOptional({ enum: BattleCategory, example: BattleCategory.STYLE_BATTLE })
+  @ApiPropertyOptional({
+    enum: BattleCategory,
+    example: BattleCategory.STYLE_BATTLE,
+  })
   @IsOptional()
   @IsEnum(BattleCategory)
   battleCategory?: BattleCategory;
 
-  @ApiPropertyOptional({ example: 'BMW,AUDI', description: 'optional brand filter' })
+  @ApiPropertyOptional({
+    example: 'BMW,AUDI',
+    description: 'optional brand filter',
+  })
   @IsOptional()
   @IsString()
   brandFilter?: string;
 
-  @ApiProperty({ example: 'Free Car Wash Coupon', description: 'required in schema' })
+  @ApiProperty({
+    example: 'Free Car Wash Coupon',
+    description: 'required in schema',
+  })
   @IsString()
   winPrize!: string;
 
-  @ApiProperty({ example: 'IMAGE', description: 'required in schema. Example: IMAGE / VIDEO / BOTH' })
+  @ApiProperty({
+    example: 'IMAGE',
+    description: 'required in schema. Example: IMAGE / VIDEO / BOTH',
+  })
   @IsString()
   uploadImageOrVideo!: string;
 
   // Requirements
-  @ApiPropertyOptional({ enum: CameraRequirement, example: CameraRequirement.ANY })
+  @ApiPropertyOptional({
+    enum: CameraRequirement,
+    example: CameraRequirement.ANY,
+  })
   @IsOptional()
   @IsEnum(CameraRequirement)
   cameraRequirement?: CameraRequirement;
@@ -76,12 +91,18 @@ export class CreateHeadToHeadBattleDto {
   rejectEditedPhotos?: boolean;
 
   // Access
-  @ApiPropertyOptional({ enum: BattleAccessType, example: BattleAccessType.OPEN })
+  @ApiPropertyOptional({
+    enum: BattleAccessType,
+    example: BattleAccessType.OPEN,
+  })
   @IsOptional()
   @IsEnum(BattleAccessType)
   accessType?: BattleAccessType;
 
-  @ApiPropertyOptional({ enum: AutoInviteScope, example: AutoInviteScope.SAME_CITY })
+  @ApiPropertyOptional({
+    enum: AutoInviteScope,
+    example: AutoInviteScope.SAME_CITY,
+  })
   @IsOptional()
   @IsEnum(AutoInviteScope)
   autoInviteScope?: AutoInviteScope;
@@ -94,7 +115,10 @@ export class CreateHeadToHeadBattleDto {
   autoInviteCount?: number;
 
   // Location
-  @ApiPropertyOptional({ enum: ParticipationScope, example: ParticipationScope.GLOBAL })
+  @ApiPropertyOptional({
+    enum: ParticipationScope,
+    example: ParticipationScope.GLOBAL,
+  })
   @IsOptional()
   @IsEnum(ParticipationScope)
   participationScope?: ParticipationScope;

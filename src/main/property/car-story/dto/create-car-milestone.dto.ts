@@ -12,7 +12,6 @@ import {
 import { Type } from 'class-transformer';
 import { CarMilestoneType } from 'generated/prisma/enums';
 
-
 export class CreateCarMilestoneDto {
   @ApiProperty({ example: 'First track day' })
   @IsString()
@@ -28,7 +27,9 @@ export class CreateCarMilestoneDto {
   @IsDateString()
   date?: string;
 
-  @ApiPropertyOptional({ example: 'View and manage your personal car details.' })
+  @ApiPropertyOptional({
+    example: 'View and manage your personal car details.',
+  })
   @IsOptional()
   @IsString()
   description?: string;

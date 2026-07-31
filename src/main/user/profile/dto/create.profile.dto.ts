@@ -63,7 +63,10 @@ export class BusinessProfileDto {
 }
 
 export class ProDriverProfileDto {
-  @ApiPropertyOptional({ enum: VehicleCategory, example: VehicleCategory.MOTOCROSS })
+  @ApiPropertyOptional({
+    enum: VehicleCategory,
+    example: VehicleCategory.MOTOCROSS,
+  })
   @IsOptional()
   @IsEnum(VehicleCategory)
   racingDiscipline?: VehicleCategory;
@@ -285,7 +288,6 @@ export class SimRacingProfileDto {
 /* ---------------- Main DTO ---------------- */
 
 export class CreateProfileDto {
-
   @ApiPropertyOptional({ example: 'Ash' })
   @IsOptional()
   @IsString()

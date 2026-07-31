@@ -1,14 +1,23 @@
-import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { ReportDto } from './dto/report-dto';
-import { NotificationEntityType, NotificationType, ReportType, Role } from '../../../../prisma/generated/prisma/enums';
+import {
+  NotificationEntityType,
+  NotificationType,
+  ReportType,
+  Role,
+} from '../../../../prisma/generated/prisma/enums';
 import { NotificationService } from '../../notification/notification.service';
 @Injectable()
 export class ReportService {
   constructor(
     private prisma: PrismaService,
     private readonly notificationService: NotificationService,
-  ) { }
+  ) {}
 
   async createReport(userId: string, dto: ReportDto) {
     const existing = await this.prisma.report.findUnique({
@@ -31,7 +40,7 @@ export class ReportService {
         targetType: dto.targetType,
         targetId: dto.targetId,
         reason: dto.reason,
-        description: dto.description ?? null
+        description: dto.description ?? null,
       },
     });
 
@@ -48,7 +57,10 @@ export class ReportService {
           type: NotificationType.ADMIN,
           title: `New Report: ${dto.targetType}`,
           message: `A user has reported a ${dto.targetType.toLowerCase()} for: ${dto.reason}.`,
-          entityType: dto.targetType === ReportType.POST ? NotificationEntityType.POST : NotificationEntityType.PROFILE,
+          entityType:
+            dto.targetType === ReportType.POST
+              ? NotificationEntityType.POST
+              : NotificationEntityType.PROFILE,
           entityId: dto.targetId,
         });
       }

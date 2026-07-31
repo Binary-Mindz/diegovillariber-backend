@@ -1,10 +1,10 @@
-import { PrismaService } from "@/common/prisma/prisma.service";
-import { Injectable } from "@nestjs/common";
-import { ChallengeStatus, MediaType } from "generated/prisma/enums";
+import { PrismaService } from '@/common/prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { ChallengeStatus, MediaType } from 'generated/prisma/enums';
 
 @Injectable()
 export class AdminOverviewService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async getDashboardStats() {
     const [
@@ -24,7 +24,7 @@ export class AdminOverviewService {
       this.prisma.event.count(),
       this.prisma.challenge.count(),
       this.prisma.challenge.count({
-        where: { status : ChallengeStatus.UPCOMING}
+        where: { status: ChallengeStatus.UPCOMING },
       }),
       this.prisma.headToHeadBattle.count(),
     ]);
@@ -89,5 +89,4 @@ export class AdminOverviewService {
       totalVideos,
     };
   }
-
 }

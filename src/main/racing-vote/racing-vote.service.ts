@@ -6,15 +6,21 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Prisma } from 'generated/prisma/client';
-import { CreateRacingVoteDto, RacingVoteTargetType } from './dto/create-racing-vote.dto';
-import { RacingVoteHistoryDto, TimeFrameFilter } from './dto/racing-vote-history.dto';
+import {
+  CreateRacingVoteDto,
+  RacingVoteTargetType,
+} from './dto/create-racing-vote.dto';
+import {
+  RacingVoteHistoryDto,
+  TimeFrameFilter,
+} from './dto/racing-vote-history.dto';
 
 @Injectable()
 export class RacingVoteService {
   private readonly DAILY_LIMIT = 5;
   private readonly DEFAULT_POINT = 5;
 
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   /**
    * Asia/Dhaka (UTC+6) টাইমজোন অনুযায়ী আজকের দিনের শুরু এবং শেষ সময় বের করার নিখুঁত লজিক
@@ -111,9 +117,7 @@ export class RacingVoteService {
       });
 
       if (alreadyVotedForSameUser) {
-        throw new BadRequestException(
-          'You already voted for this user',
-        );
+        throw new BadRequestException('You already voted for this user');
       }
 
       return this.prisma.$transaction(async (tx) => {
@@ -125,7 +129,14 @@ export class RacingVoteService {
           },
           include: {
             voter: { select: { id: true, email: true } },
-            targetUser: { select: { id: true, email: true, totalPoints: true, totalVote: true } },
+            targetUser: {
+              select: {
+                id: true,
+                email: true,
+                totalPoints: true,
+                totalVote: true,
+              },
+            },
           },
         });
 
@@ -200,7 +211,9 @@ export class RacingVoteService {
           },
           include: {
             voter: { select: { id: true, email: true } },
-            post: { select: { id: true, userId: true, point: true, racingVote: true } },
+            post: {
+              select: { id: true, userId: true, point: true, racingVote: true },
+            },
           },
         });
 
@@ -348,9 +361,7 @@ export class RacingVoteService {
         item.totalPoints += vote.point;
         item.totalVotes += 1;
 
-        const alreadyExists = item.posts.some(
-          (p) => p.id === vote.post!.id,
-        );
+        const alreadyExists = item.posts.some((p) => p.id === vote.post!.id);
 
         if (!alreadyExists) {
           item.posts.push({
@@ -363,8 +374,9 @@ export class RacingVoteService {
         }
       }
 
-      const data = Array.from(grouped.values())
-        .sort((a, b) => b.totalPoints - a.totalPoints);
+      const data = Array.from(grouped.values()).sort(
+        (a, b) => b.totalPoints - a.totalPoints,
+      );
 
       const paginated = data.slice(skip, skip + limit);
 
@@ -440,8 +452,12 @@ export class RacingVoteService {
     const vote = await this.prisma.racingVote.findUnique({
       where: { id: voteId },
       include: {
-        post: { select: { id: true, userId: true, point: true, racingVote: true } },
-        targetUser: { select: { id: true, totalPoints: true, totalVote: true } },
+        post: {
+          select: { id: true, userId: true, point: true, racingVote: true },
+        },
+        targetUser: {
+          select: { id: true, totalPoints: true, totalVote: true },
+        },
       },
     });
 
@@ -507,7 +523,15 @@ export class RacingVoteService {
       },
       include: {
         targetUser: { select: { id: true, email: true } },
-        post: { select: { id: true, userId: true, point: true, caption: true, mediaUrl: true } },
+        post: {
+          select: {
+            id: true,
+            userId: true,
+            point: true,
+            caption: true,
+            mediaUrl: true,
+          },
+        },
       },
       orderBy: { createdAt: 'desc' },
     });
@@ -524,10 +548,7 @@ export class RacingVoteService {
 
     const users = await this.prisma.user.findMany({
       where: { totalVote: { gt: 0 } },
-      orderBy: [
-        { totalVote: 'desc' },
-        { totalPoints: 'desc' },
-      ],
+      orderBy: [{ totalVote: 'desc' }, { totalPoints: 'desc' }],
       take: limit,
       select: {
         id: true,

@@ -10,12 +10,18 @@ export enum OfficialPartnerTab {
 }
 
 export class OfficialPartnerQueryDto {
-  @ApiPropertyOptional({ enum: OfficialPartnerTab, default: OfficialPartnerTab.APPLICATIONS })
+  @ApiPropertyOptional({
+    enum: OfficialPartnerTab,
+    default: OfficialPartnerTab.APPLICATIONS,
+  })
   @IsOptional()
   @IsEnum(OfficialPartnerTab)
   tab?: OfficialPartnerTab = OfficialPartnerTab.APPLICATIONS;
 
-  @ApiPropertyOptional({ enum: OfficialPartnerRequestStatus, description: 'Filter by requestStatus' })
+  @ApiPropertyOptional({
+    enum: OfficialPartnerRequestStatus,
+    description: 'Filter by requestStatus',
+  })
   @IsOptional()
   @IsEnum(OfficialPartnerRequestStatus)
   status?: OfficialPartnerRequestStatus;

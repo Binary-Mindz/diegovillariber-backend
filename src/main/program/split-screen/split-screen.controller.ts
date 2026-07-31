@@ -12,7 +12,6 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 
-
 import { SplitScreenService } from './split-screen.service';
 import { CreateSplitScreenMatchDto } from './dto/create-split-screen-match.dto';
 import { SplitScreenBattleQueryDto } from './dto/split-screen-battle-query.dto';
@@ -38,7 +37,7 @@ export class SplitScreenController {
 
   @Get('my-searching-request')
   @ApiOperation({ summary: 'Get my current split screen searching request' })
-  async mySearchingRequest(@GetUser('userId') userId: string,) {
+  async mySearchingRequest(@GetUser('userId') userId: string) {
     return this.splitScreenService.mySearchingRequest(userId);
   }
 

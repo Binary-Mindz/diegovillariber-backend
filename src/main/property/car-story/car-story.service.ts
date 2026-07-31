@@ -12,7 +12,7 @@ import { UpdateCarMilestoneDto } from './dto/update-car-milestone.dto';
 
 @Injectable()
 export class CarStoryService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createStory(userId: string, dto: CreateCarStoryDto) {
     const car = await this.prisma.car.findUnique({
@@ -37,7 +37,9 @@ export class CarStoryService {
     }
 
     if (car.profile.userId !== userId) {
-      throw new ForbiddenException('You are not allowed to create story for this car');
+      throw new ForbiddenException(
+        'You are not allowed to create story for this car',
+      );
     }
 
     if (car.story) {

@@ -14,11 +14,7 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-import {
-  ApiTags,
-  ApiBearerAuth,
-  ApiOperation,
-} from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { handleRequest } from '@/common/helpers/handle.request';
@@ -78,18 +74,18 @@ export class HashtagController {
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete hashtag ' })
   async deleteHashtag(
-  @Param('id') id: string,
-  @GetUser('userId') userId: string,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    async () => this.hashtagService.deleteHashtag(id, userId),
-    'Hashtag deleted successfully',
-  );
+    @Param('id') id: string,
+    @GetUser('userId') userId: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => this.hashtagService.deleteHashtag(id, userId),
+      'Hashtag deleted successfully',
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
   @Get()
   @ApiOperation({ summary: 'Get active hashtags' })

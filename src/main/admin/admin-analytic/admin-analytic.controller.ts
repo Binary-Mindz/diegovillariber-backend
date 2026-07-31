@@ -1,10 +1,4 @@
-import {
-  Controller,
-  Get,
-  UseGuards,
-  Res,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, UseGuards, Res, Query } from '@nestjs/common';
 import { Response } from 'express';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
@@ -47,21 +41,22 @@ export class AdminAnalyticController {
     return response;
   }
 
- @Get('top-content-creators')
-async getTopCreators(
-  @Query() query: TopContentCreatorQueryDto,
-  @Res() res: Response,
-) {
-  const response = await this.adminAnalyticService.getTopContentCreators(query);
+  @Get('top-content-creators')
+  async getTopCreators(
+    @Query() query: TopContentCreatorQueryDto,
+    @Res() res: Response,
+  ) {
+    const response =
+      await this.adminAnalyticService.getTopContentCreators(query);
 
-  return res.status(response.statusCode).json(response);
-}
+    return res.status(response.statusCode).json(response);
+  }
 
-@Get('most-engaged-posts')
-  @ApiOperation({ summary: 'Get most engaged posts ranked by likes and comments' })
+  @Get('most-engaged-posts')
+  @ApiOperation({
+    summary: 'Get most engaged posts ranked by likes and comments',
+  })
   async getMostEngagedPosts(@Query() query: GetMostEngagedPostsQueryDto) {
     return this.adminAnalyticService.getMostEngagedPosts(query);
   }
-
-
 }

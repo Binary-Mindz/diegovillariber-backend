@@ -34,29 +34,52 @@ export class SubmitLabTimeController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Submit lap time (SIM_RACING_DRIVER only)' })
-  create(@GetUser('userId') userId: string, @Body() dto: CreateSubmitLabTimeDto) {
-    return handleRequest(async () => this.service.create(userId, dto), 'Lap submitted successfully');
+  create(
+    @GetUser('userId') userId: string,
+    @Body() dto: CreateSubmitLabTimeDto,
+  ) {
+    return handleRequest(
+      async () => this.service.create(userId, dto),
+      'Lap submitted successfully',
+    );
   }
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get()
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'List my submitted lap times (Active profile only)' })
-  list(@GetUser('userId') userId: string, @Query() query: SubmitLabTimeQueryDto) {
-    return handleRequest(async () => this.service.list(userId, query), 'Submitted laps fetched');
+  @ApiOperation({
+    summary: 'List my submitted lap times (Active profile only)',
+  })
+  list(
+    @GetUser('userId') userId: string,
+    @Query() query: SubmitLabTimeQueryDto,
+  ) {
+    return handleRequest(
+      async () => this.service.list(userId, query),
+      'Submitted laps fetched',
+    );
   }
 
-   @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('compare')
   @HttpCode(HttpStatus.OK)
-  @ApiOperation({ summary: 'Compare best lap time (You vs Other user) by platform+circuit+class' })
-  compareBest(@GetUser('userId') userId: string, @Query() dto: CompareSubmitLabTimeDto) {
-    return handleRequest(async () => this.service.compareBest(userId, dto), 'Compare result');
+  @ApiOperation({
+    summary:
+      'Compare best lap time (You vs Other user) by platform+circuit+class',
+  })
+  compareBest(
+    @GetUser('userId') userId: string,
+    @Query() dto: CompareSubmitLabTimeDto,
+  ) {
+    return handleRequest(
+      async () => this.service.compareBest(userId, dto),
+      'Compare result',
+    );
   }
 
-    @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('sim-racing-users')
   @HttpCode(HttpStatus.OK)
@@ -95,7 +118,10 @@ export class SubmitLabTimeController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Get my submitted lap by id' })
   get(@GetUser('userId') userId: string, @Param('id') id: string) {
-    return handleRequest(async () => this.service.get(userId, id), 'Submitted lap fetched');
+    return handleRequest(
+      async () => this.service.get(userId, id),
+      'Submitted lap fetched',
+    );
   }
 
   @ApiBearerAuth()
@@ -103,8 +129,15 @@ export class SubmitLabTimeController {
   @Patch(':id')
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Update submitted lap (Owner only)' })
-  update(@GetUser('userId') userId: string, @Param('id') id: string, @Body() dto: UpdateSubmitLabTimeDto) {
-    return handleRequest(async () => this.service.update(userId, id, dto), 'Submitted lap updated');
+  update(
+    @GetUser('userId') userId: string,
+    @Param('id') id: string,
+    @Body() dto: UpdateSubmitLabTimeDto,
+  ) {
+    return handleRequest(
+      async () => this.service.update(userId, id, dto),
+      'Submitted lap updated',
+    );
   }
 
   @ApiBearerAuth()
@@ -113,6 +146,9 @@ export class SubmitLabTimeController {
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Delete submitted lap (Owner only)' })
   delete(@GetUser('userId') userId: string, @Param('id') id: string) {
-    return handleRequest(async () => this.service.delete(userId, id), 'Submitted lap deleted');
+    return handleRequest(
+      async () => this.service.delete(userId, id),
+      'Submitted lap deleted',
+    );
   }
 }

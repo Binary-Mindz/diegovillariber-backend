@@ -1,7 +1,12 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional, IsString, IsUUID } from 'class-validator';
-import { SplitScreenBattleCategory, SplitScreenDivision, SplitScreenLeagueCode, SplitScreenMatchmakingMode, SplitScreenPreferenceMode } from 'generated/prisma/enums';
-
+import {
+  SplitScreenBattleCategory,
+  SplitScreenDivision,
+  SplitScreenLeagueCode,
+  SplitScreenMatchmakingMode,
+  SplitScreenPreferenceMode,
+} from 'generated/prisma/enums';
 
 export class CreateSplitScreenMatchDto {
   @ApiProperty({

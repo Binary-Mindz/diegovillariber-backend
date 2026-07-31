@@ -27,7 +27,6 @@ export class CreateEventDto {
   @IsString()
   description?: string;
 
- 
   @ApiPropertyOptional({ example: 'Dhaka Race Track' })
   @IsOptional()
   @IsString()

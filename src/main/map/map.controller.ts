@@ -21,10 +21,7 @@ export class MapController {
 
   @Get('details/:type/:id')
   @ApiOperation({ summary: 'Get map card details by type and id' })
-  async getDetails(
-    @Param('type') type: string,
-    @Param('id') id: string,
-  ) {
+  async getDetails(@Param('type') type: string, @Param('id') id: string) {
     return handleRequest(
       () => this.mapService.getMapDetails(type.toLowerCase(), id),
       'Map details fetched successfully',

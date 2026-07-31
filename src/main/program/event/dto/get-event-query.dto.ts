@@ -1,4 +1,13 @@
-import { IsEnum, IsInt, IsOptional, IsString, IsUUID, Max, Min, IsDateString } from 'class-validator';
+import {
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  IsUUID,
+  Max,
+  Min,
+  IsDateString,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { EventStatus, EventType } from 'generated/prisma/enums';
@@ -61,7 +70,10 @@ export class GetEventsQueryDto {
   @Min(1)
   page: number = 1;
 
-  @ApiPropertyOptional({ example: 20, description: 'Items per page (default = 20)' })
+  @ApiPropertyOptional({
+    example: 20,
+    description: 'Items per page (default = 20)',
+  })
   @IsOptional()
   @Type(() => Number)
   @IsInt()

@@ -5,7 +5,6 @@ import { DiscoverService } from './discover.service';
 import { GlobalSearchDto } from './dto/global-search-query.dto';
 import { GetTrendingHashtagsDto } from './dto/get-trending-hashtag.dto';
 
-
 @ApiTags('Discover')
 @Controller('discover')
 export class DiscoverController {
@@ -22,12 +21,12 @@ export class DiscoverController {
     return response;
   }
 
-@Get('trending-hashtags')
-@ApiOperation({ summary: 'Get trending hashtags with preview media' })
-async getTrendingHashtags(@Query() dto: GetTrendingHashtagsDto) {
-  return handleRequest(
-    () => this.discoverService.getTrendingHashtags(dto),
-    'Trending hashtags fetched successfully',
-  );
-}
+  @Get('trending-hashtags')
+  @ApiOperation({ summary: 'Get trending hashtags with preview media' })
+  async getTrendingHashtags(@Query() dto: GetTrendingHashtagsDto) {
+    return handleRequest(
+      () => this.discoverService.getTrendingHashtags(dto),
+      'Trending hashtags fetched successfully',
+    );
+  }
 }

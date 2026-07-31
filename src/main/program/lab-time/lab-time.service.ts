@@ -450,31 +450,31 @@ export class LabTimeService {
 
     return {
       comparison: {
-          sameTrack: true,
-    sameLayout,
-    trackName: myLap.trackName,
-    rankingLapPosition: rankingPosition + 1,
-    myLapPosition: myPosition + 1,
-    fasterSide,
-    fasterLapId,
-    timeDifferenceMs,
-    telemetry: {
-      ranking: rankingTelemetryStats,
-      mine: myTelemetryStats,
-      difference: {
-        maxSpeedMS:
-          rankingTelemetryStats.maxSpeedMS !== null &&
-          myTelemetryStats.maxSpeedMS !== null
-            ? myTelemetryStats.maxSpeedMS - rankingTelemetryStats.maxSpeedMS
-            : null,
-        avgSpeedMS:
-          rankingTelemetryStats.avgSpeedMS !== null &&
-          myTelemetryStats.avgSpeedMS !== null
-            ? myTelemetryStats.avgSpeedMS - rankingTelemetryStats.avgSpeedMS
-            : null,
+        sameTrack: true,
+        sameLayout,
+        trackName: myLap.trackName,
+        rankingLapPosition: rankingPosition + 1,
+        myLapPosition: myPosition + 1,
+        fasterSide,
+        fasterLapId,
+        timeDifferenceMs,
+        telemetry: {
+          ranking: rankingTelemetryStats,
+          mine: myTelemetryStats,
+          difference: {
+            maxSpeedMS:
+              rankingTelemetryStats.maxSpeedMS !== null &&
+              myTelemetryStats.maxSpeedMS !== null
+                ? myTelemetryStats.maxSpeedMS - rankingTelemetryStats.maxSpeedMS
+                : null,
+            avgSpeedMS:
+              rankingTelemetryStats.avgSpeedMS !== null &&
+              myTelemetryStats.avgSpeedMS !== null
+                ? myTelemetryStats.avgSpeedMS - rankingTelemetryStats.avgSpeedMS
+                : null,
+          },
+        },
       },
-    },
-  },
       rankingLap: {
         ...rankingLap,
         vehicle: rankingLapVehicle,
@@ -710,12 +710,12 @@ export class LabTimeService {
             description: true,
           },
         },
-        profile:{
-          select:{
-            profileName:true,
-            imageUrl:true
-          }
-        }
+        profile: {
+          select: {
+            profileName: true,
+            imageUrl: true,
+          },
+        },
       },
     });
 
@@ -725,7 +725,7 @@ export class LabTimeService {
 
     return {
       ...lap,
-      profileName: lap.profile?.profileName ?? null,   // ✅ ADD
+      profileName: lap.profile?.profileName ?? null, // ✅ ADD
       profileImageUrl: lap.profile?.imageUrl ?? null,
       vehicle: await this.getVehicleDetails(
         lap.profileId,
@@ -751,12 +751,12 @@ export class LabTimeService {
     }
 
     const headers = Object.keys(telemetry[0]);
-    const csvRows = [headers.join(',')]; 
+    const csvRows = [headers.join(',')];
 
     for (const row of telemetry) {
-      const values = headers.map(header => {
+      const values = headers.map((header) => {
         const val = row[header];
-     
+
         if (typeof val === 'string' && val.includes(',')) {
           return `"${val}"`;
         }
@@ -841,7 +841,7 @@ export class LabTimeService {
       ...(dto.trackName !== undefined ? { trackName: dto.trackName } : {}),
       ...(dto.trackLayout !== undefined
         ? {
-           trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? '',
+            trackLayout: selectedLayout?.trackLayout ?? dto.trackLayout ?? '',
           }
         : {}),
       ...(selectedLayout

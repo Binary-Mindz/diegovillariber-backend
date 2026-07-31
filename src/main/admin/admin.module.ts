@@ -14,7 +14,21 @@ import { AdminPrestigeModule } from './admin-prestige/admin-prestige.module';
 import { AdminBadgeModule } from './admin-badge/admin-badge.module';
 
 @Module({
-  imports: [AdminOverviewModule, AdminAnalyticModule, AdminUserManagementModule, AdminLegalNoticeModule, AdminTutorialModule, AdminPrestigeModule , AdminBadgeModule , HashtagModule, AdminEventManagementModule, AdminReportModule, AdminSimRacingModule, AdminAdModule, AdminHeaderModule],
+  imports: [
+    AdminOverviewModule,
+    AdminAnalyticModule,
+    AdminUserManagementModule,
+    AdminLegalNoticeModule,
+    AdminTutorialModule,
+    AdminPrestigeModule,
+    AdminBadgeModule,
+    HashtagModule,
+    AdminEventManagementModule,
+    AdminReportModule,
+    AdminSimRacingModule,
+    AdminAdModule,
+    AdminHeaderModule,
+  ],
   controllers: [],
   providers: [],
   exports: [],

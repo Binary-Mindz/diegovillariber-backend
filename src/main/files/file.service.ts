@@ -3,10 +3,7 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 
 @Injectable()
 export class FileService {
-  constructor(
-    private prisma: PrismaService,
-  ) {}
-
+  constructor(private prisma: PrismaService) {}
 
   async getFiles(skip = 0, take = 10) {
     const [files, total] = await Promise.all([

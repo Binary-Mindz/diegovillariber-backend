@@ -31,7 +31,7 @@ import { SwitchProfileTypeDto } from './dto/switch.profile.type.dto';
 @ApiTags('Profiles')
 @Controller('profiles')
 export class ProfileController {
-  constructor(private readonly profileService: ProfileService) { }
+  constructor(private readonly profileService: ProfileService) {}
 
   @Post()
   @ApiOperation({
@@ -72,8 +72,6 @@ export class ProfileController {
     };
   }
 
-
-
   // profile.controller.ts
 
   @UseGuards(JwtAuthGuard)
@@ -82,10 +80,7 @@ export class ProfileController {
     @Param('profileId') profileId: string,
     @Body() dto: SwitchProfileTypeDto,
   ) {
-    return this.profileService.switchProfileType(
-      profileId,
-      dto.type,
-    );
+    return this.profileService.switchProfileType(profileId, dto.type);
   }
 
   @Patch(':profileId')
@@ -112,8 +107,6 @@ export class ProfileController {
       data: profile,
     };
   }
-
-
 
   @Patch(':profileId/type')
   @HttpCode(HttpStatus.OK)
@@ -171,6 +164,4 @@ export class ProfileController {
       data: result,
     };
   }
-
-
 }

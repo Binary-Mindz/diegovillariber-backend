@@ -1,12 +1,15 @@
-import { PrismaService } from "@/common/prisma/prisma.service";
-import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
-import { UnsavePostDto } from "./dto/unsave-post.dto";
-import { SavePostDto } from "./dto/save-post.dto";
+import { PrismaService } from '@/common/prisma/prisma.service';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { UnsavePostDto } from './dto/unsave-post.dto';
+import { SavePostDto } from './dto/save-post.dto';
 
 @Injectable()
 export class SaveService {
   constructor(private prisma: PrismaService) {}
-
 
   async savePost(userId: string, dto: SavePostDto) {
     const exists = await this.prisma.savePost.findUnique({
@@ -29,7 +32,6 @@ export class SaveService {
       },
     });
   }
-
 
   async unsavePost(userId: string, dto: UnsavePostDto) {
     const saved = await this.prisma.savePost.findUnique({
@@ -57,7 +59,6 @@ export class SaveService {
     return { removed: true };
   }
 
-
   async getMySavedPosts(userId: string) {
     return this.prisma.savePost.findMany({
       where: { userId },
@@ -67,7 +68,6 @@ export class SaveService {
       orderBy: { createdAt: 'desc' },
     });
   }
-
 
   async isPostSaved(userId: string, postId: string) {
     const saved = await this.prisma.savePost.findUnique({

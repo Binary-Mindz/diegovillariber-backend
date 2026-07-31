@@ -1,6 +1,16 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsArray, IsEnum, IsInt, IsOptional, IsString, IsUUID, Max, Min, ValidateNested } from 'class-validator';
+import {
+  IsArray,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  IsUUID,
+  Max,
+  Min,
+  ValidateNested,
+} from 'class-validator';
 import { MediaType } from 'generated/prisma/enums';
 
 export class SubmissionMediaItemDto {
@@ -30,7 +40,10 @@ export class SubmissionMediaItemDto {
   @Min(0)
   sortOrder?: number;
 
-  @ApiPropertyOptional({ example: 'raw_1', description: 'Use same pairKey for RAW+EDITED pairing if needed' })
+  @ApiPropertyOptional({
+    example: 'raw_1',
+    description: 'Use same pairKey for RAW+EDITED pairing if needed',
+  })
   @IsOptional()
   @IsString()
   pairKey?: string;

@@ -35,14 +35,7 @@ export class AdminBadgeService {
   }
 
   async getCatalog(query: BadgeCatalogQueryDto) {
-    const {
-      page = 1,
-      limit = 9,
-      search,
-      status,
-      rarity,
-      targetType,
-    } = query;
+    const { page = 1, limit = 9, search, status, rarity, targetType } = query;
 
     const where: Prisma.BadgeWhereInput = {
       ...(status
@@ -89,10 +82,7 @@ export class AdminBadgeService {
     const [items, total] = await Promise.all([
       this.prisma.badge.findMany({
         where,
-        orderBy: [
-          { sortOrder: 'asc' },
-          { createdAt: 'desc' },
-        ],
+        orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
         skip: (page - 1) * limit,
         take: limit,
       }),
@@ -117,10 +107,7 @@ export class AdminBadgeService {
           not: BadgeStatus.DELETED,
         },
       },
-      orderBy: [
-        { sortOrder: 'asc' },
-        { createdAt: 'desc' },
-      ],
+      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
       select: {
         id: true,
         name: true,

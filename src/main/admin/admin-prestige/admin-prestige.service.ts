@@ -1,9 +1,8 @@
- import {
+import {
   BadRequestException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-
 
 import { CreatePrestigeDto } from './dto/create-prestige.dto';
 import { UpdatePrestigeDto } from './dto/update-prestige.dto';
@@ -46,7 +45,9 @@ export class AdminPrestigeService {
     });
 
     if (existing) {
-      throw new BadRequestException('Prestige rule already exists for this earnBy');
+      throw new BadRequestException(
+        'Prestige rule already exists for this earnBy',
+      );
     }
 
     this.validateCaps(dto.dailyCap ?? 0, dto.weeklyCap ?? 0);
@@ -136,7 +137,9 @@ export class AdminPrestigeService {
       });
 
       if (duplicate) {
-        throw new BadRequestException('Prestige rule already exists for this earnBy');
+        throw new BadRequestException(
+          'Prestige rule already exists for this earnBy',
+        );
       }
     }
 

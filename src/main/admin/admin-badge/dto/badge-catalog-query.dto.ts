@@ -1,14 +1,11 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
+import { IsEnum, IsInt, IsOptional, IsString, Max, Min } from 'class-validator';
 import {
-  IsEnum,
-  IsInt,
-  IsOptional,
-  IsString,
-  Max,
-  Min,
-} from 'class-validator';
-import { BadgeRarity, BadgeStatus, BadgeTargetType } from 'generated/prisma/enums';
+  BadgeRarity,
+  BadgeStatus,
+  BadgeTargetType,
+} from 'generated/prisma/enums';
 
 export class BadgeCatalogQueryDto {
   @ApiPropertyOptional({ example: 1, default: 1 })

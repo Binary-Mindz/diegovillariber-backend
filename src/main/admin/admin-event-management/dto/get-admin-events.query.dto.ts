@@ -16,7 +16,8 @@ export class GetAdminEventsQueryDto {
 
   @ApiPropertyOptional({
     example: 'dhaka',
-    description: 'Search by event title / location / creator name / creator email',
+    description:
+      'Search by event title / location / creator name / creator email',
   })
   @IsOptional()
   @IsString()

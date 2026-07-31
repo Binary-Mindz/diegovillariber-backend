@@ -102,7 +102,7 @@ export class ProfileShareService {
         userId: true,
         profileName: true,
         bio: true,
-        shareSlug:true,
+        shareSlug: true,
         imageUrl: true,
         instagramHandler: true,
         accountType: true,
@@ -120,17 +120,17 @@ export class ProfileShareService {
     }
 
     return {
-    userId: profile.userId,
-    profileId: profile.id,
-    slug: profile.shareSlug,
-    profileName: profile.profileName,
-    bio: profile.bio,
-    imageUrl: profile.imageUrl,
-    instagramHandler: profile.instagramHandler,
-    accountType: profile.accountType,
-    suspend: profile.suspend,
-    isActive: profile.isActive,
-  };
+      userId: profile.userId,
+      profileId: profile.id,
+      slug: profile.shareSlug,
+      profileName: profile.profileName,
+      bio: profile.bio,
+      imageUrl: profile.imageUrl,
+      instagramHandler: profile.instagramHandler,
+      accountType: profile.accountType,
+      suspend: profile.suspend,
+      isActive: profile.isActive,
+    };
   }
   async increaseShareCount(profileId: string) {
     await this.prisma.user.updateMany({

@@ -132,87 +132,87 @@ export class RepostService {
     };
   }
 
- async getMyReposts(userId: string) {
-  const reposts = await this.prisma.repost.findMany({
-    where: { userId },
-    orderBy: { createdAt: 'desc' },
-    select: {
-      id: true,
-      point: true,
-      createdAt: true,
-      post: {
-        select: {
-          id: true,
-          caption: true,
-          mediaUrl: true,
-          postType: true,
-          mediaType: true,
-          postLocation: true,
-          locationName: true,
-          createdAt: true,
-          repost: true,
-          like: true,
-          comment: true,
-          share: true,
-          user: {
-            select: {
-              id: true,
-              email: true,
+  async getMyReposts(userId: string) {
+    const reposts = await this.prisma.repost.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      select: {
+        id: true,
+        point: true,
+        createdAt: true,
+        post: {
+          select: {
+            id: true,
+            caption: true,
+            mediaUrl: true,
+            postType: true,
+            mediaType: true,
+            postLocation: true,
+            locationName: true,
+            createdAt: true,
+            repost: true,
+            like: true,
+            comment: true,
+            share: true,
+            user: {
+              select: {
+                id: true,
+                email: true,
+              },
             },
-          },
-          profile: {
-            select: {
-              id: true,
-              profileName: true,
-              imageUrl: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+              },
             },
-          },
-          car: {
-            select: {
-              id: true,
-              model: true
+            car: {
+              select: {
+                id: true,
+                model: true,
+              },
             },
-          },
-          _count: {
-            select: {
-              likes: true,
-              comments: true,
-              reposts: true,
+            _count: {
+              select: {
+                likes: true,
+                comments: true,
+                reposts: true,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
 
-  return reposts.map((item) => {
-    const post = item.post;
+    return reposts.map((item) => {
+      const post = item.post;
 
-    return {
-      repostId: item.id,
-      point: item.point,
-      createdAt: item.createdAt,
-      post: {
-        id: post.id,
-        caption: post.caption,
-        mediaUrl: post.mediaUrl,
-        postType: post.postType,
-        mediaType: post.mediaType,
-        postLocation: post.postLocation,
-        locationName: post.locationName,
-        createdAt: post.createdAt,
-        repostCount: post.repost,
-        likeCount: post.like,
-        commentCount: post.comment,
-        shareCount: post.share,
-        user: post.user,
-        profile: post.profile,
-        car: post.car,
-        counts: post._count,
-      },
-    };
-  });
-}
+      return {
+        repostId: item.id,
+        point: item.point,
+        createdAt: item.createdAt,
+        post: {
+          id: post.id,
+          caption: post.caption,
+          mediaUrl: post.mediaUrl,
+          postType: post.postType,
+          mediaType: post.mediaType,
+          postLocation: post.postLocation,
+          locationName: post.locationName,
+          createdAt: post.createdAt,
+          repostCount: post.repost,
+          likeCount: post.like,
+          commentCount: post.comment,
+          shareCount: post.share,
+          user: post.user,
+          profile: post.profile,
+          car: post.car,
+          counts: post._count,
+        },
+      };
+    });
+  }
 
   async isPostReposted(userId: string, postId: string) {
     const repost = await this.prisma.repost.findUnique({

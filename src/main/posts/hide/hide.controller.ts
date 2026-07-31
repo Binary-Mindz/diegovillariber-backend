@@ -8,7 +8,12 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { HideService } from './hide.service';
 import { HidePostDto } from './dto/hide-post.dto';
@@ -26,17 +31,13 @@ export class HideController {
   @ApiOperation({ summary: 'Hide a post' })
   @ApiResponse({ status: 201, description: 'Post hidden successfully' })
   @Post()
-  async hidePost(
-    @GetUser('userId') userId: string,
-    @Body() dto: HidePostDto,
-  ) {
+  async hidePost(@GetUser('userId') userId: string, @Body() dto: HidePostDto) {
     return handleRequest(
       async () => this.hideService.hidePost(userId, dto),
       'Post hidden successfully',
       HttpStatus.CREATED,
     );
   }
-
 
   @ApiOperation({ summary: 'Unhide a post' })
   @ApiResponse({ status: 200, description: 'Post unhidden successfully' })
@@ -52,7 +53,6 @@ export class HideController {
     );
   }
 
-
   @ApiOperation({ summary: 'Get my hidden posts' })
   @ApiResponse({ status: 200 })
   @Get('me')
@@ -63,7 +63,6 @@ export class HideController {
       HttpStatus.OK,
     );
   }
-
 
   @ApiOperation({ summary: 'Check if post is hidden' })
   @ApiResponse({ status: 200 })

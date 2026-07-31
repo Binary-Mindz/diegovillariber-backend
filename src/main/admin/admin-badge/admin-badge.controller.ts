@@ -1,20 +1,10 @@
-import {
-  Controller,
-  Get,
-  Query,
-  Res,
-} from '@nestjs/common';
+import { Controller, Get, Query, Res } from '@nestjs/common';
 import { Response } from 'express';
-import {
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 import { handleRequest } from '@/common/helpers/handle.request';
 import { AdminBadgeService } from './admin-badge.service';
 import { BadgeCatalogQueryDto } from './dto/badge-catalog-query.dto';
-
 
 @ApiTags('Admin-Badges')
 @Controller('admin/badges')

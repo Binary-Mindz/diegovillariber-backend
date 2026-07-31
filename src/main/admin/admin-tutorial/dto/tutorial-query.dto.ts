@@ -1,5 +1,11 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsInt, IsNumberString, IsOptional, IsString, Min } from 'class-validator';
+import {
+  IsInt,
+  IsNumberString,
+  IsOptional,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class TutorialQueryDto {
   @ApiPropertyOptional({

@@ -1,11 +1,25 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Query, UseGuards } from "@nestjs/common";
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { SaveService } from "./save.service";
-import { JwtAuthGuard } from "@/common/guards/jwt-auth.guard";
-import { GetUser } from "@/common/decorator/get-user.decorator";
-import { SavePostDto } from "./dto/save-post.dto";
-import { handleRequest } from "@/common/helpers/handle.request";
-import { UnsavePostDto } from "./dto/unsave-post.dto";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpStatus,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { SaveService } from './save.service';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { GetUser } from '@/common/decorator/get-user.decorator';
+import { SavePostDto } from './dto/save-post.dto';
+import { handleRequest } from '@/common/helpers/handle.request';
+import { UnsavePostDto } from './dto/unsave-post.dto';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -14,21 +28,16 @@ import { UnsavePostDto } from "./dto/unsave-post.dto";
 export class SaveController {
   constructor(private readonly saveService: SaveService) {}
 
-
   @ApiOperation({ summary: 'Save a post' })
   @ApiResponse({ status: 201, description: 'Post saved successfully' })
   @Post()
-  async savePost(
-    @GetUser('userId') userId: string,
-    @Body() dto: SavePostDto,
-  ) {
+  async savePost(@GetUser('userId') userId: string, @Body() dto: SavePostDto) {
     return handleRequest(
       async () => this.saveService.savePost(userId, dto),
       'Post saved successfully',
       HttpStatus.CREATED,
     );
   }
-
 
   @ApiOperation({ summary: 'Unsave a post' })
   @ApiResponse({ status: 200, description: 'Post unsaved successfully' })
@@ -44,7 +53,6 @@ export class SaveController {
     );
   }
 
-  
   @ApiOperation({ summary: 'Get my saved posts' })
   @ApiResponse({ status: 200, description: 'Saved posts fetched successfully' })
   @Get('me')
@@ -56,7 +64,6 @@ export class SaveController {
     );
   }
 
-  
   @ApiOperation({ summary: 'Check if post is saved' })
   @ApiResponse({ status: 200 })
   @Get('check')
@@ -70,5 +77,4 @@ export class SaveController {
       HttpStatus.OK,
     );
   }
-
 }

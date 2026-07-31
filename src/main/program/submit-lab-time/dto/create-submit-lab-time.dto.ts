@@ -1,6 +1,20 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsBoolean, IsEnum, IsInt, IsOptional, IsString, MaxLength, Min, IsDateString } from 'class-validator';
-import { CarClass, Circuit, Platform, TelemetrySource } from 'generated/prisma/enums';
+import {
+  IsBoolean,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  MaxLength,
+  Min,
+  IsDateString,
+} from 'class-validator';
+import {
+  CarClass,
+  Circuit,
+  Platform,
+  TelemetrySource,
+} from 'generated/prisma/enums';
 
 export class CreateSubmitLabTimeDto {
   @ApiProperty({ enum: Platform, example: Platform.iRacing })
@@ -36,7 +50,10 @@ export class CreateSubmitLabTimeDto {
   @MaxLength(500)
   videoLink?: string;
 
-  @ApiProperty({ enum: TelemetrySource, example: TelemetrySource.iRacing_MoTec })
+  @ApiProperty({
+    enum: TelemetrySource,
+    example: TelemetrySource.iRacing_MoTec,
+  })
   @IsEnum(TelemetrySource)
   telemetrySource!: TelemetrySource;
 

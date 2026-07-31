@@ -9,7 +9,7 @@ import {
 
 @Injectable()
 export class DiscoverService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   async globalSearch(dto: GlobalSearchDto) {
     const keyword = dto.keyword?.trim() ?? '';
@@ -32,128 +32,139 @@ export class DiscoverService {
     const userWhere =
       keyword.length > 0
         ? {
-          OR: [
-            {
-              email: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+            OR: [
+              {
+                email: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              phone: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                phone: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              profile: {
-                some: {
-                  profileName: {
-                    contains: keyword,
-                    mode: 'insensitive' as const,
+              {
+                profile: {
+                  some: {
+                    profileName: {
+                      contains: keyword,
+                      mode: 'insensitive' as const,
+                    },
                   },
                 },
               },
-            },
-          ],
-        }
+            ],
+          }
         : {};
 
     const postWhere =
       keyword.length > 0
         ? {
-          OR: [
-            // normal search
-            {
-              caption: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+            OR: [
+              // normal search
+              {
+                caption: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              locationName: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                locationName: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              locationAddress: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                locationAddress: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              postLocation: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                postLocation: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
 
-            // 🔥 hashtag search (always active if keyword আছে)
-            ...(normalizedKeyword
-              ? [
-                {
-                  hashtags: {
-                    some: {
-                      tag: {
-                        contains: normalizedKeyword,
-                        mode: 'insensitive' as const,
+              // 🔥 hashtag search (always active if keyword আছে)
+              ...(normalizedKeyword
+                ? [
+                    {
+                      hashtags: {
+                        some: {
+                          tag: {
+                            contains: normalizedKeyword,
+                            mode: 'insensitive' as const,
+                          },
+                        },
                       },
                     },
-                  },
-                },
-              ]
-              : []),
-          ],
-        }
+                  ]
+                : []),
+            ],
+          }
         : {};
     const eventWhere =
       keyword.length > 0
         ? {
-          OR: [
-            {
-              eventTitle: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+            OR: [
+              {
+                eventTitle: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              description: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                description: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              location: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                location: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-            {
-              locationAddress: {
-                contains: keyword,
-                mode: 'insensitive' as const,
+              {
+                locationAddress: {
+                  contains: keyword,
+                  mode: 'insensitive' as const,
+                },
               },
-            },
-          ],
-        }
+            ],
+          }
         : {};
 
     // Have to match the hashtag elements of the challenge
-    const challengeWhere: Prisma.ChallengeWhereInput = keyword.length > 0 ? {
-      challengeSubmissions: {
-        some: {
-          hashtags: {
-            has: `${normalizedKeyword}`,
+    const challengeWhere: Prisma.ChallengeWhereInput =
+      keyword.length > 0
+        ? {
+            challengeSubmissions: {
+              some: {
+                hashtags: {
+                  has: `${normalizedKeyword}`,
+                },
+              },
+            },
           }
-        }
-      },
-    } : {}
+        : {};
 
-    const [users, usersCount, posts, postsCount, events, eventsCount, challenges, challengesCount] =
-      await Promise.all([
-        shouldSearchUsers
-          ? this.prisma.user.findMany({
+    const [
+      users,
+      usersCount,
+      posts,
+      postsCount,
+      events,
+      eventsCount,
+      challenges,
+      challengesCount,
+    ] = await Promise.all([
+      shouldSearchUsers
+        ? this.prisma.user.findMany({
             where: userWhere,
             orderBy: {
               createdAt: 'desc',
@@ -180,16 +191,16 @@ export class DiscoverService {
               },
             },
           })
-          : Promise.resolve([]),
+        : Promise.resolve([]),
 
-        shouldSearchUsers
-          ? this.prisma.user.count({
+      shouldSearchUsers
+        ? this.prisma.user.count({
             where: userWhere,
           })
-          : Promise.resolve(0),
+        : Promise.resolve(0),
 
-        shouldSearchPosts
-          ? this.prisma.post.findMany({
+      shouldSearchPosts
+        ? this.prisma.post.findMany({
             where: postWhere,
             orderBy: {
               createdAt: 'desc',
@@ -243,16 +254,16 @@ export class DiscoverService {
               },
             },
           })
-          : Promise.resolve([]),
+        : Promise.resolve([]),
 
-        shouldSearchPosts
-          ? this.prisma.post.count({
+      shouldSearchPosts
+        ? this.prisma.post.count({
             where: postWhere,
           })
-          : Promise.resolve(0),
+        : Promise.resolve(0),
 
-        shouldSearchEvents
-          ? this.prisma.event.findMany({
+      shouldSearchEvents
+        ? this.prisma.event.findMany({
             where: eventWhere,
             orderBy: [{ startDate: 'asc' }, { createdAt: 'desc' }],
             skip,
@@ -286,31 +297,31 @@ export class DiscoverService {
               },
             },
           })
-          : Promise.resolve([]),
+        : Promise.resolve([]),
 
-        shouldSearchEvents
-          ? this.prisma.event.count({
+      shouldSearchEvents
+        ? this.prisma.event.count({
             where: eventWhere,
           })
-          : Promise.resolve(0),
+        : Promise.resolve(0),
 
-        shouldSearchChallenges
-          ? this.prisma.challenge.findMany({
+      shouldSearchChallenges
+        ? this.prisma.challenge.findMany({
             where: challengeWhere,
             skip,
             take: limit,
             include: {
-              challengeSubmissions: true
+              challengeSubmissions: true,
             },
           })
-          : Promise.resolve([]),
+        : Promise.resolve([]),
 
-        shouldSearchChallenges
-          ? this.prisma.challenge.count({
+      shouldSearchChallenges
+        ? this.prisma.challenge.count({
             where: challengeWhere,
           })
-          : Promise.resolve(0),
-      ]);
+        : Promise.resolve(0),
+    ]);
 
     return {
       keyword,
@@ -345,7 +356,7 @@ export class DiscoverService {
 
     const where = {
       isActive: true,
-      usageCount: { gte: 1 }
+      usageCount: { gte: 1 },
     };
 
     const [hashtags, total] = await Promise.all([
@@ -378,49 +389,51 @@ export class DiscoverService {
       this.prisma.hashtag.count({ where }),
     ]);
 
-
     const items = await Promise.all(
       hashtags.map(async (hashtag) => {
-
-
-        const latestChallengeSubmission = await this.prisma.challengeSubmission.findFirst({
-          where: {
-            hashtags: {
-              has: hashtag.tag,
+        const latestChallengeSubmission =
+          await this.prisma.challengeSubmission.findFirst({
+            where: {
+              hashtags: {
+                has: hashtag.tag,
+              },
+              status: 'APPROVED',
+              media: { some: {} },
             },
-            status: 'APPROVED',
-            media: { some: {} }
-          },
-          orderBy: { createdAt: 'desc' },
-          select: {
-            id: true,
-            challengeId: true,
-            createdAt: true,
-            media: {
-              take: 1,
-              orderBy: { sortOrder: 'asc' },
-              select: {
-                url: true,
-                type: true,
-              }
+            orderBy: { createdAt: 'desc' },
+            select: {
+              id: true,
+              challengeId: true,
+              createdAt: true,
+              media: {
+                take: 1,
+                orderBy: { sortOrder: 'asc' },
+                select: {
+                  url: true,
+                  type: true,
+                },
+              },
+            },
+          });
+
+        const postPreview = hashtag.posts[0]
+          ? {
+              id: hashtag.posts[0].id,
+              mediaUrl: hashtag.posts[0].mediaUrl?.[0] ?? null,
+              mediaType: hashtag.posts[0].mediaType ?? null,
+              createdAt: hashtag.posts[0].createdAt,
             }
-          }
-        });
+          : null;
 
-        const postPreview = hashtag.posts[0] ? {
-          id: hashtag.posts[0].id,
-          mediaUrl: hashtag.posts[0].mediaUrl?.[0] ?? null,
-          mediaType: hashtag.posts[0].mediaType ?? null,
-          createdAt: hashtag.posts[0].createdAt
-        } : null;
-
-        const challengePreview = latestChallengeSubmission?.media?.[0] ? {
-          submissionId: latestChallengeSubmission.id,
-          challengeId: latestChallengeSubmission.challengeId,
-          mediaUrl: latestChallengeSubmission.media[0].url,
-          mediaType: latestChallengeSubmission.media[0].type,
-          createdAt: latestChallengeSubmission.createdAt
-        } : null;
+        const challengePreview = latestChallengeSubmission?.media?.[0]
+          ? {
+              submissionId: latestChallengeSubmission.id,
+              challengeId: latestChallengeSubmission.challengeId,
+              mediaUrl: latestChallengeSubmission.media[0].url,
+              mediaType: latestChallengeSubmission.media[0].type,
+              createdAt: latestChallengeSubmission.createdAt,
+            }
+          : null;
 
         return {
           id: hashtag.id,
@@ -435,7 +448,7 @@ export class DiscoverService {
           createdAt: hashtag.createdAt,
           updatedAt: hashtag.updatedAt,
         };
-      })
+      }),
     );
 
     return {

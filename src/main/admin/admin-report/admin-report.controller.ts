@@ -47,12 +47,17 @@ export class AdminReportController {
     return response;
   }
 
-  
   @Patch(':targetId/restore-feed')
-  @ApiOperation({ summary: 'Admin: Restore copyright hidden post back to feed' })
-  @ApiParam({ name: 'targetId', type: String, example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111' })
+  @ApiOperation({
+    summary: 'Admin: Restore copyright hidden post back to feed',
+  })
+  @ApiParam({
+    name: 'targetId',
+    type: String,
+    example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111',
+  })
   async restorePostToFeed(
-    @Param('targetId', ParseUUIDPipe) targetId: string, 
+    @Param('targetId', ParseUUIDPipe) targetId: string,
     @Res({ passthrough: true }) res: Response,
   ) {
     const response = await handleRequest(
@@ -66,7 +71,11 @@ export class AdminReportController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get single report by id' })
-  @ApiParam({ name: 'id', type: String, example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111' })
+  @ApiParam({
+    name: 'id',
+    type: String,
+    example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111',
+  })
   async getSingleReport(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
@@ -82,7 +91,11 @@ export class AdminReportController {
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete report by id' })
-  @ApiParam({ name: 'id', type: String, example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111' })
+  @ApiParam({
+    name: 'id',
+    type: String,
+    example: 'c6f12d7d-98f1-4a18-a2f7-fbb2d2cc1111',
+  })
   async deleteReport(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,

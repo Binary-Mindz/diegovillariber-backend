@@ -68,7 +68,11 @@ export class AdminTutorialService {
     const [data, total] = await this.prisma.$transaction([
       this.prisma.tutorial.findMany({
         where,
-        orderBy: [{ learnVersion: 'desc' }, { sectionCode: 'asc' }, { order: 'asc' }],
+        orderBy: [
+          { learnVersion: 'desc' },
+          { sectionCode: 'asc' },
+          { order: 'asc' },
+        ],
         skip,
         take: limit,
       }),

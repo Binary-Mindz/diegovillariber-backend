@@ -1,4 +1,17 @@
-import { Body, Controller, Post, UseGuards, Req, Get, HttpCode, HttpStatus, Param, Res, Delete, Patch } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  UseGuards,
+  Req,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Res,
+  Delete,
+  Patch,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
@@ -8,7 +21,12 @@ import { LoginDto } from './dto/login.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { ApiBearerAuth, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+} from '@nestjs/swagger';
 import { ChangePasswordDto } from './dto/change-password.dto';
 import { GetUser } from '@/common/decorator/get-user.decorator';
 import { Roles } from '@/common/decorator/roles.tdecorator';
@@ -32,41 +50,41 @@ export class AuthController {
     return this.auth.verifyEmail(dto.email, dto.otp);
   }
 
- @Post('login')
- @HttpCode(HttpStatus.OK)
-async login(
-  @Body() dto: LoginDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    async () => {
-      return await this.auth.login(dto.email, dto.password, dto.loginAs);
-    },
-    'Login successful',
-    HttpStatus.OK,
-  );
+  @Post('login')
+  @HttpCode(HttpStatus.OK)
+  async login(
+    @Body() dto: LoginDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => {
+        return await this.auth.login(dto.email, dto.password, dto.loginAs);
+      },
+      'Login successful',
+      HttpStatus.OK,
+    );
 
-  res.status(response.statusCode); // now works
-  return response;
-}
+    res.status(response.statusCode); // now works
+    return response;
+  }
 
-@Post('google')
-@HttpCode(HttpStatus.OK)
-async googleAuth(
-  @Body() dto: GoogleAuthDto,
-  @Res({ passthrough: true }) res: Response,
-) {
-  const response = await handleRequest(
-    async () => await this.auth.googleAuth(dto),
-    'Google authentication successful',
-    HttpStatus.OK,
-  );
+  @Post('google')
+  @HttpCode(HttpStatus.OK)
+  async googleAuth(
+    @Body() dto: GoogleAuthDto,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      async () => await this.auth.googleAuth(dto),
+      'Google authentication successful',
+      HttpStatus.OK,
+    );
 
-  res.status(response.statusCode);
-  return response;
-}
+    res.status(response.statusCode);
+    return response;
+  }
 
- // NEW: verify login OTP
+  // NEW: verify login OTP
   @Post('verify-login-otp')
   @HttpCode(HttpStatus.OK)
   async verifyLoginOtp(
@@ -127,7 +145,7 @@ async googleAuth(
     );
   }
 
-    // NEW: toggle two factor
+  // NEW: toggle two factor
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Patch('two-factor')
@@ -158,13 +176,13 @@ async googleAuth(
     return this.auth.getMe(userId);
   }
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Delete('delete-me')
-@ApiOperation({ summary: 'Delete my account' })
-deleteMe(@GetUser('userId') userId: string) {
-  return this.auth.deleteMe(userId);
-}
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Delete('delete-me')
+  @ApiOperation({ summary: 'Delete my account' })
+  deleteMe(@GetUser('userId') userId: string) {
+    return this.auth.deleteMe(userId);
+  }
 
   // Example: admin only route
   @ApiBearerAuth()

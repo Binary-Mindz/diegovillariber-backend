@@ -223,8 +223,16 @@ export class SpottingMatcherService {
       return false;
     }
 
-    return candidateTexts.some((value) =>
-      this.containsAllTokens(value, requestTokens),
+    const normalizedCandidates = candidateTexts
+      .map((text) => this.normalizeSearchValue(text))
+      .filter((text): text is string => Boolean(text));
+
+    if (!normalizedCandidates.length) {
+      return false;
+    }
+
+    return requestTokens.every((token) =>
+      normalizedCandidates.some((candidate) => candidate.includes(token)),
     );
   }
 
@@ -318,13 +326,14 @@ export class SpottingMatcherService {
     const tokens = new Set<string>();
 
     for (const value of [request.brand, request.model]) {
-      const normalized = this.normalizeSearchValue(value);
-      if (normalized) {
-        for (const token of normalized.split(/(?=[A-Z])|(?=[0-9])/i)) {
-          const cleaned = token.trim().toLowerCase();
-          if (cleaned) {
-            tokens.add(cleaned);
-          }
+      if (!value) continue;
+
+      const parts = value.split(/[^a-zA-Z0-9]+/);
+
+      for (const part of parts) {
+        const cleaned = this.normalizeSearchValue(part);
+        if (cleaned) {
+          tokens.add(cleaned);
         }
       }
     }

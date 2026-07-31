@@ -31,7 +31,10 @@ export class ChallengeQueryDto {
   @IsEnum(ChallengeTab)
   tab?: ChallengeTab;
 
-  @ApiPropertyOptional({ enum: ChallengeCategory, example: ChallengeCategory.DAILY })
+  @ApiPropertyOptional({
+    enum: ChallengeCategory,
+    example: ChallengeCategory.DAILY,
+  })
   @IsOptional()
   @IsEnum(ChallengeCategory)
   category?: ChallengeCategory;
@@ -59,7 +62,10 @@ export class ChallengeQueryDto {
   @IsEnum(DeviceType)
   deviceType?: DeviceType;
 
-  @ApiPropertyOptional({ enum: QuickPreset, example: QuickPreset.NONE_ALL_DEVICE })
+  @ApiPropertyOptional({
+    enum: QuickPreset,
+    example: QuickPreset.NONE_ALL_DEVICE,
+  })
   @IsOptional()
   @IsEnum(QuickPreset)
   quickPreset?: QuickPreset;
@@ -79,7 +85,8 @@ export class ChallengeQueryDto {
 
   @ApiPropertyOptional({
     example: 'sunset',
-    description: 'Search by challenge title / description / location / prize / creator name / creator email',
+    description:
+      'Search by challenge title / description / location / prize / creator name / creator email',
   })
   @IsOptional()
   @IsString()

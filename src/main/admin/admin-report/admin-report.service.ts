@@ -1,11 +1,13 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AdminReportQueryDto } from './dto/admin-report.query.dto';
-import { NotificationEntityType, NotificationType, Prisma, ReportType } from 'generated/prisma/client';
+import {
+  NotificationEntityType,
+  NotificationType,
+  Prisma,
+  ReportType,
+} from 'generated/prisma/client';
 import { NotificationService } from '../../notification/notification.service';
-
-
-
 
 @Injectable()
 export class AdminReportService {
@@ -44,19 +46,19 @@ export class AdminReportService {
             select: {
               id: true,
               email: true,
-              posts:{
-                select:{
-                  mediaUrl:true,
-                  caption:true,
-                  postType:true,
-                }
+              posts: {
+                select: {
+                  mediaUrl: true,
+                  caption: true,
+                  postType: true,
+                },
               },
-              profile:{
-                select:{
-                  profileName:true,
-                  imageUrl:true
-                }
-              }
+              profile: {
+                select: {
+                  profileName: true,
+                  imageUrl: true,
+                },
+              },
             },
           },
         },
@@ -79,26 +81,26 @@ export class AdminReportService {
     const report = await this.prisma.report.findUnique({
       where: { id },
       include: {
-          user: {
-            select: {
-              id: true,
-              email: true,
-              posts:{
-                select:{
-                  mediaUrl:true,
-                  caption:true,
-                  postType:true,
-                }
+        user: {
+          select: {
+            id: true,
+            email: true,
+            posts: {
+              select: {
+                mediaUrl: true,
+                caption: true,
+                postType: true,
               },
-              profile:{
-                select:{
-                  profileName:true,
-                  imageUrl:true
-                }
-              }
+            },
+            profile: {
+              select: {
+                profileName: true,
+                imageUrl: true,
+              },
             },
           },
         },
+      },
     });
 
     if (!report) {
@@ -155,7 +157,8 @@ export class AdminReportService {
         userId: post.userId,
         type: NotificationType.SYSTEM,
         title: 'Post Restored',
-        message: 'Great news! Your post has been reviewed by the admin and successfully restored to the feed.',
+        message:
+          'Great news! Your post has been reviewed by the admin and successfully restored to the feed.',
         entityType: NotificationEntityType.POST,
         entityId: targetId,
       });

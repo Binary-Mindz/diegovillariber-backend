@@ -1,4 +1,9 @@
-import { BadRequestException, ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '@/common/prisma/prisma.service';
 
 import { Type } from 'generated/prisma/enums';
@@ -16,7 +21,8 @@ export class VirtualGarageService {
       select: { activeProfileId: true },
     });
 
-    if (!user?.activeProfileId) throw new BadRequestException('Active profile not set');
+    if (!user?.activeProfileId)
+      throw new BadRequestException('Active profile not set');
 
     const profile = await this.prisma.profile.findUnique({
       where: { id: user.activeProfileId },
@@ -26,7 +32,9 @@ export class VirtualGarageService {
     if (!profile) throw new NotFoundException('Profile not found');
 
     if (profile.activeType !== Type.SIM_RACING_DRIVER) {
-      throw new ForbiddenException('Only SIM_RACING_DRIVER can manage virtual garage');
+      throw new ForbiddenException(
+        'Only SIM_RACING_DRIVER can manage virtual garage',
+      );
     }
 
     return profile;
@@ -110,15 +118,21 @@ export class VirtualGarageService {
     if (!existing) throw new NotFoundException('Virtual garage car not found');
 
     const payload: any = {
-      ...(dto.simPlatform !== undefined ? { simPlatform: dto.simPlatform } : {}),
+      ...(dto.simPlatform !== undefined
+        ? { simPlatform: dto.simPlatform }
+        : {}),
       ...(dto.carMake !== undefined ? { carMake: dto.carMake } : {}),
       ...(dto.carModel !== undefined ? { carModel: dto.carModel } : {}),
       ...(dto.makeYear !== undefined ? { makeYear: dto.makeYear } : {}),
       ...(dto.carClass !== undefined ? { carClass: dto.carClass } : {}),
       ...(dto.livery !== undefined ? { livery: dto.livery ?? null } : {}),
       ...(dto.teamName !== undefined ? { teamName: dto.teamName ?? null } : {}),
-      ...(dto.carNumber !== undefined ? { carNumber: dto.carNumber ?? null } : {}),
-      ...(dto.transmission !== undefined ? { transmission: dto.transmission } : {}),
+      ...(dto.carNumber !== undefined
+        ? { carNumber: dto.carNumber ?? null }
+        : {}),
+      ...(dto.transmission !== undefined
+        ? { transmission: dto.transmission }
+        : {}),
       ...(dto.notes !== undefined ? { notes: dto.notes ?? null } : {}),
     };
 

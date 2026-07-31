@@ -173,8 +173,7 @@ export class AdminAdService {
     return ad;
   }
 
-
- async getAdsOverview(query: AdOverviewQueryDto) {
+  async getAdsOverview(query: AdOverviewQueryDto) {
     const range = query.range ?? '30d';
 
     const daysMap: Record<'7d' | '30d' | '90d', number> = {

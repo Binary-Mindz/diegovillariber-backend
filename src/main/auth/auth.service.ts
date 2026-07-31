@@ -665,115 +665,66 @@ export class AuthService {
   // }
 
   async googleAuth(dto: GoogleAuthDto) {
-  const googleClientId = process.env.GOOGLE_CLIENT_ID;
+    const googleClientId = process.env.GOOGLE_CLIENT_ID;
 
-  if (!googleClientId) {
-    throw new BadRequestException('GOOGLE_CLIENT_ID is missing in environment');
-  }
-
-  try {
-    const ticket = await this.googleClient.verifyIdToken({
-      idToken: dto.idToken,
-      audience: googleClientId,
-    });
-
-    const payload = ticket.getPayload();
-
-    if (!payload) {
-      throw new BadRequestException('Invalid Google token payload');
+    if (!googleClientId) {
+      throw new BadRequestException(
+        'GOOGLE_CLIENT_ID is missing in environment',
+      );
     }
 
-    const email = payload.email;
-    if (!email) {
-      throw new BadRequestException('Google account email not found');
-    }
-
-    const googleName = payload.name ?? null;
-    const googlePicture = payload.picture ?? null;
-    const emailVerified = payload.email_verified ?? true;
-
-    let isNewUser = false;
-
-    let user = await this.prisma.user.findUnique({
-      where: { email },
-      include: {
-        profile: true,
-        ambassadorPrograms: true,
-        officialPartners: true,
-      },
-    });
-
-    // NEW USER => SIGNUP
-    if (!user) {
-      if (!dto.profileType) {
-        throw new BadRequestException(
-          'profileType is required for new Google signup',
-        );
-      }
-
-      const randomPassword = await this.hash(randomUUID());
-
-      user = await this.prisma.$transaction(async (tx) => {
-        const createdUser = await tx.user.create({
-          data: {
-            email,
-            password: randomPassword,
-            isEmailVerified: emailVerified,
-          },
-        });
-
-        await this.createProfileByType(tx, createdUser.id, {
-          username: dto.username ?? googleName ?? email.split('@')[0],
-          profileType: dto.profileType,
-          preference: dto.preference ?? null,
-          bio: dto.bio ?? null,
-          imageUrl: dto.imageUrl ?? googlePicture,
-          instagramHandler: dto.instagramHandler ?? null,
-          accountType: dto.accountType ?? AccountType.PUBLIC,
-          locationStatus: dto.locationStatus ?? false,
-          creator: dto.creator,
-          business: dto.business,
-          proDriver: dto.proDriver,
-        });
-
-        return tx.user.findUniqueOrThrow({
-          where: { id: createdUser.id },
-          include: {
-            profile: true,
-            ambassadorPrograms: true,
-            officialPartners: true,
-          },
-        });
+    try {
+      const ticket = await this.googleClient.verifyIdToken({
+        idToken: dto.idToken,
+        audience: googleClientId,
       });
 
-      isNewUser = true;
-    } else {
-      // EXISTING USER => SIGNIN
-      if (!user.isEmailVerified) {
-        user = await this.prisma.user.update({
-          where: { id: user.id },
-          data: {
-            isEmailVerified: true,
-            emailOtp: null,
-            emailOtpExpiresAt: null,
-          },
-          include: {
-            profile: true,
-            ambassadorPrograms: true,
-            officialPartners: true,
-          },
-        });
+      const payload = ticket.getPayload();
+
+      if (!payload) {
+        throw new BadRequestException('Invalid Google token payload');
       }
 
-      if (!user.profile || user.profile.length === 0) {
+      const email = payload.email;
+      if (!email) {
+        throw new BadRequestException('Google account email not found');
+      }
+
+      const googleName = payload.name ?? null;
+      const googlePicture = payload.picture ?? null;
+      const emailVerified = payload.email_verified ?? true;
+
+      let isNewUser = false;
+
+      let user = await this.prisma.user.findUnique({
+        where: { email },
+        include: {
+          profile: true,
+          ambassadorPrograms: true,
+          officialPartners: true,
+        },
+      });
+
+      // NEW USER => SIGNUP
+      if (!user) {
         if (!dto.profileType) {
           throw new BadRequestException(
-            'profileType is required because this user has no profile yet',
+            'profileType is required for new Google signup',
           );
         }
 
-        await this.prisma.$transaction(async (tx) => {
-          await this.createProfileByType(tx, user!.id, {
+        const randomPassword = await this.hash(randomUUID());
+
+        user = await this.prisma.$transaction(async (tx) => {
+          const createdUser = await tx.user.create({
+            data: {
+              email,
+              password: randomPassword,
+              isEmailVerified: emailVerified,
+            },
+          });
+
+          await this.createProfileByType(tx, createdUser.id, {
             username: dto.username ?? googleName ?? email.split('@')[0],
             profileType: dto.profileType,
             preference: dto.preference ?? null,
@@ -786,90 +737,141 @@ export class AuthService {
             business: dto.business,
             proDriver: dto.proDriver,
           });
+
+          return tx.user.findUniqueOrThrow({
+            where: { id: createdUser.id },
+            include: {
+              profile: true,
+              ambassadorPrograms: true,
+              officialPartners: true,
+            },
+          });
         });
 
-        user = await this.prisma.user.findUniqueOrThrow({
-          where: { id: user.id },
-          include: {
-            profile: true,
-            ambassadorPrograms: true,
-            officialPartners: true,
-          },
-        });
+        isNewUser = true;
+      } else {
+        // EXISTING USER => SIGNIN
+        if (!user.isEmailVerified) {
+          user = await this.prisma.user.update({
+            where: { id: user.id },
+            data: {
+              isEmailVerified: true,
+              emailOtp: null,
+              emailOtpExpiresAt: null,
+            },
+            include: {
+              profile: true,
+              ambassadorPrograms: true,
+              officialPartners: true,
+            },
+          });
+        }
+
+        if (!user.profile || user.profile.length === 0) {
+          if (!dto.profileType) {
+            throw new BadRequestException(
+              'profileType is required because this user has no profile yet',
+            );
+          }
+
+          await this.prisma.$transaction(async (tx) => {
+            await this.createProfileByType(tx, user!.id, {
+              username: dto.username ?? googleName ?? email.split('@')[0],
+              profileType: dto.profileType,
+              preference: dto.preference ?? null,
+              bio: dto.bio ?? null,
+              imageUrl: dto.imageUrl ?? googlePicture,
+              instagramHandler: dto.instagramHandler ?? null,
+              accountType: dto.accountType ?? AccountType.PUBLIC,
+              locationStatus: dto.locationStatus ?? false,
+              creator: dto.creator,
+              business: dto.business,
+              proDriver: dto.proDriver,
+            });
+          });
+
+          user = await this.prisma.user.findUniqueOrThrow({
+            where: { id: user.id },
+            include: {
+              profile: true,
+              ambassadorPrograms: true,
+              officialPartners: true,
+            },
+          });
+        }
       }
-    }
 
-    let selectedRole = user.role;
+      let selectedRole = user.role;
 
-    if (dto.loginAs === 'AMBASSADOR') {
-      if (
-        !user.ambassadorPrograms ||
-        user.ambassadorPrograms.status !== 'APPROVED'
-      ) {
-        throw new ForbiddenException('Ambassador not approved');
+      if (dto.loginAs === 'AMBASSADOR') {
+        if (
+          !user.ambassadorPrograms ||
+          user.ambassadorPrograms.status !== 'APPROVED'
+        ) {
+          throw new ForbiddenException('Ambassador not approved');
+        }
+        selectedRole = 'AMBASSADOR';
       }
-      selectedRole = 'AMBASSADOR';
-    }
 
-    if (dto.loginAs === 'OFFICIAL_PARTNER') {
-      if (
-        !user.officialPartners ||
-        user.officialPartners.requestStatus !== 'APPROVED'
-      ) {
-        throw new ForbiddenException('Official Partner not approved');
+      if (dto.loginAs === 'OFFICIAL_PARTNER') {
+        if (
+          !user.officialPartners ||
+          user.officialPartners.requestStatus !== 'APPROVED'
+        ) {
+          throw new ForbiddenException('Official Partner not approved');
+        }
+        selectedRole = 'OFFICIAL_PARTNER';
       }
-      selectedRole = 'OFFICIAL_PARTNER';
-    }
 
-    const updatedUser = await this.prisma.user.update({
-      where: { id: user.id },
-      data: { activeRole: selectedRole },
-      select: {
-        id: true,
-        email: true,
-        activeProfileId: true,
-      },
-    });
+      const updatedUser = await this.prisma.user.update({
+        where: { id: user.id },
+        data: { activeRole: selectedRole },
+        select: {
+          id: true,
+          email: true,
+          activeProfileId: true,
+        },
+      });
 
-    const accessToken = this.signAccessToken({
-      id: user.id,
-      role: selectedRole,
-      email: user.email,
-    });
-
-    const refreshToken = this.signRefreshToken({
-      id: user.id,
-      role: selectedRole,
-      email: user.email,
-    });
-
-    await this.prisma.user.update({
-      where: { id: user.id },
-      data: { refreshTokenHash: await this.hash(refreshToken) },
-    });
-
-    return {
-      message: isNewUser
-        ? 'Google signup successful'
-        : 'Google signin successful',
-      isNewUser,
-      user: {
-        id: updatedUser.id,
-        email: updatedUser.email,
+      const accessToken = this.signAccessToken({
+        id: user.id,
         role: selectedRole,
-        activeProfileId: updatedUser.activeProfileId,
-      },
-      tokens: {
-        accessToken,
-        refreshToken,
-      },
-    };
-  } catch (error: any) {
-    throw new BadRequestException(
-      error?.message || 'Invalid Google ID token',
-    );
+        email: user.email,
+      });
+
+      const refreshToken = this.signRefreshToken({
+        id: user.id,
+        role: selectedRole,
+        email: user.email,
+      });
+
+      await this.prisma.user.update({
+        where: { id: user.id },
+        data: { refreshTokenHash: await this.hash(refreshToken) },
+      });
+
+      return {
+        message: isNewUser
+          ? 'Google signup successful'
+          : 'Google signin successful',
+        isNewUser,
+        user: {
+          id: updatedUser.id,
+          email: updatedUser.email,
+          role: selectedRole,
+          activeProfileId: updatedUser.activeProfileId,
+        },
+        tokens: {
+          accessToken,
+          refreshToken,
+        },
+      };
+    } catch (error: any) {
+      throw new BadRequestException(
+        error?.message || 'Invalid Google ID token',
+      );
+    }
   }
-}
 
   async verifyLoginOtp(tempToken: string, otp: string) {
     const user = await this.prisma.user.findFirst({

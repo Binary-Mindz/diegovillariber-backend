@@ -11,7 +11,12 @@ import {
   Param,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { ApiBearerAuth, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiQuery,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { RolesGuard } from '@/common/guards/roles.guard';
@@ -24,7 +29,6 @@ import { EngagementQueryDto } from './dto/engagemant-query.dto';
 import { Role } from 'generated/prisma/enums';
 
 @ApiBearerAuth()
-
 @ApiTags('Admin Event Management')
 @Controller('admin-event-management')
 export class AdminEventManagementController {
@@ -44,7 +48,7 @@ export class AdminEventManagementController {
     res.status(response.statusCode);
     return response;
   }
-   
+
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN, Role.OFFICIAL_PARTNER)
   @Get('retention-overview')
@@ -160,9 +164,9 @@ export class AdminEventManagementController {
     res.status(response.statusCode);
     return response;
   }
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(Role.ADMIN)
-    @Get(':id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
+  @Get(':id')
   async getSingleEvent(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
