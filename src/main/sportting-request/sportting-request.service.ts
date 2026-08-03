@@ -256,6 +256,21 @@ export class SpottingRequestService {
     });
   }
 
+  async deleteSpottingRequest(userId: string, requestId: string) {
+    const request = await this.prisma.spottingRequest.findFirst({
+      where: { id: requestId, userId },
+      select: { id: true },
+    });
+
+    if (!request) {
+      throw new NotFoundException('Spotting request not found');
+    }
+
+    return this.prisma.spottingRequest.delete({
+      where: { id: requestId },
+    });
+  }
+
   async getRequestMatches(userId: string, requestId: string) {
     const request = await this.prisma.spottingRequest.findFirst({
       where: { id: requestId, userId },

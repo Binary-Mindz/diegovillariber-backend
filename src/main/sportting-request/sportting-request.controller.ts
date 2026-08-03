@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Patch,
@@ -8,15 +9,15 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Response } from 'express';
 
-import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { GetUser } from '@/common/decorator/get-user.decorator';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { handleRequest } from '@/common/helpers/handle.request';
 import { CreateSpottingRequestDto } from './dto/create-sportting-request.dto';
-import { SpottingRequestService } from './sportting-request.service';
 import { NearbyPostsDto } from './dto/nearby-post.dto';
+import { SpottingRequestService } from './sportting-request.service';
 
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
@@ -95,6 +96,21 @@ export class SpottingRequestController {
     const response = await handleRequest(
       () => this.spottingRequestService.cancelRequest(userId, id),
       'Spotting request cancelled successfully',
+    );
+
+    res.status(response.statusCode);
+    return response;
+  }
+
+  @Delete(':id')
+  async delete(
+    @GetUser('userId') userId: string,
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const response = await handleRequest(
+      () => this.spottingRequestService.deleteSpottingRequest(userId, id),
+      'Spotting request deleted successfully',
     );
 
     res.status(response.statusCode);
