@@ -327,10 +327,6 @@ export class HeadToHeadService {
           placeId: dto.placeId,
           startDate: dto.startDate,
           endDate: dto.endDate,
-          // auto-join creator
-          participants: {
-            create: { userId: creatorId, status: ParticipantStatus.JOINED },
-          },
         },
       });
     } catch (error) {

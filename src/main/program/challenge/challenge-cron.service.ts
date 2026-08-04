@@ -88,10 +88,10 @@ export class ChallengeCronService {
           `Challenge status sync completed. ACTIVE: ${activeResult.count}, FINISHED(from UPCOMING): ${finishedFromUpcoming.count}, FINISHED(from ACTIVE): ${finishedFromActive.count}`,
         );
       }
-    } catch (error) {
+    } catch (error: unknown) {
       this.logger.error(
         'Failed to sync challenge statuses',
-        error?.stack || error,
+        error instanceof Error ? error.stack : JSON.stringify(error),
       );
     }
   }
