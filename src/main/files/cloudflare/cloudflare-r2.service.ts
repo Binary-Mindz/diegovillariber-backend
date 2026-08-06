@@ -1,20 +1,25 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
 import {
+  DeleteObjectCommand,
+  PutObjectCommand,
+  S3Client,
+} from '@aws-sdk/client-s3';
+import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { FileType } from 'generated/prisma/enums';
-import {
-  S3Client,
-  PutObjectCommand,
-  DeleteObjectCommand,
-} from '@aws-sdk/client-s3';
-import sharp from 'sharp';
 import ffmpeg from 'fluent-ffmpeg';
 import * as fs from 'fs';
+import { FileType } from 'generated/prisma/enums';
 import * as path from 'path';
+import sharp from 'sharp';
 import { promisify } from 'util';
+import {
+  getPreferredImageExtension,
+  getPreferredImageMimeType,
+  resolveFileCategory,
+} from './file-upload.utils';
 
 const writeFileAsync = promisify(fs.writeFile);
 const unlinkAsync = promisify(fs.unlink);
@@ -40,16 +45,92 @@ export class CloudflareR2Service {
     });
   }
 
-  private async compressImage(buffer: Buffer): Promise<Buffer> {
+  private async compressImage(
+    buffer: Buffer,
+    originalName: string,
+    mimetype: string,
+  ): Promise<{ buffer: Buffer; ext: string; mimetype: string }> {
+    const preferredExt = getPreferredImageExtension(mimetype, originalName);
+    const preferredMimeType = getPreferredImageMimeType(mimetype, originalName);
+
+    const preserveOriginal = [
+      'heic',
+      'heif',
+      'avif',
+      'raw',
+      'dng',
+      'cr2',
+      'cr3',
+      'nef',
+      'arw',
+      'rw2',
+      'orf',
+      'sr2',
+      'pef',
+      'raf',
+      'mrw',
+      'x3f',
+      'jxl',
+      'jp2',
+    ].includes(preferredExt);
+
+    if (preserveOriginal) {
+      return {
+        buffer,
+        ext: preferredExt || 'jpg',
+        mimetype: preferredMimeType || mimetype || 'image/jpeg',
+      };
+    }
+
     try {
-      return await sharp(buffer)
-        .resize({ width: 1280, withoutEnlargement: true })
+      const image = sharp(buffer).resize({
+        width: 1280,
+        withoutEnlargement: true,
+      });
+
+      if (preferredExt === 'png') {
+        const optimizedBuffer = await image
+          .png({ compressionLevel: 8 })
+          .toBuffer();
+        return {
+          buffer: optimizedBuffer,
+          ext: 'png',
+          mimetype: preferredMimeType,
+        };
+      }
+
+      if (preferredExt === 'webp') {
+        const optimizedBuffer = await image.webp({ quality: 80 }).toBuffer();
+        return {
+          buffer: optimizedBuffer,
+          ext: 'webp',
+          mimetype: preferredMimeType,
+        };
+      }
+
+      if (preferredExt === 'gif') {
+        return {
+          buffer: await image.toBuffer(),
+          ext: 'gif',
+          mimetype: preferredMimeType,
+        };
+      }
+
+      const optimizedBuffer = await image
         .jpeg({ quality: 80, progressive: true, mozjpeg: true })
         .toBuffer();
+
+      return {
+        buffer: optimizedBuffer,
+        ext: 'jpg',
+        mimetype: preferredMimeType || 'image/jpeg',
+      };
     } catch (error) {
-      throw new InternalServerErrorException(
-        `Image optimization failed: ${error.message}`,
-      );
+      return {
+        buffer,
+        ext: preferredExt || 'jpg',
+        mimetype: preferredMimeType || mimetype || 'image/jpeg',
+      };
     }
   }
 
@@ -162,12 +243,21 @@ export class CloudflareR2Service {
     let finalBuffer = fileBuffer;
     let ext = originalName.split('.').pop() || '';
     let finalMimeType = mimetype;
-    const fileCategory = this.resolveFileCategory(mimetype);
+    const fileCategory = resolveFileCategory(
+      fileBuffer,
+      originalName,
+      mimetype,
+    );
 
     if (fileCategory === 'image') {
-      finalBuffer = await this.compressImage(fileBuffer);
-      ext = 'jpeg';
-      finalMimeType = 'image/jpeg';
+      const compressedImage = await this.compressImage(
+        fileBuffer,
+        originalName,
+        mimetype,
+      );
+      finalBuffer = compressedImage.buffer;
+      ext = compressedImage.ext;
+      finalMimeType = compressedImage.mimetype;
     } else if (fileCategory === 'video') {
       const videoResult = await this.compressVideo(fileBuffer, originalName);
       finalBuffer = videoResult.buffer;
@@ -251,11 +341,5 @@ export class CloudflareR2Service {
       id: fileOnDb.id,
       message: 'File deleted successfully from Cloudflare R2 and database',
     };
-  }
-
-  private resolveFileCategory(mimeType: string): 'image' | 'video' | 'raw' {
-    if (mimeType.startsWith('image/')) return 'image';
-    if (mimeType.startsWith('video/')) return 'video';
-    return 'raw';
   }
 }
