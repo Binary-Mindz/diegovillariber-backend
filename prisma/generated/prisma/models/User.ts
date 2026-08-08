@@ -449,6 +449,7 @@ export type UserWhereInput = {
   messages?: Prisma.MessageListRelationFilter
   messageReceipts?: Prisma.MessageReceiptListRelationFilter
   taggedInPosts?: Prisma.PostListRelationFilter
+  postTagRequests?: Prisma.PostTagRequestListRelationFilter
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleListRelationFilter
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleListRelationFilter
   battleInvitationsInviter?: Prisma.BattleInvitationListRelationFilter
@@ -546,6 +547,7 @@ export type UserOrderByWithRelationInput = {
   messages?: Prisma.MessageOrderByRelationAggregateInput
   messageReceipts?: Prisma.MessageReceiptOrderByRelationAggregateInput
   taggedInPosts?: Prisma.PostOrderByRelationAggregateInput
+  postTagRequests?: Prisma.PostTagRequestOrderByRelationAggregateInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleOrderByRelationAggregateInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleOrderByRelationAggregateInput
   battleInvitationsInviter?: Prisma.BattleInvitationOrderByRelationAggregateInput
@@ -646,6 +648,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   messages?: Prisma.MessageListRelationFilter
   messageReceipts?: Prisma.MessageReceiptListRelationFilter
   taggedInPosts?: Prisma.PostListRelationFilter
+  postTagRequests?: Prisma.PostTagRequestListRelationFilter
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleListRelationFilter
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleListRelationFilter
   battleInvitationsInviter?: Prisma.BattleInvitationListRelationFilter
@@ -813,6 +816,7 @@ export type UserCreateInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -910,6 +914,7 @@ export type UserUncheckedCreateInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -1007,6 +1012,7 @@ export type UserUpdateInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -1104,6 +1110,7 @@ export type UserUncheckedUpdateInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -1959,6 +1966,20 @@ export type UserUpdateOneRequiredWithoutPostRatingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostRatingsInput, Prisma.UserUpdateWithoutPostRatingsInput>, Prisma.UserUncheckedUpdateWithoutPostRatingsInput>
 }
 
+export type UserCreateNestedOneWithoutPostTagRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostTagRequestsInput, Prisma.UserUncheckedCreateWithoutPostTagRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostTagRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPostTagRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPostTagRequestsInput, Prisma.UserUncheckedCreateWithoutPostTagRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPostTagRequestsInput
+  upsert?: Prisma.UserUpsertWithoutPostTagRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPostTagRequestsInput, Prisma.UserUpdateWithoutPostTagRequestsInput>, Prisma.UserUncheckedUpdateWithoutPostTagRequestsInput>
+}
+
 export type UserCreateNestedOneWithoutPrizesInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPrizesInput, Prisma.UserUncheckedCreateWithoutPrizesInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPrizesInput
@@ -2396,6 +2417,7 @@ export type UserCreateWithoutAmbassadorProgramsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -2492,6 +2514,7 @@ export type UserUncheckedCreateWithoutAmbassadorProgramsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -2604,6 +2627,7 @@ export type UserUpdateWithoutAmbassadorProgramsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -2700,6 +2724,7 @@ export type UserUncheckedUpdateWithoutAmbassadorProgramsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -2797,6 +2822,7 @@ export type UserCreateWithoutCarStoriesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -2893,6 +2919,7 @@ export type UserUncheckedCreateWithoutCarStoriesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -3005,6 +3032,7 @@ export type UserUpdateWithoutCarStoriesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -3101,6 +3129,7 @@ export type UserUncheckedUpdateWithoutCarStoriesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -3197,6 +3226,7 @@ export type UserCreateWithoutCarMilestonesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -3293,6 +3323,7 @@ export type UserUncheckedCreateWithoutCarMilestonesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -3405,6 +3436,7 @@ export type UserUpdateWithoutCarMilestonesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -3501,6 +3533,7 @@ export type UserUncheckedUpdateWithoutCarMilestonesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -3596,6 +3629,7 @@ export type UserCreateWithoutChallengesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -3692,6 +3726,7 @@ export type UserUncheckedCreateWithoutChallengesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -3804,6 +3839,7 @@ export type UserUpdateWithoutChallengesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -3900,6 +3936,7 @@ export type UserUncheckedUpdateWithoutChallengesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -3996,6 +4033,7 @@ export type UserCreateWithoutChallengeParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -4092,6 +4130,7 @@ export type UserUncheckedCreateWithoutChallengeParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -4204,6 +4243,7 @@ export type UserUpdateWithoutChallengeParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -4300,6 +4340,7 @@ export type UserUncheckedUpdateWithoutChallengeParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -4397,6 +4438,7 @@ export type UserCreateWithoutChallengeReactionsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -4493,6 +4535,7 @@ export type UserUncheckedCreateWithoutChallengeReactionsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -4605,6 +4648,7 @@ export type UserUpdateWithoutChallengeReactionsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -4701,6 +4745,7 @@ export type UserUncheckedUpdateWithoutChallengeReactionsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -4797,6 +4842,7 @@ export type UserCreateWithoutChallengeVotesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -4893,6 +4939,7 @@ export type UserUncheckedCreateWithoutChallengeVotesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -5005,6 +5052,7 @@ export type UserUpdateWithoutChallengeVotesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -5101,6 +5149,7 @@ export type UserUncheckedUpdateWithoutChallengeVotesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -5197,6 +5246,7 @@ export type UserCreateWithoutChallengeCommentsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -5293,6 +5343,7 @@ export type UserUncheckedCreateWithoutChallengeCommentsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -5405,6 +5456,7 @@ export type UserUpdateWithoutChallengeCommentsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -5501,6 +5553,7 @@ export type UserUncheckedUpdateWithoutChallengeCommentsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -5596,6 +5649,7 @@ export type UserCreateWithoutCommentsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -5692,6 +5746,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -5804,6 +5859,7 @@ export type UserUpdateWithoutCommentsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -5900,6 +5956,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -5996,6 +6053,7 @@ export type UserCreateWithoutConversationParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -6092,6 +6150,7 @@ export type UserUncheckedCreateWithoutConversationParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -6204,6 +6263,7 @@ export type UserUpdateWithoutConversationParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -6300,6 +6360,7 @@ export type UserUncheckedUpdateWithoutConversationParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -6396,6 +6457,7 @@ export type UserCreateWithoutEventsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -6492,6 +6554,7 @@ export type UserUncheckedCreateWithoutEventsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -6604,6 +6667,7 @@ export type UserUpdateWithoutEventsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -6700,6 +6764,7 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -6796,6 +6861,7 @@ export type UserCreateWithoutFollowingInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -6892,6 +6958,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -6993,6 +7060,7 @@ export type UserCreateWithoutFollowersInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -7089,6 +7157,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -7201,6 +7270,7 @@ export type UserUpdateWithoutFollowingInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -7297,6 +7367,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -7404,6 +7475,7 @@ export type UserUpdateWithoutFollowersInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -7500,6 +7572,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -7597,6 +7670,7 @@ export type UserCreateWithoutHashtagsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -7693,6 +7767,7 @@ export type UserUncheckedCreateWithoutHashtagsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -7805,6 +7880,7 @@ export type UserUpdateWithoutHashtagsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -7901,6 +7977,7 @@ export type UserUncheckedUpdateWithoutHashtagsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -7997,6 +8074,7 @@ export type UserCreateWithoutHeadToHeadBattlesCreatedInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
   battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
@@ -8093,6 +8171,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesCreatedInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
@@ -8194,6 +8273,7 @@ export type UserCreateWithoutHeadToHeadBattlesWonInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
   battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
@@ -8290,6 +8370,7 @@ export type UserUncheckedCreateWithoutHeadToHeadBattlesWonInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
@@ -8402,6 +8483,7 @@ export type UserUpdateWithoutHeadToHeadBattlesCreatedInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
@@ -8498,6 +8580,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesCreatedInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
@@ -8605,6 +8688,7 @@ export type UserUpdateWithoutHeadToHeadBattlesWonInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
@@ -8701,6 +8785,7 @@ export type UserUncheckedUpdateWithoutHeadToHeadBattlesWonInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
@@ -8796,6 +8881,7 @@ export type UserCreateWithoutBattleParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -8892,6 +8978,7 @@ export type UserUncheckedCreateWithoutBattleParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -9004,6 +9091,7 @@ export type UserUpdateWithoutBattleParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -9100,6 +9188,7 @@ export type UserUncheckedUpdateWithoutBattleParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -9197,6 +9286,7 @@ export type UserCreateWithoutBattleInvitationsInviterInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
@@ -9293,6 +9383,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInviterInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
@@ -9394,6 +9485,7 @@ export type UserCreateWithoutBattleInvitationsInvitteInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -9490,6 +9582,7 @@ export type UserUncheckedCreateWithoutBattleInvitationsInvitteInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -9602,6 +9695,7 @@ export type UserUpdateWithoutBattleInvitationsInviterInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
@@ -9698,6 +9792,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInviterInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
@@ -9805,6 +9900,7 @@ export type UserUpdateWithoutBattleInvitationsInvitteInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -9901,6 +9997,7 @@ export type UserUncheckedUpdateWithoutBattleInvitationsInvitteInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -9997,6 +10094,7 @@ export type UserCreateWithoutBattleSubmissionsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -10093,6 +10191,7 @@ export type UserUncheckedCreateWithoutBattleSubmissionsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -10205,6 +10304,7 @@ export type UserUpdateWithoutBattleSubmissionsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -10301,6 +10401,7 @@ export type UserUncheckedUpdateWithoutBattleSubmissionsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -10397,6 +10498,7 @@ export type UserCreateWithoutBattleVotesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -10493,6 +10595,7 @@ export type UserUncheckedCreateWithoutBattleVotesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -10605,6 +10708,7 @@ export type UserUpdateWithoutBattleVotesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -10701,6 +10805,7 @@ export type UserUncheckedUpdateWithoutBattleVotesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -10797,6 +10902,7 @@ export type UserCreateWithoutBattleCommentsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -10893,6 +10999,7 @@ export type UserUncheckedCreateWithoutBattleCommentsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -11005,6 +11112,7 @@ export type UserUpdateWithoutBattleCommentsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -11101,6 +11209,7 @@ export type UserUncheckedUpdateWithoutBattleCommentsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -11196,6 +11305,7 @@ export type UserCreateWithoutHidePostsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -11292,6 +11402,7 @@ export type UserUncheckedCreateWithoutHidePostsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -11404,6 +11515,7 @@ export type UserUpdateWithoutHidePostsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -11500,6 +11612,7 @@ export type UserUncheckedUpdateWithoutHidePostsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -11596,6 +11709,7 @@ export type UserCreateWithoutLikesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -11692,6 +11806,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -11804,6 +11919,7 @@ export type UserUpdateWithoutLikesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -11900,6 +12016,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -11996,6 +12113,7 @@ export type UserCreateWithoutLivesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -12092,6 +12210,7 @@ export type UserUncheckedCreateWithoutLivesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -12204,6 +12323,7 @@ export type UserUpdateWithoutLivesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -12300,6 +12420,7 @@ export type UserUncheckedUpdateWithoutLivesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -12396,6 +12517,7 @@ export type UserCreateWithoutLiveParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -12492,6 +12614,7 @@ export type UserUncheckedCreateWithoutLiveParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -12604,6 +12727,7 @@ export type UserUpdateWithoutLiveParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -12700,6 +12824,7 @@ export type UserUncheckedUpdateWithoutLiveParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -12796,6 +12921,7 @@ export type UserCreateWithoutLiveRewardsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -12892,6 +13018,7 @@ export type UserUncheckedCreateWithoutLiveRewardsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -12993,6 +13120,7 @@ export type UserCreateWithoutLiveRewardsGivenInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -13089,6 +13217,7 @@ export type UserUncheckedCreateWithoutLiveRewardsGivenInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -13201,6 +13330,7 @@ export type UserUpdateWithoutLiveRewardsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -13297,6 +13427,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -13404,6 +13535,7 @@ export type UserUpdateWithoutLiveRewardsGivenInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -13500,6 +13632,7 @@ export type UserUncheckedUpdateWithoutLiveRewardsGivenInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -13596,6 +13729,7 @@ export type UserCreateWithoutMessagesInput = {
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -13692,6 +13826,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -13804,6 +13939,7 @@ export type UserUpdateWithoutMessagesInput = {
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -13900,6 +14036,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -13996,6 +14133,7 @@ export type UserCreateWithoutMessageReceiptsInput = {
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -14092,6 +14230,7 @@ export type UserUncheckedCreateWithoutMessageReceiptsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -14204,6 +14343,7 @@ export type UserUpdateWithoutMessageReceiptsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -14300,6 +14440,7 @@ export type UserUncheckedUpdateWithoutMessageReceiptsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -14397,6 +14538,7 @@ export type UserCreateWithoutNotificationsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -14493,6 +14635,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -14594,6 +14737,7 @@ export type UserCreateWithoutNotificationsActorInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -14690,6 +14834,7 @@ export type UserUncheckedCreateWithoutNotificationsActorInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -14802,6 +14947,7 @@ export type UserUpdateWithoutNotificationsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -14898,6 +15044,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -15005,6 +15152,7 @@ export type UserUpdateWithoutNotificationsActorInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -15101,6 +15249,7 @@ export type UserUncheckedUpdateWithoutNotificationsActorInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -15197,6 +15346,7 @@ export type UserCreateWithoutNotificationPreferencesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -15293,6 +15443,7 @@ export type UserUncheckedCreateWithoutNotificationPreferencesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -15405,6 +15556,7 @@ export type UserUpdateWithoutNotificationPreferencesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -15501,6 +15653,7 @@ export type UserUncheckedUpdateWithoutNotificationPreferencesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -15597,6 +15750,7 @@ export type UserCreateWithoutDeviceTokensInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -15693,6 +15847,7 @@ export type UserUncheckedCreateWithoutDeviceTokensInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -15805,6 +15960,7 @@ export type UserUpdateWithoutDeviceTokensInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -15901,6 +16057,7 @@ export type UserUncheckedUpdateWithoutDeviceTokensInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -15996,6 +16153,7 @@ export type UserCreateWithoutOfficialPartnersInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -16092,6 +16250,7 @@ export type UserUncheckedCreateWithoutOfficialPartnersInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -16204,6 +16363,7 @@ export type UserUpdateWithoutOfficialPartnersInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -16300,6 +16460,7 @@ export type UserUncheckedUpdateWithoutOfficialPartnersInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -16396,6 +16557,7 @@ export type UserCreateWithoutPaymentsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -16492,6 +16654,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -16604,6 +16767,7 @@ export type UserUpdateWithoutPaymentsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -16700,6 +16864,7 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -16796,6 +16961,7 @@ export type UserCreateWithoutPostsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -16892,6 +17058,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -16993,6 +17160,7 @@ export type UserCreateWithoutTaggedInPostsInput = {
   conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -17089,6 +17257,7 @@ export type UserUncheckedCreateWithoutTaggedInPostsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -17201,6 +17370,7 @@ export type UserUpdateWithoutPostsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -17297,6 +17467,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -17444,6 +17615,7 @@ export type UserCreateWithoutPostViewInsightsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -17540,6 +17712,7 @@ export type UserUncheckedCreateWithoutPostViewInsightsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -17652,6 +17825,7 @@ export type UserUpdateWithoutPostViewInsightsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -17748,6 +17922,7 @@ export type UserUncheckedUpdateWithoutPostViewInsightsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -17844,6 +18019,7 @@ export type UserCreateWithoutPostRatingsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -17940,6 +18116,7 @@ export type UserUncheckedCreateWithoutPostRatingsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -18052,6 +18229,7 @@ export type UserUpdateWithoutPostRatingsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -18148,6 +18326,7 @@ export type UserUncheckedUpdateWithoutPostRatingsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -18180,6 +18359,410 @@ export type UserUncheckedUpdateWithoutPostRatingsInput = {
   blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
   spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPostTagRequestsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPostTagRequestsInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  password: string
+  role?: $Enums.Role
+  activeRole?: $Enums.Role | null
+  otp?: string | null
+  expiresIn?: string | null
+  isEmailVerified?: boolean
+  accountStatus?: $Enums.AccountStatus
+  emailOtp?: string | null
+  emailOtpExpiresAt?: Date | string | null
+  resetOtp?: string | null
+  resetOtpExpiresAt?: Date | string | null
+  refreshTokenHash?: string | null
+  totalPoints?: number
+  balance?: number
+  likeCount?: number
+  commentCount?: number
+  shareCount?: number
+  totalVote?: number
+  activeProfileId?: string | null
+  isTwoFactorEnabled?: boolean
+  twoFactorOtp?: string | null
+  twoFactorOtpExpiresAt?: Date | string | null
+  twoFactorTempToken?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedManyWithoutUserInput
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutOwnerInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutUserInput
+  following?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowerInput
+  followers?: Prisma.FollowUncheckedCreateNestedManyWithoutFollowingInput
+  productLists?: Prisma.ProductListUncheckedCreateNestedManyWithoutOwnerInput
+  reports?: Prisma.ReportUncheckedCreateNestedManyWithoutUserInput
+  shares?: Prisma.ShareUncheckedCreateNestedManyWithoutUserInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutUserInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutUserInput
+  liveRewards?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutHostInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedCreateNestedManyWithoutParticipantInput
+  lives?: Prisma.LiveUncheckedCreateNestedManyWithoutHostInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedCreateNestedManyWithoutUserInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutUserInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutUserInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutUserInput
+  wishLists?: Prisma.WishListUncheckedCreateNestedManyWithoutUserInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  userPoints?: Prisma.UserPointUncheckedCreateNestedManyWithoutUserInput
+  challenges?: Prisma.ChallengeUncheckedCreateNestedManyWithoutCreatorInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedCreateNestedManyWithoutUserInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedCreateNestedOneWithoutUserInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedCreateNestedOneWithoutUserInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
+  taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviteeInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedCreateNestedManyWithoutUserInput
+  battleVotes?: Prisma.BattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  battleComments?: Prisma.BattleCommentUncheckedCreateNestedManyWithoutUserInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutCreatorInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedCreateNestedManyWithoutWinnerUserInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedCreateNestedManyWithoutUserInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedCreateNestedManyWithoutUserInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedCreateNestedManyWithoutUserInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedCreateNestedManyWithoutUserInput
+  prizes?: Prisma.PrizeUncheckedCreateNestedManyWithoutCreatedByInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedCreateNestedManyWithoutUserInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedCreateNestedManyWithoutUserInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedCreateNestedManyWithoutUserInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsActor?: Prisma.NotificationUncheckedCreateNestedManyWithoutActorUserInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedCreateNestedManyWithoutUserInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedCreateNestedManyWithoutUserInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutLeftUserInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedCreateNestedManyWithoutRightUserInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedCreateNestedManyWithoutVoterInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedCreateNestedManyWithoutUserInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutVoterInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutTargetUserInput
+  blockedUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockerInput
+  blockedByUsers?: Prisma.UserBlockUncheckedCreateNestedManyWithoutBlockedUserInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedCreateNestedManyWithoutUserInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutSpottedUserInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutUserInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutViewerInput
+  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutCreatedByUserInput
+  carStories?: Prisma.CarStoryUncheckedCreateNestedManyWithoutUserInput
+  carMilestones?: Prisma.CarMilestoneUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPostTagRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostTagRequestsInput, Prisma.UserUncheckedCreateWithoutPostTagRequestsInput>
+}
+
+export type UserUpsertWithoutPostTagRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPostTagRequestsInput, Prisma.UserUncheckedUpdateWithoutPostTagRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPostTagRequestsInput, Prisma.UserUncheckedCreateWithoutPostTagRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPostTagRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPostTagRequestsInput, Prisma.UserUncheckedUpdateWithoutPostTagRequestsInput>
+}
+
+export type UserUpdateWithoutPostTagRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutUserNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutViewerNestedInput
+  hashtags?: Prisma.HashtagUpdateManyWithoutCreatedByUserNestedInput
+  carStories?: Prisma.CarStoryUpdateManyWithoutUserNestedInput
+  carMilestones?: Prisma.CarMilestoneUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPostTagRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  activeRole?: Prisma.NullableEnumRoleFieldUpdateOperationsInput | $Enums.Role | null
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  expiresIn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  accountStatus?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus
+  emailOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  refreshTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPoints?: Prisma.IntFieldUpdateOperationsInput | number
+  balance?: Prisma.IntFieldUpdateOperationsInput | number
+  likeCount?: Prisma.IntFieldUpdateOperationsInput | number
+  commentCount?: Prisma.IntFieldUpdateOperationsInput | number
+  shareCount?: Prisma.IntFieldUpdateOperationsInput | number
+  totalVote?: Prisma.IntFieldUpdateOperationsInput | number
+  activeProfileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isTwoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorOtp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  twoFactorOtpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  twoFactorTempToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateManyWithoutUserNestedInput
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutOwnerNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutUserNestedInput
+  following?: Prisma.FollowUncheckedUpdateManyWithoutFollowerNestedInput
+  followers?: Prisma.FollowUncheckedUpdateManyWithoutFollowingNestedInput
+  productLists?: Prisma.ProductListUncheckedUpdateManyWithoutOwnerNestedInput
+  reports?: Prisma.ReportUncheckedUpdateManyWithoutUserNestedInput
+  shares?: Prisma.ShareUncheckedUpdateManyWithoutUserNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutUserNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutUserNestedInput
+  liveRewards?: Prisma.LiveRewardUncheckedUpdateManyWithoutHostNestedInput
+  liveRewardsGiven?: Prisma.LiveRewardUncheckedUpdateManyWithoutParticipantNestedInput
+  lives?: Prisma.LiveUncheckedUpdateManyWithoutHostNestedInput
+  liveParticipants?: Prisma.LiveParticipantUncheckedUpdateManyWithoutUserNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutUserNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutUserNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutUserNestedInput
+  wishLists?: Prisma.WishListUncheckedUpdateManyWithoutUserNestedInput
+  battleParticipants?: Prisma.BattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  userPoints?: Prisma.UserPointUncheckedUpdateManyWithoutUserNestedInput
+  challenges?: Prisma.ChallengeUncheckedUpdateManyWithoutCreatorNestedInput
+  challengeParticipants?: Prisma.ChallengeParticipantUncheckedUpdateManyWithoutUserNestedInput
+  officialPartners?: Prisma.OfficialPartnerUncheckedUpdateOneWithoutUserNestedInput
+  ambassadorPrograms?: Prisma.AmbassadorProgramUncheckedUpdateOneWithoutUserNestedInput
+  conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
+  battleInvitationsInvitte?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviteeNestedInput
+  battleSubmissions?: Prisma.BattleSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  battleVotes?: Prisma.BattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  battleComments?: Prisma.BattleCommentUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftBattlesCreated?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutCreatorNestedInput
+  rawShiftBattlesWon?: Prisma.RawShiftBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
+  rawShiftParticipants?: Prisma.RawShiftParticipantUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftEntries?: Prisma.RawShiftEntryUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftVotes?: Prisma.RawShiftVoteUncheckedUpdateManyWithoutUserNestedInput
+  rawShiftComments?: Prisma.RawShiftCommentUncheckedUpdateManyWithoutUserNestedInput
+  prizes?: Prisma.PrizeUncheckedUpdateManyWithoutCreatedByNestedInput
+  challengeReactions?: Prisma.ChallengeReactionUncheckedUpdateManyWithoutUserNestedInput
+  challengeVotes?: Prisma.ChallengeVoteUncheckedUpdateManyWithoutUserNestedInput
+  challengeComments?: Prisma.ChallengeCommentUncheckedUpdateManyWithoutUserNestedInput
+  notificationPreferences?: Prisma.NotificationPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsActor?: Prisma.NotificationUncheckedUpdateManyWithoutActorUserNestedInput
+  deviceTokens?: Prisma.DeviceTokenUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenMatchRequests?: Prisma.SplitScreenMatchRequestUncheckedUpdateManyWithoutUserNestedInput
+  splitScreenBattlesLeftUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutLeftUserNestedInput
+  splitScreenBattlesRightUser?: Prisma.SplitScreenBattleUncheckedUpdateManyWithoutRightUserNestedInput
+  splitScreenBattleVotes?: Prisma.SplitScreenBattleVoteUncheckedUpdateManyWithoutVoterNestedInput
+  splitScreenBattleParticipants?: Prisma.SplitScreenBattleParticipantUncheckedUpdateManyWithoutUserNestedInput
+  racingVotesGiven?: Prisma.RacingVoteUncheckedUpdateManyWithoutVoterNestedInput
+  racingVotesReceived?: Prisma.RacingVoteUncheckedUpdateManyWithoutTargetUserNestedInput
+  blockedUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockerNestedInput
+  blockedByUsers?: Prisma.UserBlockUncheckedUpdateManyWithoutBlockedUserNestedInput
+  spottingRequests?: Prisma.SpottingRequestUncheckedUpdateManyWithoutUserNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutSpottedUserNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutUserNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutViewerNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutCreatedByUserNestedInput
   carStories?: Prisma.CarStoryUncheckedUpdateManyWithoutUserNestedInput
@@ -18244,6 +18827,7 @@ export type UserCreateWithoutPrizesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -18340,6 +18924,7 @@ export type UserUncheckedCreateWithoutPrizesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -18452,6 +19037,7 @@ export type UserUpdateWithoutPrizesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -18548,6 +19134,7 @@ export type UserUncheckedUpdateWithoutPrizesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -18643,6 +19230,7 @@ export type UserCreateWithoutProductListsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -18739,6 +19327,7 @@ export type UserUncheckedCreateWithoutProductListsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -18851,6 +19440,7 @@ export type UserUpdateWithoutProductListsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -18947,6 +19537,7 @@ export type UserUncheckedUpdateWithoutProductListsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -19043,6 +19634,7 @@ export type UserCreateWithoutProfileInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -19139,6 +19731,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -19251,6 +19844,7 @@ export type UserUpdateWithoutProfileInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -19347,6 +19941,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -19444,6 +20039,7 @@ export type UserCreateWithoutRacingVotesGivenInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -19540,6 +20136,7 @@ export type UserUncheckedCreateWithoutRacingVotesGivenInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -19641,6 +20238,7 @@ export type UserCreateWithoutRacingVotesReceivedInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -19737,6 +20335,7 @@ export type UserUncheckedCreateWithoutRacingVotesReceivedInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -19849,6 +20448,7 @@ export type UserUpdateWithoutRacingVotesGivenInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -19945,6 +20545,7 @@ export type UserUncheckedUpdateWithoutRacingVotesGivenInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -20052,6 +20653,7 @@ export type UserUpdateWithoutRacingVotesReceivedInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -20148,6 +20750,7 @@ export type UserUncheckedUpdateWithoutRacingVotesReceivedInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -20244,6 +20847,7 @@ export type UserCreateWithoutRawShiftBattlesCreatedInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -20340,6 +20944,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesCreatedInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -20441,6 +21046,7 @@ export type UserCreateWithoutRawShiftBattlesWonInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -20537,6 +21143,7 @@ export type UserUncheckedCreateWithoutRawShiftBattlesWonInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -20649,6 +21256,7 @@ export type UserUpdateWithoutRawShiftBattlesCreatedInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -20745,6 +21353,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesCreatedInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -20852,6 +21461,7 @@ export type UserUpdateWithoutRawShiftBattlesWonInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -20948,6 +21558,7 @@ export type UserUncheckedUpdateWithoutRawShiftBattlesWonInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -21044,6 +21655,7 @@ export type UserCreateWithoutRawShiftParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -21140,6 +21752,7 @@ export type UserUncheckedCreateWithoutRawShiftParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -21252,6 +21865,7 @@ export type UserUpdateWithoutRawShiftParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -21348,6 +21962,7 @@ export type UserUncheckedUpdateWithoutRawShiftParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -21444,6 +22059,7 @@ export type UserCreateWithoutRawShiftEntriesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -21540,6 +22156,7 @@ export type UserUncheckedCreateWithoutRawShiftEntriesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -21652,6 +22269,7 @@ export type UserUpdateWithoutRawShiftEntriesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -21748,6 +22366,7 @@ export type UserUncheckedUpdateWithoutRawShiftEntriesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -21844,6 +22463,7 @@ export type UserCreateWithoutRawShiftVotesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -21940,6 +22560,7 @@ export type UserUncheckedCreateWithoutRawShiftVotesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -22052,6 +22673,7 @@ export type UserUpdateWithoutRawShiftVotesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -22148,6 +22770,7 @@ export type UserUncheckedUpdateWithoutRawShiftVotesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -22244,6 +22867,7 @@ export type UserCreateWithoutRawShiftCommentsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -22340,6 +22964,7 @@ export type UserUncheckedCreateWithoutRawShiftCommentsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -22452,6 +23077,7 @@ export type UserUpdateWithoutRawShiftCommentsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -22548,6 +23174,7 @@ export type UserUncheckedUpdateWithoutRawShiftCommentsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -22643,6 +23270,7 @@ export type UserCreateWithoutReportsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -22739,6 +23367,7 @@ export type UserUncheckedCreateWithoutReportsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -22851,6 +23480,7 @@ export type UserUpdateWithoutReportsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -22947,6 +23577,7 @@ export type UserUncheckedUpdateWithoutReportsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -23043,6 +23674,7 @@ export type UserCreateWithoutRepostsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -23139,6 +23771,7 @@ export type UserUncheckedCreateWithoutRepostsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -23251,6 +23884,7 @@ export type UserUpdateWithoutRepostsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -23347,6 +23981,7 @@ export type UserUncheckedUpdateWithoutRepostsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -23443,6 +24078,7 @@ export type UserCreateWithoutSavePostsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -23539,6 +24175,7 @@ export type UserUncheckedCreateWithoutSavePostsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -23651,6 +24288,7 @@ export type UserUpdateWithoutSavePostsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -23747,6 +24385,7 @@ export type UserUncheckedUpdateWithoutSavePostsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -23843,6 +24482,7 @@ export type UserCreateWithoutSharesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -23939,6 +24579,7 @@ export type UserUncheckedCreateWithoutSharesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -24051,6 +24692,7 @@ export type UserUpdateWithoutSharesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -24147,6 +24789,7 @@ export type UserUncheckedUpdateWithoutSharesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -24244,6 +24887,7 @@ export type UserCreateWithoutSplitScreenMatchRequestsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -24340,6 +24984,7 @@ export type UserUncheckedCreateWithoutSplitScreenMatchRequestsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -24452,6 +25097,7 @@ export type UserUpdateWithoutSplitScreenMatchRequestsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -24548,6 +25194,7 @@ export type UserUncheckedUpdateWithoutSplitScreenMatchRequestsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -24644,6 +25291,7 @@ export type UserCreateWithoutSplitScreenBattlesLeftUserInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -24740,6 +25388,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesLeftUserInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -24841,6 +25490,7 @@ export type UserCreateWithoutSplitScreenBattlesRightUserInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -24937,6 +25587,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattlesRightUserInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -25049,6 +25700,7 @@ export type UserUpdateWithoutSplitScreenBattlesLeftUserInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -25145,6 +25797,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesLeftUserInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -25252,6 +25905,7 @@ export type UserUpdateWithoutSplitScreenBattlesRightUserInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -25348,6 +26002,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattlesRightUserInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -25444,6 +26099,7 @@ export type UserCreateWithoutSplitScreenBattleParticipantsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -25540,6 +26196,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleParticipantsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -25652,6 +26309,7 @@ export type UserUpdateWithoutSplitScreenBattleParticipantsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -25748,6 +26406,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleParticipantsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -25844,6 +26503,7 @@ export type UserCreateWithoutSplitScreenBattleVotesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -25940,6 +26600,7 @@ export type UserUncheckedCreateWithoutSplitScreenBattleVotesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -26052,6 +26713,7 @@ export type UserUpdateWithoutSplitScreenBattleVotesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -26148,6 +26810,7 @@ export type UserUncheckedUpdateWithoutSplitScreenBattleVotesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -26244,6 +26907,7 @@ export type UserCreateWithoutSpottingMatchesInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -26340,6 +27004,7 @@ export type UserUncheckedCreateWithoutSpottingMatchesInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -26452,6 +27117,7 @@ export type UserUpdateWithoutSpottingMatchesInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -26548,6 +27214,7 @@ export type UserUncheckedUpdateWithoutSpottingMatchesInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -26644,6 +27311,7 @@ export type UserCreateWithoutSpottingRequestsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -26740,6 +27408,7 @@ export type UserUncheckedCreateWithoutSpottingRequestsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -26852,6 +27521,7 @@ export type UserUpdateWithoutSpottingRequestsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -26948,6 +27618,7 @@ export type UserUncheckedUpdateWithoutSpottingRequestsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -27044,6 +27715,7 @@ export type UserCreateWithoutBlockedUsersInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -27140,6 +27812,7 @@ export type UserUncheckedCreateWithoutBlockedUsersInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -27241,6 +27914,7 @@ export type UserCreateWithoutBlockedByUsersInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -27337,6 +28011,7 @@ export type UserUncheckedCreateWithoutBlockedByUsersInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -27449,6 +28124,7 @@ export type UserUpdateWithoutBlockedUsersInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -27545,6 +28221,7 @@ export type UserUncheckedUpdateWithoutBlockedUsersInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -27652,6 +28329,7 @@ export type UserUpdateWithoutBlockedByUsersInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -27748,6 +28426,7 @@ export type UserUncheckedUpdateWithoutBlockedByUsersInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -27843,6 +28522,7 @@ export type UserCreateWithoutUserPointsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -27939,6 +28619,7 @@ export type UserUncheckedCreateWithoutUserPointsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -28051,6 +28732,7 @@ export type UserUpdateWithoutUserPointsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -28147,6 +28829,7 @@ export type UserUncheckedUpdateWithoutUserPointsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -28243,6 +28926,7 @@ export type UserCreateWithoutWishListsInput = {
   messages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationCreateNestedManyWithoutInviterInput
@@ -28339,6 +29023,7 @@ export type UserUncheckedCreateWithoutWishListsInput = {
   messages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReceipts?: Prisma.MessageReceiptUncheckedCreateNestedManyWithoutUserInput
   taggedInPosts?: Prisma.PostUncheckedCreateNestedManyWithoutTaggedUsersInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutTaggedUserInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutCreatorInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedCreateNestedManyWithoutWinnerUserInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedCreateNestedManyWithoutInviterInput
@@ -28451,6 +29136,7 @@ export type UserUpdateWithoutWishListsInput = {
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -28547,6 +29233,7 @@ export type UserUncheckedUpdateWithoutWishListsInput = {
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
   taggedInPosts?: Prisma.PostUncheckedUpdateManyWithoutTaggedUsersNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -28643,6 +29330,7 @@ export type UserUpdateWithoutTaggedInPostsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUpdateManyWithoutUserNestedInput
+  postTagRequests?: Prisma.PostTagRequestUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUpdateManyWithoutInviterNestedInput
@@ -28739,6 +29427,7 @@ export type UserUncheckedUpdateWithoutTaggedInPostsInput = {
   conversationParticipants?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReceipts?: Prisma.MessageReceiptUncheckedUpdateManyWithoutUserNestedInput
+  postTagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutTaggedUserNestedInput
   headToHeadBattlesCreated?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutCreatorNestedInput
   headToHeadBattlesWon?: Prisma.HeadToHeadBattleUncheckedUpdateManyWithoutWinnerUserNestedInput
   battleInvitationsInviter?: Prisma.BattleInvitationUncheckedUpdateManyWithoutInviterNestedInput
@@ -28842,6 +29531,7 @@ export type UserCountOutputType = {
   messages: number
   messageReceipts: number
   taggedInPosts: number
+  postTagRequests: number
   headToHeadBattlesCreated: number
   headToHeadBattlesWon: number
   battleInvitationsInviter: number
@@ -28909,6 +29599,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   messages?: boolean | UserCountOutputTypeCountMessagesArgs
   messageReceipts?: boolean | UserCountOutputTypeCountMessageReceiptsArgs
   taggedInPosts?: boolean | UserCountOutputTypeCountTaggedInPostsArgs
+  postTagRequests?: boolean | UserCountOutputTypeCountPostTagRequestsArgs
   headToHeadBattlesCreated?: boolean | UserCountOutputTypeCountHeadToHeadBattlesCreatedArgs
   headToHeadBattlesWon?: boolean | UserCountOutputTypeCountHeadToHeadBattlesWonArgs
   battleInvitationsInviter?: boolean | UserCountOutputTypeCountBattleInvitationsInviterArgs
@@ -29145,6 +29836,13 @@ export type UserCountOutputTypeCountMessageReceiptsArgs<ExtArgs extends runtime.
  */
 export type UserCountOutputTypeCountTaggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPostTagRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostTagRequestWhereInput
 }
 
 /**
@@ -29465,6 +30163,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
   messageReceipts?: boolean | Prisma.User$messageReceiptsArgs<ExtArgs>
   taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  postTagRequests?: boolean | Prisma.User$postTagRequestsArgs<ExtArgs>
   headToHeadBattlesCreated?: boolean | Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>
   headToHeadBattlesWon?: boolean | Prisma.User$headToHeadBattlesWonArgs<ExtArgs>
   battleInvitationsInviter?: boolean | Prisma.User$battleInvitationsInviterArgs<ExtArgs>
@@ -29629,6 +30328,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
   messageReceipts?: boolean | Prisma.User$messageReceiptsArgs<ExtArgs>
   taggedInPosts?: boolean | Prisma.User$taggedInPostsArgs<ExtArgs>
+  postTagRequests?: boolean | Prisma.User$postTagRequestsArgs<ExtArgs>
   headToHeadBattlesCreated?: boolean | Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>
   headToHeadBattlesWon?: boolean | Prisma.User$headToHeadBattlesWonArgs<ExtArgs>
   battleInvitationsInviter?: boolean | Prisma.User$battleInvitationsInviterArgs<ExtArgs>
@@ -29703,6 +30403,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     messages: Prisma.$MessagePayload<ExtArgs>[]
     messageReceipts: Prisma.$MessageReceiptPayload<ExtArgs>[]
     taggedInPosts: Prisma.$PostPayload<ExtArgs>[]
+    postTagRequests: Prisma.$PostTagRequestPayload<ExtArgs>[]
     headToHeadBattlesCreated: Prisma.$HeadToHeadBattlePayload<ExtArgs>[]
     headToHeadBattlesWon: Prisma.$HeadToHeadBattlePayload<ExtArgs>[]
     battleInvitationsInviter: Prisma.$BattleInvitationPayload<ExtArgs>[]
@@ -30193,6 +30894,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   messages<T extends Prisma.User$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReceipts<T extends Prisma.User$messageReceiptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReceiptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReceiptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   taggedInPosts<T extends Prisma.User$taggedInPostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$taggedInPostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postTagRequests<T extends Prisma.User$postTagRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postTagRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostTagRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   headToHeadBattlesCreated<T extends Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$headToHeadBattlesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   headToHeadBattlesWon<T extends Prisma.User$headToHeadBattlesWonArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$headToHeadBattlesWonArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HeadToHeadBattlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   battleInvitationsInviter<T extends Prisma.User$battleInvitationsInviterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$battleInvitationsInviterArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BattleInvitationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -31358,6 +32060,30 @@ export type User$taggedInPostsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.PostScalarFieldEnum | Prisma.PostScalarFieldEnum[]
+}
+
+/**
+ * User.postTagRequests
+ */
+export type User$postTagRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostTagRequest
+   */
+  select?: Prisma.PostTagRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostTagRequest
+   */
+  omit?: Prisma.PostTagRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostTagRequestInclude<ExtArgs> | null
+  where?: Prisma.PostTagRequestWhereInput
+  orderBy?: Prisma.PostTagRequestOrderByWithRelationInput | Prisma.PostTagRequestOrderByWithRelationInput[]
+  cursor?: Prisma.PostTagRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostTagRequestScalarFieldEnum | Prisma.PostTagRequestScalarFieldEnum[]
 }
 
 /**

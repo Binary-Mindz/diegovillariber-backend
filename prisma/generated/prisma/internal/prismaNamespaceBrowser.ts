@@ -118,6 +118,7 @@ export const ModelName = {
   Post: 'Post',
   PostViewInsight: 'PostViewInsight',
   PostRating: 'PostRating',
+  PostTagRequest: 'PostTagRequest',
   PrestigeRule: 'PrestigeRule',
   Prize: 'Prize',
   ProDriverProfile: 'ProDriverProfile',
@@ -1276,6 +1277,18 @@ export const PostRatingScalarFieldEnum = {
 } as const
 
 export type PostRatingScalarFieldEnum = (typeof PostRatingScalarFieldEnum)[keyof typeof PostRatingScalarFieldEnum]
+
+
+export const PostTagRequestScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  taggedUserId: 'taggedUserId',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostTagRequestScalarFieldEnum = (typeof PostTagRequestScalarFieldEnum)[keyof typeof PostTagRequestScalarFieldEnum]
 
 
 export const PrestigeRuleScalarFieldEnum = {

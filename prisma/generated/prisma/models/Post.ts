@@ -506,6 +506,7 @@ export type PostWhereInput = {
   bike?: Prisma.XOR<Prisma.BikeNullableScalarRelationFilter, Prisma.BikeWhereInput> | null
   taggedUsers?: Prisma.UserListRelationFilter
   taggedProfiles?: Prisma.TaggedProfilePostListRelationFilter
+  tagRequests?: Prisma.PostTagRequestListRelationFilter
   hashtags?: Prisma.HashtagListRelationFilter
   reposts?: Prisma.RepostListRelationFilter
   racingVotes?: Prisma.RacingVoteListRelationFilter
@@ -562,6 +563,7 @@ export type PostOrderByWithRelationInput = {
   bike?: Prisma.BikeOrderByWithRelationInput
   taggedUsers?: Prisma.UserOrderByRelationAggregateInput
   taggedProfiles?: Prisma.TaggedProfilePostOrderByRelationAggregateInput
+  tagRequests?: Prisma.PostTagRequestOrderByRelationAggregateInput
   hashtags?: Prisma.HashtagOrderByRelationAggregateInput
   reposts?: Prisma.RepostOrderByRelationAggregateInput
   racingVotes?: Prisma.RacingVoteOrderByRelationAggregateInput
@@ -621,6 +623,7 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   bike?: Prisma.XOR<Prisma.BikeNullableScalarRelationFilter, Prisma.BikeWhereInput> | null
   taggedUsers?: Prisma.UserListRelationFilter
   taggedProfiles?: Prisma.TaggedProfilePostListRelationFilter
+  tagRequests?: Prisma.PostTagRequestListRelationFilter
   hashtags?: Prisma.HashtagListRelationFilter
   reposts?: Prisma.RepostListRelationFilter
   racingVotes?: Prisma.RacingVoteListRelationFilter
@@ -761,6 +764,7 @@ export type PostCreateInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -813,6 +817,7 @@ export type PostUncheckedCreateInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -865,6 +870,7 @@ export type PostUpdateInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -917,6 +923,7 @@ export type PostUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -1483,6 +1490,20 @@ export type PostUpdateOneRequiredWithoutPostRatingsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutPostRatingsInput, Prisma.PostUpdateWithoutPostRatingsInput>, Prisma.PostUncheckedUpdateWithoutPostRatingsInput>
 }
 
+export type PostCreateNestedOneWithoutTagRequestsInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutTagRequestsInput, Prisma.PostUncheckedCreateWithoutTagRequestsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutTagRequestsInput
+  connect?: Prisma.PostWhereUniqueInput
+}
+
+export type PostUpdateOneRequiredWithoutTagRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.PostCreateWithoutTagRequestsInput, Prisma.PostUncheckedCreateWithoutTagRequestsInput>
+  connectOrCreate?: Prisma.PostCreateOrConnectWithoutTagRequestsInput
+  upsert?: Prisma.PostUpsertWithoutTagRequestsInput
+  connect?: Prisma.PostWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PostUpdateToOneWithWhereWithoutTagRequestsInput, Prisma.PostUpdateWithoutTagRequestsInput>, Prisma.PostUncheckedUpdateWithoutTagRequestsInput>
+}
+
 export type PostCreateNestedManyWithoutProfileInput = {
   create?: Prisma.XOR<Prisma.PostCreateWithoutProfileInput, Prisma.PostUncheckedCreateWithoutProfileInput> | Prisma.PostCreateWithoutProfileInput[] | Prisma.PostUncheckedCreateWithoutProfileInput[]
   connectOrCreate?: Prisma.PostCreateOrConnectWithoutProfileInput | Prisma.PostCreateOrConnectWithoutProfileInput[]
@@ -1716,6 +1737,7 @@ export type PostCreateWithoutBikeInput = {
   car?: Prisma.CarCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -1767,6 +1789,7 @@ export type PostUncheckedCreateWithoutBikeInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -1887,6 +1910,7 @@ export type PostCreateWithoutCarInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -1938,6 +1962,7 @@ export type PostUncheckedCreateWithoutCarInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -2016,6 +2041,7 @@ export type PostCreateWithoutCommentsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -2067,6 +2093,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -2134,6 +2161,7 @@ export type PostUpdateWithoutCommentsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -2185,6 +2213,7 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -2236,6 +2265,7 @@ export type PostCreateWithoutHashtagsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
@@ -2287,6 +2317,7 @@ export type PostUncheckedCreateWithoutHashtagsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
@@ -2359,6 +2390,7 @@ export type PostCreateWithoutHidePostsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -2410,6 +2442,7 @@ export type PostUncheckedCreateWithoutHidePostsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -2477,6 +2510,7 @@ export type PostUpdateWithoutHidePostsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -2528,6 +2562,7 @@ export type PostUncheckedUpdateWithoutHidePostsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -2579,6 +2614,7 @@ export type PostCreateWithoutLikesInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -2630,6 +2666,7 @@ export type PostUncheckedCreateWithoutLikesInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -2697,6 +2734,7 @@ export type PostUpdateWithoutLikesInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -2748,6 +2786,7 @@ export type PostUncheckedUpdateWithoutLikesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -2799,6 +2838,7 @@ export type PostCreateWithoutPostViewInsightsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -2850,6 +2890,7 @@ export type PostUncheckedCreateWithoutPostViewInsightsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -2917,6 +2958,7 @@ export type PostUpdateWithoutPostViewInsightsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -2968,6 +3010,7 @@ export type PostUncheckedUpdateWithoutPostViewInsightsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -3019,6 +3062,7 @@ export type PostCreateWithoutPostRatingsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -3070,6 +3114,7 @@ export type PostUncheckedCreateWithoutPostRatingsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -3137,6 +3182,7 @@ export type PostUpdateWithoutPostRatingsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -3188,6 +3234,7 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -3195,6 +3242,230 @@ export type PostUncheckedUpdateWithoutPostRatingsInput = {
   hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
   likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
+}
+
+export type PostCreateWithoutTagRequestsInput = {
+  id?: string
+  assetType?: $Enums.PostAssetType | null
+  profileType?: $Enums.Type | null
+  postType?: $Enums.PostType
+  caption?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
+  postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  locationVisibility?: string | null
+  vehicleCategory?: $Enums.PostVehicleCategory
+  mediaType?: $Enums.MediaType
+  like?: number
+  comment?: number
+  share?: number
+  repost?: number
+  racingVote?: number
+  contentBooster?: boolean
+  point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPostsInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutPostsInput
+  car?: Prisma.CarCreateNestedOneWithoutPostsInput
+  bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
+  taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
+  taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
+  reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
+  racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
+  savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
+  hidePosts?: Prisma.HidePostCreateNestedManyWithoutPostInput
+  likes?: Prisma.LikeCreateNestedManyWithoutPostInput
+  comments?: Prisma.CommentCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightCreateNestedManyWithoutPostInput
+}
+
+export type PostUncheckedCreateWithoutTagRequestsInput = {
+  id?: string
+  userId: string
+  profileId?: string | null
+  carId?: string | null
+  bikeId?: string | null
+  assetType?: $Enums.PostAssetType | null
+  profileType?: $Enums.Type | null
+  postType?: $Enums.PostType
+  caption?: string | null
+  mediaUrl?: Prisma.PostCreatemediaUrlInput | string[]
+  postLocation?: string | null
+  locationName?: string | null
+  locationAddress?: string | null
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: string | null
+  locationVisibility?: string | null
+  vehicleCategory?: $Enums.PostVehicleCategory
+  mediaType?: $Enums.MediaType
+  like?: number
+  comment?: number
+  share?: number
+  repost?: number
+  racingVote?: number
+  contentBooster?: boolean
+  point?: number
+  photoEditingDeclaration?: $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: $Enums.VideoEditingDeclaration | null
+  ratingCount?: number
+  ratingTotal?: number
+  ratingAverage?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: number
+  visiualStyle?: Prisma.PostCreatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostCreatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostCreatesubjectInput | $Enums.Subject[]
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
+  taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
+  reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
+  racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
+  savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
+  hidePosts?: Prisma.HidePostUncheckedCreateNestedManyWithoutPostInput
+  likes?: Prisma.LikeUncheckedCreateNestedManyWithoutPostInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutPostInput
+  postRatings?: Prisma.PostRatingUncheckedCreateNestedManyWithoutPostInput
+  spottingMatches?: Prisma.SpottingMatchUncheckedCreateNestedManyWithoutPostInput
+  postViewInsights?: Prisma.PostViewInsightUncheckedCreateNestedManyWithoutPostInput
+}
+
+export type PostCreateOrConnectWithoutTagRequestsInput = {
+  where: Prisma.PostWhereUniqueInput
+  create: Prisma.XOR<Prisma.PostCreateWithoutTagRequestsInput, Prisma.PostUncheckedCreateWithoutTagRequestsInput>
+}
+
+export type PostUpsertWithoutTagRequestsInput = {
+  update: Prisma.XOR<Prisma.PostUpdateWithoutTagRequestsInput, Prisma.PostUncheckedUpdateWithoutTagRequestsInput>
+  create: Prisma.XOR<Prisma.PostCreateWithoutTagRequestsInput, Prisma.PostUncheckedCreateWithoutTagRequestsInput>
+  where?: Prisma.PostWhereInput
+}
+
+export type PostUpdateToOneWithWhereWithoutTagRequestsInput = {
+  where?: Prisma.PostWhereInput
+  data: Prisma.XOR<Prisma.PostUpdateWithoutTagRequestsInput, Prisma.PostUncheckedUpdateWithoutTagRequestsInput>
+}
+
+export type PostUpdateWithoutTagRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
+  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumPostVehicleCategoryFieldUpdateOperationsInput | $Enums.PostVehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  like?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.IntFieldUpdateOperationsInput | number
+  share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
+  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
+  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPostsNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutPostsNestedInput
+  car?: Prisma.CarUpdateOneWithoutPostsNestedInput
+  bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
+  taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
+  taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
+  reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
+  racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
+  savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
+  hidePosts?: Prisma.HidePostUpdateManyWithoutPostNestedInput
+  likes?: Prisma.LikeUpdateManyWithoutPostNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUpdateManyWithoutPostNestedInput
+  spottingMatches?: Prisma.SpottingMatchUpdateManyWithoutPostNestedInput
+  postViewInsights?: Prisma.PostViewInsightUpdateManyWithoutPostNestedInput
+}
+
+export type PostUncheckedUpdateWithoutTagRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  carId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bikeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assetType?: Prisma.NullableEnumPostAssetTypeFieldUpdateOperationsInput | $Enums.PostAssetType | null
+  profileType?: Prisma.NullableEnumTypeFieldUpdateOperationsInput | $Enums.Type | null
+  postType?: Prisma.EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+  caption?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  mediaUrl?: Prisma.PostUpdatemediaUrlInput | string[]
+  postLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  placeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationVisibility?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicleCategory?: Prisma.EnumPostVehicleCategoryFieldUpdateOperationsInput | $Enums.PostVehicleCategory
+  mediaType?: Prisma.EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  like?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.IntFieldUpdateOperationsInput | number
+  share?: Prisma.IntFieldUpdateOperationsInput | number
+  repost?: Prisma.IntFieldUpdateOperationsInput | number
+  racingVote?: Prisma.IntFieldUpdateOperationsInput | number
+  contentBooster?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  point?: Prisma.IntFieldUpdateOperationsInput | number
+  photoEditingDeclaration?: Prisma.NullableEnumPhotoEditingDeclarationFieldUpdateOperationsInput | $Enums.PhotoEditingDeclaration | null
+  videoEditingDeclaration?: Prisma.NullableEnumVideoEditingDeclarationFieldUpdateOperationsInput | $Enums.VideoEditingDeclaration | null
+  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingTotal?: Prisma.IntFieldUpdateOperationsInput | number
+  ratingAverage?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  view?: Prisma.IntFieldUpdateOperationsInput | number
+  visiualStyle?: Prisma.PostUpdatevisiualStyleInput | $Enums.VisiualStyle[]
+  contextActivity?: Prisma.PostUpdatecontextActivityInput | $Enums.ContextActivity[]
+  subject?: Prisma.PostUpdatesubjectInput | $Enums.Subject[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
+  taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
+  reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
+  racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
+  savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
+  hidePosts?: Prisma.HidePostUncheckedUpdateManyWithoutPostNestedInput
+  likes?: Prisma.LikeUncheckedUpdateManyWithoutPostNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutPostNestedInput
+  postRatings?: Prisma.PostRatingUncheckedUpdateManyWithoutPostNestedInput
   spottingMatches?: Prisma.SpottingMatchUncheckedUpdateManyWithoutPostNestedInput
   postViewInsights?: Prisma.PostViewInsightUncheckedUpdateManyWithoutPostNestedInput
 }
@@ -3238,6 +3509,7 @@ export type PostCreateWithoutProfileInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -3289,6 +3561,7 @@ export type PostUncheckedCreateWithoutProfileInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -3367,6 +3640,7 @@ export type PostCreateWithoutRacingVotesInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
@@ -3418,6 +3692,7 @@ export type PostUncheckedCreateWithoutRacingVotesInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
@@ -3485,6 +3760,7 @@ export type PostUpdateWithoutRacingVotesInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
@@ -3536,6 +3812,7 @@ export type PostUncheckedUpdateWithoutRacingVotesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
@@ -3587,6 +3864,7 @@ export type PostCreateWithoutRepostsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostCreateNestedManyWithoutPostInput
@@ -3638,6 +3916,7 @@ export type PostUncheckedCreateWithoutRepostsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
   savePosts?: Prisma.SavePostUncheckedCreateNestedManyWithoutPostInput
@@ -3705,6 +3984,7 @@ export type PostUpdateWithoutRepostsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
@@ -3756,6 +4036,7 @@ export type PostUncheckedUpdateWithoutRepostsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
@@ -3807,6 +4088,7 @@ export type PostCreateWithoutSavePostsInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -3858,6 +4140,7 @@ export type PostUncheckedCreateWithoutSavePostsInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -3925,6 +4208,7 @@ export type PostUpdateWithoutSavePostsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -3976,6 +4260,7 @@ export type PostUncheckedUpdateWithoutSavePostsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -4027,6 +4312,7 @@ export type PostCreateWithoutSpottingMatchesInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -4078,6 +4364,7 @@ export type PostUncheckedCreateWithoutSpottingMatchesInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -4145,6 +4432,7 @@ export type PostUpdateWithoutSpottingMatchesInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -4196,6 +4484,7 @@ export type PostUncheckedUpdateWithoutSpottingMatchesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -4246,6 +4535,7 @@ export type PostCreateWithoutTaggedProfilesInput = {
   car?: Prisma.CarCreateNestedOneWithoutPostsInput
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -4297,6 +4587,7 @@ export type PostUncheckedCreateWithoutTaggedProfilesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -4364,6 +4655,7 @@ export type PostUpdateWithoutTaggedProfilesInput = {
   car?: Prisma.CarUpdateOneWithoutPostsNestedInput
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -4415,6 +4707,7 @@ export type PostUncheckedUpdateWithoutTaggedProfilesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -4466,6 +4759,7 @@ export type PostCreateWithoutUserInput = {
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedUsers?: Prisma.UserCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -4517,6 +4811,7 @@ export type PostUncheckedCreateWithoutUserInput = {
   updatedAt?: Date | string
   taggedUsers?: Prisma.UserUncheckedCreateNestedManyWithoutTaggedInPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -4578,6 +4873,7 @@ export type PostCreateWithoutTaggedUsersInput = {
   car?: Prisma.CarCreateNestedOneWithoutPostsInput
   bike?: Prisma.BikeCreateNestedOneWithoutPostsInput
   taggedProfiles?: Prisma.TaggedProfilePostCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteCreateNestedManyWithoutPostInput
@@ -4629,6 +4925,7 @@ export type PostUncheckedCreateWithoutTaggedUsersInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedCreateNestedManyWithoutPostInput
+  tagRequests?: Prisma.PostTagRequestUncheckedCreateNestedManyWithoutPostInput
   hashtags?: Prisma.HashtagUncheckedCreateNestedManyWithoutPostsInput
   reposts?: Prisma.RepostUncheckedCreateNestedManyWithoutPostInput
   racingVotes?: Prisma.RacingVoteUncheckedCreateNestedManyWithoutPostInput
@@ -4756,6 +5053,7 @@ export type PostUpdateWithoutBikeInput = {
   car?: Prisma.CarUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -4807,6 +5105,7 @@ export type PostUncheckedUpdateWithoutBikeInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -4936,6 +5235,7 @@ export type PostUpdateWithoutCarInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -4987,6 +5287,7 @@ export type PostUncheckedUpdateWithoutCarInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -5078,6 +5379,7 @@ export type PostUpdateWithoutHashtagsInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUpdateManyWithoutPostNestedInput
@@ -5129,6 +5431,7 @@ export type PostUncheckedUpdateWithoutHashtagsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
   savePosts?: Prisma.SavePostUncheckedUpdateManyWithoutPostNestedInput
@@ -5258,6 +5561,7 @@ export type PostUpdateWithoutProfileInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -5309,6 +5613,7 @@ export type PostUncheckedUpdateWithoutProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -5438,6 +5743,7 @@ export type PostUpdateWithoutUserInput = {
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedUsers?: Prisma.UserUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -5489,6 +5795,7 @@ export type PostUncheckedUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedUsers?: Prisma.UserUncheckedUpdateManyWithoutTaggedInPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -5579,6 +5886,7 @@ export type PostUpdateWithoutTaggedUsersInput = {
   car?: Prisma.CarUpdateOneWithoutPostsNestedInput
   bike?: Prisma.BikeUpdateOneWithoutPostsNestedInput
   taggedProfiles?: Prisma.TaggedProfilePostUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUpdateManyWithoutPostNestedInput
@@ -5630,6 +5938,7 @@ export type PostUncheckedUpdateWithoutTaggedUsersInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   taggedProfiles?: Prisma.TaggedProfilePostUncheckedUpdateManyWithoutPostNestedInput
+  tagRequests?: Prisma.PostTagRequestUncheckedUpdateManyWithoutPostNestedInput
   hashtags?: Prisma.HashtagUncheckedUpdateManyWithoutPostsNestedInput
   reposts?: Prisma.RepostUncheckedUpdateManyWithoutPostNestedInput
   racingVotes?: Prisma.RacingVoteUncheckedUpdateManyWithoutPostNestedInput
@@ -5690,6 +5999,7 @@ export type PostUncheckedUpdateManyWithoutTaggedUsersInput = {
 export type PostCountOutputType = {
   taggedUsers: number
   taggedProfiles: number
+  tagRequests: number
   hashtags: number
   reposts: number
   racingVotes: number
@@ -5705,6 +6015,7 @@ export type PostCountOutputType = {
 export type PostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   taggedUsers?: boolean | PostCountOutputTypeCountTaggedUsersArgs
   taggedProfiles?: boolean | PostCountOutputTypeCountTaggedProfilesArgs
+  tagRequests?: boolean | PostCountOutputTypeCountTagRequestsArgs
   hashtags?: boolean | PostCountOutputTypeCountHashtagsArgs
   reposts?: boolean | PostCountOutputTypeCountRepostsArgs
   racingVotes?: boolean | PostCountOutputTypeCountRacingVotesArgs
@@ -5739,6 +6050,13 @@ export type PostCountOutputTypeCountTaggedUsersArgs<ExtArgs extends runtime.Type
  */
 export type PostCountOutputTypeCountTaggedProfilesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.TaggedProfilePostWhereInput
+}
+
+/**
+ * PostCountOutputType without action
+ */
+export type PostCountOutputTypeCountTagRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostTagRequestWhereInput
 }
 
 /**
@@ -5856,6 +6174,7 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   bike?: boolean | Prisma.Post$bikeArgs<ExtArgs>
   taggedUsers?: boolean | Prisma.Post$taggedUsersArgs<ExtArgs>
   taggedProfiles?: boolean | Prisma.Post$taggedProfilesArgs<ExtArgs>
+  tagRequests?: boolean | Prisma.Post$tagRequestsArgs<ExtArgs>
   hashtags?: boolean | Prisma.Post$hashtagsArgs<ExtArgs>
   reposts?: boolean | Prisma.Post$repostsArgs<ExtArgs>
   racingVotes?: boolean | Prisma.Post$racingVotesArgs<ExtArgs>
@@ -6005,6 +6324,7 @@ export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   bike?: boolean | Prisma.Post$bikeArgs<ExtArgs>
   taggedUsers?: boolean | Prisma.Post$taggedUsersArgs<ExtArgs>
   taggedProfiles?: boolean | Prisma.Post$taggedProfilesArgs<ExtArgs>
+  tagRequests?: boolean | Prisma.Post$tagRequestsArgs<ExtArgs>
   hashtags?: boolean | Prisma.Post$hashtagsArgs<ExtArgs>
   reposts?: boolean | Prisma.Post$repostsArgs<ExtArgs>
   racingVotes?: boolean | Prisma.Post$racingVotesArgs<ExtArgs>
@@ -6039,6 +6359,7 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     bike: Prisma.$BikePayload<ExtArgs> | null
     taggedUsers: Prisma.$UserPayload<ExtArgs>[]
     taggedProfiles: Prisma.$TaggedProfilePostPayload<ExtArgs>[]
+    tagRequests: Prisma.$PostTagRequestPayload<ExtArgs>[]
     hashtags: Prisma.$HashtagPayload<ExtArgs>[]
     reposts: Prisma.$RepostPayload<ExtArgs>[]
     racingVotes: Prisma.$RacingVotePayload<ExtArgs>[]
@@ -6488,6 +6809,7 @@ export interface Prisma__PostClient<T, Null = never, ExtArgs extends runtime.Typ
   bike<T extends Prisma.Post$bikeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$bikeArgs<ExtArgs>>): Prisma.Prisma__BikeClient<runtime.Types.Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   taggedUsers<T extends Prisma.Post$taggedUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$taggedUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   taggedProfiles<T extends Prisma.Post$taggedProfilesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$taggedProfilesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaggedProfilePostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tagRequests<T extends Prisma.Post$tagRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$tagRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostTagRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   hashtags<T extends Prisma.Post$hashtagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$hashtagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HashtagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reposts<T extends Prisma.Post$repostsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$repostsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RepostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   racingVotes<T extends Prisma.Post$racingVotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Post$racingVotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RacingVotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7062,6 +7384,30 @@ export type Post$taggedProfilesArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.TaggedProfilePostScalarFieldEnum | Prisma.TaggedProfilePostScalarFieldEnum[]
+}
+
+/**
+ * Post.tagRequests
+ */
+export type Post$tagRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PostTagRequest
+   */
+  select?: Prisma.PostTagRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PostTagRequest
+   */
+  omit?: Prisma.PostTagRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostTagRequestInclude<ExtArgs> | null
+  where?: Prisma.PostTagRequestWhereInput
+  orderBy?: Prisma.PostTagRequestOrderByWithRelationInput | Prisma.PostTagRequestOrderByWithRelationInput[]
+  cursor?: Prisma.PostTagRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostTagRequestScalarFieldEnum | Prisma.PostTagRequestScalarFieldEnum[]
 }
 
 /**

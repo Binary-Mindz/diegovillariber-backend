@@ -459,6 +459,15 @@ export const ViewerRelationType = {
 export type ViewerRelationType = (typeof ViewerRelationType)[keyof typeof ViewerRelationType]
 
 
+export const PostTagRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type PostTagRequestStatus = (typeof PostTagRequestStatus)[keyof typeof PostTagRequestStatus]
+
+
 export const PrestigeRuleStatus = {
   ACTIVE: 'ACTIVE',
   INACTIVE: 'INACTIVE'

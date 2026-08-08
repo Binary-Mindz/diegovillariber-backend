@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import {
   MediaType,
+  PostTagRequestStatus,
   PostViewSource,
   Prisma,
   ReportType,
@@ -16,6 +17,8 @@ import { NotificationService } from '../../notification/notification.service';
 import { SpottingRequestService } from '../../sportting-request/sportting-request.service';
 import { CreatePostDto } from './dto/create.post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
+import { RespondTagRequestDto } from './dto/respond-tag-request.dto';
+import { TagRequestQueryDto } from './dto/tag-request-query.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 
 const POST_REWARD_POINTS = 5;
@@ -367,9 +370,6 @@ export class PostService {
           hashtags: hashtagIds.length
             ? { connect: hashtagIds.map((id) => ({ id })) }
             : undefined,
-          taggedUsers: taggedUserIds.length
-            ? { connect: taggedUserIds.map((id) => ({ id })) }
-            : undefined,
           point: POST_REWARD_POINTS,
           contentBooster: wantBoost,
         },
@@ -380,11 +380,12 @@ export class PostService {
         },
       });
 
-      if (taggedProfiles.length) {
-        await tx.taggedProfilePost.createMany({
-          data: taggedProfiles.map((p) => ({
+      if (taggedUserIds.length) {
+        await tx.postTagRequest.createMany({
+          data: taggedUserIds.map((targetUserId) => ({
             postId: post.id,
-            profileId: p.id,
+            taggedUserId: targetUserId,
+            status: PostTagRequestStatus.PENDING,
           })),
           skipDuplicates: true,
         });
@@ -468,16 +469,28 @@ export class PostService {
     taggedUserIds: string[],
     postId: string,
   ) {
-    const promises = taggedUserIds.map((targetUserId) => {
+    const actorProfile = await this.prisma.profile.findFirst({
+      where: { userId: actorUserId, isActive: 'ACTIVE' },
+      select: { profileName: true },
+    });
+    const actorName = actorProfile?.profileName ?? 'Someone';
+
+    const requests = await this.prisma.postTagRequest.findMany({
+      where: { postId, taggedUserId: { in: taggedUserIds } },
+      select: { id: true, taggedUserId: true },
+    });
+
+    const promises = requests.map((req) => {
       return this.notificationService.sendNotification({
-        userId: targetUserId,
+        userId: req.taggedUserId,
         actorUserId: actorUserId,
         type: 'TAGGED' as any,
         channel: undefined,
-        title: 'New Tagged Post',
-        message: 'Someone tagged you in a post.',
+        title: 'Post Tag Request',
+        message: `${actorName} requested to tag you in a post.`,
         entityType: 'POST' as any,
         entityId: postId,
+        meta: { tagRequestId: req.id, postId },
         deepLink: `/posts/${postId}`,
       });
     });
@@ -809,232 +822,324 @@ export class PostService {
       );
     }
 
-    return this.prisma.$transaction(async (tx) => {
-      const existing = await tx.post.findUnique({
-        where: { id: postId },
-        include: {
-          hashtags: { select: { id: true } },
-          taggedUsers: { select: { id: true } },
-        },
-      });
-
-      if (!existing) {
-        throw new NotFoundException('Post not found');
-      }
-
-      if (existing.userId !== userId) {
-        throw new ForbiddenException('You are not allowed to update this post');
-      }
-
-      const nextHashtagIds =
-        dto.hashtagIds !== undefined
-          ? Array.from(new Set(dto.hashtagIds))
-          : undefined;
-
-      const nextTaggedUserIds =
-        dto.taggedUserIds !== undefined
-          ? Array.from(new Set(dto.taggedUserIds)).filter((id) => id !== userId)
-          : undefined;
-
-      const finalMediaType = dto.mediaType ?? existing.mediaType;
-
-      const finalPhotoEditingDeclaration =
-        dto.photoEditingDeclaration === undefined
-          ? existing.photoEditingDeclaration
-          : dto.photoEditingDeclaration;
-
-      const finalVideoEditingDeclaration =
-        dto.videoEditingDeclaration === undefined
-          ? existing.videoEditingDeclaration
-          : dto.videoEditingDeclaration;
-
-      if (finalMediaType === MediaType.IMAGE && finalVideoEditingDeclaration) {
-        throw new BadRequestException(
-          'videoEditingDeclaration is only allowed for VIDEO posts.',
-        );
-      }
-
-      if (finalMediaType === MediaType.VIDEO && finalPhotoEditingDeclaration) {
-        throw new BadRequestException(
-          'photoEditingDeclaration is only allowed for IMAGE posts.',
-        );
-      }
-
-      if (nextHashtagIds !== undefined && nextHashtagIds.length > 0) {
-        const foundHashtags = await tx.hashtag.findMany({
-          where: { id: { in: nextHashtagIds }, isActive: true },
-          select: { id: true },
-        });
-
-        if (foundHashtags.length !== nextHashtagIds.length) {
-          throw new BadRequestException(
-            'One or more hashtags are invalid or inactive.',
-          );
-        }
-      }
-
-      let taggedProfiles: { id: string }[] = [];
-
-      if (nextTaggedUserIds !== undefined && nextTaggedUserIds.length > 0) {
-        const foundUsers = await tx.user.findMany({
-          where: { id: { in: nextTaggedUserIds } },
-          select: { id: true },
-        });
-
-        if (foundUsers.length !== nextTaggedUserIds.length) {
-          throw new BadRequestException('One or more tagged users are invalid');
-        }
-
-        const blockedRelations = await tx.userBlock.findMany({
-          where: {
-            OR: nextTaggedUserIds.flatMap((targetUserId) => [
-              { blockerId: userId, blockedUserId: targetUserId },
-              { blockerId: targetUserId, blockedUserId: userId },
-            ]),
+    return this.prisma
+      .$transaction(async (tx) => {
+        const existing = await tx.post.findUnique({
+          where: { id: postId },
+          include: {
+            hashtags: { select: { id: true } },
+            taggedUsers: { select: { id: true } },
           },
-          select: { blockerId: true, blockedUserId: true },
         });
 
-        if (blockedRelations.length > 0) {
-          throw new BadRequestException(
-            'You cannot tag users who are blocked or who blocked you',
+        if (!existing) {
+          throw new NotFoundException('Post not found');
+        }
+
+        if (existing.userId !== userId) {
+          throw new ForbiddenException(
+            'You are not allowed to update this post',
           );
         }
 
-        taggedProfiles = await tx.profile.findMany({
-          where: {
-            userId: { in: nextTaggedUserIds },
-            isActive: 'ACTIVE',
-            suspend: false,
-          },
-          select: { id: true },
-        });
+        const nextHashtagIds =
+          dto.hashtagIds !== undefined
+            ? Array.from(new Set(dto.hashtagIds))
+            : undefined;
 
-        // 🎯 ফিক্স: আপডেট করার সময়ও ইনঅ্যাক্টিভ প্রোফাইল ভ্যালিডেশন নিশ্চিত করা হলো
-        if (taggedProfiles.length !== nextTaggedUserIds.length) {
+        const nextTaggedUserIds =
+          dto.taggedUserIds !== undefined
+            ? Array.from(new Set(dto.taggedUserIds)).filter(
+                (id) => id !== userId,
+              )
+            : undefined;
+
+        const finalMediaType = dto.mediaType ?? existing.mediaType;
+
+        const finalPhotoEditingDeclaration =
+          dto.photoEditingDeclaration === undefined
+            ? existing.photoEditingDeclaration
+            : dto.photoEditingDeclaration;
+
+        const finalVideoEditingDeclaration =
+          dto.videoEditingDeclaration === undefined
+            ? existing.videoEditingDeclaration
+            : dto.videoEditingDeclaration;
+
+        if (
+          finalMediaType === MediaType.IMAGE &&
+          finalVideoEditingDeclaration
+        ) {
           throw new BadRequestException(
-            'One or more tagged users have inactive or suspended profiles',
+            'videoEditingDeclaration is only allowed for VIDEO posts.',
           );
         }
-      }
 
-      const oldHashtagIds = existing.hashtags.map((item) => item.id);
+        if (
+          finalMediaType === MediaType.VIDEO &&
+          finalPhotoEditingDeclaration
+        ) {
+          throw new BadRequestException(
+            'photoEditingDeclaration is only allowed for IMAGE posts.',
+          );
+        }
 
-      const updateData: Prisma.PostUpdateInput = {
-        ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
-        ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
-        ...(dto.caption !== undefined ? { caption: dto.caption ?? null } : {}),
-        ...(dto.mediaUrl !== undefined ? { mediaUrl: dto.mediaUrl ?? [] } : {}),
-        ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
-        ...(dto.vehicleCategory !== undefined
-          ? { vehicleCategory: dto.vehicleCategory ?? null }
-          : {}),
-        ...(dto.photoEditingDeclaration !== undefined
-          ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.videoEditingDeclaration !== undefined
-          ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
-          : {}),
-        ...(dto.postLocation !== undefined
-          ? { postLocation: dto.postLocation ?? null }
-          : {}),
-        ...(dto.locationVisibility !== undefined
-          ? { locationVisibility: dto.locationVisibility ?? null }
-          : {}),
-        ...(dto.locationName !== undefined
-          ? { locationName: dto.locationName ?? null }
-          : {}),
-        ...(dto.locationAddress !== undefined
-          ? { locationAddress: dto.locationAddress ?? null }
-          : {}),
-        ...(dto.latitude !== undefined
-          ? { latitude: dto.latitude ?? null }
-          : {}),
-        ...(dto.longitude !== undefined
-          ? { longitude: dto.longitude ?? null }
-          : {}),
-        ...(dto.placeId !== undefined ? { placeId: dto.placeId ?? null } : {}),
-        ...(dto.visiualStyle !== undefined
-          ? { visiualStyle: dto.visiualStyle ?? [] }
-          : {}),
-        ...(dto.contextActivity !== undefined
-          ? { contextActivity: dto.contextActivity ?? [] }
-          : {}),
-        ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
-        ...(nextHashtagIds !== undefined
-          ? { hashtags: { set: nextHashtagIds.map((id) => ({ id })) } }
-          : {}),
-        ...(nextTaggedUserIds !== undefined
-          ? { taggedUsers: { set: nextTaggedUserIds.map((id) => ({ id })) } }
-          : {}),
-      };
-
-      if (
-        Object.keys(updateData).length === 0 &&
-        nextHashtagIds === undefined &&
-        nextTaggedUserIds === undefined
-      ) {
-        throw new BadRequestException('No valid fields provided to update');
-      }
-
-      const updated = await tx.post.update({
-        where: { id: postId },
-        data: updateData,
-        include: {
-          hashtags: true,
-          taggedUsers: { select: { id: true } },
-          profile: { select: { id: true, imageUrl: true, activeType: true } },
-          taggedProfiles: {
-            include: {
-              profile: {
-                select: { id: true, profileName: true, imageUrl: true },
-              },
-            },
-          },
-        },
-      });
-
-      if (nextTaggedUserIds !== undefined) {
-        await tx.taggedProfilePost.deleteMany({ where: { postId } });
-
-        if (taggedProfiles.length) {
-          await tx.taggedProfilePost.createMany({
-            data: taggedProfiles.map((p) => ({
-              postId,
-              profileId: p.id,
-            })),
-            skipDuplicates: true,
+        if (nextHashtagIds !== undefined && nextHashtagIds.length > 0) {
+          const foundHashtags = await tx.hashtag.findMany({
+            where: { id: { in: nextHashtagIds }, isActive: true },
+            select: { id: true },
           });
+
+          if (foundHashtags.length !== nextHashtagIds.length) {
+            throw new BadRequestException(
+              'One or more hashtags are invalid or inactive.',
+            );
+          }
         }
-      }
 
-      if (nextHashtagIds !== undefined) {
-        const removedHashtagIds = oldHashtagIds.filter(
-          (id) => !nextHashtagIds.includes(id),
-        );
-        const addedHashtagIds = nextHashtagIds.filter(
-          (id) => !oldHashtagIds.includes(id),
-        );
+        let taggedProfiles: { id: string }[] = [];
 
-        if (removedHashtagIds.length > 0) {
-          for (const hashtagId of removedHashtagIds) {
-            await tx.hashtag.update({
-              where: { id: hashtagId },
-              data: { usageCount: { decrement: 1 } },
+        if (nextTaggedUserIds !== undefined && nextTaggedUserIds.length > 0) {
+          const foundUsers = await tx.user.findMany({
+            where: { id: { in: nextTaggedUserIds } },
+            select: { id: true },
+          });
+
+          if (foundUsers.length !== nextTaggedUserIds.length) {
+            throw new BadRequestException(
+              'One or more tagged users are invalid',
+            );
+          }
+
+          const blockedRelations = await tx.userBlock.findMany({
+            where: {
+              OR: nextTaggedUserIds.flatMap((targetUserId) => [
+                { blockerId: userId, blockedUserId: targetUserId },
+                { blockerId: targetUserId, blockedUserId: userId },
+              ]),
+            },
+            select: { blockerId: true, blockedUserId: true },
+          });
+
+          if (blockedRelations.length > 0) {
+            throw new BadRequestException(
+              'You cannot tag users who are blocked or who blocked you',
+            );
+          }
+
+          taggedProfiles = await tx.profile.findMany({
+            where: {
+              userId: { in: nextTaggedUserIds },
+              isActive: 'ACTIVE',
+              suspend: false,
+            },
+            select: { id: true },
+          });
+
+          // 🎯 ফিক্স: আপডেট করার সময়ও ইনঅ্যাক্টিভ প্রোফাইল ভ্যালিডেশন নিশ্চিত করা হলো
+          if (taggedProfiles.length !== nextTaggedUserIds.length) {
+            throw new BadRequestException(
+              'One or more tagged users have inactive or suspended profiles',
+            );
+          }
+        }
+
+        const oldHashtagIds = existing.hashtags.map((item) => item.id);
+
+        const updateData: Prisma.PostUpdateInput = {
+          ...(dto.postType !== undefined ? { postType: dto.postType } : {}),
+          ...(dto.assetType !== undefined ? { assetType: dto.assetType } : {}),
+          ...(dto.caption !== undefined
+            ? { caption: dto.caption ?? null }
+            : {}),
+          ...(dto.mediaUrl !== undefined
+            ? { mediaUrl: dto.mediaUrl ?? [] }
+            : {}),
+          ...(dto.mediaType !== undefined ? { mediaType: dto.mediaType } : {}),
+          ...(dto.vehicleCategory !== undefined
+            ? { vehicleCategory: dto.vehicleCategory ?? null }
+            : {}),
+          ...(dto.photoEditingDeclaration !== undefined
+            ? { photoEditingDeclaration: dto.photoEditingDeclaration ?? null }
+            : {}),
+          ...(dto.videoEditingDeclaration !== undefined
+            ? { videoEditingDeclaration: dto.videoEditingDeclaration ?? null }
+            : {}),
+          ...(dto.postLocation !== undefined
+            ? { postLocation: dto.postLocation ?? null }
+            : {}),
+          ...(dto.locationVisibility !== undefined
+            ? { locationVisibility: dto.locationVisibility ?? null }
+            : {}),
+          ...(dto.locationName !== undefined
+            ? { locationName: dto.locationName ?? null }
+            : {}),
+          ...(dto.locationAddress !== undefined
+            ? { locationAddress: dto.locationAddress ?? null }
+            : {}),
+          ...(dto.latitude !== undefined
+            ? { latitude: dto.latitude ?? null }
+            : {}),
+          ...(dto.longitude !== undefined
+            ? { longitude: dto.longitude ?? null }
+            : {}),
+          ...(dto.placeId !== undefined
+            ? { placeId: dto.placeId ?? null }
+            : {}),
+          ...(dto.visiualStyle !== undefined
+            ? { visiualStyle: dto.visiualStyle ?? [] }
+            : {}),
+          ...(dto.contextActivity !== undefined
+            ? { contextActivity: dto.contextActivity ?? [] }
+            : {}),
+          ...(dto.subject !== undefined ? { subject: dto.subject ?? [] } : {}),
+          ...(nextHashtagIds !== undefined
+            ? { hashtags: { set: nextHashtagIds.map((id) => ({ id })) } }
+            : {}),
+        };
+
+        if (
+          Object.keys(updateData).length === 0 &&
+          nextHashtagIds === undefined &&
+          nextTaggedUserIds === undefined
+        ) {
+          throw new BadRequestException('No valid fields provided to update');
+        }
+
+        const newlyRequestedUserIds: string[] = [];
+
+        if (nextTaggedUserIds !== undefined) {
+          const existingTagRequests = await tx.postTagRequest.findMany({
+            where: { postId },
+            select: { id: true, taggedUserId: true, status: true },
+          });
+
+          const existingRequestedUserIds = existingTagRequests.map(
+            (r) => r.taggedUserId,
+          );
+
+          const removedUserIds = existingRequestedUserIds.filter(
+            (id) => !nextTaggedUserIds.includes(id),
+          );
+
+          if (removedUserIds.length > 0) {
+            await tx.postTagRequest.deleteMany({
+              where: {
+                postId,
+                taggedUserId: { in: removedUserIds },
+              },
+            });
+
+            await tx.post.update({
+              where: { id: postId },
+              data: {
+                taggedUsers: {
+                  disconnect: removedUserIds.map((id) => ({ id })),
+                },
+              },
+            });
+
+            const removedProfiles = await tx.profile.findMany({
+              where: { userId: { in: removedUserIds } },
+              select: { id: true },
+            });
+
+            if (removedProfiles.length > 0) {
+              await tx.taggedProfilePost.deleteMany({
+                where: {
+                  postId,
+                  profileId: { in: removedProfiles.map((p) => p.id) },
+                },
+              });
+            }
+          }
+
+          for (const targetUserId of nextTaggedUserIds) {
+            const existingReq = existingTagRequests.find(
+              (r) => r.taggedUserId === targetUserId,
+            );
+
+            if (
+              !existingReq ||
+              existingReq.status === PostTagRequestStatus.REJECTED
+            ) {
+              await tx.postTagRequest.upsert({
+                where: {
+                  postId_taggedUserId: {
+                    postId,
+                    taggedUserId: targetUserId,
+                  },
+                },
+                update: {
+                  status: PostTagRequestStatus.PENDING,
+                },
+                create: {
+                  postId,
+                  taggedUserId: targetUserId,
+                  status: PostTagRequestStatus.PENDING,
+                },
+              });
+              newlyRequestedUserIds.push(targetUserId);
+            }
+          }
+        }
+
+        if (nextHashtagIds !== undefined) {
+          const removedHashtagIds = oldHashtagIds.filter(
+            (id) => !nextHashtagIds.includes(id),
+          );
+          const addedHashtagIds = nextHashtagIds.filter(
+            (id) => !oldHashtagIds.includes(id),
+          );
+
+          if (removedHashtagIds.length > 0) {
+            for (const hashtagId of removedHashtagIds) {
+              await tx.hashtag.update({
+                where: { id: hashtagId },
+                data: { usageCount: { decrement: 1 } },
+              });
+            }
+          }
+
+          if (addedHashtagIds.length > 0) {
+            await tx.hashtag.updateMany({
+              where: { id: { in: addedHashtagIds } },
+              data: { usageCount: { increment: 1 } },
             });
           }
         }
 
-        if (addedHashtagIds.length > 0) {
-          await tx.hashtag.updateMany({
-            where: { id: { in: addedHashtagIds } },
-            data: { usageCount: { increment: 1 } },
-          });
-        }
-      }
+        const updated = await tx.post.update({
+          where: { id: postId },
+          data: updateData,
+          include: {
+            hashtags: true,
+            taggedUsers: { select: { id: true } },
+            profile: { select: { id: true, imageUrl: true, activeType: true } },
+            taggedProfiles: {
+              include: {
+                profile: {
+                  select: { id: true, profileName: true, imageUrl: true },
+                },
+              },
+            },
+          },
+        });
 
-      return updated;
-    });
+        return { updated, newlyRequestedUserIds };
+      })
+      .then((res) => {
+        if (res.newlyRequestedUserIds.length > 0) {
+          this.sendNotificationToTaggedUsers(
+            userId,
+            res.newlyRequestedUserIds,
+            postId,
+          ).catch((err) =>
+            console.error('Failed to send tag notifications on update:', err),
+          );
+        }
+        return res.updated;
+      });
   }
 
   // 🎯 ট্যাগড পোস্ট এবং নিজের পোস্ট একই সাথে এই মেথডে নিখুঁতভাবে হ্যান্ডেল হচ্ছে!
@@ -1091,5 +1196,201 @@ export class PostService {
 
       return { deleted: true, postId };
     });
+  }
+
+  async respondTagRequest(
+    requestId: string,
+    userId: string,
+    dto: RespondTagRequestDto,
+  ) {
+    const tagRequest = await this.prisma.postTagRequest.findUnique({
+      where: { id: requestId },
+      include: {
+        post: {
+          select: {
+            id: true,
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (!tagRequest) {
+      throw new NotFoundException('Tag request not found');
+    }
+
+    if (tagRequest.taggedUserId !== userId) {
+      throw new ForbiddenException(
+        'You are not authorized to respond to this tag request',
+      );
+    }
+
+    if (tagRequest.status === dto.status) {
+      return tagRequest;
+    }
+
+    return this.prisma.$transaction(async (tx) => {
+      const updatedRequest = await tx.postTagRequest.update({
+        where: { id: requestId },
+        data: { status: dto.status },
+      });
+
+      if (dto.status === PostTagRequestStatus.ACCEPTED) {
+        await tx.post.update({
+          where: { id: tagRequest.postId },
+          data: {
+            taggedUsers: { connect: { id: userId } },
+          },
+        });
+
+        const activeProfile = await tx.profile.findFirst({
+          where: { userId, isActive: 'ACTIVE', suspend: false },
+          select: { id: true, profileName: true },
+        });
+
+        if (activeProfile) {
+          await tx.taggedProfilePost.upsert({
+            where: {
+              postId_profileId: {
+                postId: tagRequest.postId,
+                profileId: activeProfile.id,
+              },
+            },
+            update: {},
+            create: {
+              postId: tagRequest.postId,
+              profileId: activeProfile.id,
+            },
+          });
+        }
+
+        const userProfile =
+          activeProfile ??
+          (await tx.profile.findFirst({
+            where: { userId },
+            select: { profileName: true },
+          }));
+        const responderName = userProfile?.profileName ?? 'A user';
+
+        this.notificationService
+          .sendNotification({
+            userId: tagRequest.post.userId,
+            actorUserId: userId,
+            type: 'TAGGED' as any,
+            title: 'Tag Request Accepted',
+            message: `${responderName} accepted your tag request.`,
+            entityType: 'POST' as any,
+            entityId: tagRequest.postId,
+            deepLink: `/posts/${tagRequest.postId}`,
+          })
+          .catch((err) =>
+            console.error('Failed to send tag accept notification:', err),
+          );
+      } else if (dto.status === PostTagRequestStatus.REJECTED) {
+        await tx.post.update({
+          where: { id: tagRequest.postId },
+          data: {
+            taggedUsers: { disconnect: { id: userId } },
+          },
+        });
+
+        const userProfiles = await tx.profile.findMany({
+          where: { userId },
+          select: { id: true },
+        });
+
+        if (userProfiles.length) {
+          await tx.taggedProfilePost.deleteMany({
+            where: {
+              postId: tagRequest.postId,
+              profileId: { in: userProfiles.map((p) => p.id) },
+            },
+          });
+        }
+      }
+
+      return updatedRequest;
+    });
+  }
+
+  async getPendingTagRequests(userId: string, query: TagRequestQueryDto) {
+    const page = query.page ?? 1;
+    const limit = query.limit ?? 20;
+    const skip = (page - 1) * limit;
+
+    const statusFilter = query.status ?? PostTagRequestStatus.PENDING;
+
+    const where: Prisma.PostTagRequestWhereInput = {
+      taggedUserId: userId,
+      status: statusFilter,
+    };
+
+    const [data, total] = await Promise.all([
+      this.prisma.postTagRequest.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        skip,
+        take: limit,
+        include: {
+          post: {
+            include: {
+              profile: {
+                select: {
+                  id: true,
+                  profileName: true,
+                  imageUrl: true,
+                  activeType: true,
+                },
+              },
+            },
+          },
+        },
+      }),
+      this.prisma.postTagRequest.count({ where }),
+    ]);
+
+    return {
+      data,
+      meta: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
+  }
+
+  async getPostTagRequests(postId: string, userId: string) {
+    const post = await this.prisma.post.findUnique({
+      where: { id: postId },
+      select: { id: true, userId: true },
+    });
+
+    if (!post) {
+      throw new NotFoundException('Post not found');
+    }
+
+    const tagRequests = await this.prisma.postTagRequest.findMany({
+      where: { postId },
+      include: {
+        taggedUser: {
+          select: {
+            id: true,
+            email: true,
+            profile: {
+              select: {
+                id: true,
+                profileName: true,
+                imageUrl: true,
+                isActive: true,
+              },
+            },
+          },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return tagRequests;
   }
 }

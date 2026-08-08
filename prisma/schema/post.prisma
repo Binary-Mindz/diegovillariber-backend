@@ -45,6 +45,7 @@ model Post {
 
   taggedUsers User[] @relation("PostTaggedUsers")
   taggedProfiles           TaggedProfilePost[]
+  tagRequests              PostTagRequest[]
 
   visiualStyle    VisiualStyle[]    @default([])
   contextActivity ContextActivity[] @default([])

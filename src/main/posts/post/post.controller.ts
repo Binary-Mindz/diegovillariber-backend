@@ -29,6 +29,8 @@ import { handleRequest } from '@/common/helpers/handle.request';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
 import { PostInsightSourceDto } from './dto/post-insight-source.dto';
+import { RespondTagRequestDto } from './dto/respond-tag-request.dto';
+import { TagRequestQueryDto } from './dto/tag-request-query.dto';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -72,6 +74,38 @@ export class PostController {
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @Get('tag-requests/pending')
+  @ApiOperation({
+    summary: 'Get pending post tag requests for logged in user',
+  })
+  async getPendingTagRequests(
+    @GetUser('userId') userId: string,
+    @Query() query: TagRequestQueryDto,
+  ) {
+    return handleRequest(
+      () => this.postsService.getPendingTagRequests(userId, query),
+      'Pending tag requests fetched successfully',
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Patch('tag-requests/:requestId/respond')
+  @HttpCode(HttpStatus.OK)
+  @ApiOperation({ summary: 'Accept or reject a post tag request' })
+  async respondTagRequest(
+    @Param('requestId') requestId: string,
+    @GetUser('userId') userId: string,
+    @Body() dto: RespondTagRequestDto,
+  ) {
+    return handleRequest(
+      () => this.postsService.respondTagRequest(requestId, userId, dto),
+      `Tag request ${dto.status.toLowerCase()} successfully`,
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':postId')
   async getSinglePost(
     @GetUser('userId') userId: string,
@@ -109,6 +143,20 @@ export class PostController {
 
     res.status(response.statusCode);
     return response;
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get(':postId/tag-requests')
+  @ApiOperation({ summary: 'Get tag requests for a specific post' })
+  async getPostTagRequests(
+    @GetUser('userId') userId: string,
+    @Param('postId') postId: string,
+  ) {
+    return handleRequest(
+      () => this.postsService.getPostTagRequests(postId, userId),
+      'Post tag requests fetched successfully',
+    );
   }
 
   @ApiBearerAuth()

@@ -373,6 +373,11 @@ export type PostViewInsight = Prisma.PostViewInsightModel
  */
 export type PostRating = Prisma.PostRatingModel
 /**
+ * Model PostTagRequest
+ * 
+ */
+export type PostTagRequest = Prisma.PostTagRequestModel
+/**
  * Model PrestigeRule
  * 
  */

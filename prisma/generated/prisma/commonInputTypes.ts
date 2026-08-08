@@ -1619,6 +1619,23 @@ export type EnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
 }
 
+export type EnumPostTagRequestStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostTagRequestStatus | Prisma.EnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel> | $Enums.PostTagRequestStatus
+}
+
+export type EnumPostTagRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostTagRequestStatus | Prisma.EnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostTagRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.PostTagRequestStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel>
+}
+
 export type EnumPrestigeRuleStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.PrestigeRuleStatus | Prisma.EnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
   in?: $Enums.PrestigeRuleStatus[] | Prisma.ListEnumPrestigeRuleStatusFieldRefInput<$PrismaModel>
@@ -3853,6 +3870,23 @@ export type NestedEnumViewerRelationTypeWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumViewerRelationTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumPostTagRequestStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostTagRequestStatus | Prisma.EnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel> | $Enums.PostTagRequestStatus
+}
+
+export type NestedEnumPostTagRequestStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PostTagRequestStatus | Prisma.EnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PostTagRequestStatus[] | Prisma.ListEnumPostTagRequestStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPostTagRequestStatusWithAggregatesFilter<$PrismaModel> | $Enums.PostTagRequestStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPostTagRequestStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumPrestigeRuleStatusFilter<$PrismaModel = never> = {
