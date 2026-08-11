@@ -1,3 +1,6 @@
+import { GetUser } from '@/common/decorator/get-user.decorator';
+import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
+import { handleRequest } from '@/common/helpers/handle.request';
 import {
   Body,
   Controller,
@@ -21,16 +24,13 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Response } from 'express';
-import { PostService } from './post.service';
-import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
 import { CreatePostDto } from './dto/create.post.dto';
-import { GetUser } from '@/common/decorator/get-user.decorator';
-import { handleRequest } from '@/common/helpers/handle.request';
-import { UpdatePostDto } from './dto/update-post.dto';
 import { FeedQueryDto } from './dto/feed-query.dto';
 import { PostInsightSourceDto } from './dto/post-insight-source.dto';
 import { RespondTagRequestDto } from './dto/respond-tag-request.dto';
 import { TagRequestQueryDto } from './dto/tag-request-query.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
+import { PostService } from './post.service';
 
 @ApiTags('Posts')
 @Controller('posts')
@@ -183,6 +183,14 @@ export class PostController {
   async deletePost(@Param('id') id: string, @GetUser('userId') userId: string) {
     return handleRequest(async () => {
       const result = await this.postsService.deletePost(id, userId);
+      return result;
+    }, 'Post deleted successfully');
+  }
+
+  @Delete('post/:id')
+  async deletePostByAdmin(@Param('id') id: string) {
+    return handleRequest(async () => {
+      const result = await this.postsService.deletePostByAdmin(id);
       return result;
     }, 'Post deleted successfully');
   }

@@ -1393,4 +1393,10 @@ export class PostService {
 
     return tagRequests;
   }
+
+  async deletePostByAdmin(postId: string) {
+    const post = await this.prisma.post.delete({ where: { id: postId } });
+
+    return post.id;
+  }
 }
