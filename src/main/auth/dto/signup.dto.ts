@@ -1,10 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsString, MinLength, IsEnum } from 'class-validator';
+import { IsEmail, MinLength, IsEnum } from 'class-validator';
 import { Preference, Type } from 'generated/prisma/enums';
+import { IsProfileName } from '@/common/decorator/is-profile-name.decorator';
 
 export class SignUpDto {
-  @ApiProperty({ example: 'John deo' })
-  @IsString()
+  @ApiProperty({ example: 'john_doe' })
+  @IsProfileName()
   username!: string;
 
   @ApiProperty({ example: 'ranarasul21@gmail.com' })

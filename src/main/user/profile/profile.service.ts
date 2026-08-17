@@ -1,6 +1,7 @@
 import { PrismaService } from '@/common/prisma/prisma.service';
 import {
   BadRequestException,
+  ConflictException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -61,6 +62,19 @@ export class ProfileService {
       select: { id: true },
     });
     if (!user) throw new NotFoundException('User not found');
+
+    if (dto.profileName) {
+      const existingWithName = await this.prisma.profile.findFirst({
+        where: {
+          profileName: dto.profileName,
+          userId: { not: currentUserId },
+        },
+        select: { id: true },
+      });
+      if (existingWithName) {
+        throw new ConflictException('Profile name is already taken');
+      }
+    }
 
     return this.prisma.$transaction(async (tx) => {
       const existing = await tx.profile.findUnique({
@@ -150,6 +164,21 @@ export class ProfileService {
     if (!profile) throw new NotFoundException('Profile not found');
     if (profile.userId !== currentUserId)
       throw new ForbiddenException('No access');
+
+    if (dto.profileName !== undefined && dto.profileName !== null) {
+      const existingWithName = await this.prisma.profile.findFirst({
+        where: {
+          profileName: dto.profileName,
+          NOT: { id: profileId },
+        },
+        select: { id: true },
+      });
+      if (existingWithName) {
+        throw new ConflictException(
+          'Profile name is already in use by another user',
+        );
+      }
+    }
 
     return this.prisma.profile.update({
       where: { id: profileId },
