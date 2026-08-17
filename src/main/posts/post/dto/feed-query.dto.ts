@@ -1,5 +1,5 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import {
   IsEnum,
   IsInt,
@@ -11,7 +11,29 @@ import {
 } from 'class-validator';
 import { PostType } from 'generated/prisma/enums';
 
+export enum FeedTab {
+  ALL = 'all',
+  TRENDING = 'trending',
+  TOP = 'top',
+  VIDEO = 'video',
+  PHOTO = 'photo',
+  SPOTTER = 'spotter',
+}
+
 export class FeedQueryDto {
+  @ApiPropertyOptional({
+    enum: FeedTab,
+    example: FeedTab.ALL,
+    description:
+      'Feed tab filter: all (entire list) | trending (sorted by racingVote) | top (sorted by ratingAverage) | video | photo | spotter',
+  })
+  @IsOptional()
+  @Transform(({ value }) =>
+    typeof value === 'string' ? value.toLowerCase() : value,
+  )
+  @IsEnum(FeedTab)
+  tab?: FeedTab = FeedTab.ALL;
+
   @ApiPropertyOptional({ example: 1 })
   @Type(() => Number)
   @IsOptional()
