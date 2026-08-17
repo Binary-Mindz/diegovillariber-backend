@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ConflictException,
   ForbiddenException,
   Injectable,
   NotFoundException,
@@ -203,6 +204,32 @@ export class AuthService {
     return profile;
   }
 
+  private async generateUniqueFallbackProfileName(
+    base: string,
+  ): Promise<string> {
+    const rawBase =
+      base
+        .toLowerCase()
+        .replace(/[^a-z0-9._-]/g, '_')
+        .replace(/^[._-]+|[._-]+$/g, '') || 'driver';
+    let candidate = rawBase.slice(0, 24);
+    if (candidate.length < 3) {
+      candidate = `${candidate}_${Math.floor(100 + Math.random() * 900)}`;
+    }
+    let uniqueCandidate = candidate;
+    let suffix = 0;
+    while (
+      await this.prisma.profile.findUnique({
+        where: { profileName: uniqueCandidate },
+        select: { id: true },
+      })
+    ) {
+      suffix++;
+      uniqueCandidate = `${candidate.slice(0, 20)}_${suffix}`;
+    }
+    return uniqueCandidate;
+  }
+
   async signup(dto: SignUpDto) {
     const existing = await this.prisma.user.findUnique({
       where: { email: dto.email },
@@ -230,6 +257,14 @@ export class AuthService {
         message: 'Email not verified. OTP resent.',
         userId: existing.id,
       };
+    }
+
+    const existingProfile = await this.prisma.profile.findUnique({
+      where: { profileName: dto.username },
+      select: { id: true },
+    });
+    if (existingProfile) {
+      throw new ConflictException('Profile name already exists');
     }
 
     const passwordHash = await this.hash(dto.password);
@@ -713,6 +748,21 @@ export class AuthService {
           );
         }
 
+        let profileName = dto.username;
+        if (profileName) {
+          const existingProfile = await this.prisma.profile.findUnique({
+            where: { profileName },
+            select: { id: true },
+          });
+          if (existingProfile) {
+            throw new ConflictException('Profile name already exists');
+          }
+        } else {
+          profileName = await this.generateUniqueFallbackProfileName(
+            googleName ?? email.split('@')[0],
+          );
+        }
+
         const randomPassword = await this.hash(randomUUID());
 
         user = await this.prisma.$transaction(async (tx) => {
@@ -725,7 +775,7 @@ export class AuthService {
           });
 
           await this.createProfileByType(tx, createdUser.id, {
-            username: dto.username ?? googleName ?? email.split('@')[0],
+            username: profileName,
             profileType: dto.profileType,
             preference: dto.preference ?? null,
             bio: dto.bio ?? null,
@@ -774,9 +824,24 @@ export class AuthService {
             );
           }
 
+          let profileName = dto.username;
+          if (profileName) {
+            const existingProfile = await this.prisma.profile.findUnique({
+              where: { profileName },
+              select: { id: true },
+            });
+            if (existingProfile) {
+              throw new ConflictException('Profile name already exists');
+            }
+          } else {
+            profileName = await this.generateUniqueFallbackProfileName(
+              googleName ?? email.split('@')[0],
+            );
+          }
+
           await this.prisma.$transaction(async (tx) => {
             await this.createProfileByType(tx, user!.id, {
-              username: dto.username ?? googleName ?? email.split('@')[0],
+              username: profileName,
               profileType: dto.profileType,
               preference: dto.preference ?? null,
               bio: dto.bio ?? null,

@@ -365,12 +365,12 @@ export type ProfileOrderByWithRelationInput = {
 export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   userId?: string
+  profileName?: string
   shareSlug?: string
   AND?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   OR?: Prisma.ProfileWhereInput[]
   NOT?: Prisma.ProfileWhereInput | Prisma.ProfileWhereInput[]
   activeType?: Prisma.EnumTypeNullableFilter<"Profile"> | $Enums.Type | null
-  profileName?: Prisma.StringNullableFilter<"Profile"> | string | null
   bio?: Prisma.StringNullableFilter<"Profile"> | string | null
   imageUrl?: Prisma.StringNullableFilter<"Profile"> | string | null
   instagramHandler?: Prisma.StringNullableFilter<"Profile"> | string | null
@@ -404,7 +404,7 @@ export type ProfileWhereUniqueInput = Prisma.AtLeast<{
   splitScreenBattlesRightUser?: Prisma.SplitScreenBattleListRelationFilter
   spottingRequests?: Prisma.SpottingRequestListRelationFilter
   profileBadges?: Prisma.ProfileBadgeListRelationFilter
-}, "id" | "userId" | "shareSlug">
+}, "id" | "userId" | "profileName" | "shareSlug">
 
 export type ProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

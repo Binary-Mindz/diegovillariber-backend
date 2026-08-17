@@ -4,7 +4,7 @@ model Profile {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   activeType       Type?
-  profileName      String?
+  profileName      String?   @unique
   bio              String?
   imageUrl         String?
   instagramHandler String?

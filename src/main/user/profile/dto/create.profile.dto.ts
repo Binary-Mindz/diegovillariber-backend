@@ -9,6 +9,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsProfileName } from '@/common/decorator/is-profile-name.decorator';
 
 import {
   AccountType,
@@ -288,9 +289,9 @@ export class SimRacingProfileDto {
 /* ---------------- Main DTO ---------------- */
 
 export class CreateProfileDto {
-  @ApiPropertyOptional({ example: 'Ash' })
+  @ApiPropertyOptional({ example: 'ash_racer' })
   @IsOptional()
-  @IsString()
+  @IsProfileName()
   profileName?: string;
 
   @ApiPropertyOptional({ example: 'Car enthusiast & sim racer' })

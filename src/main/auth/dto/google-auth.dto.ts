@@ -8,6 +8,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
+import { IsProfileName } from '@/common/decorator/is-profile-name.decorator';
 
 class CreatorDto {
   @IsOptional()
@@ -58,9 +59,9 @@ export class GoogleAuthDto {
   @IsEnum(Role)
   loginAs?: Role;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({ example: 'john_doe' })
   @IsOptional()
-  @IsString()
+  @IsProfileName()
   username?: string;
 
   @ApiPropertyOptional({ enum: Type })
