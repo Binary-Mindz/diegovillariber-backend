@@ -16,10 +16,11 @@ import {
 import { NotificationService } from '../../notification/notification.service';
 import { SpottingRequestService } from '../../sportting-request/sportting-request.service';
 import { CreatePostDto } from './dto/create.post.dto';
-import { FeedQueryDto } from './dto/feed-query.dto';
+import { FeedQueryDto, FeedTab } from './dto/feed-query.dto';
 import { RespondTagRequestDto } from './dto/respond-tag-request.dto';
 import { TagRequestQueryDto } from './dto/tag-request-query.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
+import { isSpotterPost, isVideoPost } from './utils/post-filter.utils';
 
 const POST_REWARD_POINTS = 5;
 const BOOST_COST_POINTS = 300;
@@ -579,11 +580,36 @@ export class PostService {
       preferenceFilter = { assetType: 'BIKE' };
     }
 
+    let tabWhereFilter: Prisma.PostWhereInput = {};
+
+    if (query.tab === FeedTab.VIDEO) {
+      tabWhereFilter = {
+        OR: [
+          { mediaType: MediaType.VIDEO },
+          { videoEditingDeclaration: { not: null } },
+        ],
+      };
+    } else if (query.tab === FeedTab.PHOTO) {
+      tabWhereFilter = {
+        mediaType: MediaType.IMAGE,
+        videoEditingDeclaration: null,
+      };
+    } else if (query.tab === FeedTab.SPOTTER) {
+      tabWhereFilter = {
+        OR: [
+          { profileType: 'SPOTTER' },
+          { postType: 'Spotter_Post' },
+          { profile: { activeType: 'SPOTTER' } },
+        ],
+      };
+    }
+
     const where: Prisma.PostWhereInput = {
       userId: { notIn: excludedUserIds },
       id: { notIn: finalHiddenPostIds },
       AND: [
         preferenceFilter,
+        tabWhereFilter,
         {
           OR: [
             {
@@ -619,12 +645,19 @@ export class PostService {
       ...(subject ? { subject: { hasSome: subject } } : {}),
     };
 
-    const orderBy: Prisma.PostOrderByWithRelationInput[] =
-      query.sort === 'topLiked'
-        ? [{ like: 'desc' }, { createdAt: 'desc' }]
-        : query.sort === 'boosted'
-          ? [{ contentBooster: 'desc' }, { createdAt: 'desc' }]
-          : [{ createdAt: 'desc' }];
+    let orderBy: Prisma.PostOrderByWithRelationInput[] = [
+      { createdAt: 'desc' },
+    ];
+
+    if (query.tab === FeedTab.TRENDING) {
+      orderBy = [{ racingVote: 'desc' }, { createdAt: 'desc' }];
+    } else if (query.tab === FeedTab.TOP) {
+      orderBy = [{ ratingAverage: 'desc' }, { createdAt: 'desc' }];
+    } else if (query.sort === 'topLiked') {
+      orderBy = [{ like: 'desc' }, { createdAt: 'desc' }];
+    } else if (query.sort === 'boosted') {
+      orderBy = [{ contentBooster: 'desc' }, { createdAt: 'desc' }];
+    }
 
     const [data, total] = await this.prisma.$transaction([
       this.prisma.post.findMany({
@@ -1398,5 +1431,22 @@ export class PostService {
     const post = await this.prisma.post.delete({ where: { id: postId } });
 
     return post.id;
+  }
+
+  _isVideoPost(post: {
+    mediaType?: string | null;
+    postType?: string | null;
+    videoEditingDeclaration?: any;
+    mediaUrl?: string[] | null;
+  }): boolean {
+    return isVideoPost(post);
+  }
+
+  _isSpotterPost(post: {
+    profileType?: string | null;
+    postType?: string | null;
+    profile?: { activeType?: string | null } | null;
+  }): boolean {
+    return isSpotterPost(post);
   }
 }
